@@ -1,3 +1,8 @@
+2024-11-15 Version: 2.8.0
+- Support API GetKafkaClientIp.
+- Update API GetInstanceList: update response param.
+
+
 2024-08-02 Version: 2.7.2
 - Update API GetConsumerProgress: add param HideLastTimestamp.
 - Update API UpgradePrePayOrder: update response param.

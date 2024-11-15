@@ -2993,6 +2993,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_list_with_options_async(request, runtime)
 
+    def get_kafka_client_ip_with_options(
+        self,
+        request: alikafka_20190916_models.GetKafkaClientIpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.GetKafkaClientIpResponse:
+        """
+        @summary 获取kafka客户端ip
+        
+        @param request: GetKafkaClientIpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKafkaClientIpResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group):
+            query['Group'] = request.group
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetKafkaClientIp',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetKafkaClientIpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_kafka_client_ip_with_options_async(
+        self,
+        request: alikafka_20190916_models.GetKafkaClientIpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.GetKafkaClientIpResponse:
+        """
+        @summary 获取kafka客户端ip
+        
+        @param request: GetKafkaClientIpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKafkaClientIpResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group):
+            query['Group'] = request.group
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetKafkaClientIp',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetKafkaClientIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_kafka_client_ip(
+        self,
+        request: alikafka_20190916_models.GetKafkaClientIpRequest,
+    ) -> alikafka_20190916_models.GetKafkaClientIpResponse:
+        """
+        @summary 获取kafka客户端ip
+        
+        @param request: GetKafkaClientIpRequest
+        @return: GetKafkaClientIpResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_kafka_client_ip_with_options(request, runtime)
+
+    async def get_kafka_client_ip_async(
+        self,
+        request: alikafka_20190916_models.GetKafkaClientIpRequest,
+    ) -> alikafka_20190916_models.GetKafkaClientIpResponse:
+        """
+        @summary 获取kafka客户端ip
+        
+        @param request: GetKafkaClientIpRequest
+        @return: GetKafkaClientIpResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_kafka_client_ip_with_options_async(request, runtime)
+
     def get_quota_tip_with_options(
         self,
         request: alikafka_20190916_models.GetQuotaTipRequest,

@@ -6686,12 +6686,42 @@ class GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo(
         return self
 
 
+class GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds(TeaModel):
+    def __init__(
+        self,
+        v_switch_ids: List[str] = None,
+    ):
+        self.v_switch_ids = v_switch_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        return self
+
+
 class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
     def __init__(
         self,
         all_config: str = None,
+        auto_create_group_enable: bool = None,
+        auto_create_topic_enable: bool = None,
         confluent_config: GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig = None,
         create_time: int = None,
+        default_partition_num: int = None,
         deploy_type: int = None,
         disk_size: int = None,
         disk_type: int = None,
@@ -6727,16 +6757,20 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         used_partition_count: int = None,
         used_topic_count: int = None,
         v_switch_id: str = None,
+        v_switch_ids: GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds = None,
         view_instance_status_code: int = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
         # The configurations of the deployed ApsaraMQ for Kafka instance.
         self.all_config = all_config
+        self.auto_create_group_enable = auto_create_group_enable
+        self.auto_create_topic_enable = auto_create_topic_enable
         # The parameters that are returned for the ApsaraMQ for Confluent instance.
         self.confluent_config = confluent_config
         # The time when the instance was created. Unit: milliseconds.
         self.create_time = create_time
+        self.default_partition_num = default_partition_num
         # The type of the network in which the instance is deployed. Valid values:
         # 
         # *   **4**: Internet and VPC
@@ -6860,6 +6894,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.used_topic_count = used_topic_count
         # The ID of the vSwitch to which the instance belongs.
         self.v_switch_id = v_switch_id
+        self.v_switch_ids = v_switch_ids
         # The instance status. The valid values are consistent with the values displayed in the ApsaraMQ for Kafka console. This parameter is used in the new version of ApsaraMQ for Kafka.
         # 
         # Valid values:
@@ -6893,6 +6928,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             self.tags.validate()
         if self.upgrade_service_detail_info:
             self.upgrade_service_detail_info.validate()
+        if self.v_switch_ids:
+            self.v_switch_ids.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6902,10 +6939,16 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         result = dict()
         if self.all_config is not None:
             result['AllConfig'] = self.all_config
+        if self.auto_create_group_enable is not None:
+            result['AutoCreateGroupEnable'] = self.auto_create_group_enable
+        if self.auto_create_topic_enable is not None:
+            result['AutoCreateTopicEnable'] = self.auto_create_topic_enable
         if self.confluent_config is not None:
             result['ConfluentConfig'] = self.confluent_config.to_map()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.default_partition_num is not None:
+            result['DefaultPartitionNum'] = self.default_partition_num
         if self.deploy_type is not None:
             result['DeployType'] = self.deploy_type
         if self.disk_size is not None:
@@ -6976,6 +7019,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             result['UsedTopicCount'] = self.used_topic_count
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids.to_map()
         if self.view_instance_status_code is not None:
             result['ViewInstanceStatusCode'] = self.view_instance_status_code
         if self.vpc_id is not None:
@@ -6988,11 +7033,17 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         m = m or dict()
         if m.get('AllConfig') is not None:
             self.all_config = m.get('AllConfig')
+        if m.get('AutoCreateGroupEnable') is not None:
+            self.auto_create_group_enable = m.get('AutoCreateGroupEnable')
+        if m.get('AutoCreateTopicEnable') is not None:
+            self.auto_create_topic_enable = m.get('AutoCreateTopicEnable')
         if m.get('ConfluentConfig') is not None:
             temp_model = GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig()
             self.confluent_config = temp_model.from_map(m['ConfluentConfig'])
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DefaultPartitionNum') is not None:
+            self.default_partition_num = m.get('DefaultPartitionNum')
         if m.get('DeployType') is not None:
             self.deploy_type = m.get('DeployType')
         if m.get('DiskSize') is not None:
@@ -7065,6 +7116,9 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             self.used_topic_count = m.get('UsedTopicCount')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchIds') is not None:
+            temp_model = GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds()
+            self.v_switch_ids = temp_model.from_map(m['VSwitchIds'])
         if m.get('ViewInstanceStatusCode') is not None:
             self.view_instance_status_code = m.get('ViewInstanceStatusCode')
         if m.get('VpcId') is not None:
@@ -7204,6 +7258,365 @@ class GetInstanceListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetInstanceListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetKafkaClientIpRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        group: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        start_time: int = None,
+        topic: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.group = group
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.start_time = start_time
+        self.topic = topic
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.group is not None:
+            result['Group'] = self.group
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Group') is not None:
+            self.group = m.get('Group')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetKafkaClientIpResponseBodyDataDataDataDataData(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        num: int = None,
+    ):
+        self.ip = ip
+        self.num = num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.num is not None:
+            result['Num'] = self.num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Num') is not None:
+            self.num = m.get('Num')
+        return self
+
+
+class GetKafkaClientIpResponseBodyDataDataDataData(TeaModel):
+    def __init__(
+        self,
+        data: List[GetKafkaClientIpResponseBodyDataDataDataDataData] = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetKafkaClientIpResponseBodyDataDataDataDataData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class GetKafkaClientIpResponseBodyDataDataData(TeaModel):
+    def __init__(
+        self,
+        data: GetKafkaClientIpResponseBodyDataDataDataData = None,
+        name: str = None,
+    ):
+        self.data = data
+        self.name = name
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetKafkaClientIpResponseBodyDataDataDataData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetKafkaClientIpResponseBodyDataData(TeaModel):
+    def __init__(
+        self,
+        data: List[GetKafkaClientIpResponseBodyDataDataData] = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetKafkaClientIpResponseBodyDataDataData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class GetKafkaClientIpResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        alert: bool = None,
+        data: GetKafkaClientIpResponseBodyDataData = None,
+        end_date: int = None,
+        search_time_range: int = None,
+        start_date: int = None,
+        time_limit_day: int = None,
+    ):
+        self.alert = alert
+        self.data = data
+        self.end_date = end_date
+        self.search_time_range = search_time_range
+        self.start_date = start_date
+        self.time_limit_day = time_limit_day
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert is not None:
+            result['Alert'] = self.alert
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.search_time_range is not None:
+            result['SearchTimeRange'] = self.search_time_range
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.time_limit_day is not None:
+            result['TimeLimitDay'] = self.time_limit_day
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alert') is not None:
+            self.alert = m.get('Alert')
+        if m.get('Data') is not None:
+            temp_model = GetKafkaClientIpResponseBodyDataData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('SearchTimeRange') is not None:
+            self.search_time_range = m.get('SearchTimeRange')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('TimeLimitDay') is not None:
+            self.time_limit_day = m.get('TimeLimitDay')
+        return self
+
+
+class GetKafkaClientIpResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetKafkaClientIpResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetKafkaClientIpResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetKafkaClientIpResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetKafkaClientIpResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetKafkaClientIpResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
