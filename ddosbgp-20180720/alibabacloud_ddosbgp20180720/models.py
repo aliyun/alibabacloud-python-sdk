@@ -3732,6 +3732,7 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
         blackholding_count: str = None,
         commodity_type: str = None,
         coverage_type: int = None,
+        debt_status: int = None,
         expire_time: int = None,
         gmt_create: int = None,
         instance_id: str = None,
@@ -3764,6 +3765,7 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
         # *   **3**: The instance supports public IP addresses in regions outside the Chinese mainland.
         # *   **4**: The instance supports public IP addresses in a region in or outside the Chinese mainland.
         self.coverage_type = coverage_type
+        self.debt_status = debt_status
         # The time when the instance expires. The value is a UNIX timestamp. Unit: milliseconds.
         self.expire_time = expire_time
         # The time when the instance was purchased. The value is a UNIX timestamp. Unit: milliseconds.
@@ -3816,6 +3818,8 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
             result['CommodityType'] = self.commodity_type
         if self.coverage_type is not None:
             result['CoverageType'] = self.coverage_type
+        if self.debt_status is not None:
+            result['DebtStatus'] = self.debt_status
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.gmt_create is not None:
@@ -3847,6 +3851,8 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
             self.commodity_type = m.get('CommodityType')
         if m.get('CoverageType') is not None:
             self.coverage_type = m.get('CoverageType')
+        if m.get('DebtStatus') is not None:
+            self.debt_status = m.get('DebtStatus')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('GmtCreate') is not None:
@@ -4741,6 +4747,7 @@ class DescribeOpEntitiesRequest(TeaModel):
         current_page: int = None,
         end_time: int = None,
         instance_id: str = None,
+        op_action: int = None,
         order_by: str = None,
         order_dir: str = None,
         page_size: int = None,
@@ -4760,6 +4767,7 @@ class DescribeOpEntitiesRequest(TeaModel):
         # 
         # > You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        self.op_action = op_action
         # The sorting method of operation logs. Set the value to **opdate**, which indicates sorting based on the operation time.
         self.order_by = order_by
         # The sort order of operation logs. Valid values:
@@ -4801,6 +4809,8 @@ class DescribeOpEntitiesRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.op_action is not None:
+            result['OpAction'] = self.op_action
         if self.order_by is not None:
             result['OrderBy'] = self.order_by
         if self.order_dir is not None:
@@ -4823,6 +4833,8 @@ class DescribeOpEntitiesRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('OpAction') is not None:
+            self.op_action = m.get('OpAction')
         if m.get('OrderBy') is not None:
             self.order_by = m.get('OrderBy')
         if m.get('OrderDir') is not None:
