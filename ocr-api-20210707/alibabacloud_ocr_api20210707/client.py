@@ -2653,6 +2653,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.need_rotate):
             query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_oricoord):
+            query['OutputOricoord'] = request.output_oricoord
         if not UtilClient.is_unset(request.subject):
             query['Subject'] = request.subject
         if not UtilClient.is_unset(request.url):
@@ -2694,6 +2696,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.need_rotate):
             query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_oricoord):
+            query['OutputOricoord'] = request.output_oricoord
         if not UtilClient.is_unset(request.subject):
             query['Subject'] = request.subject
         if not UtilClient.is_unset(request.url):

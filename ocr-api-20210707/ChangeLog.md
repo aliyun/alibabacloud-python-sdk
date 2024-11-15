@@ -1,3 +1,7 @@
+2024-11-15 Version: 3.1.2
+- Update API RecognizeEduPaperStructed: add param OutputOricoord.
+
+
 2024-07-31 Version: 3.1.1
 - Update API RecognizeEduPaperCut: add param OutputOricoord.
 

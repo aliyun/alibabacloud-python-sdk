@@ -5820,11 +5820,13 @@ class RecognizeEduPaperStructedRequest(TeaModel):
     def __init__(
         self,
         need_rotate: bool = None,
+        output_oricoord: bool = None,
         subject: str = None,
         url: str = None,
         body: BinaryIO = None,
     ):
         self.need_rotate = need_rotate
+        self.output_oricoord = output_oricoord
         self.subject = subject
         self.url = url
         self.body = body
@@ -5840,6 +5842,8 @@ class RecognizeEduPaperStructedRequest(TeaModel):
         result = dict()
         if self.need_rotate is not None:
             result['NeedRotate'] = self.need_rotate
+        if self.output_oricoord is not None:
+            result['OutputOricoord'] = self.output_oricoord
         if self.subject is not None:
             result['Subject'] = self.subject
         if self.url is not None:
@@ -5852,6 +5856,8 @@ class RecognizeEduPaperStructedRequest(TeaModel):
         m = m or dict()
         if m.get('NeedRotate') is not None:
             self.need_rotate = m.get('NeedRotate')
+        if m.get('OutputOricoord') is not None:
+            self.output_oricoord = m.get('OutputOricoord')
         if m.get('Subject') is not None:
             self.subject = m.get('Subject')
         if m.get('Url') is not None:
