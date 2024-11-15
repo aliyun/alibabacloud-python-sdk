@@ -1,3 +1,7 @@
+2024-11-15 Version: 4.4.7
+- Update API ImportImage: add param ClientToken.
+
+
 2024-11-13 Version: 4.4.6
 - Update API DescribeInstanceHistoryEvents: add param MaxResults.
 - Update API DescribeInstanceHistoryEvents: add param NextToken.
