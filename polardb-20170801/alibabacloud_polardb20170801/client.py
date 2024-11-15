@@ -1065,7 +1065,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateActivationCodeResponse:
         """
-        @summary 生成轻量化版本激活码
+        @summary Generates a lightweight license activation code.
         
         @param request: CreateActivationCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1116,7 +1116,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateActivationCodeResponse:
         """
-        @summary 生成轻量化版本激活码
+        @summary Generates a lightweight license activation code.
         
         @param request: CreateActivationCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1166,7 +1166,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateActivationCodeRequest,
     ) -> polardb_20170801_models.CreateActivationCodeResponse:
         """
-        @summary 生成轻量化版本激活码
+        @summary Generates a lightweight license activation code.
         
         @param request: CreateActivationCodeRequest
         @return: CreateActivationCodeResponse
@@ -1179,7 +1179,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateActivationCodeRequest,
     ) -> polardb_20170801_models.CreateActivationCodeResponse:
         """
-        @summary 生成轻量化版本激活码
+        @summary Generates a lightweight license activation code.
         
         @param request: CreateActivationCodeRequest
         @return: CreateActivationCodeResponse
@@ -1469,6 +1469,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
             query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
+        if not UtilClient.is_unset(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.clone_data_point):
@@ -1610,6 +1612,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
             query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
+        if not UtilClient.is_unset(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.clone_data_point):
@@ -2801,7 +2805,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse:
         """
-        @summary 创建或获取虚拟证书订单
+        @summary Creates or obtains a virtual license order.
         
         @param request: CreateOrGetVirtualLicenseOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2844,7 +2848,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse:
         """
-        @summary 创建或获取虚拟证书订单
+        @summary Creates or obtains a virtual license order.
         
         @param request: CreateOrGetVirtualLicenseOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2886,7 +2890,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateOrGetVirtualLicenseOrderRequest,
     ) -> polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse:
         """
-        @summary 创建或获取虚拟证书订单
+        @summary Creates or obtains a virtual license order.
         
         @param request: CreateOrGetVirtualLicenseOrderRequest
         @return: CreateOrGetVirtualLicenseOrderResponse
@@ -2899,7 +2903,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateOrGetVirtualLicenseOrderRequest,
     ) -> polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse:
         """
-        @summary 创建或获取虚拟证书订单
+        @summary Creates or obtains a virtual license order.
         
         @param request: CreateOrGetVirtualLicenseOrderRequest
         @return: CreateOrGetVirtualLicenseOrderResponse
@@ -5113,7 +5117,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeActivationCodesResponse:
         """
-        @summary 查询激活码列表
+        @summary Queries a list of activation codes.
         
         @param request: DescribeActivationCodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5160,7 +5164,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeActivationCodesResponse:
         """
-        @summary 查询激活码列表
+        @summary Queries a list of activation codes.
         
         @param request: DescribeActivationCodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5206,7 +5210,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeActivationCodesRequest,
     ) -> polardb_20170801_models.DescribeActivationCodesResponse:
         """
-        @summary 查询激活码列表
+        @summary Queries a list of activation codes.
         
         @param request: DescribeActivationCodesRequest
         @return: DescribeActivationCodesResponse
@@ -5219,7 +5223,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeActivationCodesRequest,
     ) -> polardb_20170801_models.DescribeActivationCodesResponse:
         """
-        @summary 查询激活码列表
+        @summary Queries a list of activation codes.
         
         @param request: DescribeActivationCodesRequest
         @return: DescribeActivationCodesResponse
@@ -6829,10 +6833,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterMigrationResponse:
         """
-        @summary Queries the migration status of PolarDB clusters.
+        @summary The ID of the synchronous task.
         
-        @description    You can call this operation to query the status of data migration from an ApsaraDB RDS instance to a PolarDB cluster. For more information, see [Upgrade ApsaraDB RDS for MySQL to PolarDB for MySQL with one click](https://help.aliyun.com/document_detail/121582.html).
-        Before you call this operation, make sure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**.
+        @description The ID of the request.
         
         @param request: DescribeDBClusterMigrationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6875,10 +6878,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterMigrationResponse:
         """
-        @summary Queries the migration status of PolarDB clusters.
+        @summary The ID of the synchronous task.
         
-        @description    You can call this operation to query the status of data migration from an ApsaraDB RDS instance to a PolarDB cluster. For more information, see [Upgrade ApsaraDB RDS for MySQL to PolarDB for MySQL with one click](https://help.aliyun.com/document_detail/121582.html).
-        Before you call this operation, make sure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**.
+        @description The ID of the request.
         
         @param request: DescribeDBClusterMigrationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6920,10 +6922,9 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterMigrationRequest,
     ) -> polardb_20170801_models.DescribeDBClusterMigrationResponse:
         """
-        @summary Queries the migration status of PolarDB clusters.
+        @summary The ID of the synchronous task.
         
-        @description    You can call this operation to query the status of data migration from an ApsaraDB RDS instance to a PolarDB cluster. For more information, see [Upgrade ApsaraDB RDS for MySQL to PolarDB for MySQL with one click](https://help.aliyun.com/document_detail/121582.html).
-        Before you call this operation, make sure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**.
+        @description The ID of the request.
         
         @param request: DescribeDBClusterMigrationRequest
         @return: DescribeDBClusterMigrationResponse
@@ -6936,10 +6937,9 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterMigrationRequest,
     ) -> polardb_20170801_models.DescribeDBClusterMigrationResponse:
         """
-        @summary Queries the migration status of PolarDB clusters.
+        @summary The ID of the synchronous task.
         
-        @description    You can call this operation to query the status of data migration from an ApsaraDB RDS instance to a PolarDB cluster. For more information, see [Upgrade ApsaraDB RDS for MySQL to PolarDB for MySQL with one click](https://help.aliyun.com/document_detail/121582.html).
-        Before you call this operation, make sure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**.
+        @description The ID of the request.
         
         @param request: DescribeDBClusterMigrationRequest
         @return: DescribeDBClusterMigrationResponse
@@ -9789,7 +9789,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeLicenseOrdersResponse:
         """
-        @summary 查询License订单列表
+        @summary Queries a list of license orders.
         
         @param request: DescribeLicenseOrdersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9842,7 +9842,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeLicenseOrdersResponse:
         """
-        @summary 查询License订单列表
+        @summary Queries a list of license orders.
         
         @param request: DescribeLicenseOrdersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9894,7 +9894,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeLicenseOrdersRequest,
     ) -> polardb_20170801_models.DescribeLicenseOrdersResponse:
         """
-        @summary 查询License订单列表
+        @summary Queries a list of license orders.
         
         @param request: DescribeLicenseOrdersRequest
         @return: DescribeLicenseOrdersResponse
@@ -9907,7 +9907,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeLicenseOrdersRequest,
     ) -> polardb_20170801_models.DescribeLicenseOrdersResponse:
         """
-        @summary 查询License订单列表
+        @summary Queries a list of license orders.
         
         @param request: DescribeLicenseOrdersRequest
         @return: DescribeLicenseOrdersResponse
@@ -18941,7 +18941,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.TempModifyDBNodeResponse:
         """
-        @summary Temporarily changes the node configurations of a cluster.
+        @summary Temporarily changes the node configurations.
         
         @param request: TempModifyDBNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18994,7 +18994,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.TempModifyDBNodeResponse:
         """
-        @summary Temporarily changes the node configurations of a cluster.
+        @summary Temporarily changes the node configurations.
         
         @param request: TempModifyDBNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19046,7 +19046,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.TempModifyDBNodeRequest,
     ) -> polardb_20170801_models.TempModifyDBNodeResponse:
         """
-        @summary Temporarily changes the node configurations of a cluster.
+        @summary Temporarily changes the node configurations.
         
         @param request: TempModifyDBNodeRequest
         @return: TempModifyDBNodeResponse
@@ -19059,7 +19059,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.TempModifyDBNodeRequest,
     ) -> polardb_20170801_models.TempModifyDBNodeResponse:
         """
-        @summary Temporarily changes the node configurations of a cluster.
+        @summary Temporarily changes the node configurations.
         
         @param request: TempModifyDBNodeRequest
         @return: TempModifyDBNodeResponse
