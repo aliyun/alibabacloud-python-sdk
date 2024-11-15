@@ -1,3 +1,17 @@
+2024-11-15 Version: 1.6.0
+- Support API TriggerChatFlow.
+- Update API AddChatappPhoneNumber: update param PreValidateId.
+- Update API ChatappEmbedSignUp: update response param.
+- Update API ChatappMigrationRegister: update response param.
+- Update API ChatappMigrationVerified: update response param.
+- Update API CreateChatappMigrationInitiate: update response param.
+- Update API GetChatappUploadAuthorization: update response param.
+- Update API GetMigrationVerifyCode: update response param.
+- Update API GetPhoneNumberVerificationStatus: update response param.
+- Update API SubmitIsvCustomerTerms: update response param.
+- Update API UpdateAccountWebhook: update response param.
+
+
 2024-09-03 Version: 1.5.1
 - Update API QueryChatappBindWaba: update response param.
 
