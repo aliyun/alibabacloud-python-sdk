@@ -1535,6 +1535,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_device_info_with_options_async(request, runtime)
 
+    def describe_face_guard_risk_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeFaceGuardRiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeFaceGuardRiskResponse:
+        """
+        @summary 金融级人脸保镖服务
+        
+        @param request: DescribeFaceGuardRiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFaceGuardRiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.device_token):
+            query['DeviceToken'] = request.device_token
+        if not UtilClient.is_unset(request.outer_order_no):
+            query['OuterOrderNo'] = request.outer_order_no
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFaceGuardRisk',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeFaceGuardRiskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_face_guard_risk_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeFaceGuardRiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeFaceGuardRiskResponse:
+        """
+        @summary 金融级人脸保镖服务
+        
+        @param request: DescribeFaceGuardRiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFaceGuardRiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.device_token):
+            query['DeviceToken'] = request.device_token
+        if not UtilClient.is_unset(request.outer_order_no):
+            query['OuterOrderNo'] = request.outer_order_no
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFaceGuardRisk',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeFaceGuardRiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_face_guard_risk(
+        self,
+        request: cloudauth_20190307_models.DescribeFaceGuardRiskRequest,
+    ) -> cloudauth_20190307_models.DescribeFaceGuardRiskResponse:
+        """
+        @summary 金融级人脸保镖服务
+        
+        @param request: DescribeFaceGuardRiskRequest
+        @return: DescribeFaceGuardRiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_face_guard_risk_with_options(request, runtime)
+
+    async def describe_face_guard_risk_async(
+        self,
+        request: cloudauth_20190307_models.DescribeFaceGuardRiskRequest,
+    ) -> cloudauth_20190307_models.DescribeFaceGuardRiskResponse:
+        """
+        @summary 金融级人脸保镖服务
+        
+        @param request: DescribeFaceGuardRiskRequest
+        @return: DescribeFaceGuardRiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_face_guard_risk_with_options_async(request, runtime)
+
     def describe_face_verify_with_options(
         self,
         request: cloudauth_20190307_models.DescribeFaceVerifyRequest,

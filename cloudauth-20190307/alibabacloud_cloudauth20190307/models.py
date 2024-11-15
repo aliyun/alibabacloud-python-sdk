@@ -2488,6 +2488,173 @@ class DescribeDeviceInfoResponse(TeaModel):
         return self
 
 
+class DescribeFaceGuardRiskRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        device_token: str = None,
+        outer_order_no: str = None,
+        product_code: str = None,
+    ):
+        self.biz_id = biz_id
+        self.device_token = device_token
+        self.outer_order_no = outer_order_no
+        self.product_code = product_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.device_token is not None:
+            result['DeviceToken'] = self.device_token
+        if self.outer_order_no is not None:
+            result['OuterOrderNo'] = self.outer_order_no
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('DeviceToken') is not None:
+            self.device_token = m.get('DeviceToken')
+        if m.get('OuterOrderNo') is not None:
+            self.outer_order_no = m.get('OuterOrderNo')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        return self
+
+
+class DescribeFaceGuardRiskResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        riak_tags: str = None,
+        risk_extends: str = None,
+    ):
+        self.riak_tags = riak_tags
+        self.risk_extends = risk_extends
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.riak_tags is not None:
+            result['RiakTags'] = self.riak_tags
+        if self.risk_extends is not None:
+            result['RiskExtends'] = self.risk_extends
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RiakTags') is not None:
+            self.riak_tags = m.get('RiakTags')
+        if m.get('RiskExtends') is not None:
+            self.risk_extends = m.get('RiskExtends')
+        return self
+
+
+class DescribeFaceGuardRiskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: DescribeFaceGuardRiskResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DescribeFaceGuardRiskResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class DescribeFaceGuardRiskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeFaceGuardRiskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeFaceGuardRiskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeFaceVerifyRequest(TeaModel):
     def __init__(
         self,

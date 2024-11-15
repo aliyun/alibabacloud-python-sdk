@@ -1,3 +1,7 @@
+2024-11-15 Version: 3.2.0
+- Support API DescribeFaceGuardRisk.
+
+
 2024-10-21 Version: 3.1.0
 - Support API DeleteFaceVerifyResult.
 
