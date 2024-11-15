@@ -3265,6 +3265,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_forward_entry_with_options_async(request, runtime)
 
+    def create_ha_vip_with_options(
+        self,
+        request: ens_20171110_models.CreateHaVipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateHaVipResponse:
+        """
+        @summary 创建高可用VIP
+        
+        @param request: CreateHaVipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHaVipResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.amount):
+            query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ip_address):
+            query['IpAddress'] = request.ip_address
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHaVip',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateHaVipResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ha_vip_with_options_async(
+        self,
+        request: ens_20171110_models.CreateHaVipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateHaVipResponse:
+        """
+        @summary 创建高可用VIP
+        
+        @param request: CreateHaVipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHaVipResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.amount):
+            query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ip_address):
+            query['IpAddress'] = request.ip_address
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHaVip',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateHaVipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ha_vip(
+        self,
+        request: ens_20171110_models.CreateHaVipRequest,
+    ) -> ens_20171110_models.CreateHaVipResponse:
+        """
+        @summary 创建高可用VIP
+        
+        @param request: CreateHaVipRequest
+        @return: CreateHaVipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_ha_vip_with_options(request, runtime)
+
+    async def create_ha_vip_async(
+        self,
+        request: ens_20171110_models.CreateHaVipRequest,
+    ) -> ens_20171110_models.CreateHaVipResponse:
+        """
+        @summary 创建高可用VIP
+        
+        @param request: CreateHaVipRequest
+        @return: CreateHaVipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ha_vip_with_options_async(request, runtime)
+
     def create_image_with_options(
         self,
         request: ens_20171110_models.CreateImageRequest,
@@ -7132,6 +7244,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_forward_entry_with_options_async(request, runtime)
+
+    def delete_ha_vips_with_options(
+        self,
+        tmp_req: ens_20171110_models.DeleteHaVipsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteHaVipsResponse:
+        """
+        @summary 删除高可用VIP实例
+        
+        @param tmp_req: DeleteHaVipsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHaVipsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeleteHaVipsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ha_vip_ids):
+            request.ha_vip_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ha_vip_ids, 'HaVipIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ha_vip_ids_shrink):
+            query['HaVipIds'] = request.ha_vip_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHaVips',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteHaVipsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ha_vips_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.DeleteHaVipsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteHaVipsResponse:
+        """
+        @summary 删除高可用VIP实例
+        
+        @param tmp_req: DeleteHaVipsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHaVipsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeleteHaVipsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ha_vip_ids):
+            request.ha_vip_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ha_vip_ids, 'HaVipIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ha_vip_ids_shrink):
+            query['HaVipIds'] = request.ha_vip_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHaVips',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteHaVipsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ha_vips(
+        self,
+        request: ens_20171110_models.DeleteHaVipsRequest,
+    ) -> ens_20171110_models.DeleteHaVipsResponse:
+        """
+        @summary 删除高可用VIP实例
+        
+        @param request: DeleteHaVipsRequest
+        @return: DeleteHaVipsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ha_vips_with_options(request, runtime)
+
+    async def delete_ha_vips_async(
+        self,
+        request: ens_20171110_models.DeleteHaVipsRequest,
+    ) -> ens_20171110_models.DeleteHaVipsResponse:
+        """
+        @summary 删除高可用VIP实例
+        
+        @param request: DeleteHaVipsRequest
+        @return: DeleteHaVipsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ha_vips_with_options_async(request, runtime)
 
     def delete_image_with_options(
         self,

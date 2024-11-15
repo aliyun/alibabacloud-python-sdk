@@ -5538,6 +5538,131 @@ class CreateForwardEntryResponse(TeaModel):
         return self
 
 
+class CreateHaVipRequest(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        description: str = None,
+        ip_address: str = None,
+        name: str = None,
+        v_switch_id: str = None,
+    ):
+        self.amount = amount
+        self.description = description
+        self.ip_address = ip_address
+        self.name = name
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class CreateHaVipResponseBody(TeaModel):
+    def __init__(
+        self,
+        ha_vip_ids: List[str] = None,
+        request_id: str = None,
+    ):
+        self.ha_vip_ids = ha_vip_ids
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ha_vip_ids is not None:
+            result['HaVipIds'] = self.ha_vip_ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HaVipIds') is not None:
+            self.ha_vip_ids = m.get('HaVipIds')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateHaVipResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateHaVipResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateHaVipResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateImageRequest(TeaModel):
     def __init__(
         self,
@@ -11051,6 +11176,130 @@ class DeleteForwardEntryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteForwardEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteHaVipsRequest(TeaModel):
+    def __init__(
+        self,
+        ha_vip_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.ha_vip_ids = ha_vip_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ha_vip_ids is not None:
+            result['HaVipIds'] = self.ha_vip_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HaVipIds') is not None:
+            self.ha_vip_ids = m.get('HaVipIds')
+        return self
+
+
+class DeleteHaVipsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ha_vip_ids_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.ha_vip_ids_shrink = ha_vip_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ha_vip_ids_shrink is not None:
+            result['HaVipIds'] = self.ha_vip_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HaVipIds') is not None:
+            self.ha_vip_ids_shrink = m.get('HaVipIds')
+        return self
+
+
+class DeleteHaVipsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteHaVipsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHaVipsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHaVipsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
