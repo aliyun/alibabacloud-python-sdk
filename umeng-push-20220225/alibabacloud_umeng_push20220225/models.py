@@ -431,6 +431,7 @@ class ChannelProperties(TeaModel):
         oppo_channel_id: str = None,
         oppo_notify_level: str = None,
         use_huawei_message: str = None,
+        use_huawei_plain_message: str = None,
         vivo_add_badge: str = None,
         vivo_category: str = None,
         vivo_push_mode: str = None,
@@ -446,6 +447,7 @@ class ChannelProperties(TeaModel):
         self.oppo_channel_id = oppo_channel_id
         self.oppo_notify_level = oppo_notify_level
         self.use_huawei_message = use_huawei_message
+        self.use_huawei_plain_message = use_huawei_plain_message
         self.vivo_add_badge = vivo_add_badge
         self.vivo_category = vivo_category
         self.vivo_push_mode = vivo_push_mode
@@ -480,6 +482,8 @@ class ChannelProperties(TeaModel):
             result['oppoNotifyLevel'] = self.oppo_notify_level
         if self.use_huawei_message is not None:
             result['useHuaweiMessage'] = self.use_huawei_message
+        if self.use_huawei_plain_message is not None:
+            result['useHuaweiPlainMessage'] = self.use_huawei_plain_message
         if self.vivo_add_badge is not None:
             result['vivoAddBadge'] = self.vivo_add_badge
         if self.vivo_category is not None:
@@ -512,6 +516,8 @@ class ChannelProperties(TeaModel):
             self.oppo_notify_level = m.get('oppoNotifyLevel')
         if m.get('useHuaweiMessage') is not None:
             self.use_huawei_message = m.get('useHuaweiMessage')
+        if m.get('useHuaweiPlainMessage') is not None:
+            self.use_huawei_plain_message = m.get('useHuaweiPlainMessage')
         if m.get('vivoAddBadge') is not None:
             self.vivo_add_badge = m.get('vivoAddBadge')
         if m.get('vivoCategory') is not None:
