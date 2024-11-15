@@ -41,6 +41,238 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def ai_search_with_options(
+        self,
+        request: iqs20241111_models.AiSearchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.AiSearchResponse:
+        """
+        @summary AI搜索流式接口
+        
+        @param request: AiSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AiSearchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.industry):
+            query['industry'] = request.industry
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.time_range):
+            query['timeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AiSearch',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v3/linkedRetrieval/commands/aiSearch',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20241111_models.AiSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ai_search_with_options_async(
+        self,
+        request: iqs20241111_models.AiSearchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.AiSearchResponse:
+        """
+        @summary AI搜索流式接口
+        
+        @param request: AiSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AiSearchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.industry):
+            query['industry'] = request.industry
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.time_range):
+            query['timeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AiSearch',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v3/linkedRetrieval/commands/aiSearch',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20241111_models.AiSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ai_search(
+        self,
+        request: iqs20241111_models.AiSearchRequest,
+    ) -> iqs20241111_models.AiSearchResponse:
+        """
+        @summary AI搜索流式接口
+        
+        @param request: AiSearchRequest
+        @return: AiSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.ai_search_with_options(request, headers, runtime)
+
+    async def ai_search_async(
+        self,
+        request: iqs20241111_models.AiSearchRequest,
+    ) -> iqs20241111_models.AiSearchResponse:
+        """
+        @summary AI搜索流式接口
+        
+        @param request: AiSearchRequest
+        @return: AiSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.ai_search_with_options_async(request, headers, runtime)
+
+    def generic_advanced_search_with_options(
+        self,
+        request: iqs20241111_models.GenericAdvancedSearchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.GenericAdvancedSearchResponse:
+        """
+        @summary 增强版通用搜索
+        
+        @param request: GenericAdvancedSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenericAdvancedSearchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.time_range):
+            query['timeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenericAdvancedSearch',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericAdvancedSearch',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20241111_models.GenericAdvancedSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generic_advanced_search_with_options_async(
+        self,
+        request: iqs20241111_models.GenericAdvancedSearchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.GenericAdvancedSearchResponse:
+        """
+        @summary 增强版通用搜索
+        
+        @param request: GenericAdvancedSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenericAdvancedSearchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.time_range):
+            query['timeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenericAdvancedSearch',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericAdvancedSearch',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20241111_models.GenericAdvancedSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generic_advanced_search(
+        self,
+        request: iqs20241111_models.GenericAdvancedSearchRequest,
+    ) -> iqs20241111_models.GenericAdvancedSearchResponse:
+        """
+        @summary 增强版通用搜索
+        
+        @param request: GenericAdvancedSearchRequest
+        @return: GenericAdvancedSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.generic_advanced_search_with_options(request, headers, runtime)
+
+    async def generic_advanced_search_async(
+        self,
+        request: iqs20241111_models.GenericAdvancedSearchRequest,
+    ) -> iqs20241111_models.GenericAdvancedSearchResponse:
+        """
+        @summary 增强版通用搜索
+        
+        @param request: GenericAdvancedSearchRequest
+        @return: GenericAdvancedSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.generic_advanced_search_with_options_async(request, headers, runtime)
+
     def generic_search_with_options(
         self,
         request: iqs20241111_models.GenericSearchRequest,
@@ -57,8 +289,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.industry):
+            query['industry'] = request.industry
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
         if not UtilClient.is_unset(request.time_range):
             query['timeRange'] = request.time_range
         req = open_api_models.OpenApiRequest(
@@ -97,8 +335,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.industry):
+            query['industry'] = request.industry
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
         if not UtilClient.is_unset(request.time_range):
             query['timeRange'] = request.time_range
         req = open_api_models.OpenApiRequest(
