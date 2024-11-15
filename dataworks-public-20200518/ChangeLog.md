@@ -1,3 +1,7 @@
+2024-11-15 Version: 6.1.6
+- Update API UpdateQualityRule: update param Checker.
+
+
 2024-11-04 Version: 6.1.5
 - Update API CreateProject: update param ProjectDescription.
 

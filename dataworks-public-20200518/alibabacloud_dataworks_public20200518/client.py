@@ -23473,7 +23473,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMeasureDataResponse:
         """
-        @summary 查询DataWorks计量数据
+        @summary Queries the statistics on the number of phone call-based alerts or text message-based alerts reported within the tenant to which your account belongs during the previous 30 days.
         
         @param request: ListMeasureDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23514,7 +23514,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMeasureDataResponse:
         """
-        @summary 查询DataWorks计量数据
+        @summary Queries the statistics on the number of phone call-based alerts or text message-based alerts reported within the tenant to which your account belongs during the previous 30 days.
         
         @param request: ListMeasureDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23554,7 +23554,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMeasureDataRequest,
     ) -> dataworks_public_20200518_models.ListMeasureDataResponse:
         """
-        @summary 查询DataWorks计量数据
+        @summary Queries the statistics on the number of phone call-based alerts or text message-based alerts reported within the tenant to which your account belongs during the previous 30 days.
         
         @param request: ListMeasureDataRequest
         @return: ListMeasureDataResponse
@@ -23567,7 +23567,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMeasureDataRequest,
     ) -> dataworks_public_20200518_models.ListMeasureDataResponse:
         """
-        @summary 查询DataWorks计量数据
+        @summary Queries the statistics on the number of phone call-based alerts or text message-based alerts reported within the tenant to which your account belongs during the previous 30 days.
         
         @param request: ListMeasureDataRequest
         @return: ListMeasureDataResponse
