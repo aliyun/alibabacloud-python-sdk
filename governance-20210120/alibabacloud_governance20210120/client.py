@@ -48,7 +48,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.BatchEnrollAccountsResponse:
         """
-        @summary 账号工厂批量注册账号
+        @summary Applies an account baseline to multiple existing resource accounts at a time.
+        
+        @description You can call this operation to apply an account baseline to existing resource accounts.
+        Accounts are enrolled in the account factory in asynchronous mode. After a resource account is created, an account baseline is applied to the account. You can call the [GetEnrolledAccount](https://help.aliyun.com/document_detail/609062.html) operation to query the details of the account enrolled in the account factory and check whether the account baseline is applied to the account.
         
         @param request: BatchEnrollAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -89,7 +92,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.BatchEnrollAccountsResponse:
         """
-        @summary 账号工厂批量注册账号
+        @summary Applies an account baseline to multiple existing resource accounts at a time.
+        
+        @description You can call this operation to apply an account baseline to existing resource accounts.
+        Accounts are enrolled in the account factory in asynchronous mode. After a resource account is created, an account baseline is applied to the account. You can call the [GetEnrolledAccount](https://help.aliyun.com/document_detail/609062.html) operation to query the details of the account enrolled in the account factory and check whether the account baseline is applied to the account.
         
         @param request: BatchEnrollAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -129,7 +135,10 @@ class Client(OpenApiClient):
         request: governance_20210120_models.BatchEnrollAccountsRequest,
     ) -> governance_20210120_models.BatchEnrollAccountsResponse:
         """
-        @summary 账号工厂批量注册账号
+        @summary Applies an account baseline to multiple existing resource accounts at a time.
+        
+        @description You can call this operation to apply an account baseline to existing resource accounts.
+        Accounts are enrolled in the account factory in asynchronous mode. After a resource account is created, an account baseline is applied to the account. You can call the [GetEnrolledAccount](https://help.aliyun.com/document_detail/609062.html) operation to query the details of the account enrolled in the account factory and check whether the account baseline is applied to the account.
         
         @param request: BatchEnrollAccountsRequest
         @return: BatchEnrollAccountsResponse
@@ -142,7 +151,10 @@ class Client(OpenApiClient):
         request: governance_20210120_models.BatchEnrollAccountsRequest,
     ) -> governance_20210120_models.BatchEnrollAccountsResponse:
         """
-        @summary 账号工厂批量注册账号
+        @summary Applies an account baseline to multiple existing resource accounts at a time.
+        
+        @description You can call this operation to apply an account baseline to existing resource accounts.
+        Accounts are enrolled in the account factory in asynchronous mode. After a resource account is created, an account baseline is applied to the account. You can call the [GetEnrolledAccount](https://help.aliyun.com/document_detail/609062.html) operation to query the details of the account enrolled in the account factory and check whether the account baseline is applied to the account.
         
         @param request: BatchEnrollAccountsRequest
         @return: BatchEnrollAccountsResponse
@@ -156,7 +168,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.CreateAccountFactoryBaselineResponse:
         """
-        @summary 创建账号工厂基线
+        @summary Creates a baseline of the account factory.
         
         @param request: CreateAccountFactoryBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -197,7 +209,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.CreateAccountFactoryBaselineResponse:
         """
-        @summary 创建账号工厂基线
+        @summary Creates a baseline of the account factory.
         
         @param request: CreateAccountFactoryBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -237,7 +249,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.CreateAccountFactoryBaselineRequest,
     ) -> governance_20210120_models.CreateAccountFactoryBaselineResponse:
         """
-        @summary 创建账号工厂基线
+        @summary Creates a baseline of the account factory.
         
         @param request: CreateAccountFactoryBaselineRequest
         @return: CreateAccountFactoryBaselineResponse
@@ -250,7 +262,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.CreateAccountFactoryBaselineRequest,
     ) -> governance_20210120_models.CreateAccountFactoryBaselineResponse:
         """
-        @summary 创建账号工厂基线
+        @summary Creates a baseline of the account factory.
         
         @param request: CreateAccountFactoryBaselineRequest
         @return: CreateAccountFactoryBaselineResponse
@@ -264,7 +276,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.DeleteAccountFactoryBaselineResponse:
         """
-        @summary 删除账号工厂基线
+        @summary Deletes an account factory baseline.
         
         @param request: DeleteAccountFactoryBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -301,7 +313,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.DeleteAccountFactoryBaselineResponse:
         """
-        @summary 删除账号工厂基线
+        @summary Deletes an account factory baseline.
         
         @param request: DeleteAccountFactoryBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -337,7 +349,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.DeleteAccountFactoryBaselineRequest,
     ) -> governance_20210120_models.DeleteAccountFactoryBaselineResponse:
         """
-        @summary 删除账号工厂基线
+        @summary Deletes an account factory baseline.
         
         @param request: DeleteAccountFactoryBaselineRequest
         @return: DeleteAccountFactoryBaselineResponse
@@ -350,7 +362,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.DeleteAccountFactoryBaselineRequest,
     ) -> governance_20210120_models.DeleteAccountFactoryBaselineResponse:
         """
-        @summary 删除账号工厂基线
+        @summary Deletes an account factory baseline.
         
         @param request: DeleteAccountFactoryBaselineRequest
         @return: DeleteAccountFactoryBaselineResponse
@@ -716,7 +728,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListAccountFactoryBaselineItemsResponse:
         """
-        @summary 获取账号工厂基线元素列表
+        @summary Queries a list of baseline items that are supported by the account factory of Cloud Governance Center (CGC).
         
         @param request: ListAccountFactoryBaselineItemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -761,7 +773,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListAccountFactoryBaselineItemsResponse:
         """
-        @summary 获取账号工厂基线元素列表
+        @summary Queries a list of baseline items that are supported by the account factory of Cloud Governance Center (CGC).
         
         @param request: ListAccountFactoryBaselineItemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -805,7 +817,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListAccountFactoryBaselineItemsRequest,
     ) -> governance_20210120_models.ListAccountFactoryBaselineItemsResponse:
         """
-        @summary 获取账号工厂基线元素列表
+        @summary Queries a list of baseline items that are supported by the account factory of Cloud Governance Center (CGC).
         
         @param request: ListAccountFactoryBaselineItemsRequest
         @return: ListAccountFactoryBaselineItemsResponse
@@ -818,7 +830,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListAccountFactoryBaselineItemsRequest,
     ) -> governance_20210120_models.ListAccountFactoryBaselineItemsResponse:
         """
-        @summary 获取账号工厂基线元素列表
+        @summary Queries a list of baseline items that are supported by the account factory of Cloud Governance Center (CGC).
         
         @param request: ListAccountFactoryBaselineItemsRequest
         @return: ListAccountFactoryBaselineItemsResponse
@@ -1040,7 +1052,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListEvaluationMetadataResponse:
         """
-        @summary 查看治理检测定义
+        @summary Queries all available information about check items in a governance maturity check, including the name, ID, description, stage, resource metadata, and fixing guide.
         
         @param request: ListEvaluationMetadataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1077,7 +1089,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListEvaluationMetadataResponse:
         """
-        @summary 查看治理检测定义
+        @summary Queries all available information about check items in a governance maturity check, including the name, ID, description, stage, resource metadata, and fixing guide.
         
         @param request: ListEvaluationMetadataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1113,7 +1125,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListEvaluationMetadataRequest,
     ) -> governance_20210120_models.ListEvaluationMetadataResponse:
         """
-        @summary 查看治理检测定义
+        @summary Queries all available information about check items in a governance maturity check, including the name, ID, description, stage, resource metadata, and fixing guide.
         
         @param request: ListEvaluationMetadataRequest
         @return: ListEvaluationMetadataResponse
@@ -1126,7 +1138,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListEvaluationMetadataRequest,
     ) -> governance_20210120_models.ListEvaluationMetadataResponse:
         """
-        @summary 查看治理检测定义
+        @summary Queries all available information about check items in a governance maturity check, including the name, ID, description, stage, resource metadata, and fixing guide.
         
         @param request: ListEvaluationMetadataRequest
         @return: ListEvaluationMetadataResponse
@@ -1140,7 +1152,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListEvaluationMetricDetailsResponse:
         """
-        @summary 获取云治理中心治理检测项结果详情
+        @summary Queries the non-compliant resource information of a check item, including the name, ID, category, type, region, and related metadata of non-compliant resources.
         
         @param request: ListEvaluationMetricDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1183,7 +1195,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListEvaluationMetricDetailsResponse:
         """
-        @summary 获取云治理中心治理检测项结果详情
+        @summary Queries the non-compliant resource information of a check item, including the name, ID, category, type, region, and related metadata of non-compliant resources.
         
         @param request: ListEvaluationMetricDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1225,7 +1237,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListEvaluationMetricDetailsRequest,
     ) -> governance_20210120_models.ListEvaluationMetricDetailsResponse:
         """
-        @summary 获取云治理中心治理检测项结果详情
+        @summary Queries the non-compliant resource information of a check item, including the name, ID, category, type, region, and related metadata of non-compliant resources.
         
         @param request: ListEvaluationMetricDetailsRequest
         @return: ListEvaluationMetricDetailsResponse
@@ -1238,7 +1250,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListEvaluationMetricDetailsRequest,
     ) -> governance_20210120_models.ListEvaluationMetricDetailsResponse:
         """
-        @summary 获取云治理中心治理检测项结果详情
+        @summary Queries the non-compliant resource information of a check item, including the name, ID, category, type, region, and related metadata of non-compliant resources.
         
         @param request: ListEvaluationMetricDetailsRequest
         @return: ListEvaluationMetricDetailsResponse
@@ -1352,7 +1364,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListEvaluationScoreHistoryResponse:
         """
-        @summary 查看治理检测定义
+        @summary Queries the historical scores of a governance maturity check.
         
         @param request: ListEvaluationScoreHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1393,7 +1405,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListEvaluationScoreHistoryResponse:
         """
-        @summary 查看治理检测定义
+        @summary Queries the historical scores of a governance maturity check.
         
         @param request: ListEvaluationScoreHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1433,7 +1445,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListEvaluationScoreHistoryRequest,
     ) -> governance_20210120_models.ListEvaluationScoreHistoryResponse:
         """
-        @summary 查看治理检测定义
+        @summary Queries the historical scores of a governance maturity check.
         
         @param request: ListEvaluationScoreHistoryRequest
         @return: ListEvaluationScoreHistoryResponse
@@ -1446,7 +1458,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListEvaluationScoreHistoryRequest,
     ) -> governance_20210120_models.ListEvaluationScoreHistoryResponse:
         """
-        @summary 查看治理检测定义
+        @summary Queries the historical scores of a governance maturity check.
         
         @param request: ListEvaluationScoreHistoryRequest
         @return: ListEvaluationScoreHistoryResponse
@@ -1456,20 +1468,26 @@ class Client(OpenApiClient):
 
     def run_evaluation_with_options(
         self,
-        request: governance_20210120_models.RunEvaluationRequest,
+        tmp_req: governance_20210120_models.RunEvaluationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.RunEvaluationResponse:
         """
-        @summary 运行云治理中心治理检测
+        @summary Performs a governance maturity check.
         
-        @param request: RunEvaluationRequest
+        @param tmp_req: RunEvaluationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RunEvaluationResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = governance_20210120_models.RunEvaluationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.metric_ids):
+            request.metric_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metric_ids, 'MetricIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.account_id):
             query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.metric_ids_shrink):
+            query['MetricIds'] = request.metric_ids_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.scope):
@@ -1495,20 +1513,26 @@ class Client(OpenApiClient):
 
     async def run_evaluation_with_options_async(
         self,
-        request: governance_20210120_models.RunEvaluationRequest,
+        tmp_req: governance_20210120_models.RunEvaluationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.RunEvaluationResponse:
         """
-        @summary 运行云治理中心治理检测
+        @summary Performs a governance maturity check.
         
-        @param request: RunEvaluationRequest
+        @param tmp_req: RunEvaluationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RunEvaluationResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = governance_20210120_models.RunEvaluationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.metric_ids):
+            request.metric_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metric_ids, 'MetricIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.account_id):
             query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.metric_ids_shrink):
+            query['MetricIds'] = request.metric_ids_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.scope):
@@ -1537,7 +1561,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.RunEvaluationRequest,
     ) -> governance_20210120_models.RunEvaluationResponse:
         """
-        @summary 运行云治理中心治理检测
+        @summary Performs a governance maturity check.
         
         @param request: RunEvaluationRequest
         @return: RunEvaluationResponse
@@ -1550,7 +1574,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.RunEvaluationRequest,
     ) -> governance_20210120_models.RunEvaluationResponse:
         """
-        @summary 运行云治理中心治理检测
+        @summary Performs a governance maturity check.
         
         @param request: RunEvaluationRequest
         @return: RunEvaluationResponse
@@ -1564,7 +1588,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.UpdateAccountFactoryBaselineResponse:
         """
-        @summary 更新账号工厂基线
+        @summary Updates a baseline of the account factory.
         
         @param request: UpdateAccountFactoryBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1607,7 +1631,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.UpdateAccountFactoryBaselineResponse:
         """
-        @summary 更新账号工厂基线
+        @summary Updates a baseline of the account factory.
         
         @param request: UpdateAccountFactoryBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1649,7 +1673,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.UpdateAccountFactoryBaselineRequest,
     ) -> governance_20210120_models.UpdateAccountFactoryBaselineResponse:
         """
-        @summary 更新账号工厂基线
+        @summary Updates a baseline of the account factory.
         
         @param request: UpdateAccountFactoryBaselineRequest
         @return: UpdateAccountFactoryBaselineResponse
@@ -1662,7 +1686,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.UpdateAccountFactoryBaselineRequest,
     ) -> governance_20210120_models.UpdateAccountFactoryBaselineResponse:
         """
-        @summary 更新账号工厂基线
+        @summary Updates a baseline of the account factory.
         
         @param request: UpdateAccountFactoryBaselineRequest
         @return: UpdateAccountFactoryBaselineResponse

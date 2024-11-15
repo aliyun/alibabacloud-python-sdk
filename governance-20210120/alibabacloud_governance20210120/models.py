@@ -9,6 +9,7 @@ class BatchEnrollAccountsRequestAccounts(TeaModel):
         self,
         account_uid: int = None,
     ):
+        # The account ID. This parameter is required.
         self.account_uid = account_uid
 
     def validate(self):
@@ -39,9 +40,16 @@ class BatchEnrollAccountsRequestBaselineItems(TeaModel):
         skip: bool = None,
         version: str = None,
     ):
+        # The configurations of the baseline item.
         self.config = config
+        # The name of the baseline item.
         self.name = name
+        # Specifies whether to skip the baseline item. Valid values:
+        # 
+        # *   false
+        # *   true
         self.skip = skip
+        # The version of the baseline item.
         self.version = version
 
     def validate(self):
@@ -84,9 +92,17 @@ class BatchEnrollAccountsRequest(TeaModel):
         baseline_items: List[BatchEnrollAccountsRequestBaselineItems] = None,
         region_id: str = None,
     ):
+        # The resource accounts.
         self.accounts = accounts
+        # The baseline ID.
+        # 
+        # If this parameter is left empty, the default baseline is used.
         self.baseline_id = baseline_id
+        # The baseline items.
+        # 
+        # If this parameter is specified, the configurations of the baseline items are merged with the baseline applied to the specified account. The configurations of the same baseline items are subject to the configurations of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configurations of the account baseline to the account.
         self.baseline_items = baseline_items
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -143,6 +159,7 @@ class BatchEnrollAccountsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -213,8 +230,11 @@ class CreateAccountFactoryBaselineRequestBaselineItems(TeaModel):
         name: str = None,
         version: str = None,
     ):
+        # The configurations of the baseline item. The value of this parameter is a JSON string.
         self.config = config
+        # The name of the baseline item.
         self.name = name
+        # The version of the baseline item.
         self.version = version
 
     def validate(self):
@@ -253,10 +273,15 @@ class CreateAccountFactoryBaselineRequest(TeaModel):
         description: str = None,
         region_id: str = None,
     ):
+        # The baseline items.
+        # 
+        # You can call the [ListAccountFactoryBaselineItems](~~ListAccountFactoryBaselineItems~~) operation to query a list of baseline items supported by the account factory in Cloud Governance Center.
         self.baseline_items = baseline_items
+        # The name of the baseline.
         self.baseline_name = baseline_name
+        # The description of the baseline.
         self.description = description
-        # RegionId
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -305,7 +330,9 @@ class CreateAccountFactoryBaselineResponseBody(TeaModel):
         baseline_id: str = None,
         request_id: str = None,
     ):
+        # The baseline ID.
         self.baseline_id = baseline_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -379,7 +406,9 @@ class DeleteAccountFactoryBaselineRequest(TeaModel):
         baseline_id: str = None,
         region_id: str = None,
     ):
+        # The baseline ID.
         self.baseline_id = baseline_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -411,6 +440,7 @@ class DeleteAccountFactoryBaselineResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -532,7 +562,9 @@ class EnrollAccountRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -615,6 +647,7 @@ class EnrollAccountRequest(TeaModel):
         # 
         # > This parameter is available only for resellers at the international site (alibabacloud.com).
         self.resell_account_type = resell_account_type
+        # The tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -798,6 +831,7 @@ class EnrollAccountShrinkRequest(TeaModel):
         # 
         # > This parameter is available only for resellers at the international site (alibabacloud.com).
         self.resell_account_type = resell_account_type
+        # The tags. You can specify up to 20 tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -1709,12 +1743,19 @@ class ListAccountFactoryBaselineItemsRequest(TeaModel):
         type: str = None,
         versions: List[str] = None,
     ):
+        # The number of entries per page.
+        # 
+        # Valid values: 1 to 100. Default value: 10
         self.max_results = max_results
+        # The names of the baseline items.
         self.names = names
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_token = next_token
-        # RegionId
+        # The region ID.
         self.region_id = region_id
+        # The type of the baseline items.
         self.type = type
+        # The versions of the baseline items.
         self.versions = versions
 
     def validate(self):
@@ -1764,8 +1805,11 @@ class ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn(TeaModel
         type: str = None,
         version: str = None,
     ):
+        # The name of the baseline item.
         self.name = name
+        # The type of the baseline item.
         self.type = type
+        # The version of the baseline item.
         self.version = version
 
     def validate(self):
@@ -1805,10 +1849,15 @@ class ListAccountFactoryBaselineItemsResponseBodyBaselineItems(TeaModel):
         type: str = None,
         version: str = None,
     ):
+        # The dependency of the baseline item.
         self.depends_on = depends_on
+        # The description of the baseline item.
         self.description = description
+        # The name of the baseline item.
         self.name = name
+        # The type of the baseline item.
         self.type = type
+        # The version of the baseline item.
         self.version = version
 
     def validate(self):
@@ -1862,8 +1911,11 @@ class ListAccountFactoryBaselineItemsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The baseline items.
         self.baseline_items = baseline_items
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1954,9 +2006,11 @@ class ListAccountFactoryBaselinesRequest(TeaModel):
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # You do not need to specify this parameter for the first request.
         self.next_token = next_token
-        # RegionId
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -2007,8 +2061,8 @@ class ListAccountFactoryBaselinesResponseBodyBaselines(TeaModel):
         self.description = description
         # The type of the baseline. Valid values:
         # 
-        # *   System: default baseline
-        # *   Custom: custom baseline
+        # *   System: default baseline.
+        # *   Custom: custom baseline.
         self.type = type
         # The time when the baseline was updated.
         self.update_time = update_time
@@ -2060,7 +2114,7 @@ class ListAccountFactoryBaselinesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # An array that consists of baselines.
+        # The baselines.
         self.baselines = baselines
         # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -2369,7 +2423,12 @@ class ListEvaluationMetadataRequest(TeaModel):
         language: str = None,
         region_id: str = None,
     ):
+        # The language. The information is returned in the specified language. Valid values:
+        # 
+        # *   en: English
+        # *   zh: Chinese
         self.language = language
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -2404,9 +2463,13 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMet
         content: str = None,
         title: str = None,
     ):
+        # The display name of the fixing button.
         self.button_name = button_name
+        # The navigation URL of the fixing button.
         self.button_ref = button_ref
+        # The fixing procedure.
         self.content = content
+        # The title of the fixing procedure.
         self.title = title
 
     def validate(self):
@@ -2451,11 +2514,23 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMet
         notice: str = None,
         suggestion: str = None,
     ):
+        # The fixing method.
+        # 
+        # >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
         self.classification = classification
+        # The fixing cost.
         self.cost_description = cost_description
+        # The description of the fixing item.
+        # 
+        # >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
         self.description = description
+        # The content of the fixing items.
         self.guidance = guidance
+        # The usage notes of the fixing item.
         self.notice = notice
+        # The fixing suggestion.
+        # 
+        # >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
         self.suggestion = suggestion
 
     def validate(self):
@@ -2512,7 +2587,13 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMet
         actions: List[ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions] = None,
         remediation_type: str = None,
     ):
+        # The fixing operations.
         self.actions = actions
+        # The type of the fixing method. Valid values:
+        # 
+        # *   Manual: manual fixing
+        # *   QuickFix: quick fixing
+        # *   Analysis: auxiliary decision-making
         self.remediation_type = remediation_type
 
     def validate(self):
@@ -2552,6 +2633,7 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMet
         self,
         remediation: List[ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation] = None,
     ):
+        # The fixing items.
         self.remediation = remediation
 
     def validate(self):
@@ -2589,8 +2671,11 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetada
         property_name: str = None,
         property_type: str = None,
     ):
+        # The display name of the resource property.
         self.display_name = display_name
+        # The name of the resource property.
         self.property_name = property_name
+        # The type of the resource property.
         self.property_type = property_type
 
     def validate(self):
@@ -2626,6 +2711,7 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetada
         self,
         resource_property_metadata: List[ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata] = None,
     ):
+        # The metadata of the resource properties.
         self.resource_property_metadata = resource_property_metadata
 
     def validate(self):
@@ -2669,14 +2755,29 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata(TeaModel):
         scope: str = None,
         stage: str = None,
     ):
+        # The category of the check item.
         self.category = category
+        # The description of the check item.
         self.description = description
+        # The display name of the check item.
         self.display_name = display_name
+        # The ID of the metadata.
         self.id = id
+        # The governance level of the check item.
         self.recommendation_level = recommendation_level
+        # The metadata of the fixing task.
         self.remediation_metadata = remediation_metadata
+        # The metadata of the checked resources.
         self.resource_metadata = resource_metadata
+        # The scope of the check item. Valid values:
+        # 
+        # *   Account: the check item in a single-account governance maturity check
+        # *   ResourceDirectory: the check item in a multi-account governance maturity check
         self.scope = scope
+        # The status of the check item. Valid values:
+        # 
+        # *   Released: The check item is released.
+        # *   Beta: The check item is pre-released.
         self.stage = stage
 
     def validate(self):
@@ -2742,7 +2843,11 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadata(TeaModel):
         metadata: List[ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata] = None,
         type: str = None,
     ):
+        # The metadata objects of a specific metadata type.
         self.metadata = metadata
+        # The type of the metadata. Valid values:
+        # 
+        # *   Metric: the check item
         self.type = type
 
     def validate(self):
@@ -2783,7 +2888,9 @@ class ListEvaluationMetadataResponseBody(TeaModel):
         evaluation_metadata: List[ListEvaluationMetadataResponseBodyEvaluationMetadata] = None,
         request_id: str = None,
     ):
+        # The metadata of a governance maturity check.
         self.evaluation_metadata = evaluation_metadata
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2868,10 +2975,17 @@ class ListEvaluationMetricDetailsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
         self.account_id = account_id
+        # The ID of the check item.
+        # 
+        # You can call the [ListEvaluationMetadata](https://help.aliyun.com/document_detail/2841889.html) operation to query the ID of the check item.
         self.id = id
+        # The maximum number of entries to return for a single request. Default value: 5.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -2916,7 +3030,9 @@ class ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties(TeaMode
         property_name: str = None,
         property_value: str = None,
     ):
+        # The name of the resource attribute.
         self.property_name = property_name
+        # The value of the resource attribute.
         self.property_value = property_value
 
     def validate(self):
@@ -2955,13 +3071,27 @@ class ListEvaluationMetricDetailsResponseBodyResources(TeaModel):
         resource_properties: List[ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties] = None,
         resource_type: str = None,
     ):
+        # 合规状态。取值：
+        # - NonCompliant：不合规。
+        # - Excluded：已忽略。
+        # - PendingExclusion：已忽略未生效。
+        # - PendingInclusion：已取消忽略未生效。
         self.compliance_type = compliance_type
+        # The region ID of the resource.
         self.region_id = region_id
+        # The check results further analyzed by auxiliary decision-making.
+        # 
+        # >  This parameter is returned only when the check item supports the auxiliary decision-making feature.
         self.resource_classification = resource_classification
+        # The resource ID.
         self.resource_id = resource_id
+        # The name of the resource.
         self.resource_name = resource_name
+        # The ID of the Alibaba Cloud account that owns the resource.
         self.resource_owner_id = resource_owner_id
+        # The attributes of the resource.
         self.resource_properties = resource_properties
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -3027,8 +3157,11 @@ class ListEvaluationMetricDetailsResponseBody(TeaModel):
         request_id: str = None,
         resources: List[ListEvaluationMetricDetailsResponseBodyResources] = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The details of the non-compliant resources.
         self.resources = resources
 
     def validate(self):
@@ -3445,9 +3578,17 @@ class ListEvaluationScoreHistoryRequest(TeaModel):
         region_id: str = None,
         start_date: str = None,
     ):
+        # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
         self.account_id = account_id
+        # The end of the time range to query. Specify the time in the YYYY-MM-DD format.
+        # 
+        # By default, the historical scores that were generated in the seven days before the current date are queried.
         self.end_date = end_date
+        # The region ID.
         self.region_id = region_id
+        # The beginning of the time range to query. Specify the time in the YYYY-MM-DD format.
+        # 
+        # You can query the historical scores within the previous 180 days.
         self.start_date = start_date
 
     def validate(self):
@@ -3488,7 +3629,11 @@ class ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory(TeaMod
         evaluation_time: str = None,
         score: float = None,
     ):
+        # The time when the score was generated. The time is in UTC.
         self.evaluation_time = evaluation_time
+        # The score.
+        # 
+        # Valid values: 0 to 1.
         self.score = score
 
     def validate(self):
@@ -3520,6 +3665,7 @@ class ListEvaluationScoreHistoryResponseBodyScoreHistory(TeaModel):
         self,
         total_score_history: List[ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory] = None,
     ):
+        # The historical scores.
         self.total_score_history = total_score_history
 
     def validate(self):
@@ -3556,7 +3702,9 @@ class ListEvaluationScoreHistoryResponseBody(TeaModel):
         request_id: str = None,
         score_history: ListEvaluationScoreHistoryResponseBodyScoreHistory = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The historical scores.
         self.score_history = score_history
 
     def validate(self):
@@ -3630,11 +3778,19 @@ class RunEvaluationRequest(TeaModel):
     def __init__(
         self,
         account_id: int = None,
+        metric_ids: List[str] = None,
         region_id: str = None,
         scope: str = None,
     ):
+        # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
         self.account_id = account_id
+        self.metric_ids = metric_ids
+        # The region ID.
         self.region_id = region_id
+        # The check range of the governance maturity check. Valid values:
+        # 
+        # *   Account (default): A single-account governance maturity check is performed to check only the Alibaba Cloud account that you use to access Cloud Governance Center.
+        # *   ResourceDirectory: A multi-account governance maturity check is performed to check all members within a resource directory. Before you perform a multi-account governance maturity check, you must enable the multi-account governance maturity check feature.
         self.scope = scope
 
     def validate(self):
@@ -3648,6 +3804,8 @@ class RunEvaluationRequest(TeaModel):
         result = dict()
         if self.account_id is not None:
             result['AccountId'] = self.account_id
+        if self.metric_ids is not None:
+            result['MetricIds'] = self.metric_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.scope is not None:
@@ -3658,6 +3816,59 @@ class RunEvaluationRequest(TeaModel):
         m = m or dict()
         if m.get('AccountId') is not None:
             self.account_id = m.get('AccountId')
+        if m.get('MetricIds') is not None:
+            self.metric_ids = m.get('MetricIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        return self
+
+
+class RunEvaluationShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        account_id: int = None,
+        metric_ids_shrink: str = None,
+        region_id: str = None,
+        scope: str = None,
+    ):
+        # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+        self.account_id = account_id
+        self.metric_ids_shrink = metric_ids_shrink
+        # The region ID.
+        self.region_id = region_id
+        # The check range of the governance maturity check. Valid values:
+        # 
+        # *   Account (default): A single-account governance maturity check is performed to check only the Alibaba Cloud account that you use to access Cloud Governance Center.
+        # *   ResourceDirectory: A multi-account governance maturity check is performed to check all members within a resource directory. Before you perform a multi-account governance maturity check, you must enable the multi-account governance maturity check feature.
+        self.scope = scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.metric_ids_shrink is not None:
+            result['MetricIds'] = self.metric_ids_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('MetricIds') is not None:
+            self.metric_ids_shrink = m.get('MetricIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Scope') is not None:
@@ -3670,6 +3881,7 @@ class RunEvaluationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3740,8 +3952,11 @@ class UpdateAccountFactoryBaselineRequestBaselineItems(TeaModel):
         name: str = None,
         version: str = None,
     ):
+        # The configurations of the baseline item. The value of this parameter is a JSON string.
         self.config = config
+        # The name of the baseline item.
         self.name = name
+        # The version of the baseline item.
         self.version = version
 
     def validate(self):
@@ -3781,11 +3996,17 @@ class UpdateAccountFactoryBaselineRequest(TeaModel):
         description: str = None,
         region_id: str = None,
     ):
+        # The baseline ID.
         self.baseline_id = baseline_id
+        # The baseline items.
+        # 
+        # You can call the [ListAccountFactoryBaselineItems](~~ListAccountFactoryBaselineItems~~) operation to query a list of baseline items supported by the account factory in Cloud Governance Center.
         self.baseline_items = baseline_items
+        # The name of the baseline.
         self.baseline_name = baseline_name
+        # The description of the baseline.
         self.description = description
-        # RegionId
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -3837,6 +4058,7 @@ class UpdateAccountFactoryBaselineResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
