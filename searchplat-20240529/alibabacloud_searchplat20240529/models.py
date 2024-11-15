@@ -1276,6 +1276,184 @@ class GetDocumentSplitResponse(TeaModel):
         return self
 
 
+class GetEmbeddingTuningRequest(TeaModel):
+    def __init__(
+        self,
+        input: List[List[float]] = None,
+        parameters: Dict[str, Any] = None,
+    ):
+        self.input = input
+        self.parameters = parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input is not None:
+            result['input'] = self.input
+        if self.parameters is not None:
+            result['parameters'] = self.parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input') is not None:
+            self.input = m.get('input')
+        if m.get('parameters') is not None:
+            self.parameters = m.get('parameters')
+        return self
+
+
+class GetEmbeddingTuningResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        output: List[List[float]] = None,
+    ):
+        self.output = output
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['output'] = self.output
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('output') is not None:
+            self.output = m.get('output')
+        return self
+
+
+class GetEmbeddingTuningResponseBodyUsage(TeaModel):
+    def __init__(
+        self,
+        doc_count: int = None,
+    ):
+        self.doc_count = doc_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_count is not None:
+            result['doc_count'] = self.doc_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('doc_count') is not None:
+            self.doc_count = m.get('doc_count')
+        return self
+
+
+class GetEmbeddingTuningResponseBody(TeaModel):
+    def __init__(
+        self,
+        latency: int = None,
+        request_id: str = None,
+        result: GetEmbeddingTuningResponseBodyResult = None,
+        usage: GetEmbeddingTuningResponseBodyUsage = None,
+    ):
+        self.latency = latency
+        self.request_id = request_id
+        self.result = result
+        self.usage = usage
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.latency is not None:
+            result['latency'] = self.latency
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('latency') is not None:
+            self.latency = m.get('latency')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('result') is not None:
+            temp_model = GetEmbeddingTuningResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('usage') is not None:
+            temp_model = GetEmbeddingTuningResponseBodyUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GetEmbeddingTuningResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEmbeddingTuningResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEmbeddingTuningResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetImageAnalyzeTaskStatusRequest(TeaModel):
     def __init__(
         self,

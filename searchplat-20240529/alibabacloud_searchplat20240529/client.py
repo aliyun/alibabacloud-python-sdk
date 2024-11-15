@@ -597,6 +597,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_document_split_with_options_async(workspace_name, service_id, request, headers, runtime)
 
+    def get_embedding_tuning_with_options(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetEmbeddingTuningRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetEmbeddingTuningResponse:
+        """
+        @summary 向量微调
+        
+        @param request: GetEmbeddingTuningRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmbeddingTuningResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input):
+            body['input'] = request.input
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetEmbeddingTuning',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/embedding-tuning/{service_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetEmbeddingTuningResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_embedding_tuning_with_options_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetEmbeddingTuningRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetEmbeddingTuningResponse:
+        """
+        @summary 向量微调
+        
+        @param request: GetEmbeddingTuningRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmbeddingTuningResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input):
+            body['input'] = request.input
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetEmbeddingTuning',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/embedding-tuning/{service_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetEmbeddingTuningResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_embedding_tuning(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetEmbeddingTuningRequest,
+    ) -> searchplat_20240529_models.GetEmbeddingTuningResponse:
+        """
+        @summary 向量微调
+        
+        @param request: GetEmbeddingTuningRequest
+        @return: GetEmbeddingTuningResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_embedding_tuning_with_options(workspace_name, service_id, request, headers, runtime)
+
+    async def get_embedding_tuning_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetEmbeddingTuningRequest,
+    ) -> searchplat_20240529_models.GetEmbeddingTuningResponse:
+        """
+        @summary 向量微调
+        
+        @param request: GetEmbeddingTuningRequest
+        @return: GetEmbeddingTuningResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_embedding_tuning_with_options_async(workspace_name, service_id, request, headers, runtime)
+
     def get_image_analyze_task_status_with_options(
         self,
         workspace_name: str,
