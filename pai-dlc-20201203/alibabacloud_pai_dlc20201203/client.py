@@ -2874,6 +2874,8 @@ class Client(OpenApiClient):
             query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.max_running_time_minutes):
             query['MaxRunningTimeMinutes'] = request.max_running_time_minutes
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -2917,6 +2919,8 @@ class Client(OpenApiClient):
             query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.max_running_time_minutes):
             query['MaxRunningTimeMinutes'] = request.max_running_time_minutes
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
