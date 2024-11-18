@@ -9107,6 +9107,7 @@ class ListMembersRequest(TeaModel):
 class ListMembersResponseBodyMembers(TeaModel):
     def __init__(
         self,
+        account_name: str = None,
         display_name: str = None,
         gmt_create_time: str = None,
         member_id: str = None,
@@ -9114,6 +9115,7 @@ class ListMembersResponseBodyMembers(TeaModel):
         roles: List[str] = None,
         user_id: str = None,
     ):
+        self.account_name = account_name
         self.display_name = display_name
         self.gmt_create_time = gmt_create_time
         self.member_id = member_id
@@ -9130,6 +9132,8 @@ class ListMembersResponseBodyMembers(TeaModel):
             return _map
 
         result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
         if self.gmt_create_time is not None:
@@ -9146,6 +9150,8 @@ class ListMembersResponseBodyMembers(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
         if m.get('GmtCreateTime') is not None:
