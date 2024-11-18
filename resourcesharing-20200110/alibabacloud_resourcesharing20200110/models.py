@@ -11,7 +11,9 @@ class AcceptResourceShareInvitationRequest(TeaModel):
     ):
         # The ID of the resource sharing invitation.
         # 
-        # You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID.
+        # You can call the [ListResourceShareInvitations](https://help.aliyun.com/document_detail/450564.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.resource_share_invitation_id = resource_share_invitation_id
 
     def validate(self):
@@ -57,7 +59,7 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvi
         self.resource_id = resource_id
         # The type of the shared resource.
         # 
-        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         self.resource_type = resource_type
         # The failure status. Valid values:
         # 
@@ -132,16 +134,28 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitation(TeaModel)
         # The information about the failure.
         self.accept_invitation_failed_details = accept_invitation_failed_details
         # The time when the invitation was created. The time is displayed in UTC.
+        # 
+        # This parameter is required.
         self.create_time = create_time
         # The Alibaba Cloud account ID of the invitee.
+        # 
+        # This parameter is required.
         self.receiver_account_id = receiver_account_id
         # The ID of the resource share.
+        # 
+        # This parameter is required.
         self.resource_share_id = resource_share_id
         # The ID of the resource sharing invitation.
+        # 
+        # This parameter is required.
         self.resource_share_invitation_id = resource_share_invitation_id
         # The name of the resource share.
+        # 
+        # This parameter is required.
         self.resource_share_name = resource_share_name
         # The Alibaba Cloud account ID of the inviter.
+        # 
+        # This parameter is required.
         self.sender_account_id = sender_account_id
         # The status of the invitation. Valid values:
         # 
@@ -151,6 +165,8 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitation(TeaModel)
         # *   Rejected
         # *   Expired
         # *   AcceptFailed
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -303,7 +319,7 @@ class AssociateResourceShareRequestResources(TeaModel):
         # 
         # Valid values of N: 1 to 5. This indicates that a maximum of five shared resources can be specified at a time.
         # 
-        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         # 
         # >  `Resources.N.ResourceId` and `Resources.N.ResourceType` must be used in pairs.
         self.resource_type = resource_type
@@ -338,7 +354,16 @@ class AssociateResourceShareRequestTargetProperties(TeaModel):
         property: str = None,
         target_id: str = None,
     ):
+        # The property parameter of the principal. For example, you can specify a parameter that indicates the time range for resource sharing. Valid values of `timeRangeType`:
+        # 
+        # *   timeRange: a specific time range
+        # *   day: all day
+        # 
+        # >  `TargetProperties.N.TargetId` and `TargetProperties.N.Property` must be used in pairs.
         self.property = property
+        # The ID of the principal.
+        # 
+        # >  `TargetProperties.N.TargetId` and `TargetProperties.N.Property` must be used in pairs.
         self.target_id = target_id
 
     def validate(self):
@@ -374,12 +399,17 @@ class AssociateResourceShareRequest(TeaModel):
         target_properties: List[AssociateResourceShareRequestTargetProperties] = None,
         targets: List[str] = None,
     ):
-        # The information about the permissions. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share. For more information, see [Permission library](~~465474~~).
+        # The information about the permissions. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share. For more information, see [Permission library](https://help.aliyun.com/document_detail/465474.html).
         self.permission_names = permission_names
         # The ID of the resource share.
+        # 
+        # This parameter is required.
         self.resource_share_id = resource_share_id
         # The information about the resources.
         self.resources = resources
+        # The properties of the principal.
+        # 
+        # >  This parameter is available only when you specify an Alibaba Cloud service as a principal.
         self.target_properties = target_properties
         # The information about the principals.
         self.targets = targets
@@ -480,13 +510,16 @@ class AssociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
         self.entity_id = entity_id
         # The type of the entity. The value of this parameter depends on the value of the AssociationType parameter:
         # 
-        # *   If the value of AssociationType is Resource, the value of this parameter is the type of the shared resource. For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # *   If the value of AssociationType is Resource, the value of this parameter is the type of the shared resource. For information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         # *   If the value of AssociationType is Target, the value of this parameter is `Account`.
         self.entity_type = entity_type
         # The ID of the resource share.
         self.resource_share_id = resource_share_id
         # The name of the resource share.
         self.resource_share_name = resource_share_name
+        # The properties of the principal, such as the time range within which the resource is shared.
+        # 
+        # >  This parameter is returned only if the principal is an Alibaba Cloud service.
         self.target_property = target_property
         # The time when the association of the entity was updated. The value of this parameter depends on the value of the AssociationType parameter:
         # 
@@ -642,6 +675,8 @@ class AssociateResourceSharePermissionRequest(TeaModel):
         resource_share_id: str = None,
     ):
         # The name of the permission.
+        # 
+        # This parameter is required.
         self.permission_name = permission_name
         # Specifies whether to use the specified permission to replace an existing permission. Valid values:
         # 
@@ -649,6 +684,8 @@ class AssociateResourceSharePermissionRequest(TeaModel):
         # *   true: uses the specified permission to replace an existing permission of the same resource type.
         self.replace = replace
         # The ID of the resource share.
+        # 
+        # This parameter is required.
         self.resource_share_id = resource_share_id
 
     def validate(self):
@@ -756,10 +793,16 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_region_id: str = None,
     ):
         # The ID of the destination resource group.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
         # The ID of the resource share.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The region ID of the resource share.
+        # 
+        # This parameter is required.
         self.resource_region_id = resource_region_id
 
     def validate(self):
@@ -954,7 +997,7 @@ class CreateResourceShareRequestResources(TeaModel):
         # 
         # Valid values of N: 1 to 5. This indicates that a maximum of five shared resources can be specified at a time.
         # 
-        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         # 
         # >  `Resources.N.ResourceId` and `Resources.N.ResourceType` must be used in pairs.
         self.resource_type = resource_type
@@ -983,13 +1026,55 @@ class CreateResourceShareRequestResources(TeaModel):
         return self
 
 
+class CreateResourceShareRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateResourceShareRequestTargetProperties(TeaModel):
     def __init__(
         self,
         property: str = None,
         target_id: str = None,
     ):
+        # The property parameter of the principal. For example, you can specify a parameter that indicates the time range for resource sharing. Valid values of `timeRangeType`:
+        # 
+        # *   timeRange: a specific time range
+        # *   day: all day
+        # 
+        # >  `TargetProperties.N.TargetId` and `TargetProperties.N.Property` must be used in pairs.
         self.property = property
+        # The ID of the principal.
+        # 
+        # >  `TargetProperties.N.TargetId` and `TargetProperties.N.Property` must be used in pairs.
         self.target_id = target_id
 
     def validate(self):
@@ -1021,8 +1106,10 @@ class CreateResourceShareRequest(TeaModel):
         self,
         allow_external_targets: bool = None,
         permission_names: List[str] = None,
+        resource_group_id: str = None,
         resource_share_name: str = None,
         resources: List[CreateResourceShareRequestResources] = None,
+        tag: List[CreateResourceShareRequestTag] = None,
         target_properties: List[CreateResourceShareRequestTargetProperties] = None,
         targets: List[str] = None,
     ):
@@ -1031,16 +1118,23 @@ class CreateResourceShareRequest(TeaModel):
         # *   false (default): Resources in the resource share can be shared only with accounts in the resource directory.
         # *   true: Resources in the resource share can be shared with both accounts in the resource directory and accounts outside the resource directory.
         self.allow_external_targets = allow_external_targets
-        # The information about the permissions. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share. For more information, see [Permission library](~~465474~~).
+        # The information about the permissions. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share. For more information, see [Permission library](https://help.aliyun.com/document_detail/465474.html).
         self.permission_names = permission_names
+        self.resource_group_id = resource_group_id
         # The name of the resource share.
         # 
         # The name must be 1 to 50 characters in length.
         # 
-        # The name can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The name can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        # 
+        # This parameter is required.
         self.resource_share_name = resource_share_name
         # The information about the shared resources.
         self.resources = resources
+        self.tag = tag
+        # The properties of the principal.
+        # 
+        # >  This parameter is available only when you specify an Alibaba Cloud service as a principal.
         self.target_properties = target_properties
         # The information about the principals.
         self.targets = targets
@@ -1048,6 +1142,10 @@ class CreateResourceShareRequest(TeaModel):
     def validate(self):
         if self.resources:
             for k in self.resources:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
         if self.target_properties:
@@ -1065,12 +1163,18 @@ class CreateResourceShareRequest(TeaModel):
             result['AllowExternalTargets'] = self.allow_external_targets
         if self.permission_names is not None:
             result['PermissionNames'] = self.permission_names
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_share_name is not None:
             result['ResourceShareName'] = self.resource_share_name
         result['Resources'] = []
         if self.resources is not None:
             for k in self.resources:
                 result['Resources'].append(k.to_map() if k else None)
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         result['TargetProperties'] = []
         if self.target_properties is not None:
             for k in self.target_properties:
@@ -1085,6 +1189,8 @@ class CreateResourceShareRequest(TeaModel):
             self.allow_external_targets = m.get('AllowExternalTargets')
         if m.get('PermissionNames') is not None:
             self.permission_names = m.get('PermissionNames')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceShareName') is not None:
             self.resource_share_name = m.get('ResourceShareName')
         self.resources = []
@@ -1092,6 +1198,11 @@ class CreateResourceShareRequest(TeaModel):
             for k in m.get('Resources'):
                 temp_model = CreateResourceShareRequestResources()
                 self.resources.append(temp_model.from_map(k))
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateResourceShareRequestTag()
+                self.tag.append(temp_model.from_map(k))
         self.target_properties = []
         if m.get('TargetProperties') is not None:
             for k in m.get('TargetProperties'):
@@ -1266,6 +1377,8 @@ class DeleteResourceShareRequest(TeaModel):
         resource_share_id: str = None,
     ):
         # The ID of the resource share.
+        # 
+        # This parameter is required.
         self.resource_share_id = resource_share_id
 
     def validate(self):
@@ -1520,7 +1633,7 @@ class DisassociateResourceShareRequestResources(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of a shared resource.
+        # The ID of the shared resource.
         # 
         # Valid values of N: 1 to 5. This indicates that a maximum of five shared resources can be specified at a time.
         # 
@@ -1530,7 +1643,7 @@ class DisassociateResourceShareRequestResources(TeaModel):
         # 
         # Valid values of N: 1 to 5. This indicates that a maximum of five shared resources can be specified at a time.
         # 
-        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         # 
         # >  Resources.N.ResourceId and Resources.N.ResourceType must be used in pairs.
         self.resource_type = resource_type
@@ -1569,14 +1682,16 @@ class DisassociateResourceShareRequest(TeaModel):
     ):
         # The owner of the resource share. Valid values:
         # 
-        # *   Self: The resource share belongs to the current account. This is the default value. If you are the management account or a member of a resource directory and you want to remove resources or principals from a resource share, set this parameter to Self.
-        # *   OtherAccounts: The resource share belongs to another account. If you are not the management account or a member of a resource directory and you want to exit a resource share, set this parameter to OtherAccounts.
+        # *   Self: The resource share belongs to the current account. This is the default value. For resource sharing within a resource directory, if you are a resource owner and you want to disassociate resources or principals from a resource share, set this parameter to Self.
+        # *   OtherAccounts: The resource share belongs to another account. For resource sharing outside a resource directory, if you are a principal and you want to exit a resource share, set this parameter to OtherAccounts.
         self.resource_owner = resource_owner
         # The ID of the resource share.
+        # 
+        # This parameter is required.
         self.resource_share_id = resource_share_id
-        # The shared resource.
+        # The information about the resources.
         self.resources = resources
-        # The ID of a principal.
+        # The information about the principals.
         self.targets = targets
 
     def validate(self):
@@ -1658,17 +1773,20 @@ class DisassociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
         # The ID of the entity. The value of this parameter depends on the value of the AssociationType parameter:
         # 
         # *   If the value of `AssociationType` is `Resource`, the value of this parameter is the ID of the resource.
-        # *   If the value of `AssociationType` is `Target`, the value of this parameter is the ID of the resource directory, folder, or member.
+        # *   If the value of `AssociationType` is `Target`, the value of this parameter is the ID of the resource directory, folder, member, or Alibaba Cloud service.
         self.entity_id = entity_id
         # The type of the entity. The value of this parameter depends on the value of the AssociationType parameter:
         # 
-        # *   If the value of AssociationType is Resource, the value of this parameter is the type of the resource. For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # *   If the value of AssociationType is Resource, the value of this parameter is the type of the resource. For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         # *   If the value of AssociationType is Target, the value of this parameter is Account.
         self.entity_type = entity_type
         # The ID of the resource share.
         self.resource_share_id = resource_share_id
         # The name of the resource share.
         self.resource_share_name = resource_share_name
+        # The properties of the principal, such as the time range within which the resource is shared.
+        # 
+        # >  This parameter is returned only if the principal is an Alibaba Cloud service.
         self.target_property = target_property
         # The time when the disassociation of the entity was updated. The value of this parameter depends on the value of the AssociationType parameter:
         # 
@@ -1738,9 +1856,9 @@ class DisassociateResourceShareResponseBody(TeaModel):
         request_id: str = None,
         resource_share_associations: List[DisassociateResourceShareResponseBodyResourceShareAssociations] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the entities that are associated with the resource share.
+        # The information about the entities that are associated with the resource share.
         self.resource_share_associations = resource_share_associations
 
     def validate(self):
@@ -1822,9 +1940,13 @@ class DisassociateResourceSharePermissionRequest(TeaModel):
         permission_name: str = None,
         resource_share_id: str = None,
     ):
-        # The name of the permission. For more information, see [Permission library](~~465474~~).
+        # The name of the permission. For more information, see [Permission library](https://help.aliyun.com/document_detail/465474.html).
+        # 
+        # This parameter is required.
         self.permission_name = permission_name
         # The ID of the resource share.
+        # 
+        # This parameter is required.
         self.resource_share_id = resource_share_id
 
     def validate(self):
@@ -1996,6 +2118,8 @@ class GetPermissionRequest(TeaModel):
         permission_version: str = None,
     ):
         # The name of the permission.
+        # 
+        # This parameter is required.
         self.permission_name = permission_name
         # The version of the permission.
         self.permission_version = permission_version
@@ -2056,7 +2180,7 @@ class GetPermissionResponseBodyPermission(TeaModel):
         self.permission_version = permission_version
         # The type of the shared resources.
         # 
-        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         self.resource_type = resource_type
         # The update time.
         self.update_time = update_time
@@ -2201,6 +2325,8 @@ class ListPermissionVersionsRequest(TeaModel):
         # The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
         self.next_token = next_token
         # The name of the permission.
+        # 
+        # This parameter is required.
         self.permission_name = permission_name
 
     def validate(self):
@@ -2260,7 +2386,7 @@ class ListPermissionVersionsResponseBodyPermissions(TeaModel):
         self.permission_version = permission_version
         # The type of the shared resources.
         # 
-        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         self.resource_type = resource_type
         # The update time.
         self.update_time = update_time
@@ -2415,7 +2541,7 @@ class ListPermissionsRequest(TeaModel):
         self.next_token = next_token
         # The type of the shared resources.
         # 
-        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         self.resource_type = resource_type
 
     def validate(self):
@@ -2475,7 +2601,7 @@ class ListPermissionsResponseBodyPermissions(TeaModel):
         self.permission_version = permission_version
         # The type of the shared resources.
         # 
-        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         self.resource_type = resource_type
         # The update time.
         self.update_time = update_time
@@ -2640,6 +2766,8 @@ class ListResourceShareAssociationsRequest(TeaModel):
         # 
         # *   Resource
         # *   Target
+        # 
+        # This parameter is required.
         self.association_type = association_type
         # The maximum number of entries to return for a single request.
         # 
@@ -2817,7 +2945,7 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaMode
         self.entity_id = entity_id
         # The type of the entity. The value of this parameter depends on the value of the AssociationType parameter:
         # 
-        # *   If the value of AssociationType is Resource, the value of this parameter is the type of the resource. For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # *   If the value of AssociationType is Resource, the value of this parameter is the type of the resource. For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         # *   If the value of AssociationType is Target, the value of this parameter is `Account`.
         self.entity_type = entity_type
         # Indicates whether the principal is outside the resource directory. Valid values:
@@ -3074,7 +3202,7 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitation
         self.resource_id = resource_id
         # The type of the shared resource.
         # 
-        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         self.resource_type = resource_type
         # The failure status. Valid values:
         # 
@@ -3336,8 +3464,12 @@ class ListResourceSharePermissionsRequest(TeaModel):
         # 
         # *   Self: the current account
         # *   OtherAccounts: an account other than the current account
+        # 
+        # This parameter is required.
         self.resource_owner = resource_owner
         # The ID of the resource share.
+        # 
+        # This parameter is required.
         self.resource_share_id = resource_share_id
 
     def validate(self):
@@ -3401,7 +3533,7 @@ class ListResourceSharePermissionsResponseBodyPermissions(TeaModel):
         self.permission_version = permission_version
         # The type of the shared resources.
         # 
-        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         self.resource_type = resource_type
         # The update time.
         self.update_time = update_time
@@ -3541,16 +3673,51 @@ class ListResourceSharePermissionsResponse(TeaModel):
         return self
 
 
+class ListResourceSharesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListResourceSharesRequest(TeaModel):
     def __init__(
         self,
         max_results: int = None,
         next_token: str = None,
         permission_name: str = None,
+        resource_group_id: str = None,
         resource_owner: str = None,
         resource_share_ids: List[str] = None,
         resource_share_name: str = None,
         resource_share_status: str = None,
+        tag: List[ListResourceSharesRequestTag] = None,
     ):
         # The maximum number of entries to return for a single request.
         # 
@@ -3558,12 +3725,15 @@ class ListResourceSharesRequest(TeaModel):
         self.max_results = max_results
         # The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
         self.next_token = next_token
-        # The name of the permission. For more information, see [Permission library](~~465474~~).
+        # The name of the permission. For more information, see [Permission library](https://help.aliyun.com/document_detail/465474.html).
         self.permission_name = permission_name
+        self.resource_group_id = resource_group_id
         # The owner of the resource shares. Valid values:
         # 
         # *   Self: the current account
         # *   OtherAccounts: an account other than the current account
+        # 
+        # This parameter is required.
         self.resource_owner = resource_owner
         # The ID of a resource share.
         self.resource_share_ids = resource_share_ids
@@ -3578,9 +3748,13 @@ class ListResourceSharesRequest(TeaModel):
         # 
         # >  The system deletes the records of resource shares in the Deleted state within 48 hours to 96 hours after you delete the resource shares.
         self.resource_share_status = resource_share_status
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3594,6 +3768,8 @@ class ListResourceSharesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.permission_name is not None:
             result['PermissionName'] = self.permission_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner is not None:
             result['ResourceOwner'] = self.resource_owner
         if self.resource_share_ids is not None:
@@ -3602,6 +3778,10 @@ class ListResourceSharesRequest(TeaModel):
             result['ResourceShareName'] = self.resource_share_name
         if self.resource_share_status is not None:
             result['ResourceShareStatus'] = self.resource_share_status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -3612,6 +3792,8 @@ class ListResourceSharesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('PermissionName') is not None:
             self.permission_name = m.get('PermissionName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwner') is not None:
             self.resource_owner = m.get('ResourceOwner')
         if m.get('ResourceShareIds') is not None:
@@ -3620,6 +3802,44 @@ class ListResourceSharesRequest(TeaModel):
             self.resource_share_name = m.get('ResourceShareName')
         if m.get('ResourceShareStatus') is not None:
             self.resource_share_status = m.get('ResourceShareStatus')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListResourceSharesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListResourceSharesResponseBodyResourceSharesTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -3628,10 +3848,12 @@ class ListResourceSharesResponseBodyResourceShares(TeaModel):
         self,
         allow_external_targets: bool = None,
         create_time: str = None,
+        resource_group_id: str = None,
         resource_share_id: str = None,
         resource_share_name: str = None,
         resource_share_owner: str = None,
         resource_share_status: str = None,
+        tags: List[ListResourceSharesResponseBodyResourceSharesTags] = None,
         update_time: str = None,
     ):
         # Indicates whether resources in the resource share can be shared with accounts outside the resource directory. Valid values:
@@ -3641,6 +3863,7 @@ class ListResourceSharesResponseBodyResourceShares(TeaModel):
         self.allow_external_targets = allow_external_targets
         # The time when the resource share was created.
         self.create_time = create_time
+        self.resource_group_id = resource_group_id
         # The ID of the resource share.
         self.resource_share_id = resource_share_id
         # The name of the resource share.
@@ -3656,11 +3879,15 @@ class ListResourceSharesResponseBodyResourceShares(TeaModel):
         # 
         # >  The system deletes the records of resource shares in the Deleted state within 48 hours to 96 hours after you delete the resource shares.
         self.resource_share_status = resource_share_status
+        self.tags = tags
         # The time when the resource share was updated.
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3672,6 +3899,8 @@ class ListResourceSharesResponseBodyResourceShares(TeaModel):
             result['AllowExternalTargets'] = self.allow_external_targets
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_share_id is not None:
             result['ResourceShareId'] = self.resource_share_id
         if self.resource_share_name is not None:
@@ -3680,6 +3909,10 @@ class ListResourceSharesResponseBodyResourceShares(TeaModel):
             result['ResourceShareOwner'] = self.resource_share_owner
         if self.resource_share_status is not None:
             result['ResourceShareStatus'] = self.resource_share_status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
         return result
@@ -3690,6 +3923,8 @@ class ListResourceSharesResponseBodyResourceShares(TeaModel):
             self.allow_external_targets = m.get('AllowExternalTargets')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceShareId') is not None:
             self.resource_share_id = m.get('ResourceShareId')
         if m.get('ResourceShareName') is not None:
@@ -3698,6 +3933,11 @@ class ListResourceSharesResponseBodyResourceShares(TeaModel):
             self.resource_share_owner = m.get('ResourceShareOwner')
         if m.get('ResourceShareStatus') is not None:
             self.resource_share_status = m.get('ResourceShareStatus')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListResourceSharesResponseBodyResourceSharesTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
         return self
@@ -3817,12 +4057,14 @@ class ListSharedResourcesRequest(TeaModel):
         # 
         # *   Self: your account. If you set the value to Self, the resources you share with other accounts are queried.
         # *   OtherAccounts: another account. If you set the value to OtherAccounts, the resources other accounts share with you are queried.
+        # 
+        # This parameter is required.
         self.resource_owner = resource_owner
         # The ID of a resource share.
         self.resource_share_ids = resource_share_ids
         # The type of the shared resources.
         # 
-        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         self.resource_type = resource_type
         # The ID of the principal or resource owner.
         # 
@@ -3904,7 +4146,7 @@ class ListSharedResourcesResponseBodySharedResources(TeaModel):
         self.resource_status_message = resource_status_message
         # The type of the shared resource.
         # 
-        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         self.resource_type = resource_type
         # The time when the association of the shared resource was updated.
         self.update_time = update_time
@@ -4059,7 +4301,7 @@ class ListSharedTargetsRequest(TeaModel):
         # 
         # Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
-        # The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
         # The ID of the shared resource.
         self.resource_id = resource_id
@@ -4067,14 +4309,18 @@ class ListSharedTargetsRequest(TeaModel):
         # 
         # *   Self: your account. If you set the value to Self, the principals that are associated with your resource shares are queried.
         # *   OtherAccounts: another account. If you set the value to OtherAccounts, the resource shares with which your account is associated and the owners of the resource shares are queried.
+        # 
+        # This parameter is required.
         self.resource_owner = resource_owner
         # The ID of a resource share.
+        # 
+        # Valid values of N: 1 to 5. This indicates that a maximum of five resource shares can be specified at a time.
         self.resource_share_ids = resource_share_ids
         # The type of the shared resources.
         # 
-        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         self.resource_type = resource_type
-        # The ID of a principal.
+        # The information about the principals.
         self.targets = targets
 
     def validate(self):
@@ -4135,8 +4381,8 @@ class ListSharedTargetsResponseBodySharedTargets(TeaModel):
         self.create_time = create_time
         # Indicates whether the principal is outside the resource directory. Valid values:
         # 
-        # *   true: The principal is outside the resource directory.
-        # *   false: The principal is in the resource directory.
+        # *   true
+        # *   false
         self.external = external
         # The ID of the resource share.
         self.resource_share_id = resource_share_id
@@ -4145,6 +4391,9 @@ class ListSharedTargetsResponseBodySharedTargets(TeaModel):
         # *   If the value of `ResourceOwner` is `Self`, the value of this parameter is the ID of a principal.
         # *   If the value of `ResourceOwner` is `OtherAccounts`, the value of this parameter is the ID of a resource owner.
         self.target_id = target_id
+        # The properties of the principal, such as the time range within which the resource is shared.
+        # 
+        # >  This parameter is returned only if the principal is an Alibaba Cloud service.
         self.target_property = target_property
         # The time when the association of the principal was updated.
         self.update_time = update_time
@@ -4196,9 +4445,9 @@ class ListSharedTargetsResponseBody(TeaModel):
         request_id: str = None,
         shared_targets: List[ListSharedTargetsResponseBodySharedTargets] = None,
     ):
-        # The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information of the principals.
         self.shared_targets = shared_targets
@@ -4287,7 +4536,9 @@ class RejectResourceShareInvitationRequest(TeaModel):
     ):
         # The ID of the resource sharing invitation.
         # 
-        # You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+        # You can call the [ListResourceShareInvitations](https://help.aliyun.com/document_detail/450564.html) operation to obtain the ID of a resource sharing invitation.
+        # 
+        # This parameter is required.
         self.resource_share_invitation_id = resource_share_invitation_id
 
     def validate(self):
@@ -4322,16 +4573,28 @@ class RejectResourceShareInvitationResponseBodyResourceShareInvitation(TeaModel)
         status: str = None,
     ):
         # The time when the invitation was created. The time is displayed in UTC.
+        # 
+        # This parameter is required.
         self.create_time = create_time
         # The Alibaba Cloud account ID of the invitee.
+        # 
+        # This parameter is required.
         self.receiver_account_id = receiver_account_id
         # The ID of the resource share.
+        # 
+        # This parameter is required.
         self.resource_share_id = resource_share_id
         # The ID of the invitation.
+        # 
+        # This parameter is required.
         self.resource_share_invitation_id = resource_share_invitation_id
         # The name of the resource share.
+        # 
+        # This parameter is required.
         self.resource_share_name = resource_share_name
         # The Alibaba Cloud account ID of the inviter.
+        # 
+        # This parameter is required.
         self.sender_account_id = sender_account_id
         # The status of the invitation. Valid values:
         # 
@@ -4340,6 +4603,8 @@ class RejectResourceShareInvitationResponseBodyResourceShareInvitation(TeaModel)
         # *   Cancelled: The invitation is canceled.
         # *   Rejected: The invitation is rejected.
         # *   Expired: The invitation has expired.
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -4477,12 +4742,16 @@ class UpdateResourceShareRequest(TeaModel):
         # *   true: Resources in the resource share can be shared with both accounts in the resource directory and accounts outside the resource directory.
         self.allow_external_targets = allow_external_targets
         # The ID of the resource share.
+        # 
+        # This parameter is required.
         self.resource_share_id = resource_share_id
         # The new name of the resource share.
         # 
         # The name must be 1 to 50 characters in length.
         # 
-        # The name can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The name can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        # 
+        # This parameter is required.
         self.resource_share_name = resource_share_name
 
     def validate(self):

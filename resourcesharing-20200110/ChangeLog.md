@@ -1,3 +1,11 @@
+2024-11-18 Version: 2.1.5
+- Update API CreateResourceShare: add param ResourceGroupId.
+- Update API CreateResourceShare: add param Tag.
+- Update API ListResourceShares: add param ResourceGroupId.
+- Update API ListResourceShares: add param Tag.
+- Update API ListResourceShares: update response param.
+
+
 2024-02-04 Version: 2.1.4
 - Update API AcceptResourceShareInvitationupdate response param.
 - Update API DeleteResourceShareupdate response param.

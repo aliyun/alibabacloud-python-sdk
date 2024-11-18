@@ -47,10 +47,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.AcceptResourceShareInvitationResponse:
         """
-        ### [](#)
-        *   A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
-        *   A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
-        This topic provides an example on how to call the API operation to accept the resource sharing invitation whose ID is `i-pMnItMX19fBJ****` in the `cn-hangzhou` region.
+        @summary Accepts a resource sharing invitation.
+        
+        @description ### [](#)
+        A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
+        A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
+        This topic provides an example on how to call the API operation to accept the resource sharing invitation whose ID is `i-pMnItMX19fBJ***` in the `cn-hangzhou` region.
         
         @param request: AcceptResourceShareInvitationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -85,10 +87,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.AcceptResourceShareInvitationResponse:
         """
-        ### [](#)
-        *   A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
-        *   A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
-        This topic provides an example on how to call the API operation to accept the resource sharing invitation whose ID is `i-pMnItMX19fBJ****` in the `cn-hangzhou` region.
+        @summary Accepts a resource sharing invitation.
+        
+        @description ### [](#)
+        A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
+        A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
+        This topic provides an example on how to call the API operation to accept the resource sharing invitation whose ID is `i-pMnItMX19fBJ***` in the `cn-hangzhou` region.
         
         @param request: AcceptResourceShareInvitationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -122,10 +126,12 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.AcceptResourceShareInvitationRequest,
     ) -> resource_sharing_20200110_models.AcceptResourceShareInvitationResponse:
         """
-        ### [](#)
-        *   A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
-        *   A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
-        This topic provides an example on how to call the API operation to accept the resource sharing invitation whose ID is `i-pMnItMX19fBJ****` in the `cn-hangzhou` region.
+        @summary Accepts a resource sharing invitation.
+        
+        @description ### [](#)
+        A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
+        A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
+        This topic provides an example on how to call the API operation to accept the resource sharing invitation whose ID is `i-pMnItMX19fBJ***` in the `cn-hangzhou` region.
         
         @param request: AcceptResourceShareInvitationRequest
         @return: AcceptResourceShareInvitationResponse
@@ -138,10 +144,12 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.AcceptResourceShareInvitationRequest,
     ) -> resource_sharing_20200110_models.AcceptResourceShareInvitationResponse:
         """
-        ### [](#)
-        *   A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
-        *   A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
-        This topic provides an example on how to call the API operation to accept the resource sharing invitation whose ID is `i-pMnItMX19fBJ****` in the `cn-hangzhou` region.
+        @summary Accepts a resource sharing invitation.
+        
+        @description ### [](#)
+        A principal needs to accept or reject a resource sharing invitation only if the principal is not the management account or a member of a resource directory. If you share resources with an object in a resource directory, the system automatically accepts the resource sharing invitation for the object.
+        A resource sharing invitation is valid for seven days. A principal must accept or reject the invitation within the validity period.
+        This topic provides an example on how to call the API operation to accept the resource sharing invitation whose ID is `i-pMnItMX19fBJ***` in the `cn-hangzhou` region.
         
         @param request: AcceptResourceShareInvitationRequest
         @return: AcceptResourceShareInvitationResponse
@@ -155,7 +163,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.AssociateResourceShareResponse:
         """
-        This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql***` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
+        @summary Associates resources or principals with a resource share.
+        
+        @description This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql***` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
         
         @param request: AssociateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -198,7 +208,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.AssociateResourceShareResponse:
         """
-        This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql***` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
+        @summary Associates resources or principals with a resource share.
+        
+        @description This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql***` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
         
         @param request: AssociateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -240,7 +252,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.AssociateResourceShareRequest,
     ) -> resource_sharing_20200110_models.AssociateResourceShareResponse:
         """
-        This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql***` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
+        @summary Associates resources or principals with a resource share.
+        
+        @description This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql***` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
         
         @param request: AssociateResourceShareRequest
         @return: AssociateResourceShareResponse
@@ -253,7 +267,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.AssociateResourceShareRequest,
     ) -> resource_sharing_20200110_models.AssociateResourceShareResponse:
         """
-        This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql***` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
+        @summary Associates resources or principals with a resource share.
+        
+        @description This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql***` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
         
         @param request: AssociateResourceShareRequest
         @return: AssociateResourceShareResponse
@@ -267,7 +283,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.AssociateResourceSharePermissionResponse:
         """
-        This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
+        @summary Associates permissions with a resource share.
+        
+        @description This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
         
         @param request: AssociateResourceSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -306,7 +324,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.AssociateResourceSharePermissionResponse:
         """
-        This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
+        @summary Associates permissions with a resource share.
+        
+        @description This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
         
         @param request: AssociateResourceSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -344,7 +364,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.AssociateResourceSharePermissionRequest,
     ) -> resource_sharing_20200110_models.AssociateResourceSharePermissionResponse:
         """
-        This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
+        @summary Associates permissions with a resource share.
+        
+        @description This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
         
         @param request: AssociateResourceSharePermissionRequest
         @return: AssociateResourceSharePermissionResponse
@@ -357,7 +379,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.AssociateResourceSharePermissionRequest,
     ) -> resource_sharing_20200110_models.AssociateResourceSharePermissionResponse:
         """
-        This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
+        @summary Associates permissions with a resource share.
+        
+        @description This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
         
         @param request: AssociateResourceSharePermissionRequest
         @return: AssociateResourceSharePermissionResponse
@@ -370,6 +394,13 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ChangeResourceGroupResponse:
+        """
+        @summary Transfers a resource share from one resource group to another.
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -402,6 +433,13 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ChangeResourceGroupResponse:
+        """
+        @summary Transfers a resource share from one resource group to another.
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -433,6 +471,12 @@ class Client(OpenApiClient):
         self,
         request: resource_sharing_20200110_models.ChangeResourceGroupRequest,
     ) -> resource_sharing_20200110_models.ChangeResourceGroupResponse:
+        """
+        @summary Transfers a resource share from one resource group to another.
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_resource_group_with_options(request, runtime)
 
@@ -440,6 +484,12 @@ class Client(OpenApiClient):
         self,
         request: resource_sharing_20200110_models.ChangeResourceGroupRequest,
     ) -> resource_sharing_20200110_models.ChangeResourceGroupResponse:
+        """
+        @summary Transfers a resource share from one resource group to another.
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
@@ -447,6 +497,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.CheckSharingWithResourceDirectoryStatusResponse:
+        """
+        @summary Checks the status of resource sharing within a resource directory.
+        
+        @param request: CheckSharingWithResourceDirectoryStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckSharingWithResourceDirectoryStatusResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='CheckSharingWithResourceDirectoryStatus',
@@ -468,6 +525,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.CheckSharingWithResourceDirectoryStatusResponse:
+        """
+        @summary Checks the status of resource sharing within a resource directory.
+        
+        @param request: CheckSharingWithResourceDirectoryStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckSharingWithResourceDirectoryStatusResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='CheckSharingWithResourceDirectoryStatus',
@@ -486,10 +550,20 @@ class Client(OpenApiClient):
         )
 
     def check_sharing_with_resource_directory_status(self) -> resource_sharing_20200110_models.CheckSharingWithResourceDirectoryStatusResponse:
+        """
+        @summary Checks the status of resource sharing within a resource directory.
+        
+        @return: CheckSharingWithResourceDirectoryStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_sharing_with_resource_directory_status_with_options(runtime)
 
     async def check_sharing_with_resource_directory_status_async(self) -> resource_sharing_20200110_models.CheckSharingWithResourceDirectoryStatusResponse:
+        """
+        @summary Checks the status of resource sharing within a resource directory.
+        
+        @return: CheckSharingWithResourceDirectoryStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_sharing_with_resource_directory_status_with_options_async(runtime)
 
@@ -499,8 +573,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.CreateResourceShareResponse:
         """
-        Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](~~160622~~).
-        This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql****` with the member `172050525300****`. In this example, the management account of a resource directory is used to call this API operation.
+        @summary Creates a resource share.
+        
+        @description Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](https://help.aliyun.com/document_detail/160622.html).
+        This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql***` with the member `172050525300****` in a resource directory. In this example, the management account of the resource directory is used to call this API operation.
         
         @param request: CreateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -512,10 +588,14 @@ class Client(OpenApiClient):
             query['AllowExternalTargets'] = request.allow_external_targets
         if not UtilClient.is_unset(request.permission_names):
             query['PermissionNames'] = request.permission_names
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_share_name):
             query['ResourceShareName'] = request.resource_share_name
         if not UtilClient.is_unset(request.resources):
             query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.target_properties):
             query['TargetProperties'] = request.target_properties
         if not UtilClient.is_unset(request.targets):
@@ -545,8 +625,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.CreateResourceShareResponse:
         """
-        Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](~~160622~~).
-        This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql****` with the member `172050525300****`. In this example, the management account of a resource directory is used to call this API operation.
+        @summary Creates a resource share.
+        
+        @description Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](https://help.aliyun.com/document_detail/160622.html).
+        This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql***` with the member `172050525300****` in a resource directory. In this example, the management account of the resource directory is used to call this API operation.
         
         @param request: CreateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -558,10 +640,14 @@ class Client(OpenApiClient):
             query['AllowExternalTargets'] = request.allow_external_targets
         if not UtilClient.is_unset(request.permission_names):
             query['PermissionNames'] = request.permission_names
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_share_name):
             query['ResourceShareName'] = request.resource_share_name
         if not UtilClient.is_unset(request.resources):
             query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.target_properties):
             query['TargetProperties'] = request.target_properties
         if not UtilClient.is_unset(request.targets):
@@ -590,8 +676,10 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.CreateResourceShareRequest,
     ) -> resource_sharing_20200110_models.CreateResourceShareResponse:
         """
-        Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](~~160622~~).
-        This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql****` with the member `172050525300****`. In this example, the management account of a resource directory is used to call this API operation.
+        @summary Creates a resource share.
+        
+        @description Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](https://help.aliyun.com/document_detail/160622.html).
+        This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql***` with the member `172050525300****` in a resource directory. In this example, the management account of the resource directory is used to call this API operation.
         
         @param request: CreateResourceShareRequest
         @return: CreateResourceShareResponse
@@ -604,8 +692,10 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.CreateResourceShareRequest,
     ) -> resource_sharing_20200110_models.CreateResourceShareResponse:
         """
-        Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](~~160622~~).
-        This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql****` with the member `172050525300****`. In this example, the management account of a resource directory is used to call this API operation.
+        @summary Creates a resource share.
+        
+        @description Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](https://help.aliyun.com/document_detail/160622.html).
+        This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql***` with the member `172050525300****` in a resource directory. In this example, the management account of the resource directory is used to call this API operation.
         
         @param request: CreateResourceShareRequest
         @return: CreateResourceShareResponse
@@ -619,9 +709,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         """
-        After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
+        @summary 调用DeleteResourceShare删除共享单元。
+        
+        @description After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
         A resource share that is deleted is in the `Deleted` state. The system deletes the record of the resource share within 48 hours to 96 hours.
-        This topic provides an example on how to call the API operation to delete the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region.
+        This topic provides an example on how to call the API operation to delete the resource share `rs-qSkW1HBY***` in the `cn-hangzhou` region.
         
         @param request: DeleteResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -656,9 +748,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         """
-        After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
+        @summary 调用DeleteResourceShare删除共享单元。
+        
+        @description After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
         A resource share that is deleted is in the `Deleted` state. The system deletes the record of the resource share within 48 hours to 96 hours.
-        This topic provides an example on how to call the API operation to delete the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region.
+        This topic provides an example on how to call the API operation to delete the resource share `rs-qSkW1HBY***` in the `cn-hangzhou` region.
         
         @param request: DeleteResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -692,9 +786,11 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DeleteResourceShareRequest,
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         """
-        After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
+        @summary 调用DeleteResourceShare删除共享单元。
+        
+        @description After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
         A resource share that is deleted is in the `Deleted` state. The system deletes the record of the resource share within 48 hours to 96 hours.
-        This topic provides an example on how to call the API operation to delete the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region.
+        This topic provides an example on how to call the API operation to delete the resource share `rs-qSkW1HBY***` in the `cn-hangzhou` region.
         
         @param request: DeleteResourceShareRequest
         @return: DeleteResourceShareResponse
@@ -707,9 +803,11 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DeleteResourceShareRequest,
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         """
-        After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
+        @summary 调用DeleteResourceShare删除共享单元。
+        
+        @description After a resource share is deleted, all principals in the resource share can no longer access the resources in the resource share. However, the resources are not deleted with the resource share.
         A resource share that is deleted is in the `Deleted` state. The system deletes the record of the resource share within 48 hours to 96 hours.
-        This topic provides an example on how to call the API operation to delete the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region.
+        This topic provides an example on how to call the API operation to delete the resource share `rs-qSkW1HBY***` in the `cn-hangzhou` region.
         
         @param request: DeleteResourceShareRequest
         @return: DeleteResourceShareResponse
@@ -722,6 +820,13 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions where the Resource Sharing service is available.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -750,6 +855,13 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions where the Resource Sharing service is available.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -777,6 +889,12 @@ class Client(OpenApiClient):
         self,
         request: resource_sharing_20200110_models.DescribeRegionsRequest,
     ) -> resource_sharing_20200110_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions where the Resource Sharing service is available.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -784,6 +902,12 @@ class Client(OpenApiClient):
         self,
         request: resource_sharing_20200110_models.DescribeRegionsRequest,
     ) -> resource_sharing_20200110_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions where the Resource Sharing service is available.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -793,9 +917,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DisassociateResourceShareResponse:
         """
-        A resource owner can call this API operation to remove shared resources or principals from a resource share.
-        *   If an Alibaba Cloud account that is not the management account or a member of a resource directory is added to a resource share as a principal, you can use the Alibaba Cloud account to call this API operation to exit the resource share. For more information, see [Exit a resource share](~~440614~~).
-        This topic provides an example on how to use the management account of a resource directory to call the API operation to remove the member `172050525300****` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is removed from the resource share, the member cannot share the resources in the resource share.
+        @summary Disassociates resources or principals from a resource share.
+        
+        @description    A resource owner can call this API operation to disassociate shared resources or principals from a resource share.
+        If a principal does not belong to a resource directory, the principal can call this API operation to exit the resource share. For more information, see [Exit a resource share](https://help.aliyun.com/document_detail/440614.html).
+        This topic provides an example on how to use the management account of a resource directory to call the API operation to disassociate the member `172050525300***` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is disassociated from the resource share, the member cannot share the resources in the resource share.
         
         @param request: DisassociateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -836,9 +962,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DisassociateResourceShareResponse:
         """
-        A resource owner can call this API operation to remove shared resources or principals from a resource share.
-        *   If an Alibaba Cloud account that is not the management account or a member of a resource directory is added to a resource share as a principal, you can use the Alibaba Cloud account to call this API operation to exit the resource share. For more information, see [Exit a resource share](~~440614~~).
-        This topic provides an example on how to use the management account of a resource directory to call the API operation to remove the member `172050525300****` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is removed from the resource share, the member cannot share the resources in the resource share.
+        @summary Disassociates resources or principals from a resource share.
+        
+        @description    A resource owner can call this API operation to disassociate shared resources or principals from a resource share.
+        If a principal does not belong to a resource directory, the principal can call this API operation to exit the resource share. For more information, see [Exit a resource share](https://help.aliyun.com/document_detail/440614.html).
+        This topic provides an example on how to use the management account of a resource directory to call the API operation to disassociate the member `172050525300***` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is disassociated from the resource share, the member cannot share the resources in the resource share.
         
         @param request: DisassociateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -878,9 +1006,11 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DisassociateResourceShareRequest,
     ) -> resource_sharing_20200110_models.DisassociateResourceShareResponse:
         """
-        A resource owner can call this API operation to remove shared resources or principals from a resource share.
-        *   If an Alibaba Cloud account that is not the management account or a member of a resource directory is added to a resource share as a principal, you can use the Alibaba Cloud account to call this API operation to exit the resource share. For more information, see [Exit a resource share](~~440614~~).
-        This topic provides an example on how to use the management account of a resource directory to call the API operation to remove the member `172050525300****` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is removed from the resource share, the member cannot share the resources in the resource share.
+        @summary Disassociates resources or principals from a resource share.
+        
+        @description    A resource owner can call this API operation to disassociate shared resources or principals from a resource share.
+        If a principal does not belong to a resource directory, the principal can call this API operation to exit the resource share. For more information, see [Exit a resource share](https://help.aliyun.com/document_detail/440614.html).
+        This topic provides an example on how to use the management account of a resource directory to call the API operation to disassociate the member `172050525300***` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is disassociated from the resource share, the member cannot share the resources in the resource share.
         
         @param request: DisassociateResourceShareRequest
         @return: DisassociateResourceShareResponse
@@ -893,9 +1023,11 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DisassociateResourceShareRequest,
     ) -> resource_sharing_20200110_models.DisassociateResourceShareResponse:
         """
-        A resource owner can call this API operation to remove shared resources or principals from a resource share.
-        *   If an Alibaba Cloud account that is not the management account or a member of a resource directory is added to a resource share as a principal, you can use the Alibaba Cloud account to call this API operation to exit the resource share. For more information, see [Exit a resource share](~~440614~~).
-        This topic provides an example on how to use the management account of a resource directory to call the API operation to remove the member `172050525300****` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is removed from the resource share, the member cannot share the resources in the resource share.
+        @summary Disassociates resources or principals from a resource share.
+        
+        @description    A resource owner can call this API operation to disassociate shared resources or principals from a resource share.
+        If a principal does not belong to a resource directory, the principal can call this API operation to exit the resource share. For more information, see [Exit a resource share](https://help.aliyun.com/document_detail/440614.html).
+        This topic provides an example on how to use the management account of a resource directory to call the API operation to disassociate the member `172050525300***` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is disassociated from the resource share, the member cannot share the resources in the resource share.
         
         @param request: DisassociateResourceShareRequest
         @return: DisassociateResourceShareResponse
@@ -909,7 +1041,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DisassociateResourceSharePermissionResponse:
         """
-        This topic provides an example on how to call the API operation to disassociate the `AliyunRSDefaultPermissionVSwitch` permission from the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
+        @summary Disassociates a permission from a resource share. You can disassociate a permission from a resource share only if the resource share does not contain resources of the type indicated by the permission.
+        
+        @description This topic provides an example on how to call the API operation to disassociate the `AliyunRSDefaultPermissionVSwitch` permission from the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
         
         @param request: DisassociateResourceSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -946,7 +1080,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.DisassociateResourceSharePermissionResponse:
         """
-        This topic provides an example on how to call the API operation to disassociate the `AliyunRSDefaultPermissionVSwitch` permission from the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
+        @summary Disassociates a permission from a resource share. You can disassociate a permission from a resource share only if the resource share does not contain resources of the type indicated by the permission.
+        
+        @description This topic provides an example on how to call the API operation to disassociate the `AliyunRSDefaultPermissionVSwitch` permission from the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
         
         @param request: DisassociateResourceSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -982,7 +1118,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DisassociateResourceSharePermissionRequest,
     ) -> resource_sharing_20200110_models.DisassociateResourceSharePermissionResponse:
         """
-        This topic provides an example on how to call the API operation to disassociate the `AliyunRSDefaultPermissionVSwitch` permission from the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
+        @summary Disassociates a permission from a resource share. You can disassociate a permission from a resource share only if the resource share does not contain resources of the type indicated by the permission.
+        
+        @description This topic provides an example on how to call the API operation to disassociate the `AliyunRSDefaultPermissionVSwitch` permission from the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
         
         @param request: DisassociateResourceSharePermissionRequest
         @return: DisassociateResourceSharePermissionResponse
@@ -995,7 +1133,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.DisassociateResourceSharePermissionRequest,
     ) -> resource_sharing_20200110_models.DisassociateResourceSharePermissionResponse:
         """
-        This topic provides an example on how to call the API operation to disassociate the `AliyunRSDefaultPermissionVSwitch` permission from the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
+        @summary Disassociates a permission from a resource share. You can disassociate a permission from a resource share only if the resource share does not contain resources of the type indicated by the permission.
+        
+        @description This topic provides an example on how to call the API operation to disassociate the `AliyunRSDefaultPermissionVSwitch` permission from the `rs-6GRmdD3X***` resource share in the `cn-hangzhou` region.
         
         @param request: DisassociateResourceSharePermissionRequest
         @return: DisassociateResourceSharePermissionResponse
@@ -1008,7 +1148,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse:
         """
-        You can share your resources with all members in your resource directory, all members in a specific folder in your resource directory, or a specific member in your resource directory as a resource owner only after you enable resource sharing for your resource directory.
+        @summary Enables resource sharing for a resource directory.
+        
+        @description You can share your resources with all members in your resource directory, all members in a specific folder in your resource directory, or a specific member in your resource directory as a resource owner only after you enable resource sharing for your resource directory.
         You can call this API operation only by using the management account of your resource directory or a RAM user or RAM role to which the required permissions are granted within the management account.
         
         @param request: EnableSharingWithResourceDirectoryRequest
@@ -1037,7 +1179,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse:
         """
-        You can share your resources with all members in your resource directory, all members in a specific folder in your resource directory, or a specific member in your resource directory as a resource owner only after you enable resource sharing for your resource directory.
+        @summary Enables resource sharing for a resource directory.
+        
+        @description You can share your resources with all members in your resource directory, all members in a specific folder in your resource directory, or a specific member in your resource directory as a resource owner only after you enable resource sharing for your resource directory.
         You can call this API operation only by using the management account of your resource directory or a RAM user or RAM role to which the required permissions are granted within the management account.
         
         @param request: EnableSharingWithResourceDirectoryRequest
@@ -1063,7 +1207,9 @@ class Client(OpenApiClient):
 
     def enable_sharing_with_resource_directory(self) -> resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse:
         """
-        You can share your resources with all members in your resource directory, all members in a specific folder in your resource directory, or a specific member in your resource directory as a resource owner only after you enable resource sharing for your resource directory.
+        @summary Enables resource sharing for a resource directory.
+        
+        @description You can share your resources with all members in your resource directory, all members in a specific folder in your resource directory, or a specific member in your resource directory as a resource owner only after you enable resource sharing for your resource directory.
         You can call this API operation only by using the management account of your resource directory or a RAM user or RAM role to which the required permissions are granted within the management account.
         
         @return: EnableSharingWithResourceDirectoryResponse
@@ -1073,7 +1219,9 @@ class Client(OpenApiClient):
 
     async def enable_sharing_with_resource_directory_async(self) -> resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse:
         """
-        You can share your resources with all members in your resource directory, all members in a specific folder in your resource directory, or a specific member in your resource directory as a resource owner only after you enable resource sharing for your resource directory.
+        @summary Enables resource sharing for a resource directory.
+        
+        @description You can share your resources with all members in your resource directory, all members in a specific folder in your resource directory, or a specific member in your resource directory as a resource owner only after you enable resource sharing for your resource directory.
         You can call this API operation only by using the management account of your resource directory or a RAM user or RAM role to which the required permissions are granted within the management account.
         
         @return: EnableSharingWithResourceDirectoryResponse
@@ -1087,7 +1235,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.GetPermissionResponse:
         """
-        This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
+        @summary Queries the information about a permission.
+        
+        @description This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
         
         @param request: GetPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1124,7 +1274,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.GetPermissionResponse:
         """
-        This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
+        @summary Queries the information about a permission.
+        
+        @description This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
         
         @param request: GetPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1160,7 +1312,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.GetPermissionRequest,
     ) -> resource_sharing_20200110_models.GetPermissionResponse:
         """
-        This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
+        @summary Queries the information about a permission.
+        
+        @description This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
         
         @param request: GetPermissionRequest
         @return: GetPermissionResponse
@@ -1173,7 +1327,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.GetPermissionRequest,
     ) -> resource_sharing_20200110_models.GetPermissionResponse:
         """
-        This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
+        @summary Queries the information about a permission.
+        
+        @description This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
         
         @param request: GetPermissionRequest
         @return: GetPermissionResponse
@@ -1187,7 +1343,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListPermissionVersionsResponse:
         """
-        This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
+        @summary Queries the versions of a permission.
+        
+        @description This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
         
         @param request: ListPermissionVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1226,7 +1384,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListPermissionVersionsResponse:
         """
-        This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
+        @summary Queries the versions of a permission.
+        
+        @description This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
         
         @param request: ListPermissionVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1264,7 +1424,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListPermissionVersionsRequest,
     ) -> resource_sharing_20200110_models.ListPermissionVersionsResponse:
         """
-        This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
+        @summary Queries the versions of a permission.
+        
+        @description This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
         
         @param request: ListPermissionVersionsRequest
         @return: ListPermissionVersionsResponse
@@ -1277,7 +1439,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListPermissionVersionsRequest,
     ) -> resource_sharing_20200110_models.ListPermissionVersionsResponse:
         """
-        This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
+        @summary Queries the versions of a permission.
+        
+        @description This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
         
         @param request: ListPermissionVersionsRequest
         @return: ListPermissionVersionsResponse
@@ -1291,7 +1455,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListPermissionsResponse:
         """
-        This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
+        @summary Queries the information about the default permission.
+        
+        @description This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
         
         @param request: ListPermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1330,7 +1496,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListPermissionsResponse:
         """
-        This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
+        @summary Queries the information about the default permission.
+        
+        @description This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
         
         @param request: ListPermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1368,7 +1536,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListPermissionsRequest,
     ) -> resource_sharing_20200110_models.ListPermissionsResponse:
         """
-        This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
+        @summary Queries the information about the default permission.
+        
+        @description This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
         
         @param request: ListPermissionsRequest
         @return: ListPermissionsResponse
@@ -1381,7 +1551,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListPermissionsRequest,
     ) -> resource_sharing_20200110_models.ListPermissionsResponse:
         """
-        This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
+        @summary Queries the information about the default permission.
+        
+        @description This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
         
         @param request: ListPermissionsRequest
         @return: ListPermissionsResponse
@@ -1395,9 +1567,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceShareAssociationsResponse:
         """
-        This topic provides an example on how to call the API operation to query the association records of the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows the following records:
-        *   The resource `vsw-bp1upw03qyz8n7us9****` of the `VSwitch` type has been associated with the resource share `rs-6GRmdD3X****`. The resource is in the `Associated` state. This indicates that the resource is being shared.
-        *   The resource `vsw-bp183p93qs667muql****` of the `VSwitch` type has been disassociated from the resource share `rs-6GRmdD3X****`. The resource is in the `Disassociated` state. This indicates that the sharing of the resource is stopped.
+        @summary Queries the association records of resource shares.
+        
+        @description This topic provides an example on how to call the API operation to query the association records of the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows the following records:
+        The resource `vsw-bp1upw03qyz8n7us9****` of the `VSwitch` type has been associated with the resource share `rs-6GRmdD3X****`. The resource is in the `Associated` state. This indicates that the resource is being shared.
+        The resource `vsw-bp183p93qs667muql****` of the `VSwitch` type has been disassociated from the resource share `rs-6GRmdD3X****`. The resource is in the `Disassociated` state. This indicates that the sharing of the resource is stopped.
         
         @param request: ListResourceShareAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1444,9 +1618,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceShareAssociationsResponse:
         """
-        This topic provides an example on how to call the API operation to query the association records of the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows the following records:
-        *   The resource `vsw-bp1upw03qyz8n7us9****` of the `VSwitch` type has been associated with the resource share `rs-6GRmdD3X****`. The resource is in the `Associated` state. This indicates that the resource is being shared.
-        *   The resource `vsw-bp183p93qs667muql****` of the `VSwitch` type has been disassociated from the resource share `rs-6GRmdD3X****`. The resource is in the `Disassociated` state. This indicates that the sharing of the resource is stopped.
+        @summary Queries the association records of resource shares.
+        
+        @description This topic provides an example on how to call the API operation to query the association records of the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows the following records:
+        The resource `vsw-bp1upw03qyz8n7us9****` of the `VSwitch` type has been associated with the resource share `rs-6GRmdD3X****`. The resource is in the `Associated` state. This indicates that the resource is being shared.
+        The resource `vsw-bp183p93qs667muql****` of the `VSwitch` type has been disassociated from the resource share `rs-6GRmdD3X****`. The resource is in the `Disassociated` state. This indicates that the sharing of the resource is stopped.
         
         @param request: ListResourceShareAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1492,9 +1668,11 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceShareAssociationsRequest,
     ) -> resource_sharing_20200110_models.ListResourceShareAssociationsResponse:
         """
-        This topic provides an example on how to call the API operation to query the association records of the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows the following records:
-        *   The resource `vsw-bp1upw03qyz8n7us9****` of the `VSwitch` type has been associated with the resource share `rs-6GRmdD3X****`. The resource is in the `Associated` state. This indicates that the resource is being shared.
-        *   The resource `vsw-bp183p93qs667muql****` of the `VSwitch` type has been disassociated from the resource share `rs-6GRmdD3X****`. The resource is in the `Disassociated` state. This indicates that the sharing of the resource is stopped.
+        @summary Queries the association records of resource shares.
+        
+        @description This topic provides an example on how to call the API operation to query the association records of the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows the following records:
+        The resource `vsw-bp1upw03qyz8n7us9****` of the `VSwitch` type has been associated with the resource share `rs-6GRmdD3X****`. The resource is in the `Associated` state. This indicates that the resource is being shared.
+        The resource `vsw-bp183p93qs667muql****` of the `VSwitch` type has been disassociated from the resource share `rs-6GRmdD3X****`. The resource is in the `Disassociated` state. This indicates that the sharing of the resource is stopped.
         
         @param request: ListResourceShareAssociationsRequest
         @return: ListResourceShareAssociationsResponse
@@ -1507,9 +1685,11 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceShareAssociationsRequest,
     ) -> resource_sharing_20200110_models.ListResourceShareAssociationsResponse:
         """
-        This topic provides an example on how to call the API operation to query the association records of the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows the following records:
-        *   The resource `vsw-bp1upw03qyz8n7us9****` of the `VSwitch` type has been associated with the resource share `rs-6GRmdD3X****`. The resource is in the `Associated` state. This indicates that the resource is being shared.
-        *   The resource `vsw-bp183p93qs667muql****` of the `VSwitch` type has been disassociated from the resource share `rs-6GRmdD3X****`. The resource is in the `Disassociated` state. This indicates that the sharing of the resource is stopped.
+        @summary Queries the association records of resource shares.
+        
+        @description This topic provides an example on how to call the API operation to query the association records of the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows the following records:
+        The resource `vsw-bp1upw03qyz8n7us9****` of the `VSwitch` type has been associated with the resource share `rs-6GRmdD3X****`. The resource is in the `Associated` state. This indicates that the resource is being shared.
+        The resource `vsw-bp183p93qs667muql****` of the `VSwitch` type has been disassociated from the resource share `rs-6GRmdD3X****`. The resource is in the `Disassociated` state. This indicates that the sharing of the resource is stopped.
         
         @param request: ListResourceShareAssociationsRequest
         @return: ListResourceShareAssociationsResponse
@@ -1523,7 +1703,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceShareInvitationsResponse:
         """
-        ### [](#)
+        @summary Queries the resource sharing invitations that are received.
+        
+        @description ### [](#)
         This topic provides an example on how to call the API operation to query the resource sharing invitations that are received by the current account in the `cn-hangzhou` region. The response shows that one invitation is received by the current account and is waiting for confirmation.
         
         @param request: ListResourceShareInvitationsRequest
@@ -1565,7 +1747,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceShareInvitationsResponse:
         """
-        ### [](#)
+        @summary Queries the resource sharing invitations that are received.
+        
+        @description ### [](#)
         This topic provides an example on how to call the API operation to query the resource sharing invitations that are received by the current account in the `cn-hangzhou` region. The response shows that one invitation is received by the current account and is waiting for confirmation.
         
         @param request: ListResourceShareInvitationsRequest
@@ -1606,7 +1790,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceShareInvitationsRequest,
     ) -> resource_sharing_20200110_models.ListResourceShareInvitationsResponse:
         """
-        ### [](#)
+        @summary Queries the resource sharing invitations that are received.
+        
+        @description ### [](#)
         This topic provides an example on how to call the API operation to query the resource sharing invitations that are received by the current account in the `cn-hangzhou` region. The response shows that one invitation is received by the current account and is waiting for confirmation.
         
         @param request: ListResourceShareInvitationsRequest
@@ -1620,7 +1806,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceShareInvitationsRequest,
     ) -> resource_sharing_20200110_models.ListResourceShareInvitationsResponse:
         """
-        ### [](#)
+        @summary Queries the resource sharing invitations that are received.
+        
+        @description ### [](#)
         This topic provides an example on how to call the API operation to query the resource sharing invitations that are received by the current account in the `cn-hangzhou` region. The response shows that one invitation is received by the current account and is waiting for confirmation.
         
         @param request: ListResourceShareInvitationsRequest
@@ -1635,7 +1823,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceSharePermissionsResponse:
         """
-        This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
+        @summary Queries the permissions that are associated with a resource share.
+        
+        @description This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
         
         @param request: ListResourceSharePermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1676,7 +1866,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceSharePermissionsResponse:
         """
-        This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
+        @summary Queries the permissions that are associated with a resource share.
+        
+        @description This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
         
         @param request: ListResourceSharePermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1716,7 +1908,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceSharePermissionsRequest,
     ) -> resource_sharing_20200110_models.ListResourceSharePermissionsResponse:
         """
-        This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
+        @summary Queries the permissions that are associated with a resource share.
+        
+        @description This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
         
         @param request: ListResourceSharePermissionsRequest
         @return: ListResourceSharePermissionsResponse
@@ -1729,7 +1923,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceSharePermissionsRequest,
     ) -> resource_sharing_20200110_models.ListResourceSharePermissionsResponse:
         """
-        This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
+        @summary Queries the permissions that are associated with a resource share.
+        
+        @description This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
         
         @param request: ListResourceSharePermissionsRequest
         @return: ListResourceSharePermissionsResponse
@@ -1743,9 +1939,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceSharesResponse:
         """
-        This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
-        *   `rs-hX9wC5jO****`, which is in the `Deleted` state
-        *   `rs-PqysnzIj****`, which is in the `Active` state
+        @summary Queries resource shares.
+        
+        @description This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
+        `rs-hX9wC5jO****`, which is in the `Deleted` state
+        `rs-PqysnzIj****`, which is in the `Active` state
         
         @param request: ListResourceSharesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1759,6 +1957,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.permission_name):
             query['PermissionName'] = request.permission_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner):
             query['ResourceOwner'] = request.resource_owner
         if not UtilClient.is_unset(request.resource_share_ids):
@@ -1767,6 +1967,8 @@ class Client(OpenApiClient):
             query['ResourceShareName'] = request.resource_share_name
         if not UtilClient.is_unset(request.resource_share_status):
             query['ResourceShareStatus'] = request.resource_share_status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1792,9 +1994,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListResourceSharesResponse:
         """
-        This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
-        *   `rs-hX9wC5jO****`, which is in the `Deleted` state
-        *   `rs-PqysnzIj****`, which is in the `Active` state
+        @summary Queries resource shares.
+        
+        @description This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
+        `rs-hX9wC5jO****`, which is in the `Deleted` state
+        `rs-PqysnzIj****`, which is in the `Active` state
         
         @param request: ListResourceSharesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1808,6 +2012,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.permission_name):
             query['PermissionName'] = request.permission_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner):
             query['ResourceOwner'] = request.resource_owner
         if not UtilClient.is_unset(request.resource_share_ids):
@@ -1816,6 +2022,8 @@ class Client(OpenApiClient):
             query['ResourceShareName'] = request.resource_share_name
         if not UtilClient.is_unset(request.resource_share_status):
             query['ResourceShareStatus'] = request.resource_share_status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1840,9 +2048,11 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceSharesRequest,
     ) -> resource_sharing_20200110_models.ListResourceSharesResponse:
         """
-        This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
-        *   `rs-hX9wC5jO****`, which is in the `Deleted` state
-        *   `rs-PqysnzIj****`, which is in the `Active` state
+        @summary Queries resource shares.
+        
+        @description This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
+        `rs-hX9wC5jO****`, which is in the `Deleted` state
+        `rs-PqysnzIj****`, which is in the `Active` state
         
         @param request: ListResourceSharesRequest
         @return: ListResourceSharesResponse
@@ -1855,9 +2065,11 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListResourceSharesRequest,
     ) -> resource_sharing_20200110_models.ListResourceSharesResponse:
         """
-        This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
-        *   `rs-hX9wC5jO****`, which is in the `Deleted` state
-        *   `rs-PqysnzIj****`, which is in the `Active` state
+        @summary Queries resource shares.
+        
+        @description This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691***`:
+        `rs-hX9wC5jO****`, which is in the `Deleted` state
+        `rs-PqysnzIj****`, which is in the `Active` state
         
         @param request: ListResourceSharesRequest
         @return: ListResourceSharesResponse
@@ -1871,7 +2083,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListSharedResourcesResponse:
         """
-        This topic provides an example on how to call the API operation to query the resources that you share with other accounts in the `cn-hangzhou` region. The response shows that in the resource share `rs-6GRmdD3X***`, you share the `vsw-bp1upw03qyz8n7us9****` resource of the `VSwitch` type with other accounts.
+        @summary Queries the resources you share with other accounts or the resources other accounts share with you.
+        
+        @description This topic provides an example on how to call the API operation to query the resources that you share with other accounts in the `cn-hangzhou` region. The response shows that in the resource share `rs-6GRmdD3X***`, you share the `vsw-bp1upw03qyz8n7us9****` resource of the `VSwitch` type with other accounts.
         
         @param request: ListSharedResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1918,7 +2132,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListSharedResourcesResponse:
         """
-        This topic provides an example on how to call the API operation to query the resources that you share with other accounts in the `cn-hangzhou` region. The response shows that in the resource share `rs-6GRmdD3X***`, you share the `vsw-bp1upw03qyz8n7us9****` resource of the `VSwitch` type with other accounts.
+        @summary Queries the resources you share with other accounts or the resources other accounts share with you.
+        
+        @description This topic provides an example on how to call the API operation to query the resources that you share with other accounts in the `cn-hangzhou` region. The response shows that in the resource share `rs-6GRmdD3X***`, you share the `vsw-bp1upw03qyz8n7us9****` resource of the `VSwitch` type with other accounts.
         
         @param request: ListSharedResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1964,7 +2180,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListSharedResourcesRequest,
     ) -> resource_sharing_20200110_models.ListSharedResourcesResponse:
         """
-        This topic provides an example on how to call the API operation to query the resources that you share with other accounts in the `cn-hangzhou` region. The response shows that in the resource share `rs-6GRmdD3X***`, you share the `vsw-bp1upw03qyz8n7us9****` resource of the `VSwitch` type with other accounts.
+        @summary Queries the resources you share with other accounts or the resources other accounts share with you.
+        
+        @description This topic provides an example on how to call the API operation to query the resources that you share with other accounts in the `cn-hangzhou` region. The response shows that in the resource share `rs-6GRmdD3X***`, you share the `vsw-bp1upw03qyz8n7us9****` resource of the `VSwitch` type with other accounts.
         
         @param request: ListSharedResourcesRequest
         @return: ListSharedResourcesResponse
@@ -1977,7 +2195,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListSharedResourcesRequest,
     ) -> resource_sharing_20200110_models.ListSharedResourcesResponse:
         """
-        This topic provides an example on how to call the API operation to query the resources that you share with other accounts in the `cn-hangzhou` region. The response shows that in the resource share `rs-6GRmdD3X***`, you share the `vsw-bp1upw03qyz8n7us9****` resource of the `VSwitch` type with other accounts.
+        @summary Queries the resources you share with other accounts or the resources other accounts share with you.
+        
+        @description This topic provides an example on how to call the API operation to query the resources that you share with other accounts in the `cn-hangzhou` region. The response shows that in the resource share `rs-6GRmdD3X***`, you share the `vsw-bp1upw03qyz8n7us9****` resource of the `VSwitch` type with other accounts.
         
         @param request: ListSharedResourcesRequest
         @return: ListSharedResourcesResponse
@@ -1991,9 +2211,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListSharedTargetsResponse:
         """
-        If you are a resource owner, you can query the principals with which you share your resources.
-        If you are a principal, you can query the resources that are shared with you.
-        This topic provides an example on how to call the API operation to query the principals with which you share your resources in the `cn-hangzhou` region. The response shows that you share your resources with the principals `114240524784****` and `172050525300****`.
+        @summary Queries principals.
+        
+        @description If you are a resource owner, you can query the principals with which you share your resources. If you are a principal, you can query the resources that are shared with you.
+        This topic provides an example on how to call the API operation to query the principals with which you share your resources in the `cn-hangzhou` region. The response shows that you share your resources with the principals `114240524784***` and `172050525300****`.
         
         @param request: ListSharedTargetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2040,9 +2261,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.ListSharedTargetsResponse:
         """
-        If you are a resource owner, you can query the principals with which you share your resources.
-        If you are a principal, you can query the resources that are shared with you.
-        This topic provides an example on how to call the API operation to query the principals with which you share your resources in the `cn-hangzhou` region. The response shows that you share your resources with the principals `114240524784****` and `172050525300****`.
+        @summary Queries principals.
+        
+        @description If you are a resource owner, you can query the principals with which you share your resources. If you are a principal, you can query the resources that are shared with you.
+        This topic provides an example on how to call the API operation to query the principals with which you share your resources in the `cn-hangzhou` region. The response shows that you share your resources with the principals `114240524784***` and `172050525300****`.
         
         @param request: ListSharedTargetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2088,9 +2310,10 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListSharedTargetsRequest,
     ) -> resource_sharing_20200110_models.ListSharedTargetsResponse:
         """
-        If you are a resource owner, you can query the principals with which you share your resources.
-        If you are a principal, you can query the resources that are shared with you.
-        This topic provides an example on how to call the API operation to query the principals with which you share your resources in the `cn-hangzhou` region. The response shows that you share your resources with the principals `114240524784****` and `172050525300****`.
+        @summary Queries principals.
+        
+        @description If you are a resource owner, you can query the principals with which you share your resources. If you are a principal, you can query the resources that are shared with you.
+        This topic provides an example on how to call the API operation to query the principals with which you share your resources in the `cn-hangzhou` region. The response shows that you share your resources with the principals `114240524784***` and `172050525300****`.
         
         @param request: ListSharedTargetsRequest
         @return: ListSharedTargetsResponse
@@ -2103,9 +2326,10 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.ListSharedTargetsRequest,
     ) -> resource_sharing_20200110_models.ListSharedTargetsResponse:
         """
-        If you are a resource owner, you can query the principals with which you share your resources.
-        If you are a principal, you can query the resources that are shared with you.
-        This topic provides an example on how to call the API operation to query the principals with which you share your resources in the `cn-hangzhou` region. The response shows that you share your resources with the principals `114240524784****` and `172050525300****`.
+        @summary Queries principals.
+        
+        @description If you are a resource owner, you can query the principals with which you share your resources. If you are a principal, you can query the resources that are shared with you.
+        This topic provides an example on how to call the API operation to query the principals with which you share your resources in the `cn-hangzhou` region. The response shows that you share your resources with the principals `114240524784***` and `172050525300****`.
         
         @param request: ListSharedTargetsRequest
         @return: ListSharedTargetsResponse
@@ -2119,7 +2343,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.RejectResourceShareInvitationResponse:
         """
-        This topic provides an example on how to call the API operation to reject the resource sharing invitation `i-yyTWbkjHArYh***` in the `cn-hangzhou` region.
+        @summary 拒绝组织外共享邀请
+        
+        @description This topic provides an example on how to call the API operation to reject the resource sharing invitation `i-yyTWbkjHArYh***` in the `cn-hangzhou` region.
         
         @param request: RejectResourceShareInvitationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2154,7 +2380,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.RejectResourceShareInvitationResponse:
         """
-        This topic provides an example on how to call the API operation to reject the resource sharing invitation `i-yyTWbkjHArYh***` in the `cn-hangzhou` region.
+        @summary 拒绝组织外共享邀请
+        
+        @description This topic provides an example on how to call the API operation to reject the resource sharing invitation `i-yyTWbkjHArYh***` in the `cn-hangzhou` region.
         
         @param request: RejectResourceShareInvitationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2188,7 +2416,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.RejectResourceShareInvitationRequest,
     ) -> resource_sharing_20200110_models.RejectResourceShareInvitationResponse:
         """
-        This topic provides an example on how to call the API operation to reject the resource sharing invitation `i-yyTWbkjHArYh***` in the `cn-hangzhou` region.
+        @summary 拒绝组织外共享邀请
+        
+        @description This topic provides an example on how to call the API operation to reject the resource sharing invitation `i-yyTWbkjHArYh***` in the `cn-hangzhou` region.
         
         @param request: RejectResourceShareInvitationRequest
         @return: RejectResourceShareInvitationResponse
@@ -2201,7 +2431,9 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.RejectResourceShareInvitationRequest,
     ) -> resource_sharing_20200110_models.RejectResourceShareInvitationResponse:
         """
-        This topic provides an example on how to call the API operation to reject the resource sharing invitation `i-yyTWbkjHArYh***` in the `cn-hangzhou` region.
+        @summary 拒绝组织外共享邀请
+        
+        @description This topic provides an example on how to call the API operation to reject the resource sharing invitation `i-yyTWbkjHArYh***` in the `cn-hangzhou` region.
         
         @param request: RejectResourceShareInvitationRequest
         @return: RejectResourceShareInvitationResponse
@@ -2215,8 +2447,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.UpdateResourceShareResponse:
         """
-        You can call this API operation to change the name or resource sharing scope of a resource share.
-        This topic provides an example on how to call the API operation to change the name of the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region from `test` to `new`.
+        @summary 调用UpdateResourceShare修改共享单元基本信息。
+        
+        @description You can call this API operation to change the name or resource sharing scope of a resource share.
+        This topic provides an example on how to call the API operation to change the name of the resource share `rs-qSkW1HBY***` in the `cn-hangzhou` region from `test` to `new`.
         
         @param request: UpdateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2255,8 +2489,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_sharing_20200110_models.UpdateResourceShareResponse:
         """
-        You can call this API operation to change the name or resource sharing scope of a resource share.
-        This topic provides an example on how to call the API operation to change the name of the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region from `test` to `new`.
+        @summary 调用UpdateResourceShare修改共享单元基本信息。
+        
+        @description You can call this API operation to change the name or resource sharing scope of a resource share.
+        This topic provides an example on how to call the API operation to change the name of the resource share `rs-qSkW1HBY***` in the `cn-hangzhou` region from `test` to `new`.
         
         @param request: UpdateResourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2294,8 +2530,10 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.UpdateResourceShareRequest,
     ) -> resource_sharing_20200110_models.UpdateResourceShareResponse:
         """
-        You can call this API operation to change the name or resource sharing scope of a resource share.
-        This topic provides an example on how to call the API operation to change the name of the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region from `test` to `new`.
+        @summary 调用UpdateResourceShare修改共享单元基本信息。
+        
+        @description You can call this API operation to change the name or resource sharing scope of a resource share.
+        This topic provides an example on how to call the API operation to change the name of the resource share `rs-qSkW1HBY***` in the `cn-hangzhou` region from `test` to `new`.
         
         @param request: UpdateResourceShareRequest
         @return: UpdateResourceShareResponse
@@ -2308,8 +2546,10 @@ class Client(OpenApiClient):
         request: resource_sharing_20200110_models.UpdateResourceShareRequest,
     ) -> resource_sharing_20200110_models.UpdateResourceShareResponse:
         """
-        You can call this API operation to change the name or resource sharing scope of a resource share.
-        This topic provides an example on how to call the API operation to change the name of the resource share `rs-qSkW1HBY****` in the `cn-hangzhou` region from `test` to `new`.
+        @summary 调用UpdateResourceShare修改共享单元基本信息。
+        
+        @description You can call this API operation to change the name or resource sharing scope of a resource share.
+        This topic provides an example on how to call the API operation to change the name of the resource share `rs-qSkW1HBY***` in the `cn-hangzhou` region from `test` to `new`.
         
         @param request: UpdateResourceShareRequest
         @return: UpdateResourceShareResponse
