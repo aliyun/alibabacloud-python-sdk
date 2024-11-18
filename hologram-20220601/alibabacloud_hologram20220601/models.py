@@ -118,8 +118,12 @@ class CreateHoloWarehouseRequest(TeaModel):
         cpu: str = None,
         name: str = None,
     ):
+        # The specifications of the virtual warehouse. The number of vCPUs must be an integer multiple of 16 CPUs. Minimum value: 16.
+        # 
         # This parameter is required.
         self.cpu = cpu
+        # The name of the virtual warehouse.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -153,6 +157,7 @@ class CreateHoloWarehouseResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful. Valid values: true and false.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -618,6 +623,8 @@ class DeleteHoloWarehouseRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the virtual warehouse.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -647,8 +654,9 @@ class DeleteHoloWarehouseResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful. Valid values: true and false.
         self.data = data
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -871,6 +879,7 @@ class DisableHiveAccessRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -903,12 +912,53 @@ class DisableHiveAccessResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned result.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.data = data
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.success = success
 
     def validate(self):
@@ -997,6 +1047,7 @@ class EnableHiveAccessRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -1029,12 +1080,35 @@ class EnableHiveAccessResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.data = data
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2165,6 +2239,250 @@ class GetWarehouseDetailResponse(TeaModel):
         return self
 
 
+class ListBackupDataRequest(TeaModel):
+    def __init__(
+        self,
+        backup_type: str = None,
+        instance_id: str = None,
+    ):
+        self.backup_type = backup_type
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_type is not None:
+            result['backupType'] = self.backup_type
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('backupType') is not None:
+            self.backup_type = m.get('backupType')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        return self
+
+
+class ListBackupDataResponseBodyBackupDataList(TeaModel):
+    def __init__(
+        self,
+        backup_type: str = None,
+        cold_data_size: int = None,
+        data_desc: str = None,
+        data_gran: str = None,
+        data_size: int = None,
+        data_time: str = None,
+        end_time: str = None,
+        id: int = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_region: str = None,
+        instance_type: str = None,
+        instance_zone_id: str = None,
+        snapshot_region: str = None,
+        snapshot_zone_id: str = None,
+        start_time: str = None,
+        status: str = None,
+        trigger_type: str = None,
+    ):
+        self.backup_type = backup_type
+        self.cold_data_size = cold_data_size
+        self.data_desc = data_desc
+        self.data_gran = data_gran
+        self.data_size = data_size
+        self.data_time = data_time
+        self.end_time = end_time
+        self.id = id
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_region = instance_region
+        self.instance_type = instance_type
+        self.instance_zone_id = instance_zone_id
+        self.snapshot_region = snapshot_region
+        self.snapshot_zone_id = snapshot_zone_id
+        self.start_time = start_time
+        self.status = status
+        self.trigger_type = trigger_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_type is not None:
+            result['BackupType'] = self.backup_type
+        if self.cold_data_size is not None:
+            result['ColdDataSize'] = self.cold_data_size
+        if self.data_desc is not None:
+            result['DataDesc'] = self.data_desc
+        if self.data_gran is not None:
+            result['DataGran'] = self.data_gran
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.data_time is not None:
+            result['DataTime'] = self.data_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_region is not None:
+            result['InstanceRegion'] = self.instance_region
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.instance_zone_id is not None:
+            result['InstanceZoneId'] = self.instance_zone_id
+        if self.snapshot_region is not None:
+            result['SnapshotRegion'] = self.snapshot_region
+        if self.snapshot_zone_id is not None:
+            result['SnapshotZoneId'] = self.snapshot_zone_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupType') is not None:
+            self.backup_type = m.get('BackupType')
+        if m.get('ColdDataSize') is not None:
+            self.cold_data_size = m.get('ColdDataSize')
+        if m.get('DataDesc') is not None:
+            self.data_desc = m.get('DataDesc')
+        if m.get('DataGran') is not None:
+            self.data_gran = m.get('DataGran')
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('DataTime') is not None:
+            self.data_time = m.get('DataTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceRegion') is not None:
+            self.instance_region = m.get('InstanceRegion')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('InstanceZoneId') is not None:
+            self.instance_zone_id = m.get('InstanceZoneId')
+        if m.get('SnapshotRegion') is not None:
+            self.snapshot_region = m.get('SnapshotRegion')
+        if m.get('SnapshotZoneId') is not None:
+            self.snapshot_zone_id = m.get('SnapshotZoneId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        return self
+
+
+class ListBackupDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        backup_data_list: List[ListBackupDataResponseBodyBackupDataList] = None,
+        request_id: str = None,
+    ):
+        self.backup_data_list = backup_data_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.backup_data_list:
+            for k in self.backup_data_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BackupDataList'] = []
+        if self.backup_data_list is not None:
+            for k in self.backup_data_list:
+                result['BackupDataList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.backup_data_list = []
+        if m.get('BackupDataList') is not None:
+            for k in m.get('BackupDataList'):
+                temp_model = ListBackupDataResponseBodyBackupDataList()
+                self.backup_data_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListBackupDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListBackupDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListBackupDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListInstancesRequestTag(TeaModel):
     def __init__(
         self,
@@ -2992,6 +3310,8 @@ class RebalanceHoloWarehouseRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the virtual warehouse.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -3021,6 +3341,7 @@ class RebalanceHoloWarehouseResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful. Valid values: true and false.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -3096,8 +3417,12 @@ class RenameHoloWarehouseRequest(TeaModel):
         name: str = None,
         new_warehouse_name: str = None,
     ):
+        # The original name of the virtual warehouse.
+        # 
         # This parameter is required.
         self.name = name
+        # The new name of the virtual warehouse.
+        # 
         # This parameter is required.
         self.new_warehouse_name = new_warehouse_name
 
@@ -3131,6 +3456,7 @@ class RenameHoloWarehouseResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful. Valid values: true and false.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -3405,6 +3731,8 @@ class RestartHoloWarehouseRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the virtual warehouse.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -3434,6 +3762,7 @@ class RestartHoloWarehouseResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful. Valid values: true and false.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -3630,6 +3959,8 @@ class ResumeHoloWarehouseRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the virtual warehouse.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -3659,6 +3990,7 @@ class ResumeHoloWarehouseResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful. Valid values: true and false.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -3838,8 +4170,12 @@ class ScaleHoloWarehouseRequest(TeaModel):
         cpu: int = None,
         name: str = None,
     ):
+        # The specifications of the virtual warehouse. The number of vCPUs must be an integer multiple of 16.
+        # 
         # This parameter is required.
         self.cpu = cpu
+        # The name of the virtual warehouse.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -3873,6 +4209,7 @@ class ScaleHoloWarehouseResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful. Valid values: true and false.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -4350,6 +4687,8 @@ class SuspendHoloWarehouseRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the virtual warehouse.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -4379,6 +4718,7 @@ class SuspendHoloWarehouseResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful. Valid values: true and false.
         self.data = data
         # Id of the request
         self.request_id = request_id

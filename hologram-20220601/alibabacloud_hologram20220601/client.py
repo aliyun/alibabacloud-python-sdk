@@ -48,7 +48,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.ChangeResourceGroupResponse:
         """
-        @summary 更改资源组
+        @summary Updates a resource group.
         
         @param request: ChangeResourceGroupRequest
         @param headers: map
@@ -88,7 +88,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.ChangeResourceGroupResponse:
         """
-        @summary 更改资源组
+        @summary Updates a resource group.
         
         @param request: ChangeResourceGroupRequest
         @param headers: map
@@ -126,7 +126,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.ChangeResourceGroupRequest,
     ) -> hologram_20220601_models.ChangeResourceGroupResponse:
         """
-        @summary 更改资源组
+        @summary Updates a resource group.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -140,7 +140,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.ChangeResourceGroupRequest,
     ) -> hologram_20220601_models.ChangeResourceGroupResponse:
         """
-        @summary 更改资源组
+        @summary Updates a resource group.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -157,7 +157,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.CreateHoloWarehouseResponse:
         """
-        @summary 创建计算组
+        @summary Creates a virtual warehouse.
         
         @param request: CreateHoloWarehouseRequest
         @param headers: map
@@ -198,7 +198,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.CreateHoloWarehouseResponse:
         """
-        @summary 创建计算组
+        @summary Creates a virtual warehouse.
         
         @param request: CreateHoloWarehouseRequest
         @param headers: map
@@ -237,7 +237,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.CreateHoloWarehouseRequest,
     ) -> hologram_20220601_models.CreateHoloWarehouseResponse:
         """
-        @summary 创建计算组
+        @summary Creates a virtual warehouse.
         
         @param request: CreateHoloWarehouseRequest
         @return: CreateHoloWarehouseResponse
@@ -252,7 +252,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.CreateHoloWarehouseRequest,
     ) -> hologram_20220601_models.CreateHoloWarehouseResponse:
         """
-        @summary 创建计算组
+        @summary Creates a virtual warehouse.
         
         @param request: CreateHoloWarehouseRequest
         @return: CreateHoloWarehouseResponse
@@ -525,7 +525,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.DeleteHoloWarehouseResponse:
         """
-        @summary 删除计算组
+        @summary Deletes a virtual warehouse.
         
         @param request: DeleteHoloWarehouseRequest
         @param headers: map
@@ -564,7 +564,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.DeleteHoloWarehouseResponse:
         """
-        @summary 删除计算组
+        @summary Deletes a virtual warehouse.
         
         @param request: DeleteHoloWarehouseRequest
         @param headers: map
@@ -601,7 +601,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.DeleteHoloWarehouseRequest,
     ) -> hologram_20220601_models.DeleteHoloWarehouseResponse:
         """
-        @summary 删除计算组
+        @summary Deletes a virtual warehouse.
         
         @param request: DeleteHoloWarehouseRequest
         @return: DeleteHoloWarehouseResponse
@@ -616,7 +616,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.DeleteHoloWarehouseRequest,
     ) -> hologram_20220601_models.DeleteHoloWarehouseResponse:
         """
-        @summary 删除计算组
+        @summary Deletes a virtual warehouse.
         
         @param request: DeleteHoloWarehouseRequest
         @return: DeleteHoloWarehouseResponse
@@ -761,7 +761,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.DisableHiveAccessResponse:
         """
-        @summary 关闭数据湖加速
+        @summary Disables data lake acceleration.
         
         @param request: DisableHiveAccessRequest
         @param headers: map
@@ -800,7 +800,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.DisableHiveAccessResponse:
         """
-        @summary 关闭数据湖加速
+        @summary Disables data lake acceleration.
         
         @param request: DisableHiveAccessRequest
         @param headers: map
@@ -837,7 +837,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.DisableHiveAccessRequest,
     ) -> hologram_20220601_models.DisableHiveAccessResponse:
         """
-        @summary 关闭数据湖加速
+        @summary Disables data lake acceleration.
         
         @param request: DisableHiveAccessRequest
         @return: DisableHiveAccessResponse
@@ -852,7 +852,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.DisableHiveAccessRequest,
     ) -> hologram_20220601_models.DisableHiveAccessResponse:
         """
-        @summary 关闭数据湖加速
+        @summary Disables data lake acceleration.
         
         @param request: DisableHiveAccessRequest
         @return: DisableHiveAccessResponse
@@ -869,7 +869,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.EnableHiveAccessResponse:
         """
-        @summary 打开数据湖加速
+        @summary Enables data lake acceleration.
         
         @param request: EnableHiveAccessRequest
         @param headers: map
@@ -908,7 +908,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.EnableHiveAccessResponse:
         """
-        @summary 打开数据湖加速
+        @summary Enables data lake acceleration.
         
         @param request: EnableHiveAccessRequest
         @param headers: map
@@ -945,7 +945,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.EnableHiveAccessRequest,
     ) -> hologram_20220601_models.EnableHiveAccessResponse:
         """
-        @summary 打开数据湖加速
+        @summary Enables data lake acceleration.
         
         @param request: EnableHiveAccessRequest
         @return: EnableHiveAccessResponse
@@ -960,7 +960,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.EnableHiveAccessRequest,
     ) -> hologram_20220601_models.EnableHiveAccessResponse:
         """
-        @summary 打开数据湖加速
+        @summary Enables data lake acceleration.
         
         @param request: EnableHiveAccessRequest
         @return: EnableHiveAccessResponse
@@ -1148,6 +1148,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_warehouse_detail_with_options_async(instance_id, headers, runtime)
+
+    def list_backup_data_with_options(
+        self,
+        request: hologram_20220601_models.ListBackupDataRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.ListBackupDataResponse:
+        """
+        @summary 获取备份列表
+        
+        @param request: ListBackupDataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBackupDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_type):
+            query['backupType'] = request.backup_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBackupData',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/backups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.ListBackupDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_backup_data_with_options_async(
+        self,
+        request: hologram_20220601_models.ListBackupDataRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.ListBackupDataResponse:
+        """
+        @summary 获取备份列表
+        
+        @param request: ListBackupDataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBackupDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_type):
+            query['backupType'] = request.backup_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBackupData',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/backups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.ListBackupDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_backup_data(
+        self,
+        request: hologram_20220601_models.ListBackupDataRequest,
+    ) -> hologram_20220601_models.ListBackupDataResponse:
+        """
+        @summary 获取备份列表
+        
+        @param request: ListBackupDataRequest
+        @return: ListBackupDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_backup_data_with_options(request, headers, runtime)
+
+    async def list_backup_data_async(
+        self,
+        request: hologram_20220601_models.ListBackupDataRequest,
+    ) -> hologram_20220601_models.ListBackupDataResponse:
+        """
+        @summary 获取备份列表
+        
+        @param request: ListBackupDataRequest
+        @return: ListBackupDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_backup_data_with_options_async(request, headers, runtime)
 
     def list_instances_with_options(
         self,
@@ -1359,7 +1467,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.RebalanceHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Triggers shard rebalancing for a virtual warehouse.
         
         @param request: RebalanceHoloWarehouseRequest
         @param headers: map
@@ -1398,7 +1506,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.RebalanceHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Triggers shard rebalancing for a virtual warehouse.
         
         @param request: RebalanceHoloWarehouseRequest
         @param headers: map
@@ -1435,7 +1543,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.RebalanceHoloWarehouseRequest,
     ) -> hologram_20220601_models.RebalanceHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Triggers shard rebalancing for a virtual warehouse.
         
         @param request: RebalanceHoloWarehouseRequest
         @return: RebalanceHoloWarehouseResponse
@@ -1450,7 +1558,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.RebalanceHoloWarehouseRequest,
     ) -> hologram_20220601_models.RebalanceHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Triggers shard rebalancing for a virtual warehouse.
         
         @param request: RebalanceHoloWarehouseRequest
         @return: RebalanceHoloWarehouseResponse
@@ -1467,7 +1575,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.RenameHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Renames a virtual warehouse.
         
         @param request: RenameHoloWarehouseRequest
         @param headers: map
@@ -1508,7 +1616,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.RenameHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Renames a virtual warehouse.
         
         @param request: RenameHoloWarehouseRequest
         @param headers: map
@@ -1547,7 +1655,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.RenameHoloWarehouseRequest,
     ) -> hologram_20220601_models.RenameHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Renames a virtual warehouse.
         
         @param request: RenameHoloWarehouseRequest
         @return: RenameHoloWarehouseResponse
@@ -1562,7 +1670,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.RenameHoloWarehouseRequest,
     ) -> hologram_20220601_models.RenameHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Renames a virtual warehouse.
         
         @param request: RenameHoloWarehouseRequest
         @return: RenameHoloWarehouseResponse
@@ -1711,7 +1819,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.RestartHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Restarts a virtual warehouse.
         
         @param request: RestartHoloWarehouseRequest
         @param headers: map
@@ -1750,7 +1858,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.RestartHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Restarts a virtual warehouse.
         
         @param request: RestartHoloWarehouseRequest
         @param headers: map
@@ -1787,7 +1895,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.RestartHoloWarehouseRequest,
     ) -> hologram_20220601_models.RestartHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Restarts a virtual warehouse.
         
         @param request: RestartHoloWarehouseRequest
         @return: RestartHoloWarehouseResponse
@@ -1802,7 +1910,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.RestartHoloWarehouseRequest,
     ) -> hologram_20220601_models.RestartHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Restarts a virtual warehouse.
         
         @param request: RestartHoloWarehouseRequest
         @return: RestartHoloWarehouseResponse
@@ -1909,7 +2017,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.ResumeHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Resumes a virtual warehouse.
         
         @param request: ResumeHoloWarehouseRequest
         @param headers: map
@@ -1948,7 +2056,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.ResumeHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Resumes a virtual warehouse.
         
         @param request: ResumeHoloWarehouseRequest
         @param headers: map
@@ -1985,7 +2093,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.ResumeHoloWarehouseRequest,
     ) -> hologram_20220601_models.ResumeHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Resumes a virtual warehouse.
         
         @param request: ResumeHoloWarehouseRequest
         @return: ResumeHoloWarehouseResponse
@@ -2000,7 +2108,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.ResumeHoloWarehouseRequest,
     ) -> hologram_20220601_models.ResumeHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Resumes a virtual warehouse.
         
         @param request: ResumeHoloWarehouseRequest
         @return: ResumeHoloWarehouseResponse
@@ -2107,7 +2215,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.ScaleHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Scales in or out a virtual warehouse.
         
         @param request: ScaleHoloWarehouseRequest
         @param headers: map
@@ -2148,7 +2256,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.ScaleHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Scales in or out a virtual warehouse.
         
         @param request: ScaleHoloWarehouseRequest
         @param headers: map
@@ -2187,7 +2295,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.ScaleHoloWarehouseRequest,
     ) -> hologram_20220601_models.ScaleHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Scales in or out a virtual warehouse.
         
         @param request: ScaleHoloWarehouseRequest
         @return: ScaleHoloWarehouseResponse
@@ -2202,7 +2310,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.ScaleHoloWarehouseRequest,
     ) -> hologram_20220601_models.ScaleHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Scales in or out a virtual warehouse.
         
         @param request: ScaleHoloWarehouseRequest
         @return: ScaleHoloWarehouseResponse
@@ -2453,7 +2561,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.SuspendHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Suspends a virtual warehouse.
         
         @param request: SuspendHoloWarehouseRequest
         @param headers: map
@@ -2492,7 +2600,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.SuspendHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Suspends a virtual warehouse.
         
         @param request: SuspendHoloWarehouseRequest
         @param headers: map
@@ -2529,7 +2637,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.SuspendHoloWarehouseRequest,
     ) -> hologram_20220601_models.SuspendHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Suspends a virtual warehouse.
         
         @param request: SuspendHoloWarehouseRequest
         @return: SuspendHoloWarehouseResponse
@@ -2544,7 +2652,7 @@ class Client(OpenApiClient):
         request: hologram_20220601_models.SuspendHoloWarehouseRequest,
     ) -> hologram_20220601_models.SuspendHoloWarehouseResponse:
         """
-        @summary 停止计算组
+        @summary Suspends a virtual warehouse.
         
         @param request: SuspendHoloWarehouseRequest
         @return: SuspendHoloWarehouseResponse

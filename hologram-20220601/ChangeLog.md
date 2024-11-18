@@ -1,3 +1,7 @@
+2024-11-18 Version: 1.5.0
+- Support API ListBackupData.
+
+
 2024-08-20 Version: 1.4.0
 - Support API CreateHoloWarehouse.
 - Support API DeleteHoloWarehouse.
