@@ -8531,6 +8531,172 @@ class CreateNetworkAclEntryResponse(TeaModel):
         return self
 
 
+class CreateNetworkInterfaceRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        security_group_ids: List[str] = None,
+        v_switch_id: str = None,
+    ):
+        self.description = description
+        self.name = name
+        # This parameter is required.
+        self.security_group_ids = security_group_ids
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class CreateNetworkInterfaceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        security_group_ids_shrink: str = None,
+        v_switch_id: str = None,
+    ):
+        self.description = description
+        self.name = name
+        # This parameter is required.
+        self.security_group_ids_shrink = security_group_ids_shrink
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.security_group_ids_shrink is not None:
+            result['SecurityGroupIds'] = self.security_group_ids_shrink
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids_shrink = m.get('SecurityGroupIds')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class CreateNetworkInterfaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        network_interface_ids: List[str] = None,
+        request_id: str = None,
+    ):
+        self.network_interface_ids = network_interface_ids
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_interface_ids is not None:
+            result['NetworkInterfaceIds'] = self.network_interface_ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkInterfaceIds') is not None:
+            self.network_interface_ids = m.get('NetworkInterfaceIds')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateNetworkInterfaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateNetworkInterfaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateNetworkInterfaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSDGRequest(TeaModel):
     def __init__(
         self,
@@ -12153,6 +12319,130 @@ class DeleteNetworkAclEntryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteNetworkAclEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteNetworkInterfacesRequest(TeaModel):
+    def __init__(
+        self,
+        network_interface_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.network_interface_ids = network_interface_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_interface_ids is not None:
+            result['NetworkInterfaceIds'] = self.network_interface_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkInterfaceIds') is not None:
+            self.network_interface_ids = m.get('NetworkInterfaceIds')
+        return self
+
+
+class DeleteNetworkInterfacesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        network_interface_ids_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.network_interface_ids_shrink = network_interface_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_interface_ids_shrink is not None:
+            result['NetworkInterfaceIds'] = self.network_interface_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkInterfaceIds') is not None:
+            self.network_interface_ids_shrink = m.get('NetworkInterfaceIds')
+        return self
+
+
+class DeleteNetworkInterfacesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteNetworkInterfacesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNetworkInterfacesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNetworkInterfacesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19053,6 +19343,8 @@ class DescribeDisksResponseBodyDisksDisks(TeaModel):
         self,
         category: str = None,
         creation_time: str = None,
+        delete_with_instance: bool = None,
+        description: str = None,
         disk_charge_type: str = None,
         disk_id: str = None,
         disk_name: str = None,
@@ -19077,6 +19369,8 @@ class DescribeDisksResponseBodyDisksDisks(TeaModel):
         self.category = category
         # The time when the disk was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        self.delete_with_instance = delete_with_instance
+        self.description = description
         # The billing method of the cloud disk or local disk. Valid values:
         # 
         # *   **prepaid**: subscription.
@@ -19144,6 +19438,10 @@ class DescribeDisksResponseBodyDisksDisks(TeaModel):
             result['Category'] = self.category
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.delete_with_instance is not None:
+            result['DeleteWithInstance'] = self.delete_with_instance
+        if self.description is not None:
+            result['Description'] = self.description
         if self.disk_charge_type is not None:
             result['DiskChargeType'] = self.disk_charge_type
         if self.disk_id is not None:
@@ -19180,6 +19478,10 @@ class DescribeDisksResponseBodyDisksDisks(TeaModel):
             self.category = m.get('Category')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('DeleteWithInstance') is not None:
+            self.delete_with_instance = m.get('DeleteWithInstance')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('DiskChargeType') is not None:
             self.disk_charge_type = m.get('DiskChargeType')
         if m.get('DiskId') is not None:

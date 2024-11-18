@@ -5321,6 +5321,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_network_acl_entry_with_options_async(request, runtime)
 
+    def create_network_interface_with_options(
+        self,
+        tmp_req: ens_20171110_models.CreateNetworkInterfaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateNetworkInterfaceResponse:
+        """
+        @summary 创建弹性网卡
+        
+        @param tmp_req: CreateNetworkInterfaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkInterfaceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateNetworkInterfaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.security_group_ids):
+            request.security_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_group_ids, 'SecurityGroupIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.security_group_ids_shrink):
+            query['SecurityGroupIds'] = request.security_group_ids_shrink
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkInterface',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateNetworkInterfaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_network_interface_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.CreateNetworkInterfaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateNetworkInterfaceResponse:
+        """
+        @summary 创建弹性网卡
+        
+        @param tmp_req: CreateNetworkInterfaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkInterfaceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateNetworkInterfaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.security_group_ids):
+            request.security_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_group_ids, 'SecurityGroupIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.security_group_ids_shrink):
+            query['SecurityGroupIds'] = request.security_group_ids_shrink
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkInterface',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateNetworkInterfaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_network_interface(
+        self,
+        request: ens_20171110_models.CreateNetworkInterfaceRequest,
+    ) -> ens_20171110_models.CreateNetworkInterfaceResponse:
+        """
+        @summary 创建弹性网卡
+        
+        @param request: CreateNetworkInterfaceRequest
+        @return: CreateNetworkInterfaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_network_interface_with_options(request, runtime)
+
+    async def create_network_interface_async(
+        self,
+        request: ens_20171110_models.CreateNetworkInterfaceRequest,
+    ) -> ens_20171110_models.CreateNetworkInterfaceResponse:
+        """
+        @summary 创建弹性网卡
+        
+        @param request: CreateNetworkInterfaceRequest
+        @return: CreateNetworkInterfaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_network_interface_with_options_async(request, runtime)
+
     def create_sdgwith_options(
         self,
         request: ens_20171110_models.CreateSDGRequest,
@@ -8168,6 +8284,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_network_acl_entry_with_options_async(request, runtime)
+
+    def delete_network_interfaces_with_options(
+        self,
+        tmp_req: ens_20171110_models.DeleteNetworkInterfacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteNetworkInterfacesResponse:
+        """
+        @summary 删除弹性网卡
+        
+        @param tmp_req: DeleteNetworkInterfacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkInterfacesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeleteNetworkInterfacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.network_interface_ids):
+            request.network_interface_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network_interface_ids, 'NetworkInterfaceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_ids_shrink):
+            query['NetworkInterfaceIds'] = request.network_interface_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkInterfaces',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteNetworkInterfacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_network_interfaces_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.DeleteNetworkInterfacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteNetworkInterfacesResponse:
+        """
+        @summary 删除弹性网卡
+        
+        @param tmp_req: DeleteNetworkInterfacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkInterfacesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeleteNetworkInterfacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.network_interface_ids):
+            request.network_interface_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network_interface_ids, 'NetworkInterfaceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_ids_shrink):
+            query['NetworkInterfaceIds'] = request.network_interface_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkInterfaces',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteNetworkInterfacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_network_interfaces(
+        self,
+        request: ens_20171110_models.DeleteNetworkInterfacesRequest,
+    ) -> ens_20171110_models.DeleteNetworkInterfacesResponse:
+        """
+        @summary 删除弹性网卡
+        
+        @param request: DeleteNetworkInterfacesRequest
+        @return: DeleteNetworkInterfacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_network_interfaces_with_options(request, runtime)
+
+    async def delete_network_interfaces_async(
+        self,
+        request: ens_20171110_models.DeleteNetworkInterfacesRequest,
+    ) -> ens_20171110_models.DeleteNetworkInterfacesResponse:
+        """
+        @summary 删除弹性网卡
+        
+        @param request: DeleteNetworkInterfacesRequest
+        @return: DeleteNetworkInterfacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_network_interfaces_with_options_async(request, runtime)
 
     def delete_object_with_options(
         self,
