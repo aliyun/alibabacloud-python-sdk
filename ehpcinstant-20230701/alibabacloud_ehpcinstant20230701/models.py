@@ -3408,6 +3408,7 @@ class ListImagesResponseBodyImages(TeaModel):
         image_id: str = None,
         image_type: str = None,
         name: str = None,
+        os_tag: str = None,
         version: str = None,
     ):
         # This parameter is required.
@@ -3419,6 +3420,7 @@ class ListImagesResponseBodyImages(TeaModel):
         # This parameter is required.
         self.image_type = image_type
         self.name = name
+        self.os_tag = os_tag
         self.version = version
 
     def validate(self):
@@ -3442,6 +3444,8 @@ class ListImagesResponseBodyImages(TeaModel):
             result['ImageType'] = self.image_type
         if self.name is not None:
             result['Name'] = self.name
+        if self.os_tag is not None:
+            result['OsTag'] = self.os_tag
         if self.version is not None:
             result['Version'] = self.version
         return result
@@ -3460,6 +3464,8 @@ class ListImagesResponseBodyImages(TeaModel):
             self.image_type = m.get('ImageType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('OsTag') is not None:
+            self.os_tag = m.get('OsTag')
         if m.get('Version') is not None:
             self.version = m.get('Version')
         return self
