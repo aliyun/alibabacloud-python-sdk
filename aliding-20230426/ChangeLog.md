@@ -1,3 +1,12 @@
+2024-11-19 Version: 2.28.0
+- Support API CopyDentry.
+- Support API GetDeptNo.
+- Support API GetOrgLiveList.
+- Support API SetConferenceHosts.
+- Update API GetUser: update response param.
+- Update API QueryMeetingRoom: update response param.
+
+
 2024-11-11 Version: 2.27.0
 - Support API CreateTicket.
 

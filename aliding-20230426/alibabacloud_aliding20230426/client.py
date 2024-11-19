@@ -3335,6 +3335,164 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CommitFileHeaders()
         return await self.commit_file_with_options_async(request, headers, runtime)
 
+    def copy_dentry_with_options(
+        self,
+        tmp_req: aliding_20230426_models.CopyDentryRequest,
+        tmp_header: aliding_20230426_models.CopyDentryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CopyDentryResponse:
+        """
+        @summary 创建知识库节点副本
+        
+        @param tmp_req: CopyDentryRequest
+        @param tmp_header: CopyDentryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyDentryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CopyDentryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CopyDentryShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dentry_id):
+            body['DentryId'] = request.dentry_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.target_space_id):
+            body['TargetSpaceId'] = request.target_space_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.to_next_dentry_id):
+            body['ToNextDentryId'] = request.to_next_dentry_id
+        if not UtilClient.is_unset(request.to_parent_dentry_id):
+            body['ToParentDentryId'] = request.to_parent_dentry_id
+        if not UtilClient.is_unset(request.to_prev_dentry_id):
+            body['ToPrevDentryId'] = request.to_prev_dentry_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CopyDentry',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v2/documents/copyDentry',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CopyDentryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copy_dentry_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.CopyDentryRequest,
+        tmp_header: aliding_20230426_models.CopyDentryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CopyDentryResponse:
+        """
+        @summary 创建知识库节点副本
+        
+        @param tmp_req: CopyDentryRequest
+        @param tmp_header: CopyDentryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyDentryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CopyDentryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CopyDentryShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dentry_id):
+            body['DentryId'] = request.dentry_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.target_space_id):
+            body['TargetSpaceId'] = request.target_space_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.to_next_dentry_id):
+            body['ToNextDentryId'] = request.to_next_dentry_id
+        if not UtilClient.is_unset(request.to_parent_dentry_id):
+            body['ToParentDentryId'] = request.to_parent_dentry_id
+        if not UtilClient.is_unset(request.to_prev_dentry_id):
+            body['ToPrevDentryId'] = request.to_prev_dentry_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CopyDentry',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v2/documents/copyDentry',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CopyDentryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copy_dentry(
+        self,
+        request: aliding_20230426_models.CopyDentryRequest,
+    ) -> aliding_20230426_models.CopyDentryResponse:
+        """
+        @summary 创建知识库节点副本
+        
+        @param request: CopyDentryRequest
+        @return: CopyDentryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CopyDentryHeaders()
+        return self.copy_dentry_with_options(request, headers, runtime)
+
+    async def copy_dentry_async(
+        self,
+        request: aliding_20230426_models.CopyDentryRequest,
+    ) -> aliding_20230426_models.CopyDentryResponse:
+        """
+        @summary 创建知识库节点副本
+        
+        @param request: CopyDentryRequest
+        @return: CopyDentryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CopyDentryHeaders()
+        return await self.copy_dentry_with_options_async(request, headers, runtime)
+
     def create_delivery_plan_with_options(
         self,
         tmp_req: aliding_20230426_models.CreateDeliveryPlanRequest,
@@ -10223,6 +10381,132 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.GetCorpTasksHeaders()
         return await self.get_corp_tasks_with_options_async(request, headers, runtime)
 
+    def get_dept_no_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetDeptNoRequest,
+        tmp_header: aliding_20230426_models.GetDeptNoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetDeptNoResponse:
+        """
+        @param tmp_req: GetDeptNoRequest
+        @param tmp_header: GetDeptNoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeptNoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetDeptNoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetDeptNoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.dept_id):
+            body['deptId'] = request.dept_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDeptNo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/dept/getDeptNo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetDeptNoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dept_no_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetDeptNoRequest,
+        tmp_header: aliding_20230426_models.GetDeptNoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetDeptNoResponse:
+        """
+        @param tmp_req: GetDeptNoRequest
+        @param tmp_header: GetDeptNoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeptNoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetDeptNoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetDeptNoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.dept_id):
+            body['deptId'] = request.dept_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDeptNo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/dept/getDeptNo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetDeptNoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dept_no(
+        self,
+        request: aliding_20230426_models.GetDeptNoRequest,
+    ) -> aliding_20230426_models.GetDeptNoResponse:
+        """
+        @param request: GetDeptNoRequest
+        @return: GetDeptNoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetDeptNoHeaders()
+        return self.get_dept_no_with_options(request, headers, runtime)
+
+    async def get_dept_no_async(
+        self,
+        request: aliding_20230426_models.GetDeptNoRequest,
+    ) -> aliding_20230426_models.GetDeptNoResponse:
+        """
+        @param request: GetDeptNoRequest
+        @return: GetDeptNoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetDeptNoHeaders()
+        return await self.get_dept_no_with_options_async(request, headers, runtime)
+
     def get_doc_content_with_options(
         self,
         tmp_req: aliding_20230426_models.GetDocContentRequest,
@@ -14636,6 +14920,152 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetOperationRecordsHeaders()
         return await self.get_operation_records_with_options_async(request, headers, runtime)
+
+    def get_org_live_list_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetOrgLiveListRequest,
+        tmp_header: aliding_20230426_models.GetOrgLiveListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetOrgLiveListResponse:
+        """
+        @param tmp_req: GetOrgLiveListRequest
+        @param tmp_header: GetOrgLiveListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrgLiveListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetOrgLiveListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetOrgLiveListShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.corp_id):
+            body['CorpId'] = request.corp_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetOrgLiveList',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/getOrgLiveList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetOrgLiveListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_org_live_list_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetOrgLiveListRequest,
+        tmp_header: aliding_20230426_models.GetOrgLiveListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetOrgLiveListResponse:
+        """
+        @param tmp_req: GetOrgLiveListRequest
+        @param tmp_header: GetOrgLiveListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrgLiveListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetOrgLiveListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetOrgLiveListShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.corp_id):
+            body['CorpId'] = request.corp_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetOrgLiveList',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/getOrgLiveList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetOrgLiveListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_org_live_list(
+        self,
+        request: aliding_20230426_models.GetOrgLiveListRequest,
+    ) -> aliding_20230426_models.GetOrgLiveListResponse:
+        """
+        @param request: GetOrgLiveListRequest
+        @return: GetOrgLiveListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetOrgLiveListHeaders()
+        return self.get_org_live_list_with_options(request, headers, runtime)
+
+    async def get_org_live_list_async(
+        self,
+        request: aliding_20230426_models.GetOrgLiveListRequest,
+    ) -> aliding_20230426_models.GetOrgLiveListResponse:
+        """
+        @param request: GetOrgLiveListRequest
+        @return: GetOrgLiveListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetOrgLiveListHeaders()
+        return await self.get_org_live_list_with_options_async(request, headers, runtime)
 
     def get_process_definition_with_options(
         self,
@@ -26984,6 +27414,152 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SetColumnsVisibilityHeaders()
         return await self.set_columns_visibility_with_options_async(request, headers, runtime)
+
+    def set_conference_hosts_with_options(
+        self,
+        tmp_req: aliding_20230426_models.SetConferenceHostsRequest,
+        tmp_header: aliding_20230426_models.SetConferenceHostsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.SetConferenceHostsResponse:
+        """
+        @summary 设置联席主持人
+        
+        @param tmp_req: SetConferenceHostsRequest
+        @param tmp_header: SetConferenceHostsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetConferenceHostsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.SetConferenceHostsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.SetConferenceHostsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.user_ids):
+            request.user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_ids, 'UserIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.user_ids_shrink):
+            body['UserIds'] = request.user_ids_shrink
+        if not UtilClient.is_unset(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetConferenceHosts',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/setConferenceHosts',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.SetConferenceHostsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_conference_hosts_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.SetConferenceHostsRequest,
+        tmp_header: aliding_20230426_models.SetConferenceHostsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.SetConferenceHostsResponse:
+        """
+        @summary 设置联席主持人
+        
+        @param tmp_req: SetConferenceHostsRequest
+        @param tmp_header: SetConferenceHostsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetConferenceHostsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.SetConferenceHostsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.SetConferenceHostsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.user_ids):
+            request.user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_ids, 'UserIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.user_ids_shrink):
+            body['UserIds'] = request.user_ids_shrink
+        if not UtilClient.is_unset(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetConferenceHosts',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/setConferenceHosts',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.SetConferenceHostsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_conference_hosts(
+        self,
+        request: aliding_20230426_models.SetConferenceHostsRequest,
+    ) -> aliding_20230426_models.SetConferenceHostsResponse:
+        """
+        @summary 设置联席主持人
+        
+        @param request: SetConferenceHostsRequest
+        @return: SetConferenceHostsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.SetConferenceHostsHeaders()
+        return self.set_conference_hosts_with_options(request, headers, runtime)
+
+    async def set_conference_hosts_async(
+        self,
+        request: aliding_20230426_models.SetConferenceHostsRequest,
+    ) -> aliding_20230426_models.SetConferenceHostsResponse:
+        """
+        @summary 设置联席主持人
+        
+        @param request: SetConferenceHostsRequest
+        @return: SetConferenceHostsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.SetConferenceHostsHeaders()
+        return await self.set_conference_hosts_with_options_async(request, headers, runtime)
 
     def set_rows_visibility_with_options(
         self,
