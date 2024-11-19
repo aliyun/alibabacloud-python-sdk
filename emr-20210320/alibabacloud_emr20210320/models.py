@@ -2182,6 +2182,7 @@ class Cluster(TeaModel):
         cluster_state: str = None,
         cluster_type: str = None,
         create_time: int = None,
+        deletion_protection: bool = None,
         deploy_mode: str = None,
         description: str = None,
         emr_default_role: str = None,
@@ -2208,6 +2209,7 @@ class Cluster(TeaModel):
         self.cluster_type = cluster_type
         # 创建时间。
         self.create_time = create_time
+        self.deletion_protection = deletion_protection
         # 部署模式。
         self.deploy_mode = deploy_mode
         self.description = description
@@ -2265,6 +2267,8 @@ class Cluster(TeaModel):
             result['ClusterType'] = self.cluster_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.deploy_mode is not None:
             result['DeployMode'] = self.deploy_mode
         if self.description is not None:
@@ -2311,6 +2315,8 @@ class Cluster(TeaModel):
             self.cluster_type = m.get('ClusterType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('DeployMode') is not None:
             self.deploy_mode = m.get('DeployMode')
         if m.get('Description') is not None:
@@ -2496,6 +2502,7 @@ class ClusterSummary(TeaModel):
         cluster_state: str = None,
         cluster_type: str = None,
         create_time: int = None,
+        deletion_protection: bool = None,
         description: str = None,
         emr_default_role: str = None,
         end_time: int = None,
@@ -2529,6 +2536,7 @@ class ClusterSummary(TeaModel):
         self.cluster_type = cluster_type
         # 创建时间。
         self.create_time = create_time
+        self.deletion_protection = deletion_protection
         self.description = description
         # EMR服务角色。
         self.emr_default_role = emr_default_role
@@ -2575,6 +2583,8 @@ class ClusterSummary(TeaModel):
             result['ClusterType'] = self.cluster_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.description is not None:
             result['Description'] = self.description
         if self.emr_default_role is not None:
@@ -2611,6 +2621,8 @@ class ClusterSummary(TeaModel):
             self.cluster_type = m.get('ClusterType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('EmrDefaultRole') is not None:
@@ -4493,6 +4505,39 @@ class NodeCountConstraint(TeaModel):
         return self
 
 
+class PrivatePoolOptions(TeaModel):
+    def __init__(
+        self,
+        match_criteria: str = None,
+        private_pool_ids: List[str] = None,
+    ):
+        self.match_criteria = match_criteria
+        self.private_pool_ids = private_pool_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match_criteria is not None:
+            result['MatchCriteria'] = self.match_criteria
+        if self.private_pool_ids is not None:
+            result['PrivatePoolIds'] = self.private_pool_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MatchCriteria') is not None:
+            self.match_criteria = m.get('MatchCriteria')
+        if m.get('PrivatePoolIds') is not None:
+            self.private_pool_ids = m.get('PrivatePoolIds')
+        return self
+
+
 class SpotBidPrice(TeaModel):
     def __init__(
         self,
@@ -4637,6 +4682,7 @@ class NodeGroup(TeaModel):
         node_group_type: str = None,
         node_resize_strategy: str = None,
         payment_type: str = None,
+        private_pool_options: PrivatePoolOptions = None,
         running_node_count: int = None,
         spot_bid_prices: List[SpotBidPrice] = None,
         spot_instance_remedy: bool = None,
@@ -4685,6 +4731,7 @@ class NodeGroup(TeaModel):
         # - PayAsYouGo：后付费，按量付费。
         # - Subscription：预付费，包年包月。
         self.payment_type = payment_type
+        self.private_pool_options = private_pool_options
         # 存活节点数量。
         self.running_node_count = running_node_count
         self.spot_bid_prices = spot_bid_prices
@@ -4698,7 +4745,6 @@ class NodeGroup(TeaModel):
         self.spot_strategy = spot_strategy
         # 状态变化原因。
         self.state_change_reason = state_change_reason
-        # 节点组状态，NodeGroupState别名。
         self.status = status
         # 系统盘信息。
         self.system_disk = system_disk
@@ -4718,6 +4764,8 @@ class NodeGroup(TeaModel):
             for k in self.data_disks:
                 if k:
                     k.validate()
+        if self.private_pool_options:
+            self.private_pool_options.validate()
         if self.spot_bid_prices:
             for k in self.spot_bid_prices:
                 if k:
@@ -4759,6 +4807,8 @@ class NodeGroup(TeaModel):
             result['NodeResizeStrategy'] = self.node_resize_strategy
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
         if self.running_node_count is not None:
             result['RunningNodeCount'] = self.running_node_count
         result['SpotBidPrices'] = []
@@ -4813,6 +4863,9 @@ class NodeGroup(TeaModel):
             self.node_resize_strategy = m.get('NodeResizeStrategy')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        if m.get('PrivatePoolOptions') is not None:
+            temp_model = PrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(m['PrivatePoolOptions'])
         if m.get('RunningNodeCount') is not None:
             self.running_node_count = m.get('RunningNodeCount')
         self.spot_bid_prices = []
@@ -4857,6 +4910,7 @@ class NodeGroupConfig(TeaModel):
         node_group_type: str = None,
         node_resize_strategy: str = None,
         payment_type: str = None,
+        private_pool_options: PrivatePoolOptions = None,
         spot_bid_prices: List[SpotBidPrice] = None,
         spot_instance_remedy: bool = None,
         spot_strategy: str = None,
@@ -4911,6 +4965,7 @@ class NodeGroupConfig(TeaModel):
         # 
         # 默认值：PayAsYouGo。
         self.payment_type = payment_type
+        self.private_pool_options = private_pool_options
         # 抢占式Spot实例出价价格。参数SpotStrategy取值为SpotWithPriceLimit时生效。数组元数个数N的取值范围：0~100。
         self.spot_bid_prices = spot_bid_prices
         # 开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。取值范围：
@@ -4948,6 +5003,8 @@ class NodeGroupConfig(TeaModel):
             for k in self.data_disks:
                 if k:
                     k.validate()
+        if self.private_pool_options:
+            self.private_pool_options.validate()
         if self.spot_bid_prices:
             for k in self.spot_bid_prices:
                 if k:
@@ -4991,6 +5048,8 @@ class NodeGroupConfig(TeaModel):
             result['NodeResizeStrategy'] = self.node_resize_strategy
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
         result['SpotBidPrices'] = []
         if self.spot_bid_prices is not None:
             for k in self.spot_bid_prices:
@@ -5042,6 +5101,9 @@ class NodeGroupConfig(TeaModel):
             self.node_resize_strategy = m.get('NodeResizeStrategy')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        if m.get('PrivatePoolOptions') is not None:
+            temp_model = PrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(m['PrivatePoolOptions'])
         self.spot_bid_prices = []
         if m.get('SpotBidPrices') is not None:
             for k in m.get('SpotBidPrices'):
@@ -7526,17 +7588,17 @@ class CreateApiTemplateRequest(TeaModel):
         # 
         # This parameter is required.
         self.api_name = api_name
-        # The content of the cluster API operation template. Set the value to JSON strings of the request parameters of the [CreateCluster](https://help.aliyun.com/zh/emr/emr-on-ecs/developer-reference/api-emr-2021-03-20-createcluster) API operation for creating a cluster.
+        # The content of the cluster API operation template. Set the value to JSON strings of the request parameters of the [CreateCluster](https://help.aliyun.com/document_detail/454393.html) API operation for creating a cluster.
         # 
         # This parameter is required.
         self.content = content
-        # 地域ID。
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 资源组ID。
+        # Resource group ID.
         self.resource_group_id = resource_group_id
-        # 集群模板名字。
+        # Cluster template name.
         # 
         # This parameter is required.
         self.template_name = template_name
@@ -7584,9 +7646,11 @@ class CreateApiTemplateResponseBody(TeaModel):
         success: str = None,
         template_id: str = None,
     ):
-        # 请求ID。
+        # Request ID.
         self.request_id = request_id
+        # Template ID (to be deprecated).
         self.success = success
+        # Template ID (it is recommended to use the parameter TemplateId).
         self.template_id = template_id
 
     def validate(self):
@@ -7679,13 +7743,13 @@ class CreateClusterRequest(TeaModel):
         subscription_config: SubscriptionConfig = None,
         tags: List[Tag] = None,
     ):
-        # The application configurations. You can specify a maximum of 1,000 items.
+        # The service configurations. Number of elements in the array: 1 to 1000.
         self.application_configs = application_configs
-        # The applications. You can specify a maximum of 100 items.
+        # The services. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.applications = applications
-        # The bootstrap actions. You can specify a maximum of 10 items.
+        # The bootstrap actions. Number of elements in the array: 1 to 10.
         self.bootstrap_scripts = bootstrap_scripts
         # The idempotent client token. If you call the same ClientToken multiple times, the returned results are the same. Only one cluster can be created with the same ClientToken.
         self.client_token = client_token
@@ -7712,11 +7776,11 @@ class CreateClusterRequest(TeaModel):
         # *   HA: high availability (HA) mode. A cluster that contains three master nodes is created.
         self.deploy_mode = deploy_mode
         self.description = description
-        # The attributes of all ECS instances.
+        # The attributes of all ECS instances. The basic attributes of all ECS instances in the cluster.
         # 
         # This parameter is required.
         self.node_attributes = node_attributes
-        # The node groups. You can specify a maximum of 100 items.
+        # The node groups. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.node_groups = node_groups
@@ -7744,7 +7808,7 @@ class CreateClusterRequest(TeaModel):
         self.security_mode = security_mode
         # The subscription configurations. This parameter is required only if you set the PaymentType parameter to Subscription.
         self.subscription_config = subscription_config
-        # The tags. You can specify a maximum of 20 items.
+        # The list of tags. Number of elements in the array: 0 to 20.
         self.tags = tags
 
     def validate(self):
@@ -8752,11 +8816,11 @@ class GetApiTemplateRequest(TeaModel):
         region_id: str = None,
         template_id: str = None,
     ):
-        # 区域ID。
+        # Region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 集群模板id。
+        # Cluster template ID.
         # 
         # This parameter is required.
         self.template_id = template_id
@@ -8793,7 +8857,7 @@ class GetApiTemplateResponseBody(TeaModel):
     ):
         # The content of the API operation template.
         self.data = data
-        # 请求ID。
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9292,6 +9356,7 @@ class GetAutoScalingActivityResponseBodyScalingActivity(TeaModel):
         node_group_id: str = None,
         node_group_name: str = None,
         operation_id: str = None,
+        policy_type: str = None,
         rule_detail: ScalingRule = None,
         rule_name: str = None,
         start_time: int = None,
@@ -9326,6 +9391,7 @@ class GetAutoScalingActivityResponseBodyScalingActivity(TeaModel):
         self.node_group_name = node_group_name
         # The operation ID.
         self.operation_id = operation_id
+        self.policy_type = policy_type
         # The description of the scaling rule.
         self.rule_detail = rule_detail
         # The name of the scaling rule.
@@ -9371,6 +9437,8 @@ class GetAutoScalingActivityResponseBodyScalingActivity(TeaModel):
             result['NodeGroupName'] = self.node_group_name
         if self.operation_id is not None:
             result['OperationId'] = self.operation_id
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
         if self.rule_detail is not None:
             result['RuleDetail'] = self.rule_detail.to_map()
         if self.rule_name is not None:
@@ -9406,6 +9474,8 @@ class GetAutoScalingActivityResponseBodyScalingActivity(TeaModel):
             self.node_group_name = m.get('NodeGroupName')
         if m.get('OperationId') is not None:
             self.operation_id = m.get('OperationId')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
         if m.get('RuleDetail') is not None:
             temp_model = ScalingRule()
             self.rule_detail = temp_model.from_map(m['RuleDetail'])
@@ -10201,7 +10271,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
         # *   False
         # *   True
         self.exist_clone_config = exist_clone_config
-        # The attributes of the node.
+        # The attributes of all ECS instances.
         self.node_attributes = node_attributes
         # The node groups. Number of elements in the array: 1 to 100.
         self.node_groups = node_groups
@@ -12802,17 +12872,19 @@ class GetDoctorHBaseRegionRequest(TeaModel):
         hbase_region_id: str = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # Cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Date.
+        # 
         # This parameter is required.
         self.date_time = date_time
-        # Region ID。
+        # Region ID.
         # 
         # This parameter is required.
         self.hbase_region_id = hbase_region_id
-        # 区域ID。
+        # Region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -12857,9 +12929,13 @@ class GetDoctorHBaseRegionResponseBodyDataMetricsDailyReadRequest(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -12902,9 +12978,13 @@ class GetDoctorHBaseRegionResponseBodyDataMetricsDailyWriteRequest(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -12947,9 +13027,11 @@ class GetDoctorHBaseRegionResponseBodyDataMetricsStoreFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Description of the metric.
         self.description = description
-        # The name of the metric.
+        # Metric name.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
         # The value of the metric.
         self.value = value
@@ -12994,9 +13076,13 @@ class GetDoctorHBaseRegionResponseBodyDataMetricsTotalReadRequest(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Metric description.
         self.description = description
+        # Metric name.
         self.name = name
+        # Metric unit.
         self.unit = unit
+        # Metric value.
         self.value = value
 
     def validate(self):
@@ -13039,9 +13125,13 @@ class GetDoctorHBaseRegionResponseBodyDataMetricsTotalWriteRequest(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Metric description.
         self.description = description
+        # Metric name.
         self.name = name
+        # Metric unit.
         self.unit = unit
+        # Metric value.
         self.value = value
 
     def validate(self):
@@ -13085,11 +13175,15 @@ class GetDoctorHBaseRegionResponseBodyDataMetrics(TeaModel):
         total_read_request: GetDoctorHBaseRegionResponseBodyDataMetricsTotalReadRequest = None,
         total_write_request: GetDoctorHBaseRegionResponseBodyDataMetricsTotalWriteRequest = None,
     ):
+        # Number of read requests in a single day.
         self.daily_read_request = daily_read_request
+        # Number of write requests in a single day.
         self.daily_write_request = daily_write_request
-        # The number of StoreFiles.
+        # Store file count.
         self.store_file_count = store_file_count
+        # Total read request count
         self.total_read_request = total_read_request
+        # Total write request count
         self.total_write_request = total_write_request
 
     def validate(self):
@@ -13149,9 +13243,11 @@ class GetDoctorHBaseRegionResponseBodyData(TeaModel):
         region_server_host: str = None,
         table_name: str = None,
     ):
-        # The metric information.
+        # Metrics information.
         self.metrics = metrics
+        # Host of the RegionServer.
         self.region_server_host = region_server_host
+        # Table name.
         self.table_name = table_name
 
     def validate(self):
@@ -13190,9 +13286,9 @@ class GetDoctorHBaseRegionResponseBody(TeaModel):
         data: GetDoctorHBaseRegionResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # Returned data.
         self.data = data
-        # 请求ID。
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14045,16 +14141,20 @@ class GetDoctorHBaseTableRequest(TeaModel):
         region_id: str = None,
         table_name: str = None,
     ):
-        # 集群ID。
+        # Cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Date.
+        # 
         # This parameter is required.
         self.date_time = date_time
-        # 区域ID。
+        # Region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # Table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
 
@@ -14101,15 +14201,19 @@ class GetDoctorHBaseTableResponseBodyDataAnalysis(TeaModel):
         write_request_hotspot_region_list: List[str] = None,
         write_request_unbalance_suggestion: str = None,
     ):
+        # List of read hotspot regions.
         self.read_request_hotspot_region_list = read_request_hotspot_region_list
-        # The description of read imbalance.
+        # Description of read imbalance.
         self.read_request_unbalance_suggestion = read_request_unbalance_suggestion
+        # List of read/write hotspot regions.
         self.request_hotspot_region_list = request_hotspot_region_list
-        # The description of read/write imbalance.
+        # Description of read/write imbalance.
         self.request_unbalance_suggestion = request_unbalance_suggestion
+        # Table score.
         self.table_score = table_score
+        # List of write hotspot regions.
         self.write_request_hotspot_region_list = write_request_hotspot_region_list
-        # The description of write imbalance.
+        # Description of write imbalance.
         self.write_request_unbalance_suggestion = write_request_unbalance_suggestion
 
     def validate(self):
@@ -14164,9 +14268,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsColdAccessDay(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the metric.
         self.name = name
+        # Unit of the metric.
         self.unit = unit
+        # Value of the metric.
         self.value = value
 
     def validate(self):
@@ -14209,9 +14317,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsColdConfigDay(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Metric name.
         self.name = name
+        # Unit of the metric.
         self.unit = unit
+        # Metric value.
         self.value = value
 
     def validate(self):
@@ -14254,9 +14366,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsColdDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Metric description.
         self.description = description
+        # Metric name.
         self.name = name
+        # Metric unit.
         self.unit = unit
+        # Metric value.
         self.value = value
 
     def validate(self):
@@ -14299,9 +14415,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsDailyReadRequest(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the item.
         self.name = name
+        # Unit of the metric.
         self.unit = unit
+        # Value of the metric.
         self.value = value
 
     def validate(self):
@@ -14344,9 +14464,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsDailyReadRequestDayGrowthRatio(T
         unit: str = None,
         value: float = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Metric name.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14389,9 +14513,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsDailyWriteRequest(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the metric.
         self.name = name
+        # Unit of the metric.
         self.unit = unit
+        # Value of the metric.
         self.value = value
 
     def validate(self):
@@ -14434,9 +14562,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsDailyWriteRequestDayGrowthRatio(
         unit: str = None,
         value: float = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14479,9 +14611,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsFreezeConfigDay(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the metric.
         self.name = name
+        # Unit of the metric.
         self.unit = unit
+        # Value of the metric.
         self.value = value
 
     def validate(self):
@@ -14524,9 +14660,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsFreezeDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Metric description.
         self.description = description
+        # Metric name.
         self.name = name
+        # Metric unit.
         self.unit = unit
+        # Metric value.
         self.value = value
 
     def validate(self):
@@ -14569,9 +14709,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsHotDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The metric value.
         self.value = value
 
     def validate(self):
@@ -14614,9 +14758,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsLocality(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the metric.
         self.name = name
+        # Unit of the metric.
         self.unit = unit
+        # Value of the metric.
         self.value = value
 
     def validate(self):
@@ -14659,9 +14807,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsReadRequestBalance(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14704,9 +14856,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsRegionBalance(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Metric name.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The metric value.
         self.value = value
 
     def validate(self):
@@ -14749,9 +14905,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsRegionCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Metric description.
         self.description = description
+        # Metric name.
         self.name = name
+        # Metric unit.
         self.unit = unit
+        # Metric value.
         self.value = value
 
     def validate(self):
@@ -14794,9 +14954,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsRegionCountDayGrowthRatio(TeaMod
         unit: str = None,
         value: float = None,
     ):
+        # Metric description.
         self.description = description
+        # Metric name.
         self.name = name
+        # Metric unit.
         self.unit = unit
+        # Metric value.
         self.value = value
 
     def validate(self):
@@ -14839,9 +15003,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsRegionServerCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Metric description.
         self.description = description
+        # Metric name.
         self.name = name
+        # Metric unit.
         self.unit = unit
+        # Usage.
         self.value = value
 
     def validate(self):
@@ -14884,9 +15052,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsRequestBalance(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The metric value.
         self.value = value
 
     def validate(self):
@@ -14929,9 +15101,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsStoreFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the metric.
         self.name = name
+        # Unit of the metric.
         self.unit = unit
+        # Value of the metric.
         self.value = value
 
     def validate(self):
@@ -14974,9 +15150,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsStoreFileCountDayGrowthRatio(Tea
         unit: str = None,
         value: float = None,
     ):
+        # Metric description.
         self.description = description
+        # Metric name.
         self.name = name
+        # Metric unit.
         self.unit = unit
+        # Metric value.
         self.value = value
 
     def validate(self):
@@ -15019,9 +15199,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsTableSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Metric name.
         self.name = name
+        # Unit of the metric
         self.unit = unit
+        # Metric value.
         self.value = value
 
     def validate(self):
@@ -15064,9 +15248,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsTableSizeDayGrowthRatio(TeaModel
         unit: str = None,
         value: float = None,
     ):
+        # Metric description.
         self.description = description
+        # Metric name.
         self.name = name
+        # Metric unit.
         self.unit = unit
+        # Metric value.
         self.value = value
 
     def validate(self):
@@ -15109,9 +15297,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsWarmConfigDay(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Metric description.
         self.description = description
+        # Metric name.
         self.name = name
+        # Metric unit.
         self.unit = unit
+        # Metric value.
         self.value = value
 
     def validate(self):
@@ -15154,9 +15346,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsWarmDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # Usage rate.
         self.value = value
 
     def validate(self):
@@ -15199,9 +15395,13 @@ class GetDoctorHBaseTableResponseBodyDataMetricsWriteRequestBalance(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # Description of the metric.
         self.description = description
+        # Name of the metric.
         self.name = name
+        # Unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -15264,29 +15464,53 @@ class GetDoctorHBaseTableResponseBodyDataMetrics(TeaModel):
         warm_data_size: GetDoctorHBaseTableResponseBodyDataMetricsWarmDataSize = None,
         write_request_balance: GetDoctorHBaseTableResponseBodyDataMetricsWriteRequestBalance = None,
     ):
+        # Number of days the table has not been accessed.
         self.cold_access_day = cold_access_day
+        # Cold data access days configuration.
         self.cold_config_day = cold_config_day
+        # Cold data size.
         self.cold_data_size = cold_data_size
+        # Number of read requests per day.
         self.daily_read_request = daily_read_request
+        # Daily growth ratio of daily read requests.
         self.daily_read_request_day_growth_ratio = daily_read_request_day_growth_ratio
+        # Number of write requests per day.
         self.daily_write_request = daily_write_request
+        # Daily write request growth ratio.
         self.daily_write_request_day_growth_ratio = daily_write_request_day_growth_ratio
+        # Configuration for the number of days cold data is accessed.
         self.freeze_config_day = freeze_config_day
+        # Frozen data size.
         self.freeze_data_size = freeze_data_size
+        # Hot data size.
         self.hot_data_size = hot_data_size
+        # Locality rate.
         self.locality = locality
+        # Read request balance.
         self.read_request_balance = read_request_balance
+        # Region balance.
         self.region_balance = region_balance
+        # Number of regions.
         self.region_count = region_count
+        # Daily incremental ratio of regions
         self.region_count_day_growth_ratio = region_count_day_growth_ratio
+        # Number of RegionServers.
         self.region_server_count = region_server_count
+        # Request balance.
         self.request_balance = request_balance
+        # Number of store files.
         self.store_file_count = store_file_count
+        # Daily growth ratio of store file count.
         self.store_file_count_day_growth_ratio = store_file_count_day_growth_ratio
+        # Table size.
         self.table_size = table_size
+        # Daily growth ratio of table size.
         self.table_size_day_growth_ratio = table_size_day_growth_ratio
+        # Warm data access days configuration.
         self.warm_config_day = warm_config_day
+        # Warm data size.
         self.warm_data_size = warm_data_size
+        # Write request balance.
         self.write_request_balance = write_request_balance
 
     def validate(self):
@@ -15478,8 +15702,9 @@ class GetDoctorHBaseTableResponseBodyData(TeaModel):
         analysis: GetDoctorHBaseTableResponseBodyDataAnalysis = None,
         metrics: GetDoctorHBaseTableResponseBodyDataMetrics = None,
     ):
-        # The diagnosis result.
+        # Diagnostic results.
         self.analysis = analysis
+        # Metrics information.
         self.metrics = metrics
 
     def validate(self):
@@ -15517,9 +15742,9 @@ class GetDoctorHBaseTableResponseBody(TeaModel):
         data: GetDoctorHBaseTableResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # Returned data.
         self.data = data
-        # 请求ID。
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29938,19 +30163,25 @@ class GetDoctorReportComponentSummaryRequest(TeaModel):
         date_time: str = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # Cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # component type
+        # Select component filter type. Values: 
+        # - compute 
+        # - hive
+        # - hdfs
+        # - yarn
+        # - oss
+        # - hbase
         # 
         # This parameter is required.
         self.component_type = component_type
-        # dateTime for specify report
+        # Report date.
         # 
         # This parameter is required.
         self.date_time = date_time
-        # 区域ID。
+        # Region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -29994,9 +30225,11 @@ class GetDoctorReportComponentSummaryResponseBodyData(TeaModel):
         suggestion: str = None,
         summary: str = None,
     ):
+        # Score.
         self.score = score
+        # Optimization suggestions.
         self.suggestion = suggestion
-        # The summary of the report.
+        # Report summary.
         self.summary = summary
 
     def validate(self):
@@ -30033,9 +30266,9 @@ class GetDoctorReportComponentSummaryResponseBody(TeaModel):
         data: GetDoctorReportComponentSummaryResponseBodyData = None,
         request_id: str = None,
     ):
-        # The content of the report.
+        # Report content.
         self.data = data
-        # 请求ID。
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -31414,6 +31647,7 @@ class ListAutoScalingActivitiesRequest(TeaModel):
         region_id: str = None,
         scaling_activity_states: List[str] = None,
         scaling_activity_type: str = None,
+        scaling_policy_type: str = None,
         scaling_rule_name: str = None,
         start_time: int = None,
     ):
@@ -31440,6 +31674,7 @@ class ListAutoScalingActivitiesRequest(TeaModel):
         # *   SCALE_OUT
         # *   SCALE_IN
         self.scaling_activity_type = scaling_activity_type
+        self.scaling_policy_type = scaling_policy_type
         # The name of the scaling rule.
         self.scaling_rule_name = scaling_rule_name
         # The beginning of the time range to query. Unit: milliseconds.
@@ -31470,6 +31705,8 @@ class ListAutoScalingActivitiesRequest(TeaModel):
             result['ScalingActivityStates'] = self.scaling_activity_states
         if self.scaling_activity_type is not None:
             result['ScalingActivityType'] = self.scaling_activity_type
+        if self.scaling_policy_type is not None:
+            result['ScalingPolicyType'] = self.scaling_policy_type
         if self.scaling_rule_name is not None:
             result['ScalingRuleName'] = self.scaling_rule_name
         if self.start_time is not None:
@@ -31494,6 +31731,8 @@ class ListAutoScalingActivitiesRequest(TeaModel):
             self.scaling_activity_states = m.get('ScalingActivityStates')
         if m.get('ScalingActivityType') is not None:
             self.scaling_activity_type = m.get('ScalingActivityType')
+        if m.get('ScalingPolicyType') is not None:
+            self.scaling_policy_type = m.get('ScalingPolicyType')
         if m.get('ScalingRuleName') is not None:
             self.scaling_rule_name = m.get('ScalingRuleName')
         if m.get('StartTime') is not None:
@@ -31511,9 +31750,11 @@ class ListAutoScalingActivitiesResponseBodyScalingActivities(TeaModel):
         description: str = None,
         end_time: int = None,
         expect_num: int = None,
+        instance_type_to_num: Dict[str, int] = None,
         node_group_id: str = None,
         node_group_name: str = None,
         operation_id: str = None,
+        policy_type: str = None,
         rule_name: str = None,
         start_time: int = None,
     ):
@@ -31539,12 +31780,14 @@ class ListAutoScalingActivitiesResponseBodyScalingActivities(TeaModel):
         self.end_time = end_time
         # The number of added or removed instances.
         self.expect_num = expect_num
+        self.instance_type_to_num = instance_type_to_num
         # The ID of the node group.
         self.node_group_id = node_group_id
         # The name of the node group.
         self.node_group_name = node_group_name
         # The operation ID.
         self.operation_id = operation_id
+        self.policy_type = policy_type
         # The name of the scaling rule.
         self.rule_name = rule_name
         # The start time of the scaling. Unit: milliseconds.
@@ -31573,12 +31816,16 @@ class ListAutoScalingActivitiesResponseBodyScalingActivities(TeaModel):
             result['EndTime'] = self.end_time
         if self.expect_num is not None:
             result['ExpectNum'] = self.expect_num
+        if self.instance_type_to_num is not None:
+            result['InstanceTypeToNum'] = self.instance_type_to_num
         if self.node_group_id is not None:
             result['NodeGroupId'] = self.node_group_id
         if self.node_group_name is not None:
             result['NodeGroupName'] = self.node_group_name
         if self.operation_id is not None:
             result['OperationId'] = self.operation_id
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
         if self.start_time is not None:
@@ -31601,12 +31848,16 @@ class ListAutoScalingActivitiesResponseBodyScalingActivities(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('ExpectNum') is not None:
             self.expect_num = m.get('ExpectNum')
+        if m.get('InstanceTypeToNum') is not None:
+            self.instance_type_to_num = m.get('InstanceTypeToNum')
         if m.get('NodeGroupId') is not None:
             self.node_group_id = m.get('NodeGroupId')
         if m.get('NodeGroupName') is not None:
             self.node_group_name = m.get('NodeGroupName')
         if m.get('OperationId') is not None:
             self.operation_id = m.get('OperationId')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
         if m.get('StartTime') is not None:
@@ -46297,52 +46548,35 @@ class ListInstanceTypesRequest(TeaModel):
         release_version: str = None,
         zone_id: str = None,
     ):
-        # 集群ID，仅升配场景使用。
+        # The ID of cluster.
         self.cluster_id = cluster_id
-        # 创建的EMR集群类型。取值范围：
-        # - DATALAKE：新版数据湖。
-        # - OLAP：数据分析。
-        # - DATAFLOW：实时数据流。
-        # - DATASERVING：数据服务。
-        # - CUSTOM：自定义集群。
-        # - HADOOP：旧版数据湖（不推荐使用，建议使用新版数据湖）。
+        # Cluster type.
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
-        # 集群中的应用部署模式。取值范围：
-        # - NORMAL：非高可用部署。集群1个MASTER节点。
-        # - HA：高可用部署。高可用部署要求至少3个MASTER节点。
-        # 
-        # 默认值：NORMAL。
+        # Deployment mode.
         self.deploy_mode = deploy_mode
-        # 机型
+        # Instance Type
         self.instance_type = instance_type
-        # 是否变配。
+        # Whether to change the configuration.
         self.is_modification = is_modification
-        # 节点组ID。
+        # Node group ID.
         self.node_group_id = node_group_id
-        # 节点组类型。取值范围：
-        # - MASTER：管理类型节点组。
-        # - CORE：存储类型节点组。
-        # - TASK：计算类型节点组。
+        # Node group type.
         # 
         # This parameter is required.
         self.node_group_type = node_group_type
-        # 集群的付费类型。取值范围：
-        # - PayAsYouGo：后付费。
-        # - Subscription：预付费。
-        # 
-        # 默认值：PayAsYouGo。
+        # Payment type.
         # 
         # This parameter is required.
         self.payment_type = payment_type
-        # 区域ID。
+        # The ID of the region in which you want to create the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # EMR发行版。
+        # EMR distribution.
         self.release_version = release_version
-        # 可用区ID。
+        # Availability Zone ID
         # 
         # This parameter is required.
         self.zone_id = zone_id
@@ -46418,13 +46652,13 @@ class ListInstanceTypesResponseBody(TeaModel):
     ):
         # The instance types.
         self.instance_types = instance_types
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of records returned in this request.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # Returns the position of the read data.
         self.next_token = next_token
-        # 请求ID。
+        # Request ID.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total amount of data under the conditions of this request.
         self.total_count = total_count
 
     def validate(self):
@@ -48268,67 +48502,71 @@ class RunClusterRequest(TeaModel):
         subscription_config: SubscriptionConfig = None,
         tags: List[Tag] = None,
     ):
-        # 应用配置。数组元素个数N的取值范围：1~1000。
+        # The service configurations. Number of elements in the array: 1 to 1,000.
         self.application_configs = application_configs
-        # 应用列表。数组元素个数N的取值范围：1~100。
+        # The list of services. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.applications = applications
-        # 引导脚本。数组元素个数N的取值范围：1~10。
+        # The bootstrap actions. Number of elements in the array: 1 to 10.
         self.bootstrap_scripts = bootstrap_scripts
-        # 幂等客户端TOKEN。同一个ClientToken多次调用的返回结果一致，同一个ClientToken最多只创建一个集群。
+        # The client token that is used to ensure the idempotence of the request. The same ClientToken value for multiple calls to the RunCluster operation results in identical responses. Only one cluster can be created by using the same ClientToken value.
         self.client_token = client_token
-        # 集群名称。长度为1~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）
+        # The cluster name. The name must be 1 to 128 characters in length. The name must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
-        # 创建的EMR集群类型。取值范围：
-        # - DATALAKE：新版数据湖。
-        # - OLAP：数据分析。
-        # - DATAFLOW：实时数据流。
-        # - DATASERVING：数据服务。
-        # - CUSTOM：自定义集群。
-        # - HADOOP：旧版数据湖（不推荐使用，建议使用新版数据湖）。
+        # The type of the cluster. Valid values:
+        # 
+        # *   DATALAKE
+        # *   OLAP
+        # *   DATAFLOW
+        # *   DATASERVING
+        # *   CUSTOM
+        # *   HADOOP: We recommend that you set this parameter to DATALAKE rather than HADOOP.
+        # 
+        # If the first time you create an EMR cluster is after 17:00 (UTC+8) on December 19, 2022, you cannot create a Hadoop, Data Science, Presto, or ZooKeeper cluster.
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
-        # 集群中的应用部署模式。取值范围：
-        # - NORMAL：非高可用部署。集群1个MASTER节点。
-        # - HA：高可用部署。高可用部署要求至少3个MASTER节点。
+        # The deployment mode of master nodes in the cluster. Valid values:
         # 
-        # 默认值：NORMAL。
+        # *   NORMAL: regular mode. This is the default value. A cluster that contains only one master node is created.
+        # *   HA: high availability mode. A cluster that contains at least three master nodes is created.
         self.deploy_mode = deploy_mode
+        # The cluster description.
         self.description = description
+        # The basic attributes of all ECS instances in the cluster.
         self.node_attributes = node_attributes
-        # 节点组。数组元素个数N的取值范围：1~100。
-        # <p>
+        # The node groups. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.node_groups = node_groups
-        # 集群的付费类型。取值范围：
-        # - PayAsYouGo：后付费。
-        # - Subscription：预付费。
+        # The billing method of the cluster. Valid values:
         # 
-        # 默认值：PayAsYouGo。
+        # *   PayAsYouGo
+        # *   Subscription
+        # 
+        # Default value: PayAsYouGo.
         self.payment_type = payment_type
-        # 区域ID。
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # EMR发行版。
+        # The EMR version. You can query available EMR versions in the EMR console.
         # 
         # This parameter is required.
         self.release_version = release_version
-        # 集群所在的企业资源组ID。
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Kerberos安全模式。取值范围：
-        # - NORMAL：普通模式，不开启Kerberos模式。
-        # - KERBEROS：开启Kerberos模式。
+        # The security mode of the cluster. Valid values:
         # 
-        # 默认值：NORMAL
+        # *   NORMAL: regular mode. Kerberos authentication is disabled. This is the default value.
+        # *   KERBEROS: Kerberos mode. Kerberos authentication is enabled.
         self.security_mode = security_mode
+        # The subscription configurations. This parameter is required only if you set the PaymentType parameter to Subscription.
         self.subscription_config = subscription_config
-        # 标签。数组元数个数N的取值范围：0~20。
+        # The list of tags. Number of elements in the array: 0 to 20.
         self.tags = tags
 
     def validate(self):
@@ -48486,67 +48724,71 @@ class RunClusterShrinkRequest(TeaModel):
         subscription_config_shrink: str = None,
         tags_shrink: str = None,
     ):
-        # 应用配置。数组元素个数N的取值范围：1~1000。
+        # The service configurations. Number of elements in the array: 1 to 1,000.
         self.application_configs_shrink = application_configs_shrink
-        # 应用列表。数组元素个数N的取值范围：1~100。
+        # The list of services. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.applications_shrink = applications_shrink
-        # 引导脚本。数组元素个数N的取值范围：1~10。
+        # The bootstrap actions. Number of elements in the array: 1 to 10.
         self.bootstrap_scripts_shrink = bootstrap_scripts_shrink
-        # 幂等客户端TOKEN。同一个ClientToken多次调用的返回结果一致，同一个ClientToken最多只创建一个集群。
+        # The client token that is used to ensure the idempotence of the request. The same ClientToken value for multiple calls to the RunCluster operation results in identical responses. Only one cluster can be created by using the same ClientToken value.
         self.client_token = client_token
-        # 集群名称。长度为1~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）
+        # The cluster name. The name must be 1 to 128 characters in length. The name must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
-        # 创建的EMR集群类型。取值范围：
-        # - DATALAKE：新版数据湖。
-        # - OLAP：数据分析。
-        # - DATAFLOW：实时数据流。
-        # - DATASERVING：数据服务。
-        # - CUSTOM：自定义集群。
-        # - HADOOP：旧版数据湖（不推荐使用，建议使用新版数据湖）。
+        # The type of the cluster. Valid values:
+        # 
+        # *   DATALAKE
+        # *   OLAP
+        # *   DATAFLOW
+        # *   DATASERVING
+        # *   CUSTOM
+        # *   HADOOP: We recommend that you set this parameter to DATALAKE rather than HADOOP.
+        # 
+        # If the first time you create an EMR cluster is after 17:00 (UTC+8) on December 19, 2022, you cannot create a Hadoop, Data Science, Presto, or ZooKeeper cluster.
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
-        # 集群中的应用部署模式。取值范围：
-        # - NORMAL：非高可用部署。集群1个MASTER节点。
-        # - HA：高可用部署。高可用部署要求至少3个MASTER节点。
+        # The deployment mode of master nodes in the cluster. Valid values:
         # 
-        # 默认值：NORMAL。
+        # *   NORMAL: regular mode. This is the default value. A cluster that contains only one master node is created.
+        # *   HA: high availability mode. A cluster that contains at least three master nodes is created.
         self.deploy_mode = deploy_mode
+        # The cluster description.
         self.description = description
+        # The basic attributes of all ECS instances in the cluster.
         self.node_attributes_shrink = node_attributes_shrink
-        # 节点组。数组元素个数N的取值范围：1~100。
-        # <p>
+        # The node groups. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.node_groups_shrink = node_groups_shrink
-        # 集群的付费类型。取值范围：
-        # - PayAsYouGo：后付费。
-        # - Subscription：预付费。
+        # The billing method of the cluster. Valid values:
         # 
-        # 默认值：PayAsYouGo。
+        # *   PayAsYouGo
+        # *   Subscription
+        # 
+        # Default value: PayAsYouGo.
         self.payment_type = payment_type
-        # 区域ID。
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # EMR发行版。
+        # The EMR version. You can query available EMR versions in the EMR console.
         # 
         # This parameter is required.
         self.release_version = release_version
-        # 集群所在的企业资源组ID。
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Kerberos安全模式。取值范围：
-        # - NORMAL：普通模式，不开启Kerberos模式。
-        # - KERBEROS：开启Kerberos模式。
+        # The security mode of the cluster. Valid values:
         # 
-        # 默认值：NORMAL
+        # *   NORMAL: regular mode. Kerberos authentication is disabled. This is the default value.
+        # *   KERBEROS: Kerberos mode. Kerberos authentication is enabled.
         self.security_mode = security_mode
+        # The subscription configurations. This parameter is required only if you set the PaymentType parameter to Subscription.
         self.subscription_config_shrink = subscription_config_shrink
-        # 标签。数组元数个数N的取值范围：0~20。
+        # The list of tags. Number of elements in the array: 0 to 20.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -48640,11 +48882,11 @@ class RunClusterResponseBody(TeaModel):
         operation_id: str = None,
         request_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 操作ID。
+        # The operation ID.
         self.operation_id = operation_id
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48998,11 +49240,11 @@ class UpdateApiTemplateRequest(TeaModel):
         template_id: str = None,
         template_name: str = None,
     ):
-        # The name of the API. You can create only a cluster API operation template. Set the value to CreateCluster.
+        # The name of the API operation. You can create only a cluster API operation template. Set the value to CreateCluster.
         # 
         # This parameter is required.
         self.api_name = api_name
-        # The content of the cluster API operation template. Set the value to JSON strings of the request parameters of the [CreateCluster](https://help.aliyun.com/document_detail/454393.html) API for creating a cluster.
+        # The content of the cluster API operation template. Set the value to JSON strings of the request parameters of the [CreateCluster](https://help.aliyun.com/document_detail/454393.html) API operation for creating a cluster.
         # 
         # This parameter is required.
         self.content = content

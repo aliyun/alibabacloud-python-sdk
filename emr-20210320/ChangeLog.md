@@ -1,3 +1,9 @@
+2024-11-19 Version: 2.1.1
+- Update API GetAutoScalingActivity: update response param.
+- Update API ListAutoScalingActivities: add param ScalingPolicyType.
+- Update API ListAutoScalingActivities: update response param.
+
+
 2024-10-17 Version: 2.1.0
 - Support API GetClusterCloneMeta.
 - Support API RunCluster.
