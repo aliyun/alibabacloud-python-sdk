@@ -1,3 +1,7 @@
+2024-11-19 Version: 3.2.1
+- Update API DescribeFaceGuardRisk: update response param.
+
+
 2024-11-15 Version: 3.2.0
 - Support API DescribeFaceGuardRisk.
 

@@ -2536,11 +2536,13 @@ class DescribeFaceGuardRiskRequest(TeaModel):
 class DescribeFaceGuardRiskResponseBodyResultObject(TeaModel):
     def __init__(
         self,
-        riak_tags: str = None,
+        certify_id: str = None,
         risk_extends: str = None,
+        risk_tags: str = None,
     ):
-        self.riak_tags = riak_tags
+        self.certify_id = certify_id
         self.risk_extends = risk_extends
+        self.risk_tags = risk_tags
 
     def validate(self):
         pass
@@ -2551,18 +2553,22 @@ class DescribeFaceGuardRiskResponseBodyResultObject(TeaModel):
             return _map
 
         result = dict()
-        if self.riak_tags is not None:
-            result['RiakTags'] = self.riak_tags
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
         if self.risk_extends is not None:
             result['RiskExtends'] = self.risk_extends
+        if self.risk_tags is not None:
+            result['RiskTags'] = self.risk_tags
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RiakTags') is not None:
-            self.riak_tags = m.get('RiakTags')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
         if m.get('RiskExtends') is not None:
             self.risk_extends = m.get('RiskExtends')
+        if m.get('RiskTags') is not None:
+            self.risk_tags = m.get('RiskTags')
         return self
 
 
