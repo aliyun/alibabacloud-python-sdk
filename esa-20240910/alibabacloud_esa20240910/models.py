@@ -5215,14 +5215,23 @@ class CreateEdgeContainerAppVersionRequestContainersACRImageInfo(TeaModel):
         tag: str = None,
         tag_url: str = None,
     ):
+        # The domain name of the Container Registry image.
         self.domain = domain
+        # The ID of the Container Registry instance.
         self.instance_id = instance_id
+        # Specifies whether the image is an enterprise-level Container Registry image.
         self.is_enterprise_registry = is_enterprise_registry
+        # The regions in which the Container Registry instance resides.
         self.region_id = region_id
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The namespace to which the image repository belongs.
         self.repo_namespace = repo_namespace
+        # The tag of the Container Registry image.
         self.tag = tag
+        # The URL of the Container Registry image tag.
         self.tag_url = tag_url
 
     def validate(self):
@@ -5292,16 +5301,27 @@ class CreateEdgeContainerAppVersionRequestContainersProbeContent(TeaModel):
         success_threshold: int = None,
         timeout_seconds: int = None,
     ):
+        # The command of the exec type probe.
         self.command = command
+        # The number of consecutive failed health checks required for a container to be considered as unhealthy.
         self.failure_threshold = failure_threshold
+        # The domain name that is used for health checks.
         self.host = host
+        # The request headers that are included in the container health check request.
         self.http_headers = http_headers
+        # The latency for container probe initialization.
         self.initial_delay_seconds = initial_delay_seconds
+        # The health check path.
         self.path = path
+        # The interval between container health checks.
         self.period_seconds = period_seconds
+        # The health check port.
         self.port = port
+        # The protocol that the container health check request uses.
         self.scheme = scheme
+        # The number of consecutive successful health checks required for a container to be considered as healthy.
         self.success_threshold = success_threshold
+        # The timeout period of the container health check.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -5381,24 +5401,48 @@ class CreateEdgeContainerAppVersionRequestContainers(TeaModel):
         spec: str = None,
         storage: str = None,
     ):
+        # The information about the Container Registry image.
         self.acrimage_info = acrimage_info
+        # The arguments that are passed to the container startup command. Separate the parameters with spaces.
         self.args = args
+        # The command that is used to start the container. Separate the arguments with spaces.
         self.command = command
+        # The environment variables. Separate the environment variables with commas (,).
         self.env_variables = env_variables
+        # The address of the image.
+        # 
         # This parameter is required.
         self.image = image
+        # Specifies whether the image is a Container Registry image.
+        # 
         # This parameter is required.
         self.is_acrimage = is_acrimage
+        # The name of the container. The name must be unique in the same container group.
+        # 
         # This parameter is required.
         self.name = name
+        # The command that is run before the container is started. Separate the arguments with spaces.
         self.post_start = post_start
+        # The command that is run before the container is stopped. Separate the arguments with spaces.
         self.pre_stop = pre_stop
+        # The content of the container health probe.
+        # 
         # This parameter is required.
         self.probe_content = probe_content
+        # The type of the probe. Valid values:
+        # 
+        # *   exec: the command type.
+        # *   tcpSocket: the TCP probe type.
+        # *   httpGet: the HTTP access type.
+        # 
         # This parameter is required.
         self.probe_type = probe_type
+        # The compute specification of the container. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
+        # 
         # This parameter is required.
         self.spec = spec
+        # The storage capacity. Valid values: 0.5G, 10G, 20G, and 30G.
+        # 
         # This parameter is required.
         self.storage = storage
 
@@ -5483,12 +5527,20 @@ class CreateEdgeContainerAppVersionRequest(TeaModel):
         name: str = None,
         remarks: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The container group to be deployed for this version, which contains information about images.\\
+        # The image data contains the image address, startup command, parameters, environment variables, and probe rules. You can specify one or more images. The parameter value is a JSON string.
+        # 
         # This parameter is required.
         self.containers = containers
+        # The version name, which must be 6 to 128 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The description of the version.
         self.remarks = remarks
 
     def validate(self):
@@ -5539,12 +5591,20 @@ class CreateEdgeContainerAppVersionShrinkRequest(TeaModel):
         name: str = None,
         remarks: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The container group to be deployed for this version, which contains information about images.\\
+        # The image data contains the image address, startup command, parameters, environment variables, and probe rules. You can specify one or more images. The parameter value is a JSON string.
+        # 
         # This parameter is required.
         self.containers_shrink = containers_shrink
+        # The version name, which must be 6 to 128 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The description of the version.
         self.remarks = remarks
 
     def validate(self):
@@ -5585,7 +5645,9 @@ class CreateEdgeContainerAppVersionResponseBody(TeaModel):
         request_id: str = None,
         version_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the created version.
         self.version_id = version_id
 
     def validate(self):
@@ -13091,121 +13153,6 @@ class DescribeHttpDDoSAttackProtectionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeHttpDDoSAttackProtectionResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeIPRangeListResponseBodyContent(TeaModel):
-    def __init__(
-        self,
-        cidr: str = None,
-        ip_type: str = None,
-    ):
-        self.cidr = cidr
-        self.ip_type = ip_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cidr is not None:
-            result['Cidr'] = self.cidr
-        if self.ip_type is not None:
-            result['IpType'] = self.ip_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Cidr') is not None:
-            self.cidr = m.get('Cidr')
-        if m.get('IpType') is not None:
-            self.ip_type = m.get('IpType')
-        return self
-
-
-class DescribeIPRangeListResponseBody(TeaModel):
-    def __init__(
-        self,
-        content: List[DescribeIPRangeListResponseBodyContent] = None,
-        request_id: str = None,
-    ):
-        self.content = content
-        self.request_id = request_id
-
-    def validate(self):
-        if self.content:
-            for k in self.content:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Content'] = []
-        if self.content is not None:
-            for k in self.content:
-                result['Content'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.content = []
-        if m.get('Content') is not None:
-            for k in m.get('Content'):
-                temp_model = DescribeIPRangeListResponseBodyContent()
-                self.content.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeIPRangeListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeIPRangeListResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeIPRangeListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20794,8 +20741,12 @@ class ListClientCertificatesRequest(TeaModel):
         page_size: int = None,
         site_id: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The website ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -20845,19 +20796,33 @@ class ListClientCertificatesResponseBodyResult(TeaModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The ID of the CA certificate.
         self.cacertificate_id = cacertificate_id
+        # The Common Name of the certificate.
         self.common_name = common_name
+        # The time when the certificate was created.
         self.create_time = create_time
+        # The certificate ID.
         self.id = id
+        # The certificate authority (CA) that issued the certificate.
         self.issuer = issuer
+        # The certificate name.
         self.name = name
+        # The time when the certificate expires.
         self.not_after = not_after
+        # The time when the certificate takes effect.
         self.not_before = not_before
+        # The public key algorithm of the certificate.
         self.pubkey_algorithm = pubkey_algorithm
+        # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
+        # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
+        # The certificate status.
         self.status = status
+        # The certificate type.
         self.type = type
+        # The time when the certificate was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -20943,12 +20908,19 @@ class ListClientCertificatesResponseBody(TeaModel):
         site_name: str = None,
         total_count: int = None,
     ):
+        # The page number returned.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The client certificates.
         self.result = result
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -24138,7 +24110,7 @@ class ListRecordsRequest(TeaModel):
         biz_name: str = None,
         page_number: int = None,
         page_size: int = None,
-        proxied: str = None,
+        proxied: bool = None,
         record_match_type: str = None,
         record_name: str = None,
         site_id: int = None,

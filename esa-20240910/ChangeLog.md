@@ -1,3 +1,7 @@
+2024-11-19 Version: 2.4.4
+- Update API ListRecords: update param Proxied.
+
+
 2024-11-13 Version: 2.4.3
 - Update API BatchCreateRecords: update param RecordList.
 - Update API CreateScheduledPreloadExecutions: update param Executions.

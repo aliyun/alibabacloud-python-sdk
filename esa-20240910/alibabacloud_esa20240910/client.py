@@ -2313,7 +2313,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateEdgeContainerAppVersionResponse:
         """
-        @summary 创建边缘容器应用的版本
+        @summary Creates a version for a containerized application. You can iterate the application based on the version.
         
         @param tmp_req: CreateEdgeContainerAppVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2358,7 +2358,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateEdgeContainerAppVersionResponse:
         """
-        @summary 创建边缘容器应用的版本
+        @summary Creates a version for a containerized application. You can iterate the application based on the version.
         
         @param tmp_req: CreateEdgeContainerAppVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2402,7 +2402,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateEdgeContainerAppVersionRequest,
     ) -> esa20240910_models.CreateEdgeContainerAppVersionResponse:
         """
-        @summary 创建边缘容器应用的版本
+        @summary Creates a version for a containerized application. You can iterate the application based on the version.
         
         @param request: CreateEdgeContainerAppVersionRequest
         @return: CreateEdgeContainerAppVersionResponse
@@ -2415,7 +2415,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateEdgeContainerAppVersionRequest,
     ) -> esa20240910_models.CreateEdgeContainerAppVersionResponse:
         """
-        @summary 创建边缘容器应用的版本
+        @summary Creates a version for a containerized application. You can iterate the application based on the version.
         
         @param request: CreateEdgeContainerAppVersionRequest
         @return: CreateEdgeContainerAppVersionResponse
@@ -7271,80 +7271,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_http_ddo_sattack_protection_with_options_async(request, runtime)
 
-    def describe_iprange_list_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.DescribeIPRangeListResponse:
-        """
-        @summary 查询加速服务节点IP段列表
-        
-        @param request: DescribeIPRangeListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeIPRangeListResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeIPRangeList',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.DescribeIPRangeListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_iprange_list_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.DescribeIPRangeListResponse:
-        """
-        @summary 查询加速服务节点IP段列表
-        
-        @param request: DescribeIPRangeListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeIPRangeListResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeIPRangeList',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.DescribeIPRangeListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_iprange_list(self) -> esa20240910_models.DescribeIPRangeListResponse:
-        """
-        @summary 查询加速服务节点IP段列表
-        
-        @return: DescribeIPRangeListResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_iprange_list_with_options(runtime)
-
-    async def describe_iprange_list_async(self) -> esa20240910_models.DescribeIPRangeListResponse:
-        """
-        @summary 查询加速服务节点IP段列表
-        
-        @return: DescribeIPRangeListResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_iprange_list_with_options_async(runtime)
-
     def describe_kv_account_status_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -11399,7 +11325,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListClientCertificatesResponse:
         """
-        @summary 查询站点下客户端证书列表
+        @summary Queries client certificates configured for a website.
         
         @param request: ListClientCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11432,7 +11358,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListClientCertificatesResponse:
         """
-        @summary 查询站点下客户端证书列表
+        @summary Queries client certificates configured for a website.
         
         @param request: ListClientCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11464,7 +11390,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListClientCertificatesRequest,
     ) -> esa20240910_models.ListClientCertificatesResponse:
         """
-        @summary 查询站点下客户端证书列表
+        @summary Queries client certificates configured for a website.
         
         @param request: ListClientCertificatesRequest
         @return: ListClientCertificatesResponse
@@ -11477,7 +11403,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListClientCertificatesRequest,
     ) -> esa20240910_models.ListClientCertificatesResponse:
         """
-        @summary 查询站点下客户端证书列表
+        @summary Queries client certificates configured for a website.
         
         @param request: ListClientCertificatesRequest
         @return: ListClientCertificatesResponse
