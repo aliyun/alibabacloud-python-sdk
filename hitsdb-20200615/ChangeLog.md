@@ -1,3 +1,37 @@
+2024-11-19 Version: 5.0.0
+- Support API ChangeResourceGroup.
+- Support API CreateLindormV2Instance.
+- Support API DeleteCustomResource.
+- Support API DeployLdpsSemiManagedComponent.
+- Support API GetLindormV2Instance.
+- Support API GetLindormV2InstanceEngineList.
+- Support API ModifyLindormV2Instance.
+- Support API ModifyLindormV2WhiteIpList.
+- Support API ReleaseLindormV2Instance.
+- Support API SetDefaultOlapComputeGroup.
+- Support API UpdateLindormV2InstanceParameter.
+- Support API UpgradeLindormV2StreamEngine.
+- Delete API CreateLdpsNamespace.
+- Update API CreateLdpsComputeGroup: update response param.
+- Update API CreateLindormInstance: update response param.
+- Update API DeleteLdpsComputeGroup: update response param.
+- Update API GetClientSourceIp: update response param.
+- Update API GetEngineDefaultAuth: update response param.
+- Update API GetInstanceIpWhiteList: update response param.
+- Update API GetInstanceSecurityGroups: update response param.
+- Update API GetLindormInstance: update response param.
+- Update API GetLindormInstanceEngineList: update response param.
+- Update API ListLdpsComputeGroups: update response param.
+- Update API ModifyInstancePayType: update response param.
+- Update API OpenComputeEngine: update response param.
+- Update API OpenComputePreCheck: update response param.
+- Update API RenewLindormInstance: update response param.
+- Update API RestartLdpsComputeGroup: update response param.
+- Update API SwitchLSQLV3MySQLService: update response param.
+- Update API UpdateInstanceIpWhiteList: update response param.
+- Update API UpdateLdpsComputeGroup: update response param.
+
+
 2024-06-05 Version: 4.6.2
 - Update API GetLindormInstance: update response param.
 
