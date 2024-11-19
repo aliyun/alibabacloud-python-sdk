@@ -1,3 +1,13 @@
+2024-11-19 Version: 4.2.0
+- Support API DescribeCustomDomainSampleRate.
+- Support API ListRealtimeLogDelivery.
+- Support API ModifyCustomDomainSampleRate.
+- Update API AddCdnDomain: update param Tag.
+- Update API RefreshObjectCaches: update param Force.
+- Update API RefreshObjectCaches: update param ObjectPath.
+- Update API RefreshObjectCaches: update param ObjectType.
+
+
 2024-11-06 Version: 4.1.0
 - Support API DescribeCdnTypes.
 - Support API DescribeUserCdnStatus.

@@ -7523,6 +7523,7 @@ class DescribeCdnFullDomainsBlockIPConfigRequest(TeaModel):
         self,
         iplist: str = None,
     ):
+        # The IP address or CIDR block to query. Separate multiple values with commas (,). You can specify up to 50 IP addresses or CIDR blocks.
         self.iplist = iplist
 
     def validate(self):
@@ -7552,8 +7553,17 @@ class DescribeCdnFullDomainsBlockIPConfigResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # The value of Code is not 0 in the following scenarios:
+        # 
+        # *   The format of the IP address is invalid.
+        # *   The number of IP addresses exceeds the upper limit.
+        # *   Other abnormal scenarios.
         self.code = code
+        # The returned results. If the operation is successful, URLs of OSS objects are returned. If the operation fails, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7632,10 +7642,16 @@ class DescribeCdnFullDomainsBlockIPHistoryRequest(TeaModel):
         iplist: str = None,
         start_time: str = None,
     ):
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The end time must be later than the start time.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The IP address or CIDR blocks to query.
+        # 
         # This parameter is required.
         self.iplist = iplist
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -7674,8 +7690,14 @@ class DescribeCdnFullDomainsBlockIPHistoryResponseBodyIPBlockInfo(TeaModel):
         deliver_time: str = None,
         status: str = None,
     ):
+        # The blocked IP address or CIDR block.
         self.block_ip = block_ip
+        # The delivery time.
         self.deliver_time = deliver_time
+        # The delivery status.
+        # 
+        # *   Success
+        # *   Failed
         self.status = status
 
     def validate(self):
@@ -7714,9 +7736,19 @@ class DescribeCdnFullDomainsBlockIPHistoryResponseBody(TeaModel):
         ipblock_info: List[DescribeCdnFullDomainsBlockIPHistoryResponseBodyIPBlockInfo] = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # The value of Code is not 0 in the following scenarios:
+        # 
+        # *   The format of the IP address is invalid.
+        # *   The format of the time is invalid.
+        # *   Other abnormal scenarios.
         self.code = code
+        # The description of the status returned.
         self.description = description
+        # The result of the operation.
         self.ipblock_info = ipblock_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10041,7 +10073,9 @@ class DescribeCdnTypesResponseBodyCdnTypesCdnType(TeaModel):
         desc: str = None,
         type: str = None,
     ):
+        # The description of the domain name type.
         self.desc = desc
+        # The type of the domain name.
         self.type = type
 
     def validate(self):
@@ -10109,7 +10143,9 @@ class DescribeCdnTypesResponseBody(TeaModel):
         cdn_types: DescribeCdnTypesResponseBodyCdnTypes = None,
         request_id: str = None,
     ):
+        # The types of the domain names.
         self.cdn_types = cdn_types
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12406,6 +12442,177 @@ class DescribeCertificateInfoByIDResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCertificateInfoByIDResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCustomDomainSampleRateRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+    ):
+        self.domain_name = domain_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        return self
+
+
+class DescribeCustomDomainSampleRateResponseBodyContentDomainContent(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        sample_rate: float = None,
+    ):
+        self.domain_name = domain_name
+        self.sample_rate = sample_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        return self
+
+
+class DescribeCustomDomainSampleRateResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        domain_content: List[DescribeCustomDomainSampleRateResponseBodyContentDomainContent] = None,
+    ):
+        self.domain_content = domain_content
+
+    def validate(self):
+        if self.domain_content:
+            for k in self.domain_content:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainContent'] = []
+        if self.domain_content is not None:
+            for k in self.domain_content:
+                result['DomainContent'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domain_content = []
+        if m.get('DomainContent') is not None:
+            for k in m.get('DomainContent'):
+                temp_model = DescribeCustomDomainSampleRateResponseBodyContentDomainContent()
+                self.domain_content.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCustomDomainSampleRateResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: DescribeCustomDomainSampleRateResponseBodyContent = None,
+        request_id: str = None,
+    ):
+        self.content = content
+        self.request_id = request_id
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            temp_model = DescribeCustomDomainSampleRateResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCustomDomainSampleRateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCustomDomainSampleRateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCustomDomainSampleRateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28057,10 +28264,18 @@ class DescribeUserCdnStatusResponseBody(TeaModel):
         on_service: bool = None,
         request_id: str = None,
     ):
+        # Indicates whetherAlibaba Cloud CDN is activated.
         self.enabled = enabled
+        # Indicates whether your account has overdue payments.
+        # 
+        # *   true
+        # *   false
         self.in_debt = in_debt
+        # Indicates whether the grace period for your overdue payments expired.
         self.in_debt_overdue = in_debt_overdue
+        # Indicates whether the service is available.
         self.on_service = on_service
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30532,6 +30747,182 @@ class ListFCTriggerResponse(TeaModel):
         return self
 
 
+class ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo(TeaModel):
+    def __init__(
+        self,
+        dm_id: int = None,
+        domain: str = None,
+        logstore: str = None,
+        project: str = None,
+        region: str = None,
+        status: str = None,
+    ):
+        # The domain ID.
+        self.dm_id = dm_id
+        # The accelerated domain name.
+        self.domain = domain
+        # The name of the Logstore where log entries are stored.
+        self.logstore = logstore
+        # The name of the Log Service project that is used for real-time log delivery.
+        self.project = project
+        # The ID of the region where the Log Service project is deployed.
+        self.region = region
+        # The status of real-time log delivery.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dm_id is not None:
+            result['DmId'] = self.dm_id
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.logstore is not None:
+            result['Logstore'] = self.logstore
+        if self.project is not None:
+            result['Project'] = self.project
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DmId') is not None:
+            self.dm_id = m.get('DmId')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Logstore') is not None:
+            self.logstore = m.get('Logstore')
+        if m.get('Project') is not None:
+            self.project = m.get('Project')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListRealtimeLogDeliveryResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        realtime_log_delivery_info: List[ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo] = None,
+    ):
+        self.realtime_log_delivery_info = realtime_log_delivery_info
+
+    def validate(self):
+        if self.realtime_log_delivery_info:
+            for k in self.realtime_log_delivery_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RealtimeLogDeliveryInfo'] = []
+        if self.realtime_log_delivery_info is not None:
+            for k in self.realtime_log_delivery_info:
+                result['RealtimeLogDeliveryInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.realtime_log_delivery_info = []
+        if m.get('RealtimeLogDeliveryInfo') is not None:
+            for k in m.get('RealtimeLogDeliveryInfo'):
+                temp_model = ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo()
+                self.realtime_log_delivery_info.append(temp_model.from_map(k))
+        return self
+
+
+class ListRealtimeLogDeliveryResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: ListRealtimeLogDeliveryResponseBodyContent = None,
+        request_id: str = None,
+    ):
+        # The logging information.
+        self.content = content
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            temp_model = ListRealtimeLogDeliveryResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListRealtimeLogDeliveryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRealtimeLogDeliveryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRealtimeLogDeliveryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListRealtimeLogDeliveryDomainsRequest(TeaModel):
     def __init__(
         self,
@@ -31758,6 +32149,121 @@ class ModifyCdnServiceResponse(TeaModel):
         return self
 
 
+class ModifyCustomDomainSampleRateRequest(TeaModel):
+    def __init__(
+        self,
+        base_config_id: str = None,
+        domain_name: str = None,
+        sample_rate: float = None,
+        sink_id: int = None,
+    ):
+        self.base_config_id = base_config_id
+        # This parameter is required.
+        self.domain_name = domain_name
+        # This parameter is required.
+        self.sample_rate = sample_rate
+        self.sink_id = sink_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_config_id is not None:
+            result['BaseConfigID'] = self.base_config_id
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        if self.sink_id is not None:
+            result['SinkID'] = self.sink_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseConfigID') is not None:
+            self.base_config_id = m.get('BaseConfigID')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        if m.get('SinkID') is not None:
+            self.sink_id = m.get('SinkID')
+        return self
+
+
+class ModifyCustomDomainSampleRateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyCustomDomainSampleRateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCustomDomainSampleRateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCustomDomainSampleRateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyRealtimeLogDeliveryRequest(TeaModel):
     def __init__(
         self,
@@ -32265,8 +32771,14 @@ class RefreshObjectCacheByCacheTagRequest(TeaModel):
     ):
         # This parameter is required.
         self.cache_tag = cache_tag
+        # The accelerated domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Specifies whether to purge all resources that you submit if the requested content is one of the resources that you submit to purge. Default value: false.
+        # 
+        # *   **true**: The nearest POP fetches all resources from the origin server, delivers them to the client, and updates the cache with the new version.
+        # *   **false**: The nearest POP checks the Last-Modified parameter of the resource on the origin server. If the parameter value is the same as that of the cached resource, the POP serves the cached resource. If the parameter value is not the same as that of the cached resource, the POP fetches the latest version from the origin server, delivers it to the client, and updates the cache with the new version.
         self.force = force
 
     def validate(self):
@@ -32303,7 +32815,12 @@ class RefreshObjectCacheByCacheTagResponseBody(TeaModel):
         refresh_task_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the refresh task. If multiple tasks are returned, the task IDs are separated by commas (,). The task IDs are merged based on the following rules:
+        # 
+        # *   If the tasks are specified for the same accelerated domain name, submitted within the same second, and run to refresh content based on URLs instead of directories, the task IDs are merged into one task ID (RefreshTaskId).
+        # *   If the number of tasks that are specified for the same accelerated domain name, submitted within the same second, and run to refresh content based on URLs instead of directories exceeds 2,000, every 2,000 task IDs are merged into one task ID (RefreshTaskId).
         self.refresh_task_id = refresh_task_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -32380,28 +32897,9 @@ class RefreshObjectCachesRequest(TeaModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # When the comparison between the source content and the source site resources is consistent, should the resources within the corresponding range be forcibly refreshed. The default is false.
-        # 
-        # *   **true**: purges all resources in the range that corresponds to the type of the purge task. If you set this parameter to true, when the requested resource matches the resource in the range that corresponds to the type of the purge task, the POP retrieves the resource from the origin server, returns the resource to the client, and caches the resource.
-        # *   **false**: purges the changed resources in the range that corresponds to the type of the purge task. If you set this parameter to false, when the requested resource matches the resource in the range that corresponds to the type of the purge task, the POP obtains the Last-Modified parameter of the resource from the origin server. If the obtained value of the Last-Modified parameter is the same as that of the cached resource, the cached resource is returned. Otherwise, the POP retrieves the resource from the origin server, returns the resource to the client, and caches the resource.
-        # 
-        # >  This parameter takes effect only when the ObjectType parameter is not set to File.
         self.force = force
-        # *   If you submit multiple URLs or directories at a time, separate them with line breaks (\\n) or (\\r\\n).
-        # *   The total number of domain names contained all URLs in a submitted task cannot exceed 10.
-        # 
         # This parameter is required.
         self.object_path = object_path
-        # The type of the object that you want to refresh. Valid values:
-        # 
-        # *   **File** (default): refreshes one or more files.
-        # *   **Directory**: refreshes the files in one or more directories.
-        # *   **Regex**: refreshes content based on regular expressions.
-        # *   **ExQuery**: omits parameters after the question mark in the URL and refreshes content.
-        # 
-        # If you set the ObjectType parameter to File or Directory, you can view [Refresh and prefetch resources](https://help.aliyun.com/document_detail/27140.html) to obtain more information. If you set the ObjectType parameter to Regex, you can view [Configure URL refresh rules that contain regular expressions](https://help.aliyun.com/document_detail/146195.html) to obtain more information.
-        # 
-        # If you set the ObjectType parameter to Directory, the resources in the directory that you want to refresh are marked as expired. You cannot delete the directory. If clients request resources on POPs that are marked as expired, Alibaba Cloud CDN checks whether the resources on your origin server are updated. If resources are updated, Alibaba Cloud CDN retrieves the latest version of the resources and returns the resources to the clients. Otherwise, the origin server returns the 304 status code.
         self.object_type = object_type
         self.owner_id = owner_id
         self.security_token = security_token
@@ -33230,11 +33728,24 @@ class SetCdnFullDomainsBlockIPRequest(TeaModel):
         operation_type: str = None,
         update_type: str = None,
     ):
+        # The duration for which IP addresses or CIDR blocks are blocked. Unit: seconds. The value **0** specifies that IP addresses or CIDR blocks are permanently blocked. This parameter is available only if you set **OperationType** to **block**.
         self.block_interval = block_interval
+        # The IP addresses that you want to block or unblock. Separate multiple IP addresses with commas (,). You can specify up to 1,000 IP addresses.
+        # 
         # This parameter is required.
         self.iplist = iplist
+        # The type of the operation.
+        # 
+        # *   block
+        # *   unblock
+        # 
         # This parameter is required.
         self.operation_type = operation_type
+        # The type of the blocking duration. This parameter is available only if you set **OperationType** to **block**. Valid values:
+        # 
+        # *   **cover**: The blocking duration that is specified in the request takes effect.
+        # *   **uncover**: The longer one of the blocking duration that is specified in the request and the remaining blocking duration takes effect.
+        # *   Default value: cover.
         self.update_type = update_type
 
     def validate(self):
@@ -33276,8 +33787,11 @@ class SetCdnFullDomainsBlockIPResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code. The status code 0 indicates that the call is successful. If another status code is returned, the call fails.
         self.code = code
+        # The additional information returned. If the request was successful, OK is returned. If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

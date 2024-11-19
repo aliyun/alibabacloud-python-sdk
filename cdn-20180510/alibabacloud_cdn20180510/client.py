@@ -5114,7 +5114,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigResponse:
         """
-        @summary 获取海量封禁全量配置
+        @summary You can call the DescribeCdnFullDomainsBlockIPConfig operation to query the configurations of full blocking.
+        
+        @description >
+        To use this operation,[submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+        If you specify IP addresses or CIDR blocks, IP addresses that are effective and the corresponding expiration time are returned. If you do not specify IP addresses or CIDR blocks, all effective IP addresses and the corresponding expiration time are returned.
+        The results are written to OSS and returned as OSS URLs. The content in OSS objects is in the format of IP address-Corresponding expiration time. The expiration time is in the YYYY-MM-DD hh:mm:ss format.
+        You can share OSS URLs with others. The shared URLs are valid for three days.
         
         @param request: DescribeCdnFullDomainsBlockIPConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5149,7 +5155,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigResponse:
         """
-        @summary 获取海量封禁全量配置
+        @summary You can call the DescribeCdnFullDomainsBlockIPConfig operation to query the configurations of full blocking.
+        
+        @description >
+        To use this operation,[submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+        If you specify IP addresses or CIDR blocks, IP addresses that are effective and the corresponding expiration time are returned. If you do not specify IP addresses or CIDR blocks, all effective IP addresses and the corresponding expiration time are returned.
+        The results are written to OSS and returned as OSS URLs. The content in OSS objects is in the format of IP address-Corresponding expiration time. The expiration time is in the YYYY-MM-DD hh:mm:ss format.
+        You can share OSS URLs with others. The shared URLs are valid for three days.
         
         @param request: DescribeCdnFullDomainsBlockIPConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5183,7 +5195,13 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigRequest,
     ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigResponse:
         """
-        @summary 获取海量封禁全量配置
+        @summary You can call the DescribeCdnFullDomainsBlockIPConfig operation to query the configurations of full blocking.
+        
+        @description >
+        To use this operation,[submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+        If you specify IP addresses or CIDR blocks, IP addresses that are effective and the corresponding expiration time are returned. If you do not specify IP addresses or CIDR blocks, all effective IP addresses and the corresponding expiration time are returned.
+        The results are written to OSS and returned as OSS URLs. The content in OSS objects is in the format of IP address-Corresponding expiration time. The expiration time is in the YYYY-MM-DD hh:mm:ss format.
+        You can share OSS URLs with others. The shared URLs are valid for three days.
         
         @param request: DescribeCdnFullDomainsBlockIPConfigRequest
         @return: DescribeCdnFullDomainsBlockIPConfigResponse
@@ -5196,7 +5214,13 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigRequest,
     ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigResponse:
         """
-        @summary 获取海量封禁全量配置
+        @summary You can call the DescribeCdnFullDomainsBlockIPConfig operation to query the configurations of full blocking.
+        
+        @description >
+        To use this operation,[submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+        If you specify IP addresses or CIDR blocks, IP addresses that are effective and the corresponding expiration time are returned. If you do not specify IP addresses or CIDR blocks, all effective IP addresses and the corresponding expiration time are returned.
+        The results are written to OSS and returned as OSS URLs. The content in OSS objects is in the format of IP address-Corresponding expiration time. The expiration time is in the YYYY-MM-DD hh:mm:ss format.
+        You can share OSS URLs with others. The shared URLs are valid for three days.
         
         @param request: DescribeCdnFullDomainsBlockIPConfigRequest
         @return: DescribeCdnFullDomainsBlockIPConfigResponse
@@ -5210,7 +5234,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryResponse:
         """
-        @summary 查询用户海量封禁历史
+        @summary Queries the blocking history.
+        
+        @description >
+        To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+        For a specified IP addresses and time range, the time when the IP address was delivered to the edge and the corresponding result are returned.
+        If a specified IP address or CIDR block has multiple blocking records in a specified time range, the records are sorted by delivery time in descending order.
+        The maximum time range to query is 90 days.
+        If no blocking record exists or delivery fails for the given IP address and time range, the delivery time is empty.
         
         @param request: DescribeCdnFullDomainsBlockIPHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5249,7 +5280,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryResponse:
         """
-        @summary 查询用户海量封禁历史
+        @summary Queries the blocking history.
+        
+        @description >
+        To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+        For a specified IP addresses and time range, the time when the IP address was delivered to the edge and the corresponding result are returned.
+        If a specified IP address or CIDR block has multiple blocking records in a specified time range, the records are sorted by delivery time in descending order.
+        The maximum time range to query is 90 days.
+        If no blocking record exists or delivery fails for the given IP address and time range, the delivery time is empty.
         
         @param request: DescribeCdnFullDomainsBlockIPHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5287,7 +5325,14 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryRequest,
     ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryResponse:
         """
-        @summary 查询用户海量封禁历史
+        @summary Queries the blocking history.
+        
+        @description >
+        To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+        For a specified IP addresses and time range, the time when the IP address was delivered to the edge and the corresponding result are returned.
+        If a specified IP address or CIDR block has multiple blocking records in a specified time range, the records are sorted by delivery time in descending order.
+        The maximum time range to query is 90 days.
+        If no blocking record exists or delivery fails for the given IP address and time range, the delivery time is empty.
         
         @param request: DescribeCdnFullDomainsBlockIPHistoryRequest
         @return: DescribeCdnFullDomainsBlockIPHistoryResponse
@@ -5300,7 +5345,14 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryRequest,
     ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryResponse:
         """
-        @summary 查询用户海量封禁历史
+        @summary Queries the blocking history.
+        
+        @description >
+        To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+        For a specified IP addresses and time range, the time when the IP address was delivered to the edge and the corresponding result are returned.
+        If a specified IP address or CIDR block has multiple blocking records in a specified time range, the records are sorted by delivery time in descending order.
+        The maximum time range to query is 90 days.
+        If no blocking record exists or delivery fails for the given IP address and time range, the delivery time is empty.
         
         @param request: DescribeCdnFullDomainsBlockIPHistoryRequest
         @return: DescribeCdnFullDomainsBlockIPHistoryResponse
@@ -6616,6 +6668,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnTypesResponse:
         """
+        @summary Queries the types of domain names.
+        
         @param request: DescribeCdnTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCdnTypesResponse
@@ -6653,6 +6707,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnTypesResponse:
         """
+        @summary Queries the types of domain names.
+        
         @param request: DescribeCdnTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCdnTypesResponse
@@ -6689,6 +6745,8 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeCdnTypesRequest,
     ) -> cdn_20180510_models.DescribeCdnTypesResponse:
         """
+        @summary Queries the types of domain names.
+        
         @param request: DescribeCdnTypesRequest
         @return: DescribeCdnTypesResponse
         """
@@ -6700,6 +6758,8 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeCdnTypesRequest,
     ) -> cdn_20180510_models.DescribeCdnTypesResponse:
         """
+        @summary Queries the types of domain names.
+        
         @param request: DescribeCdnTypesRequest
         @return: DescribeCdnTypesResponse
         """
@@ -7721,6 +7781,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_certificate_info_by_idwith_options_async(request, runtime)
+
+    def describe_custom_domain_sample_rate_with_options(
+        self,
+        request: cdn_20180510_models.DescribeCustomDomainSampleRateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制查询域名采样率
+        
+        @param request: DescribeCustomDomainSampleRateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomDomainSampleRateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomDomainSampleRate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCustomDomainSampleRateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_custom_domain_sample_rate_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeCustomDomainSampleRateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制查询域名采样率
+        
+        @param request: DescribeCustomDomainSampleRateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomDomainSampleRateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomDomainSampleRate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCustomDomainSampleRateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_custom_domain_sample_rate(
+        self,
+        request: cdn_20180510_models.DescribeCustomDomainSampleRateRequest,
+    ) -> cdn_20180510_models.DescribeCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制查询域名采样率
+        
+        @param request: DescribeCustomDomainSampleRateRequest
+        @return: DescribeCustomDomainSampleRateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_custom_domain_sample_rate_with_options(request, runtime)
+
+    async def describe_custom_domain_sample_rate_async(
+        self,
+        request: cdn_20180510_models.DescribeCustomDomainSampleRateRequest,
+    ) -> cdn_20180510_models.DescribeCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制查询域名采样率
+        
+        @param request: DescribeCustomDomainSampleRateRequest
+        @return: DescribeCustomDomainSampleRateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_custom_domain_sample_rate_with_options_async(request, runtime)
 
     def describe_custom_log_config_with_options(
         self,
@@ -15718,6 +15870,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserCdnStatusResponse:
         """
+        @summary Queries the status of a user.
+        
         @param request: DescribeUserCdnStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUserCdnStatusResponse
@@ -15753,6 +15907,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserCdnStatusResponse:
         """
+        @summary Queries the status of a user.
+        
         @param request: DescribeUserCdnStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUserCdnStatusResponse
@@ -15787,6 +15943,8 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeUserCdnStatusRequest,
     ) -> cdn_20180510_models.DescribeUserCdnStatusResponse:
         """
+        @summary Queries the status of a user.
+        
         @param request: DescribeUserCdnStatusRequest
         @return: DescribeUserCdnStatusResponse
         """
@@ -15798,6 +15956,8 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeUserCdnStatusRequest,
     ) -> cdn_20180510_models.DescribeUserCdnStatusResponse:
         """
+        @summary Queries the status of a user.
+        
         @param request: DescribeUserCdnStatusRequest
         @return: DescribeUserCdnStatusResponse
         """
@@ -17064,6 +17224,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_fctrigger_with_options_async(request, runtime)
 
+    def list_realtime_log_delivery_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.ListRealtimeLogDeliveryResponse:
+        """
+        @summary Queries all real-time log delivery tasks within your Alibaba Cloud account.
+        
+        @description \\\\* \\*\\*\
+        
+        @param request: ListRealtimeLogDeliveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRealtimeLogDeliveryResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListRealtimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.ListRealtimeLogDeliveryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_realtime_log_delivery_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.ListRealtimeLogDeliveryResponse:
+        """
+        @summary Queries all real-time log delivery tasks within your Alibaba Cloud account.
+        
+        @description \\\\* \\*\\*\
+        
+        @param request: ListRealtimeLogDeliveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRealtimeLogDeliveryResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListRealtimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.ListRealtimeLogDeliveryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_realtime_log_delivery(self) -> cdn_20180510_models.ListRealtimeLogDeliveryResponse:
+        """
+        @summary Queries all real-time log delivery tasks within your Alibaba Cloud account.
+        
+        @description \\\\* \\*\\*\
+        
+        @return: ListRealtimeLogDeliveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_realtime_log_delivery_with_options(runtime)
+
+    async def list_realtime_log_delivery_async(self) -> cdn_20180510_models.ListRealtimeLogDeliveryResponse:
+        """
+        @summary Queries all real-time log delivery tasks within your Alibaba Cloud account.
+        
+        @description \\\\* \\*\\*\
+        
+        @return: ListRealtimeLogDeliveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_realtime_log_delivery_with_options_async(runtime)
+
     def list_realtime_log_delivery_domains_with_options(
         self,
         request: cdn_20180510_models.ListRealtimeLogDeliveryDomainsRequest,
@@ -17904,6 +18146,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_cdn_service_with_options_async(request, runtime)
 
+    def modify_custom_domain_sample_rate_with_options(
+        self,
+        request: cdn_20180510_models.ModifyCustomDomainSampleRateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.ModifyCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制修改域名采样率接口
+        
+        @param request: ModifyCustomDomainSampleRateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCustomDomainSampleRateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.base_config_id):
+            body['BaseConfigID'] = request.base_config_id
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.sample_rate):
+            body['SampleRate'] = request.sample_rate
+        if not UtilClient.is_unset(request.sink_id):
+            body['SinkID'] = request.sink_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyCustomDomainSampleRate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.ModifyCustomDomainSampleRateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_custom_domain_sample_rate_with_options_async(
+        self,
+        request: cdn_20180510_models.ModifyCustomDomainSampleRateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.ModifyCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制修改域名采样率接口
+        
+        @param request: ModifyCustomDomainSampleRateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCustomDomainSampleRateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.base_config_id):
+            body['BaseConfigID'] = request.base_config_id
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.sample_rate):
+            body['SampleRate'] = request.sample_rate
+        if not UtilClient.is_unset(request.sink_id):
+            body['SinkID'] = request.sink_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyCustomDomainSampleRate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.ModifyCustomDomainSampleRateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_custom_domain_sample_rate(
+        self,
+        request: cdn_20180510_models.ModifyCustomDomainSampleRateRequest,
+    ) -> cdn_20180510_models.ModifyCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制修改域名采样率接口
+        
+        @param request: ModifyCustomDomainSampleRateRequest
+        @return: ModifyCustomDomainSampleRateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_custom_domain_sample_rate_with_options(request, runtime)
+
+    async def modify_custom_domain_sample_rate_async(
+        self,
+        request: cdn_20180510_models.ModifyCustomDomainSampleRateRequest,
+    ) -> cdn_20180510_models.ModifyCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制修改域名采样率接口
+        
+        @param request: ModifyCustomDomainSampleRateRequest
+        @return: ModifyCustomDomainSampleRateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_custom_domain_sample_rate_with_options_async(request, runtime)
+
     def modify_realtime_log_delivery_with_options(
         self,
         request: cdn_20180510_models.ModifyRealtimeLogDeliveryRequest,
@@ -18398,7 +18748,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.RefreshObjectCacheByCacheTagResponse:
         """
-        @summary 指定缓存tag刷新节点上的文件内容
+        @summary Refreshes the cache based on cache tags that you configured.
         
         @param request: RefreshObjectCacheByCacheTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18437,7 +18787,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.RefreshObjectCacheByCacheTagResponse:
         """
-        @summary 指定缓存tag刷新节点上的文件内容
+        @summary Refreshes the cache based on cache tags that you configured.
         
         @param request: RefreshObjectCacheByCacheTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18475,7 +18825,7 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.RefreshObjectCacheByCacheTagRequest,
     ) -> cdn_20180510_models.RefreshObjectCacheByCacheTagResponse:
         """
-        @summary 指定缓存tag刷新节点上的文件内容
+        @summary Refreshes the cache based on cache tags that you configured.
         
         @param request: RefreshObjectCacheByCacheTagRequest
         @return: RefreshObjectCacheByCacheTagResponse
@@ -18488,7 +18838,7 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.RefreshObjectCacheByCacheTagRequest,
     ) -> cdn_20180510_models.RefreshObjectCacheByCacheTagResponse:
         """
-        @summary 指定缓存tag刷新节点上的文件内容
+        @summary Refreshes the cache based on cache tags that you configured.
         
         @param request: RefreshObjectCacheByCacheTagRequest
         @return: RefreshObjectCacheByCacheTagResponse
@@ -18524,18 +18874,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.force):
-            query['Force'] = request.force
-        if not UtilClient.is_unset(request.object_path):
-            query['ObjectPath'] = request.object_path
-        if not UtilClient.is_unset(request.object_type):
-            query['ObjectType'] = request.object_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        body = {}
+        if not UtilClient.is_unset(request.force):
+            body['Force'] = request.force
+        if not UtilClient.is_unset(request.object_path):
+            body['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.object_type):
+            body['ObjectType'] = request.object_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RefreshObjectCaches',
@@ -18581,18 +18933,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.force):
-            query['Force'] = request.force
-        if not UtilClient.is_unset(request.object_path):
-            query['ObjectPath'] = request.object_path
-        if not UtilClient.is_unset(request.object_type):
-            query['ObjectType'] = request.object_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        body = {}
+        if not UtilClient.is_unset(request.force):
+            body['Force'] = request.force
+        if not UtilClient.is_unset(request.object_path):
+            body['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.object_type):
+            body['ObjectType'] = request.object_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RefreshObjectCaches',
@@ -19258,7 +19612,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetCdnFullDomainsBlockIPResponse:
         """
-        @summary 配置CDN上的海量封禁功能
+        @summary Blocks or unblocks IP addresses from accessing domain names.
+        
+        @description >
+        To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+        This operation is suitable for blocking or unblocking a maximum of 1,000 IP addresses or CIDR blocks at a time.
         
         @param request: SetCdnFullDomainsBlockIPRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19299,7 +19657,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetCdnFullDomainsBlockIPResponse:
         """
-        @summary 配置CDN上的海量封禁功能
+        @summary Blocks or unblocks IP addresses from accessing domain names.
+        
+        @description >
+        To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+        This operation is suitable for blocking or unblocking a maximum of 1,000 IP addresses or CIDR blocks at a time.
         
         @param request: SetCdnFullDomainsBlockIPRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19339,7 +19701,11 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.SetCdnFullDomainsBlockIPRequest,
     ) -> cdn_20180510_models.SetCdnFullDomainsBlockIPResponse:
         """
-        @summary 配置CDN上的海量封禁功能
+        @summary Blocks or unblocks IP addresses from accessing domain names.
+        
+        @description >
+        To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+        This operation is suitable for blocking or unblocking a maximum of 1,000 IP addresses or CIDR blocks at a time.
         
         @param request: SetCdnFullDomainsBlockIPRequest
         @return: SetCdnFullDomainsBlockIPResponse
@@ -19352,7 +19718,11 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.SetCdnFullDomainsBlockIPRequest,
     ) -> cdn_20180510_models.SetCdnFullDomainsBlockIPResponse:
         """
-        @summary 配置CDN上的海量封禁功能
+        @summary Blocks or unblocks IP addresses from accessing domain names.
+        
+        @description >
+        To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+        This operation is suitable for blocking or unblocking a maximum of 1,000 IP addresses or CIDR blocks at a time.
         
         @param request: SetCdnFullDomainsBlockIPRequest
         @return: SetCdnFullDomainsBlockIPResponse
