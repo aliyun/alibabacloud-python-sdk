@@ -5747,6 +5747,7 @@ class GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue(Te
 class GetQualityCheckTaskResultResponseBodyDataQualityCheckList(TeaModel):
     def __init__(
         self,
+        biz_type: str = None,
         check_explanation: str = None,
         check_passed: str = None,
         check_process: str = None,
@@ -5758,7 +5759,9 @@ class GetQualityCheckTaskResultResponseBodyDataQualityCheckList(TeaModel):
         quality_group_id: str = None,
         rule_description: str = None,
         rule_id: str = None,
+        rule_type: str = None,
     ):
+        self.biz_type = biz_type
         self.check_explanation = check_explanation
         self.check_passed = check_passed
         self.check_process = check_process
@@ -5770,6 +5773,7 @@ class GetQualityCheckTaskResultResponseBodyDataQualityCheckList(TeaModel):
         self.quality_group_id = quality_group_id
         self.rule_description = rule_description
         self.rule_id = rule_id
+        self.rule_type = rule_type
 
     def validate(self):
         if self.origin_dialogue:
@@ -5783,6 +5787,8 @@ class GetQualityCheckTaskResultResponseBodyDataQualityCheckList(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_type is not None:
+            result['bizType'] = self.biz_type
         if self.check_explanation is not None:
             result['checkExplanation'] = self.check_explanation
         if self.check_passed is not None:
@@ -5807,10 +5813,14 @@ class GetQualityCheckTaskResultResponseBodyDataQualityCheckList(TeaModel):
             result['ruleDescription'] = self.rule_description
         if self.rule_id is not None:
             result['ruleId'] = self.rule_id
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('bizType') is not None:
+            self.biz_type = m.get('bizType')
         if m.get('checkExplanation') is not None:
             self.check_explanation = m.get('checkExplanation')
         if m.get('checkPassed') is not None:
@@ -5836,6 +5846,8 @@ class GetQualityCheckTaskResultResponseBodyDataQualityCheckList(TeaModel):
             self.rule_description = m.get('ruleDescription')
         if m.get('ruleId') is not None:
             self.rule_id = m.get('ruleId')
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
         return self
 
 
