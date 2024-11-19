@@ -48,12 +48,20 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvi
         status: str = None,
         status_message: str = None,
     ):
-        # The type of the sharing operation. Valid values:
+        # This parameter is deprecated. The OperationType parameter is used instead.
+        self.associate_type = associate_type
+        # The failure description.
+        self.failure_description = failure_description
+        # The failure cause. Valid values:
+        # 
+        # *   Unavailable: The resource cannot be shared.
+        # *   LimitExceeded: The number of shared resources within the Alibaba Cloud account exceeds the upper limit.
+        # *   ZonalResourceInaccessible: The resource is unavailable in this region.
+        # *   InternalError: An internal error occurred during the check.
+        self.failure_reason = failure_reason
+        # The operation type. Valid values:
         # 
         # *   Associate
-        self.associate_type = associate_type
-        self.failure_description = failure_description
-        self.failure_reason = failure_reason
         self.operation_type = operation_type
         # The ID of the shared resource.
         self.resource_id = resource_id
@@ -61,14 +69,9 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvi
         # 
         # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         self.resource_type = resource_type
-        # The failure status. Valid values:
-        # 
-        # *   Unavailable: The resource cannot be shared.
-        # *   LimitExceeded: The number of shared resources within the Alibaba Cloud account exceeds the upper limit.
-        # *   ZonalResourceInaccessible: The resource is unavailable in this region.
-        # *   InternalError: An internal error occurred during the check.
+        # This parameter is deprecated. The FailureReason parameter is used instead.
         self.status = status
-        # The failure cause.
+        # This parameter is deprecated. The FailureDescription parameter is used instead.
         self.status_message = status_message
 
     def validate(self):
@@ -2773,13 +2776,15 @@ class ListResourceShareAssociationsRequest(TeaModel):
         # 
         # Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
-        # The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+        # The `token` that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
         self.next_token = next_token
         # The ID of the resource.
         # 
         # >  This parameter is unavailable if you set the `AssociationType` parameter to `Target`.
         self.resource_id = resource_id
         # The IDs of the resource shares.
+        # 
+        # Valid values of N: 1 to 5. This indicates that a maximum of five resource shares can be specified at a time.
         self.resource_share_ids = resource_share_ids
         # The ID of the principal.
         # 
@@ -2842,13 +2847,36 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociat
         status: str = None,
         status_message: str = None,
     ):
+        # This parameter is deprecated. The OperationType parameter is used instead.
         self.associate_type = associate_type
+        # The ID of the entity. The value of this parameter depends on the value of the AssociationType parameter:
+        # 
+        # *   If the value of AssociationType is Resource, the value of this parameter is the ID of the principal.
+        # *   If the value of AssociationType is Target, the value of this parameter is the ID of the resource.
         self.entity_id = entity_id
+        # The type of the entity. The value of this parameter depends on the value of the AssociationType parameter:
+        # 
+        # *   If the value of AssociationType is Resource, the value of this parameter is the type of the resource. For information about the types of resources that can be shared, see Services that work with Resource Sharing.
+        # *   If the value of AssociationType is Target, the value of this parameter is `ResourceDirectory`, `Folder`, `Account`, or `Service`.
         self.entity_type = entity_type
+        # The failure description.
         self.failure_description = failure_description
+        # The failure cause. Valid values:
+        # 
+        # *   Unavailable: The resource does not exist.
+        # *   LimitExceeded: The number of principals for the resource exceeds the upper limit.
+        # *   ZonalResourceInaccessible: The resource is unavailable in this region.
+        # *   InternalError: An internal error occurred.
+        # *   UnsupportedOperation: You cannot perform this operation.
         self.failure_reason = failure_reason
+        # The operation type. Valid values:
+        # 
+        # *   Associate
+        # *   Disassociate
         self.operation_type = operation_type
+        # This parameter is deprecated. The FailureReason parameter is used instead.
         self.status = status
+        # This parameter is deprecated. The FailureDescription parameter is used instead.
         self.status_message = status_message
 
     def validate(self):
@@ -2915,6 +2943,7 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaMode
         target_property: str = None,
         update_time: str = None,
     ):
+        # The information about the failure.
         self.association_failed_details = association_failed_details
         # The association status. Valid values:
         # 
@@ -2940,23 +2969,29 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaMode
         self.create_time = create_time
         # The ID of the entity. The value of this parameter depends on the value of the AssociationType parameter:
         # 
-        # *   If the value of `AssociationType` is `Resource`, the value of this parameter is the ID of the shared resource.
+        # *   If the value of `AssociationType` is `Resource`, the value of this parameter is the ID of the resource.
         # *   If the value of `AssociationType` is `Target`, the value of this parameter is the ID of the principal.
         self.entity_id = entity_id
         # The type of the entity. The value of this parameter depends on the value of the AssociationType parameter:
         # 
-        # *   If the value of AssociationType is Resource, the value of this parameter is the type of the resource. For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
+        # *   If the value of AssociationType is Resource, the value of this parameter is the type of the resource. For information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         # *   If the value of AssociationType is Target, the value of this parameter is `Account`.
         self.entity_type = entity_type
         # Indicates whether the principal is outside the resource directory. Valid values:
         # 
-        # *   true: The principal is outside the resource directory.
-        # *   false: The principal is in the resource directory.
+        # *   true
+        # *   false
         self.external = external
         # The ID of the resource share.
         self.resource_share_id = resource_share_id
         # The name of the resource share.
         self.resource_share_name = resource_share_name
+        # The properties of the principal, such as the time range within which the resource is shared. Valid values of `timeRangeType`:
+        # 
+        # *   timeRange: a specific time range
+        # *   day: all day
+        # 
+        # >  This parameter is returned only if the principal is an Alibaba Cloud service.
         self.target_property = target_property
         # The time when the association of the entity was updated. The value of this parameter depends on the value of the AssociationType parameter:
         # 
@@ -3043,9 +3078,9 @@ class ListResourceShareAssociationsResponseBody(TeaModel):
         request_id: str = None,
         resource_share_associations: List[ListResourceShareAssociationsResponseBodyResourceShareAssociations] = None,
     ):
-        # The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+        # The `token` that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information of the entities.
         self.resource_share_associations = resource_share_associations
@@ -3190,13 +3225,22 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitation
         status: str = None,
         status_message: str = None,
     ):
-        # The type of the sharing operation. Valid values:
+        # This parameter is deprecated. The OperationType parameter is used instead.
+        self.associate_type = associate_type
+        # The failure description.
+        self.failure_description = failure_description
+        # The failure cause. Valid values:
+        # 
+        # *   Unavailable: The resource cannot be shared.
+        # *   LimitExceeded: The number of shared resources within the Alibaba Cloud account exceeds the upper limit.
+        # *   ZonalResourceInaccessible: The resource is unavailable in this region.
+        # *   InternalError: An internal error occurred during the check.
+        # *   UnsupportedOperation: You cannot perform this operation.
+        self.failure_reason = failure_reason
+        # The operation type. Valid values:
         # 
         # *   Associate
         # *   Disassociate
-        self.associate_type = associate_type
-        self.failure_description = failure_description
-        self.failure_reason = failure_reason
         self.operation_type = operation_type
         # The ID of the shared resource.
         self.resource_id = resource_id
@@ -3204,15 +3248,9 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitation
         # 
         # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
         self.resource_type = resource_type
-        # The failure status. Valid values:
-        # 
-        # *   Unavailable: The resource cannot be shared.
-        # *   LimitExceeded: The number of shared resources within the Alibaba Cloud account exceeds the upper limit.
-        # *   ZonalResourceInaccessible: The resource is unavailable in this region.
-        # *   UnsupportedOperation: The operation is not allowed because another association exists.
-        # *   InternalError: An internal error occurred during the check.
+        # This parameter is deprecated. The FailureReason parameter is used instead.
         self.status = status
-        # The failure cause.
+        # This parameter is deprecated. The FailureDescription parameter is used instead.
         self.status_message = status_message
 
     def validate(self):
@@ -4529,6 +4567,262 @@ class ListSharedTargetsResponse(TeaModel):
         return self
 
 
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        self.next_token = next_token
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        tag_resource: List[ListTagResourcesResponseBodyTagResourcesTagResource] = None,
+    ):
+        self.tag_resource = tag_resource
+
+    def validate(self):
+        if self.tag_resource:
+            for k in self.tag_resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TagResource'] = []
+        if self.tag_resource is not None:
+            for k in self.tag_resource:
+                result['TagResource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_resource = []
+        if m.get('TagResource') is not None:
+            for k in m.get('TagResource'):
+                temp_model = ListTagResourcesResponseBodyTagResourcesTagResource()
+                self.tag_resource.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: ListTagResourcesResponseBodyTagResources = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            self.tag_resources.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_resources is not None:
+            result['TagResources'] = self.tag_resources.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagResources') is not None:
+            temp_model = ListTagResourcesResponseBodyTagResources()
+            self.tag_resources = temp_model.from_map(m['TagResources'])
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RejectResourceShareInvitationRequest(TeaModel):
     def __init__(
         self,
@@ -4725,6 +5019,285 @@ class RejectResourceShareInvitationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RejectResourceShareInvitationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        # This parameter is required.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UntagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag_key: List[str] = None,
+    ):
+        self.all = all
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

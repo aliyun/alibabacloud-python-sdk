@@ -1,3 +1,9 @@
+2024-11-19 Version: 2.2.0
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UntagResources.
+
+
 2024-11-18 Version: 2.1.5
 - Update API CreateResourceShare: add param ResourceGroupId.
 - Update API CreateResourceShare: add param Tag.
