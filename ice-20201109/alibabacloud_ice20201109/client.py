@@ -514,7 +514,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddTemplateResponse:
         """
-        @summary AddTemplate
+        @summary Creates a template.
+        
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
         
         @param request: AddTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -565,7 +569,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddTemplateResponse:
         """
-        @summary AddTemplate
+        @summary Creates a template.
+        
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
         
         @param request: AddTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -615,7 +623,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddTemplateRequest,
     ) -> ice20201109_models.AddTemplateResponse:
         """
-        @summary AddTemplate
+        @summary Creates a template.
+        
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
         
         @param request: AddTemplateRequest
         @return: AddTemplateResponse
@@ -628,7 +640,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddTemplateRequest,
     ) -> ice20201109_models.AddTemplateResponse:
         """
-        @summary AddTemplate
+        @summary Creates a template.
+        
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
         
         @param request: AddTemplateRequest
         @return: AddTemplateResponse
@@ -850,7 +866,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CancelDNAJobResponse:
         """
-        @summary 取消DNA作业
+        @summary Cancels a media fingerprint analysis job.
+        
+        @description    You can cancel a media fingerprint analysis job only if the job is in the Queuing state.
+        We recommend that you call the **UpdatePipeline** operation to set the status of the ApsaraVideo Media Processing (MPS) queue to Paused before you cancel a job. This suspends job scheduling in the MPS queue. After the job is canceled, you must set the status of the MPS queue back to Active so that the other jobs in the MPS queue can be scheduled.
         
         @param request: CancelDNAJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -893,7 +912,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CancelDNAJobResponse:
         """
-        @summary 取消DNA作业
+        @summary Cancels a media fingerprint analysis job.
+        
+        @description    You can cancel a media fingerprint analysis job only if the job is in the Queuing state.
+        We recommend that you call the **UpdatePipeline** operation to set the status of the ApsaraVideo Media Processing (MPS) queue to Paused before you cancel a job. This suspends job scheduling in the MPS queue. After the job is canceled, you must set the status of the MPS queue back to Active so that the other jobs in the MPS queue can be scheduled.
         
         @param request: CancelDNAJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -935,7 +957,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.CancelDNAJobRequest,
     ) -> ice20201109_models.CancelDNAJobResponse:
         """
-        @summary 取消DNA作业
+        @summary Cancels a media fingerprint analysis job.
+        
+        @description    You can cancel a media fingerprint analysis job only if the job is in the Queuing state.
+        We recommend that you call the **UpdatePipeline** operation to set the status of the ApsaraVideo Media Processing (MPS) queue to Paused before you cancel a job. This suspends job scheduling in the MPS queue. After the job is canceled, you must set the status of the MPS queue back to Active so that the other jobs in the MPS queue can be scheduled.
         
         @param request: CancelDNAJobRequest
         @return: CancelDNAJobResponse
@@ -948,7 +973,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.CancelDNAJobRequest,
     ) -> ice20201109_models.CancelDNAJobResponse:
         """
-        @summary 取消DNA作业
+        @summary Cancels a media fingerprint analysis job.
+        
+        @description    You can cancel a media fingerprint analysis job only if the job is in the Queuing state.
+        We recommend that you call the **UpdatePipeline** operation to set the status of the ApsaraVideo Media Processing (MPS) queue to Paused before you cancel a job. This suspends job scheduling in the MPS queue. After the job is canceled, you must set the status of the MPS queue back to Active so that the other jobs in the MPS queue can be scheduled.
         
         @param request: CancelDNAJobRequest
         @return: CancelDNAJobResponse
@@ -1058,7 +1086,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateAuditResponse:
         """
-        @summary 提交人工审核
+        @summary Submits manual review results for media assets.
         
         @param request: CreateAuditRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1093,7 +1121,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateAuditResponse:
         """
-        @summary 提交人工审核
+        @summary Submits manual review results for media assets.
         
         @param request: CreateAuditRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1127,7 +1155,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateAuditRequest,
     ) -> ice20201109_models.CreateAuditResponse:
         """
-        @summary 提交人工审核
+        @summary Submits manual review results for media assets.
         
         @param request: CreateAuditRequest
         @return: CreateAuditResponse
@@ -1140,7 +1168,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateAuditRequest,
     ) -> ice20201109_models.CreateAuditResponse:
         """
-        @summary 提交人工审核
+        @summary Submits manual review results for media assets.
         
         @param request: CreateAuditRequest
         @return: CreateAuditResponse
@@ -1154,7 +1182,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateAvatarTrainingJobResponse:
         """
-        @summary 创建数字人训练任务
+        @summary Creates a digital human training job. You can configure the basic information of the digital human and the materials required for the training. Note: This operation is used to initialize the training job. It does not submit the training job. To submit the training job, call the SubmitAvatarTrainingJob operation.
         
         @param request: CreateAvatarTrainingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1201,7 +1229,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateAvatarTrainingJobResponse:
         """
-        @summary 创建数字人训练任务
+        @summary Creates a digital human training job. You can configure the basic information of the digital human and the materials required for the training. Note: This operation is used to initialize the training job. It does not submit the training job. To submit the training job, call the SubmitAvatarTrainingJob operation.
         
         @param request: CreateAvatarTrainingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1247,7 +1275,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateAvatarTrainingJobRequest,
     ) -> ice20201109_models.CreateAvatarTrainingJobResponse:
         """
-        @summary 创建数字人训练任务
+        @summary Creates a digital human training job. You can configure the basic information of the digital human and the materials required for the training. Note: This operation is used to initialize the training job. It does not submit the training job. To submit the training job, call the SubmitAvatarTrainingJob operation.
         
         @param request: CreateAvatarTrainingJobRequest
         @return: CreateAvatarTrainingJobResponse
@@ -1260,7 +1288,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateAvatarTrainingJobRequest,
     ) -> ice20201109_models.CreateAvatarTrainingJobResponse:
         """
-        @summary 创建数字人训练任务
+        @summary Creates a digital human training job. You can configure the basic information of the digital human and the materials required for the training. Note: This operation is used to initialize the training job. It does not submit the training job. To submit the training job, call the SubmitAvatarTrainingJob operation.
         
         @param request: CreateAvatarTrainingJobRequest
         @return: CreateAvatarTrainingJobResponse
@@ -1274,7 +1302,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateCustomTemplateResponse:
         """
-        @summary 创建媒体处理自定义模板
+        @summary Creates a custom template.
         
         @param request: CreateCustomTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1315,7 +1343,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateCustomTemplateResponse:
         """
-        @summary 创建媒体处理自定义模板
+        @summary Creates a custom template.
         
         @param request: CreateCustomTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1355,7 +1383,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateCustomTemplateRequest,
     ) -> ice20201109_models.CreateCustomTemplateResponse:
         """
-        @summary 创建媒体处理自定义模板
+        @summary Creates a custom template.
         
         @param request: CreateCustomTemplateRequest
         @return: CreateCustomTemplateResponse
@@ -1368,7 +1396,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateCustomTemplateRequest,
     ) -> ice20201109_models.CreateCustomTemplateResponse:
         """
-        @summary 创建媒体处理自定义模板
+        @summary Creates a custom template.
         
         @param request: CreateCustomTemplateRequest
         @return: CreateCustomTemplateResponse
@@ -1382,7 +1410,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateCustomizedVoiceJobResponse:
         """
-        @summary 创建人声克隆任务
+        @summary Creates a human voice cloning job. You can configure the basic information of the human voice cloning job.
         
         @param request: CreateCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1425,7 +1453,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateCustomizedVoiceJobResponse:
         """
-        @summary 创建人声克隆任务
+        @summary Creates a human voice cloning job. You can configure the basic information of the human voice cloning job.
         
         @param request: CreateCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1467,7 +1495,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateCustomizedVoiceJobRequest,
     ) -> ice20201109_models.CreateCustomizedVoiceJobResponse:
         """
-        @summary 创建人声克隆任务
+        @summary Creates a human voice cloning job. You can configure the basic information of the human voice cloning job.
         
         @param request: CreateCustomizedVoiceJobRequest
         @return: CreateCustomizedVoiceJobResponse
@@ -1480,7 +1508,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateCustomizedVoiceJobRequest,
     ) -> ice20201109_models.CreateCustomizedVoiceJobResponse:
         """
-        @summary 创建人声克隆任务
+        @summary Creates a human voice cloning job. You can configure the basic information of the human voice cloning job.
         
         @param request: CreateCustomizedVoiceJobRequest
         @return: CreateCustomizedVoiceJobResponse
@@ -1494,7 +1522,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateDNADBResponse:
         """
-        @summary 创建指纹库
+        @summary Creates media fingerprint libraries.
+        
+        @description    You can create up to five media fingerprint libraries within an account. To increase the quota, submit a ticket. You can call the DeleteDNADB operation to delete the fingerprint libraries that you no longer need.
         
         @param request: CreateDNADBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1541,7 +1571,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateDNADBResponse:
         """
-        @summary 创建指纹库
+        @summary Creates media fingerprint libraries.
+        
+        @description    You can create up to five media fingerprint libraries within an account. To increase the quota, submit a ticket. You can call the DeleteDNADB operation to delete the fingerprint libraries that you no longer need.
         
         @param request: CreateDNADBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1587,7 +1619,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateDNADBRequest,
     ) -> ice20201109_models.CreateDNADBResponse:
         """
-        @summary 创建指纹库
+        @summary Creates media fingerprint libraries.
+        
+        @description    You can create up to five media fingerprint libraries within an account. To increase the quota, submit a ticket. You can call the DeleteDNADB operation to delete the fingerprint libraries that you no longer need.
         
         @param request: CreateDNADBRequest
         @return: CreateDNADBResponse
@@ -1600,7 +1634,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateDNADBRequest,
     ) -> ice20201109_models.CreateDNADBResponse:
         """
-        @summary 创建指纹库
+        @summary Creates media fingerprint libraries.
+        
+        @description    You can create up to five media fingerprint libraries within an account. To increase the quota, submit a ticket. You can call the DeleteDNADB operation to delete the fingerprint libraries that you no longer need.
         
         @param request: CreateDNADBRequest
         @return: CreateDNADBResponse
@@ -2078,7 +2114,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreatePipelineResponse:
         """
-        @summary 添加用户管道配置
+        @summary Creates an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: CreatePipelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2117,7 +2153,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreatePipelineResponse:
         """
-        @summary 添加用户管道配置
+        @summary Creates an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: CreatePipelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2155,7 +2191,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreatePipelineRequest,
     ) -> ice20201109_models.CreatePipelineResponse:
         """
-        @summary 添加用户管道配置
+        @summary Creates an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: CreatePipelineRequest
         @return: CreatePipelineResponse
@@ -2168,7 +2204,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreatePipelineRequest,
     ) -> ice20201109_models.CreatePipelineResponse:
         """
-        @summary 添加用户管道配置
+        @summary Creates an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: CreatePipelineRequest
         @return: CreatePipelineResponse
@@ -2674,7 +2710,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DecryptKMSDataKeyResponse:
         """
-        @summary 解密KMS密钥DataKey
+        @summary Decrypts the ciphertext specified by CiphertextBlob in the Key Management Service (KMS) data key.
         
         @param request: DecryptKMSDataKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2709,7 +2745,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DecryptKMSDataKeyResponse:
         """
-        @summary 解密KMS密钥DataKey
+        @summary Decrypts the ciphertext specified by CiphertextBlob in the Key Management Service (KMS) data key.
         
         @param request: DecryptKMSDataKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2743,7 +2779,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DecryptKMSDataKeyRequest,
     ) -> ice20201109_models.DecryptKMSDataKeyResponse:
         """
-        @summary 解密KMS密钥DataKey
+        @summary Decrypts the ciphertext specified by CiphertextBlob in the Key Management Service (KMS) data key.
         
         @param request: DecryptKMSDataKeyRequest
         @return: DecryptKMSDataKeyResponse
@@ -2756,7 +2792,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DecryptKMSDataKeyRequest,
     ) -> ice20201109_models.DecryptKMSDataKeyResponse:
         """
-        @summary 解密KMS密钥DataKey
+        @summary Decrypts the ciphertext specified by CiphertextBlob in the Key Management Service (KMS) data key.
         
         @param request: DecryptKMSDataKeyRequest
         @return: DecryptKMSDataKeyResponse
@@ -2770,7 +2806,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteAvatarTrainingJobResponse:
         """
-        @summary 更新数字人训练任务信息
+        @summary Deletes a digital human training job that is in the Init or Fail state.
         
         @param request: DeleteAvatarTrainingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2805,7 +2841,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteAvatarTrainingJobResponse:
         """
-        @summary 更新数字人训练任务信息
+        @summary Deletes a digital human training job that is in the Init or Fail state.
         
         @param request: DeleteAvatarTrainingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2839,7 +2875,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteAvatarTrainingJobRequest,
     ) -> ice20201109_models.DeleteAvatarTrainingJobResponse:
         """
-        @summary 更新数字人训练任务信息
+        @summary Deletes a digital human training job that is in the Init or Fail state.
         
         @param request: DeleteAvatarTrainingJobRequest
         @return: DeleteAvatarTrainingJobResponse
@@ -2852,7 +2888,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteAvatarTrainingJobRequest,
     ) -> ice20201109_models.DeleteAvatarTrainingJobResponse:
         """
-        @summary 更新数字人训练任务信息
+        @summary Deletes a digital human training job that is in the Init or Fail state.
         
         @param request: DeleteAvatarTrainingJobRequest
         @return: DeleteAvatarTrainingJobResponse
@@ -2970,7 +3006,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteCustomTemplateResponse:
         """
-        @summary 删除媒体处理自定义模板
+        @summary Deletes a custom template.
         
         @param request: DeleteCustomTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3005,7 +3041,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteCustomTemplateResponse:
         """
-        @summary 删除媒体处理自定义模板
+        @summary Deletes a custom template.
         
         @param request: DeleteCustomTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3039,7 +3075,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteCustomTemplateRequest,
     ) -> ice20201109_models.DeleteCustomTemplateResponse:
         """
-        @summary 删除媒体处理自定义模板
+        @summary Deletes a custom template.
         
         @param request: DeleteCustomTemplateRequest
         @return: DeleteCustomTemplateResponse
@@ -3052,7 +3088,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteCustomTemplateRequest,
     ) -> ice20201109_models.DeleteCustomTemplateResponse:
         """
-        @summary 删除媒体处理自定义模板
+        @summary Deletes a custom template.
         
         @param request: DeleteCustomTemplateRequest
         @return: DeleteCustomTemplateResponse
@@ -3066,7 +3102,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteCustomizedVoiceJobResponse:
         """
-        @summary 删除用户的专属人声任务
+        @summary Deletes a human voice cloning job that is not in the Training or Success state.
         
         @param request: DeleteCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3101,7 +3137,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteCustomizedVoiceJobResponse:
         """
-        @summary 删除用户的专属人声任务
+        @summary Deletes a human voice cloning job that is not in the Training or Success state.
         
         @param request: DeleteCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3135,7 +3171,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteCustomizedVoiceJobRequest,
     ) -> ice20201109_models.DeleteCustomizedVoiceJobResponse:
         """
-        @summary 删除用户的专属人声任务
+        @summary Deletes a human voice cloning job that is not in the Training or Success state.
         
         @param request: DeleteCustomizedVoiceJobRequest
         @return: DeleteCustomizedVoiceJobResponse
@@ -3148,7 +3184,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteCustomizedVoiceJobRequest,
     ) -> ice20201109_models.DeleteCustomizedVoiceJobResponse:
         """
-        @summary 删除用户的专属人声任务
+        @summary Deletes a human voice cloning job that is not in the Training or Success state.
         
         @param request: DeleteCustomizedVoiceJobRequest
         @return: DeleteCustomizedVoiceJobResponse
@@ -3162,7 +3198,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteDNADBResponse:
         """
-        @summary 删除DNA库
+        @summary Deletes a media fingerprint library.
         
         @param request: DeleteDNADBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3205,7 +3241,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteDNADBResponse:
         """
-        @summary 删除DNA库
+        @summary Deletes a media fingerprint library.
         
         @param request: DeleteDNADBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3247,7 +3283,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteDNADBRequest,
     ) -> ice20201109_models.DeleteDNADBResponse:
         """
-        @summary 删除DNA库
+        @summary Deletes a media fingerprint library.
         
         @param request: DeleteDNADBRequest
         @return: DeleteDNADBResponse
@@ -3260,7 +3296,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteDNADBRequest,
     ) -> ice20201109_models.DeleteDNADBResponse:
         """
-        @summary 删除DNA库
+        @summary Deletes a media fingerprint library.
         
         @param request: DeleteDNADBRequest
         @return: DeleteDNADBResponse
@@ -3274,7 +3310,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteDNAFilesResponse:
         """
-        @summary 删除DNA文件
+        @summary Deletes files from a media fingerprint library.
         
         @param request: DeleteDNAFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3319,7 +3355,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteDNAFilesResponse:
         """
-        @summary 删除DNA文件
+        @summary Deletes files from a media fingerprint library.
         
         @param request: DeleteDNAFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3363,7 +3399,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteDNAFilesRequest,
     ) -> ice20201109_models.DeleteDNAFilesResponse:
         """
-        @summary 删除DNA文件
+        @summary Deletes files from a media fingerprint library.
         
         @param request: DeleteDNAFilesRequest
         @return: DeleteDNAFilesResponse
@@ -3376,7 +3412,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteDNAFilesRequest,
     ) -> ice20201109_models.DeleteDNAFilesResponse:
         """
-        @summary 删除DNA文件
+        @summary Deletes files from a media fingerprint library.
         
         @param request: DeleteDNAFilesRequest
         @return: DeleteDNAFilesResponse
@@ -4494,7 +4530,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeletePipelineResponse:
         """
-        @summary 删除管道配置
+        @summary Deletes an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: DeletePipelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4529,7 +4565,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeletePipelineResponse:
         """
-        @summary 删除管道配置
+        @summary Deletes an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: DeletePipelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4563,7 +4599,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeletePipelineRequest,
     ) -> ice20201109_models.DeletePipelineResponse:
         """
-        @summary 删除管道配置
+        @summary Deletes an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: DeletePipelineRequest
         @return: DeletePipelineResponse
@@ -4576,7 +4612,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeletePipelineRequest,
     ) -> ice20201109_models.DeletePipelineResponse:
         """
-        @summary 删除管道配置
+        @summary Deletes an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: DeletePipelineRequest
         @return: DeletePipelineResponse
@@ -4702,7 +4738,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteSmartJobResponse:
         """
-        @summary DeleteSmartJob
+        @summary Deletes intelligent jobs based on job IDs.
         
         @param request: DeleteSmartJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4737,7 +4773,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteSmartJobResponse:
         """
-        @summary DeleteSmartJob
+        @summary Deletes intelligent jobs based on job IDs.
         
         @param request: DeleteSmartJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4771,7 +4807,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteSmartJobRequest,
     ) -> ice20201109_models.DeleteSmartJobResponse:
         """
-        @summary DeleteSmartJob
+        @summary Deletes intelligent jobs based on job IDs.
         
         @param request: DeleteSmartJobRequest
         @return: DeleteSmartJobResponse
@@ -4784,7 +4820,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteSmartJobRequest,
     ) -> ice20201109_models.DeleteSmartJobResponse:
         """
-        @summary DeleteSmartJob
+        @summary Deletes intelligent jobs based on job IDs.
         
         @param request: DeleteSmartJobRequest
         @return: DeleteSmartJobResponse
@@ -4798,7 +4834,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteTemplateResponse:
         """
-        @summary DeleteTemplate
+        @summary Deletes templates.
+        
+        @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: DeleteTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4831,7 +4871,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteTemplateResponse:
         """
-        @summary DeleteTemplate
+        @summary Deletes templates.
+        
+        @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: DeleteTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4863,7 +4907,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteTemplateRequest,
     ) -> ice20201109_models.DeleteTemplateResponse:
         """
-        @summary DeleteTemplate
+        @summary Deletes templates.
+        
+        @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: DeleteTemplateRequest
         @return: DeleteTemplateResponse
@@ -4876,7 +4924,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteTemplateRequest,
     ) -> ice20201109_models.DeleteTemplateResponse:
         """
-        @summary DeleteTemplate
+        @summary Deletes templates.
+        
+        @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: DeleteTemplateRequest
         @return: DeleteTemplateResponse
@@ -4986,6 +5038,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsEditUsageResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on video-on-demand (VOD) editing. The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsEditUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMeterImsEditUsageResponse
@@ -5025,6 +5079,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsEditUsageResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on video-on-demand (VOD) editing. The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsEditUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMeterImsEditUsageResponse
@@ -5063,6 +5119,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsEditUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsEditUsageResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on video-on-demand (VOD) editing. The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsEditUsageRequest
         @return: DescribeMeterImsEditUsageResponse
         """
@@ -5074,6 +5132,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsEditUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsEditUsageResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on video-on-demand (VOD) editing. The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsEditUsageRequest
         @return: DescribeMeterImsEditUsageResponse
         """
@@ -5086,6 +5146,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on ultra high definition (UHD) transcoding of ApsaraVideo Media Processing (MPS). The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsMediaConvertUHDUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMeterImsMediaConvertUHDUsageResponse
@@ -5125,6 +5187,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on ultra high definition (UHD) transcoding of ApsaraVideo Media Processing (MPS). The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsMediaConvertUHDUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMeterImsMediaConvertUHDUsageResponse
@@ -5163,6 +5227,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsMediaConvertUHDUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on ultra high definition (UHD) transcoding of ApsaraVideo Media Processing (MPS). The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsMediaConvertUHDUsageRequest
         @return: DescribeMeterImsMediaConvertUHDUsageResponse
         """
@@ -5174,6 +5240,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsMediaConvertUHDUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on ultra high definition (UHD) transcoding of ApsaraVideo Media Processing (MPS). The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsMediaConvertUHDUsageRequest
         @return: DescribeMeterImsMediaConvertUHDUsageResponse
         """
@@ -5186,7 +5254,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUsageResponse:
         """
-        @summary 智能媒体服务点播转码用量
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on video-on-demand (VOD) transcoding. The maximum query range is 31 days. You can query data within the last 90 days.
         
         @param request: DescribeMeterImsMediaConvertUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5227,7 +5295,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUsageResponse:
         """
-        @summary 智能媒体服务点播转码用量
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on video-on-demand (VOD) transcoding. The maximum query range is 31 days. You can query data within the last 90 days.
         
         @param request: DescribeMeterImsMediaConvertUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5267,7 +5335,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsMediaConvertUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUsageResponse:
         """
-        @summary 智能媒体服务点播转码用量
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on video-on-demand (VOD) transcoding. The maximum query range is 31 days. You can query data within the last 90 days.
         
         @param request: DescribeMeterImsMediaConvertUsageRequest
         @return: DescribeMeterImsMediaConvertUsageResponse
@@ -5280,7 +5348,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsMediaConvertUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUsageResponse:
         """
-        @summary 智能媒体服务点播转码用量
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on video-on-demand (VOD) transcoding. The maximum query range is 31 days. You can query data within the last 90 days.
         
         @param request: DescribeMeterImsMediaConvertUsageRequest
         @return: DescribeMeterImsMediaConvertUsageResponse
@@ -5294,6 +5362,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsMpsAiUsageResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on AI processing of ApsaraVideo Media Processing (MPS). The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsMpsAiUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMeterImsMpsAiUsageResponse
@@ -5333,6 +5403,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsMpsAiUsageResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on AI processing of ApsaraVideo Media Processing (MPS). The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsMpsAiUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMeterImsMpsAiUsageResponse
@@ -5371,6 +5443,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsMpsAiUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsMpsAiUsageResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on AI processing of ApsaraVideo Media Processing (MPS). The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsMpsAiUsageRequest
         @return: DescribeMeterImsMpsAiUsageResponse
         """
@@ -5382,6 +5456,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsMpsAiUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsMpsAiUsageResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS) on AI processing of ApsaraVideo Media Processing (MPS). The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsMpsAiUsageRequest
         @return: DescribeMeterImsMpsAiUsageResponse
         """
@@ -5394,6 +5470,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsSummaryResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS). The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMeterImsSummaryResponse
@@ -5431,6 +5509,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsSummaryResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS). The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMeterImsSummaryResponse
@@ -5467,6 +5547,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsSummaryRequest,
     ) -> ice20201109_models.DescribeMeterImsSummaryResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS). The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsSummaryRequest
         @return: DescribeMeterImsSummaryResponse
         """
@@ -5478,6 +5560,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsSummaryRequest,
     ) -> ice20201109_models.DescribeMeterImsSummaryResponse:
         """
+        @summary Queries the usage statistics of Intelligent Media Services (IMS). The maximum query range is 31 days. You can query data within the last 90 days.
+        
         @param request: DescribeMeterImsSummaryRequest
         @return: DescribeMeterImsSummaryResponse
         """
@@ -5802,7 +5886,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DetectAudioForCustomizedVoiceJobResponse:
         """
-        @summary 本接口用来检测用户的朗读是否有明显的发音错误、嘈杂的环境等
+        @summary Checks whether the reading of users has issues, such as noticeable pronunciation errors or background noise. After the audio is checked on the cloud, the qualified audio is temporarily stored on the cloud for subsequent training. Do not skip this step.
         
         @param request: DetectAudioForCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5841,7 +5925,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DetectAudioForCustomizedVoiceJobResponse:
         """
-        @summary 本接口用来检测用户的朗读是否有明显的发音错误、嘈杂的环境等
+        @summary Checks whether the reading of users has issues, such as noticeable pronunciation errors or background noise. After the audio is checked on the cloud, the qualified audio is temporarily stored on the cloud for subsequent training. Do not skip this step.
         
         @param request: DetectAudioForCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5879,7 +5963,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DetectAudioForCustomizedVoiceJobRequest,
     ) -> ice20201109_models.DetectAudioForCustomizedVoiceJobResponse:
         """
-        @summary 本接口用来检测用户的朗读是否有明显的发音错误、嘈杂的环境等
+        @summary Checks whether the reading of users has issues, such as noticeable pronunciation errors or background noise. After the audio is checked on the cloud, the qualified audio is temporarily stored on the cloud for subsequent training. Do not skip this step.
         
         @param request: DetectAudioForCustomizedVoiceJobRequest
         @return: DetectAudioForCustomizedVoiceJobResponse
@@ -5892,7 +5976,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DetectAudioForCustomizedVoiceJobRequest,
     ) -> ice20201109_models.DetectAudioForCustomizedVoiceJobResponse:
         """
-        @summary 本接口用来检测用户的朗读是否有明显的发音错误、嘈杂的环境等
+        @summary Checks whether the reading of users has issues, such as noticeable pronunciation errors or background noise. After the audio is checked on the cloud, the qualified audio is temporarily stored on the cloud for subsequent training. Do not skip this step.
         
         @param request: DetectAudioForCustomizedVoiceJobRequest
         @return: DetectAudioForCustomizedVoiceJobResponse
@@ -6120,6 +6204,8 @@ class Client(OpenApiClient):
             query['Expire'] = request.expire
         if not UtilClient.is_unset(request.template_config_shrink):
             query['TemplateConfig'] = request.template_config_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
@@ -6165,6 +6251,8 @@ class Client(OpenApiClient):
             query['Expire'] = request.expire
         if not UtilClient.is_unset(request.template_config_shrink):
             query['TemplateConfig'] = request.template_config_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
@@ -6217,7 +6305,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GenerateKMSDataKeyResponse:
         """
-        @summary 生成KMS密钥DataKey
+        @summary Generates a random Key Management Service (KMS) data key used for HTTP Live Streaming (HLS) encryption and transcoding of videos.
         
         @param request: GenerateKMSDataKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6245,7 +6333,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GenerateKMSDataKeyResponse:
         """
-        @summary 生成KMS密钥DataKey
+        @summary Generates a random Key Management Service (KMS) data key used for HTTP Live Streaming (HLS) encryption and transcoding of videos.
         
         @param request: GenerateKMSDataKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6270,7 +6358,7 @@ class Client(OpenApiClient):
 
     def generate_kmsdata_key(self) -> ice20201109_models.GenerateKMSDataKeyResponse:
         """
-        @summary 生成KMS密钥DataKey
+        @summary Generates a random Key Management Service (KMS) data key used for HTTP Live Streaming (HLS) encryption and transcoding of videos.
         
         @return: GenerateKMSDataKeyResponse
         """
@@ -6279,7 +6367,7 @@ class Client(OpenApiClient):
 
     async def generate_kmsdata_key_async(self) -> ice20201109_models.GenerateKMSDataKeyResponse:
         """
-        @summary 生成KMS密钥DataKey
+        @summary Generates a random Key Management Service (KMS) data key used for HTTP Live Streaming (HLS) encryption and transcoding of videos.
         
         @return: GenerateKMSDataKeyResponse
         """
@@ -6292,7 +6380,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetAvatarResponse:
         """
-        @summary 查询单个数字人
+        @summary Queries the information about a trained digital human.
         
         @param request: GetAvatarRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6327,7 +6415,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetAvatarResponse:
         """
-        @summary 查询单个数字人
+        @summary Queries the information about a trained digital human.
         
         @param request: GetAvatarRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6361,7 +6449,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetAvatarRequest,
     ) -> ice20201109_models.GetAvatarResponse:
         """
-        @summary 查询单个数字人
+        @summary Queries the information about a trained digital human.
         
         @param request: GetAvatarRequest
         @return: GetAvatarResponse
@@ -6374,7 +6462,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetAvatarRequest,
     ) -> ice20201109_models.GetAvatarResponse:
         """
-        @summary 查询单个数字人
+        @summary Queries the information about a trained digital human.
         
         @param request: GetAvatarRequest
         @return: GetAvatarResponse
@@ -6388,7 +6476,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetAvatarTrainingJobResponse:
         """
-        @summary 查询单个数字人训练任务
+        @summary Queries the information about a digital human training job.
         
         @param request: GetAvatarTrainingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6423,7 +6511,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetAvatarTrainingJobResponse:
         """
-        @summary 查询单个数字人训练任务
+        @summary Queries the information about a digital human training job.
         
         @param request: GetAvatarTrainingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6457,7 +6545,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetAvatarTrainingJobRequest,
     ) -> ice20201109_models.GetAvatarTrainingJobResponse:
         """
-        @summary 查询单个数字人训练任务
+        @summary Queries the information about a digital human training job.
         
         @param request: GetAvatarTrainingJobRequest
         @return: GetAvatarTrainingJobResponse
@@ -6470,7 +6558,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetAvatarTrainingJobRequest,
     ) -> ice20201109_models.GetAvatarTrainingJobResponse:
         """
-        @summary 查询单个数字人训练任务
+        @summary Queries the information about a digital human training job.
         
         @param request: GetAvatarTrainingJobRequest
         @return: GetAvatarTrainingJobResponse
@@ -6484,7 +6572,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetBatchMediaProducingJobResponse:
         """
-        @summary 一键成片-批量获取剪辑任务
+        @summary Queries the information about a quick video production job, including the input parameters, job state, and the IDs and URLs of the output media assets. You can call this operation to query only quick video production jobs created within the past year.
         
         @param request: GetBatchMediaProducingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6519,7 +6607,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetBatchMediaProducingJobResponse:
         """
-        @summary 一键成片-批量获取剪辑任务
+        @summary Queries the information about a quick video production job, including the input parameters, job state, and the IDs and URLs of the output media assets. You can call this operation to query only quick video production jobs created within the past year.
         
         @param request: GetBatchMediaProducingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6553,7 +6641,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetBatchMediaProducingJobRequest,
     ) -> ice20201109_models.GetBatchMediaProducingJobResponse:
         """
-        @summary 一键成片-批量获取剪辑任务
+        @summary Queries the information about a quick video production job, including the input parameters, job state, and the IDs and URLs of the output media assets. You can call this operation to query only quick video production jobs created within the past year.
         
         @param request: GetBatchMediaProducingJobRequest
         @return: GetBatchMediaProducingJobResponse
@@ -6566,7 +6654,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetBatchMediaProducingJobRequest,
     ) -> ice20201109_models.GetBatchMediaProducingJobResponse:
         """
-        @summary 一键成片-批量获取剪辑任务
+        @summary Queries the information about a quick video production job, including the input parameters, job state, and the IDs and URLs of the output media assets. You can call this operation to query only quick video production jobs created within the past year.
         
         @param request: GetBatchMediaProducingJobRequest
         @return: GetBatchMediaProducingJobResponse
@@ -6774,7 +6862,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCustomTemplateResponse:
         """
-        @summary 获取单个媒体处理自定义模板
+        @summary Queries the information about a custom template.
+        
+        @description You can call this operation to query the information about a template with the ID specified by the TemplateId parameter. You can also query the information about the default template. If TemplateId is specified, other parameters are ignored and the template whose ID is specified is queried. If TemplateId is not specified, the default template is queried based on other parameters. In this case, Type is required.
+        Template types:
+        1.  1: transcoding template.
+        2.  2: snapshot template.
+        3.  3: animated image template.
+        4.  4\\. image watermark template.
+        5.  5: text watermark template.
+        6.  6: subtitle template.
+        7.  7: AI-assisted content moderation template.
+        8.  8: AI-assisted intelligent thumbnail template.
+        9.  9: AI-assisted intelligent erasure template.
+        Subtypes of transcoding templates:
+        1.  1 (Normal): regular template.
+        2.  2 (AudioTranscode): audio transcoding template.
+        3.  3 (Remux): container format conversion template.
+        4.  4 (NarrowBandV1): Narrowband HD 1.0 template.
+        5.  5 (NarrowBandV2): Narrowband HD 2.0 template.
+        Subtypes of snapshot templates:
+        1.  1 (Normal): regular template.
+        2.  2 (Sprite): sprite template.
+        3.  3 (WebVtt): WebVTT template.
+        Subtypes of AI-assisted content moderation templates:
+        1.  1 (Video): video moderation template.
+        2.  2 (Audio): audio moderation template.
+        3.  3 (Image): image moderation template.
+        Subtypes of AI-assisted intelligent erasure templates:
+        1.  1 (VideoDelogo): logo erasure template.
+        2.  2 (VideoDetext): subtitle erasure template.
         
         @param request: GetCustomTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6813,7 +6930,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCustomTemplateResponse:
         """
-        @summary 获取单个媒体处理自定义模板
+        @summary Queries the information about a custom template.
+        
+        @description You can call this operation to query the information about a template with the ID specified by the TemplateId parameter. You can also query the information about the default template. If TemplateId is specified, other parameters are ignored and the template whose ID is specified is queried. If TemplateId is not specified, the default template is queried based on other parameters. In this case, Type is required.
+        Template types:
+        1.  1: transcoding template.
+        2.  2: snapshot template.
+        3.  3: animated image template.
+        4.  4\\. image watermark template.
+        5.  5: text watermark template.
+        6.  6: subtitle template.
+        7.  7: AI-assisted content moderation template.
+        8.  8: AI-assisted intelligent thumbnail template.
+        9.  9: AI-assisted intelligent erasure template.
+        Subtypes of transcoding templates:
+        1.  1 (Normal): regular template.
+        2.  2 (AudioTranscode): audio transcoding template.
+        3.  3 (Remux): container format conversion template.
+        4.  4 (NarrowBandV1): Narrowband HD 1.0 template.
+        5.  5 (NarrowBandV2): Narrowband HD 2.0 template.
+        Subtypes of snapshot templates:
+        1.  1 (Normal): regular template.
+        2.  2 (Sprite): sprite template.
+        3.  3 (WebVtt): WebVTT template.
+        Subtypes of AI-assisted content moderation templates:
+        1.  1 (Video): video moderation template.
+        2.  2 (Audio): audio moderation template.
+        3.  3 (Image): image moderation template.
+        Subtypes of AI-assisted intelligent erasure templates:
+        1.  1 (VideoDelogo): logo erasure template.
+        2.  2 (VideoDetext): subtitle erasure template.
         
         @param request: GetCustomTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6851,7 +6997,36 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCustomTemplateRequest,
     ) -> ice20201109_models.GetCustomTemplateResponse:
         """
-        @summary 获取单个媒体处理自定义模板
+        @summary Queries the information about a custom template.
+        
+        @description You can call this operation to query the information about a template with the ID specified by the TemplateId parameter. You can also query the information about the default template. If TemplateId is specified, other parameters are ignored and the template whose ID is specified is queried. If TemplateId is not specified, the default template is queried based on other parameters. In this case, Type is required.
+        Template types:
+        1.  1: transcoding template.
+        2.  2: snapshot template.
+        3.  3: animated image template.
+        4.  4\\. image watermark template.
+        5.  5: text watermark template.
+        6.  6: subtitle template.
+        7.  7: AI-assisted content moderation template.
+        8.  8: AI-assisted intelligent thumbnail template.
+        9.  9: AI-assisted intelligent erasure template.
+        Subtypes of transcoding templates:
+        1.  1 (Normal): regular template.
+        2.  2 (AudioTranscode): audio transcoding template.
+        3.  3 (Remux): container format conversion template.
+        4.  4 (NarrowBandV1): Narrowband HD 1.0 template.
+        5.  5 (NarrowBandV2): Narrowband HD 2.0 template.
+        Subtypes of snapshot templates:
+        1.  1 (Normal): regular template.
+        2.  2 (Sprite): sprite template.
+        3.  3 (WebVtt): WebVTT template.
+        Subtypes of AI-assisted content moderation templates:
+        1.  1 (Video): video moderation template.
+        2.  2 (Audio): audio moderation template.
+        3.  3 (Image): image moderation template.
+        Subtypes of AI-assisted intelligent erasure templates:
+        1.  1 (VideoDelogo): logo erasure template.
+        2.  2 (VideoDetext): subtitle erasure template.
         
         @param request: GetCustomTemplateRequest
         @return: GetCustomTemplateResponse
@@ -6864,7 +7039,36 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCustomTemplateRequest,
     ) -> ice20201109_models.GetCustomTemplateResponse:
         """
-        @summary 获取单个媒体处理自定义模板
+        @summary Queries the information about a custom template.
+        
+        @description You can call this operation to query the information about a template with the ID specified by the TemplateId parameter. You can also query the information about the default template. If TemplateId is specified, other parameters are ignored and the template whose ID is specified is queried. If TemplateId is not specified, the default template is queried based on other parameters. In this case, Type is required.
+        Template types:
+        1.  1: transcoding template.
+        2.  2: snapshot template.
+        3.  3: animated image template.
+        4.  4\\. image watermark template.
+        5.  5: text watermark template.
+        6.  6: subtitle template.
+        7.  7: AI-assisted content moderation template.
+        8.  8: AI-assisted intelligent thumbnail template.
+        9.  9: AI-assisted intelligent erasure template.
+        Subtypes of transcoding templates:
+        1.  1 (Normal): regular template.
+        2.  2 (AudioTranscode): audio transcoding template.
+        3.  3 (Remux): container format conversion template.
+        4.  4 (NarrowBandV1): Narrowband HD 1.0 template.
+        5.  5 (NarrowBandV2): Narrowband HD 2.0 template.
+        Subtypes of snapshot templates:
+        1.  1 (Normal): regular template.
+        2.  2 (Sprite): sprite template.
+        3.  3 (WebVtt): WebVTT template.
+        Subtypes of AI-assisted content moderation templates:
+        1.  1 (Video): video moderation template.
+        2.  2 (Audio): audio moderation template.
+        3.  3 (Image): image moderation template.
+        Subtypes of AI-assisted intelligent erasure templates:
+        1.  1 (VideoDelogo): logo erasure template.
+        2.  2 (VideoDetext): subtitle erasure template.
         
         @param request: GetCustomTemplateRequest
         @return: GetCustomTemplateResponse
@@ -6878,7 +7082,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCustomizedVoiceResponse:
         """
-        @summary 获取用户的专属人声
+        @summary Queries the information about a personalized human voice.
         
         @param request: GetCustomizedVoiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6913,7 +7117,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCustomizedVoiceResponse:
         """
-        @summary 获取用户的专属人声
+        @summary Queries the information about a personalized human voice.
         
         @param request: GetCustomizedVoiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6947,7 +7151,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCustomizedVoiceRequest,
     ) -> ice20201109_models.GetCustomizedVoiceResponse:
         """
-        @summary 获取用户的专属人声
+        @summary Queries the information about a personalized human voice.
         
         @param request: GetCustomizedVoiceRequest
         @return: GetCustomizedVoiceResponse
@@ -6960,7 +7164,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCustomizedVoiceRequest,
     ) -> ice20201109_models.GetCustomizedVoiceResponse:
         """
-        @summary 获取用户的专属人声
+        @summary Queries the information about a personalized human voice.
         
         @param request: GetCustomizedVoiceRequest
         @return: GetCustomizedVoiceResponse
@@ -6974,7 +7178,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCustomizedVoiceJobResponse:
         """
-        @summary 查询单个人声克隆训练任务
+        @summary Queries the information about a human voice cloning job.
         
         @param request: GetCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7009,7 +7213,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCustomizedVoiceJobResponse:
         """
-        @summary 查询单个人声克隆训练任务
+        @summary Queries the information about a human voice cloning job.
         
         @param request: GetCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7043,7 +7247,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCustomizedVoiceJobRequest,
     ) -> ice20201109_models.GetCustomizedVoiceJobResponse:
         """
-        @summary 查询单个人声克隆训练任务
+        @summary Queries the information about a human voice cloning job.
         
         @param request: GetCustomizedVoiceJobRequest
         @return: GetCustomizedVoiceJobResponse
@@ -7056,7 +7260,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCustomizedVoiceJobRequest,
     ) -> ice20201109_models.GetCustomizedVoiceJobResponse:
         """
-        @summary 查询单个人声克隆训练任务
+        @summary Queries the information about a human voice cloning job.
         
         @param request: GetCustomizedVoiceJobRequest
         @return: GetCustomizedVoiceJobResponse
@@ -7144,7 +7348,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse:
         """
-        @summary 通过本接口来获取需要给用户朗读的文本及示例音频
+        @summary Queries the text to be read and sample audio for training a personalized human voice.
         
         @param request: GetDemonstrationForCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7179,7 +7383,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse:
         """
-        @summary 通过本接口来获取需要给用户朗读的文本及示例音频
+        @summary Queries the text to be read and sample audio for training a personalized human voice.
         
         @param request: GetDemonstrationForCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7213,7 +7417,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetDemonstrationForCustomizedVoiceJobRequest,
     ) -> ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse:
         """
-        @summary 通过本接口来获取需要给用户朗读的文本及示例音频
+        @summary Queries the text to be read and sample audio for training a personalized human voice.
         
         @param request: GetDemonstrationForCustomizedVoiceJobRequest
         @return: GetDemonstrationForCustomizedVoiceJobResponse
@@ -7226,7 +7430,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetDemonstrationForCustomizedVoiceJobRequest,
     ) -> ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse:
         """
-        @summary 通过本接口来获取需要给用户朗读的文本及示例音频
+        @summary Queries the text to be read and sample audio for training a personalized human voice.
         
         @param request: GetDemonstrationForCustomizedVoiceJobRequest
         @return: GetDemonstrationForCustomizedVoiceJobResponse
@@ -7240,7 +7444,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetDynamicImageJobResponse:
         """
-        @summary 查询动图任务详情接口
+        @summary Queries the information about an image animation job.
         
         @param request: GetDynamicImageJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7275,7 +7479,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetDynamicImageJobResponse:
         """
-        @summary 查询动图任务详情接口
+        @summary Queries the information about an image animation job.
         
         @param request: GetDynamicImageJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7309,7 +7513,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetDynamicImageJobRequest,
     ) -> ice20201109_models.GetDynamicImageJobResponse:
         """
-        @summary 查询动图任务详情接口
+        @summary Queries the information about an image animation job.
         
         @param request: GetDynamicImageJobRequest
         @return: GetDynamicImageJobResponse
@@ -7322,7 +7526,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetDynamicImageJobRequest,
     ) -> ice20201109_models.GetDynamicImageJobResponse:
         """
-        @summary 查询动图任务详情接口
+        @summary Queries the information about an image animation job.
         
         @param request: GetDynamicImageJobRequest
         @return: GetDynamicImageJobResponse
@@ -7714,7 +7918,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveEditingJobResponse:
         """
-        @summary 获取直播剪辑任务
+        @summary Queries the information about a live editing job. The requested information includes the state, timeline, and template of the job, the ID and URL of the output file, and the configurations of the job. You can call this operation to query only live editing jobs created within the past year.
         
         @param request: GetLiveEditingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7749,7 +7953,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveEditingJobResponse:
         """
-        @summary 获取直播剪辑任务
+        @summary Queries the information about a live editing job. The requested information includes the state, timeline, and template of the job, the ID and URL of the output file, and the configurations of the job. You can call this operation to query only live editing jobs created within the past year.
         
         @param request: GetLiveEditingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7783,7 +7987,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveEditingJobRequest,
     ) -> ice20201109_models.GetLiveEditingJobResponse:
         """
-        @summary 获取直播剪辑任务
+        @summary Queries the information about a live editing job. The requested information includes the state, timeline, and template of the job, the ID and URL of the output file, and the configurations of the job. You can call this operation to query only live editing jobs created within the past year.
         
         @param request: GetLiveEditingJobRequest
         @return: GetLiveEditingJobResponse
@@ -7796,7 +8000,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveEditingJobRequest,
     ) -> ice20201109_models.GetLiveEditingJobResponse:
         """
-        @summary 获取直播剪辑任务
+        @summary Queries the information about a live editing job. The requested information includes the state, timeline, and template of the job, the ID and URL of the output file, and the configurations of the job. You can call this operation to query only live editing jobs created within the past year.
         
         @param request: GetLiveEditingJobRequest
         @return: GetLiveEditingJobResponse
@@ -8486,6 +8690,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaInfoJobResponse:
         """
+        @summary Queries the information about a media information analysis job.
+        
         @param request: GetMediaInfoJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMediaInfoJobResponse
@@ -8519,6 +8725,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaInfoJobResponse:
         """
+        @summary Queries the information about a media information analysis job.
+        
         @param request: GetMediaInfoJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMediaInfoJobResponse
@@ -8551,6 +8759,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaInfoJobRequest,
     ) -> ice20201109_models.GetMediaInfoJobResponse:
         """
+        @summary Queries the information about a media information analysis job.
+        
         @param request: GetMediaInfoJobRequest
         @return: GetMediaInfoJobResponse
         """
@@ -8562,6 +8772,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaInfoJobRequest,
     ) -> ice20201109_models.GetMediaInfoJobResponse:
         """
+        @summary Queries the information about a media information analysis job.
+        
         @param request: GetMediaInfoJobRequest
         @return: GetMediaInfoJobResponse
         """
@@ -8674,7 +8886,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaProducingJobResponse:
         """
-        @summary GetMediaProducingJob
+        @summary Queries the information about a media editing and production job. The requested information includes the state, timeline, template, and data of the job. You can call this operation to query only media editing and production jobs created within the past year.
         
         @param request: GetMediaProducingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8707,7 +8919,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaProducingJobResponse:
         """
-        @summary GetMediaProducingJob
+        @summary Queries the information about a media editing and production job. The requested information includes the state, timeline, template, and data of the job. You can call this operation to query only media editing and production jobs created within the past year.
         
         @param request: GetMediaProducingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8739,7 +8951,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaProducingJobRequest,
     ) -> ice20201109_models.GetMediaProducingJobResponse:
         """
-        @summary GetMediaProducingJob
+        @summary Queries the information about a media editing and production job. The requested information includes the state, timeline, template, and data of the job. You can call this operation to query only media editing and production jobs created within the past year.
         
         @param request: GetMediaProducingJobRequest
         @return: GetMediaProducingJobResponse
@@ -8752,7 +8964,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaProducingJobRequest,
     ) -> ice20201109_models.GetMediaProducingJobResponse:
         """
-        @summary GetMediaProducingJob
+        @summary Queries the information about a media editing and production job. The requested information includes the state, timeline, template, and data of the job. You can call this operation to query only media editing and production jobs created within the past year.
         
         @param request: GetMediaProducingJobRequest
         @return: GetMediaProducingJobResponse
@@ -8766,7 +8978,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPackageJobResponse:
         """
-        @summary 获取单个打包任务信息
+        @summary Queries the information about a packaging job.
         
         @param request: GetPackageJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8801,7 +9013,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPackageJobResponse:
         """
-        @summary 获取单个打包任务信息
+        @summary Queries the information about a packaging job.
         
         @param request: GetPackageJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8835,7 +9047,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPackageJobRequest,
     ) -> ice20201109_models.GetPackageJobResponse:
         """
-        @summary 获取单个打包任务信息
+        @summary Queries the information about a packaging job.
         
         @param request: GetPackageJobRequest
         @return: GetPackageJobResponse
@@ -8848,7 +9060,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPackageJobRequest,
     ) -> ice20201109_models.GetPackageJobResponse:
         """
-        @summary 获取单个打包任务信息
+        @summary Queries the information about a packaging job.
         
         @param request: GetPackageJobRequest
         @return: GetPackageJobResponse
@@ -8862,7 +9074,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPipelineResponse:
         """
-        @summary 获取单个管道配置
+        @summary Queries the information about an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: GetPipelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8897,7 +9109,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPipelineResponse:
         """
-        @summary 获取单个管道配置
+        @summary Queries the information about an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: GetPipelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8931,7 +9143,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPipelineRequest,
     ) -> ice20201109_models.GetPipelineResponse:
         """
-        @summary 获取单个管道配置
+        @summary Queries the information about an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: GetPipelineRequest
         @return: GetPipelineResponse
@@ -8944,7 +9156,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPipelineRequest,
     ) -> ice20201109_models.GetPipelineResponse:
         """
-        @summary 获取单个管道配置
+        @summary Queries the information about an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: GetPipelineRequest
         @return: GetPipelineResponse
@@ -9162,7 +9374,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSmartHandleJobResponse:
         """
-        @summary GetSmartHandleJob
+        @summary Queries the information about an intelligent job and the execution results of the job based the job ID. You can call this operation to query only intelligent jobs created within the past year.
         
         @param request: GetSmartHandleJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9197,7 +9409,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSmartHandleJobResponse:
         """
-        @summary GetSmartHandleJob
+        @summary Queries the information about an intelligent job and the execution results of the job based the job ID. You can call this operation to query only intelligent jobs created within the past year.
         
         @param request: GetSmartHandleJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9231,7 +9443,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSmartHandleJobRequest,
     ) -> ice20201109_models.GetSmartHandleJobResponse:
         """
-        @summary GetSmartHandleJob
+        @summary Queries the information about an intelligent job and the execution results of the job based the job ID. You can call this operation to query only intelligent jobs created within the past year.
         
         @param request: GetSmartHandleJobRequest
         @return: GetSmartHandleJobResponse
@@ -9244,7 +9456,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSmartHandleJobRequest,
     ) -> ice20201109_models.GetSmartHandleJobResponse:
         """
-        @summary GetSmartHandleJob
+        @summary Queries the information about an intelligent job and the execution results of the job based the job ID. You can call this operation to query only intelligent jobs created within the past year.
         
         @param request: GetSmartHandleJobRequest
         @return: GetSmartHandleJobResponse
@@ -9258,7 +9470,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSnapshotJobResponse:
         """
-        @summary 查询单个截图任务
+        @summary Queries the information about a snapshot job.
         
         @param request: GetSnapshotJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9293,7 +9505,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSnapshotJobResponse:
         """
-        @summary 查询单个截图任务
+        @summary Queries the information about a snapshot job.
         
         @param request: GetSnapshotJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9327,7 +9539,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSnapshotJobRequest,
     ) -> ice20201109_models.GetSnapshotJobResponse:
         """
-        @summary 查询单个截图任务
+        @summary Queries the information about a snapshot job.
         
         @param request: GetSnapshotJobRequest
         @return: GetSnapshotJobResponse
@@ -9340,7 +9552,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSnapshotJobRequest,
     ) -> ice20201109_models.GetSnapshotJobResponse:
         """
-        @summary 查询单个截图任务
+        @summary Queries the information about a snapshot job.
         
         @param request: GetSnapshotJobRequest
         @return: GetSnapshotJobResponse
@@ -9354,7 +9566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSnapshotUrlsResponse:
         """
-        @summary 获取截图文件URL
+        @summary Queries the accessible URLs of the output images of a snapshot job.
         
         @param request: GetSnapshotUrlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9397,7 +9609,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSnapshotUrlsResponse:
         """
-        @summary 获取截图文件URL
+        @summary Queries the accessible URLs of the output images of a snapshot job.
         
         @param request: GetSnapshotUrlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9439,7 +9651,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSnapshotUrlsRequest,
     ) -> ice20201109_models.GetSnapshotUrlsResponse:
         """
-        @summary 获取截图文件URL
+        @summary Queries the accessible URLs of the output images of a snapshot job.
         
         @param request: GetSnapshotUrlsRequest
         @return: GetSnapshotUrlsResponse
@@ -9452,7 +9664,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSnapshotUrlsRequest,
     ) -> ice20201109_models.GetSnapshotUrlsResponse:
         """
-        @summary 获取截图文件URL
+        @summary Queries the accessible URLs of the output images of a snapshot job.
         
         @param request: GetSnapshotUrlsRequest
         @return: GetSnapshotUrlsResponse
@@ -9570,7 +9782,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSystemTemplateResponse:
         """
-        @summary 获取单个媒体处理系统模板
+        @summary Queries the information about a system template.
         
         @param request: GetSystemTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9605,7 +9817,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSystemTemplateResponse:
         """
-        @summary 获取单个媒体处理系统模板
+        @summary Queries the information about a system template.
         
         @param request: GetSystemTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9639,7 +9851,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSystemTemplateRequest,
     ) -> ice20201109_models.GetSystemTemplateResponse:
         """
-        @summary 获取单个媒体处理系统模板
+        @summary Queries the information about a system template.
         
         @param request: GetSystemTemplateRequest
         @return: GetSystemTemplateResponse
@@ -9652,7 +9864,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSystemTemplateRequest,
     ) -> ice20201109_models.GetSystemTemplateResponse:
         """
-        @summary 获取单个媒体处理系统模板
+        @summary Queries the information about a system template.
         
         @param request: GetSystemTemplateRequest
         @return: GetSystemTemplateResponse
@@ -9666,7 +9878,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTemplateResponse:
         """
-        @summary GetTemplate
+        @summary Queries the information about a template based on the template ID. You can call this operation to query the information about an advanced template if the template is in the Available state.
+        
+        @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: GetTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9703,7 +9919,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTemplateResponse:
         """
-        @summary GetTemplate
+        @summary Queries the information about a template based on the template ID. You can call this operation to query the information about an advanced template if the template is in the Available state.
+        
+        @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: GetTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9739,7 +9959,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTemplateRequest,
     ) -> ice20201109_models.GetTemplateResponse:
         """
-        @summary GetTemplate
+        @summary Queries the information about a template based on the template ID. You can call this operation to query the information about an advanced template if the template is in the Available state.
+        
+        @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: GetTemplateRequest
         @return: GetTemplateResponse
@@ -9752,7 +9976,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTemplateRequest,
     ) -> ice20201109_models.GetTemplateResponse:
         """
-        @summary GetTemplate
+        @summary Queries the information about a template based on the template ID. You can call this operation to query the information about an advanced template if the template is in the Available state.
+        
+        @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: GetTemplateRequest
         @return: GetTemplateResponse
@@ -9766,7 +9994,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTemplateMaterialsResponse:
         """
-        @summary 获取模板关联素材信息
+        @summary Queries the URLs of materials associated with an advanced template for use by the advanced template editor. The URLs expire in 30 minutes. FileList is an array of materials that you want to query. If you do not specify this parameter, the URLs of all materials are returned. A maximum of 400 URLs can be returned.
         
         @param request: GetTemplateMaterialsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9803,7 +10031,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTemplateMaterialsResponse:
         """
-        @summary 获取模板关联素材信息
+        @summary Queries the URLs of materials associated with an advanced template for use by the advanced template editor. The URLs expire in 30 minutes. FileList is an array of materials that you want to query. If you do not specify this parameter, the URLs of all materials are returned. A maximum of 400 URLs can be returned.
         
         @param request: GetTemplateMaterialsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9839,7 +10067,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTemplateMaterialsRequest,
     ) -> ice20201109_models.GetTemplateMaterialsResponse:
         """
-        @summary 获取模板关联素材信息
+        @summary Queries the URLs of materials associated with an advanced template for use by the advanced template editor. The URLs expire in 30 minutes. FileList is an array of materials that you want to query. If you do not specify this parameter, the URLs of all materials are returned. A maximum of 400 URLs can be returned.
         
         @param request: GetTemplateMaterialsRequest
         @return: GetTemplateMaterialsResponse
@@ -9852,7 +10080,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTemplateMaterialsRequest,
     ) -> ice20201109_models.GetTemplateMaterialsResponse:
         """
-        @summary 获取模板关联素材信息
+        @summary Queries the URLs of materials associated with an advanced template for use by the advanced template editor. The URLs expire in 30 minutes. FileList is an array of materials that you want to query. If you do not specify this parameter, the URLs of all materials are returned. A maximum of 400 URLs can be returned.
         
         @param request: GetTemplateMaterialsRequest
         @return: GetTemplateMaterialsResponse
@@ -9866,7 +10094,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTemplateParamsResponse:
         """
-        @summary 获取模板参数信息
+        @summary Queries the parameters for replaceable materials in a template, including the parameter names, default values, and material thumbnails. Only advanced templates are supported.
         
         @param request: GetTemplateParamsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9899,7 +10127,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTemplateParamsResponse:
         """
-        @summary 获取模板参数信息
+        @summary Queries the parameters for replaceable materials in a template, including the parameter names, default values, and material thumbnails. Only advanced templates are supported.
         
         @param request: GetTemplateParamsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9931,7 +10159,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTemplateParamsRequest,
     ) -> ice20201109_models.GetTemplateParamsResponse:
         """
-        @summary 获取模板参数信息
+        @summary Queries the parameters for replaceable materials in a template, including the parameter names, default values, and material thumbnails. Only advanced templates are supported.
         
         @param request: GetTemplateParamsRequest
         @return: GetTemplateParamsResponse
@@ -9944,7 +10172,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTemplateParamsRequest,
     ) -> ice20201109_models.GetTemplateParamsResponse:
         """
-        @summary 获取模板参数信息
+        @summary Queries the parameters for replaceable materials in a template, including the parameter names, default values, and material thumbnails. Only advanced templates are supported.
         
         @param request: GetTemplateParamsRequest
         @return: GetTemplateParamsResponse
@@ -9958,6 +10186,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTranscodeJobResponse:
         """
+        @summary Queries the information about a transcoding job.
+        
         @param request: GetTranscodeJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTranscodeJobResponse
@@ -9991,6 +10221,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTranscodeJobResponse:
         """
+        @summary Queries the information about a transcoding job.
+        
         @param request: GetTranscodeJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTranscodeJobResponse
@@ -10023,6 +10255,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTranscodeJobRequest,
     ) -> ice20201109_models.GetTranscodeJobResponse:
         """
+        @summary Queries the information about a transcoding job.
+        
         @param request: GetTranscodeJobRequest
         @return: GetTranscodeJobResponse
         """
@@ -10034,6 +10268,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTranscodeJobRequest,
     ) -> ice20201109_models.GetTranscodeJobResponse:
         """
+        @summary Queries the information about a transcoding job.
+        
         @param request: GetTranscodeJobRequest
         @return: GetTranscodeJobResponse
         """
@@ -10286,7 +10522,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetWorkflowTaskResponse:
         """
-        @summary 获取工作流任务
+        @summary Queries the information about a workflow task by task ID, including the workflow ID and the status and result of the task. You can query only the workflow task data of the last year.
         
         @param request: GetWorkflowTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10321,7 +10557,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetWorkflowTaskResponse:
         """
-        @summary 获取工作流任务
+        @summary Queries the information about a workflow task by task ID, including the workflow ID and the status and result of the task. You can query only the workflow task data of the last year.
         
         @param request: GetWorkflowTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10355,7 +10591,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetWorkflowTaskRequest,
     ) -> ice20201109_models.GetWorkflowTaskResponse:
         """
-        @summary 获取工作流任务
+        @summary Queries the information about a workflow task by task ID, including the workflow ID and the status and result of the task. You can query only the workflow task data of the last year.
         
         @param request: GetWorkflowTaskRequest
         @return: GetWorkflowTaskResponse
@@ -10368,7 +10604,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetWorkflowTaskRequest,
     ) -> ice20201109_models.GetWorkflowTaskResponse:
         """
-        @summary 获取工作流任务
+        @summary Queries the information about a workflow task by task ID, including the workflow ID and the status and result of the task. You can query only the workflow task data of the last year.
         
         @param request: GetWorkflowTaskRequest
         @return: GetWorkflowTaskResponse
@@ -10706,7 +10942,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAvatarTrainingJobsResponse:
         """
-        @summary 查询数字人训练任务列表，列出当前用户的所有数字人训练任务
+        @summary Queries a list of digital human training jobs.
         
         @param request: ListAvatarTrainingJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10745,7 +10981,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAvatarTrainingJobsResponse:
         """
-        @summary 查询数字人训练任务列表，列出当前用户的所有数字人训练任务
+        @summary Queries a list of digital human training jobs.
         
         @param request: ListAvatarTrainingJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10783,7 +11019,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAvatarTrainingJobsRequest,
     ) -> ice20201109_models.ListAvatarTrainingJobsResponse:
         """
-        @summary 查询数字人训练任务列表，列出当前用户的所有数字人训练任务
+        @summary Queries a list of digital human training jobs.
         
         @param request: ListAvatarTrainingJobsRequest
         @return: ListAvatarTrainingJobsResponse
@@ -10796,7 +11032,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAvatarTrainingJobsRequest,
     ) -> ice20201109_models.ListAvatarTrainingJobsResponse:
         """
-        @summary 查询数字人训练任务列表，列出当前用户的所有数字人训练任务
+        @summary Queries a list of digital human training jobs.
         
         @param request: ListAvatarTrainingJobsRequest
         @return: ListAvatarTrainingJobsResponse
@@ -10810,7 +11046,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAvatarsResponse:
         """
-        @summary 查询数字人列表，列出当前用户的所有数字人
+        @summary Queries a list of trained digital humans.
         
         @param request: ListAvatarsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10849,7 +11085,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAvatarsResponse:
         """
-        @summary 查询数字人列表，列出当前用户的所有数字人
+        @summary Queries a list of trained digital humans.
         
         @param request: ListAvatarsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10887,7 +11123,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAvatarsRequest,
     ) -> ice20201109_models.ListAvatarsResponse:
         """
-        @summary 查询数字人列表，列出当前用户的所有数字人
+        @summary Queries a list of trained digital humans.
         
         @param request: ListAvatarsRequest
         @return: ListAvatarsResponse
@@ -10900,7 +11136,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAvatarsRequest,
     ) -> ice20201109_models.ListAvatarsResponse:
         """
-        @summary 查询数字人列表，列出当前用户的所有数字人
+        @summary Queries a list of trained digital humans.
         
         @param request: ListAvatarsRequest
         @return: ListAvatarsResponse
@@ -10914,7 +11150,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListBatchMediaProducingJobsResponse:
         """
-        @summary 获取一键成片任务列表
+        @summary Queries a list of quick video production jobs based on conditions such as the job type and state.
         
         @param request: ListBatchMediaProducingJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10963,7 +11199,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListBatchMediaProducingJobsResponse:
         """
-        @summary 获取一键成片任务列表
+        @summary Queries a list of quick video production jobs based on conditions such as the job type and state.
         
         @param request: ListBatchMediaProducingJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11011,7 +11247,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListBatchMediaProducingJobsRequest,
     ) -> ice20201109_models.ListBatchMediaProducingJobsResponse:
         """
-        @summary 获取一键成片任务列表
+        @summary Queries a list of quick video production jobs based on conditions such as the job type and state.
         
         @param request: ListBatchMediaProducingJobsRequest
         @return: ListBatchMediaProducingJobsResponse
@@ -11024,7 +11260,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListBatchMediaProducingJobsRequest,
     ) -> ice20201109_models.ListBatchMediaProducingJobsResponse:
         """
-        @summary 获取一键成片任务列表
+        @summary Queries a list of quick video production jobs based on conditions such as the job type and state.
         
         @param request: ListBatchMediaProducingJobsRequest
         @return: ListBatchMediaProducingJobsResponse
@@ -11038,7 +11274,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListCustomTemplatesResponse:
         """
-        @summary 获取媒体处理自定义模板列表
+        @summary Queries a list of custom templates.
         
         @param request: ListCustomTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11085,7 +11321,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListCustomTemplatesResponse:
         """
-        @summary 获取媒体处理自定义模板列表
+        @summary Queries a list of custom templates.
         
         @param request: ListCustomTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11131,7 +11367,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListCustomTemplatesRequest,
     ) -> ice20201109_models.ListCustomTemplatesResponse:
         """
-        @summary 获取媒体处理自定义模板列表
+        @summary Queries a list of custom templates.
         
         @param request: ListCustomTemplatesRequest
         @return: ListCustomTemplatesResponse
@@ -11144,7 +11380,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListCustomTemplatesRequest,
     ) -> ice20201109_models.ListCustomTemplatesResponse:
         """
-        @summary 获取媒体处理自定义模板列表
+        @summary Queries a list of custom templates.
         
         @param request: ListCustomTemplatesRequest
         @return: ListCustomTemplatesResponse
@@ -11158,7 +11394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListCustomizedVoiceJobsResponse:
         """
-        @summary 查询人声克隆训练任务列表，列出当前用户的所有人声克隆训练任务
+        @summary Queries a list of human voice cloning jobs.
         
         @param request: ListCustomizedVoiceJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11197,7 +11433,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListCustomizedVoiceJobsResponse:
         """
-        @summary 查询人声克隆训练任务列表，列出当前用户的所有人声克隆训练任务
+        @summary Queries a list of human voice cloning jobs.
         
         @param request: ListCustomizedVoiceJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11235,7 +11471,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListCustomizedVoiceJobsRequest,
     ) -> ice20201109_models.ListCustomizedVoiceJobsResponse:
         """
-        @summary 查询人声克隆训练任务列表，列出当前用户的所有人声克隆训练任务
+        @summary Queries a list of human voice cloning jobs.
         
         @param request: ListCustomizedVoiceJobsRequest
         @return: ListCustomizedVoiceJobsResponse
@@ -11248,7 +11484,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListCustomizedVoiceJobsRequest,
     ) -> ice20201109_models.ListCustomizedVoiceJobsResponse:
         """
-        @summary 查询人声克隆训练任务列表，列出当前用户的所有人声克隆训练任务
+        @summary Queries a list of human voice cloning jobs.
         
         @param request: ListCustomizedVoiceJobsRequest
         @return: ListCustomizedVoiceJobsResponse
@@ -11262,7 +11498,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListCustomizedVoicesResponse:
         """
-        @summary 获取用户的专属人声列表
+        @summary Queries a list of personalized human voices.
         
         @param request: ListCustomizedVoicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11301,7 +11537,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListCustomizedVoicesResponse:
         """
-        @summary 获取用户的专属人声列表
+        @summary Queries a list of personalized human voices.
         
         @param request: ListCustomizedVoicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11339,7 +11575,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListCustomizedVoicesRequest,
     ) -> ice20201109_models.ListCustomizedVoicesResponse:
         """
-        @summary 获取用户的专属人声列表
+        @summary Queries a list of personalized human voices.
         
         @param request: ListCustomizedVoicesRequest
         @return: ListCustomizedVoicesResponse
@@ -11352,7 +11588,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListCustomizedVoicesRequest,
     ) -> ice20201109_models.ListCustomizedVoicesResponse:
         """
-        @summary 获取用户的专属人声列表
+        @summary Queries a list of personalized human voices.
         
         @param request: ListCustomizedVoicesRequest
         @return: ListCustomizedVoicesResponse
@@ -11366,7 +11602,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListDNADBResponse:
         """
-        @summary 查询DNA库
+        @summary Queries a list of media fingerprint libraries.
         
         @param request: ListDNADBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11409,7 +11645,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListDNADBResponse:
         """
-        @summary 查询DNA库
+        @summary Queries a list of media fingerprint libraries.
         
         @param request: ListDNADBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11451,7 +11687,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListDNADBRequest,
     ) -> ice20201109_models.ListDNADBResponse:
         """
-        @summary 查询DNA库
+        @summary Queries a list of media fingerprint libraries.
         
         @param request: ListDNADBRequest
         @return: ListDNADBResponse
@@ -11464,7 +11700,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListDNADBRequest,
     ) -> ice20201109_models.ListDNADBResponse:
         """
-        @summary 查询DNA库
+        @summary Queries a list of media fingerprint libraries.
         
         @param request: ListDNADBRequest
         @return: ListDNADBResponse
@@ -11478,7 +11714,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListDNAFilesResponse:
         """
-        @summary 查询DNA文件
+        @summary Queries a list of files in a media fingerprint library.
+        
+        @description You can call this operation to query files in a media fingerprint library based on the library ID. The queried results can be paginated.
         
         @param request: ListDNAFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11525,7 +11763,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListDNAFilesResponse:
         """
-        @summary 查询DNA文件
+        @summary Queries a list of files in a media fingerprint library.
+        
+        @description You can call this operation to query files in a media fingerprint library based on the library ID. The queried results can be paginated.
         
         @param request: ListDNAFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11571,7 +11811,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListDNAFilesRequest,
     ) -> ice20201109_models.ListDNAFilesResponse:
         """
-        @summary 查询DNA文件
+        @summary Queries a list of files in a media fingerprint library.
+        
+        @description You can call this operation to query files in a media fingerprint library based on the library ID. The queried results can be paginated.
         
         @param request: ListDNAFilesRequest
         @return: ListDNAFilesResponse
@@ -11584,7 +11826,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListDNAFilesRequest,
     ) -> ice20201109_models.ListDNAFilesResponse:
         """
-        @summary 查询DNA文件
+        @summary Queries a list of files in a media fingerprint library.
+        
+        @description You can call this operation to query files in a media fingerprint library based on the library ID. The queried results can be paginated.
         
         @param request: ListDNAFilesRequest
         @return: ListDNAFilesResponse
@@ -11598,7 +11842,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListDynamicImageJobsResponse:
         """
-        @summary 查询截图任务列表接口
+        @summary Queries a list of image animation jobs.
         
         @param request: ListDynamicImageJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11645,7 +11889,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListDynamicImageJobsResponse:
         """
-        @summary 查询截图任务列表接口
+        @summary Queries a list of image animation jobs.
         
         @param request: ListDynamicImageJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11691,7 +11935,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListDynamicImageJobsRequest,
     ) -> ice20201109_models.ListDynamicImageJobsResponse:
         """
-        @summary 查询截图任务列表接口
+        @summary Queries a list of image animation jobs.
         
         @param request: ListDynamicImageJobsRequest
         @return: ListDynamicImageJobsResponse
@@ -11704,7 +11948,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListDynamicImageJobsRequest,
     ) -> ice20201109_models.ListDynamicImageJobsResponse:
         """
-        @summary 查询截图任务列表接口
+        @summary Queries a list of image animation jobs.
         
         @param request: ListDynamicImageJobsRequest
         @return: ListDynamicImageJobsResponse
@@ -12786,6 +13030,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaInfoJobsResponse:
         """
+        @summary Queries a list of media information analysis jobs.
+        
         @param request: ListMediaInfoJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListMediaInfoJobsResponse
@@ -12831,6 +13077,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaInfoJobsResponse:
         """
+        @summary Queries a list of media information analysis jobs.
+        
         @param request: ListMediaInfoJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListMediaInfoJobsResponse
@@ -12875,6 +13123,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaInfoJobsRequest,
     ) -> ice20201109_models.ListMediaInfoJobsResponse:
         """
+        @summary Queries a list of media information analysis jobs.
+        
         @param request: ListMediaInfoJobsRequest
         @return: ListMediaInfoJobsResponse
         """
@@ -12886,6 +13136,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaInfoJobsRequest,
     ) -> ice20201109_models.ListMediaInfoJobsResponse:
         """
+        @summary Queries a list of media information analysis jobs.
+        
         @param request: ListMediaInfoJobsRequest
         @return: ListMediaInfoJobsResponse
         """
@@ -12998,7 +13250,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaProducingJobsResponse:
         """
-        @summary 列出合成任务列表
+        @summary Queries a list of media editing and production jobs that meet the specified conditions. You can query the jobs based on the job state and type.
         
         @param request: ListMediaProducingJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13051,7 +13303,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaProducingJobsResponse:
         """
-        @summary 列出合成任务列表
+        @summary Queries a list of media editing and production jobs that meet the specified conditions. You can query the jobs based on the job state and type.
         
         @param request: ListMediaProducingJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13103,7 +13355,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaProducingJobsRequest,
     ) -> ice20201109_models.ListMediaProducingJobsResponse:
         """
-        @summary 列出合成任务列表
+        @summary Queries a list of media editing and production jobs that meet the specified conditions. You can query the jobs based on the job state and type.
         
         @param request: ListMediaProducingJobsRequest
         @return: ListMediaProducingJobsResponse
@@ -13116,7 +13368,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaProducingJobsRequest,
     ) -> ice20201109_models.ListMediaProducingJobsResponse:
         """
-        @summary 列出合成任务列表
+        @summary Queries a list of media editing and production jobs that meet the specified conditions. You can query the jobs based on the job state and type.
         
         @param request: ListMediaProducingJobsRequest
         @return: ListMediaProducingJobsResponse
@@ -13130,7 +13382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListPackageJobsResponse:
         """
-        @summary 获取打包任务列表
+        @summary Queries a list of packaging jobs.
         
         @param request: ListPackageJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13177,7 +13429,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListPackageJobsResponse:
         """
-        @summary 获取打包任务列表
+        @summary Queries a list of packaging jobs.
         
         @param request: ListPackageJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13223,7 +13475,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListPackageJobsRequest,
     ) -> ice20201109_models.ListPackageJobsResponse:
         """
-        @summary 获取打包任务列表
+        @summary Queries a list of packaging jobs.
         
         @param request: ListPackageJobsRequest
         @return: ListPackageJobsResponse
@@ -13236,7 +13488,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListPackageJobsRequest,
     ) -> ice20201109_models.ListPackageJobsResponse:
         """
-        @summary 获取打包任务列表
+        @summary Queries a list of packaging jobs.
         
         @param request: ListPackageJobsRequest
         @return: ListPackageJobsResponse
@@ -13250,7 +13502,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListPipelinesResponse:
         """
-        @summary 获取管道配置列表
+        @summary Queries a list of ApsaraVideo Media Processing (MPS) queues.
         
         @param request: ListPipelinesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13285,7 +13537,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListPipelinesResponse:
         """
-        @summary 获取管道配置列表
+        @summary Queries a list of ApsaraVideo Media Processing (MPS) queues.
         
         @param request: ListPipelinesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13319,7 +13571,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListPipelinesRequest,
     ) -> ice20201109_models.ListPipelinesResponse:
         """
-        @summary 获取管道配置列表
+        @summary Queries a list of ApsaraVideo Media Processing (MPS) queues.
         
         @param request: ListPipelinesRequest
         @return: ListPipelinesResponse
@@ -13332,7 +13584,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListPipelinesRequest,
     ) -> ice20201109_models.ListPipelinesResponse:
         """
-        @summary 获取管道配置列表
+        @summary Queries a list of ApsaraVideo Media Processing (MPS) queues.
         
         @param request: ListPipelinesRequest
         @return: ListPipelinesResponse
@@ -13566,7 +13818,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartJobsResponse:
         """
-        @summary ListSmartJobs
+        @summary Queries a list of intelligent jobs based on specified parameters.
         
         @param request: ListSmartJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13599,7 +13851,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartJobsResponse:
         """
-        @summary ListSmartJobs
+        @summary Queries a list of intelligent jobs based on specified parameters.
         
         @param request: ListSmartJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13631,7 +13883,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSmartJobsRequest,
     ) -> ice20201109_models.ListSmartJobsResponse:
         """
-        @summary ListSmartJobs
+        @summary Queries a list of intelligent jobs based on specified parameters.
         
         @param request: ListSmartJobsRequest
         @return: ListSmartJobsResponse
@@ -13644,7 +13896,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSmartJobsRequest,
     ) -> ice20201109_models.ListSmartJobsResponse:
         """
-        @summary ListSmartJobs
+        @summary Queries a list of intelligent jobs based on specified parameters.
         
         @param request: ListSmartJobsRequest
         @return: ListSmartJobsResponse
@@ -13658,7 +13910,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartSysAvatarModelsResponse:
         """
-        @summary 列出虚拟人官方模特配置
+        @summary Queries a list of system digital humans. This operation supports paged queries.
         
         @param request: ListSmartSysAvatarModelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13697,7 +13949,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartSysAvatarModelsResponse:
         """
-        @summary 列出虚拟人官方模特配置
+        @summary Queries a list of system digital humans. This operation supports paged queries.
         
         @param request: ListSmartSysAvatarModelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13735,7 +13987,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSmartSysAvatarModelsRequest,
     ) -> ice20201109_models.ListSmartSysAvatarModelsResponse:
         """
-        @summary 列出虚拟人官方模特配置
+        @summary Queries a list of system digital humans. This operation supports paged queries.
         
         @param request: ListSmartSysAvatarModelsRequest
         @return: ListSmartSysAvatarModelsResponse
@@ -13748,7 +14000,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSmartSysAvatarModelsRequest,
     ) -> ice20201109_models.ListSmartSysAvatarModelsResponse:
         """
-        @summary 列出虚拟人官方模特配置
+        @summary Queries a list of system digital humans. This operation supports paged queries.
         
         @param request: ListSmartSysAvatarModelsRequest
         @return: ListSmartSysAvatarModelsResponse
@@ -13761,7 +14013,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartVoiceGroupsResponse:
         """
-        @summary 列出智能语音发音人信息
+        @summary Queries a list of speaker groups, including the name, gender, and sample audio of each speaker. The list is grouped by scenario.
         
         @param request: ListSmartVoiceGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13789,7 +14041,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartVoiceGroupsResponse:
         """
-        @summary 列出智能语音发音人信息
+        @summary Queries a list of speaker groups, including the name, gender, and sample audio of each speaker. The list is grouped by scenario.
         
         @param request: ListSmartVoiceGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13814,7 +14066,7 @@ class Client(OpenApiClient):
 
     def list_smart_voice_groups(self) -> ice20201109_models.ListSmartVoiceGroupsResponse:
         """
-        @summary 列出智能语音发音人信息
+        @summary Queries a list of speaker groups, including the name, gender, and sample audio of each speaker. The list is grouped by scenario.
         
         @return: ListSmartVoiceGroupsResponse
         """
@@ -13823,7 +14075,7 @@ class Client(OpenApiClient):
 
     async def list_smart_voice_groups_async(self) -> ice20201109_models.ListSmartVoiceGroupsResponse:
         """
-        @summary 列出智能语音发音人信息
+        @summary Queries a list of speaker groups, including the name, gender, and sample audio of each speaker. The list is grouped by scenario.
         
         @return: ListSmartVoiceGroupsResponse
         """
@@ -13836,7 +14088,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSnapshotJobsResponse:
         """
-        @summary 查询截图任务列表接口
+        @summary Queries a list of snapshot jobs.
         
         @param request: ListSnapshotJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13883,7 +14135,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSnapshotJobsResponse:
         """
-        @summary 查询截图任务列表接口
+        @summary Queries a list of snapshot jobs.
         
         @param request: ListSnapshotJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13929,7 +14181,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSnapshotJobsRequest,
     ) -> ice20201109_models.ListSnapshotJobsResponse:
         """
-        @summary 查询截图任务列表接口
+        @summary Queries a list of snapshot jobs.
         
         @param request: ListSnapshotJobsRequest
         @return: ListSnapshotJobsResponse
@@ -13942,7 +14194,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSnapshotJobsRequest,
     ) -> ice20201109_models.ListSnapshotJobsResponse:
         """
-        @summary 查询截图任务列表接口
+        @summary Queries a list of snapshot jobs.
         
         @param request: ListSnapshotJobsRequest
         @return: ListSnapshotJobsResponse
@@ -13956,7 +14208,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSystemTemplatesResponse:
         """
-        @summary 获取媒体处理系统模板列表
+        @summary Queries a list of system templates.
+        
+        @description Template types:
+        1.  1: transcoding template.
+        2.  2: snapshot template.
+        3.  3: animated image template.
+        4.  4\\. image watermark template.
+        5.  5: text watermark template.
+        6.  6: subtitle template.
+        7.  7: AI-assisted content moderation template.
+        8.  8: AI-assisted intelligent thumbnail template.
+        9.  9: AI-assisted intelligent erasure template.
+        Subtypes of transcoding templates:
+        1.  1 (Normal): regular template.
+        2.  2 (AudioTranscode): audio transcoding template.
+        3.  3 (Remux): container format conversion template.
+        4.  4 (NarrowBandV1): Narrowband HD 1.0 template.
+        5.  5 (NarrowBandV2): Narrowband HD 2.0 template.
+        Subtypes of snapshot templates:
+        1.  1 (Normal): regular template.
+        2.  2 (Sprite): sprite template.
+        3.  3 (WebVtt): WebVTT template.
+        Subtypes of AI-assisted content moderation templates:
+        1.  1 (Video): video moderation template.
+        2.  2 (Audio): audio moderation template.
+        3.  3 (Image): image moderation template.
+        Subtypes of AI-assisted intelligent erasure templates:
+        1.  1 (VideoDelogo): logo erasure template.
+        2.  2 (VideoDetext): subtitle erasure template.
         
         @param request: ListSystemTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14003,7 +14283,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSystemTemplatesResponse:
         """
-        @summary 获取媒体处理系统模板列表
+        @summary Queries a list of system templates.
+        
+        @description Template types:
+        1.  1: transcoding template.
+        2.  2: snapshot template.
+        3.  3: animated image template.
+        4.  4\\. image watermark template.
+        5.  5: text watermark template.
+        6.  6: subtitle template.
+        7.  7: AI-assisted content moderation template.
+        8.  8: AI-assisted intelligent thumbnail template.
+        9.  9: AI-assisted intelligent erasure template.
+        Subtypes of transcoding templates:
+        1.  1 (Normal): regular template.
+        2.  2 (AudioTranscode): audio transcoding template.
+        3.  3 (Remux): container format conversion template.
+        4.  4 (NarrowBandV1): Narrowband HD 1.0 template.
+        5.  5 (NarrowBandV2): Narrowband HD 2.0 template.
+        Subtypes of snapshot templates:
+        1.  1 (Normal): regular template.
+        2.  2 (Sprite): sprite template.
+        3.  3 (WebVtt): WebVTT template.
+        Subtypes of AI-assisted content moderation templates:
+        1.  1 (Video): video moderation template.
+        2.  2 (Audio): audio moderation template.
+        3.  3 (Image): image moderation template.
+        Subtypes of AI-assisted intelligent erasure templates:
+        1.  1 (VideoDelogo): logo erasure template.
+        2.  2 (VideoDetext): subtitle erasure template.
         
         @param request: ListSystemTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14049,7 +14357,35 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSystemTemplatesRequest,
     ) -> ice20201109_models.ListSystemTemplatesResponse:
         """
-        @summary 获取媒体处理系统模板列表
+        @summary Queries a list of system templates.
+        
+        @description Template types:
+        1.  1: transcoding template.
+        2.  2: snapshot template.
+        3.  3: animated image template.
+        4.  4\\. image watermark template.
+        5.  5: text watermark template.
+        6.  6: subtitle template.
+        7.  7: AI-assisted content moderation template.
+        8.  8: AI-assisted intelligent thumbnail template.
+        9.  9: AI-assisted intelligent erasure template.
+        Subtypes of transcoding templates:
+        1.  1 (Normal): regular template.
+        2.  2 (AudioTranscode): audio transcoding template.
+        3.  3 (Remux): container format conversion template.
+        4.  4 (NarrowBandV1): Narrowband HD 1.0 template.
+        5.  5 (NarrowBandV2): Narrowband HD 2.0 template.
+        Subtypes of snapshot templates:
+        1.  1 (Normal): regular template.
+        2.  2 (Sprite): sprite template.
+        3.  3 (WebVtt): WebVTT template.
+        Subtypes of AI-assisted content moderation templates:
+        1.  1 (Video): video moderation template.
+        2.  2 (Audio): audio moderation template.
+        3.  3 (Image): image moderation template.
+        Subtypes of AI-assisted intelligent erasure templates:
+        1.  1 (VideoDelogo): logo erasure template.
+        2.  2 (VideoDetext): subtitle erasure template.
         
         @param request: ListSystemTemplatesRequest
         @return: ListSystemTemplatesResponse
@@ -14062,7 +14398,35 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSystemTemplatesRequest,
     ) -> ice20201109_models.ListSystemTemplatesResponse:
         """
-        @summary 获取媒体处理系统模板列表
+        @summary Queries a list of system templates.
+        
+        @description Template types:
+        1.  1: transcoding template.
+        2.  2: snapshot template.
+        3.  3: animated image template.
+        4.  4\\. image watermark template.
+        5.  5: text watermark template.
+        6.  6: subtitle template.
+        7.  7: AI-assisted content moderation template.
+        8.  8: AI-assisted intelligent thumbnail template.
+        9.  9: AI-assisted intelligent erasure template.
+        Subtypes of transcoding templates:
+        1.  1 (Normal): regular template.
+        2.  2 (AudioTranscode): audio transcoding template.
+        3.  3 (Remux): container format conversion template.
+        4.  4 (NarrowBandV1): Narrowband HD 1.0 template.
+        5.  5 (NarrowBandV2): Narrowband HD 2.0 template.
+        Subtypes of snapshot templates:
+        1.  1 (Normal): regular template.
+        2.  2 (Sprite): sprite template.
+        3.  3 (WebVtt): WebVTT template.
+        Subtypes of AI-assisted content moderation templates:
+        1.  1 (Video): video moderation template.
+        2.  2 (Audio): audio moderation template.
+        3.  3 (Image): image moderation template.
+        Subtypes of AI-assisted intelligent erasure templates:
+        1.  1 (VideoDelogo): logo erasure template.
+        2.  2 (VideoDetext): subtitle erasure template.
         
         @param request: ListSystemTemplatesRequest
         @return: ListSystemTemplatesResponse
@@ -14076,7 +14440,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListTemplatesResponse:
         """
-        @summary ListTemplates
+        @summary Queries a list of templates that meet the specified conditions. You can query templates based on information such as the template status and creation source.
+        
+        @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: ListTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14123,7 +14491,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListTemplatesResponse:
         """
-        @summary ListTemplates
+        @summary Queries a list of templates that meet the specified conditions. You can query templates based on information such as the template status and creation source.
+        
+        @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: ListTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14169,7 +14541,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListTemplatesRequest,
     ) -> ice20201109_models.ListTemplatesResponse:
         """
-        @summary ListTemplates
+        @summary Queries a list of templates that meet the specified conditions. You can query templates based on information such as the template status and creation source.
+        
+        @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: ListTemplatesRequest
         @return: ListTemplatesResponse
@@ -14182,7 +14558,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListTemplatesRequest,
     ) -> ice20201109_models.ListTemplatesResponse:
         """
-        @summary ListTemplates
+        @summary Queries a list of templates that meet the specified conditions. You can query templates based on information such as the template status and creation source.
+        
+        @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: ListTemplatesRequest
         @return: ListTemplatesResponse
@@ -14196,6 +14576,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListTranscodeJobsResponse:
         """
+        @summary Queries a list of transcoding jobs.
+        
         @param request: ListTranscodeJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTranscodeJobsResponse
@@ -14241,6 +14623,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListTranscodeJobsResponse:
         """
+        @summary Queries a list of transcoding jobs.
+        
         @param request: ListTranscodeJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTranscodeJobsResponse
@@ -14285,6 +14669,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListTranscodeJobsRequest,
     ) -> ice20201109_models.ListTranscodeJobsResponse:
         """
+        @summary Queries a list of transcoding jobs.
+        
         @param request: ListTranscodeJobsRequest
         @return: ListTranscodeJobsResponse
         """
@@ -14296,6 +14682,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListTranscodeJobsRequest,
     ) -> ice20201109_models.ListTranscodeJobsResponse:
         """
+        @summary Queries a list of transcoding jobs.
+        
         @param request: ListTranscodeJobsRequest
         @return: ListTranscodeJobsResponse
         """
@@ -14308,7 +14696,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryDNAJobListResponse:
         """
-        @summary 查询DNA作业
+        @summary Queries a list of media fingerprint analysis jobs.
         
         @param request: QueryDNAJobListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14351,7 +14739,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryDNAJobListResponse:
         """
-        @summary 查询DNA作业
+        @summary Queries a list of media fingerprint analysis jobs.
         
         @param request: QueryDNAJobListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14393,7 +14781,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryDNAJobListRequest,
     ) -> ice20201109_models.QueryDNAJobListResponse:
         """
-        @summary 查询DNA作业
+        @summary Queries a list of media fingerprint analysis jobs.
         
         @param request: QueryDNAJobListRequest
         @return: QueryDNAJobListResponse
@@ -14406,7 +14794,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryDNAJobListRequest,
     ) -> ice20201109_models.QueryDNAJobListResponse:
         """
-        @summary 查询DNA作业
+        @summary Queries a list of media fingerprint analysis jobs.
         
         @param request: QueryDNAJobListRequest
         @return: QueryDNAJobListResponse
@@ -14420,7 +14808,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryIProductionJobResponse:
         """
-        @summary 查询智能生产作业
+        @summary Queries the status and result of an intelligent production job.
         
         @param request: QueryIProductionJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14457,7 +14845,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryIProductionJobResponse:
         """
-        @summary 查询智能生产作业
+        @summary Queries the status and result of an intelligent production job.
         
         @param request: QueryIProductionJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14493,7 +14881,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryIProductionJobRequest,
     ) -> ice20201109_models.QueryIProductionJobResponse:
         """
-        @summary 查询智能生产作业
+        @summary Queries the status and result of an intelligent production job.
         
         @param request: QueryIProductionJobRequest
         @return: QueryIProductionJobResponse
@@ -14506,7 +14894,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryIProductionJobRequest,
     ) -> ice20201109_models.QueryIProductionJobResponse:
         """
-        @summary 查询智能生产作业
+        @summary Queries the status and result of an intelligent production job.
         
         @param request: QueryIProductionJobRequest
         @return: QueryIProductionJobResponse
@@ -14520,6 +14908,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryMediaCensorJobDetailResponse:
         """
+        @summary Queries the information about a content moderation job.
+        
+        @description In the content moderation results, the moderation results of the video are sorted in ascending order by time into a timeline. If the video is long, the content moderation results are paginated, and the first page is returned. You can call this operation again to query the remaining moderation results of the video.
+        
         @param request: QueryMediaCensorJobDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryMediaCensorJobDetailResponse
@@ -14565,6 +14957,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryMediaCensorJobDetailResponse:
         """
+        @summary Queries the information about a content moderation job.
+        
+        @description In the content moderation results, the moderation results of the video are sorted in ascending order by time into a timeline. If the video is long, the content moderation results are paginated, and the first page is returned. You can call this operation again to query the remaining moderation results of the video.
+        
         @param request: QueryMediaCensorJobDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryMediaCensorJobDetailResponse
@@ -14609,6 +15005,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryMediaCensorJobDetailRequest,
     ) -> ice20201109_models.QueryMediaCensorJobDetailResponse:
         """
+        @summary Queries the information about a content moderation job.
+        
+        @description In the content moderation results, the moderation results of the video are sorted in ascending order by time into a timeline. If the video is long, the content moderation results are paginated, and the first page is returned. You can call this operation again to query the remaining moderation results of the video.
+        
         @param request: QueryMediaCensorJobDetailRequest
         @return: QueryMediaCensorJobDetailResponse
         """
@@ -14620,6 +15020,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryMediaCensorJobDetailRequest,
     ) -> ice20201109_models.QueryMediaCensorJobDetailResponse:
         """
+        @summary Queries the information about a content moderation job.
+        
+        @description In the content moderation results, the moderation results of the video are sorted in ascending order by time into a timeline. If the video is long, the content moderation results are paginated, and the first page is returned. You can call this operation again to query the remaining moderation results of the video.
+        
         @param request: QueryMediaCensorJobDetailRequest
         @return: QueryMediaCensorJobDetailResponse
         """
@@ -14632,6 +15036,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryMediaCensorJobListResponse:
         """
+        @summary Queries a list of content moderation jobs.
+        
+        @description You can call this operation to query only the content moderation jobs within the most recent three months.
+        
         @param request: QueryMediaCensorJobListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryMediaCensorJobListResponse
@@ -14685,6 +15093,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryMediaCensorJobListResponse:
         """
+        @summary Queries a list of content moderation jobs.
+        
+        @description You can call this operation to query only the content moderation jobs within the most recent three months.
+        
         @param request: QueryMediaCensorJobListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryMediaCensorJobListResponse
@@ -14737,6 +15149,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryMediaCensorJobListRequest,
     ) -> ice20201109_models.QueryMediaCensorJobListResponse:
         """
+        @summary Queries a list of content moderation jobs.
+        
+        @description You can call this operation to query only the content moderation jobs within the most recent three months.
+        
         @param request: QueryMediaCensorJobListRequest
         @return: QueryMediaCensorJobListResponse
         """
@@ -14748,6 +15164,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryMediaCensorJobListRequest,
     ) -> ice20201109_models.QueryMediaCensorJobListResponse:
         """
+        @summary Queries a list of content moderation jobs.
+        
+        @description You can call this operation to query only the content moderation jobs within the most recent three months.
+        
         @param request: QueryMediaCensorJobListRequest
         @return: QueryMediaCensorJobListResponse
         """
@@ -15056,6 +15476,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QuerySmarttagJobResponse:
         """
+        @summary Queries the information about a smart tagging job.
+        
         @param request: QuerySmarttagJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QuerySmarttagJobResponse
@@ -15091,6 +15513,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QuerySmarttagJobResponse:
         """
+        @summary Queries the information about a smart tagging job.
+        
         @param request: QuerySmarttagJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QuerySmarttagJobResponse
@@ -15125,6 +15549,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.QuerySmarttagJobRequest,
     ) -> ice20201109_models.QuerySmarttagJobResponse:
         """
+        @summary Queries the information about a smart tagging job.
+        
         @param request: QuerySmarttagJobRequest
         @return: QuerySmarttagJobResponse
         """
@@ -15136,6 +15562,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.QuerySmarttagJobRequest,
     ) -> ice20201109_models.QuerySmarttagJobResponse:
         """
+        @summary Queries the information about a smart tagging job.
+        
         @param request: QuerySmarttagJobRequest
         @return: QuerySmarttagJobResponse
         """
@@ -17044,7 +17472,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetDefaultCustomTemplateResponse:
         """
-        @summary 设置默认媒体处理模板
+        @summary Sets a custom template as the default template.
         
         @param request: SetDefaultCustomTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17079,7 +17507,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetDefaultCustomTemplateResponse:
         """
-        @summary 设置默认媒体处理模板
+        @summary Sets a custom template as the default template.
         
         @param request: SetDefaultCustomTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17113,7 +17541,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetDefaultCustomTemplateRequest,
     ) -> ice20201109_models.SetDefaultCustomTemplateResponse:
         """
-        @summary 设置默认媒体处理模板
+        @summary Sets a custom template as the default template.
         
         @param request: SetDefaultCustomTemplateRequest
         @return: SetDefaultCustomTemplateResponse
@@ -17126,7 +17554,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetDefaultCustomTemplateRequest,
     ) -> ice20201109_models.SetDefaultCustomTemplateResponse:
         """
-        @summary 设置默认媒体处理模板
+        @summary Sets a custom template as the default template.
         
         @param request: SetDefaultCustomTemplateRequest
         @return: SetDefaultCustomTemplateResponse
@@ -17716,7 +18144,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.StartWorkflowResponse:
         """
-        @summary 启动工作流
+        @summary Submits a workflow task. You can submit a workflow task to implement automated media processing based on a workflow template.
+        
+        @description    Only media assets from Intelligent Media Services (IMS) or ApsaraVideo VOD can be used as the input of a workflow.
+        When you submit a workflow task, you must specify a workflow template. You can create a workflow template in the [IMS console](https://ims.console.aliyun.com/settings/workflow/list) or use a preset workflow template.
         
         @param request: StartWorkflowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17755,7 +18186,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.StartWorkflowResponse:
         """
-        @summary 启动工作流
+        @summary Submits a workflow task. You can submit a workflow task to implement automated media processing based on a workflow template.
+        
+        @description    Only media assets from Intelligent Media Services (IMS) or ApsaraVideo VOD can be used as the input of a workflow.
+        When you submit a workflow task, you must specify a workflow template. You can create a workflow template in the [IMS console](https://ims.console.aliyun.com/settings/workflow/list) or use a preset workflow template.
         
         @param request: StartWorkflowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17793,7 +18227,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.StartWorkflowRequest,
     ) -> ice20201109_models.StartWorkflowResponse:
         """
-        @summary 启动工作流
+        @summary Submits a workflow task. You can submit a workflow task to implement automated media processing based on a workflow template.
+        
+        @description    Only media assets from Intelligent Media Services (IMS) or ApsaraVideo VOD can be used as the input of a workflow.
+        When you submit a workflow task, you must specify a workflow template. You can create a workflow template in the [IMS console](https://ims.console.aliyun.com/settings/workflow/list) or use a preset workflow template.
         
         @param request: StartWorkflowRequest
         @return: StartWorkflowResponse
@@ -17806,7 +18243,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.StartWorkflowRequest,
     ) -> ice20201109_models.StartWorkflowResponse:
         """
-        @summary 启动工作流
+        @summary Submits a workflow task. You can submit a workflow task to implement automated media processing based on a workflow template.
+        
+        @description    Only media assets from Intelligent Media Services (IMS) or ApsaraVideo VOD can be used as the input of a workflow.
+        When you submit a workflow task, you must specify a workflow template. You can create a workflow template in the [IMS console](https://ims.console.aliyun.com/settings/workflow/list) or use a preset workflow template.
         
         @param request: StartWorkflowRequest
         @return: StartWorkflowResponse
@@ -18012,7 +18452,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitASRJobResponse:
         """
-        @summary SubmitASRJob
+        @summary Submits an automatic speech recognition (ASR) job to extract the start and end time and the corresponding text information of a speech in a video.
         
         @param request: SubmitASRJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18057,7 +18497,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitASRJobResponse:
         """
-        @summary SubmitASRJob
+        @summary Submits an automatic speech recognition (ASR) job to extract the start and end time and the corresponding text information of a speech in a video.
         
         @param request: SubmitASRJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18101,7 +18541,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitASRJobRequest,
     ) -> ice20201109_models.SubmitASRJobResponse:
         """
-        @summary SubmitASRJob
+        @summary Submits an automatic speech recognition (ASR) job to extract the start and end time and the corresponding text information of a speech in a video.
         
         @param request: SubmitASRJobRequest
         @return: SubmitASRJobResponse
@@ -18114,7 +18554,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitASRJobRequest,
     ) -> ice20201109_models.SubmitASRJobResponse:
         """
-        @summary SubmitASRJob
+        @summary Submits an automatic speech recognition (ASR) job to extract the start and end time and the corresponding text information of a speech in a video.
         
         @param request: SubmitASRJobRequest
         @return: SubmitASRJobResponse
@@ -18128,7 +18568,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAudioProduceJobResponse:
         """
-        @summary SubmitAudioProduceJob
+        @summary Submits an audio production job that converts text into an audio file.
         
         @param request: SubmitAudioProduceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18175,7 +18615,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAudioProduceJobResponse:
         """
-        @summary SubmitAudioProduceJob
+        @summary Submits an audio production job that converts text into an audio file.
         
         @param request: SubmitAudioProduceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18221,7 +18661,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAudioProduceJobRequest,
     ) -> ice20201109_models.SubmitAudioProduceJobResponse:
         """
-        @summary SubmitAudioProduceJob
+        @summary Submits an audio production job that converts text into an audio file.
         
         @param request: SubmitAudioProduceJobRequest
         @return: SubmitAudioProduceJobResponse
@@ -18234,7 +18674,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAudioProduceJobRequest,
     ) -> ice20201109_models.SubmitAudioProduceJobResponse:
         """
-        @summary SubmitAudioProduceJob
+        @summary Submits an audio production job that converts text into an audio file.
         
         @param request: SubmitAudioProduceJobRequest
         @return: SubmitAudioProduceJobResponse
@@ -18248,7 +18688,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAvatarTrainingJobResponse:
         """
-        @summary 提交数字人训练任务
+        @summary Submits a digital human training job. You can call this operation to submit a job the first time or submit a job again with updated parameters if the training failed.
         
         @param request: SubmitAvatarTrainingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18283,7 +18723,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAvatarTrainingJobResponse:
         """
-        @summary 提交数字人训练任务
+        @summary Submits a digital human training job. You can call this operation to submit a job the first time or submit a job again with updated parameters if the training failed.
         
         @param request: SubmitAvatarTrainingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18317,7 +18757,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAvatarTrainingJobRequest,
     ) -> ice20201109_models.SubmitAvatarTrainingJobResponse:
         """
-        @summary 提交数字人训练任务
+        @summary Submits a digital human training job. You can call this operation to submit a job the first time or submit a job again with updated parameters if the training failed.
         
         @param request: SubmitAvatarTrainingJobRequest
         @return: SubmitAvatarTrainingJobResponse
@@ -18330,7 +18770,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAvatarTrainingJobRequest,
     ) -> ice20201109_models.SubmitAvatarTrainingJobResponse:
         """
-        @summary 提交数字人训练任务
+        @summary Submits a digital human training job. You can call this operation to submit a job the first time or submit a job again with updated parameters if the training failed.
         
         @param request: SubmitAvatarTrainingJobRequest
         @return: SubmitAvatarTrainingJobResponse
@@ -18460,7 +18900,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
         """
-        @summary SubmitBatchMediaProducingJob
+        @summary Submits a quick video production job that intelligently edits multiple video, audio, and image assets to generate multiple videos at a time.
         
         @param request: SubmitBatchMediaProducingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18505,7 +18945,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
         """
-        @summary SubmitBatchMediaProducingJob
+        @summary Submits a quick video production job that intelligently edits multiple video, audio, and image assets to generate multiple videos at a time.
         
         @param request: SubmitBatchMediaProducingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18549,7 +18989,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
     ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
         """
-        @summary SubmitBatchMediaProducingJob
+        @summary Submits a quick video production job that intelligently edits multiple video, audio, and image assets to generate multiple videos at a time.
         
         @param request: SubmitBatchMediaProducingJobRequest
         @return: SubmitBatchMediaProducingJobResponse
@@ -18562,7 +19002,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
     ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
         """
-        @summary SubmitBatchMediaProducingJob
+        @summary Submits a quick video production job that intelligently edits multiple video, audio, and image assets to generate multiple videos at a time.
         
         @param request: SubmitBatchMediaProducingJobRequest
         @return: SubmitBatchMediaProducingJobResponse
@@ -18576,7 +19016,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitCustomizedVoiceJobResponse:
         """
-        @summary 提交人声克隆训练任务
+        @summary Submits a human voice cloning job. The value of VoiceId must be the one used during audio check. The system uses this ID to find the cached audio file for training. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
         
         @param request: SubmitCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18613,7 +19053,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitCustomizedVoiceJobResponse:
         """
-        @summary 提交人声克隆训练任务
+        @summary Submits a human voice cloning job. The value of VoiceId must be the one used during audio check. The system uses this ID to find the cached audio file for training. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
         
         @param request: SubmitCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18649,7 +19089,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitCustomizedVoiceJobRequest,
     ) -> ice20201109_models.SubmitCustomizedVoiceJobResponse:
         """
-        @summary 提交人声克隆训练任务
+        @summary Submits a human voice cloning job. The value of VoiceId must be the one used during audio check. The system uses this ID to find the cached audio file for training. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
         
         @param request: SubmitCustomizedVoiceJobRequest
         @return: SubmitCustomizedVoiceJobResponse
@@ -18662,7 +19102,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitCustomizedVoiceJobRequest,
     ) -> ice20201109_models.SubmitCustomizedVoiceJobResponse:
         """
-        @summary 提交人声克隆训练任务
+        @summary Submits a human voice cloning job. The value of VoiceId must be the one used during audio check. The system uses this ID to find the cached audio file for training. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
         
         @param request: SubmitCustomizedVoiceJobRequest
         @return: SubmitCustomizedVoiceJobResponse
@@ -18676,7 +19116,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitDNAJobResponse:
         """
-        @summary 提交DNA作业
+        @summary Submits a media fingerprint analysis job.
+        
+        @description    SubmitDNAJob is an asynchronous operation. After a request is sent, the system returns a request ID and a job ID and runs the task in the background.
+        You can call this operation only in the China (Beijing), China (Hangzhou), and China (Shanghai) regions.
+        You can submit a text fingerprint analysis job only in the China (Shanghai) region.
         
         @param tmp_req: SubmitDNAJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18735,7 +19179,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitDNAJobResponse:
         """
-        @summary 提交DNA作业
+        @summary Submits a media fingerprint analysis job.
+        
+        @description    SubmitDNAJob is an asynchronous operation. After a request is sent, the system returns a request ID and a job ID and runs the task in the background.
+        You can call this operation only in the China (Beijing), China (Hangzhou), and China (Shanghai) regions.
+        You can submit a text fingerprint analysis job only in the China (Shanghai) region.
         
         @param tmp_req: SubmitDNAJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18793,7 +19241,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitDNAJobRequest,
     ) -> ice20201109_models.SubmitDNAJobResponse:
         """
-        @summary 提交DNA作业
+        @summary Submits a media fingerprint analysis job.
+        
+        @description    SubmitDNAJob is an asynchronous operation. After a request is sent, the system returns a request ID and a job ID and runs the task in the background.
+        You can call this operation only in the China (Beijing), China (Hangzhou), and China (Shanghai) regions.
+        You can submit a text fingerprint analysis job only in the China (Shanghai) region.
         
         @param request: SubmitDNAJobRequest
         @return: SubmitDNAJobResponse
@@ -18806,7 +19258,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitDNAJobRequest,
     ) -> ice20201109_models.SubmitDNAJobResponse:
         """
-        @summary 提交DNA作业
+        @summary Submits a media fingerprint analysis job.
+        
+        @description    SubmitDNAJob is an asynchronous operation. After a request is sent, the system returns a request ID and a job ID and runs the task in the background.
+        You can call this operation only in the China (Beijing), China (Hangzhou), and China (Shanghai) regions.
+        You can submit a text fingerprint analysis job only in the China (Shanghai) region.
         
         @param request: SubmitDNAJobRequest
         @return: SubmitDNAJobResponse
@@ -18964,7 +19420,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitDynamicImageJobResponse:
         """
-        @summary 提交异步动图任务接口
+        @summary Submits an image animation job.
         
         @param tmp_req: SubmitDynamicImageJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19019,7 +19475,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitDynamicImageJobResponse:
         """
-        @summary 提交异步动图任务接口
+        @summary Submits an image animation job.
         
         @param tmp_req: SubmitDynamicImageJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19073,7 +19529,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitDynamicImageJobRequest,
     ) -> ice20201109_models.SubmitDynamicImageJobResponse:
         """
-        @summary 提交异步动图任务接口
+        @summary Submits an image animation job.
         
         @param request: SubmitDynamicImageJobRequest
         @return: SubmitDynamicImageJobResponse
@@ -19086,7 +19542,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitDynamicImageJobRequest,
     ) -> ice20201109_models.SubmitDynamicImageJobResponse:
         """
-        @summary 提交异步动图任务接口
+        @summary Submits an image animation job.
         
         @param request: SubmitDynamicImageJobRequest
         @return: SubmitDynamicImageJobResponse
@@ -19100,7 +19556,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitIProductionJobResponse:
         """
-        @summary 提交智能生产作业
+        @summary Submits an intelligent production job.
         
         @param tmp_req: SubmitIProductionJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19159,7 +19615,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitIProductionJobResponse:
         """
-        @summary 提交智能生产作业
+        @summary Submits an intelligent production job.
         
         @param tmp_req: SubmitIProductionJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19217,7 +19673,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitIProductionJobRequest,
     ) -> ice20201109_models.SubmitIProductionJobResponse:
         """
-        @summary 提交智能生产作业
+        @summary Submits an intelligent production job.
         
         @param request: SubmitIProductionJobRequest
         @return: SubmitIProductionJobResponse
@@ -19230,7 +19686,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitIProductionJobRequest,
     ) -> ice20201109_models.SubmitIProductionJobResponse:
         """
-        @summary 提交智能生产作业
+        @summary Submits an intelligent production job.
         
         @param request: SubmitIProductionJobRequest
         @return: SubmitIProductionJobResponse
@@ -19244,7 +19700,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveEditingJobResponse:
         """
-        @summary 提交直播剪辑任务
+        @summary Submits a live editing job to merge one or more live stream clips into one video. After a live editing job is submitted, the job is queued in the background for asynchronous processing. You can call the GeLiveEditingJob operation to query the state of the job based on the job ID. You can also call the GetMediaInfo operation to query the information about the generated media asset based on the media asset ID.
+        
+        @description Live editing is supported for live streams that are recorded and stored in Object Storage Service (OSS) and ApsaraVideo VOD. If multiple live streams are involved in a single job, only those recorded within the same application are supported for mixed editing. The streams must all be recorded either in OSS or ApsaraVideo VOD.
         
         @param request: SubmitLiveEditingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19291,7 +19749,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveEditingJobResponse:
         """
-        @summary 提交直播剪辑任务
+        @summary Submits a live editing job to merge one or more live stream clips into one video. After a live editing job is submitted, the job is queued in the background for asynchronous processing. You can call the GeLiveEditingJob operation to query the state of the job based on the job ID. You can also call the GetMediaInfo operation to query the information about the generated media asset based on the media asset ID.
+        
+        @description Live editing is supported for live streams that are recorded and stored in Object Storage Service (OSS) and ApsaraVideo VOD. If multiple live streams are involved in a single job, only those recorded within the same application are supported for mixed editing. The streams must all be recorded either in OSS or ApsaraVideo VOD.
         
         @param request: SubmitLiveEditingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19337,7 +19797,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitLiveEditingJobRequest,
     ) -> ice20201109_models.SubmitLiveEditingJobResponse:
         """
-        @summary 提交直播剪辑任务
+        @summary Submits a live editing job to merge one or more live stream clips into one video. After a live editing job is submitted, the job is queued in the background for asynchronous processing. You can call the GeLiveEditingJob operation to query the state of the job based on the job ID. You can also call the GetMediaInfo operation to query the information about the generated media asset based on the media asset ID.
+        
+        @description Live editing is supported for live streams that are recorded and stored in Object Storage Service (OSS) and ApsaraVideo VOD. If multiple live streams are involved in a single job, only those recorded within the same application are supported for mixed editing. The streams must all be recorded either in OSS or ApsaraVideo VOD.
         
         @param request: SubmitLiveEditingJobRequest
         @return: SubmitLiveEditingJobResponse
@@ -19350,7 +19812,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitLiveEditingJobRequest,
     ) -> ice20201109_models.SubmitLiveEditingJobResponse:
         """
-        @summary 提交直播剪辑任务
+        @summary Submits a live editing job to merge one or more live stream clips into one video. After a live editing job is submitted, the job is queued in the background for asynchronous processing. You can call the GeLiveEditingJob operation to query the state of the job based on the job ID. You can also call the GetMediaInfo operation to query the information about the generated media asset based on the media asset ID.
+        
+        @description Live editing is supported for live streams that are recorded and stored in Object Storage Service (OSS) and ApsaraVideo VOD. If multiple live streams are involved in a single job, only those recorded within the same application are supported for mixed editing. The streams must all be recorded either in OSS or ApsaraVideo VOD.
         
         @param request: SubmitLiveEditingJobRequest
         @return: SubmitLiveEditingJobResponse
@@ -19844,6 +20308,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaCensorJobResponse:
         """
+        @summary Submits a content moderation job.
+        
+        @description The job that you submit by calling this operation is run in asynchronous mode. The job is added to an ApsaraVideo Media Processing (MPS) queue to be scheduled and run. You can call the [QueryMediaCensorJobDetail](https://help.aliyun.com/document_detail/444847.html) operation or configure an asynchronous notification to obtain the job results.
+        
         @param tmp_req: SubmitMediaCensorJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitMediaCensorJobResponse
@@ -19901,6 +20369,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaCensorJobResponse:
         """
+        @summary Submits a content moderation job.
+        
+        @description The job that you submit by calling this operation is run in asynchronous mode. The job is added to an ApsaraVideo Media Processing (MPS) queue to be scheduled and run. You can call the [QueryMediaCensorJobDetail](https://help.aliyun.com/document_detail/444847.html) operation or configure an asynchronous notification to obtain the job results.
+        
         @param tmp_req: SubmitMediaCensorJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitMediaCensorJobResponse
@@ -19957,6 +20429,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitMediaCensorJobRequest,
     ) -> ice20201109_models.SubmitMediaCensorJobResponse:
         """
+        @summary Submits a content moderation job.
+        
+        @description The job that you submit by calling this operation is run in asynchronous mode. The job is added to an ApsaraVideo Media Processing (MPS) queue to be scheduled and run. You can call the [QueryMediaCensorJobDetail](https://help.aliyun.com/document_detail/444847.html) operation or configure an asynchronous notification to obtain the job results.
+        
         @param request: SubmitMediaCensorJobRequest
         @return: SubmitMediaCensorJobResponse
         """
@@ -19968,6 +20444,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitMediaCensorJobRequest,
     ) -> ice20201109_models.SubmitMediaCensorJobResponse:
         """
+        @summary Submits a content moderation job.
+        
+        @description The job that you submit by calling this operation is run in asynchronous mode. The job is added to an ApsaraVideo Media Processing (MPS) queue to be scheduled and run. You can call the [QueryMediaCensorJobDetail](https://help.aliyun.com/document_detail/444847.html) operation or configure an asynchronous notification to obtain the job results.
+        
         @param request: SubmitMediaCensorJobRequest
         @return: SubmitMediaCensorJobResponse
         """
@@ -19980,6 +20460,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaInfoJobResponse:
         """
+        @summary Submits a media information analysis job in asynchronous mode.
+        
+        @description You can call this operation to analyze an input media file by using a callback mechanism or initiating subsequent queries. This operation is suitable for scenarios in which real-time performance is less critical and high concurrency is expected.
+        
         @param tmp_req: SubmitMediaInfoJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitMediaInfoJobResponse
@@ -20025,6 +20509,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaInfoJobResponse:
         """
+        @summary Submits a media information analysis job in asynchronous mode.
+        
+        @description You can call this operation to analyze an input media file by using a callback mechanism or initiating subsequent queries. This operation is suitable for scenarios in which real-time performance is less critical and high concurrency is expected.
+        
         @param tmp_req: SubmitMediaInfoJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitMediaInfoJobResponse
@@ -20069,6 +20557,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitMediaInfoJobRequest,
     ) -> ice20201109_models.SubmitMediaInfoJobResponse:
         """
+        @summary Submits a media information analysis job in asynchronous mode.
+        
+        @description You can call this operation to analyze an input media file by using a callback mechanism or initiating subsequent queries. This operation is suitable for scenarios in which real-time performance is less critical and high concurrency is expected.
+        
         @param request: SubmitMediaInfoJobRequest
         @return: SubmitMediaInfoJobResponse
         """
@@ -20080,6 +20572,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitMediaInfoJobRequest,
     ) -> ice20201109_models.SubmitMediaInfoJobResponse:
         """
+        @summary Submits a media information analysis job in asynchronous mode.
+        
+        @description You can call this operation to analyze an input media file by using a callback mechanism or initiating subsequent queries. This operation is suitable for scenarios in which real-time performance is less critical and high concurrency is expected.
+        
         @param request: SubmitMediaInfoJobRequest
         @return: SubmitMediaInfoJobResponse
         """
@@ -20092,7 +20588,22 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaProducingJobResponse:
         """
-        @summary SubmitMediaProducingJob
+        @summary Submits a media editing and production job. If you need to perform any form of post-production such as editing and production on video or audio materials, you can call this operation to automate the process.
+        
+        @description    This operation returns only the submission result of a media editing and production job. When the submission result is returned, the job may still be in progress. After a media editing and production job is submitted, the job is queued in the background for asynchronous processing.
+        The materials referenced in the timeline of an online editing project can be media assets in the media asset library or Object Storage Service (OSS) objects. External URLs or Alibaba Cloud Content Delivery Network (CDN) URLs are not supported. To use an OSS object as a material, you must set MediaUrl to an OSS URL, such as https://your-bucket.oss-region-name.aliyuncs.com/your-object.ext.
+        After the production is complete, the output file is automatically registered as a media asset. The media asset first needs to be analyzed. After the media asset is analyzed, you can query the duration and resolution information based on the media asset ID.
+        ## [](#)Limits
+        The throttling threshold of this operation is 30 queries per second (QPS).
+        *\
+        *Note** If the threshold is exceeded, a "Throttling.User" error is returned when you submit an editing job. For more information about how to resolve this issue, see the [FAQ](https://help.aliyun.com/document_detail/453484.html).
+        You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
+        The total size of material files cannot exceed 1 TB.
+        The OSS buckets in which the materials reside and where the output media assets are stored must be in the same region as the region in which Intelligent Media Services (IMS) is activated.
+        An output video must meet the following requirements:
+        Both the width and height must be at least 128 pixels.
+        Both the width and height cannot exceed 4,096 pixels.
+        The shorter side of the video cannot exceed 2,160 pixels.
         
         @param request: SubmitMediaProducingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20151,7 +20662,22 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaProducingJobResponse:
         """
-        @summary SubmitMediaProducingJob
+        @summary Submits a media editing and production job. If you need to perform any form of post-production such as editing and production on video or audio materials, you can call this operation to automate the process.
+        
+        @description    This operation returns only the submission result of a media editing and production job. When the submission result is returned, the job may still be in progress. After a media editing and production job is submitted, the job is queued in the background for asynchronous processing.
+        The materials referenced in the timeline of an online editing project can be media assets in the media asset library or Object Storage Service (OSS) objects. External URLs or Alibaba Cloud Content Delivery Network (CDN) URLs are not supported. To use an OSS object as a material, you must set MediaUrl to an OSS URL, such as https://your-bucket.oss-region-name.aliyuncs.com/your-object.ext.
+        After the production is complete, the output file is automatically registered as a media asset. The media asset first needs to be analyzed. After the media asset is analyzed, you can query the duration and resolution information based on the media asset ID.
+        ## [](#)Limits
+        The throttling threshold of this operation is 30 queries per second (QPS).
+        *\
+        *Note** If the threshold is exceeded, a "Throttling.User" error is returned when you submit an editing job. For more information about how to resolve this issue, see the [FAQ](https://help.aliyun.com/document_detail/453484.html).
+        You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
+        The total size of material files cannot exceed 1 TB.
+        The OSS buckets in which the materials reside and where the output media assets are stored must be in the same region as the region in which Intelligent Media Services (IMS) is activated.
+        An output video must meet the following requirements:
+        Both the width and height must be at least 128 pixels.
+        Both the width and height cannot exceed 4,096 pixels.
+        The shorter side of the video cannot exceed 2,160 pixels.
         
         @param request: SubmitMediaProducingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20209,7 +20735,22 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitMediaProducingJobRequest,
     ) -> ice20201109_models.SubmitMediaProducingJobResponse:
         """
-        @summary SubmitMediaProducingJob
+        @summary Submits a media editing and production job. If you need to perform any form of post-production such as editing and production on video or audio materials, you can call this operation to automate the process.
+        
+        @description    This operation returns only the submission result of a media editing and production job. When the submission result is returned, the job may still be in progress. After a media editing and production job is submitted, the job is queued in the background for asynchronous processing.
+        The materials referenced in the timeline of an online editing project can be media assets in the media asset library or Object Storage Service (OSS) objects. External URLs or Alibaba Cloud Content Delivery Network (CDN) URLs are not supported. To use an OSS object as a material, you must set MediaUrl to an OSS URL, such as https://your-bucket.oss-region-name.aliyuncs.com/your-object.ext.
+        After the production is complete, the output file is automatically registered as a media asset. The media asset first needs to be analyzed. After the media asset is analyzed, you can query the duration and resolution information based on the media asset ID.
+        ## [](#)Limits
+        The throttling threshold of this operation is 30 queries per second (QPS).
+        *\
+        *Note** If the threshold is exceeded, a "Throttling.User" error is returned when you submit an editing job. For more information about how to resolve this issue, see the [FAQ](https://help.aliyun.com/document_detail/453484.html).
+        You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
+        The total size of material files cannot exceed 1 TB.
+        The OSS buckets in which the materials reside and where the output media assets are stored must be in the same region as the region in which Intelligent Media Services (IMS) is activated.
+        An output video must meet the following requirements:
+        Both the width and height must be at least 128 pixels.
+        Both the width and height cannot exceed 4,096 pixels.
+        The shorter side of the video cannot exceed 2,160 pixels.
         
         @param request: SubmitMediaProducingJobRequest
         @return: SubmitMediaProducingJobResponse
@@ -20222,7 +20763,22 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitMediaProducingJobRequest,
     ) -> ice20201109_models.SubmitMediaProducingJobResponse:
         """
-        @summary SubmitMediaProducingJob
+        @summary Submits a media editing and production job. If you need to perform any form of post-production such as editing and production on video or audio materials, you can call this operation to automate the process.
+        
+        @description    This operation returns only the submission result of a media editing and production job. When the submission result is returned, the job may still be in progress. After a media editing and production job is submitted, the job is queued in the background for asynchronous processing.
+        The materials referenced in the timeline of an online editing project can be media assets in the media asset library or Object Storage Service (OSS) objects. External URLs or Alibaba Cloud Content Delivery Network (CDN) URLs are not supported. To use an OSS object as a material, you must set MediaUrl to an OSS URL, such as https://your-bucket.oss-region-name.aliyuncs.com/your-object.ext.
+        After the production is complete, the output file is automatically registered as a media asset. The media asset first needs to be analyzed. After the media asset is analyzed, you can query the duration and resolution information based on the media asset ID.
+        ## [](#)Limits
+        The throttling threshold of this operation is 30 queries per second (QPS).
+        *\
+        *Note** If the threshold is exceeded, a "Throttling.User" error is returned when you submit an editing job. For more information about how to resolve this issue, see the [FAQ](https://help.aliyun.com/document_detail/453484.html).
+        You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
+        The total size of material files cannot exceed 1 TB.
+        The OSS buckets in which the materials reside and where the output media assets are stored must be in the same region as the region in which Intelligent Media Services (IMS) is activated.
+        An output video must meet the following requirements:
+        Both the width and height must be at least 128 pixels.
+        Both the width and height cannot exceed 4,096 pixels.
+        The shorter side of the video cannot exceed 2,160 pixels.
         
         @param request: SubmitMediaProducingJobRequest
         @return: SubmitMediaProducingJobResponse
@@ -20236,7 +20792,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitPackageJobResponse:
         """
-        @summary 提交打包任务
+        @summary Submits a packaging job.
         
         @param tmp_req: SubmitPackageJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20287,7 +20843,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitPackageJobResponse:
         """
-        @summary 提交打包任务
+        @summary Submits a packaging job.
         
         @param tmp_req: SubmitPackageJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20337,7 +20893,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitPackageJobRequest,
     ) -> ice20201109_models.SubmitPackageJobResponse:
         """
-        @summary 提交打包任务
+        @summary Submits a packaging job.
         
         @param request: SubmitPackageJobRequest
         @return: SubmitPackageJobResponse
@@ -20350,7 +20906,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitPackageJobRequest,
     ) -> ice20201109_models.SubmitPackageJobResponse:
         """
-        @summary 提交打包任务
+        @summary Submits a packaging job.
         
         @param request: SubmitPackageJobRequest
         @return: SubmitPackageJobResponse
@@ -20364,6 +20920,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSmarttagJobResponse:
         """
+        @summary Submits a smart tagging job.
+        
+        @description Before you call this operation to submit a smart tagging job, you must add a smart tagging template and specify the analysis types that you want to use in the template. For more information, see CreateCustomTemplate. You can use the smart tagging feature only in the China (Beijing), China (Shanghai), and China (Hangzhou) regions. By default, an ApsaraVideo Media Processing (MPS) queue can process a maximum of two concurrent smart tagging jobs. If you need to process more concurrent smart tagging jobs, submit a ticket to contact Alibaba Cloud Technical Support for evaluation and configuration.
+        
         @param tmp_req: SubmitSmarttagJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitSmarttagJobResponse
@@ -20421,6 +20981,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSmarttagJobResponse:
         """
+        @summary Submits a smart tagging job.
+        
+        @description Before you call this operation to submit a smart tagging job, you must add a smart tagging template and specify the analysis types that you want to use in the template. For more information, see CreateCustomTemplate. You can use the smart tagging feature only in the China (Beijing), China (Shanghai), and China (Hangzhou) regions. By default, an ApsaraVideo Media Processing (MPS) queue can process a maximum of two concurrent smart tagging jobs. If you need to process more concurrent smart tagging jobs, submit a ticket to contact Alibaba Cloud Technical Support for evaluation and configuration.
+        
         @param tmp_req: SubmitSmarttagJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitSmarttagJobResponse
@@ -20477,6 +21041,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitSmarttagJobRequest,
     ) -> ice20201109_models.SubmitSmarttagJobResponse:
         """
+        @summary Submits a smart tagging job.
+        
+        @description Before you call this operation to submit a smart tagging job, you must add a smart tagging template and specify the analysis types that you want to use in the template. For more information, see CreateCustomTemplate. You can use the smart tagging feature only in the China (Beijing), China (Shanghai), and China (Hangzhou) regions. By default, an ApsaraVideo Media Processing (MPS) queue can process a maximum of two concurrent smart tagging jobs. If you need to process more concurrent smart tagging jobs, submit a ticket to contact Alibaba Cloud Technical Support for evaluation and configuration.
+        
         @param request: SubmitSmarttagJobRequest
         @return: SubmitSmarttagJobResponse
         """
@@ -20488,6 +21056,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitSmarttagJobRequest,
     ) -> ice20201109_models.SubmitSmarttagJobResponse:
         """
+        @summary Submits a smart tagging job.
+        
+        @description Before you call this operation to submit a smart tagging job, you must add a smart tagging template and specify the analysis types that you want to use in the template. For more information, see CreateCustomTemplate. You can use the smart tagging feature only in the China (Beijing), China (Shanghai), and China (Hangzhou) regions. By default, an ApsaraVideo Media Processing (MPS) queue can process a maximum of two concurrent smart tagging jobs. If you need to process more concurrent smart tagging jobs, submit a ticket to contact Alibaba Cloud Technical Support for evaluation and configuration.
+        
         @param request: SubmitSmarttagJobRequest
         @return: SubmitSmarttagJobResponse
         """
@@ -20500,7 +21072,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSnapshotJobResponse:
         """
-        @summary 提交异步截图任务
+        @summary Submits a snapshot job.
         
         @param tmp_req: SubmitSnapshotJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20555,7 +21127,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSnapshotJobResponse:
         """
-        @summary 提交异步截图任务
+        @summary Submits a snapshot job.
         
         @param tmp_req: SubmitSnapshotJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20609,7 +21181,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitSnapshotJobRequest,
     ) -> ice20201109_models.SubmitSnapshotJobResponse:
         """
-        @summary 提交异步截图任务
+        @summary Submits a snapshot job.
         
         @param request: SubmitSnapshotJobRequest
         @return: SubmitSnapshotJobResponse
@@ -20622,7 +21194,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitSnapshotJobRequest,
     ) -> ice20201109_models.SubmitSnapshotJobResponse:
         """
-        @summary 提交异步截图任务
+        @summary Submits a snapshot job.
         
         @param request: SubmitSnapshotJobRequest
         @return: SubmitSnapshotJobResponse
@@ -20636,7 +21208,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSportsHighlightsJobResponse:
         """
-        @summary 发起体育集锦任务
+        @summary Submits a sports highlights job to generate a highlights video of an event based on event materials that contain commentary.
         
         @param request: SubmitSportsHighlightsJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20679,7 +21251,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSportsHighlightsJobResponse:
         """
-        @summary 发起体育集锦任务
+        @summary Submits a sports highlights job to generate a highlights video of an event based on event materials that contain commentary.
         
         @param request: SubmitSportsHighlightsJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20721,7 +21293,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitSportsHighlightsJobRequest,
     ) -> ice20201109_models.SubmitSportsHighlightsJobResponse:
         """
-        @summary 发起体育集锦任务
+        @summary Submits a sports highlights job to generate a highlights video of an event based on event materials that contain commentary.
         
         @param request: SubmitSportsHighlightsJobRequest
         @return: SubmitSportsHighlightsJobResponse
@@ -20734,7 +21306,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitSportsHighlightsJobRequest,
     ) -> ice20201109_models.SubmitSportsHighlightsJobResponse:
         """
-        @summary 发起体育集锦任务
+        @summary Submits a sports highlights job to generate a highlights video of an event based on event materials that contain commentary.
         
         @param request: SubmitSportsHighlightsJobRequest
         @return: SubmitSportsHighlightsJobResponse
@@ -20748,7 +21320,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitStandardCustomizedVoiceJobResponse:
         """
-        @summary 提交标准版人声克隆训练任务
+        @summary Submits a standard human voice cloning job. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
         
         @param request: SubmitStandardCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20791,7 +21363,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitStandardCustomizedVoiceJobResponse:
         """
-        @summary 提交标准版人声克隆训练任务
+        @summary Submits a standard human voice cloning job. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
         
         @param request: SubmitStandardCustomizedVoiceJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20833,7 +21405,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitStandardCustomizedVoiceJobRequest,
     ) -> ice20201109_models.SubmitStandardCustomizedVoiceJobResponse:
         """
-        @summary 提交标准版人声克隆训练任务
+        @summary Submits a standard human voice cloning job. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
         
         @param request: SubmitStandardCustomizedVoiceJobRequest
         @return: SubmitStandardCustomizedVoiceJobResponse
@@ -20846,7 +21418,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitStandardCustomizedVoiceJobRequest,
     ) -> ice20201109_models.SubmitStandardCustomizedVoiceJobResponse:
         """
-        @summary 提交标准版人声克隆训练任务
+        @summary Submits a standard human voice cloning job. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
         
         @param request: SubmitStandardCustomizedVoiceJobRequest
         @return: SubmitStandardCustomizedVoiceJobResponse
@@ -20860,6 +21432,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSyncMediaInfoJobResponse:
         """
+        @summary Submits a media file in synchronous mode for media information analysis.
+        
+        @description You can call this operation to analyze an input media file in synchronous mode. This operation is suitable for scenarios that require high real-time performance and low concurrency. If it takes an extended period of time to obtain the media information about the input media file, the request may time out or the obtained information may be inaccurate. We recommend that you call the [SubmitMediaInfoJob](https://help.aliyun.com/document_detail/441222.html) operation to obtain media information.
+        
         @param tmp_req: SubmitSyncMediaInfoJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitSyncMediaInfoJobResponse
@@ -20905,6 +21481,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSyncMediaInfoJobResponse:
         """
+        @summary Submits a media file in synchronous mode for media information analysis.
+        
+        @description You can call this operation to analyze an input media file in synchronous mode. This operation is suitable for scenarios that require high real-time performance and low concurrency. If it takes an extended period of time to obtain the media information about the input media file, the request may time out or the obtained information may be inaccurate. We recommend that you call the [SubmitMediaInfoJob](https://help.aliyun.com/document_detail/441222.html) operation to obtain media information.
+        
         @param tmp_req: SubmitSyncMediaInfoJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitSyncMediaInfoJobResponse
@@ -20949,6 +21529,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitSyncMediaInfoJobRequest,
     ) -> ice20201109_models.SubmitSyncMediaInfoJobResponse:
         """
+        @summary Submits a media file in synchronous mode for media information analysis.
+        
+        @description You can call this operation to analyze an input media file in synchronous mode. This operation is suitable for scenarios that require high real-time performance and low concurrency. If it takes an extended period of time to obtain the media information about the input media file, the request may time out or the obtained information may be inaccurate. We recommend that you call the [SubmitMediaInfoJob](https://help.aliyun.com/document_detail/441222.html) operation to obtain media information.
+        
         @param request: SubmitSyncMediaInfoJobRequest
         @return: SubmitSyncMediaInfoJobResponse
         """
@@ -20960,6 +21544,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitSyncMediaInfoJobRequest,
     ) -> ice20201109_models.SubmitSyncMediaInfoJobResponse:
         """
+        @summary Submits a media file in synchronous mode for media information analysis.
+        
+        @description You can call this operation to analyze an input media file in synchronous mode. This operation is suitable for scenarios that require high real-time performance and low concurrency. If it takes an extended period of time to obtain the media information about the input media file, the request may time out or the obtained information may be inaccurate. We recommend that you call the [SubmitMediaInfoJob](https://help.aliyun.com/document_detail/441222.html) operation to obtain media information.
+        
         @param request: SubmitSyncMediaInfoJobRequest
         @return: SubmitSyncMediaInfoJobResponse
         """
@@ -20972,7 +21560,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTextGenerateJobResponse:
         """
-        @summary 提交文本生成任务
+        @summary Submits a text generation job to generate marketing copies based on keywords and the requirements for the word count and number of output copies. The word count of the output copies may differ from the specified word count. After the job is submitted, you can call the GetSmartHandleJob operation to obtain the job state and result based on the job ID.
         
         @param request: SubmitTextGenerateJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21015,7 +21603,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTextGenerateJobResponse:
         """
-        @summary 提交文本生成任务
+        @summary Submits a text generation job to generate marketing copies based on keywords and the requirements for the word count and number of output copies. The word count of the output copies may differ from the specified word count. After the job is submitted, you can call the GetSmartHandleJob operation to obtain the job state and result based on the job ID.
         
         @param request: SubmitTextGenerateJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21057,7 +21645,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitTextGenerateJobRequest,
     ) -> ice20201109_models.SubmitTextGenerateJobResponse:
         """
-        @summary 提交文本生成任务
+        @summary Submits a text generation job to generate marketing copies based on keywords and the requirements for the word count and number of output copies. The word count of the output copies may differ from the specified word count. After the job is submitted, you can call the GetSmartHandleJob operation to obtain the job state and result based on the job ID.
         
         @param request: SubmitTextGenerateJobRequest
         @return: SubmitTextGenerateJobResponse
@@ -21070,7 +21658,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitTextGenerateJobRequest,
     ) -> ice20201109_models.SubmitTextGenerateJobResponse:
         """
-        @summary 提交文本生成任务
+        @summary Submits a text generation job to generate marketing copies based on keywords and the requirements for the word count and number of output copies. The word count of the output copies may differ from the specified word count. After the job is submitted, you can call the GetSmartHandleJob operation to obtain the job state and result based on the job ID.
         
         @param request: SubmitTextGenerateJobRequest
         @return: SubmitTextGenerateJobResponse
@@ -21084,6 +21672,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTranscodeJobResponse:
         """
+        @summary Submits a transcoding job.
+        
         @param tmp_req: SubmitTranscodeJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitTranscodeJobResponse
@@ -21135,6 +21725,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTranscodeJobResponse:
         """
+        @summary Submits a transcoding job.
+        
         @param tmp_req: SubmitTranscodeJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitTranscodeJobResponse
@@ -21185,6 +21777,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitTranscodeJobRequest,
     ) -> ice20201109_models.SubmitTranscodeJobResponse:
         """
+        @summary Submits a transcoding job.
+        
         @param request: SubmitTranscodeJobRequest
         @return: SubmitTranscodeJobResponse
         """
@@ -21196,6 +21790,8 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitTranscodeJobRequest,
     ) -> ice20201109_models.SubmitTranscodeJobResponse:
         """
+        @summary Submits a transcoding job.
+        
         @param request: SubmitTranscodeJobRequest
         @return: SubmitTranscodeJobResponse
         """
@@ -21208,7 +21804,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitVideoTranslationJobResponse:
         """
-        @summary Submits a video translation job. You can call this operation to translate the subtitle that appears in a video into the specified language. In the future, this operation will support voice translation and lip synchronization for spoken content.
+        @summary Submits a video translation job. You can call this operation to translate subtitles in a video and audio to a specific language. Lip-sync adaptation will be supported in the future.
         
         @description After you call this operation to submit a video translation job, the system returns a job ID. You can call the GetSmartHandleJob operation based on the job ID to obtain the status and result information of the job.
         
@@ -21257,7 +21853,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitVideoTranslationJobResponse:
         """
-        @summary Submits a video translation job. You can call this operation to translate the subtitle that appears in a video into the specified language. In the future, this operation will support voice translation and lip synchronization for spoken content.
+        @summary Submits a video translation job. You can call this operation to translate subtitles in a video and audio to a specific language. Lip-sync adaptation will be supported in the future.
         
         @description After you call this operation to submit a video translation job, the system returns a job ID. You can call the GetSmartHandleJob operation based on the job ID to obtain the status and result information of the job.
         
@@ -21305,7 +21901,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitVideoTranslationJobRequest,
     ) -> ice20201109_models.SubmitVideoTranslationJobResponse:
         """
-        @summary Submits a video translation job. You can call this operation to translate the subtitle that appears in a video into the specified language. In the future, this operation will support voice translation and lip synchronization for spoken content.
+        @summary Submits a video translation job. You can call this operation to translate subtitles in a video and audio to a specific language. Lip-sync adaptation will be supported in the future.
         
         @description After you call this operation to submit a video translation job, the system returns a job ID. You can call the GetSmartHandleJob operation based on the job ID to obtain the status and result information of the job.
         
@@ -21320,7 +21916,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitVideoTranslationJobRequest,
     ) -> ice20201109_models.SubmitVideoTranslationJobResponse:
         """
-        @summary Submits a video translation job. You can call this operation to translate the subtitle that appears in a video into the specified language. In the future, this operation will support voice translation and lip synchronization for spoken content.
+        @summary Submits a video translation job. You can call this operation to translate subtitles in a video and audio to a specific language. Lip-sync adaptation will be supported in the future.
         
         @description After you call this operation to submit a video translation job, the system returns a job ID. You can call the GetSmartHandleJob operation based on the job ID to obtain the status and result information of the job.
         
@@ -21448,7 +22044,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateAvatarTrainingJobResponse:
         """
-        @summary 更新数字人训练任务信息
+        @summary Modifies a digital human training job. You can modify the basic information or update parameters such as Video and Transparent for retraining if the training failed.
         
         @param request: UpdateAvatarTrainingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21495,7 +22091,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateAvatarTrainingJobResponse:
         """
-        @summary 更新数字人训练任务信息
+        @summary Modifies a digital human training job. You can modify the basic information or update parameters such as Video and Transparent for retraining if the training failed.
         
         @param request: UpdateAvatarTrainingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21541,7 +22137,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateAvatarTrainingJobRequest,
     ) -> ice20201109_models.UpdateAvatarTrainingJobResponse:
         """
-        @summary 更新数字人训练任务信息
+        @summary Modifies a digital human training job. You can modify the basic information or update parameters such as Video and Transparent for retraining if the training failed.
         
         @param request: UpdateAvatarTrainingJobRequest
         @return: UpdateAvatarTrainingJobResponse
@@ -21554,7 +22150,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateAvatarTrainingJobRequest,
     ) -> ice20201109_models.UpdateAvatarTrainingJobResponse:
         """
-        @summary 更新数字人训练任务信息
+        @summary Modifies a digital human training job. You can modify the basic information or update parameters such as Video and Transparent for retraining if the training failed.
         
         @param request: UpdateAvatarTrainingJobRequest
         @return: UpdateAvatarTrainingJobResponse
@@ -21676,7 +22272,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateCustomTemplateResponse:
         """
-        @summary 更新媒体处理自定义模板
+        @summary Updates a custom template.
         
         @param request: UpdateCustomTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21715,7 +22311,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateCustomTemplateResponse:
         """
-        @summary 更新媒体处理自定义模板
+        @summary Updates a custom template.
         
         @param request: UpdateCustomTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21753,7 +22349,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateCustomTemplateRequest,
     ) -> ice20201109_models.UpdateCustomTemplateResponse:
         """
-        @summary 更新媒体处理自定义模板
+        @summary Updates a custom template.
         
         @param request: UpdateCustomTemplateRequest
         @return: UpdateCustomTemplateResponse
@@ -21766,7 +22362,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateCustomTemplateRequest,
     ) -> ice20201109_models.UpdateCustomTemplateResponse:
         """
-        @summary 更新媒体处理自定义模板
+        @summary Updates a custom template.
         
         @param request: UpdateCustomTemplateRequest
         @return: UpdateCustomTemplateResponse
@@ -21780,7 +22376,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateCustomizedVoiceResponse:
         """
-        @summary 更新用户的专属人声
+        @summary Updates a personalized human voice. Only the media asset ID of the sample audio file can be modified.
         
         @param request: UpdateCustomizedVoiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21817,7 +22413,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateCustomizedVoiceResponse:
         """
-        @summary 更新用户的专属人声
+        @summary Updates a personalized human voice. Only the media asset ID of the sample audio file can be modified.
         
         @param request: UpdateCustomizedVoiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21853,7 +22449,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateCustomizedVoiceRequest,
     ) -> ice20201109_models.UpdateCustomizedVoiceResponse:
         """
-        @summary 更新用户的专属人声
+        @summary Updates a personalized human voice. Only the media asset ID of the sample audio file can be modified.
         
         @param request: UpdateCustomizedVoiceRequest
         @return: UpdateCustomizedVoiceResponse
@@ -21866,7 +22462,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateCustomizedVoiceRequest,
     ) -> ice20201109_models.UpdateCustomizedVoiceResponse:
         """
-        @summary 更新用户的专属人声
+        @summary Updates a personalized human voice. Only the media asset ID of the sample audio file can be modified.
         
         @param request: UpdateCustomizedVoiceRequest
         @return: UpdateCustomizedVoiceResponse
@@ -22824,7 +23420,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdatePipelineResponse:
         """
-        @summary 更新管道配置
+        @summary Updates the information about an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: UpdatePipelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22865,7 +23461,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdatePipelineResponse:
         """
-        @summary 更新管道配置
+        @summary Updates the information about an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: UpdatePipelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22905,7 +23501,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdatePipelineRequest,
     ) -> ice20201109_models.UpdatePipelineResponse:
         """
-        @summary 更新管道配置
+        @summary Updates the information about an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: UpdatePipelineRequest
         @return: UpdatePipelineResponse
@@ -22918,7 +23514,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdatePipelineRequest,
     ) -> ice20201109_models.UpdatePipelineResponse:
         """
-        @summary 更新管道配置
+        @summary Updates the information about an ApsaraVideo Media Processing (MPS) queue.
         
         @param request: UpdatePipelineRequest
         @return: UpdatePipelineResponse
@@ -23040,7 +23636,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateTemplateResponse:
         """
-        @summary UpdateTemplate
+        @summary Modifies an online editing template. You can modify the template title and template configurations.
+        
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: UpdateTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23091,7 +23690,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateTemplateResponse:
         """
-        @summary UpdateTemplate
+        @summary Modifies an online editing template. You can modify the template title and template configurations.
+        
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: UpdateTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23141,7 +23743,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateTemplateRequest,
     ) -> ice20201109_models.UpdateTemplateResponse:
         """
-        @summary UpdateTemplate
+        @summary Modifies an online editing template. You can modify the template title and template configurations.
+        
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: UpdateTemplateRequest
         @return: UpdateTemplateResponse
@@ -23154,7 +23759,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateTemplateRequest,
     ) -> ice20201109_models.UpdateTemplateResponse:
         """
-        @summary UpdateTemplate
+        @summary Modifies an online editing template. You can modify the template title and template configurations.
+        
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         
         @param request: UpdateTemplateRequest
         @return: UpdateTemplateResponse

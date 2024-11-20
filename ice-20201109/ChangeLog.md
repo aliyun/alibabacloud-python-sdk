@@ -1,3 +1,8 @@
+2024-11-20 Version: 3.6.4
+- Update API GenerateAIAgentCall: add param UserData.
+- Update API StartRtcRobotInstance: update param Config.
+
+
 2024-11-05 Version: 3.6.3
 - Update API StartRtcRobotInstance: update param Config.
 - Update API SubmitIProductionJob: add param ModelId.

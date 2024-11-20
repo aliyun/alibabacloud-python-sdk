@@ -178,12 +178,14 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
         enable_voice_interrupt: bool = None,
         graceful_shutdown: bool = None,
         greeting: str = None,
+        max_idle_time: int = None,
         use_voiceprint: bool = None,
         user_offline_timeout: int = None,
         user_online_timeout: int = None,
         voice_id: str = None,
         voiceprint_id: str = None,
         volume: int = None,
+        workflow_override_params: str = None,
     ):
         self.asr_max_silence = asr_max_silence
         self.avatar_id = avatar_id
@@ -192,12 +194,14 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
         self.enable_voice_interrupt = enable_voice_interrupt
         self.graceful_shutdown = graceful_shutdown
         self.greeting = greeting
+        self.max_idle_time = max_idle_time
         self.use_voiceprint = use_voiceprint
         self.user_offline_timeout = user_offline_timeout
         self.user_online_timeout = user_online_timeout
         self.voice_id = voice_id
         self.voiceprint_id = voiceprint_id
         self.volume = volume
+        self.workflow_override_params = workflow_override_params
 
     def validate(self):
         pass
@@ -222,6 +226,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             result['GracefulShutdown'] = self.graceful_shutdown
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.max_idle_time is not None:
+            result['MaxIdleTime'] = self.max_idle_time
         if self.use_voiceprint is not None:
             result['UseVoiceprint'] = self.use_voiceprint
         if self.user_offline_timeout is not None:
@@ -234,6 +240,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             result['VoiceprintId'] = self.voiceprint_id
         if self.volume is not None:
             result['Volume'] = self.volume
+        if self.workflow_override_params is not None:
+            result['WorkflowOverrideParams'] = self.workflow_override_params
         return result
 
     def from_map(self, m: dict = None):
@@ -252,6 +260,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             self.graceful_shutdown = m.get('GracefulShutdown')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('MaxIdleTime') is not None:
+            self.max_idle_time = m.get('MaxIdleTime')
         if m.get('UseVoiceprint') is not None:
             self.use_voiceprint = m.get('UseVoiceprint')
         if m.get('UserOfflineTimeout') is not None:
@@ -264,6 +274,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             self.voiceprint_id = m.get('VoiceprintId')
         if m.get('Volume') is not None:
             self.volume = m.get('Volume')
+        if m.get('WorkflowOverrideParams') is not None:
+            self.workflow_override_params = m.get('WorkflowOverrideParams')
         return self
 
 
@@ -277,12 +289,14 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
         enable_voice_interrupt: bool = None,
         graceful_shutdown: bool = None,
         greeting: str = None,
+        max_idle_time: int = None,
         use_voiceprint: bool = None,
         user_offline_timeout: int = None,
         user_online_timeout: int = None,
         voice_id: str = None,
         voiceprint_id: str = None,
         volume: int = None,
+        workflow_override_params: str = None,
     ):
         self.asr_max_silence = asr_max_silence
         self.bailian_app_params = bailian_app_params
@@ -291,12 +305,14 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
         self.enable_voice_interrupt = enable_voice_interrupt
         self.graceful_shutdown = graceful_shutdown
         self.greeting = greeting
+        self.max_idle_time = max_idle_time
         self.use_voiceprint = use_voiceprint
         self.user_offline_timeout = user_offline_timeout
         self.user_online_timeout = user_online_timeout
         self.voice_id = voice_id
         self.voiceprint_id = voiceprint_id
         self.volume = volume
+        self.workflow_override_params = workflow_override_params
 
     def validate(self):
         pass
@@ -321,6 +337,8 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
             result['GracefulShutdown'] = self.graceful_shutdown
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.max_idle_time is not None:
+            result['MaxIdleTime'] = self.max_idle_time
         if self.use_voiceprint is not None:
             result['UseVoiceprint'] = self.use_voiceprint
         if self.user_offline_timeout is not None:
@@ -333,6 +351,8 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
             result['VoiceprintId'] = self.voiceprint_id
         if self.volume is not None:
             result['Volume'] = self.volume
+        if self.workflow_override_params is not None:
+            result['WorkflowOverrideParams'] = self.workflow_override_params
         return result
 
     def from_map(self, m: dict = None):
@@ -351,6 +371,8 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
             self.graceful_shutdown = m.get('GracefulShutdown')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('MaxIdleTime') is not None:
+            self.max_idle_time = m.get('MaxIdleTime')
         if m.get('UseVoiceprint') is not None:
             self.use_voiceprint = m.get('UseVoiceprint')
         if m.get('UserOfflineTimeout') is not None:
@@ -363,6 +385,8 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
             self.voiceprint_id = m.get('VoiceprintId')
         if m.get('Volume') is not None:
             self.volume = m.get('Volume')
+        if m.get('WorkflowOverrideParams') is not None:
+            self.workflow_override_params = m.get('WorkflowOverrideParams')
         return self
 
 
@@ -370,30 +394,38 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
     def __init__(
         self,
         asr_max_silence: int = None,
+        avatar_url: str = None,
+        avatar_url_type: str = None,
         bailian_app_params: str = None,
         enable_push_to_talk: bool = None,
         enable_voice_interrupt: bool = None,
         graceful_shutdown: bool = None,
         greeting: str = None,
+        max_idle_time: int = None,
         use_voiceprint: bool = None,
         user_offline_timeout: int = None,
         user_online_timeout: int = None,
         voice_id: str = None,
         voiceprint_id: str = None,
         volume: int = None,
+        workflow_override_params: str = None,
     ):
         self.asr_max_silence = asr_max_silence
+        self.avatar_url = avatar_url
+        self.avatar_url_type = avatar_url_type
         self.bailian_app_params = bailian_app_params
         self.enable_push_to_talk = enable_push_to_talk
         self.enable_voice_interrupt = enable_voice_interrupt
         self.graceful_shutdown = graceful_shutdown
         self.greeting = greeting
+        self.max_idle_time = max_idle_time
         self.use_voiceprint = use_voiceprint
         self.user_offline_timeout = user_offline_timeout
         self.user_online_timeout = user_online_timeout
         self.voice_id = voice_id
         self.voiceprint_id = voiceprint_id
         self.volume = volume
+        self.workflow_override_params = workflow_override_params
 
     def validate(self):
         pass
@@ -406,6 +438,10 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
         result = dict()
         if self.asr_max_silence is not None:
             result['AsrMaxSilence'] = self.asr_max_silence
+        if self.avatar_url is not None:
+            result['AvatarUrl'] = self.avatar_url
+        if self.avatar_url_type is not None:
+            result['AvatarUrlType'] = self.avatar_url_type
         if self.bailian_app_params is not None:
             result['BailianAppParams'] = self.bailian_app_params
         if self.enable_push_to_talk is not None:
@@ -416,6 +452,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             result['GracefulShutdown'] = self.graceful_shutdown
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.max_idle_time is not None:
+            result['MaxIdleTime'] = self.max_idle_time
         if self.use_voiceprint is not None:
             result['UseVoiceprint'] = self.use_voiceprint
         if self.user_offline_timeout is not None:
@@ -428,12 +466,18 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             result['VoiceprintId'] = self.voiceprint_id
         if self.volume is not None:
             result['Volume'] = self.volume
+        if self.workflow_override_params is not None:
+            result['WorkflowOverrideParams'] = self.workflow_override_params
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AsrMaxSilence') is not None:
             self.asr_max_silence = m.get('AsrMaxSilence')
+        if m.get('AvatarUrl') is not None:
+            self.avatar_url = m.get('AvatarUrl')
+        if m.get('AvatarUrlType') is not None:
+            self.avatar_url_type = m.get('AvatarUrlType')
         if m.get('BailianAppParams') is not None:
             self.bailian_app_params = m.get('BailianAppParams')
         if m.get('EnablePushToTalk') is not None:
@@ -444,6 +488,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             self.graceful_shutdown = m.get('GracefulShutdown')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('MaxIdleTime') is not None:
+            self.max_idle_time = m.get('MaxIdleTime')
         if m.get('UseVoiceprint') is not None:
             self.use_voiceprint = m.get('UseVoiceprint')
         if m.get('UserOfflineTimeout') is not None:
@@ -456,6 +502,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             self.voiceprint_id = m.get('VoiceprintId')
         if m.get('Volume') is not None:
             self.volume = m.get('Volume')
+        if m.get('WorkflowOverrideParams') is not None:
+            self.workflow_override_params = m.get('WorkflowOverrideParams')
         return self
 
 
@@ -1763,12 +1811,53 @@ class AddTemplateRequest(TeaModel):
         type: str = None,
     ):
         self.config = config
+        # The URL of the template thumbnail.
         self.cover_url = cover_url
+        # The name of the custom template.
         self.name = name
+        # The ID of the template preview video.
         self.preview_media = preview_media
+        # The IDs of the materials associated with the template for use by the regular template editor.
         self.related_mediaids = related_mediaids
+        # The source from which the template is created. Valid values:
+        # 
+        # *   OpenAPI
+        # *   AliyunConsole
+        # *   WebSDK
+        # 
+        # <!---->
+        # 
+        # *\
+        # *\
+        # *\
         self.source = source
+        # The template state. Valid values:
+        # 
+        # *   Available: The template is available.
+        # *   Created: The template is created but not ready for use.
+        # *   Uploading: The video is being uploaded.
+        # *   Processing: The advanced template is being processed.
+        # *   UploadFailed: Failed to upload the video.
+        # *   ProcessFailed: Failed to process the advanced template.
+        # 
+        # <!---->
+        # 
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
         self.status = status
+        # The template type. Valid values:
+        # 
+        # *   Timeline: a regular template created based on the timeline of a video editing project, in which multiple materials are arranged in sequence across multiple layers. It can be used to convert text and images into videos, create photo albums, add opening and closing parts, and apply the default watermark.
+        # *   VETemplate: an advanced template created using effects of Adobe After Effects (AE). It can be used to produce complex animations and advanced media effects.
+        # 
+        # <!---->
+        # 
+        # *\
+        # *\
         self.type = type
 
     def validate(self):
@@ -1832,14 +1921,49 @@ class AddTemplateResponseBodyTemplate(TeaModel):
         template_id: str = None,
         type: str = None,
     ):
+        # The template configurations.
         self.config = config
+        # The URL of the template thumbnail.
         self.cover_url = cover_url
+        # The source from which the template was created.
+        # 
+        # Valid values:
+        # 
+        # *   AliyunConsole
+        # *   WebSDK
+        # *   OpenAPI
         self.create_source = create_source
+        # The source from which the template was modified.
+        # 
+        # Valid values:
+        # 
+        # *   AliyunConsole
+        # *   WebSDK
+        # *   OpenAPI
         self.modified_source = modified_source
+        # The template name.
         self.name = name
+        # The ID of the preview video.
         self.preview_media = preview_media
+        # The template state.
+        # 
+        # Valid values:
+        # 
+        # *   UploadFailed: Failed to upload the video.
+        # *   ProcessFailed: Failed to process the advanced template.
+        # *   Available: The template is available.
+        # *   Uploading: The video is being uploaded.
+        # *   Created: The template is created but not ready for use.
+        # *   Processing: The advanced template is being processed.
         self.status = status
+        # The template ID.
         self.template_id = template_id
+        # The template type.
+        # 
+        # Valid values:
+        # 
+        # *   Timeline: regular template.
+        # *   VETemplate: advanced template.
         self.type = type
 
     def validate(self):
@@ -1900,8 +2024,9 @@ class AddTemplateResponseBody(TeaModel):
         request_id: str = None,
         template: AddTemplateResponseBodyTemplate = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The template information.
         self.template = template
 
     def validate(self):
@@ -2594,6 +2719,8 @@ class CancelDNAJobRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the media fingerprint analysis job that you want to cancel.
+        # 
         # This parameter is required.
         self.job_id = job_id
         self.owner_account = owner_account
@@ -2643,7 +2770,9 @@ class CancelDNAJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2817,6 +2946,8 @@ class CreateAuditRequest(TeaModel):
         self,
         audit_content: str = None,
     ):
+        # The review results. You can specify the results for a maximum of 20 videos at a time. The value must be converted to a string. For more information about the parameters in AuditContent, see the "AuditContent" section of this topic.
+        # 
         # This parameter is required.
         self.audit_content = audit_content
 
@@ -2845,6 +2976,7 @@ class CreateAuditResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2919,13 +3051,35 @@ class CreateAvatarTrainingJobRequest(TeaModel):
         transparent: bool = None,
         video: str = None,
     ):
+        # *   The description of the digital human.
+        # *   The description can be up to 1,000 characters in length.
         self.avatar_description = avatar_description
+        # *   The name of the digital human.
+        # *   The name can be up to seven characters in length.
+        # 
         # This parameter is required.
         self.avatar_name = avatar_name
+        # The type of the digital human.
         self.avatar_type = avatar_type
+        # *   The media asset ID of the portrait image.
+        # *   The value must be 32 characters in length.
         self.portrait = portrait
+        # *   The thumbnail URL.
+        # *   After the digital human is trained, the thumbnail is uploaded to this URL.
+        # *   The URL must be a valid public Object Storage Service (OSS) URL.
+        # *   The URL can be up to 512 characters in length.
         self.thumbnail = thumbnail
+        # *   Specifies whether the training video supports alpha channels.
+        # 
+        #     **\
+        # 
+        #     **Note**: Make sure that the current settings are consistent with those of the submitted training video. Otherwise, the digital human may malfunction.
         self.transparent = transparent
+        # *   The ID of the video used for training.
+        # *   The value must be 32 characters in length.
+        # *   Supported formats: MP4, MOV, and WebM.
+        # *   The duration of the video must be 5 to 15 minutes.
+        # *   The resolution of the video must be 1920×1080 or 1080×1920.
         self.video = video
 
     def validate(self):
@@ -2977,6 +3131,7 @@ class CreateAvatarTrainingJobResponseBodyData(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the digital human training job.
         self.job_id = job_id
 
     def validate(self):
@@ -3006,8 +3161,11 @@ class CreateAvatarTrainingJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3089,11 +3247,55 @@ class CreateCustomTemplateRequest(TeaModel):
         template_config: str = None,
         type: int = None,
     ):
+        # The template name.
+        # 
         # This parameter is required.
         self.name = name
+        # The template subtype.
+        # 
+        # Valid values for transcoding templates:
+        # 
+        # *   1 (Normal): regular template.
+        # *   2 (AudioTranscode): audio transcoding template.
+        # *   3 (Remux): container format conversion template.
+        # *   4 (NarrowBandV1): Narrowband HD 1.0 template.
+        # *   5 (NarrowBandV2): Narrowband HD 2.0 template.
+        # 
+        # Valid values for snapshot templates:
+        # 
+        # *   1 (Normal): regular template.
+        # *   2 (Sprite): sprite template.
+        # *   3 (WebVtt): WebVTT template.
+        # 
+        # Valid values for AI-assisted content moderation templates:
+        # 
+        # *   1 (Video): video moderation template.
+        # *   2 (Audio): audio moderation template.
+        # *   3 (Image): image moderation template.
+        # 
+        # Valid values for AI-assisted intelligent erasure templates.
+        # 
+        # *   1 (VideoDelogo): logo erasure template.
+        # *   2 (VideoDetext): subtitle erasure template.
         self.subtype = subtype
+        # The template configurations. For more information, see [Template parameters](https://help.aliyun.com/document_detail/448291.html).
+        # 
         # This parameter is required.
         self.template_config = template_config
+        # The template type. Valid values:
+        # 
+        # *   1: transcoding template.
+        # *   2: snapshot template.
+        # *   3: animated image template.
+        # *   4\\. image watermark template.
+        # *   5: text watermark template.
+        # *   6: subtitle template.
+        # *   7: AI-assisted content moderation template.
+        # *   8: AI-assisted intelligent thumbnail template.
+        # *   9: AI-assisted intelligent erasure template.
+        # *   10: AI-assisted media fingerprint analysis template.
+        # *   11: AI-assisted smart tagging template.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -3143,15 +3345,25 @@ class CreateCustomTemplateResponseBodyCustomTemplate(TeaModel):
         type: int = None,
         type_name: str = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
+        # Indicates whether the template is the default template.
         self.is_default = is_default
+        # The time when the template was last modified.
         self.modified_time = modified_time
+        # The template state.
         self.status = status
+        # The subtype name of the template.
         self.subtype = subtype
+        # The template configurations.
         self.template_config = template_config
+        # The template ID.
         self.template_id = template_id
+        # The template name.
         self.template_name = template_name
+        # The type ID of the template.
         self.type = type
+        # The type name of the template.
         self.type_name = type_name
 
     def validate(self):
@@ -3216,7 +3428,9 @@ class CreateCustomTemplateResponseBody(TeaModel):
         custom_template: CreateCustomTemplateResponseBodyCustomTemplate = None,
         request_id: str = None,
     ):
+        # The template information.
         self.custom_template = custom_template
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3295,13 +3509,36 @@ class CreateCustomizedVoiceJobRequest(TeaModel):
         voice_id: str = None,
         voice_name: str = None,
     ):
+        # The gender. Valid values:
+        # 
+        # *   female
+        # *   male
+        # 
         # This parameter is required.
         self.gender = gender
+        # The scenario. Valid values:
+        # 
+        # *   story
+        # *   interaction
+        # *   navigation
+        # 
         # This parameter is required.
         self.scenario = scenario
+        # The voice description.
+        # 
+        # *   The description can be up to 256 characters in length.
         self.voice_desc = voice_desc
+        # The voice ID. It can be the English name or Chinese Pinyin of the voice.
+        # 
+        # *   The value must be a unique ID that is not used by other custom voices.
+        # *   The ID can be up to 32 characters in length.
+        # *   Only letters and digits are supported.
+        # 
         # This parameter is required.
         self.voice_id = voice_id
+        # The voice name.
+        # 
+        # *   The name can be up to 32 characters in length.
         self.voice_name = voice_name
 
     def validate(self):
@@ -3346,7 +3583,9 @@ class CreateCustomizedVoiceJobResponseBodyData(TeaModel):
         job_id: str = None,
         voice_id: str = None,
     ):
+        # The ID of the human voice cloning job.
         self.job_id = job_id
+        # The voice ID.
         self.voice_id = voice_id
 
     def validate(self):
@@ -3380,8 +3619,11 @@ class CreateCustomizedVoiceJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true false
         self.success = success
 
     def validate(self):
@@ -3466,8 +3708,17 @@ class CreateDNADBRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The description of the media fingerprint library.
         self.description = description
+        # The model of the media fingerprint library. Valid values:
+        # 
+        # *   **Video**\
+        # *   **Audio**\
+        # *   **Image**\
+        # *   **Text** (supported only in the China (Shanghai) region)
         self.model = model
+        # The name of the media fingerprint library.
+        # 
         # This parameter is required.
         self.name = name
         self.owner_account = owner_account
@@ -3528,10 +3779,15 @@ class CreateDNADBResponseBodyDBInfo(TeaModel):
         name: str = None,
         status: str = None,
     ):
+        # The ID of the media fingerprint library. We recommend that you save this ID for subsequent calls of other operations.
         self.dbid = dbid
+        # The description of the media fingerprint library.
         self.description = description
+        # The model of the media fingerprint library.
         self.model = model
+        # The name of the media fingerprint library.
         self.name = name
+        # The state of the media fingerprint library. After a media fingerprint library is created, it enters the offline state. After the media fingerprint library is processed at the backend, it enters the active state.
         self.status = status
 
     def validate(self):
@@ -3576,7 +3832,9 @@ class CreateDNADBResponseBody(TeaModel):
         dbinfo: CreateDNADBResponseBodyDBInfo = None,
         request_id: str = None,
     ):
+        # The details of the media fingerprint library.
         self.dbinfo = dbinfo
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4676,9 +4934,18 @@ class CreatePipelineRequest(TeaModel):
         priority: int = None,
         speed: str = None,
     ):
+        # The name of the MPS queue.
+        # 
         # This parameter is required.
         self.name = name
+        # The priority. Default value: 6. Valid values: 1 to 10. A greater value specifies a higher priority.
         self.priority = priority
+        # The type of the MPS queue. Valid values:
+        # 
+        # 1.  Standard: standard MPS queue.
+        # 2.  Boost: MPS queue with transcoding speed boosted.
+        # 3.  NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
+        # 
         # This parameter is required.
         self.speed = speed
 
@@ -4721,12 +4988,30 @@ class CreatePipelineResponseBodyPipeline(TeaModel):
         speed: str = None,
         status: str = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
+        # The time when the template was last modified.
         self.modified_time = modified_time
+        # The name of the MPS queue.
         self.name = name
+        # The ID of the MPS queue.
         self.pipeline_id = pipeline_id
+        # The priority of the MPS queue.
         self.priority = priority
+        # The type of the MPS queue.
+        # 
+        # Valid values:
+        # 
+        # *   Boost: MPS queue with transcoding speed boosted.
+        # *   Standard: standard MPS queue.
+        # *   NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
         self.speed = speed
+        # The state of the MPS queue.
+        # 
+        # Valid values:
+        # 
+        # *   Active
+        # *   Paused
         self.status = status
 
     def validate(self):
@@ -4779,7 +5064,9 @@ class CreatePipelineResponseBody(TeaModel):
         pipeline: CreatePipelineResponseBodyPipeline = None,
         request_id: str = None,
     ):
+        # The information about the MPS queue.
         self.pipeline = pipeline
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5507,6 +5794,8 @@ class DecryptKMSDataKeyRequest(TeaModel):
         self,
         ciphertext_blob: str = None,
     ):
+        # The ciphertext that you want to decrypt.
+        # 
         # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
 
@@ -5536,7 +5825,9 @@ class DecryptKMSDataKeyResponseBodyDataKey(TeaModel):
         key_id: str = None,
         plaintext: str = None,
     ):
+        # The ID of the customer master key (CMK) that was used to decrypt the ciphertext.
         self.key_id = key_id
+        # The plaintext that is generated after decryption.
         self.plaintext = plaintext
 
     def validate(self):
@@ -5569,7 +5860,9 @@ class DecryptKMSDataKeyResponseBody(TeaModel):
         data_key: DecryptKMSDataKeyResponseBodyDataKey = None,
         request_id: str = None,
     ):
+        # The information about the decryption result.
         self.data_key = data_key
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5644,6 +5937,8 @@ class DeleteAvatarTrainingJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the digital human training job.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -5672,6 +5967,7 @@ class DeleteAvatarTrainingJobResponseBodyData(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the digital human training job.
         self.job_id = job_id
 
     def validate(self):
@@ -5701,8 +5997,14 @@ class DeleteAvatarTrainingJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -5884,6 +6186,8 @@ class DeleteCustomTemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # The ID of the custom template.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -5913,7 +6217,9 @@ class DeleteCustomTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -5986,6 +6292,8 @@ class DeleteCustomizedVoiceJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the human voice cloning job.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -6015,7 +6323,12 @@ class DeleteCustomizedVoiceJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6092,6 +6405,8 @@ class DeleteDNADBRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the media fingerprint library that you want to delete.
+        # 
         # This parameter is required.
         self.dbid = dbid
         self.owner_account = owner_account
@@ -6140,6 +6455,7 @@ class DeleteDNADBResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6213,10 +6529,14 @@ class DeleteDNAFilesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the media fingerprint library from which you want to delete files.
+        # 
         # This parameter is required.
         self.dbid = dbid
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The primary key values of the files that you want to delete. Separate multiple values with commas (,). You can delete up to 50 files at a time.
+        # 
         # This parameter is required.
         self.primary_keys = primary_keys
         self.resource_owner_account = resource_owner_account
@@ -6267,6 +6587,7 @@ class DeleteDNAFilesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7696,6 +8017,8 @@ class DeletePipelineRequest(TeaModel):
         self,
         pipeline_id: str = None,
     ):
+        # The ID of the MPS queue.
+        # 
         # This parameter is required.
         self.pipeline_id = pipeline_id
 
@@ -7725,7 +8048,9 @@ class DeletePipelineResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -7927,6 +8252,7 @@ class DeleteSmartJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The IDs of the jobs to delete. Separate multiple IDs with commas (,).
         self.job_id = job_id
 
     def validate(self):
@@ -7954,7 +8280,7 @@ class DeleteSmartJobResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # RequestId
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8023,6 +8349,7 @@ class DeleteTemplateRequest(TeaModel):
         self,
         template_ids: str = None,
     ):
+        # The IDs of the templates that you want to delete. Separate multiple IDs with commas (,).
         self.template_ids = template_ids
 
     def validate(self):
@@ -8050,6 +8377,7 @@ class DeleteTemplateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8281,11 +8609,18 @@ class DescribeMeterImsEditUsageRequest(TeaModel):
         region: str = None,
         start_ts: int = None,
     ):
+        # The end of the time range to query. The value is a 10-digit timestamp.
+        # 
         # This parameter is required.
         self.end_ts = end_ts
+        # The time granularity of the query. Valid values: 3600 (hour) and 86400 (day).
+        # 
         # This parameter is required.
         self.interval = interval
+        # This parameter does not take effect. By default, the usage data of all regions is returned.
         self.region = region
+        # The beginning of the time range to query. The value is a 10-digit timestamp.
+        # 
         # This parameter is required.
         self.start_ts = start_ts
 
@@ -8328,8 +8663,11 @@ class DescribeMeterImsEditUsageResponseBodyData(TeaModel):
         profile: str = None,
         time: int = None,
     ):
+        # The usage duration, in minutes.
         self.duration = duration
+        # The video profile.
         self.profile = profile
+        # The beginning time of usage. The value is a 10-digit timestamp.
         self.time = time
 
     def validate(self):
@@ -8366,7 +8704,9 @@ class DescribeMeterImsEditUsageResponseBody(TeaModel):
         data: List[DescribeMeterImsEditUsageResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The usage statistics of IMS on VOD editing.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8450,11 +8790,18 @@ class DescribeMeterImsMediaConvertUHDUsageRequest(TeaModel):
         region_id: str = None,
         start_ts: int = None,
     ):
+        # The end of the time range to query. The value is a 10-digit timestamp.
+        # 
         # This parameter is required.
         self.end_ts = end_ts
+        # The time granularity of the query. Valid values: 3600 (hour) and 86400 (day).
+        # 
         # This parameter is required.
         self.interval = interval
+        # This parameter does not take effect. By default, the usage data of all regions is returned.
         self.region_id = region_id
+        # The beginning of the time range to query. The value is a 10-digit timestamp.
+        # 
         # This parameter is required.
         self.start_ts = start_ts
 
@@ -8497,8 +8844,11 @@ class DescribeMeterImsMediaConvertUHDUsageResponseBodyData(TeaModel):
         specification: str = None,
         time: int = None,
     ):
+        # The usage duration, in minutes.
         self.duration = duration
+        # The transcoding specifications.
         self.specification = specification
+        # The beginning time of usage. The value is a 10-digit timestamp.
         self.time = time
 
     def validate(self):
@@ -8535,7 +8885,9 @@ class DescribeMeterImsMediaConvertUHDUsageResponseBody(TeaModel):
         data: List[DescribeMeterImsMediaConvertUHDUsageResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The usage statistics of IMS on UHD transcoding of MPS.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8619,11 +8971,18 @@ class DescribeMeterImsMediaConvertUsageRequest(TeaModel):
         region: str = None,
         start_ts: int = None,
     ):
+        # The end of the time range to query. The value is a 10-digit timestamp. The maximum query range is 31 days. The duration between StartTs and EndTs cannot exceed 31 days.
+        # 
         # This parameter is required.
         self.end_ts = end_ts
+        # The time granularity of the query. Valid values: 3600 (hour) and 86400 (day).
+        # 
         # This parameter is required.
         self.interval = interval
+        # This parameter does not take effect. By default, the usage data of all regions is returned.
         self.region = region
+        # The beginning of the time range to query. The value is a 10-digit timestamp. You can query data within the last 90 days.
+        # 
         # This parameter is required.
         self.start_ts = start_ts
 
@@ -8666,8 +9025,11 @@ class DescribeMeterImsMediaConvertUsageResponseBodyData(TeaModel):
         specification: str = None,
         time: int = None,
     ):
+        # The usage duration, in minutes.
         self.duration = duration
+        # The transcoding specifications.
         self.specification = specification
+        # The beginning time of usage. The value is a 10-digit timestamp.
         self.time = time
 
     def validate(self):
@@ -8704,7 +9066,9 @@ class DescribeMeterImsMediaConvertUsageResponseBody(TeaModel):
         data: List[DescribeMeterImsMediaConvertUsageResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The usage statistics of IMS on VOD transcoding.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8788,11 +9152,18 @@ class DescribeMeterImsMpsAiUsageRequest(TeaModel):
         region: str = None,
         start_ts: int = None,
     ):
+        # The end of the time range to query. The value is a 10-digit timestamp. The maximum query range is 31 days. The duration between StartTs and EndTs cannot exceed 31 days.
+        # 
         # This parameter is required.
         self.end_ts = end_ts
+        # The time granularity of the query. Valid values: 3600 (hour) and 86400 (day).
+        # 
         # This parameter is required.
         self.interval = interval
+        # This parameter does not take effect. By default, the usage data of all regions is returned.
         self.region = region
+        # The beginning of the time range to query. The value is a 10-digit timestamp. You can query data within the last 90 days.
+        # 
         # This parameter is required.
         self.start_ts = start_ts
 
@@ -8835,8 +9206,11 @@ class DescribeMeterImsMpsAiUsageResponseBodyData(TeaModel):
         time: int = None,
         type: str = None,
     ):
+        # The usage duration, in minutes.
         self.duration = duration
+        # The beginning time of usage. The value is a 10-digit timestamp.
         self.time = time
+        # The AI type. Valid values:
         self.type = type
 
     def validate(self):
@@ -8873,7 +9247,9 @@ class DescribeMeterImsMpsAiUsageResponseBody(TeaModel):
         data: List[DescribeMeterImsMpsAiUsageResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The usage statistics of IMS on AI processing of MPS.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8956,9 +9332,14 @@ class DescribeMeterImsSummaryRequest(TeaModel):
         region: str = None,
         start_ts: int = None,
     ):
+        # The end of the time range to query. The value is a 10-digit timestamp.
+        # 
         # This parameter is required.
         self.end_ts = end_ts
+        # This parameter does not take effect. By default, the usage data of all regions is returned.
         self.region = region
+        # The beginning of the time range to query. The value is a 10-digit timestamp.
+        # 
         # This parameter is required.
         self.start_ts = start_ts
 
@@ -9002,13 +9383,21 @@ class DescribeMeterImsSummaryResponseBodyData(TeaModel):
         mps_transcode_duration: int = None,
         mps_transcode_uhdduration: int = None,
     ):
+        # The duration of video editing.
         self.editing_duration = editing_duration
+        # The duration of live editing.
         self.live_edit_duration = live_edit_duration
+        # The duration of live stream recording.
         self.live_record_duration = live_record_duration
+        # The number of live stream snapshots.
         self.live_snapshot_count = live_snapshot_count
+        # The duration of live stream transcoding.
         self.live_transcode_duration = live_transcode_duration
+        # The duration of AI processing.
         self.mps_ai_duration = mps_ai_duration
+        # The duration of video-on-demand (VOD) transcoding.
         self.mps_transcode_duration = mps_transcode_duration
+        # The duration of audio and video enhancement.
         self.mps_transcode_uhdduration = mps_transcode_uhdduration
 
     def validate(self):
@@ -9065,7 +9454,9 @@ class DescribeMeterImsSummaryResponseBody(TeaModel):
         data: List[DescribeMeterImsSummaryResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The usage statistics of IMS.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9702,10 +10093,20 @@ class DetectAudioForCustomizedVoiceJobRequest(TeaModel):
         record_url: str = None,
         voice_id: str = None,
     ):
+        # The sequence number of the recording file.
+        # 
         # This parameter is required.
         self.audio_record_id = audio_record_id
+        # The URL of the recording file.
+        # 
+        # > : The URL must be an Object Storage Service (OSS) URL within your Alibaba Cloud account. The OSS bucket must be in the same region in which IMS is activated.
+        # 
+        # > : The audio file must be in the WAV or PCM format and must be a 16-bit mono audio file at 48000 Hz.
+        # 
         # This parameter is required.
         self.record_url = record_url
+        # The voice ID.
+        # 
         # This parameter is required.
         self.voice_id = voice_id
 
@@ -9743,7 +10144,12 @@ class DetectAudioForCustomizedVoiceJobResponseBodyData(TeaModel):
         pass_: bool = None,
         reason: str = None,
     ):
+        # Indicates whether the audio file passes the check. Valid values:
+        # 
+        # *   true
+        # *   false
         self.pass_ = pass_
+        # The reason returned if the audio file failed to pass the check.
         self.reason = reason
 
     def validate(self):
@@ -9777,8 +10183,11 @@ class DetectAudioForCustomizedVoiceJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true false
         self.success = success
 
     def validate(self):
@@ -10104,12 +10513,14 @@ class GenerateAIAgentCallRequest(TeaModel):
         aiagent_id: str = None,
         expire: int = None,
         template_config: AIAgentTemplateConfig = None,
+        user_data: str = None,
         user_id: str = None,
     ):
         # This parameter is required.
         self.aiagent_id = aiagent_id
         self.expire = expire
         self.template_config = template_config
+        self.user_data = user_data
         self.user_id = user_id
 
     def validate(self):
@@ -10128,6 +10539,8 @@ class GenerateAIAgentCallRequest(TeaModel):
             result['Expire'] = self.expire
         if self.template_config is not None:
             result['TemplateConfig'] = self.template_config.to_map()
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -10141,6 +10554,8 @@ class GenerateAIAgentCallRequest(TeaModel):
         if m.get('TemplateConfig') is not None:
             temp_model = AIAgentTemplateConfig()
             self.template_config = temp_model.from_map(m['TemplateConfig'])
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -10152,12 +10567,14 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
         aiagent_id: str = None,
         expire: int = None,
         template_config_shrink: str = None,
+        user_data: str = None,
         user_id: str = None,
     ):
         # This parameter is required.
         self.aiagent_id = aiagent_id
         self.expire = expire
         self.template_config_shrink = template_config_shrink
+        self.user_data = user_data
         self.user_id = user_id
 
     def validate(self):
@@ -10175,6 +10592,8 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
             result['Expire'] = self.expire
         if self.template_config_shrink is not None:
             result['TemplateConfig'] = self.template_config_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -10187,6 +10606,8 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
             self.expire = m.get('Expire')
         if m.get('TemplateConfig') is not None:
             self.template_config_shrink = m.get('TemplateConfig')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -10297,8 +10718,11 @@ class GenerateKMSDataKeyResponseBodyDataKey(TeaModel):
         key_id: str = None,
         plaintext: str = None,
     ):
+        # The ciphertext of the encrypted data key. This parameter is used as CipherText when you create a transcoding job.
         self.ciphertext_blob = ciphertext_blob
+        # The ID of the customer master key (CMK). The ID must be globally unique.
         self.key_id = key_id
+        # The Base64-encoded plaintext of the data key.
         self.plaintext = plaintext
 
     def validate(self):
@@ -10335,7 +10759,9 @@ class GenerateKMSDataKeyResponseBody(TeaModel):
         data_key: GenerateKMSDataKeyResponseBodyDataKey = None,
         request_id: str = None,
     ):
+        # The information about the data key.
         self.data_key = data_key
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10410,6 +10836,8 @@ class GetAvatarRequest(TeaModel):
         self,
         avatar_id: str = None,
     ):
+        # *   The ID of the digital human.
+        # 
         # This parameter is required.
         self.avatar_id = avatar_id
 
@@ -10446,14 +10874,23 @@ class GetAvatarResponseBodyDataAvatar(TeaModel):
         transparent: bool = None,
         width: int = None,
     ):
+        # The description of the digital human.
         self.avatar_description = avatar_description
+        # The ID of the digital human.
         self.avatar_id = avatar_id
+        # The name of the digital human.
         self.avatar_name = avatar_name
+        # The type of the digital human.
         self.avatar_type = avatar_type
+        # The height of the digital human image in pixels.
         self.height = height
+        # The media asset ID of the portrait image.
         self.portrait = portrait
+        # The thumbnail URL.
         self.thumbnail = thumbnail
+        # Indicates whether the digital human supports alpha channels.
         self.transparent = transparent
+        # The width of the digital human image in pixels.
         self.width = width
 
     def validate(self):
@@ -10513,6 +10950,7 @@ class GetAvatarResponseBodyData(TeaModel):
         self,
         avatar: GetAvatarResponseBodyDataAvatar = None,
     ):
+        # The information about the digital human.
         self.avatar = avatar
 
     def validate(self):
@@ -10544,8 +10982,14 @@ class GetAvatarResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -10624,6 +11068,8 @@ class GetAvatarTrainingJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the digital human training job.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -10664,18 +11110,34 @@ class GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob(TeaModel):
         transparent: bool = None,
         video: str = None,
     ):
+        # The description of the digital human.
         self.avatar_description = avatar_description
+        # The ID of the digital human.
         self.avatar_id = avatar_id
+        # The name of the digital human.
         self.avatar_name = avatar_name
+        # The type of the digital human.
         self.avatar_type = avatar_type
+        # *   The time when the first training was initiated.
+        # *   The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.first_training_time = first_training_time
+        # The ID of the digital human training job.
         self.job_id = job_id
+        # *   The time when the last training was initiated.
+        # *   The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.last_training_time = last_training_time
+        # The status description.
         self.message = message
+        # The media asset ID of the portrait image.
         self.portrait = portrait
+        # *   The state of the digital human training job.
+        # *   Valid values: Init, Queuing, Training, Success, and Fail.
         self.status = status
+        # The thumbnail URL.
         self.thumbnail = thumbnail
+        # Indicates whether the input video supports alpha channels.
         self.transparent = transparent
+        # The ID of the video used for training.
         self.video = video
 
     def validate(self):
@@ -10751,6 +11213,7 @@ class GetAvatarTrainingJobResponseBodyData(TeaModel):
         self,
         avatar_training_job: GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob = None,
     ):
+        # The information about the digital human training job.
         self.avatar_training_job = avatar_training_job
 
     def validate(self):
@@ -10782,8 +11245,11 @@ class GetAvatarTrainingJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned if the request was successful.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -10862,6 +11328,7 @@ class GetBatchMediaProducingJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the quick video production job.
         self.job_id = job_id
 
     def validate(self):
@@ -10895,12 +11362,27 @@ class GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList(TeaModel):
         project_id: str = None,
         status: str = None,
     ):
+        # The error code that is returned if the subjob failed. This parameter is not returned if the subjob is successful.
         self.error_code = error_code
+        # The error message that is returned if the subjob failed. This parameter is not returned if the subjob is successful.
         self.error_message = error_message
+        # The subjob ID.
         self.job_id = job_id
+        # The ID of the output media asset.
         self.media_id = media_id
+        # The URL of the output file.
         self.media_url = media_url
+        # The ID of the online editing project.
         self.project_id = project_id
+        # The subjob state. Valid values:
+        # 
+        # Init: The subjob is initialized.
+        # 
+        # Processing: The subjob is in progress.
+        # 
+        # Success: The subjob is successful.
+        # 
+        # Failed: The subjob failed.
         self.status = status
 
     def validate(self):
@@ -10963,17 +11445,42 @@ class GetBatchMediaProducingJobResponseBodyEditingBatchJob(TeaModel):
         sub_job_list: List[GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList] = None,
         user_data: str = None,
     ):
+        # The time when the job was complete.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.complete_time = complete_time
+        # The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The editing configurations. For more information, see [EditingConfig](~~2692547#1be9bba03b7qu~~).
         self.editing_config = editing_config
+        # The extended information. This parameter contains the following fields:
+        # 
+        # ErrorCode: the error code of the main job.
+        # 
+        # ErrorMessage: the error message of the main job.
         self.extend = extend
+        # The input configurations. For more information, see [InputConfig](~~2692547#2faed1559549n~~).
         self.input_config = input_config
+        # The job ID.
         self.job_id = job_id
         self.job_type = job_type
+        # The time when the job was last modified.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.modified_time = modified_time
+        # The output configurations. For more information, see [OutputConfig](~~2692547#447b928fcbuoa~~).
         self.output_config = output_config
+        # The job state. Valid values:
+        # 
+        # Init: The job is initialized.
+        # 
+        # Processing: The job is in progress.
+        # 
+        # Finished: The job is complete.
         self.status = status
+        # The quick video production subjobs.
         self.sub_job_list = sub_job_list
+        # The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html?spm=a2c4g.439285.0.i1#section-urj-v3f-0s1).
         self.user_data = user_data
 
     def validate(self):
@@ -11054,7 +11561,9 @@ class GetBatchMediaProducingJobResponseBody(TeaModel):
         editing_batch_job: GetBatchMediaProducingJobResponseBodyEditingBatchJob = None,
         request_id: str = None,
     ):
+        # The information about the quick video production job.
         self.editing_batch_job = editing_batch_job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11568,8 +12077,11 @@ class GetCustomTemplateRequest(TeaModel):
         template_id: str = None,
         type: int = None,
     ):
+        # The template subtype.
         self.subtype = subtype
+        # The template ID.
         self.template_id = template_id
+        # The ID of the template type that is used to query the default template. This parameter is required if TemplateId is not specified.
         self.type = type
 
     def validate(self):
@@ -11672,17 +12184,28 @@ class GetCustomTemplateResponseBodyCustomTemplate(TeaModel):
         type: int = None,
         type_name: str = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
         self.frontend_hint = frontend_hint
+        # Indicates whether the template is the default template.
         self.is_default = is_default
+        # The time when the template was last modified.
         self.modified_time = modified_time
+        # The template state.
         self.status = status
+        # The subtype ID of the template.
         self.subtype = subtype
+        # The subtype name of the template.
         self.subtype_name = subtype_name
+        # The template parameters.
         self.template_config = template_config
+        # The template ID.
         self.template_id = template_id
+        # The template name.
         self.template_name = template_name
+        # The type ID of the template.
         self.type = type
+        # The type name of the template.
         self.type_name = type_name
 
     def validate(self):
@@ -11757,7 +12280,9 @@ class GetCustomTemplateResponseBody(TeaModel):
         custom_template: GetCustomTemplateResponseBodyCustomTemplate = None,
         request_id: str = None,
     ):
+        # The template information.
         self.custom_template = custom_template
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11832,6 +12357,7 @@ class GetCustomizedVoiceRequest(TeaModel):
         self,
         voice_id: str = None,
     ):
+        # The voice ID.
         self.voice_id = voice_id
 
     def validate(self):
@@ -11864,11 +12390,26 @@ class GetCustomizedVoiceResponseBodyDataCustomizedVoice(TeaModel):
         voice_id: str = None,
         voice_name: str = None,
     ):
+        # The media asset ID of the sample audio file.
         self.demo_audio_media_id = demo_audio_media_id
+        # The gender. Valid values:
+        # 
+        # *   female
+        # *   male
         self.gender = gender
+        # The demonstration scenario.
+        # 
+        # Valid values:
+        # 
+        # *   **story**\
+        # *   **interaction**\
+        # *   **navigation**\
         self.scenario = scenario
+        # The voice description.
         self.voice_desc = voice_desc
+        # The voice ID.
         self.voice_id = voice_id
+        # The voice name.
         self.voice_name = voice_name
 
     def validate(self):
@@ -11916,6 +12457,7 @@ class GetCustomizedVoiceResponseBodyData(TeaModel):
         self,
         customized_voice: GetCustomizedVoiceResponseBodyDataCustomizedVoice = None,
     ):
+        # The personalized human voice.
         self.customized_voice = customized_voice
 
     def validate(self):
@@ -11947,8 +12489,14 @@ class GetCustomizedVoiceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -12027,6 +12575,8 @@ class GetCustomizedVoiceJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the human voice cloning job.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -12064,15 +12614,42 @@ class GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob(TeaModel):
         voice_id: str = None,
         voice_name: str = None,
     ):
+        # The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The gender. Valid values:
+        # 
+        # *   female
+        # *   male
         self.gender = gender
+        # The ID of the human voice cloning job.
         self.job_id = job_id
+        # The status description.
         self.message = message
+        # The scenario. Valid values:
+        # 
+        # *   story
+        # *   interaction
+        # *   navigation
         self.scenario = scenario
+        # The job state. Valid values:
+        # 
+        # *   Initialization
+        # *   AudioDetecting
+        # *   PreTraining
+        # *   Training
+        # *   Success
+        # *   Fail
         self.status = status
+        # The type of the human voice cloning job. Valid values:
+        # 
+        # *   Basic
+        # *   Standard
         self.type = type
+        # The voice description.
         self.voice_desc = voice_desc
+        # The voice ID.
         self.voice_id = voice_id
+        # The voice name.
         self.voice_name = voice_name
 
     def validate(self):
@@ -12136,6 +12713,7 @@ class GetCustomizedVoiceJobResponseBodyData(TeaModel):
         self,
         customized_voice_job: GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob = None,
     ):
+        # The information about the human voice cloning job.
         self.customized_voice_job = customized_voice_job
 
     def validate(self):
@@ -12167,8 +12745,14 @@ class GetCustomizedVoiceJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned if the request was successful.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -12339,6 +12923,14 @@ class GetDemonstrationForCustomizedVoiceJobRequest(TeaModel):
         self,
         scenario: str = None,
     ):
+        # The demonstration scenario.
+        # 
+        # Valid values:
+        # 
+        # *   **story**\
+        # *   **interaction**\
+        # *   **navigation**\
+        # 
         # This parameter is required.
         self.scenario = scenario
 
@@ -12369,8 +12961,17 @@ class GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList(Tea
         demo_audio: str = None,
         text: str = None,
     ):
+        # The sequence number of the text, which corresponds to the AduioRecordId parameter to be passed during audio check.
         self.audio_id = audio_id
+        # The URL of the sample audio.
+        # 
+        # *   The value is an Object Storage Service (OSS) URL.
+        # 
+        #     **\
+        # 
+        #     **Note**: The URL expires in 12 hours.
         self.demo_audio = demo_audio
+        # The text content to be read.
         self.text = text
 
     def validate(self):
@@ -12406,6 +13007,7 @@ class GetDemonstrationForCustomizedVoiceJobResponseBodyData(TeaModel):
         self,
         demonstration_list: List[GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList] = None,
     ):
+        # A list of 20 text entries to be read and the corresponding sample audio.
         self.demonstration_list = demonstration_list
 
     def validate(self):
@@ -12443,8 +13045,14 @@ class GetDemonstrationForCustomizedVoiceJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -12523,6 +13131,7 @@ class GetDynamicImageJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
 
     def validate(self):
@@ -12552,11 +13161,11 @@ class GetDynamicImageJobResponseBodyDynamicImageJobInputOssFile(TeaModel):
         location: str = None,
         object: str = None,
     ):
-        # OSS Bucket
+        # The OSS bucket.
         self.bucket = bucket
-        # OSS Location
+        # The OSS location.
         self.location = location
-        # OSS Object
+        # The OSS object.
         self.object = object
 
     def validate(self):
@@ -12594,8 +13203,19 @@ class GetDynamicImageJobResponseBodyDynamicImageJobInput(TeaModel):
         oss_file: GetDynamicImageJobResponseBodyDynamicImageJobInputOssFile = None,
         type: str = None,
     ):
+        # The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+        # 
+        # 1.  OSS://bucket/object
+        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+        # 
+        # In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
         self.media = media
+        # The three key elements of OSS.
         self.oss_file = oss_file
+        # The type of the input file. Valid values:
+        # 
+        # 1.  OSS: an Object Storage Service (OSS) object.
+        # 2.  Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -12635,11 +13255,11 @@ class GetDynamicImageJobResponseBodyDynamicImageJobOutputOssFile(TeaModel):
         location: str = None,
         object: str = None,
     ):
-        # OSS Bucket
+        # The OSS bucket.
         self.bucket = bucket
-        # OSS Location
+        # The OSS location.
         self.location = location
-        # OSS Object
+        # The OSS object.
         self.object = object
 
     def validate(self):
@@ -12677,8 +13297,14 @@ class GetDynamicImageJobResponseBodyDynamicImageJobOutput(TeaModel):
         oss_file: GetDynamicImageJobResponseBodyDynamicImageJobOutputOssFile = None,
         type: str = None,
     ):
+        # The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+        # 
+        # 1.  OSS://bucket/object
+        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
         self.media = media
+        # The three key elements of OSS.
         self.oss_file = oss_file
+        # The type of the input file. Valid values: OSS: an OSS object. Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -12732,22 +13358,51 @@ class GetDynamicImageJobResponseBodyDynamicImageJob(TeaModel):
         trigger_source: str = None,
         user_data: str = None,
     ):
+        # Error codes
         self.code = code
+        # The time when the job was created.
         self.create_time = create_time
+        # The time when the job was complete.
         self.finish_time = finish_time
+        # The input of the job.
         self.input = input
+        # The job ID.
         self.job_id = job_id
+        # The error message that is returned.
         self.message = message
+        # The time when the job was last modified.
         self.modified_time = modified_time
+        # The name of the job.
         self.name = name
+        # The output of the job.
         self.output = output
+        # The URL of the output animated image.
         self.output_url = output_url
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The state of the job.
+        # 
+        # Valid values:
+        # 
+        # *   Init: The job is submitted.
+        # *   Success: The job is successful.
+        # *   Fail: The job failed.
         self.status = status
+        # The time when the job was submitted.
         self.submit_time = submit_time
+        # The animation template configuration.
         self.template_config = template_config
+        # The template ID.
         self.template_id = template_id
+        # The request trigger source.
+        # 
+        # Valid values:
+        # 
+        # *   Console
+        # *   Workflow
+        # *   API
         self.trigger_source = trigger_source
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -12845,7 +13500,9 @@ class GetDynamicImageJobResponseBody(TeaModel):
         dynamic_image_job: GetDynamicImageJobResponseBodyDynamicImageJob = None,
         request_id: str = None,
     ):
+        # The information about the snapshot job.
         self.dynamic_image_job = dynamic_image_job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14008,6 +14665,7 @@ class GetLiveEditingJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the live editing job.
         self.job_id = job_id
 
     def validate(self):
@@ -14037,8 +14695,11 @@ class GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig(TeaModel):
         domain_name: str = None,
         stream_name: str = None,
     ):
+        # The name of the application to which the live stream belongs.
         self.app_name = app_name
+        # The domain name of the live stream.
         self.domain_name = domain_name
+        # The name of the live stream.
         self.stream_name = stream_name
 
     def validate(self):
@@ -14074,6 +14735,7 @@ class GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig(TeaModel):
         self,
         mode: str = None,
     ):
+        # The editing mode. Default value: Accurate.
         self.mode = mode
 
     def validate(self):
@@ -14107,12 +14769,19 @@ class GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig(TeaModel):
         vod_template_group_id: str = None,
         width: int = None,
     ):
+        # The bitrate of the output file. Unit: Kbit/s. You can leave this parameter empty. The default value is the maximum bitrate of the input materials.
         self.bitrate = bitrate
+        # If OutputMediaTarget is set to vod-media, this parameter indicates the file name of the output file. The value contains the file name extension but not the path.
         self.file_name = file_name
+        # The height of the output file. You can leave this parameter empty. The default value is the maximum height of the input materials.
         self.height = height
+        # The URL of the output file.
         self.media_url = media_url
+        # If OutputMediaTarget is set to vod-media, this parameter indicates the storage location of the media asset in ApsaraVideo VOD. The storage location is the path of the file in ApsaraVideo VOD, excluding the prefix http://. Example: outin-xxxxxx.oss-cn-shanghai.aliyuncs.com.
         self.storage_location = storage_location
+        # The ID of the VOD transcoding template group. If VOD transcoding is not required, set the value to VOD_NO_TRANSCODE.
         self.vod_template_group_id = vod_template_group_id
+        # The width of the output file. You can leave this parameter empty. The default value is the maximum width of the input materials.
         self.width = width
 
     def validate(self):
@@ -14178,20 +14847,35 @@ class GetLiveEditingJobResponseBodyLiveEditingJob(TeaModel):
         status: str = None,
         user_data: str = None,
     ):
+        # The clips.
         self.clips = clips
+        # The response code. Note: Pay attention to this parameter if the job failed.
         self.code = code
+        # The time when the live editing job was completed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.complete_time = complete_time
+        # The time when the live editing job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The ID of the live editing job.
         self.job_id = job_id
+        # The live editing configurations.
         self.live_stream_config = live_stream_config
+        # The media asset ID of the output file.
         self.media_id = media_id
+        # The production configurations.
         self.media_produce_config = media_produce_config
+        # The URL of the output file.
         self.media_url = media_url
+        # The returned message. Note: Pay attention to this parameter if the job failed.
         self.message = message
+        # The time when the live editing job was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.modified_time = modified_time
+        # The storage configurations of the output file.
         self.output_media_config = output_media_config
+        # The ID of the live editing project.
         self.project_id = project_id
+        # The state of the live editing job. Valid values: Init, Queuing, Processing, Success, and Failed.
         self.status = status
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -14284,7 +14968,9 @@ class GetLiveEditingJobResponseBody(TeaModel):
         live_editing_job: GetLiveEditingJobResponseBodyLiveEditingJob = None,
         request_id: str = None,
     ):
+        # The information about the live editing job.
         self.live_editing_job = live_editing_job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17043,6 +17729,7 @@ class GetMediaInfoJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
 
     def validate(self):
@@ -17071,7 +17758,12 @@ class GetMediaInfoJobResponseBodyMediaInfoJobInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object. If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported. If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an Object Storage Service (OSS) object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -17117,20 +17809,35 @@ class GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoLis
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The sound channel layout.
         self.channel_layout = channel_layout
+        # The number of sound channels.
         self.channels = channels
+        # The name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The encoding format.
         self.codec_name = codec_name
+        # The encoder tag.
         self.codec_tag = codec_tag
+        # The name of the encoder tag.
         self.codec_tag_string = codec_tag_string
+        # The time base of the encoder.
         self.codec_time_base = codec_time_base
+        # The duration of the stream. Unit: seconds.
         self.duration = duration
+        # The sequence number of the stream.
         self.index = index
+        # The language of the stream.
         self.lang = lang
+        # The sample format.
         self.sample_fmt = sample_fmt
+        # The sampling rate. Unit: Hz.
         self.sample_rate = sample_rate
+        # The start time of the stream.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -17225,17 +17932,29 @@ class GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo(TeaM
         region: str = None,
         width: str = None,
     ):
+        # The video bitrate.
         self.bitrate = bitrate
+        # The duration of the video. Unit: seconds.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size.
         self.file_size = file_size
+        # The state of the file.
         self.file_status = file_status
+        # The file type.
         self.file_type = file_type
+        # The URL of the file.
         self.file_url = file_url
+        # The name of the video format.
         self.format_name = format_name
+        # The height of the output video.
         self.height = height
+        # The ID of the media asset.
         self.media_id = media_id
+        # The region in which the file resides.
         self.region = region
+        # The width of the output video.
         self.width = width
 
     def validate(self):
@@ -17329,28 +18048,55 @@ class GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoLis
         time_base: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bit_rate = bit_rate
+        # The name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The encoding format.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The time base of the encoder.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio.
         self.dar = dar
+        # The duration of the file.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+        # 
+        # *   0: The stream contains no B-frames.
+        # *   1: The stream contains one B-frame.
+        # *   2: The stream contains multiple consecutive B-frames.
         self.has_bframes = has_bframes
+        # The height of the output video.
         self.height = height
+        # The sequence number of the stream.
         self.index = index
+        # The language of the stream.
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The encoder profile.
         self.profile = profile
+        # The rotation angle of the video image.
         self.rotate = rotate
+        # The aspect ratio of the area from which the sampling points are collected.
         self.sar = sar
+        # The start time of the stream.
         self.start_time = start_time
+        # The time base.
         self.time_base = time_base
+        # The width of the output video.
         self.width = width
 
     def validate(self):
@@ -17468,8 +18214,11 @@ class GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty(TeaModel):
         file_basic_info: GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo = None,
         video_stream_info_list: List[GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList] = None,
     ):
+        # The information about the audio stream.
         self.audio_stream_info_list = audio_stream_info_list
+        # The basic file information.
         self.file_basic_info = file_basic_info
+        # The information about the video stream.
         self.video_stream_info_list = video_stream_info_list
 
     def validate(self):
@@ -17526,7 +18275,9 @@ class GetMediaInfoJobResponseBodyMediaInfoJobScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
 
     def validate(self):
@@ -17570,18 +18321,31 @@ class GetMediaInfoJobResponseBodyMediaInfoJob(TeaModel):
         trigger_source: str = None,
         user_data: str = None,
     ):
+        # Indicates whether asynchronous processing was performed.
         self.async_ = async_
+        # The time when the job was complete.
         self.finish_time = finish_time
+        # The input of the job.
         self.input = input
+        # The job ID.
         self.job_id = job_id
+        # The details of the media information.
         self.media_info_property = media_info_property
+        # The job name.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The scheduling information.
         self.schedule_config = schedule_config
+        # The state of the job. Valid values: Init (the job is submitted), Success (the job is successful), and Fail (the job failed).
         self.status = status
+        # The job submission information.
         self.submit_result_json = submit_result_json
+        # The time when the job was submitted.
         self.submit_time = submit_time
+        # The source of the job. Valid values: API, WorkFlow, and Console.
         self.trigger_source = trigger_source
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -17668,6 +18432,7 @@ class GetMediaInfoJobResponseBody(TeaModel):
     ):
         # MediaInfoJobDTO
         self.media_info_job = media_info_job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17862,6 +18627,7 @@ class GetMediaProducingJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the media editing and production job.
         self.job_id = job_id
 
     def validate(self):
@@ -17905,22 +18671,61 @@ class GetMediaProducingJobResponseBodyMediaProducingJob(TeaModel):
         user_data: str = None,
         vod_media_id: str = None,
     ):
+        # The template parameters of the media editing and production job.
         self.clips_param = clips_param
+        # The response code
+        # 
+        # Note: Pay attention to this parameter if the job failed.
         self.code = code
+        # The time when the media editing and production job was complete.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.complete_time = complete_time
+        # The time when the media editing and production job was created.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The duration of the output file.
+        # 
+        # Note: This parameter has a value if the job is successful and the output file is an audio or video file.
         self.duration = duration
+        # The ID of the media editing and production job.
         self.job_id = job_id
+        # The media asset ID of the output file.
         self.media_id = media_id
+        # The URL of the output file.
         self.media_url = media_url
+        # The returned message.
+        # 
+        # Note: Pay attention to this parameter if the job failed.
         self.message = message
+        # The time when the media editing and production job was last modified.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.modified_time = modified_time
+        # The ID of the online editing project.
         self.project_id = project_id
+        # The state of the media editing and production job. Valid values:
+        # 
+        # Init
+        # 
+        # Queuing
+        # 
+        # Processing
+        # 
+        # Success
+        # 
+        # Failed
         self.status = status
+        # The materials of the media editing and production job if the job is a subjob of a quick video production job, including the broadcast text and title.
         self.sub_job_materials = sub_job_materials
+        # The ID of the template used by the media editing and production job.
         self.template_id = template_id
+        # The timeline of the media editing and production job.
         self.timeline = timeline
+        # The user-defined data in the JSON format.
         self.user_data = user_data
+        # The media asset ID of the output file in ApsaraVideo VOD if the output file is stored in ApsaraVideo VOD.
         self.vod_media_id = vod_media_id
 
     def validate(self):
@@ -18013,7 +18818,9 @@ class GetMediaProducingJobResponseBody(TeaModel):
         media_producing_job: GetMediaProducingJobResponseBodyMediaProducingJob = None,
         request_id: str = None,
     ):
+        # The information about the online editing project.
         self.media_producing_job = media_producing_job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18088,6 +18895,8 @@ class GetPackageJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The job ID. You can obtain the job ID from the response parameters of the [SubmitPackageJob](https://help.aliyun.com/document_detail/461964.html) operation.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -18117,7 +18926,15 @@ class GetPackageJobResponseBodyPackageJobInputsInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an Object Storage Service (OSS) object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -18149,6 +18966,7 @@ class GetPackageJobResponseBodyPackageJobInputs(TeaModel):
         self,
         input: GetPackageJobResponseBodyPackageJobInputsInput = None,
     ):
+        # The information about the input stream file.
         self.input = input
 
     def validate(self):
@@ -18179,7 +18997,15 @@ class GetPackageJobResponseBodyPackageJobOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -18226,21 +19052,41 @@ class GetPackageJobResponseBodyPackageJob(TeaModel):
         trigger_source: str = None,
         user_data: str = None,
     ):
+        # The error code returned if the job fails.
         self.code = code
+        # The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.finish_time = finish_time
+        # The input of the job.
         self.inputs = inputs
+        # The job ID.
         self.job_id = job_id
+        # The error message that is returned.
         self.message = message
+        # The time when the job was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.modified_time = modified_time
+        # The name of the job.
         self.name = name
+        # The output of the job.
         self.output = output
+        # The URL of the output file.
         self.output_url = output_url
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
+        # The state of the job.
         self.status = status
+        # The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.submit_time = submit_time
+        # The source of the job. Valid values:
+        # 
+        # *   API
+        # *   WorkFlow
+        # *   Console
         self.trigger_source = trigger_source
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -18340,7 +19186,9 @@ class GetPackageJobResponseBody(TeaModel):
         package_job: GetPackageJobResponseBodyPackageJob = None,
         request_id: str = None,
     ):
+        # The information about the packaging job.
         self.package_job = package_job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18415,6 +19263,8 @@ class GetPipelineRequest(TeaModel):
         self,
         pipeline_id: str = None,
     ):
+        # The ID of the MPS queue.
+        # 
         # This parameter is required.
         self.pipeline_id = pipeline_id
 
@@ -18449,12 +19299,30 @@ class GetPipelineResponseBodyPipeline(TeaModel):
         speed: str = None,
         status: str = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
+        # The time when the template was last modified.
         self.modified_time = modified_time
+        # The name of the MPS queue.
         self.name = name
+        # The ID of the MPS queue.
         self.pipeline_id = pipeline_id
+        # The priority of the MPS queue. Valid values: 1 to 10.
         self.priority = priority
+        # The type of the MPS queue.
+        # 
+        # Valid values:
+        # 
+        # *   Standard: standard MPS queue.
+        # *   Boost: MPS queue with transcoding speed boosted.
+        # *   NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
         self.speed = speed
+        # The state of the MPS queue.
+        # 
+        # Valid values:
+        # 
+        # *   Active
+        # *   Paused
         self.status = status
 
     def validate(self):
@@ -18507,7 +19375,9 @@ class GetPipelineResponseBody(TeaModel):
         pipeline: GetPipelineResponseBodyPipeline = None,
         request_id: str = None,
     ):
+        # The information about the MPS queue.
         self.pipeline = pipeline
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19891,6 +20761,7 @@ class GetSmartHandleJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
 
     def validate(self):
@@ -19920,10 +20791,11 @@ class GetSmartHandleJobResponseBodyJobResult(TeaModel):
         media_id: str = None,
         usage: str = None,
     ):
-        # 智能分析结果
+        # The AI analysis result.
         self.ai_result = ai_result
-        # 媒资Id
+        # The ID of the media asset.
         self.media_id = media_id
+        # The token usage. This parameter is returned only for keyword-based text generation jobs.
         self.usage = usage
 
     def validate(self):
@@ -19959,6 +20831,7 @@ class GetSmartHandleJobResponseBodySmartJobInfoInputConfig(TeaModel):
         self,
         input_file: str = None,
     ):
+        # The OSS URL or the ID of the material in the media asset library.
         self.input_file = input_file
 
     def validate(self):
@@ -19987,9 +20860,9 @@ class GetSmartHandleJobResponseBodySmartJobInfoOutputConfig(TeaModel):
         bucket: str = None,
         object: str = None,
     ):
-        # OSS Bucket
+        # The OSS bucket.
         self.bucket = bucket
-        # OSS Object
+        # The OSS object.
         self.object = object
 
     def validate(self):
@@ -20028,14 +20901,21 @@ class GetSmartHandleJobResponseBodySmartJobInfo(TeaModel):
         title: str = None,
         user_id: str = None,
     ):
+        # The time when the job was created.
         self.create_time = create_time
+        # The job description.
         self.description = description
+        # The input configurations.
         self.input_config = input_config
+        # The job type.
         self.job_type = job_type
+        # The time when the job was last modified.
         self.modified_time = modified_time
+        # The output configurations.
         self.output_config = output_config
+        # The job title.
         self.title = title
-        # userid。
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -20102,12 +20982,26 @@ class GetSmartHandleJobResponseBody(TeaModel):
         state: str = None,
         user_data: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The job results.
         self.job_result = job_result
+        # The job results.
         self.output = output
+        # The request ID.
         self.request_id = request_id
+        # The information about the intelligent job.
         self.smart_job_info = smart_job_info
+        # The job state.
+        # 
+        # Valid values:
+        # 
+        # *   Finished
+        # *   Failed
+        # *   Executing
+        # *   Created
         self.state = state
+        # The user-defined data in the JSON format.
         self.user_data = user_data
 
     def validate(self):
@@ -20205,6 +21099,8 @@ class GetSnapshotJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the snapshot job.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -20235,11 +21131,11 @@ class GetSnapshotJobResponseBodySnapshotJobInputOssFile(TeaModel):
         location: str = None,
         object: str = None,
     ):
-        # OSS Bucket
+        # The OSS bucket.
         self.bucket = bucket
-        # OSS Location
+        # The OSS location.
         self.location = location
-        # OSS Object
+        # The OSS object.
         self.object = object
 
     def validate(self):
@@ -20277,8 +21173,17 @@ class GetSnapshotJobResponseBodySnapshotJobInput(TeaModel):
         oss_file: GetSnapshotJobResponseBodySnapshotJobInputOssFile = None,
         type: str = None,
     ):
+        # The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+        # 
+        # 1.  oss://bucket/object
+        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
         self.media = media
+        # The three key elements of OSS.
         self.oss_file = oss_file
+        # The type of the input file. Valid values:
+        # 
+        # 1.  OSS: an Object Storage Service (OSS) object.
+        # 2.  Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -20318,11 +21223,11 @@ class GetSnapshotJobResponseBodySnapshotJobOutputOssFile(TeaModel):
         location: str = None,
         object: str = None,
     ):
-        # OSS Bucket
+        # The OSS bucket.
         self.bucket = bucket
-        # OSS Location
+        # The OSS location.
         self.location = location
-        # OSS Object
+        # The OSS object.
         self.object = object
 
     def validate(self):
@@ -20360,8 +21265,19 @@ class GetSnapshotJobResponseBodySnapshotJobOutput(TeaModel):
         oss_file: GetSnapshotJobResponseBodySnapshotJobOutputOssFile = None,
         type: str = None,
     ):
+        # The output file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+        # 
+        # 1.  oss://bucket/object
+        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+        # 
+        # In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS. If multiple static snapshots were captured, the object must contain the "{Count}" placeholder. In the case of a sprite, the object must contain the "{TileCount}" placeholder. The suffix of the WebVTT snapshot objects must be ".vtt".
         self.media = media
+        # The three key elements of OSS.
         self.oss_file = oss_file
+        # The type of the output file. Valid values:
+        # 
+        # 1.  OSS: an OSS object.
+        # 2.  Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -20417,24 +21333,61 @@ class GetSnapshotJobResponseBodySnapshotJob(TeaModel):
         type: str = None,
         user_data: str = None,
     ):
+        # Indicates whether the snapshots were captured in asynchronous mode. Default value: true.
         self.async_ = async_
+        # Error codes
         self.code = code
+        # The number of snapshots.
         self.count = count
+        # The time when the job was created.
         self.create_time = create_time
+        # The time when the job was complete.
         self.finish_time = finish_time
+        # The input of the job.
         self.input = input
+        # The job ID.
         self.job_id = job_id
+        # The error message that is returned.
         self.message = message
+        # The time when the job was last modified.
         self.modified_time = modified_time
+        # The name of the job.
         self.name = name
+        # The output of the job.
         self.output = output
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The state of the job.
+        # 
+        # Valid values:
+        # 
+        # *   Init: The job is submitted.
+        # *   Success: The job is successful.
+        # *   Fail: The job failed.
         self.status = status
+        # The time when the job was submitted.
         self.submit_time = submit_time
+        # The snapshot template configuration.
         self.template_config = template_config
+        # The template ID.
         self.template_id = template_id
+        # The request trigger source.
+        # 
+        # Valid values:
+        # 
+        # *   Console
+        # *   Workflow
+        # *   API
         self.trigger_source = trigger_source
+        # Snapshot types
+        # 
+        # Valid values:
+        # 
+        # *   WebVtt
+        # *   Sprite
+        # *   Normal
         self.type = type
+        # The user-defined parameters.
         self.user_data = user_data
 
     def validate(self):
@@ -20540,7 +21493,9 @@ class GetSnapshotJobResponseBody(TeaModel):
         request_id: str = None,
         snapshot_job: GetSnapshotJobResponseBodySnapshotJob = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the snapshot job.
         self.snapshot_job = snapshot_job
 
     def validate(self):
@@ -20619,10 +21574,18 @@ class GetSnapshotUrlsRequest(TeaModel):
         page_size: int = None,
         timeout: int = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The order that you use to sort the query results. Valid values: Asc and Desc.
+        # 
+        # *\
+        # *\
         self.order_by = order_by
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 30. Default value: 10.
         self.page_size = page_size
+        # The authentication timeout period. Unit: seconds Default value: 3600. Maximum value: 129600 (36 hours).
         self.timeout = timeout
 
     def validate(self):
@@ -20669,9 +21632,13 @@ class GetSnapshotUrlsResponseBody(TeaModel):
         total: int = None,
         web_vtturl: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of snapshot URLs.
         self.snapshot_urls = snapshot_urls
+        # The total number of snapshots.
         self.total = total
+        # The URL of the WebVTT file.
         self.web_vtturl = web_vtturl
 
     def validate(self):
@@ -20949,6 +21916,8 @@ class GetSystemTemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -20984,13 +21953,21 @@ class GetSystemTemplateResponseBodySystemTemplate(TeaModel):
         type: int = None,
         type_name: str = None,
     ):
+        # The template state.
         self.status = status
+        # The subtype ID of the template.
         self.subtype = subtype
+        # The subtype name of the template.
         self.subtype_name = subtype_name
+        # The template parameters.
         self.template_config = template_config
+        # The template ID.
         self.template_id = template_id
+        # The template name.
         self.template_name = template_name
+        # The type ID of the template.
         self.type = type
+        # The type name of the template.
         self.type_name = type_name
 
     def validate(self):
@@ -21047,7 +22024,9 @@ class GetSystemTemplateResponseBody(TeaModel):
         request_id: str = None,
         system_template: GetSystemTemplateResponseBodySystemTemplate = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The template information.
         self.system_template = system_template
 
     def validate(self):
@@ -21123,7 +22102,9 @@ class GetTemplateRequest(TeaModel):
         related_mediaid_flag: str = None,
         template_id: str = None,
     ):
+        # Specifies whether to return the information about the associated materials. Default value: 0. Valid values: 0 and 1. A value of 1 specifies that the information about the associated materials is returned. This parameter is valid only for regular templates.
         self.related_mediaid_flag = related_mediaid_flag
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -21168,19 +22149,62 @@ class GetTemplateResponseBodyTemplate(TeaModel):
         template_id: str = None,
         type: str = None,
     ):
+        # The clip parameters for submitting a video production job. You can replace mediaId and text with real values to submit a job. References:
+        # 
+        # *   [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html)
+        # *   [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html)
         self.clips_param = clips_param
+        # The template configurations.
+        # 
+        # *   For more information about the configurations of a regular template, see [Config object of a regular template](https://help.aliyun.com/document_detail/277430.html).
+        # *   For more information about the configurations of an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html#title-3tf-skt-eoi).
         self.config = config
+        # The thumbnail URL.
         self.cover_url = cover_url
+        # The source from which the template was created. Valid values:
+        # 
+        # *   AliyunConsole
+        # *   OpenAPI
+        # *   WebSDK
         self.create_source = create_source
+        # The time when the template was created.
         self.creation_time = creation_time
+        # The source from which the template was modified. Valid values:
+        # 
+        # *   AliyunConsole
+        # *   OpenAPI
+        # *   WebSDK
         self.modified_source = modified_source
+        # The time when the template was last modified.
         self.modified_time = modified_time
+        # The template name.
         self.name = name
+        # The preview media asset.
         self.preview_media = preview_media
+        # The state of the preview media asset. Valid values:
+        # 
+        # *   Init: the initial state, which indicates that the source file is not ready.
+        # *   Preparing: The source file is being prepared. For example, the file is being uploaded or edited.
+        # *   PrepareFail: The source file failed to be prepared. For example, the information about the source file failed to be obtained.
+        # *   Normal: The source file is ready.
         self.preview_media_status = preview_media_status
+        # The IDs of the materials associated with the template for use by the regular template editor.
         self.related_mediaids = related_mediaids
+        # The template state. Valid values:
+        # 
+        # *   Available
+        # *   Created
+        # *   Uploading
+        # *   Processing
+        # *   UploadFailed
+        # *   ProcessFailed
         self.status = status
+        # The template ID.
         self.template_id = template_id
+        # The template type. Valid values:
+        # 
+        # *   Timeline
+        # *   VETemplate
         self.type = type
 
     def validate(self):
@@ -21261,7 +22285,9 @@ class GetTemplateResponseBody(TeaModel):
         request_id: str = None,
         template: GetTemplateResponseBodyTemplate = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The template information.
         self.template = template
 
     def validate(self):
@@ -21337,7 +22363,10 @@ class GetTemplateMaterialsRequest(TeaModel):
         file_list: str = None,
         template_id: str = None,
     ):
+        # The materials that you want to query.
         self.file_list = file_list
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -21371,8 +22400,9 @@ class GetTemplateMaterialsResponseBody(TeaModel):
         material_urls: str = None,
         request_id: str = None,
     ):
+        # The URLs of the associated materials.
         self.material_urls = material_urls
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21445,6 +22475,7 @@ class GetTemplateParamsRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -21476,10 +22507,21 @@ class GetTemplateParamsResponseBodyParamList(TeaModel):
         media_url: str = None,
         type: str = None,
     ):
+        # The original subtitle content.
         self.content = content
+        # The thumbnail URL of the original material.
         self.cover_url = cover_url
+        # The parameter name.
         self.key = key
+        # The URL of the original material.
         self.media_url = media_url
+        # The material type.
+        # 
+        # Valid values:
+        # 
+        # *   Video
+        # *   Text
+        # *   Image
         self.type = type
 
     def validate(self):
@@ -21525,9 +22567,11 @@ class GetTemplateParamsResponseBody(TeaModel):
         request_id: str = None,
         template_id: str = None,
     ):
+        # The queried parameters.
         self.param_list = param_list
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -21612,6 +22656,7 @@ class GetTranscodeJobRequest(TeaModel):
         self,
         parent_job_id: str = None,
     ):
+        # The job ID.
         self.parent_job_id = parent_job_id
 
     def validate(self):
@@ -21640,7 +22685,15 @@ class GetTranscodeJobResponseBodyTranscodeParentJobInputGroup(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -21674,8 +22727,17 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput(TeaModel):
         output_url: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The URL of the output stream.
         self.output_url = output_url
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -21714,10 +22776,16 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigCombi
         start: float = None,
         video_index: str = None,
     ):
+        # The audio stream index.
+        # 
         # This parameter is required.
         self.audio_index = audio_index
+        # The duration of the input stream. The default value is the duration of the video.
         self.duration = duration
+        # The start time of the input stream. Default value: 0.
         self.start = start
+        # The video stream index.
+        # 
         # This parameter is required.
         self.video_index = video_index
 
@@ -21761,9 +22829,13 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncry
         encrypt_type: str = None,
         key_service_type: str = None,
     ):
+        # The ciphertext of HLS encryption.
         self.cipher_text = cipher_text
+        # The endpoint of the decryption service for HLS encryption.
         self.decrypt_key_uri = decrypt_key_uri
+        # The encryption type.
         self.encrypt_type = encrypt_type
+        # The type of the key service. Valid values: KMS and Base64.
         self.key_service_type = key_service_type
 
     def validate(self):
@@ -21804,7 +22876,15 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImage
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -21837,7 +22917,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImage
         duration: str = None,
         start: str = None,
     ):
+        # The duration of the stream. Valid values: the number of seconds or "ToEND".
         self.duration = duration
+        # The start time of the stream.
         self.start = start
 
     def validate(self):
@@ -21875,12 +22957,19 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImage
         timeline: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline = None,
         width: str = None,
     ):
+        # The position of the watermark on the x-axis.
         self.dx = dx
+        # The position of the watermark on the y-axis.
         self.dy = dy
+        # The watermark image file.
         self.file = file
+        # The height of the output video.
         self.height = height
+        # The reference position of the watermark. Valid values: TopLeft, TopRight, BottomLeft, and BottomRight. Default value: TopLeft.
         self.refer_pos = refer_pos
+        # The timeline settings.
         self.timeline = timeline
+        # The width of the output video.
         self.width = width
 
     def validate(self):
@@ -21938,7 +23027,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImage
         overwrite_params: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -21973,7 +23064,15 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubti
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -22007,8 +23106,11 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubti
         file: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile = None,
         format: str = None,
     ):
+        # The file encoding format.
         self.char_enc = char_enc
+        # The subtitle file.
         self.file = file
+        # The format of the subtitle file.
         self.format = format
 
     def validate(self):
@@ -22047,7 +23149,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubti
         overwrite_params: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -22090,15 +23194,25 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextW
         left: str = None,
         top: str = None,
     ):
+        # Indicates whether the text size was adjusted based on the output video dimensions. Valid values: true and false. Default value: false.
         self.adaptive = adaptive
+        # The border color.
         self.border_color = border_color
+        # The border width.
         self.border_width = border_width
+        # The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
         self.content = content
+        # The transparency of the watermark.
         self.font_alpha = font_alpha
+        # The color of the text.
         self.font_color = font_color
+        # The font of the text.
         self.font_name = font_name
+        # The size of the text.
         self.font_size = font_size
+        # The distance of the watermark from the left edge.
         self.left = left
+        # The distance of the watermark from the top edge.
         self.top = top
 
     def validate(self):
@@ -22163,7 +23277,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextW
         overwrite_params: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -22200,9 +23316,13 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
         method: str = None,
         true_peak: str = None,
     ):
+        # The output volume.
         self.integrated_loudness_target = integrated_loudness_target
+        # The volume range.
         self.loudness_range_target = loudness_range_target
+        # The volume adjustment method. Valid values:
         self.method = method
+        # The peak volume.
         self.true_peak = true_peak
 
     def validate(self):
@@ -22248,12 +23368,27 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
         samplerate: str = None,
         volume: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Valid values: [8,1000].
+        # *   Unit: Kbit/s.
+        # *   Default value: 128.
         self.bitrate = bitrate
+        # The number of sound channels. Default value: 2.
         self.channels = channels
+        # The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
         self.codec = codec
+        # The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
         self.profile = profile
+        # Indicates whether the audio stream is deleted.
         self.remove = remove
+        # The sampling rate.
+        # 
+        # *   Default value: 44100.
+        # *   Valid values: 22050, 32000, 44100, 48000, and 96000.
+        # *   Unit: Hz.
         self.samplerate = samplerate
+        # The volume configurations.
         self.volume = volume
 
     def validate(self):
@@ -22307,6 +23442,7 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
         self,
         format: str = None,
     ):
+        # The container format.
         self.format = format
 
     def validate(self):
@@ -22335,7 +23471,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
         duration: str = None,
         force_seg_time: str = None,
     ):
+        # The segment length.
         self.duration = duration
+        # The forced segmentation point in time.
         self.force_seg_time = force_seg_time
 
     def validate(self):
@@ -22367,6 +23505,7 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
         self,
         segment: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment = None,
     ):
+        # The segment settings.
         self.segment = segment
 
     def validate(self):
@@ -22403,13 +23542,64 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
         is_check_video_bitrate_fail: str = None,
         trans_mode: str = None,
     ):
+        # The method that is used to adjust the resolution. This parameter takes effect only if both the Width and Height parameters are specified. You can use this parameter together with the LongShortMode parameter.
+        # 
+        # Valid values: rescale, crop, pad, and none.
+        # 
+        # Default value: none.
         self.adj_dar_method = adj_dar_method
+        # Indicates whether the audio bitrate was checked. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true If the bitrate of the input audio is less than that of the output audio, the bitrate of the input audio is used for transcoding.
+        # *   false
+        # 
+        # Default value:
+        # 
+        # *   If this parameter is not specified and the codec of the output audio is different from that of the input audio, the default value is false.
+        # *   If this parameter is not specified and the codec of the output audio is the same as that of the input audio, the default value is true.
         self.is_check_audio_bitrate = is_check_audio_bitrate
+        # Indicates whether the audio bitrate was checked. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true If the bitrate of the input audio is less than that of the output audio, the transcoding job fails.
+        # *   false
+        # 
+        # Default value: false.
         self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        # Indicates whether the video resolution was checked. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+        # 
+        # *   true If the width or height of the input video is less than that of the output video, the resolution of the input video is used for transcoding.
+        # *   false
+        # 
+        # Default value: false.
         self.is_check_reso = is_check_reso
+        # Indicates whether the video resolution was checked. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+        # 
+        # *   true If the width or height of the input video is less than that of the output video, the transcoding job fails.
+        # *   false
+        # 
+        # Default value: false.
         self.is_check_reso_fail = is_check_reso_fail
+        # Indicates whether the video bitrate was checked. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true If the bitrate of the input video is less than that of the output video, the bitrate of the input video is used for transcoding.
+        # *   false
+        # 
+        # Default value: false.
         self.is_check_video_bitrate = is_check_video_bitrate
+        # Indicates whether the video bitrate was checked. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true If the bitrate of the input video is less than that of the output video, the transcoding job fails.
+        # *   false
+        # 
+        # Default value: false.
         self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        # The video transcoding mode. Valid values:
+        # 
+        # *   onepass: You can set this parameter to onepass if the Bitrate parameter is set to ABR. The encoding speed of this mode is faster than that of the twopass mode.
+        # *   twopass: You can set this parameter to twopass if the Bitrate parameter is set to VBR. The encoding speed of this mode is slower than that of the onepass mode.
+        # *   CBR: the constant bitrate mode.
+        # 
+        # Default value: onepass.
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -22482,23 +23672,82 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
         scan_mode: str = None,
         width: str = None,
     ):
+        # The maximum ABR. This parameter takes effect only for Narrowband HD 1.0.
+        # 
+        # *   Valid values: [10,50000].
+        # *   Unit: Kbit/s.
         self.abr_max = abr_max
+        # The average bitrate of the video.
+        # 
+        # *   Valid values: [10,50000].
+        # *   Unit: Kbit/s.
         self.bitrate = bitrate
+        # The buffer size.
+        # 
+        # *   Valid values: [1000,128000].
+        # *   Default value: 6000.
+        # *   Unit: KB.
         self.bufsize = bufsize
+        # The encoding format.
         self.codec = codec
+        # The constant rate factor.
+        # 
+        # *   Valid values: [0,51].
+        # *   Default value: 23 if the encoding format is H.264, or 26 if the encoding format is H.265.
+        # *   If this parameter is specified, the value of Bitrate becomes invalid.
         self.crf = crf
+        # The method of video cropping. Valid values: border: automatically detects and removes black bars. A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
         self.crop = crop
+        # The frame rate.
+        # 
+        # *   Valid values: (0,60].
+        # *   The value is 60 if the frame rate of the input video exceeds 60.
+        # *   Default value: the frame rate of the input video.
         self.fps = fps
+        # The maximum number of frames between two keyframes.
+        # 
+        # *   Valid values: [1,1080000].
+        # *   Default value: 250.
         self.gop = gop
+        # The height of the output video.
+        # 
+        # *   Valid values: [128,4096].
+        # *   Unit: pixels.
+        # *   Default value: the height of the input video.
         self.height = height
+        # Indicates whether the auto-rotate screen feature is enabled.
         self.long_short_mode = long_short_mode
+        # The maximum bitrate of the output video.
+        # 
+        # *   Valid values: [10,50000].
+        # *   Unit: Kbit/s.
         self.maxrate = maxrate
+        # The black bars added to the video.
+        # 
+        # *   Format: width:height:left:top.
+        # *   Example: 1280:800:0:140.
         self.pad = pad
+        # The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
         self.preset = preset
+        # The encoding profile. Valid values: baseline, main, and high.
+        # 
+        # *   baseline: applicable to mobile devices.
+        # *   main: applicable to standard-definition devices.
+        # *   high: applicable to high-definition devices.
+        # 
+        # Default value: high.
         self.profile = profile
+        # Indicates whether the video was removed.
         self.remove = remove
+        # The scan mode. Valid values: interlaced and progressive.
         self.scan_mode = scan_mode
+        # The width of the output video.
+        # 
+        # *   Valid values: [128,4096].
+        # *   Unit: pixels.
+        # *   Default value: the width of the input video.
         self.width = width
 
     def validate(self):
@@ -22598,10 +23847,15 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
         trans_config: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig = None,
         video: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo = None,
     ):
+        # The audio settings.
         self.audio = audio
+        # The encapsulation format settings.
         self.container = container
+        # The encapsulation settings.
         self.mux_config = mux_config
+        # The conditional transcoding configurations.
         self.trans_config = trans_config
+        # The video settings.
         self.video = video
 
     def validate(self):
@@ -22660,7 +23914,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTrans
         overwrite_params: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -22699,11 +23955,17 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig(TeaM
         text_watermarks: List[GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks] = None,
         transcode: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode = None,
     ):
+        # The multi-input stream merge configuration.
         self.combine_configs = combine_configs
+        # The encryption settings.
         self.encryption = encryption
+        # The watermark configuration of an image.
         self.image_watermarks = image_watermarks
+        # The subtitle configuration.
         self.subtitles = subtitles
+        # The configurations of the text watermark.
         self.text_watermarks = text_watermarks
+        # The transcoding configuration.
         self.transcode = transcode
 
     def validate(self):
@@ -22793,7 +24055,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroup(TeaModel):
         output: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput = None,
         process_config: GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig = None,
     ):
+        # The output file configuration.
         self.output = output
+        # The job processing configuration.
         self.process_config = process_config
 
     def validate(self):
@@ -22831,7 +24095,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the ApsaraVideo Media Processing (MPS) queue to which the snapshot job was submitted.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
 
     def validate(self):
@@ -22865,8 +24131,17 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup(Te
         media: str = None,
         type: str = None,
     ):
+        # The URL of the media asset. This parameter is specified only when the media asset is transcoded.
         self.input_url = input_url
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an Object Storage Service (OSS) object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -22916,20 +24191,35 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaAu
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The sound channel layout.
         self.channel_layout = channel_layout
+        # The number of sound channels.
         self.channels = channels
+        # The name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The encoding format.
         self.codec_name = codec_name
+        # The encoder tag.
         self.codec_tag = codec_tag
+        # The name of the encoder tag.
         self.codec_tag_string = codec_tag_string
+        # The time base of the encoder.
         self.codec_time_base = codec_time_base
+        # The duration of the stream. Unit: seconds.
         self.duration = duration
+        # The sequence number of the stream.
         self.index = index
+        # The language of the stream.
         self.lang = lang
+        # The sample format.
         self.sample_fmt = sample_fmt
+        # The sampling rate. Unit: Hz.
         self.sample_rate = sample_rate
+        # The start time of the stream.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -23024,17 +24314,29 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFi
         region: str = None,
         width: str = None,
     ):
+        # The video bitrate.
         self.bitrate = bitrate
+        # The duration of the video. Unit: seconds.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size. Unit: bytes.
         self.file_size = file_size
+        # The state of the file.
         self.file_status = file_status
+        # The file type. Valid values: source_file and transcode_file.
         self.file_type = file_type
+        # The URL of the file.
         self.file_url = file_url
+        # The name of the video format.
         self.format_name = format_name
+        # The height of the output video.
         self.height = height
+        # The ID of the media asset.
         self.media_id = media_id
+        # The region in which the file resides.
         self.region = region
+        # The width of the output video.
         self.width = width
 
     def validate(self):
@@ -23128,28 +24430,55 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaVi
         time_base: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bit_rate = bit_rate
+        # The name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The encoding format.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The time base of the encoder.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio.
         self.dar = dar
+        # The duration of the stream. Unit: seconds.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+        # 
+        # *   0: The stream contains no B-frames.
+        # *   1: The stream contains one B-frame.
+        # *   2: The stream contains multiple consecutive B-frames.
         self.has_bframes = has_bframes
+        # The height of the output video.
         self.height = height
+        # The sequence number of the stream.
         self.index = index
+        # The language of the stream.
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The encoder profile.
         self.profile = profile
+        # The rotation angle of the video image. Valid values: 0, 90, 180, and 270. Default value: 0.
         self.rotate = rotate
+        # The aspect ratio of the area from which the sampling points are collected.
         self.sar = sar
+        # The start time of the stream.
         self.start_time = start_time
+        # The time base.
         self.time_base = time_base
+        # The width of the output video.
         self.width = width
 
     def validate(self):
@@ -23267,8 +24596,11 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMeta(T
         file_basic_info: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo = None,
         video_stream_info_list: List[GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaVideoStreamInfoList] = None,
     ):
+        # The information about the audio stream.
         self.audio_stream_info_list = audio_stream_info_list
+        # The basic file information.
         self.file_basic_info = file_basic_info
+        # The information about the video stream.
         self.video_stream_info_list = video_stream_info_list
 
     def validate(self):
@@ -23326,8 +24658,17 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput(TeaMod
         output_url: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The path of the transcoded output stream. This parameter is required only when the output is a media asset.
         self.output_url = output_url
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -23366,10 +24707,16 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         start: float = None,
         video_index: str = None,
     ):
+        # The audio stream index.
+        # 
         # This parameter is required.
         self.audio_index = audio_index
+        # The duration of the input stream. The default value is the duration of the video.
         self.duration = duration
+        # The start time of the input stream. Default value: 0.
         self.start = start
+        # The video stream index.
+        # 
         # This parameter is required.
         self.video_index = video_index
 
@@ -23413,9 +24760,13 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         encrypt_type: str = None,
         key_service_type: str = None,
     ):
+        # The ciphertext of HTTP Live Streaming (HLS) encryption.
         self.cipher_text = cipher_text
+        # The endpoint of the decryption service for HLS encryption.
         self.decrypt_key_uri = decrypt_key_uri
+        # The encryption type.
         self.encrypt_type = encrypt_type
+        # The type of the key service. Valid values: KMS and Base64.
         self.key_service_type = key_service_type
 
     def validate(self):
@@ -23456,7 +24807,15 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -23489,7 +24848,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         duration: str = None,
         start: str = None,
     ):
+        # The duration of the stream. Valid values: the number of seconds or "ToEND".
         self.duration = duration
+        # The start time of the stream.
         self.start = start
 
     def validate(self):
@@ -23527,12 +24888,19 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         timeline: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsTimeline = None,
         width: str = None,
     ):
+        # The position of the watermark on the x-axis.
         self.dx = dx
+        # The position of the watermark on the y-axis.
         self.dy = dy
+        # The watermark image file.
         self.file = file
+        # The height of the output video.
         self.height = height
+        # The reference position of the watermark. Valid values: TopLeft, TopRight, BottomLeft, and BottomRight. Default value: TopLeft.
         self.refer_pos = refer_pos
+        # The timeline settings.
         self.timeline = timeline
+        # The width of the output video.
         self.width = width
 
     def validate(self):
@@ -23590,7 +24958,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         overwrite_params: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -23625,7 +24995,15 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -23659,8 +25037,11 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         file: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile = None,
         format: str = None,
     ):
+        # The file encoding format.
         self.char_enc = char_enc
+        # The subtitle file.
         self.file = file
+        # The format of the subtitle file.
         self.format = format
 
     def validate(self):
@@ -23699,7 +25080,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         overwrite_params: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -23742,15 +25125,25 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         left: str = None,
         top: str = None,
     ):
+        # Indicates whether the text size was adjusted based on the output video dimensions. Valid values: true and false. Default value: false.
         self.adaptive = adaptive
+        # The border color.
         self.border_color = border_color
+        # The border width.
         self.border_width = border_width
+        # The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
         self.content = content
+        # The transparency of the watermark.
         self.font_alpha = font_alpha
+        # The color of the text.
         self.font_color = font_color
+        # The font of the text.
         self.font_name = font_name
+        # The size of the text.
         self.font_size = font_size
+        # The distance of the watermark from the left edge.
         self.left = left
+        # The distance of the watermark from the top edge.
         self.top = top
 
     def validate(self):
@@ -23815,7 +25208,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         overwrite_params: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -23852,9 +25247,13 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         method: str = None,
         true_peak: str = None,
     ):
+        # The output volume.
         self.integrated_loudness_target = integrated_loudness_target
+        # The volume range.
         self.loudness_range_target = loudness_range_target
+        # The volume adjustment method. Valid values:
         self.method = method
+        # The peak volume.
         self.true_peak = true_peak
 
     def validate(self):
@@ -23900,12 +25299,26 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         samplerate: str = None,
         volume: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Valid values: [8,1000].
+        # *   Unit: Kbit/s.
+        # *   Default value: 128.
         self.bitrate = bitrate
+        # The number of sound channels. Default value: 2.
         self.channels = channels
+        # The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
         self.codec = codec
+        # The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
         self.profile = profile
+        # Indicates whether the audio stream is deleted.
         self.remove = remove
+        # The sampling rate.
+        # 
+        # *   Default value: 44100. Valid values: 22050, 32000, 44100, 48000, and 96000.
+        # *   Unit: Hz.
         self.samplerate = samplerate
+        # The volume configurations.
         self.volume = volume
 
     def validate(self):
@@ -23959,6 +25372,7 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         self,
         format: str = None,
     ):
+        # The container format.
         self.format = format
 
     def validate(self):
@@ -23987,7 +25401,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         duration: str = None,
         force_seg_time: str = None,
     ):
+        # The segment length.
         self.duration = duration
+        # The forced segmentation point in time.
         self.force_seg_time = force_seg_time
 
     def validate(self):
@@ -24019,6 +25435,7 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         self,
         segment: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment = None,
     ):
+        # The segment settings.
         self.segment = segment
 
     def validate(self):
@@ -24055,13 +25472,66 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         is_check_video_bitrate_fail: str = None,
         trans_mode: str = None,
     ):
+        # The method that is used to adjust the resolution. This parameter takes effect only if both the Width and Height parameters are specified. You can use this parameter together with the LongShortMode parameter.
+        # 
+        # Valid values: rescale, crop, pad, and none.
+        # 
+        # Default value: none.
+        # 
+        # For more information about examples, see How do I set the resolution for an output video?
         self.adj_dar_method = adj_dar_method
+        # Indicates whether the audio bitrate was checked. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true If the bitrate of the input audio is less than that of the output audio, the bitrate of the input audio is used for transcoding.
+        # *   false
+        # 
+        # Default value:
+        # 
+        # *   If this parameter is not specified and the codec of the output audio is different from that of the input audio, the default value is false.
+        # *   If this parameter is not specified and the codec of the output audio is the same as that of the input audio, the default value is true.
         self.is_check_audio_bitrate = is_check_audio_bitrate
+        # Indicates whether the audio bitrate was checked. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true If the bitrate of the input audio is less than that of the output audio, the transcoding job fails.
+        # *   false
+        # 
+        # Default value: false.
         self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        # Indicates whether the video resolution was checked. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+        # 
+        # *   true If the width or height of the input video is less than that of the output video, the resolution of the input video is used for transcoding.
+        # *   false
+        # 
+        # Default value: false.
         self.is_check_reso = is_check_reso
+        # Indicates whether the video resolution was checked. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+        # 
+        # *   true If the width or height of the input video is less than that of the output video, the transcoding job fails.
+        # *   false
+        # 
+        # Default value: false.
         self.is_check_reso_fail = is_check_reso_fail
+        # Indicates whether the video bitrate was checked. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true If the bitrate of the input video is less than that of the output video, the bitrate of the input video is used for transcoding.
+        # *   false
+        # 
+        # Default value: false.
         self.is_check_video_bitrate = is_check_video_bitrate
+        # Indicates whether the video bitrate was checked. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true If the bitrate of the input video is less than that of the output video, the transcoding job fails.
+        # *   false
+        # 
+        # Default value: false.
         self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        # The video transcoding mode. Valid values:
+        # 
+        # *   onepass: You can set this parameter to onepass if the Bitrate parameter is set to ABR. The encoding speed of this mode is faster than that of the twopass mode.
+        # *   twopass: You can set this parameter to twopass if the Bitrate parameter is set to VBR. The encoding speed of this mode is slower than that of the onepass mode.
+        # *   CBR: the constant bitrate mode.
+        # 
+        # Default value: onepass.
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -24134,23 +25604,84 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         scan_mode: str = None,
         width: str = None,
     ):
+        # The maximum adaptive bitrate (ABR). This parameter takes effect only for Narrowband HD 1.0.
+        # 
+        # *   Valid values: [10,50000].
+        # *   Unit: Kbit/s.
         self.abr_max = abr_max
+        # The average bitrate of the video.
+        # 
+        # *   Valid values: [10,50000].
+        # *   Unit: Kbit/s.
         self.bitrate = bitrate
+        # The buffer size.
+        # 
+        # *   Valid values: [1000,128000].
+        # *   Default value: 6000.
+        # *   Unit: Kbit/s.
         self.bufsize = bufsize
+        # The encoding format.
         self.codec = codec
+        # The constant rate factor.
+        # 
+        # *   Valid values: [0,51].
+        # *   Default value: 23 if the encoding format is H.264, or 26 if the encoding format is H.265.
+        # 
+        # If this parameter is specified, the value of Bitrate becomes invalid.
         self.crf = crf
+        # The method of video cropping. Valid values:
+        # 
+        # *   border: automatically detects and removes black bars.
+        # *   A value in the width:height:left:top format: crops the videos based on the custom settings.
         self.crop = crop
+        # The frame rate.
+        # 
+        # *   Valid values: (0,60]. The value is 60 if the frame rate of the input video exceeds 60.
+        # *   Default value: the frame rate of the input video.
         self.fps = fps
+        # The maximum number of frames between two keyframes.
+        # 
+        # *   Valid values: [1,1080000].
+        # *   Default value: 250.
         self.gop = gop
+        # The height of the output video.
+        # 
+        # *   Valid values: [128,4096].
+        # *   Unit: pixels.
+        # 
+        # Default value: the height of the input video.
         self.height = height
+        # Indicates whether the auto-rotate screen feature is enabled.
         self.long_short_mode = long_short_mode
+        # The maximum bitrate of the output video.
+        # 
+        # *   Valid values: [10,50000].
+        # *   Unit: Kbit/s.
         self.maxrate = maxrate
+        # The black bars added to the video. Format: width:height:left:top.
         self.pad = pad
+        # The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
         self.preset = preset
+        # The encoding profile. Valid values: baseline, main, and high.
+        # 
+        # *   baseline: applicable to mobile devices.
+        # *   main: applicable to standard-definition devices.
+        # *   high: applicable to high-definition devices.
+        # 
+        # Default value: high.
         self.profile = profile
+        # Indicates whether the video was removed.
         self.remove = remove
+        # The scan mode. Valid values: interlaced and progressive.
         self.scan_mode = scan_mode
+        # The width of the output video.
+        # 
+        # *   Valid values: [128,4096].
+        # *   Unit: pixels.
+        # 
+        # Default value: the width of the input video.
         self.width = width
 
     def validate(self):
@@ -24251,11 +25782,16 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         trans_config: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig = None,
         video: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo = None,
     ):
+        # The audio settings.
         self.audio = audio
+        # The encapsulation format settings.
         self.container = container
+        # The encapsulation settings.
         self.mux_config = mux_config
         self.tags = tags
+        # The conditional transcoding configurations.
         self.trans_config = trans_config
+        # The video settings.
         self.video = video
 
     def validate(self):
@@ -24318,7 +25854,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         overwrite_params: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -24358,12 +25896,19 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         text_watermarks: List[GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks] = None,
         transcode: GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode = None,
     ):
+        # The multi-input stream merge configuration.
         self.combine_configs = combine_configs
+        # The encryption settings.
         self.encryption = encryption
+        # The watermark configuration of an image.
         self.image_watermarks = image_watermarks
+        # Indicates whether the tags of the input stream are inherited in the output stream. This parameter does not take effect when the input is not a media asset. Default value: false.
         self.is_inherit_tags = is_inherit_tags
+        # The subtitle configuration.
         self.subtitles = subtitles
+        # The configurations of the text watermark.
         self.text_watermarks = text_watermarks
+        # The transcoding configuration.
         self.transcode = transcode
 
     def validate(self):
@@ -24457,7 +26002,9 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleConfi
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the ApsaraVideo Media Processing (MPS) queue to which the snapshot job was submitted.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
 
     def validate(self):
@@ -24504,21 +26051,37 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList(TeaModel):
         submit_time: str = None,
         user_data: str = None,
     ):
+        # The time when the job was created.
         self.create_time = create_time
+        # The time when the job was complete.
         self.finish_time = finish_time
+        # The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
         self.input_group = input_group
+        # The subjob ID.
         self.job_id = job_id
+        # The index number of the subjob in the entire job.
         self.job_index = job_index
+        # The job name.
         self.name = name
+        # The media information about the video generated by the job.
         self.out_file_meta = out_file_meta
+        # The output file configuration.
         self.output = output
+        # The main job ID.
         self.parent_job_id = parent_job_id
+        # The transcoding configuration.
         self.process_config = process_config
+        # The ID of the request that submitted the job.
         self.request_id = request_id
+        # The scheduling information about the job.
         self.schedule_config = schedule_config
+        # The state of the transcoding job. Valid values: Init (the job is submitted), Success (the job is successful), Fail (the job failed), and Deleted (the job is deleted).
         self.status = status
+        # The job submission result.
         self.submit_result_json = submit_result_json
+        # The time when the job was submitted.
         self.submit_time = submit_time
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -24640,20 +26203,42 @@ class GetTranscodeJobResponseBodyTranscodeParentJob(TeaModel):
         trigger_source: str = None,
         user_data: str = None,
     ):
+        # The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.finish_time = finish_time
+        # The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
         self.input_group = input_group
+        # The number of subjobs.
         self.job_count = job_count
+        # The job name.
         self.name = name
+        # The output group of the job.
         self.output_group = output_group
+        # The main job ID.
         self.parent_job_id = parent_job_id
+        # The completion percentage of the job.
         self.percent = percent
+        # The ID of the request that submitted the job.
         self.request_id = request_id
+        # The scheduling configuration of the job.
         self.schedule_config = schedule_config
+        # The state of the job.
+        # 
+        # *   Success: At least one of the subjobs is successful.
+        # *   Fail: All subjobs failed.
         self.status = status
+        # The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.submit_time = submit_time
+        # The list of subjobs.
         self.transcode_job_list = transcode_job_list
+        # The source of the job. Valid values:
+        # 
+        # *   API
+        # *   WorkFlow
+        # *   Console
         self.trigger_source = trigger_source
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -24767,6 +26352,7 @@ class GetTranscodeJobResponseBody(TeaModel):
         request_id: str = None,
         transcode_parent_job: GetTranscodeJobResponseBodyTranscodeParentJob = None,
     ):
+        # The request ID.
         self.request_id = request_id
         # TranscodeParentJobWithSubJobDTO
         self.transcode_parent_job = transcode_parent_job
@@ -25410,6 +26996,7 @@ class GetWorkflowTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # The ID of the workflow task.
         self.task_id = task_id
 
     def validate(self):
@@ -25442,11 +27029,28 @@ class GetWorkflowTaskResponseBodyWorkflowTaskWorkflow(TeaModel):
         type: str = None,
         workflow_id: str = None,
     ):
+        # The time when the workflow was created.
         self.create_time = create_time
+        # The time when the workflow was last modified.
         self.modified_time = modified_time
+        # The workflow name.
         self.name = name
+        # The workflow state.
+        # 
+        # Valid values:
+        # 
+        # *   Active
+        # *   Inactive
         self.status = status
+        # The workflow type.
+        # 
+        # Valid values:
+        # 
+        # *   Customize: custom workflow.
+        # *   System: system workflow.
+        # *   Common: user-created workflow.
         self.type = type
+        # The workflow ID.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -25501,13 +27105,29 @@ class GetWorkflowTaskResponseBodyWorkflowTask(TeaModel):
         user_data: str = None,
         workflow: GetWorkflowTaskResponseBodyWorkflowTaskWorkflow = None,
     ):
+        # The results for all nodes of the workflow task.
         self.activity_results = activity_results
+        # The time when the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the task was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.finish_time = finish_time
+        # The task state.
+        # 
+        # Valid values:
+        # 
+        # *   Init: The task is being initialized.
+        # *   Failed: The task failed.
+        # *   Canceled: The task is canceled.
+        # *   Processing: The task is in progress.
+        # *   Succeed: The task is successful.
         self.status = status
+        # The ID of the workflow task.
         self.task_id = task_id
+        # The input of the workflow task.
         self.task_input = task_input
+        # The user-defined field that was specified when the workflow task was submitted.
         self.user_data = user_data
+        # The workflow Information.
         self.workflow = workflow
 
     def validate(self):
@@ -25566,8 +27186,9 @@ class GetWorkflowTaskResponseBody(TeaModel):
         request_id: str = None,
         workflow_task: GetWorkflowTaskResponseBodyWorkflowTask = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The information about the workflow task.
         self.workflow_task = workflow_task
 
     def validate(self):
@@ -26215,8 +27836,15 @@ class ListAvatarTrainingJobsRequest(TeaModel):
         page_size: int = None,
         status: str = None,
     ):
+        # *   The page number.
+        # *   Default value: 1.
         self.page_no = page_no
+        # *   The number of entries per page.
+        # *   Default value: 10.
+        # *   Valid values: 1 to 100.
         self.page_size = page_size
+        # *   The job state.
+        # *   Valid values: Init, Queuing, Training, Success, and Fail.
         self.status = status
 
     def validate(self):
@@ -26262,16 +27890,30 @@ class ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList(TeaModel):
         portrait: str = None,
         status: str = None,
     ):
+        # The description of the digital human.
         self.avatar_description = avatar_description
+        # The ID of the digital human.
         self.avatar_id = avatar_id
+        # The name of the digital human.
         self.avatar_name = avatar_name
+        # The type of the digital human.
         self.avatar_type = avatar_type
+        # *   The time when the job was created.
+        # *   The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # *   The time when the first training was initiated.
+        # *   The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.first_training_time = first_training_time
+        # The ID of the digital human training job.
         self.job_id = job_id
+        # *   The time when the last training was initiated.
+        # *   The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.last_training_time = last_training_time
+        # The status description.
         self.message = message
+        # The media asset ID of the portrait image.
         self.portrait = portrait
+        # The state of the digital human training job.
         self.status = status
 
     def validate(self):
@@ -26340,7 +27982,9 @@ class ListAvatarTrainingJobsResponseBodyData(TeaModel):
         avatar_training_job_list: List[ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList] = None,
         total_count: int = None,
     ):
+        # The list of digital human training jobs.
         self.avatar_training_job_list = avatar_training_job_list
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -26382,8 +28026,14 @@ class ListAvatarTrainingJobsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -26464,8 +28114,14 @@ class ListAvatarsRequest(TeaModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # *   The type of the digital human.
+        # *   2DAvatar
         self.avatar_type = avatar_type
+        # *   The page number.
+        # *   Default value: 1.
         self.page_no = page_no
+        # *   The number of entries per page.
+        # *   Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -26507,12 +28163,19 @@ class ListAvatarsResponseBodyDataAvatarList(TeaModel):
         thumbnail: str = None,
         transparent: bool = None,
     ):
+        # The description of the digital human.
         self.avatar_description = avatar_description
+        # The ID of the digital human.
         self.avatar_id = avatar_id
+        # The name of the digital human.
         self.avatar_name = avatar_name
+        # The type of the digital human.
         self.avatar_type = avatar_type
+        # The media asset ID of the portrait image.
         self.portrait = portrait
+        # The thumbnail URL.
         self.thumbnail = thumbnail
+        # Indicates whether the digital human image supports the alpha channels.
         self.transparent = transparent
 
     def validate(self):
@@ -26565,7 +28228,9 @@ class ListAvatarsResponseBodyData(TeaModel):
         avatar_list: List[ListAvatarsResponseBodyDataAvatarList] = None,
         total_count: int = None,
     ):
+        # The queried digital humans.
         self.avatar_list = avatar_list
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -26607,8 +28272,14 @@ class ListAvatarsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -26694,13 +28365,41 @@ class ListBatchMediaProducingJobsRequest(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
+        # The ID of the quick video production job.
         self.job_id = job_id
+        # The job type.
+        # 
+        # Valid values:
+        # 
+        # *   Script: script-based editing job that mixes media assets.
+        # *   Smart_Mix: intelligent editing job that mixes media assets.
         self.job_type = job_type
+        # The maximum number of entries to return.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The sorting parameter. Valid values:
+        # 
+        # *   desc (default): sorted by creation time in descending order.
+        # *   asc: sorted by creation time in ascending order.
+        # 
+        # <!---->
+        # 
+        # *\
+        # *\
         self.sort_by = sort_by
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
+        # The job state.
+        # 
+        # Valid values:
+        # 
+        # *   Finished
+        # *   Init
+        # *   Failed
+        # *   Processing
         self.status = status
 
     def validate(self):
@@ -26766,16 +28465,39 @@ class ListBatchMediaProducingJobsResponseBodyEditingBatchJobList(TeaModel):
         status: str = None,
         user_data: str = None,
     ):
+        # The time when the job was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.complete_time = complete_time
+        # The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The editing configurations. For more information, see [EditingConfig](~~2692547#1be9bba03b7qu~~).
         self.editing_config = editing_config
+        # The extended information of the job.
         self.extend = extend
+        # The input configurations.
         self.input_config = input_config
+        # The ID of the quick video production job.
         self.job_id = job_id
+        # The job type.
+        # 
+        # Valid values:
+        # 
+        # *   Script: script-based editing job that mixes media assets.
+        # *   Smart_Mix: intelligent editing job that mixes media assets.
         self.job_type = job_type
+        # The time when the job was last modified.
         self.modified_time = modified_time
+        # The output configurations. For more information, see [OutputConfig](~~2692547#447b928fcbuoa~~).
         self.output_config = output_config
+        # The job state.
+        # 
+        # Valid values:
+        # 
+        # *   Finished
+        # *   Init
+        # *   Failed
+        # *   Processing
         self.status = status
+        # The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/zh/ims/use-cases/to-configure-a-callback-when-a-clip-completes).
         self.user_data = user_data
 
     def validate(self):
@@ -26846,10 +28568,15 @@ class ListBatchMediaProducingJobsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The queried quick video production jobs.
         self.editing_batch_job_list = editing_batch_job_list
+        # The number of entries per page. Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26944,12 +28671,58 @@ class ListCustomTemplatesRequest(TeaModel):
         template_id: str = None,
         type: str = None,
     ):
+        # The template name.
         self.name = name
+        # The order in which the entries are sorted. Valid values:
+        # 
+        # *   CreateTimeDesc: sorted by creation time in descending order.
+        # *   CreateTimeAsc: sorted by creation time in ascending order.
         self.order_by = order_by
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The subtype ID of the template.
+        # 
+        # *   Valid values for transcoding templates:
+        # 
+        #     *   1 (Normal): regular template.
+        #     *   2 (AudioTranscode): audio transcoding template.
+        #     *   3 (Remux): container format conversion template.
+        #     *   4 (NarrowBandV1): Narrowband HD 1.0 template.
+        #     *   5 (NarrowBandV2): Narrowband HD 2.0 template.
+        # 
+        # *   Valid values for snapshot templates:
+        # 
+        #     *   1 (Normal): regular template.
+        #     *   2 (Sprite): sprite template.
+        #     *   3 (WebVtt): WebVTT template.
+        # 
+        # *   Valid values for AI-assisted content moderation templates:
+        # 
+        #     *   1 (Video): video moderation template.
+        #     *   2 (Audio): audio moderation template.
+        #     *   3 (Image): image moderation template.
+        # 
+        # *   Valid values for AI-assisted intelligent erasure templates:
+        # 
+        #     *   1 (VideoDelogo): logo erasure template.
+        #     *   2 (VideoDetext): subtitle erasure template.
         self.subtype = subtype
+        # The template ID.
         self.template_id = template_id
+        # The template type. Valid values:
+        # 
+        # *   1: transcoding template.
+        # *   2: snapshot template.
+        # *   3: animated image template.
+        # *   4\\. image watermark template.
+        # *   5: text watermark template.
+        # *   6: subtitle template.
+        # *   7: AI-assisted content moderation template.
+        # *   8: AI-assisted intelligent thumbnail template.
+        # *   9: AI-assisted intelligent erasure template.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -27069,17 +28842,37 @@ class ListCustomTemplatesResponseBodyCustomTemplateList(TeaModel):
         type: int = None,
         type_name: str = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
         self.frontend_hint = frontend_hint
+        # Indicates whether the template is the default template.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_default = is_default
+        # The time when the template was last modified.
         self.modified_time = modified_time
+        # The template state.
+        # 
+        # Valid values:
+        # 
+        # *   Normal
         self.status = status
+        # The subtype ID of the template.
         self.subtype = subtype
+        # The subtype name of the template.
         self.subtype_name = subtype_name
+        # The template parameters.
         self.template_config = template_config
+        # The template ID.
         self.template_id = template_id
+        # The template name.
         self.template_name = template_name
+        # The type ID of the template.
         self.type = type
+        # The type name of the template.
         self.type_name = type_name
 
     def validate(self):
@@ -27155,8 +28948,11 @@ class ListCustomTemplatesResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The queried templates.
         self.custom_template_list = custom_template_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of templates.
         self.total = total
 
     def validate(self):
@@ -27243,8 +29039,16 @@ class ListCustomizedVoiceJobsRequest(TeaModel):
         page_size: int = None,
         type: str = None,
     ):
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Valid values: 1 to 100.
         self.page_size = page_size
+        # The type of the human voice cloning job. Valid values:
+        # 
+        # *   Basic
+        # *   Standard
+        # 
+        # > : If you do not specify this parameter, the default value Basic is used.
         self.type = type
 
     def validate(self):
@@ -27290,16 +29094,49 @@ class ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList(TeaModel):
         voice_id: str = None,
         voice_name: str = None,
     ):
+        # *   The time when the job was created.
+        # *   The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The gender. Valid values:
+        # 
+        # *   female
+        # *   male
         self.gender = gender
+        # The time when the job was created.
         self.gmt_create = gmt_create
+        # The ID of the human voice cloning job.
         self.job_id = job_id
+        # The returned message.
         self.message = message
+        # The scenario. Valid values:
+        # 
+        # *   story
+        # *   interaction
+        # *   navigation
         self.scenario = scenario
+        # The job state. Valid values:
+        # 
+        # *   Initialization
+        # *   AudioDetecting
+        # *   PreTraining
+        # *   Training
+        # *   Success
+        # *   Fail
         self.status = status
+        # *   The voice type. Valid values:
+        # 
+        #     *   Basic
+        #     *   Standard
         self.type = type
+        # The voice description.
+        # 
+        # *   The description can be up to 256 characters in length.
         self.voice_desc = voice_desc
+        # The voice ID.
         self.voice_id = voice_id
+        # The voice name.
+        # 
+        # *   The name can be up to 32 characters in length.
         self.voice_name = voice_name
 
     def validate(self):
@@ -27368,7 +29205,9 @@ class ListCustomizedVoiceJobsResponseBodyData(TeaModel):
         customized_voice_job_list: List[ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList] = None,
         total_count: int = None,
     ):
+        # The queried human voice cloning jobs.
         self.customized_voice_job_list = customized_voice_job_list
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -27410,8 +29249,11 @@ class ListCustomizedVoiceJobsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true false
         self.success = success
 
     def validate(self):
@@ -27492,8 +29334,16 @@ class ListCustomizedVoicesRequest(TeaModel):
         page_size: int = None,
         type: str = None,
     ):
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Valid values: 1 to 100.
         self.page_size = page_size
+        # *   The voice type. Valid values:
+        # 
+        #     *   Basic
+        #     *   Standard
+        # 
+        # *   If you do not specify this parameter, the default value Basic is used.
         self.type = type
 
     def validate(self):
@@ -27535,12 +29385,29 @@ class ListCustomizedVoicesResponseBodyDataCustomizedVoiceList(TeaModel):
         voice_id: str = None,
         voice_name: str = None,
     ):
+        # The media asset ID of the sample audio file.
         self.demo_audio_media_id = demo_audio_media_id
+        # The gender. Valid values:
+        # 
+        # *   female
+        # *   male
         self.gender = gender
+        # The scenario. Valid values:
+        # 
+        # *   story
+        # *   interaction
+        # *   navigation
         self.scenario = scenario
+        # *   The voice type. Valid values:
+        # 
+        #     *   Basic
+        #     *   Standard
         self.type = type
+        # The voice description.
         self.voice_desc = voice_desc
+        # The voice ID.
         self.voice_id = voice_id
+        # The voice name.
         self.voice_name = voice_name
 
     def validate(self):
@@ -27593,7 +29460,9 @@ class ListCustomizedVoicesResponseBodyData(TeaModel):
         customized_voice_list: List[ListCustomizedVoicesResponseBodyDataCustomizedVoiceList] = None,
         total_count: int = None,
     ):
+        # The queried personalized human voices.
         self.customized_voice_list = customized_voice_list
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -27635,8 +29504,14 @@ class ListCustomizedVoicesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -27719,6 +29594,7 @@ class ListDNADBRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The IDs of the media fingerprint libraries. We recommend that you query at most 10 libraries at a time. Separate multiple library IDs with commas (,).
         self.dbids = dbids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -27770,10 +29646,24 @@ class ListDNADBResponseBodyDBList(TeaModel):
         name: str = None,
         status: str = None,
     ):
+        # The ID of the media fingerprint library.
         self.dbid = dbid
+        # The description of the media fingerprint library.
         self.description = description
+        # The model of the media fingerprint library. Valid values:
+        # 
+        # *   **Video**\
+        # *   **Audio**\
+        # *   **Image**\
+        # *   **Text** (supported only in the China (Shanghai) region)
         self.model = model
+        # The name of the media fingerprint library.
         self.name = name
+        # The state of the media fingerprint library. Default value: **offline**. ****Valid values:
+        # 
+        # *   **offline**: The media fingerprint library is offline.
+        # *   **active**: The media fingerprint library is online.
+        # *   **deleted**: The media fingerprint library is deleted.
         self.status = status
 
     def validate(self):
@@ -27818,7 +29708,9 @@ class ListDNADBResponseBody(TeaModel):
         dblist: List[ListDNADBResponseBodyDBList] = None,
         request_id: str = None,
     ):
+        # The queried media fingerprint libraries.
         self.dblist = dblist
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -27905,11 +29797,15 @@ class ListDNAFilesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the media fingerprint library.
+        # 
         # This parameter is required.
         self.dbid = dbid
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_page_token = next_page_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -27965,8 +29861,11 @@ class ListDNAFilesResponseBodyFileListInputFile(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The OSS region in which the input file resides.
         self.location = location
+        # The name of the OSS object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -28003,7 +29902,9 @@ class ListDNAFilesResponseBodyFileList(TeaModel):
         input_file: ListDNAFilesResponseBodyFileListInputFile = None,
         primary_key: str = None,
     ):
+        # The Object Storage Service (OSS) information about the input file.
         self.input_file = input_file
+        # The primary key of the file.
         self.primary_key = primary_key
 
     def validate(self):
@@ -28039,8 +29940,11 @@ class ListDNAFilesResponseBody(TeaModel):
         next_page_token: str = None,
         request_id: str = None,
     ):
+        # The queried files.
         self.file_list = file_list
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_page_token = next_page_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28131,12 +30035,28 @@ class ListDynamicImageJobsRequest(TeaModel):
         start_of_create_time: str = None,
         status: str = None,
     ):
+        # The end of the time range during which the jobs to be queried were created.
         self.end_of_create_time = end_of_create_time
+        # The job ID.
         self.job_id = job_id
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_page_token = next_page_token
+        # The order that you use to sort the query results. Valid values:
+        # 
+        # 1.  CreateTimeAsc: sorts the jobs by creation time in ascending order.
+        # 2.  CreateTimeDesc: sorts the jobs by creation time in descending order.
         self.order_by = order_by
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        # The beginning of the time range during which the jobs to be queried were created.
         self.start_of_create_time = start_of_create_time
+        # The state of the job.
+        # 
+        # Valid values:
+        # 
+        # *   Init: The job is submitted.
+        # *   Success: The job is successful.
+        # *   Fail: The job failed.
         self.status = status
 
     def validate(self):
@@ -28189,7 +30109,18 @@ class ListDynamicImageJobsResponseBodyJobsInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The input file. The file can be an OSS object or a media asset. The URL of an OSS object can be in one of the following formats:
+        # 
+        # 1.  OSS://bucket/object
+        # 2.  http(s)://bucket.oss-[regionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
         self.media = media
+        # The type of the input file. Valid values:
+        # 
+        # 1.  OSS: an Object Storage Service (OSS) object.
+        # 2.  Media: a media asset.
+        # 
+        # *\
+        # *\
         self.type = type
 
     def validate(self):
@@ -28222,7 +30153,18 @@ class ListDynamicImageJobsResponseBodyJobsOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+        # 
+        # 1.  OSS://bucket/object
+        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
         self.media = media
+        # The type of the output file. Valid values:
+        # 
+        # 1.  OSS: an OSS object.
+        # 2.  Media: a media asset.
+        # 
+        # *\
+        # *\
         self.type = type
 
     def validate(self):
@@ -28265,17 +30207,39 @@ class ListDynamicImageJobsResponseBodyJobs(TeaModel):
         template_id: str = None,
         trigger_source: str = None,
     ):
+        # The time when the job was created.
         self.create_time = create_time
+        # The time when the job was complete.
         self.finish_time = finish_time
+        # The input of the job.
         self.input = input
+        # The job ID.
         self.job_id = job_id
+        # The time when the job was last modified.
         self.modified_time = modified_time
+        # The name of the job.
         self.name = name
+        # The output of the job.
         self.output = output
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The state of the job.
+        # 
+        # *   **Success**: The job is successful.
+        # *   **Fail**: The job failed.
+        # *   **Init**: The job is submitted.
         self.status = status
+        # The time when the job was submitted.
         self.submit_time = submit_time
+        # The template ID.
         self.template_id = template_id
+        # The request trigger source.
+        # 
+        # Valid values:
+        # 
+        # *   Console
+        # *   Workflow
+        # *   API
         self.trigger_source = trigger_source
 
     def validate(self):
@@ -28354,8 +30318,11 @@ class ListDynamicImageJobsResponseBody(TeaModel):
         next_page_token: str = None,
         request_id: str = None,
     ):
+        # The list of jobs.
         self.jobs = jobs
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_page_token = next_page_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -31712,12 +33679,26 @@ class ListMediaInfoJobsRequest(TeaModel):
         start_of_create_time: str = None,
         status: str = None,
     ):
+        # The end of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_of_create_time = end_of_create_time
+        # The job ID.
         self.job_id = job_id
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_page_token = next_page_token
+        # The order that you use to sort the query results. Valid values:
+        # 
+        # *   CreateTimeDesc: sorts the query results by creation time in descending order.
+        # *   CreateTimeAsc: sorts the query results by creation time in ascending order.
         self.order_by = order_by
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The beginning of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_of_create_time = start_of_create_time
+        # The state of the job. Valid values:
+        # 
+        # *   Init: The job is submitted.
+        # *   Success: The job is successful.
+        # *   Fail: The job failed.
         self.status = status
 
     def validate(self):
@@ -31770,7 +33751,15 @@ class ListMediaInfoJobsResponseBodyJobsInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an Object Storage Service (OSS) object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -31816,20 +33805,35 @@ class ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyAudioStreamInfoList(TeaM
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The sound channel layout.
         self.channel_layout = channel_layout
+        # The number of sound channels.
         self.channels = channels
+        # The name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The encoding format.
         self.codec_name = codec_name
+        # The encoder tag.
         self.codec_tag = codec_tag
+        # The name of the encoder tag.
         self.codec_tag_string = codec_tag_string
+        # The time base of the encoder.
         self.codec_time_base = codec_time_base
+        # The duration of the stream. Unit: seconds.
         self.duration = duration
+        # The sequence number of the stream.
         self.index = index
+        # The language of the stream.
         self.lang = lang
+        # The sampling format.
         self.sample_fmt = sample_fmt
+        # The sampling rate. Unit: Hz.
         self.sample_rate = sample_rate
+        # The start time of the stream.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -31924,17 +33928,29 @@ class ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo(TeaModel):
         region: str = None,
         width: str = None,
     ):
+        # The video bitrate.
         self.bitrate = bitrate
+        # The duration of the video. Unit: seconds.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size. Unit: bytes.
         self.file_size = file_size
+        # The state of the file.
         self.file_status = file_status
+        # The file type. Valid values: source_file and transcode_file.
         self.file_type = file_type
+        # The URL of the file.
         self.file_url = file_url
+        # The name of the video format.
         self.format_name = format_name
+        # The height.
         self.height = height
+        # The ID of the media asset.
         self.media_id = media_id
+        # The region in which the file resides.
         self.region = region
+        # The width.
         self.width = width
 
     def validate(self):
@@ -32028,28 +34044,58 @@ class ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList(TeaM
         time_base: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bit_rate = bit_rate
+        # The name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The encoding format.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The time base of the encoder.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio.
         self.dar = dar
+        # The duration of the stream. Unit: seconds.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+        # 
+        # *   0: The stream contains no B-frames.
+        # *   1: The stream contains one B-frame.
+        # *   2: The stream contains multiple consecutive B-frames.
         self.has_bframes = has_bframes
+        # The height.
         self.height = height
+        # The sequence number of the stream.
         self.index = index
+        # The language of the stream.
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The encoder profile.
         self.profile = profile
+        # The rotation angle of the video image.
+        # 
+        # *   Valid values: 0, 90, 180, and 270.
+        # *   Default value: 0.
         self.rotate = rotate
+        # The aspect ratio of the area from which the sampling points are collected.
         self.sar = sar
+        # The start time of the stream.
         self.start_time = start_time
+        # The time base.
         self.time_base = time_base
+        # The width.
         self.width = width
 
     def validate(self):
@@ -32167,8 +34213,11 @@ class ListMediaInfoJobsResponseBodyJobsMediaInfoProperty(TeaModel):
         file_basic_info: ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo = None,
         video_stream_info_list: List[ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList] = None,
     ):
+        # The information about the audio stream.
         self.audio_stream_info_list = audio_stream_info_list
+        # The basic file information.
         self.file_basic_info = file_basic_info
+        # The information about the video stream.
         self.video_stream_info_list = video_stream_info_list
 
     def validate(self):
@@ -32225,7 +34274,9 @@ class ListMediaInfoJobsResponseBodyJobsScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
 
     def validate(self):
@@ -32269,18 +34320,39 @@ class ListMediaInfoJobsResponseBodyJobs(TeaModel):
         trigger_source: str = None,
         user_data: str = None,
     ):
+        # Indicates whether asynchronous processing was performed.
         self.async_ = async_
+        # The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.finish_time = finish_time
+        # The input of the job.
         self.input = input
+        # The job ID.
         self.job_id = job_id
+        # The details of the media information.
         self.media_info_property = media_info_property
+        # The job name.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The scheduling information.
         self.schedule_config = schedule_config
+        # The state of the job. Valid values:
+        # 
+        # *   Init: The job is submitted.
+        # *   Success: The job is successful.
+        # *   Fail: The job failed.
         self.status = status
+        # The job submission information.
         self.submit_result_json = submit_result_json
+        # The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.submit_time = submit_time
+        # The source of the job. Valid values:
+        # 
+        # *   API
+        # *   WorkFlow
+        # *   Console
         self.trigger_source = trigger_source
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -32366,8 +34438,11 @@ class ListMediaInfoJobsResponseBody(TeaModel):
         next_page_token: str = None,
         request_id: str = None,
     ):
+        # The list of media information analysis jobs.
         self.jobs = jobs
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. The token of the next page is returned after you call this operation for the first time.
         self.next_page_token = next_page_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -32579,15 +34654,45 @@ class ListMediaProducingJobsRequest(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The end of the time range to query. The maximum time range between EndTime and StartTime cannot exceed 30 days. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
+        # The job type.
+        # 
+        # Valid values:
+        # 
+        # *   LiveEditingJob: live editing job.
+        # *   EditingJob: regular template-based editing job
+        # *   VETemplateJob: advanced template-based editing job.
         self.job_type = job_type
+        # The search keyword. For example, you can use a job ID as the keyword to search for jobs.
         self.keyword = keyword
+        # The ID of the quick video production job. If this parameter is specified, the subjobs of the quick video production job are queried.
         self.master_job_id = master_job_id
+        # The maximum number of entries to return.
+        # 
+        # Default value: 10. Valid values: 1 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The ID of the online editing project.
         self.project_id = project_id
+        # The sorting parameter. By default, the query results are sorted by creation time in descending order.
+        # 
+        # Valid values:
+        # 
+        # *   CreationTime:Asc: sorted by creation time in ascending order.
+        # *   CreationTime:Desc: sorted by creation time in descending order.
         self.sort_by = sort_by
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
+        # The job state.
+        # 
+        # Valid values:
+        # 
+        # *   Init: The job is initialized.
+        # *   Failed: The job failed.
+        # *   Success: The job is successful.
+        # *   Processing: The job is in progress.
         self.status = status
 
     def validate(self):
@@ -32664,19 +34769,33 @@ class ListMediaProducingJobsResponseBodyMediaProducingJobList(TeaModel):
         template_id: str = None,
         user_data: str = None,
     ):
+        # The template material parameters.
         self.clips_param = clips_param
+        # The response code.
         self.code = code
+        # The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.complete_time = complete_time
+        # The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The duration of the output file. Unit: seconds.
         self.duration = duration
+        # The ID of the online editing job.
         self.job_id = job_id
+        # The media asset ID of the output file.
         self.media_id = media_id
+        # The URL of the output file.
         self.media_url = media_url
+        # The returned message. Note: Pay attention to this parameter if the job failed.
         self.message = message
+        # The time when the job was last modified.
         self.modified_time = modified_time
+        # The ID of the online editing project.
         self.project_id = project_id
+        # The job state.
         self.status = status
+        # The ID of the online editing template.
         self.template_id = template_id
+        # The user-defined data in the JSON format.
         self.user_data = user_data
 
     def validate(self):
@@ -32759,10 +34878,15 @@ class ListMediaProducingJobsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The maximum number of entries returned.
+        # 
+        # Default value: 10. Valid values: 1 to 100.
         self.max_results = max_results
+        # The queried media editing and production jobs.
         self.media_producing_job_list = media_producing_job_list
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -32857,12 +34981,26 @@ class ListPackageJobsRequest(TeaModel):
         start_of_create_time: str = None,
         status: str = None,
     ):
+        # The end of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_of_create_time = end_of_create_time
+        # The job ID.
         self.job_id = job_id
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_page_token = next_page_token
+        # The order that you use to sort the query results. Valid values:
+        # 
+        # *   CreateTimeDesc: sorts the jobs by creation time in descending order.
+        # *   CreateTimeAsc: sorts the jobs by creation time in ascending order.
         self.order_by = order_by
+        # The number of entries per page. Valid values: 0 to 100. Default value: 20.
         self.page_size = page_size
+        # The beginning of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_of_create_time = start_of_create_time
+        # The state of the job.
+        # 
+        # *   Init: The job is submitted.
+        # *   Success: The job is successful.
+        # *   Fail: The job failed.
         self.status = status
 
     def validate(self):
@@ -32915,7 +35053,15 @@ class ListPackageJobsResponseBodyPackageJobListPackageJobsInputsInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an Object Storage Service (OSS) object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -32947,6 +35093,7 @@ class ListPackageJobsResponseBodyPackageJobListPackageJobsInputs(TeaModel):
         self,
         input: ListPackageJobsResponseBodyPackageJobListPackageJobsInputsInput = None,
     ):
+        # The information about the input stream file.
         self.input = input
 
     def validate(self):
@@ -32977,7 +35124,15 @@ class ListPackageJobsResponseBodyPackageJobListPackageJobsOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -33023,20 +35178,39 @@ class ListPackageJobsResponseBodyPackageJobListPackageJobs(TeaModel):
         trigger_source: str = None,
         user_data: str = None,
     ):
+        # The error code returned if the job fails.
         self.code = code
+        # The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.finish_time = finish_time
+        # The input of the job.
         self.inputs = inputs
+        # The job ID.
         self.job_id = job_id
+        # The error message that is returned.
         self.message = message
+        # The time when the job was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.modified_time = modified_time
+        # The name of the job.
         self.name = name
+        # The output of the job.
         self.output = output
+        # The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority. Default value: 6.
         self.priority = priority
+        # The state of the job.
         self.status = status
+        # The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.submit_time = submit_time
+        # The source of the job. Valid values:
+        # 
+        # *   API
+        # *   WorkFlow
+        # *   Console
         self.trigger_source = trigger_source
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -33132,7 +35306,9 @@ class ListPackageJobsResponseBodyPackageJobList(TeaModel):
         next_page_token: str = None,
         package_jobs: List[ListPackageJobsResponseBodyPackageJobListPackageJobs] = None,
     ):
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. The token of the next page is returned after you call this operation for the first time.
         self.next_page_token = next_page_token
+        # The list of packaging jobs.
         self.package_jobs = package_jobs
 
     def validate(self):
@@ -33173,7 +35349,9 @@ class ListPackageJobsResponseBody(TeaModel):
         package_job_list: ListPackageJobsResponseBodyPackageJobList = None,
         request_id: str = None,
     ):
+        # The list of packaging jobs.
         self.package_job_list = package_job_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33248,6 +35426,13 @@ class ListPipelinesRequest(TeaModel):
         self,
         speed: str = None,
     ):
+        # The type of the MPS queue.
+        # 
+        # Valid values:
+        # 
+        # *   Boost: MPS queue with transcoding speed boosted.
+        # *   Standard: standard MPS queue.
+        # *   NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
         self.speed = speed
 
     def validate(self):
@@ -33281,12 +35466,24 @@ class ListPipelinesResponseBodyPipelineList(TeaModel):
         speed: str = None,
         status: str = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
+        # The time when the template was last modified.
         self.modified_time = modified_time
+        # The name of the MPS queue.
         self.name = name
+        # The ID of the MPS queue.
         self.pipeline_id = pipeline_id
+        # The priority of the MPS queue.
         self.priority = priority
+        # The type of the MPS queue.
         self.speed = speed
+        # The state of the MPS queue.
+        # 
+        # Valid values:
+        # 
+        # *   Active
+        # *   Paused
         self.status = status
 
     def validate(self):
@@ -33339,7 +35536,9 @@ class ListPipelinesResponseBody(TeaModel):
         pipeline_list: List[ListPipelinesResponseBodyPipelineList] = None,
         request_id: str = None,
     ):
+        # The queried MPS queues.
         self.pipeline_list = pipeline_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -34114,12 +36313,40 @@ class ListSmartJobsRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # The job state.
+        # 
+        # Valid values:
+        # 
+        # *   Finished: The job is complete.
+        # *   Failed: The job failed.
+        # *   Executing: The job is in progress.
+        # *   Created: The job is created.
         self.job_state = job_state
+        # The job type.
+        # 
+        # Valid values:
+        # 
+        # *   ASR: automatic speech recognition(job) job.
+        # *   DynamicChart: dynamic chart job.
+        # *   VideoTranslation: video translation job.
+        # *   TextToSpeech: intelligent audio production job.
         self.job_type = job_type
+        # The maximum number of entries to return.
+        # 
+        # Default value: 10. Valid values: 1 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Valid values: 1 to 100.
         self.page_size = page_size
+        # The sorting parameter. By default, the query results are sorted by creation time in descending order.
+        # 
+        # Valid values:
+        # 
+        # *   CreationTime:Asc: sorted by creation time in ascending order.
+        # *   CreationTime:Desc: sorted by creation time in descending order.
         self.sort_by = sort_by
 
     def validate(self):
@@ -34172,7 +36399,9 @@ class ListSmartJobsResponseBodySmartJobListInputConfig(TeaModel):
         input_file: str = None,
         keyword: str = None,
     ):
+        # The information about the input file.
         self.input_file = input_file
+        # The keyword information.
         self.keyword = keyword
 
     def validate(self):
@@ -34205,9 +36434,9 @@ class ListSmartJobsResponseBodySmartJobListOutputConfig(TeaModel):
         bucket: str = None,
         object: str = None,
     ):
-        # OSS Bucket
+        # The Object Storage Service (OSS) bucket.
         self.bucket = bucket
-        # OSS Object
+        # The OSS object.
         self.object = object
 
     def validate(self):
@@ -34250,17 +36479,42 @@ class ListSmartJobsResponseBodySmartJobList(TeaModel):
         user_data: str = None,
         user_id: int = None,
     ):
+        # The time when the job was created.
         self.create_time = create_time
+        # The job description.
         self.description = description
+        # The editing configurations.
         self.editing_config = editing_config
+        # The input configurations.
         self.input_config = input_config
+        # The job ID.
         self.job_id = job_id
+        # The job state.
+        # 
+        # Valid values:
+        # 
+        # *   Finished: The job is complete.
+        # *   Failed: The job failed.
+        # *   Executing: The job is in progress.
+        # *   Created: The job is created.
         self.job_state = job_state
+        # The job type.
+        # 
+        # Valid values:
+        # 
+        # *   ASR: ASR job.
+        # *   DynamicChart: dynamic chart job.
+        # *   TextToSpeech: intelligent audio production job.
         self.job_type = job_type
+        # The time when the job was last modified.
         self.modified_time = modified_time
+        # The output configurations.
         self.output_config = output_config
+        # The job title.
         self.title = title
+        # The user-defined data.
         self.user_data = user_data
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -34341,10 +36595,15 @@ class ListSmartJobsResponseBody(TeaModel):
         smart_job_list: List[ListSmartJobsResponseBodySmartJobList] = None,
         total_count: str = None,
     ):
+        # The maximum number of entries returned on a single page. The value is set to the maximum number of entries returned on each page except for the last page. Valid example: 10,10,5. Invalid example: 10,5,10.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The queried intelligent jobs.
         self.smart_job_list = smart_job_list
+        # Optional. The total number of entries returned. By default, this parameter is not returned.
         self.total_count = total_count
 
     def validate(self):
@@ -34439,7 +36698,9 @@ class ListSmartSysAvatarModelsRequest(TeaModel):
         page_size: int = None,
         sdk_version: str = None,
     ):
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Valid values: 1 to 100.
         self.page_size = page_size
         self.sdk_version = sdk_version
 
@@ -34483,13 +36744,21 @@ class ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList(TeaModel):
         video_url: str = None,
         width: int = None,
     ):
+        # The ID of the digital human. The ID is required to submit a separate digital human rendering job or use the digital human image in an intelligent timeline.
         self.avatar_id = avatar_id
+        # The name of the digital human.
         self.avatar_name = avatar_name
+        # The video bitrate.
         self.bitrate = bitrate
+        # The sample thumbnail URL of the digital human.
         self.cover_url = cover_url
+        # The video height.
         self.height = height
+        # Indicates whether portrait mask rendering is supported.
         self.output_mask = output_mask
+        # The sample video URL of the digital human.
         self.video_url = video_url
+        # The video width.
         self.width = width
 
     def validate(self):
@@ -34547,8 +36816,11 @@ class ListSmartSysAvatarModelsResponseBody(TeaModel):
         smart_sys_avatar_model_list: List[ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The queried digital humans.
         self.smart_sys_avatar_model_list = smart_sys_avatar_model_list
+        # The total number of system digital human images returned.
         self.total_count = total_count
 
     def validate(self):
@@ -34640,13 +36912,27 @@ class ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList(TeaModel):
         voice_type: str = None,
         voice_url: str = None,
     ):
+        # The speaker description.
         self.desc = desc
+        # The speaker name.
         self.name = name
+        # The remarks of the speaker.
         self.remark = remark
         self.support_sample_rate = support_sample_rate
+        # The tag of the speaker type.
         self.tag = tag
+        # The speaker ID.
         self.voice = voice
+        # The speaker type.
+        # 
+        # Valid values:
+        # 
+        # *   Male
+        # *   Female
+        # *   Boy
+        # *   Girl
         self.voice_type = voice_type
+        # The URL of the sample audio file.
         self.voice_url = voice_url
 
     def validate(self):
@@ -34703,7 +36989,9 @@ class ListSmartVoiceGroupsResponseBodyVoiceGroups(TeaModel):
         type: str = None,
         voice_list: List[ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList] = None,
     ):
+        # The name of the speaker group.
         self.type = type
+        # The speakers.
         self.voice_list = voice_list
 
     def validate(self):
@@ -34744,8 +37032,9 @@ class ListSmartVoiceGroupsResponseBody(TeaModel):
         request_id: str = None,
         voice_groups: List[ListSmartVoiceGroupsResponseBodyVoiceGroups] = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The queried speaker groups.
         self.voice_groups = voice_groups
 
     def validate(self):
@@ -34832,12 +37121,33 @@ class ListSnapshotJobsRequest(TeaModel):
         start_of_create_time: str = None,
         status: str = None,
     ):
+        # The end of the time range during which the jobs to be queried were created.
         self.end_of_create_time = end_of_create_time
+        # The job ID.
         self.job_id = job_id
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_page_token = next_page_token
+        # The order that you use to sort the query results.
+        # 
+        # 1.  CreateTimeDesc
+        # 2.  CreateTimeAsc
+        # 
+        # Valid values:
+        # 
+        # *   CreateTimeDesc: sorts the jobs by creation time in descending order
+        # *   CreateTimeAsc: sorts the jobs by creation time in ascending order.
         self.order_by = order_by
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        # The beginning of the time range during which the jobs to be queried were created.
         self.start_of_create_time = start_of_create_time
+        # The state of the job.
+        # 
+        # Valid values:
+        # 
+        # *   Init: The job is submitted.
+        # *   Success: The job is successful.
+        # *   Fail: The job failed.
         self.status = status
 
     def validate(self):
@@ -34890,7 +37200,12 @@ class ListSnapshotJobsResponseBodyJobsInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats: 1. OSS://bucket/object 2. http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
         self.media = media
+        # The type of the input file. Valid values:
+        # 
+        # 1.  OSS: an Object Storage Service (OSS) object.
+        # 2.  Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -34923,7 +37238,17 @@ class ListSnapshotJobsResponseBodyJobsOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The output file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+        # 
+        # 1.  OSS://bucket/object
+        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+        # 
+        # In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS. If multiple static snapshots were captured, the object must contain the "{Count}" placeholder. In the case of a sprite, the object must contain the "{TileCount}" placeholder. The suffix of the WebVTT snapshot objects must be ".vtt".
         self.media = media
+        # The type of the output file. Valid values:
+        # 
+        # 1.  OSS: an OSS object.
+        # 2.  Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -34969,20 +37294,51 @@ class ListSnapshotJobsResponseBodyJobs(TeaModel):
         trigger_source: str = None,
         type: str = None,
     ):
+        # Indicates whether the snapshots were captured in asynchronous mode.
         self.async_ = async_
+        # The number of snapshots.
         self.count = count
+        # The time when the job was created.
         self.create_time = create_time
+        # The time when the job was complete.
         self.finish_time = finish_time
+        # The input of the job.
         self.input = input
+        # The job ID.
         self.job_id = job_id
+        # The time when the job was last modified.
         self.modified_time = modified_time
+        # The name of the job.
         self.name = name
+        # The output of the job.
         self.output = output
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The state of the job.
+        # 
+        # *   **Success**: The job is successful.
+        # *   **Fail**: The job failed.
+        # *   **Init**: The job is submitted.
         self.status = status
+        # The time when the job was submitted.
         self.submit_time = submit_time
+        # The template ID.
         self.template_id = template_id
+        # The request trigger source.
+        # 
+        # Valid values:
+        # 
+        # *   Console
+        # *   Workflow
+        # *   API
         self.trigger_source = trigger_source
+        # The type of the job.
+        # 
+        # Valid values:
+        # 
+        # *   WebVtt
+        # *   Sprite
+        # *   Normal
         self.type = type
 
     def validate(self):
@@ -35073,8 +37429,11 @@ class ListSnapshotJobsResponseBody(TeaModel):
         next_page_token: str = None,
         request_id: str = None,
     ):
+        # The list of jobs.
         self.jobs = jobs
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_page_token = next_page_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -35165,12 +37524,20 @@ class ListSystemTemplatesRequest(TeaModel):
         template_id: str = None,
         type: str = None,
     ):
+        # The template name.
         self.name = name
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20 Valid values: 1 to 100.
         self.page_size = page_size
+        # The template state. Valid values: Normal, Invisible, and All.
         self.status = status
+        # The subtype ID of the template.
         self.subtype = subtype
+        # The template ID.
         self.template_id = template_id
+        # The template type. Separate multiple types with commas (,).
+        # 
         # This parameter is required.
         self.type = type
 
@@ -35230,13 +37597,21 @@ class ListSystemTemplatesResponseBodySystemTemplateList(TeaModel):
         type: int = None,
         type_name: str = None,
     ):
+        # The template state.
         self.status = status
+        # The subtype ID of the template.
         self.subtype = subtype
+        # The subtype name of the template.
         self.subtype_name = subtype_name
+        # The template parameters.
         self.template_config = template_config
+        # The template ID.
         self.template_id = template_id
+        # The template name.
         self.template_name = template_name
+        # The type ID of the template.
         self.type = type
+        # The type name of the template.
         self.type_name = type_name
 
     def validate(self):
@@ -35294,8 +37669,11 @@ class ListSystemTemplatesResponseBody(TeaModel):
         system_template_list: List[ListSystemTemplatesResponseBodySystemTemplateList] = None,
         total: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The queried templates.
         self.system_template_list = system_template_list
+        # The total number of templates.
         self.total = total
 
     def validate(self):
@@ -35386,12 +37764,44 @@ class ListTemplatesRequest(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The source from which the template was created.
+        # 
+        # Valid values:
+        # 
+        # *   AliyunConsole
+        # *   WebSDK
+        # *   OpenAPI
         self.create_source = create_source
+        # The search keyword. You can use the template ID or title as the keyword to search for templates.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
+        # The sorting parameter. By default, the query results are sorted by creation time in descending order.
+        # 
+        # Valid values:
+        # 
+        # *   CreationTime:Asc: sorted by creation time in ascending order.
+        # *   CreationTime:Desc: sorted by creation time in descending order.
         self.sort_type = sort_type
+        # The template state.
+        # 
+        # Valid values:
+        # 
+        # *   UploadFailed: Failed to upload the video.
+        # *   ProcessFailed: Failed to process the advanced template.
+        # *   Available: The template is available.
+        # *   Uploading: The video is being uploaded.
+        # *   Created: The template is created but not ready for use.
+        # *   Processing: The advanced template is being processed.
         self.status = status
+        # The template type.
+        # 
+        # Valid values:
+        # 
+        # *   Timeline
+        # *   VETemplate
         self.type = type
 
     def validate(self):
@@ -35455,19 +37865,64 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         template_id: str = None,
         type: str = None,
     ):
-        # ClipsParam
+        # The clip parameters.
         self.clips_param = clips_param
+        # The template configurations.
         self.config = config
+        # The thumbnail URL.
         self.cover_url = cover_url
+        # The source from which the template was created.
+        # 
+        # Valid values:
+        # 
+        # *   AliyunConsole
+        # *   WebSDK
+        # *   OpenAPI
         self.create_source = create_source
+        # The time when the template was created.
         self.creation_time = creation_time
+        # The source from which the template was modified.
+        # 
+        # Valid values:
+        # 
+        # *   AliyunConsole
+        # *   WebSDK
+        # *   OpenAPI
         self.modified_source = modified_source
+        # The time when the template was last modified.
         self.modified_time = modified_time
+        # The template name.
         self.name = name
+        # The preview media asset.
         self.preview_media = preview_media
+        # The state of the preview media asset.
+        # 
+        # Valid values:
+        # 
+        # *   PrepareFail
+        # *   Init
+        # *   Normal
+        # *   Preparing
         self.preview_media_status = preview_media_status
+        # The template state.
+        # 
+        # Valid values:
+        # 
+        # *   UploadFailed: Failed to upload the video.
+        # *   ProcessFailed: Failed to process the advanced template.
+        # *   Available: The template is available.
+        # *   Uploading: The video is being uploaded.
+        # *   Created: The template is created but not ready for use.
+        # *   Processing: The advanced template is being processed.
         self.status = status
+        # The template ID.
         self.template_id = template_id
+        # The template type.
+        # 
+        # Valid values:
+        # 
+        # *   Timeline: regular template.
+        # *   VETemplate: advanced template.
         self.type = type
 
     def validate(self):
@@ -35545,8 +38000,11 @@ class ListTemplatesResponseBody(TeaModel):
         templates: List[ListTemplatesResponseBodyTemplates] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The queried templates.
         self.templates = templates
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -35637,12 +38095,26 @@ class ListTranscodeJobsRequest(TeaModel):
         start_of_create_time: str = None,
         status: str = None,
     ):
+        # The end of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_of_create_time = end_of_create_time
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_page_token = next_page_token
+        # The order that you use to sort the query results. Valid values:
+        # 
+        # *   CreateTimeDesc: sorts the query results by creation time in descending order.
+        # *   CreateTimeAsc: sorts the query results by creation time in ascending order.
         self.order_by = order_by
+        # The number of entries per page. Valid values: 0 to 100. Default value: 20.
         self.page_size = page_size
+        # The job ID.
         self.parent_job_id = parent_job_id
+        # The beginning of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_of_create_time = start_of_create_time
+        # The state of the job.
+        # 
+        # *   Init: The job is submitted.
+        # *   Success: The job is successful.
+        # *   Fail: The job failed.
         self.status = status
 
     def validate(self):
@@ -35696,8 +38168,17 @@ class ListTranscodeJobsResponseBodyJobsInputGroup(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The URL of the media asset. This parameter is specified only when the media asset is transcoded.
         self.input_url = input_url
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an Object Storage Service (OSS) object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -35735,8 +38216,14 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupOutput(TeaModel):
         output_url: str = None,
         type: str = None,
     ):
+        # The media object. If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported. If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The URL of the transcoded output stream. This parameter is required only when the output is a media asset.
         self.output_url = output_url
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -35775,10 +38262,16 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigCombineConfigs(Te
         start: float = None,
         video_index: str = None,
     ):
+        # The audio stream index.
+        # 
         # This parameter is required.
         self.audio_index = audio_index
+        # The duration of the input stream. The default value is the duration of the video.
         self.duration = duration
+        # The start time of the input stream. Default value: 0.
         self.start = start
+        # The video stream index.
+        # 
         # This parameter is required.
         self.video_index = video_index
 
@@ -35821,8 +38314,11 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigEncryption(TeaMod
         decrypt_key_uri: str = None,
         encrypt_type: str = None,
     ):
+        # The ciphertext of HTTP Live Streaming (HLS) encryption.
         self.cipher_text = cipher_text
+        # The endpoint of the decryption service for HLS encryption.
         self.decrypt_key_uri = decrypt_key_uri
+        # The encryption type.
         self.encrypt_type = encrypt_type
 
     def validate(self):
@@ -35859,7 +38355,12 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOv
         media: str = None,
         type: str = None,
     ):
+        # The media object. If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported. If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -35892,7 +38393,9 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOv
         duration: str = None,
         start: str = None,
     ):
+        # The duration of the stream. Valid values: the number of seconds or "ToEND".
         self.duration = duration
+        # The beginning of the time range for which data was queried.
         self.start = start
 
     def validate(self):
@@ -35930,12 +38433,19 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOv
         timeline: ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline = None,
         width: str = None,
     ):
+        # The position of the watermark on the x-axis.
         self.dx = dx
+        # The position of the watermark on the y-axis.
         self.dy = dy
+        # The watermark image file.
         self.file = file
+        # The height of the output video.
         self.height = height
+        # The reference position of the watermark. Valid values: TopLeft, TopRight, BottomLeft, and BottomRight. Default value: TopLeft.
         self.refer_pos = refer_pos
+        # The timeline settings.
         self.timeline = timeline
+        # The width of the output video.
         self.width = width
 
     def validate(self):
@@ -35993,7 +38503,9 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarks(T
         overwrite_params: ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -36028,7 +38540,15 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwrit
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, the ID of a media asset is returned.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -36062,8 +38582,11 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwrit
         file: ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParamsFile = None,
         format: str = None,
     ):
+        # The file encoding format.
         self.char_enc = char_enc
+        # The subtitle file.
         self.file = file
+        # The format of the subtitle file.
         self.format = format
 
     def validate(self):
@@ -36102,7 +38625,9 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles(TeaMode
         overwrite_params: ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -36145,15 +38670,25 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarksOve
         left: str = None,
         top: str = None,
     ):
+        # Indicates whether the text size was adjusted based on the output video dimensions. true / false, default: false
         self.adaptive = adaptive
+        # The border color.
         self.border_color = border_color
+        # The border width.
         self.border_width = border_width
+        # The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
         self.content = content
+        # The transparency of the watermark.
         self.font_alpha = font_alpha
+        # The color of the text.
         self.font_color = font_color
+        # The font of the text.
         self.font_name = font_name
+        # The size of the text.
         self.font_size = font_size
+        # The distance of the watermark from the left edge.
         self.left = left
+        # The distance of the watermark from the top edge.
         self.top = top
 
     def validate(self):
@@ -36218,7 +38753,9 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks(Te
         overwrite_params: ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -36255,9 +38792,13 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrit
         method: str = None,
         true_peak: str = None,
     ):
+        # The output volume.
         self.integrated_loudness_target = integrated_loudness_target
+        # The volume range.
         self.loudness_range_target = loudness_range_target
+        # The volume adjustment method. Valid values:
         self.method = method
+        # The peak volume.
         self.true_peak = true_peak
 
     def validate(self):
@@ -36303,12 +38844,27 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrit
         samplerate: str = None,
         volume: ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Valid values: [8,1000].
+        # *   Unit: Kbit/s.
+        # *   Default value: 128.
         self.bitrate = bitrate
+        # The number of sound channels. Default value: 2.
         self.channels = channels
+        # The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
         self.codec = codec
+        # The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
         self.profile = profile
+        # Indicates whether the audio stream is deleted.
         self.remove = remove
+        # The sampling rate.
+        # 
+        # *   Default value: 44100.
+        # *   Valid values: 22050, 32000, 44100, 48000, and 96000.
+        # *   Unit: Hz.
         self.samplerate = samplerate
+        # The volume configurations.
         self.volume = volume
 
     def validate(self):
@@ -36362,6 +38918,7 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrit
         self,
         format: str = None,
     ):
+        # The container format.
         self.format = format
 
     def validate(self):
@@ -36390,7 +38947,9 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrit
         duration: str = None,
         force_seg_time: str = None,
     ):
+        # The segment length.
         self.duration = duration
+        # The forced segmentation point in time.
         self.force_seg_time = force_seg_time
 
     def validate(self):
@@ -36422,6 +38981,7 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrit
         self,
         segment: ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment = None,
     ):
+        # The segment settings.
         self.segment = segment
 
     def validate(self):
@@ -36468,23 +39028,80 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrit
         scan_mode: str = None,
         width: str = None,
     ):
+        # The maximum adaptive bitrate (ABR). This parameter takes effect only for Narrowband HD 1.0. Valid values: [10,50000]. Unit: Kbit/s.
         self.abr_max = abr_max
+        # The average bitrate of the video.
+        # 
+        # *   Valid values: [10,50000].
+        # *   Unit: Kbit/s.
         self.bitrate = bitrate
+        # The buffer size.
+        # 
+        # *   Valid values: [1000,128000].
+        # *   Default value: 6000.
+        # *   Unit: KB.
         self.bufsize = bufsize
+        # The encoding format.
         self.codec = codec
+        # The constant rate factor.
+        # 
+        # *   Valid values: [0,51].
+        # *   Default value: 23 if the encoding format is H.264, or 26 if the encoding format is H.265.
+        # 
+        # If this parameter is set, the value of Bitrate becomes invalid.
         self.crf = crf
+        # The method of video cropping. Valid values:
+        # 
+        # *   border: automatically detects and removes black bars.
+        # *   A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
         self.crop = crop
+        # The frame rate.
+        # 
+        # *   Valid values: (0,60].
+        # *   The value is 60 if the frame rate of the input video exceeds 60.
+        # *   Default value: the frame rate of the input video.
         self.fps = fps
+        # The maximum number of frames between two keyframes.
+        # 
+        # *   Valid values: [1,1080000].
+        # *   Default value: 250.
         self.gop = gop
+        # The height of the output video.
+        # 
+        # *   Valid values: [128,4096].
+        # *   Unit: pixels.
+        # *   Default value: the height of the input video.
         self.height = height
+        # Indicates whether the auto-rotate screen feature is enabled.
         self.long_short_mode = long_short_mode
+        # The maximum bitrate of the output video. Valid values: [10,50000]. Unit: Kbit/s.
         self.maxrate = maxrate
+        # The black bars added to the video.
+        # 
+        # *   Format: width:height:left:top.
+        # *   Example: 1280:800:0:140.
         self.pad = pad
+        # The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
         self.preset = preset
+        # The encoding profile. Valid values: baseline, main, and high.
+        # 
+        # *   baseline: applicable to mobile devices.
+        # *   main: applicable to standard-definition devices.
+        # *   high: applicable to high-definition devices.
+        # 
+        # Default value: high.
         self.profile = profile
+        # Indicates whether the video was removed.
         self.remove = remove
+        # The scan mode. Valid values: interlaced and progressive.
         self.scan_mode = scan_mode
+        # The width of the output video.
+        # 
+        # *   Valid values: [128,4096].
+        # *   Unit: pixels.
+        # *   Default value: the width of the input video.
         self.width = width
 
     def validate(self):
@@ -36584,10 +39201,14 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrit
         tags: Dict[str, str] = None,
         video: ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsVideo = None,
     ):
+        # The audio settings.
         self.audio = audio
+        # The encapsulation format settings.
         self.container = container
+        # The encapsulation settings.
         self.mux_config = mux_config
         self.tags = tags
+        # The video settings.
         self.video = video
 
     def validate(self):
@@ -36643,7 +39264,9 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode(TeaMode
         overwrite_params: ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -36683,12 +39306,19 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig(TeaModel):
         text_watermarks: List[ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks] = None,
         transcode: ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode = None,
     ):
+        # The multi-input stream merge configuration.
         self.combine_configs = combine_configs
+        # The encryption settings.
         self.encryption = encryption
+        # The watermark configuration for an image.
         self.image_watermarks = image_watermarks
+        # Indicates whether the tags of the input stream are inherited in the output stream. This parameter does not take effect when the input is not a media asset. Default value: false.
         self.is_inherit_tags = is_inherit_tags
+        # The subtitle configuration.
         self.subtitles = subtitles
+        # The configurations of the text watermarks.
         self.text_watermarks = text_watermarks
+        # The transcoding configuration.
         self.transcode = transcode
 
     def validate(self):
@@ -36782,7 +39412,9 @@ class ListTranscodeJobsResponseBodyJobsOutputGroup(TeaModel):
         output: ListTranscodeJobsResponseBodyJobsOutputGroupOutput = None,
         process_config: ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig = None,
     ):
+        # The output file configuration.
         self.output = output
+        # The job processing configuration.
         self.process_config = process_config
 
     def validate(self):
@@ -36820,7 +39452,9 @@ class ListTranscodeJobsResponseBodyJobsScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
 
     def validate(self):
@@ -36865,19 +39499,40 @@ class ListTranscodeJobsResponseBodyJobs(TeaModel):
         trigger_source: str = None,
         user_data: str = None,
     ):
+        # The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.finish_time = finish_time
+        # The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
         self.input_group = input_group
+        # The number of subjobs.
         self.job_count = job_count
+        # The job name.
         self.name = name
+        # The output group of the job.
         self.output_group = output_group
+        # The main job ID.
         self.parent_job_id = parent_job_id
+        # The completion percentage of the job.
         self.percent = percent
+        # The ID of the request that submitted the job.
         self.request_id = request_id
+        # The scheduling configuration of the job.
         self.schedule_config = schedule_config
+        # The state of the job.
+        # 
+        # *   Success: At least one of the subjobs is successful.
+        # *   Fail: All subjobs failed.
         self.status = status
+        # The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.submit_time = submit_time
+        # The source of the job. Valid values:
+        # 
+        # *   API
+        # *   WorkFlow
+        # *   Console
         self.trigger_source = trigger_source
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -36979,8 +39634,11 @@ class ListTranscodeJobsResponseBody(TeaModel):
         next_page_token: str = None,
         request_id: str = None,
     ):
+        # The list of jobs.
         self.jobs = jobs
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. The token of the next page is returned after you call this operation for the first time.
         self.next_page_token = next_page_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -37069,6 +39727,7 @@ class QueryDNAJobListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The IDs of the media fingerprint analysis jobs that you want to query. We recommend that you query at most 10 jobs at a time. Separate multiple job IDs with commas (,).
         self.job_ids = job_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -37117,7 +39776,18 @@ class QueryDNAJobListResponseBodyJobListInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The input file. The file can be an OSS object or a media asset. The path of an OSS object can be in one of the following formats:
+        # 
+        # 1\\. oss://bucket/object
+        # 
+        # 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
+        # 
+        # In the preceding paths, bucket indicates an OSS bucket that resides in the same region as the current project, and object indicates the path of the object in the bucket.
         self.media = media
+        # The type of the input file. Valid values:
+        # 
+        # 1.  OSS: Object Storage Service (OSS) object.
+        # 2.  Media: media asset.
         self.type = type
 
     def validate(self):
@@ -37160,17 +39830,34 @@ class QueryDNAJobListResponseBodyJobList(TeaModel):
         status: str = None,
         user_data: str = None,
     ):
+        # The response code.
         self.code = code
+        # The configurations of the media fingerprint analysis job.
         self.config = config
+        # The time when the job was created.
         self.creation_time = creation_time
+        # The ID of the media fingerprint library.
         self.dbid = dbid
+        # The URL of the media fingerprint analysis result.
         self.dnaresult = dnaresult
+        # The time when the job was complete.
         self.finish_time = finish_time
+        # The job ID.
         self.id = id
+        # The details of the input file.
         self.input = input
+        # The returned message.
         self.message = message
+        # The primary key of the video. You must make sure that each primary key is unique.
         self.primary_key = primary_key
+        # The job state. Valid values:
+        # 
+        # *   **Queuing**: The job is waiting in the queue.
+        # *   **Analysing**: The job is in progress.
+        # *   **Success**: The job is successful.
+        # *   **Fail**: The job failed.
         self.status = status
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -37245,7 +39932,9 @@ class QueryDNAJobListResponseBody(TeaModel):
         job_list: List[QueryDNAJobListResponseBodyJobList] = None,
         request_id: str = None,
     ):
+        # The queried media fingerprint analysis jobs.
         self.job_list = job_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -37327,7 +40016,10 @@ class QueryIProductionJobRequest(TeaModel):
         client_token: str = None,
         job_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The ID of the intelligent production job.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -37361,7 +40053,15 @@ class QueryIProductionJobResponseBodyInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The input file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
+        # 
+        # 1.  oss://bucket/object
+        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
         self.media = media
+        # The media type. Valid values:
+        # 
+        # 1.  OSS: Object Storage Service (OSS) object
+        # 2.  Media: media asset
         self.type = type
 
     def validate(self):
@@ -37394,7 +40094,15 @@ class QueryIProductionJobResponseBodyOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The output file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
+        # 
+        # 1.  oss://bucket/object
+        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
         self.media = media
+        # The media type. Valid values:
+        # 
+        # *   OSS: OSS object
+        # *   Media: media asset
         self.type = type
 
     def validate(self):
@@ -37427,7 +40135,12 @@ class QueryIProductionJobResponseBodyScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the ApsaraVideo Media Processing (MPS) queue.
         self.pipeline_id = pipeline_id
+        # The priority of the job in the MPS queue to which the job is added.
+        # 
+        # *   A value of 10 indicates the highest priority.
+        # *   Default value: **6**.
         self.priority = priority
 
     def validate(self):
@@ -37474,21 +40187,47 @@ class QueryIProductionJobResponseBody(TeaModel):
         template_id: str = None,
         user_data: str = None,
     ):
+        # The time when the job was created.
         self.create_time = create_time
+        # The time when the job was complete.
         self.finish_time = finish_time
+        # The name of the algorithm that you want to use for the job. Valid values:
+        # 
+        # *   **Cover**: This algorithm intelligently generates a thumbnail image for a video.
+        # *   **VideoClip**: This algorithm intelligently generates a summary for a video.
+        # *   **VideoDelogo**: This algorithm removes logos from a video.
+        # *   **VideoDetext**: This algorithm removes captions from a video.
         self.function_name = function_name
+        # The input file.
         self.input = input
+        # The ID of the intelligent production job.
         self.job_id = job_id
+        # The algorithm-specific parameters. The parameters are specified as JSON objects and vary based on the algorithm.
         self.job_params = job_params
+        # The name of the intelligent production job.
         self.name = name
+        # The output file.
         self.output = output
+        # The output files.
         self.output_files = output_files
+        # The URLs of the output files.
         self.output_urls = output_urls
+        # The ID of the request.
         self.request_id = request_id
+        # The output of the algorithm. The output is in JSON format and varies based on the algorithm. For more information, see the "Parameters of Result" section of this topic.
         self.result = result
+        # The scheduling configuration.
         self.schedule_config = schedule_config
+        # The status of the job. Valid values:
+        # 
+        # *   Queuing: The job is waiting in the queue.
+        # *   Analysing: The job is in progress.
+        # *   Fail: The job failed.
+        # *   Success: The job was successful.
         self.status = status
+        # The template ID.
         self.template_id = template_id
+        # The user-defined data that is returned in the response.
         self.user_data = user_data
 
     def validate(self):
@@ -37631,9 +40370,16 @@ class QueryMediaCensorJobDetailRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the content moderation job. You can obtain the job ID from the response parameters of the [SubmitMediaCensorJob](https://help.aliyun.com/document_detail/444848.html) operation.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The number of entries per page.
+        # 
+        # *   Default value: **30**.
+        # *   Valid values: **1 to 300**.
         self.maximum_page_size = maximum_page_size
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_page_token = next_page_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -37692,9 +40438,25 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailBarrageCensorResu
         scene: str = None,
         suggestion: str = None,
     ):
+        # The label of the moderation result. Valid values:
+        # 
+        # *   **normal**: normal content.
+        # *   **spam**: spam.
+        # *   **ad**: ads.
+        # *   **abuse**: abuse content.
+        # *   **flood**: excessive junk content.
+        # *   **contraband**: prohibited content.
+        # *   **meaningless**: meaningless content.
         self.label = label
+        # The score.
         self.rate = rate
+        # The moderation scenario. The value is **antispam**.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -37737,9 +40499,74 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorR
         scene: str = None,
         suggestion: str = None,
     ):
+        # The label of the moderation result.
+        # 
+        # *   Valid values in the pornographic content moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **sexy**: sexy content.
+        #     *   **porn**: pornographic content.
+        # 
+        # *   Valid values in the terrorist content moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **bloody**: bloody content.
+        #     *   **explosion**: explosion and smoke.
+        #     *   **outfit**: special costume.
+        #     *   **logo**: special logo.
+        #     *   **weapon**: weapon.
+        #     *   **politics**: political content.
+        #     *   **violence**: violence.
+        #     *   **crowd**: crowd.
+        #     *   **parade**: parade.
+        #     *   **carcrash**: car accident.
+        #     *   **flag**: flag.
+        #     *   **location**: landmark.
+        #     *   **others**: other content.
+        # 
+        # *   Valid values in the ad moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **ad**: other ads.
+        #     *   **politics**: political content in text.
+        #     *   **porn**: pornographic content in text.
+        #     *   **abuse**: abuse in text.
+        #     *   **terrorism**: terrorist content in text.
+        #     *   **contraband**: prohibited content in text.
+        #     *   **spam**: spam in text.
+        #     *   **npx**: illegal ad.
+        #     *   **qrcode**: QR code.
+        #     *   **programCode**: mini program code.
+        # 
+        # *   Valid values in the undesirable scene moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **meaningless**: meaningless content, such as a black or white screen.
+        #     *   **PIP**: picture-in-picture.
+        #     *   **smoking**: smoking.
+        #     *   **drivelive**: live broadcasting in a running vehicle.
+        # 
+        # *   Valid values in the logo moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **TV**: controlled logo.
+        #     *   **trademark**: trademark.
         self.label = label
+        # The score. Valid values: 0 to 100.
         self.rate = rate
+        # The moderation scenario. Valid values:
+        # 
+        # *   **porn**: pornographic content moderation.
+        # *   **terrorism**: terrorist content moderation.
+        # *   **ad**: ad moderation.
+        # *   **live**: undesirable scene moderation.
+        # *   **logo**: logo moderation.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -37817,9 +40644,13 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorR
         object: str = None,
         results: QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResultResults = None,
     ):
+        # The OSS bucket in which the thumbnail is stored.
         self.bucket = bucket
+        # The OSS region in which the thumbnail resides.
         self.location = location
+        # The Object Storage Service (OSS) object that is used as the thumbnail.
         self.object = object
+        # The moderation results.
         self.results = results
 
     def validate(self):
@@ -37899,9 +40730,25 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailDescCensorResult(
         scene: str = None,
         suggestion: str = None,
     ):
+        # The label of the moderation result. Valid values:
+        # 
+        # *   **normal**: normal content.
+        # *   **spam**: spam.
+        # *   **ad**: ads.
+        # *   **abuse**: abuse content.
+        # *   **flood**: excessive junk content.
+        # *   **contraband**: prohibited content.
+        # *   **meaningless**: meaningless content.
         self.label = label
+        # The score.
         self.rate = rate
+        # The moderation scenario. The value is **antispam**.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -37943,8 +40790,11 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailInput(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The OSS region in which the input file resides.
         self.location = location
+        # The name of the OSS object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -37983,9 +40833,25 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailTitleCensorResult
         scene: str = None,
         suggestion: str = None,
     ):
+        # The label of the moderation result. Valid values:
+        # 
+        # *   **normal**: normal content.
+        # *   **spam**: spam.
+        # *   **ad**: ads.
+        # *   **abuse**: abuse content.
+        # *   **flood**: excessive junk content.
+        # *   **contraband**: prohibited content.
+        # *   **meaningless**: meaningless content.
         self.label = label
+        # The score.
         self.rate = rate
+        # The moderation scenario. The value is **antispam**.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -38028,9 +40894,74 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         scene: str = None,
         suggestion: str = None,
     ):
+        # The label of the moderation result.
+        # 
+        # *   Valid values in the pornographic content moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **sexy**: sexy content.
+        #     *   **porn**: pornographic content.
+        # 
+        # *   Valid values in the terrorist content moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **bloody**: bloody content.
+        #     *   **explosion**: explosion and smoke.
+        #     *   **outfit**: special costume.
+        #     *   **logo**: special logo.
+        #     *   **weapon**: weapon.
+        #     *   **politics**: political content.
+        #     *   **violence**: violence.
+        #     *   **crowd**: crowd.
+        #     *   **parade**: parade.
+        #     *   **carcrash**: car accident.
+        #     *   **flag**: flag.
+        #     *   **location**: landmark.
+        #     *   **others**: other content.
+        # 
+        # *   Valid values in the ad moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **ad**: other ads.
+        #     *   **politics**: political content in text.
+        #     *   **porn**: pornographic content in text.
+        #     *   **abuse**: abuse in text.
+        #     *   **terrorism**: terrorist content in text.
+        #     *   **contraband**: prohibited content in text.
+        #     *   **spam**: spam in text.
+        #     *   **npx**: illegal ad.
+        #     *   **qrcode**: QR code.
+        #     *   **programCode**: mini program code.
+        # 
+        # *   Valid values in the undesirable scene moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **meaningless**: meaningless content, such as a black or white screen.
+        #     *   **PIP**: picture-in-picture.
+        #     *   **smoking**: smoking.
+        #     *   **drivelive**: live broadcasting in a running vehicle.
+        # 
+        # *   Valid values in the logo moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **TV**: controlled logo.
+        #     *   **trademark**: trademark.
         self.label = label
+        # The score.
         self.rate = rate
+        # The moderation scenario. Valid values:
+        # 
+        # *   **porn**: pornographic content moderation.
+        # *   **terrorism**: terrorist content moderation.
+        # *   **ad**: ad moderation.
+        # *   **live**: undesirable scene moderation.
+        # *   **logo**: logo moderation.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -38108,9 +41039,74 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         scene: str = None,
         suggestion: str = None,
     ):
+        # The label of the moderation result.
+        # 
+        # *   Valid values in the pornographic content moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **sexy**: sexy content.
+        #     *   **porn**: pornographic content.
+        # 
+        # *   Valid values in the terrorist content moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **bloody**: bloody content.
+        #     *   **explosion**: explosion and smoke.
+        #     *   **outfit**: special costume.
+        #     *   **logo**: special logo.
+        #     *   **weapon**: weapon.
+        #     *   **politics**: political content.
+        #     *   **violence**: violence.
+        #     *   **crowd**: crowd.
+        #     *   **parade**: parade.
+        #     *   **carcrash**: car accident.
+        #     *   **flag**: flag.
+        #     *   **location**: landmark.
+        #     *   **others**: other content.
+        # 
+        # *   Valid values in the ad moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **ad**: other ads.
+        #     *   **politics**: political content in text.
+        #     *   **porn**: pornographic content in text.
+        #     *   **abuse**: abuse in text.
+        #     *   **terrorism**: terrorist content in text.
+        #     *   **contraband**: prohibited content in text.
+        #     *   **spam**: spam in text.
+        #     *   **npx**: illegal ad.
+        #     *   **qrcode**: QR code.
+        #     *   **programCode**: mini program code.
+        # 
+        # *   Valid values in the undesirable scene moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **meaningless**: meaningless content, such as a black or white screen.
+        #     *   **PIP**: picture-in-picture.
+        #     *   **smoking**: smoking.
+        #     *   **drivelive**: live broadcasting in a running vehicle.
+        # 
+        # *   Valid values in the logo moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **TV**: controlled logo.
+        #     *   **trademark**: trademark.
         self.label = label
+        # The score.
         self.rate = rate
+        # The moderation scenario. Valid values:
+        # 
+        # *   **porn**: pornographic content moderation.
+        # *   **terrorism**: terrorist content moderation.
+        # *   **ad**: ad moderation.
+        # *   **live**: undesirable scene moderation.
+        # *   **logo**: logo moderation.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -38187,8 +41183,13 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         object: str = None,
         timestamp: str = None,
     ):
+        # The moderation results that include information such as labels and scores.
         self.censor_results = censor_results
+        # The OSS object that is generated as the output snapshot.
+        # 
+        # >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg`, `output00002-****.jpg`, and so on.
         self.object = object
+        # The position in the video. Format: `hh:mm:ss[.SSS]`.
         self.timestamp = timestamp
 
     def validate(self):
@@ -38263,8 +41264,11 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         next_page_token: str = None,
         video_timelines: QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelines = None,
     ):
+        # A collection of moderation results. The information includes the summary about various scenarios such as pornographic content moderation and terrorist content moderation.
         self.censor_results = censor_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_page_token = next_page_token
+        # The moderation results that are sorted in ascending order by time.
         self.video_timelines = video_timelines
 
     def validate(self):
@@ -38307,8 +41311,13 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfig
         location: str = None,
         object: str = None,
     ):
+        # The OSS bucket in which the output snapshot is stored.
         self.bucket = bucket
+        # The OSS region in which the output snapshot resides.
         self.location = location
+        # The OSS object that is generated as the output snapshot.
+        # 
+        # >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg`, `output00002-****.jpg`, and so on.
         self.object = object
 
     def validate(self):
@@ -38346,8 +41355,14 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfig
         output_file: QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfigOutputFile = None,
         video_censor: str = None,
     ):
+        # The custom business type. Default value: common.
         self.biz_type = biz_type
+        # The information about output snapshots.
         self.output_file = output_file
+        # Indicates whether the video content needs to be moderated. Default value: **true**. Valid values:
+        # 
+        # *   **true**: The video content needs to be moderated.
+        # *   **false**: The video content does not need to be moderated.
         self.video_censor = video_censor
 
     def validate(self):
@@ -38400,21 +41415,43 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail(TeaModel):
         vensor_censor_result: QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResult = None,
         video_censor_config: QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfig = None,
     ):
+        # The moderation results of live comments.
         self.barrage_censor_result = barrage_censor_result
+        # The error code returned if the job failed. This parameter is not returned if the job is successful.
         self.code = code
+        # The moderation results of thumbnails.
         self.cover_image_censor_results = cover_image_censor_results
+        # The time when the content moderation job was created.
         self.creation_time = creation_time
+        # The moderation results of descriptions.
         self.desc_censor_result = desc_censor_result
+        # The time when the content moderation job was complete.
         self.finish_time = finish_time
+        # The information about the job input.
         self.input = input
+        # The ID of the content moderation job.
         self.job_id = job_id
+        # The error message returned if the job failed. This parameter is not returned if the job is successful.
         self.message = message
+        # The ID of the ApsaraVideo Media Processing (MPS) queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The job state.
         self.state = state
+        # The overall result of the content moderation job. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
+        # 
+        # >  If the moderation result of any type of content is review, the overall result is review. If the moderation result of any type of content is block, the overall result is block.
         self.suggestion = suggestion
+        # The moderation results of titles.
         self.title_censor_result = title_censor_result
+        # The user-defined data.
         self.user_data = user_data
+        # The moderation results of videos.
         self.vensor_censor_result = vensor_censor_result
+        # The video moderation configurations.
         self.video_censor_config = video_censor_config
 
     def validate(self):
@@ -38523,7 +41560,9 @@ class QueryMediaCensorJobDetailResponseBody(TeaModel):
         media_censor_job_detail: QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail = None,
         request_id: str = None,
     ):
+        # The results of the content moderation job.
         self.media_censor_job_detail = media_censor_job_detail
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -38608,16 +41647,38 @@ class QueryMediaCensorJobListRequest(TeaModel):
         start_of_job_created_time_range: str = None,
         state: str = None,
     ):
+        # The end of the time range to query.
+        # 
+        # *   Specify the time in the ISO 8601 standard. The time must be in UTC.
+        # *   Format: yyyy-MM-ddTHH:mm:ssZ.
         self.end_of_job_created_time_range = end_of_job_created_time_range
+        # The IDs of the content moderation jobs. You can obtain the ID of a content moderation job from the response parameters of the SubmitMediaCensorJob operation. Separate multiple IDs with commas (,).
         self.job_ids = job_ids
+        # The number of entries per page.
+        # 
+        # *   Default value: **30**.
+        # *   Valid values: **1 to 300**.
         self.maximum_page_size = maximum_page_size
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_page_token = next_page_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the ApsaraVideo Media Processing (MPS) queue to which the jobs were submitted.
         self.pipeline_id = pipeline_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query.
+        # 
+        # *   Specify the time in the ISO 8601 standard. The time must be in UTC.
+        # *   Format: yyyy-MM-ddTHH:mm:ssZ.
         self.start_of_job_created_time_range = start_of_job_created_time_range
+        # The state of the jobs that you want to query. Valid values:
+        # 
+        # *   **All**: all jobs.
+        # *   **Queuing**: the jobs that are waiting in the queue.
+        # *   **Analysing**: the jobs that are in progress.
+        # *   **Fail**: failed jobs.
+        # *   **Success**: successful jobs.
         self.state = state
 
     def validate(self):
@@ -38688,9 +41749,25 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrage
         scene: str = None,
         suggestion: str = None,
     ):
+        # The label of the moderation result. Separate multiple labels with commas (,). Valid values:
+        # 
+        # *   **normal**: normal content.
+        # *   **spam**: spam.
+        # *   **ad**: ads.
+        # *   **abuse**: abuse content.
+        # *   **flood**: excessive junk content.
+        # *   **contraband**: prohibited content.
+        # *   **meaningless**: meaningless content.
         self.label = label
+        # The score. Valid values: 0 to 100.
         self.rate = rate
+        # The moderation scenario. The value is **antispam**.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -38733,9 +41810,76 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverIm
         scene: str = None,
         suggestion: str = None,
     ):
+        # The label of the moderation result. Separate multiple labels with commas (,).
+        # 
+        # *   Valid values in the pornographic content moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **sexy**: sexy content.
+        #     *   **porn**: pornographic content.
+        # 
+        # *   Valid values in the terrorist content moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **bloody**: bloody content.
+        #     *   **explosion**: explosion and smoke.
+        #     *   **outfit**: special costume.
+        #     *   **logo**: special logo.
+        #     *   **weapon**: weapon.
+        #     *   **politics**: political content.
+        #     *   **violence**: violence.
+        #     *   **crowd**: crowd.
+        #     *   **parade**: parade.
+        #     *   **carcrash**: car accident.
+        #     *   **flag**: flag.
+        #     *   **location**: landmark.
+        #     *   **others**: other content.
+        # 
+        # *   Valid values in the ad moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **ad**: other ads.
+        #     *   **politics**: political content in text.
+        #     *   **porn**: pornographic content in text.
+        #     *   **abuse**: abuse in text.
+        #     *   **terrorism**: terrorist content in text.
+        #     *   **contraband**: prohibited content in text.
+        #     *   **spam**: spam in text.
+        #     *   **npx**: illegal ad.
+        #     *   **qrcode**: QR code.
+        #     *   **programCode**: mini program code.
+        # 
+        # *   Valid values in the undesirable scene moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **meaningless**: meaningless content, such as a black or white screen.
+        #     *   **PIP**: picture-in-picture.
+        #     *   **smoking**: smoking.
+        #     *   **drivelive**: live streaming in a running vehicle.
+        # 
+        # *   Valid values in the logo moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **TV**: controlled logo.
+        #     *   **trademark**: trademark.
         self.label = label
+        # The score. Valid values: 0 to 100.
         self.rate = rate
+        # The moderation scenario. Valid values:
+        # 
+        # *   **porn**: pornographic content moderation.
+        # *   **terrorism**: terrorist content moderation.
+        # *   **ad**: ad moderation.
+        # *   **live**: undesirable scene moderation.
+        # *   **logo**: logo moderation.
         self.scene = scene
+        # The overall result of the moderation job. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
+        # 
+        # >  If the moderation result of any type of content is review, the overall result is review. If the moderation result of any type of content is block, the overall result is block.
         self.suggestion = suggestion
 
     def validate(self):
@@ -38813,9 +41957,13 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverIm
         object: str = None,
         results: QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResults = None,
     ):
+        # The OSS bucket in which the thumbnail is stored.
         self.bucket = bucket
+        # The OSS region in which the thumbnail resides.
         self.location = location
+        # The Object Storage Service (OSS) object that is used as the thumbnail.
         self.object = object
+        # The moderation results.
         self.results = results
 
     def validate(self):
@@ -38895,9 +42043,25 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCen
         scene: str = None,
         suggestion: str = None,
     ):
+        # The label of the moderation result. Separate multiple labels with commas (,). Valid values:
+        # 
+        # *   **normal**: normal content.
+        # *   **spam**: spam.
+        # *   **ad**: ads.
+        # *   **abuse**: abuse content.
+        # *   **flood**: excessive junk content.
+        # *   **contraband**: prohibited content.
+        # *   **meaningless**: meaningless content.
         self.label = label
+        # The score. Valid values: 0 to 100.
         self.rate = rate
+        # The moderation scenario. The value is **antispam**.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -38939,8 +42103,11 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput(T
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The OSS region in which the input file resides.
         self.location = location
+        # The name of the OSS object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -38979,9 +42146,25 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCe
         scene: str = None,
         suggestion: str = None,
     ):
+        # The label of the moderation result. Separate multiple labels with commas (,). Valid values:
+        # 
+        # *   **normal**: normal content.
+        # *   **spam**: spam.
+        # *   **ad**: ads.
+        # *   **abuse**: abuse content.
+        # *   **flood**: excessive junk content.
+        # *   **contraband**: prohibited content.
+        # *   **meaningless**: meaningless content.
         self.label = label
+        # The score. Valid values: 0 to 100.
         self.rate = rate
+        # The moderation scenario. The value is **antispam**.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -39024,9 +42207,74 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
         scene: str = None,
         suggestion: str = None,
     ):
+        # The label of the moderation result. Separate multiple labels with commas (,).
+        # 
+        # *   Valid values in the pornographic content moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **sexy**: sexy content.
+        #     *   **porn**: pornographic content.
+        # 
+        # *   Valid values in the terrorist content moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **bloody**: bloody content.
+        #     *   **explosion**: explosion and smoke.
+        #     *   **outfit**: special costume.
+        #     *   **logo**: special logo.
+        #     *   **weapon**: weapon.
+        #     *   **politics**: political content.
+        #     *   **violence**: violence.
+        #     *   **crowd**: crowd.
+        #     *   **parade**: parade.
+        #     *   **carcrash**: car accident.
+        #     *   **flag**: flag.
+        #     *   **location**: landmark.
+        #     *   **others**: other content.
+        # 
+        # *   Valid values in the ad moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **ad**: other ads.
+        #     *   **politics**: political content in text.
+        #     *   **porn**: pornographic content in text.
+        #     *   **abuse**: abuse in text.
+        #     *   **terrorism**: terrorist content in text.
+        #     *   **contraband**: prohibited content in text.
+        #     *   **spam**: spam in text.
+        #     *   **npx**: illegal ad.
+        #     *   **qrcode**: QR code.
+        #     *   **programCode**: mini program code.
+        # 
+        # *   Valid values in the undesirable scene moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **meaningless**: meaningless content, such as a black or white screen.
+        #     *   **PIP**: picture-in-picture.
+        #     *   **smoking**: smoking.
+        #     *   **drivelive**: live streaming in a running vehicle.
+        # 
+        # *   Valid values in the logo moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **TV**: controlled logo.
+        #     *   **trademark**: trademark.
         self.label = label
+        # The score. Valid values: 0 to 100.
         self.rate = rate
+        # The moderation scenario. Valid values:
+        # 
+        # *   **porn**: pornographic content moderation.
+        # *   **terrorism**: terrorist content moderation.
+        # *   **ad**: ad moderation.
+        # *   **live**: undesirable scene moderation.
+        # *   **logo**: logo moderation.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -39104,9 +42352,74 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
         scene: str = None,
         suggestion: str = None,
     ):
+        # The label of the moderation result. Separate multiple labels with commas (,).
+        # 
+        # *   Valid values in the pornographic content moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **sexy**: sexy content.
+        #     *   **porn**: pornographic content.
+        # 
+        # *   Valid values in the terrorist content moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **bloody**: bloody content.
+        #     *   **explosion**: explosion and smoke.
+        #     *   **outfit**: special costume.
+        #     *   **logo**: special logo.
+        #     *   **weapon**: weapon.
+        #     *   **politics**: political content.
+        #     *   **violence**: violence.
+        #     *   **crowd**: crowd.
+        #     *   **parade**: parade.
+        #     *   **carcrash**: car accident.
+        #     *   **flag**: flag.
+        #     *   **location**: landmark.
+        #     *   **others**: other content.
+        # 
+        # *   Valid values in the ad moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **ad**: other ads.
+        #     *   **politics**: political content in text.
+        #     *   **porn**: pornographic content in text.
+        #     *   **abuse**: abuse in text.
+        #     *   **terrorism**: terrorist content in text.
+        #     *   **contraband**: prohibited content in text.
+        #     *   **spam**: spam in text.
+        #     *   **npx**: illegal ad.
+        #     *   **qrcode**: QR code.
+        #     *   **programCode**: mini program code.
+        # 
+        # *   Valid values in the undesirable scene moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **meaningless**: meaningless content, such as a black or white screen.
+        #     *   **PIP**: picture-in-picture.
+        #     *   **smoking**: smoking.
+        #     *   **drivelive**: live streaming in a running vehicle.
+        # 
+        # *   Valid values in the logo moderation scenario:
+        # 
+        #     *   **normal**: normal content.
+        #     *   **TV**: controlled logo.
+        #     *   **trademark**: trademark.
         self.label = label
+        # The score. Valid values: 0 to 100.
         self.rate = rate
+        # The moderation scenario. Valid values:
+        # 
+        # *   **porn**: pornographic content moderation.
+        # *   **terrorism**: terrorist content moderation.
+        # *   **ad**: ad moderation.
+        # *   **live**: undesirable scene moderation.
+        # *   **logo**: logo moderation.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -39183,8 +42496,13 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
         object: str = None,
         timestamp: str = None,
     ):
+        # The moderation results that include information such as labels and scores.
         self.censor_results = censor_results
+        # The OSS object that is generated as the output snapshot.
+        # 
+        # >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg`, `output00002-****.jpg`, and so on.
         self.object = object
+        # The position in the video. Format: `hh:mm:ss[.SSS]`.
         self.timestamp = timestamp
 
     def validate(self):
@@ -39259,8 +42577,11 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
         next_page_token: str = None,
         video_timelines: QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelines = None,
     ):
+        # A collection of moderation results. The information includes the summary about various scenarios such as pornographic content moderation and terrorist content moderation.
         self.censor_results = censor_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_page_token = next_page_token
+        # The moderation results that are sorted in ascending order by time.
         self.video_timelines = video_timelines
 
     def validate(self):
@@ -39303,8 +42624,13 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCe
         location: str = None,
         object: str = None,
     ):
+        # The OSS bucket in which the output snapshot is stored.
         self.bucket = bucket
+        # The ID of the region in which the output snapshot resides.
         self.location = location
+        # The OSS object that is generated as the output snapshot.
+        # 
+        # >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg, output00002-****.jpg`, and so on.
         self.object = object
 
     def validate(self):
@@ -39342,8 +42668,16 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCe
         output_file: QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile = None,
         video_censor: str = None,
     ):
+        # The moderation template. Default value: common. The default value indicates that the default template is used.
+        # 
+        # >  If the moderation template is not specified, the default value common is returned. If a custom moderation template that is created by submitting a ticket is specified, the UID of the template is returned.
         self.biz_type = biz_type
+        # The information about output snapshots.
         self.output_file = output_file
+        # Indicates whether the video content needs to be moderated. Default value: **true**. Valid values:
+        # 
+        # *   **true**: The video content needs to be moderated.
+        # *   **false**: The video content does not need to be moderated.
         self.video_censor = video_censor
 
     def validate(self):
@@ -39396,21 +42730,41 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob(TeaMod
         vensor_censor_result: QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult = None,
         video_censor_config: QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig = None,
     ):
+        # The moderation results of live comments.
         self.barrage_censor_result = barrage_censor_result
+        # The error code returned if the job failed. This parameter is not returned if the job is successful.
         self.code = code
+        # The moderation results of thumbnails.
         self.cover_image_censor_results = cover_image_censor_results
+        # The time when the content moderation job was created.
         self.creation_time = creation_time
+        # The moderation results of descriptions.
         self.desc_censor_result = desc_censor_result
+        # The time when the content moderation job was complete.
         self.finish_time = finish_time
+        # The information about the job input.
         self.input = input
+        # The ID of the content moderation job.
         self.job_id = job_id
+        # The error message returned if the job failed. This parameter is not returned if the job is successful.
         self.message = message
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The job state.
         self.state = state
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
+        # The moderation results of titles.
         self.title_censor_result = title_censor_result
+        # The user-defined data.
         self.user_data = user_data
+        # The moderation results of videos.
         self.vensor_censor_result = vensor_censor_result
+        # The video moderation configurations.
         self.video_censor_config = video_censor_config
 
     def validate(self):
@@ -39583,9 +42937,13 @@ class QueryMediaCensorJobListResponseBody(TeaModel):
         non_exist_ids: QueryMediaCensorJobListResponseBodyNonExistIds = None,
         request_id: str = None,
     ):
+        # The queried content moderation jobs.
         self.media_censor_job_list = media_censor_job_list
+        # A pagination token. It can be used in the next request to retrieve a new page of results. The value is 32-character UUID. If the returned query results cannot be displayed within one page, this parameter is returned. The value of this parameter is updated for each query.
         self.next_page_token = next_page_token
+        # The IDs of the jobs that do not exist. This parameter is not returned if all the specified jobs are found.
         self.non_exist_ids = non_exist_ids
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -40168,8 +43526,14 @@ class QuerySmarttagJobRequest(TeaModel):
         job_id: str = None,
         params: str = None,
     ):
+        # The ID of the smart tagging job that you want to query. You can obtain the job ID from the response parameters of the SubmitSmarttagJob operation.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The extra parameters that you want to query in the request. The value is a JSON string. Example: {"labelResultType":"auto"}. The value of labelResultType is of the STRING type. Valid values:
+        # 
+        # *   auto: machine tagging
+        # *   hmi: tagging by human and machine
         self.params = params
 
     def validate(self):
@@ -40202,7 +43566,27 @@ class QuerySmarttagJobResponseBodyResultsResult(TeaModel):
         data: str = None,
         type: str = None,
     ):
+        # The details of the analysis result. The value is a JSON string. For more information about the parameters of different result types, see the "Parameters of different result types" section of this topic.
         self.data = data
+        # The type of the analysis result.
+        # 
+        # *   The type of the analysis result based on Smart tagging V1.0. Valid values:
+        # 
+        # 1.  TextLabel: the text tag.
+        # 2.  VideoLabel: the video tag.
+        # 3.  ASR: the original result of automatic speech recognition (ASR). By default, this type of result is not returned.
+        # 4.  OCR: the original result of optical character recognition (OCR). By default, this type of result is not returned.
+        # 5.  NLP: the natural language processing (NLP)-based result. By default, this type of result is not returned.
+        # 
+        # *   The type of the analysis result based on Smart tagging V2.0. Valid values:
+        # 
+        # 1.  CPVLabel
+        # 2.  Meta: the information about the video file, such as the title of the video. By default, this type of information is not returned.
+        # 
+        # *   The type of the analysis result based on Smart tagging V2.0-custom. Valid values:
+        # 
+        # 1.  CPVLabel
+        # 2.  Meta: the information about the video file, such as the title of the video. By default, this type of information is not returned.
         self.type = type
 
     def validate(self):
@@ -40272,9 +43656,18 @@ class QuerySmarttagJobResponseBody(TeaModel):
         results: QuerySmarttagJobResponseBodyResults = None,
         user_data: str = None,
     ):
+        # The status of the job. Valid values:
+        # 
+        # *   **Success**: The job was successful.
+        # *   **Fail**: The job failed.
+        # *   **Processing**: The job is in progress.
+        # *   **Submitted**: The job is submitted and waiting to be processed.
         self.job_status = job_status
+        # The request ID.
         self.request_id = request_id
+        # The analysis results of the smart tagging job. The value is an array.
         self.results = results
+        # The content of callback messages that are sent to Simple Message Queue (SMQ) when the information of the smart tagging job changes. For more information about the parameters contained in the callback message, see the "Callback parameters" section of this topic.
         self.user_data = user_data
 
     def validate(self):
@@ -45037,6 +48430,8 @@ class SetDefaultCustomTemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -45066,7 +48461,9 @@ class SetDefaultCustomTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -45683,6 +49080,7 @@ class StartRtcRobotInstanceRequestConfig(TeaModel):
         user_online_timeout: int = None,
         voice_id: str = None,
         voiceprint_id: str = None,
+        volume: int = None,
     ):
         self.asr_max_silence = asr_max_silence
         self.enable_voice_interrupt = enable_voice_interrupt
@@ -45692,6 +49090,7 @@ class StartRtcRobotInstanceRequestConfig(TeaModel):
         self.user_online_timeout = user_online_timeout
         self.voice_id = voice_id
         self.voiceprint_id = voiceprint_id
+        self.volume = volume
 
     def validate(self):
         pass
@@ -45718,6 +49117,8 @@ class StartRtcRobotInstanceRequestConfig(TeaModel):
             result['VoiceId'] = self.voice_id
         if self.voiceprint_id is not None:
             result['VoiceprintId'] = self.voiceprint_id
+        if self.volume is not None:
+            result['Volume'] = self.volume
         return result
 
     def from_map(self, m: dict = None):
@@ -45738,6 +49139,8 @@ class StartRtcRobotInstanceRequestConfig(TeaModel):
             self.voice_id = m.get('VoiceId')
         if m.get('VoiceprintId') is not None:
             self.voiceprint_id = m.get('VoiceprintId')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
         return self
 
 
@@ -45947,8 +49350,11 @@ class StartWorkflowRequest(TeaModel):
         user_data: str = None,
         workflow_id: str = None,
     ):
+        # The workflow input. Only media assets are supported.
         self.task_input = task_input
+        # The user-defined data in the JSON format, which cannot be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.htm).
         self.user_data = user_data
+        # The ID of the workflow template. To view the template ID, log on to the [IMS console](https://ims.console.aliyun.com/settings/workflow/list) and choose Configurations > Workflow Template.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -45985,7 +49391,9 @@ class StartWorkflowResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the workflow task.
         self.task_id = task_id
 
     def validate(self):
@@ -46256,11 +49664,17 @@ class SubmitASRJobRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
+        # The job description, which can up to 128 bytes in length.
         self.description = description
+        # The speech duration.
         self.duration = duration
+        # The input file. You can specify an Object Storage Service (OSS) URL or the ID of a media asset in the media asset library.
         self.input_file = input_file
+        # The start time of the speech to recognize.
         self.start_time = start_time
+        # The job title, which can be up to 128 bytes in length.
         self.title = title
+        # The user-defined data in the JSON format. You can specify your business information, such as the business environment and job information.
         self.user_data = user_data
 
     def validate(self):
@@ -46310,8 +49724,16 @@ class SubmitASRJobResponseBody(TeaModel):
         request_id: str = None,
         state: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
+        # The job state. Valid values:
+        # 
+        # *   Created
+        # *   Executing
+        # *   Finished
+        # *   Failed
         self.state = state
 
     def validate(self):
@@ -46394,15 +49816,40 @@ class SubmitAudioProduceJobRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
+        # The job description.
+        # 
+        # *   The job description can be up to 1,024 bytes in length.
+        # *   The value must be encoded in UTF-8.
         self.description = description
+        # The audio editing configurations.
+        # 
+        # *   voice: the [voice type](https://help.aliyun.com/document_detail/402424.html).
+        # *   customizedVoice: the ID of the personalized human voice.
+        # *   format: the format of the output file. Valid values: PCM, WAV, and MP3.
+        # *   volume: the volume. Default value: 50. Valid values: 0 to 100.
+        # *   speech_rate: the speech tempo. Default value: 0. Value range: -500 to 500.
+        # *   pitch_rate: the intonation. Default value: 0. Value range: -500 to 500.
+        # 
+        # >  If you specify both voice and customizedVoice, customizedVoice takes precedence over voice.
+        # 
         # This parameter is required.
         self.editing_config = editing_config
+        # The text content. A maximum of 2,000 characters are supported. The [Speech Synthesis Markup Language (SSML)](https://help.aliyun.com/document_detail/2672807.html) is supported.
+        # 
         # This parameter is required.
         self.input_config = input_config
+        # The output audio configurations.
+        # 
         # This parameter is required.
         self.output_config = output_config
+        # Specifies whether to overwrite the existing Object Storage Service (OSS) object.
         self.overwrite = overwrite
+        # The job title. If you do not specify this parameter, the system generates a title based on the current date.
+        # 
+        # *   The job title can be up to 128 bytes in length.
+        # *   The value must be encoded in UTF-8.
         self.title = title
+        # The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
         self.user_data = user_data
 
     def validate(self):
@@ -46457,9 +49904,18 @@ class SubmitAudioProduceJobResponseBody(TeaModel):
         request_id: str = None,
         state: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The ID of the media asset.
         self.media_id = media_id
+        # The request ID.
         self.request_id = request_id
+        # The job state. Valid values:
+        # 
+        # *   Created
+        # *   Executing
+        # *   Finished
+        # *   Failed
         self.state = state
 
     def validate(self):
@@ -46540,6 +49996,8 @@ class SubmitAvatarTrainingJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the digital human training job.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -46568,6 +50026,7 @@ class SubmitAvatarTrainingJobResponseBodyData(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the digital human training job.
         self.job_id = job_id
 
     def validate(self):
@@ -46597,8 +50056,11 @@ class SubmitAvatarTrainingJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -46819,10 +50281,15 @@ class SubmitBatchMediaProducingJobRequest(TeaModel):
         output_config: str = None,
         user_data: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The editing configurations. For more information, see [EditingConfig](~~2692547#1be9bba03b7qu~~).
         self.editing_config = editing_config
+        # The input configurations. For more information, see [InputConfig](~~2692547#2faed1559549n~~).
         self.input_config = input_config
+        # The output configurations. For more information, see [OutputConfig](~~2692547#447b928fcbuoa~~).
         self.output_config = output_config
+        # The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html?spm=a2c4g.439285.0.i1#section-urj-v3f-0s1).
         self.user_data = user_data
 
     def validate(self):
@@ -46867,7 +50334,9 @@ class SubmitBatchMediaProducingJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the quick video production job.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -46941,7 +50410,18 @@ class SubmitCustomizedVoiceJobRequest(TeaModel):
         demo_audio_media_url: str = None,
         voice_id: str = None,
     ):
+        # The URL of the sample audio file.
+        # 
+        # *   If this parameter is specified, a sample audio file is generated at the specified Object Storage Service (OSS) URL after the training is complete.
+        # 
+        # *   If this parameter is not specified, no sample audio file is generated.
+        # 
+        #     **\
+        # 
+        #     **Note**: The URL must be a valid public OSS URL within your Alibaba Cloud account.
         self.demo_audio_media_url = demo_audio_media_url
+        # The voice ID.
+        # 
         # This parameter is required.
         self.voice_id = voice_id
 
@@ -46975,7 +50455,9 @@ class SubmitCustomizedVoiceJobResponseBodyData(TeaModel):
         job_id: str = None,
         voice_id: str = None,
     ):
+        # The ID of the human voice cloning job.
         self.job_id = job_id
+        # The voice ID.
         self.voice_id = voice_id
 
     def validate(self):
@@ -47009,8 +50491,14 @@ class SubmitCustomizedVoiceJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -47090,8 +50578,21 @@ class SubmitDNAJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The input file. The file can be an OSS object or a media asset. You can specify the path of an OSS object in one of the following formats:
+        # 
+        # 1\\. oss://bucket/object
+        # 
+        # 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
+        # 
+        # In the preceding paths, bucket indicates an OSS bucket that resides in the same region as the current project, and object indicates the path of the object in the bucket.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the input file. Valid values:
+        # 
+        # 1.  OSS: Object Storage Service (OSS) object.
+        # 2.  Media: media asset.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -47134,19 +50635,29 @@ class SubmitDNAJobRequest(TeaModel):
         template_id: str = None,
         user_data: str = None,
     ):
+        # The configurations of the media fingerprint analysis job. The value is a JSON object. If you specify this parameter, the template parameters are overwritten.
         self.config = config
+        # The ID of the media fingerprint library. If you do not specify this parameter, the default media fingerprint library is used. For more information about how to create a media fingerprint library, see [CreateDNADB](https://help.aliyun.com/document_detail/479275.html).
+        # 
         # This parameter is required.
         self.dbid = dbid
+        # The input file for media fingerprint analysis.
+        # 
         # This parameter is required.
         self.input = input
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the ApsaraVideo Media Processing (MPS) queue to which the media fingerprint analysis job is submitted.
         self.pipeline_id = pipeline_id
+        # The primary key of the video. You must make sure that each primary key is unique.
+        # 
         # This parameter is required.
         self.primary_key = primary_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The template ID.
         self.template_id = template_id
+        # The user-defined data. The data can be up to 128 bytes in length.
         self.user_data = user_data
 
     def validate(self):
@@ -47226,19 +50737,29 @@ class SubmitDNAJobShrinkRequest(TeaModel):
         template_id: str = None,
         user_data: str = None,
     ):
+        # The configurations of the media fingerprint analysis job. The value is a JSON object. If you specify this parameter, the template parameters are overwritten.
         self.config = config
+        # The ID of the media fingerprint library. If you do not specify this parameter, the default media fingerprint library is used. For more information about how to create a media fingerprint library, see [CreateDNADB](https://help.aliyun.com/document_detail/479275.html).
+        # 
         # This parameter is required.
         self.dbid = dbid
+        # The input file for media fingerprint analysis.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the ApsaraVideo Media Processing (MPS) queue to which the media fingerprint analysis job is submitted.
         self.pipeline_id = pipeline_id
+        # The primary key of the video. You must make sure that each primary key is unique.
+        # 
         # This parameter is required.
         self.primary_key = primary_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The template ID.
         self.template_id = template_id
+        # The user-defined data. The data can be up to 128 bytes in length.
         self.user_data = user_data
 
     def validate(self):
@@ -47307,7 +50828,9 @@ class SubmitDNAJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the media fingerprint analysis job. We recommend that you save this ID for subsequent calls of other operations.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47557,8 +51080,25 @@ class SubmitDynamicImageJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The input file. If Type is set to OSS, set this parameter to the URL of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. The URL of an OSS object can be in one of the following formats:
+        # 
+        # 1.  oss://bucket/object
+        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+        # 
+        # In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+        # 
+        # >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the input file. Valid values:
+        # 
+        # 1.  OSS: an Object Storage Service (OSS) object.
+        # 2.  Media: a media asset.
+        # 
+        # *\
+        # *\
+        # 
         # This parameter is required.
         self.type = type
 
@@ -47592,8 +51132,25 @@ class SubmitDynamicImageJobRequestOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The output file. The file can be an OSS object or a media asset. The URL of an OSS object can be in one of the following formats:
+        # 
+        # *   oss://bucket/object
+        # *   http(s)://bucket.oss-[regionId].aliyuncs.com/object
+        # 
+        # In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+        # 
+        # >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the IMS console.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the output file. Valid values:
+        # 
+        # 1.  OSS: an OSS object.
+        # 2.  Media: a media asset.
+        # 
+        # *\
+        # *\
+        # 
         # This parameter is required.
         self.type = type
 
@@ -47627,7 +51184,9 @@ class SubmitDynamicImageJobRequestScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The priority. Valid values: 1 to 10. Default value: 6. A greater value specifies a higher priority.
         self.priority = priority
 
     def validate(self):
@@ -47661,8 +51220,20 @@ class SubmitDynamicImageJobRequestTemplateConfigOverwriteParamsTimeSpan(TeaModel
         end: str = None,
         seek: str = None,
     ):
+        # The length of the clip.
+        # 
+        # *   Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # *   Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
         self.duration = duration
+        # The length of the ending part of the original clip to be cropped out. If you specify this parameter, the Duration parameter becomes invalid.
+        # 
+        # *   Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # *   Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
         self.end = end
+        # The start point of the clip.
+        # 
+        # *   Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # *   Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
         self.seek = seek
 
     def validate(self):
@@ -47704,12 +51275,32 @@ class SubmitDynamicImageJobRequestTemplateConfigOverwriteParams(TeaModel):
         time_span: SubmitDynamicImageJobRequestTemplateConfigOverwriteParamsTimeSpan = None,
         width: int = None,
     ):
+        # The format of the animated image. Valid values:
+        # 
+        # *   **gif**\
+        # *   **webp**\
         self.format = format
+        # The frame rate. Valid values: [1,60].
         self.fps = fps
+        # The height of the animated image. Valid values: [128,4096].
         self.height = height
+        # Specifies whether to enable the auto-rotate screen feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # Default value: **true**.
+        # 
+        # >  If this feature is enabled, the width of the output video corresponds to the long side of the input video, which is the height of the input video in portrait mode. The height of the output video corresponds to the short side of the input video, which is the width of the input video in portrait mode.
         self.long_short_mode = long_short_mode
+        # The scan mode. Valid values:
+        # 
+        # *   **interlaced**\
+        # *   **progressive** This is the default value.
         self.scan_mode = scan_mode
+        # The timeline parameters.
         self.time_span = time_span
+        # The width of the animated image. Valid values: [128,4096].
         self.width = width
 
     def validate(self):
@@ -47764,7 +51355,10 @@ class SubmitDynamicImageJobRequestTemplateConfig(TeaModel):
         overwrite_params: SubmitDynamicImageJobRequestTemplateConfigOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters.
         self.overwrite_params = overwrite_params
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -47804,14 +51398,23 @@ class SubmitDynamicImageJobRequest(TeaModel):
         template_config: SubmitDynamicImageJobRequestTemplateConfig = None,
         user_data: str = None,
     ):
+        # The input of the job.
+        # 
         # This parameter is required.
         self.input = input
+        # The name of the job.
         self.name = name
+        # The output of the job.
+        # 
         # This parameter is required.
         self.output = output
+        # The scheduling settings.
         self.schedule_config = schedule_config
+        # The snapshot template configuration.
+        # 
         # This parameter is required.
         self.template_config = template_config
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -47875,14 +51478,23 @@ class SubmitDynamicImageJobShrinkRequest(TeaModel):
         template_config_shrink: str = None,
         user_data: str = None,
     ):
+        # The input of the job.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
+        # The name of the job.
         self.name = name
+        # The output of the job.
+        # 
         # This parameter is required.
         self.output_shrink = output_shrink
+        # The scheduling settings.
         self.schedule_config_shrink = schedule_config_shrink
+        # The snapshot template configuration.
+        # 
         # This parameter is required.
         self.template_config_shrink = template_config_shrink
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -47931,7 +51543,9 @@ class SubmitDynamicImageJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48005,8 +51619,18 @@ class SubmitIProductionJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The input file. The file can be an OSS object or a media asset. You can specify the path of an OSS object in one of the following formats:
+        # 
+        # 1.  oss://bucket/object
+        # 2.  http(s)://bucket.oss-[regionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
+        # 
         # This parameter is required.
         self.media = media
+        # The media type. Valid values:
+        # 
+        # *   OSS: OSS object
+        # *   Media: media asset
+        # 
         # This parameter is required.
         self.type = type
 
@@ -48040,8 +51664,18 @@ class SubmitIProductionJobRequestOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The output file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
+        # 
+        # 1.  oss://bucket/object
+        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
+        # 
         # This parameter is required.
         self.media = media
+        # The media type. Valid values:
+        # 
+        # *   OSS: OSS object
+        # *   Media: media asset
+        # 
         # This parameter is required.
         self.type = type
 
@@ -48075,7 +51709,9 @@ class SubmitIProductionJobRequestScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the ApsaraVideo Media Processing (MPS) queue.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. A smaller value indicates a higher priority.
         self.priority = priority
 
     def validate(self):
@@ -48115,17 +51751,42 @@ class SubmitIProductionJobRequest(TeaModel):
         template_id: str = None,
         user_data: str = None,
     ):
+        # The name of the algorithm that you want to use for the job. Valid values:
+        # 
+        # *   **Cover**: This algorithm intelligently generates a thumbnail image for a video.
+        # *   **VideoClip**: This algorithm intelligently generates a summary for a video.
+        # *   **VideoDelogo**: This algorithm removes logos from a video.
+        # *   **VideoDetext**: This algorithm removes captions from a video.
+        # *   **CaptionExtraction**: This algorithm extracts captions from a video and generates the caption file.
+        # *   **VideoGreenScreenMatting**: This algorithm performs green-screen image matting on a video and generates a new video.
+        # *   **FaceBeauty**: This algorithm performs video retouching.
+        # *   **VideoH2V**: This algorithm transforms a video from the landscape mode to the portrait mode.
+        # *   **MusicSegmentDetect**: This algorithm detects the chorus of a song.
+        # *   **AudioBeatDetection**: This algorithm detects rhythms.
+        # *   **AudioQualityAssessment**: This algorithm assesses the audio quality.
+        # *   **SpeechDenoise**: This algorithm performs noise reduction.
+        # *   **AudioMixing**: This algorithm mixes audio streams.
+        # 
         # This parameter is required.
         self.function_name = function_name
+        # The input file. The file can be an Object Storage Service (OSS) object or a media asset.
+        # 
         # This parameter is required.
         self.input = input
+        # The algorithm-specific parameters. The parameters are specified as JSON objects and vary based on the algorithm. For more information, see the "Parameters of JobParams" section of this topic.
         self.job_params = job_params
         self.model_id = model_id
+        # The name of the intelligent production job. The name can be up to 100 characters in length.
         self.name = name
+        # The output file. The file can be an OSS object or a media asset.
+        # 
         # This parameter is required.
         self.output = output
+        # The scheduling configuration.
         self.schedule_config = schedule_config
+        # The template ID.
         self.template_id = template_id
+        # The user-defined data that is returned in the response. The value can be up to 1,024 bytes in length.
         self.user_data = user_data
 
     def validate(self):
@@ -48201,17 +51862,42 @@ class SubmitIProductionJobShrinkRequest(TeaModel):
         template_id: str = None,
         user_data: str = None,
     ):
+        # The name of the algorithm that you want to use for the job. Valid values:
+        # 
+        # *   **Cover**: This algorithm intelligently generates a thumbnail image for a video.
+        # *   **VideoClip**: This algorithm intelligently generates a summary for a video.
+        # *   **VideoDelogo**: This algorithm removes logos from a video.
+        # *   **VideoDetext**: This algorithm removes captions from a video.
+        # *   **CaptionExtraction**: This algorithm extracts captions from a video and generates the caption file.
+        # *   **VideoGreenScreenMatting**: This algorithm performs green-screen image matting on a video and generates a new video.
+        # *   **FaceBeauty**: This algorithm performs video retouching.
+        # *   **VideoH2V**: This algorithm transforms a video from the landscape mode to the portrait mode.
+        # *   **MusicSegmentDetect**: This algorithm detects the chorus of a song.
+        # *   **AudioBeatDetection**: This algorithm detects rhythms.
+        # *   **AudioQualityAssessment**: This algorithm assesses the audio quality.
+        # *   **SpeechDenoise**: This algorithm performs noise reduction.
+        # *   **AudioMixing**: This algorithm mixes audio streams.
+        # 
         # This parameter is required.
         self.function_name = function_name
+        # The input file. The file can be an Object Storage Service (OSS) object or a media asset.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
+        # The algorithm-specific parameters. The parameters are specified as JSON objects and vary based on the algorithm. For more information, see the "Parameters of JobParams" section of this topic.
         self.job_params = job_params
         self.model_id = model_id
+        # The name of the intelligent production job. The name can be up to 100 characters in length.
         self.name = name
+        # The output file. The file can be an OSS object or a media asset.
+        # 
         # This parameter is required.
         self.output_shrink = output_shrink
+        # The scheduling configuration.
         self.schedule_config_shrink = schedule_config_shrink
+        # The template ID.
         self.template_id = template_id
+        # The user-defined data that is returned in the response. The value can be up to 1,024 bytes in length.
         self.user_data = user_data
 
     def validate(self):
@@ -48272,7 +51958,9 @@ class SubmitIProductionJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the intelligent production job.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48351,13 +52039,38 @@ class SubmitLiveEditingJobRequest(TeaModel):
         project_id: str = None,
         user_data: str = None,
     ):
+        # The clips in the JSON array format. The output video is created by merging these clips sequentially.
+        # 
+        # Each clip has a start time and an end time. If no live stream parameters are specified, the outer live stream configurations apply. The start and end timestamps are in UTC. For more information about the parameters, see the "Clip" section of this topic.
+        # 
         # This parameter is required.
         self.clips = clips
+        # The live stream configurations, in the JSON format. The configurations must include the following parameters:
+        # 
+        # *   AppName: the name of the application to which the live stream belongs.
+        # *   DomainName: the domain name of the application.
+        # *   StreamName: the name of the live stream.
         self.live_stream_config = live_stream_config
+        # The production configurations, in the JSON format. Mode specifies the editing mode. Valid values:
+        # 
+        # *   **AccurateFast** (default): fast editing. It is faster than the Accurate mode. The resolution of the output file is the same as that of the source stream. You cannot specify the width and height of the output file.
+        # *   **Accurate**: accurate editing. In this mode, you can specify the width and height of the output file.
+        # *   **Rough**: rough editing. The minimum precision is one TS segment. The output file comprises all segments within the specified time range. You can specify the width and height of the output file.
+        # *   **RoughFast**: fast rough editing. It is faster than the Accurate mode. The minimum precision is one TS segment. The output file comprises all segments within the specified time range. The resolution of the output file is the same as that of the source stream. You cannot specify the width and height of the output file.
         self.media_produce_config = media_produce_config
+        # The configurations of the output file, in the JSON format. You can specify an OSS URL or a storage location in a storage bucket of ApsaraVideo VOD.
+        # 
+        # *   To store the output file in OSS, you must specify MediaURL.
+        # *   To store the output file in ApsaraVideo VOD, you must specify StorageLocation and FileName.
         self.output_media_config = output_media_config
+        # The type of the output file. Valid values:
+        # 
+        # *   oss-object: OSS object in an OSS bucket.
+        # *   vod-media: media asset in Alibaba Cloud VOD.
         self.output_media_target = output_media_target
+        # The ID of the live editing project. If this parameter is specified, the system reads the storage configurations of the project. If this parameter is not specified, the specified storage configurations take precedence.
         self.project_id = project_id
+        # The user-defined data in the JSON format, which can be up to 512 bytes in length.
         self.user_data = user_data
 
     def validate(self):
@@ -48414,11 +52127,17 @@ class SubmitLiveEditingJobResponseBody(TeaModel):
         request_id: str = None,
         vod_media_id: str = None,
     ):
+        # The ID of the live editing job.
         self.job_id = job_id
+        # The media asset ID of the output file.
         self.media_id = media_id
+        # The URL of the output file.
         self.media_url = media_url
+        # The ID of the live editing project.
         self.project_id = project_id
+        # The request ID.
         self.request_id = request_id
+        # The media asset ID of the output file in ApsaraVideo VOD if the output file is stored in ApsaraVideo VOD.
         self.vod_media_id = vod_media_id
 
     def validate(self):
@@ -49466,7 +53185,19 @@ class SubmitMediaCensorJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The input file. The file can be an OSS object or a media asset. You can specify the path of an OSS object in one of the following formats:
+        # 
+        # 1\\. oss://bucket/object
+        # 
+        # 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
+        # 
+        # In the preceding paths, bucket indicates an OSS bucket that resides in the same region as the current project, and object indicates the path of the object in the bucket.
         self.media = media
+        # The type of the input file. Valid values:
+        # 
+        # OSS: OSS object.
+        # 
+        # Media: media asset.
         self.type = type
 
     def validate(self):
@@ -49499,7 +53230,9 @@ class SubmitMediaCensorJobRequestScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the ApsaraVideo Media Processing (MPS) queue to which the job is submitted.
         self.pipeline_id = pipeline_id
+        # The job priority. A larger value indicates a higher priority. Valid values: 1 to 10.
         self.priority = priority
 
     def validate(self):
@@ -49540,15 +53273,36 @@ class SubmitMediaCensorJobRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
+        # The live comments of the video.
+        # 
+        # >  If this parameter is specified, the system checks the live comments specified by this parameter instead of the live comments of the input file specified by Media.
         self.barrages = barrages
+        # The Object Storage Service (OSS) objects that are used as the thumbnails. Specify the thumbnails in a JSON array. A maximum of five thumbnails are supported.
+        # 
+        # >  If this parameter is specified, the system checks the thumbnails specified by this parameter instead of the thumbnails of the input file specified by **Media**.
         self.cover_images = cover_images
+        # The video description, which can be up to 128 bytes in length.
+        # 
+        # >  If this parameter is specified, the system checks the description specified by this parameter instead of the description of the input file specified by Media.
         self.description = description
+        # The information about the file to be moderated.
         self.input = input
+        # The callback URL. Simple Message Queue (SMQ, formerly MNS) and HTTP callbacks are supported.
         self.notify_url = notify_url
+        # The output snapshots. The moderation job generates output snapshots and the result JSON file in the path corresponding to the input file.
+        # 
+        # *   File name format of output snapshots: oss://bucket/snapshot-{Count}.jpg. In the path, bucket indicates an OSS bucket that resides in the same region as the current project, and {Count} is the sequence number of the snapshot.
+        # *   The detailed moderation results are stored in the {jobId}.output file in the same OSS folder as the output snapshots. For more information about the parameters in the output file, see [Output parameters of media moderation jobs](https://help.aliyun.com/document_detail/609211.html).
         self.output = output
+        # The scheduling configurations.
         self.schedule_config = schedule_config
+        # The template ID. If this parameter is not specified, the default template is used for moderation.
         self.template_id = template_id
+        # The video title, which can be up to 64 bytes in length.
+        # 
+        # >  If this parameter is specified, the system checks the title specified by this parameter instead of the title of the input file specified by Media.
         self.title = title
+        # The user-defined data, which can be up to 128 bytes in length.
         self.user_data = user_data
 
     def validate(self):
@@ -49626,15 +53380,36 @@ class SubmitMediaCensorJobShrinkRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
+        # The live comments of the video.
+        # 
+        # >  If this parameter is specified, the system checks the live comments specified by this parameter instead of the live comments of the input file specified by Media.
         self.barrages = barrages
+        # The Object Storage Service (OSS) objects that are used as the thumbnails. Specify the thumbnails in a JSON array. A maximum of five thumbnails are supported.
+        # 
+        # >  If this parameter is specified, the system checks the thumbnails specified by this parameter instead of the thumbnails of the input file specified by **Media**.
         self.cover_images = cover_images
+        # The video description, which can be up to 128 bytes in length.
+        # 
+        # >  If this parameter is specified, the system checks the description specified by this parameter instead of the description of the input file specified by Media.
         self.description = description
+        # The information about the file to be moderated.
         self.input_shrink = input_shrink
+        # The callback URL. Simple Message Queue (SMQ, formerly MNS) and HTTP callbacks are supported.
         self.notify_url = notify_url
+        # The output snapshots. The moderation job generates output snapshots and the result JSON file in the path corresponding to the input file.
+        # 
+        # *   File name format of output snapshots: oss://bucket/snapshot-{Count}.jpg. In the path, bucket indicates an OSS bucket that resides in the same region as the current project, and {Count} is the sequence number of the snapshot.
+        # *   The detailed moderation results are stored in the {jobId}.output file in the same OSS folder as the output snapshots. For more information about the parameters in the output file, see [Output parameters of media moderation jobs](https://help.aliyun.com/document_detail/609211.html).
         self.output = output
+        # The scheduling configurations.
         self.schedule_config_shrink = schedule_config_shrink
+        # The template ID. If this parameter is not specified, the default template is used for moderation.
         self.template_id = template_id
+        # The video title, which can be up to 64 bytes in length.
+        # 
+        # >  If this parameter is specified, the system checks the title specified by this parameter instead of the title of the input file specified by Media.
         self.title = title
+        # The user-defined data, which can be up to 128 bytes in length.
         self.user_data = user_data
 
     def validate(self):
@@ -49699,7 +53474,9 @@ class SubmitMediaCensorJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the content moderation job. We recommend that you save this ID for subsequent calls of other operations.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49773,8 +53550,18 @@ class SubmitMediaInfoJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # 
+        # >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+        # 
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the media object. Valid values: OSS and Media. A value of OSS indicates an Object Storage Service (OSS) object. A value of Media indicates a media asset.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -49808,7 +53595,9 @@ class SubmitMediaInfoJobRequestScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
 
     def validate(self):
@@ -49843,10 +53632,15 @@ class SubmitMediaInfoJobRequest(TeaModel):
         schedule_config: SubmitMediaInfoJobRequestScheduleConfig = None,
         user_data: str = None,
     ):
+        # The input of the job.
+        # 
         # This parameter is required.
         self.input = input
+        # The job name.
         self.name = name
+        # The scheduling parameters.
         self.schedule_config = schedule_config
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -49894,10 +53688,15 @@ class SubmitMediaInfoJobShrinkRequest(TeaModel):
         schedule_config_shrink: str = None,
         user_data: str = None,
     ):
+        # The input of the job.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
+        # The job name.
         self.name = name
+        # The scheduling parameters.
         self.schedule_config_shrink = schedule_config_shrink
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -49938,7 +53737,9 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object. If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported. If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The type of the media object. Valid values: OSS and Media. A value of OSS indicates an OSS object. A value of Media indicates a media asset.
         self.type = type
 
     def validate(self):
@@ -49984,20 +53785,35 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfo
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The sound channel layout.
         self.channel_layout = channel_layout
+        # The number of sound channels.
         self.channels = channels
+        # The name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The encoding format.
         self.codec_name = codec_name
+        # The encoder tag.
         self.codec_tag = codec_tag
+        # The name of the encoder tag.
         self.codec_tag_string = codec_tag_string
+        # The time base of the encoder.
         self.codec_time_base = codec_time_base
+        # The duration of the stream. Unit: seconds.
         self.duration = duration
+        # The sequence number of the stream.
         self.index = index
+        # The language of the stream.
         self.lang = lang
+        # The sample format.
         self.sample_fmt = sample_fmt
+        # The sampling rate. Unit: Hz.
         self.sample_rate = sample_rate
+        # The start time of the stream.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -50092,17 +53908,29 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo(T
         region: str = None,
         width: str = None,
     ):
+        # The video bitrate.
         self.bitrate = bitrate
+        # The duration of the video.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size.
         self.file_size = file_size
+        # The state of the file.
         self.file_status = file_status
+        # The file type.
         self.file_type = file_type
+        # The URL of the file.
         self.file_url = file_url
+        # The name of the video format.
         self.format_name = format_name
+        # The height of the output video.
         self.height = height
+        # The ID of the media asset.
         self.media_id = media_id
+        # The region in which the file resides.
         self.region = region
+        # The width of the output video.
         self.width = width
 
     def validate(self):
@@ -50196,28 +54024,55 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfo
         time_base: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bit_rate = bit_rate
+        # The name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The encoding format.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The time base of the encoder.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio.
         self.dar = dar
+        # The duration of the file.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+        # 
+        # *   0: The stream contains no B-frames.
+        # *   1: The stream contains one B-frame.
+        # *   2: The stream contains multiple consecutive B-frames.
         self.has_bframes = has_bframes
+        # The height of the output video.
         self.height = height
+        # The sequence number of the stream.
         self.index = index
+        # The language of the stream.
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The encoder profile.
         self.profile = profile
+        # The rotation angle of the video image.
         self.rotate = rotate
+        # The aspect ratio of the area from which the sampling points are collected.
         self.sar = sar
+        # The start time of the stream.
         self.start_time = start_time
+        # The time base.
         self.time_base = time_base
+        # The width of the output video.
         self.width = width
 
     def validate(self):
@@ -50335,8 +54190,11 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty(TeaModel):
         file_basic_info: SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo = None,
         video_stream_info_list: List[SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList] = None,
     ):
+        # The information about the audio stream.
         self.audio_stream_info_list = audio_stream_info_list
+        # The basic file information.
         self.file_basic_info = file_basic_info
+        # The information about the video stream.
         self.video_stream_info_list = video_stream_info_list
 
     def validate(self):
@@ -50393,7 +54251,9 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
 
     def validate(self):
@@ -50437,18 +54297,31 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJob(TeaModel):
         trigger_source: str = None,
         user_data: str = None,
     ):
+        # Indicates whether asynchronous processing was performed.
         self.async_ = async_
+        # The time when the job was complete.
         self.finish_time = finish_time
+        # The input of the job.
         self.input = input
+        # The job ID.
         self.job_id = job_id
+        # The details of the media information.
         self.media_info_property = media_info_property
+        # The job name.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The scheduling information.
         self.schedule_config = schedule_config
+        # The state of the job. Valid values: Init (the job is submitted), Success (the job is successful), and Fail (the job failed).
         self.status = status
+        # The job submission information.
         self.submit_result_json = submit_result_json
+        # The time when the job was submitted.
         self.submit_time = submit_time
+        # The source of the job. Valid values: API, WorkFlow, and Console.
         self.trigger_source = trigger_source
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -50535,6 +54408,7 @@ class SubmitMediaInfoJobResponseBody(TeaModel):
     ):
         # MediaInfoJobDTO
         self.media_info_job = media_info_job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50620,18 +54494,53 @@ class SubmitMediaProducingJobRequest(TeaModel):
         timeline: str = None,
         user_data: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The material parameters of the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
         self.clips_param = clips_param
+        # The parameters for editing and production. For more information, see [EditingProduceConfig](https://help.aliyun.com/document_detail/357745.html#title-10z-t9u-n69).
+        # 
+        # >  If no thumbnail is specified in EditingProduceConfig, the first frame of the video is used as the thumbnail.
+        # 
+        # *   AutoRegisterInputVodMedia: specifies whether to automatically register the ApsaraVideo VOD media assets in your timeline with IMS. Default value: true.
+        # *   OutputWebmTransparentChannel: specifies whether the output video contains alpha channels. Default value: false.
+        # *   CoverConfig: the custom thumbnail parameters.
+        # *\
         self.editing_produce_config = editing_produce_config
+        # The metadata of the produced video, in the JSON format. For more information about the parameters, see [MediaMetadata](https://help.aliyun.com/document_detail/357745.html?spm=a2c4g.445712.0.0.49a716dbA8hgdz#97ff26d0e3c28).
         self.media_metadata = media_metadata
+        # The configurations of the output file, in the JSON format. You can specify an OSS URL or a storage location in a storage bucket of ApsaraVideo VOD.
+        # 
+        # To store the output file in OSS, you must specify MediaURL. To store the output file in ApsaraVideo VOD, you must specify StorageLocation and FileName.
+        # 
+        # For more information, see [OutputMediaConfig](https://help.aliyun.com/document_detail/357745.html#title-4j6-ve7-g31).
+        # 
         # This parameter is required.
         self.output_media_config = output_media_config
+        # The type of the output file. Valid values:
+        # 
+        # *   oss-object: OSS object in an OSS bucket.
+        # *   vod-media: media asset in ApsaraVideo VOD.
+        # *   S3: output file based on the Amazon Simple Storage Service (S3) protocol.
         self.output_media_target = output_media_target
+        # The ID of the editing project.
+        # 
+        # > : You must specify one of ProgectId, Timeline, and TempalteId and leave the other two parameters empty.
         self.project_id = project_id
+        # The metadata of the editing project, in the JSON format. For more information about the parameters, see [ProjectMetadata](https://help.aliyun.com/document_detail/357745.html#title-yvp-81k-wff).
         self.project_metadata = project_metadata
+        # The source of the editing and production request. Valid values:
+        # 
+        # *   OpenAPI
+        # *   AliyunConsole
+        # *   WebSDK
         self.source = source
+        # The template ID. The template is used to build a timeline with ease.
+        # 
+        # > : You must specify one of ProgectId, Timeline, and TempalteId and leave the other two parameters empty. If TemplateId is specified, ClipsParam must also be specified.
         self.template_id = template_id
         self.timeline = timeline
+        # The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
         self.user_data = user_data
 
     def validate(self):
@@ -50707,10 +54616,15 @@ class SubmitMediaProducingJobResponseBody(TeaModel):
         request_id: str = None,
         vod_media_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The media asset ID of the output file.
         self.media_id = media_id
+        # The ID of the editing project.
         self.project_id = project_id
+        # The request ID.
         self.request_id = request_id
+        # The media asset ID of the output file in ApsaraVideo VOD if the output file is stored in ApsaraVideo VOD.
         self.vod_media_id = vod_media_id
 
     def validate(self):
@@ -50796,8 +54710,18 @@ class SubmitPackageJobRequestInputsInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an Object Storage Service (OSS) object.
+        # *   Media: a media asset.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -50830,6 +54754,8 @@ class SubmitPackageJobRequestInputs(TeaModel):
         self,
         input: SubmitPackageJobRequestInputsInput = None,
     ):
+        # The information about the input stream file.
+        # 
         # This parameter is required.
         self.input = input
 
@@ -50861,8 +54787,15 @@ class SubmitPackageJobRequestOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object. If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported. If Type is set to Media, set this parameter to the ID of a media asset.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -50896,7 +54829,9 @@ class SubmitPackageJobRequestScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
 
     def validate(self):
@@ -50932,12 +54867,19 @@ class SubmitPackageJobRequest(TeaModel):
         schedule_config: SubmitPackageJobRequestScheduleConfig = None,
         user_data: str = None,
     ):
+        # The input of the job.
+        # 
         # This parameter is required.
         self.inputs = inputs
+        # The name of the job.
         self.name = name
+        # The output of the job.
+        # 
         # This parameter is required.
         self.output = output
+        # The scheduling settings.
         self.schedule_config = schedule_config
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -50999,12 +54941,19 @@ class SubmitPackageJobShrinkRequest(TeaModel):
         schedule_config_shrink: str = None,
         user_data: str = None,
     ):
+        # The input of the job.
+        # 
         # This parameter is required.
         self.inputs_shrink = inputs_shrink
+        # The name of the job.
         self.name = name
+        # The output of the job.
+        # 
         # This parameter is required.
         self.output_shrink = output_shrink
+        # The scheduling settings.
         self.schedule_config_shrink = schedule_config_shrink
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -51049,7 +54998,9 @@ class SubmitPackageJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51123,7 +55074,17 @@ class SubmitSmarttagJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # If Type is set to OSS, specify an OSS path. Example: OSS://test-bucket/video/202208/test.mp4.
+        # 
+        # If Type is set to Media, specify a media asset ID. Example: c5c62d8f0361337cab312dce8e77dc6d.
+        # 
+        # If Type is set to URL, specify an HTTP URL. Example: https://zc-test.oss-cn-shanghai.aliyuncs.com/test/unknowFace.mp4.
         self.media = media
+        # The media type. Valid values:
+        # 
+        # *   OSS
+        # *   Media
+        # *   URL
         self.type = type
 
     def validate(self):
@@ -51156,7 +55117,9 @@ class SubmitSmarttagJobRequestScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: str = None,
     ):
+        # The ID of the ApsaraVideo Media Processing (MPS) queue to which you want to submit the smart tagging job. The MPS queue is bound to an SMQ queue. This parameter specifies the default MPS queue. By default, an MPS queue can process a maximum of two concurrent smart tagging jobs. To increase the limit, submit a ticket.
         self.pipeline_id = pipeline_id
+        # The job priority. This parameter is not implemented. You can leave this parameter empty or enter a random value.
         self.priority = priority
 
     def validate(self):
@@ -51197,17 +55160,30 @@ class SubmitSmarttagJobRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
+        # The video description. The description can contain letters, digits, and hyphens (-) and cannot start with a special character. The description can be up to 1 KB in length.
         self.content = content
+        # This parameter is discontinued.
         self.content_addr = content_addr
+        # This parameter is discontinued.
         self.content_type = content_type
-        # input
+        # The job input.
         self.input = input
+        # The URL for receiving callbacks. Set the value to an HTTP URL or an HTTPS URL.
         self.notify_url = notify_url
+        # The additional request parameters. The value is a JSON string. Example: {"needAsrData":true, "needOcrData":false}. The following parameters are supported:
+        # 
+        # *   needAsrData: specifies whether to query the automatic speech recognition (ASR) data. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
+        # *   needOcrData: specifies whether to query the optical character recognition (OCR) data. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
+        # *   needMetaData: specifies whether to query the metadata. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
+        # *   nlpParams: the input parameters of the natural language processing (NLP) operator. The value is a JSON object. This parameter is empty by default, which indicates that the NLP operator is not used. For more information, see the "nlpParams" section of this topic.
         self.params = params
-        # scheduleConfig
+        # The scheduling configurations.
         self.schedule_config = schedule_config
+        # The ID of the template that specifies the analysis algorithms. For more information about template operations, see [Configure templates](https://help.aliyun.com/document_detail/445702.html).
         self.template_id = template_id
+        # The video title. The title can contain letters, digits, and hyphens (-) and cannot start with a special character. The title can be up to 256 bytes in length.
         self.title = title
+        # The data to be passed through Simple Message Queue (SMQ, formerly MNS) during callbacks. The data can be up to 1 KB in length. For more information about how to specify an SMQ queue for receiving callbacks, see UpdatePipeline.
         self.user_data = user_data
 
     def validate(self):
@@ -51285,17 +55261,30 @@ class SubmitSmarttagJobShrinkRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
+        # The video description. The description can contain letters, digits, and hyphens (-) and cannot start with a special character. The description can be up to 1 KB in length.
         self.content = content
+        # This parameter is discontinued.
         self.content_addr = content_addr
+        # This parameter is discontinued.
         self.content_type = content_type
-        # input
+        # The job input.
         self.input_shrink = input_shrink
+        # The URL for receiving callbacks. Set the value to an HTTP URL or an HTTPS URL.
         self.notify_url = notify_url
+        # The additional request parameters. The value is a JSON string. Example: {"needAsrData":true, "needOcrData":false}. The following parameters are supported:
+        # 
+        # *   needAsrData: specifies whether to query the automatic speech recognition (ASR) data. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
+        # *   needOcrData: specifies whether to query the optical character recognition (OCR) data. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
+        # *   needMetaData: specifies whether to query the metadata. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
+        # *   nlpParams: the input parameters of the natural language processing (NLP) operator. The value is a JSON object. This parameter is empty by default, which indicates that the NLP operator is not used. For more information, see the "nlpParams" section of this topic.
         self.params = params
-        # scheduleConfig
+        # The scheduling configurations.
         self.schedule_config_shrink = schedule_config_shrink
+        # The ID of the template that specifies the analysis algorithms. For more information about template operations, see [Configure templates](https://help.aliyun.com/document_detail/445702.html).
         self.template_id = template_id
+        # The video title. The title can contain letters, digits, and hyphens (-) and cannot start with a special character. The title can be up to 256 bytes in length.
         self.title = title
+        # The data to be passed through Simple Message Queue (SMQ, formerly MNS) during callbacks. The data can be up to 1 KB in length. For more information about how to specify an SMQ queue for receiving callbacks, see UpdatePipeline.
         self.user_data = user_data
 
     def validate(self):
@@ -51360,7 +55349,9 @@ class SubmitSmarttagJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the smart tagging job. We recommend that you save this ID for subsequent calls of other operations.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51434,8 +55425,20 @@ class SubmitSnapshotJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+        # 
+        # 1.  oss://bucket/object
+        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+        # 
+        # >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the input file. Valid values:
+        # 
+        # 1.  OSS: an Object Storage Service (OSS) object.
+        # 2.  Media: a media asset.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -51469,8 +55472,22 @@ class SubmitSnapshotJobRequestOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The output file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+        # 
+        # 1.  oss://bucket/object
+        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+        # 
+        # In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS. If multiple static snapshots were captured, the object must contain the "{Count}" placeholder. In the case of a sprite, the object must contain the "{TileCount}" placeholder. The suffix of the WebVTT snapshot objects must be ".vtt".
+        # 
+        # >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the IMS console.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the output file. Valid values:
+        # 
+        # 1.  OSS: an OSS object.
+        # 2.  Media: a media asset.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -51503,6 +55520,7 @@ class SubmitSnapshotJobRequestScheduleConfig(TeaModel):
         self,
         pipeline_id: str = None,
     ):
+        # The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -51536,12 +55554,19 @@ class SubmitSnapshotJobRequestTemplateConfigOverwriteParamsSpriteSnapshotConfig(
         margin: int = None,
         padding: int = None,
     ):
+        # The height of a single snapshot before tiling. The default value is the height of the output snapshot.
         self.cell_height = cell_height
+        # The width of a single snapshot before tiling. The default value is the width of the output snapshot.
         self.cell_width = cell_width
+        # The background color.
         self.color = color
+        # The number of columns that the image sprite contains.
         self.columns = columns
+        # The number of rows that the image sprite contains.
         self.lines = lines
+        # The width of the frame. Default value: 0. Unit: pixels.
         self.margin = margin
+        # The spacing between two adjacent snapshots. Default value: 0. Unit: pixels.
         self.padding = padding
 
     def validate(self):
@@ -51603,16 +55628,27 @@ class SubmitSnapshotJobRequestTemplateConfigOverwriteParams(TeaModel):
         type: str = None,
         width: int = None,
     ):
+        # The threshold that is used to filter out black frames for the first snapshot to be captured. This feature is available if you request the system to capture multiple snapshots.
         self.black_level = black_level
+        # The number of snapshots.
         self.count = count
+        # The type of the frame.
         self.frame_type = frame_type
+        # The height of a captured snapshot.
         self.height = height
+        # The interval at which snapshots are captured.
         self.interval = interval
+        # The WebVTT snapshot configuration that specifies whether to merge the output snapshots.
         self.is_spt_frag = is_spt_frag
+        # The color value threshold that determines whether a pixel is black.
         self.pixel_black_threshold = pixel_black_threshold
+        # The configuration of the sprite snapshot.
         self.sprite_snapshot_config = sprite_snapshot_config
+        # The point in time at which the system starts to capture snapshots in the input video.
         self.time = time
+        # The snapshot type. Valid values:
         self.type = type
+        # The width of a captured snapshot.
         self.width = width
 
     def validate(self):
@@ -51683,7 +55719,10 @@ class SubmitSnapshotJobRequestTemplateConfig(TeaModel):
         overwrite_params: SubmitSnapshotJobRequestTemplateConfigOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters.
         self.overwrite_params = overwrite_params
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -51723,14 +55762,23 @@ class SubmitSnapshotJobRequest(TeaModel):
         template_config: SubmitSnapshotJobRequestTemplateConfig = None,
         user_data: str = None,
     ):
+        # The snapshot input.
+        # 
         # This parameter is required.
         self.input = input
+        # The name of the job.
         self.name = name
+        # The snapshot output.
+        # 
         # This parameter is required.
         self.output = output
+        # The scheduling settings.
         self.schedule_config = schedule_config
+        # The snapshot template configuration.
+        # 
         # This parameter is required.
         self.template_config = template_config
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -51794,14 +55842,23 @@ class SubmitSnapshotJobShrinkRequest(TeaModel):
         template_config_shrink: str = None,
         user_data: str = None,
     ):
+        # The snapshot input.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
+        # The name of the job.
         self.name = name
+        # The snapshot output.
+        # 
         # This parameter is required.
         self.output_shrink = output_shrink
+        # The scheduling settings.
         self.schedule_config_shrink = schedule_config_shrink
+        # The snapshot template configuration.
+        # 
         # This parameter is required.
         self.template_config_shrink = template_config_shrink
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -51850,7 +55907,9 @@ class SubmitSnapshotJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51926,9 +55985,13 @@ class SubmitSportsHighlightsJobRequest(TeaModel):
         output_config: str = None,
         user_data: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The input configurations.
         self.input_config = input_config
+        # The output configurations.
         self.output_config = output_config
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -51969,7 +56032,9 @@ class SubmitSportsHighlightsJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the sports highlights job.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52046,10 +56111,37 @@ class SubmitStandardCustomizedVoiceJobRequest(TeaModel):
         gender: str = None,
         voice_name: str = None,
     ):
+        # *   The material assets IDs of the materials for training.
+        # *   Separate multiple media IDs with commas (,).
+        # 
+        # > : The total duration of all materials must be within 15 to 30 minutes. The duration of each material must be greater than 1 minute.
         self.audios = audios
+        # *   The media asset ID of the authentication audio.
+        # 
+        # *   Upload an audio file for identity authentication. If the voiceprint extracted from the uploaded file differs from that of the training file, the job fails.
+        # 
+        #     **\
+        # 
+        #     **Note**: Clearly read and record the following text: I confirm to customize human voice cloning and provide audio files that contain my voice for training. I promise that I am responsible for the customized content and that the content complies with laws and regulations.
         self.authentication = authentication
+        # The URL of the sample audio file.
+        # 
+        # *   If this parameter is specified, a sample audio file is generated at the specified Object Storage Service (OSS) URL after the training is complete.
+        # 
+        # *   If this parameter is not specified, no sample audio file is generated.
+        # 
+        #     **\
+        # 
+        #     **Note**: The URL must be a valid public OSS URL within your Alibaba Cloud account.
         self.demo_audio_media_url = demo_audio_media_url
+        # The gender. Valid values:
+        # 
+        # *   female
+        # *   male
         self.gender = gender
+        # The voice name.
+        # 
+        # *   The name can be up to 32 characters in length.
         self.voice_name = voice_name
 
     def validate(self):
@@ -52093,6 +56185,7 @@ class SubmitStandardCustomizedVoiceJobResponseBodyData(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the human voice cloning job.
         self.job_id = job_id
 
     def validate(self):
@@ -52122,8 +56215,14 @@ class SubmitStandardCustomizedVoiceJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -52203,8 +56302,21 @@ class SubmitSyncMediaInfoJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # 
+        # >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+        # 
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the media object.
+        # 
+        # *   OSS: an Object Storage Service (OSS) object.
+        # *   Media: a media asset.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -52238,7 +56350,9 @@ class SubmitSyncMediaInfoJobRequestScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
 
     def validate(self):
@@ -52273,10 +56387,15 @@ class SubmitSyncMediaInfoJobRequest(TeaModel):
         schedule_config: SubmitSyncMediaInfoJobRequestScheduleConfig = None,
         user_data: str = None,
     ):
+        # The input of the job.
+        # 
         # This parameter is required.
         self.input = input
+        # The job name.
         self.name = name
+        # The scheduling parameters. This parameter is optional.
         self.schedule_config = schedule_config
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -52324,10 +56443,15 @@ class SubmitSyncMediaInfoJobShrinkRequest(TeaModel):
         schedule_config_shrink: str = None,
         user_data: str = None,
     ):
+        # The input of the job.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
+        # The job name.
         self.name = name
+        # The scheduling parameters. This parameter is optional.
         self.schedule_config_shrink = schedule_config_shrink
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -52368,7 +56492,12 @@ class SubmitSyncMediaInfoJobResponseBodyMediaInfoJobInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object. If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported. If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -52414,20 +56543,35 @@ class SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStream
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The sound channel layout.
         self.channel_layout = channel_layout
+        # The number of sound channels.
         self.channels = channels
+        # The name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The encoding format.
         self.codec_name = codec_name
+        # The encoder tag.
         self.codec_tag = codec_tag
+        # The name of the encoder tag.
         self.codec_tag_string = codec_tag_string
+        # The time base of the encoder.
         self.codec_time_base = codec_time_base
+        # The duration of the file.
         self.duration = duration
+        # The sequence number of the stream.
         self.index = index
+        # The language of the stream.
         self.lang = lang
+        # The sample format.
         self.sample_fmt = sample_fmt
+        # The sampling rate. Unit: Hz.
         self.sample_rate = sample_rate
+        # The start time of the stream.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -52522,17 +56666,31 @@ class SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicIn
         region: str = None,
         width: str = None,
     ):
+        # The video bitrate.
         self.bitrate = bitrate
+        # The duration of the video. Unit: seconds.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size. Unit: bytes.
         self.file_size = file_size
+        # The state of the file. Valid values:
+        # 
+        # *   Normal
         self.file_status = file_status
+        # The file type.
         self.file_type = file_type
+        # The URL of the file.
         self.file_url = file_url
+        # The name of the video format.
         self.format_name = format_name
+        # The height of the output video.
         self.height = height
+        # The ID of the media asset.
         self.media_id = media_id
+        # The region in which the file resides.
         self.region = region
+        # The width of the output video.
         self.width = width
 
     def validate(self):
@@ -52626,28 +56784,55 @@ class SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStream
         time_base: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bit_rate = bit_rate
+        # The name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The encoding format.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The time base of the encoder.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio.
         self.dar = dar
+        # The duration of the file.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+        # 
+        # *   0: The stream contains no B-frames.
+        # *   1: The stream contains one B-frame.
+        # *   2: The stream contains multiple consecutive B-frames.
         self.has_bframes = has_bframes
+        # The height of the output video.
         self.height = height
+        # The sequence number of the stream.
         self.index = index
+        # The language of the stream.
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The encoder profile.
         self.profile = profile
+        # The rotation angle of the video image.
         self.rotate = rotate
+        # The aspect ratio of the area from which the sampling points are collected.
         self.sar = sar
+        # The start time of the stream.
         self.start_time = start_time
+        # The time base.
         self.time_base = time_base
+        # The width of the output video.
         self.width = width
 
     def validate(self):
@@ -52765,8 +56950,11 @@ class SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty(TeaModel):
         file_basic_info: SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo = None,
         video_stream_info_list: List[SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList] = None,
     ):
+        # The information about the audio stream.
         self.audio_stream_info_list = audio_stream_info_list
+        # The basic file information.
         self.file_basic_info = file_basic_info
+        # The information about the video stream.
         self.video_stream_info_list = video_stream_info_list
 
     def validate(self):
@@ -52823,7 +57011,9 @@ class SubmitSyncMediaInfoJobResponseBodyMediaInfoJobScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
 
     def validate(self):
@@ -52867,18 +57057,31 @@ class SubmitSyncMediaInfoJobResponseBodyMediaInfoJob(TeaModel):
         trigger_source: str = None,
         user_data: str = None,
     ):
+        # Indicates whether asynchronous processing was performed.
         self.async_ = async_
+        # The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.finish_time = finish_time
+        # The input of the job.
         self.input = input
+        # The job ID.
         self.job_id = job_id
+        # The details of the media information.
         self.media_info_property = media_info_property
+        # The job name.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The scheduling information.
         self.schedule_config = schedule_config
+        # The state of the job. Valid values: Init (the job is submitted), Success (the job is successful), and Fail (the job failed).
         self.status = status
+        # The job submission information.
         self.submit_result_json = submit_result_json
+        # The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.submit_time = submit_time
+        # The source of the job. Valid values: API, WorkFlow, and Console.
         self.trigger_source = trigger_source
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -52965,6 +57168,7 @@ class SubmitSyncMediaInfoJobResponseBody(TeaModel):
     ):
         # MediaInfoJobDTO
         self.media_info_job = media_info_job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53043,10 +57247,24 @@ class SubmitTextGenerateJobRequest(TeaModel):
         type: str = None,
         user_data: str = None,
     ):
+        # The job description, which can be up to 1,024 bytes in length and must be encoded in UTF-8.
         self.description = description
+        # The text generation configurations, including keywords and the requirements for the word count and number of output copies.
         self.generate_config = generate_config
+        # The job title.
+        # 
+        # The job title can be up to 128 bytes in length.
+        # 
+        # The value must be encoded in UTF-8.
         self.title = title
+        # The job type.
+        # 
+        # Valid values:
+        # 
+        # *   MarketingCopy: the marketing copy.
+        # *   Title: the short video title.
         self.type = type
+        # The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
         self.user_data = user_data
 
     def validate(self):
@@ -53091,8 +57309,9 @@ class SubmitTextGenerateJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
-        # Id of the request
+        # The request ID
         self.request_id = request_id
 
     def validate(self):
@@ -53167,9 +57386,26 @@ class SubmitTranscodeJobRequestInputGroup(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The URL of the input stream.
+        # 
+        # *   This parameter takes effect only when Type is set to Media. You can select a specific file within the media asset as an input.
+        # *   The system checks whether the input URL exists within the media asset.
         self.input_url = input_url
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # 
+        # >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+        # 
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
+        # 
         # This parameter is required.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an Object Storage Service (OSS) object.
+        # *   Media: a media asset.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -53208,9 +57444,35 @@ class SubmitTranscodeJobRequestOutputGroupOutput(TeaModel):
         output_url: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # 
+        # >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the IMS console.
+        # 
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
+        # 
         # This parameter is required.
         self.media = media
+        # The URL of the output stream.\\
+        # This parameter takes effect only when Type is set to Media. You can select a specific file within the media asset as an output.\\
+        # Supported placeholders:
+        # 
+        # *   {MediaId}: the ID of the media asset.
+        # *   {JobId}: the ID of the transcoding subjob.
+        # *   {MediaBucket}: the bucket to which the media asset belongs.
+        # *   {ExtName}: the file suffix, which uses the output format of the transcoding template.
+        # *   {DestMd5}: the MD5 value of the transcoded output file.\\
+        #     Notes:
+        # 
+        # 1.  This parameter must contain the {MediaId} and {JobId} placeholders.
+        # 2.  The output bucket is the same as the bucket to which the media asset belongs.
         self.output_url = output_url
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -53250,10 +57512,16 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs(TeaModel):
         start: float = None,
         video_index: str = None,
     ):
+        # The audio stream index.
+        # 
         # This parameter is required.
         self.audio_index = audio_index
+        # The duration of the input stream. The default value is the duration of the video.
         self.duration = duration
+        # The start time of the input stream. Default value: 0.
         self.start = start
+        # The video stream index.
+        # 
         # This parameter is required.
         self.video_index = video_index
 
@@ -53297,9 +57565,19 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption(TeaModel):
         encrypt_type: str = None,
         key_service_type: str = None,
     ):
+        # The ciphertext of HTTP Live Streaming (HLS) encryption.
         self.cipher_text = cipher_text
+        # The address of the decryption service for HLS encryption.
         self.decrypt_key_uri = decrypt_key_uri
+        # Specifies the encryption type. Valid values:
+        # 
+        # *   PrivateEncryption: Alibaba Cloud proprietary cryptography
+        # *   HLSEncryption: HTTP Live Streaming (HLS) encryption
         self.encrypt_type = encrypt_type
+        # The key service type for HLS encryption. Valid values:
+        # 
+        # *   KMS
+        # *   Base64
         self.key_service_type = key_service_type
 
     def validate(self):
@@ -53340,7 +57618,15 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteP
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -53373,7 +57659,16 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteP
         duration: str = None,
         start: str = None,
     ):
+        # The time range in which the watermark is displayed.
+        # 
+        # *   Valid values: integers and ToEND.
+        # *   Default value: ToEND.
         self.duration = duration
+        # The beginning of the time range in which the watermark is displayed.
+        # 
+        # *   Unit: seconds.
+        # *   Value values: integers.
+        # *   Default value: 0.
         self.start = start
 
     def validate(self):
@@ -53411,12 +57706,66 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteP
         timeline: SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline = None,
         width: str = None,
     ):
+        # The horizontal offset of the watermark relative to the output video. Default value: 0.
+        # 
+        # The following value types are supported:
+        # 
+        # *   Integer: the pixel value of the horizontal offset.
+        # 
+        #     *   Valid values: [8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   Decimal: the ratio of the horizontal offset to the width of the output video.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
         self.dx = dx
+        # The vertical offset of the watermark relative to the output video. Default value: 0.
+        # 
+        # The following value types are supported:
+        # 
+        # *   Integer: the pixel value of the horizontal offset.
+        # 
+        #     *   Valid values: [8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   Decimal: the ratio of the vertical offset to the height of the output video.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
         self.dy = dy
+        # The watermark image file.
         self.file = file
+        # The height of the watermark image in the output video. The following value types are supported:
+        # 
+        # *   Integer: the pixel value of the watermark height.
+        # 
+        #     *   Valid values: [8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   Decimal: the ratio of the watermark height to the height of the output video.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
         self.height = height
+        # The position of the watermark.
+        # 
+        # *   Valid values: TopRight, TopLeft, BottomRight, and BottomLeft.
+        # *   Default value: TopRight.
         self.refer_pos = refer_pos
+        # The time settings of the dynamic watermark.
         self.timeline = timeline
+        # The width of the watermark in the output video. The following value types are supported:
+        # 
+        # *   Integer: the pixel value of the watermark width.
+        # 
+        #     *   Valid values: [8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   Decimal: the ratio of the watermark width to the width of the output video.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
         self.width = width
 
     def validate(self):
@@ -53474,7 +57823,10 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks(TeaModel)
         overwrite_params: SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -53510,7 +57862,15 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParamsF
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -53544,8 +57904,11 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParams(
         file: SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParamsFile = None,
         format: str = None,
     ):
+        # The file encoding format.
         self.char_enc = char_enc
+        # The subtitle file.
         self.file = file
+        # The format of the subtitle file.
         self.format = format
 
     def validate(self):
@@ -53584,7 +57947,10 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles(TeaModel):
         overwrite_params: SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -53628,15 +57994,40 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwritePa
         left: str = None,
         top: str = None,
     ):
+        # Specifies whether to the font size based on the output video dimensions. true / false, default: false
         self.adaptive = adaptive
+        # The outline color of the text watermark. Default value: black. For more information, see BorderColor.
         self.border_color = border_color
+        # The outline width of the text watermark.
+        # 
+        # *   Default value: 0.
+        # *   Valid values: (0,4096].
         self.border_width = border_width
+        # The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
         self.content = content
+        # The transparency of the text.
+        # 
+        # *   Valid values: (0,1].
+        # *   Default value: 1.
         self.font_alpha = font_alpha
+        # The color of the text.
         self.font_color = font_color
+        # The font of the text. Default value: SimSun.
         self.font_name = font_name
+        # The size of the text.
+        # 
+        # *   Default value: 16.
+        # *   Valid values: (4,120).
         self.font_size = font_size
+        # The left margin of the text watermark.
+        # 
+        # *   Default value: 0.
+        # *   Valid values: [0,4096].
         self.left = left
+        # The top margin of the text.
+        # 
+        # *   Default value: 0.
+        # *   Valid values: [0,4096].
         self.top = top
 
     def validate(self):
@@ -53701,7 +58092,10 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks(TeaModel):
         overwrite_params: SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -53739,9 +58133,13 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsA
         method: str = None,
         true_peak: str = None,
     ):
+        # The output volume.
         self.integrated_loudness_target = integrated_loudness_target
+        # The volume range.
         self.loudness_range_target = loudness_range_target
+        # The volume adjustment method. Valid values:
         self.method = method
+        # The peak volume.
         self.true_peak = true_peak
 
     def validate(self):
@@ -53787,12 +58185,19 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsA
         samplerate: str = None,
         volume: SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume = None,
     ):
+        # The audio bitrate of the output file. Valid values: [8,1000]. Unit: Kbit/s. Default value: 128.
         self.bitrate = bitrate
+        # The number of sound channels. Default value: 2.
         self.channels = channels
+        # The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
         self.codec = codec
+        # The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
         self.profile = profile
+        # Specifies whether to delete the audio stream.
         self.remove = remove
+        # The sampling rate. Valid values: 22050, 32000, 44100, 48000, and 96000. Default value: 44100. Unit: Hz.
         self.samplerate = samplerate
+        # The volume configurations.
         self.volume = volume
 
     def validate(self):
@@ -53846,6 +58251,7 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsC
         self,
         format: str = None,
     ):
+        # The container format.
         self.format = format
 
     def validate(self):
@@ -53874,7 +58280,9 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsM
         duration: str = None,
         force_seg_time: str = None,
     ):
+        # The segment length.
         self.duration = duration
+        # The forced segmentation point in time.
         self.force_seg_time = force_seg_time
 
     def validate(self):
@@ -53906,6 +58314,7 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsM
         self,
         segment: SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment = None,
     ):
+        # The segment settings.
         self.segment = segment
 
     def validate(self):
@@ -53942,13 +58351,64 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsT
         is_check_video_bitrate_fail: str = None,
         trans_mode: str = None,
     ):
+        # The method that is used to adjust the resolution. This parameter takes effect only if both the Width and Height parameters are specified. You can use this parameter together with the LongShortMode parameter.
+        # 
+        # Valid values: rescale, crop, pad, and none.
+        # 
+        # Default value: none.
         self.adj_dar_method = adj_dar_method
+        # Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the bitrate of the input audio is used for transcoding.
+        # *   false: does not check the video resolution.
+        # 
+        # Default value:
+        # 
+        # *   If this parameter is not specified and the codec of the output audio is different from that of the input audio, the default value is false.
+        # *   If this parameter is not specified and the codec of the output audio is the same as that of the input audio, the default value is true.
         self.is_check_audio_bitrate = is_check_audio_bitrate
+        # Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the transcoding job fails.
+        # *   false: does not check the video resolution.
+        # 
+        # Default value: false.
         self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        # Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the width or height of the input video is less than that of the output video, the resolution of the input video is used for transcoding.
+        # *   false: does not check the video resolution.
+        # 
+        # Default value: false.
         self.is_check_reso = is_check_reso
+        # Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the width or height of the input video is less than that of the output video, the transcoding job fails.
+        # *   false: does not check the video resolution.
+        # 
+        # Default value: false.
         self.is_check_reso_fail = is_check_reso_fail
+        # Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the bitrate of the input video is used for transcoding.
+        # *   false: does not check the video resolution.
+        # 
+        # Default value: false.
         self.is_check_video_bitrate = is_check_video_bitrate
+        # Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the transcoding job fails.
+        # *   false: does not check the video resolution.
+        # 
+        # Default value: false.
         self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        # The video transcoding mode. Valid values:
+        # 
+        # *   onepass: You can set this parameter to onepass if the Bitrate parameter is set to ABR. The encoding speed of this mode is faster than that of the twopass mode.
+        # *   twopass: You can set this parameter to twopass if the Bitrate parameter is set to VBR. The encoding speed of this mode is slower than that of the onepass mode.
+        # *   CBR: the constant bitrate mode.
+        # 
+        # Default value: onepass.
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -54021,23 +58481,54 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsV
         scan_mode: str = None,
         width: str = None,
     ):
+        # The maximum adaptive bitrate (ABR). This parameter takes effect only for Narrowband HD 1.0. Valid values: [10,50000]. Unit: Kbit/s.
         self.abr_max = abr_max
+        # The average video bitrate. Valid values: [10,50000]. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The buffer size. Valid values: [1000,128000]. Default value: 6000. Unit: KB.
         self.bufsize = bufsize
+        # The encoding format.
         self.codec = codec
+        # The constant rate factor (CRF). Valid values: [0,51]. Default value: 23 if the encoding format is H.264, or 26 if the encoding format is H.265.
+        # 
+        # >  If this parameter is specified, the setting of the bitrate becomes invalid.
         self.crf = crf
+        # The method of video cropping. Valid values:
+        # 
+        # *   border: automatically detects and removes black bars.
+        # *   A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
         self.crop = crop
+        # The frame rate. Valid values:(0,60]. Default value: the frame rate of the input file.
+        # 
+        # >  The value is 60 if the frame rate of the input file exceeds 60.
         self.fps = fps
+        # The maximum number of frames between keyframes. Valid values: [1,1080000]. Default value: 250.
         self.gop = gop
+        # The height of the video. Valid values: [128,4096]. Unit: pixels. Default value: the original height of the video.
         self.height = height
+        # Specifies whether to enable the auto-rotate screen feature.
         self.long_short_mode = long_short_mode
+        # The maximum bitrate of the video. Valid values: [10,50000]. Unit: Kbit/s.
         self.maxrate = maxrate
+        # The black bars added to the video. Format: width:height:left:top. Example: 1280:800:0:140.
         self.pad = pad
+        # The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
         self.preset = preset
+        # The encoding profile. Valid values: baseline, main, and high.
+        # 
+        # *   baseline: applicable to mobile devices.
+        # *   main: applicable to standard-definition devices.
+        # *   high: applicable to high-definition devices.
+        # 
+        # Default value: high.
         self.profile = profile
+        # Specifies whether to remove the video.
         self.remove = remove
+        # The scan mode. Valid values: interlaced and progressive.
         self.scan_mode = scan_mode
+        # The width of the video. Valid values: [128,4096]. Unit: pixels. Default value: the original width of the video.
         self.width = width
 
     def validate(self):
@@ -54137,10 +58628,15 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams(
         trans_config: SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig = None,
         video: SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo = None,
     ):
+        # The audio settings.
         self.audio = audio
+        # The encapsulation format settings.
         self.container = container
+        # The encapsulation settings.
         self.mux_config = mux_config
+        # The conditional transcoding configurations.
         self.trans_config = trans_config
+        # The video settings.
         self.video = video
 
     def validate(self):
@@ -54199,7 +58695,10 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode(TeaModel):
         overwrite_params: SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -54239,11 +58738,18 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfig(TeaModel):
         text_watermarks: List[SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks] = None,
         transcode: SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode = None,
     ):
+        # The multi-input stream merge configuration.
         self.combine_configs = combine_configs
+        # The encryption settings.
         self.encryption = encryption
+        # The watermark configuration of an image.
         self.image_watermarks = image_watermarks
+        # The subtitle configuration.
         self.subtitles = subtitles
+        # The configurations of the text watermark.
         self.text_watermarks = text_watermarks
+        # The transcoding configuration.
+        # 
         # This parameter is required.
         self.transcode = transcode
 
@@ -54334,8 +58840,12 @@ class SubmitTranscodeJobRequestOutputGroup(TeaModel):
         output: SubmitTranscodeJobRequestOutputGroupOutput = None,
         process_config: SubmitTranscodeJobRequestOutputGroupProcessConfig = None,
     ):
+        # The output file configuration.
+        # 
         # This parameter is required.
         self.output = output
+        # The job processing configuration.
+        # 
         # This parameter is required.
         self.process_config = process_config
 
@@ -54374,7 +58884,9 @@ class SubmitTranscodeJobRequestScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
 
     def validate(self):
@@ -54411,13 +58923,21 @@ class SubmitTranscodeJobRequest(TeaModel):
         schedule_config: SubmitTranscodeJobRequestScheduleConfig = None,
         user_data: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
+        # 
         # This parameter is required.
         self.input_group = input_group
+        # The job name.
         self.name = name
+        # The output group of the job.
+        # 
         # This parameter is required.
         self.output_group = output_group
+        # The scheduling information about the job.
         self.schedule_config = schedule_config
+        # The custom settings. The value must be in the JSON format and can be up to 512 bytes in length. You can specify a [custom callback URL](https://help.aliyun.com/document_detail/451631.html).
         self.user_data = user_data
 
     def validate(self):
@@ -54490,13 +59010,21 @@ class SubmitTranscodeJobShrinkRequest(TeaModel):
         schedule_config_shrink: str = None,
         user_data: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
+        # 
         # This parameter is required.
         self.input_group_shrink = input_group_shrink
+        # The job name.
         self.name = name
+        # The output group of the job.
+        # 
         # This parameter is required.
         self.output_group_shrink = output_group_shrink
+        # The scheduling information about the job.
         self.schedule_config_shrink = schedule_config_shrink
+        # The custom settings. The value must be in the JSON format and can be up to 512 bytes in length. You can specify a [custom callback URL](https://help.aliyun.com/document_detail/451631.html).
         self.user_data = user_data
 
     def validate(self):
@@ -54545,7 +59073,15 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobInputGroup(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -54578,7 +59114,15 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput(TeaModel
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -54613,10 +59157,16 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigCo
         start: float = None,
         video_index: str = None,
     ):
+        # The audio stream index.
+        # 
         # This parameter is required.
         self.audio_index = audio_index
+        # The duration of the input stream. The default value is the duration of the video.
         self.duration = duration
+        # The start time of the input stream. Default value: 0.
         self.start = start
+        # The video stream index.
+        # 
         # This parameter is required.
         self.video_index = video_index
 
@@ -54660,9 +59210,13 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEn
         encrypt_type: str = None,
         key_service_type: str = None,
     ):
+        # The ciphertext of HLS encryption.
         self.cipher_text = cipher_text
+        # The address of the decryption service for HLS encryption.
         self.decrypt_key_uri = decrypt_key_uri
+        # Specifies the encryption type.
         self.encrypt_type = encrypt_type
+        # The type of the key service. Valid values: KMS and Base64.
         self.key_service_type = key_service_type
 
     def validate(self):
@@ -54703,7 +59257,15 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigIm
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -54736,7 +59298,16 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigIm
         duration: str = None,
         start: str = None,
     ):
+        # The time range in which the watermark is displayed.
+        # 
+        # *   Valid values: integers and ToEND.
+        # *   Default value: ToEND.
         self.duration = duration
+        # The beginning of the time range in which the watermark is displayed.
+        # 
+        # *   Unit: seconds.
+        # *   Value values: integers.
+        # *   Default value: 0.
         self.start = start
 
     def validate(self):
@@ -54774,12 +59345,66 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigIm
         timeline: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline = None,
         width: str = None,
     ):
+        # The horizontal offset of the watermark relative to the output video. Default value: 0.
+        # 
+        # The following value types are supported:
+        # 
+        # *   Integer: the pixel value of the horizontal offset.
+        # 
+        #     *   Valid values: [8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   Decimal: the ratio of the horizontal offset to the width of the output video.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
         self.dx = dx
+        # The vertical offset of the watermark relative to the output video. Default value: 0.
+        # 
+        # The following value types are supported:
+        # 
+        # *   Integer: the pixel value of the horizontal offset.
+        # 
+        #     *   Valid values: [8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   Decimal: the ratio of the vertical offset to the height of the output video.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
         self.dy = dy
+        # The watermark image file.
         self.file = file
+        # The height of the watermark image in the output video. The following value types are supported:
+        # 
+        # *   Integer: the pixel value of the watermark height.
+        # 
+        #     *   Valid values: [8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   Decimal: the ratio of the watermark height to the height of the output video.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
         self.height = height
+        # The position of the watermark.
+        # 
+        # *   Valid values: TopRight, TopLeft, BottomRight, and BottomLeft.
+        # *   Default value: TopRight.
         self.refer_pos = refer_pos
+        # The time settings of the dynamic watermark.
         self.timeline = timeline
+        # The width of the watermark in the output video. The following value types are supported:
+        # 
+        # *   Integer: the pixel value of the watermark width.
+        # 
+        #     *   Valid values: [8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   Decimal: the ratio of the watermark width to the width of the output video.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
         self.width = width
 
     def validate(self):
@@ -54837,7 +59462,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigIm
         overwrite_params: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -54872,7 +59499,12 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSu
         media: str = None,
         type: str = None,
     ):
+        # The media object. If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported. If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -54906,8 +59538,11 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSu
         file: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile = None,
         format: str = None,
     ):
+        # The file encoding format.
         self.char_enc = char_enc
+        # The subtitle file.
         self.file = file
+        # The format of the subtitle file.
         self.format = format
 
     def validate(self):
@@ -54946,7 +59581,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSu
         overwrite_params: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -54989,15 +59626,43 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTe
         left: str = None,
         top: str = None,
     ):
+        # Specifies whether to the font size based on the output video dimensions.
+        # 
+        # *   true: false
+        # *   default: false
         self.adaptive = adaptive
+        # The outline color of the text watermark. Default value: black. For more information, see BorderColor.
         self.border_color = border_color
+        # The outline width of the text watermark.
+        # 
+        # *   Default value: 0.
+        # *   Valid values: (0,4096].
         self.border_width = border_width
+        # The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
         self.content = content
+        # The transparency of the text.
+        # 
+        # *   Valid values: (0,1].
+        # *   Default value: 1.
         self.font_alpha = font_alpha
+        # The color of the text.
         self.font_color = font_color
+        # The font of the text. Default value: SimSun.
         self.font_name = font_name
+        # The size of the text.
+        # 
+        # *   Default value: 16.
+        # *   Valid values: (4,120).
         self.font_size = font_size
+        # The left margin of the text watermark.
+        # 
+        # *   Default value: 0.
+        # *   Valid values: [0,4096].
         self.left = left
+        # The top margin of the text.
+        # 
+        # *   Default value: 0.
+        # *   Valid values: [0,4096].
         self.top = top
 
     def validate(self):
@@ -55062,7 +59727,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTe
         overwrite_params: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -55099,9 +59766,13 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
         method: str = None,
         true_peak: str = None,
     ):
+        # The output volume.
         self.integrated_loudness_target = integrated_loudness_target
+        # The volume range.
         self.loudness_range_target = loudness_range_target
+        # The volume adjustment method. Valid values:
         self.method = method
+        # The peak volume.
         self.true_peak = true_peak
 
     def validate(self):
@@ -55147,12 +59818,26 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
         samplerate: str = None,
         volume: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Valid values: [8,1000].
+        # *   Unit: Kbit/s.
+        # *   Default value: 128.
         self.bitrate = bitrate
+        # The number of sound channels. Default value: 2.
         self.channels = channels
+        # The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
         self.codec = codec
+        # The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
         self.profile = profile
+        # Specifies whether to delete the audio stream.
         self.remove = remove
+        # The sampling rate.
+        # 
+        # *   Valid values: 22050, 32000, 44100, 48000, and 96000. Default value: 44100.
+        # *   Unit: Hz.
         self.samplerate = samplerate
+        # The volume configurations.
         self.volume = volume
 
     def validate(self):
@@ -55206,6 +59891,7 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
         self,
         format: str = None,
     ):
+        # The container format.
         self.format = format
 
     def validate(self):
@@ -55234,7 +59920,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
         duration: str = None,
         force_seg_time: str = None,
     ):
+        # The segment length.
         self.duration = duration
+        # The forced segmentation point in time.
         self.force_seg_time = force_seg_time
 
     def validate(self):
@@ -55266,6 +59954,7 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
         self,
         segment: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment = None,
     ):
+        # The segment settings.
         self.segment = segment
 
     def validate(self):
@@ -55302,13 +59991,64 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
         is_check_video_bitrate_fail: str = None,
         trans_mode: str = None,
     ):
+        # The method that is used to adjust the resolution. This parameter takes effect only if both the Width and Height parameters are specified. You can use this parameter together with the LongShortMode parameter.
+        # 
+        # Valid values: rescale, crop, pad, and none.
+        # 
+        # Default value: none.
         self.adj_dar_method = adj_dar_method
+        # Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the bitrate of the input audio is used for transcoding.
+        # *   false: does not check the video resolution.
+        # 
+        # Default value:
+        # 
+        # *   If this parameter is not specified and the codec of the output audio is different from that of the input audio, the default value is false.
+        # *   If this parameter is not specified and the codec of the output audio is the same as that of the input audio, the default value is true.
         self.is_check_audio_bitrate = is_check_audio_bitrate
+        # Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the transcoding job fails.
+        # *   false: does not check the video resolution.
+        # 
+        # Default value: false.
         self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        # Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the width or height of the input video is less than that of the output video, the resolution of the input video is used for transcoding.
+        # *   false: does not check the video resolution.
+        # 
+        # Default value: false.
         self.is_check_reso = is_check_reso
+        # Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the width or height of the input video is less than that of the output video, the transcoding job fails.
+        # *   false: does not check the video resolution.
+        # 
+        # Default value: false.
         self.is_check_reso_fail = is_check_reso_fail
+        # Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the bitrate of the input video is used for transcoding.
+        # *   false: does not check the video resolution.
+        # 
+        # Default value: false.
         self.is_check_video_bitrate = is_check_video_bitrate
+        # Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the transcoding job fails.
+        # *   false: does not check the video resolution.
+        # 
+        # Default value: false.
         self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        # The video transcoding mode. Valid values:
+        # 
+        # *   onepass: You can set this parameter to onepass if the Bitrate parameter is set to ABR. The encoding speed of this mode is faster than that of the twopass mode.
+        # *   twopass: You can set this parameter to twopass if the Bitrate parameter is set to VBR. The encoding speed of this mode is slower than that of the onepass mode.
+        # *   CBR: the constant bitrate mode.
+        # 
+        # Default value: onepass.
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -55381,23 +60121,86 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
         scan_mode: str = None,
         width: str = None,
     ):
+        # The maximum ABR. This parameter takes effect only for Narrowband HD 1.0.
+        # 
+        # *   Valid values: [10,50000].
+        # *   Unit: Kbit/s.
         self.abr_max = abr_max
+        # The average bitrate of the video.
+        # 
+        # *   Valid values: [10,50000].
+        # *   Unit: Kbit/s.
         self.bitrate = bitrate
+        # The buffer size.
+        # 
+        # *   Valid values: [1000,128000].
+        # *   Default value: 6000.
+        # *   Unit: KB.
         self.bufsize = bufsize
+        # The encoding format.
         self.codec = codec
+        # The constant rate factor.
+        # 
+        # *   Valid values: [0,51].
+        # *   Default value: 23 if the encoding format is H.264, or Default value when the Codec parameter is set to H.265: 26.
+        # 
+        # If this parameter is specified, the value of Bitrate becomes invalid.
         self.crf = crf
+        # The method of video cropping. Valid values:
+        # 
+        # *   border: automatically detects and removes black bars.
+        # *   A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
         self.crop = crop
+        # The frame rate.
+        # 
+        # *   Valid values: (0,60].
+        # *   The value is 60 if the frame rate of the input video exceeds 60.
+        # *   Default value: the frame rate of the input video.
         self.fps = fps
+        # The maximum number of frames between two keyframes.
+        # 
+        # *   Valid values: [1,1080000].
+        # *   Default value: 250.
         self.gop = gop
+        # The height of the output video.
+        # 
+        # *   Valid values: [128,4096].
+        # *   Unit: pixels.
+        # *   Default value: the height of the input video.
         self.height = height
+        # Specifies whether to enable the auto-rotate screen feature.
         self.long_short_mode = long_short_mode
+        # The maximum bitrate of the output video.
+        # 
+        # *   Valid values: [10,50000].
+        # *   Unit: Kbit/s.
         self.maxrate = maxrate
+        # The black bars added to the video.
+        # 
+        # *   Format: width:height:left:top.
+        # *   Example: 1280:800:0:140.
         self.pad = pad
+        # The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
         self.preset = preset
+        # The encoding profile. Valid values: baseline, main, and high.
+        # 
+        # *   baseline: applicable to mobile devices.
+        # *   main: applicable to standard-definition devices.
+        # *   high: applicable to high-definition devices.
+        # 
+        # Default value: high.
         self.profile = profile
+        # Specifies whether to remove the video.
         self.remove = remove
+        # The scan mode. Valid values: interlaced and progressive.
         self.scan_mode = scan_mode
+        # The width of the output video.
+        # 
+        # *   Valid values: [128,4096].
+        # *   Unit: pixels.
+        # *   Default value: the width of the input video.
         self.width = width
 
     def validate(self):
@@ -55497,10 +60300,15 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
         trans_config: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig = None,
         video: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo = None,
     ):
+        # The audio settings.
         self.audio = audio
+        # The encapsulation format settings.
         self.container = container
+        # The encapsulation settings.
         self.mux_config = mux_config
+        # The conditional transcoding configurations.
         self.trans_config = trans_config
+        # The video settings.
         self.video = video
 
     def validate(self):
@@ -55559,7 +60367,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
         overwrite_params: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -55598,11 +60408,17 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig(T
         text_watermarks: List[SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks] = None,
         transcode: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode = None,
     ):
+        # The multi-input stream merge configuration.
         self.combine_configs = combine_configs
+        # The encryption settings.
         self.encryption = encryption
+        # The watermark configuration of an image.
         self.image_watermarks = image_watermarks
+        # The subtitle configuration.
         self.subtitles = subtitles
+        # The configurations of the text watermark.
         self.text_watermarks = text_watermarks
+        # The transcoding configuration.
         self.transcode = transcode
 
     def validate(self):
@@ -55692,7 +60508,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroup(TeaModel):
         output: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput = None,
         process_config: SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig = None,
     ):
+        # The output file configuration.
         self.output = output
+        # The job processing configuration.
         self.process_config = process_config
 
     def validate(self):
@@ -55730,7 +60548,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobScheduleConfig(TeaModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
 
     def validate(self):
@@ -55764,8 +60584,20 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup
         media: str = None,
         type: str = None,
     ):
+        # The URL of the input stream:
+        # 
+        # *   This parameter takes effect only when Type is set to Media. You can select a specific file within the media asset as an input.
+        # *   The system checks whether the input URL exists within the media asset.
         self.input_url = input_url
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -55815,20 +60647,35 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMet
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The sound channel layout.
         self.channel_layout = channel_layout
+        # The number of sound channels.
         self.channels = channels
+        # The name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The encoding format.
         self.codec_name = codec_name
+        # The encoder tag.
         self.codec_tag = codec_tag
+        # The name of the encoder tag.
         self.codec_tag_string = codec_tag_string
+        # The time base of the encoder.
         self.codec_time_base = codec_time_base
+        # The duration of the stream. Unit: seconds.
         self.duration = duration
+        # The sequence number of the stream.
         self.index = index
+        # The language of the stream.
         self.lang = lang
+        # The sample format.
         self.sample_fmt = sample_fmt
+        # The sampling rate. Unit: Hz.
         self.sample_rate = sample_rate
+        # The start time of the stream.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -55923,17 +60770,29 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMet
         region: str = None,
         width: str = None,
     ):
+        # The video bitrate.
         self.bitrate = bitrate
+        # The duration of the video. Unit: seconds.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size. Unit: bytes.
         self.file_size = file_size
+        # The state of the file.
         self.file_status = file_status
+        # The file type. Valid values: source_file and transcode_file.
         self.file_type = file_type
+        # The URL of the file.
         self.file_url = file_url
+        # The name of the video format.
         self.format_name = format_name
+        # The height of the output video.
         self.height = height
+        # The ID of the media asset.
         self.media_id = media_id
+        # The region in which the file resides.
         self.region = region
+        # The width of the output video.
         self.width = width
 
     def validate(self):
@@ -56027,28 +60886,55 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMet
         time_base: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bit_rate = bit_rate
+        # The name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The encoding format.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The time base of the encoder.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio.
         self.dar = dar
+        # The duration of the stream. Unit: seconds.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+        # 
+        # *   0: The stream contains no B-frames.
+        # *   1: The stream contains one B-frame.
+        # *   2: The stream contains multiple consecutive B-frames.
         self.has_bframes = has_bframes
+        # The height of the output video.
         self.height = height
+        # The sequence number of the stream.
         self.index = index
+        # The language of the stream.
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The encoder profile.
         self.profile = profile
+        # The rotation angle of the video image. Valid values: 0, 90, 180, and 270. Default value: 0.
         self.rotate = rotate
+        # The aspect ratio of the area from which the sampling points are collected.
         self.sar = sar
+        # The start time of the stream.
         self.start_time = start_time
+        # The time base.
         self.time_base = time_base
+        # The width of the output video.
         self.width = width
 
     def validate(self):
@@ -56166,8 +61052,11 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMet
         file_basic_info: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo = None,
         video_stream_info_list: List[SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaVideoStreamInfoList] = None,
     ):
+        # The information about the audio stream.
         self.audio_stream_info_list = audio_stream_info_list
+        # The basic file information.
         self.file_basic_info = file_basic_info
+        # The information about the video stream.
         self.video_stream_info_list = video_stream_info_list
 
     def validate(self):
@@ -56225,8 +61114,29 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput(Tea
         output_url: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The URL of the output stream.\\
+        # This parameter takes effect only when Type is set to Media. You can select a specific file within the media asset as an output.\\
+        # Supported placeholders:
+        # 
+        # *   {MediaId}: the ID of the media asset.
+        # *   {JobId}: the ID of the transcoding subjob.
+        # *   {MediaBucket}: the bucket to which the media asset belongs.
+        # *   {ExtName}: the file suffix, which uses the output format of the transcoding template.
+        # *   {DestMd5}: the MD5 value of the transcoded output file.\\
+        #     Notes:
+        # 
+        # 1.  This parameter must contain the {MediaId} and {JobId} placeholders.
+        # 2.  The output bucket is the same as the bucket to which the media asset belongs.
         self.output_url = output_url
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -56265,10 +61175,16 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         start: float = None,
         video_index: str = None,
     ):
+        # The audio stream index.
+        # 
         # This parameter is required.
         self.audio_index = audio_index
+        # The duration of the input stream. The default value is the duration of the video.
         self.duration = duration
+        # The start time of the input stream. Default value: 0.
         self.start = start
+        # The video stream index.
+        # 
         # This parameter is required.
         self.video_index = video_index
 
@@ -56312,9 +61228,13 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         encrypt_type: str = None,
         key_service_type: str = None,
     ):
+        # The ciphertext of HLS encryption.
         self.cipher_text = cipher_text
+        # The address of the decryption service for HLS encryption.
         self.decrypt_key_uri = decrypt_key_uri
+        # Specifies the encryption type.
         self.encrypt_type = encrypt_type
+        # The type of the key service. Valid values: KMS and Base64.
         self.key_service_type = key_service_type
 
     def validate(self):
@@ -56355,7 +61275,15 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -56388,7 +61316,16 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         duration: str = None,
         start: str = None,
     ):
+        # The time range in which the watermark is displayed.
+        # 
+        # *   Valid values: integers and ToEND.
+        # *   Default value: ToEND.
         self.duration = duration
+        # The beginning of the time range in which the watermark is displayed.
+        # 
+        # *   Unit: seconds.
+        # *   Value values: integers.
+        # *   Default value: 0.
         self.start = start
 
     def validate(self):
@@ -56426,12 +61363,66 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         timeline: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsTimeline = None,
         width: str = None,
     ):
+        # The horizontal offset of the watermark relative to the output video. Default value: 0.
+        # 
+        # The following value types are supported:
+        # 
+        # *   Integer: the pixel value of the horizontal offset.
+        # 
+        #     *   Valid values: [8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   Decimal: the ratio of the horizontal offset to the width of the output video.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
         self.dx = dx
+        # The vertical offset of the watermark relative to the output video. Default value: 0.
+        # 
+        # The following value types are supported:
+        # 
+        # *   Integer: the pixel value of the horizontal offset.
+        # 
+        #     *   Valid values: [8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   Decimal: the ratio of the vertical offset to the height of the output video.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
         self.dy = dy
+        # The watermark image file.
         self.file = file
+        # The height of the watermark image in the output video. The following value types are supported:
+        # 
+        # *   Integer: the pixel value of the watermark height.
+        # 
+        #     *   Valid values: [8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   Decimal: the ratio of the watermark height to the height of the output video.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
         self.height = height
+        # The position of the watermark.
+        # 
+        # *   Valid values: TopRight, TopLeft, BottomRight, and BottomLeft.
+        # *   Default value: TopRight.
         self.refer_pos = refer_pos
+        # The time settings of the dynamic watermark.
         self.timeline = timeline
+        # The width of the watermark in the output video. The following value types are supported:
+        # 
+        # *   Integer: the pixel value of the watermark width.
+        # 
+        #     *   Valid values: [8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   Decimal: the ratio of the watermark width to the width of the output video.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
         self.width = width
 
     def validate(self):
@@ -56489,7 +61480,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         overwrite_params: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -56524,7 +61517,15 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         media: str = None,
         type: str = None,
     ):
+        # The media object.
+        # 
+        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # *   If Type is set to Media, set this parameter to the ID of a media asset.
         self.media = media
+        # The type of the media object. Valid values:
+        # 
+        # *   OSS: an OSS object.
+        # *   Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -56558,8 +61559,11 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         file: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile = None,
         format: str = None,
     ):
+        # The file encoding format.
         self.char_enc = char_enc
+        # The subtitle file.
         self.file = file
+        # The format of the subtitle file.
         self.format = format
 
     def validate(self):
@@ -56598,7 +61602,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         overwrite_params: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -56641,15 +61647,40 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         left: str = None,
         top: str = None,
     ):
+        # Specifies whether to the font size based on the output video dimensions. true / false, default: false
         self.adaptive = adaptive
+        # The outline color of the text watermark. Default value: black. For more information, see BorderColor.
         self.border_color = border_color
+        # The outline width of the text watermark.
+        # 
+        # *   Default value: 0.
+        # *   Valid values: (0,4096].
         self.border_width = border_width
+        # The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
         self.content = content
+        # The transparency of the text.
+        # 
+        # *   Valid values: (0,1].
+        # *   Default value: 1.
         self.font_alpha = font_alpha
+        # The color of the text.
         self.font_color = font_color
+        # The font of the text. Default value: SimSun.
         self.font_name = font_name
+        # The size of the text.
+        # 
+        # *   Default value: 16.
+        # *   Valid values: (4,120).
         self.font_size = font_size
+        # The left margin of the text watermark.
+        # 
+        # *   Default value: 0.
+        # *   Valid values: [0,4096].
         self.left = left
+        # The top margin of the text.
+        # 
+        # *   Default value: 0.
+        # *   Valid values: [0,4096].
         self.top = top
 
     def validate(self):
@@ -56714,7 +61745,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         overwrite_params: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -56751,9 +61784,13 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         method: str = None,
         true_peak: str = None,
     ):
+        # The output volume.
         self.integrated_loudness_target = integrated_loudness_target
+        # The volume range.
         self.loudness_range_target = loudness_range_target
+        # The volume adjustment method. Valid values:
         self.method = method
+        # The peak volume.
         self.true_peak = true_peak
 
     def validate(self):
@@ -56799,12 +61836,27 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         samplerate: str = None,
         volume: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Valid values: [8,1000].
+        # *   Unit: Kbit/s.
+        # *   Default value: 128.
         self.bitrate = bitrate
+        # The number of sound channels. Default value: 2.
         self.channels = channels
+        # The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
         self.codec = codec
+        # The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
         self.profile = profile
+        # Specifies whether to delete the audio stream.
         self.remove = remove
+        # The sampling rate.
+        # 
+        # *   Default value: 44100.
+        # *   Valid values: 22050, 32000, 44100, 48000, and 96000.
+        # *   Unit: Hz.
         self.samplerate = samplerate
+        # The volume configurations.
         self.volume = volume
 
     def validate(self):
@@ -56858,6 +61910,7 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         self,
         format: str = None,
     ):
+        # The container format.
         self.format = format
 
     def validate(self):
@@ -56886,7 +61939,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         duration: str = None,
         force_seg_time: str = None,
     ):
+        # The segment length.
         self.duration = duration
+        # The forced segmentation point in time.
         self.force_seg_time = force_seg_time
 
     def validate(self):
@@ -56918,6 +61973,7 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         self,
         segment: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment = None,
     ):
+        # The segment settings.
         self.segment = segment
 
     def validate(self):
@@ -56954,13 +62010,52 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         is_check_video_bitrate_fail: str = None,
         trans_mode: str = None,
     ):
+        # The method that is used to adjust the resolution. This parameter takes effect only if both the Width and Height parameters are specified. You can use this parameter together with the LongShortMode parameter.
+        # 
+        # Valid values: rescale, crop, pad, and none.
+        # 
+        # Default value: none.
         self.adj_dar_method = adj_dar_method
+        # Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the bitrate of the input audio is used for transcoding.
+        # *   false: does not check the video resolution.
+        # 
+        # Default values:
+        # 
+        # *   If this parameter is not specified and the codec of the output audio is different from that of the input audio, the default value is false.
+        # *   If this parameter is not specified and the codec of the output audio is the same as that of the input audio, the default value is true.
         self.is_check_audio_bitrate = is_check_audio_bitrate
+        # Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the transcoding job fails.
+        # *   false: does not check the video resolution. This is the default value.
         self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        # Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the width or height of the input video is less than that of the output video, the resolution of the input video is used for transcoding.
+        # *   false: does not check the video resolution. This is the default value.
         self.is_check_reso = is_check_reso
+        # Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the width or height of the input video is less than that of the output video, the transcoding job fails.
+        # *   false: does not check the video resolution. This is the default value.
         self.is_check_reso_fail = is_check_reso_fail
+        # Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the bitrate of the input video is used for transcoding.
+        # *   false: does not check the video resolution. This is the default value.
         self.is_check_video_bitrate = is_check_video_bitrate
+        # Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+        # 
+        # *   true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the transcoding job fails.
+        # *   false: does not check the video resolution. This is the default value.
         self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        # The video transcoding mode. Valid values:
+        # 
+        # *   onepass: You can set this parameter to onepass if the Bitrate parameter is set to ABR. This is the default value. The encoding speed of this mode is faster than that of the twopass mode.
+        # *   twopass: You can set this parameter to twopass if the Bitrate parameter is set to VBR. The encoding speed of this mode is slower than that of the onepass mode.
+        # *   CBR: the constant bitrate mode.
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -57033,23 +62128,80 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         scan_mode: str = None,
         width: str = None,
     ):
+        # The maximum ABR. This parameter takes effect only for Narrowband HD 1.0. Valid values: [10,50000]. Unit: Kbit/s.
         self.abr_max = abr_max
+        # The average bitrate of the video.
+        # 
+        # *   Valid values: [10,50000].
+        # *   Unit: Kbit/s.
         self.bitrate = bitrate
+        # The buffer size.
+        # 
+        # *   Valid values: [1000,128000].
+        # *   Default value: 6000.
+        # *   Unit: KB.
         self.bufsize = bufsize
+        # The encoding format.
         self.codec = codec
+        # The constant rate factor.
+        # 
+        # *   Valid values: [0,51].
+        # *   Default value: 23 if the encoding format is H.264, or Default value when the Codec parameter is set to H.265: 26.
+        # 
+        # If this parameter is specified, the value of Bitrate becomes invalid.
         self.crf = crf
+        # The method of video cropping. Valid values:
+        # 
+        # *   border: automatically detects and removes black bars.
+        # *   A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
         self.crop = crop
+        # The frame rate.
+        # 
+        # *   Valid values: (0,60].
+        # *   The value is 60 if the frame rate of the input video exceeds 60.
+        # *   Default value: the frame rate of the input video.
         self.fps = fps
+        # The maximum number of frames between two keyframes.
+        # 
+        # *   Valid values: [1,1080000].
+        # *   Default value: 250.
         self.gop = gop
+        # The height of the output video.
+        # 
+        # *   Valid values: [128,4096].
+        # *   Unit: pixels.
+        # *   Default value: the height of the input video.
         self.height = height
+        # Specifies whether to enable the auto-rotate screen feature.
         self.long_short_mode = long_short_mode
+        # The maximum bitrate of the output video. Valid values: [10,50000]. Unit: Kbit/s.
         self.maxrate = maxrate
+        # The black bars added to the video.
+        # 
+        # *   Format: width:height:left:top.
+        # *   Example: 1280:800:0:140.
         self.pad = pad
+        # The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
         self.preset = preset
+        # The encoding profile. Valid values: baseline, main, and high.
+        # 
+        # *   baseline: applicable to mobile devices.
+        # *   main: applicable to standard-definition devices.
+        # *   high: applicable to high-definition devices.
+        # 
+        # Default value: high.
         self.profile = profile
+        # Specifies whether to remove the video.
         self.remove = remove
+        # The scan mode. Valid values: interlaced and progressive.
         self.scan_mode = scan_mode
+        # The width of the output video.
+        # 
+        # *   Valid values: [128,4096].
+        # *   Unit: pixels.
+        # *   Default value: the width of the input video.
         self.width = width
 
     def validate(self):
@@ -57149,10 +62301,15 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         trans_config: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig = None,
         video: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo = None,
     ):
+        # The audio settings.
         self.audio = audio
+        # The encapsulation format settings.
         self.container = container
+        # The encapsulation settings.
         self.mux_config = mux_config
+        # The conditional transcoding configurations.
         self.trans_config = trans_config
+        # The video settings.
         self.video = video
 
     def validate(self):
@@ -57211,7 +62368,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         overwrite_params: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams = None,
         template_id: str = None,
     ):
+        # The parameters that are used to overwrite the corresponding parameters of the template.
         self.overwrite_params = overwrite_params
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -57250,11 +62409,17 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         text_watermarks: List[SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks] = None,
         transcode: SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode = None,
     ):
+        # The multi-input stream merge configuration.
         self.combine_configs = combine_configs
+        # The encryption settings.
         self.encryption = encryption
+        # The watermark configuration of an image.
         self.image_watermarks = image_watermarks
+        # The subtitle configuration.
         self.subtitles = subtitles
+        # The configurations of the text watermark.
         self.text_watermarks = text_watermarks
+        # The transcoding configuration.
         self.transcode = transcode
 
     def validate(self):
@@ -57344,7 +62509,9 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleCo
         pipeline_id: str = None,
         priority: int = None,
     ):
+        # The ID of the MPS queue to which the job was submitted.
         self.pipeline_id = pipeline_id
+        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
         self.priority = priority
 
     def validate(self):
@@ -57391,21 +62558,43 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList(TeaModel)
         submit_time: str = None,
         user_data: str = None,
     ):
+        # The time when the job was created.
         self.create_time = create_time
+        # The time when the job was complete.
         self.finish_time = finish_time
+        # The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
         self.input_group = input_group
+        # The subjob ID.
         self.job_id = job_id
+        # The index number of the subjob in the entire job.
         self.job_index = job_index
+        # The job name.
         self.name = name
+        # The media information about the video generated by the job.
         self.out_file_meta = out_file_meta
+        # The output file configuration.
         self.output = output
+        # The main job ID.
         self.parent_job_id = parent_job_id
+        # The transcoding configuration.
         self.process_config = process_config
+        # The ID of the request that submitted the job.
         self.request_id = request_id
+        # The scheduling information about the job.
         self.schedule_config = schedule_config
+        # The state of the transcoding job. Valid values:
+        # 
+        # *   Init: The job is submitted.
+        # *   Processing: The job is in progress.
+        # *   Success: The job is successful.
+        # *   Fail: The job failed.
+        # *   Deleted: The job is deleted.
         self.status = status
+        # The job submission result.
         self.submit_result_json = submit_result_json
+        # The time when the job was submitted.
         self.submit_time = submit_time
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -57527,20 +62716,35 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJob(TeaModel):
         trigger_source: str = None,
         user_data: str = None,
     ):
+        # The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.finish_time = finish_time
+        # The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
         self.input_group = input_group
+        # The number of subjobs.
         self.job_count = job_count
+        # The job name.
         self.name = name
+        # The output group of the job.
         self.output_group = output_group
+        # The main job ID.
         self.parent_job_id = parent_job_id
+        # The completion percentage of the job.
         self.percent = percent
+        # The ID of the request that submitted the job.
         self.request_id = request_id
+        # The scheduling configuration of the job.
         self.schedule_config = schedule_config
+        # The state of the job. Success: At least one of the subjobs is successful. Fail: All subjobs failed.
         self.status = status
+        # The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.submit_time = submit_time
+        # The list of subjobs.
         self.transcode_job_list = transcode_job_list
+        # The source of the job. Valid values: API, WorkFlow, and Console.
         self.trigger_source = trigger_source
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -57654,6 +62858,7 @@ class SubmitTranscodeJobResponseBody(TeaModel):
         request_id: str = None,
         transcode_parent_job: SubmitTranscodeJobResponseBodyTranscodeParentJob = None,
     ):
+        # The request ID.
         self.request_id = request_id
         # TranscodeParentJobWithSubJobDTO
         self.transcode_parent_job = transcode_parent_job
@@ -57752,7 +62957,8 @@ class SubmitVideoTranslationJobRequest(TeaModel):
         self.output_config = output_config
         # *   The job title.
         self.title = title
-        # *   The user data.
+        # *   The user-defined data.
+        # *   The data must be in the JSON format, and can be up to 512 characters in length.
         self.user_data = user_data
 
     def validate(self):
@@ -58078,13 +63284,38 @@ class UpdateAvatarTrainingJobRequest(TeaModel):
         transparent: bool = None,
         video: str = None,
     ):
+        # *   The description of the digital human.
+        # *   The description can be up to 1,000 characters in length.
         self.avatar_description = avatar_description
+        # *   The name of the digital human.
+        # *   The name can be up to seven characters in length.
         self.avatar_name = avatar_name
+        # The ID of the digital human training job.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # *   The media asset ID of the portrait image.
+        # *   The value must be 32 characters in length.
         self.portrait = portrait
+        # *   The thumbnail URL.
+        # *   After the digital human is trained, the thumbnail is uploaded to this URL.
+        # *   The URL must be a valid public Object Storage Service (OSS) URL.
+        # *   The URL can be up to 512 characters in length.
+        # *   The URL cannot be updated after the digital human is trained.
         self.thumbnail = thumbnail
+        # *   Indicates whether the input video supports alpha channels.
+        # 
+        # *   You can modify this parameter only if the job is in the Init or Fail state.
+        # 
+        #     **\
+        # 
+        #     **Note**: Make sure that the current settings are consistent with those of the submitted training video. Otherwise, the digital human may malfunction.
         self.transparent = transparent
+        # *   The ID of the video used for training.
+        # *   The value must be 32 characters in length.
+        # *   Supported formats: MP4, MOV, and WebM.
+        # *   The duration of the video must be 5 to 15 minutes.
+        # *   The resolution of the video must be 1920×1080 or 1080×1920.
         self.video = video
 
     def validate(self):
@@ -58136,6 +63367,7 @@ class UpdateAvatarTrainingJobResponseBodyData(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the digital human training job.
         self.job_id = job_id
 
     def validate(self):
@@ -58165,8 +63397,14 @@ class UpdateAvatarTrainingJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -58359,8 +63597,12 @@ class UpdateCustomTemplateRequest(TeaModel):
         template_config: str = None,
         template_id: str = None,
     ):
+        # The template name.
         self.name = name
+        # The [template parameters](https://help.aliyun.com/document_detail/448291.html).
         self.template_config = template_config
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -58398,7 +63640,9 @@ class UpdateCustomTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -58472,7 +63716,10 @@ class UpdateCustomizedVoiceRequest(TeaModel):
         demo_audio_media_id: str = None,
         voice_id: str = None,
     ):
+        # The media asset ID of the sample audio file.
         self.demo_audio_media_id = demo_audio_media_id
+        # The voice ID.
+        # 
         # This parameter is required.
         self.voice_id = voice_id
 
@@ -58506,7 +63753,12 @@ class UpdateCustomizedVoiceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -58591,7 +63843,7 @@ class UpdateEditingProjectRequest(TeaModel):
         # *   Reserving
         # *   ReservationCanceled
         self.business_status = business_status
-        # The material parameter corresponding to the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information<props="china">, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use an advanced template](https://help.aliyun.com/document_detail/291418.html).
+        # The material parameter corresponding to the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified.
         self.clips_param = clips_param
         # The thumbnail URL of the online editing project.
         self.cover_url = cover_url
@@ -60143,10 +65395,20 @@ class UpdatePipelineRequest(TeaModel):
         priority: int = None,
         status: str = None,
     ):
+        # The name of the MPS queue.
         self.name = name
+        # The ID of the MPS queue.
+        # 
         # This parameter is required.
         self.pipeline_id = pipeline_id
+        # The priority of the MPS queue. Valid values: 1 to 10.
         self.priority = priority
+        # The state of the MPS queue.
+        # 
+        # Valid values:
+        # 
+        # *   Active
+        # *   Paused
         self.status = status
 
     def validate(self):
@@ -60187,7 +65449,9 @@ class UpdatePipelineResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -60446,12 +65710,32 @@ class UpdateTemplateRequest(TeaModel):
         template_id: str = None,
     ):
         self.config = config
+        # The URL of the template thumbnail.
         self.cover_url = cover_url
+        # The name of the online editing template.
         self.name = name
+        # The ID of the preview video.
         self.preview_media = preview_media
+        # The IDs of the materials associated with the template for use by the regular template editor.
         self.related_mediaids = related_mediaids
+        # The source from which the template is modified. Default value: OpenAPI. Valid values:
+        # 
+        # *   AliyunConsole
+        # *   OpenAPI
+        # *   WebSDK
         self.source = source
+        # The template state. Valid values:
+        # 
+        # *   Available: The template is available.
+        # *   Created: The template is created but not ready for use.
+        # *   Uploading: The video is being uploaded.
+        # *   Processing: The advanced template is being processed.
+        # *   UploadFailed: Failed to upload the video.
+        # *   ProcessFailed: Failed to process the advanced template.
+        # 
+        # >  After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
         self.status = status
+        # The ID of the online editing template. You can obtain the template ID in the [Intelligent Media Services (IMS) console](https://ice.console.aliyun.com/production/template/list/common) or the response parameters of the [AddTemplate](https://help.aliyun.com/document_detail/441161.html) operation.
         self.template_id = template_id
 
     def validate(self):
@@ -60507,6 +65791,7 @@ class UpdateTemplateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
