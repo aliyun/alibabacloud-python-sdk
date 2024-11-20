@@ -2458,15 +2458,15 @@ class Client(OpenApiClient):
         @return: Id2MetaVerifyResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.identify_num):
-            query['IdentifyNum'] = request.identify_num
+            body['IdentifyNum'] = request.identify_num
         if not UtilClient.is_unset(request.param_type):
-            query['ParamType'] = request.param_type
+            body['ParamType'] = request.param_type
         if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
+            body['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='Id2MetaVerify',
@@ -2497,15 +2497,15 @@ class Client(OpenApiClient):
         @return: Id2MetaVerifyResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.identify_num):
-            query['IdentifyNum'] = request.identify_num
+            body['IdentifyNum'] = request.identify_num
         if not UtilClient.is_unset(request.param_type):
-            query['ParamType'] = request.param_type
+            body['ParamType'] = request.param_type
         if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
+            body['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='Id2MetaVerify',
@@ -3054,17 +3054,17 @@ class Client(OpenApiClient):
         @return: Mobile3MetaDetailVerifyResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.identify_num):
-            query['IdentifyNum'] = request.identify_num
+            body['IdentifyNum'] = request.identify_num
         if not UtilClient.is_unset(request.mobile):
-            query['Mobile'] = request.mobile
+            body['Mobile'] = request.mobile
         if not UtilClient.is_unset(request.param_type):
-            query['ParamType'] = request.param_type
+            body['ParamType'] = request.param_type
         if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
+            body['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='Mobile3MetaDetailVerify',
@@ -3095,17 +3095,17 @@ class Client(OpenApiClient):
         @return: Mobile3MetaDetailVerifyResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.identify_num):
-            query['IdentifyNum'] = request.identify_num
+            body['IdentifyNum'] = request.identify_num
         if not UtilClient.is_unset(request.mobile):
-            query['Mobile'] = request.mobile
+            body['Mobile'] = request.mobile
         if not UtilClient.is_unset(request.param_type):
-            query['ParamType'] = request.param_type
+            body['ParamType'] = request.param_type
         if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
+            body['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='Mobile3MetaDetailVerify',
@@ -3162,17 +3162,17 @@ class Client(OpenApiClient):
         @return: Mobile3MetaSimpleVerifyResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.identify_num):
-            query['IdentifyNum'] = request.identify_num
+            body['IdentifyNum'] = request.identify_num
         if not UtilClient.is_unset(request.mobile):
-            query['Mobile'] = request.mobile
+            body['Mobile'] = request.mobile
         if not UtilClient.is_unset(request.param_type):
-            query['ParamType'] = request.param_type
+            body['ParamType'] = request.param_type
         if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
+            body['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='Mobile3MetaSimpleVerify',
@@ -3203,17 +3203,17 @@ class Client(OpenApiClient):
         @return: Mobile3MetaSimpleVerifyResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.identify_num):
-            query['IdentifyNum'] = request.identify_num
+            body['IdentifyNum'] = request.identify_num
         if not UtilClient.is_unset(request.mobile):
-            query['Mobile'] = request.mobile
+            body['Mobile'] = request.mobile
         if not UtilClient.is_unset(request.param_type):
-            query['ParamType'] = request.param_type
+            body['ParamType'] = request.param_type
         if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
+            body['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='Mobile3MetaSimpleVerify',
@@ -3270,13 +3270,13 @@ class Client(OpenApiClient):
         @return: MobileDetectResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.mobiles):
-            query['Mobiles'] = request.mobiles
+            body['Mobiles'] = request.mobiles
         if not UtilClient.is_unset(request.param_type):
-            query['ParamType'] = request.param_type
+            body['ParamType'] = request.param_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='MobileDetect',
@@ -3307,13 +3307,13 @@ class Client(OpenApiClient):
         @return: MobileDetectResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.mobiles):
-            query['Mobiles'] = request.mobiles
+            body['Mobiles'] = request.mobiles
         if not UtilClient.is_unset(request.param_type):
-            query['ParamType'] = request.param_type
+            body['ParamType'] = request.param_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='MobileDetect',
@@ -3370,13 +3370,13 @@ class Client(OpenApiClient):
         @return: MobileOnlineStatusResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.mobile):
-            query['Mobile'] = request.mobile
+            body['Mobile'] = request.mobile
         if not UtilClient.is_unset(request.param_type):
-            query['ParamType'] = request.param_type
+            body['ParamType'] = request.param_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='MobileOnlineStatus',
@@ -3407,13 +3407,13 @@ class Client(OpenApiClient):
         @return: MobileOnlineStatusResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.mobile):
-            query['Mobile'] = request.mobile
+            body['Mobile'] = request.mobile
         if not UtilClient.is_unset(request.param_type):
-            query['ParamType'] = request.param_type
+            body['ParamType'] = request.param_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='MobileOnlineStatus',
@@ -3470,13 +3470,13 @@ class Client(OpenApiClient):
         @return: MobileOnlineTimeResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.mobile):
-            query['Mobile'] = request.mobile
+            body['Mobile'] = request.mobile
         if not UtilClient.is_unset(request.param_type):
-            query['ParamType'] = request.param_type
+            body['ParamType'] = request.param_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='MobileOnlineTime',
@@ -3507,13 +3507,13 @@ class Client(OpenApiClient):
         @return: MobileOnlineTimeResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.mobile):
-            query['Mobile'] = request.mobile
+            body['Mobile'] = request.mobile
         if not UtilClient.is_unset(request.param_type):
-            query['ParamType'] = request.param_type
+            body['ParamType'] = request.param_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='MobileOnlineTime',

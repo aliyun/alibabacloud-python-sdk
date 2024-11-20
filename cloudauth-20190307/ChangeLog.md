@@ -1,3 +1,23 @@
+2024-11-20 Version: 3.2.2
+- Update API Id2MetaVerify: update param IdentifyNum.
+- Update API Id2MetaVerify: update param ParamType.
+- Update API Id2MetaVerify: update param UserName.
+- Update API Mobile3MetaDetailVerify: update param IdentifyNum.
+- Update API Mobile3MetaDetailVerify: update param Mobile.
+- Update API Mobile3MetaDetailVerify: update param ParamType.
+- Update API Mobile3MetaDetailVerify: update param UserName.
+- Update API Mobile3MetaSimpleVerify: update param IdentifyNum.
+- Update API Mobile3MetaSimpleVerify: update param Mobile.
+- Update API Mobile3MetaSimpleVerify: update param ParamType.
+- Update API Mobile3MetaSimpleVerify: update param UserName.
+- Update API MobileDetect: update param Mobiles.
+- Update API MobileDetect: update param ParamType.
+- Update API MobileOnlineStatus: update param Mobile.
+- Update API MobileOnlineStatus: update param ParamType.
+- Update API MobileOnlineTime: update param Mobile.
+- Update API MobileOnlineTime: update param ParamType.
+
+
 2024-11-19 Version: 3.2.1
 - Update API DescribeFaceGuardRisk: update response param.
 
