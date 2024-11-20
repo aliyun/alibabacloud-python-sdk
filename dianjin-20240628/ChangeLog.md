@@ -1,3 +1,6 @@
+2024-11-20 Version: 1.6.3
+- Generated python 2024-06-28 for DianJin.
+
 2024-11-19 Version: 1.6.2
 - Update API GetQualityCheckTaskResult: update response param.
 
