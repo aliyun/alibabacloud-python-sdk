@@ -9357,10 +9357,16 @@ class CreateWaitingRoomRequestHostNameAndPath(TeaModel):
         path: str = None,
         subdomain: str = None,
     ):
+        # The domain name.
+        # 
         # This parameter is required.
         self.domain = domain
+        # The path.
+        # 
         # This parameter is required.
         self.path = path
+        # The subdomain.
+        # 
         # This parameter is required.
         self.subdomain = subdomain
 
@@ -9413,32 +9419,88 @@ class CreateWaitingRoomRequest(TeaModel):
         total_active_users: str = None,
         waiting_room_type: str = None,
     ):
+        # The name of the custom cookie.
+        # 
         # This parameter is required.
         self.cookie_name = cookie_name
+        # The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
         self.custom_page_html = custom_page_html
+        # The description of the waiting room.
         self.description = description
+        # Specifies whether to disable session renewal. Valid values:
+        # 
+        # *   on
+        # *   off
         self.disable_session_renewal_enable = disable_session_renewal_enable
+        # Specifies whether to enable the waiting room. Valid values:
+        # 
+        # *   on
+        # *   off
+        # 
         # This parameter is required.
         self.enable = enable
+        # The hostname and path.
+        # 
         # This parameter is required.
         self.host_name_and_path = host_name_and_path
+        # Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+        # 
+        # *   on
+        # *   off
         self.json_response_enable = json_response_enable
+        # The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
+        # 
+        # *   enus: English.
+        # *   zhcn: Simplified Chinese.
+        # *   zhhk: Traditional Chinese.
         self.language = language
+        # The name of the waiting room.
+        # 
         # This parameter is required.
         self.name = name
+        # The maximum number of new users per minute.
+        # 
         # This parameter is required.
         self.new_users_per_minute = new_users_per_minute
+        # Specifies whether to queue all requests. Valid values:
+        # 
+        # *   on
+        # *   off
         self.queue_all_enable = queue_all_enable
+        # The queuing method. Valid values:
+        # 
+        # *   random: Users gain access to the origin randomly, regardless of the arrival time.
+        # *   fifo: Users gain access to the origin in order of arrival.
+        # *   passthrough: Users pass through the waiting room and go straight to the origin.
+        # *   reject-all: Users are blocked from reaching the origin.
+        # 
         # This parameter is required.
         self.queuing_method = queuing_method
+        # The HTTP status code to return while a user is in the queue. Valid values:
+        # 
+        # *   200
+        # *   202
+        # *   429
+        # 
         # This parameter is required.
         self.queuing_status_code = queuing_status_code
+        # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        # 
         # This parameter is required.
         self.session_duration = session_duration
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The maximum number of active users.
+        # 
         # This parameter is required.
         self.total_active_users = total_active_users
+        # The type of the waiting room. Valid values:
+        # 
+        # *   default
+        # *   custom
+        # 
         # This parameter is required.
         self.waiting_room_type = waiting_room_type
 
@@ -9555,32 +9617,88 @@ class CreateWaitingRoomShrinkRequest(TeaModel):
         total_active_users: str = None,
         waiting_room_type: str = None,
     ):
+        # The name of the custom cookie.
+        # 
         # This parameter is required.
         self.cookie_name = cookie_name
+        # The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
         self.custom_page_html = custom_page_html
+        # The description of the waiting room.
         self.description = description
+        # Specifies whether to disable session renewal. Valid values:
+        # 
+        # *   on
+        # *   off
         self.disable_session_renewal_enable = disable_session_renewal_enable
+        # Specifies whether to enable the waiting room. Valid values:
+        # 
+        # *   on
+        # *   off
+        # 
         # This parameter is required.
         self.enable = enable
+        # The hostname and path.
+        # 
         # This parameter is required.
         self.host_name_and_path_shrink = host_name_and_path_shrink
+        # Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+        # 
+        # *   on
+        # *   off
         self.json_response_enable = json_response_enable
+        # The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
+        # 
+        # *   enus: English.
+        # *   zhcn: Simplified Chinese.
+        # *   zhhk: Traditional Chinese.
         self.language = language
+        # The name of the waiting room.
+        # 
         # This parameter is required.
         self.name = name
+        # The maximum number of new users per minute.
+        # 
         # This parameter is required.
         self.new_users_per_minute = new_users_per_minute
+        # Specifies whether to queue all requests. Valid values:
+        # 
+        # *   on
+        # *   off
         self.queue_all_enable = queue_all_enable
+        # The queuing method. Valid values:
+        # 
+        # *   random: Users gain access to the origin randomly, regardless of the arrival time.
+        # *   fifo: Users gain access to the origin in order of arrival.
+        # *   passthrough: Users pass through the waiting room and go straight to the origin.
+        # *   reject-all: Users are blocked from reaching the origin.
+        # 
         # This parameter is required.
         self.queuing_method = queuing_method
+        # The HTTP status code to return while a user is in the queue. Valid values:
+        # 
+        # *   200
+        # *   202
+        # *   429
+        # 
         # This parameter is required.
         self.queuing_status_code = queuing_status_code
+        # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        # 
         # This parameter is required.
         self.session_duration = session_duration
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The maximum number of active users.
+        # 
         # This parameter is required.
         self.total_active_users = total_active_users
+        # The type of the waiting room. Valid values:
+        # 
+        # *   default
+        # *   custom
+        # 
         # This parameter is required.
         self.waiting_room_type = waiting_room_type
 
@@ -9673,6 +9791,7 @@ class CreateWaitingRoomResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12749,9 +12868,11 @@ class DescribeDDoSAllEventListResponseBodyDataList(TeaModel):
     def __init__(
         self,
         bps: int = None,
+        coverage: str = None,
         cps: int = None,
         end_time: str = None,
         event_id: str = None,
+        event_result: str = None,
         event_type: str = None,
         pps: int = None,
         qps: int = None,
@@ -12760,9 +12881,11 @@ class DescribeDDoSAllEventListResponseBodyDataList(TeaModel):
         target_id: str = None,
     ):
         self.bps = bps
+        self.coverage = coverage
         self.cps = cps
         self.end_time = end_time
         self.event_id = event_id
+        self.event_result = event_result
         self.event_type = event_type
         self.pps = pps
         self.qps = qps
@@ -12781,12 +12904,16 @@ class DescribeDDoSAllEventListResponseBodyDataList(TeaModel):
         result = dict()
         if self.bps is not None:
             result['Bps'] = self.bps
+        if self.coverage is not None:
+            result['Coverage'] = self.coverage
         if self.cps is not None:
             result['Cps'] = self.cps
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.event_id is not None:
             result['EventId'] = self.event_id
+        if self.event_result is not None:
+            result['EventResult'] = self.event_result
         if self.event_type is not None:
             result['EventType'] = self.event_type
         if self.pps is not None:
@@ -12805,12 +12932,16 @@ class DescribeDDoSAllEventListResponseBodyDataList(TeaModel):
         m = m or dict()
         if m.get('Bps') is not None:
             self.bps = m.get('Bps')
+        if m.get('Coverage') is not None:
+            self.coverage = m.get('Coverage')
         if m.get('Cps') is not None:
             self.cps = m.get('Cps')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('EventId') is not None:
             self.event_id = m.get('EventId')
+        if m.get('EventResult') is not None:
+            self.event_result = m.get('EventResult')
         if m.get('EventType') is not None:
             self.event_type = m.get('EventType')
         if m.get('Pps') is not None:

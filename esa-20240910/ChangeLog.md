@@ -1,3 +1,7 @@
+2024-11-20 Version: 2.4.5
+- Update API DescribeDDoSAllEventList: update response param.
+
+
 2024-11-19 Version: 2.4.4
 - Update API ListRecords: update param Proxied.
 

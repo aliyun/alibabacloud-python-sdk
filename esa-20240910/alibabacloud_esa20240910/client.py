@@ -4117,7 +4117,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateWaitingRoomResponse:
         """
-        @summary 创建等候室
+        @summary Creates a waiting room for a website.
         
         @param tmp_req: CreateWaitingRoomRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4188,7 +4188,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateWaitingRoomResponse:
         """
-        @summary 创建等候室
+        @summary Creates a waiting room for a website.
         
         @param tmp_req: CreateWaitingRoomRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4258,7 +4258,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateWaitingRoomRequest,
     ) -> esa20240910_models.CreateWaitingRoomResponse:
         """
-        @summary 创建等候室
+        @summary Creates a waiting room for a website.
         
         @param request: CreateWaitingRoomRequest
         @return: CreateWaitingRoomResponse
@@ -4271,7 +4271,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateWaitingRoomRequest,
     ) -> esa20240910_models.CreateWaitingRoomResponse:
         """
-        @summary 创建等候室
+        @summary Creates a waiting room for a website.
         
         @param request: CreateWaitingRoomRequest
         @return: CreateWaitingRoomResponse
