@@ -1138,6 +1138,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.stack_arn):
+            query['StackArn'] = request.stack_arn
         if not UtilClient.is_unset(request.stack_group_name):
             query['StackGroupName'] = request.stack_group_name
         if not UtilClient.is_unset(request.tags):
@@ -1216,6 +1218,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.stack_arn):
+            query['StackArn'] = request.stack_arn
         if not UtilClient.is_unset(request.stack_group_name):
             query['StackGroupName'] = request.stack_group_name
         if not UtilClient.is_unset(request.tags):
@@ -6120,6 +6124,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_template_summary_with_options_async(request, runtime)
+
+    def import_stacks_to_stack_group_with_options(
+        self,
+        tmp_req: ros20190910_models.ImportStacksToStackGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.ImportStacksToStackGroupResponse:
+        """
+        @param tmp_req: ImportStacksToStackGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportStacksToStackGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ros20190910_models.ImportStacksToStackGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.operation_preferences):
+            request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_directory_folder_ids):
+            request.resource_directory_folder_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_directory_folder_ids, 'ResourceDirectoryFolderIds', 'json')
+        if not UtilClient.is_unset(tmp_req.stack_arns):
+            request.stack_arns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stack_arns, 'StackArns', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.operation_description):
+            query['OperationDescription'] = request.operation_description
+        if not UtilClient.is_unset(request.operation_preferences_shrink):
+            query['OperationPreferences'] = request.operation_preferences_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_directory_folder_ids_shrink):
+            query['ResourceDirectoryFolderIds'] = request.resource_directory_folder_ids_shrink
+        if not UtilClient.is_unset(request.stack_arns_shrink):
+            query['StackArns'] = request.stack_arns_shrink
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportStacksToStackGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.ImportStacksToStackGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_stacks_to_stack_group_with_options_async(
+        self,
+        tmp_req: ros20190910_models.ImportStacksToStackGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.ImportStacksToStackGroupResponse:
+        """
+        @param tmp_req: ImportStacksToStackGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportStacksToStackGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ros20190910_models.ImportStacksToStackGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.operation_preferences):
+            request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_directory_folder_ids):
+            request.resource_directory_folder_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_directory_folder_ids, 'ResourceDirectoryFolderIds', 'json')
+        if not UtilClient.is_unset(tmp_req.stack_arns):
+            request.stack_arns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stack_arns, 'StackArns', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.operation_description):
+            query['OperationDescription'] = request.operation_description
+        if not UtilClient.is_unset(request.operation_preferences_shrink):
+            query['OperationPreferences'] = request.operation_preferences_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_directory_folder_ids_shrink):
+            query['ResourceDirectoryFolderIds'] = request.resource_directory_folder_ids_shrink
+        if not UtilClient.is_unset(request.stack_arns_shrink):
+            query['StackArns'] = request.stack_arns_shrink
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportStacksToStackGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.ImportStacksToStackGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_stacks_to_stack_group(
+        self,
+        request: ros20190910_models.ImportStacksToStackGroupRequest,
+    ) -> ros20190910_models.ImportStacksToStackGroupResponse:
+        """
+        @param request: ImportStacksToStackGroupRequest
+        @return: ImportStacksToStackGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.import_stacks_to_stack_group_with_options(request, runtime)
+
+    async def import_stacks_to_stack_group_async(
+        self,
+        request: ros20190910_models.ImportStacksToStackGroupRequest,
+    ) -> ros20190910_models.ImportStacksToStackGroupResponse:
+        """
+        @param request: ImportStacksToStackGroupRequest
+        @return: ImportStacksToStackGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.import_stacks_to_stack_group_with_options_async(request, runtime)
 
     def list_aitask_events_with_options(
         self,

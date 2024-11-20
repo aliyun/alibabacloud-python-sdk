@@ -2024,6 +2024,7 @@ class CreateStackGroupRequest(TeaModel):
         permission_model: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        stack_arn: str = None,
         stack_group_name: str = None,
         tags: List[CreateStackGroupRequestTags] = None,
         template_body: str = None,
@@ -2070,6 +2071,7 @@ class CreateStackGroupRequest(TeaModel):
         # The ID of the resource group. If you do not specify this parameter, the stack group is added to the default resource group.\\
         # For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.html).
         self.resource_group_id = resource_group_id
+        self.stack_arn = stack_arn
         # The name of the stack group. The name must be unique within a region.\\
         # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
         # 
@@ -2131,6 +2133,8 @@ class CreateStackGroupRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.stack_arn is not None:
+            result['StackArn'] = self.stack_arn
         if self.stack_group_name is not None:
             result['StackGroupName'] = self.stack_group_name
         result['Tags'] = []
@@ -2173,6 +2177,8 @@ class CreateStackGroupRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('StackArn') is not None:
+            self.stack_arn = m.get('StackArn')
         if m.get('StackGroupName') is not None:
             self.stack_group_name = m.get('StackGroupName')
         self.tags = []
@@ -2290,6 +2296,7 @@ class CreateStackGroupShrinkRequest(TeaModel):
         permission_model: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        stack_arn: str = None,
         stack_group_name: str = None,
         tags: List[CreateStackGroupShrinkRequestTags] = None,
         template_body: str = None,
@@ -2336,6 +2343,7 @@ class CreateStackGroupShrinkRequest(TeaModel):
         # The ID of the resource group. If you do not specify this parameter, the stack group is added to the default resource group.\\
         # For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.html).
         self.resource_group_id = resource_group_id
+        self.stack_arn = stack_arn
         # The name of the stack group. The name must be unique within a region.\\
         # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
         # 
@@ -2395,6 +2403,8 @@ class CreateStackGroupShrinkRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.stack_arn is not None:
+            result['StackArn'] = self.stack_arn
         if self.stack_group_name is not None:
             result['StackGroupName'] = self.stack_group_name
         result['Tags'] = []
@@ -2436,6 +2446,8 @@ class CreateStackGroupShrinkRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('StackArn') is not None:
+            self.stack_arn = m.get('StackArn')
         if m.get('StackGroupName') is not None:
             self.stack_group_name = m.get('StackGroupName')
         self.tags = []
@@ -14334,6 +14346,212 @@ class GetTemplateSummaryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTemplateSummaryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ImportStacksToStackGroupRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        operation_description: str = None,
+        operation_preferences: Dict[str, Any] = None,
+        region_id: str = None,
+        resource_directory_folder_ids: List[str] = None,
+        stack_arns: List[str] = None,
+        stack_group_name: str = None,
+    ):
+        self.client_token = client_token
+        self.operation_description = operation_description
+        self.operation_preferences = operation_preferences
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_directory_folder_ids = resource_directory_folder_ids
+        # This parameter is required.
+        self.stack_arns = stack_arns
+        # This parameter is required.
+        self.stack_group_name = stack_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.operation_description is not None:
+            result['OperationDescription'] = self.operation_description
+        if self.operation_preferences is not None:
+            result['OperationPreferences'] = self.operation_preferences
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_directory_folder_ids is not None:
+            result['ResourceDirectoryFolderIds'] = self.resource_directory_folder_ids
+        if self.stack_arns is not None:
+            result['StackArns'] = self.stack_arns
+        if self.stack_group_name is not None:
+            result['StackGroupName'] = self.stack_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OperationDescription') is not None:
+            self.operation_description = m.get('OperationDescription')
+        if m.get('OperationPreferences') is not None:
+            self.operation_preferences = m.get('OperationPreferences')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceDirectoryFolderIds') is not None:
+            self.resource_directory_folder_ids = m.get('ResourceDirectoryFolderIds')
+        if m.get('StackArns') is not None:
+            self.stack_arns = m.get('StackArns')
+        if m.get('StackGroupName') is not None:
+            self.stack_group_name = m.get('StackGroupName')
+        return self
+
+
+class ImportStacksToStackGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        operation_description: str = None,
+        operation_preferences_shrink: str = None,
+        region_id: str = None,
+        resource_directory_folder_ids_shrink: str = None,
+        stack_arns_shrink: str = None,
+        stack_group_name: str = None,
+    ):
+        self.client_token = client_token
+        self.operation_description = operation_description
+        self.operation_preferences_shrink = operation_preferences_shrink
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_directory_folder_ids_shrink = resource_directory_folder_ids_shrink
+        # This parameter is required.
+        self.stack_arns_shrink = stack_arns_shrink
+        # This parameter is required.
+        self.stack_group_name = stack_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.operation_description is not None:
+            result['OperationDescription'] = self.operation_description
+        if self.operation_preferences_shrink is not None:
+            result['OperationPreferences'] = self.operation_preferences_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_directory_folder_ids_shrink is not None:
+            result['ResourceDirectoryFolderIds'] = self.resource_directory_folder_ids_shrink
+        if self.stack_arns_shrink is not None:
+            result['StackArns'] = self.stack_arns_shrink
+        if self.stack_group_name is not None:
+            result['StackGroupName'] = self.stack_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OperationDescription') is not None:
+            self.operation_description = m.get('OperationDescription')
+        if m.get('OperationPreferences') is not None:
+            self.operation_preferences_shrink = m.get('OperationPreferences')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceDirectoryFolderIds') is not None:
+            self.resource_directory_folder_ids_shrink = m.get('ResourceDirectoryFolderIds')
+        if m.get('StackArns') is not None:
+            self.stack_arns_shrink = m.get('StackArns')
+        if m.get('StackGroupName') is not None:
+            self.stack_group_name = m.get('StackGroupName')
+        return self
+
+
+class ImportStacksToStackGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        operation_id: str = None,
+        request_id: str = None,
+    ):
+        self.operation_id = operation_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ImportStacksToStackGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportStacksToStackGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportStacksToStackGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

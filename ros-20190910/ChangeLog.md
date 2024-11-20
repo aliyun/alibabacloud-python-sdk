@@ -1,3 +1,8 @@
+2024-11-20 Version: 3.5.0
+- Support API ImportStacksToStackGroup.
+- Update API CreateStackGroup: add param StackArn.
+
+
 2024-08-09 Version: 3.4.3
 - Generated python 2019-09-10 for ROS.
 
