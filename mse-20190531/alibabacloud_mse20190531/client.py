@@ -4344,8 +4344,6 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.beta_ips):
             query['BetaIps'] = request.beta_ips
-        if not UtilClient.is_unset(request.content):
-            query['Content'] = request.content
         if not UtilClient.is_unset(request.data_id):
             query['DataId'] = request.data_id
         if not UtilClient.is_unset(request.desc):
@@ -4360,8 +4358,12 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateNacosConfig',
@@ -4401,8 +4403,6 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.beta_ips):
             query['BetaIps'] = request.beta_ips
-        if not UtilClient.is_unset(request.content):
-            query['Content'] = request.content
         if not UtilClient.is_unset(request.data_id):
             query['DataId'] = request.data_id
         if not UtilClient.is_unset(request.desc):
@@ -4417,8 +4417,12 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateNacosConfig',
@@ -16956,7 +16960,7 @@ class Client(OpenApiClient):
 
     def list_listeners_by_config_with_options(
         self,
-        request: mse_20190531_models.ListListenersByConfigRequest,
+        tmp_req: mse_20190531_models.ListListenersByConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListListenersByConfigResponse:
         """
@@ -16964,16 +16968,22 @@ class Client(OpenApiClient):
         
         @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
-        @param request: ListListenersByConfigRequest
+        @param tmp_req: ListListenersByConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListListenersByConfigResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.ListListenersByConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ext_gray_rules):
+            request.ext_gray_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext_gray_rules, 'ExtGrayRules', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.data_id):
             query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.ext_gray_rules_shrink):
+            query['ExtGrayRules'] = request.ext_gray_rules_shrink
         if not UtilClient.is_unset(request.group):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
@@ -17003,7 +17013,7 @@ class Client(OpenApiClient):
 
     async def list_listeners_by_config_with_options_async(
         self,
-        request: mse_20190531_models.ListListenersByConfigRequest,
+        tmp_req: mse_20190531_models.ListListenersByConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListListenersByConfigResponse:
         """
@@ -17011,16 +17021,22 @@ class Client(OpenApiClient):
         
         @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
-        @param request: ListListenersByConfigRequest
+        @param tmp_req: ListListenersByConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListListenersByConfigResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.ListListenersByConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ext_gray_rules):
+            request.ext_gray_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext_gray_rules, 'ExtGrayRules', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.data_id):
             query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.ext_gray_rules_shrink):
+            query['ExtGrayRules'] = request.ext_gray_rules_shrink
         if not UtilClient.is_unset(request.group):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
@@ -25362,6 +25378,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_route_waf_status_with_options_async(request, runtime)
 
+    def update_gateway_service_with_options(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayServiceResponse:
+        """
+        @summary 更新服务
+        
+        @param tmp_req: UpdateGatewayServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayServiceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayServiceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ip_list):
+            request.ip_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ip_list, 'IpList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.ip_list_shrink):
+            query['IpList'] = request.ip_list_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.service_port):
+            query['ServicePort'] = request.service_port
+        if not UtilClient.is_unset(request.service_protocol):
+            query['ServiceProtocol'] = request.service_protocol
+        if not UtilClient.is_unset(request.tls_setting):
+            query['TlsSetting'] = request.tls_setting
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayService',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_service_with_options_async(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayServiceResponse:
+        """
+        @summary 更新服务
+        
+        @param tmp_req: UpdateGatewayServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayServiceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayServiceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ip_list):
+            request.ip_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ip_list, 'IpList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.ip_list_shrink):
+            query['IpList'] = request.ip_list_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.service_port):
+            query['ServicePort'] = request.service_port
+        if not UtilClient.is_unset(request.service_protocol):
+            query['ServiceProtocol'] = request.service_protocol
+        if not UtilClient.is_unset(request.tls_setting):
+            query['TlsSetting'] = request.tls_setting
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayService',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_service(
+        self,
+        request: mse_20190531_models.UpdateGatewayServiceRequest,
+    ) -> mse_20190531_models.UpdateGatewayServiceResponse:
+        """
+        @summary 更新服务
+        
+        @param request: UpdateGatewayServiceRequest
+        @return: UpdateGatewayServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_gateway_service_with_options(request, runtime)
+
+    async def update_gateway_service_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayServiceRequest,
+    ) -> mse_20190531_models.UpdateGatewayServiceResponse:
+        """
+        @summary 更新服务
+        
+        @param request: UpdateGatewayServiceRequest
+        @return: UpdateGatewayServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_gateway_service_with_options_async(request, runtime)
+
     def update_gateway_service_check_with_options(
         self,
         tmp_req: mse_20190531_models.UpdateGatewayServiceCheckRequest,
@@ -26500,8 +26652,6 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.beta_ips):
             query['BetaIps'] = request.beta_ips
-        if not UtilClient.is_unset(request.content):
-            query['Content'] = request.content
         if not UtilClient.is_unset(request.data_id):
             query['DataId'] = request.data_id
         if not UtilClient.is_unset(request.desc):
@@ -26520,8 +26670,12 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateNacosConfig',
@@ -26561,8 +26715,6 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.beta_ips):
             query['BetaIps'] = request.beta_ips
-        if not UtilClient.is_unset(request.content):
-            query['Content'] = request.content
         if not UtilClient.is_unset(request.data_id):
             query['DataId'] = request.data_id
         if not UtilClient.is_unset(request.desc):
@@ -26581,8 +26733,12 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateNacosConfig',
@@ -26654,6 +26810,10 @@ class Client(OpenApiClient):
             query['DataId'] = request.data_id
         if not UtilClient.is_unset(request.gray_rule):
             query['GrayRule'] = request.gray_rule
+        if not UtilClient.is_unset(request.gray_rule_name):
+            query['GrayRuleName'] = request.gray_rule_name
+        if not UtilClient.is_unset(request.gray_rule_priority):
+            query['GrayRulePriority'] = request.gray_rule_priority
         if not UtilClient.is_unset(request.gray_type):
             query['GrayType'] = request.gray_type
         if not UtilClient.is_unset(request.group):
@@ -26662,6 +26822,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.op_type):
+            query['OpType'] = request.op_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.request_pars):
@@ -26711,6 +26873,10 @@ class Client(OpenApiClient):
             query['DataId'] = request.data_id
         if not UtilClient.is_unset(request.gray_rule):
             query['GrayRule'] = request.gray_rule
+        if not UtilClient.is_unset(request.gray_rule_name):
+            query['GrayRuleName'] = request.gray_rule_name
+        if not UtilClient.is_unset(request.gray_rule_priority):
+            query['GrayRulePriority'] = request.gray_rule_priority
         if not UtilClient.is_unset(request.gray_type):
             query['GrayType'] = request.gray_type
         if not UtilClient.is_unset(request.group):
@@ -26719,6 +26885,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.op_type):
+            query['OpType'] = request.op_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.request_pars):

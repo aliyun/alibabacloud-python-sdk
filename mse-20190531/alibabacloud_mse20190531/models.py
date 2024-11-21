@@ -11007,7 +11007,6 @@ class CreateNacosConfigRequest(TeaModel):
         self.app_name = app_name
         # The list of IP addresses where the beta release of the configuration is performed.
         self.beta_ips = beta_ips
-        # The content of the configuration.
         self.content = content
         # The ID of the data.
         # 
@@ -28276,6 +28275,51 @@ class GetNacosConfigRequest(TeaModel):
         return self
 
 
+class GetNacosConfigResponseBodyConfigurationGrayVersions(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        priority: int = None,
+        rule: str = None,
+        type: str = None,
+    ):
+        self.name = name
+        self.priority = priority
+        self.rule = rule
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class GetNacosConfigResponseBodyConfiguration(TeaModel):
     def __init__(
         self,
@@ -28285,6 +28329,7 @@ class GetNacosConfigResponseBodyConfiguration(TeaModel):
         data_id: str = None,
         desc: str = None,
         encrypted_data_key: str = None,
+        gray_versions: List[GetNacosConfigResponseBodyConfigurationGrayVersions] = None,
         group: str = None,
         md_5: str = None,
         tags: str = None,
@@ -28302,6 +28347,7 @@ class GetNacosConfigResponseBodyConfiguration(TeaModel):
         self.desc = desc
         # The encryption key.
         self.encrypted_data_key = encrypted_data_key
+        self.gray_versions = gray_versions
         # The name of the configuration group.
         self.group = group
         # The message digest of the configuration.
@@ -28312,7 +28358,10 @@ class GetNacosConfigResponseBodyConfiguration(TeaModel):
         self.type = type
 
     def validate(self):
-        pass
+        if self.gray_versions:
+            for k in self.gray_versions:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -28332,6 +28381,10 @@ class GetNacosConfigResponseBodyConfiguration(TeaModel):
             result['Desc'] = self.desc
         if self.encrypted_data_key is not None:
             result['EncryptedDataKey'] = self.encrypted_data_key
+        result['GrayVersions'] = []
+        if self.gray_versions is not None:
+            for k in self.gray_versions:
+                result['GrayVersions'].append(k.to_map() if k else None)
         if self.group is not None:
             result['Group'] = self.group
         if self.md_5 is not None:
@@ -28356,6 +28409,11 @@ class GetNacosConfigResponseBodyConfiguration(TeaModel):
             self.desc = m.get('Desc')
         if m.get('EncryptedDataKey') is not None:
             self.encrypted_data_key = m.get('EncryptedDataKey')
+        self.gray_versions = []
+        if m.get('GrayVersions') is not None:
+            for k in m.get('GrayVersions'):
+                temp_model = GetNacosConfigResponseBodyConfigurationGrayVersions()
+                self.gray_versions.append(temp_model.from_map(k))
         if m.get('Group') is not None:
             self.group = m.get('Group')
         if m.get('Md5') is not None:
@@ -46444,11 +46502,57 @@ class ListIsolationRulesResponse(TeaModel):
         return self
 
 
+class ListListenersByConfigRequestExtGrayRules(TeaModel):
+    def __init__(
+        self,
+        gray_rule: str = None,
+        gray_rule_name: str = None,
+        gray_rule_priority: int = None,
+        gray_rule_type: str = None,
+    ):
+        self.gray_rule = gray_rule
+        self.gray_rule_name = gray_rule_name
+        self.gray_rule_priority = gray_rule_priority
+        self.gray_rule_type = gray_rule_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gray_rule is not None:
+            result['GrayRule'] = self.gray_rule
+        if self.gray_rule_name is not None:
+            result['GrayRuleName'] = self.gray_rule_name
+        if self.gray_rule_priority is not None:
+            result['GrayRulePriority'] = self.gray_rule_priority
+        if self.gray_rule_type is not None:
+            result['GrayRuleType'] = self.gray_rule_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GrayRule') is not None:
+            self.gray_rule = m.get('GrayRule')
+        if m.get('GrayRuleName') is not None:
+            self.gray_rule_name = m.get('GrayRuleName')
+        if m.get('GrayRulePriority') is not None:
+            self.gray_rule_priority = m.get('GrayRulePriority')
+        if m.get('GrayRuleType') is not None:
+            self.gray_rule_type = m.get('GrayRuleType')
+        return self
+
+
 class ListListenersByConfigRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
         data_id: str = None,
+        ext_gray_rules: List[ListListenersByConfigRequestExtGrayRules] = None,
         group: str = None,
         instance_id: str = None,
         namespace_id: str = None,
@@ -46463,6 +46567,93 @@ class ListListenersByConfigRequest(TeaModel):
         # 
         # This parameter is required.
         self.data_id = data_id
+        self.ext_gray_rules = ext_gray_rules
+        # The name of the group.
+        # 
+        # This parameter is required.
+        self.group = group
+        # The ID of the instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The ID of the namespace.
+        self.namespace_id = namespace_id
+        # The extended request parameters in the JSON format.
+        self.request_pars = request_pars
+
+    def validate(self):
+        if self.ext_gray_rules:
+            for k in self.ext_gray_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        result['ExtGrayRules'] = []
+        if self.ext_gray_rules is not None:
+            for k in self.ext_gray_rules:
+                result['ExtGrayRules'].append(k.to_map() if k else None)
+        if self.group is not None:
+            result['Group'] = self.group
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.request_pars is not None:
+            result['RequestPars'] = self.request_pars
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        self.ext_gray_rules = []
+        if m.get('ExtGrayRules') is not None:
+            for k in m.get('ExtGrayRules'):
+                temp_model = ListListenersByConfigRequestExtGrayRules()
+                self.ext_gray_rules.append(temp_model.from_map(k))
+        if m.get('Group') is not None:
+            self.group = m.get('Group')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('RequestPars') is not None:
+            self.request_pars = m.get('RequestPars')
+        return self
+
+
+class ListListenersByConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        data_id: str = None,
+        ext_gray_rules_shrink: str = None,
+        group: str = None,
+        instance_id: str = None,
+        namespace_id: str = None,
+        request_pars: str = None,
+    ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        self.accept_language = accept_language
+        # The ID of the data.
+        # 
+        # This parameter is required.
+        self.data_id = data_id
+        self.ext_gray_rules_shrink = ext_gray_rules_shrink
         # The name of the group.
         # 
         # This parameter is required.
@@ -46489,6 +46680,8 @@ class ListListenersByConfigRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.data_id is not None:
             result['DataId'] = self.data_id
+        if self.ext_gray_rules_shrink is not None:
+            result['ExtGrayRules'] = self.ext_gray_rules_shrink
         if self.group is not None:
             result['Group'] = self.group
         if self.instance_id is not None:
@@ -46505,6 +46698,8 @@ class ListListenersByConfigRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
+        if m.get('ExtGrayRules') is not None:
+            self.ext_gray_rules_shrink = m.get('ExtGrayRules')
         if m.get('Group') is not None:
             self.group = m.get('Group')
         if m.get('InstanceId') is not None:
@@ -46521,6 +46716,8 @@ class ListListenersByConfigResponseBodyListeners(TeaModel):
         self,
         ip: str = None,
         labels: Dict[str, str] = None,
+        match_rule_name: str = None,
+        match_rule_type: str = None,
         md_5: str = None,
         status: str = None,
         version: str = None,
@@ -46529,6 +46726,8 @@ class ListListenersByConfigResponseBodyListeners(TeaModel):
         self.ip = ip
         # The label of the listener.
         self.labels = labels
+        self.match_rule_name = match_rule_name
+        self.match_rule_type = match_rule_type
         # The verification string.
         self.md_5 = md_5
         # The status.
@@ -46549,6 +46748,10 @@ class ListListenersByConfigResponseBodyListeners(TeaModel):
             result['Ip'] = self.ip
         if self.labels is not None:
             result['Labels'] = self.labels
+        if self.match_rule_name is not None:
+            result['MatchRuleName'] = self.match_rule_name
+        if self.match_rule_type is not None:
+            result['MatchRuleType'] = self.match_rule_type
         if self.md_5 is not None:
             result['Md5'] = self.md_5
         if self.status is not None:
@@ -46563,6 +46766,10 @@ class ListListenersByConfigResponseBodyListeners(TeaModel):
             self.ip = m.get('Ip')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
+        if m.get('MatchRuleName') is not None:
+            self.match_rule_name = m.get('MatchRuleName')
+        if m.get('MatchRuleType') is not None:
+            self.match_rule_type = m.get('MatchRuleType')
         if m.get('Md5') is not None:
             self.md_5 = m.get('Md5')
         if m.get('Status') is not None:
@@ -66692,6 +66899,254 @@ class UpdateGatewayRouteWafStatusResponse(TeaModel):
         return self
 
 
+class UpdateGatewayServiceRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        gateway_id: int = None,
+        gateway_unique_id: str = None,
+        id: str = None,
+        ip_list: List[str] = None,
+        name: str = None,
+        service_port: str = None,
+        service_protocol: str = None,
+        tls_setting: str = None,
+    ):
+        self.accept_language = accept_language
+        self.gateway_id = gateway_id
+        self.gateway_unique_id = gateway_unique_id
+        self.id = id
+        self.ip_list = ip_list
+        self.name = name
+        self.service_port = service_port
+        self.service_protocol = service_protocol
+        self.tls_setting = tls_setting
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.ip_list is not None:
+            result['IpList'] = self.ip_list
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.service_port is not None:
+            result['ServicePort'] = self.service_port
+        if self.service_protocol is not None:
+            result['ServiceProtocol'] = self.service_protocol
+        if self.tls_setting is not None:
+            result['TlsSetting'] = self.tls_setting
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IpList') is not None:
+            self.ip_list = m.get('IpList')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ServicePort') is not None:
+            self.service_port = m.get('ServicePort')
+        if m.get('ServiceProtocol') is not None:
+            self.service_protocol = m.get('ServiceProtocol')
+        if m.get('TlsSetting') is not None:
+            self.tls_setting = m.get('TlsSetting')
+        return self
+
+
+class UpdateGatewayServiceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        gateway_id: int = None,
+        gateway_unique_id: str = None,
+        id: str = None,
+        ip_list_shrink: str = None,
+        name: str = None,
+        service_port: str = None,
+        service_protocol: str = None,
+        tls_setting: str = None,
+    ):
+        self.accept_language = accept_language
+        self.gateway_id = gateway_id
+        self.gateway_unique_id = gateway_unique_id
+        self.id = id
+        self.ip_list_shrink = ip_list_shrink
+        self.name = name
+        self.service_port = service_port
+        self.service_protocol = service_protocol
+        self.tls_setting = tls_setting
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.ip_list_shrink is not None:
+            result['IpList'] = self.ip_list_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.service_port is not None:
+            result['ServicePort'] = self.service_port
+        if self.service_protocol is not None:
+            result['ServiceProtocol'] = self.service_protocol
+        if self.tls_setting is not None:
+            result['TlsSetting'] = self.tls_setting
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IpList') is not None:
+            self.ip_list_shrink = m.get('IpList')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ServicePort') is not None:
+            self.service_port = m.get('ServicePort')
+        if m.get('ServiceProtocol') is not None:
+            self.service_protocol = m.get('ServiceProtocol')
+        if m.get('TlsSetting') is not None:
+            self.tls_setting = m.get('TlsSetting')
+        return self
+
+
+class UpdateGatewayServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateGatewayServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateGatewayServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateGatewayServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateGatewayServiceCheckRequest(TeaModel):
     def __init__(
         self,
@@ -68773,7 +69228,6 @@ class UpdateNacosConfigRequest(TeaModel):
         self.app_name = app_name
         # The list of IP addresses where the beta release of the configuration is performed.
         self.beta_ips = beta_ips
-        # The content of the configuration.
         self.content = content
         # The ID of the configuration.
         # 
@@ -68976,10 +69430,13 @@ class UpdateNacosGrayConfigRequest(TeaModel):
         content: str = None,
         data_id: str = None,
         gray_rule: str = None,
+        gray_rule_name: str = None,
+        gray_rule_priority: int = None,
         gray_type: str = None,
         group: str = None,
         instance_id: str = None,
         namespace_id: str = None,
+        op_type: str = None,
         region_id: str = None,
         request_pars: str = None,
         stop_gray: bool = None,
@@ -68990,12 +69447,15 @@ class UpdateNacosGrayConfigRequest(TeaModel):
         # This parameter is required.
         self.data_id = data_id
         self.gray_rule = gray_rule
+        self.gray_rule_name = gray_rule_name
+        self.gray_rule_priority = gray_rule_priority
         # This parameter is required.
         self.gray_type = gray_type
         self.group = group
         # This parameter is required.
         self.instance_id = instance_id
         self.namespace_id = namespace_id
+        self.op_type = op_type
         self.region_id = region_id
         self.request_pars = request_pars
         self.stop_gray = stop_gray
@@ -69019,6 +69479,10 @@ class UpdateNacosGrayConfigRequest(TeaModel):
             result['DataId'] = self.data_id
         if self.gray_rule is not None:
             result['GrayRule'] = self.gray_rule
+        if self.gray_rule_name is not None:
+            result['GrayRuleName'] = self.gray_rule_name
+        if self.gray_rule_priority is not None:
+            result['GrayRulePriority'] = self.gray_rule_priority
         if self.gray_type is not None:
             result['GrayType'] = self.gray_type
         if self.group is not None:
@@ -69027,6 +69491,8 @@ class UpdateNacosGrayConfigRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.op_type is not None:
+            result['OpType'] = self.op_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.request_pars is not None:
@@ -69047,6 +69513,10 @@ class UpdateNacosGrayConfigRequest(TeaModel):
             self.data_id = m.get('DataId')
         if m.get('GrayRule') is not None:
             self.gray_rule = m.get('GrayRule')
+        if m.get('GrayRuleName') is not None:
+            self.gray_rule_name = m.get('GrayRuleName')
+        if m.get('GrayRulePriority') is not None:
+            self.gray_rule_priority = m.get('GrayRulePriority')
         if m.get('GrayType') is not None:
             self.gray_type = m.get('GrayType')
         if m.get('Group') is not None:
@@ -69055,6 +69525,8 @@ class UpdateNacosGrayConfigRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('OpType') is not None:
+            self.op_type = m.get('OpType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RequestPars') is not None:
