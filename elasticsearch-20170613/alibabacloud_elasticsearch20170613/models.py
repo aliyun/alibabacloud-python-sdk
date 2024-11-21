@@ -1983,6 +1983,7 @@ class ActivateZonesRequest(TeaModel):
         body: str = None,
         client_token: str = None,
     ):
+        # 请求体参数。
         self.body = body
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -2642,10 +2643,28 @@ class CapacityPlanRequestDataInfo(TeaModel):
         type: str = None,
         unit: str = None,
     ):
+        # Disk data metric code. Options:
+        # 
+        # - totalRawData: Raw data information
+        # - document: Data document information, estimated document count
+        # - dailyIncrement: Daily data growth
+        # - dailyIncrementDoc: Daily incremental document count
+        # - retentionTime: Data retention period
+        # - replica: Replica settings
         self.code = code
+        # Disk usage metric value.
         self.size = size
+        # Total number of data entries.
         self.total_count = total_count
+        # Disk data type. Options:
+        # 
+        # - hot: Hot data
+        # - warm: Cold data
         self.type = type
+        # Data or time unit. Options:
+        # 
+        # - Data units: MiB, GiB, TB, PB
+        # - Time units: DAYS, WEEKS, MONTHS, YEARS
         self.unit = unit
 
     def validate(self):
@@ -2695,12 +2714,25 @@ class CapacityPlanRequestMetric(TeaModel):
         throughput: int = None,
         type: str = None,
     ):
+        # Average QPS.
         self.average_qps = average_qps
+        # Search or write metric code. Options:
+        # 
+        # - write: Write
+        # - search: Search
         self.code = code
+        # Concurrent number.
         self.concurrent = concurrent
+        # Peak QPS.
         self.peak_qps = peak_qps
+        # Expected average response time, unit: milliseconds.
         self.response_time = response_time
+        # Throughput, unit: MB/S.
         self.throughput = throughput
+        # Search/write peak type. Options:
+        # 
+        # - common: Regular
+        # - peak: Peak
         self.type = type
 
     def validate(self):
@@ -2755,9 +2787,22 @@ class CapacityPlanRequest(TeaModel):
         metric: List[CapacityPlanRequestMetric] = None,
         usage_scenario: str = None,
     ):
+        # Indicates whether there is a need for complex aggregation queries. Options:
+        # 
+        # - true: Yes
+        # - false (default): No
         self.complex_query_available = complex_query_available
+        # Disk usage status.
         self.data_info = data_info
+        # Metrics information including disk usage, search and write operations, aggregation requests, etc.
         self.metric = metric
+        # Usage scenarios, options:
+        # 
+        # - general: General scenario
+        # - analysisVisualization: Data analysis scenario
+        # - dbAcceleration: Database acceleration scenario
+        # - search: Search scenario
+        # - log: Log scenario
         self.usage_scenario = usage_scenario
 
     def validate(self):
@@ -2816,17 +2861,15 @@ class CapacityPlanResponseBodyResultExtendConfigs(TeaModel):
         disk: int = None,
         disk_type: str = None,
     ):
-        # The size of the disk. Unit: GiB.
+        # Configuration type, with a single value: sharedDisk.
+        # 
+        # > This extendConfigs attribute may appear when the planned instance type is Advanced.
         self.config_type = config_type
-        # The type of the disk. Valid value: CPFS_PREMIUM.
-        # 
-        # >  The extendConfigs attribute that may occur when the planned instance type is enhanced (advanced).
+        # Disk size, in GiB.
         self.disk = disk
-        # The version type. Valid values:
+        # Disk type, with a single value: CPFS_PREMIUM.
         # 
-        # *   advanced: enhanced edition
-        # *   x-pack: Commercial Edition
-        # *   community: community version
+        # > This extendConfigs attribute may appear when the planned instance type is Advanced.
         self.disk_type = disk_type
 
     def validate(self):
@@ -2867,33 +2910,39 @@ class CapacityPlanResponseBodyResultNodeConfigurations(TeaModel):
         memory: int = None,
         node_type: str = None,
     ):
-        # The number of CPUs of the cloud desktop.
+        # Number of nodes.
         self.amount = amount
-        # The size of the disk. Unit: GiB.
+        # Number of CPUs.
         self.cpu = cpu
-        # The type of the hard disk. Valid values:
-        # 
-        # *   cloud_essd: enhanced SSD (ESSD)
-        # *   cloud_ssd: standard SSD
-        # *   cloud_efficiency: ultra disk
-        # *   local_ssd: local SSD
-        # *   local_efficiency: local ultra disk
+        # Disk size, in GiB.
         self.disk = disk
-        # The memory size of the current node role.
+        # Disk type, with meanings as follows:
+        # 
+        # - cloud_essd: ESSD Cloud Disk
+        # 
+        # - cloud_ssd: SSD Cloud Disk
+        # 
+        # - cloud_efficiency: Efficient Cloud Disk
+        # 
+        # - local_ssd: Local SSD Disk
+        # 
+        # - local_efficiency: Local Efficient Disk
         self.disk_type = disk_type
-        # The type of the node. Supported types are as follows:
-        # 
-        # *   WORKER: data node
-        # *   WORKER_WARM: cold data node
-        # *   MASTER: dedicated master node
-        # *   KIBANA: Kibana node
-        # *   COORDINATING: client node
-        # *   ELASTIC_WORKER: elastic node
+        # Specified memory size for the current node role.
         self.memory = memory
-        # The result calculated based on the capacity planning. No default value is available. The values are as follows:
+        # Node type, with supported types as follows:
         # 
-        # *   true: indicates that the number of data nodes calculated by capacity planning exceeds the threshold of 50.
-        # *   false: The number of data nodes calculated by capacity planning is less than 50.
+        # - WORKER: Data Node
+        # 
+        # - WORKER_WARM: Cold Data Node
+        # 
+        # - MASTER: Dedicated Master Node
+        # 
+        # - KIBANA: Kibana Node
+        # 
+        # - COORDINATING: Coordinator Node
+        # 
+        # - ELASTIC_WORKER: Elastic Node
         self.node_type = node_type
 
     def validate(self):
@@ -2944,14 +2993,23 @@ class CapacityPlanResponseBodyResult(TeaModel):
         node_configurations: List[CapacityPlanResponseBodyResultNodeConfigurations] = None,
         oversized_cluster: bool = None,
     ):
-        # The type of the configuration. Set the value to sharedDisk.
-        # 
-        # >  The extendConfigs attribute that may occur when the planned instance type is enhanced (advanced).
+        # Extended configuration information.
         self.extend_configs = extend_configs
-        # The node information.
+        # Edition type, with values meaning as follows:
+        # 
+        # - advanced: Enhanced Edition
+        # 
+        # - x-pack: Commercial Edition
+        # 
+        # - community: Community Edition
         self.instance_category = instance_category
-        # The number of cores.
+        # Node information.
         self.node_configurations = node_configurations
+        # Based on the capacity planning calculation, there is no default value. The meanings of the values are as follows:
+        # 
+        # - true: Represents an oversized cluster, indicating that the number of data nodes calculated by the capacity planning exceeds the threshold of 50.
+        # 
+        # - false: The number of data nodes calculated by the capacity planning is within 50.
         self.oversized_cluster = oversized_cluster
 
     def validate(self):
@@ -3009,9 +3067,9 @@ class CapacityPlanResponseBody(TeaModel):
         request_id: str = None,
         result: CapacityPlanResponseBodyResult = None,
     ):
-        # The response of the request.
+        # ID of the current request.
         self.request_id = request_id
-        # The extension configuration information.
+        # Returned result of the request.
         self.result = result
 
     def validate(self):
@@ -3295,6 +3353,7 @@ class CloseManagedIndexRequest(TeaModel):
         self,
         client_token: str = None,
     ):
+        # Used to ensure the idempotency of the request. Generated by the client, it must be unique across different requests and not exceed 64 ASCII characters.
         self.client_token = client_token
 
     def validate(self):
@@ -3323,7 +3382,13 @@ class CloseManagedIndexResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the index\\"s cloud management has been successfully closed:
+        # 
+        # - true: Success
+        # 
+        # - false: Failure
         self.result = result
 
     def validate(self):
@@ -4979,7 +5044,7 @@ class DeactivateZonesRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
-        # A unique token generated by the client to guarantee the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+        # Used to ensure idempotency of the request. The client generates this parameter value and must guarantee its uniqueness across different requests, with a maximum length of 64 ASCII characters.
         self.client_token = client_token
 
     def validate(self):
@@ -5012,12 +5077,12 @@ class DeactivateZonesResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # Return results:
+        # Return result:
         # 
-        # *   true: offline zone successfully
-        # *   false: offline zone successfully failed
+        # - true: Zone offline successful
+        # - false: Zone offline failed
         self.result = result
 
     def validate(self):
@@ -6502,24 +6567,61 @@ class DescribeApmResponseBodyResult(TeaModel):
         vs_area: str = None,
         vswitch_id: str = None,
     ):
+        # Instance domain.
         self.apm_server_domain = apm_server_domain
+        # Creation time.
         self.created_at = created_at
+        # Deployed replica count.
         self.deployed_replica = deployed_replica
+        # Instance name.
         self.description = description
+        # Instance expiration time.
         self.end_time = end_time
+        # Instance ID.
         self.instance_id = instance_id
+        # Number of nodes.
         self.node_amount = node_amount
+        # Associated Elasticsearch instance.
         self.output_es = output_es
+        # Username of the associated Elasticsearch instance.
         self.output_esuser_name = output_esuser_name
+        # User account ID.
         self.owner_id = owner_id
+        # Payment method, with the following values:
+        # 
+        # - postpaid: Pay-as-you-go.
+        # 
+        # - prepaid: Subscription.
         self.payment_type = payment_type
+        # Region.
         self.region = region
+        # Replica count.
         self.replica = replica
+        # Specification, with the following values:
+        # 
+        # - C1M2 (1 core, 2 GB)
+        # 
+        # - C2M4 (2 cores, 4 GB)
         self.resource_spec = resource_spec
+        # Lifecycle status, with the following values:
+        # 
+        # - CREATING: Creating.
+        # 
+        # - ACTIVATING: Activating.
+        # 
+        # - ACTIVE: Active.
+        # 
+        # - INACTIVE: Frozen.
+        # 
+        # - INVALID: Invalid.
         self.status = status
+        # Version information.
         self.version = version
+        # VPC ID.
         self.vpc_id = vpc_id
+        # Availability zone where the switch is located.
         self.vs_area = vs_area
+        # Switch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -6620,7 +6722,9 @@ class DescribeApmResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeApmResponseBodyResult = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Request result.
         self.result = result
 
     def validate(self):
@@ -14069,6 +14173,143 @@ class GetRegionalInstanceConfigResponseBodyResultMasterDiskList(TeaModel):
         return self
 
 
+class GetRegionalInstanceConfigResponseBodyResultWarmNodeAmountRange(TeaModel):
+    def __init__(
+        self,
+        max_amount: int = None,
+        min_amount: int = None,
+    ):
+        self.max_amount = max_amount
+        self.min_amount = min_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_amount is not None:
+            result['maxAmount'] = self.max_amount
+        if self.min_amount is not None:
+            result['minAmount'] = self.min_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxAmount') is not None:
+            self.max_amount = m.get('maxAmount')
+        if m.get('minAmount') is not None:
+            self.min_amount = m.get('minAmount')
+        return self
+
+
+class GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines(TeaModel):
+    def __init__(
+        self,
+        max_size: int = None,
+        min_size: int = None,
+        performance_level: str = None,
+    ):
+        self.max_size = max_size
+        self.min_size = min_size
+        self.performance_level = performance_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_size is not None:
+            result['maxSize'] = self.max_size
+        if self.min_size is not None:
+            result['minSize'] = self.min_size
+        if self.performance_level is not None:
+            result['performanceLevel'] = self.performance_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxSize') is not None:
+            self.max_size = m.get('maxSize')
+        if m.get('minSize') is not None:
+            self.min_size = m.get('minSize')
+        if m.get('performanceLevel') is not None:
+            self.performance_level = m.get('performanceLevel')
+        return self
+
+
+class GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList(TeaModel):
+    def __init__(
+        self,
+        disk_type: str = None,
+        max_size: int = None,
+        min_size: int = None,
+        scale_limit: int = None,
+        sub_classification_confines: List[GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines] = None,
+        value_limit_set: List[int] = None,
+    ):
+        self.disk_type = disk_type
+        self.max_size = max_size
+        self.min_size = min_size
+        self.scale_limit = scale_limit
+        self.sub_classification_confines = sub_classification_confines
+        self.value_limit_set = value_limit_set
+
+    def validate(self):
+        if self.sub_classification_confines:
+            for k in self.sub_classification_confines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_type is not None:
+            result['diskType'] = self.disk_type
+        if self.max_size is not None:
+            result['maxSize'] = self.max_size
+        if self.min_size is not None:
+            result['minSize'] = self.min_size
+        if self.scale_limit is not None:
+            result['scaleLimit'] = self.scale_limit
+        result['subClassificationConfines'] = []
+        if self.sub_classification_confines is not None:
+            for k in self.sub_classification_confines:
+                result['subClassificationConfines'].append(k.to_map() if k else None)
+        if self.value_limit_set is not None:
+            result['valueLimitSet'] = self.value_limit_set
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('diskType') is not None:
+            self.disk_type = m.get('diskType')
+        if m.get('maxSize') is not None:
+            self.max_size = m.get('maxSize')
+        if m.get('minSize') is not None:
+            self.min_size = m.get('minSize')
+        if m.get('scaleLimit') is not None:
+            self.scale_limit = m.get('scaleLimit')
+        self.sub_classification_confines = []
+        if m.get('subClassificationConfines') is not None:
+            for k in m.get('subClassificationConfines'):
+                temp_model = GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines()
+                self.sub_classification_confines.append(temp_model.from_map(k))
+        if m.get('valueLimitSet') is not None:
+            self.value_limit_set = m.get('valueLimitSet')
+        return self
+
+
 class GetRegionalInstanceConfigResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -14084,6 +14325,9 @@ class GetRegionalInstanceConfigResponseBodyResult(TeaModel):
         master_specs: List[str] = None,
         spec_info_map: Dict[str, ResultSpecInfoMapValue] = None,
         versions: List[str] = None,
+        warm_node_amount_range: GetRegionalInstanceConfigResponseBodyResultWarmNodeAmountRange = None,
+        warm_node_disk_list: List[GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList] = None,
+        warm_node_specs: List[str] = None,
     ):
         self.client_node_amount_range = client_node_amount_range
         self.client_node_disk_list = client_node_disk_list
@@ -14097,6 +14341,9 @@ class GetRegionalInstanceConfigResponseBodyResult(TeaModel):
         self.master_specs = master_specs
         self.spec_info_map = spec_info_map
         self.versions = versions
+        self.warm_node_amount_range = warm_node_amount_range
+        self.warm_node_disk_list = warm_node_disk_list
+        self.warm_node_specs = warm_node_specs
 
     def validate(self):
         if self.client_node_amount_range:
@@ -14119,6 +14366,12 @@ class GetRegionalInstanceConfigResponseBodyResult(TeaModel):
             for v in self.spec_info_map.values():
                 if v:
                     v.validate()
+        if self.warm_node_amount_range:
+            self.warm_node_amount_range.validate()
+        if self.warm_node_disk_list:
+            for k in self.warm_node_disk_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14158,6 +14411,14 @@ class GetRegionalInstanceConfigResponseBodyResult(TeaModel):
                 result['specInfoMap'][k] = v.to_map()
         if self.versions is not None:
             result['versions'] = self.versions
+        if self.warm_node_amount_range is not None:
+            result['warmNodeAmountRange'] = self.warm_node_amount_range.to_map()
+        result['warmNodeDiskList'] = []
+        if self.warm_node_disk_list is not None:
+            for k in self.warm_node_disk_list:
+                result['warmNodeDiskList'].append(k.to_map() if k else None)
+        if self.warm_node_specs is not None:
+            result['warmNodeSpecs'] = self.warm_node_specs
         return result
 
     def from_map(self, m: dict = None):
@@ -14200,6 +14461,16 @@ class GetRegionalInstanceConfigResponseBodyResult(TeaModel):
                 self.spec_info_map[k] = temp_model.from_map(v)
         if m.get('versions') is not None:
             self.versions = m.get('versions')
+        if m.get('warmNodeAmountRange') is not None:
+            temp_model = GetRegionalInstanceConfigResponseBodyResultWarmNodeAmountRange()
+            self.warm_node_amount_range = temp_model.from_map(m['warmNodeAmountRange'])
+        self.warm_node_disk_list = []
+        if m.get('warmNodeDiskList') is not None:
+            for k in m.get('warmNodeDiskList'):
+                temp_model = GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList()
+                self.warm_node_disk_list.append(temp_model.from_map(k))
+        if m.get('warmNodeSpecs') is not None:
+            self.warm_node_specs = m.get('warmNodeSpecs')
         return self
 
 
@@ -38046,10 +38317,12 @@ class UpdateXpackMonitorConfigResponse(TeaModel):
 class UpgradeEngineVersionRequestPlugins(TeaModel):
     def __init__(
         self,
+        enable: str = None,
         file_version: str = None,
         name: str = None,
         version: str = None,
     ):
+        self.enable = enable
         self.file_version = file_version
         self.name = name
         self.version = version
@@ -38063,6 +38336,8 @@ class UpgradeEngineVersionRequestPlugins(TeaModel):
             return _map
 
         result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
         if self.file_version is not None:
             result['fileVersion'] = self.file_version
         if self.name is not None:
@@ -38073,6 +38348,8 @@ class UpgradeEngineVersionRequestPlugins(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
         if m.get('fileVersion') is not None:
             self.file_version = m.get('fileVersion')
         if m.get('name') is not None:

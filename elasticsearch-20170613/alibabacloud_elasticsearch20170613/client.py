@@ -683,7 +683,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CapacityPlanResponse:
         """
-        @summary 容量规划
+        @summary Capacity Planning
         
         @param request: CapacityPlanRequest
         @param headers: map
@@ -727,7 +727,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CapacityPlanResponse:
         """
-        @summary 容量规划
+        @summary Capacity Planning
         
         @param request: CapacityPlanRequest
         @param headers: map
@@ -769,7 +769,7 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.CapacityPlanRequest,
     ) -> elasticsearch_20170613_models.CapacityPlanResponse:
         """
-        @summary 容量规划
+        @summary Capacity Planning
         
         @param request: CapacityPlanRequest
         @return: CapacityPlanResponse
@@ -783,7 +783,7 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.CapacityPlanRequest,
     ) -> elasticsearch_20170613_models.CapacityPlanResponse:
         """
-        @summary 容量规划
+        @summary Capacity Planning
         
         @param request: CapacityPlanRequest
         @return: CapacityPlanResponse
@@ -1013,7 +1013,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
         """
-        @summary 关闭索引托管
+        @summary Disable Managed Index
         
         @param request: CloseManagedIndexRequest
         @param headers: map
@@ -1053,7 +1053,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
         """
-        @summary 关闭索引托管
+        @summary Disable Managed Index
         
         @param request: CloseManagedIndexRequest
         @param headers: map
@@ -1091,7 +1091,7 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.CloseManagedIndexRequest,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
         """
-        @summary 关闭索引托管
+        @summary Disable Managed Index
         
         @param request: CloseManagedIndexRequest
         @return: CloseManagedIndexResponse
@@ -1107,7 +1107,7 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.CloseManagedIndexRequest,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
         """
-        @summary 关闭索引托管
+        @summary Disable Managed Index
         
         @param request: CloseManagedIndexRequest
         @return: CloseManagedIndexResponse
@@ -2224,7 +2224,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
         """
-        @summary Call deactivatezones to offline part of the zone when multiple zones are available. And you need to migrate the nodes in the offline zone to other zones.
+        @summary Invoke DeactivateZones to offline certain zones when there are multiple availability zones, and migrate nodes in the offline zones to other availability zones.
         
         @param request: DeactivateZonesRequest
         @param headers: map
@@ -2264,7 +2264,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
         """
-        @summary Call deactivatezones to offline part of the zone when multiple zones are available. And you need to migrate the nodes in the offline zone to other zones.
+        @summary Invoke DeactivateZones to offline certain zones when there are multiple availability zones, and migrate nodes in the offline zones to other availability zones.
         
         @param request: DeactivateZonesRequest
         @param headers: map
@@ -2302,7 +2302,7 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.DeactivateZonesRequest,
     ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
         """
-        @summary Call deactivatezones to offline part of the zone when multiple zones are available. And you need to migrate the nodes in the offline zone to other zones.
+        @summary Invoke DeactivateZones to offline certain zones when there are multiple availability zones, and migrate nodes in the offline zones to other availability zones.
         
         @param request: DeactivateZonesRequest
         @return: DeactivateZonesResponse
@@ -2317,7 +2317,7 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.DeactivateZonesRequest,
     ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
         """
-        @summary Call deactivatezones to offline part of the zone when multiple zones are available. And you need to migrate the nodes in the offline zone to other zones.
+        @summary Invoke DeactivateZones to offline certain zones when there are multiple availability zones, and migrate nodes in the offline zones to other availability zones.
         
         @param request: DeactivateZonesRequest
         @return: DeactivateZonesResponse
@@ -3779,7 +3779,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeApmResponse:
         """
-        @summary DescribeApm
+        @summary Describe APM
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3811,7 +3811,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeApmResponse:
         """
-        @summary DescribeApm
+        @summary Describe APM
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3841,7 +3841,7 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeApmResponse:
         """
-        @summary DescribeApm
+        @summary Describe APM
         
         @return: DescribeApmResponse
         """
@@ -3854,7 +3854,7 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeApmResponse:
         """
-        @summary DescribeApm
+        @summary Describe APM
         
         @return: DescribeApmResponse
         """
