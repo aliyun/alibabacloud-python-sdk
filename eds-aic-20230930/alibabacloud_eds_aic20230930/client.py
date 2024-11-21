@@ -266,6 +266,8 @@ class Client(OpenApiClient):
             query['BackupFilePath'] = request.backup_file_path
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.source_app_list):
+            query['SourceAppList'] = request.source_app_list
         if not UtilClient.is_unset(request.source_file_path_list):
             query['SourceFilePathList'] = request.source_file_path_list
         if not UtilClient.is_unset(request.upload_endpoint):
@@ -311,6 +313,8 @@ class Client(OpenApiClient):
             query['BackupFilePath'] = request.backup_file_path
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.source_app_list):
+            query['SourceAppList'] = request.source_app_list
         if not UtilClient.is_unset(request.source_file_path_list):
             query['SourceFilePathList'] = request.source_file_path_list
         if not UtilClient.is_unset(request.upload_endpoint):
@@ -1992,6 +1996,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status_list):
+            query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2045,6 +2051,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status_list):
+            query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2404,6 +2412,7 @@ class Client(OpenApiClient):
 
     def describe_regions_with_options(
         self,
+        request: eds_aic_20230930_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DescribeRegionsResponse:
         """
@@ -2413,7 +2422,13 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRegionsResponse
         """
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='DescribeRegions',
             version='2023-09-30',
@@ -2432,6 +2447,7 @@ class Client(OpenApiClient):
 
     async def describe_regions_with_options_async(
         self,
+        request: eds_aic_20230930_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DescribeRegionsResponse:
         """
@@ -2441,7 +2457,13 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRegionsResponse
         """
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='DescribeRegions',
             version='2023-09-30',
@@ -2458,23 +2480,31 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_regions(self) -> eds_aic_20230930_models.DescribeRegionsResponse:
+    def describe_regions(
+        self,
+        request: eds_aic_20230930_models.DescribeRegionsRequest,
+    ) -> eds_aic_20230930_models.DescribeRegionsResponse:
         """
         @summary 查询地域
         
+        @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.describe_regions_with_options(runtime)
+        return self.describe_regions_with_options(request, runtime)
 
-    async def describe_regions_async(self) -> eds_aic_20230930_models.DescribeRegionsResponse:
+    async def describe_regions_async(
+        self,
+        request: eds_aic_20230930_models.DescribeRegionsRequest,
+    ) -> eds_aic_20230930_models.DescribeRegionsResponse:
         """
         @summary 查询地域
         
+        @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.describe_regions_with_options_async(runtime)
+        return await self.describe_regions_with_options_async(request, runtime)
 
     def describe_spec_with_options(
         self,
@@ -3127,94 +3157,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.fetch_file_with_options_async(request, runtime)
-
-    def get_adb_secure_with_options(
-        self,
-        request: eds_aic_20230930_models.GetAdbSecureRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> eds_aic_20230930_models.GetAdbSecureResponse:
-        """
-        @param request: GetAdbSecureRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAdbSecureResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetAdbSecure',
-            version='2023-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eds_aic_20230930_models.GetAdbSecureResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_adb_secure_with_options_async(
-        self,
-        request: eds_aic_20230930_models.GetAdbSecureRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> eds_aic_20230930_models.GetAdbSecureResponse:
-        """
-        @param request: GetAdbSecureRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAdbSecureResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetAdbSecure',
-            version='2023-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eds_aic_20230930_models.GetAdbSecureResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_adb_secure(
-        self,
-        request: eds_aic_20230930_models.GetAdbSecureRequest,
-    ) -> eds_aic_20230930_models.GetAdbSecureResponse:
-        """
-        @param request: GetAdbSecureRequest
-        @return: GetAdbSecureResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.get_adb_secure_with_options(request, runtime)
-
-    async def get_adb_secure_async(
-        self,
-        request: eds_aic_20230930_models.GetAdbSecureRequest,
-    ) -> eds_aic_20230930_models.GetAdbSecureResponse:
-        """
-        @param request: GetAdbSecureRequest
-        @return: GetAdbSecureResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.get_adb_secure_with_options_async(request, runtime)
 
     def import_key_pair_with_options(
         self,
@@ -4707,98 +4649,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.send_file_with_options_async(request, runtime)
-
-    def set_adb_secure_with_options(
-        self,
-        request: eds_aic_20230930_models.SetAdbSecureRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> eds_aic_20230930_models.SetAdbSecureResponse:
-        """
-        @param request: SetAdbSecureRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetAdbSecureResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetAdbSecure',
-            version='2023-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eds_aic_20230930_models.SetAdbSecureResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def set_adb_secure_with_options_async(
-        self,
-        request: eds_aic_20230930_models.SetAdbSecureRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> eds_aic_20230930_models.SetAdbSecureResponse:
-        """
-        @param request: SetAdbSecureRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetAdbSecureResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetAdbSecure',
-            version='2023-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eds_aic_20230930_models.SetAdbSecureResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def set_adb_secure(
-        self,
-        request: eds_aic_20230930_models.SetAdbSecureRequest,
-    ) -> eds_aic_20230930_models.SetAdbSecureResponse:
-        """
-        @param request: SetAdbSecureRequest
-        @return: SetAdbSecureResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.set_adb_secure_with_options(request, runtime)
-
-    async def set_adb_secure_async(
-        self,
-        request: eds_aic_20230930_models.SetAdbSecureRequest,
-    ) -> eds_aic_20230930_models.SetAdbSecureResponse:
-        """
-        @param request: SetAdbSecureRequest
-        @return: SetAdbSecureResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.set_adb_secure_with_options_async(request, runtime)
 
     def start_android_instance_with_options(
         self,

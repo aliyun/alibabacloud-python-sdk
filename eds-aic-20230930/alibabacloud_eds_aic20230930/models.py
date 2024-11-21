@@ -305,6 +305,7 @@ class BackupFileRequest(TeaModel):
         android_instance_id_list: List[str] = None,
         backup_file_path: str = None,
         description: str = None,
+        source_app_list: List[str] = None,
         source_file_path_list: List[str] = None,
         upload_endpoint: str = None,
         upload_type: str = None,
@@ -314,7 +315,7 @@ class BackupFileRequest(TeaModel):
         # This parameter is required.
         self.backup_file_path = backup_file_path
         self.description = description
-        # This parameter is required.
+        self.source_app_list = source_app_list
         self.source_file_path_list = source_file_path_list
         self.upload_endpoint = upload_endpoint
         self.upload_type = upload_type
@@ -334,6 +335,8 @@ class BackupFileRequest(TeaModel):
             result['BackupFilePath'] = self.backup_file_path
         if self.description is not None:
             result['Description'] = self.description
+        if self.source_app_list is not None:
+            result['SourceAppList'] = self.source_app_list
         if self.source_file_path_list is not None:
             result['SourceFilePathList'] = self.source_file_path_list
         if self.upload_endpoint is not None:
@@ -350,6 +353,8 @@ class BackupFileRequest(TeaModel):
             self.backup_file_path = m.get('BackupFilePath')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('SourceAppList') is not None:
+            self.source_app_list = m.get('SourceAppList')
         if m.get('SourceFilePathList') is not None:
             self.source_file_path_list = m.get('SourceFilePathList')
         if m.get('UploadEndpoint') is not None:
@@ -931,7 +936,6 @@ class CreateAppRequest(TeaModel):
         install_param: str = None,
         oss_app_url: str = None,
     ):
-        # This parameter is required.
         self.app_name = app_name
         self.biz_region_id = biz_region_id
         self.description = description
@@ -1336,9 +1340,21 @@ class CreateKeyPairResponse(TeaModel):
 class CreatePolicyGroupRequestNetRedirectPolicy(TeaModel):
     def __init__(
         self,
+        custom_proxy: str = None,
+        host_addr: str = None,
         net_redirect: str = None,
+        port: str = None,
+        proxy_password: str = None,
+        proxy_type: str = None,
+        proxy_user_name: str = None,
     ):
+        self.custom_proxy = custom_proxy
+        self.host_addr = host_addr
         self.net_redirect = net_redirect
+        self.port = port
+        self.proxy_password = proxy_password
+        self.proxy_type = proxy_type
+        self.proxy_user_name = proxy_user_name
 
     def validate(self):
         pass
@@ -1349,14 +1365,38 @@ class CreatePolicyGroupRequestNetRedirectPolicy(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_proxy is not None:
+            result['CustomProxy'] = self.custom_proxy
+        if self.host_addr is not None:
+            result['HostAddr'] = self.host_addr
         if self.net_redirect is not None:
             result['NetRedirect'] = self.net_redirect
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.proxy_password is not None:
+            result['ProxyPassword'] = self.proxy_password
+        if self.proxy_type is not None:
+            result['ProxyType'] = self.proxy_type
+        if self.proxy_user_name is not None:
+            result['ProxyUserName'] = self.proxy_user_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomProxy') is not None:
+            self.custom_proxy = m.get('CustomProxy')
+        if m.get('HostAddr') is not None:
+            self.host_addr = m.get('HostAddr')
         if m.get('NetRedirect') is not None:
             self.net_redirect = m.get('NetRedirect')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('ProxyPassword') is not None:
+            self.proxy_password = m.get('ProxyPassword')
+        if m.get('ProxyType') is not None:
+            self.proxy_type = m.get('ProxyType')
+        if m.get('ProxyUserName') is not None:
+            self.proxy_user_name = m.get('ProxyUserName')
         return self
 
 
@@ -3194,6 +3234,7 @@ class DescribeBackupFilesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         start_time: str = None,
+        status_list: List[str] = None,
     ):
         self.android_instance_id = android_instance_id
         self.android_instance_name = android_instance_name
@@ -3206,6 +3247,7 @@ class DescribeBackupFilesRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.start_time = start_time
+        self.status_list = status_list
 
     def validate(self):
         pass
@@ -3238,6 +3280,8 @@ class DescribeBackupFilesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.status_list is not None:
+            result['StatusList'] = self.status_list
         return result
 
     def from_map(self, m: dict = None):
@@ -3264,6 +3308,8 @@ class DescribeBackupFilesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('StatusList') is not None:
+            self.status_list = m.get('StatusList')
         return self
 
 
@@ -3281,8 +3327,11 @@ class DescribeBackupFilesResponseBodyData(TeaModel):
         gmt_created: str = None,
         gmt_modified: str = None,
         instance_group_id: str = None,
+        region_id: str = None,
+        source_app_info_list: List[str] = None,
         source_file_path_list: List[str] = None,
         status: str = None,
+        task_id: str = None,
         upload_endpoint: str = None,
         upload_type: str = None,
     ):
@@ -3297,8 +3346,11 @@ class DescribeBackupFilesResponseBodyData(TeaModel):
         self.gmt_created = gmt_created
         self.gmt_modified = gmt_modified
         self.instance_group_id = instance_group_id
+        self.region_id = region_id
+        self.source_app_info_list = source_app_info_list
         self.source_file_path_list = source_file_path_list
         self.status = status
+        self.task_id = task_id
         self.upload_endpoint = upload_endpoint
         self.upload_type = upload_type
 
@@ -3333,10 +3385,16 @@ class DescribeBackupFilesResponseBodyData(TeaModel):
             result['GmtModified'] = self.gmt_modified
         if self.instance_group_id is not None:
             result['InstanceGroupId'] = self.instance_group_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_app_info_list is not None:
+            result['SourceAppInfoList'] = self.source_app_info_list
         if self.source_file_path_list is not None:
             result['SourceFilePathList'] = self.source_file_path_list
         if self.status is not None:
             result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         if self.upload_endpoint is not None:
             result['UploadEndpoint'] = self.upload_endpoint
         if self.upload_type is not None:
@@ -3367,10 +3425,16 @@ class DescribeBackupFilesResponseBodyData(TeaModel):
             self.gmt_modified = m.get('GmtModified')
         if m.get('InstanceGroupId') is not None:
             self.instance_group_id = m.get('InstanceGroupId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceAppInfoList') is not None:
+            self.source_app_info_list = m.get('SourceAppInfoList')
         if m.get('SourceFilePathList') is not None:
             self.source_file_path_list = m.get('SourceFilePathList')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         if m.get('UploadEndpoint') is not None:
             self.upload_endpoint = m.get('UploadEndpoint')
         if m.get('UploadType') is not None:
@@ -4101,12 +4165,41 @@ class DescribeKeyPairsResponse(TeaModel):
         return self
 
 
+class DescribeRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+    ):
+        self.accept_language = accept_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        return self
+
+
 class DescribeRegionsResponseBodyRegionModels(TeaModel):
     def __init__(
         self,
         region_id: str = None,
+        region_name: str = None,
     ):
         self.region_id = region_id
+        self.region_name = region_name
 
     def validate(self):
         pass
@@ -4119,12 +4212,16 @@ class DescribeRegionsResponseBodyRegionModels(TeaModel):
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.region_name is not None:
+            result['RegionName'] = self.region_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RegionName') is not None:
+            self.region_name = m.get('RegionName')
         return self
 
 
@@ -4484,6 +4581,8 @@ class DescribeTasksRequest(TeaModel):
 class DescribeTasksResponseBodyData(TeaModel):
     def __init__(
         self,
+        error_code: str = None,
+        error_msg: str = None,
         finish_time: str = None,
         invoke_id: str = None,
         region_id: str = None,
@@ -4494,6 +4593,8 @@ class DescribeTasksResponseBodyData(TeaModel):
         task_status: str = None,
         task_type: str = None,
     ):
+        self.error_code = error_code
+        self.error_msg = error_msg
         self.finish_time = finish_time
         self.invoke_id = invoke_id
         self.region_id = region_id
@@ -4513,6 +4614,10 @@ class DescribeTasksResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
         if self.finish_time is not None:
             result['FinishTime'] = self.finish_time
         if self.invoke_id is not None:
@@ -4535,6 +4640,10 @@ class DescribeTasksResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
         if m.get('FinishTime') is not None:
             self.finish_time = m.get('FinishTime')
         if m.get('InvokeId') is not None:
@@ -5193,177 +5302,6 @@ class FetchFileResponse(TeaModel):
         return self
 
 
-class GetAdbSecureRequest(TeaModel):
-    def __init__(
-        self,
-        instance_ids: List[str] = None,
-    ):
-        self.instance_ids = instance_ids
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.instance_ids is not None:
-            result['InstanceIds'] = self.instance_ids
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InstanceIds') is not None:
-            self.instance_ids = m.get('InstanceIds')
-        return self
-
-
-class GetAdbSecureResponseBodyDataAdbSecureList(TeaModel):
-    def __init__(
-        self,
-        instance_id: str = None,
-        status: int = None,
-    ):
-        self.instance_id = instance_id
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class GetAdbSecureResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        adb_secure_list: List[GetAdbSecureResponseBodyDataAdbSecureList] = None,
-    ):
-        self.adb_secure_list = adb_secure_list
-
-    def validate(self):
-        if self.adb_secure_list:
-            for k in self.adb_secure_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['AdbSecureList'] = []
-        if self.adb_secure_list is not None:
-            for k in self.adb_secure_list:
-                result['AdbSecureList'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.adb_secure_list = []
-        if m.get('AdbSecureList') is not None:
-            for k in m.get('AdbSecureList'):
-                temp_model = GetAdbSecureResponseBodyDataAdbSecureList()
-                self.adb_secure_list.append(temp_model.from_map(k))
-        return self
-
-
-class GetAdbSecureResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: GetAdbSecureResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = GetAdbSecureResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class GetAdbSecureResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetAdbSecureResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetAdbSecureResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ImportKeyPairRequest(TeaModel):
     def __init__(
         self,
@@ -5669,9 +5607,21 @@ class ListPolicyGroupsRequest(TeaModel):
 class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(TeaModel):
     def __init__(
         self,
+        custom_proxy: str = None,
+        host_addr: str = None,
         net_redirect: str = None,
+        port: str = None,
+        proxy_password: str = None,
+        proxy_type: str = None,
+        proxy_user_name: str = None,
     ):
+        self.custom_proxy = custom_proxy
+        self.host_addr = host_addr
         self.net_redirect = net_redirect
+        self.port = port
+        self.proxy_password = proxy_password
+        self.proxy_type = proxy_type
+        self.proxy_user_name = proxy_user_name
 
     def validate(self):
         pass
@@ -5682,14 +5632,38 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_proxy is not None:
+            result['CustomProxy'] = self.custom_proxy
+        if self.host_addr is not None:
+            result['HostAddr'] = self.host_addr
         if self.net_redirect is not None:
             result['NetRedirect'] = self.net_redirect
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.proxy_password is not None:
+            result['ProxyPassword'] = self.proxy_password
+        if self.proxy_type is not None:
+            result['ProxyType'] = self.proxy_type
+        if self.proxy_user_name is not None:
+            result['ProxyUserName'] = self.proxy_user_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomProxy') is not None:
+            self.custom_proxy = m.get('CustomProxy')
+        if m.get('HostAddr') is not None:
+            self.host_addr = m.get('HostAddr')
         if m.get('NetRedirect') is not None:
             self.net_redirect = m.get('NetRedirect')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('ProxyPassword') is not None:
+            self.proxy_password = m.get('ProxyPassword')
+        if m.get('ProxyType') is not None:
+            self.proxy_type = m.get('ProxyType')
+        if m.get('ProxyUserName') is not None:
+            self.proxy_user_name = m.get('ProxyUserName')
         return self
 
 
@@ -6303,9 +6277,21 @@ class ModifyKeyPairNameResponse(TeaModel):
 class ModifyPolicyGroupRequestNetRedirectPolicy(TeaModel):
     def __init__(
         self,
+        custom_proxy: str = None,
+        host_addr: str = None,
         net_redirect: str = None,
+        port: str = None,
+        proxy_password: str = None,
+        proxy_type: str = None,
+        proxy_user_name: str = None,
     ):
+        self.custom_proxy = custom_proxy
+        self.host_addr = host_addr
         self.net_redirect = net_redirect
+        self.port = port
+        self.proxy_password = proxy_password
+        self.proxy_type = proxy_type
+        self.proxy_user_name = proxy_user_name
 
     def validate(self):
         pass
@@ -6316,14 +6302,38 @@ class ModifyPolicyGroupRequestNetRedirectPolicy(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_proxy is not None:
+            result['CustomProxy'] = self.custom_proxy
+        if self.host_addr is not None:
+            result['HostAddr'] = self.host_addr
         if self.net_redirect is not None:
             result['NetRedirect'] = self.net_redirect
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.proxy_password is not None:
+            result['ProxyPassword'] = self.proxy_password
+        if self.proxy_type is not None:
+            result['ProxyType'] = self.proxy_type
+        if self.proxy_user_name is not None:
+            result['ProxyUserName'] = self.proxy_user_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomProxy') is not None:
+            self.custom_proxy = m.get('CustomProxy')
+        if m.get('HostAddr') is not None:
+            self.host_addr = m.get('HostAddr')
         if m.get('NetRedirect') is not None:
             self.net_redirect = m.get('NetRedirect')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('ProxyPassword') is not None:
+            self.proxy_password = m.get('ProxyPassword')
+        if m.get('ProxyType') is not None:
+            self.proxy_type = m.get('ProxyType')
+        if m.get('ProxyUserName') is not None:
+            self.proxy_user_name = m.get('ProxyUserName')
         return self
 
 
@@ -7333,155 +7343,6 @@ class SendFileResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendFileResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SetAdbSecureRequest(TeaModel):
-    def __init__(
-        self,
-        instance_ids: List[str] = None,
-        status: int = None,
-    ):
-        self.instance_ids = instance_ids
-        # This parameter is required.
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.instance_ids is not None:
-            result['InstanceIds'] = self.instance_ids
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InstanceIds') is not None:
-            self.instance_ids = m.get('InstanceIds')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class SetAdbSecureResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        fail_count: int = None,
-        instance_ids: List[str] = None,
-        total_count: int = None,
-    ):
-        self.fail_count = fail_count
-        self.instance_ids = instance_ids
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.fail_count is not None:
-            result['FailCount'] = self.fail_count
-        if self.instance_ids is not None:
-            result['InstanceIds'] = self.instance_ids
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FailCount') is not None:
-            self.fail_count = m.get('FailCount')
-        if m.get('InstanceIds') is not None:
-            self.instance_ids = m.get('InstanceIds')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class SetAdbSecureResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: SetAdbSecureResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = SetAdbSecureResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SetAdbSecureResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SetAdbSecureResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SetAdbSecureResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

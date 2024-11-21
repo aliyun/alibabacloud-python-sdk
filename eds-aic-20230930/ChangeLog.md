@@ -1,3 +1,19 @@
+2024-11-21 Version: 3.0.0
+- Delete API GetAdbSecure.
+- Delete API SetAdbSecure.
+- Update API BackupFile: add param SourceAppList.
+- Update API BackupFile: update param SourceFilePathList.
+- Update API CreateApp: update param AppName.
+- Update API CreatePolicyGroup: update param NetRedirectPolicy.
+- Update API DescribeBackupFiles: add param StatusList.
+- Update API DescribeBackupFiles: update response param.
+- Update API DescribeRegions: add param AcceptLanguage.
+- Update API DescribeRegions: update response param.
+- Update API DescribeTasks: update response param.
+- Update API ListPolicyGroups: update response param.
+- Update API ModifyPolicyGroup: update param NetRedirectPolicy.
+
+
 2024-11-04 Version: 2.0.2
 - Update API RunCommand: add param ContentEncoding.
 
