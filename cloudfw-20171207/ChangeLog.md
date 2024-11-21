@@ -1,3 +1,8 @@
+2024-11-21 Version: 4.3.1
+- Update API DescribeVpcFirewallControlPolicy: update param CurrentPage.
+- Update API DescribeVpcFirewallControlPolicy: update param PageSize.
+
+
 2024-11-13 Version: 4.3.0
 - Support API DescribeAssetStatistic.
 - Support API DescribeUserBuyVersion.

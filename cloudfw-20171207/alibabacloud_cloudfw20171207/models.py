@@ -17641,8 +17641,6 @@ class DescribeVpcFirewallControlPolicyRequest(TeaModel):
         # The unique ID of the access control policy.
         self.acl_uuid = acl_uuid
         # The number of the page to return.
-        # 
-        # This parameter is required.
         self.current_page = current_page
         # The description of the access control policy. Fuzzy match is supported.
         self.description = description
@@ -17662,8 +17660,6 @@ class DescribeVpcFirewallControlPolicyRequest(TeaModel):
         # The number of entries to return on each page.
         # 
         # Maximum value: 50.
-        # 
-        # This parameter is required.
         self.page_size = page_size
         # The protocol type in the access control policy. Valid values:
         # 
