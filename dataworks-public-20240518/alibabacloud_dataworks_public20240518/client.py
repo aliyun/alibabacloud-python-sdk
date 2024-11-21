@@ -367,6 +367,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.clone_data_source_with_options_async(request, runtime)
 
+    def create_alert_rule_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateAlertRuleResponse:
+        """
+        @summary 创建自定义监控报警规则
+        
+        @param tmp_req: CreateAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAlertRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateAlertRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger_condition):
+            request.trigger_condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger_condition, 'TriggerCondition', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.trigger_condition_shrink):
+            query['TriggerCondition'] = request.trigger_condition_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateAlertRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_alert_rule_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateAlertRuleResponse:
+        """
+        @summary 创建自定义监控报警规则
+        
+        @param tmp_req: CreateAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAlertRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateAlertRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger_condition):
+            request.trigger_condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger_condition, 'TriggerCondition', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.trigger_condition_shrink):
+            query['TriggerCondition'] = request.trigger_condition_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateAlertRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_alert_rule(
+        self,
+        request: dataworks_public_20240518_models.CreateAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.CreateAlertRuleResponse:
+        """
+        @summary 创建自定义监控报警规则
+        
+        @param request: CreateAlertRuleRequest
+        @return: CreateAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_alert_rule_with_options(request, runtime)
+
+    async def create_alert_rule_async(
+        self,
+        request: dataworks_public_20240518_models.CreateAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.CreateAlertRuleResponse:
+        """
+        @summary 创建自定义监控报警规则
+        
+        @param request: CreateAlertRuleRequest
+        @return: CreateAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_alert_rule_with_options_async(request, runtime)
+
     def create_dialarm_rule_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.CreateDIAlarmRuleRequest,
@@ -1963,6 +2087,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_workflow_definition_with_options_async(request, runtime)
 
+    def delete_alert_rule_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteAlertRuleResponse:
+        """
+        @summary 删除自定义监控报警规则
+        
+        @param request: DeleteAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlertRuleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteAlertRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_alert_rule_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteAlertRuleResponse:
+        """
+        @summary 删除自定义监控报警规则
+        
+        @param request: DeleteAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlertRuleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteAlertRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_alert_rule(
+        self,
+        request: dataworks_public_20240518_models.DeleteAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.DeleteAlertRuleResponse:
+        """
+        @summary 删除自定义监控报警规则
+        
+        @param request: DeleteAlertRuleRequest
+        @return: DeleteAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_alert_rule_with_options(request, runtime)
+
+    async def delete_alert_rule_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.DeleteAlertRuleResponse:
+        """
+        @summary 删除自定义监控报警规则
+        
+        @param request: DeleteAlertRuleRequest
+        @return: DeleteAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_alert_rule_with_options_async(request, runtime)
+
     def delete_dialarm_rule_with_options(
         self,
         request: dataworks_public_20240518_models.DeleteDIAlarmRuleRequest,
@@ -2749,7 +2969,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteProjectMemberResponse:
         """
-        @summary 移除工作空间成员
+        @summary Removes a member from a workspace.
         
         @param request: DeleteProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2786,7 +3006,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteProjectMemberResponse:
         """
-        @summary 移除工作空间成员
+        @summary Removes a member from a workspace.
         
         @param request: DeleteProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2822,7 +3042,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteProjectMemberRequest,
     ) -> dataworks_public_20240518_models.DeleteProjectMemberResponse:
         """
-        @summary 移除工作空间成员
+        @summary Removes a member from a workspace.
         
         @param request: DeleteProjectMemberRequest
         @return: DeleteProjectMemberResponse
@@ -2835,7 +3055,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteProjectMemberRequest,
     ) -> dataworks_public_20240518_models.DeleteProjectMemberResponse:
         """
-        @summary 移除工作空间成员
+        @summary Removes a member from a workspace.
         
         @param request: DeleteProjectMemberRequest
         @return: DeleteProjectMemberResponse
@@ -3562,6 +3782,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.exec_deployment_stage_with_options_async(request, runtime)
+
+    def get_alert_rule_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetAlertRuleResponse:
+        """
+        @summary 获取自定义监控报警规则
+        
+        @param request: GetAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlertRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetAlertRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_alert_rule_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetAlertRuleResponse:
+        """
+        @summary 获取自定义监控报警规则
+        
+        @param request: GetAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlertRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetAlertRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_alert_rule(
+        self,
+        request: dataworks_public_20240518_models.GetAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.GetAlertRuleResponse:
+        """
+        @summary 获取自定义监控报警规则
+        
+        @param request: GetAlertRuleRequest
+        @return: GetAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_alert_rule_with_options(request, runtime)
+
+    async def get_alert_rule_async(
+        self,
+        request: dataworks_public_20240518_models.GetAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.GetAlertRuleResponse:
+        """
+        @summary 获取自定义监控报警规则
+        
+        @param request: GetAlertRuleRequest
+        @return: GetAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_alert_rule_with_options_async(request, runtime)
 
     def get_dijob_with_options(
         self,
@@ -4409,7 +4721,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetProjectMemberResponse:
         """
-        @summary 查询工作空间成员详情
+        @summary Queries the details about a member in a workspace.
         
         @param request: GetProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4446,7 +4758,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetProjectMemberResponse:
         """
-        @summary 查询工作空间成员详情
+        @summary Queries the details about a member in a workspace.
         
         @param request: GetProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4482,7 +4794,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetProjectMemberRequest,
     ) -> dataworks_public_20240518_models.GetProjectMemberResponse:
         """
-        @summary 查询工作空间成员详情
+        @summary Queries the details about a member in a workspace.
         
         @param request: GetProjectMemberRequest
         @return: GetProjectMemberResponse
@@ -4495,7 +4807,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetProjectMemberRequest,
     ) -> dataworks_public_20240518_models.GetProjectMemberResponse:
         """
-        @summary 查询工作空间成员详情
+        @summary Queries the details about a member in a workspace.
         
         @param request: GetProjectMemberRequest
         @return: GetProjectMemberResponse
@@ -4969,6 +5281,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetTaskInstanceResponse:
         """
+        @summary Queries the information about an instance.
+        
         @param request: GetTaskInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTaskInstanceResponse
@@ -5000,6 +5314,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetTaskInstanceResponse:
         """
+        @summary Queries the information about an instance.
+        
         @param request: GetTaskInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTaskInstanceResponse
@@ -5030,6 +5346,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetTaskInstanceRequest,
     ) -> dataworks_public_20240518_models.GetTaskInstanceResponse:
         """
+        @summary Queries the information about an instance.
+        
         @param request: GetTaskInstanceRequest
         @return: GetTaskInstanceResponse
         """
@@ -5041,6 +5359,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetTaskInstanceRequest,
     ) -> dataworks_public_20240518_models.GetTaskInstanceResponse:
         """
+        @summary Queries the information about an instance.
+        
         @param request: GetTaskInstanceRequest
         @return: GetTaskInstanceResponse
         """
@@ -5229,7 +5549,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GrantMemberProjectRolesResponse:
         """
-        @summary 授予工作空间成员角色
+        @summary Assigns roles to members in a workspace.
         
         @param tmp_req: GrantMemberProjectRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5272,7 +5592,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GrantMemberProjectRolesResponse:
         """
-        @summary 授予工作空间成员角色
+        @summary Assigns roles to members in a workspace.
         
         @param tmp_req: GrantMemberProjectRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5314,7 +5634,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GrantMemberProjectRolesRequest,
     ) -> dataworks_public_20240518_models.GrantMemberProjectRolesResponse:
         """
-        @summary 授予工作空间成员角色
+        @summary Assigns roles to members in a workspace.
         
         @param request: GrantMemberProjectRolesRequest
         @return: GrantMemberProjectRolesResponse
@@ -5327,7 +5647,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GrantMemberProjectRolesRequest,
     ) -> dataworks_public_20240518_models.GrantMemberProjectRolesResponse:
         """
-        @summary 授予工作空间成员角色
+        @summary Assigns roles to members in a workspace.
         
         @param request: GrantMemberProjectRolesRequest
         @return: GrantMemberProjectRolesResponse
@@ -5434,6 +5754,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.import_workflow_definition_with_options_async(request, runtime)
+
+    def list_alert_rules_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListAlertRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListAlertRulesResponse:
+        """
+        @summary 分页获取自定义监控报警规则
+        
+        @param tmp_req: ListAlertRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlertRulesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListAlertRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_ids):
+            request.task_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_ids, 'TaskIds', 'json')
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.receiver):
+            query['Receiver'] = request.receiver
+        if not UtilClient.is_unset(request.task_ids_shrink):
+            query['TaskIds'] = request.task_ids_shrink
+        if not UtilClient.is_unset(request.types_shrink):
+            query['Types'] = request.types_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAlertRules',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListAlertRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_alert_rules_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListAlertRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListAlertRulesResponse:
+        """
+        @summary 分页获取自定义监控报警规则
+        
+        @param tmp_req: ListAlertRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlertRulesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListAlertRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_ids):
+            request.task_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_ids, 'TaskIds', 'json')
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.receiver):
+            query['Receiver'] = request.receiver
+        if not UtilClient.is_unset(request.task_ids_shrink):
+            query['TaskIds'] = request.task_ids_shrink
+        if not UtilClient.is_unset(request.types_shrink):
+            query['Types'] = request.types_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAlertRules',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListAlertRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_alert_rules(
+        self,
+        request: dataworks_public_20240518_models.ListAlertRulesRequest,
+    ) -> dataworks_public_20240518_models.ListAlertRulesResponse:
+        """
+        @summary 分页获取自定义监控报警规则
+        
+        @param request: ListAlertRulesRequest
+        @return: ListAlertRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_alert_rules_with_options(request, runtime)
+
+    async def list_alert_rules_async(
+        self,
+        request: dataworks_public_20240518_models.ListAlertRulesRequest,
+    ) -> dataworks_public_20240518_models.ListAlertRulesResponse:
+        """
+        @summary 分页获取自定义监控报警规则
+        
+        @param request: ListAlertRulesRequest
+        @return: ListAlertRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_alert_rules_with_options_async(request, runtime)
 
     def list_dialarm_rules_with_options(
         self,
@@ -5909,7 +6361,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesResponse:
         """
-        @summary ListDataQualityEvaluationTaskInstances
+        @summary Queries a list of instances generated by a data quality monitoring task by page.
         
         @param request: ListDataQualityEvaluationTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5942,7 +6394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesResponse:
         """
-        @summary ListDataQualityEvaluationTaskInstances
+        @summary Queries a list of instances generated by a data quality monitoring task by page.
         
         @param request: ListDataQualityEvaluationTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5974,7 +6426,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesResponse:
         """
-        @summary ListDataQualityEvaluationTaskInstances
+        @summary Queries a list of instances generated by a data quality monitoring task by page.
         
         @param request: ListDataQualityEvaluationTaskInstancesRequest
         @return: ListDataQualityEvaluationTaskInstancesResponse
@@ -5987,7 +6439,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesResponse:
         """
-        @summary ListDataQualityEvaluationTaskInstances
+        @summary Queries a list of instances generated by a data quality monitoring task by page.
         
         @param request: ListDataQualityEvaluationTaskInstancesRequest
         @return: ListDataQualityEvaluationTaskInstancesResponse
@@ -6001,6 +6453,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityEvaluationTasksResponse:
         """
+        @summary Queries a list of data quality monitoring tasks by page.
+        
         @param request: ListDataQualityEvaluationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataQualityEvaluationTasksResponse
@@ -6032,6 +6486,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityEvaluationTasksResponse:
         """
+        @summary Queries a list of data quality monitoring tasks by page.
+        
         @param request: ListDataQualityEvaluationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataQualityEvaluationTasksResponse
@@ -6062,6 +6518,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityEvaluationTasksRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityEvaluationTasksResponse:
         """
+        @summary Queries a list of data quality monitoring tasks by page.
+        
         @param request: ListDataQualityEvaluationTasksRequest
         @return: ListDataQualityEvaluationTasksResponse
         """
@@ -6073,6 +6531,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityEvaluationTasksRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityEvaluationTasksResponse:
         """
+        @summary Queries a list of data quality monitoring tasks by page.
+        
         @param request: ListDataQualityEvaluationTasksRequest
         @return: ListDataQualityEvaluationTasksResponse
         """
@@ -6169,7 +6629,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityRulesResponse:
         """
-        @summary 质量监控规则分页查询
+        @summary Queries a list of data quality monitoring rules by page.
         
         @param request: ListDataQualityRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6202,7 +6662,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityRulesResponse:
         """
-        @summary 质量监控规则分页查询
+        @summary Queries a list of data quality monitoring rules by page.
         
         @param request: ListDataQualityRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6234,7 +6694,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityRulesRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityRulesResponse:
         """
-        @summary 质量监控规则分页查询
+        @summary Queries a list of data quality monitoring rules by page.
         
         @param request: ListDataQualityRulesRequest
         @return: ListDataQualityRulesResponse
@@ -6247,7 +6707,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityRulesRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityRulesResponse:
         """
-        @summary 质量监控规则分页查询
+        @summary Queries a list of data quality monitoring rules by page.
         
         @param request: ListDataQualityRulesRequest
         @return: ListDataQualityRulesResponse
@@ -7081,7 +7541,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListProjectMembersResponse:
         """
-        @summary 分页查询工作空间成员详情
+        @summary Queries details about members in a workspace.
         
         @param tmp_req: ListProjectMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7130,7 +7590,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListProjectMembersResponse:
         """
-        @summary 分页查询工作空间成员详情
+        @summary Queries details about members in a workspace.
         
         @param tmp_req: ListProjectMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7178,7 +7638,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListProjectMembersRequest,
     ) -> dataworks_public_20240518_models.ListProjectMembersResponse:
         """
-        @summary 分页查询工作空间成员详情
+        @summary Queries details about members in a workspace.
         
         @param request: ListProjectMembersRequest
         @return: ListProjectMembersResponse
@@ -7191,7 +7651,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListProjectMembersRequest,
     ) -> dataworks_public_20240518_models.ListProjectMembersResponse:
         """
-        @summary 分页查询工作空间成员详情
+        @summary Queries details about members in a workspace.
         
         @param request: ListProjectMembersRequest
         @return: ListProjectMembersResponse
@@ -7893,6 +8353,10 @@ class Client(OpenApiClient):
             body['TaskName'] = request.task_name
         if not UtilClient.is_unset(request.task_type):
             body['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.trigger_recurrence):
+            body['TriggerRecurrence'] = request.trigger_recurrence
+        if not UtilClient.is_unset(request.trigger_type):
+            body['TriggerType'] = request.trigger_type
         if not UtilClient.is_unset(request.workflow_id):
             body['WorkflowId'] = request.workflow_id
         if not UtilClient.is_unset(request.workflow_instance_id):
@@ -7964,6 +8428,10 @@ class Client(OpenApiClient):
             body['TaskName'] = request.task_name
         if not UtilClient.is_unset(request.task_type):
             body['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.trigger_recurrence):
+            body['TriggerRecurrence'] = request.trigger_recurrence
+        if not UtilClient.is_unset(request.trigger_type):
+            body['TriggerType'] = request.trigger_type
         if not UtilClient.is_unset(request.workflow_id):
             body['WorkflowId'] = request.workflow_id
         if not UtilClient.is_unset(request.workflow_instance_id):
@@ -9633,7 +10101,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RevokeMemberProjectRolesResponse:
         """
-        @summary 撤销工作空间成员的角色
+        @summary Revokes roles that are assigned to a member in a workspace.
         
         @param tmp_req: RevokeMemberProjectRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9676,7 +10144,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RevokeMemberProjectRolesResponse:
         """
-        @summary 撤销工作空间成员的角色
+        @summary Revokes roles that are assigned to a member in a workspace.
         
         @param tmp_req: RevokeMemberProjectRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9718,7 +10186,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RevokeMemberProjectRolesRequest,
     ) -> dataworks_public_20240518_models.RevokeMemberProjectRolesResponse:
         """
-        @summary 撤销工作空间成员的角色
+        @summary Revokes roles that are assigned to a member in a workspace.
         
         @param request: RevokeMemberProjectRolesRequest
         @return: RevokeMemberProjectRolesResponse
@@ -9731,7 +10199,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RevokeMemberProjectRolesRequest,
     ) -> dataworks_public_20240518_models.RevokeMemberProjectRolesResponse:
         """
-        @summary 撤销工作空间成员的角色
+        @summary Revokes roles that are assigned to a member in a workspace.
         
         @param request: RevokeMemberProjectRolesRequest
         @return: RevokeMemberProjectRolesResponse
@@ -10322,6 +10790,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.trigger_scheduler_task_instance_with_options_async(request, runtime)
+
+    def update_alert_rule_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateAlertRuleResponse:
+        """
+        @summary 创建自定义监控报警规则
+        
+        @param tmp_req: UpdateAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlertRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateAlertRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger_condition):
+            request.trigger_condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger_condition, 'TriggerCondition', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.trigger_condition_shrink):
+            query['TriggerCondition'] = request.trigger_condition_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateAlertRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_alert_rule_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateAlertRuleResponse:
+        """
+        @summary 创建自定义监控报警规则
+        
+        @param tmp_req: UpdateAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlertRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateAlertRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger_condition):
+            request.trigger_condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger_condition, 'TriggerCondition', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.trigger_condition_shrink):
+            query['TriggerCondition'] = request.trigger_condition_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateAlertRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_alert_rule(
+        self,
+        request: dataworks_public_20240518_models.UpdateAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.UpdateAlertRuleResponse:
+        """
+        @summary 创建自定义监控报警规则
+        
+        @param request: UpdateAlertRuleRequest
+        @return: UpdateAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_alert_rule_with_options(request, runtime)
+
+    async def update_alert_rule_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.UpdateAlertRuleResponse:
+        """
+        @summary 创建自定义监控报警规则
+        
+        @param request: UpdateAlertRuleRequest
+        @return: UpdateAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_alert_rule_with_options_async(request, runtime)
 
     def update_dialarm_rule_with_options(
         self,

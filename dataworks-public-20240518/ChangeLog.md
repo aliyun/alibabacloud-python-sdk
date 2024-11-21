@@ -1,3 +1,26 @@
+2024-11-21 Version: 3.0.0
+- Support API CreateAlertRule.
+- Support API DeleteAlertRule.
+- Support API GetAlertRule.
+- Support API ListAlertRules.
+- Support API UpdateAlertRule.
+- Update API GetTask: update response param.
+- Update API GetTaskInstance: update response param.
+- Update API ListDataQualityEvaluationTaskInstances: update response param.
+- Update API ListDataQualityEvaluationTasks: update response param.
+- Update API ListDataQualityResults: update response param.
+- Update API ListDataQualityRules: update response param.
+- Update API ListDownstreamTaskInstances: update response param.
+- Update API ListDownstreamTasks: update response param.
+- Update API ListTaskInstances: add param TriggerRecurrence.
+- Update API ListTaskInstances: add param TriggerType.
+- Update API ListTaskInstances: update param TaskType.
+- Update API ListTaskInstances: update response param.
+- Update API ListTasks: update response param.
+- Update API ListUpstreamTaskInstances: update response param.
+- Update API ListUpstreamTasks: update response param.
+
+
 2024-10-30 Version: 2.1.1
 - Generated python 2024-05-18 for dataworks-public.
 
