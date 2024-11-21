@@ -1,3 +1,7 @@
+2024-11-21 Version: 6.2.0
+- Support API ListCheckProcesses.
+
+
 2024-11-15 Version: 6.1.6
 - Update API UpdateQualityRule: update param Checker.
 

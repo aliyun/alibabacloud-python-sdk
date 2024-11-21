@@ -359,6 +359,80 @@ class LineageRelationRegisterBulkVO(TeaModel):
         return self
 
 
+class LineageRelationRegisterTaskVO(TeaModel):
+    def __init__(
+        self,
+        attributes: Dict[str, str] = None,
+        create_timestamp: int = None,
+        input_entities: List[LineageEntityVO] = None,
+        name: str = None,
+        output_entities: List[LineageEntityVO] = None,
+        qualified_name: str = None,
+    ):
+        self.attributes = attributes
+        self.create_timestamp = create_timestamp
+        self.input_entities = input_entities
+        self.name = name
+        self.output_entities = output_entities
+        self.qualified_name = qualified_name
+
+    def validate(self):
+        if self.input_entities:
+            for k in self.input_entities:
+                if k:
+                    k.validate()
+        if self.output_entities:
+            for k in self.output_entities:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        result['InputEntities'] = []
+        if self.input_entities is not None:
+            for k in self.input_entities:
+                result['InputEntities'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        result['OutputEntities'] = []
+        if self.output_entities is not None:
+            for k in self.output_entities:
+                result['OutputEntities'].append(k.to_map() if k else None)
+        if self.qualified_name is not None:
+            result['QualifiedName'] = self.qualified_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        self.input_entities = []
+        if m.get('InputEntities') is not None:
+            for k in m.get('InputEntities'):
+                temp_model = LineageEntityVO()
+                self.input_entities.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.output_entities = []
+        if m.get('OutputEntities') is not None:
+            for k in m.get('OutputEntities'):
+                temp_model = LineageEntityVO()
+                self.output_entities.append(temp_model.from_map(k))
+        if m.get('QualifiedName') is not None:
+            self.qualified_name = m.get('QualifiedName')
+        return self
+
+
 class LineageRelationRegisterVO(TeaModel):
     def __init__(
         self,
@@ -47415,6 +47489,268 @@ class ListCalcEnginesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCalcEnginesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCheckProcessesRequest(TeaModel):
+    def __init__(
+        self,
+        event_code: str = None,
+        operator: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        status: str = None,
+    ):
+        # This parameter is required.
+        self.event_code = event_code
+        self.operator = operator
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_code is not None:
+            result['EventCode'] = self.event_code
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventCode') is not None:
+            self.event_code = m.get('EventCode')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListCheckProcessesResponseBodyPagingInfoCheckProcesses(TeaModel):
+    def __init__(
+        self,
+        event_code: str = None,
+        event_name: str = None,
+        event_name_en: str = None,
+        message_id: str = None,
+        operator: str = None,
+        process_id: str = None,
+        process_name: str = None,
+        project_id: int = None,
+        status: str = None,
+    ):
+        self.event_code = event_code
+        self.event_name = event_name
+        self.event_name_en = event_name_en
+        self.message_id = message_id
+        self.operator = operator
+        self.process_id = process_id
+        self.process_name = process_name
+        self.project_id = project_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_code is not None:
+            result['EventCode'] = self.event_code
+        if self.event_name is not None:
+            result['EventName'] = self.event_name
+        if self.event_name_en is not None:
+            result['EventNameEn'] = self.event_name_en
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        if self.process_name is not None:
+            result['ProcessName'] = self.process_name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventCode') is not None:
+            self.event_code = m.get('EventCode')
+        if m.get('EventName') is not None:
+            self.event_name = m.get('EventName')
+        if m.get('EventNameEn') is not None:
+            self.event_name_en = m.get('EventNameEn')
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        if m.get('ProcessName') is not None:
+            self.process_name = m.get('ProcessName')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListCheckProcessesResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        check_processes: List[ListCheckProcessesResponseBodyPagingInfoCheckProcesses] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.check_processes = check_processes
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.check_processes:
+            for k in self.check_processes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CheckProcesses'] = []
+        if self.check_processes is not None:
+            for k in self.check_processes:
+                result['CheckProcesses'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.check_processes = []
+        if m.get('CheckProcesses') is not None:
+            for k in m.get('CheckProcesses'):
+                temp_model = ListCheckProcessesResponseBodyPagingInfoCheckProcesses()
+                self.check_processes.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCheckProcessesResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListCheckProcessesResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListCheckProcessesResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListCheckProcessesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCheckProcessesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCheckProcessesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

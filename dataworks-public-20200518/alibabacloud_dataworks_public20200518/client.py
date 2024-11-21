@@ -19995,6 +19995,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_calc_engines_with_options_async(request, runtime)
 
+    def list_check_processes_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListCheckProcessesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListCheckProcessesResponse:
+        """
+        @summary 查询扩展事件的检查列表
+        
+        @param request: ListCheckProcessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCheckProcessesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.event_code):
+            body['EventCode'] = request.event_code
+        if not UtilClient.is_unset(request.operator):
+            body['Operator'] = request.operator
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCheckProcesses',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListCheckProcessesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_check_processes_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListCheckProcessesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListCheckProcessesResponse:
+        """
+        @summary 查询扩展事件的检查列表
+        
+        @param request: ListCheckProcessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCheckProcessesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.event_code):
+            body['EventCode'] = request.event_code
+        if not UtilClient.is_unset(request.operator):
+            body['Operator'] = request.operator
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCheckProcesses',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListCheckProcessesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_check_processes(
+        self,
+        request: dataworks_public_20200518_models.ListCheckProcessesRequest,
+    ) -> dataworks_public_20200518_models.ListCheckProcessesResponse:
+        """
+        @summary 查询扩展事件的检查列表
+        
+        @param request: ListCheckProcessesRequest
+        @return: ListCheckProcessesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_check_processes_with_options(request, runtime)
+
+    async def list_check_processes_async(
+        self,
+        request: dataworks_public_20200518_models.ListCheckProcessesRequest,
+    ) -> dataworks_public_20200518_models.ListCheckProcessesResponse:
+        """
+        @summary 查询扩展事件的检查列表
+        
+        @param request: ListCheckProcessesRequest
+        @return: ListCheckProcessesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_check_processes_with_options_async(request, runtime)
+
     def list_cluster_configs_with_options(
         self,
         request: dataworks_public_20200518_models.ListClusterConfigsRequest,
