@@ -2445,6 +2445,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detect_face_attributes_with_options_async(request, runtime)
 
+    def id_2meta_standard_verify_with_options(
+        self,
+        request: cloudauth_20190307_models.Id2MetaStandardVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Id2MetaStandardVerifyResponse:
+        """
+        @summary 身份二要素标准版
+        
+        @param request: Id2MetaStandardVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Id2MetaStandardVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identify_num):
+            body['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.param_type):
+            body['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Id2MetaStandardVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Id2MetaStandardVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def id_2meta_standard_verify_with_options_async(
+        self,
+        request: cloudauth_20190307_models.Id2MetaStandardVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Id2MetaStandardVerifyResponse:
+        """
+        @summary 身份二要素标准版
+        
+        @param request: Id2MetaStandardVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Id2MetaStandardVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identify_num):
+            body['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.param_type):
+            body['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Id2MetaStandardVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Id2MetaStandardVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def id_2meta_standard_verify(
+        self,
+        request: cloudauth_20190307_models.Id2MetaStandardVerifyRequest,
+    ) -> cloudauth_20190307_models.Id2MetaStandardVerifyResponse:
+        """
+        @summary 身份二要素标准版
+        
+        @param request: Id2MetaStandardVerifyRequest
+        @return: Id2MetaStandardVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.id_2meta_standard_verify_with_options(request, runtime)
+
+    async def id_2meta_standard_verify_async(
+        self,
+        request: cloudauth_20190307_models.Id2MetaStandardVerifyRequest,
+    ) -> cloudauth_20190307_models.Id2MetaStandardVerifyResponse:
+        """
+        @summary 身份二要素标准版
+        
+        @param request: Id2MetaStandardVerifyRequest
+        @return: Id2MetaStandardVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.id_2meta_standard_verify_with_options_async(request, runtime)
+
     def id_2meta_verify_with_options(
         self,
         request: cloudauth_20190307_models.Id2MetaVerifyRequest,
