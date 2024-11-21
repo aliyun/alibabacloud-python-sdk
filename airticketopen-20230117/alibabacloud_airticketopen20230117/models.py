@@ -6920,50 +6920,18 @@ class CollectFlightLowestPriceHeaders(TeaModel):
         return self
 
 
-class CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo(TeaModel):
-    def __init__(
-        self,
-        departure_flight_number: str = None,
-        return_flight_number: str = None,
-    ):
-        # This parameter is required.
-        self.departure_flight_number = departure_flight_number
-        self.return_flight_number = return_flight_number
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.departure_flight_number is not None:
-            result['departure_flight_number'] = self.departure_flight_number
-        if self.return_flight_number is not None:
-            result['return_flight_number'] = self.return_flight_number
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('departure_flight_number') is not None:
-            self.departure_flight_number = m.get('departure_flight_number')
-        if m.get('return_flight_number') is not None:
-            self.return_flight_number = m.get('return_flight_number')
-        return self
-
-
-class CollectFlightLowestPriceRequestLowestPriceFlightList(TeaModel):
+class CollectFlightLowestPriceRequestLowestPriceFlightInfoList(TeaModel):
     def __init__(
         self,
         arrival_city: str = None,
         departure_city: str = None,
         departure_date: str = None,
-        flight_number_info: CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo = None,
+        departure_flight_number: str = None,
         market_total_price: float = None,
         request_id: str = None,
         return_date: str = None,
+        return_flight_number: str = None,
+        solution_id: str = None,
         suez_total_price: float = None,
         trip_type: int = None,
     ):
@@ -6974,19 +6942,21 @@ class CollectFlightLowestPriceRequestLowestPriceFlightList(TeaModel):
         # This parameter is required.
         self.departure_date = departure_date
         # This parameter is required.
-        self.flight_number_info = flight_number_info
+        self.departure_flight_number = departure_flight_number
         # This parameter is required.
         self.market_total_price = market_total_price
         self.request_id = request_id
         self.return_date = return_date
+        self.return_flight_number = return_flight_number
+        # This parameter is required.
+        self.solution_id = solution_id
         # This parameter is required.
         self.suez_total_price = suez_total_price
         # This parameter is required.
         self.trip_type = trip_type
 
     def validate(self):
-        if self.flight_number_info:
-            self.flight_number_info.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -7000,14 +6970,18 @@ class CollectFlightLowestPriceRequestLowestPriceFlightList(TeaModel):
             result['departure_city'] = self.departure_city
         if self.departure_date is not None:
             result['departure_date'] = self.departure_date
-        if self.flight_number_info is not None:
-            result['flight_number_info'] = self.flight_number_info.to_map()
+        if self.departure_flight_number is not None:
+            result['departure_flight_number'] = self.departure_flight_number
         if self.market_total_price is not None:
             result['market_total_price'] = self.market_total_price
         if self.request_id is not None:
             result['request_id'] = self.request_id
         if self.return_date is not None:
             result['return_date'] = self.return_date
+        if self.return_flight_number is not None:
+            result['return_flight_number'] = self.return_flight_number
+        if self.solution_id is not None:
+            result['solution_id'] = self.solution_id
         if self.suez_total_price is not None:
             result['suez_total_price'] = self.suez_total_price
         if self.trip_type is not None:
@@ -7022,15 +6996,18 @@ class CollectFlightLowestPriceRequestLowestPriceFlightList(TeaModel):
             self.departure_city = m.get('departure_city')
         if m.get('departure_date') is not None:
             self.departure_date = m.get('departure_date')
-        if m.get('flight_number_info') is not None:
-            temp_model = CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo()
-            self.flight_number_info = temp_model.from_map(m['flight_number_info'])
+        if m.get('departure_flight_number') is not None:
+            self.departure_flight_number = m.get('departure_flight_number')
         if m.get('market_total_price') is not None:
             self.market_total_price = m.get('market_total_price')
         if m.get('request_id') is not None:
             self.request_id = m.get('request_id')
         if m.get('return_date') is not None:
             self.return_date = m.get('return_date')
+        if m.get('return_flight_number') is not None:
+            self.return_flight_number = m.get('return_flight_number')
+        if m.get('solution_id') is not None:
+            self.solution_id = m.get('solution_id')
         if m.get('suez_total_price') is not None:
             self.suez_total_price = m.get('suez_total_price')
         if m.get('trip_type') is not None:
@@ -7041,14 +7018,14 @@ class CollectFlightLowestPriceRequestLowestPriceFlightList(TeaModel):
 class CollectFlightLowestPriceRequest(TeaModel):
     def __init__(
         self,
-        lowest_price_flight_list: List[CollectFlightLowestPriceRequestLowestPriceFlightList] = None,
+        lowest_price_flight_info_list: List[CollectFlightLowestPriceRequestLowestPriceFlightInfoList] = None,
     ):
         # This parameter is required.
-        self.lowest_price_flight_list = lowest_price_flight_list
+        self.lowest_price_flight_info_list = lowest_price_flight_info_list
 
     def validate(self):
-        if self.lowest_price_flight_list:
-            for k in self.lowest_price_flight_list:
+        if self.lowest_price_flight_info_list:
+            for k in self.lowest_price_flight_info_list:
                 if k:
                     k.validate()
 
@@ -7058,29 +7035,29 @@ class CollectFlightLowestPriceRequest(TeaModel):
             return _map
 
         result = dict()
-        result['lowestPriceFlightList'] = []
-        if self.lowest_price_flight_list is not None:
-            for k in self.lowest_price_flight_list:
-                result['lowestPriceFlightList'].append(k.to_map() if k else None)
+        result['lowest_price_flight_info_list'] = []
+        if self.lowest_price_flight_info_list is not None:
+            for k in self.lowest_price_flight_info_list:
+                result['lowest_price_flight_info_list'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.lowest_price_flight_list = []
-        if m.get('lowestPriceFlightList') is not None:
-            for k in m.get('lowestPriceFlightList'):
-                temp_model = CollectFlightLowestPriceRequestLowestPriceFlightList()
-                self.lowest_price_flight_list.append(temp_model.from_map(k))
+        self.lowest_price_flight_info_list = []
+        if m.get('lowest_price_flight_info_list') is not None:
+            for k in m.get('lowest_price_flight_info_list'):
+                temp_model = CollectFlightLowestPriceRequestLowestPriceFlightInfoList()
+                self.lowest_price_flight_info_list.append(temp_model.from_map(k))
         return self
 
 
 class CollectFlightLowestPriceShrinkRequest(TeaModel):
     def __init__(
         self,
-        lowest_price_flight_list_shrink: str = None,
+        lowest_price_flight_info_list_shrink: str = None,
     ):
         # This parameter is required.
-        self.lowest_price_flight_list_shrink = lowest_price_flight_list_shrink
+        self.lowest_price_flight_info_list_shrink = lowest_price_flight_info_list_shrink
 
     def validate(self):
         pass
@@ -7091,14 +7068,14 @@ class CollectFlightLowestPriceShrinkRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.lowest_price_flight_list_shrink is not None:
-            result['lowestPriceFlightList'] = self.lowest_price_flight_list_shrink
+        if self.lowest_price_flight_info_list_shrink is not None:
+            result['lowest_price_flight_info_list'] = self.lowest_price_flight_info_list_shrink
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('lowestPriceFlightList') is not None:
-            self.lowest_price_flight_list_shrink = m.get('lowestPriceFlightList')
+        if m.get('lowest_price_flight_info_list') is not None:
+            self.lowest_price_flight_info_list_shrink = m.get('lowest_price_flight_info_list')
         return self
 
 

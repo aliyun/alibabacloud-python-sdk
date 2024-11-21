@@ -1374,11 +1374,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.CollectFlightLowestPriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.lowest_price_flight_list):
-            request.lowest_price_flight_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lowest_price_flight_list, 'lowestPriceFlightList', 'json')
+        if not UtilClient.is_unset(tmp_req.lowest_price_flight_info_list):
+            request.lowest_price_flight_info_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lowest_price_flight_info_list, 'lowest_price_flight_info_list', 'json')
         body = {}
-        if not UtilClient.is_unset(request.lowest_price_flight_list_shrink):
-            body['lowestPriceFlightList'] = request.lowest_price_flight_list_shrink
+        if not UtilClient.is_unset(request.lowest_price_flight_info_list_shrink):
+            body['lowest_price_flight_info_list'] = request.lowest_price_flight_info_list_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1423,11 +1423,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.CollectFlightLowestPriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.lowest_price_flight_list):
-            request.lowest_price_flight_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lowest_price_flight_list, 'lowestPriceFlightList', 'json')
+        if not UtilClient.is_unset(tmp_req.lowest_price_flight_info_list):
+            request.lowest_price_flight_info_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lowest_price_flight_info_list, 'lowest_price_flight_info_list', 'json')
         body = {}
-        if not UtilClient.is_unset(request.lowest_price_flight_list_shrink):
-            body['lowestPriceFlightList'] = request.lowest_price_flight_list_shrink
+        if not UtilClient.is_unset(request.lowest_price_flight_info_list_shrink):
+            body['lowest_price_flight_info_list'] = request.lowest_price_flight_info_list_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
