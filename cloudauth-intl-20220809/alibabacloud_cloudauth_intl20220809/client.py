@@ -801,6 +801,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.face_compare_with_options_async(request, runtime)
 
+    def face_guard_risk_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.FaceGuardRiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.FaceGuardRiskResponse:
+        """
+        @summary 国际人脸保镖纯服务端接口
+        
+        @param request: FaceGuardRiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FaceGuardRiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.device_token):
+            query['DeviceToken'] = request.device_token
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FaceGuardRisk',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.FaceGuardRiskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def face_guard_risk_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.FaceGuardRiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.FaceGuardRiskResponse:
+        """
+        @summary 国际人脸保镖纯服务端接口
+        
+        @param request: FaceGuardRiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FaceGuardRiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.device_token):
+            query['DeviceToken'] = request.device_token
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FaceGuardRisk',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.FaceGuardRiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def face_guard_risk(
+        self,
+        request: cloudauth_intl_20220809_models.FaceGuardRiskRequest,
+    ) -> cloudauth_intl_20220809_models.FaceGuardRiskResponse:
+        """
+        @summary 国际人脸保镖纯服务端接口
+        
+        @param request: FaceGuardRiskRequest
+        @return: FaceGuardRiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.face_guard_risk_with_options(request, runtime)
+
+    async def face_guard_risk_async(
+        self,
+        request: cloudauth_intl_20220809_models.FaceGuardRiskRequest,
+    ) -> cloudauth_intl_20220809_models.FaceGuardRiskResponse:
+        """
+        @summary 国际人脸保镖纯服务端接口
+        
+        @param request: FaceGuardRiskRequest
+        @return: FaceGuardRiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.face_guard_risk_with_options_async(request, runtime)
+
     def face_liveness_with_options(
         self,
         request: cloudauth_intl_20220809_models.FaceLivenessRequest,
@@ -1195,6 +1303,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not UtilClient.is_unset(request.ocr):
             query['Ocr'] = request.ocr
+        if not UtilClient.is_unset(request.procedure_priority):
+            query['ProcedurePriority'] = request.procedure_priority
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_flow):
@@ -1286,6 +1396,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not UtilClient.is_unset(request.ocr):
             query['Ocr'] = request.ocr
+        if not UtilClient.is_unset(request.procedure_priority):
+            query['ProcedurePriority'] = request.procedure_priority
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_flow):

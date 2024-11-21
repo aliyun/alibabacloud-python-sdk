@@ -277,6 +277,7 @@ class CheckResultResponseBodyResult(TeaModel):
         ext_basic_info: str = None,
         ext_face_info: str = None,
         ext_id_info: str = None,
+        ext_info: str = None,
         ext_risk_info: str = None,
         passed: str = None,
         sub_code: str = None,
@@ -285,6 +286,7 @@ class CheckResultResponseBodyResult(TeaModel):
         self.ext_basic_info = ext_basic_info
         self.ext_face_info = ext_face_info
         self.ext_id_info = ext_id_info
+        self.ext_info = ext_info
         self.ext_risk_info = ext_risk_info
         self.passed = passed
         self.sub_code = sub_code
@@ -306,6 +308,8 @@ class CheckResultResponseBodyResult(TeaModel):
             result['ExtFaceInfo'] = self.ext_face_info
         if self.ext_id_info is not None:
             result['ExtIdInfo'] = self.ext_id_info
+        if self.ext_info is not None:
+            result['ExtInfo'] = self.ext_info
         if self.ext_risk_info is not None:
             result['ExtRiskInfo'] = self.ext_risk_info
         if self.passed is not None:
@@ -324,6 +328,8 @@ class CheckResultResponseBodyResult(TeaModel):
             self.ext_face_info = m.get('ExtFaceInfo')
         if m.get('ExtIdInfo') is not None:
             self.ext_id_info = m.get('ExtIdInfo')
+        if m.get('ExtInfo') is not None:
+            self.ext_info = m.get('ExtInfo')
         if m.get('ExtRiskInfo') is not None:
             self.ext_risk_info = m.get('ExtRiskInfo')
         if m.get('Passed') is not None:
@@ -1215,6 +1221,179 @@ class FaceCompareResponse(TeaModel):
         return self
 
 
+class FaceGuardRiskRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        device_token: str = None,
+        merchant_biz_id: str = None,
+        product_code: str = None,
+    ):
+        self.biz_id = biz_id
+        self.device_token = device_token
+        self.merchant_biz_id = merchant_biz_id
+        self.product_code = product_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.device_token is not None:
+            result['DeviceToken'] = self.device_token
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('DeviceToken') is not None:
+            self.device_token = m.get('DeviceToken')
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        return self
+
+
+class FaceGuardRiskResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        risk_extends: str = None,
+        risk_tags: str = None,
+        transaction_id: str = None,
+    ):
+        self.risk_extends = risk_extends
+        self.risk_tags = risk_tags
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.risk_extends is not None:
+            result['RiskExtends'] = self.risk_extends
+        if self.risk_tags is not None:
+            result['RiskTags'] = self.risk_tags
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RiskExtends') is not None:
+            self.risk_extends = m.get('RiskExtends')
+        if m.get('RiskTags') is not None:
+            self.risk_tags = m.get('RiskTags')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class FaceGuardRiskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: FaceGuardRiskResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = FaceGuardRiskResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class FaceGuardRiskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FaceGuardRiskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FaceGuardRiskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class FaceLivenessRequest(TeaModel):
     def __init__(
         self,
@@ -1783,6 +1962,7 @@ class InitializeRequest(TeaModel):
         meta_info: str = None,
         model: str = None,
         ocr: str = None,
+        procedure_priority: str = None,
         product_code: str = None,
         product_flow: str = None,
         return_url: str = None,
@@ -1813,6 +1993,7 @@ class InitializeRequest(TeaModel):
         self.model = model
         # OCR。
         self.ocr = ocr
+        self.procedure_priority = procedure_priority
         self.product_code = product_code
         self.product_flow = product_flow
         self.return_url = return_url
@@ -1870,6 +2051,8 @@ class InitializeRequest(TeaModel):
             result['Model'] = self.model
         if self.ocr is not None:
             result['Ocr'] = self.ocr
+        if self.procedure_priority is not None:
+            result['ProcedurePriority'] = self.procedure_priority
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
         if self.product_flow is not None:
@@ -1930,6 +2113,8 @@ class InitializeRequest(TeaModel):
             self.model = m.get('Model')
         if m.get('Ocr') is not None:
             self.ocr = m.get('Ocr')
+        if m.get('ProcedurePriority') is not None:
+            self.procedure_priority = m.get('ProcedurePriority')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
         if m.get('ProductFlow') is not None:

@@ -1,3 +1,9 @@
+2024-11-21 Version: 3.1.0
+- Support API FaceGuardRisk.
+- Update API CheckResult: update response param.
+- Update API Initialize: add param ProcedurePriority.
+
+
 2024-10-08 Version: 3.0.0
 - Delete API DescribeAddressLabels.
 - Delete API DescribeAddressOverview.
