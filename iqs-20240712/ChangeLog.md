@@ -1,3 +1,18 @@
+2024-11-22 Version: 2.0.0
+- Delete API BicyclingDirection.
+- Delete API CircleTrafficStatus.
+- Delete API DrivingDirection.
+- Delete API NearbySearch.
+- Delete API PlaceSearch.
+- Delete API QueryAttractions.
+- Delete API QueryHotels.
+- Delete API QueryRestaurants.
+- Delete API RectangleTrafficStatus.
+- Delete API RoadTrafficStatus.
+- Delete API TransitIntegratedDirectionOld.
+- Delete API WalkingDirection.
+
+
 2024-11-14 Version: 1.4.0
 - Support API BicyclingDirection.
 - Support API CircleTrafficStatus.
