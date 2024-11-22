@@ -53,7 +53,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ActivateClientCertificateResponse:
         """
-        @summary 激活客户端证书
+        @summary Activates a client certificate.
         
         @param request: ActivateClientCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -86,7 +86,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ActivateClientCertificateResponse:
         """
-        @summary 激活客户端证书
+        @summary Activates a client certificate.
         
         @param request: ActivateClientCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -118,7 +118,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ActivateClientCertificateRequest,
     ) -> esa20240910_models.ActivateClientCertificateResponse:
         """
-        @summary 激活客户端证书
+        @summary Activates a client certificate.
         
         @param request: ActivateClientCertificateRequest
         @return: ActivateClientCertificateResponse
@@ -131,7 +131,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ActivateClientCertificateRequest,
     ) -> esa20240910_models.ActivateClientCertificateResponse:
         """
-        @summary 激活客户端证书
+        @summary Activates a client certificate.
         
         @param request: ActivateClientCertificateRequest
         @return: ActivateClientCertificateResponse
@@ -145,7 +145,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchCreateRecordsResponse:
         """
-        @summary 创建记录
+        @summary Adds DNS records of different record types at a time..
+        
+        @description This operation allows you to create or update multiple DNS records at a time. It is suitable for managing a large number of DNS configurations. Supported record types include but are not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. The operation allows you to configure the priority, flag, tag, and weight for DNS records. In addition, for specific types of records, such as CERT, SSHFP, SMIMEA, and TLSA, advanced settings such as certificate information and encryption algorithms are also supported.
+        Successful and failed records along with error messages are listed in the response.
         
         @param tmp_req: BatchCreateRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -186,7 +189,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchCreateRecordsResponse:
         """
-        @summary 创建记录
+        @summary Adds DNS records of different record types at a time..
+        
+        @description This operation allows you to create or update multiple DNS records at a time. It is suitable for managing a large number of DNS configurations. Supported record types include but are not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. The operation allows you to configure the priority, flag, tag, and weight for DNS records. In addition, for specific types of records, such as CERT, SSHFP, SMIMEA, and TLSA, advanced settings such as certificate information and encryption algorithms are also supported.
+        Successful and failed records along with error messages are listed in the response.
         
         @param tmp_req: BatchCreateRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -226,7 +232,10 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchCreateRecordsRequest,
     ) -> esa20240910_models.BatchCreateRecordsResponse:
         """
-        @summary 创建记录
+        @summary Adds DNS records of different record types at a time..
+        
+        @description This operation allows you to create or update multiple DNS records at a time. It is suitable for managing a large number of DNS configurations. Supported record types include but are not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. The operation allows you to configure the priority, flag, tag, and weight for DNS records. In addition, for specific types of records, such as CERT, SSHFP, SMIMEA, and TLSA, advanced settings such as certificate information and encryption algorithms are also supported.
+        Successful and failed records along with error messages are listed in the response.
         
         @param request: BatchCreateRecordsRequest
         @return: BatchCreateRecordsResponse
@@ -239,7 +248,10 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchCreateRecordsRequest,
     ) -> esa20240910_models.BatchCreateRecordsResponse:
         """
-        @summary 创建记录
+        @summary Adds DNS records of different record types at a time..
+        
+        @description This operation allows you to create or update multiple DNS records at a time. It is suitable for managing a large number of DNS configurations. Supported record types include but are not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. The operation allows you to configure the priority, flag, tag, and weight for DNS records. In addition, for specific types of records, such as CERT, SSHFP, SMIMEA, and TLSA, advanced settings such as certificate information and encryption algorithms are also supported.
+        Successful and failed records along with error messages are listed in the response.
         
         @param request: BatchCreateRecordsRequest
         @return: BatchCreateRecordsResponse
@@ -253,7 +265,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchCreateWafRulesResponse:
         """
-        @summary 批量创建WAF规则
+        @summary Creates multiple rules of a specific Web Application Firewall (WAF) rule category at a time. You can also configure shared settings for the rules.
         
         @param tmp_req: BatchCreateWafRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -304,7 +316,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchCreateWafRulesResponse:
         """
-        @summary 批量创建WAF规则
+        @summary Creates multiple rules of a specific Web Application Firewall (WAF) rule category at a time. You can also configure shared settings for the rules.
         
         @param tmp_req: BatchCreateWafRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -354,7 +366,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchCreateWafRulesRequest,
     ) -> esa20240910_models.BatchCreateWafRulesResponse:
         """
-        @summary 批量创建WAF规则
+        @summary Creates multiple rules of a specific Web Application Firewall (WAF) rule category at a time. You can also configure shared settings for the rules.
         
         @param request: BatchCreateWafRulesRequest
         @return: BatchCreateWafRulesResponse
@@ -367,7 +379,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchCreateWafRulesRequest,
     ) -> esa20240910_models.BatchCreateWafRulesResponse:
         """
-        @summary 批量创建WAF规则
+        @summary Creates multiple rules of a specific Web Application Firewall (WAF) rule category at a time. You can also configure shared settings for the rules.
         
         @param request: BatchCreateWafRulesRequest
         @return: BatchCreateWafRulesResponse
@@ -381,7 +393,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchDeleteKvResponse:
         """
-        @summary 批量删除Namespace的key-value对
+        @summary Deletes key-value pairs from a namespace at a time based on keys.
         
         @param tmp_req: BatchDeleteKvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -424,7 +436,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchDeleteKvResponse:
         """
-        @summary 批量删除Namespace的key-value对
+        @summary Deletes key-value pairs from a namespace at a time based on keys.
         
         @param tmp_req: BatchDeleteKvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -466,7 +478,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchDeleteKvRequest,
     ) -> esa20240910_models.BatchDeleteKvResponse:
         """
-        @summary 批量删除Namespace的key-value对
+        @summary Deletes key-value pairs from a namespace at a time based on keys.
         
         @param request: BatchDeleteKvRequest
         @return: BatchDeleteKvResponse
@@ -479,7 +491,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchDeleteKvRequest,
     ) -> esa20240910_models.BatchDeleteKvResponse:
         """
-        @summary 批量删除Namespace的key-value对
+        @summary Deletes key-value pairs from a namespace at a time based on keys.
         
         @param request: BatchDeleteKvRequest
         @return: BatchDeleteKvResponse
@@ -493,7 +505,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchDeleteKvWithHighCapacityResponse:
         """
-        @summary 批量删除Namespace下的KV队，支持大body的上传，上限100M
+        @summary Deletes multiple key-value pairs from a namespace at a time based on specified keys. The request body can be up to 100 MB.
+        
+        @description This operation allows you to upload a larger request body than by using [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html). For small request bodies, we recommend that you use [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchDeleteKvWithHighCapacityAdvance to call the operation.
+        func TestBatchDeleteWithHighCapacity() error {
+        // Initialize the configurations.
+        cfg := new(openapi.Config)
+        cfg.SetAccessKeyId("xxxxxxxxx")
+        cfg.SetAccessKeySecret("xxxxxxxxxx")
+        cli, err := NewClient(cfg)
+        if err != nil {
+        return err
+        }
+        runtime := &util.RuntimeOptions{}
+        // Construct a request for deleting key-value pairs at a time.
+        namespace := "test_batch_put"
+        rawReq := BatchDeleteKvRequest{
+        Namespace: &namespace,
+        }
+        for i := 0; i < 10000; i++ {
+        key := fmt.Sprintf("test_key_%d", i)
+        rawReq.Keys = append(rawReq.Keys, &key)
+        }
+        payload, err := json.Marshal(rawReq)
+        if err != nil {
+        return err
+        }
+        // If the payload is greater than 2 MB, call the BatchDeleteKvWithHighCapacity operation for deletion.
+        reqHighCapacity := BatchDeleteKvWithHighCapacityAdvanceRequest{
+        Namespace: &namespace,
+        UrlObject: bytes.NewReader(payload),
+        }
+        resp, err := cli.BatchDeleteKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+        if err != nil {
+        return err
+        }
+        return nil
+        }
         
         @param request: BatchDeleteKvWithHighCapacityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -530,7 +578,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchDeleteKvWithHighCapacityResponse:
         """
-        @summary 批量删除Namespace下的KV队，支持大body的上传，上限100M
+        @summary Deletes multiple key-value pairs from a namespace at a time based on specified keys. The request body can be up to 100 MB.
+        
+        @description This operation allows you to upload a larger request body than by using [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html). For small request bodies, we recommend that you use [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchDeleteKvWithHighCapacityAdvance to call the operation.
+        func TestBatchDeleteWithHighCapacity() error {
+        // Initialize the configurations.
+        cfg := new(openapi.Config)
+        cfg.SetAccessKeyId("xxxxxxxxx")
+        cfg.SetAccessKeySecret("xxxxxxxxxx")
+        cli, err := NewClient(cfg)
+        if err != nil {
+        return err
+        }
+        runtime := &util.RuntimeOptions{}
+        // Construct a request for deleting key-value pairs at a time.
+        namespace := "test_batch_put"
+        rawReq := BatchDeleteKvRequest{
+        Namespace: &namespace,
+        }
+        for i := 0; i < 10000; i++ {
+        key := fmt.Sprintf("test_key_%d", i)
+        rawReq.Keys = append(rawReq.Keys, &key)
+        }
+        payload, err := json.Marshal(rawReq)
+        if err != nil {
+        return err
+        }
+        // If the payload is greater than 2 MB, call the BatchDeleteKvWithHighCapacity operation for deletion.
+        reqHighCapacity := BatchDeleteKvWithHighCapacityAdvanceRequest{
+        Namespace: &namespace,
+        UrlObject: bytes.NewReader(payload),
+        }
+        resp, err := cli.BatchDeleteKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+        if err != nil {
+        return err
+        }
+        return nil
+        }
         
         @param request: BatchDeleteKvWithHighCapacityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -566,7 +650,43 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchDeleteKvWithHighCapacityRequest,
     ) -> esa20240910_models.BatchDeleteKvWithHighCapacityResponse:
         """
-        @summary 批量删除Namespace下的KV队，支持大body的上传，上限100M
+        @summary Deletes multiple key-value pairs from a namespace at a time based on specified keys. The request body can be up to 100 MB.
+        
+        @description This operation allows you to upload a larger request body than by using [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html). For small request bodies, we recommend that you use [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchDeleteKvWithHighCapacityAdvance to call the operation.
+        func TestBatchDeleteWithHighCapacity() error {
+        // Initialize the configurations.
+        cfg := new(openapi.Config)
+        cfg.SetAccessKeyId("xxxxxxxxx")
+        cfg.SetAccessKeySecret("xxxxxxxxxx")
+        cli, err := NewClient(cfg)
+        if err != nil {
+        return err
+        }
+        runtime := &util.RuntimeOptions{}
+        // Construct a request for deleting key-value pairs at a time.
+        namespace := "test_batch_put"
+        rawReq := BatchDeleteKvRequest{
+        Namespace: &namespace,
+        }
+        for i := 0; i < 10000; i++ {
+        key := fmt.Sprintf("test_key_%d", i)
+        rawReq.Keys = append(rawReq.Keys, &key)
+        }
+        payload, err := json.Marshal(rawReq)
+        if err != nil {
+        return err
+        }
+        // If the payload is greater than 2 MB, call the BatchDeleteKvWithHighCapacity operation for deletion.
+        reqHighCapacity := BatchDeleteKvWithHighCapacityAdvanceRequest{
+        Namespace: &namespace,
+        UrlObject: bytes.NewReader(payload),
+        }
+        resp, err := cli.BatchDeleteKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+        if err != nil {
+        return err
+        }
+        return nil
+        }
         
         @param request: BatchDeleteKvWithHighCapacityRequest
         @return: BatchDeleteKvWithHighCapacityResponse
@@ -579,7 +699,43 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchDeleteKvWithHighCapacityRequest,
     ) -> esa20240910_models.BatchDeleteKvWithHighCapacityResponse:
         """
-        @summary 批量删除Namespace下的KV队，支持大body的上传，上限100M
+        @summary Deletes multiple key-value pairs from a namespace at a time based on specified keys. The request body can be up to 100 MB.
+        
+        @description This operation allows you to upload a larger request body than by using [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html). For small request bodies, we recommend that you use [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchDeleteKvWithHighCapacityAdvance to call the operation.
+        func TestBatchDeleteWithHighCapacity() error {
+        // Initialize the configurations.
+        cfg := new(openapi.Config)
+        cfg.SetAccessKeyId("xxxxxxxxx")
+        cfg.SetAccessKeySecret("xxxxxxxxxx")
+        cli, err := NewClient(cfg)
+        if err != nil {
+        return err
+        }
+        runtime := &util.RuntimeOptions{}
+        // Construct a request for deleting key-value pairs at a time.
+        namespace := "test_batch_put"
+        rawReq := BatchDeleteKvRequest{
+        Namespace: &namespace,
+        }
+        for i := 0; i < 10000; i++ {
+        key := fmt.Sprintf("test_key_%d", i)
+        rawReq.Keys = append(rawReq.Keys, &key)
+        }
+        payload, err := json.Marshal(rawReq)
+        if err != nil {
+        return err
+        }
+        // If the payload is greater than 2 MB, call the BatchDeleteKvWithHighCapacity operation for deletion.
+        reqHighCapacity := BatchDeleteKvWithHighCapacityAdvanceRequest{
+        Namespace: &namespace,
+        UrlObject: bytes.NewReader(payload),
+        }
+        resp, err := cli.BatchDeleteKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+        if err != nil {
+        return err
+        }
+        return nil
+        }
         
         @param request: BatchDeleteKvWithHighCapacityRequest
         @return: BatchDeleteKvWithHighCapacityResponse
@@ -737,7 +893,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchGetExpressionFieldsResponse:
         """
-        @summary 批量获取表达式的匹配项
+        @summary Batch queries the objects that match specific expressions.
         
         @param tmp_req: BatchGetExpressionFieldsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -782,7 +938,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchGetExpressionFieldsResponse:
         """
-        @summary 批量获取表达式的匹配项
+        @summary Batch queries the objects that match specific expressions.
         
         @param tmp_req: BatchGetExpressionFieldsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -826,7 +982,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchGetExpressionFieldsRequest,
     ) -> esa20240910_models.BatchGetExpressionFieldsResponse:
         """
-        @summary 批量获取表达式的匹配项
+        @summary Batch queries the objects that match specific expressions.
         
         @param request: BatchGetExpressionFieldsRequest
         @return: BatchGetExpressionFieldsResponse
@@ -839,7 +995,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchGetExpressionFieldsRequest,
     ) -> esa20240910_models.BatchGetExpressionFieldsResponse:
         """
-        @summary 批量获取表达式的匹配项
+        @summary Batch queries the objects that match specific expressions.
         
         @param request: BatchGetExpressionFieldsRequest
         @return: BatchGetExpressionFieldsResponse
@@ -853,7 +1009,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchPutKvResponse:
         """
-        @summary 批量设置Namespace的key-value对
+        @summary Configures key-value pairs for a namespace at a time based on specified keys.
         
         @param tmp_req: BatchPutKvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -896,7 +1052,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchPutKvResponse:
         """
-        @summary 批量设置Namespace的key-value对
+        @summary Configures key-value pairs for a namespace at a time based on specified keys.
         
         @param tmp_req: BatchPutKvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -938,7 +1094,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchPutKvRequest,
     ) -> esa20240910_models.BatchPutKvResponse:
         """
-        @summary 批量设置Namespace的key-value对
+        @summary Configures key-value pairs for a namespace at a time based on specified keys.
         
         @param request: BatchPutKvRequest
         @return: BatchPutKvResponse
@@ -951,7 +1107,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchPutKvRequest,
     ) -> esa20240910_models.BatchPutKvResponse:
         """
-        @summary 批量设置Namespace的key-value对
+        @summary Configures key-value pairs for a namespace at a time based on specified keys.
         
         @param request: BatchPutKvRequest
         @return: BatchPutKvResponse
@@ -965,7 +1121,51 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchPutKvWithHighCapacityResponse:
         """
-        @summary 批量设置Namespace的key-value对，支持最大100M的请求体
+        @summary Configures key-value pairs for a namespace at a time based on specified keys. The request body can be up to 100 MB.
+        
+        @description This operation allows you to upload a larger request body than by using [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html). For small request bodies, we recommend that you use [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchPutKvWithHighCapacityAdvance to call the operation.
+        func TestBatchPutKvWithHighCapacity() error {
+        // Initialize the configurations.
+        cfg := new(openapi.Config)
+        cfg.SetAccessKeyId("xxxxxxxxx")
+        cfg.SetAccessKeySecret("xxxxxxxxxx")
+        cli, err := NewClient(cfg)
+        if err != nil {
+        return err
+        }
+        runtime := &util.RuntimeOptions{}
+        // Construct a request for uploading key-value pairs at a time.
+        namespace := "test_batch_put"
+        numKv := 10000
+        kvList := make([]BatchPutKvRequestKvList, numKv)
+        test_value := strings.Repeat("a", 101024)
+        for i := 0; i < numKv; i++ {
+        key := fmt.Sprintf("test_key_%d", i)
+        value := test_value
+        kvList[i] = &BatchPutKvRequestKvList{
+        Key:   &key,
+        Value: &value,
+        }
+        }
+        rawReq := BatchPutKvRequest{
+        Namespace: &namespace,
+        KvList:    kvList,
+        }
+        payload, err := json.Marshal(rawReq)
+        if err != nil {
+        return err
+        }
+        // If the payload is greater than 2 MB, call the BatchPutKvWithHighCapacity operation for upload.
+        reqHighCapacity := BatchPutKvWithHighCapacityAdvanceRequest{
+        Namespace: &namespace,
+        UrlObject: bytes.NewReader(payload),
+        }
+        resp, err := cli.BatchPutKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+        if err != nil {
+        return err
+        }
+        return nil
+        }
         
         @param request: BatchPutKvWithHighCapacityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1002,7 +1202,51 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchPutKvWithHighCapacityResponse:
         """
-        @summary 批量设置Namespace的key-value对，支持最大100M的请求体
+        @summary Configures key-value pairs for a namespace at a time based on specified keys. The request body can be up to 100 MB.
+        
+        @description This operation allows you to upload a larger request body than by using [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html). For small request bodies, we recommend that you use [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchPutKvWithHighCapacityAdvance to call the operation.
+        func TestBatchPutKvWithHighCapacity() error {
+        // Initialize the configurations.
+        cfg := new(openapi.Config)
+        cfg.SetAccessKeyId("xxxxxxxxx")
+        cfg.SetAccessKeySecret("xxxxxxxxxx")
+        cli, err := NewClient(cfg)
+        if err != nil {
+        return err
+        }
+        runtime := &util.RuntimeOptions{}
+        // Construct a request for uploading key-value pairs at a time.
+        namespace := "test_batch_put"
+        numKv := 10000
+        kvList := make([]BatchPutKvRequestKvList, numKv)
+        test_value := strings.Repeat("a", 101024)
+        for i := 0; i < numKv; i++ {
+        key := fmt.Sprintf("test_key_%d", i)
+        value := test_value
+        kvList[i] = &BatchPutKvRequestKvList{
+        Key:   &key,
+        Value: &value,
+        }
+        }
+        rawReq := BatchPutKvRequest{
+        Namespace: &namespace,
+        KvList:    kvList,
+        }
+        payload, err := json.Marshal(rawReq)
+        if err != nil {
+        return err
+        }
+        // If the payload is greater than 2 MB, call the BatchPutKvWithHighCapacity operation for upload.
+        reqHighCapacity := BatchPutKvWithHighCapacityAdvanceRequest{
+        Namespace: &namespace,
+        UrlObject: bytes.NewReader(payload),
+        }
+        resp, err := cli.BatchPutKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+        if err != nil {
+        return err
+        }
+        return nil
+        }
         
         @param request: BatchPutKvWithHighCapacityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1038,7 +1282,51 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchPutKvWithHighCapacityRequest,
     ) -> esa20240910_models.BatchPutKvWithHighCapacityResponse:
         """
-        @summary 批量设置Namespace的key-value对，支持最大100M的请求体
+        @summary Configures key-value pairs for a namespace at a time based on specified keys. The request body can be up to 100 MB.
+        
+        @description This operation allows you to upload a larger request body than by using [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html). For small request bodies, we recommend that you use [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchPutKvWithHighCapacityAdvance to call the operation.
+        func TestBatchPutKvWithHighCapacity() error {
+        // Initialize the configurations.
+        cfg := new(openapi.Config)
+        cfg.SetAccessKeyId("xxxxxxxxx")
+        cfg.SetAccessKeySecret("xxxxxxxxxx")
+        cli, err := NewClient(cfg)
+        if err != nil {
+        return err
+        }
+        runtime := &util.RuntimeOptions{}
+        // Construct a request for uploading key-value pairs at a time.
+        namespace := "test_batch_put"
+        numKv := 10000
+        kvList := make([]BatchPutKvRequestKvList, numKv)
+        test_value := strings.Repeat("a", 101024)
+        for i := 0; i < numKv; i++ {
+        key := fmt.Sprintf("test_key_%d", i)
+        value := test_value
+        kvList[i] = &BatchPutKvRequestKvList{
+        Key:   &key,
+        Value: &value,
+        }
+        }
+        rawReq := BatchPutKvRequest{
+        Namespace: &namespace,
+        KvList:    kvList,
+        }
+        payload, err := json.Marshal(rawReq)
+        if err != nil {
+        return err
+        }
+        // If the payload is greater than 2 MB, call the BatchPutKvWithHighCapacity operation for upload.
+        reqHighCapacity := BatchPutKvWithHighCapacityAdvanceRequest{
+        Namespace: &namespace,
+        UrlObject: bytes.NewReader(payload),
+        }
+        resp, err := cli.BatchPutKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+        if err != nil {
+        return err
+        }
+        return nil
+        }
         
         @param request: BatchPutKvWithHighCapacityRequest
         @return: BatchPutKvWithHighCapacityResponse
@@ -1051,7 +1339,51 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchPutKvWithHighCapacityRequest,
     ) -> esa20240910_models.BatchPutKvWithHighCapacityResponse:
         """
-        @summary 批量设置Namespace的key-value对，支持最大100M的请求体
+        @summary Configures key-value pairs for a namespace at a time based on specified keys. The request body can be up to 100 MB.
+        
+        @description This operation allows you to upload a larger request body than by using [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html). For small request bodies, we recommend that you use [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchPutKvWithHighCapacityAdvance to call the operation.
+        func TestBatchPutKvWithHighCapacity() error {
+        // Initialize the configurations.
+        cfg := new(openapi.Config)
+        cfg.SetAccessKeyId("xxxxxxxxx")
+        cfg.SetAccessKeySecret("xxxxxxxxxx")
+        cli, err := NewClient(cfg)
+        if err != nil {
+        return err
+        }
+        runtime := &util.RuntimeOptions{}
+        // Construct a request for uploading key-value pairs at a time.
+        namespace := "test_batch_put"
+        numKv := 10000
+        kvList := make([]BatchPutKvRequestKvList, numKv)
+        test_value := strings.Repeat("a", 101024)
+        for i := 0; i < numKv; i++ {
+        key := fmt.Sprintf("test_key_%d", i)
+        value := test_value
+        kvList[i] = &BatchPutKvRequestKvList{
+        Key:   &key,
+        Value: &value,
+        }
+        }
+        rawReq := BatchPutKvRequest{
+        Namespace: &namespace,
+        KvList:    kvList,
+        }
+        payload, err := json.Marshal(rawReq)
+        if err != nil {
+        return err
+        }
+        // If the payload is greater than 2 MB, call the BatchPutKvWithHighCapacity operation for upload.
+        reqHighCapacity := BatchPutKvWithHighCapacityAdvanceRequest{
+        Namespace: &namespace,
+        UrlObject: bytes.NewReader(payload),
+        }
+        resp, err := cli.BatchPutKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+        if err != nil {
+        return err
+        }
+        return nil
+        }
         
         @param request: BatchPutKvWithHighCapacityRequest
         @return: BatchPutKvWithHighCapacityResponse
@@ -1209,7 +1541,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchUpdateWafRulesResponse:
         """
-        @summary 批量修改WAF规则
+        @summary Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
         
         @param tmp_req: BatchUpdateWafRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1262,7 +1594,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BatchUpdateWafRulesResponse:
         """
-        @summary 批量修改WAF规则
+        @summary Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
         
         @param tmp_req: BatchUpdateWafRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1314,7 +1646,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchUpdateWafRulesRequest,
     ) -> esa20240910_models.BatchUpdateWafRulesResponse:
         """
-        @summary 批量修改WAF规则
+        @summary Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
         
         @param request: BatchUpdateWafRulesRequest
         @return: BatchUpdateWafRulesResponse
@@ -1327,7 +1659,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BatchUpdateWafRulesRequest,
     ) -> esa20240910_models.BatchUpdateWafRulesResponse:
         """
-        @summary 批量修改WAF规则
+        @summary Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
         
         @param request: BatchUpdateWafRulesRequest
         @return: BatchUpdateWafRulesResponse
@@ -1341,7 +1673,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BlockObjectResponse:
         """
-        @summary URL封禁
+        @summary Blocks URLs.
         
         @param tmp_req: BlockObjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1388,7 +1720,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.BlockObjectResponse:
         """
-        @summary URL封禁
+        @summary Blocks URLs.
         
         @param tmp_req: BlockObjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1434,7 +1766,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BlockObjectRequest,
     ) -> esa20240910_models.BlockObjectResponse:
         """
-        @summary URL封禁
+        @summary Blocks URLs.
         
         @param request: BlockObjectRequest
         @return: BlockObjectResponse
@@ -1447,7 +1779,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.BlockObjectRequest,
     ) -> esa20240910_models.BlockObjectResponse:
         """
-        @summary URL封禁
+        @summary Blocks URLs.
         
         @param request: BlockObjectRequest
         @return: BlockObjectResponse
@@ -1461,7 +1793,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ChangeResourceGroupResponse:
         """
-        @summary 修改站点的企业资源组
+        @summary Moves a website from one resource group to another.
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1502,7 +1834,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ChangeResourceGroupResponse:
         """
-        @summary 修改站点的企业资源组
+        @summary Moves a website from one resource group to another.
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1542,7 +1874,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ChangeResourceGroupRequest,
     ) -> esa20240910_models.ChangeResourceGroupResponse:
         """
-        @summary 修改站点的企业资源组
+        @summary Moves a website from one resource group to another.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -1555,7 +1887,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ChangeResourceGroupRequest,
     ) -> esa20240910_models.ChangeResourceGroupResponse:
         """
-        @summary 修改站点的企业资源组
+        @summary Moves a website from one resource group to another.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -1569,7 +1901,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CheckSiteNameResponse:
         """
-        @summary 校验站点名称是否可用
+        @summary Checks whether a specified website name is available.
         
         @param request: CheckSiteNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1604,7 +1936,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CheckSiteNameResponse:
         """
-        @summary 校验站点名称是否可用
+        @summary Checks whether a specified website name is available.
         
         @param request: CheckSiteNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1638,7 +1970,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CheckSiteNameRequest,
     ) -> esa20240910_models.CheckSiteNameResponse:
         """
-        @summary 校验站点名称是否可用
+        @summary Checks whether a specified website name is available.
         
         @param request: CheckSiteNameRequest
         @return: CheckSiteNameResponse
@@ -1651,7 +1983,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CheckSiteNameRequest,
     ) -> esa20240910_models.CheckSiteNameResponse:
         """
-        @summary 校验站点名称是否可用
+        @summary Checks whether a specified website name is available.
         
         @param request: CheckSiteNameRequest
         @return: CheckSiteNameResponse
@@ -1665,7 +1997,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CheckSiteProjectNameResponse:
         """
-        @summary 实时日志任务投递名检查
+        @summary Checks the name of a real-time log delivery task.
         
         @param request: CheckSiteProjectNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1698,7 +2030,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CheckSiteProjectNameResponse:
         """
-        @summary 实时日志任务投递名检查
+        @summary Checks the name of a real-time log delivery task.
         
         @param request: CheckSiteProjectNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1730,7 +2062,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CheckSiteProjectNameRequest,
     ) -> esa20240910_models.CheckSiteProjectNameResponse:
         """
-        @summary 实时日志任务投递名检查
+        @summary Checks the name of a real-time log delivery task.
         
         @param request: CheckSiteProjectNameRequest
         @return: CheckSiteProjectNameResponse
@@ -1743,7 +2075,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CheckSiteProjectNameRequest,
     ) -> esa20240910_models.CheckSiteProjectNameResponse:
         """
-        @summary 实时日志任务投递名检查
+        @summary Checks the name of a real-time log delivery task.
         
         @param request: CheckSiteProjectNameRequest
         @return: CheckSiteProjectNameResponse
@@ -1757,7 +2089,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CheckUserProjectNameResponse:
         """
-        @summary 实时日志用户任务投递名检查
+        @summary Checks the name of a real-time log delivery task by account.
         
         @param request: CheckUserProjectNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1790,7 +2122,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CheckUserProjectNameResponse:
         """
-        @summary 实时日志用户任务投递名检查
+        @summary Checks the name of a real-time log delivery task by account.
         
         @param request: CheckUserProjectNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1822,7 +2154,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CheckUserProjectNameRequest,
     ) -> esa20240910_models.CheckUserProjectNameResponse:
         """
-        @summary 实时日志用户任务投递名检查
+        @summary Checks the name of a real-time log delivery task by account.
         
         @param request: CheckUserProjectNameRequest
         @return: CheckUserProjectNameResponse
@@ -1835,7 +2167,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CheckUserProjectNameRequest,
     ) -> esa20240910_models.CheckUserProjectNameResponse:
         """
-        @summary 实时日志用户任务投递名检查
+        @summary Checks the name of a real-time log delivery task by account.
         
         @param request: CheckUserProjectNameRequest
         @return: CheckUserProjectNameResponse
@@ -1849,7 +2181,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CommitRoutineStagingCodeResponse:
         """
-        @summary 提交Routine测试版本代码
+        @summary Commits the unstable code in the staging environment to generate an official code version.
         
         @param request: CommitRoutineStagingCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1886,7 +2218,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CommitRoutineStagingCodeResponse:
         """
-        @summary 提交Routine测试版本代码
+        @summary Commits the unstable code in the staging environment to generate an official code version.
         
         @param request: CommitRoutineStagingCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1922,7 +2254,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CommitRoutineStagingCodeRequest,
     ) -> esa20240910_models.CommitRoutineStagingCodeResponse:
         """
-        @summary 提交Routine测试版本代码
+        @summary Commits the unstable code in the staging environment to generate an official code version.
         
         @param request: CommitRoutineStagingCodeRequest
         @return: CommitRoutineStagingCodeResponse
@@ -1935,7 +2267,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CommitRoutineStagingCodeRequest,
     ) -> esa20240910_models.CommitRoutineStagingCodeResponse:
         """
-        @summary 提交Routine测试版本代码
+        @summary Commits the unstable code in the staging environment to generate an official code version.
         
         @param request: CommitRoutineStagingCodeRequest
         @return: CommitRoutineStagingCodeResponse
@@ -1949,7 +2281,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateCustomScenePolicyResponse:
         """
-        @summary 创建定制场景策略
+        @summary Creates an account-level custom scenario policy. You can execute a policy after you associate the policy with a website.
         
         @param request: CreateCustomScenePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1992,7 +2324,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateCustomScenePolicyResponse:
         """
-        @summary 创建定制场景策略
+        @summary Creates an account-level custom scenario policy. You can execute a policy after you associate the policy with a website.
         
         @param request: CreateCustomScenePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2034,7 +2366,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateCustomScenePolicyRequest,
     ) -> esa20240910_models.CreateCustomScenePolicyResponse:
         """
-        @summary 创建定制场景策略
+        @summary Creates an account-level custom scenario policy. You can execute a policy after you associate the policy with a website.
         
         @param request: CreateCustomScenePolicyRequest
         @return: CreateCustomScenePolicyResponse
@@ -2047,7 +2379,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateCustomScenePolicyRequest,
     ) -> esa20240910_models.CreateCustomScenePolicyResponse:
         """
-        @summary 创建定制场景策略
+        @summary Creates an account-level custom scenario policy. You can execute a policy after you associate the policy with a website.
         
         @param request: CreateCustomScenePolicyRequest
         @return: CreateCustomScenePolicyResponse
@@ -2061,7 +2393,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateEdgeContainerAppResponse:
         """
-        @summary 创建边缘容器的应用
+        @summary Creates a containerized application. You can deploy and release a version of the application across points of presence (POPs).
         
         @param request: CreateEdgeContainerAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2122,7 +2454,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateEdgeContainerAppResponse:
         """
-        @summary 创建边缘容器的应用
+        @summary Creates a containerized application. You can deploy and release a version of the application across points of presence (POPs).
         
         @param request: CreateEdgeContainerAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2182,7 +2514,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateEdgeContainerAppRequest,
     ) -> esa20240910_models.CreateEdgeContainerAppResponse:
         """
-        @summary 创建边缘容器的应用
+        @summary Creates a containerized application. You can deploy and release a version of the application across points of presence (POPs).
         
         @param request: CreateEdgeContainerAppRequest
         @return: CreateEdgeContainerAppResponse
@@ -2195,7 +2527,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateEdgeContainerAppRequest,
     ) -> esa20240910_models.CreateEdgeContainerAppResponse:
         """
-        @summary 创建边缘容器的应用
+        @summary Creates a containerized application. You can deploy and release a version of the application across points of presence (POPs).
         
         @param request: CreateEdgeContainerAppRequest
         @return: CreateEdgeContainerAppResponse
@@ -2209,7 +2541,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateEdgeContainerAppRecordResponse:
         """
-        @summary 创建一个边缘容器应用的域名记录
+        @summary Associates a domain name with a containerized application. This way, requests destined for the associated domain name are forwarded to the application.
         
         @param request: CreateEdgeContainerAppRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2248,7 +2580,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateEdgeContainerAppRecordResponse:
         """
-        @summary 创建一个边缘容器应用的域名记录
+        @summary Associates a domain name with a containerized application. This way, requests destined for the associated domain name are forwarded to the application.
         
         @param request: CreateEdgeContainerAppRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2286,7 +2618,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateEdgeContainerAppRecordRequest,
     ) -> esa20240910_models.CreateEdgeContainerAppRecordResponse:
         """
-        @summary 创建一个边缘容器应用的域名记录
+        @summary Associates a domain name with a containerized application. This way, requests destined for the associated domain name are forwarded to the application.
         
         @param request: CreateEdgeContainerAppRecordRequest
         @return: CreateEdgeContainerAppRecordResponse
@@ -2299,7 +2631,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateEdgeContainerAppRecordRequest,
     ) -> esa20240910_models.CreateEdgeContainerAppRecordResponse:
         """
-        @summary 创建一个边缘容器应用的域名记录
+        @summary Associates a domain name with a containerized application. This way, requests destined for the associated domain name are forwarded to the application.
         
         @param request: CreateEdgeContainerAppRecordRequest
         @return: CreateEdgeContainerAppRecordResponse
@@ -2429,7 +2761,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateKvNamespaceResponse:
         """
-        @summary 添加Namespace
+        @summary Create a namespace in your Alibaba Cloud account.
         
         @param request: CreateKvNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2466,7 +2798,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateKvNamespaceResponse:
         """
-        @summary 添加Namespace
+        @summary Create a namespace in your Alibaba Cloud account.
         
         @param request: CreateKvNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2502,7 +2834,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateKvNamespaceRequest,
     ) -> esa20240910_models.CreateKvNamespaceResponse:
         """
-        @summary 添加Namespace
+        @summary Create a namespace in your Alibaba Cloud account.
         
         @param request: CreateKvNamespaceRequest
         @return: CreateKvNamespaceResponse
@@ -2515,7 +2847,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateKvNamespaceRequest,
     ) -> esa20240910_models.CreateKvNamespaceResponse:
         """
-        @summary 添加Namespace
+        @summary Create a namespace in your Alibaba Cloud account.
         
         @param request: CreateKvNamespaceRequest
         @return: CreateKvNamespaceResponse
@@ -2529,7 +2861,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateListResponse:
         """
-        @summary 创建自定义列表
+        @summary Creates a list. Lists are used for the referencing of values in the rules engine to implement complex logic and control in security policies.
         
         @param tmp_req: CreateListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2574,7 +2906,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateListResponse:
         """
-        @summary 创建自定义列表
+        @summary Creates a list. Lists are used for the referencing of values in the rules engine to implement complex logic and control in security policies.
         
         @param tmp_req: CreateListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2618,7 +2950,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateListRequest,
     ) -> esa20240910_models.CreateListResponse:
         """
-        @summary 创建自定义列表
+        @summary Creates a list. Lists are used for the referencing of values in the rules engine to implement complex logic and control in security policies.
         
         @param request: CreateListRequest
         @return: CreateListResponse
@@ -2631,7 +2963,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateListRequest,
     ) -> esa20240910_models.CreateListResponse:
         """
-        @summary 创建自定义列表
+        @summary Creates a list. Lists are used for the referencing of values in the rules engine to implement complex logic and control in security policies.
         
         @param request: CreateListRequest
         @return: CreateListResponse
@@ -2639,13 +2971,109 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_list_with_options_async(request, runtime)
 
+    def create_origin_protection_with_options(
+        self,
+        request: esa20240910_models.CreateOriginProtectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateOriginProtectionResponse:
+        """
+        @summary 开启源站防护
+        
+        @param request: CreateOriginProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOriginProtectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOriginProtection',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateOriginProtectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_origin_protection_with_options_async(
+        self,
+        request: esa20240910_models.CreateOriginProtectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateOriginProtectionResponse:
+        """
+        @summary 开启源站防护
+        
+        @param request: CreateOriginProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOriginProtectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOriginProtection',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateOriginProtectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_origin_protection(
+        self,
+        request: esa20240910_models.CreateOriginProtectionRequest,
+    ) -> esa20240910_models.CreateOriginProtectionResponse:
+        """
+        @summary 开启源站防护
+        
+        @param request: CreateOriginProtectionRequest
+        @return: CreateOriginProtectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_origin_protection_with_options(request, runtime)
+
+    async def create_origin_protection_async(
+        self,
+        request: esa20240910_models.CreateOriginProtectionRequest,
+    ) -> esa20240910_models.CreateOriginProtectionResponse:
+        """
+        @summary 开启源站防护
+        
+        @param request: CreateOriginProtectionRequest
+        @return: CreateOriginProtectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_origin_protection_with_options_async(request, runtime)
+
     def create_page_with_options(
         self,
         request: esa20240910_models.CreatePageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreatePageResponse:
         """
-        @summary 调用CreatePage创建自定义响应页面
+        @summary Creates a custom error page, which is displayed when a request is blocked by Web Application Firewall (WAF). You can configure the HTML content, page type, and description, and submit the Base64-encoded page content.
         
         @param request: CreatePageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2686,7 +3114,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreatePageResponse:
         """
-        @summary 调用CreatePage创建自定义响应页面
+        @summary Creates a custom error page, which is displayed when a request is blocked by Web Application Firewall (WAF). You can configure the HTML content, page type, and description, and submit the Base64-encoded page content.
         
         @param request: CreatePageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2726,7 +3154,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreatePageRequest,
     ) -> esa20240910_models.CreatePageResponse:
         """
-        @summary 调用CreatePage创建自定义响应页面
+        @summary Creates a custom error page, which is displayed when a request is blocked by Web Application Firewall (WAF). You can configure the HTML content, page type, and description, and submit the Base64-encoded page content.
         
         @param request: CreatePageRequest
         @return: CreatePageResponse
@@ -2739,7 +3167,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreatePageRequest,
     ) -> esa20240910_models.CreatePageResponse:
         """
-        @summary 调用CreatePage创建自定义响应页面
+        @summary Creates a custom error page, which is displayed when a request is blocked by Web Application Firewall (WAF). You can configure the HTML content, page type, and description, and submit the Base64-encoded page content.
         
         @param request: CreatePageRequest
         @return: CreatePageResponse
@@ -2753,7 +3181,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateRecordResponse:
         """
-        @summary 创建记录
+        @summary Creates a DNS record for a specific website.
         
         @param tmp_req: CreateRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2814,7 +3242,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateRecordResponse:
         """
-        @summary 创建记录
+        @summary Creates a DNS record for a specific website.
         
         @param tmp_req: CreateRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2874,7 +3302,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateRecordRequest,
     ) -> esa20240910_models.CreateRecordResponse:
         """
-        @summary 创建记录
+        @summary Creates a DNS record for a specific website.
         
         @param request: CreateRecordRequest
         @return: CreateRecordResponse
@@ -2887,7 +3315,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateRecordRequest,
     ) -> esa20240910_models.CreateRecordResponse:
         """
-        @summary 创建记录
+        @summary Creates a DNS record for a specific website.
         
         @param request: CreateRecordRequest
         @return: CreateRecordResponse
@@ -2901,7 +3329,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateRoutineResponse:
         """
-        @summary 创建routine
+        @summary Creates a routine.
         
         @param request: CreateRoutineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2940,7 +3368,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateRoutineResponse:
         """
-        @summary 创建routine
+        @summary Creates a routine.
         
         @param request: CreateRoutineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2978,7 +3406,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateRoutineRequest,
     ) -> esa20240910_models.CreateRoutineResponse:
         """
-        @summary 创建routine
+        @summary Creates a routine.
         
         @param request: CreateRoutineRequest
         @return: CreateRoutineResponse
@@ -2991,7 +3419,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateRoutineRequest,
     ) -> esa20240910_models.CreateRoutineResponse:
         """
-        @summary 创建routine
+        @summary Creates a routine.
         
         @param request: CreateRoutineRequest
         @return: CreateRoutineResponse
@@ -3005,7 +3433,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateRoutineRelatedRecordResponse:
         """
-        @summary 添加Routine关联域名
+        @summary Adds a record to map a domain that is associated with a routine. This record is used to trigger the associated routine code.
         
         @param request: CreateRoutineRelatedRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3044,7 +3472,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateRoutineRelatedRecordResponse:
         """
-        @summary 添加Routine关联域名
+        @summary Adds a record to map a domain that is associated with a routine. This record is used to trigger the associated routine code.
         
         @param request: CreateRoutineRelatedRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3082,7 +3510,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateRoutineRelatedRecordRequest,
     ) -> esa20240910_models.CreateRoutineRelatedRecordResponse:
         """
-        @summary 添加Routine关联域名
+        @summary Adds a record to map a domain that is associated with a routine. This record is used to trigger the associated routine code.
         
         @param request: CreateRoutineRelatedRecordRequest
         @return: CreateRoutineRelatedRecordResponse
@@ -3095,7 +3523,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateRoutineRelatedRecordRequest,
     ) -> esa20240910_models.CreateRoutineRelatedRecordResponse:
         """
-        @summary 添加Routine关联域名
+        @summary Adds a record to map a domain that is associated with a routine. This record is used to trigger the associated routine code.
         
         @param request: CreateRoutineRelatedRecordRequest
         @return: CreateRoutineRelatedRecordResponse
@@ -3109,7 +3537,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateRoutineRelatedRouteResponse:
         """
-        @summary 添加Routine关联路由
+        @summary Adds a route to map a URL to a routine so that the routine can be triggered to respond to requests destined for the URL.
         
         @param request: CreateRoutineRelatedRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3148,7 +3576,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateRoutineRelatedRouteResponse:
         """
-        @summary 添加Routine关联路由
+        @summary Adds a route to map a URL to a routine so that the routine can be triggered to respond to requests destined for the URL.
         
         @param request: CreateRoutineRelatedRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3186,7 +3614,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateRoutineRelatedRouteRequest,
     ) -> esa20240910_models.CreateRoutineRelatedRouteResponse:
         """
-        @summary 添加Routine关联路由
+        @summary Adds a route to map a URL to a routine so that the routine can be triggered to respond to requests destined for the URL.
         
         @param request: CreateRoutineRelatedRouteRequest
         @return: CreateRoutineRelatedRouteResponse
@@ -3199,7 +3627,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateRoutineRelatedRouteRequest,
     ) -> esa20240910_models.CreateRoutineRelatedRouteResponse:
         """
-        @summary 添加Routine关联路由
+        @summary Adds a route to map a URL to a routine so that the routine can be triggered to respond to requests destined for the URL.
         
         @param request: CreateRoutineRelatedRouteRequest
         @return: CreateRoutineRelatedRouteResponse
@@ -3213,7 +3641,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateScheduledPreloadExecutionsResponse:
         """
-        @summary 批量新增定时预热任务的计划
+        @summary Creates scheduled prefetch plans.
         
         @param tmp_req: CreateScheduledPreloadExecutionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3256,7 +3684,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateScheduledPreloadExecutionsResponse:
         """
-        @summary 批量新增定时预热任务的计划
+        @summary Creates scheduled prefetch plans.
         
         @param tmp_req: CreateScheduledPreloadExecutionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3298,7 +3726,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateScheduledPreloadExecutionsRequest,
     ) -> esa20240910_models.CreateScheduledPreloadExecutionsResponse:
         """
-        @summary 批量新增定时预热任务的计划
+        @summary Creates scheduled prefetch plans.
         
         @param request: CreateScheduledPreloadExecutionsRequest
         @return: CreateScheduledPreloadExecutionsResponse
@@ -3311,7 +3739,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateScheduledPreloadExecutionsRequest,
     ) -> esa20240910_models.CreateScheduledPreloadExecutionsResponse:
         """
-        @summary 批量新增定时预热任务的计划
+        @summary Creates scheduled prefetch plans.
         
         @param request: CreateScheduledPreloadExecutionsRequest
         @return: CreateScheduledPreloadExecutionsResponse
@@ -3325,7 +3753,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateScheduledPreloadJobResponse:
         """
-        @summary 新增定时预热任务
+        @summary Adds a scheduled prefetch task.
         
         @param request: CreateScheduledPreloadJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3368,7 +3796,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateScheduledPreloadJobResponse:
         """
-        @summary 新增定时预热任务
+        @summary Adds a scheduled prefetch task.
         
         @param request: CreateScheduledPreloadJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3410,7 +3838,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateScheduledPreloadJobRequest,
     ) -> esa20240910_models.CreateScheduledPreloadJobResponse:
         """
-        @summary 新增定时预热任务
+        @summary Adds a scheduled prefetch task.
         
         @param request: CreateScheduledPreloadJobRequest
         @return: CreateScheduledPreloadJobResponse
@@ -3423,7 +3851,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateScheduledPreloadJobRequest,
     ) -> esa20240910_models.CreateScheduledPreloadJobResponse:
         """
-        @summary 新增定时预热任务
+        @summary Adds a scheduled prefetch task.
         
         @param request: CreateScheduledPreloadJobRequest
         @return: CreateScheduledPreloadJobResponse
@@ -3437,7 +3865,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateSiteResponse:
         """
-        @summary 创建站点
+        @summary Adds a website.
+        
+        @description    Make sure that you have an available plan before you add a website.
+        Make sure that your website domain name has an ICP filing if the location you want to specify covers the Chinese mainland.
         
         @param request: CreateSiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3480,7 +3911,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateSiteResponse:
         """
-        @summary 创建站点
+        @summary Adds a website.
+        
+        @description    Make sure that you have an available plan before you add a website.
+        Make sure that your website domain name has an ICP filing if the location you want to specify covers the Chinese mainland.
         
         @param request: CreateSiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3522,7 +3956,10 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateSiteRequest,
     ) -> esa20240910_models.CreateSiteResponse:
         """
-        @summary 创建站点
+        @summary Adds a website.
+        
+        @description    Make sure that you have an available plan before you add a website.
+        Make sure that your website domain name has an ICP filing if the location you want to specify covers the Chinese mainland.
         
         @param request: CreateSiteRequest
         @return: CreateSiteResponse
@@ -3535,7 +3972,10 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateSiteRequest,
     ) -> esa20240910_models.CreateSiteResponse:
         """
-        @summary 创建站点
+        @summary Adds a website.
+        
+        @description    Make sure that you have an available plan before you add a website.
+        Make sure that your website domain name has an ICP filing if the location you want to specify covers the Chinese mainland.
         
         @param request: CreateSiteRequest
         @return: CreateSiteResponse
@@ -3549,7 +3989,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateSiteCustomLogResponse:
         """
-        @summary 新建自定义字段
+        @summary Adds the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
+        
+        @description    **Custom field limits**: The key name of a custom field can contain only letters, digits, underscores (_), and spaces. The key name cannot contain other characters. Otherwise, errors may occur.
+        **Parameter passing**: Submit `SiteId`, `RequestHeaders`, `ResponseHeaders`, and `Cookies` by using `formData`. Each array element matches a custom field name.
+        **(Required) SiteId**: Although `SiteId` is not marked as required in the Required column, you must specify a website ID by using this parameter when you can call this API operation.
         
         @param tmp_req: CreateSiteCustomLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3598,7 +4042,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateSiteCustomLogResponse:
         """
-        @summary 新建自定义字段
+        @summary Adds the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
+        
+        @description    **Custom field limits**: The key name of a custom field can contain only letters, digits, underscores (_), and spaces. The key name cannot contain other characters. Otherwise, errors may occur.
+        **Parameter passing**: Submit `SiteId`, `RequestHeaders`, `ResponseHeaders`, and `Cookies` by using `formData`. Each array element matches a custom field name.
+        **(Required) SiteId**: Although `SiteId` is not marked as required in the Required column, you must specify a website ID by using this parameter when you can call this API operation.
         
         @param tmp_req: CreateSiteCustomLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3646,7 +4094,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateSiteCustomLogRequest,
     ) -> esa20240910_models.CreateSiteCustomLogResponse:
         """
-        @summary 新建自定义字段
+        @summary Adds the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
+        
+        @description    **Custom field limits**: The key name of a custom field can contain only letters, digits, underscores (_), and spaces. The key name cannot contain other characters. Otherwise, errors may occur.
+        **Parameter passing**: Submit `SiteId`, `RequestHeaders`, `ResponseHeaders`, and `Cookies` by using `formData`. Each array element matches a custom field name.
+        **(Required) SiteId**: Although `SiteId` is not marked as required in the Required column, you must specify a website ID by using this parameter when you can call this API operation.
         
         @param request: CreateSiteCustomLogRequest
         @return: CreateSiteCustomLogResponse
@@ -3659,7 +4111,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateSiteCustomLogRequest,
     ) -> esa20240910_models.CreateSiteCustomLogResponse:
         """
-        @summary 新建自定义字段
+        @summary Adds the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
+        
+        @description    **Custom field limits**: The key name of a custom field can contain only letters, digits, underscores (_), and spaces. The key name cannot contain other characters. Otherwise, errors may occur.
+        **Parameter passing**: Submit `SiteId`, `RequestHeaders`, `ResponseHeaders`, and `Cookies` by using `formData`. Each array element matches a custom field name.
+        **(Required) SiteId**: Although `SiteId` is not marked as required in the Required column, you must specify a website ID by using this parameter when you can call this API operation.
         
         @param request: CreateSiteCustomLogRequest
         @return: CreateSiteCustomLogResponse
@@ -3673,7 +4129,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateSiteDeliveryTaskResponse:
         """
-        @summary 新建一个任务投递
+        @summary Creates a real-time log delivery task.
         
         @param tmp_req: CreateSiteDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3742,7 +4198,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateSiteDeliveryTaskResponse:
         """
-        @summary 新建一个任务投递
+        @summary Creates a real-time log delivery task.
         
         @param tmp_req: CreateSiteDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3810,7 +4266,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateSiteDeliveryTaskRequest,
     ) -> esa20240910_models.CreateSiteDeliveryTaskResponse:
         """
-        @summary 新建一个任务投递
+        @summary Creates a real-time log delivery task.
         
         @param request: CreateSiteDeliveryTaskRequest
         @return: CreateSiteDeliveryTaskResponse
@@ -3823,7 +4279,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateSiteDeliveryTaskRequest,
     ) -> esa20240910_models.CreateSiteDeliveryTaskResponse:
         """
-        @summary 新建一个任务投递
+        @summary Creates a real-time log delivery task.
         
         @param request: CreateSiteDeliveryTaskRequest
         @return: CreateSiteDeliveryTaskResponse
@@ -3831,13 +4287,311 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_site_delivery_task_with_options_async(request, runtime)
 
+    def create_site_function_with_options(
+        self,
+        tmp_req: esa20240910_models.CreateSiteFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateSiteFunctionResponse:
+        """
+        @summary 新增站点功能配置
+        
+        @param tmp_req: CreateSiteFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSiteFunctionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.CreateSiteFunctionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cache_reserve):
+            request.cache_reserve_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cache_reserve, 'CacheReserve', 'json')
+        if not UtilClient.is_unset(tmp_req.cache_rules):
+            request.cache_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cache_rules, 'CacheRules', 'json')
+        if not UtilClient.is_unset(tmp_req.cache_tags):
+            request.cache_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cache_tags, 'CacheTags', 'json')
+        if not UtilClient.is_unset(tmp_req.cname_flattening):
+            request.cname_flattening_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cname_flattening, 'CnameFlattening', 'json')
+        if not UtilClient.is_unset(tmp_req.compression_rules):
+            request.compression_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.compression_rules, 'CompressionRules', 'json')
+        if not UtilClient.is_unset(tmp_req.cross_border_optimization):
+            request.cross_border_optimization_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cross_border_optimization, 'CrossBorderOptimization', 'json')
+        if not UtilClient.is_unset(tmp_req.development_mode):
+            request.development_mode_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.development_mode, 'DevelopmentMode', 'json')
+        if not UtilClient.is_unset(tmp_req.http_request_header_modification_rules):
+            request.http_request_header_modification_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.http_request_header_modification_rules, 'HttpRequestHeaderModificationRules', 'json')
+        if not UtilClient.is_unset(tmp_req.http_response_header_modification_rules):
+            request.http_response_header_modification_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.http_response_header_modification_rules, 'HttpResponseHeaderModificationRules', 'json')
+        if not UtilClient.is_unset(tmp_req.https_application_configuration):
+            request.https_application_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.https_application_configuration, 'HttpsApplicationConfiguration', 'json')
+        if not UtilClient.is_unset(tmp_req.https_basic_configuration):
+            request.https_basic_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.https_basic_configuration, 'HttpsBasicConfiguration', 'json')
+        if not UtilClient.is_unset(tmp_req.image_transform):
+            request.image_transform_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_transform, 'ImageTransform', 'json')
+        if not UtilClient.is_unset(tmp_req.ipv_6):
+            request.ipv_6shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ipv_6, 'Ipv6', 'json')
+        if not UtilClient.is_unset(tmp_req.managed_transforms):
+            request.managed_transforms_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managed_transforms, 'ManagedTransforms', 'json')
+        if not UtilClient.is_unset(tmp_req.network_optimization):
+            request.network_optimization_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network_optimization, 'NetworkOptimization', 'json')
+        if not UtilClient.is_unset(tmp_req.origin_protection):
+            request.origin_protection_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.origin_protection, 'OriginProtection', 'json')
+        if not UtilClient.is_unset(tmp_req.origin_rules):
+            request.origin_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.origin_rules, 'OriginRules', 'json')
+        if not UtilClient.is_unset(tmp_req.redirect_rules):
+            request.redirect_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect_rules, 'RedirectRules', 'json')
+        if not UtilClient.is_unset(tmp_req.rewrite_url_rules):
+            request.rewrite_url_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rewrite_url_rules, 'RewriteUrlRules', 'json')
+        if not UtilClient.is_unset(tmp_req.seo_bypass):
+            request.seo_bypass_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.seo_bypass, 'SeoBypass', 'json')
+        if not UtilClient.is_unset(tmp_req.site_name_exclusive):
+            request.site_name_exclusive_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.site_name_exclusive, 'SiteNameExclusive', 'json')
+        if not UtilClient.is_unset(tmp_req.site_pause):
+            request.site_pause_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.site_pause, 'SitePause', 'json')
+        if not UtilClient.is_unset(tmp_req.tiered_cache):
+            request.tiered_cache_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tiered_cache, 'TieredCache', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cache_reserve_shrink):
+            query['CacheReserve'] = request.cache_reserve_shrink
+        if not UtilClient.is_unset(request.cache_rules_shrink):
+            query['CacheRules'] = request.cache_rules_shrink
+        if not UtilClient.is_unset(request.cache_tags_shrink):
+            query['CacheTags'] = request.cache_tags_shrink
+        if not UtilClient.is_unset(request.cname_flattening_shrink):
+            query['CnameFlattening'] = request.cname_flattening_shrink
+        if not UtilClient.is_unset(request.compression_rules_shrink):
+            query['CompressionRules'] = request.compression_rules_shrink
+        if not UtilClient.is_unset(request.cross_border_optimization_shrink):
+            query['CrossBorderOptimization'] = request.cross_border_optimization_shrink
+        if not UtilClient.is_unset(request.development_mode_shrink):
+            query['DevelopmentMode'] = request.development_mode_shrink
+        if not UtilClient.is_unset(request.http_request_header_modification_rules_shrink):
+            query['HttpRequestHeaderModificationRules'] = request.http_request_header_modification_rules_shrink
+        if not UtilClient.is_unset(request.http_response_header_modification_rules_shrink):
+            query['HttpResponseHeaderModificationRules'] = request.http_response_header_modification_rules_shrink
+        if not UtilClient.is_unset(request.https_application_configuration_shrink):
+            query['HttpsApplicationConfiguration'] = request.https_application_configuration_shrink
+        if not UtilClient.is_unset(request.https_basic_configuration_shrink):
+            query['HttpsBasicConfiguration'] = request.https_basic_configuration_shrink
+        if not UtilClient.is_unset(request.image_transform_shrink):
+            query['ImageTransform'] = request.image_transform_shrink
+        if not UtilClient.is_unset(request.ipv_6shrink):
+            query['Ipv6'] = request.ipv_6shrink
+        if not UtilClient.is_unset(request.managed_transforms_shrink):
+            query['ManagedTransforms'] = request.managed_transforms_shrink
+        if not UtilClient.is_unset(request.network_optimization_shrink):
+            query['NetworkOptimization'] = request.network_optimization_shrink
+        if not UtilClient.is_unset(request.origin_protection_shrink):
+            query['OriginProtection'] = request.origin_protection_shrink
+        if not UtilClient.is_unset(request.origin_rules_shrink):
+            query['OriginRules'] = request.origin_rules_shrink
+        if not UtilClient.is_unset(request.redirect_rules_shrink):
+            query['RedirectRules'] = request.redirect_rules_shrink
+        if not UtilClient.is_unset(request.rewrite_url_rules_shrink):
+            query['RewriteUrlRules'] = request.rewrite_url_rules_shrink
+        if not UtilClient.is_unset(request.seo_bypass_shrink):
+            query['SeoBypass'] = request.seo_bypass_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_name_exclusive_shrink):
+            query['SiteNameExclusive'] = request.site_name_exclusive_shrink
+        if not UtilClient.is_unset(request.site_pause_shrink):
+            query['SitePause'] = request.site_pause_shrink
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.tiered_cache_shrink):
+            query['TieredCache'] = request.tiered_cache_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSiteFunction',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateSiteFunctionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_site_function_with_options_async(
+        self,
+        tmp_req: esa20240910_models.CreateSiteFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateSiteFunctionResponse:
+        """
+        @summary 新增站点功能配置
+        
+        @param tmp_req: CreateSiteFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSiteFunctionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.CreateSiteFunctionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cache_reserve):
+            request.cache_reserve_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cache_reserve, 'CacheReserve', 'json')
+        if not UtilClient.is_unset(tmp_req.cache_rules):
+            request.cache_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cache_rules, 'CacheRules', 'json')
+        if not UtilClient.is_unset(tmp_req.cache_tags):
+            request.cache_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cache_tags, 'CacheTags', 'json')
+        if not UtilClient.is_unset(tmp_req.cname_flattening):
+            request.cname_flattening_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cname_flattening, 'CnameFlattening', 'json')
+        if not UtilClient.is_unset(tmp_req.compression_rules):
+            request.compression_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.compression_rules, 'CompressionRules', 'json')
+        if not UtilClient.is_unset(tmp_req.cross_border_optimization):
+            request.cross_border_optimization_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cross_border_optimization, 'CrossBorderOptimization', 'json')
+        if not UtilClient.is_unset(tmp_req.development_mode):
+            request.development_mode_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.development_mode, 'DevelopmentMode', 'json')
+        if not UtilClient.is_unset(tmp_req.http_request_header_modification_rules):
+            request.http_request_header_modification_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.http_request_header_modification_rules, 'HttpRequestHeaderModificationRules', 'json')
+        if not UtilClient.is_unset(tmp_req.http_response_header_modification_rules):
+            request.http_response_header_modification_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.http_response_header_modification_rules, 'HttpResponseHeaderModificationRules', 'json')
+        if not UtilClient.is_unset(tmp_req.https_application_configuration):
+            request.https_application_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.https_application_configuration, 'HttpsApplicationConfiguration', 'json')
+        if not UtilClient.is_unset(tmp_req.https_basic_configuration):
+            request.https_basic_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.https_basic_configuration, 'HttpsBasicConfiguration', 'json')
+        if not UtilClient.is_unset(tmp_req.image_transform):
+            request.image_transform_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_transform, 'ImageTransform', 'json')
+        if not UtilClient.is_unset(tmp_req.ipv_6):
+            request.ipv_6shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ipv_6, 'Ipv6', 'json')
+        if not UtilClient.is_unset(tmp_req.managed_transforms):
+            request.managed_transforms_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managed_transforms, 'ManagedTransforms', 'json')
+        if not UtilClient.is_unset(tmp_req.network_optimization):
+            request.network_optimization_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network_optimization, 'NetworkOptimization', 'json')
+        if not UtilClient.is_unset(tmp_req.origin_protection):
+            request.origin_protection_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.origin_protection, 'OriginProtection', 'json')
+        if not UtilClient.is_unset(tmp_req.origin_rules):
+            request.origin_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.origin_rules, 'OriginRules', 'json')
+        if not UtilClient.is_unset(tmp_req.redirect_rules):
+            request.redirect_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect_rules, 'RedirectRules', 'json')
+        if not UtilClient.is_unset(tmp_req.rewrite_url_rules):
+            request.rewrite_url_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rewrite_url_rules, 'RewriteUrlRules', 'json')
+        if not UtilClient.is_unset(tmp_req.seo_bypass):
+            request.seo_bypass_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.seo_bypass, 'SeoBypass', 'json')
+        if not UtilClient.is_unset(tmp_req.site_name_exclusive):
+            request.site_name_exclusive_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.site_name_exclusive, 'SiteNameExclusive', 'json')
+        if not UtilClient.is_unset(tmp_req.site_pause):
+            request.site_pause_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.site_pause, 'SitePause', 'json')
+        if not UtilClient.is_unset(tmp_req.tiered_cache):
+            request.tiered_cache_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tiered_cache, 'TieredCache', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cache_reserve_shrink):
+            query['CacheReserve'] = request.cache_reserve_shrink
+        if not UtilClient.is_unset(request.cache_rules_shrink):
+            query['CacheRules'] = request.cache_rules_shrink
+        if not UtilClient.is_unset(request.cache_tags_shrink):
+            query['CacheTags'] = request.cache_tags_shrink
+        if not UtilClient.is_unset(request.cname_flattening_shrink):
+            query['CnameFlattening'] = request.cname_flattening_shrink
+        if not UtilClient.is_unset(request.compression_rules_shrink):
+            query['CompressionRules'] = request.compression_rules_shrink
+        if not UtilClient.is_unset(request.cross_border_optimization_shrink):
+            query['CrossBorderOptimization'] = request.cross_border_optimization_shrink
+        if not UtilClient.is_unset(request.development_mode_shrink):
+            query['DevelopmentMode'] = request.development_mode_shrink
+        if not UtilClient.is_unset(request.http_request_header_modification_rules_shrink):
+            query['HttpRequestHeaderModificationRules'] = request.http_request_header_modification_rules_shrink
+        if not UtilClient.is_unset(request.http_response_header_modification_rules_shrink):
+            query['HttpResponseHeaderModificationRules'] = request.http_response_header_modification_rules_shrink
+        if not UtilClient.is_unset(request.https_application_configuration_shrink):
+            query['HttpsApplicationConfiguration'] = request.https_application_configuration_shrink
+        if not UtilClient.is_unset(request.https_basic_configuration_shrink):
+            query['HttpsBasicConfiguration'] = request.https_basic_configuration_shrink
+        if not UtilClient.is_unset(request.image_transform_shrink):
+            query['ImageTransform'] = request.image_transform_shrink
+        if not UtilClient.is_unset(request.ipv_6shrink):
+            query['Ipv6'] = request.ipv_6shrink
+        if not UtilClient.is_unset(request.managed_transforms_shrink):
+            query['ManagedTransforms'] = request.managed_transforms_shrink
+        if not UtilClient.is_unset(request.network_optimization_shrink):
+            query['NetworkOptimization'] = request.network_optimization_shrink
+        if not UtilClient.is_unset(request.origin_protection_shrink):
+            query['OriginProtection'] = request.origin_protection_shrink
+        if not UtilClient.is_unset(request.origin_rules_shrink):
+            query['OriginRules'] = request.origin_rules_shrink
+        if not UtilClient.is_unset(request.redirect_rules_shrink):
+            query['RedirectRules'] = request.redirect_rules_shrink
+        if not UtilClient.is_unset(request.rewrite_url_rules_shrink):
+            query['RewriteUrlRules'] = request.rewrite_url_rules_shrink
+        if not UtilClient.is_unset(request.seo_bypass_shrink):
+            query['SeoBypass'] = request.seo_bypass_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_name_exclusive_shrink):
+            query['SiteNameExclusive'] = request.site_name_exclusive_shrink
+        if not UtilClient.is_unset(request.site_pause_shrink):
+            query['SitePause'] = request.site_pause_shrink
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.tiered_cache_shrink):
+            query['TieredCache'] = request.tiered_cache_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSiteFunction',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateSiteFunctionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_site_function(
+        self,
+        request: esa20240910_models.CreateSiteFunctionRequest,
+    ) -> esa20240910_models.CreateSiteFunctionResponse:
+        """
+        @summary 新增站点功能配置
+        
+        @param request: CreateSiteFunctionRequest
+        @return: CreateSiteFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_site_function_with_options(request, runtime)
+
+    async def create_site_function_async(
+        self,
+        request: esa20240910_models.CreateSiteFunctionRequest,
+    ) -> esa20240910_models.CreateSiteFunctionResponse:
+        """
+        @summary 新增站点功能配置
+        
+        @param request: CreateSiteFunctionRequest
+        @return: CreateSiteFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_site_function_with_options_async(request, runtime)
+
     def create_user_delivery_task_with_options(
         self,
         tmp_req: esa20240910_models.CreateUserDeliveryTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateUserDeliveryTaskResponse:
         """
-        @summary 新建一个用户粒度任务投递
+        @summary Creates a log delivery task to ship logs to the specified destination.
+        
+        @description This API operation allows you to deliver logs to destinations such as Simple Log Service (SLS), HTTP servers, Object Storage Service (OSS), Amazon Simple Storage Service (S3), and Kafka. You can specify the task name, log fields to deliver, data center, discard rate, delivery type, and delivery details.
+        **Field filtering**: Use the `FieldName` parameter to specify log fields to deliver.
+        **Filtering rules**: Use the `FilterRules` parameter to pre-process and filter log data.
+        **Diverse delivery destinations**: Logs can be delivered to different destinations. Configuration parameters vary with delivery destinations.
+        ## [](#)Precautions
+        Make sure that you have sufficient permissions to perform delivery tasks.
+        If you enable encryption or authentication, properly configure corresponding parameters.
+        Verify the syntax of `FilterRules` to make sure that filtering logic works as expected.
+        Specify advanced settings such as the number of retries and timeout period based on your needs to have optimal delivery efficiency and stability.
         
         @param tmp_req: CreateUserDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3904,7 +4658,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateUserDeliveryTaskResponse:
         """
-        @summary 新建一个用户粒度任务投递
+        @summary Creates a log delivery task to ship logs to the specified destination.
+        
+        @description This API operation allows you to deliver logs to destinations such as Simple Log Service (SLS), HTTP servers, Object Storage Service (OSS), Amazon Simple Storage Service (S3), and Kafka. You can specify the task name, log fields to deliver, data center, discard rate, delivery type, and delivery details.
+        **Field filtering**: Use the `FieldName` parameter to specify log fields to deliver.
+        **Filtering rules**: Use the `FilterRules` parameter to pre-process and filter log data.
+        **Diverse delivery destinations**: Logs can be delivered to different destinations. Configuration parameters vary with delivery destinations.
+        ## [](#)Precautions
+        Make sure that you have sufficient permissions to perform delivery tasks.
+        If you enable encryption or authentication, properly configure corresponding parameters.
+        Verify the syntax of `FilterRules` to make sure that filtering logic works as expected.
+        Specify advanced settings such as the number of retries and timeout period based on your needs to have optimal delivery efficiency and stability.
         
         @param tmp_req: CreateUserDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3970,7 +4734,17 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateUserDeliveryTaskRequest,
     ) -> esa20240910_models.CreateUserDeliveryTaskResponse:
         """
-        @summary 新建一个用户粒度任务投递
+        @summary Creates a log delivery task to ship logs to the specified destination.
+        
+        @description This API operation allows you to deliver logs to destinations such as Simple Log Service (SLS), HTTP servers, Object Storage Service (OSS), Amazon Simple Storage Service (S3), and Kafka. You can specify the task name, log fields to deliver, data center, discard rate, delivery type, and delivery details.
+        **Field filtering**: Use the `FieldName` parameter to specify log fields to deliver.
+        **Filtering rules**: Use the `FilterRules` parameter to pre-process and filter log data.
+        **Diverse delivery destinations**: Logs can be delivered to different destinations. Configuration parameters vary with delivery destinations.
+        ## [](#)Precautions
+        Make sure that you have sufficient permissions to perform delivery tasks.
+        If you enable encryption or authentication, properly configure corresponding parameters.
+        Verify the syntax of `FilterRules` to make sure that filtering logic works as expected.
+        Specify advanced settings such as the number of retries and timeout period based on your needs to have optimal delivery efficiency and stability.
         
         @param request: CreateUserDeliveryTaskRequest
         @return: CreateUserDeliveryTaskResponse
@@ -3983,7 +4757,17 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateUserDeliveryTaskRequest,
     ) -> esa20240910_models.CreateUserDeliveryTaskResponse:
         """
-        @summary 新建一个用户粒度任务投递
+        @summary Creates a log delivery task to ship logs to the specified destination.
+        
+        @description This API operation allows you to deliver logs to destinations such as Simple Log Service (SLS), HTTP servers, Object Storage Service (OSS), Amazon Simple Storage Service (S3), and Kafka. You can specify the task name, log fields to deliver, data center, discard rate, delivery type, and delivery details.
+        **Field filtering**: Use the `FieldName` parameter to specify log fields to deliver.
+        **Filtering rules**: Use the `FilterRules` parameter to pre-process and filter log data.
+        **Diverse delivery destinations**: Logs can be delivered to different destinations. Configuration parameters vary with delivery destinations.
+        ## [](#)Precautions
+        Make sure that you have sufficient permissions to perform delivery tasks.
+        If you enable encryption or authentication, properly configure corresponding parameters.
+        Verify the syntax of `FilterRules` to make sure that filtering logic works as expected.
+        Specify advanced settings such as the number of retries and timeout period based on your needs to have optimal delivery efficiency and stability.
         
         @param request: CreateUserDeliveryTaskRequest
         @return: CreateUserDeliveryTaskResponse
@@ -3997,7 +4781,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateWafRuleResponse:
         """
-        @summary 创建WAF规则
+        @summary Creates a Web Application Firewall (WAF) rule. This allows you to configure fine-grained WAF settings to improve the security of your website or application.
         
         @param tmp_req: CreateWafRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4044,7 +4828,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateWafRuleResponse:
         """
-        @summary 创建WAF规则
+        @summary Creates a Web Application Firewall (WAF) rule. This allows you to configure fine-grained WAF settings to improve the security of your website or application.
         
         @param tmp_req: CreateWafRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4090,7 +4874,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateWafRuleRequest,
     ) -> esa20240910_models.CreateWafRuleResponse:
         """
-        @summary 创建WAF规则
+        @summary Creates a Web Application Firewall (WAF) rule. This allows you to configure fine-grained WAF settings to improve the security of your website or application.
         
         @param request: CreateWafRuleRequest
         @return: CreateWafRuleResponse
@@ -4103,7 +4887,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateWafRuleRequest,
     ) -> esa20240910_models.CreateWafRuleResponse:
         """
-        @summary 创建WAF规则
+        @summary Creates a Web Application Firewall (WAF) rule. This allows you to configure fine-grained WAF settings to improve the security of your website or application.
         
         @param request: CreateWafRuleRequest
         @return: CreateWafRuleResponse
@@ -4285,7 +5069,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateWaitingRoomEventResponse:
         """
-        @summary 创建等候室事件
+        @summary Creates a waiting room event.
         
         @param request: CreateWaitingRoomEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4358,7 +5142,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateWaitingRoomEventResponse:
         """
-        @summary 创建等候室事件
+        @summary Creates a waiting room event.
         
         @param request: CreateWaitingRoomEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4430,7 +5214,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateWaitingRoomEventRequest,
     ) -> esa20240910_models.CreateWaitingRoomEventResponse:
         """
-        @summary 创建等候室事件
+        @summary Creates a waiting room event.
         
         @param request: CreateWaitingRoomEventRequest
         @return: CreateWaitingRoomEventResponse
@@ -4443,7 +5227,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateWaitingRoomEventRequest,
     ) -> esa20240910_models.CreateWaitingRoomEventResponse:
         """
-        @summary 创建等候室事件
+        @summary Creates a waiting room event.
         
         @param request: CreateWaitingRoomEventRequest
         @return: CreateWaitingRoomEventResponse
@@ -4457,7 +5241,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateWaitingRoomRuleResponse:
         """
-        @summary 创建等候室规则
+        @summary Creates a waiting room bypass rule.
         
         @param request: CreateWaitingRoomRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4500,7 +5284,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateWaitingRoomRuleResponse:
         """
-        @summary 创建等候室规则
+        @summary Creates a waiting room bypass rule.
         
         @param request: CreateWaitingRoomRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4542,7 +5326,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateWaitingRoomRuleRequest,
     ) -> esa20240910_models.CreateWaitingRoomRuleResponse:
         """
-        @summary 创建等候室规则
+        @summary Creates a waiting room bypass rule.
         
         @param request: CreateWaitingRoomRuleRequest
         @return: CreateWaitingRoomRuleResponse
@@ -4555,7 +5339,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateWaitingRoomRuleRequest,
     ) -> esa20240910_models.CreateWaitingRoomRuleResponse:
         """
-        @summary 创建等候室规则
+        @summary Creates a waiting room bypass rule.
         
         @param request: CreateWaitingRoomRuleRequest
         @return: CreateWaitingRoomRuleResponse
@@ -4569,7 +5353,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteCustomScenePolicyResponse:
         """
-        @summary 删除定制场景策略
+        @summary Deletes a scenario-specific custom policy.
         
         @param request: DeleteCustomScenePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4604,7 +5388,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteCustomScenePolicyResponse:
         """
-        @summary 删除定制场景策略
+        @summary Deletes a scenario-specific custom policy.
         
         @param request: DeleteCustomScenePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4638,7 +5422,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteCustomScenePolicyRequest,
     ) -> esa20240910_models.DeleteCustomScenePolicyResponse:
         """
-        @summary 删除定制场景策略
+        @summary Deletes a scenario-specific custom policy.
         
         @param request: DeleteCustomScenePolicyRequest
         @return: DeleteCustomScenePolicyResponse
@@ -4651,7 +5435,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteCustomScenePolicyRequest,
     ) -> esa20240910_models.DeleteCustomScenePolicyResponse:
         """
-        @summary 删除定制场景策略
+        @summary Deletes a scenario-specific custom policy.
         
         @param request: DeleteCustomScenePolicyRequest
         @return: DeleteCustomScenePolicyResponse
@@ -4665,7 +5449,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteEdgeContainerAppResponse:
         """
-        @summary 删除边缘容器的应用
+        @summary Deletes a containerized application.
         
         @param request: DeleteEdgeContainerAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4700,7 +5484,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteEdgeContainerAppResponse:
         """
-        @summary 删除边缘容器的应用
+        @summary Deletes a containerized application.
         
         @param request: DeleteEdgeContainerAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4734,7 +5518,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteEdgeContainerAppRequest,
     ) -> esa20240910_models.DeleteEdgeContainerAppResponse:
         """
-        @summary 删除边缘容器的应用
+        @summary Deletes a containerized application.
         
         @param request: DeleteEdgeContainerAppRequest
         @return: DeleteEdgeContainerAppResponse
@@ -4747,7 +5531,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteEdgeContainerAppRequest,
     ) -> esa20240910_models.DeleteEdgeContainerAppResponse:
         """
-        @summary 删除边缘容器的应用
+        @summary Deletes a containerized application.
         
         @param request: DeleteEdgeContainerAppRequest
         @return: DeleteEdgeContainerAppResponse
@@ -4761,7 +5545,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteEdgeContainerAppRecordResponse:
         """
-        @summary 删除一个边缘容器应用的域名记录
+        @summary Disassociates a domain name from a containerized application. After the dissociation, you can no longer use the domain name to access the containerized application.
         
         @param request: DeleteEdgeContainerAppRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4800,7 +5584,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteEdgeContainerAppRecordResponse:
         """
-        @summary 删除一个边缘容器应用的域名记录
+        @summary Disassociates a domain name from a containerized application. After the dissociation, you can no longer use the domain name to access the containerized application.
         
         @param request: DeleteEdgeContainerAppRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4838,7 +5622,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteEdgeContainerAppRecordRequest,
     ) -> esa20240910_models.DeleteEdgeContainerAppRecordResponse:
         """
-        @summary 删除一个边缘容器应用的域名记录
+        @summary Disassociates a domain name from a containerized application. After the dissociation, you can no longer use the domain name to access the containerized application.
         
         @param request: DeleteEdgeContainerAppRecordRequest
         @return: DeleteEdgeContainerAppRecordResponse
@@ -4851,7 +5635,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteEdgeContainerAppRecordRequest,
     ) -> esa20240910_models.DeleteEdgeContainerAppRecordResponse:
         """
-        @summary 删除一个边缘容器应用的域名记录
+        @summary Disassociates a domain name from a containerized application. After the dissociation, you can no longer use the domain name to access the containerized application.
         
         @param request: DeleteEdgeContainerAppRecordRequest
         @return: DeleteEdgeContainerAppRecordResponse
@@ -4865,7 +5649,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteEdgeContainerAppVersionResponse:
         """
-        @summary 删除边缘容器应用的版本
+        @summary Deletes a version of a containerized application.
         
         @param request: DeleteEdgeContainerAppVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4902,7 +5686,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteEdgeContainerAppVersionResponse:
         """
-        @summary 删除边缘容器应用的版本
+        @summary Deletes a version of a containerized application.
         
         @param request: DeleteEdgeContainerAppVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4938,7 +5722,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteEdgeContainerAppVersionRequest,
     ) -> esa20240910_models.DeleteEdgeContainerAppVersionResponse:
         """
-        @summary 删除边缘容器应用的版本
+        @summary Deletes a version of a containerized application.
         
         @param request: DeleteEdgeContainerAppVersionRequest
         @return: DeleteEdgeContainerAppVersionResponse
@@ -4951,7 +5735,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteEdgeContainerAppVersionRequest,
     ) -> esa20240910_models.DeleteEdgeContainerAppVersionResponse:
         """
-        @summary 删除边缘容器应用的版本
+        @summary Deletes a version of a containerized application.
         
         @param request: DeleteEdgeContainerAppVersionRequest
         @return: DeleteEdgeContainerAppVersionResponse
@@ -4965,7 +5749,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteKvResponse:
         """
-        @summary 删除Namespace的Key-Value对
+        @summary Deletes a key-value pair from a namespace.
         
         @param request: DeleteKvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4998,7 +5782,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteKvResponse:
         """
-        @summary 删除Namespace的Key-Value对
+        @summary Deletes a key-value pair from a namespace.
         
         @param request: DeleteKvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5030,7 +5814,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteKvRequest,
     ) -> esa20240910_models.DeleteKvResponse:
         """
-        @summary 删除Namespace的Key-Value对
+        @summary Deletes a key-value pair from a namespace.
         
         @param request: DeleteKvRequest
         @return: DeleteKvResponse
@@ -5043,7 +5827,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteKvRequest,
     ) -> esa20240910_models.DeleteKvResponse:
         """
-        @summary 删除Namespace的Key-Value对
+        @summary Deletes a key-value pair from a namespace.
         
         @param request: DeleteKvRequest
         @return: DeleteKvResponse
@@ -5057,7 +5841,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteKvNamespaceResponse:
         """
-        @summary 删除Namespace
+        @summary Deletes a namespace from an Alibaba Cloud account.
         
         @param request: DeleteKvNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5092,7 +5876,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteKvNamespaceResponse:
         """
-        @summary 删除Namespace
+        @summary Deletes a namespace from an Alibaba Cloud account.
         
         @param request: DeleteKvNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5126,7 +5910,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteKvNamespaceRequest,
     ) -> esa20240910_models.DeleteKvNamespaceResponse:
         """
-        @summary 删除Namespace
+        @summary Deletes a namespace from an Alibaba Cloud account.
         
         @param request: DeleteKvNamespaceRequest
         @return: DeleteKvNamespaceResponse
@@ -5139,7 +5923,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteKvNamespaceRequest,
     ) -> esa20240910_models.DeleteKvNamespaceResponse:
         """
-        @summary 删除Namespace
+        @summary Deletes a namespace from an Alibaba Cloud account.
         
         @param request: DeleteKvNamespaceRequest
         @return: DeleteKvNamespaceResponse
@@ -5153,7 +5937,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteListResponse:
         """
-        @summary 删除自定义列表
+        @summary Deletes a custom list that is no longer needed.
         
         @param request: DeleteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5188,7 +5972,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteListResponse:
         """
-        @summary 删除自定义列表
+        @summary Deletes a custom list that is no longer needed.
         
         @param request: DeleteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5222,7 +6006,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteListRequest,
     ) -> esa20240910_models.DeleteListResponse:
         """
-        @summary 删除自定义列表
+        @summary Deletes a custom list that is no longer needed.
         
         @param request: DeleteListRequest
         @return: DeleteListResponse
@@ -5235,7 +6019,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteListRequest,
     ) -> esa20240910_models.DeleteListResponse:
         """
-        @summary 删除自定义列表
+        @summary Deletes a custom list that is no longer needed.
         
         @param request: DeleteListRequest
         @return: DeleteListResponse
@@ -5243,13 +6027,109 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_list_with_options_async(request, runtime)
 
+    def delete_origin_protection_with_options(
+        self,
+        request: esa20240910_models.DeleteOriginProtectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteOriginProtectionResponse:
+        """
+        @summary 关闭源站防护功能
+        
+        @param request: DeleteOriginProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOriginProtectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOriginProtection',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteOriginProtectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_origin_protection_with_options_async(
+        self,
+        request: esa20240910_models.DeleteOriginProtectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteOriginProtectionResponse:
+        """
+        @summary 关闭源站防护功能
+        
+        @param request: DeleteOriginProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOriginProtectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOriginProtection',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteOriginProtectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_origin_protection(
+        self,
+        request: esa20240910_models.DeleteOriginProtectionRequest,
+    ) -> esa20240910_models.DeleteOriginProtectionResponse:
+        """
+        @summary 关闭源站防护功能
+        
+        @param request: DeleteOriginProtectionRequest
+        @return: DeleteOriginProtectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_origin_protection_with_options(request, runtime)
+
+    async def delete_origin_protection_async(
+        self,
+        request: esa20240910_models.DeleteOriginProtectionRequest,
+    ) -> esa20240910_models.DeleteOriginProtectionResponse:
+        """
+        @summary 关闭源站防护功能
+        
+        @param request: DeleteOriginProtectionRequest
+        @return: DeleteOriginProtectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_origin_protection_with_options_async(request, runtime)
+
     def delete_page_with_options(
         self,
         request: esa20240910_models.DeletePageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeletePageResponse:
         """
-        @summary 删除自定义响应页面
+        @summary Deletes a custom error page that is no longer needed.
         
         @param request: DeletePageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5284,7 +6164,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeletePageResponse:
         """
-        @summary 删除自定义响应页面
+        @summary Deletes a custom error page that is no longer needed.
         
         @param request: DeletePageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5318,7 +6198,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeletePageRequest,
     ) -> esa20240910_models.DeletePageResponse:
         """
-        @summary 删除自定义响应页面
+        @summary Deletes a custom error page that is no longer needed.
         
         @param request: DeletePageRequest
         @return: DeletePageResponse
@@ -5331,7 +6211,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeletePageRequest,
     ) -> esa20240910_models.DeletePageResponse:
         """
-        @summary 删除自定义响应页面
+        @summary Deletes a custom error page that is no longer needed.
         
         @param request: DeletePageRequest
         @return: DeletePageResponse
@@ -5345,7 +6225,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteRecordResponse:
         """
-        @summary 删除记录
+        @summary Deletes a DNS record of a website based on the specified RecordId.
         
         @param request: DeleteRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5380,7 +6260,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteRecordResponse:
         """
-        @summary 删除记录
+        @summary Deletes a DNS record of a website based on the specified RecordId.
         
         @param request: DeleteRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5414,7 +6294,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteRecordRequest,
     ) -> esa20240910_models.DeleteRecordResponse:
         """
-        @summary 删除记录
+        @summary Deletes a DNS record of a website based on the specified RecordId.
         
         @param request: DeleteRecordRequest
         @return: DeleteRecordResponse
@@ -5427,7 +6307,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteRecordRequest,
     ) -> esa20240910_models.DeleteRecordResponse:
         """
-        @summary 删除记录
+        @summary Deletes a DNS record of a website based on the specified RecordId.
         
         @param request: DeleteRecordRequest
         @return: DeleteRecordResponse
@@ -5441,7 +6321,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteRoutineResponse:
         """
-        @summary 删除Routine
+        @summary Deletes a routine in Edge Routine.
         
         @param request: DeleteRoutineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5476,7 +6356,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteRoutineResponse:
         """
-        @summary 删除Routine
+        @summary Deletes a routine in Edge Routine.
         
         @param request: DeleteRoutineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5510,7 +6390,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteRoutineRequest,
     ) -> esa20240910_models.DeleteRoutineResponse:
         """
-        @summary 删除Routine
+        @summary Deletes a routine in Edge Routine.
         
         @param request: DeleteRoutineRequest
         @return: DeleteRoutineResponse
@@ -5523,7 +6403,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteRoutineRequest,
     ) -> esa20240910_models.DeleteRoutineResponse:
         """
-        @summary 删除Routine
+        @summary Deletes a routine in Edge Routine.
         
         @param request: DeleteRoutineRequest
         @return: DeleteRoutineResponse
@@ -5537,7 +6417,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteRoutineCodeVersionResponse:
         """
-        @summary 删除Routine某版本代码
+        @summary Deletes a code version of a routine.
         
         @param request: DeleteRoutineCodeVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5574,7 +6454,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteRoutineCodeVersionResponse:
         """
-        @summary 删除Routine某版本代码
+        @summary Deletes a code version of a routine.
         
         @param request: DeleteRoutineCodeVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5610,7 +6490,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteRoutineCodeVersionRequest,
     ) -> esa20240910_models.DeleteRoutineCodeVersionResponse:
         """
-        @summary 删除Routine某版本代码
+        @summary Deletes a code version of a routine.
         
         @param request: DeleteRoutineCodeVersionRequest
         @return: DeleteRoutineCodeVersionResponse
@@ -5623,7 +6503,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteRoutineCodeVersionRequest,
     ) -> esa20240910_models.DeleteRoutineCodeVersionResponse:
         """
-        @summary 删除Routine某版本代码
+        @summary Deletes a code version of a routine.
         
         @param request: DeleteRoutineCodeVersionRequest
         @return: DeleteRoutineCodeVersionResponse
@@ -5637,7 +6517,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteRoutineRelatedRecordResponse:
         """
-        @summary 删除Routine关联域名
+        @summary Deletes a record that is associated with a routine.
         
         @param request: DeleteRoutineRelatedRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5680,7 +6560,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteRoutineRelatedRecordResponse:
         """
-        @summary 删除Routine关联域名
+        @summary Deletes a record that is associated with a routine.
         
         @param request: DeleteRoutineRelatedRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5722,7 +6602,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteRoutineRelatedRecordRequest,
     ) -> esa20240910_models.DeleteRoutineRelatedRecordResponse:
         """
-        @summary 删除Routine关联域名
+        @summary Deletes a record that is associated with a routine.
         
         @param request: DeleteRoutineRelatedRecordRequest
         @return: DeleteRoutineRelatedRecordResponse
@@ -5735,7 +6615,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteRoutineRelatedRecordRequest,
     ) -> esa20240910_models.DeleteRoutineRelatedRecordResponse:
         """
-        @summary 删除Routine关联域名
+        @summary Deletes a record that is associated with a routine.
         
         @param request: DeleteRoutineRelatedRecordRequest
         @return: DeleteRoutineRelatedRecordResponse
@@ -5749,7 +6629,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteRoutineRelatedRouteResponse:
         """
-        @summary 删除Routine关联路由
+        @summary Deletes a route that is associated with a routine.
         
         @param request: DeleteRoutineRelatedRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5790,7 +6670,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteRoutineRelatedRouteResponse:
         """
-        @summary 删除Routine关联路由
+        @summary Deletes a route that is associated with a routine.
         
         @param request: DeleteRoutineRelatedRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5830,7 +6710,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteRoutineRelatedRouteRequest,
     ) -> esa20240910_models.DeleteRoutineRelatedRouteResponse:
         """
-        @summary 删除Routine关联路由
+        @summary Deletes a route that is associated with a routine.
         
         @param request: DeleteRoutineRelatedRouteRequest
         @return: DeleteRoutineRelatedRouteResponse
@@ -5843,7 +6723,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteRoutineRelatedRouteRequest,
     ) -> esa20240910_models.DeleteRoutineRelatedRouteResponse:
         """
-        @summary 删除Routine关联路由
+        @summary Deletes a route that is associated with a routine.
         
         @param request: DeleteRoutineRelatedRouteRequest
         @return: DeleteRoutineRelatedRouteResponse
@@ -5857,7 +6737,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteScheduledPreloadExecutionResponse:
         """
-        @summary 删除单个定时预热计划
+        @summary Deletes a scheduled prefetch plan based on the plan ID.
         
         @param request: DeleteScheduledPreloadExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5892,7 +6772,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteScheduledPreloadExecutionResponse:
         """
-        @summary 删除单个定时预热计划
+        @summary Deletes a scheduled prefetch plan based on the plan ID.
         
         @param request: DeleteScheduledPreloadExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5926,7 +6806,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteScheduledPreloadExecutionRequest,
     ) -> esa20240910_models.DeleteScheduledPreloadExecutionResponse:
         """
-        @summary 删除单个定时预热计划
+        @summary Deletes a scheduled prefetch plan based on the plan ID.
         
         @param request: DeleteScheduledPreloadExecutionRequest
         @return: DeleteScheduledPreloadExecutionResponse
@@ -5939,7 +6819,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteScheduledPreloadExecutionRequest,
     ) -> esa20240910_models.DeleteScheduledPreloadExecutionResponse:
         """
-        @summary 删除单个定时预热计划
+        @summary Deletes a scheduled prefetch plan based on the plan ID.
         
         @param request: DeleteScheduledPreloadExecutionRequest
         @return: DeleteScheduledPreloadExecutionResponse
@@ -5953,7 +6833,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteScheduledPreloadJobResponse:
         """
-        @summary 删除指定定时预热任务
+        @summary Deletes a specified scheduled prefetch task based on the task ID.
         
         @param request: DeleteScheduledPreloadJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5988,7 +6868,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteScheduledPreloadJobResponse:
         """
-        @summary 删除指定定时预热任务
+        @summary Deletes a specified scheduled prefetch task based on the task ID.
         
         @param request: DeleteScheduledPreloadJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6022,7 +6902,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteScheduledPreloadJobRequest,
     ) -> esa20240910_models.DeleteScheduledPreloadJobResponse:
         """
-        @summary 删除指定定时预热任务
+        @summary Deletes a specified scheduled prefetch task based on the task ID.
         
         @param request: DeleteScheduledPreloadJobRequest
         @return: DeleteScheduledPreloadJobResponse
@@ -6035,7 +6915,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteScheduledPreloadJobRequest,
     ) -> esa20240910_models.DeleteScheduledPreloadJobResponse:
         """
-        @summary 删除指定定时预热任务
+        @summary Deletes a specified scheduled prefetch task based on the task ID.
         
         @param request: DeleteScheduledPreloadJobRequest
         @return: DeleteScheduledPreloadJobResponse
@@ -6049,7 +6929,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteSiteResponse:
         """
-        @summary 删除站点
+        @summary Deletes a website based on the specified website ID.
         
         @param request: DeleteSiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6088,7 +6968,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteSiteResponse:
         """
-        @summary 删除站点
+        @summary Deletes a website based on the specified website ID.
         
         @param request: DeleteSiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6126,7 +7006,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteSiteRequest,
     ) -> esa20240910_models.DeleteSiteResponse:
         """
-        @summary 删除站点
+        @summary Deletes a website based on the specified website ID.
         
         @param request: DeleteSiteRequest
         @return: DeleteSiteResponse
@@ -6139,7 +7019,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteSiteRequest,
     ) -> esa20240910_models.DeleteSiteResponse:
         """
-        @summary 删除站点
+        @summary Deletes a website based on the specified website ID.
         
         @param request: DeleteSiteRequest
         @return: DeleteSiteResponse
@@ -6153,7 +7033,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteSiteDeliveryTaskResponse:
         """
-        @summary 删除一个任务投递
+        @summary Deletes a real-time log delivery task.
         
         @param request: DeleteSiteDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6190,7 +7070,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteSiteDeliveryTaskResponse:
         """
-        @summary 删除一个任务投递
+        @summary Deletes a real-time log delivery task.
         
         @param request: DeleteSiteDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6226,7 +7106,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteSiteDeliveryTaskRequest,
     ) -> esa20240910_models.DeleteSiteDeliveryTaskResponse:
         """
-        @summary 删除一个任务投递
+        @summary Deletes a real-time log delivery task.
         
         @param request: DeleteSiteDeliveryTaskRequest
         @return: DeleteSiteDeliveryTaskResponse
@@ -6239,7 +7119,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteSiteDeliveryTaskRequest,
     ) -> esa20240910_models.DeleteSiteDeliveryTaskResponse:
         """
-        @summary 删除一个任务投递
+        @summary Deletes a real-time log delivery task.
         
         @param request: DeleteSiteDeliveryTaskRequest
         @return: DeleteSiteDeliveryTaskResponse
@@ -6247,13 +7127,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_site_delivery_task_with_options_async(request, runtime)
 
+    def delete_site_function_with_options(
+        self,
+        request: esa20240910_models.DeleteSiteFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteSiteFunctionResponse:
+        """
+        @summary 删除站点配置
+        
+        @param request: DeleteSiteFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSiteFunctionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_ids):
+            query['ConfigIds'] = request.config_ids
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSiteFunction',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteSiteFunctionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_site_function_with_options_async(
+        self,
+        request: esa20240910_models.DeleteSiteFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteSiteFunctionResponse:
+        """
+        @summary 删除站点配置
+        
+        @param request: DeleteSiteFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSiteFunctionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_ids):
+            query['ConfigIds'] = request.config_ids
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSiteFunction',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteSiteFunctionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_site_function(
+        self,
+        request: esa20240910_models.DeleteSiteFunctionRequest,
+    ) -> esa20240910_models.DeleteSiteFunctionResponse:
+        """
+        @summary 删除站点配置
+        
+        @param request: DeleteSiteFunctionRequest
+        @return: DeleteSiteFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_site_function_with_options(request, runtime)
+
+    async def delete_site_function_async(
+        self,
+        request: esa20240910_models.DeleteSiteFunctionRequest,
+    ) -> esa20240910_models.DeleteSiteFunctionResponse:
+        """
+        @summary 删除站点配置
+        
+        @param request: DeleteSiteFunctionRequest
+        @return: DeleteSiteFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_site_function_with_options_async(request, runtime)
+
     def delete_user_delivery_task_with_options(
         self,
         request: esa20240910_models.DeleteUserDeliveryTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteUserDeliveryTaskResponse:
         """
-        @summary 删除一个用户任务投递
+        @summary Deletes a log delivery task from your Alibaba Cloud account.
+        
+        @description *****>
+        Deleted tasks cannot be restored. Proceed with caution.
+        To call this operation, you must have an account that has the required permissions.
+        The returned `RequestId` value can be used to track the request processing progress and troubleshoot issues.
         
         @param request: DeleteUserDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6288,7 +7273,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteUserDeliveryTaskResponse:
         """
-        @summary 删除一个用户任务投递
+        @summary Deletes a log delivery task from your Alibaba Cloud account.
+        
+        @description *****>
+        Deleted tasks cannot be restored. Proceed with caution.
+        To call this operation, you must have an account that has the required permissions.
+        The returned `RequestId` value can be used to track the request processing progress and troubleshoot issues.
         
         @param request: DeleteUserDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6322,7 +7312,12 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteUserDeliveryTaskRequest,
     ) -> esa20240910_models.DeleteUserDeliveryTaskResponse:
         """
-        @summary 删除一个用户任务投递
+        @summary Deletes a log delivery task from your Alibaba Cloud account.
+        
+        @description *****>
+        Deleted tasks cannot be restored. Proceed with caution.
+        To call this operation, you must have an account that has the required permissions.
+        The returned `RequestId` value can be used to track the request processing progress and troubleshoot issues.
         
         @param request: DeleteUserDeliveryTaskRequest
         @return: DeleteUserDeliveryTaskResponse
@@ -6335,7 +7330,12 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteUserDeliveryTaskRequest,
     ) -> esa20240910_models.DeleteUserDeliveryTaskResponse:
         """
-        @summary 删除一个用户任务投递
+        @summary Deletes a log delivery task from your Alibaba Cloud account.
+        
+        @description *****>
+        Deleted tasks cannot be restored. Proceed with caution.
+        To call this operation, you must have an account that has the required permissions.
+        The returned `RequestId` value can be used to track the request processing progress and troubleshoot issues.
         
         @param request: DeleteUserDeliveryTaskRequest
         @return: DeleteUserDeliveryTaskResponse
@@ -6349,7 +7349,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteWafRuleResponse:
         """
-        @summary 删除WAF规则
+        @summary Deletes a Web Application Firewall (WAF) rule, including its configurations and match conditions.
         
         @param request: DeleteWafRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6390,7 +7390,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteWafRuleResponse:
         """
-        @summary 删除WAF规则
+        @summary Deletes a Web Application Firewall (WAF) rule, including its configurations and match conditions.
         
         @param request: DeleteWafRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6430,7 +7430,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteWafRuleRequest,
     ) -> esa20240910_models.DeleteWafRuleResponse:
         """
-        @summary 删除WAF规则
+        @summary Deletes a Web Application Firewall (WAF) rule, including its configurations and match conditions.
         
         @param request: DeleteWafRuleRequest
         @return: DeleteWafRuleResponse
@@ -6443,7 +7443,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteWafRuleRequest,
     ) -> esa20240910_models.DeleteWafRuleResponse:
         """
-        @summary 删除WAF规则
+        @summary Deletes a Web Application Firewall (WAF) rule, including its configurations and match conditions.
         
         @param request: DeleteWafRuleRequest
         @return: DeleteWafRuleResponse
@@ -6457,7 +7457,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteWafRulesetResponse:
         """
-        @summary 删除WAF规则集
+        @summary Deletes a Web Application Firewall (WAF) ruleset that is no longer needed.
         
         @param request: DeleteWafRulesetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6498,7 +7498,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteWafRulesetResponse:
         """
-        @summary 删除WAF规则集
+        @summary Deletes a Web Application Firewall (WAF) ruleset that is no longer needed.
         
         @param request: DeleteWafRulesetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6538,7 +7538,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteWafRulesetRequest,
     ) -> esa20240910_models.DeleteWafRulesetResponse:
         """
-        @summary 删除WAF规则集
+        @summary Deletes a Web Application Firewall (WAF) ruleset that is no longer needed.
         
         @param request: DeleteWafRulesetRequest
         @return: DeleteWafRulesetResponse
@@ -6551,7 +7551,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteWafRulesetRequest,
     ) -> esa20240910_models.DeleteWafRulesetResponse:
         """
-        @summary 删除WAF规则集
+        @summary Deletes a Web Application Firewall (WAF) ruleset that is no longer needed.
         
         @param request: DeleteWafRulesetRequest
         @return: DeleteWafRulesetResponse
@@ -6565,7 +7565,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteWaitingRoomResponse:
         """
-        @summary 删除等候室
+        @summary Deletes a waiting room.
         
         @param request: DeleteWaitingRoomRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6602,7 +7602,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteWaitingRoomResponse:
         """
-        @summary 删除等候室
+        @summary Deletes a waiting room.
         
         @param request: DeleteWaitingRoomRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6638,7 +7638,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteWaitingRoomRequest,
     ) -> esa20240910_models.DeleteWaitingRoomResponse:
         """
-        @summary 删除等候室
+        @summary Deletes a waiting room.
         
         @param request: DeleteWaitingRoomRequest
         @return: DeleteWaitingRoomResponse
@@ -6651,7 +7651,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteWaitingRoomRequest,
     ) -> esa20240910_models.DeleteWaitingRoomResponse:
         """
-        @summary 删除等候室
+        @summary Deletes a waiting room.
         
         @param request: DeleteWaitingRoomRequest
         @return: DeleteWaitingRoomResponse
@@ -6665,7 +7665,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteWaitingRoomEventResponse:
         """
-        @summary 删除等候室事件
+        @summary Deletes a waiting room event.
         
         @param request: DeleteWaitingRoomEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6702,7 +7702,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteWaitingRoomEventResponse:
         """
-        @summary 删除等候室事件
+        @summary Deletes a waiting room event.
         
         @param request: DeleteWaitingRoomEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6738,7 +7738,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteWaitingRoomEventRequest,
     ) -> esa20240910_models.DeleteWaitingRoomEventResponse:
         """
-        @summary 删除等候室事件
+        @summary Deletes a waiting room event.
         
         @param request: DeleteWaitingRoomEventRequest
         @return: DeleteWaitingRoomEventResponse
@@ -6751,7 +7751,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteWaitingRoomEventRequest,
     ) -> esa20240910_models.DeleteWaitingRoomEventResponse:
         """
-        @summary 删除等候室事件
+        @summary Deletes a waiting room event.
         
         @param request: DeleteWaitingRoomEventRequest
         @return: DeleteWaitingRoomEventResponse
@@ -6765,7 +7765,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteWaitingRoomRuleResponse:
         """
-        @summary 删除等候室规则
+        @summary Deletes a waiting room bypass rule.
         
         @param request: DeleteWaitingRoomRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6802,7 +7802,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteWaitingRoomRuleResponse:
         """
-        @summary 删除等候室规则
+        @summary Deletes a waiting room bypass rule.
         
         @param request: DeleteWaitingRoomRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6838,7 +7838,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteWaitingRoomRuleRequest,
     ) -> esa20240910_models.DeleteWaitingRoomRuleResponse:
         """
-        @summary 删除等候室规则
+        @summary Deletes a waiting room bypass rule.
         
         @param request: DeleteWaitingRoomRuleRequest
         @return: DeleteWaitingRoomRuleResponse
@@ -6851,7 +7851,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteWaitingRoomRuleRequest,
     ) -> esa20240910_models.DeleteWaitingRoomRuleResponse:
         """
-        @summary 删除等候室规则
+        @summary Deletes a waiting room bypass rule.
         
         @param request: DeleteWaitingRoomRuleRequest
         @return: DeleteWaitingRoomRuleResponse
@@ -6865,7 +7865,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeCustomScenePoliciesResponse:
         """
-        @summary 查询定制场景策略配置
+        @summary Queries the configurations of a scenario-specific policy.
         
         @param request: DescribeCustomScenePoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6904,7 +7904,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeCustomScenePoliciesResponse:
         """
-        @summary 查询定制场景策略配置
+        @summary Queries the configurations of a scenario-specific policy.
         
         @param request: DescribeCustomScenePoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6942,7 +7942,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeCustomScenePoliciesRequest,
     ) -> esa20240910_models.DescribeCustomScenePoliciesResponse:
         """
-        @summary 查询定制场景策略配置
+        @summary Queries the configurations of a scenario-specific policy.
         
         @param request: DescribeCustomScenePoliciesRequest
         @return: DescribeCustomScenePoliciesResponse
@@ -6955,7 +7955,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeCustomScenePoliciesRequest,
     ) -> esa20240910_models.DescribeCustomScenePoliciesResponse:
         """
-        @summary 查询定制场景策略配置
+        @summary Queries the configurations of a scenario-specific policy.
         
         @param request: DescribeCustomScenePoliciesRequest
         @return: DescribeCustomScenePoliciesResponse
@@ -6969,7 +7969,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeDDoSAllEventListResponse:
         """
-        @summary 攻击分析-查询攻击事件列表
+        @summary Queries DDoS attack events.
         
         @param request: DescribeDDoSAllEventListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7014,7 +8014,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeDDoSAllEventListResponse:
         """
-        @summary 攻击分析-查询攻击事件列表
+        @summary Queries DDoS attack events.
         
         @param request: DescribeDDoSAllEventListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7058,7 +8058,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeDDoSAllEventListRequest,
     ) -> esa20240910_models.DescribeDDoSAllEventListResponse:
         """
-        @summary 攻击分析-查询攻击事件列表
+        @summary Queries DDoS attack events.
         
         @param request: DescribeDDoSAllEventListRequest
         @return: DescribeDDoSAllEventListResponse
@@ -7071,7 +8071,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeDDoSAllEventListRequest,
     ) -> esa20240910_models.DescribeDDoSAllEventListResponse:
         """
-        @summary 攻击分析-查询攻击事件列表
+        @summary Queries DDoS attack events.
         
         @param request: DescribeDDoSAllEventListRequest
         @return: DescribeDDoSAllEventListResponse
@@ -7085,7 +8085,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeHttpDDoSAttackIntelligentProtectionResponse:
         """
-        @summary 查询HTTP DDoS智能防护配置信息
+        @summary Queries the configuration of smart HTTP DDoS protection for a website.
         
         @param request: DescribeHttpDDoSAttackIntelligentProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7120,7 +8120,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeHttpDDoSAttackIntelligentProtectionResponse:
         """
-        @summary 查询HTTP DDoS智能防护配置信息
+        @summary Queries the configuration of smart HTTP DDoS protection for a website.
         
         @param request: DescribeHttpDDoSAttackIntelligentProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7154,7 +8154,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeHttpDDoSAttackIntelligentProtectionRequest,
     ) -> esa20240910_models.DescribeHttpDDoSAttackIntelligentProtectionResponse:
         """
-        @summary 查询HTTP DDoS智能防护配置信息
+        @summary Queries the configuration of smart HTTP DDoS protection for a website.
         
         @param request: DescribeHttpDDoSAttackIntelligentProtectionRequest
         @return: DescribeHttpDDoSAttackIntelligentProtectionResponse
@@ -7167,7 +8167,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeHttpDDoSAttackIntelligentProtectionRequest,
     ) -> esa20240910_models.DescribeHttpDDoSAttackIntelligentProtectionResponse:
         """
-        @summary 查询HTTP DDoS智能防护配置信息
+        @summary Queries the configuration of smart HTTP DDoS protection for a website.
         
         @param request: DescribeHttpDDoSAttackIntelligentProtectionRequest
         @return: DescribeHttpDDoSAttackIntelligentProtectionResponse
@@ -7181,7 +8181,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeHttpDDoSAttackProtectionResponse:
         """
-        @summary 查询HTTP DDoS攻击防护配置信息
+        @summary Queries the configurations of HTTP DDoS attack protection.
         
         @param request: DescribeHttpDDoSAttackProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7216,7 +8216,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeHttpDDoSAttackProtectionResponse:
         """
-        @summary 查询HTTP DDoS攻击防护配置信息
+        @summary Queries the configurations of HTTP DDoS attack protection.
         
         @param request: DescribeHttpDDoSAttackProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7250,7 +8250,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeHttpDDoSAttackProtectionRequest,
     ) -> esa20240910_models.DescribeHttpDDoSAttackProtectionResponse:
         """
-        @summary 查询HTTP DDoS攻击防护配置信息
+        @summary Queries the configurations of HTTP DDoS attack protection.
         
         @param request: DescribeHttpDDoSAttackProtectionRequest
         @return: DescribeHttpDDoSAttackProtectionResponse
@@ -7263,7 +8263,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribeHttpDDoSAttackProtectionRequest,
     ) -> esa20240910_models.DescribeHttpDDoSAttackProtectionResponse:
         """
-        @summary 查询HTTP DDoS攻击防护配置信息
+        @summary Queries the configurations of HTTP DDoS attack protection.
         
         @param request: DescribeHttpDDoSAttackProtectionRequest
         @return: DescribeHttpDDoSAttackProtectionResponse
@@ -7276,7 +8276,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeKvAccountStatusResponse:
         """
-        @summary 查询账户的KV状态信
+        @summary Queries whether Edge KV is activated in your Alibaba Cloud account.
         
         @param request: DescribeKvAccountStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7304,7 +8304,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribeKvAccountStatusResponse:
         """
-        @summary 查询账户的KV状态信
+        @summary Queries whether Edge KV is activated in your Alibaba Cloud account.
         
         @param request: DescribeKvAccountStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7329,7 +8329,7 @@ class Client(OpenApiClient):
 
     def describe_kv_account_status(self) -> esa20240910_models.DescribeKvAccountStatusResponse:
         """
-        @summary 查询账户的KV状态信
+        @summary Queries whether Edge KV is activated in your Alibaba Cloud account.
         
         @return: DescribeKvAccountStatusResponse
         """
@@ -7338,7 +8338,7 @@ class Client(OpenApiClient):
 
     async def describe_kv_account_status_async(self) -> esa20240910_models.DescribeKvAccountStatusResponse:
         """
-        @summary 查询账户的KV状态信
+        @summary Queries whether Edge KV is activated in your Alibaba Cloud account.
         
         @return: DescribeKvAccountStatusResponse
         """
@@ -7351,7 +8351,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribePreloadTasksResponse:
         """
-        @summary 预热任务查询接口
+        @summary Queries the details of prefetch tasks by time, task status, or prefetch URL.
         
         @param request: DescribePreloadTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7384,7 +8384,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribePreloadTasksResponse:
         """
-        @summary 预热任务查询接口
+        @summary Queries the details of prefetch tasks by time, task status, or prefetch URL.
         
         @param request: DescribePreloadTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7416,7 +8416,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribePreloadTasksRequest,
     ) -> esa20240910_models.DescribePreloadTasksResponse:
         """
-        @summary 预热任务查询接口
+        @summary Queries the details of prefetch tasks by time, task status, or prefetch URL.
         
         @param request: DescribePreloadTasksRequest
         @return: DescribePreloadTasksResponse
@@ -7429,7 +8429,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribePreloadTasksRequest,
     ) -> esa20240910_models.DescribePreloadTasksResponse:
         """
-        @summary 预热任务查询接口
+        @summary Queries the details of prefetch tasks by time, task status, or prefetch URL.
         
         @param request: DescribePreloadTasksRequest
         @return: DescribePreloadTasksResponse
@@ -7443,7 +8443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribePurgeTasksResponse:
         """
-        @summary 刷新任务查询接口
+        @summary Queries the details of purge tasks.
         
         @param request: DescribePurgeTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7476,7 +8476,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DescribePurgeTasksResponse:
         """
-        @summary 刷新任务查询接口
+        @summary Queries the details of purge tasks.
         
         @param request: DescribePurgeTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7508,7 +8508,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribePurgeTasksRequest,
     ) -> esa20240910_models.DescribePurgeTasksResponse:
         """
-        @summary 刷新任务查询接口
+        @summary Queries the details of purge tasks.
         
         @param request: DescribePurgeTasksRequest
         @return: DescribePurgeTasksResponse
@@ -7521,7 +8521,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DescribePurgeTasksRequest,
     ) -> esa20240910_models.DescribePurgeTasksResponse:
         """
-        @summary 刷新任务查询接口
+        @summary Queries the details of purge tasks.
         
         @param request: DescribePurgeTasksRequest
         @return: DescribePurgeTasksResponse
@@ -7535,7 +8535,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DisableCustomScenePolicyResponse:
         """
-        @summary 禁用定制场景策略
+        @summary Disables a scenario-specific policy.
         
         @param request: DisableCustomScenePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7570,7 +8570,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DisableCustomScenePolicyResponse:
         """
-        @summary 禁用定制场景策略
+        @summary Disables a scenario-specific policy.
         
         @param request: DisableCustomScenePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7604,7 +8604,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DisableCustomScenePolicyRequest,
     ) -> esa20240910_models.DisableCustomScenePolicyResponse:
         """
-        @summary 禁用定制场景策略
+        @summary Disables a scenario-specific policy.
         
         @param request: DisableCustomScenePolicyRequest
         @return: DisableCustomScenePolicyResponse
@@ -7617,7 +8617,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DisableCustomScenePolicyRequest,
     ) -> esa20240910_models.DisableCustomScenePolicyResponse:
         """
-        @summary 禁用定制场景策略
+        @summary Disables a scenario-specific policy.
         
         @param request: DisableCustomScenePolicyRequest
         @return: DisableCustomScenePolicyResponse
@@ -7631,7 +8631,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.EditSiteWafSettingsResponse:
         """
-        @summary 编辑站点WAF配置
+        @summary Modifies the Web Application Firewall (WAF) configuration of a website, such as the client IP address that is identified by WAF.
         
         @param tmp_req: EditSiteWafSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7676,7 +8676,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.EditSiteWafSettingsResponse:
         """
-        @summary 编辑站点WAF配置
+        @summary Modifies the Web Application Firewall (WAF) configuration of a website, such as the client IP address that is identified by WAF.
         
         @param tmp_req: EditSiteWafSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7720,7 +8720,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.EditSiteWafSettingsRequest,
     ) -> esa20240910_models.EditSiteWafSettingsResponse:
         """
-        @summary 编辑站点WAF配置
+        @summary Modifies the Web Application Firewall (WAF) configuration of a website, such as the client IP address that is identified by WAF.
         
         @param request: EditSiteWafSettingsRequest
         @return: EditSiteWafSettingsResponse
@@ -7733,7 +8733,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.EditSiteWafSettingsRequest,
     ) -> esa20240910_models.EditSiteWafSettingsResponse:
         """
-        @summary 编辑站点WAF配置
+        @summary Modifies the Web Application Firewall (WAF) configuration of a website, such as the client IP address that is identified by WAF.
         
         @param request: EditSiteWafSettingsRequest
         @return: EditSiteWafSettingsResponse
@@ -7747,7 +8747,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.EnableCustomScenePolicyResponse:
         """
-        @summary 启动定制场景策略
+        @summary Enables a scenario-specific policy.
         
         @param request: EnableCustomScenePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7782,7 +8782,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.EnableCustomScenePolicyResponse:
         """
-        @summary 启动定制场景策略
+        @summary Enables a scenario-specific policy.
         
         @param request: EnableCustomScenePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7816,7 +8816,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.EnableCustomScenePolicyRequest,
     ) -> esa20240910_models.EnableCustomScenePolicyResponse:
         """
-        @summary 启动定制场景策略
+        @summary Enables a scenario-specific policy.
         
         @param request: EnableCustomScenePolicyRequest
         @return: EnableCustomScenePolicyResponse
@@ -7829,7 +8829,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.EnableCustomScenePolicyRequest,
     ) -> esa20240910_models.EnableCustomScenePolicyResponse:
         """
-        @summary 启动定制场景策略
+        @summary Enables a scenario-specific policy.
         
         @param request: EnableCustomScenePolicyRequest
         @return: EnableCustomScenePolicyResponse
@@ -7843,7 +8843,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ExportRecordsResponse:
         """
-        @summary 导出记录
+        @summary Exports all DNS records of a website domain as a TXT file.
         
         @param request: ExportRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7876,7 +8876,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ExportRecordsResponse:
         """
-        @summary 导出记录
+        @summary Exports all DNS records of a website domain as a TXT file.
         
         @param request: ExportRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7908,7 +8908,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ExportRecordsRequest,
     ) -> esa20240910_models.ExportRecordsResponse:
         """
-        @summary 导出记录
+        @summary Exports all DNS records of a website domain as a TXT file.
         
         @param request: ExportRecordsRequest
         @return: ExportRecordsResponse
@@ -7921,7 +8921,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ExportRecordsRequest,
     ) -> esa20240910_models.ExportRecordsResponse:
         """
-        @summary 导出记录
+        @summary Exports all DNS records of a website domain as a TXT file.
         
         @param request: ExportRecordsRequest
         @return: ExportRecordsResponse
@@ -7934,7 +8934,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetCacheReserveSpecificationResponse:
         """
-        @summary 查询缓存保持实例规格
+        @summary Queries the available specifications of cache reserve instances.
         
         @param request: GetCacheReserveSpecificationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7962,7 +8962,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetCacheReserveSpecificationResponse:
         """
-        @summary 查询缓存保持实例规格
+        @summary Queries the available specifications of cache reserve instances.
         
         @param request: GetCacheReserveSpecificationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7987,7 +8987,7 @@ class Client(OpenApiClient):
 
     def get_cache_reserve_specification(self) -> esa20240910_models.GetCacheReserveSpecificationResponse:
         """
-        @summary 查询缓存保持实例规格
+        @summary Queries the available specifications of cache reserve instances.
         
         @return: GetCacheReserveSpecificationResponse
         """
@@ -7996,7 +8996,7 @@ class Client(OpenApiClient):
 
     async def get_cache_reserve_specification_async(self) -> esa20240910_models.GetCacheReserveSpecificationResponse:
         """
-        @summary 查询缓存保持实例规格
+        @summary Queries the available specifications of cache reserve instances.
         
         @return: GetCacheReserveSpecificationResponse
         """
@@ -8009,7 +9009,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerAppResponse:
         """
-        @summary 获取边缘容器应用信息
+        @summary Queries the information about a containerized application, including basic application configurations and health check configurations.
         
         @param request: GetEdgeContainerAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8044,7 +9044,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerAppResponse:
         """
-        @summary 获取边缘容器应用信息
+        @summary Queries the information about a containerized application, including basic application configurations and health check configurations.
         
         @param request: GetEdgeContainerAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8078,7 +9078,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerAppRequest,
     ) -> esa20240910_models.GetEdgeContainerAppResponse:
         """
-        @summary 获取边缘容器应用信息
+        @summary Queries the information about a containerized application, including basic application configurations and health check configurations.
         
         @param request: GetEdgeContainerAppRequest
         @return: GetEdgeContainerAppResponse
@@ -8091,7 +9091,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerAppRequest,
     ) -> esa20240910_models.GetEdgeContainerAppResponse:
         """
-        @summary 获取边缘容器应用信息
+        @summary Queries the information about a containerized application, including basic application configurations and health check configurations.
         
         @param request: GetEdgeContainerAppRequest
         @return: GetEdgeContainerAppResponse
@@ -8105,7 +9105,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerAppStatusResponse:
         """
-        @summary 获取边缘容器应用的状态信息
+        @summary Queries the status information about a containerized application, including the deployment, release, and rollback of the application.
         
         @param request: GetEdgeContainerAppStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8142,7 +9142,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerAppStatusResponse:
         """
-        @summary 获取边缘容器应用的状态信息
+        @summary Queries the status information about a containerized application, including the deployment, release, and rollback of the application.
         
         @param request: GetEdgeContainerAppStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8178,7 +9178,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerAppStatusRequest,
     ) -> esa20240910_models.GetEdgeContainerAppStatusResponse:
         """
-        @summary 获取边缘容器应用的状态信息
+        @summary Queries the status information about a containerized application, including the deployment, release, and rollback of the application.
         
         @param request: GetEdgeContainerAppStatusRequest
         @return: GetEdgeContainerAppStatusResponse
@@ -8191,7 +9191,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerAppStatusRequest,
     ) -> esa20240910_models.GetEdgeContainerAppStatusResponse:
         """
-        @summary 获取边缘容器应用的状态信息
+        @summary Queries the status information about a containerized application, including the deployment, release, and rollback of the application.
         
         @param request: GetEdgeContainerAppStatusRequest
         @return: GetEdgeContainerAppStatusResponse
@@ -8205,7 +9205,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerAppVersionResponse:
         """
-        @summary 获取边缘容器应用的某个版本信息
+        @summary Queries the information about a version of a containerized application. You can select an application version to release based on the version information.
         
         @param request: GetEdgeContainerAppVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8238,7 +9238,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerAppVersionResponse:
         """
-        @summary 获取边缘容器应用的某个版本信息
+        @summary Queries the information about a version of a containerized application. You can select an application version to release based on the version information.
         
         @param request: GetEdgeContainerAppVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8270,7 +9270,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerAppVersionRequest,
     ) -> esa20240910_models.GetEdgeContainerAppVersionResponse:
         """
-        @summary 获取边缘容器应用的某个版本信息
+        @summary Queries the information about a version of a containerized application. You can select an application version to release based on the version information.
         
         @param request: GetEdgeContainerAppVersionRequest
         @return: GetEdgeContainerAppVersionResponse
@@ -8283,7 +9283,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerAppVersionRequest,
     ) -> esa20240910_models.GetEdgeContainerAppVersionResponse:
         """
-        @summary 获取边缘容器应用的某个版本信息
+        @summary Queries the information about a version of a containerized application. You can select an application version to release based on the version information.
         
         @param request: GetEdgeContainerAppVersionRequest
         @return: GetEdgeContainerAppVersionResponse
@@ -8297,7 +9297,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerDeployRegionsResponse:
         """
-        @summary 获取边缘容器应用部署区域
+        @summary Queries regions where a containerized application is deployed based on the application ID.
         
         @param request: GetEdgeContainerDeployRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8330,7 +9330,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerDeployRegionsResponse:
         """
-        @summary 获取边缘容器应用部署区域
+        @summary Queries regions where a containerized application is deployed based on the application ID.
         
         @param request: GetEdgeContainerDeployRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8362,7 +9362,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerDeployRegionsRequest,
     ) -> esa20240910_models.GetEdgeContainerDeployRegionsResponse:
         """
-        @summary 获取边缘容器应用部署区域
+        @summary Queries regions where a containerized application is deployed based on the application ID.
         
         @param request: GetEdgeContainerDeployRegionsRequest
         @return: GetEdgeContainerDeployRegionsResponse
@@ -8375,7 +9375,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerDeployRegionsRequest,
     ) -> esa20240910_models.GetEdgeContainerDeployRegionsResponse:
         """
-        @summary 获取边缘容器应用部署区域
+        @summary Queries regions where a containerized application is deployed based on the application ID.
         
         @param request: GetEdgeContainerDeployRegionsRequest
         @return: GetEdgeContainerDeployRegionsResponse
@@ -8389,7 +9389,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerLogsResponse:
         """
-        @summary 获取边缘容器日志信息
+        @summary Queries Edge Container logs.
         
         @param request: GetEdgeContainerLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8422,7 +9422,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerLogsResponse:
         """
-        @summary 获取边缘容器日志信息
+        @summary Queries Edge Container logs.
         
         @param request: GetEdgeContainerLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8454,7 +9454,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerLogsRequest,
     ) -> esa20240910_models.GetEdgeContainerLogsResponse:
         """
-        @summary 获取边缘容器日志信息
+        @summary Queries Edge Container logs.
         
         @param request: GetEdgeContainerLogsRequest
         @return: GetEdgeContainerLogsResponse
@@ -8467,7 +9467,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerLogsRequest,
     ) -> esa20240910_models.GetEdgeContainerLogsResponse:
         """
-        @summary 获取边缘容器日志信息
+        @summary Queries Edge Container logs.
         
         @param request: GetEdgeContainerLogsRequest
         @return: GetEdgeContainerLogsResponse
@@ -8481,7 +9481,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerStagingDeployStatusResponse:
         """
-        @summary 获取应用测试环境部署状态
+        @summary Queries the deployment status of an application in the staging environment by using the application ID.
         
         @param request: GetEdgeContainerStagingDeployStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8514,7 +9514,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerStagingDeployStatusResponse:
         """
-        @summary 获取应用测试环境部署状态
+        @summary Queries the deployment status of an application in the staging environment by using the application ID.
         
         @param request: GetEdgeContainerStagingDeployStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8546,7 +9546,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerStagingDeployStatusRequest,
     ) -> esa20240910_models.GetEdgeContainerStagingDeployStatusResponse:
         """
-        @summary 获取应用测试环境部署状态
+        @summary Queries the deployment status of an application in the staging environment by using the application ID.
         
         @param request: GetEdgeContainerStagingDeployStatusRequest
         @return: GetEdgeContainerStagingDeployStatusResponse
@@ -8559,7 +9559,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerStagingDeployStatusRequest,
     ) -> esa20240910_models.GetEdgeContainerStagingDeployStatusResponse:
         """
-        @summary 获取应用测试环境部署状态
+        @summary Queries the deployment status of an application in the staging environment by using the application ID.
         
         @param request: GetEdgeContainerStagingDeployStatusRequest
         @return: GetEdgeContainerStagingDeployStatusResponse
@@ -8573,7 +9573,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerTerminalResponse:
         """
-        @summary 获取边缘容器应用终端信息
+        @summary Queries the terminal information of a containerized application.
         
         @param request: GetEdgeContainerTerminalRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8608,7 +9608,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetEdgeContainerTerminalResponse:
         """
-        @summary 获取边缘容器应用终端信息
+        @summary Queries the terminal information of a containerized application.
         
         @param request: GetEdgeContainerTerminalRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8642,7 +9642,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerTerminalRequest,
     ) -> esa20240910_models.GetEdgeContainerTerminalResponse:
         """
-        @summary 获取边缘容器应用终端信息
+        @summary Queries the terminal information of a containerized application.
         
         @param request: GetEdgeContainerTerminalRequest
         @return: GetEdgeContainerTerminalResponse
@@ -8655,7 +9655,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetEdgeContainerTerminalRequest,
     ) -> esa20240910_models.GetEdgeContainerTerminalResponse:
         """
-        @summary 获取边缘容器应用终端信息
+        @summary Queries the terminal information of a containerized application.
         
         @param request: GetEdgeContainerTerminalRequest
         @return: GetEdgeContainerTerminalResponse
@@ -8669,7 +9669,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetErServiceResponse:
         """
-        @summary GetErService
+        @summary Checks the status of Edge Routine.
         
         @param request: GetErServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8702,7 +9702,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetErServiceResponse:
         """
-        @summary GetErService
+        @summary Checks the status of Edge Routine.
         
         @param request: GetErServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8734,7 +9734,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetErServiceRequest,
     ) -> esa20240910_models.GetErServiceResponse:
         """
-        @summary GetErService
+        @summary Checks the status of Edge Routine.
         
         @param request: GetErServiceRequest
         @return: GetErServiceResponse
@@ -8747,7 +9747,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetErServiceRequest,
     ) -> esa20240910_models.GetErServiceResponse:
         """
-        @summary GetErService
+        @summary Checks the status of Edge Routine.
         
         @param request: GetErServiceRequest
         @return: GetErServiceResponse
@@ -8761,7 +9761,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetKvResponse:
         """
-        @summary 查询Key-Value对的某个Key值
+        @summary Queries the value of a key in a key-value pair.
         
         @param request: GetKvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8794,7 +9794,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetKvResponse:
         """
-        @summary 查询Key-Value对的某个Key值
+        @summary Queries the value of a key in a key-value pair.
         
         @param request: GetKvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8826,7 +9826,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetKvRequest,
     ) -> esa20240910_models.GetKvResponse:
         """
-        @summary 查询Key-Value对的某个Key值
+        @summary Queries the value of a key in a key-value pair.
         
         @param request: GetKvRequest
         @return: GetKvResponse
@@ -8839,7 +9839,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetKvRequest,
     ) -> esa20240910_models.GetKvResponse:
         """
-        @summary 查询Key-Value对的某个Key值
+        @summary Queries the value of a key in a key-value pair.
         
         @param request: GetKvRequest
         @return: GetKvResponse
@@ -8852,7 +9852,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetKvAccountResponse:
         """
-        @summary 列出账号下的NS
+        @summary Queries the Edge KV usage in your Alibaba Cloud account, including the information about all namespaces.
         
         @param request: GetKvAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8880,7 +9880,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetKvAccountResponse:
         """
-        @summary 列出账号下的NS
+        @summary Queries the Edge KV usage in your Alibaba Cloud account, including the information about all namespaces.
         
         @param request: GetKvAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8905,7 +9905,7 @@ class Client(OpenApiClient):
 
     def get_kv_account(self) -> esa20240910_models.GetKvAccountResponse:
         """
-        @summary 列出账号下的NS
+        @summary Queries the Edge KV usage in your Alibaba Cloud account, including the information about all namespaces.
         
         @return: GetKvAccountResponse
         """
@@ -8914,7 +9914,7 @@ class Client(OpenApiClient):
 
     async def get_kv_account_async(self) -> esa20240910_models.GetKvAccountResponse:
         """
-        @summary 列出账号下的NS
+        @summary Queries the Edge KV usage in your Alibaba Cloud account, including the information about all namespaces.
         
         @return: GetKvAccountResponse
         """
@@ -8927,7 +9927,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetKvNamespaceResponse:
         """
-        @summary 查询Namespace信息
+        @summary Queries the information about a namespace in your Alibaba Cloud account.
         
         @param request: GetKvNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8960,7 +9960,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetKvNamespaceResponse:
         """
-        @summary 查询Namespace信息
+        @summary Queries the information about a namespace in your Alibaba Cloud account.
         
         @param request: GetKvNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8992,7 +9992,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetKvNamespaceRequest,
     ) -> esa20240910_models.GetKvNamespaceResponse:
         """
-        @summary 查询Namespace信息
+        @summary Queries the information about a namespace in your Alibaba Cloud account.
         
         @param request: GetKvNamespaceRequest
         @return: GetKvNamespaceResponse
@@ -9005,7 +10005,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetKvNamespaceRequest,
     ) -> esa20240910_models.GetKvNamespaceResponse:
         """
-        @summary 查询Namespace信息
+        @summary Queries the information about a namespace in your Alibaba Cloud account.
         
         @param request: GetKvNamespaceRequest
         @return: GetKvNamespaceResponse
@@ -9019,7 +10019,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetListResponse:
         """
-        @summary 获取单个自定义列表
+        @summary Queries the details of a custom list, such as the name, description, type, and content.
         
         @param request: GetListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9054,7 +10054,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetListResponse:
         """
-        @summary 获取单个自定义列表
+        @summary Queries the details of a custom list, such as the name, description, type, and content.
         
         @param request: GetListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9088,7 +10088,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetListRequest,
     ) -> esa20240910_models.GetListResponse:
         """
-        @summary 获取单个自定义列表
+        @summary Queries the details of a custom list, such as the name, description, type, and content.
         
         @param request: GetListRequest
         @return: GetListResponse
@@ -9101,7 +10101,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetListRequest,
     ) -> esa20240910_models.GetListResponse:
         """
-        @summary 获取单个自定义列表
+        @summary Queries the details of a custom list, such as the name, description, type, and content.
         
         @param request: GetListRequest
         @return: GetListResponse
@@ -9109,13 +10109,105 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_list_with_options_async(request, runtime)
 
+    def get_origin_protection_with_options(
+        self,
+        request: esa20240910_models.GetOriginProtectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetOriginProtectionResponse:
+        """
+        @summary 查询站点源站防护相关配置，查看回源IP白名单信息
+        
+        @param request: GetOriginProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOriginProtectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOriginProtection',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetOriginProtectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_origin_protection_with_options_async(
+        self,
+        request: esa20240910_models.GetOriginProtectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetOriginProtectionResponse:
+        """
+        @summary 查询站点源站防护相关配置，查看回源IP白名单信息
+        
+        @param request: GetOriginProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOriginProtectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOriginProtection',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetOriginProtectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_origin_protection(
+        self,
+        request: esa20240910_models.GetOriginProtectionRequest,
+    ) -> esa20240910_models.GetOriginProtectionResponse:
+        """
+        @summary 查询站点源站防护相关配置，查看回源IP白名单信息
+        
+        @param request: GetOriginProtectionRequest
+        @return: GetOriginProtectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_origin_protection_with_options(request, runtime)
+
+    async def get_origin_protection_async(
+        self,
+        request: esa20240910_models.GetOriginProtectionRequest,
+    ) -> esa20240910_models.GetOriginProtectionResponse:
+        """
+        @summary 查询站点源站防护相关配置，查看回源IP白名单信息
+        
+        @param request: GetOriginProtectionRequest
+        @return: GetOriginProtectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_origin_protection_with_options_async(request, runtime)
+
     def get_page_with_options(
         self,
         request: esa20240910_models.GetPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetPageResponse:
         """
-        @summary 获取单个自定义响应页面详情
+        @summary Queries the details of a custom error page based on the error page ID.
         
         @param request: GetPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9150,7 +10242,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetPageResponse:
         """
-        @summary 获取单个自定义响应页面详情
+        @summary Queries the details of a custom error page based on the error page ID.
         
         @param request: GetPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9184,7 +10276,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetPageRequest,
     ) -> esa20240910_models.GetPageResponse:
         """
-        @summary 获取单个自定义响应页面详情
+        @summary Queries the details of a custom error page based on the error page ID.
         
         @param request: GetPageRequest
         @return: GetPageResponse
@@ -9197,7 +10289,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetPageRequest,
     ) -> esa20240910_models.GetPageResponse:
         """
-        @summary 获取单个自定义响应页面详情
+        @summary Queries the details of a custom error page based on the error page ID.
         
         @param request: GetPageRequest
         @return: GetPageResponse
@@ -9211,7 +10303,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetPurgeQuotaResponse:
         """
-        @summary 获取刷新Quota
+        @summary Queries the quotas and quota usage for different cache purge options.
         
         @param request: GetPurgeQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9244,7 +10336,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetPurgeQuotaResponse:
         """
-        @summary 获取刷新Quota
+        @summary Queries the quotas and quota usage for different cache purge options.
         
         @param request: GetPurgeQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9276,7 +10368,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetPurgeQuotaRequest,
     ) -> esa20240910_models.GetPurgeQuotaResponse:
         """
-        @summary 获取刷新Quota
+        @summary Queries the quotas and quota usage for different cache purge options.
         
         @param request: GetPurgeQuotaRequest
         @return: GetPurgeQuotaResponse
@@ -9289,7 +10381,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetPurgeQuotaRequest,
     ) -> esa20240910_models.GetPurgeQuotaResponse:
         """
-        @summary 获取刷新Quota
+        @summary Queries the quotas and quota usage for different cache purge options.
         
         @param request: GetPurgeQuotaRequest
         @return: GetPurgeQuotaResponse
@@ -9303,7 +10395,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRealtimeDeliveryFieldResponse:
         """
-        @summary ub日志字段列表接口
+        @summary Queries the fields in real-time logs based on the log category.
         
         @param request: GetRealtimeDeliveryFieldRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9336,7 +10428,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRealtimeDeliveryFieldResponse:
         """
-        @summary ub日志字段列表接口
+        @summary Queries the fields in real-time logs based on the log category.
         
         @param request: GetRealtimeDeliveryFieldRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9368,7 +10460,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRealtimeDeliveryFieldRequest,
     ) -> esa20240910_models.GetRealtimeDeliveryFieldResponse:
         """
-        @summary ub日志字段列表接口
+        @summary Queries the fields in real-time logs based on the log category.
         
         @param request: GetRealtimeDeliveryFieldRequest
         @return: GetRealtimeDeliveryFieldResponse
@@ -9381,7 +10473,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRealtimeDeliveryFieldRequest,
     ) -> esa20240910_models.GetRealtimeDeliveryFieldResponse:
         """
-        @summary ub日志字段列表接口
+        @summary Queries the fields in real-time logs based on the log category.
         
         @param request: GetRealtimeDeliveryFieldRequest
         @return: GetRealtimeDeliveryFieldResponse
@@ -9487,7 +10579,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRoutineResponse:
         """
-        @summary 查询Routine配置信息
+        @summary Queries the configurations of a routine, including the code versions and the configurations of the environments, associated domain names, and associated routes.
         
         @param request: GetRoutineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9522,7 +10614,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRoutineResponse:
         """
-        @summary 查询Routine配置信息
+        @summary Queries the configurations of a routine, including the code versions and the configurations of the environments, associated domain names, and associated routes.
         
         @param request: GetRoutineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9556,7 +10648,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRoutineRequest,
     ) -> esa20240910_models.GetRoutineResponse:
         """
-        @summary 查询Routine配置信息
+        @summary Queries the configurations of a routine, including the code versions and the configurations of the environments, associated domain names, and associated routes.
         
         @param request: GetRoutineRequest
         @return: GetRoutineResponse
@@ -9569,7 +10661,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRoutineRequest,
     ) -> esa20240910_models.GetRoutineResponse:
         """
-        @summary 查询Routine配置信息
+        @summary Queries the configurations of a routine, including the code versions and the configurations of the environments, associated domain names, and associated routes.
         
         @param request: GetRoutineRequest
         @return: GetRoutineResponse
@@ -9583,7 +10675,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRoutineStagingCodeUploadInfoResponse:
         """
-        @summary 上传Routine的测试版本代码, 返回上传代码到OSS的参数
+        @summary Obtains the release information about the routine code that is released to the staging environment. This information can be used to upload the test code to Object Storage Service (OSS).
+        
+        @description    Every time the code of a routine is released to the staging environment, a version number is generated. Such code is for tests only.
+        A routine can retain a maximum of 10 code versions. If the number of versions reaches the limit, you must call the DeleteRoutineCodeRevision operation to delete unwanted versions.
         
         @param request: GetRoutineStagingCodeUploadInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9620,7 +10715,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRoutineStagingCodeUploadInfoResponse:
         """
-        @summary 上传Routine的测试版本代码, 返回上传代码到OSS的参数
+        @summary Obtains the release information about the routine code that is released to the staging environment. This information can be used to upload the test code to Object Storage Service (OSS).
+        
+        @description    Every time the code of a routine is released to the staging environment, a version number is generated. Such code is for tests only.
+        A routine can retain a maximum of 10 code versions. If the number of versions reaches the limit, you must call the DeleteRoutineCodeRevision operation to delete unwanted versions.
         
         @param request: GetRoutineStagingCodeUploadInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9656,7 +10754,10 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRoutineStagingCodeUploadInfoRequest,
     ) -> esa20240910_models.GetRoutineStagingCodeUploadInfoResponse:
         """
-        @summary 上传Routine的测试版本代码, 返回上传代码到OSS的参数
+        @summary Obtains the release information about the routine code that is released to the staging environment. This information can be used to upload the test code to Object Storage Service (OSS).
+        
+        @description    Every time the code of a routine is released to the staging environment, a version number is generated. Such code is for tests only.
+        A routine can retain a maximum of 10 code versions. If the number of versions reaches the limit, you must call the DeleteRoutineCodeRevision operation to delete unwanted versions.
         
         @param request: GetRoutineStagingCodeUploadInfoRequest
         @return: GetRoutineStagingCodeUploadInfoResponse
@@ -9669,7 +10770,10 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRoutineStagingCodeUploadInfoRequest,
     ) -> esa20240910_models.GetRoutineStagingCodeUploadInfoResponse:
         """
-        @summary 上传Routine的测试版本代码, 返回上传代码到OSS的参数
+        @summary Obtains the release information about the routine code that is released to the staging environment. This information can be used to upload the test code to Object Storage Service (OSS).
+        
+        @description    Every time the code of a routine is released to the staging environment, a version number is generated. Such code is for tests only.
+        A routine can retain a maximum of 10 code versions. If the number of versions reaches the limit, you must call the DeleteRoutineCodeRevision operation to delete unwanted versions.
         
         @param request: GetRoutineStagingCodeUploadInfoRequest
         @return: GetRoutineStagingCodeUploadInfoResponse
@@ -9682,7 +10786,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRoutineStagingEnvIpResponse:
         """
-        @summary 查询边缘函数测试环境IP
+        @summary Queries the IP addresses of staging environments for Edge Routine.
         
         @param request: GetRoutineStagingEnvIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9710,7 +10814,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRoutineStagingEnvIpResponse:
         """
-        @summary 查询边缘函数测试环境IP
+        @summary Queries the IP addresses of staging environments for Edge Routine.
         
         @param request: GetRoutineStagingEnvIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9735,7 +10839,7 @@ class Client(OpenApiClient):
 
     def get_routine_staging_env_ip(self) -> esa20240910_models.GetRoutineStagingEnvIpResponse:
         """
-        @summary 查询边缘函数测试环境IP
+        @summary Queries the IP addresses of staging environments for Edge Routine.
         
         @return: GetRoutineStagingEnvIpResponse
         """
@@ -9744,7 +10848,7 @@ class Client(OpenApiClient):
 
     async def get_routine_staging_env_ip_async(self) -> esa20240910_models.GetRoutineStagingEnvIpResponse:
         """
-        @summary 查询边缘函数测试环境IP
+        @summary Queries the IP addresses of staging environments for Edge Routine.
         
         @return: GetRoutineStagingEnvIpResponse
         """
@@ -9756,7 +10860,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRoutineUserInfoResponse:
         """
-        @summary 查询用户的Routine列表
+        @summary Queries the Edge Routine information in your Alibaba Cloud account, including the associated subdomain and created routines.
         
         @param request: GetRoutineUserInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9784,7 +10888,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRoutineUserInfoResponse:
         """
-        @summary 查询用户的Routine列表
+        @summary Queries the Edge Routine information in your Alibaba Cloud account, including the associated subdomain and created routines.
         
         @param request: GetRoutineUserInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9809,7 +10913,7 @@ class Client(OpenApiClient):
 
     def get_routine_user_info(self) -> esa20240910_models.GetRoutineUserInfoResponse:
         """
-        @summary 查询用户的Routine列表
+        @summary Queries the Edge Routine information in your Alibaba Cloud account, including the associated subdomain and created routines.
         
         @return: GetRoutineUserInfoResponse
         """
@@ -9818,7 +10922,7 @@ class Client(OpenApiClient):
 
     async def get_routine_user_info_async(self) -> esa20240910_models.GetRoutineUserInfoResponse:
         """
-        @summary 查询用户的Routine列表
+        @summary Queries the Edge Routine information in your Alibaba Cloud account, including the associated subdomain and created routines.
         
         @return: GetRoutineUserInfoResponse
         """
@@ -9831,7 +10935,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetScheduledPreloadJobResponse:
         """
-        @summary 查询单个定时预热任务
+        @summary Queries a specified scheduled prefetch task based on the task ID.
         
         @param request: GetScheduledPreloadJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9864,7 +10968,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetScheduledPreloadJobResponse:
         """
-        @summary 查询单个定时预热任务
+        @summary Queries a specified scheduled prefetch task based on the task ID.
         
         @param request: GetScheduledPreloadJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9896,7 +11000,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetScheduledPreloadJobRequest,
     ) -> esa20240910_models.GetScheduledPreloadJobResponse:
         """
-        @summary 查询单个定时预热任务
+        @summary Queries a specified scheduled prefetch task based on the task ID.
         
         @param request: GetScheduledPreloadJobRequest
         @return: GetScheduledPreloadJobResponse
@@ -9909,7 +11013,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetScheduledPreloadJobRequest,
     ) -> esa20240910_models.GetScheduledPreloadJobResponse:
         """
-        @summary 查询单个定时预热任务
+        @summary Queries a specified scheduled prefetch task based on the task ID.
         
         @param request: GetScheduledPreloadJobRequest
         @return: GetScheduledPreloadJobResponse
@@ -9923,7 +11027,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteResponse:
         """
-        @summary 查询单个站点信息
+        @summary Queries information about a website based on the website ID.
         
         @param request: GetSiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9956,7 +11060,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteResponse:
         """
-        @summary 查询单个站点信息
+        @summary Queries information about a website based on the website ID.
         
         @param request: GetSiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9988,7 +11092,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteRequest,
     ) -> esa20240910_models.GetSiteResponse:
         """
-        @summary 查询单个站点信息
+        @summary Queries information about a website based on the website ID.
         
         @param request: GetSiteRequest
         @return: GetSiteResponse
@@ -10001,7 +11105,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteRequest,
     ) -> esa20240910_models.GetSiteResponse:
         """
-        @summary 查询单个站点信息
+        @summary Queries information about a website based on the website ID.
         
         @param request: GetSiteRequest
         @return: GetSiteResponse
@@ -10015,7 +11119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteCurrentNSResponse:
         """
-        @summary 查询当前NS列表
+        @summary Queries the nameservers configured for a website.
         
         @param request: GetSiteCurrentNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10048,7 +11152,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteCurrentNSResponse:
         """
-        @summary 查询当前NS列表
+        @summary Queries the nameservers configured for a website.
         
         @param request: GetSiteCurrentNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10080,7 +11184,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteCurrentNSRequest,
     ) -> esa20240910_models.GetSiteCurrentNSResponse:
         """
-        @summary 查询当前NS列表
+        @summary Queries the nameservers configured for a website.
         
         @param request: GetSiteCurrentNSRequest
         @return: GetSiteCurrentNSResponse
@@ -10093,7 +11197,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteCurrentNSRequest,
     ) -> esa20240910_models.GetSiteCurrentNSResponse:
         """
-        @summary 查询当前NS列表
+        @summary Queries the nameservers configured for a website.
         
         @param request: GetSiteCurrentNSRequest
         @return: GetSiteCurrentNSResponse
@@ -10107,7 +11211,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteCustomLogResponse:
         """
-        @summary 获取自定义字段
+        @summary Queries the configuration of custom log fields for a website.
+        
+        @description    **Description**: You can call this operation to query the configuration of custom log fields for a website, including custom fields in request headers, response headers, and cookies.
+        **Scenarios**: You can call this operation in scenarios where you need to obtain specific HTTP headers or cookie information for log analysis.
+        ****\
         
         @param request: GetSiteCustomLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10140,7 +11248,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteCustomLogResponse:
         """
-        @summary 获取自定义字段
+        @summary Queries the configuration of custom log fields for a website.
+        
+        @description    **Description**: You can call this operation to query the configuration of custom log fields for a website, including custom fields in request headers, response headers, and cookies.
+        **Scenarios**: You can call this operation in scenarios where you need to obtain specific HTTP headers or cookie information for log analysis.
+        ****\
         
         @param request: GetSiteCustomLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10172,7 +11284,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteCustomLogRequest,
     ) -> esa20240910_models.GetSiteCustomLogResponse:
         """
-        @summary 获取自定义字段
+        @summary Queries the configuration of custom log fields for a website.
+        
+        @description    **Description**: You can call this operation to query the configuration of custom log fields for a website, including custom fields in request headers, response headers, and cookies.
+        **Scenarios**: You can call this operation in scenarios where you need to obtain specific HTTP headers or cookie information for log analysis.
+        ****\
         
         @param request: GetSiteCustomLogRequest
         @return: GetSiteCustomLogResponse
@@ -10185,7 +11301,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteCustomLogRequest,
     ) -> esa20240910_models.GetSiteCustomLogResponse:
         """
-        @summary 获取自定义字段
+        @summary Queries the configuration of custom log fields for a website.
+        
+        @description    **Description**: You can call this operation to query the configuration of custom log fields for a website, including custom fields in request headers, response headers, and cookies.
+        **Scenarios**: You can call this operation in scenarios where you need to obtain specific HTTP headers or cookie information for log analysis.
+        ****\
         
         @param request: GetSiteCustomLogRequest
         @return: GetSiteCustomLogResponse
@@ -10199,7 +11319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteDeliveryTaskResponse:
         """
-        @summary 获取一个实时日志任务投递
+        @summary Queries a real-time log delivery task.
         
         @param request: GetSiteDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10232,7 +11352,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteDeliveryTaskResponse:
         """
-        @summary 获取一个实时日志任务投递
+        @summary Queries a real-time log delivery task.
         
         @param request: GetSiteDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10264,7 +11384,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteDeliveryTaskRequest,
     ) -> esa20240910_models.GetSiteDeliveryTaskResponse:
         """
-        @summary 获取一个实时日志任务投递
+        @summary Queries a real-time log delivery task.
         
         @param request: GetSiteDeliveryTaskRequest
         @return: GetSiteDeliveryTaskResponse
@@ -10277,7 +11397,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteDeliveryTaskRequest,
     ) -> esa20240910_models.GetSiteDeliveryTaskResponse:
         """
-        @summary 获取一个实时日志任务投递
+        @summary Queries a real-time log delivery task.
         
         @param request: GetSiteDeliveryTaskRequest
         @return: GetSiteDeliveryTaskResponse
@@ -10291,7 +11411,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteLogDeliveryQuotaResponse:
         """
-        @summary 获取日志投递任务quota数
+        @summary Queries the remaining quota for delivering a specific category of real-time logs in a website.
+        
+        @description You can call this operation to query the remaining quota for delivering a specific category of real-time logs in a website within an Alibaba Cloud account. This is essential for monitoring and managing your log delivery capacity to ensure that logs can be delivered to the destination and prevent data loss or latency caused by insufficient quota.
+        *Take note of the following parameters:**\
+        ``
+        `BusinessType` is required. You must specify a log category to obtain the corresponding quota information.
+        `SiteId` specifies the ID of a website, which must be a valid integer that corresponds to a website that you configured on Alibaba Cloud.
+        *Response:**\
+        If a request is successful, the system returns the remaining log delivery quota (`FreeQuota`), request ID (`RequestId`), website ID (`SiteId`), and log category (`BusinessType`). You can confirm and record the returned data.
         
         @param request: GetSiteLogDeliveryQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10324,7 +11452,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteLogDeliveryQuotaResponse:
         """
-        @summary 获取日志投递任务quota数
+        @summary Queries the remaining quota for delivering a specific category of real-time logs in a website.
+        
+        @description You can call this operation to query the remaining quota for delivering a specific category of real-time logs in a website within an Alibaba Cloud account. This is essential for monitoring and managing your log delivery capacity to ensure that logs can be delivered to the destination and prevent data loss or latency caused by insufficient quota.
+        *Take note of the following parameters:**\
+        ``
+        `BusinessType` is required. You must specify a log category to obtain the corresponding quota information.
+        `SiteId` specifies the ID of a website, which must be a valid integer that corresponds to a website that you configured on Alibaba Cloud.
+        *Response:**\
+        If a request is successful, the system returns the remaining log delivery quota (`FreeQuota`), request ID (`RequestId`), website ID (`SiteId`), and log category (`BusinessType`). You can confirm and record the returned data.
         
         @param request: GetSiteLogDeliveryQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10356,7 +11492,15 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteLogDeliveryQuotaRequest,
     ) -> esa20240910_models.GetSiteLogDeliveryQuotaResponse:
         """
-        @summary 获取日志投递任务quota数
+        @summary Queries the remaining quota for delivering a specific category of real-time logs in a website.
+        
+        @description You can call this operation to query the remaining quota for delivering a specific category of real-time logs in a website within an Alibaba Cloud account. This is essential for monitoring and managing your log delivery capacity to ensure that logs can be delivered to the destination and prevent data loss or latency caused by insufficient quota.
+        *Take note of the following parameters:**\
+        ``
+        `BusinessType` is required. You must specify a log category to obtain the corresponding quota information.
+        `SiteId` specifies the ID of a website, which must be a valid integer that corresponds to a website that you configured on Alibaba Cloud.
+        *Response:**\
+        If a request is successful, the system returns the remaining log delivery quota (`FreeQuota`), request ID (`RequestId`), website ID (`SiteId`), and log category (`BusinessType`). You can confirm and record the returned data.
         
         @param request: GetSiteLogDeliveryQuotaRequest
         @return: GetSiteLogDeliveryQuotaResponse
@@ -10369,7 +11513,15 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteLogDeliveryQuotaRequest,
     ) -> esa20240910_models.GetSiteLogDeliveryQuotaResponse:
         """
-        @summary 获取日志投递任务quota数
+        @summary Queries the remaining quota for delivering a specific category of real-time logs in a website.
+        
+        @description You can call this operation to query the remaining quota for delivering a specific category of real-time logs in a website within an Alibaba Cloud account. This is essential for monitoring and managing your log delivery capacity to ensure that logs can be delivered to the destination and prevent data loss or latency caused by insufficient quota.
+        *Take note of the following parameters:**\
+        ``
+        `BusinessType` is required. You must specify a log category to obtain the corresponding quota information.
+        `SiteId` specifies the ID of a website, which must be a valid integer that corresponds to a website that you configured on Alibaba Cloud.
+        *Response:**\
+        If a request is successful, the system returns the remaining log delivery quota (`FreeQuota`), request ID (`RequestId`), website ID (`SiteId`), and log category (`BusinessType`). You can confirm and record the returned data.
         
         @param request: GetSiteLogDeliveryQuotaRequest
         @return: GetSiteLogDeliveryQuotaResponse
@@ -10383,7 +11535,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteWafSettingsResponse:
         """
-        @summary 获取站点WAF配置
+        @summary Queries the Web Application Firewall (WAF) configurations of a website.
         
         @param request: GetSiteWafSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10420,7 +11572,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetSiteWafSettingsResponse:
         """
-        @summary 获取站点WAF配置
+        @summary Queries the Web Application Firewall (WAF) configurations of a website.
         
         @param request: GetSiteWafSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10456,7 +11608,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteWafSettingsRequest,
     ) -> esa20240910_models.GetSiteWafSettingsResponse:
         """
-        @summary 获取站点WAF配置
+        @summary Queries the Web Application Firewall (WAF) configurations of a website.
         
         @param request: GetSiteWafSettingsRequest
         @return: GetSiteWafSettingsResponse
@@ -10469,7 +11621,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetSiteWafSettingsRequest,
     ) -> esa20240910_models.GetSiteWafSettingsResponse:
         """
-        @summary 获取站点WAF配置
+        @summary Queries the Web Application Firewall (WAF) configurations of a website.
         
         @param request: GetSiteWafSettingsRequest
         @return: GetSiteWafSettingsResponse
@@ -10483,7 +11635,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetUploadTaskResponse:
         """
-        @summary 文件上传任务查询接口
+        @summary Queries the execution status and running information of a file upload task based on the task ID.
         
         @param request: GetUploadTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10516,7 +11668,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetUploadTaskResponse:
         """
-        @summary 文件上传任务查询接口
+        @summary Queries the execution status and running information of a file upload task based on the task ID.
         
         @param request: GetUploadTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10548,7 +11700,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetUploadTaskRequest,
     ) -> esa20240910_models.GetUploadTaskResponse:
         """
-        @summary 文件上传任务查询接口
+        @summary Queries the execution status and running information of a file upload task based on the task ID.
         
         @param request: GetUploadTaskRequest
         @return: GetUploadTaskResponse
@@ -10561,7 +11713,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetUploadTaskRequest,
     ) -> esa20240910_models.GetUploadTaskResponse:
         """
-        @summary 文件上传任务查询接口
+        @summary Queries the execution status and running information of a file upload task based on the task ID.
         
         @param request: GetUploadTaskRequest
         @return: GetUploadTaskResponse
@@ -10575,7 +11727,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetUserDeliveryTaskResponse:
         """
-        @summary 获取一个用户粒度任务投递
+        @summary Queries the information about a log delivery task by account.
+        
+        @description    This API operation queries the details of a delivery task, including the task name, discard rate, region, log category, status, delivery destination, configuration, and filtering rules.****\
+        You can call this operation to query detailed information about a log delivery task to analyze log processing efficiency or troubleshoot delivery problems.****\
+        ****````
         
         @param request: GetUserDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10608,7 +11764,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetUserDeliveryTaskResponse:
         """
-        @summary 获取一个用户粒度任务投递
+        @summary Queries the information about a log delivery task by account.
+        
+        @description    This API operation queries the details of a delivery task, including the task name, discard rate, region, log category, status, delivery destination, configuration, and filtering rules.****\
+        You can call this operation to query detailed information about a log delivery task to analyze log processing efficiency or troubleshoot delivery problems.****\
+        ****````
         
         @param request: GetUserDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10640,7 +11800,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetUserDeliveryTaskRequest,
     ) -> esa20240910_models.GetUserDeliveryTaskResponse:
         """
-        @summary 获取一个用户粒度任务投递
+        @summary Queries the information about a log delivery task by account.
+        
+        @description    This API operation queries the details of a delivery task, including the task name, discard rate, region, log category, status, delivery destination, configuration, and filtering rules.****\
+        You can call this operation to query detailed information about a log delivery task to analyze log processing efficiency or troubleshoot delivery problems.****\
+        ****````
         
         @param request: GetUserDeliveryTaskRequest
         @return: GetUserDeliveryTaskResponse
@@ -10653,7 +11817,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetUserDeliveryTaskRequest,
     ) -> esa20240910_models.GetUserDeliveryTaskResponse:
         """
-        @summary 获取一个用户粒度任务投递
+        @summary Queries the information about a log delivery task by account.
+        
+        @description    This API operation queries the details of a delivery task, including the task name, discard rate, region, log category, status, delivery destination, configuration, and filtering rules.****\
+        You can call this operation to query detailed information about a log delivery task to analyze log processing efficiency or troubleshoot delivery problems.****\
+        ****````
         
         @param request: GetUserDeliveryTaskRequest
         @return: GetUserDeliveryTaskResponse
@@ -10667,7 +11835,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetUserLogDeliveryQuotaResponse:
         """
-        @summary 获取日志投递任务用户quota数
+        @summary Queries the remaining log delivery quota of each log category in your account.
+        
+        @description This operation allows you to query the remaining real-time log delivery quota of each log category in your Alibaba Cloud account. You must provide your Alibaba Cloud account ID (aliUid) and log category (BusinessType). The system then returns the remaining quota of the log category to help you track the usage.
         
         @param request: GetUserLogDeliveryQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10700,7 +11870,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetUserLogDeliveryQuotaResponse:
         """
-        @summary 获取日志投递任务用户quota数
+        @summary Queries the remaining log delivery quota of each log category in your account.
+        
+        @description This operation allows you to query the remaining real-time log delivery quota of each log category in your Alibaba Cloud account. You must provide your Alibaba Cloud account ID (aliUid) and log category (BusinessType). The system then returns the remaining quota of the log category to help you track the usage.
         
         @param request: GetUserLogDeliveryQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10732,7 +11904,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetUserLogDeliveryQuotaRequest,
     ) -> esa20240910_models.GetUserLogDeliveryQuotaResponse:
         """
-        @summary 获取日志投递任务用户quota数
+        @summary Queries the remaining log delivery quota of each log category in your account.
+        
+        @description This operation allows you to query the remaining real-time log delivery quota of each log category in your Alibaba Cloud account. You must provide your Alibaba Cloud account ID (aliUid) and log category (BusinessType). The system then returns the remaining quota of the log category to help you track the usage.
         
         @param request: GetUserLogDeliveryQuotaRequest
         @return: GetUserLogDeliveryQuotaResponse
@@ -10745,7 +11919,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetUserLogDeliveryQuotaRequest,
     ) -> esa20240910_models.GetUserLogDeliveryQuotaResponse:
         """
-        @summary 获取日志投递任务用户quota数
+        @summary Queries the remaining log delivery quota of each log category in your account.
+        
+        @description This operation allows you to query the remaining real-time log delivery quota of each log category in your Alibaba Cloud account. You must provide your Alibaba Cloud account ID (aliUid) and log category (BusinessType). The system then returns the remaining quota of the log category to help you track the usage.
         
         @param request: GetUserLogDeliveryQuotaRequest
         @return: GetUserLogDeliveryQuotaResponse
@@ -10758,6 +11934,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetWafBotAppKeyResponse:
         """
+        @summary Queries the application key (AppKey) that is used for authentication and data exchange in bot behavior detection in Web Application Firewall (WAF).
+        
         @param request: GetWafBotAppKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetWafBotAppKeyResponse
@@ -10784,6 +11962,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetWafBotAppKeyResponse:
         """
+        @summary Queries the application key (AppKey) that is used for authentication and data exchange in bot behavior detection in Web Application Firewall (WAF).
+        
         @param request: GetWafBotAppKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetWafBotAppKeyResponse
@@ -10807,6 +11987,8 @@ class Client(OpenApiClient):
 
     def get_waf_bot_app_key(self) -> esa20240910_models.GetWafBotAppKeyResponse:
         """
+        @summary Queries the application key (AppKey) that is used for authentication and data exchange in bot behavior detection in Web Application Firewall (WAF).
+        
         @return: GetWafBotAppKeyResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -10814,6 +11996,8 @@ class Client(OpenApiClient):
 
     async def get_waf_bot_app_key_async(self) -> esa20240910_models.GetWafBotAppKeyResponse:
         """
+        @summary Queries the application key (AppKey) that is used for authentication and data exchange in bot behavior detection in Web Application Firewall (WAF).
+        
         @return: GetWafBotAppKeyResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -10825,7 +12009,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetWafFilterResponse:
         """
-        @summary 将匹配项转换为表达式
+        @summary Queries the conditions for matching incoming requests that are configured in a WAF rule category for a website. These conditions define how WAF detects and processes different types of requests.
         
         @param request: GetWafFilterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10866,7 +12050,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetWafFilterResponse:
         """
-        @summary 将匹配项转换为表达式
+        @summary Queries the conditions for matching incoming requests that are configured in a WAF rule category for a website. These conditions define how WAF detects and processes different types of requests.
         
         @param request: GetWafFilterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10906,7 +12090,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetWafFilterRequest,
     ) -> esa20240910_models.GetWafFilterResponse:
         """
-        @summary 将匹配项转换为表达式
+        @summary Queries the conditions for matching incoming requests that are configured in a WAF rule category for a website. These conditions define how WAF detects and processes different types of requests.
         
         @param request: GetWafFilterRequest
         @return: GetWafFilterResponse
@@ -10919,7 +12103,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetWafFilterRequest,
     ) -> esa20240910_models.GetWafFilterResponse:
         """
-        @summary 将匹配项转换为表达式
+        @summary Queries the conditions for matching incoming requests that are configured in a WAF rule category for a website. These conditions define how WAF detects and processes different types of requests.
         
         @param request: GetWafFilterRequest
         @return: GetWafFilterResponse
@@ -10933,7 +12117,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetWafQuotaResponse:
         """
-        @summary 获取WAF配额详情
+        @summary Queries the quotas of Web Application Firewall (WAF) resources, such as managed rule groups, custom lists, custom error pages, and scenario-specific policies.
         
         @param request: GetWafQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10968,7 +12152,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetWafQuotaResponse:
         """
-        @summary 获取WAF配额详情
+        @summary Queries the quotas of Web Application Firewall (WAF) resources, such as managed rule groups, custom lists, custom error pages, and scenario-specific policies.
         
         @param request: GetWafQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11002,7 +12186,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetWafQuotaRequest,
     ) -> esa20240910_models.GetWafQuotaResponse:
         """
-        @summary 获取WAF配额详情
+        @summary Queries the quotas of Web Application Firewall (WAF) resources, such as managed rule groups, custom lists, custom error pages, and scenario-specific policies.
         
         @param request: GetWafQuotaRequest
         @return: GetWafQuotaResponse
@@ -11015,7 +12199,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetWafQuotaRequest,
     ) -> esa20240910_models.GetWafQuotaResponse:
         """
-        @summary 获取WAF配额详情
+        @summary Queries the quotas of Web Application Firewall (WAF) resources, such as managed rule groups, custom lists, custom error pages, and scenario-specific policies.
         
         @param request: GetWafQuotaRequest
         @return: GetWafQuotaResponse
@@ -11029,7 +12213,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetWafRuleResponse:
         """
-        @summary 获取单个WAF规则详情
+        @summary Queries the details of a Web Application Firewall (WAF) rule, such as its configuration and status.
         
         @param request: GetWafRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11066,7 +12250,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetWafRuleResponse:
         """
-        @summary 获取单个WAF规则详情
+        @summary Queries the details of a Web Application Firewall (WAF) rule, such as its configuration and status.
         
         @param request: GetWafRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11102,7 +12286,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetWafRuleRequest,
     ) -> esa20240910_models.GetWafRuleResponse:
         """
-        @summary 获取单个WAF规则详情
+        @summary Queries the details of a Web Application Firewall (WAF) rule, such as its configuration and status.
         
         @param request: GetWafRuleRequest
         @return: GetWafRuleResponse
@@ -11115,7 +12299,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetWafRuleRequest,
     ) -> esa20240910_models.GetWafRuleResponse:
         """
-        @summary 获取单个WAF规则详情
+        @summary Queries the details of a Web Application Firewall (WAF) rule, such as its configuration and status.
         
         @param request: GetWafRuleRequest
         @return: GetWafRuleResponse
@@ -11129,7 +12313,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetWafRulesetResponse:
         """
-        @summary 获取WAF规则集详情
+        @summary Queries the details of a Web Application Firewall (WAF) ruleset, such as the configuration and status.
         
         @param request: GetWafRulesetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11168,7 +12352,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetWafRulesetResponse:
         """
-        @summary 获取WAF规则集详情
+        @summary Queries the details of a Web Application Firewall (WAF) ruleset, such as the configuration and status.
         
         @param request: GetWafRulesetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11206,7 +12390,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetWafRulesetRequest,
     ) -> esa20240910_models.GetWafRulesetResponse:
         """
-        @summary 获取WAF规则集详情
+        @summary Queries the details of a Web Application Firewall (WAF) ruleset, such as the configuration and status.
         
         @param request: GetWafRulesetRequest
         @return: GetWafRulesetResponse
@@ -11219,7 +12403,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetWafRulesetRequest,
     ) -> esa20240910_models.GetWafRulesetResponse:
         """
-        @summary 获取WAF规则集详情
+        @summary Queries the details of a Web Application Firewall (WAF) ruleset, such as the configuration and status.
         
         @param request: GetWafRulesetRequest
         @return: GetWafRulesetResponse
@@ -11233,7 +12417,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListCacheReserveInstancesResponse:
         """
-        @summary 查询缓存保持实例列表
+        @summary Queries the cache reserve instances in your Alibaba Cloud account.
         
         @param request: ListCacheReserveInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11266,7 +12450,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListCacheReserveInstancesResponse:
         """
-        @summary 查询缓存保持实例列表
+        @summary Queries the cache reserve instances in your Alibaba Cloud account.
         
         @param request: ListCacheReserveInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11298,7 +12482,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListCacheReserveInstancesRequest,
     ) -> esa20240910_models.ListCacheReserveInstancesResponse:
         """
-        @summary 查询缓存保持实例列表
+        @summary Queries the cache reserve instances in your Alibaba Cloud account.
         
         @param request: ListCacheReserveInstancesRequest
         @return: ListCacheReserveInstancesResponse
@@ -11311,7 +12495,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListCacheReserveInstancesRequest,
     ) -> esa20240910_models.ListCacheReserveInstancesResponse:
         """
-        @summary 查询缓存保持实例列表
+        @summary Queries the cache reserve instances in your Alibaba Cloud account.
         
         @param request: ListCacheReserveInstancesRequest
         @return: ListCacheReserveInstancesResponse
@@ -11417,7 +12601,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListEdgeContainerAppRecordsResponse:
         """
-        @summary 获取一个边缘容器应用的全部域名记录
+        @summary Lists domain names that are associated with a containerized application.
         
         @param request: ListEdgeContainerAppRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11450,7 +12634,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListEdgeContainerAppRecordsResponse:
         """
-        @summary 获取一个边缘容器应用的全部域名记录
+        @summary Lists domain names that are associated with a containerized application.
         
         @param request: ListEdgeContainerAppRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11482,7 +12666,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListEdgeContainerAppRecordsRequest,
     ) -> esa20240910_models.ListEdgeContainerAppRecordsResponse:
         """
-        @summary 获取一个边缘容器应用的全部域名记录
+        @summary Lists domain names that are associated with a containerized application.
         
         @param request: ListEdgeContainerAppRecordsRequest
         @return: ListEdgeContainerAppRecordsResponse
@@ -11495,7 +12679,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListEdgeContainerAppRecordsRequest,
     ) -> esa20240910_models.ListEdgeContainerAppRecordsResponse:
         """
-        @summary 获取一个边缘容器应用的全部域名记录
+        @summary Lists domain names that are associated with a containerized application.
         
         @param request: ListEdgeContainerAppRecordsRequest
         @return: ListEdgeContainerAppRecordsResponse
@@ -11509,7 +12693,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListEdgeContainerAppVersionsResponse:
         """
-        @summary 获取边缘容器应用的全部版本信息
+        @summary Lists versions of all containerized applications.
         
         @param request: ListEdgeContainerAppVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11542,7 +12726,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListEdgeContainerAppVersionsResponse:
         """
-        @summary 获取边缘容器应用的全部版本信息
+        @summary Lists versions of all containerized applications.
         
         @param request: ListEdgeContainerAppVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11574,7 +12758,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListEdgeContainerAppVersionsRequest,
     ) -> esa20240910_models.ListEdgeContainerAppVersionsResponse:
         """
-        @summary 获取边缘容器应用的全部版本信息
+        @summary Lists versions of all containerized applications.
         
         @param request: ListEdgeContainerAppVersionsRequest
         @return: ListEdgeContainerAppVersionsResponse
@@ -11587,7 +12771,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListEdgeContainerAppVersionsRequest,
     ) -> esa20240910_models.ListEdgeContainerAppVersionsResponse:
         """
-        @summary 获取边缘容器应用的全部版本信息
+        @summary Lists versions of all containerized applications.
         
         @param request: ListEdgeContainerAppVersionsRequest
         @return: ListEdgeContainerAppVersionsResponse
@@ -11601,7 +12785,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListEdgeContainerAppsResponse:
         """
-        @summary 获取用户全部边缘容器应用
+        @summary Queries all containerized applications in your Alibaba Cloud account.
         
         @param request: ListEdgeContainerAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11646,7 +12830,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListEdgeContainerAppsResponse:
         """
-        @summary 获取用户全部边缘容器应用
+        @summary Queries all containerized applications in your Alibaba Cloud account.
         
         @param request: ListEdgeContainerAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11690,7 +12874,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListEdgeContainerAppsRequest,
     ) -> esa20240910_models.ListEdgeContainerAppsResponse:
         """
-        @summary 获取用户全部边缘容器应用
+        @summary Queries all containerized applications in your Alibaba Cloud account.
         
         @param request: ListEdgeContainerAppsRequest
         @return: ListEdgeContainerAppsResponse
@@ -11703,7 +12887,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListEdgeContainerAppsRequest,
     ) -> esa20240910_models.ListEdgeContainerAppsResponse:
         """
-        @summary 获取用户全部边缘容器应用
+        @summary Queries all containerized applications in your Alibaba Cloud account.
         
         @param request: ListEdgeContainerAppsRequest
         @return: ListEdgeContainerAppsResponse
@@ -11717,7 +12901,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListEdgeContainerRecordsResponse:
         """
-        @summary 查询站点的边缘容器记录
+        @summary Queries the records that are associated with Edge Container for a website.
         
         @param request: ListEdgeContainerRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11750,7 +12934,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListEdgeContainerRecordsResponse:
         """
-        @summary 查询站点的边缘容器记录
+        @summary Queries the records that are associated with Edge Container for a website.
         
         @param request: ListEdgeContainerRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11782,7 +12966,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListEdgeContainerRecordsRequest,
     ) -> esa20240910_models.ListEdgeContainerRecordsResponse:
         """
-        @summary 查询站点的边缘容器记录
+        @summary Queries the records that are associated with Edge Container for a website.
         
         @param request: ListEdgeContainerRecordsRequest
         @return: ListEdgeContainerRecordsResponse
@@ -11795,7 +12979,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListEdgeContainerRecordsRequest,
     ) -> esa20240910_models.ListEdgeContainerRecordsResponse:
         """
-        @summary 查询站点的边缘容器记录
+        @summary Queries the records that are associated with Edge Container for a website.
         
         @param request: ListEdgeContainerRecordsRequest
         @return: ListEdgeContainerRecordsResponse
@@ -11808,7 +12992,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListEdgeRoutinePlansResponse:
         """
-        @summary 查询用户可购买的边缘函数的套餐
+        @summary Queries Edge Routine plans.
         
         @param request: ListEdgeRoutinePlansRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11836,7 +13020,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListEdgeRoutinePlansResponse:
         """
-        @summary 查询用户可购买的边缘函数的套餐
+        @summary Queries Edge Routine plans.
         
         @param request: ListEdgeRoutinePlansRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11861,7 +13045,7 @@ class Client(OpenApiClient):
 
     def list_edge_routine_plans(self) -> esa20240910_models.ListEdgeRoutinePlansResponse:
         """
-        @summary 查询用户可购买的边缘函数的套餐
+        @summary Queries Edge Routine plans.
         
         @return: ListEdgeRoutinePlansResponse
         """
@@ -11870,7 +13054,7 @@ class Client(OpenApiClient):
 
     async def list_edge_routine_plans_async(self) -> esa20240910_models.ListEdgeRoutinePlansResponse:
         """
-        @summary 查询用户可购买的边缘函数的套餐
+        @summary Queries Edge Routine plans.
         
         @return: ListEdgeRoutinePlansResponse
         """
@@ -11883,7 +13067,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListEdgeRoutineRecordsResponse:
         """
-        @summary 查询站点的边缘路由记录
+        @summary Queries the records that are associated with Edge Routine routes for a website.
+        
+        @description >  You can call this operation 100 times per second.
         
         @param request: ListEdgeRoutineRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11916,7 +13102,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListEdgeRoutineRecordsResponse:
         """
-        @summary 查询站点的边缘路由记录
+        @summary Queries the records that are associated with Edge Routine routes for a website.
+        
+        @description >  You can call this operation 100 times per second.
         
         @param request: ListEdgeRoutineRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11948,7 +13136,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListEdgeRoutineRecordsRequest,
     ) -> esa20240910_models.ListEdgeRoutineRecordsResponse:
         """
-        @summary 查询站点的边缘路由记录
+        @summary Queries the records that are associated with Edge Routine routes for a website.
+        
+        @description >  You can call this operation 100 times per second.
         
         @param request: ListEdgeRoutineRecordsRequest
         @return: ListEdgeRoutineRecordsResponse
@@ -11961,7 +13151,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListEdgeRoutineRecordsRequest,
     ) -> esa20240910_models.ListEdgeRoutineRecordsResponse:
         """
-        @summary 查询站点的边缘路由记录
+        @summary Queries the records that are associated with Edge Routine routes for a website.
+        
+        @description >  You can call this operation 100 times per second.
         
         @param request: ListEdgeRoutineRecordsRequest
         @return: ListEdgeRoutineRecordsResponse
@@ -11975,7 +13167,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListInstanceQuotasResponse:
         """
-        @summary 查询实例或者站点的quota值
+        @summary Queries the quota details in a subscription plan.
         
         @param request: ListInstanceQuotasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12008,7 +13200,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListInstanceQuotasResponse:
         """
-        @summary 查询实例或者站点的quota值
+        @summary Queries the quota details in a subscription plan.
         
         @param request: ListInstanceQuotasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12040,7 +13232,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListInstanceQuotasRequest,
     ) -> esa20240910_models.ListInstanceQuotasResponse:
         """
-        @summary 查询实例或者站点的quota值
+        @summary Queries the quota details in a subscription plan.
         
         @param request: ListInstanceQuotasRequest
         @return: ListInstanceQuotasResponse
@@ -12053,7 +13245,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListInstanceQuotasRequest,
     ) -> esa20240910_models.ListInstanceQuotasResponse:
         """
-        @summary 查询实例或者站点的quota值
+        @summary Queries the quota details in a subscription plan.
         
         @param request: ListInstanceQuotasRequest
         @return: ListInstanceQuotasResponse
@@ -12067,7 +13259,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListInstanceQuotasWithUsageResponse:
         """
-        @summary 查询功能quota和用量
+        @summary Queries quotas and the actual usage in a plan based on the website or plan ID.
         
         @param request: ListInstanceQuotasWithUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12100,7 +13292,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListInstanceQuotasWithUsageResponse:
         """
-        @summary 查询功能quota和用量
+        @summary Queries quotas and the actual usage in a plan based on the website or plan ID.
         
         @param request: ListInstanceQuotasWithUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12132,7 +13324,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListInstanceQuotasWithUsageRequest,
     ) -> esa20240910_models.ListInstanceQuotasWithUsageResponse:
         """
-        @summary 查询功能quota和用量
+        @summary Queries quotas and the actual usage in a plan based on the website or plan ID.
         
         @param request: ListInstanceQuotasWithUsageRequest
         @return: ListInstanceQuotasWithUsageResponse
@@ -12145,7 +13337,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListInstanceQuotasWithUsageRequest,
     ) -> esa20240910_models.ListInstanceQuotasWithUsageResponse:
         """
-        @summary 查询功能quota和用量
+        @summary Queries quotas and the actual usage in a plan based on the website or plan ID.
         
         @param request: ListInstanceQuotasWithUsageRequest
         @return: ListInstanceQuotasWithUsageResponse
@@ -12159,7 +13351,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListKvsResponse:
         """
-        @summary 遍历Namespace的Key值
+        @summary Lists all key-value pairs in a namespace in your Alibaba Cloud account.
         
         @param request: ListKvsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12192,7 +13384,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListKvsResponse:
         """
-        @summary 遍历Namespace的Key值
+        @summary Lists all key-value pairs in a namespace in your Alibaba Cloud account.
         
         @param request: ListKvsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12224,7 +13416,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListKvsRequest,
     ) -> esa20240910_models.ListKvsResponse:
         """
-        @summary 遍历Namespace的Key值
+        @summary Lists all key-value pairs in a namespace in your Alibaba Cloud account.
         
         @param request: ListKvsRequest
         @return: ListKvsResponse
@@ -12237,7 +13429,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListKvsRequest,
     ) -> esa20240910_models.ListKvsResponse:
         """
-        @summary 遍历Namespace的Key值
+        @summary Lists all key-value pairs in a namespace in your Alibaba Cloud account.
         
         @param request: ListKvsRequest
         @return: ListKvsResponse
@@ -12251,7 +13443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListListsResponse:
         """
-        @summary 列举自定义列表
+        @summary Queries all custom lists and their details in an Alibaba Cloud account. You can specify query arguments to filter the results and display the returned lists by page.
         
         @param tmp_req: ListListsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12294,7 +13486,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListListsResponse:
         """
-        @summary 列举自定义列表
+        @summary Queries all custom lists and their details in an Alibaba Cloud account. You can specify query arguments to filter the results and display the returned lists by page.
         
         @param tmp_req: ListListsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12336,7 +13528,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListListsRequest,
     ) -> esa20240910_models.ListListsResponse:
         """
-        @summary 列举自定义列表
+        @summary Queries all custom lists and their details in an Alibaba Cloud account. You can specify query arguments to filter the results and display the returned lists by page.
         
         @param request: ListListsRequest
         @return: ListListsResponse
@@ -12349,7 +13541,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListListsRequest,
     ) -> esa20240910_models.ListListsResponse:
         """
-        @summary 列举自定义列表
+        @summary Queries all custom lists and their details in an Alibaba Cloud account. You can specify query arguments to filter the results and display the returned lists by page.
         
         @param request: ListListsRequest
         @return: ListListsResponse
@@ -12363,7 +13555,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListLoadBalancerRegionsResponse:
         """
-        @summary 查询负载均衡区域列表
+        @summary Queries the information that can be used to configure a traffic steering policy based on the originating country or region for a load balancer, such as the code and code descriptions of the regions and subregions of the load balancer.
+        
+        @description When you call an operation to create a traffic steering policy based on the originating country or region for a load balancer, you can use the code of a region or subregion to specify traffic that is sent from the region or subregion.
         
         @param request: ListLoadBalancerRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12396,7 +13590,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListLoadBalancerRegionsResponse:
         """
-        @summary 查询负载均衡区域列表
+        @summary Queries the information that can be used to configure a traffic steering policy based on the originating country or region for a load balancer, such as the code and code descriptions of the regions and subregions of the load balancer.
+        
+        @description When you call an operation to create a traffic steering policy based on the originating country or region for a load balancer, you can use the code of a region or subregion to specify traffic that is sent from the region or subregion.
         
         @param request: ListLoadBalancerRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12428,7 +13624,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListLoadBalancerRegionsRequest,
     ) -> esa20240910_models.ListLoadBalancerRegionsResponse:
         """
-        @summary 查询负载均衡区域列表
+        @summary Queries the information that can be used to configure a traffic steering policy based on the originating country or region for a load balancer, such as the code and code descriptions of the regions and subregions of the load balancer.
+        
+        @description When you call an operation to create a traffic steering policy based on the originating country or region for a load balancer, you can use the code of a region or subregion to specify traffic that is sent from the region or subregion.
         
         @param request: ListLoadBalancerRegionsRequest
         @return: ListLoadBalancerRegionsResponse
@@ -12441,7 +13639,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListLoadBalancerRegionsRequest,
     ) -> esa20240910_models.ListLoadBalancerRegionsResponse:
         """
-        @summary 查询负载均衡区域列表
+        @summary Queries the information that can be used to configure a traffic steering policy based on the originating country or region for a load balancer, such as the code and code descriptions of the regions and subregions of the load balancer.
+        
+        @description When you call an operation to create a traffic steering policy based on the originating country or region for a load balancer, you can use the code of a region or subregion to specify traffic that is sent from the region or subregion.
         
         @param request: ListLoadBalancerRegionsRequest
         @return: ListLoadBalancerRegionsResponse
@@ -12455,7 +13655,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListManagedRulesGroupsResponse:
         """
-        @summary 列举自定义托管规则组
+        @summary Queries all WAF managed rule groups in your Alibaba Cloud account.
         
         @param request: ListManagedRulesGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12492,7 +13692,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListManagedRulesGroupsResponse:
         """
-        @summary 列举自定义托管规则组
+        @summary Queries all WAF managed rule groups in your Alibaba Cloud account.
         
         @param request: ListManagedRulesGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12528,7 +13728,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListManagedRulesGroupsRequest,
     ) -> esa20240910_models.ListManagedRulesGroupsResponse:
         """
-        @summary 列举自定义托管规则组
+        @summary Queries all WAF managed rule groups in your Alibaba Cloud account.
         
         @param request: ListManagedRulesGroupsRequest
         @return: ListManagedRulesGroupsResponse
@@ -12541,7 +13741,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListManagedRulesGroupsRequest,
     ) -> esa20240910_models.ListManagedRulesGroupsResponse:
         """
-        @summary 列举自定义托管规则组
+        @summary Queries all WAF managed rule groups in your Alibaba Cloud account.
         
         @param request: ListManagedRulesGroupsRequest
         @return: ListManagedRulesGroupsResponse
@@ -12555,7 +13755,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListPagesResponse:
         """
-        @summary 列举自定义响应页面
+        @summary Lists all custom error pages that you created. You can define the page number and the number of entries per page to display the response.
         
         @param request: ListPagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12592,7 +13792,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListPagesResponse:
         """
-        @summary 列举自定义响应页面
+        @summary Lists all custom error pages that you created. You can define the page number and the number of entries per page to display the response.
         
         @param request: ListPagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12628,7 +13828,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListPagesRequest,
     ) -> esa20240910_models.ListPagesResponse:
         """
-        @summary 列举自定义响应页面
+        @summary Lists all custom error pages that you created. You can define the page number and the number of entries per page to display the response.
         
         @param request: ListPagesRequest
         @return: ListPagesResponse
@@ -12641,7 +13841,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListPagesRequest,
     ) -> esa20240910_models.ListPagesResponse:
         """
-        @summary 列举自定义响应页面
+        @summary Lists all custom error pages that you created. You can define the page number and the number of entries per page to display the response.
         
         @param request: ListPagesRequest
         @return: ListPagesResponse
@@ -12655,7 +13855,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRecordsResponse:
         """
-        @summary 查询站点下的记录列表
+        @summary Queries a list of Domain Name System (DNS) records of a website, including the record value, priority, and authentication configurations. Supports filtering by specifying parameters such as RecordName and RecordMatchType.
+        
+        @description The DNS records related to Edge Container, Edge Routine, and TCP/UDP proxy are not returned in this operation.
         
         @param request: ListRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12688,7 +13890,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRecordsResponse:
         """
-        @summary 查询站点下的记录列表
+        @summary Queries a list of Domain Name System (DNS) records of a website, including the record value, priority, and authentication configurations. Supports filtering by specifying parameters such as RecordName and RecordMatchType.
+        
+        @description The DNS records related to Edge Container, Edge Routine, and TCP/UDP proxy are not returned in this operation.
         
         @param request: ListRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12720,7 +13924,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListRecordsRequest,
     ) -> esa20240910_models.ListRecordsResponse:
         """
-        @summary 查询站点下的记录列表
+        @summary Queries a list of Domain Name System (DNS) records of a website, including the record value, priority, and authentication configurations. Supports filtering by specifying parameters such as RecordName and RecordMatchType.
+        
+        @description The DNS records related to Edge Container, Edge Routine, and TCP/UDP proxy are not returned in this operation.
         
         @param request: ListRecordsRequest
         @return: ListRecordsResponse
@@ -12733,7 +13939,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListRecordsRequest,
     ) -> esa20240910_models.ListRecordsResponse:
         """
-        @summary 查询站点下的记录列表
+        @summary Queries a list of Domain Name System (DNS) records of a website, including the record value, priority, and authentication configurations. Supports filtering by specifying parameters such as RecordName and RecordMatchType.
+        
+        @description The DNS records related to Edge Container, Edge Routine, and TCP/UDP proxy are not returned in this operation.
         
         @param request: ListRecordsRequest
         @return: ListRecordsResponse
@@ -12746,7 +13954,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRoutineCanaryAreasResponse:
         """
-        @summary 查询Routine灰度环境列表
+        @summary Lists the regions to which Edge Routine code can be released for canary deployment.
         
         @param request: ListRoutineCanaryAreasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12774,7 +13982,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRoutineCanaryAreasResponse:
         """
-        @summary 查询Routine灰度环境列表
+        @summary Lists the regions to which Edge Routine code can be released for canary deployment.
         
         @param request: ListRoutineCanaryAreasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12799,7 +14007,7 @@ class Client(OpenApiClient):
 
     def list_routine_canary_areas(self) -> esa20240910_models.ListRoutineCanaryAreasResponse:
         """
-        @summary 查询Routine灰度环境列表
+        @summary Lists the regions to which Edge Routine code can be released for canary deployment.
         
         @return: ListRoutineCanaryAreasResponse
         """
@@ -12808,7 +14016,7 @@ class Client(OpenApiClient):
 
     async def list_routine_canary_areas_async(self) -> esa20240910_models.ListRoutineCanaryAreasResponse:
         """
-        @summary 查询Routine灰度环境列表
+        @summary Lists the regions to which Edge Routine code can be released for canary deployment.
         
         @return: ListRoutineCanaryAreasResponse
         """
@@ -12820,7 +14028,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRoutineOptionalSpecsResponse:
         """
-        @summary 查询Routine可选择规格列表
+        @summary Queries the specifications that you can select for a routine based on the plan type. The response contains all specifications that you can select for a routine. The IsAvailable parameter indicates whether a specification is available.
+        
+        @description You can call this operation to query the specifications that you can select for a routine.
         
         @param request: ListRoutineOptionalSpecsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12848,7 +14058,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRoutineOptionalSpecsResponse:
         """
-        @summary 查询Routine可选择规格列表
+        @summary Queries the specifications that you can select for a routine based on the plan type. The response contains all specifications that you can select for a routine. The IsAvailable parameter indicates whether a specification is available.
+        
+        @description You can call this operation to query the specifications that you can select for a routine.
         
         @param request: ListRoutineOptionalSpecsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12873,7 +14085,9 @@ class Client(OpenApiClient):
 
     def list_routine_optional_specs(self) -> esa20240910_models.ListRoutineOptionalSpecsResponse:
         """
-        @summary 查询Routine可选择规格列表
+        @summary Queries the specifications that you can select for a routine based on the plan type. The response contains all specifications that you can select for a routine. The IsAvailable parameter indicates whether a specification is available.
+        
+        @description You can call this operation to query the specifications that you can select for a routine.
         
         @return: ListRoutineOptionalSpecsResponse
         """
@@ -12882,7 +14096,9 @@ class Client(OpenApiClient):
 
     async def list_routine_optional_specs_async(self) -> esa20240910_models.ListRoutineOptionalSpecsResponse:
         """
-        @summary 查询Routine可选择规格列表
+        @summary Queries the specifications that you can select for a routine based on the plan type. The response contains all specifications that you can select for a routine. The IsAvailable parameter indicates whether a specification is available.
+        
+        @description You can call this operation to query the specifications that you can select for a routine.
         
         @return: ListRoutineOptionalSpecsResponse
         """
@@ -12895,7 +14111,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListScheduledPreloadExecutionsResponse:
         """
-        @summary 列出指定任务下的执行计划
+        @summary Lists the plans in a scheduled prefetch task by task ID.
         
         @param request: ListScheduledPreloadExecutionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12928,7 +14144,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListScheduledPreloadExecutionsResponse:
         """
-        @summary 列出指定任务下的执行计划
+        @summary Lists the plans in a scheduled prefetch task by task ID.
         
         @param request: ListScheduledPreloadExecutionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12960,7 +14176,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListScheduledPreloadExecutionsRequest,
     ) -> esa20240910_models.ListScheduledPreloadExecutionsResponse:
         """
-        @summary 列出指定任务下的执行计划
+        @summary Lists the plans in a scheduled prefetch task by task ID.
         
         @param request: ListScheduledPreloadExecutionsRequest
         @return: ListScheduledPreloadExecutionsResponse
@@ -12973,7 +14189,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListScheduledPreloadExecutionsRequest,
     ) -> esa20240910_models.ListScheduledPreloadExecutionsResponse:
         """
-        @summary 列出指定任务下的执行计划
+        @summary Lists the plans in a scheduled prefetch task by task ID.
         
         @param request: ListScheduledPreloadExecutionsRequest
         @return: ListScheduledPreloadExecutionsResponse
@@ -12987,7 +14203,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListScheduledPreloadJobsResponse:
         """
-        @summary 列出定时预热任务列表
+        @summary Queries the scheduled prefetch tasks for a website.
         
         @param request: ListScheduledPreloadJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13020,7 +14236,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListScheduledPreloadJobsResponse:
         """
-        @summary 列出定时预热任务列表
+        @summary Queries the scheduled prefetch tasks for a website.
         
         @param request: ListScheduledPreloadJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13052,7 +14268,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListScheduledPreloadJobsRequest,
     ) -> esa20240910_models.ListScheduledPreloadJobsResponse:
         """
-        @summary 列出定时预热任务列表
+        @summary Queries the scheduled prefetch tasks for a website.
         
         @param request: ListScheduledPreloadJobsRequest
         @return: ListScheduledPreloadJobsResponse
@@ -13065,7 +14281,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListScheduledPreloadJobsRequest,
     ) -> esa20240910_models.ListScheduledPreloadJobsResponse:
         """
-        @summary 列出定时预热任务列表
+        @summary Queries the scheduled prefetch tasks for a website.
         
         @param request: ListScheduledPreloadJobsRequest
         @return: ListScheduledPreloadJobsResponse
@@ -13079,7 +14295,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListSiteDeliveryTasksResponse:
         """
-        @summary 列出全部任务投递
+        @summary Lists all log delivery tasks that are in progress.
         
         @param request: ListSiteDeliveryTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13112,7 +14328,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListSiteDeliveryTasksResponse:
         """
-        @summary 列出全部任务投递
+        @summary Lists all log delivery tasks that are in progress.
         
         @param request: ListSiteDeliveryTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13144,7 +14360,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListSiteDeliveryTasksRequest,
     ) -> esa20240910_models.ListSiteDeliveryTasksResponse:
         """
-        @summary 列出全部任务投递
+        @summary Lists all log delivery tasks that are in progress.
         
         @param request: ListSiteDeliveryTasksRequest
         @return: ListSiteDeliveryTasksResponse
@@ -13157,7 +14373,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListSiteDeliveryTasksRequest,
     ) -> esa20240910_models.ListSiteDeliveryTasksResponse:
         """
-        @summary 列出全部任务投递
+        @summary Lists all log delivery tasks that are in progress.
         
         @param request: ListSiteDeliveryTasksRequest
         @return: ListSiteDeliveryTasksResponse
@@ -13165,13 +14381,105 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_site_delivery_tasks_with_options_async(request, runtime)
 
+    def list_site_functions_with_options(
+        self,
+        request: esa20240910_models.ListSiteFunctionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListSiteFunctionsResponse:
+        """
+        @summary 查询站点配置
+        
+        @param request: ListSiteFunctionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSiteFunctionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSiteFunctions',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListSiteFunctionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_site_functions_with_options_async(
+        self,
+        request: esa20240910_models.ListSiteFunctionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListSiteFunctionsResponse:
+        """
+        @summary 查询站点配置
+        
+        @param request: ListSiteFunctionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSiteFunctionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSiteFunctions',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListSiteFunctionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_site_functions(
+        self,
+        request: esa20240910_models.ListSiteFunctionsRequest,
+    ) -> esa20240910_models.ListSiteFunctionsResponse:
+        """
+        @summary 查询站点配置
+        
+        @param request: ListSiteFunctionsRequest
+        @return: ListSiteFunctionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_site_functions_with_options(request, runtime)
+
+    async def list_site_functions_async(
+        self,
+        request: esa20240910_models.ListSiteFunctionsRequest,
+    ) -> esa20240910_models.ListSiteFunctionsResponse:
+        """
+        @summary 查询站点配置
+        
+        @param request: ListSiteFunctionsRequest
+        @return: ListSiteFunctionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_site_functions_with_options_async(request, runtime)
+
     def list_sites_with_options(
         self,
         tmp_req: esa20240910_models.ListSitesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListSitesResponse:
         """
-        @summary 查询站点列表
+        @summary Queries the information about websites in your account, such as the name, status, and configuration of each website.
         
         @param tmp_req: ListSitesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13208,7 +14516,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListSitesResponse:
         """
-        @summary 查询站点列表
+        @summary Queries the information about websites in your account, such as the name, status, and configuration of each website.
         
         @param tmp_req: ListSitesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13244,7 +14552,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListSitesRequest,
     ) -> esa20240910_models.ListSitesResponse:
         """
-        @summary 查询站点列表
+        @summary Queries the information about websites in your account, such as the name, status, and configuration of each website.
         
         @param request: ListSitesRequest
         @return: ListSitesResponse
@@ -13257,7 +14565,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListSitesRequest,
     ) -> esa20240910_models.ListSitesResponse:
         """
-        @summary 查询站点列表
+        @summary Queries the information about websites in your account, such as the name, status, and configuration of each website.
         
         @param request: ListSitesRequest
         @return: ListSitesResponse
@@ -13271,7 +14579,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListTagResourcesResponse:
         """
-        @summary 查询云资源已经绑定的标签列表
+        @summary Queries tags based on the region ID and resource type.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13320,7 +14628,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListTagResourcesResponse:
         """
-        @summary 查询云资源已经绑定的标签列表
+        @summary Queries tags based on the region ID and resource type.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13368,7 +14676,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListTagResourcesRequest,
     ) -> esa20240910_models.ListTagResourcesResponse:
         """
-        @summary 查询云资源已经绑定的标签列表
+        @summary Queries tags based on the region ID and resource type.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -13381,7 +14689,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListTagResourcesRequest,
     ) -> esa20240910_models.ListTagResourcesResponse:
         """
-        @summary 查询云资源已经绑定的标签列表
+        @summary Queries tags based on the region ID and resource type.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -13395,7 +14703,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListUploadTasksResponse:
         """
-        @summary 获取文件上传任务
+        @summary Queries the execution status and running information of file upload tasks based on the task time and type.
         
         @param request: ListUploadTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13428,7 +14736,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListUploadTasksResponse:
         """
-        @summary 获取文件上传任务
+        @summary Queries the execution status and running information of file upload tasks based on the task time and type.
         
         @param request: ListUploadTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13460,7 +14768,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListUploadTasksRequest,
     ) -> esa20240910_models.ListUploadTasksResponse:
         """
-        @summary 获取文件上传任务
+        @summary Queries the execution status and running information of file upload tasks based on the task time and type.
         
         @param request: ListUploadTasksRequest
         @return: ListUploadTasksResponse
@@ -13473,7 +14781,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListUploadTasksRequest,
     ) -> esa20240910_models.ListUploadTasksResponse:
         """
-        @summary 获取文件上传任务
+        @summary Queries the execution status and running information of file upload tasks based on the task time and type.
         
         @param request: ListUploadTasksRequest
         @return: ListUploadTasksResponse
@@ -13487,7 +14795,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListUserDeliveryTasksResponse:
         """
-        @summary 列出用户全部任务投递
+        @summary Queries all delivery tasks in your Alibaba Cloud account by page. You can filter the delivery tasks by the category of the delivered real-time logs.
         
         @param request: ListUserDeliveryTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13520,7 +14828,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListUserDeliveryTasksResponse:
         """
-        @summary 列出用户全部任务投递
+        @summary Queries all delivery tasks in your Alibaba Cloud account by page. You can filter the delivery tasks by the category of the delivered real-time logs.
         
         @param request: ListUserDeliveryTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13552,7 +14860,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListUserDeliveryTasksRequest,
     ) -> esa20240910_models.ListUserDeliveryTasksResponse:
         """
-        @summary 列出用户全部任务投递
+        @summary Queries all delivery tasks in your Alibaba Cloud account by page. You can filter the delivery tasks by the category of the delivered real-time logs.
         
         @param request: ListUserDeliveryTasksRequest
         @return: ListUserDeliveryTasksResponse
@@ -13565,7 +14873,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListUserDeliveryTasksRequest,
     ) -> esa20240910_models.ListUserDeliveryTasksResponse:
         """
-        @summary 列出用户全部任务投递
+        @summary Queries all delivery tasks in your Alibaba Cloud account by page. You can filter the delivery tasks by the category of the delivered real-time logs.
         
         @param request: ListUserDeliveryTasksRequest
         @return: ListUserDeliveryTasksResponse
@@ -13579,7 +14887,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListUserRatePlanInstancesResponse:
         """
-        @summary 查询该用户下可用的已购套餐实例
+        @summary Queries the plans that you purchased and the details of the plans.
         
         @param request: ListUserRatePlanInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13612,7 +14920,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListUserRatePlanInstancesResponse:
         """
-        @summary 查询该用户下可用的已购套餐实例
+        @summary Queries the plans that you purchased and the details of the plans.
         
         @param request: ListUserRatePlanInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13644,7 +14952,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListUserRatePlanInstancesRequest,
     ) -> esa20240910_models.ListUserRatePlanInstancesResponse:
         """
-        @summary 查询该用户下可用的已购套餐实例
+        @summary Queries the plans that you purchased and the details of the plans.
         
         @param request: ListUserRatePlanInstancesRequest
         @return: ListUserRatePlanInstancesResponse
@@ -13657,7 +14965,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListUserRatePlanInstancesRequest,
     ) -> esa20240910_models.ListUserRatePlanInstancesResponse:
         """
-        @summary 查询该用户下可用的已购套餐实例
+        @summary Queries the plans that you purchased and the details of the plans.
         
         @param request: ListUserRatePlanInstancesRequest
         @return: ListUserRatePlanInstancesResponse
@@ -13671,7 +14979,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafManagedRulesResponse:
         """
-        @summary 列举WAF托管规则
+        @summary Lists all Web Application Firewall (WAF) managed rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
         
         @param tmp_req: ListWafManagedRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13724,7 +15032,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafManagedRulesResponse:
         """
-        @summary 列举WAF托管规则
+        @summary Lists all Web Application Firewall (WAF) managed rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
         
         @param tmp_req: ListWafManagedRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13776,7 +15084,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafManagedRulesRequest,
     ) -> esa20240910_models.ListWafManagedRulesResponse:
         """
-        @summary 列举WAF托管规则
+        @summary Lists all Web Application Firewall (WAF) managed rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
         
         @param request: ListWafManagedRulesRequest
         @return: ListWafManagedRulesResponse
@@ -13789,7 +15097,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafManagedRulesRequest,
     ) -> esa20240910_models.ListWafManagedRulesResponse:
         """
-        @summary 列举WAF托管规则
+        @summary Lists all Web Application Firewall (WAF) managed rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
         
         @param request: ListWafManagedRulesRequest
         @return: ListWafManagedRulesResponse
@@ -13803,7 +15111,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafPhasesResponse:
         """
-        @summary 列举WAF阶段
+        @summary Queries the WAF rule categories that are applied to a website and related rulesets.
         
         @param request: ListWafPhasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13840,7 +15148,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafPhasesResponse:
         """
-        @summary 列举WAF阶段
+        @summary Queries the WAF rule categories that are applied to a website and related rulesets.
         
         @param request: ListWafPhasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13876,7 +15184,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafPhasesRequest,
     ) -> esa20240910_models.ListWafPhasesResponse:
         """
-        @summary 列举WAF阶段
+        @summary Queries the WAF rule categories that are applied to a website and related rulesets.
         
         @param request: ListWafPhasesRequest
         @return: ListWafPhasesResponse
@@ -13889,7 +15197,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafPhasesRequest,
     ) -> esa20240910_models.ListWafPhasesResponse:
         """
-        @summary 列举WAF阶段
+        @summary Queries the WAF rule categories that are applied to a website and related rulesets.
         
         @param request: ListWafPhasesRequest
         @return: ListWafPhasesResponse
@@ -13903,7 +15211,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafRulesResponse:
         """
-        @summary 列举WAF规则
+        @summary Lists all Web Application Firewall (WAF) rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
         
         @param tmp_req: ListWafRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13952,7 +15260,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafRulesResponse:
         """
-        @summary 列举WAF规则
+        @summary Lists all Web Application Firewall (WAF) rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
         
         @param tmp_req: ListWafRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14000,7 +15308,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafRulesRequest,
     ) -> esa20240910_models.ListWafRulesResponse:
         """
-        @summary 列举WAF规则
+        @summary Lists all Web Application Firewall (WAF) rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
         
         @param request: ListWafRulesRequest
         @return: ListWafRulesResponse
@@ -14013,7 +15321,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafRulesRequest,
     ) -> esa20240910_models.ListWafRulesResponse:
         """
-        @summary 列举WAF规则
+        @summary Lists all Web Application Firewall (WAF) rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
         
         @param request: ListWafRulesRequest
         @return: ListWafRulesResponse
@@ -14027,7 +15335,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafRulesetsResponse:
         """
-        @summary 列举WAF规则集
+        @summary Lists the rulesets in a Web Application Firewall (WAF) rule category. You can call this operation to query the basic information about and status of rulesets by page.
         
         @param tmp_req: ListWafRulesetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14076,7 +15384,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafRulesetsResponse:
         """
-        @summary 列举WAF规则集
+        @summary Lists the rulesets in a Web Application Firewall (WAF) rule category. You can call this operation to query the basic information about and status of rulesets by page.
         
         @param tmp_req: ListWafRulesetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14124,7 +15432,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafRulesetsRequest,
     ) -> esa20240910_models.ListWafRulesetsResponse:
         """
-        @summary 列举WAF规则集
+        @summary Lists the rulesets in a Web Application Firewall (WAF) rule category. You can call this operation to query the basic information about and status of rulesets by page.
         
         @param request: ListWafRulesetsRequest
         @return: ListWafRulesetsResponse
@@ -14137,7 +15445,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafRulesetsRequest,
     ) -> esa20240910_models.ListWafRulesetsResponse:
         """
-        @summary 列举WAF规则集
+        @summary Lists the rulesets in a Web Application Firewall (WAF) rule category. You can call this operation to query the basic information about and status of rulesets by page.
         
         @param request: ListWafRulesetsRequest
         @return: ListWafRulesetsResponse
@@ -14151,7 +15459,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafTemplateRulesResponse:
         """
-        @summary 列举WAF模板规则
+        @summary Queries template rules in Web Application Firewall (WAF). In most cases, these rules are pre-defined rulesets that are used to quickly enable protection against common types of attacks.
         
         @param tmp_req: ListWafTemplateRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14194,7 +15502,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafTemplateRulesResponse:
         """
-        @summary 列举WAF模板规则
+        @summary Queries template rules in Web Application Firewall (WAF). In most cases, these rules are pre-defined rulesets that are used to quickly enable protection against common types of attacks.
         
         @param tmp_req: ListWafTemplateRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14236,7 +15544,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafTemplateRulesRequest,
     ) -> esa20240910_models.ListWafTemplateRulesResponse:
         """
-        @summary 列举WAF模板规则
+        @summary Queries template rules in Web Application Firewall (WAF). In most cases, these rules are pre-defined rulesets that are used to quickly enable protection against common types of attacks.
         
         @param request: ListWafTemplateRulesRequest
         @return: ListWafTemplateRulesResponse
@@ -14249,7 +15557,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafTemplateRulesRequest,
     ) -> esa20240910_models.ListWafTemplateRulesResponse:
         """
-        @summary 列举WAF模板规则
+        @summary Queries template rules in Web Application Firewall (WAF). In most cases, these rules are pre-defined rulesets that are used to quickly enable protection against common types of attacks.
         
         @param request: ListWafTemplateRulesRequest
         @return: ListWafTemplateRulesResponse
@@ -14263,7 +15571,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafUsageOfRulesResponse:
         """
-        @summary 列举WAF规则使用情况
+        @summary Queries the usage details of WAF rules.
         
         @param request: ListWafUsageOfRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14300,7 +15608,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWafUsageOfRulesResponse:
         """
-        @summary 列举WAF规则使用情况
+        @summary Queries the usage details of WAF rules.
         
         @param request: ListWafUsageOfRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14336,7 +15644,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafUsageOfRulesRequest,
     ) -> esa20240910_models.ListWafUsageOfRulesResponse:
         """
-        @summary 列举WAF规则使用情况
+        @summary Queries the usage details of WAF rules.
         
         @param request: ListWafUsageOfRulesRequest
         @return: ListWafUsageOfRulesResponse
@@ -14349,7 +15657,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWafUsageOfRulesRequest,
     ) -> esa20240910_models.ListWafUsageOfRulesResponse:
         """
-        @summary 列举WAF规则使用情况
+        @summary Queries the usage details of WAF rules.
         
         @param request: ListWafUsageOfRulesRequest
         @return: ListWafUsageOfRulesResponse
@@ -14363,7 +15671,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWaitingRoomEventsResponse:
         """
-        @summary 查询等候室事件
+        @summary Queries the information about waiting room events for a waiting room.
+        
+        @description You can call this operation to query details of all waiting room events related to a waiting room in a website.
         
         @param request: ListWaitingRoomEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14396,7 +15706,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWaitingRoomEventsResponse:
         """
-        @summary 查询等候室事件
+        @summary Queries the information about waiting room events for a waiting room.
+        
+        @description You can call this operation to query details of all waiting room events related to a waiting room in a website.
         
         @param request: ListWaitingRoomEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14428,7 +15740,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWaitingRoomEventsRequest,
     ) -> esa20240910_models.ListWaitingRoomEventsResponse:
         """
-        @summary 查询等候室事件
+        @summary Queries the information about waiting room events for a waiting room.
+        
+        @description You can call this operation to query details of all waiting room events related to a waiting room in a website.
         
         @param request: ListWaitingRoomEventsRequest
         @return: ListWaitingRoomEventsResponse
@@ -14441,7 +15755,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWaitingRoomEventsRequest,
     ) -> esa20240910_models.ListWaitingRoomEventsResponse:
         """
-        @summary 查询等候室事件
+        @summary Queries the information about waiting room events for a waiting room.
+        
+        @description You can call this operation to query details of all waiting room events related to a waiting room in a website.
         
         @param request: ListWaitingRoomEventsRequest
         @return: ListWaitingRoomEventsResponse
@@ -14455,7 +15771,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWaitingRoomRulesResponse:
         """
-        @summary 查询等候室绕过规则
+        @summary Queries the waiting room bypass rules configured for a waiting room.
+        
+        @description You can call this operation to query the waiting room bypass rules that are associated with a website.
         
         @param request: ListWaitingRoomRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14488,7 +15806,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWaitingRoomRulesResponse:
         """
-        @summary 查询等候室绕过规则
+        @summary Queries the waiting room bypass rules configured for a waiting room.
+        
+        @description You can call this operation to query the waiting room bypass rules that are associated with a website.
         
         @param request: ListWaitingRoomRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14520,7 +15840,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWaitingRoomRulesRequest,
     ) -> esa20240910_models.ListWaitingRoomRulesResponse:
         """
-        @summary 查询等候室绕过规则
+        @summary Queries the waiting room bypass rules configured for a waiting room.
+        
+        @description You can call this operation to query the waiting room bypass rules that are associated with a website.
         
         @param request: ListWaitingRoomRulesRequest
         @return: ListWaitingRoomRulesResponse
@@ -14533,7 +15855,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWaitingRoomRulesRequest,
     ) -> esa20240910_models.ListWaitingRoomRulesResponse:
         """
-        @summary 查询等候室绕过规则
+        @summary Queries the waiting room bypass rules configured for a waiting room.
+        
+        @description You can call this operation to query the waiting room bypass rules that are associated with a website.
         
         @param request: ListWaitingRoomRulesRequest
         @return: ListWaitingRoomRulesResponse
@@ -14547,7 +15871,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWaitingRoomsResponse:
         """
-        @summary 查询等候室
+        @summary Queries the information about all waiting rooms in a website.
+        
+        @description You can call this operation to query detailed configurations about all waiting rooms in a website, including the status, name, and queuing rules of each waiting room.
         
         @param request: ListWaitingRoomsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14580,7 +15906,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWaitingRoomsResponse:
         """
-        @summary 查询等候室
+        @summary Queries the information about all waiting rooms in a website.
+        
+        @description You can call this operation to query detailed configurations about all waiting rooms in a website, including the status, name, and queuing rules of each waiting room.
         
         @param request: ListWaitingRoomsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14612,7 +15940,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWaitingRoomsRequest,
     ) -> esa20240910_models.ListWaitingRoomsResponse:
         """
-        @summary 查询等候室
+        @summary Queries the information about all waiting rooms in a website.
+        
+        @description You can call this operation to query detailed configurations about all waiting rooms in a website, including the status, name, and queuing rules of each waiting room.
         
         @param request: ListWaitingRoomsRequest
         @return: ListWaitingRoomsResponse
@@ -14625,7 +15955,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWaitingRoomsRequest,
     ) -> esa20240910_models.ListWaitingRoomsResponse:
         """
-        @summary 查询等候室
+        @summary Queries the information about all waiting rooms in a website.
+        
+        @description You can call this operation to query detailed configurations about all waiting rooms in a website, including the status, name, and queuing rules of each waiting room.
         
         @param request: ListWaitingRoomsRequest
         @return: ListWaitingRoomsResponse
@@ -14639,7 +15971,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PreloadCachesResponse:
         """
-        @summary 缓存预热
+        @summary Prefetches cache.
         
         @param tmp_req: PreloadCachesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14684,7 +16016,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PreloadCachesResponse:
         """
-        @summary 缓存预热
+        @summary Prefetches cache.
         
         @param tmp_req: PreloadCachesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14728,7 +16060,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.PreloadCachesRequest,
     ) -> esa20240910_models.PreloadCachesResponse:
         """
-        @summary 缓存预热
+        @summary Prefetches cache.
         
         @param request: PreloadCachesRequest
         @return: PreloadCachesResponse
@@ -14741,7 +16073,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.PreloadCachesRequest,
     ) -> esa20240910_models.PreloadCachesResponse:
         """
-        @summary 缓存预热
+        @summary Prefetches cache.
         
         @param request: PreloadCachesRequest
         @return: PreloadCachesResponse
@@ -14755,7 +16087,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PublishEdgeContainerAppVersionResponse:
         """
-        @summary 发布边缘容器应用的某个版本
+        @summary Releases a specific version of a containerized application. You can call this operation to iterate an application.
         
         @param tmp_req: PublishEdgeContainerAppVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14812,7 +16144,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PublishEdgeContainerAppVersionResponse:
         """
-        @summary 发布边缘容器应用的某个版本
+        @summary Releases a specific version of a containerized application. You can call this operation to iterate an application.
         
         @param tmp_req: PublishEdgeContainerAppVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14868,7 +16200,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.PublishEdgeContainerAppVersionRequest,
     ) -> esa20240910_models.PublishEdgeContainerAppVersionResponse:
         """
-        @summary 发布边缘容器应用的某个版本
+        @summary Releases a specific version of a containerized application. You can call this operation to iterate an application.
         
         @param request: PublishEdgeContainerAppVersionRequest
         @return: PublishEdgeContainerAppVersionResponse
@@ -14881,7 +16213,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.PublishEdgeContainerAppVersionRequest,
     ) -> esa20240910_models.PublishEdgeContainerAppVersionResponse:
         """
-        @summary 发布边缘容器应用的某个版本
+        @summary Releases a specific version of a containerized application. You can call this operation to iterate an application.
         
         @param request: PublishEdgeContainerAppVersionRequest
         @return: PublishEdgeContainerAppVersionResponse
@@ -14895,7 +16227,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PublishRoutineCodeVersionResponse:
         """
-        @summary 发布Routine某版本代码
+        @summary Releases a code version of a routine to the staging, canary, or production environment. You can specify the regions where the canary environment is deployed to release your code.
         
         @param tmp_req: PublishRoutineCodeVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14942,7 +16274,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PublishRoutineCodeVersionResponse:
         """
-        @summary 发布Routine某版本代码
+        @summary Releases a code version of a routine to the staging, canary, or production environment. You can specify the regions where the canary environment is deployed to release your code.
         
         @param tmp_req: PublishRoutineCodeVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14988,7 +16320,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.PublishRoutineCodeVersionRequest,
     ) -> esa20240910_models.PublishRoutineCodeVersionResponse:
         """
-        @summary 发布Routine某版本代码
+        @summary Releases a code version of a routine to the staging, canary, or production environment. You can specify the regions where the canary environment is deployed to release your code.
         
         @param request: PublishRoutineCodeVersionRequest
         @return: PublishRoutineCodeVersionResponse
@@ -15001,7 +16333,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.PublishRoutineCodeVersionRequest,
     ) -> esa20240910_models.PublishRoutineCodeVersionResponse:
         """
-        @summary 发布Routine某版本代码
+        @summary Releases a code version of a routine to the staging, canary, or production environment. You can specify the regions where the canary environment is deployed to release your code.
         
         @param request: PublishRoutineCodeVersionRequest
         @return: PublishRoutineCodeVersionResponse
@@ -15015,7 +16347,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PurgeCachesResponse:
         """
-        @summary 缓存刷新
+        @summary Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
         
         @param tmp_req: PurgeCachesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15062,7 +16394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PurgeCachesResponse:
         """
-        @summary 缓存刷新
+        @summary Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
         
         @param tmp_req: PurgeCachesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15108,7 +16440,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.PurgeCachesRequest,
     ) -> esa20240910_models.PurgeCachesResponse:
         """
-        @summary 缓存刷新
+        @summary Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
         
         @param request: PurgeCachesRequest
         @return: PurgeCachesResponse
@@ -15121,7 +16453,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.PurgeCachesRequest,
     ) -> esa20240910_models.PurgeCachesResponse:
         """
-        @summary 缓存刷新
+        @summary Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
         
         @param request: PurgeCachesRequest
         @return: PurgeCachesResponse
@@ -15135,7 +16467,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PutKvResponse:
         """
-        @summary 设置Namespace的Key-Value对
+        @summary Configures a key-value pair for a namespace. The request body can be up to 2 MB.
         
         @param request: PutKvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15182,7 +16514,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PutKvResponse:
         """
-        @summary 设置Namespace的Key-Value对
+        @summary Configures a key-value pair for a namespace. The request body can be up to 2 MB.
         
         @param request: PutKvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15228,7 +16560,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.PutKvRequest,
     ) -> esa20240910_models.PutKvResponse:
         """
-        @summary 设置Namespace的Key-Value对
+        @summary Configures a key-value pair for a namespace. The request body can be up to 2 MB.
         
         @param request: PutKvRequest
         @return: PutKvResponse
@@ -15241,7 +16573,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.PutKvRequest,
     ) -> esa20240910_models.PutKvResponse:
         """
-        @summary 设置Namespace的Key-Value对
+        @summary Configures a key-value pair for a namespace. The request body can be up to 2 MB.
         
         @param request: PutKvRequest
         @return: PutKvResponse
@@ -15255,7 +16587,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PutKvWithHighCapacityResponse:
         """
-        @summary 设置Namespace的Key-Value对，支持最大25M的Body
+        @summary Configures a large key-value pair for a namespace. The request body can be up to 25 MB.
+        
+        @description This operation allows you to upload a larger request body than by using [PutKv](~~PutKv~~). For small request bodies, we recommend that you use [PutKv](~~PutKv~~) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and PutKvWithHighCapacityAdvance to call the operation.
+        func TestPutKvWithHighCapacity() {
+        // Initialize the configurations.
+        cfg := new(openapi.Config)
+        cfg.SetAccessKeyId("xxxxxxxxx")
+        cfg.SetAccessKeySecret("xxxxxxxxxx")
+        cli, err := NewClient(cfg)
+        if err != nil {
+        return err
+        }
+        runtime := &util.RuntimeOptions{}
+        // Construct a request for uploading key-value pairs.
+        namespace := "test-put-kv"
+        key := "test_PutKvWithHighCapacity_0"
+        value := strings.Repeat("t", 101024*1024)
+        rawReq := &PutKvRequest{
+        Namespace: &namespace,
+        Key:       &key,
+        Value:     &value,
+        }
+        payload, err := json.Marshal(rawReq)
+        if err != nil {
+        return err
+        }
+        // If the payload is greater than 2 MB, call the PutKvWithHighCapacity operation for upload.
+        reqHighCapacity := &PutKvWithHighCapacityAdvanceRequest{
+        Namespace: &namespace,
+        Key:       &key,
+        UrlObject: bytes.NewReader([]byte(payload)),
+        }
+        resp, err := cli.PutKvWithHighCapacityAdvance(reqHighCapacity, runtime)
+        if err != nil {
+        return err
+        }
+        return nil
+        }
         
         @param request: PutKvWithHighCapacityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15294,7 +16663,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.PutKvWithHighCapacityResponse:
         """
-        @summary 设置Namespace的Key-Value对，支持最大25M的Body
+        @summary Configures a large key-value pair for a namespace. The request body can be up to 25 MB.
+        
+        @description This operation allows you to upload a larger request body than by using [PutKv](~~PutKv~~). For small request bodies, we recommend that you use [PutKv](~~PutKv~~) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and PutKvWithHighCapacityAdvance to call the operation.
+        func TestPutKvWithHighCapacity() {
+        // Initialize the configurations.
+        cfg := new(openapi.Config)
+        cfg.SetAccessKeyId("xxxxxxxxx")
+        cfg.SetAccessKeySecret("xxxxxxxxxx")
+        cli, err := NewClient(cfg)
+        if err != nil {
+        return err
+        }
+        runtime := &util.RuntimeOptions{}
+        // Construct a request for uploading key-value pairs.
+        namespace := "test-put-kv"
+        key := "test_PutKvWithHighCapacity_0"
+        value := strings.Repeat("t", 101024*1024)
+        rawReq := &PutKvRequest{
+        Namespace: &namespace,
+        Key:       &key,
+        Value:     &value,
+        }
+        payload, err := json.Marshal(rawReq)
+        if err != nil {
+        return err
+        }
+        // If the payload is greater than 2 MB, call the PutKvWithHighCapacity operation for upload.
+        reqHighCapacity := &PutKvWithHighCapacityAdvanceRequest{
+        Namespace: &namespace,
+        Key:       &key,
+        UrlObject: bytes.NewReader([]byte(payload)),
+        }
+        resp, err := cli.PutKvWithHighCapacityAdvance(reqHighCapacity, runtime)
+        if err != nil {
+        return err
+        }
+        return nil
+        }
         
         @param request: PutKvWithHighCapacityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15332,7 +16738,44 @@ class Client(OpenApiClient):
         request: esa20240910_models.PutKvWithHighCapacityRequest,
     ) -> esa20240910_models.PutKvWithHighCapacityResponse:
         """
-        @summary 设置Namespace的Key-Value对，支持最大25M的Body
+        @summary Configures a large key-value pair for a namespace. The request body can be up to 25 MB.
+        
+        @description This operation allows you to upload a larger request body than by using [PutKv](~~PutKv~~). For small request bodies, we recommend that you use [PutKv](~~PutKv~~) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and PutKvWithHighCapacityAdvance to call the operation.
+        func TestPutKvWithHighCapacity() {
+        // Initialize the configurations.
+        cfg := new(openapi.Config)
+        cfg.SetAccessKeyId("xxxxxxxxx")
+        cfg.SetAccessKeySecret("xxxxxxxxxx")
+        cli, err := NewClient(cfg)
+        if err != nil {
+        return err
+        }
+        runtime := &util.RuntimeOptions{}
+        // Construct a request for uploading key-value pairs.
+        namespace := "test-put-kv"
+        key := "test_PutKvWithHighCapacity_0"
+        value := strings.Repeat("t", 101024*1024)
+        rawReq := &PutKvRequest{
+        Namespace: &namespace,
+        Key:       &key,
+        Value:     &value,
+        }
+        payload, err := json.Marshal(rawReq)
+        if err != nil {
+        return err
+        }
+        // If the payload is greater than 2 MB, call the PutKvWithHighCapacity operation for upload.
+        reqHighCapacity := &PutKvWithHighCapacityAdvanceRequest{
+        Namespace: &namespace,
+        Key:       &key,
+        UrlObject: bytes.NewReader([]byte(payload)),
+        }
+        resp, err := cli.PutKvWithHighCapacityAdvance(reqHighCapacity, runtime)
+        if err != nil {
+        return err
+        }
+        return nil
+        }
         
         @param request: PutKvWithHighCapacityRequest
         @return: PutKvWithHighCapacityResponse
@@ -15345,7 +16788,44 @@ class Client(OpenApiClient):
         request: esa20240910_models.PutKvWithHighCapacityRequest,
     ) -> esa20240910_models.PutKvWithHighCapacityResponse:
         """
-        @summary 设置Namespace的Key-Value对，支持最大25M的Body
+        @summary Configures a large key-value pair for a namespace. The request body can be up to 25 MB.
+        
+        @description This operation allows you to upload a larger request body than by using [PutKv](~~PutKv~~). For small request bodies, we recommend that you use [PutKv](~~PutKv~~) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and PutKvWithHighCapacityAdvance to call the operation.
+        func TestPutKvWithHighCapacity() {
+        // Initialize the configurations.
+        cfg := new(openapi.Config)
+        cfg.SetAccessKeyId("xxxxxxxxx")
+        cfg.SetAccessKeySecret("xxxxxxxxxx")
+        cli, err := NewClient(cfg)
+        if err != nil {
+        return err
+        }
+        runtime := &util.RuntimeOptions{}
+        // Construct a request for uploading key-value pairs.
+        namespace := "test-put-kv"
+        key := "test_PutKvWithHighCapacity_0"
+        value := strings.Repeat("t", 101024*1024)
+        rawReq := &PutKvRequest{
+        Namespace: &namespace,
+        Key:       &key,
+        Value:     &value,
+        }
+        payload, err := json.Marshal(rawReq)
+        if err != nil {
+        return err
+        }
+        // If the payload is greater than 2 MB, call the PutKvWithHighCapacity operation for upload.
+        reqHighCapacity := &PutKvWithHighCapacityAdvanceRequest{
+        Namespace: &namespace,
+        Key:       &key,
+        UrlObject: bytes.NewReader([]byte(payload)),
+        }
+        resp, err := cli.PutKvWithHighCapacityAdvance(reqHighCapacity, runtime)
+        if err != nil {
+        return err
+        }
+        return nil
+        }
         
         @param request: PutKvWithHighCapacityRequest
         @return: PutKvWithHighCapacityResponse
@@ -15503,7 +16983,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.RebuildEdgeContainerAppStagingEnvResponse:
         """
-        @summary 重建边缘容器应用的测试环境
+        @summary Rebuilds the staging environment for containerized applications.
         
         @param request: RebuildEdgeContainerAppStagingEnvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15538,7 +17018,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.RebuildEdgeContainerAppStagingEnvResponse:
         """
-        @summary 重建边缘容器应用的测试环境
+        @summary Rebuilds the staging environment for containerized applications.
         
         @param request: RebuildEdgeContainerAppStagingEnvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15572,7 +17052,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.RebuildEdgeContainerAppStagingEnvRequest,
     ) -> esa20240910_models.RebuildEdgeContainerAppStagingEnvResponse:
         """
-        @summary 重建边缘容器应用的测试环境
+        @summary Rebuilds the staging environment for containerized applications.
         
         @param request: RebuildEdgeContainerAppStagingEnvRequest
         @return: RebuildEdgeContainerAppStagingEnvResponse
@@ -15585,7 +17065,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.RebuildEdgeContainerAppStagingEnvRequest,
     ) -> esa20240910_models.RebuildEdgeContainerAppStagingEnvResponse:
         """
-        @summary 重建边缘容器应用的测试环境
+        @summary Rebuilds the staging environment for containerized applications.
         
         @param request: RebuildEdgeContainerAppStagingEnvRequest
         @return: RebuildEdgeContainerAppStagingEnvResponse
@@ -15599,7 +17079,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ResetScheduledPreloadJobResponse:
         """
-        @summary 重置定时预热任务的进度，从头开始预热
+        @summary Resets the progress of a scheduled prefetch task and starts the prefetch from the beginning.
         
         @param request: ResetScheduledPreloadJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15634,7 +17114,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ResetScheduledPreloadJobResponse:
         """
-        @summary 重置定时预热任务的进度，从头开始预热
+        @summary Resets the progress of a scheduled prefetch task and starts the prefetch from the beginning.
         
         @param request: ResetScheduledPreloadJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15668,7 +17148,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ResetScheduledPreloadJobRequest,
     ) -> esa20240910_models.ResetScheduledPreloadJobResponse:
         """
-        @summary 重置定时预热任务的进度，从头开始预热
+        @summary Resets the progress of a scheduled prefetch task and starts the prefetch from the beginning.
         
         @param request: ResetScheduledPreloadJobRequest
         @return: ResetScheduledPreloadJobResponse
@@ -15681,7 +17161,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ResetScheduledPreloadJobRequest,
     ) -> esa20240910_models.ResetScheduledPreloadJobResponse:
         """
-        @summary 重置定时预热任务的进度，从头开始预热
+        @summary Resets the progress of a scheduled prefetch task and starts the prefetch from the beginning.
         
         @param request: ResetScheduledPreloadJobRequest
         @return: ResetScheduledPreloadJobResponse
@@ -15695,7 +17175,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.RollbackEdgeContainerAppVersionResponse:
         """
-        @summary 回滚边缘容器应用的某个版本
+        @summary Rolls back a version of a containerized application.
         
         @param request: RollbackEdgeContainerAppVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15736,7 +17216,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.RollbackEdgeContainerAppVersionResponse:
         """
-        @summary 回滚边缘容器应用的某个版本
+        @summary Rolls back a version of a containerized application.
         
         @param request: RollbackEdgeContainerAppVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15776,7 +17256,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.RollbackEdgeContainerAppVersionRequest,
     ) -> esa20240910_models.RollbackEdgeContainerAppVersionResponse:
         """
-        @summary 回滚边缘容器应用的某个版本
+        @summary Rolls back a version of a containerized application.
         
         @param request: RollbackEdgeContainerAppVersionRequest
         @return: RollbackEdgeContainerAppVersionResponse
@@ -15789,7 +17269,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.RollbackEdgeContainerAppVersionRequest,
     ) -> esa20240910_models.RollbackEdgeContainerAppVersionResponse:
         """
-        @summary 回滚边缘容器应用的某个版本
+        @summary Rolls back a version of a containerized application.
         
         @param request: RollbackEdgeContainerAppVersionRequest
         @return: RollbackEdgeContainerAppVersionResponse
@@ -15803,7 +17283,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.SetCertificateResponse:
         """
-        @summary 设置证书
+        @summary Configures whether to enable certificates and update certificate information for a website.
         
         @param request: SetCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15860,7 +17340,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.SetCertificateResponse:
         """
-        @summary 设置证书
+        @summary Configures whether to enable certificates and update certificate information for a website.
         
         @param request: SetCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15916,7 +17396,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.SetCertificateRequest,
     ) -> esa20240910_models.SetCertificateResponse:
         """
-        @summary 设置证书
+        @summary Configures whether to enable certificates and update certificate information for a website.
         
         @param request: SetCertificateRequest
         @return: SetCertificateResponse
@@ -15929,7 +17409,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.SetCertificateRequest,
     ) -> esa20240910_models.SetCertificateResponse:
         """
-        @summary 设置证书
+        @summary Configures whether to enable certificates and update certificate information for a website.
         
         @param request: SetCertificateRequest
         @return: SetCertificateResponse
@@ -15943,7 +17423,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.SetHttpDDoSAttackIntelligentProtectionResponse:
         """
-        @summary 设置HTTP DDoS智能防护配置信息
+        @summary Configures smart HTTP DDoS protection.
         
         @param request: SetHttpDDoSAttackIntelligentProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15982,7 +17462,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.SetHttpDDoSAttackIntelligentProtectionResponse:
         """
-        @summary 设置HTTP DDoS智能防护配置信息
+        @summary Configures smart HTTP DDoS protection.
         
         @param request: SetHttpDDoSAttackIntelligentProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16020,7 +17500,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.SetHttpDDoSAttackIntelligentProtectionRequest,
     ) -> esa20240910_models.SetHttpDDoSAttackIntelligentProtectionResponse:
         """
-        @summary 设置HTTP DDoS智能防护配置信息
+        @summary Configures smart HTTP DDoS protection.
         
         @param request: SetHttpDDoSAttackIntelligentProtectionRequest
         @return: SetHttpDDoSAttackIntelligentProtectionResponse
@@ -16033,7 +17513,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.SetHttpDDoSAttackIntelligentProtectionRequest,
     ) -> esa20240910_models.SetHttpDDoSAttackIntelligentProtectionResponse:
         """
-        @summary 设置HTTP DDoS智能防护配置信息
+        @summary Configures smart HTTP DDoS protection.
         
         @param request: SetHttpDDoSAttackIntelligentProtectionRequest
         @return: SetHttpDDoSAttackIntelligentProtectionResponse
@@ -16047,7 +17527,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.SetHttpDDoSAttackProtectionResponse:
         """
-        @summary 设置HTTP DDoS攻击防护配置信息
+        @summary Configures HTTP DDoS attack protection for a website.
         
         @param request: SetHttpDDoSAttackProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16084,7 +17564,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.SetHttpDDoSAttackProtectionResponse:
         """
-        @summary 设置HTTP DDoS攻击防护配置信息
+        @summary Configures HTTP DDoS attack protection for a website.
         
         @param request: SetHttpDDoSAttackProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16120,7 +17600,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.SetHttpDDoSAttackProtectionRequest,
     ) -> esa20240910_models.SetHttpDDoSAttackProtectionResponse:
         """
-        @summary 设置HTTP DDoS攻击防护配置信息
+        @summary Configures HTTP DDoS attack protection for a website.
         
         @param request: SetHttpDDoSAttackProtectionRequest
         @return: SetHttpDDoSAttackProtectionResponse
@@ -16133,7 +17613,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.SetHttpDDoSAttackProtectionRequest,
     ) -> esa20240910_models.SetHttpDDoSAttackProtectionResponse:
         """
-        @summary 设置HTTP DDoS攻击防护配置信息
+        @summary Configures HTTP DDoS attack protection for a website.
         
         @param request: SetHttpDDoSAttackProtectionRequest
         @return: SetHttpDDoSAttackProtectionResponse
@@ -16147,7 +17627,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.StartScheduledPreloadExecutionResponse:
         """
-        @summary 开始单个定时预热计划
+        @summary Starts a scheduled prefetch plan based on the plan ID.
         
         @param request: StartScheduledPreloadExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16182,7 +17662,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.StartScheduledPreloadExecutionResponse:
         """
-        @summary 开始单个定时预热计划
+        @summary Starts a scheduled prefetch plan based on the plan ID.
         
         @param request: StartScheduledPreloadExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16216,7 +17696,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.StartScheduledPreloadExecutionRequest,
     ) -> esa20240910_models.StartScheduledPreloadExecutionResponse:
         """
-        @summary 开始单个定时预热计划
+        @summary Starts a scheduled prefetch plan based on the plan ID.
         
         @param request: StartScheduledPreloadExecutionRequest
         @return: StartScheduledPreloadExecutionResponse
@@ -16229,7 +17709,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.StartScheduledPreloadExecutionRequest,
     ) -> esa20240910_models.StartScheduledPreloadExecutionResponse:
         """
-        @summary 开始单个定时预热计划
+        @summary Starts a scheduled prefetch plan based on the plan ID.
         
         @param request: StartScheduledPreloadExecutionRequest
         @return: StartScheduledPreloadExecutionResponse
@@ -16243,7 +17723,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.StopScheduledPreloadExecutionResponse:
         """
-        @summary 停止单个定时预热计划
+        @summary Stops a scheduled prefetch plan based on the plan ID.
         
         @param request: StopScheduledPreloadExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16278,7 +17758,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.StopScheduledPreloadExecutionResponse:
         """
-        @summary 停止单个定时预热计划
+        @summary Stops a scheduled prefetch plan based on the plan ID.
         
         @param request: StopScheduledPreloadExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16312,7 +17792,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.StopScheduledPreloadExecutionRequest,
     ) -> esa20240910_models.StopScheduledPreloadExecutionResponse:
         """
-        @summary 停止单个定时预热计划
+        @summary Stops a scheduled prefetch plan based on the plan ID.
         
         @param request: StopScheduledPreloadExecutionRequest
         @return: StopScheduledPreloadExecutionResponse
@@ -16325,7 +17805,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.StopScheduledPreloadExecutionRequest,
     ) -> esa20240910_models.StopScheduledPreloadExecutionResponse:
         """
-        @summary 停止单个定时预热计划
+        @summary Stops a scheduled prefetch plan based on the plan ID.
         
         @param request: StopScheduledPreloadExecutionRequest
         @return: StopScheduledPreloadExecutionResponse
@@ -16339,7 +17819,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UntagResourcesResponse:
         """
-        @summary 为资源列表统一解绑标签
+        @summary Deletes a resource tag based on a specified resource ID.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16386,7 +17866,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UntagResourcesResponse:
         """
-        @summary 为资源列表统一解绑标签
+        @summary Deletes a resource tag based on a specified resource ID.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16432,7 +17912,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UntagResourcesRequest,
     ) -> esa20240910_models.UntagResourcesResponse:
         """
-        @summary 为资源列表统一解绑标签
+        @summary Deletes a resource tag based on a specified resource ID.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -16445,7 +17925,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UntagResourcesRequest,
     ) -> esa20240910_models.UntagResourcesResponse:
         """
-        @summary 为资源列表统一解绑标签
+        @summary Deletes a resource tag based on a specified resource ID.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -16459,7 +17939,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateCustomScenePolicyResponse:
         """
-        @summary 修改定制场景策略
+        @summary Modifies the configurations of a custom scenario-specific policy.
         
         @param request: UpdateCustomScenePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16504,7 +17984,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateCustomScenePolicyResponse:
         """
-        @summary 修改定制场景策略
+        @summary Modifies the configurations of a custom scenario-specific policy.
         
         @param request: UpdateCustomScenePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16548,7 +18028,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateCustomScenePolicyRequest,
     ) -> esa20240910_models.UpdateCustomScenePolicyResponse:
         """
-        @summary 修改定制场景策略
+        @summary Modifies the configurations of a custom scenario-specific policy.
         
         @param request: UpdateCustomScenePolicyRequest
         @return: UpdateCustomScenePolicyResponse
@@ -16561,7 +18041,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateCustomScenePolicyRequest,
     ) -> esa20240910_models.UpdateCustomScenePolicyResponse:
         """
-        @summary 修改定制场景策略
+        @summary Modifies the configurations of a custom scenario-specific policy.
         
         @param request: UpdateCustomScenePolicyRequest
         @return: UpdateCustomScenePolicyResponse
@@ -16575,7 +18055,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateKvNamespaceResponse:
         """
-        @summary 重命名账号下的Namespace
+        @summary Updates the name of a namespace in Edge KV.
         
         @param request: UpdateKvNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16612,7 +18092,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateKvNamespaceResponse:
         """
-        @summary 重命名账号下的Namespace
+        @summary Updates the name of a namespace in Edge KV.
         
         @param request: UpdateKvNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16648,7 +18128,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateKvNamespaceRequest,
     ) -> esa20240910_models.UpdateKvNamespaceResponse:
         """
-        @summary 重命名账号下的Namespace
+        @summary Updates the name of a namespace in Edge KV.
         
         @param request: UpdateKvNamespaceRequest
         @return: UpdateKvNamespaceResponse
@@ -16661,7 +18141,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateKvNamespaceRequest,
     ) -> esa20240910_models.UpdateKvNamespaceResponse:
         """
-        @summary 重命名账号下的Namespace
+        @summary Updates the name of a namespace in Edge KV.
         
         @param request: UpdateKvNamespaceRequest
         @return: UpdateKvNamespaceResponse
@@ -16675,7 +18155,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateListResponse:
         """
-        @summary 更新自定义列表
+        @summary Updates a custom list.
         
         @param tmp_req: UpdateListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16720,7 +18200,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateListResponse:
         """
-        @summary 更新自定义列表
+        @summary Updates a custom list.
         
         @param tmp_req: UpdateListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16764,7 +18244,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateListRequest,
     ) -> esa20240910_models.UpdateListResponse:
         """
-        @summary 更新自定义列表
+        @summary Updates a custom list.
         
         @param request: UpdateListRequest
         @return: UpdateListResponse
@@ -16777,7 +18257,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateListRequest,
     ) -> esa20240910_models.UpdateListResponse:
         """
-        @summary 更新自定义列表
+        @summary Updates a custom list.
         
         @param request: UpdateListRequest
         @return: UpdateListResponse
@@ -16785,13 +18265,209 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_list_with_options_async(request, runtime)
 
+    def update_origin_protection_with_options(
+        self,
+        request: esa20240910_models.UpdateOriginProtectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateOriginProtectionResponse:
+        """
+        @summary 修改源站防护
+        
+        @param request: UpdateOriginProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOriginProtectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.origin_converge):
+            query['OriginConverge'] = request.origin_converge
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOriginProtection',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateOriginProtectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_origin_protection_with_options_async(
+        self,
+        request: esa20240910_models.UpdateOriginProtectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateOriginProtectionResponse:
+        """
+        @summary 修改源站防护
+        
+        @param request: UpdateOriginProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOriginProtectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.origin_converge):
+            query['OriginConverge'] = request.origin_converge
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOriginProtection',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateOriginProtectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_origin_protection(
+        self,
+        request: esa20240910_models.UpdateOriginProtectionRequest,
+    ) -> esa20240910_models.UpdateOriginProtectionResponse:
+        """
+        @summary 修改源站防护
+        
+        @param request: UpdateOriginProtectionRequest
+        @return: UpdateOriginProtectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_origin_protection_with_options(request, runtime)
+
+    async def update_origin_protection_async(
+        self,
+        request: esa20240910_models.UpdateOriginProtectionRequest,
+    ) -> esa20240910_models.UpdateOriginProtectionResponse:
+        """
+        @summary 修改源站防护
+        
+        @param request: UpdateOriginProtectionRequest
+        @return: UpdateOriginProtectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_origin_protection_with_options_async(request, runtime)
+
+    def update_origin_protection_ip_white_list_with_options(
+        self,
+        request: esa20240910_models.UpdateOriginProtectionIpWhiteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateOriginProtectionIpWhiteListResponse:
+        """
+        @summary 确认更新站点回源IP白名单到最新版本
+        
+        @param request: UpdateOriginProtectionIpWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOriginProtectionIpWhiteListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOriginProtectionIpWhiteList',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateOriginProtectionIpWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_origin_protection_ip_white_list_with_options_async(
+        self,
+        request: esa20240910_models.UpdateOriginProtectionIpWhiteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateOriginProtectionIpWhiteListResponse:
+        """
+        @summary 确认更新站点回源IP白名单到最新版本
+        
+        @param request: UpdateOriginProtectionIpWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOriginProtectionIpWhiteListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOriginProtectionIpWhiteList',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateOriginProtectionIpWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_origin_protection_ip_white_list(
+        self,
+        request: esa20240910_models.UpdateOriginProtectionIpWhiteListRequest,
+    ) -> esa20240910_models.UpdateOriginProtectionIpWhiteListResponse:
+        """
+        @summary 确认更新站点回源IP白名单到最新版本
+        
+        @param request: UpdateOriginProtectionIpWhiteListRequest
+        @return: UpdateOriginProtectionIpWhiteListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_origin_protection_ip_white_list_with_options(request, runtime)
+
+    async def update_origin_protection_ip_white_list_async(
+        self,
+        request: esa20240910_models.UpdateOriginProtectionIpWhiteListRequest,
+    ) -> esa20240910_models.UpdateOriginProtectionIpWhiteListResponse:
+        """
+        @summary 确认更新站点回源IP白名单到最新版本
+        
+        @param request: UpdateOriginProtectionIpWhiteListRequest
+        @return: UpdateOriginProtectionIpWhiteListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_origin_protection_ip_white_list_with_options_async(request, runtime)
+
     def update_page_with_options(
         self,
         request: esa20240910_models.UpdatePageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdatePageResponse:
         """
-        @summary 更新自定义响应页面
+        @summary Modifies the configurations of a custom error page, such as the name, description, content type, and content of the page.
         
         @param request: UpdatePageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16834,7 +18510,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdatePageResponse:
         """
-        @summary 更新自定义响应页面
+        @summary Modifies the configurations of a custom error page, such as the name, description, content type, and content of the page.
         
         @param request: UpdatePageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16876,7 +18552,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdatePageRequest,
     ) -> esa20240910_models.UpdatePageResponse:
         """
-        @summary 更新自定义响应页面
+        @summary Modifies the configurations of a custom error page, such as the name, description, content type, and content of the page.
         
         @param request: UpdatePageRequest
         @return: UpdatePageResponse
@@ -16889,7 +18565,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdatePageRequest,
     ) -> esa20240910_models.UpdatePageResponse:
         """
-        @summary 更新自定义响应页面
+        @summary Modifies the configurations of a custom error page, such as the name, description, content type, and content of the page.
         
         @param request: UpdatePageRequest
         @return: UpdatePageResponse
@@ -16903,7 +18579,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateRecordResponse:
         """
-        @summary 更新记录
+        @summary Updates multiple types of DNS records and origin authentication configurations.
+        
+        @description This operation allows you to update multiple types of DNS records, including but not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. You can modify the record content by providing the necessary fields such as Value, Priority, and Flag. For origins added in CNAME records such as OSS and S3, the API enables you to configure authentication details to ensure secure access.
+        ### [](#)Usage notes
+        The record value (Value) must match the record type. For example, the CNAME record should correspond to the target domain name.
+        You must specify a priority (Priority) for some record types, such as MX and SRV.
+        You must specify specific fields such as Flag and Tag for CAA records.
+        When you update security records such as CERT and SSHFP, you must accurately set fields such as Type and Algorithm.
+        If your origin type is OSS or S3, configure the authentication details in AuthConf based on the permissions.
         
         @param tmp_req: UpdateRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16960,7 +18644,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateRecordResponse:
         """
-        @summary 更新记录
+        @summary Updates multiple types of DNS records and origin authentication configurations.
+        
+        @description This operation allows you to update multiple types of DNS records, including but not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. You can modify the record content by providing the necessary fields such as Value, Priority, and Flag. For origins added in CNAME records such as OSS and S3, the API enables you to configure authentication details to ensure secure access.
+        ### [](#)Usage notes
+        The record value (Value) must match the record type. For example, the CNAME record should correspond to the target domain name.
+        You must specify a priority (Priority) for some record types, such as MX and SRV.
+        You must specify specific fields such as Flag and Tag for CAA records.
+        When you update security records such as CERT and SSHFP, you must accurately set fields such as Type and Algorithm.
+        If your origin type is OSS or S3, configure the authentication details in AuthConf based on the permissions.
         
         @param tmp_req: UpdateRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17016,7 +18708,15 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateRecordRequest,
     ) -> esa20240910_models.UpdateRecordResponse:
         """
-        @summary 更新记录
+        @summary Updates multiple types of DNS records and origin authentication configurations.
+        
+        @description This operation allows you to update multiple types of DNS records, including but not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. You can modify the record content by providing the necessary fields such as Value, Priority, and Flag. For origins added in CNAME records such as OSS and S3, the API enables you to configure authentication details to ensure secure access.
+        ### [](#)Usage notes
+        The record value (Value) must match the record type. For example, the CNAME record should correspond to the target domain name.
+        You must specify a priority (Priority) for some record types, such as MX and SRV.
+        You must specify specific fields such as Flag and Tag for CAA records.
+        When you update security records such as CERT and SSHFP, you must accurately set fields such as Type and Algorithm.
+        If your origin type is OSS or S3, configure the authentication details in AuthConf based on the permissions.
         
         @param request: UpdateRecordRequest
         @return: UpdateRecordResponse
@@ -17029,7 +18729,15 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateRecordRequest,
     ) -> esa20240910_models.UpdateRecordResponse:
         """
-        @summary 更新记录
+        @summary Updates multiple types of DNS records and origin authentication configurations.
+        
+        @description This operation allows you to update multiple types of DNS records, including but not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. You can modify the record content by providing the necessary fields such as Value, Priority, and Flag. For origins added in CNAME records such as OSS and S3, the API enables you to configure authentication details to ensure secure access.
+        ### [](#)Usage notes
+        The record value (Value) must match the record type. For example, the CNAME record should correspond to the target domain name.
+        You must specify a priority (Priority) for some record types, such as MX and SRV.
+        You must specify specific fields such as Flag and Tag for CAA records.
+        When you update security records such as CERT and SSHFP, you must accurately set fields such as Type and Algorithm.
+        If your origin type is OSS or S3, configure the authentication details in AuthConf based on the permissions.
         
         @param request: UpdateRecordRequest
         @return: UpdateRecordResponse
@@ -17043,7 +18751,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateScheduledPreloadExecutionResponse:
         """
-        @summary 更新单个定时预热计划
+        @summary Updates a scheduled prefetch plan based on the plan ID.
         
         @param request: UpdateScheduledPreloadExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17088,7 +18796,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateScheduledPreloadExecutionResponse:
         """
-        @summary 更新单个定时预热计划
+        @summary Updates a scheduled prefetch plan based on the plan ID.
         
         @param request: UpdateScheduledPreloadExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17132,7 +18840,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateScheduledPreloadExecutionRequest,
     ) -> esa20240910_models.UpdateScheduledPreloadExecutionResponse:
         """
-        @summary 更新单个定时预热计划
+        @summary Updates a scheduled prefetch plan based on the plan ID.
         
         @param request: UpdateScheduledPreloadExecutionRequest
         @return: UpdateScheduledPreloadExecutionResponse
@@ -17145,7 +18853,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateScheduledPreloadExecutionRequest,
     ) -> esa20240910_models.UpdateScheduledPreloadExecutionResponse:
         """
-        @summary 更新单个定时预热计划
+        @summary Updates a scheduled prefetch plan based on the plan ID.
         
         @param request: UpdateScheduledPreloadExecutionRequest
         @return: UpdateScheduledPreloadExecutionResponse
@@ -17159,7 +18867,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSiteAccessTypeResponse:
         """
-        @summary 修改站点接入方式
+        @summary Converts the DNS setup option of a website.
+        
+        @description When you change the DNS setup of a website from NS to CNAME, take note of the following items:
+        Make sure that the website has only proxied A/AAAA and CNAME records.
+        Make sure that ESA proxy is not disabled for the website and custom nameservers are not configured.
         
         @param request: UpdateSiteAccessTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17196,7 +18908,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSiteAccessTypeResponse:
         """
-        @summary 修改站点接入方式
+        @summary Converts the DNS setup option of a website.
+        
+        @description When you change the DNS setup of a website from NS to CNAME, take note of the following items:
+        Make sure that the website has only proxied A/AAAA and CNAME records.
+        Make sure that ESA proxy is not disabled for the website and custom nameservers are not configured.
         
         @param request: UpdateSiteAccessTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17232,7 +18948,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSiteAccessTypeRequest,
     ) -> esa20240910_models.UpdateSiteAccessTypeResponse:
         """
-        @summary 修改站点接入方式
+        @summary Converts the DNS setup option of a website.
+        
+        @description When you change the DNS setup of a website from NS to CNAME, take note of the following items:
+        Make sure that the website has only proxied A/AAAA and CNAME records.
+        Make sure that ESA proxy is not disabled for the website and custom nameservers are not configured.
         
         @param request: UpdateSiteAccessTypeRequest
         @return: UpdateSiteAccessTypeResponse
@@ -17245,7 +18965,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSiteAccessTypeRequest,
     ) -> esa20240910_models.UpdateSiteAccessTypeResponse:
         """
-        @summary 修改站点接入方式
+        @summary Converts the DNS setup option of a website.
+        
+        @description When you change the DNS setup of a website from NS to CNAME, take note of the following items:
+        Make sure that the website has only proxied A/AAAA and CNAME records.
+        Make sure that ESA proxy is not disabled for the website and custom nameservers are not configured.
         
         @param request: UpdateSiteAccessTypeRequest
         @return: UpdateSiteAccessTypeResponse
@@ -17259,7 +18983,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSiteCoverageResponse:
         """
-        @summary 更新站点加速区域
+        @summary Modifies the service location for a single website. This updates the acceleration configuration of the website to adapt to changes in traffic distribution, and improve user experience in specific regions.
         
         @param request: UpdateSiteCoverageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17296,7 +19020,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSiteCoverageResponse:
         """
-        @summary 更新站点加速区域
+        @summary Modifies the service location for a single website. This updates the acceleration configuration of the website to adapt to changes in traffic distribution, and improve user experience in specific regions.
         
         @param request: UpdateSiteCoverageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17332,7 +19056,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSiteCoverageRequest,
     ) -> esa20240910_models.UpdateSiteCoverageResponse:
         """
-        @summary 更新站点加速区域
+        @summary Modifies the service location for a single website. This updates the acceleration configuration of the website to adapt to changes in traffic distribution, and improve user experience in specific regions.
         
         @param request: UpdateSiteCoverageRequest
         @return: UpdateSiteCoverageResponse
@@ -17345,7 +19069,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSiteCoverageRequest,
     ) -> esa20240910_models.UpdateSiteCoverageResponse:
         """
-        @summary 更新站点加速区域
+        @summary Modifies the service location for a single website. This updates the acceleration configuration of the website to adapt to changes in traffic distribution, and improve user experience in specific regions.
         
         @param request: UpdateSiteCoverageRequest
         @return: UpdateSiteCoverageResponse
@@ -17359,7 +19083,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSiteCustomLogResponse:
         """
-        @summary 修改自定义字段
+        @summary Modifies the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
         
         @param tmp_req: UpdateSiteCustomLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17408,7 +19132,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSiteCustomLogResponse:
         """
-        @summary 修改自定义字段
+        @summary Modifies the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
         
         @param tmp_req: UpdateSiteCustomLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17456,7 +19180,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSiteCustomLogRequest,
     ) -> esa20240910_models.UpdateSiteCustomLogResponse:
         """
-        @summary 修改自定义字段
+        @summary Modifies the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
         
         @param request: UpdateSiteCustomLogRequest
         @return: UpdateSiteCustomLogResponse
@@ -17469,7 +19193,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSiteCustomLogRequest,
     ) -> esa20240910_models.UpdateSiteCustomLogResponse:
         """
-        @summary 修改自定义字段
+        @summary Modifies the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
         
         @param request: UpdateSiteCustomLogRequest
         @return: UpdateSiteCustomLogResponse
@@ -17483,7 +19207,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSiteDeliveryTaskResponse:
         """
-        @summary 修改一个任务投递
+        @summary Modifies a real-time log delivery task.
         
         @param request: UpdateSiteDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17526,7 +19250,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSiteDeliveryTaskResponse:
         """
-        @summary 修改一个任务投递
+        @summary Modifies a real-time log delivery task.
         
         @param request: UpdateSiteDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17568,7 +19292,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSiteDeliveryTaskRequest,
     ) -> esa20240910_models.UpdateSiteDeliveryTaskResponse:
         """
-        @summary 修改一个任务投递
+        @summary Modifies a real-time log delivery task.
         
         @param request: UpdateSiteDeliveryTaskRequest
         @return: UpdateSiteDeliveryTaskResponse
@@ -17581,7 +19305,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSiteDeliveryTaskRequest,
     ) -> esa20240910_models.UpdateSiteDeliveryTaskResponse:
         """
-        @summary 修改一个任务投递
+        @summary Modifies a real-time log delivery task.
         
         @param request: UpdateSiteDeliveryTaskRequest
         @return: UpdateSiteDeliveryTaskResponse
@@ -17595,7 +19319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSiteDeliveryTaskStatusResponse:
         """
-        @summary 上下线一个任务投递
+        @summary Changes the status of a real-time log delivery task.
         
         @param request: UpdateSiteDeliveryTaskStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17628,7 +19352,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSiteDeliveryTaskStatusResponse:
         """
-        @summary 上下线一个任务投递
+        @summary Changes the status of a real-time log delivery task.
         
         @param request: UpdateSiteDeliveryTaskStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17660,7 +19384,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSiteDeliveryTaskStatusRequest,
     ) -> esa20240910_models.UpdateSiteDeliveryTaskStatusResponse:
         """
-        @summary 上下线一个任务投递
+        @summary Changes the status of a real-time log delivery task.
         
         @param request: UpdateSiteDeliveryTaskStatusRequest
         @return: UpdateSiteDeliveryTaskStatusResponse
@@ -17673,7 +19397,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSiteDeliveryTaskStatusRequest,
     ) -> esa20240910_models.UpdateSiteDeliveryTaskStatusResponse:
         """
-        @summary 上下线一个任务投递
+        @summary Changes the status of a real-time log delivery task.
         
         @param request: UpdateSiteDeliveryTaskStatusRequest
         @return: UpdateSiteDeliveryTaskStatusResponse
@@ -17681,13 +19405,289 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_site_delivery_task_status_with_options_async(request, runtime)
 
+    def update_site_function_with_options(
+        self,
+        tmp_req: esa20240910_models.UpdateSiteFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateSiteFunctionResponse:
+        """
+        @summary 修改站点配置
+        
+        @param tmp_req: UpdateSiteFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSiteFunctionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateSiteFunctionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cache_reserve):
+            request.cache_reserve_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cache_reserve, 'CacheReserve', 'json')
+        if not UtilClient.is_unset(tmp_req.cache_rules):
+            request.cache_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cache_rules, 'CacheRules', 'json')
+        if not UtilClient.is_unset(tmp_req.cache_tags):
+            request.cache_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cache_tags, 'CacheTags', 'json')
+        if not UtilClient.is_unset(tmp_req.cname_flattening):
+            request.cname_flattening_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cname_flattening, 'CnameFlattening', 'json')
+        if not UtilClient.is_unset(tmp_req.compression_rules):
+            request.compression_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.compression_rules, 'CompressionRules', 'json')
+        if not UtilClient.is_unset(tmp_req.cross_border_optimization):
+            request.cross_border_optimization_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cross_border_optimization, 'CrossBorderOptimization', 'json')
+        if not UtilClient.is_unset(tmp_req.development_mode):
+            request.development_mode_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.development_mode, 'DevelopmentMode', 'json')
+        if not UtilClient.is_unset(tmp_req.http_request_header_modification_rules):
+            request.http_request_header_modification_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.http_request_header_modification_rules, 'HttpRequestHeaderModificationRules', 'json')
+        if not UtilClient.is_unset(tmp_req.http_response_header_modification_rules):
+            request.http_response_header_modification_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.http_response_header_modification_rules, 'HttpResponseHeaderModificationRules', 'json')
+        if not UtilClient.is_unset(tmp_req.https_application_configuration):
+            request.https_application_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.https_application_configuration, 'HttpsApplicationConfiguration', 'json')
+        if not UtilClient.is_unset(tmp_req.https_basic_configuration):
+            request.https_basic_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.https_basic_configuration, 'HttpsBasicConfiguration', 'json')
+        if not UtilClient.is_unset(tmp_req.image_transform):
+            request.image_transform_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_transform, 'ImageTransform', 'json')
+        if not UtilClient.is_unset(tmp_req.ipv_6):
+            request.ipv_6shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ipv_6, 'Ipv6', 'json')
+        if not UtilClient.is_unset(tmp_req.managed_transforms):
+            request.managed_transforms_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managed_transforms, 'ManagedTransforms', 'json')
+        if not UtilClient.is_unset(tmp_req.network_optimization):
+            request.network_optimization_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network_optimization, 'NetworkOptimization', 'json')
+        if not UtilClient.is_unset(tmp_req.origin_rules):
+            request.origin_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.origin_rules, 'OriginRules', 'json')
+        if not UtilClient.is_unset(tmp_req.redirect_rules):
+            request.redirect_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect_rules, 'RedirectRules', 'json')
+        if not UtilClient.is_unset(tmp_req.rewrite_url_rules):
+            request.rewrite_url_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rewrite_url_rules, 'RewriteUrlRules', 'json')
+        if not UtilClient.is_unset(tmp_req.seo_bypass):
+            request.seo_bypass_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.seo_bypass, 'SeoBypass', 'json')
+        if not UtilClient.is_unset(tmp_req.site_name_exclusive):
+            request.site_name_exclusive_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.site_name_exclusive, 'SiteNameExclusive', 'json')
+        if not UtilClient.is_unset(tmp_req.site_pause):
+            request.site_pause_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.site_pause, 'SitePause', 'json')
+        if not UtilClient.is_unset(tmp_req.tiered_cache):
+            request.tiered_cache_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tiered_cache, 'TieredCache', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cache_reserve_shrink):
+            query['CacheReserve'] = request.cache_reserve_shrink
+        if not UtilClient.is_unset(request.cache_rules_shrink):
+            query['CacheRules'] = request.cache_rules_shrink
+        if not UtilClient.is_unset(request.cache_tags_shrink):
+            query['CacheTags'] = request.cache_tags_shrink
+        if not UtilClient.is_unset(request.cname_flattening_shrink):
+            query['CnameFlattening'] = request.cname_flattening_shrink
+        if not UtilClient.is_unset(request.compression_rules_shrink):
+            query['CompressionRules'] = request.compression_rules_shrink
+        if not UtilClient.is_unset(request.cross_border_optimization_shrink):
+            query['CrossBorderOptimization'] = request.cross_border_optimization_shrink
+        if not UtilClient.is_unset(request.development_mode_shrink):
+            query['DevelopmentMode'] = request.development_mode_shrink
+        if not UtilClient.is_unset(request.http_request_header_modification_rules_shrink):
+            query['HttpRequestHeaderModificationRules'] = request.http_request_header_modification_rules_shrink
+        if not UtilClient.is_unset(request.http_response_header_modification_rules_shrink):
+            query['HttpResponseHeaderModificationRules'] = request.http_response_header_modification_rules_shrink
+        if not UtilClient.is_unset(request.https_application_configuration_shrink):
+            query['HttpsApplicationConfiguration'] = request.https_application_configuration_shrink
+        if not UtilClient.is_unset(request.https_basic_configuration_shrink):
+            query['HttpsBasicConfiguration'] = request.https_basic_configuration_shrink
+        if not UtilClient.is_unset(request.image_transform_shrink):
+            query['ImageTransform'] = request.image_transform_shrink
+        if not UtilClient.is_unset(request.ipv_6shrink):
+            query['Ipv6'] = request.ipv_6shrink
+        if not UtilClient.is_unset(request.managed_transforms_shrink):
+            query['ManagedTransforms'] = request.managed_transforms_shrink
+        if not UtilClient.is_unset(request.network_optimization_shrink):
+            query['NetworkOptimization'] = request.network_optimization_shrink
+        if not UtilClient.is_unset(request.origin_rules_shrink):
+            query['OriginRules'] = request.origin_rules_shrink
+        if not UtilClient.is_unset(request.redirect_rules_shrink):
+            query['RedirectRules'] = request.redirect_rules_shrink
+        if not UtilClient.is_unset(request.rewrite_url_rules_shrink):
+            query['RewriteUrlRules'] = request.rewrite_url_rules_shrink
+        if not UtilClient.is_unset(request.seo_bypass_shrink):
+            query['SeoBypass'] = request.seo_bypass_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_name_exclusive_shrink):
+            query['SiteNameExclusive'] = request.site_name_exclusive_shrink
+        if not UtilClient.is_unset(request.site_pause_shrink):
+            query['SitePause'] = request.site_pause_shrink
+        if not UtilClient.is_unset(request.tiered_cache_shrink):
+            query['TieredCache'] = request.tiered_cache_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSiteFunction',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateSiteFunctionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_site_function_with_options_async(
+        self,
+        tmp_req: esa20240910_models.UpdateSiteFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateSiteFunctionResponse:
+        """
+        @summary 修改站点配置
+        
+        @param tmp_req: UpdateSiteFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSiteFunctionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateSiteFunctionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cache_reserve):
+            request.cache_reserve_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cache_reserve, 'CacheReserve', 'json')
+        if not UtilClient.is_unset(tmp_req.cache_rules):
+            request.cache_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cache_rules, 'CacheRules', 'json')
+        if not UtilClient.is_unset(tmp_req.cache_tags):
+            request.cache_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cache_tags, 'CacheTags', 'json')
+        if not UtilClient.is_unset(tmp_req.cname_flattening):
+            request.cname_flattening_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cname_flattening, 'CnameFlattening', 'json')
+        if not UtilClient.is_unset(tmp_req.compression_rules):
+            request.compression_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.compression_rules, 'CompressionRules', 'json')
+        if not UtilClient.is_unset(tmp_req.cross_border_optimization):
+            request.cross_border_optimization_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cross_border_optimization, 'CrossBorderOptimization', 'json')
+        if not UtilClient.is_unset(tmp_req.development_mode):
+            request.development_mode_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.development_mode, 'DevelopmentMode', 'json')
+        if not UtilClient.is_unset(tmp_req.http_request_header_modification_rules):
+            request.http_request_header_modification_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.http_request_header_modification_rules, 'HttpRequestHeaderModificationRules', 'json')
+        if not UtilClient.is_unset(tmp_req.http_response_header_modification_rules):
+            request.http_response_header_modification_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.http_response_header_modification_rules, 'HttpResponseHeaderModificationRules', 'json')
+        if not UtilClient.is_unset(tmp_req.https_application_configuration):
+            request.https_application_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.https_application_configuration, 'HttpsApplicationConfiguration', 'json')
+        if not UtilClient.is_unset(tmp_req.https_basic_configuration):
+            request.https_basic_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.https_basic_configuration, 'HttpsBasicConfiguration', 'json')
+        if not UtilClient.is_unset(tmp_req.image_transform):
+            request.image_transform_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_transform, 'ImageTransform', 'json')
+        if not UtilClient.is_unset(tmp_req.ipv_6):
+            request.ipv_6shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ipv_6, 'Ipv6', 'json')
+        if not UtilClient.is_unset(tmp_req.managed_transforms):
+            request.managed_transforms_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managed_transforms, 'ManagedTransforms', 'json')
+        if not UtilClient.is_unset(tmp_req.network_optimization):
+            request.network_optimization_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network_optimization, 'NetworkOptimization', 'json')
+        if not UtilClient.is_unset(tmp_req.origin_rules):
+            request.origin_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.origin_rules, 'OriginRules', 'json')
+        if not UtilClient.is_unset(tmp_req.redirect_rules):
+            request.redirect_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect_rules, 'RedirectRules', 'json')
+        if not UtilClient.is_unset(tmp_req.rewrite_url_rules):
+            request.rewrite_url_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rewrite_url_rules, 'RewriteUrlRules', 'json')
+        if not UtilClient.is_unset(tmp_req.seo_bypass):
+            request.seo_bypass_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.seo_bypass, 'SeoBypass', 'json')
+        if not UtilClient.is_unset(tmp_req.site_name_exclusive):
+            request.site_name_exclusive_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.site_name_exclusive, 'SiteNameExclusive', 'json')
+        if not UtilClient.is_unset(tmp_req.site_pause):
+            request.site_pause_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.site_pause, 'SitePause', 'json')
+        if not UtilClient.is_unset(tmp_req.tiered_cache):
+            request.tiered_cache_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tiered_cache, 'TieredCache', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cache_reserve_shrink):
+            query['CacheReserve'] = request.cache_reserve_shrink
+        if not UtilClient.is_unset(request.cache_rules_shrink):
+            query['CacheRules'] = request.cache_rules_shrink
+        if not UtilClient.is_unset(request.cache_tags_shrink):
+            query['CacheTags'] = request.cache_tags_shrink
+        if not UtilClient.is_unset(request.cname_flattening_shrink):
+            query['CnameFlattening'] = request.cname_flattening_shrink
+        if not UtilClient.is_unset(request.compression_rules_shrink):
+            query['CompressionRules'] = request.compression_rules_shrink
+        if not UtilClient.is_unset(request.cross_border_optimization_shrink):
+            query['CrossBorderOptimization'] = request.cross_border_optimization_shrink
+        if not UtilClient.is_unset(request.development_mode_shrink):
+            query['DevelopmentMode'] = request.development_mode_shrink
+        if not UtilClient.is_unset(request.http_request_header_modification_rules_shrink):
+            query['HttpRequestHeaderModificationRules'] = request.http_request_header_modification_rules_shrink
+        if not UtilClient.is_unset(request.http_response_header_modification_rules_shrink):
+            query['HttpResponseHeaderModificationRules'] = request.http_response_header_modification_rules_shrink
+        if not UtilClient.is_unset(request.https_application_configuration_shrink):
+            query['HttpsApplicationConfiguration'] = request.https_application_configuration_shrink
+        if not UtilClient.is_unset(request.https_basic_configuration_shrink):
+            query['HttpsBasicConfiguration'] = request.https_basic_configuration_shrink
+        if not UtilClient.is_unset(request.image_transform_shrink):
+            query['ImageTransform'] = request.image_transform_shrink
+        if not UtilClient.is_unset(request.ipv_6shrink):
+            query['Ipv6'] = request.ipv_6shrink
+        if not UtilClient.is_unset(request.managed_transforms_shrink):
+            query['ManagedTransforms'] = request.managed_transforms_shrink
+        if not UtilClient.is_unset(request.network_optimization_shrink):
+            query['NetworkOptimization'] = request.network_optimization_shrink
+        if not UtilClient.is_unset(request.origin_rules_shrink):
+            query['OriginRules'] = request.origin_rules_shrink
+        if not UtilClient.is_unset(request.redirect_rules_shrink):
+            query['RedirectRules'] = request.redirect_rules_shrink
+        if not UtilClient.is_unset(request.rewrite_url_rules_shrink):
+            query['RewriteUrlRules'] = request.rewrite_url_rules_shrink
+        if not UtilClient.is_unset(request.seo_bypass_shrink):
+            query['SeoBypass'] = request.seo_bypass_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_name_exclusive_shrink):
+            query['SiteNameExclusive'] = request.site_name_exclusive_shrink
+        if not UtilClient.is_unset(request.site_pause_shrink):
+            query['SitePause'] = request.site_pause_shrink
+        if not UtilClient.is_unset(request.tiered_cache_shrink):
+            query['TieredCache'] = request.tiered_cache_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSiteFunction',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateSiteFunctionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_site_function(
+        self,
+        request: esa20240910_models.UpdateSiteFunctionRequest,
+    ) -> esa20240910_models.UpdateSiteFunctionResponse:
+        """
+        @summary 修改站点配置
+        
+        @param request: UpdateSiteFunctionRequest
+        @return: UpdateSiteFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_site_function_with_options(request, runtime)
+
+    async def update_site_function_async(
+        self,
+        request: esa20240910_models.UpdateSiteFunctionRequest,
+    ) -> esa20240910_models.UpdateSiteFunctionResponse:
+        """
+        @summary 修改站点配置
+        
+        @param request: UpdateSiteFunctionRequest
+        @return: UpdateSiteFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_site_function_with_options_async(request, runtime)
+
     def update_site_vanity_nswith_options(
         self,
         request: esa20240910_models.UpdateSiteVanityNSRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSiteVanityNSResponse:
         """
-        @summary 修改站点自定义NS
+        @summary Updates the custom nameserver names for a single website.
         
         @param request: UpdateSiteVanityNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17724,7 +19724,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateSiteVanityNSResponse:
         """
-        @summary 修改站点自定义NS
+        @summary Updates the custom nameserver names for a single website.
         
         @param request: UpdateSiteVanityNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17760,7 +19760,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSiteVanityNSRequest,
     ) -> esa20240910_models.UpdateSiteVanityNSResponse:
         """
-        @summary 修改站点自定义NS
+        @summary Updates the custom nameserver names for a single website.
         
         @param request: UpdateSiteVanityNSRequest
         @return: UpdateSiteVanityNSResponse
@@ -17773,7 +19773,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateSiteVanityNSRequest,
     ) -> esa20240910_models.UpdateSiteVanityNSResponse:
         """
-        @summary 修改站点自定义NS
+        @summary Updates the custom nameserver names for a single website.
         
         @param request: UpdateSiteVanityNSRequest
         @return: UpdateSiteVanityNSResponse
@@ -17787,7 +19787,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateUserDeliveryTaskResponse:
         """
-        @summary 修改一个用户粒度任务投递
+        @summary Modifies the configurations of a delivery task, including the task name, log field, log category, and discard rate.
         
         @param request: UpdateUserDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17828,7 +19828,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateUserDeliveryTaskResponse:
         """
-        @summary 修改一个用户粒度任务投递
+        @summary Modifies the configurations of a delivery task, including the task name, log field, log category, and discard rate.
         
         @param request: UpdateUserDeliveryTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17868,7 +19868,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateUserDeliveryTaskRequest,
     ) -> esa20240910_models.UpdateUserDeliveryTaskResponse:
         """
-        @summary 修改一个用户粒度任务投递
+        @summary Modifies the configurations of a delivery task, including the task name, log field, log category, and discard rate.
         
         @param request: UpdateUserDeliveryTaskRequest
         @return: UpdateUserDeliveryTaskResponse
@@ -17881,7 +19881,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateUserDeliveryTaskRequest,
     ) -> esa20240910_models.UpdateUserDeliveryTaskResponse:
         """
-        @summary 修改一个用户粒度任务投递
+        @summary Modifies the configurations of a delivery task, including the task name, log field, log category, and discard rate.
         
         @param request: UpdateUserDeliveryTaskRequest
         @return: UpdateUserDeliveryTaskResponse
@@ -17895,7 +19895,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateUserDeliveryTaskStatusResponse:
         """
-        @summary 上下线一个用户任务投递
+        @summary Changes the status of a delivery task in your Alibaba Cloud account.
+        
+        @description ## [](#)
+        You can call this operation to enable or disable a delivery task by using TaskName and Method. The response includes the most recent status and operation result details of the task.
         
         @param request: UpdateUserDeliveryTaskStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17928,7 +19931,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateUserDeliveryTaskStatusResponse:
         """
-        @summary 上下线一个用户任务投递
+        @summary Changes the status of a delivery task in your Alibaba Cloud account.
+        
+        @description ## [](#)
+        You can call this operation to enable or disable a delivery task by using TaskName and Method. The response includes the most recent status and operation result details of the task.
         
         @param request: UpdateUserDeliveryTaskStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17960,7 +19966,10 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateUserDeliveryTaskStatusRequest,
     ) -> esa20240910_models.UpdateUserDeliveryTaskStatusResponse:
         """
-        @summary 上下线一个用户任务投递
+        @summary Changes the status of a delivery task in your Alibaba Cloud account.
+        
+        @description ## [](#)
+        You can call this operation to enable or disable a delivery task by using TaskName and Method. The response includes the most recent status and operation result details of the task.
         
         @param request: UpdateUserDeliveryTaskStatusRequest
         @return: UpdateUserDeliveryTaskStatusResponse
@@ -17973,7 +19982,10 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateUserDeliveryTaskStatusRequest,
     ) -> esa20240910_models.UpdateUserDeliveryTaskStatusResponse:
         """
-        @summary 上下线一个用户任务投递
+        @summary Changes the status of a delivery task in your Alibaba Cloud account.
+        
+        @description ## [](#)
+        You can call this operation to enable or disable a delivery task by using TaskName and Method. The response includes the most recent status and operation result details of the task.
         
         @param request: UpdateUserDeliveryTaskStatusRequest
         @return: UpdateUserDeliveryTaskStatusResponse
@@ -17987,7 +19999,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateWafRuleResponse:
         """
-        @summary 更新WAF规则页面
+        @summary Modifies the configuration or status of a Web Application Firewall (WAF) rule.
         
         @param tmp_req: UpdateWafRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18038,7 +20050,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateWafRuleResponse:
         """
-        @summary 更新WAF规则页面
+        @summary Modifies the configuration or status of a Web Application Firewall (WAF) rule.
         
         @param tmp_req: UpdateWafRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18088,7 +20100,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateWafRuleRequest,
     ) -> esa20240910_models.UpdateWafRuleResponse:
         """
-        @summary 更新WAF规则页面
+        @summary Modifies the configuration or status of a Web Application Firewall (WAF) rule.
         
         @param request: UpdateWafRuleRequest
         @return: UpdateWafRuleResponse
@@ -18101,7 +20113,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateWafRuleRequest,
     ) -> esa20240910_models.UpdateWafRuleResponse:
         """
-        @summary 更新WAF规则页面
+        @summary Modifies the configuration or status of a Web Application Firewall (WAF) rule.
         
         @param request: UpdateWafRuleRequest
         @return: UpdateWafRuleResponse
@@ -18115,7 +20127,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateWafRulesetResponse:
         """
-        @summary 更新WAF规则集
+        @summary Updates a WAF ruleset based on its ID.
         
         @param request: UpdateWafRulesetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18158,7 +20170,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateWafRulesetResponse:
         """
-        @summary 更新WAF规则集
+        @summary Updates a WAF ruleset based on its ID.
         
         @param request: UpdateWafRulesetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18200,7 +20212,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateWafRulesetRequest,
     ) -> esa20240910_models.UpdateWafRulesetResponse:
         """
-        @summary 更新WAF规则集
+        @summary Updates a WAF ruleset based on its ID.
         
         @param request: UpdateWafRulesetRequest
         @return: UpdateWafRulesetResponse
@@ -18213,7 +20225,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateWafRulesetRequest,
     ) -> esa20240910_models.UpdateWafRulesetResponse:
         """
-        @summary 更新WAF规则集
+        @summary Updates a WAF ruleset based on its ID.
         
         @param request: UpdateWafRulesetRequest
         @return: UpdateWafRulesetResponse
@@ -18227,7 +20239,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateWaitingRoomResponse:
         """
-        @summary 修改等候室
+        @summary Modifies the configurations of a waiting room.
         
         @param tmp_req: UpdateWaitingRoomRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18300,7 +20312,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateWaitingRoomResponse:
         """
-        @summary 修改等候室
+        @summary Modifies the configurations of a waiting room.
         
         @param tmp_req: UpdateWaitingRoomRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18372,7 +20384,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateWaitingRoomRequest,
     ) -> esa20240910_models.UpdateWaitingRoomResponse:
         """
-        @summary 修改等候室
+        @summary Modifies the configurations of a waiting room.
         
         @param request: UpdateWaitingRoomRequest
         @return: UpdateWaitingRoomResponse
@@ -18385,7 +20397,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateWaitingRoomRequest,
     ) -> esa20240910_models.UpdateWaitingRoomResponse:
         """
-        @summary 修改等候室
+        @summary Modifies the configurations of a waiting room.
         
         @param request: UpdateWaitingRoomRequest
         @return: UpdateWaitingRoomResponse
@@ -18399,7 +20411,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateWaitingRoomEventResponse:
         """
-        @summary 修改等候室事件
+        @summary Modifies the configurations of a waiting room event.
         
         @param request: UpdateWaitingRoomEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18472,7 +20484,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateWaitingRoomEventResponse:
         """
-        @summary 修改等候室事件
+        @summary Modifies the configurations of a waiting room event.
         
         @param request: UpdateWaitingRoomEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18544,7 +20556,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateWaitingRoomEventRequest,
     ) -> esa20240910_models.UpdateWaitingRoomEventResponse:
         """
-        @summary 修改等候室事件
+        @summary Modifies the configurations of a waiting room event.
         
         @param request: UpdateWaitingRoomEventRequest
         @return: UpdateWaitingRoomEventResponse
@@ -18557,7 +20569,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateWaitingRoomEventRequest,
     ) -> esa20240910_models.UpdateWaitingRoomEventResponse:
         """
-        @summary 修改等候室事件
+        @summary Modifies the configurations of a waiting room event.
         
         @param request: UpdateWaitingRoomEventRequest
         @return: UpdateWaitingRoomEventResponse
@@ -18571,7 +20583,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateWaitingRoomRuleResponse:
         """
-        @summary 修改等候室规则
+        @summary Updates the configurations of a waiting room bypass rule for a website.
+        
+        @description You can call this API operation to modify the configurations of a waiting room bypass rule for your website, including the rule name, status, and rule content.
         
         @param request: UpdateWaitingRoomRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18614,7 +20628,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateWaitingRoomRuleResponse:
         """
-        @summary 修改等候室规则
+        @summary Updates the configurations of a waiting room bypass rule for a website.
+        
+        @description You can call this API operation to modify the configurations of a waiting room bypass rule for your website, including the rule name, status, and rule content.
         
         @param request: UpdateWaitingRoomRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18656,7 +20672,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateWaitingRoomRuleRequest,
     ) -> esa20240910_models.UpdateWaitingRoomRuleResponse:
         """
-        @summary 修改等候室规则
+        @summary Updates the configurations of a waiting room bypass rule for a website.
+        
+        @description You can call this API operation to modify the configurations of a waiting room bypass rule for your website, including the rule name, status, and rule content.
         
         @param request: UpdateWaitingRoomRuleRequest
         @return: UpdateWaitingRoomRuleResponse
@@ -18669,7 +20687,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateWaitingRoomRuleRequest,
     ) -> esa20240910_models.UpdateWaitingRoomRuleResponse:
         """
-        @summary 修改等候室规则
+        @summary Updates the configurations of a waiting room bypass rule for a website.
+        
+        @description You can call this API operation to modify the configurations of a waiting room bypass rule for your website, including the rule name, status, and rule content.
         
         @param request: UpdateWaitingRoomRuleRequest
         @return: UpdateWaitingRoomRuleResponse
@@ -18683,7 +20703,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UploadFileResponse:
         """
-        @summary 缓存刷新文件上传
+        @summary Uploads the file that contains resources to be purged or prefetched.
+        
+        @description >
+        The file can be up to 10 MB in size.
+        After the file is uploaded, you can call [SubmitUploadTask](~~SubmitUploadTask~~) to submit the purge or prefetch task.
         
         @param request: UploadFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18724,7 +20748,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UploadFileResponse:
         """
-        @summary 缓存刷新文件上传
+        @summary Uploads the file that contains resources to be purged or prefetched.
+        
+        @description >
+        The file can be up to 10 MB in size.
+        After the file is uploaded, you can call [SubmitUploadTask](~~SubmitUploadTask~~) to submit the purge or prefetch task.
         
         @param request: UploadFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18764,7 +20792,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.UploadFileRequest,
     ) -> esa20240910_models.UploadFileResponse:
         """
-        @summary 缓存刷新文件上传
+        @summary Uploads the file that contains resources to be purged or prefetched.
+        
+        @description >
+        The file can be up to 10 MB in size.
+        After the file is uploaded, you can call [SubmitUploadTask](~~SubmitUploadTask~~) to submit the purge or prefetch task.
         
         @param request: UploadFileRequest
         @return: UploadFileResponse
@@ -18777,7 +20809,11 @@ class Client(OpenApiClient):
         request: esa20240910_models.UploadFileRequest,
     ) -> esa20240910_models.UploadFileResponse:
         """
-        @summary 缓存刷新文件上传
+        @summary Uploads the file that contains resources to be purged or prefetched.
+        
+        @description >
+        The file can be up to 10 MB in size.
+        After the file is uploaded, you can call [SubmitUploadTask](~~SubmitUploadTask~~) to submit the purge or prefetch task.
         
         @param request: UploadFileRequest
         @return: UploadFileResponse
@@ -18935,7 +20971,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.VerifySiteResponse:
         """
-        @summary 校验站点的归属
+        @summary Verifies the ownership of a website domain. Websites that pass the verification are automatically activated.
+        
+        @description 1.  For a website connected by using NS setup, this operation verifies whether the nameservers of the website are the nameservers assigned by Alibaba Cloud.
+        2.  For a website connected by using CNAME setup, this operation verifies whether the website has a TXT record whose hostname is  _esaauth.[websiteDomainName] and record value is the value of VerifyCode to the DNS records of your domain. You can see the VerifyCode field in the site information.
         
         @param request: VerifySiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18970,7 +21009,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.VerifySiteResponse:
         """
-        @summary 校验站点的归属
+        @summary Verifies the ownership of a website domain. Websites that pass the verification are automatically activated.
+        
+        @description 1.  For a website connected by using NS setup, this operation verifies whether the nameservers of the website are the nameservers assigned by Alibaba Cloud.
+        2.  For a website connected by using CNAME setup, this operation verifies whether the website has a TXT record whose hostname is  _esaauth.[websiteDomainName] and record value is the value of VerifyCode to the DNS records of your domain. You can see the VerifyCode field in the site information.
         
         @param request: VerifySiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19004,7 +21046,10 @@ class Client(OpenApiClient):
         request: esa20240910_models.VerifySiteRequest,
     ) -> esa20240910_models.VerifySiteResponse:
         """
-        @summary 校验站点的归属
+        @summary Verifies the ownership of a website domain. Websites that pass the verification are automatically activated.
+        
+        @description 1.  For a website connected by using NS setup, this operation verifies whether the nameservers of the website are the nameservers assigned by Alibaba Cloud.
+        2.  For a website connected by using CNAME setup, this operation verifies whether the website has a TXT record whose hostname is  _esaauth.[websiteDomainName] and record value is the value of VerifyCode to the DNS records of your domain. You can see the VerifyCode field in the site information.
         
         @param request: VerifySiteRequest
         @return: VerifySiteResponse
@@ -19017,7 +21062,10 @@ class Client(OpenApiClient):
         request: esa20240910_models.VerifySiteRequest,
     ) -> esa20240910_models.VerifySiteResponse:
         """
-        @summary 校验站点的归属
+        @summary Verifies the ownership of a website domain. Websites that pass the verification are automatically activated.
+        
+        @description 1.  For a website connected by using NS setup, this operation verifies whether the nameservers of the website are the nameservers assigned by Alibaba Cloud.
+        2.  For a website connected by using CNAME setup, this operation verifies whether the website has a TXT record whose hostname is  _esaauth.[websiteDomainName] and record value is the value of VerifyCode to the DNS records of your domain. You can see the VerifyCode field in the site information.
         
         @param request: VerifySiteRequest
         @return: VerifySiteResponse

@@ -1,3 +1,15 @@
+2024-11-22 Version: 2.5.0
+- Support API CreateOriginProtection.
+- Support API CreateSiteFunction.
+- Support API DeleteOriginProtection.
+- Support API DeleteSiteFunction.
+- Support API GetOriginProtection.
+- Support API ListSiteFunctions.
+- Support API UpdateOriginProtection.
+- Support API UpdateOriginProtectionIpWhiteList.
+- Support API UpdateSiteFunction.
+
+
 2024-11-20 Version: 2.4.5
 - Update API DescribeDDoSAllEventList: update response param.
 

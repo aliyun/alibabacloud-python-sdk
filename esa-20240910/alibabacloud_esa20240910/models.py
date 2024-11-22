@@ -1556,6 +1556,7 @@ class HttpDeliveryHeaderParamValue(TeaModel):
         self,
         static_value: str = None,
     ):
+        # The static variable.
         self.static_value = static_value
 
     def validate(self):
@@ -1583,6 +1584,7 @@ class HttpDeliveryQueryParamValue(TeaModel):
         self,
         static_value: str = None,
     ):
+        # The static variable.
         self.static_value = static_value
 
     def validate(self):
@@ -1616,12 +1618,19 @@ class FieldContentValueFieldList(TeaModel):
         sort_order: int = None,
         is_default: bool = None,
     ):
+        # The field name.
         self.field_name = field_name
+        # The description of the field in English.
         self.description = description
+        # The description of the field in Chinese.
         self.description_cn = description_cn
+        # The category of the field.
         self.category = category
+        # The data type of the field.
         self.data_type = data_type
+        # The sequence number of the field.
         self.sort_order = sort_order
+        # Indicates whether the field is available by default.
         self.is_default = is_default
 
     def validate(self):
@@ -1674,7 +1683,9 @@ class FieldContentValue(TeaModel):
         sort_order: int = None,
         field_list: List[FieldContentValueFieldList] = None,
     ):
+        # The sequence number of the fields.
         self.sort_order = sort_order
+        # The fields.
         self.field_list = field_list
 
     def validate(self):
@@ -1715,7 +1726,9 @@ class QuotaListItemsValue(TeaModel):
         enable: bool = None,
         value: WafQuotaString = None,
     ):
+        # Indicates whether the item type is configured in the custom list.
         self.enable = enable
+        # The format restrictions for the item type in the custom list.
         self.value = value
 
     def validate(self):
@@ -1750,7 +1763,9 @@ class QuotaPageContentTypesValue(TeaModel):
         enable: bool = None,
         content_length: WafQuotaInteger = None,
     ):
+        # Indicates whether the custom error pages of the Content-Type are configured.
         self.enable = enable
+        # The maximum length of the custom error pages of the Content-Type.
         self.content_length = content_length
 
     def validate(self):
@@ -1785,8 +1800,12 @@ class ActivateClientCertificateRequest(TeaModel):
         id: str = None,
         site_id: int = None,
     ):
+        # The certificate ID, which can be obtained by calling the [ListClientCertificates](https://help.aliyun.com/document_detail/2852848.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -1822,9 +1841,13 @@ class ActivateClientCertificateResponseBody(TeaModel):
         site_id: int = None,
         site_name: str = None,
     ):
+        # The certificate ID.
         self.id = id
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
 
     def validate(self):
@@ -1969,19 +1992,33 @@ class BatchCreateRecordsRequestRecordListData(TeaModel):
         value: str = None,
         weight: int = None,
     ):
+        # The encryption algorithm used for the record. Valid values: 0 to 255. Applicable to CERT and SSHFP records.
         self.algorithm = algorithm
+        # The public key of the certificate. Applicable to CERT, SMIMEA, and TLSA records.
         self.certificate = certificate
+        # The public key fingerprint of the record. Applicable to SSHFP records.
         self.fingerprint = fingerprint
+        # The Flag for a CAA record indicates its priority and how it is processed. Valid values: 0 to 255.
         self.flag = flag
+        # The public key identification for the record. Valid values: 0 to 65535. Applicable to CERT records.
         self.key_tag = key_tag
+        # The algorithm policy used to match or validate the certificate. Valid values: 0 to 255. Applicable to SMIMEA, and TLSA records.
         self.matching_type = matching_type
+        # The port of the record. Valid values: 0 to 65535. Exclusive to SRV records.
         self.port = port
+        # The priority of the record. Valid values: 0 to 65535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
         self.priority = priority
+        # The type of certificate or public key. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
         self.selector = selector
+        # The tag of a CAA record, which indicates its specific type and purpose, such as issue, issuewild, and iodef.
         self.tag = tag
+        # The certificate type of the record (in CERT records), or the public key type (in SSHFP records).
         self.type = type
+        # The usage identifier of the record. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
         self.usage = usage
+        # The record value or part of the record content. A/AAAA: the IP address being pointed to. CNAME: the target domain name being pointed to. MX: valid target mail server domain name. TXT: valid text string. CAA: valid certificate authority domain name. SRV: valid target host domain name. URI: valid URI string.
         self.value = value
+        # The weight of the record. Valid values: 0 to 65,535. Applicable to SRV and URI records.
         self.weight = weight
 
     def validate(self):
@@ -2069,16 +2106,43 @@ class BatchCreateRecordsRequestRecordList(TeaModel):
         type: str = None,
     ):
         self.auth_conf = auth_conf
+        # The business scenario of the record for acceleration. Valid values:
+        # 
+        # *   **image_video**\
+        # *   **api**\
+        # *   **web**\
         self.biz_name = biz_name
+        # The DNS information of the record. Enter fields based on the record type.
+        # 
         # This parameter is required.
         self.data = data
+        # Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
         # This parameter is required.
         self.proxied = proxied
+        # The record name.
+        # 
         # This parameter is required.
         self.record_name = record_name
+        # The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+        # 
+        # *   **OSS**: OSS bucket.
+        # *   **S3**: S3 bucket.
+        # *   **LB**: load balancer.
+        # *   **OP**: origin pool.
+        # *   **Domain**: domain name.
+        # 
+        # If you do not pass this parameter or if you leave its value empty, Domain is used by default.
         self.source_type = source_type
+        # The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
+        # 
         # This parameter is required.
         self.ttl = ttl
+        # The DNS type of the record.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -2141,8 +2205,12 @@ class BatchCreateRecordsRequest(TeaModel):
         record_list: List[BatchCreateRecordsRequestRecordList] = None,
         site_id: int = None,
     ):
+        # The list of DNS records to be created.
+        # 
         # This parameter is required.
         self.record_list = record_list
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -2184,8 +2252,12 @@ class BatchCreateRecordsShrinkRequest(TeaModel):
         record_list_shrink: str = None,
         site_id: int = None,
     ):
+        # The list of DNS records to be created.
+        # 
         # This parameter is required.
         self.record_list_shrink = record_list_shrink
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -2231,19 +2303,42 @@ class BatchCreateRecordsResponseBodyRecordResultListFailedData(TeaModel):
         value: str = None,
         weight: int = None,
     ):
+        # The encryption algorithm used for the record. Valid values: 0 to 255. Applicable to CERT and SSHFP records.
         self.algorithm = algorithm
+        # The public key of the certificate. Applicable to CERT, SMIMEA, and TLSA records.
         self.certificate = certificate
+        # The public key fingerprint of the record. Applicable to SSHFP records.
         self.fingerprint = fingerprint
+        # The flag bit of the record. Indicates its priority and handling method, used in CAA records.
         self.flag = flag
+        # The public key identification for the record. Valid values: 0 to 65535. Applicable to CERT records.
         self.key_tag = key_tag
+        # The algorithm policy used to match or validate the certificate. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
         self.matching_type = matching_type
+        # The port number of the record, associated with the SRV record. Exclusive to SRV records.
         self.port = port
+        # The priority of the record. Valid values: 0 to 65535. A smaller value indicates a higher priority. Applicable to MX, SRV, and URI records.
         self.priority = priority
+        # The type of certificate or public key. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
         self.selector = selector
+        # Indicates its priority and handling method, used in CAA records.
         self.tag = tag
+        # The certificate type of the record (in CERT records), or the public key type (in SSHFP records).
         self.type = type
+        # The usage identifier of the record. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
         self.usage = usage
+        # The record value or part of the record content. This value is returned when the record is A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, or URI. It has different meanings based on types of records:
+        # 
+        # *   **A/AAAA**: the IP addresses. IP addresses are separated by commas (,). There is at least one IPv4 address.
+        # *   **CNAME**: the mapped domain name.
+        # *   **NS**: the nameservers for the domain name.
+        # *   **MX**: a valid domain name of the target mail server.
+        # *   **TXT**: a valid text string.
+        # *   **CAA**: a valid domain name of the certificate authority.
+        # *   **SRV**: a valid domain name of the target host.
+        # *   **URI**: a valid URI string.
         self.value = value
+        # The weight of the record. Applicable to SRV and URI records.
         self.weight = weight
 
     def validate(self):
@@ -2331,14 +2426,36 @@ class BatchCreateRecordsResponseBodyRecordResultListFailed(TeaModel):
         source_type: str = None,
         ttl: int = None,
     ):
+        # The business scenario of the record for acceleration. Valid values:
+        # 
+        # *   **image_video**\
+        # *   **api**\
+        # *   **web**\
         self.biz_name = biz_name
+        # The DNS information about the record, which contains various types of record values and their related attributes.
         self.data = data
+        # The result description.
         self.description = description
+        # Indicates whether the record is proxied. Only CNAME and A/AAAA records can be proxied. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.proxied = proxied
+        # The record ID.
         self.record_id = record_id
+        # The record name.
         self.record_name = record_name
+        # The DNS type of the record, such as **A/AAAA, CNAME, and TXT**.
         self.record_type = record_type
+        # The origin type of the CNAME record. This field is left empty for other types of records. The type of the origin server. Valid values:
+        # 
+        # *   **OSS**: OSS bucket.
+        # *   **S3**: S3 bucket.
+        # *   **LB**: load balancer.
+        # *   **OP**: origin pool.
+        # *   **Domain**: domain name.
         self.source_type = source_type
+        # The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         self.ttl = ttl
 
     def validate(self):
@@ -2413,19 +2530,42 @@ class BatchCreateRecordsResponseBodyRecordResultListSuccessData(TeaModel):
         value: str = None,
         weight: int = None,
     ):
+        # The encryption algorithm used for the record. Valid values: 0 to 255. Applicable to CERT and SSHFP records.
         self.algorithm = algorithm
+        # The public key of the certificate. Applicable to CERT, SMIMEA, and TLSA records.
         self.certificate = certificate
+        # The public key fingerprint of the record. Applicable to SSHFP records.
         self.fingerprint = fingerprint
+        # The flag bit of the record. Indicates its priority and handling method, used in CAA records.
         self.flag = flag
+        # The public key identification for the record. Valid values: 0 to 65535. Applicable to CERT records.
         self.key_tag = key_tag
+        # The algorithm policy used to match or validate the certificate. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
         self.matching_type = matching_type
+        # The port of the record. Valid values: 0 to 65535. Exclusive to SRV records.
         self.port = port
+        # The priority of the record. Valid values: 0 to 65535. A smaller value indicates a higher priority. Applicable to MX, SRV, and URI records.
         self.priority = priority
+        # The type of certificate or public key. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
         self.selector = selector
+        # The label of a CAA record, which indicates its specific type and purpose, such as issue, issuewild, and iodef.
         self.tag = tag
+        # The certificate type of the record (in CERT records), or the public key type (in SSHFP records).
         self.type = type
+        # The usage identifier of the record. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
         self.usage = usage
+        # The record value or part of the record content. This value is returned when the record is A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, or URI. It has different meanings based on types of records:
+        # 
+        # *   **A/AAAA**: the IP addresses. Multiple IPs are separated by commas (,). There is at least one IPv4 address.
+        # *   **CNAME**: the mapped domain name.
+        # *   **NS**: the nameservers for the domain name.
+        # *   **MX**: a valid domain name of the target mail server.
+        # *   **TXT**: a valid text string.
+        # *   **CAA**: a valid domain name of the certificate authority.
+        # *   **SRV**: a valid domain name of the target host.
+        # *   **URI**: a valid URI string.
         self.value = value
+        # The weight of the record. Valid values: 0 to 65535. Applicable to SRV and URI records.
         self.weight = weight
 
     def validate(self):
@@ -2513,14 +2653,36 @@ class BatchCreateRecordsResponseBodyRecordResultListSuccess(TeaModel):
         source_type: str = None,
         ttl: int = None,
     ):
+        # The business scenario of the record for acceleration. Valid values:
+        # 
+        # *   **image_video**\
+        # *   **api**\
+        # *   **web**\
         self.biz_name = biz_name
+        # The DNS record information.
         self.data = data
+        # The result description.
         self.description = description
+        # Indicates whether the record is proxied. Only CNAME and A/AAAA records can be proxied. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.proxied = proxied
+        # The record ID.
         self.record_id = record_id
+        # The record name.
         self.record_name = record_name
+        # The DNS type of the record, such as **A/AAAA, CNAME, and TXT**.
         self.record_type = record_type
+        # The origin type of the CNAME record. This field is left empty for other types of records. The type of the origin server. Valid values:
+        # 
+        # *   **OSS**: OSS bucket.
+        # *   **S3**: S3 bucket.
+        # *   **LB**: load balancer.
+        # *   **OP**: origin pool.
+        # *   **Domain**: domain name.
         self.source_type = source_type
+        # The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         self.ttl = ttl
 
     def validate(self):
@@ -2584,8 +2746,11 @@ class BatchCreateRecordsResponseBodyRecordResultList(TeaModel):
         success: List[BatchCreateRecordsResponseBodyRecordResultListSuccess] = None,
         total_count: int = None,
     ):
+        # The records that failed to be created.
         self.failed = failed
+        # The records that have been created.
         self.success = success
+        # The total number of returned records.
         self.total_count = total_count
 
     def validate(self):
@@ -2639,7 +2804,9 @@ class BatchCreateRecordsResponseBody(TeaModel):
         record_result_list: BatchCreateRecordsResponseBodyRecordResultList = None,
         request_id: str = None,
     ):
+        # The records that have been created and failed to be created.
         self.record_result_list = record_result_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2718,10 +2885,15 @@ class BatchCreateWafRulesRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The configurations of the rules.
         self.configs = configs
+        # The WAF rule category.
         self.phase = phase
+        # The configurations shared by multiple rules.
         self.shared = shared
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -2780,10 +2952,15 @@ class BatchCreateWafRulesShrinkRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The configurations of the rules.
         self.configs_shrink = configs_shrink
+        # The WAF rule category.
         self.phase = phase
+        # The configurations shared by multiple rules.
         self.shared_shrink = shared_shrink
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -2829,9 +3006,11 @@ class BatchCreateWafRulesResponseBody(TeaModel):
         request_id: str = None,
         ruleset_id: int = None,
     ):
+        # The IDs of the WAF rules.[](~~2850237~~)
         self.ids = ids
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The ID of the WAF ruleset.[](~~2850233~~)
         self.ruleset_id = ruleset_id
 
     def validate(self):
@@ -2909,8 +3088,12 @@ class BatchDeleteKvRequest(TeaModel):
         keys: List[str] = None,
         namespace: str = None,
     ):
+        # The keys that you want to delete. You can delete a maximum of 10,000 key-value pairs at a time.
+        # 
         # This parameter is required.
         self.keys = keys
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
 
@@ -2944,8 +3127,12 @@ class BatchDeleteKvShrinkRequest(TeaModel):
         keys_shrink: str = None,
         namespace: str = None,
     ):
+        # The keys that you want to delete. You can delete a maximum of 10,000 key-value pairs at a time.
+        # 
         # This parameter is required.
         self.keys_shrink = keys_shrink
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
 
@@ -2980,9 +3167,11 @@ class BatchDeleteKvResponseBody(TeaModel):
         request_id: str = None,
         success_keys: List[str] = None,
     ):
+        # The keys that failed to be deleted.
         self.fail_keys = fail_keys
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The keys that are deleted.
         self.success_keys = success_keys
 
     def validate(self):
@@ -3060,8 +3249,12 @@ class BatchDeleteKvWithHighCapacityRequest(TeaModel):
         namespace: str = None,
         url: str = None,
     ):
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The download URL of the key-value pairs that you want to delete. This parameter is automatically filled in when you use the SDK to call the operation.
+        # 
         # This parameter is required.
         self.url = url
 
@@ -3095,8 +3288,12 @@ class BatchDeleteKvWithHighCapacityAdvanceRequest(TeaModel):
         namespace: str = None,
         url_object: BinaryIO = None,
     ):
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The download URL of the key-value pairs that you want to delete. This parameter is automatically filled in when you use the SDK to call the operation.
+        # 
         # This parameter is required.
         self.url_object = url_object
 
@@ -3131,9 +3328,11 @@ class BatchDeleteKvWithHighCapacityResponseBody(TeaModel):
         request_id: str = None,
         success_keys: List[str] = None,
     ):
+        # The keys that failed to be deleted.
         self.fail_keys = fail_keys
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The keys that are deleted.
         self.success_keys = success_keys
 
     def validate(self):
@@ -3211,7 +3410,9 @@ class BatchGetExpressionFieldsRequestExpressions(TeaModel):
         expression: str = None,
         id: int = None,
     ):
+        # The content of the regular expression.
         self.expression = expression
+        # The ID of the regular expression.
         self.id = id
 
     def validate(self):
@@ -3245,8 +3446,11 @@ class BatchGetExpressionFieldsRequest(TeaModel):
         phase: str = None,
         site_id: int = None,
     ):
+        # The regular expressions.
         self.expressions = expressions
+        # The WAF rule category.
         self.phase = phase
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -3292,8 +3496,11 @@ class BatchGetExpressionFieldsShrinkRequest(TeaModel):
         phase: str = None,
         site_id: int = None,
     ):
+        # The regular expressions.
         self.expressions_shrink = expressions_shrink
+        # The WAF rule category.
         self.phase = phase
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -3330,7 +3537,9 @@ class BatchGetExpressionFieldsResponseBodyFields(TeaModel):
         fields: List[str] = None,
         id: str = None,
     ):
+        # The fields that match the regular expression.
         self.fields = fields
+        # The ID of the regular expression, which corresponds to the expression ID in the request parameter.
         self.id = id
 
     def validate(self):
@@ -3363,8 +3572,9 @@ class BatchGetExpressionFieldsResponseBody(TeaModel):
         fields: List[BatchGetExpressionFieldsResponseBodyFields] = None,
         request_id: str = None,
     ):
+        # The fields that match the regular expressions.
         self.fields = fields
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3448,10 +3658,16 @@ class BatchPutKvRequestKvList(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
         self.expiration = expiration
+        # The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
         self.expiration_ttl = expiration_ttl
+        # The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\\\).
+        # 
         # This parameter is required.
         self.key = key
+        # The key content.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -3493,8 +3709,12 @@ class BatchPutKvRequest(TeaModel):
         kv_list: List[BatchPutKvRequestKvList] = None,
         namespace: str = None,
     ):
+        # The key-value pairs that you want to configure at a time. The total size can be up to 2 MB (2 × 1000 × 1000).
+        # 
         # This parameter is required.
         self.kv_list = kv_list
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
 
@@ -3536,8 +3756,12 @@ class BatchPutKvShrinkRequest(TeaModel):
         kv_list_shrink: str = None,
         namespace: str = None,
     ):
+        # The key-value pairs that you want to configure at a time. The total size can be up to 2 MB (2 × 1000 × 1000).
+        # 
         # This parameter is required.
         self.kv_list_shrink = kv_list_shrink
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
 
@@ -3572,9 +3796,11 @@ class BatchPutKvResponseBody(TeaModel):
         request_id: str = None,
         success_keys: List[str] = None,
     ):
+        # The keys that failed to be written.
         self.fail_keys = fail_keys
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The keys that were written.
         self.success_keys = success_keys
 
     def validate(self):
@@ -3652,8 +3878,12 @@ class BatchPutKvWithHighCapacityRequest(TeaModel):
         namespace: str = None,
         url: str = None,
     ):
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The download URL of the key-value pairs that you want to configure. This parameter is automatically filled in when you use the SDK to call the operation.
+        # 
         # This parameter is required.
         self.url = url
 
@@ -3687,8 +3917,12 @@ class BatchPutKvWithHighCapacityAdvanceRequest(TeaModel):
         namespace: str = None,
         url_object: BinaryIO = None,
     ):
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The download URL of the key-value pairs that you want to configure. This parameter is automatically filled in when you use the SDK to call the operation.
+        # 
         # This parameter is required.
         self.url_object = url_object
 
@@ -3723,9 +3957,11 @@ class BatchPutKvWithHighCapacityResponseBody(TeaModel):
         request_id: str = None,
         success_keys: List[str] = None,
     ):
+        # The keys that failed to be written.
         self.fail_keys = fail_keys
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The keys that were written.
         self.success_keys = success_keys
 
     def validate(self):
@@ -3807,11 +4043,17 @@ class BatchUpdateWafRulesRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The configurations of rules.
         self.configs = configs
+        # The WAF rule category.
         self.phase = phase
+        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
         self.ruleset_id = ruleset_id
+        # The configurations shared by multiple rules.
         self.shared = shared
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -3875,11 +4117,17 @@ class BatchUpdateWafRulesShrinkRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The configurations of rules.
         self.configs_shrink = configs_shrink
+        # The WAF rule category.
         self.phase = phase
+        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
         self.ruleset_id = ruleset_id
+        # The configurations shared by multiple rules.
         self.shared_shrink = shared_shrink
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -3927,7 +4175,7 @@ class BatchUpdateWafRulesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4000,12 +4248,23 @@ class BlockObjectRequest(TeaModel):
         site_id: int = None,
         type: str = None,
     ):
+        # The content to block.
+        # 
         # This parameter is required.
         self.content = content
+        # The blocking period that you can extend. Set the value to 2year.
         self.extension = extension
+        # The period of time during which the URL is blocked. Unit: seconds. Specify this parameter if Type is set to block.
         self.maxage = maxage
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The type. Valid values:
+        # 
+        # *   **block**\
+        # *   **unblock**\
+        # 
         # This parameter is required.
         self.type = type
 
@@ -4054,12 +4313,23 @@ class BlockObjectShrinkRequest(TeaModel):
         site_id: int = None,
         type: str = None,
     ):
+        # The content to block.
+        # 
         # This parameter is required.
         self.content_shrink = content_shrink
+        # The blocking period that you can extend. Set the value to 2year.
         self.extension = extension
+        # The period of time during which the URL is blocked. Unit: seconds. Specify this parameter if Type is set to block.
         self.maxage = maxage
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The type. Valid values:
+        # 
+        # *   **block**\
+        # *   **unblock**\
+        # 
         # This parameter is required.
         self.type = type
 
@@ -4105,8 +4375,9 @@ class BlockObjectResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The blocking task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -4183,9 +4454,12 @@ class ChangeResourceGroupRequest(TeaModel):
         site_id: int = None,
     ):
         self.owner_id = owner_id
+        # The ID of the resource group to which you want to move the website.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
         self.security_token = security_token
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):
@@ -4225,7 +4499,7 @@ class ChangeResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4294,6 +4568,8 @@ class CheckSiteNameRequest(TeaModel):
         self,
         site_name: str = None,
     ):
+        # The website name.
+        # 
         # This parameter is required.
         self.site_name = site_name
 
@@ -4326,10 +4602,27 @@ class CheckSiteNameResponseBody(TeaModel):
         passed: bool = None,
         request_id: str = None,
     ):
+        # The description of the verification result. Valid values:
+        # 
+        # *   **success**: The verification is successful.
+        # *   **Site.AlreadyExist**: The website domain name has already been added.
+        # *   **Site.InvalidName**: Invalid website domain name.
+        # *   **Site.SubSiteUnavailable**: Subdomains are not allowed.
+        # *   **Site.InternalError**: An internal error occurs.
         self.description = description
+        # Indicates whether a subdomain is specified. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_sub_site = is_sub_site
+        # The verification message.
         self.messeage = messeage
+        # Indicates whether the verification passed.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.passed = passed
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4415,8 +4708,11 @@ class CheckSiteProjectNameRequest(TeaModel):
         project_name: str = None,
         site_id: int = None,
     ):
+        # The name of the real-time log delivery task.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):
@@ -4451,9 +4747,16 @@ class CheckSiteProjectNameResponseBody(TeaModel):
         project_name: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the task name is valid. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.check = check
+        # The result description.
         self.description = description
+        # The name of the real-time log delivery task.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4534,6 +4837,8 @@ class CheckUserProjectNameRequest(TeaModel):
         self,
         project_name: str = None,
     ):
+        # The name of the real-time log delivery task.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -4565,9 +4870,16 @@ class CheckUserProjectNameResponseBody(TeaModel):
         project_name: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the name is valid. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.check = check
+        # The reason why the name passed or failed the check.
         self.description = description
+        # The name of the real-time log delivery task.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4649,7 +4961,9 @@ class CommitRoutineStagingCodeRequest(TeaModel):
         code_description: str = None,
         name: str = None,
     ):
+        # The description of the code version.
         self.code_description = code_description
+        # The routine name.
         self.name = name
 
     def validate(self):
@@ -4682,8 +4996,9 @@ class CommitRoutineStagingCodeResponseBody(TeaModel):
         code_version: str = None,
         request_id: str = None,
     ):
+        # The version number of the newly generated code.
         self.code_version = code_version
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4760,13 +5075,28 @@ class CreateCustomScenePolicyRequest(TeaModel):
         start_time: str = None,
         template: str = None,
     ):
+        # The time when the policy expires.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The policy name.
+        # 
         # This parameter is required.
         self.name = name
+        # The IDs of the websites that you want to associate with the policy. Separate multiple IDs with commas (,).
         self.objects = objects
+        # The time when the policy takes effect.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The name of the policy template. Valid value:
+        # 
+        # *   **promotion**: major events.
+        # 
         # This parameter is required.
         self.template = template
 
@@ -4817,13 +5147,23 @@ class CreateCustomScenePolicyResponseBody(TeaModel):
         start_time: str = None,
         template: str = None,
     ):
+        # The time when the policy expires.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
+        # The policy name.
         self.name = name
+        # The IDs of websites associated.
         self.objects = objects
+        # The policy ID.
         self.policy_id = policy_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The time when the policy takes effect.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
+        # The name of the policy template.
         self.template = template
 
     def validate(self):
@@ -4929,21 +5269,51 @@ class CreateEdgeContainerAppRequest(TeaModel):
         service_port: int = None,
         target_port: int = None,
     ):
+        # The number of consecutive failed health checks required for an application to be considered as unhealthy. Valid values: 1 to 10. Default value: 5.
         self.health_check_fail_times = health_check_fail_times
+        # The domain name that is used for health checks. This parameter is empty by default.
         self.health_check_host = health_check_host
+        # The HTTP status code returned for a successful health check. Valid values:
+        # 
+        # *   **http_2xx** (default)
+        # *   **http_3xx**\
         self.health_check_http_code = health_check_http_code
+        # The interval between two consecutive health checks. Unit: seconds. Valid values: **1** to **50**. Default value: **5**.
         self.health_check_interval = health_check_interval
+        # The HTTP request method for health checks. Valid values:
+        # 
+        # *   **HEAD** (default): requests the headers of the resource.
+        # *   **GET**: requests the specified resource and returns both the headers and entity body.
         self.health_check_method = health_check_method
+        # The port used for health checks. Valid values: 1 to 65535. Default value: 80.
         self.health_check_port = health_check_port
+        # The number of consecutive successful health checks required for an application to be considered as healthy. Valid values: 1 to 10. Default value: 2.
         self.health_check_succ_times = health_check_succ_times
+        # The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.\\
+        # Valid values: **1** to **100**.\\
+        # Default value: **3**.
         self.health_check_timeout = health_check_timeout
+        # The health check type. By default, this parameter is left empty.
+        # 
+        # Valid values:
+        # 
+        # *   **l4**: Layer 4 health check.
+        # *   **l7**: Layer 7 health check.
         self.health_check_type = health_check_type
+        # The URI used for health checks. The URI must be **1** to **80** characters in length. Default value: "/".
         self.health_check_uri = health_check_uri
+        # The name of the application. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name must be 6 to 128 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The remarks. This parameter is empty by default.
         self.remarks = remarks
+        # The server port. Valid values: 1 to 65535.
+        # 
         # This parameter is required.
         self.service_port = service_port
+        # The backend port, which is also the service port of the application. Valid values: 1 to 65535.
+        # 
         # This parameter is required.
         self.target_port = target_port
 
@@ -5025,7 +5395,9 @@ class CreateEdgeContainerAppResponseBody(TeaModel):
         app_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the application that is created.
         self.app_id = app_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5100,10 +5472,15 @@ class CreateEdgeContainerAppRecordRequest(TeaModel):
         record_name: str = None,
         site_id: int = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The associated domain name.
+        # 
         # This parameter is required.
         self.record_name = record_name
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -5139,6 +5516,7 @@ class CreateEdgeContainerAppRecordResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5721,7 +6099,10 @@ class CreateKvNamespaceRequest(TeaModel):
         description: str = None,
         namespace: str = None,
     ):
+        # The description of the namespace.
         self.description = description
+        # The name of the namespace.
+        # 
         # This parameter is required.
         self.namespace = namespace
 
@@ -5758,10 +6139,20 @@ class CreateKvNamespaceResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The description of the namespace.
         self.description = description
+        # The name of the namespace.
         self.namespace = namespace
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The request ID.
         self.request_id = request_id
+        # The status of the namespace. Valid values:
+        # 
+        # *   **online**: working as expected.
+        # *   **delete**: pending deletion.
+        # *   **deleting**: being deleted.
+        # *   **deleted**: deleted.
         self.status = status
 
     def validate(self):
@@ -5849,9 +6240,14 @@ class CreateListRequest(TeaModel):
         kind: str = None,
         name: str = None,
     ):
+        # The description of the list that you want to create.
         self.description = description
+        # The items in the list that you want to create.
         self.items = items
+        # The type of the list that you want to create.
         self.kind = kind
+        # The name of the list that you want to create.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -5895,9 +6291,14 @@ class CreateListShrinkRequest(TeaModel):
         kind: str = None,
         name: str = None,
     ):
+        # The description of the list that you want to create.
         self.description = description
+        # The items in the list that you want to create.
         self.items_shrink = items_shrink
+        # The type of the list that you want to create.
         self.kind = kind
+        # The name of the list that you want to create.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -5939,8 +6340,9 @@ class CreateListResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The ID of the custom list.[](~~2850217~~)
         self.id = id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6008,6 +6410,102 @@ class CreateListResponse(TeaModel):
         return self
 
 
+class CreateOriginProtectionRequest(TeaModel):
+    def __init__(
+        self,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class CreateOriginProtectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateOriginProtectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOriginProtectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOriginProtectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreatePageRequest(TeaModel):
     def __init__(
         self,
@@ -6016,10 +6514,19 @@ class CreatePageRequest(TeaModel):
         description: str = None,
         name: str = None,
     ):
+        # The Base64-encoded page content. Example: "PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=", which indicates "hello page".
         self.content = content
+        # The Content-Type field in the HTTP header. Valid values:
+        # 
+        # *   text/html
+        # *   application/json
+        # 
         # This parameter is required.
         self.content_type = content_type
+        # The description of the page.
         self.description = description
+        # The name of the custom error page.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -6061,8 +6568,9 @@ class CreatePageResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The ID of the custom error page.[](~~2850223~~)
         self.id = id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6139,10 +6647,25 @@ class CreateRecordRequestAuthConf(TeaModel):
         secret_key: str = None,
         version: str = None,
     ):
+        # The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
         self.access_key = access_key
+        # The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
+        # 
+        # *   **public**: public read. Select this value when the origin type is OSS or S3 and the origin access is public read.
+        # *   **private**: private read. Select this value when the origin type is S3 and the origin access is private read.
+        # *   **private_same_account**: private read under the same account. Select this value when the origin type is OSS, the origins belong to the same Alibaba Cloud account, and the origins have private read access.
+        # *   **private_cross_account**: private read cross accounts. Select this value when the origin type is OSS, the origins belong to different Alibaba Cloud accounts, and the origins have private read access.
         self.auth_type = auth_type
+        # The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
         self.region = region
+        # The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
         self.secret_key = secret_key
+        # The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+        # 
+        # *   **v2**\
+        # *   **v4**\
+        # 
+        # If you leave this parameter empty, the default value v4 is used.
         self.version = version
 
     def validate(self):
@@ -6199,19 +6722,46 @@ class CreateRecordRequestData(TeaModel):
         value: str = None,
         weight: int = None,
     ):
+        # The encryption algorithm used for the record, specified within the range from 0 to 255. This parameter is required when you add CERT or SSHFP records.
         self.algorithm = algorithm
+        # The public key of the certificate. This parameter is required when you add CERT, SMIMEA, or TLSA records.
         self.certificate = certificate
+        # The public key fingerprint of the record. This parameter is required when you add a SSHFP record.
         self.fingerprint = fingerprint
+        # The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed, specified within the range of 0 to 255. This parameter is required when you add a CAA record.
         self.flag = flag
+        # The public key identification for the record, specified within the range of 0 to 65,535. This parameter is required when you add a CAA record.
         self.key_tag = key_tag
+        # The algorithm policy used to match or validate the certificate, specified within the range 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
         self.matching_type = matching_type
+        # The port of the record, specified within the range of 0 to 65,535. This parameter is required when you add an SRV record.
         self.port = port
+        # The priority of the record, specified within the range of 0 to 65,535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
         self.priority = priority
+        # The type of certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
         self.selector = selector
+        # The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
+        # 
+        # *   **issue**: indicates that a CA is authorized to issue a certificate for the domain name. This is usually followed by the domain name of the CA.
+        # *   **issuewild**: indicates that a CA is authorized to issue a wildcard certificate (such as \\*.example.com) for the domain name.
+        # *   **iodef**: specifies a URI to receive reports about CAA record violations.
         self.tag = tag
+        # The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
         self.type = type
+        # The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
         self.usage = usage
+        # Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+        # 
+        # *   **A/AAAA**: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
+        # *   **CNAME**: the target domain name.
+        # *   **NS**: the name servers for the domain name.
+        # *   **MX**: a valid domain name of the target mail server.
+        # *   **TXT**: a valid text string.
+        # *   **CAA**: a valid domain name of the certificate authority.
+        # *   **SRV**: a valid domain name of the target host.
+        # *   **URI**: a valid URI string.
         self.value = value
+        # The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
         self.weight = weight
 
     def validate(self):
@@ -6301,24 +6851,51 @@ class CreateRecordRequest(TeaModel):
         ttl: int = None,
         type: str = None,
     ):
+        # The origin authentication information of the CNAME record.
         self.auth_conf = auth_conf
-        # 业务场景
+        # The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+        # 
+        # *   **image_video**: video and image.
+        # *   **api**: API.
+        # *   **web**: web page.
         self.biz_name = biz_name
+        # The comment of the record. The maximum length is 100 characters.
         self.comment = comment
+        # The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html) .
+        # 
         # This parameter is required.
         self.data = data
+        # The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
+        # 
+        # *   **follow_hostname**: Follow the host record.
+        # *   **follow_origin_domain**: match the origin\\"s domain name.
         self.host_policy = host_policy
-        # 是否代理加速
+        # Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.proxied = proxied
-        # 记录名称
+        # The record name.
         # 
         # This parameter is required.
         self.record_name = record_name
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+        # 
+        # *   **OSS**: OSS bucket.
+        # *   **S3**: S3 bucket.
+        # *   **LB**: load balancer.
+        # *   **OP**: origin pool.
+        # *   **Domain**: domain name.
+        # 
+        # If you do not pass this parameter or if you leave its value empty, Domain is used by default.
         self.source_type = source_type
+        # The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         self.ttl = ttl
-        # 记录类型
+        # The type of the DNS record. For example, A/AAAA, TXT, MX, or CNAME.
         # 
         # This parameter is required.
         self.type = type
@@ -6403,24 +6980,51 @@ class CreateRecordShrinkRequest(TeaModel):
         ttl: int = None,
         type: str = None,
     ):
+        # The origin authentication information of the CNAME record.
         self.auth_conf_shrink = auth_conf_shrink
-        # 业务场景
+        # The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+        # 
+        # *   **image_video**: video and image.
+        # *   **api**: API.
+        # *   **web**: web page.
         self.biz_name = biz_name
+        # The comment of the record. The maximum length is 100 characters.
         self.comment = comment
+        # The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html) .
+        # 
         # This parameter is required.
         self.data_shrink = data_shrink
+        # The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
+        # 
+        # *   **follow_hostname**: Follow the host record.
+        # *   **follow_origin_domain**: match the origin\\"s domain name.
         self.host_policy = host_policy
-        # 是否代理加速
+        # Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.proxied = proxied
-        # 记录名称
+        # The record name.
         # 
         # This parameter is required.
         self.record_name = record_name
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+        # 
+        # *   **OSS**: OSS bucket.
+        # *   **S3**: S3 bucket.
+        # *   **LB**: load balancer.
+        # *   **OP**: origin pool.
+        # *   **Domain**: domain name.
+        # 
+        # If you do not pass this parameter or if you leave its value empty, Domain is used by default.
         self.source_type = source_type
+        # The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         self.ttl = ttl
-        # 记录类型
+        # The type of the DNS record. For example, A/AAAA, TXT, MX, or CNAME.
         # 
         # This parameter is required.
         self.type = type
@@ -6491,7 +7095,9 @@ class CreateRecordResponseBody(TeaModel):
         record_id: int = None,
         request_id: str = None,
     ):
+        # The record ID.
         self.record_id = record_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6566,8 +7172,11 @@ class CreateRoutineRequest(TeaModel):
         name: str = None,
         spec_name: str = None,
     ):
+        # The routine description.
         self.description = description
+        # The routine name, which must be unique in the same account.
         self.name = name
+        # The specification of the routine.
         self.spec_name = spec_name
 
     def validate(self):
@@ -6604,8 +7213,9 @@ class CreateRoutineResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful.
         self.status = status
 
     def validate(self):
@@ -6680,8 +7290,11 @@ class CreateRoutineRelatedRecordRequest(TeaModel):
         record_name: str = None,
         site_id: int = None,
     ):
+        # The routine name.
         self.name = name
+        # The record name.
         self.record_name = record_name
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -6718,8 +7331,9 @@ class CreateRoutineRelatedRecordResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful.
         self.status = status
 
     def validate(self):
@@ -6794,8 +7408,11 @@ class CreateRoutineRelatedRouteRequest(TeaModel):
         route: str = None,
         site_id: int = None,
     ):
+        # The routine name.
         self.name = name
+        # The route.
         self.route = route
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -6832,8 +7449,9 @@ class CreateRoutineRelatedRouteResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful.
         self.status = status
 
     def validate(self):
@@ -6909,11 +7527,17 @@ class CreateScheduledPreloadExecutionsRequestExecutions(TeaModel):
         slice_len: int = None,
         start_time: str = None,
     ):
+        # The end time of the prefetch plans.
         self.end_time = end_time
+        # The time interval between each batch execution. Unit: seconds.
+        # 
         # This parameter is required.
         self.interval = interval
+        # The number of URLs prefetched in each batch.
+        # 
         # This parameter is required.
         self.slice_len = slice_len
+        # The start time of the prefetch plans.
         self.start_time = start_time
 
     def validate(self):
@@ -6954,8 +7578,11 @@ class CreateScheduledPreloadExecutionsRequest(TeaModel):
         executions: List[CreateScheduledPreloadExecutionsRequestExecutions] = None,
         id: str = None,
     ):
+        # The scheduled prefetch plans to create.
+        # 
         # This parameter is required.
         self.executions = executions
+        # The ID of the prefetch task, which is generated by calling the [CreateScheduledPreloadJob](https://help.aliyun.com/document_detail/2850459.html) operation.
         self.id = id
 
     def validate(self):
@@ -6996,8 +7623,11 @@ class CreateScheduledPreloadExecutionsShrinkRequest(TeaModel):
         executions_shrink: str = None,
         id: str = None,
     ):
+        # The scheduled prefetch plans to create.
+        # 
         # This parameter is required.
         self.executions_shrink = executions_shrink
+        # The ID of the prefetch task, which is generated by calling the [CreateScheduledPreloadJob](https://help.aliyun.com/document_detail/2850459.html) operation.
         self.id = id
 
     def validate(self):
@@ -7036,13 +7666,27 @@ class CreateScheduledPreloadExecutionsResponseBodyFailedExecutions(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The end time of the prefetch plans.
         self.end_time = end_time
+        # The ID of the prefetch plan.
         self.id = id
+        # The time interval between each batch execution. Unit: seconds.
         self.interval = interval
+        # The ID of the prefetch task.
         self.job_id = job_id
+        # The number of URLs prefetched in each batch.
         self.slice_len = slice_len
+        # The start time of the prefetch plans.
         self.start_time = start_time
+        # The status of the prefetch plan. Valid values:
+        # 
+        # *   **waiting**\
+        # *   **running**\
+        # *   **finished**\
+        # *   **failed**\
+        # *   **stopped**\
         self.status = status
 
     def validate(self):
@@ -7105,13 +7749,27 @@ class CreateScheduledPreloadExecutionsResponseBodySuccessExecutions(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The end time of the prefetch plans.
         self.end_time = end_time
+        # The ID of the prefetch plan.
         self.id = id
+        # The time interval between each batch execution. Unit: seconds.
         self.interval = interval
+        # The ID of the prefetch task.
         self.job_id = job_id
+        # The number of URLs prefetched in each batch.
         self.slice_len = slice_len
+        # The start time of the prefetch plans.
         self.start_time = start_time
+        # The status of the prefetch plan. Valid values:
+        # 
+        # *   **waiting**\
+        # *   **running**\
+        # *   **finished**\
+        # *   **failed**\
+        # *   **stopped**\
         self.status = status
 
     def validate(self):
@@ -7172,12 +7830,17 @@ class CreateScheduledPreloadExecutionsResponseBody(TeaModel):
         success_executions: List[CreateScheduledPreloadExecutionsResponseBodySuccessExecutions] = None,
         total_count: int = None,
     ):
+        # The information about prefetch plans that failed to be created.
         self.failed_executions = failed_executions
+        # The information about plan failures.
         self.failed_messages = failed_messages
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The number of prefetch plans that are created.
         self.success_count = success_count
+        # The information about created prefetch plans.
         self.success_executions = success_executions
+        # The total number of new plans requested.
         self.total_count = total_count
 
     def validate(self):
@@ -7287,13 +7950,26 @@ class CreateScheduledPreloadJobRequest(TeaModel):
         site_id: int = None,
         url_list: str = None,
     ):
+        # The method to submit URLs to be prefetched.
+        # 
+        # Valid values:
+        # 
+        # *   **textBox**\
+        # *   **oss**\
+        # 
         # This parameter is required.
         self.insert_way = insert_way
+        # The name of the scheduled prefetch task.
+        # 
         # This parameter is required.
         self.name = name
+        # The URL of the OSS object that stores the URLs to be prefetched.
         self.oss_url = oss_url
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The URLs to be prefetched. This parameter is required if you set InsertWay to textBox.
         self.url_list = url_list
 
     def validate(self):
@@ -7351,21 +8027,40 @@ class CreateScheduledPreloadJobResponseBody(TeaModel):
         url_count: int = None,
         url_submitted: int = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The time when the task was created.
         self.created_at = created_at
+        # The domain names to be prefetched.
         self.domains = domains
+        # The error message. Multiple error messages are separated by commas (,). Valid values:
+        # 
+        # *   **InvalidUrl**: The URL format is invalid.
+        # *   **InvalidDomain**: The domain name fails the domain ownership verification.
+        # *   **QuotaExcess**: the quota limit has been reached.
+        # *   **OtherErrors**: other errors.
         self.error_info = error_info
+        # The URL of the OSS object that stores a list of URLs that failed the conditional check for prefetching.
         self.failed_file_oss = failed_file_oss
+        # The ID of the URL list file, which can be used during downloads.
         self.file_id = file_id
+        # The ID of the scheduled prefetch task.
         self.id = id
+        # The method to submit the URLs to be prefetched.
         self.insert_way = insert_way
+        # The task name.
         self.name = name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
+        # The number of submitted prefetch tasks.
         self.task_submitted = task_submitted
+        # The task type (refresh or preload).
         self.task_type = task_type
+        # The total number of URLs.
         self.url_count = url_count
+        # The number of submitted URLs.
         self.url_submitted = url_submitted
 
     def validate(self):
@@ -7494,14 +8189,28 @@ class CreateSiteRequest(TeaModel):
         resource_group_id: str = None,
         site_name: str = None,
     ):
+        # The DNS setup. Valid values:
+        # 
+        # *   **NS**\
+        # *   **CNAME**\
+        # 
         # This parameter is required.
         self.access_type = access_type
+        # The service location. Valid values:
+        # 
+        # *   **domestic**: the Chinese mainland
+        # *   **global**: global
+        # *   **overseas**: outside the Chinese mainland
+        # 
         # This parameter is required.
         self.coverage = coverage
+        # The instance ID, which can be obtained by calling the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation. Specify at least one of the instance ID and website ID. If you specify both of them, the instance ID is used.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the resource group. If you leave this parameter empty, the system uses the default resource group ID.
         self.resource_group_id = resource_group_id
-        # 记录名称
+        # The website name.
         # 
         # This parameter is required.
         self.site_name = site_name
@@ -7550,9 +8259,13 @@ class CreateSiteResponseBody(TeaModel):
         site_id: int = None,
         verify_code: str = None,
     ):
+        # The nameservers assigned by ESA. The values are separated by commas (,). This parameter is returned if you set AccessType to NS. In this case, you must change the nameservers of your domain to the assigned ones. Then, you can verify the domain ownership and activate your website.
         self.name_server_list = name_server_list
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
+        # The verification code for the website. If you set AccessType to CNAME, you need to add a TXT record whose hostname is **_esaauth.[websiteDomainName]** and record value is the value of VerifyCode to the DNS records of your domain. ****Then, you can verify the domain ownership and activate your website.
         self.verify_code = verify_code
 
     def validate(self):
@@ -7636,9 +8349,13 @@ class CreateSiteCustomLogRequest(TeaModel):
         response_headers: List[str] = None,
         site_id: int = None,
     ):
+        # The cookie fields.
         self.cookies = cookies
+        # The request header fields.
         self.request_headers = request_headers
+        # The response header fields.
         self.response_headers = response_headers
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):
@@ -7681,9 +8398,13 @@ class CreateSiteCustomLogShrinkRequest(TeaModel):
         response_headers_shrink: str = None,
         site_id: int = None,
     ):
+        # The cookie fields.
         self.cookies_shrink = cookies_shrink
+        # The request header fields.
         self.request_headers_shrink = request_headers_shrink
+        # The response header fields.
         self.response_headers_shrink = response_headers_shrink
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):
@@ -7723,7 +8444,7 @@ class CreateSiteCustomLogResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7794,8 +8515,13 @@ class CreateSiteDeliveryTaskRequestHttpDeliveryStandardAuthParam(TeaModel):
         private_key: str = None,
         url_path: str = None,
     ):
+        # The validity period of the signature.
+        # 
+        # >  The value must be greater than 0. We recommend that you specify a value that is greater than 300.
         self.expired_time = expired_time
+        # The private key.
         self.private_key = private_key
+        # The URI path for server authentication.
         self.url_path = url_path
 
     def validate(self):
@@ -7842,17 +8568,29 @@ class CreateSiteDeliveryTaskRequestHttpDelivery(TeaModel):
         standard_auth_param: CreateSiteDeliveryTaskRequestHttpDeliveryStandardAuthParam = None,
         transform_timeout: int = None,
     ):
+        # The compression method. By default, data is not compressed.
         self.compress = compress
+        # The address of the HTTP server.
         self.dest_url = dest_url
+        # The custom headers.
         self.header_param = header_param
+        # The prefix of the log delivery package.
         self.log_body_prefix = log_body_prefix
+        # The suffix of the log delivery package.
         self.log_body_suffix = log_body_suffix
+        # The maximum size of data for each delivery. Unit: MB.
         self.max_batch_mb = max_batch_mb
+        # The maximum number of entries for each delivery.
         self.max_batch_size = max_batch_size
+        # The maximum number of retries.
         self.max_retry = max_retry
+        # The custom query parameters.
         self.query_param = query_param
+        # Specifies whether to use server authentication.
         self.standard_auth_on = standard_auth_on
+        # The authentication configurations.
         self.standard_auth_param = standard_auth_param
+        # The timeout period. Unit: seconds.
         self.transform_timeout = transform_timeout
 
     def validate(self):
@@ -7951,13 +8689,21 @@ class CreateSiteDeliveryTaskRequestKafkaDelivery(TeaModel):
         user_auth: bool = None,
         user_name: str = None,
     ):
+        # The load balancing method.
         self.balancer = balancer
+        # The brokers.
         self.brokers = brokers
+        # The compression method.
         self.compress = compress
+        # The encryption method.
         self.machanism_type = machanism_type
+        # The password.
         self.password = password
+        # The topic.
         self.topic = topic
+        # Specifies whether to enable authentication.
         self.user_auth = user_auth
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -8016,9 +8762,13 @@ class CreateSiteDeliveryTaskRequestOssDelivery(TeaModel):
         prefix_path: str = None,
         region: str = None,
     ):
+        # The ID of your Alibaba Cloud account.
         self.aliuid = aliuid
+        # The name of the OSS bucket.
         self.bucket_name = bucket_name
+        # The prefix of the path in which you want to store logs.
         self.prefix_path = prefix_path
+        # The region in which the bucket is located.
         self.region = region
 
     def validate(self):
@@ -8066,12 +8816,19 @@ class CreateSiteDeliveryTaskRequestS3Delivery(TeaModel):
         server_side_encryption: bool = None,
         vertify_type: str = None,
     ):
+        # The access key ID of your Amazon S3 account.
         self.access_key = access_key
+        # The directory in the bucket.
         self.bucket_path = bucket_path
+        # The endpoint. This parameter is required when the S3Cmpt parameter is set to true.
         self.endpoint = endpoint
+        # The prefix of the path in which you want to store logs.
         self.prefix_path = prefix_path
+        # The region ID of the service.
         self.region = region
+        # Specifies whether the service is compatible with Amazon S3.
         self.s_3cmpt = s_3cmpt
+        # The secret access key of your Amazon S3 account.
         self.secret_key = secret_key
         self.server_side_encryption = server_side_encryption
         self.vertify_type = vertify_type
@@ -8135,8 +8892,11 @@ class CreateSiteDeliveryTaskRequestSlsDelivery(TeaModel):
         slsproject: str = None,
         slsregion: str = None,
     ):
+        # The name of the Logstore.
         self.slslog_store = slslog_store
+        # The name of the SLS project.
         self.slsproject = slsproject
+        # The region in which the SLS project resides.
         self.slsregion = slsregion
 
     def validate(self):
@@ -8183,22 +8943,55 @@ class CreateSiteDeliveryTaskRequest(TeaModel):
         sls_delivery: CreateSiteDeliveryTaskRequestSlsDelivery = None,
         task_name: str = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   **dcdn_log_access_l1** (default): access logs.
+        # *   **dcdn_log_er**: Edge Routine logs.
+        # *   **dcdn_log_waf**: firewall logs.
+        # *   **dcdn_log_ipa**: TCP/UDP proxy logs.
+        # 
         # This parameter is required.
         self.business_type = business_type
+        # The data center. Valid values:
+        # 
+        # *   cn: the Chinese mainland.
+        # *   oversea: outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.data_center = data_center
+        # The destination of the delivery. Valid values:
+        # 
+        # *   sls: Alibaba Cloud Simple Log Service (SLS).
+        # *   http: HTTP server.
+        # *   aws3: Amazon Simple Storage Service (S3).
+        # *   oss: Alibaba Cloud Object Storage Service (OSS).
+        # *   kafka: Kafka.
+        # *   aws3cmpt: S3-compatible storage service.
+        # 
         # This parameter is required.
         self.delivery_type = delivery_type
+        # The discard rate. Default value: 0.
         self.discard_rate = discard_rate
+        # The log fields, which are separated by commas (,).
+        # 
         # This parameter is required.
         self.field_name = field_name
+        # The configurations for delivery to an HTTP server.
         self.http_delivery = http_delivery
+        # The configurations for delivery to Kafka.
         self.kafka_delivery = kafka_delivery
+        # The configurations for delivery to OSS.
         self.oss_delivery = oss_delivery
+        # The configurations for delivery to Amazon S3 or an S3-compatible service.
         self.s_3delivery = s_3delivery
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The configurations for delivery to SLS.
         self.sls_delivery = sls_delivery
+        # The name of the delivery task.
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -8296,22 +9089,55 @@ class CreateSiteDeliveryTaskShrinkRequest(TeaModel):
         sls_delivery_shrink: str = None,
         task_name: str = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   **dcdn_log_access_l1** (default): access logs.
+        # *   **dcdn_log_er**: Edge Routine logs.
+        # *   **dcdn_log_waf**: firewall logs.
+        # *   **dcdn_log_ipa**: TCP/UDP proxy logs.
+        # 
         # This parameter is required.
         self.business_type = business_type
+        # The data center. Valid values:
+        # 
+        # *   cn: the Chinese mainland.
+        # *   oversea: outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.data_center = data_center
+        # The destination of the delivery. Valid values:
+        # 
+        # *   sls: Alibaba Cloud Simple Log Service (SLS).
+        # *   http: HTTP server.
+        # *   aws3: Amazon Simple Storage Service (S3).
+        # *   oss: Alibaba Cloud Object Storage Service (OSS).
+        # *   kafka: Kafka.
+        # *   aws3cmpt: S3-compatible storage service.
+        # 
         # This parameter is required.
         self.delivery_type = delivery_type
+        # The discard rate. Default value: 0.
         self.discard_rate = discard_rate
+        # The log fields, which are separated by commas (,).
+        # 
         # This parameter is required.
         self.field_name = field_name
+        # The configurations for delivery to an HTTP server.
         self.http_delivery_shrink = http_delivery_shrink
+        # The configurations for delivery to Kafka.
         self.kafka_delivery_shrink = kafka_delivery_shrink
+        # The configurations for delivery to OSS.
         self.oss_delivery_shrink = oss_delivery_shrink
+        # The configurations for delivery to Amazon S3 or an S3-compatible service.
         self.s_3delivery_shrink = s_3delivery_shrink
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The configurations for delivery to SLS.
         self.sls_delivery_shrink = sls_delivery_shrink
+        # The name of the delivery task.
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -8387,10 +9213,16 @@ class CreateSiteDeliveryTaskResponseBody(TeaModel):
         site_id: str = None,
         task_name: str = None,
     ):
+        # The data center. Valid values:
+        # 
+        # *   cn: the Chinese mainland.
+        # *   oversea: outside the Chinese mainland.
         self.data_center = data_center
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The website ID.[](~~2850189~~)
         self.site_id = site_id
+        # The name of the delivery task.
         self.task_name = task_name
 
     def validate(self):
@@ -8466,6 +9298,3682 @@ class CreateSiteDeliveryTaskResponse(TeaModel):
         return self
 
 
+class CreateSiteFunctionRequestCacheReserve(TeaModel):
+    def __init__(
+        self,
+        enable: str = None,
+        instance_id: str = None,
+    ):
+        self.enable = enable
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CreateSiteFunctionRequestCacheRules(TeaModel):
+    def __init__(
+        self,
+        additional_cacheable_ports: str = None,
+        browser_cache_mode: str = None,
+        browser_cache_ttl: str = None,
+        bypass_cache: str = None,
+        cache_deception_armor: str = None,
+        cache_reserve_eligibility: str = None,
+        check_presence_cookie: str = None,
+        check_presence_header: str = None,
+        edge_cache_mode: str = None,
+        edge_cache_ttl: str = None,
+        edge_status_code_cache_ttl: str = None,
+        include_cookie: str = None,
+        include_header: str = None,
+        query_string: str = None,
+        query_string_mode: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        serve_stale: str = None,
+        sort_query_string_for_cache: str = None,
+        user_device_type: str = None,
+        user_geo: str = None,
+        user_language: str = None,
+    ):
+        self.additional_cacheable_ports = additional_cacheable_ports
+        self.browser_cache_mode = browser_cache_mode
+        self.browser_cache_ttl = browser_cache_ttl
+        self.bypass_cache = bypass_cache
+        self.cache_deception_armor = cache_deception_armor
+        self.cache_reserve_eligibility = cache_reserve_eligibility
+        self.check_presence_cookie = check_presence_cookie
+        self.check_presence_header = check_presence_header
+        self.edge_cache_mode = edge_cache_mode
+        self.edge_cache_ttl = edge_cache_ttl
+        self.edge_status_code_cache_ttl = edge_status_code_cache_ttl
+        self.include_cookie = include_cookie
+        self.include_header = include_header
+        self.query_string = query_string
+        self.query_string_mode = query_string_mode
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.serve_stale = serve_stale
+        self.sort_query_string_for_cache = sort_query_string_for_cache
+        self.user_device_type = user_device_type
+        self.user_geo = user_geo
+        self.user_language = user_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_cacheable_ports is not None:
+            result['AdditionalCacheablePorts'] = self.additional_cacheable_ports
+        if self.browser_cache_mode is not None:
+            result['BrowserCacheMode'] = self.browser_cache_mode
+        if self.browser_cache_ttl is not None:
+            result['BrowserCacheTtl'] = self.browser_cache_ttl
+        if self.bypass_cache is not None:
+            result['BypassCache'] = self.bypass_cache
+        if self.cache_deception_armor is not None:
+            result['CacheDeceptionArmor'] = self.cache_deception_armor
+        if self.cache_reserve_eligibility is not None:
+            result['CacheReserveEligibility'] = self.cache_reserve_eligibility
+        if self.check_presence_cookie is not None:
+            result['CheckPresenceCookie'] = self.check_presence_cookie
+        if self.check_presence_header is not None:
+            result['CheckPresenceHeader'] = self.check_presence_header
+        if self.edge_cache_mode is not None:
+            result['EdgeCacheMode'] = self.edge_cache_mode
+        if self.edge_cache_ttl is not None:
+            result['EdgeCacheTtl'] = self.edge_cache_ttl
+        if self.edge_status_code_cache_ttl is not None:
+            result['EdgeStatusCodeCacheTtl'] = self.edge_status_code_cache_ttl
+        if self.include_cookie is not None:
+            result['IncludeCookie'] = self.include_cookie
+        if self.include_header is not None:
+            result['IncludeHeader'] = self.include_header
+        if self.query_string is not None:
+            result['QueryString'] = self.query_string
+        if self.query_string_mode is not None:
+            result['QueryStringMode'] = self.query_string_mode
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.serve_stale is not None:
+            result['ServeStale'] = self.serve_stale
+        if self.sort_query_string_for_cache is not None:
+            result['SortQueryStringForCache'] = self.sort_query_string_for_cache
+        if self.user_device_type is not None:
+            result['UserDeviceType'] = self.user_device_type
+        if self.user_geo is not None:
+            result['UserGeo'] = self.user_geo
+        if self.user_language is not None:
+            result['UserLanguage'] = self.user_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdditionalCacheablePorts') is not None:
+            self.additional_cacheable_ports = m.get('AdditionalCacheablePorts')
+        if m.get('BrowserCacheMode') is not None:
+            self.browser_cache_mode = m.get('BrowserCacheMode')
+        if m.get('BrowserCacheTtl') is not None:
+            self.browser_cache_ttl = m.get('BrowserCacheTtl')
+        if m.get('BypassCache') is not None:
+            self.bypass_cache = m.get('BypassCache')
+        if m.get('CacheDeceptionArmor') is not None:
+            self.cache_deception_armor = m.get('CacheDeceptionArmor')
+        if m.get('CacheReserveEligibility') is not None:
+            self.cache_reserve_eligibility = m.get('CacheReserveEligibility')
+        if m.get('CheckPresenceCookie') is not None:
+            self.check_presence_cookie = m.get('CheckPresenceCookie')
+        if m.get('CheckPresenceHeader') is not None:
+            self.check_presence_header = m.get('CheckPresenceHeader')
+        if m.get('EdgeCacheMode') is not None:
+            self.edge_cache_mode = m.get('EdgeCacheMode')
+        if m.get('EdgeCacheTtl') is not None:
+            self.edge_cache_ttl = m.get('EdgeCacheTtl')
+        if m.get('EdgeStatusCodeCacheTtl') is not None:
+            self.edge_status_code_cache_ttl = m.get('EdgeStatusCodeCacheTtl')
+        if m.get('IncludeCookie') is not None:
+            self.include_cookie = m.get('IncludeCookie')
+        if m.get('IncludeHeader') is not None:
+            self.include_header = m.get('IncludeHeader')
+        if m.get('QueryString') is not None:
+            self.query_string = m.get('QueryString')
+        if m.get('QueryStringMode') is not None:
+            self.query_string_mode = m.get('QueryStringMode')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ServeStale') is not None:
+            self.serve_stale = m.get('ServeStale')
+        if m.get('SortQueryStringForCache') is not None:
+            self.sort_query_string_for_cache = m.get('SortQueryStringForCache')
+        if m.get('UserDeviceType') is not None:
+            self.user_device_type = m.get('UserDeviceType')
+        if m.get('UserGeo') is not None:
+            self.user_geo = m.get('UserGeo')
+        if m.get('UserLanguage') is not None:
+            self.user_language = m.get('UserLanguage')
+        return self
+
+
+class CreateSiteFunctionRequestCacheTags(TeaModel):
+    def __init__(
+        self,
+        case_insensitive: str = None,
+        tag_name: str = None,
+    ):
+        self.case_insensitive = case_insensitive
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.case_insensitive is not None:
+            result['CaseInsensitive'] = self.case_insensitive
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CaseInsensitive') is not None:
+            self.case_insensitive = m.get('CaseInsensitive')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class CreateSiteFunctionRequestCnameFlattening(TeaModel):
+    def __init__(
+        self,
+        flatten_mode: str = None,
+    ):
+        self.flatten_mode = flatten_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flatten_mode is not None:
+            result['FlattenMode'] = self.flatten_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlattenMode') is not None:
+            self.flatten_mode = m.get('FlattenMode')
+        return self
+
+
+class CreateSiteFunctionRequestCompressionRules(TeaModel):
+    def __init__(
+        self,
+        brotli: str = None,
+        gzip: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+    ):
+        self.brotli = brotli
+        self.gzip = gzip
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brotli is not None:
+            result['Brotli'] = self.brotli
+        if self.gzip is not None:
+            result['Gzip'] = self.gzip
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Brotli') is not None:
+            self.brotli = m.get('Brotli')
+        if m.get('Gzip') is not None:
+            self.gzip = m.get('Gzip')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class CreateSiteFunctionRequestCrossBorderOptimization(TeaModel):
+    def __init__(
+        self,
+        enable: str = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class CreateSiteFunctionRequestDevelopmentMode(TeaModel):
+    def __init__(
+        self,
+        enable: str = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operation = operation
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateSiteFunctionRequestHttpRequestHeaderModificationRules(TeaModel):
+    def __init__(
+        self,
+        request_header_modification: List[CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+    ):
+        self.request_header_modification = request_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.request_header_modification:
+            for k in self.request_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RequestHeaderModification'] = []
+        if self.request_header_modification is not None:
+            for k in self.request_header_modification:
+                result['RequestHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.request_header_modification = []
+        if m.get('RequestHeaderModification') is not None:
+            for k in m.get('RequestHeaderModification'):
+                temp_model = CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification()
+                self.request_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operation = operation
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateSiteFunctionRequestHttpResponseHeaderModificationRules(TeaModel):
+    def __init__(
+        self,
+        response_header_modification: List[CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+    ):
+        self.response_header_modification = response_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.response_header_modification:
+            for k in self.response_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ResponseHeaderModification'] = []
+        if self.response_header_modification is not None:
+            for k in self.response_header_modification:
+                result['ResponseHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.response_header_modification = []
+        if m.get('ResponseHeaderModification') is not None:
+            for k in m.get('ResponseHeaderModification'):
+                temp_model = CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification()
+                self.response_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class CreateSiteFunctionRequestHttpsApplicationConfiguration(TeaModel):
+    def __init__(
+        self,
+        alt_svc: str = None,
+        alt_svc_clear: str = None,
+        alt_svc_ma: str = None,
+        alt_svc_persist: str = None,
+        hsts: str = None,
+        hsts_include_subdomains: str = None,
+        hsts_max_age: str = None,
+        hsts_preload: str = None,
+        https_force: str = None,
+        https_force_code: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+    ):
+        self.alt_svc = alt_svc
+        self.alt_svc_clear = alt_svc_clear
+        self.alt_svc_ma = alt_svc_ma
+        self.alt_svc_persist = alt_svc_persist
+        self.hsts = hsts
+        self.hsts_include_subdomains = hsts_include_subdomains
+        self.hsts_max_age = hsts_max_age
+        self.hsts_preload = hsts_preload
+        self.https_force = https_force
+        self.https_force_code = https_force_code
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alt_svc is not None:
+            result['AltSvc'] = self.alt_svc
+        if self.alt_svc_clear is not None:
+            result['AltSvcClear'] = self.alt_svc_clear
+        if self.alt_svc_ma is not None:
+            result['AltSvcMa'] = self.alt_svc_ma
+        if self.alt_svc_persist is not None:
+            result['AltSvcPersist'] = self.alt_svc_persist
+        if self.hsts is not None:
+            result['Hsts'] = self.hsts
+        if self.hsts_include_subdomains is not None:
+            result['HstsIncludeSubdomains'] = self.hsts_include_subdomains
+        if self.hsts_max_age is not None:
+            result['HstsMaxAge'] = self.hsts_max_age
+        if self.hsts_preload is not None:
+            result['HstsPreload'] = self.hsts_preload
+        if self.https_force is not None:
+            result['HttpsForce'] = self.https_force
+        if self.https_force_code is not None:
+            result['HttpsForceCode'] = self.https_force_code
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AltSvc') is not None:
+            self.alt_svc = m.get('AltSvc')
+        if m.get('AltSvcClear') is not None:
+            self.alt_svc_clear = m.get('AltSvcClear')
+        if m.get('AltSvcMa') is not None:
+            self.alt_svc_ma = m.get('AltSvcMa')
+        if m.get('AltSvcPersist') is not None:
+            self.alt_svc_persist = m.get('AltSvcPersist')
+        if m.get('Hsts') is not None:
+            self.hsts = m.get('Hsts')
+        if m.get('HstsIncludeSubdomains') is not None:
+            self.hsts_include_subdomains = m.get('HstsIncludeSubdomains')
+        if m.get('HstsMaxAge') is not None:
+            self.hsts_max_age = m.get('HstsMaxAge')
+        if m.get('HstsPreload') is not None:
+            self.hsts_preload = m.get('HstsPreload')
+        if m.get('HttpsForce') is not None:
+            self.https_force = m.get('HttpsForce')
+        if m.get('HttpsForceCode') is not None:
+            self.https_force_code = m.get('HttpsForceCode')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class CreateSiteFunctionRequestHttpsBasicConfiguration(TeaModel):
+    def __init__(
+        self,
+        ciphersuite: str = None,
+        ciphersuite_group: str = None,
+        http_2: str = None,
+        http_3: str = None,
+        https: str = None,
+        ocsp_stapling: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        tls_10: str = None,
+        tls_11: str = None,
+        tls_12: str = None,
+        tls_13: str = None,
+    ):
+        self.ciphersuite = ciphersuite
+        self.ciphersuite_group = ciphersuite_group
+        self.http_2 = http_2
+        self.http_3 = http_3
+        self.https = https
+        self.ocsp_stapling = ocsp_stapling
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.tls_10 = tls_10
+        self.tls_11 = tls_11
+        self.tls_12 = tls_12
+        self.tls_13 = tls_13
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ciphersuite is not None:
+            result['Ciphersuite'] = self.ciphersuite
+        if self.ciphersuite_group is not None:
+            result['CiphersuiteGroup'] = self.ciphersuite_group
+        if self.http_2 is not None:
+            result['Http2'] = self.http_2
+        if self.http_3 is not None:
+            result['Http3'] = self.http_3
+        if self.https is not None:
+            result['Https'] = self.https
+        if self.ocsp_stapling is not None:
+            result['OcspStapling'] = self.ocsp_stapling
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.tls_10 is not None:
+            result['Tls10'] = self.tls_10
+        if self.tls_11 is not None:
+            result['Tls11'] = self.tls_11
+        if self.tls_12 is not None:
+            result['Tls12'] = self.tls_12
+        if self.tls_13 is not None:
+            result['Tls13'] = self.tls_13
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ciphersuite') is not None:
+            self.ciphersuite = m.get('Ciphersuite')
+        if m.get('CiphersuiteGroup') is not None:
+            self.ciphersuite_group = m.get('CiphersuiteGroup')
+        if m.get('Http2') is not None:
+            self.http_2 = m.get('Http2')
+        if m.get('Http3') is not None:
+            self.http_3 = m.get('Http3')
+        if m.get('Https') is not None:
+            self.https = m.get('Https')
+        if m.get('OcspStapling') is not None:
+            self.ocsp_stapling = m.get('OcspStapling')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Tls10') is not None:
+            self.tls_10 = m.get('Tls10')
+        if m.get('Tls11') is not None:
+            self.tls_11 = m.get('Tls11')
+        if m.get('Tls12') is not None:
+            self.tls_12 = m.get('Tls12')
+        if m.get('Tls13') is not None:
+            self.tls_13 = m.get('Tls13')
+        return self
+
+
+class CreateSiteFunctionRequestImageTransform(TeaModel):
+    def __init__(
+        self,
+        enable: str = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class CreateSiteFunctionRequestIpv6(TeaModel):
+    def __init__(
+        self,
+        enable: str = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class CreateSiteFunctionRequestManagedTransforms(TeaModel):
+    def __init__(
+        self,
+        add_client_geolocation_headers: str = None,
+        add_real_client_ip_header: str = None,
+    ):
+        self.add_client_geolocation_headers = add_client_geolocation_headers
+        self.add_real_client_ip_header = add_real_client_ip_header
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_client_geolocation_headers is not None:
+            result['AddClientGeolocationHeaders'] = self.add_client_geolocation_headers
+        if self.add_real_client_ip_header is not None:
+            result['AddRealClientIpHeader'] = self.add_real_client_ip_header
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddClientGeolocationHeaders') is not None:
+            self.add_client_geolocation_headers = m.get('AddClientGeolocationHeaders')
+        if m.get('AddRealClientIpHeader') is not None:
+            self.add_real_client_ip_header = m.get('AddRealClientIpHeader')
+        return self
+
+
+class CreateSiteFunctionRequestNetworkOptimization(TeaModel):
+    def __init__(
+        self,
+        grpc: str = None,
+        http_2origin: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        smart_routing: str = None,
+        upload_max_filesize: str = None,
+        websocket: str = None,
+    ):
+        self.grpc = grpc
+        self.http_2origin = http_2origin
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.smart_routing = smart_routing
+        self.upload_max_filesize = upload_max_filesize
+        self.websocket = websocket
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.grpc is not None:
+            result['Grpc'] = self.grpc
+        if self.http_2origin is not None:
+            result['Http2Origin'] = self.http_2origin
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.smart_routing is not None:
+            result['SmartRouting'] = self.smart_routing
+        if self.upload_max_filesize is not None:
+            result['UploadMaxFilesize'] = self.upload_max_filesize
+        if self.websocket is not None:
+            result['Websocket'] = self.websocket
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Grpc') is not None:
+            self.grpc = m.get('Grpc')
+        if m.get('Http2Origin') is not None:
+            self.http_2origin = m.get('Http2Origin')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SmartRouting') is not None:
+            self.smart_routing = m.get('SmartRouting')
+        if m.get('UploadMaxFilesize') is not None:
+            self.upload_max_filesize = m.get('UploadMaxFilesize')
+        if m.get('Websocket') is not None:
+            self.websocket = m.get('Websocket')
+        return self
+
+
+class CreateSiteFunctionRequestOriginProtection(TeaModel):
+    def __init__(
+        self,
+        enable: str = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class CreateSiteFunctionRequestOriginRules(TeaModel):
+    def __init__(
+        self,
+        dns_record: str = None,
+        origin_host: str = None,
+        origin_http_port: str = None,
+        origin_https_port: str = None,
+        origin_scheme: str = None,
+        origin_sni: str = None,
+        range: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+    ):
+        self.dns_record = dns_record
+        self.origin_host = origin_host
+        self.origin_http_port = origin_http_port
+        self.origin_https_port = origin_https_port
+        self.origin_scheme = origin_scheme
+        self.origin_sni = origin_sni
+        self.range = range
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dns_record is not None:
+            result['DnsRecord'] = self.dns_record
+        if self.origin_host is not None:
+            result['OriginHost'] = self.origin_host
+        if self.origin_http_port is not None:
+            result['OriginHttpPort'] = self.origin_http_port
+        if self.origin_https_port is not None:
+            result['OriginHttpsPort'] = self.origin_https_port
+        if self.origin_scheme is not None:
+            result['OriginScheme'] = self.origin_scheme
+        if self.origin_sni is not None:
+            result['OriginSni'] = self.origin_sni
+        if self.range is not None:
+            result['Range'] = self.range
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DnsRecord') is not None:
+            self.dns_record = m.get('DnsRecord')
+        if m.get('OriginHost') is not None:
+            self.origin_host = m.get('OriginHost')
+        if m.get('OriginHttpPort') is not None:
+            self.origin_http_port = m.get('OriginHttpPort')
+        if m.get('OriginHttpsPort') is not None:
+            self.origin_https_port = m.get('OriginHttpsPort')
+        if m.get('OriginScheme') is not None:
+            self.origin_scheme = m.get('OriginScheme')
+        if m.get('OriginSni') is not None:
+            self.origin_sni = m.get('OriginSni')
+        if m.get('Range') is not None:
+            self.range = m.get('Range')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class CreateSiteFunctionRequestRedirectRules(TeaModel):
+    def __init__(
+        self,
+        reserve_query_string: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        status_code: str = None,
+        target_url: str = None,
+        type: str = None,
+    ):
+        self.reserve_query_string = reserve_query_string
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.status_code = status_code
+        self.target_url = target_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reserve_query_string is not None:
+            result['ReserveQueryString'] = self.reserve_query_string
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReserveQueryString') is not None:
+            self.reserve_query_string = m.get('ReserveQueryString')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateSiteFunctionRequestRewriteUrlRules(TeaModel):
+    def __init__(
+        self,
+        query_string: str = None,
+        rewrite_query_string_type: str = None,
+        rewrite_uri_type: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        uri: str = None,
+    ):
+        self.query_string = query_string
+        self.rewrite_query_string_type = rewrite_query_string_type
+        self.rewrite_uri_type = rewrite_uri_type
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_string is not None:
+            result['QueryString'] = self.query_string
+        if self.rewrite_query_string_type is not None:
+            result['RewriteQueryStringType'] = self.rewrite_query_string_type
+        if self.rewrite_uri_type is not None:
+            result['RewriteUriType'] = self.rewrite_uri_type
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QueryString') is not None:
+            self.query_string = m.get('QueryString')
+        if m.get('RewriteQueryStringType') is not None:
+            self.rewrite_query_string_type = m.get('RewriteQueryStringType')
+        if m.get('RewriteUriType') is not None:
+            self.rewrite_uri_type = m.get('RewriteUriType')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class CreateSiteFunctionRequestSeoBypass(TeaModel):
+    def __init__(
+        self,
+        enable: str = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class CreateSiteFunctionRequestSiteNameExclusive(TeaModel):
+    def __init__(
+        self,
+        enable: str = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class CreateSiteFunctionRequestSitePause(TeaModel):
+    def __init__(
+        self,
+        paused: str = None,
+    ):
+        self.paused = paused
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paused is not None:
+            result['Paused'] = self.paused
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Paused') is not None:
+            self.paused = m.get('Paused')
+        return self
+
+
+class CreateSiteFunctionRequestTieredCache(TeaModel):
+    def __init__(
+        self,
+        cache_architecture_mode: str = None,
+    ):
+        self.cache_architecture_mode = cache_architecture_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cache_architecture_mode is not None:
+            result['CacheArchitectureMode'] = self.cache_architecture_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CacheArchitectureMode') is not None:
+            self.cache_architecture_mode = m.get('CacheArchitectureMode')
+        return self
+
+
+class CreateSiteFunctionRequest(TeaModel):
+    def __init__(
+        self,
+        cache_reserve: List[CreateSiteFunctionRequestCacheReserve] = None,
+        cache_rules: List[CreateSiteFunctionRequestCacheRules] = None,
+        cache_tags: List[CreateSiteFunctionRequestCacheTags] = None,
+        cname_flattening: List[CreateSiteFunctionRequestCnameFlattening] = None,
+        compression_rules: List[CreateSiteFunctionRequestCompressionRules] = None,
+        cross_border_optimization: List[CreateSiteFunctionRequestCrossBorderOptimization] = None,
+        development_mode: List[CreateSiteFunctionRequestDevelopmentMode] = None,
+        http_request_header_modification_rules: List[CreateSiteFunctionRequestHttpRequestHeaderModificationRules] = None,
+        http_response_header_modification_rules: List[CreateSiteFunctionRequestHttpResponseHeaderModificationRules] = None,
+        https_application_configuration: List[CreateSiteFunctionRequestHttpsApplicationConfiguration] = None,
+        https_basic_configuration: List[CreateSiteFunctionRequestHttpsBasicConfiguration] = None,
+        image_transform: List[CreateSiteFunctionRequestImageTransform] = None,
+        ipv_6: List[CreateSiteFunctionRequestIpv6] = None,
+        managed_transforms: List[CreateSiteFunctionRequestManagedTransforms] = None,
+        network_optimization: List[CreateSiteFunctionRequestNetworkOptimization] = None,
+        origin_protection: List[CreateSiteFunctionRequestOriginProtection] = None,
+        origin_rules: List[CreateSiteFunctionRequestOriginRules] = None,
+        redirect_rules: List[CreateSiteFunctionRequestRedirectRules] = None,
+        rewrite_url_rules: List[CreateSiteFunctionRequestRewriteUrlRules] = None,
+        seo_bypass: List[CreateSiteFunctionRequestSeoBypass] = None,
+        site_id: int = None,
+        site_name_exclusive: List[CreateSiteFunctionRequestSiteNameExclusive] = None,
+        site_pause: List[CreateSiteFunctionRequestSitePause] = None,
+        site_version: int = None,
+        tiered_cache: List[CreateSiteFunctionRequestTieredCache] = None,
+    ):
+        self.cache_reserve = cache_reserve
+        self.cache_rules = cache_rules
+        self.cache_tags = cache_tags
+        self.cname_flattening = cname_flattening
+        self.compression_rules = compression_rules
+        self.cross_border_optimization = cross_border_optimization
+        self.development_mode = development_mode
+        self.http_request_header_modification_rules = http_request_header_modification_rules
+        self.http_response_header_modification_rules = http_response_header_modification_rules
+        self.https_application_configuration = https_application_configuration
+        self.https_basic_configuration = https_basic_configuration
+        self.image_transform = image_transform
+        self.ipv_6 = ipv_6
+        self.managed_transforms = managed_transforms
+        self.network_optimization = network_optimization
+        self.origin_protection = origin_protection
+        self.origin_rules = origin_rules
+        self.redirect_rules = redirect_rules
+        self.rewrite_url_rules = rewrite_url_rules
+        self.seo_bypass = seo_bypass
+        # This parameter is required.
+        self.site_id = site_id
+        self.site_name_exclusive = site_name_exclusive
+        self.site_pause = site_pause
+        self.site_version = site_version
+        self.tiered_cache = tiered_cache
+
+    def validate(self):
+        if self.cache_reserve:
+            for k in self.cache_reserve:
+                if k:
+                    k.validate()
+        if self.cache_rules:
+            for k in self.cache_rules:
+                if k:
+                    k.validate()
+        if self.cache_tags:
+            for k in self.cache_tags:
+                if k:
+                    k.validate()
+        if self.cname_flattening:
+            for k in self.cname_flattening:
+                if k:
+                    k.validate()
+        if self.compression_rules:
+            for k in self.compression_rules:
+                if k:
+                    k.validate()
+        if self.cross_border_optimization:
+            for k in self.cross_border_optimization:
+                if k:
+                    k.validate()
+        if self.development_mode:
+            for k in self.development_mode:
+                if k:
+                    k.validate()
+        if self.http_request_header_modification_rules:
+            for k in self.http_request_header_modification_rules:
+                if k:
+                    k.validate()
+        if self.http_response_header_modification_rules:
+            for k in self.http_response_header_modification_rules:
+                if k:
+                    k.validate()
+        if self.https_application_configuration:
+            for k in self.https_application_configuration:
+                if k:
+                    k.validate()
+        if self.https_basic_configuration:
+            for k in self.https_basic_configuration:
+                if k:
+                    k.validate()
+        if self.image_transform:
+            for k in self.image_transform:
+                if k:
+                    k.validate()
+        if self.ipv_6:
+            for k in self.ipv_6:
+                if k:
+                    k.validate()
+        if self.managed_transforms:
+            for k in self.managed_transforms:
+                if k:
+                    k.validate()
+        if self.network_optimization:
+            for k in self.network_optimization:
+                if k:
+                    k.validate()
+        if self.origin_protection:
+            for k in self.origin_protection:
+                if k:
+                    k.validate()
+        if self.origin_rules:
+            for k in self.origin_rules:
+                if k:
+                    k.validate()
+        if self.redirect_rules:
+            for k in self.redirect_rules:
+                if k:
+                    k.validate()
+        if self.rewrite_url_rules:
+            for k in self.rewrite_url_rules:
+                if k:
+                    k.validate()
+        if self.seo_bypass:
+            for k in self.seo_bypass:
+                if k:
+                    k.validate()
+        if self.site_name_exclusive:
+            for k in self.site_name_exclusive:
+                if k:
+                    k.validate()
+        if self.site_pause:
+            for k in self.site_pause:
+                if k:
+                    k.validate()
+        if self.tiered_cache:
+            for k in self.tiered_cache:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CacheReserve'] = []
+        if self.cache_reserve is not None:
+            for k in self.cache_reserve:
+                result['CacheReserve'].append(k.to_map() if k else None)
+        result['CacheRules'] = []
+        if self.cache_rules is not None:
+            for k in self.cache_rules:
+                result['CacheRules'].append(k.to_map() if k else None)
+        result['CacheTags'] = []
+        if self.cache_tags is not None:
+            for k in self.cache_tags:
+                result['CacheTags'].append(k.to_map() if k else None)
+        result['CnameFlattening'] = []
+        if self.cname_flattening is not None:
+            for k in self.cname_flattening:
+                result['CnameFlattening'].append(k.to_map() if k else None)
+        result['CompressionRules'] = []
+        if self.compression_rules is not None:
+            for k in self.compression_rules:
+                result['CompressionRules'].append(k.to_map() if k else None)
+        result['CrossBorderOptimization'] = []
+        if self.cross_border_optimization is not None:
+            for k in self.cross_border_optimization:
+                result['CrossBorderOptimization'].append(k.to_map() if k else None)
+        result['DevelopmentMode'] = []
+        if self.development_mode is not None:
+            for k in self.development_mode:
+                result['DevelopmentMode'].append(k.to_map() if k else None)
+        result['HttpRequestHeaderModificationRules'] = []
+        if self.http_request_header_modification_rules is not None:
+            for k in self.http_request_header_modification_rules:
+                result['HttpRequestHeaderModificationRules'].append(k.to_map() if k else None)
+        result['HttpResponseHeaderModificationRules'] = []
+        if self.http_response_header_modification_rules is not None:
+            for k in self.http_response_header_modification_rules:
+                result['HttpResponseHeaderModificationRules'].append(k.to_map() if k else None)
+        result['HttpsApplicationConfiguration'] = []
+        if self.https_application_configuration is not None:
+            for k in self.https_application_configuration:
+                result['HttpsApplicationConfiguration'].append(k.to_map() if k else None)
+        result['HttpsBasicConfiguration'] = []
+        if self.https_basic_configuration is not None:
+            for k in self.https_basic_configuration:
+                result['HttpsBasicConfiguration'].append(k.to_map() if k else None)
+        result['ImageTransform'] = []
+        if self.image_transform is not None:
+            for k in self.image_transform:
+                result['ImageTransform'].append(k.to_map() if k else None)
+        result['Ipv6'] = []
+        if self.ipv_6 is not None:
+            for k in self.ipv_6:
+                result['Ipv6'].append(k.to_map() if k else None)
+        result['ManagedTransforms'] = []
+        if self.managed_transforms is not None:
+            for k in self.managed_transforms:
+                result['ManagedTransforms'].append(k.to_map() if k else None)
+        result['NetworkOptimization'] = []
+        if self.network_optimization is not None:
+            for k in self.network_optimization:
+                result['NetworkOptimization'].append(k.to_map() if k else None)
+        result['OriginProtection'] = []
+        if self.origin_protection is not None:
+            for k in self.origin_protection:
+                result['OriginProtection'].append(k.to_map() if k else None)
+        result['OriginRules'] = []
+        if self.origin_rules is not None:
+            for k in self.origin_rules:
+                result['OriginRules'].append(k.to_map() if k else None)
+        result['RedirectRules'] = []
+        if self.redirect_rules is not None:
+            for k in self.redirect_rules:
+                result['RedirectRules'].append(k.to_map() if k else None)
+        result['RewriteUrlRules'] = []
+        if self.rewrite_url_rules is not None:
+            for k in self.rewrite_url_rules:
+                result['RewriteUrlRules'].append(k.to_map() if k else None)
+        result['SeoBypass'] = []
+        if self.seo_bypass is not None:
+            for k in self.seo_bypass:
+                result['SeoBypass'].append(k.to_map() if k else None)
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        result['SiteNameExclusive'] = []
+        if self.site_name_exclusive is not None:
+            for k in self.site_name_exclusive:
+                result['SiteNameExclusive'].append(k.to_map() if k else None)
+        result['SitePause'] = []
+        if self.site_pause is not None:
+            for k in self.site_pause:
+                result['SitePause'].append(k.to_map() if k else None)
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        result['TieredCache'] = []
+        if self.tiered_cache is not None:
+            for k in self.tiered_cache:
+                result['TieredCache'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cache_reserve = []
+        if m.get('CacheReserve') is not None:
+            for k in m.get('CacheReserve'):
+                temp_model = CreateSiteFunctionRequestCacheReserve()
+                self.cache_reserve.append(temp_model.from_map(k))
+        self.cache_rules = []
+        if m.get('CacheRules') is not None:
+            for k in m.get('CacheRules'):
+                temp_model = CreateSiteFunctionRequestCacheRules()
+                self.cache_rules.append(temp_model.from_map(k))
+        self.cache_tags = []
+        if m.get('CacheTags') is not None:
+            for k in m.get('CacheTags'):
+                temp_model = CreateSiteFunctionRequestCacheTags()
+                self.cache_tags.append(temp_model.from_map(k))
+        self.cname_flattening = []
+        if m.get('CnameFlattening') is not None:
+            for k in m.get('CnameFlattening'):
+                temp_model = CreateSiteFunctionRequestCnameFlattening()
+                self.cname_flattening.append(temp_model.from_map(k))
+        self.compression_rules = []
+        if m.get('CompressionRules') is not None:
+            for k in m.get('CompressionRules'):
+                temp_model = CreateSiteFunctionRequestCompressionRules()
+                self.compression_rules.append(temp_model.from_map(k))
+        self.cross_border_optimization = []
+        if m.get('CrossBorderOptimization') is not None:
+            for k in m.get('CrossBorderOptimization'):
+                temp_model = CreateSiteFunctionRequestCrossBorderOptimization()
+                self.cross_border_optimization.append(temp_model.from_map(k))
+        self.development_mode = []
+        if m.get('DevelopmentMode') is not None:
+            for k in m.get('DevelopmentMode'):
+                temp_model = CreateSiteFunctionRequestDevelopmentMode()
+                self.development_mode.append(temp_model.from_map(k))
+        self.http_request_header_modification_rules = []
+        if m.get('HttpRequestHeaderModificationRules') is not None:
+            for k in m.get('HttpRequestHeaderModificationRules'):
+                temp_model = CreateSiteFunctionRequestHttpRequestHeaderModificationRules()
+                self.http_request_header_modification_rules.append(temp_model.from_map(k))
+        self.http_response_header_modification_rules = []
+        if m.get('HttpResponseHeaderModificationRules') is not None:
+            for k in m.get('HttpResponseHeaderModificationRules'):
+                temp_model = CreateSiteFunctionRequestHttpResponseHeaderModificationRules()
+                self.http_response_header_modification_rules.append(temp_model.from_map(k))
+        self.https_application_configuration = []
+        if m.get('HttpsApplicationConfiguration') is not None:
+            for k in m.get('HttpsApplicationConfiguration'):
+                temp_model = CreateSiteFunctionRequestHttpsApplicationConfiguration()
+                self.https_application_configuration.append(temp_model.from_map(k))
+        self.https_basic_configuration = []
+        if m.get('HttpsBasicConfiguration') is not None:
+            for k in m.get('HttpsBasicConfiguration'):
+                temp_model = CreateSiteFunctionRequestHttpsBasicConfiguration()
+                self.https_basic_configuration.append(temp_model.from_map(k))
+        self.image_transform = []
+        if m.get('ImageTransform') is not None:
+            for k in m.get('ImageTransform'):
+                temp_model = CreateSiteFunctionRequestImageTransform()
+                self.image_transform.append(temp_model.from_map(k))
+        self.ipv_6 = []
+        if m.get('Ipv6') is not None:
+            for k in m.get('Ipv6'):
+                temp_model = CreateSiteFunctionRequestIpv6()
+                self.ipv_6.append(temp_model.from_map(k))
+        self.managed_transforms = []
+        if m.get('ManagedTransforms') is not None:
+            for k in m.get('ManagedTransforms'):
+                temp_model = CreateSiteFunctionRequestManagedTransforms()
+                self.managed_transforms.append(temp_model.from_map(k))
+        self.network_optimization = []
+        if m.get('NetworkOptimization') is not None:
+            for k in m.get('NetworkOptimization'):
+                temp_model = CreateSiteFunctionRequestNetworkOptimization()
+                self.network_optimization.append(temp_model.from_map(k))
+        self.origin_protection = []
+        if m.get('OriginProtection') is not None:
+            for k in m.get('OriginProtection'):
+                temp_model = CreateSiteFunctionRequestOriginProtection()
+                self.origin_protection.append(temp_model.from_map(k))
+        self.origin_rules = []
+        if m.get('OriginRules') is not None:
+            for k in m.get('OriginRules'):
+                temp_model = CreateSiteFunctionRequestOriginRules()
+                self.origin_rules.append(temp_model.from_map(k))
+        self.redirect_rules = []
+        if m.get('RedirectRules') is not None:
+            for k in m.get('RedirectRules'):
+                temp_model = CreateSiteFunctionRequestRedirectRules()
+                self.redirect_rules.append(temp_model.from_map(k))
+        self.rewrite_url_rules = []
+        if m.get('RewriteUrlRules') is not None:
+            for k in m.get('RewriteUrlRules'):
+                temp_model = CreateSiteFunctionRequestRewriteUrlRules()
+                self.rewrite_url_rules.append(temp_model.from_map(k))
+        self.seo_bypass = []
+        if m.get('SeoBypass') is not None:
+            for k in m.get('SeoBypass'):
+                temp_model = CreateSiteFunctionRequestSeoBypass()
+                self.seo_bypass.append(temp_model.from_map(k))
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        self.site_name_exclusive = []
+        if m.get('SiteNameExclusive') is not None:
+            for k in m.get('SiteNameExclusive'):
+                temp_model = CreateSiteFunctionRequestSiteNameExclusive()
+                self.site_name_exclusive.append(temp_model.from_map(k))
+        self.site_pause = []
+        if m.get('SitePause') is not None:
+            for k in m.get('SitePause'):
+                temp_model = CreateSiteFunctionRequestSitePause()
+                self.site_pause.append(temp_model.from_map(k))
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        self.tiered_cache = []
+        if m.get('TieredCache') is not None:
+            for k in m.get('TieredCache'):
+                temp_model = CreateSiteFunctionRequestTieredCache()
+                self.tiered_cache.append(temp_model.from_map(k))
+        return self
+
+
+class CreateSiteFunctionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cache_reserve_shrink: str = None,
+        cache_rules_shrink: str = None,
+        cache_tags_shrink: str = None,
+        cname_flattening_shrink: str = None,
+        compression_rules_shrink: str = None,
+        cross_border_optimization_shrink: str = None,
+        development_mode_shrink: str = None,
+        http_request_header_modification_rules_shrink: str = None,
+        http_response_header_modification_rules_shrink: str = None,
+        https_application_configuration_shrink: str = None,
+        https_basic_configuration_shrink: str = None,
+        image_transform_shrink: str = None,
+        ipv_6shrink: str = None,
+        managed_transforms_shrink: str = None,
+        network_optimization_shrink: str = None,
+        origin_protection_shrink: str = None,
+        origin_rules_shrink: str = None,
+        redirect_rules_shrink: str = None,
+        rewrite_url_rules_shrink: str = None,
+        seo_bypass_shrink: str = None,
+        site_id: int = None,
+        site_name_exclusive_shrink: str = None,
+        site_pause_shrink: str = None,
+        site_version: int = None,
+        tiered_cache_shrink: str = None,
+    ):
+        self.cache_reserve_shrink = cache_reserve_shrink
+        self.cache_rules_shrink = cache_rules_shrink
+        self.cache_tags_shrink = cache_tags_shrink
+        self.cname_flattening_shrink = cname_flattening_shrink
+        self.compression_rules_shrink = compression_rules_shrink
+        self.cross_border_optimization_shrink = cross_border_optimization_shrink
+        self.development_mode_shrink = development_mode_shrink
+        self.http_request_header_modification_rules_shrink = http_request_header_modification_rules_shrink
+        self.http_response_header_modification_rules_shrink = http_response_header_modification_rules_shrink
+        self.https_application_configuration_shrink = https_application_configuration_shrink
+        self.https_basic_configuration_shrink = https_basic_configuration_shrink
+        self.image_transform_shrink = image_transform_shrink
+        self.ipv_6shrink = ipv_6shrink
+        self.managed_transforms_shrink = managed_transforms_shrink
+        self.network_optimization_shrink = network_optimization_shrink
+        self.origin_protection_shrink = origin_protection_shrink
+        self.origin_rules_shrink = origin_rules_shrink
+        self.redirect_rules_shrink = redirect_rules_shrink
+        self.rewrite_url_rules_shrink = rewrite_url_rules_shrink
+        self.seo_bypass_shrink = seo_bypass_shrink
+        # This parameter is required.
+        self.site_id = site_id
+        self.site_name_exclusive_shrink = site_name_exclusive_shrink
+        self.site_pause_shrink = site_pause_shrink
+        self.site_version = site_version
+        self.tiered_cache_shrink = tiered_cache_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cache_reserve_shrink is not None:
+            result['CacheReserve'] = self.cache_reserve_shrink
+        if self.cache_rules_shrink is not None:
+            result['CacheRules'] = self.cache_rules_shrink
+        if self.cache_tags_shrink is not None:
+            result['CacheTags'] = self.cache_tags_shrink
+        if self.cname_flattening_shrink is not None:
+            result['CnameFlattening'] = self.cname_flattening_shrink
+        if self.compression_rules_shrink is not None:
+            result['CompressionRules'] = self.compression_rules_shrink
+        if self.cross_border_optimization_shrink is not None:
+            result['CrossBorderOptimization'] = self.cross_border_optimization_shrink
+        if self.development_mode_shrink is not None:
+            result['DevelopmentMode'] = self.development_mode_shrink
+        if self.http_request_header_modification_rules_shrink is not None:
+            result['HttpRequestHeaderModificationRules'] = self.http_request_header_modification_rules_shrink
+        if self.http_response_header_modification_rules_shrink is not None:
+            result['HttpResponseHeaderModificationRules'] = self.http_response_header_modification_rules_shrink
+        if self.https_application_configuration_shrink is not None:
+            result['HttpsApplicationConfiguration'] = self.https_application_configuration_shrink
+        if self.https_basic_configuration_shrink is not None:
+            result['HttpsBasicConfiguration'] = self.https_basic_configuration_shrink
+        if self.image_transform_shrink is not None:
+            result['ImageTransform'] = self.image_transform_shrink
+        if self.ipv_6shrink is not None:
+            result['Ipv6'] = self.ipv_6shrink
+        if self.managed_transforms_shrink is not None:
+            result['ManagedTransforms'] = self.managed_transforms_shrink
+        if self.network_optimization_shrink is not None:
+            result['NetworkOptimization'] = self.network_optimization_shrink
+        if self.origin_protection_shrink is not None:
+            result['OriginProtection'] = self.origin_protection_shrink
+        if self.origin_rules_shrink is not None:
+            result['OriginRules'] = self.origin_rules_shrink
+        if self.redirect_rules_shrink is not None:
+            result['RedirectRules'] = self.redirect_rules_shrink
+        if self.rewrite_url_rules_shrink is not None:
+            result['RewriteUrlRules'] = self.rewrite_url_rules_shrink
+        if self.seo_bypass_shrink is not None:
+            result['SeoBypass'] = self.seo_bypass_shrink
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name_exclusive_shrink is not None:
+            result['SiteNameExclusive'] = self.site_name_exclusive_shrink
+        if self.site_pause_shrink is not None:
+            result['SitePause'] = self.site_pause_shrink
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        if self.tiered_cache_shrink is not None:
+            result['TieredCache'] = self.tiered_cache_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CacheReserve') is not None:
+            self.cache_reserve_shrink = m.get('CacheReserve')
+        if m.get('CacheRules') is not None:
+            self.cache_rules_shrink = m.get('CacheRules')
+        if m.get('CacheTags') is not None:
+            self.cache_tags_shrink = m.get('CacheTags')
+        if m.get('CnameFlattening') is not None:
+            self.cname_flattening_shrink = m.get('CnameFlattening')
+        if m.get('CompressionRules') is not None:
+            self.compression_rules_shrink = m.get('CompressionRules')
+        if m.get('CrossBorderOptimization') is not None:
+            self.cross_border_optimization_shrink = m.get('CrossBorderOptimization')
+        if m.get('DevelopmentMode') is not None:
+            self.development_mode_shrink = m.get('DevelopmentMode')
+        if m.get('HttpRequestHeaderModificationRules') is not None:
+            self.http_request_header_modification_rules_shrink = m.get('HttpRequestHeaderModificationRules')
+        if m.get('HttpResponseHeaderModificationRules') is not None:
+            self.http_response_header_modification_rules_shrink = m.get('HttpResponseHeaderModificationRules')
+        if m.get('HttpsApplicationConfiguration') is not None:
+            self.https_application_configuration_shrink = m.get('HttpsApplicationConfiguration')
+        if m.get('HttpsBasicConfiguration') is not None:
+            self.https_basic_configuration_shrink = m.get('HttpsBasicConfiguration')
+        if m.get('ImageTransform') is not None:
+            self.image_transform_shrink = m.get('ImageTransform')
+        if m.get('Ipv6') is not None:
+            self.ipv_6shrink = m.get('Ipv6')
+        if m.get('ManagedTransforms') is not None:
+            self.managed_transforms_shrink = m.get('ManagedTransforms')
+        if m.get('NetworkOptimization') is not None:
+            self.network_optimization_shrink = m.get('NetworkOptimization')
+        if m.get('OriginProtection') is not None:
+            self.origin_protection_shrink = m.get('OriginProtection')
+        if m.get('OriginRules') is not None:
+            self.origin_rules_shrink = m.get('OriginRules')
+        if m.get('RedirectRules') is not None:
+            self.redirect_rules_shrink = m.get('RedirectRules')
+        if m.get('RewriteUrlRules') is not None:
+            self.rewrite_url_rules_shrink = m.get('RewriteUrlRules')
+        if m.get('SeoBypass') is not None:
+            self.seo_bypass_shrink = m.get('SeoBypass')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteNameExclusive') is not None:
+            self.site_name_exclusive_shrink = m.get('SiteNameExclusive')
+        if m.get('SitePause') is not None:
+            self.site_pause_shrink = m.get('SitePause')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        if m.get('TieredCache') is not None:
+            self.tiered_cache_shrink = m.get('TieredCache')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsCacheReserve(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        instance_id: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsCacheRules(TeaModel):
+    def __init__(
+        self,
+        additional_cacheable_ports: str = None,
+        browser_cache_mode: str = None,
+        browser_cache_ttl: str = None,
+        bypass_cache: str = None,
+        cache_deception_armor: str = None,
+        cache_reserve_eligibility: str = None,
+        check_presence_cookie: str = None,
+        check_presence_header: str = None,
+        config_id: int = None,
+        edge_cache_mode: str = None,
+        edge_cache_ttl: str = None,
+        edge_status_code_cache_ttl: str = None,
+        include_cookie: str = None,
+        include_header: str = None,
+        query_string: str = None,
+        query_string_mode: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+        serve_stale: str = None,
+        sort_query_string_for_cache: str = None,
+        user_device_type: str = None,
+        user_geo: str = None,
+        user_language: str = None,
+    ):
+        self.additional_cacheable_ports = additional_cacheable_ports
+        self.browser_cache_mode = browser_cache_mode
+        self.browser_cache_ttl = browser_cache_ttl
+        self.bypass_cache = bypass_cache
+        self.cache_deception_armor = cache_deception_armor
+        self.cache_reserve_eligibility = cache_reserve_eligibility
+        self.check_presence_cookie = check_presence_cookie
+        self.check_presence_header = check_presence_header
+        self.config_id = config_id
+        self.edge_cache_mode = edge_cache_mode
+        self.edge_cache_ttl = edge_cache_ttl
+        self.edge_status_code_cache_ttl = edge_status_code_cache_ttl
+        self.include_cookie = include_cookie
+        self.include_header = include_header
+        self.query_string = query_string
+        self.query_string_mode = query_string_mode
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.serve_stale = serve_stale
+        self.sort_query_string_for_cache = sort_query_string_for_cache
+        self.user_device_type = user_device_type
+        self.user_geo = user_geo
+        self.user_language = user_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_cacheable_ports is not None:
+            result['AdditionalCacheablePorts'] = self.additional_cacheable_ports
+        if self.browser_cache_mode is not None:
+            result['BrowserCacheMode'] = self.browser_cache_mode
+        if self.browser_cache_ttl is not None:
+            result['BrowserCacheTtl'] = self.browser_cache_ttl
+        if self.bypass_cache is not None:
+            result['BypassCache'] = self.bypass_cache
+        if self.cache_deception_armor is not None:
+            result['CacheDeceptionArmor'] = self.cache_deception_armor
+        if self.cache_reserve_eligibility is not None:
+            result['CacheReserveEligibility'] = self.cache_reserve_eligibility
+        if self.check_presence_cookie is not None:
+            result['CheckPresenceCookie'] = self.check_presence_cookie
+        if self.check_presence_header is not None:
+            result['CheckPresenceHeader'] = self.check_presence_header
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.edge_cache_mode is not None:
+            result['EdgeCacheMode'] = self.edge_cache_mode
+        if self.edge_cache_ttl is not None:
+            result['EdgeCacheTtl'] = self.edge_cache_ttl
+        if self.edge_status_code_cache_ttl is not None:
+            result['EdgeStatusCodeCacheTtl'] = self.edge_status_code_cache_ttl
+        if self.include_cookie is not None:
+            result['IncludeCookie'] = self.include_cookie
+        if self.include_header is not None:
+            result['IncludeHeader'] = self.include_header
+        if self.query_string is not None:
+            result['QueryString'] = self.query_string
+        if self.query_string_mode is not None:
+            result['QueryStringMode'] = self.query_string_mode
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.serve_stale is not None:
+            result['ServeStale'] = self.serve_stale
+        if self.sort_query_string_for_cache is not None:
+            result['SortQueryStringForCache'] = self.sort_query_string_for_cache
+        if self.user_device_type is not None:
+            result['UserDeviceType'] = self.user_device_type
+        if self.user_geo is not None:
+            result['UserGeo'] = self.user_geo
+        if self.user_language is not None:
+            result['UserLanguage'] = self.user_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdditionalCacheablePorts') is not None:
+            self.additional_cacheable_ports = m.get('AdditionalCacheablePorts')
+        if m.get('BrowserCacheMode') is not None:
+            self.browser_cache_mode = m.get('BrowserCacheMode')
+        if m.get('BrowserCacheTtl') is not None:
+            self.browser_cache_ttl = m.get('BrowserCacheTtl')
+        if m.get('BypassCache') is not None:
+            self.bypass_cache = m.get('BypassCache')
+        if m.get('CacheDeceptionArmor') is not None:
+            self.cache_deception_armor = m.get('CacheDeceptionArmor')
+        if m.get('CacheReserveEligibility') is not None:
+            self.cache_reserve_eligibility = m.get('CacheReserveEligibility')
+        if m.get('CheckPresenceCookie') is not None:
+            self.check_presence_cookie = m.get('CheckPresenceCookie')
+        if m.get('CheckPresenceHeader') is not None:
+            self.check_presence_header = m.get('CheckPresenceHeader')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('EdgeCacheMode') is not None:
+            self.edge_cache_mode = m.get('EdgeCacheMode')
+        if m.get('EdgeCacheTtl') is not None:
+            self.edge_cache_ttl = m.get('EdgeCacheTtl')
+        if m.get('EdgeStatusCodeCacheTtl') is not None:
+            self.edge_status_code_cache_ttl = m.get('EdgeStatusCodeCacheTtl')
+        if m.get('IncludeCookie') is not None:
+            self.include_cookie = m.get('IncludeCookie')
+        if m.get('IncludeHeader') is not None:
+            self.include_header = m.get('IncludeHeader')
+        if m.get('QueryString') is not None:
+            self.query_string = m.get('QueryString')
+        if m.get('QueryStringMode') is not None:
+            self.query_string_mode = m.get('QueryStringMode')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('ServeStale') is not None:
+            self.serve_stale = m.get('ServeStale')
+        if m.get('SortQueryStringForCache') is not None:
+            self.sort_query_string_for_cache = m.get('SortQueryStringForCache')
+        if m.get('UserDeviceType') is not None:
+            self.user_device_type = m.get('UserDeviceType')
+        if m.get('UserGeo') is not None:
+            self.user_geo = m.get('UserGeo')
+        if m.get('UserLanguage') is not None:
+            self.user_language = m.get('UserLanguage')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsCacheTags(TeaModel):
+    def __init__(
+        self,
+        case_insensitive: str = None,
+        config_id: int = None,
+        sequence: str = None,
+        tag_name: str = None,
+    ):
+        self.case_insensitive = case_insensitive
+        self.config_id = config_id
+        self.sequence = sequence
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.case_insensitive is not None:
+            result['CaseInsensitive'] = self.case_insensitive
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CaseInsensitive') is not None:
+            self.case_insensitive = m.get('CaseInsensitive')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsCnameFlattening(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        flatten_mode: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.flatten_mode = flatten_mode
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.flatten_mode is not None:
+            result['FlattenMode'] = self.flatten_mode
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('FlattenMode') is not None:
+            self.flatten_mode = m.get('FlattenMode')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsCompressionRules(TeaModel):
+    def __init__(
+        self,
+        brotli: str = None,
+        config_id: int = None,
+        gzip: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+    ):
+        self.brotli = brotli
+        self.config_id = config_id
+        self.gzip = gzip
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brotli is not None:
+            result['Brotli'] = self.brotli
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.gzip is not None:
+            result['Gzip'] = self.gzip
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Brotli') is not None:
+            self.brotli = m.get('Brotli')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Gzip') is not None:
+            self.gzip = m.get('Gzip')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsDevelopmentMode(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operation = operation
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        request_header_modification: List[CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.request_header_modification = request_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+
+    def validate(self):
+        if self.request_header_modification:
+            for k in self.request_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        result['RequestHeaderModification'] = []
+        if self.request_header_modification is not None:
+            for k in self.request_header_modification:
+                result['RequestHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        self.request_header_modification = []
+        if m.get('RequestHeaderModification') is not None:
+            for k in m.get('RequestHeaderModification'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification()
+                self.request_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operation = operation
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        response_header_modification: List[CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.response_header_modification = response_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+
+    def validate(self):
+        if self.response_header_modification:
+            for k in self.response_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        result['ResponseHeaderModification'] = []
+        if self.response_header_modification is not None:
+            for k in self.response_header_modification:
+                result['ResponseHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        self.response_header_modification = []
+        if m.get('ResponseHeaderModification') is not None:
+            for k in m.get('ResponseHeaderModification'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification()
+                self.response_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration(TeaModel):
+    def __init__(
+        self,
+        alt_svc: str = None,
+        alt_svc_clear: str = None,
+        alt_svc_ma: str = None,
+        alt_svc_persist: str = None,
+        config_id: int = None,
+        hsts: str = None,
+        hsts_include_subdomains: str = None,
+        hsts_max_age: str = None,
+        hsts_preload: str = None,
+        https_force: str = None,
+        https_force_code: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+    ):
+        self.alt_svc = alt_svc
+        self.alt_svc_clear = alt_svc_clear
+        self.alt_svc_ma = alt_svc_ma
+        self.alt_svc_persist = alt_svc_persist
+        self.config_id = config_id
+        self.hsts = hsts
+        self.hsts_include_subdomains = hsts_include_subdomains
+        self.hsts_max_age = hsts_max_age
+        self.hsts_preload = hsts_preload
+        self.https_force = https_force
+        self.https_force_code = https_force_code
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alt_svc is not None:
+            result['AltSvc'] = self.alt_svc
+        if self.alt_svc_clear is not None:
+            result['AltSvcClear'] = self.alt_svc_clear
+        if self.alt_svc_ma is not None:
+            result['AltSvcMa'] = self.alt_svc_ma
+        if self.alt_svc_persist is not None:
+            result['AltSvcPersist'] = self.alt_svc_persist
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.hsts is not None:
+            result['Hsts'] = self.hsts
+        if self.hsts_include_subdomains is not None:
+            result['HstsIncludeSubdomains'] = self.hsts_include_subdomains
+        if self.hsts_max_age is not None:
+            result['HstsMaxAge'] = self.hsts_max_age
+        if self.hsts_preload is not None:
+            result['HstsPreload'] = self.hsts_preload
+        if self.https_force is not None:
+            result['HttpsForce'] = self.https_force
+        if self.https_force_code is not None:
+            result['HttpsForceCode'] = self.https_force_code
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AltSvc') is not None:
+            self.alt_svc = m.get('AltSvc')
+        if m.get('AltSvcClear') is not None:
+            self.alt_svc_clear = m.get('AltSvcClear')
+        if m.get('AltSvcMa') is not None:
+            self.alt_svc_ma = m.get('AltSvcMa')
+        if m.get('AltSvcPersist') is not None:
+            self.alt_svc_persist = m.get('AltSvcPersist')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Hsts') is not None:
+            self.hsts = m.get('Hsts')
+        if m.get('HstsIncludeSubdomains') is not None:
+            self.hsts_include_subdomains = m.get('HstsIncludeSubdomains')
+        if m.get('HstsMaxAge') is not None:
+            self.hsts_max_age = m.get('HstsMaxAge')
+        if m.get('HstsPreload') is not None:
+            self.hsts_preload = m.get('HstsPreload')
+        if m.get('HttpsForce') is not None:
+            self.https_force = m.get('HttpsForce')
+        if m.get('HttpsForceCode') is not None:
+            self.https_force_code = m.get('HttpsForceCode')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration(TeaModel):
+    def __init__(
+        self,
+        ciphersuite: str = None,
+        ciphersuite_group: str = None,
+        config_id: int = None,
+        http_2: str = None,
+        http_3: str = None,
+        https: str = None,
+        ocsp_stapling: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+        tls_10: str = None,
+        tls_11: str = None,
+        tls_12: str = None,
+        tls_13: str = None,
+    ):
+        self.ciphersuite = ciphersuite
+        self.ciphersuite_group = ciphersuite_group
+        self.config_id = config_id
+        self.http_2 = http_2
+        self.http_3 = http_3
+        self.https = https
+        self.ocsp_stapling = ocsp_stapling
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.tls_10 = tls_10
+        self.tls_11 = tls_11
+        self.tls_12 = tls_12
+        self.tls_13 = tls_13
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ciphersuite is not None:
+            result['Ciphersuite'] = self.ciphersuite
+        if self.ciphersuite_group is not None:
+            result['CiphersuiteGroup'] = self.ciphersuite_group
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.http_2 is not None:
+            result['Http2'] = self.http_2
+        if self.http_3 is not None:
+            result['Http3'] = self.http_3
+        if self.https is not None:
+            result['Https'] = self.https
+        if self.ocsp_stapling is not None:
+            result['OcspStapling'] = self.ocsp_stapling
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.tls_10 is not None:
+            result['Tls10'] = self.tls_10
+        if self.tls_11 is not None:
+            result['Tls11'] = self.tls_11
+        if self.tls_12 is not None:
+            result['Tls12'] = self.tls_12
+        if self.tls_13 is not None:
+            result['Tls13'] = self.tls_13
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ciphersuite') is not None:
+            self.ciphersuite = m.get('Ciphersuite')
+        if m.get('CiphersuiteGroup') is not None:
+            self.ciphersuite_group = m.get('CiphersuiteGroup')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Http2') is not None:
+            self.http_2 = m.get('Http2')
+        if m.get('Http3') is not None:
+            self.http_3 = m.get('Http3')
+        if m.get('Https') is not None:
+            self.https = m.get('Https')
+        if m.get('OcspStapling') is not None:
+            self.ocsp_stapling = m.get('OcspStapling')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('Tls10') is not None:
+            self.tls_10 = m.get('Tls10')
+        if m.get('Tls11') is not None:
+            self.tls_11 = m.get('Tls11')
+        if m.get('Tls12') is not None:
+            self.tls_12 = m.get('Tls12')
+        if m.get('Tls13') is not None:
+            self.tls_13 = m.get('Tls13')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsImageTransform(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsIpv6(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsManagedTransforms(TeaModel):
+    def __init__(
+        self,
+        add_client_geolocation_headers: str = None,
+        add_real_client_ip_header: str = None,
+        config_id: int = None,
+        sequence: str = None,
+    ):
+        self.add_client_geolocation_headers = add_client_geolocation_headers
+        self.add_real_client_ip_header = add_real_client_ip_header
+        self.config_id = config_id
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_client_geolocation_headers is not None:
+            result['AddClientGeolocationHeaders'] = self.add_client_geolocation_headers
+        if self.add_real_client_ip_header is not None:
+            result['AddRealClientIpHeader'] = self.add_real_client_ip_header
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddClientGeolocationHeaders') is not None:
+            self.add_client_geolocation_headers = m.get('AddClientGeolocationHeaders')
+        if m.get('AddRealClientIpHeader') is not None:
+            self.add_real_client_ip_header = m.get('AddRealClientIpHeader')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsNetworkOptimization(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        grpc: str = None,
+        http_2origin: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+        smart_routing: str = None,
+        upload_max_filesize: str = None,
+        websocket: str = None,
+    ):
+        self.config_id = config_id
+        self.grpc = grpc
+        self.http_2origin = http_2origin
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.smart_routing = smart_routing
+        self.upload_max_filesize = upload_max_filesize
+        self.websocket = websocket
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.grpc is not None:
+            result['Grpc'] = self.grpc
+        if self.http_2origin is not None:
+            result['Http2Origin'] = self.http_2origin
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.smart_routing is not None:
+            result['SmartRouting'] = self.smart_routing
+        if self.upload_max_filesize is not None:
+            result['UploadMaxFilesize'] = self.upload_max_filesize
+        if self.websocket is not None:
+            result['Websocket'] = self.websocket
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Grpc') is not None:
+            self.grpc = m.get('Grpc')
+        if m.get('Http2Origin') is not None:
+            self.http_2origin = m.get('Http2Origin')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SmartRouting') is not None:
+            self.smart_routing = m.get('SmartRouting')
+        if m.get('UploadMaxFilesize') is not None:
+            self.upload_max_filesize = m.get('UploadMaxFilesize')
+        if m.get('Websocket') is not None:
+            self.websocket = m.get('Websocket')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsOriginRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        dns_record: str = None,
+        origin_host: str = None,
+        origin_http_port: str = None,
+        origin_https_port: str = None,
+        origin_scheme: str = None,
+        origin_sni: str = None,
+        range: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.dns_record = dns_record
+        self.origin_host = origin_host
+        self.origin_http_port = origin_http_port
+        self.origin_https_port = origin_https_port
+        self.origin_scheme = origin_scheme
+        self.origin_sni = origin_sni
+        self.range = range
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.dns_record is not None:
+            result['DnsRecord'] = self.dns_record
+        if self.origin_host is not None:
+            result['OriginHost'] = self.origin_host
+        if self.origin_http_port is not None:
+            result['OriginHttpPort'] = self.origin_http_port
+        if self.origin_https_port is not None:
+            result['OriginHttpsPort'] = self.origin_https_port
+        if self.origin_scheme is not None:
+            result['OriginScheme'] = self.origin_scheme
+        if self.origin_sni is not None:
+            result['OriginSni'] = self.origin_sni
+        if self.range is not None:
+            result['Range'] = self.range
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('DnsRecord') is not None:
+            self.dns_record = m.get('DnsRecord')
+        if m.get('OriginHost') is not None:
+            self.origin_host = m.get('OriginHost')
+        if m.get('OriginHttpPort') is not None:
+            self.origin_http_port = m.get('OriginHttpPort')
+        if m.get('OriginHttpsPort') is not None:
+            self.origin_https_port = m.get('OriginHttpsPort')
+        if m.get('OriginScheme') is not None:
+            self.origin_scheme = m.get('OriginScheme')
+        if m.get('OriginSni') is not None:
+            self.origin_sni = m.get('OriginSni')
+        if m.get('Range') is not None:
+            self.range = m.get('Range')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsRedirectRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        reserve_query_string: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+        status_code: str = None,
+        target_url: str = None,
+        type: str = None,
+    ):
+        self.config_id = config_id
+        self.reserve_query_string = reserve_query_string
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.status_code = status_code
+        self.target_url = target_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.reserve_query_string is not None:
+            result['ReserveQueryString'] = self.reserve_query_string
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ReserveQueryString') is not None:
+            self.reserve_query_string = m.get('ReserveQueryString')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsRewriteUrlRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        query_string: str = None,
+        rewrite_query_string_type: str = None,
+        rewrite_uri_type: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+        uri: str = None,
+    ):
+        self.config_id = config_id
+        self.query_string = query_string
+        self.rewrite_query_string_type = rewrite_query_string_type
+        self.rewrite_uri_type = rewrite_uri_type
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.query_string is not None:
+            result['QueryString'] = self.query_string
+        if self.rewrite_query_string_type is not None:
+            result['RewriteQueryStringType'] = self.rewrite_query_string_type
+        if self.rewrite_uri_type is not None:
+            result['RewriteUriType'] = self.rewrite_uri_type
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('QueryString') is not None:
+            self.query_string = m.get('QueryString')
+        if m.get('RewriteQueryStringType') is not None:
+            self.rewrite_query_string_type = m.get('RewriteQueryStringType')
+        if m.get('RewriteUriType') is not None:
+            self.rewrite_uri_type = m.get('RewriteUriType')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsSeoBypass(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsSiteNameExclusive(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsSitePause(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        paused: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.paused = paused
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.paused is not None:
+            result['Paused'] = self.paused
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Paused') is not None:
+            self.paused = m.get('Paused')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigsTieredCache(TeaModel):
+    def __init__(
+        self,
+        cache_architecture_mode: str = None,
+        config_id: int = None,
+        sequence: str = None,
+    ):
+        self.cache_architecture_mode = cache_architecture_mode
+        self.config_id = config_id
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cache_architecture_mode is not None:
+            result['CacheArchitectureMode'] = self.cache_architecture_mode
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CacheArchitectureMode') is not None:
+            self.cache_architecture_mode = m.get('CacheArchitectureMode')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class CreateSiteFunctionResponseBodyConfigs(TeaModel):
+    def __init__(
+        self,
+        cache_reserve: List[CreateSiteFunctionResponseBodyConfigsCacheReserve] = None,
+        cache_rules: List[CreateSiteFunctionResponseBodyConfigsCacheRules] = None,
+        cache_tags: List[CreateSiteFunctionResponseBodyConfigsCacheTags] = None,
+        cname_flattening: List[CreateSiteFunctionResponseBodyConfigsCnameFlattening] = None,
+        compression_rules: List[CreateSiteFunctionResponseBodyConfigsCompressionRules] = None,
+        cross_border_optimization: List[CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization] = None,
+        development_mode: List[CreateSiteFunctionResponseBodyConfigsDevelopmentMode] = None,
+        http_request_header_modification_rules: List[CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules] = None,
+        http_response_header_modification_rules: List[CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules] = None,
+        https_application_configuration: List[CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration] = None,
+        https_basic_configuration: List[CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration] = None,
+        image_transform: List[CreateSiteFunctionResponseBodyConfigsImageTransform] = None,
+        ipv_6: List[CreateSiteFunctionResponseBodyConfigsIpv6] = None,
+        managed_transforms: List[CreateSiteFunctionResponseBodyConfigsManagedTransforms] = None,
+        network_optimization: List[CreateSiteFunctionResponseBodyConfigsNetworkOptimization] = None,
+        origin_rules: List[CreateSiteFunctionResponseBodyConfigsOriginRules] = None,
+        redirect_rules: List[CreateSiteFunctionResponseBodyConfigsRedirectRules] = None,
+        rewrite_url_rules: List[CreateSiteFunctionResponseBodyConfigsRewriteUrlRules] = None,
+        seo_bypass: List[CreateSiteFunctionResponseBodyConfigsSeoBypass] = None,
+        site_name_exclusive: List[CreateSiteFunctionResponseBodyConfigsSiteNameExclusive] = None,
+        site_pause: List[CreateSiteFunctionResponseBodyConfigsSitePause] = None,
+        tiered_cache: List[CreateSiteFunctionResponseBodyConfigsTieredCache] = None,
+    ):
+        self.cache_reserve = cache_reserve
+        self.cache_rules = cache_rules
+        self.cache_tags = cache_tags
+        self.cname_flattening = cname_flattening
+        self.compression_rules = compression_rules
+        self.cross_border_optimization = cross_border_optimization
+        self.development_mode = development_mode
+        self.http_request_header_modification_rules = http_request_header_modification_rules
+        self.http_response_header_modification_rules = http_response_header_modification_rules
+        self.https_application_configuration = https_application_configuration
+        self.https_basic_configuration = https_basic_configuration
+        self.image_transform = image_transform
+        self.ipv_6 = ipv_6
+        self.managed_transforms = managed_transforms
+        self.network_optimization = network_optimization
+        self.origin_rules = origin_rules
+        self.redirect_rules = redirect_rules
+        self.rewrite_url_rules = rewrite_url_rules
+        self.seo_bypass = seo_bypass
+        self.site_name_exclusive = site_name_exclusive
+        self.site_pause = site_pause
+        self.tiered_cache = tiered_cache
+
+    def validate(self):
+        if self.cache_reserve:
+            for k in self.cache_reserve:
+                if k:
+                    k.validate()
+        if self.cache_rules:
+            for k in self.cache_rules:
+                if k:
+                    k.validate()
+        if self.cache_tags:
+            for k in self.cache_tags:
+                if k:
+                    k.validate()
+        if self.cname_flattening:
+            for k in self.cname_flattening:
+                if k:
+                    k.validate()
+        if self.compression_rules:
+            for k in self.compression_rules:
+                if k:
+                    k.validate()
+        if self.cross_border_optimization:
+            for k in self.cross_border_optimization:
+                if k:
+                    k.validate()
+        if self.development_mode:
+            for k in self.development_mode:
+                if k:
+                    k.validate()
+        if self.http_request_header_modification_rules:
+            for k in self.http_request_header_modification_rules:
+                if k:
+                    k.validate()
+        if self.http_response_header_modification_rules:
+            for k in self.http_response_header_modification_rules:
+                if k:
+                    k.validate()
+        if self.https_application_configuration:
+            for k in self.https_application_configuration:
+                if k:
+                    k.validate()
+        if self.https_basic_configuration:
+            for k in self.https_basic_configuration:
+                if k:
+                    k.validate()
+        if self.image_transform:
+            for k in self.image_transform:
+                if k:
+                    k.validate()
+        if self.ipv_6:
+            for k in self.ipv_6:
+                if k:
+                    k.validate()
+        if self.managed_transforms:
+            for k in self.managed_transforms:
+                if k:
+                    k.validate()
+        if self.network_optimization:
+            for k in self.network_optimization:
+                if k:
+                    k.validate()
+        if self.origin_rules:
+            for k in self.origin_rules:
+                if k:
+                    k.validate()
+        if self.redirect_rules:
+            for k in self.redirect_rules:
+                if k:
+                    k.validate()
+        if self.rewrite_url_rules:
+            for k in self.rewrite_url_rules:
+                if k:
+                    k.validate()
+        if self.seo_bypass:
+            for k in self.seo_bypass:
+                if k:
+                    k.validate()
+        if self.site_name_exclusive:
+            for k in self.site_name_exclusive:
+                if k:
+                    k.validate()
+        if self.site_pause:
+            for k in self.site_pause:
+                if k:
+                    k.validate()
+        if self.tiered_cache:
+            for k in self.tiered_cache:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CacheReserve'] = []
+        if self.cache_reserve is not None:
+            for k in self.cache_reserve:
+                result['CacheReserve'].append(k.to_map() if k else None)
+        result['CacheRules'] = []
+        if self.cache_rules is not None:
+            for k in self.cache_rules:
+                result['CacheRules'].append(k.to_map() if k else None)
+        result['CacheTags'] = []
+        if self.cache_tags is not None:
+            for k in self.cache_tags:
+                result['CacheTags'].append(k.to_map() if k else None)
+        result['CnameFlattening'] = []
+        if self.cname_flattening is not None:
+            for k in self.cname_flattening:
+                result['CnameFlattening'].append(k.to_map() if k else None)
+        result['CompressionRules'] = []
+        if self.compression_rules is not None:
+            for k in self.compression_rules:
+                result['CompressionRules'].append(k.to_map() if k else None)
+        result['CrossBorderOptimization'] = []
+        if self.cross_border_optimization is not None:
+            for k in self.cross_border_optimization:
+                result['CrossBorderOptimization'].append(k.to_map() if k else None)
+        result['DevelopmentMode'] = []
+        if self.development_mode is not None:
+            for k in self.development_mode:
+                result['DevelopmentMode'].append(k.to_map() if k else None)
+        result['HttpRequestHeaderModificationRules'] = []
+        if self.http_request_header_modification_rules is not None:
+            for k in self.http_request_header_modification_rules:
+                result['HttpRequestHeaderModificationRules'].append(k.to_map() if k else None)
+        result['HttpResponseHeaderModificationRules'] = []
+        if self.http_response_header_modification_rules is not None:
+            for k in self.http_response_header_modification_rules:
+                result['HttpResponseHeaderModificationRules'].append(k.to_map() if k else None)
+        result['HttpsApplicationConfiguration'] = []
+        if self.https_application_configuration is not None:
+            for k in self.https_application_configuration:
+                result['HttpsApplicationConfiguration'].append(k.to_map() if k else None)
+        result['HttpsBasicConfiguration'] = []
+        if self.https_basic_configuration is not None:
+            for k in self.https_basic_configuration:
+                result['HttpsBasicConfiguration'].append(k.to_map() if k else None)
+        result['ImageTransform'] = []
+        if self.image_transform is not None:
+            for k in self.image_transform:
+                result['ImageTransform'].append(k.to_map() if k else None)
+        result['Ipv6'] = []
+        if self.ipv_6 is not None:
+            for k in self.ipv_6:
+                result['Ipv6'].append(k.to_map() if k else None)
+        result['ManagedTransforms'] = []
+        if self.managed_transforms is not None:
+            for k in self.managed_transforms:
+                result['ManagedTransforms'].append(k.to_map() if k else None)
+        result['NetworkOptimization'] = []
+        if self.network_optimization is not None:
+            for k in self.network_optimization:
+                result['NetworkOptimization'].append(k.to_map() if k else None)
+        result['OriginRules'] = []
+        if self.origin_rules is not None:
+            for k in self.origin_rules:
+                result['OriginRules'].append(k.to_map() if k else None)
+        result['RedirectRules'] = []
+        if self.redirect_rules is not None:
+            for k in self.redirect_rules:
+                result['RedirectRules'].append(k.to_map() if k else None)
+        result['RewriteUrlRules'] = []
+        if self.rewrite_url_rules is not None:
+            for k in self.rewrite_url_rules:
+                result['RewriteUrlRules'].append(k.to_map() if k else None)
+        result['SeoBypass'] = []
+        if self.seo_bypass is not None:
+            for k in self.seo_bypass:
+                result['SeoBypass'].append(k.to_map() if k else None)
+        result['SiteNameExclusive'] = []
+        if self.site_name_exclusive is not None:
+            for k in self.site_name_exclusive:
+                result['SiteNameExclusive'].append(k.to_map() if k else None)
+        result['SitePause'] = []
+        if self.site_pause is not None:
+            for k in self.site_pause:
+                result['SitePause'].append(k.to_map() if k else None)
+        result['TieredCache'] = []
+        if self.tiered_cache is not None:
+            for k in self.tiered_cache:
+                result['TieredCache'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cache_reserve = []
+        if m.get('CacheReserve') is not None:
+            for k in m.get('CacheReserve'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsCacheReserve()
+                self.cache_reserve.append(temp_model.from_map(k))
+        self.cache_rules = []
+        if m.get('CacheRules') is not None:
+            for k in m.get('CacheRules'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsCacheRules()
+                self.cache_rules.append(temp_model.from_map(k))
+        self.cache_tags = []
+        if m.get('CacheTags') is not None:
+            for k in m.get('CacheTags'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsCacheTags()
+                self.cache_tags.append(temp_model.from_map(k))
+        self.cname_flattening = []
+        if m.get('CnameFlattening') is not None:
+            for k in m.get('CnameFlattening'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsCnameFlattening()
+                self.cname_flattening.append(temp_model.from_map(k))
+        self.compression_rules = []
+        if m.get('CompressionRules') is not None:
+            for k in m.get('CompressionRules'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsCompressionRules()
+                self.compression_rules.append(temp_model.from_map(k))
+        self.cross_border_optimization = []
+        if m.get('CrossBorderOptimization') is not None:
+            for k in m.get('CrossBorderOptimization'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization()
+                self.cross_border_optimization.append(temp_model.from_map(k))
+        self.development_mode = []
+        if m.get('DevelopmentMode') is not None:
+            for k in m.get('DevelopmentMode'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsDevelopmentMode()
+                self.development_mode.append(temp_model.from_map(k))
+        self.http_request_header_modification_rules = []
+        if m.get('HttpRequestHeaderModificationRules') is not None:
+            for k in m.get('HttpRequestHeaderModificationRules'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules()
+                self.http_request_header_modification_rules.append(temp_model.from_map(k))
+        self.http_response_header_modification_rules = []
+        if m.get('HttpResponseHeaderModificationRules') is not None:
+            for k in m.get('HttpResponseHeaderModificationRules'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules()
+                self.http_response_header_modification_rules.append(temp_model.from_map(k))
+        self.https_application_configuration = []
+        if m.get('HttpsApplicationConfiguration') is not None:
+            for k in m.get('HttpsApplicationConfiguration'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration()
+                self.https_application_configuration.append(temp_model.from_map(k))
+        self.https_basic_configuration = []
+        if m.get('HttpsBasicConfiguration') is not None:
+            for k in m.get('HttpsBasicConfiguration'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration()
+                self.https_basic_configuration.append(temp_model.from_map(k))
+        self.image_transform = []
+        if m.get('ImageTransform') is not None:
+            for k in m.get('ImageTransform'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsImageTransform()
+                self.image_transform.append(temp_model.from_map(k))
+        self.ipv_6 = []
+        if m.get('Ipv6') is not None:
+            for k in m.get('Ipv6'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsIpv6()
+                self.ipv_6.append(temp_model.from_map(k))
+        self.managed_transforms = []
+        if m.get('ManagedTransforms') is not None:
+            for k in m.get('ManagedTransforms'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsManagedTransforms()
+                self.managed_transforms.append(temp_model.from_map(k))
+        self.network_optimization = []
+        if m.get('NetworkOptimization') is not None:
+            for k in m.get('NetworkOptimization'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsNetworkOptimization()
+                self.network_optimization.append(temp_model.from_map(k))
+        self.origin_rules = []
+        if m.get('OriginRules') is not None:
+            for k in m.get('OriginRules'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsOriginRules()
+                self.origin_rules.append(temp_model.from_map(k))
+        self.redirect_rules = []
+        if m.get('RedirectRules') is not None:
+            for k in m.get('RedirectRules'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsRedirectRules()
+                self.redirect_rules.append(temp_model.from_map(k))
+        self.rewrite_url_rules = []
+        if m.get('RewriteUrlRules') is not None:
+            for k in m.get('RewriteUrlRules'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsRewriteUrlRules()
+                self.rewrite_url_rules.append(temp_model.from_map(k))
+        self.seo_bypass = []
+        if m.get('SeoBypass') is not None:
+            for k in m.get('SeoBypass'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsSeoBypass()
+                self.seo_bypass.append(temp_model.from_map(k))
+        self.site_name_exclusive = []
+        if m.get('SiteNameExclusive') is not None:
+            for k in m.get('SiteNameExclusive'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsSiteNameExclusive()
+                self.site_name_exclusive.append(temp_model.from_map(k))
+        self.site_pause = []
+        if m.get('SitePause') is not None:
+            for k in m.get('SitePause'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsSitePause()
+                self.site_pause.append(temp_model.from_map(k))
+        self.tiered_cache = []
+        if m.get('TieredCache') is not None:
+            for k in m.get('TieredCache'):
+                temp_model = CreateSiteFunctionResponseBodyConfigsTieredCache()
+                self.tiered_cache.append(temp_model.from_map(k))
+        return self
+
+
+class CreateSiteFunctionResponseBody(TeaModel):
+    def __init__(
+        self,
+        configs: CreateSiteFunctionResponseBodyConfigs = None,
+        request_id: str = None,
+    ):
+        self.configs = configs
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.configs:
+            self.configs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configs is not None:
+            result['Configs'] = self.configs.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Configs') is not None:
+            temp_model = CreateSiteFunctionResponseBodyConfigs()
+            self.configs = temp_model.from_map(m['Configs'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateSiteFunctionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSiteFunctionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSiteFunctionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam(TeaModel):
     def __init__(
         self,
@@ -8473,8 +12981,11 @@ class CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam(TeaModel):
         private_key: str = None,
         url_path: str = None,
     ):
+        # The validity period of the signature.
         self.expired_time = expired_time
+        # The private key.
         self.private_key = private_key
+        # The URL path.
         self.url_path = url_path
 
     def validate(self):
@@ -8528,24 +13039,43 @@ class CreateUserDeliveryTaskRequestHttpDelivery(TeaModel):
         success_code: int = None,
         transform_timeout: int = None,
     ):
+        # The compression method.
         self.compress = compress
+        # The address of the HTTP server.
         self.dest_url = dest_url
+        # The custom headers.
         self.header_param = header_param
+        # The ending separator.
         self.last_log_split = last_log_split
+        # The prefix of the log delivery package.
         self.log_body_prefix = log_body_prefix
+        # The suffix of the log delivery package.
         self.log_body_suffix = log_body_suffix
+        # Specifies whether to enable log splitting. Default value: true.
         self.log_split = log_split
+        # The log separator.
         self.log_split_words = log_split_words
+        # The maximum backoff time. Unit: milliseconds.
         self.max_backoff_ms = max_backoff_ms
+        # The maximum size of data for each delivery. Unit: MB.
         self.max_batch_mb = max_batch_mb
+        # The maximum number of entries for each delivery.
         self.max_batch_size = max_batch_size
+        # The maximum number of retries.
         self.max_retry = max_retry
+        # The minimum backoff time. Unit: milliseconds.
         self.min_backoff_ms = min_backoff_ms
+        # The custom query parameters.
         self.query_param = query_param
+        # The response field key used for success check.
         self.response_body_key = response_body_key
+        # Specifies whether to use server authentication.
         self.standard_auth_on = standard_auth_on
+        # The authentication configurations.
         self.standard_auth_param = standard_auth_param
+        # The custom code for a success.
         self.success_code = success_code
+        # The timeout period. Unit: seconds.
         self.transform_timeout = transform_timeout
 
     def validate(self):
@@ -8672,13 +13202,21 @@ class CreateUserDeliveryTaskRequestKafkaDelivery(TeaModel):
         user_auth: bool = None,
         user_name: str = None,
     ):
+        # The load balancing method.
         self.balancer = balancer
+        # The brokers.
         self.brokers = brokers
+        # The compression method. By default, data is not compressed.
         self.compress = compress
+        # The encryption method.
         self.machanism_type = machanism_type
+        # The password.
         self.password = password
+        # The topic.
         self.topic = topic
+        # Specifies whether to enable authentication.
         self.user_auth = user_auth
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -8737,9 +13275,13 @@ class CreateUserDeliveryTaskRequestOssDelivery(TeaModel):
         prefix_path: str = None,
         region: str = None,
     ):
+        # The ID of your Alibaba Cloud account.
         self.aliuid = aliuid
+        # The name of the OSS bucket.
         self.bucket_name = bucket_name
+        # The prefix of the path in which you want to store logs.
         self.prefix_path = prefix_path
+        # The region in which the bucket is located.
         self.region = region
 
     def validate(self):
@@ -8787,12 +13329,19 @@ class CreateUserDeliveryTaskRequestS3Delivery(TeaModel):
         server_side_encryption: bool = None,
         vertify_type: str = None,
     ):
+        # The access key ID of your Amazon S3 account.
         self.access_key = access_key
+        # The directory in the bucket.
         self.bucket_path = bucket_path
+        # The endpoint.
         self.endpoint = endpoint
+        # The prefix of the path in which you want to store logs.
         self.prefix_path = prefix_path
+        # The region ID of the service.
         self.region = region
+        # Specifies whether the service is compatible with Amazon S3.
         self.s_3cmpt = s_3cmpt
+        # The secret access key of your Amazon S3 account.
         self.secret_key = secret_key
         self.server_side_encryption = server_side_encryption
         self.vertify_type = vertify_type
@@ -8856,8 +13405,11 @@ class CreateUserDeliveryTaskRequestSlsDelivery(TeaModel):
         slsproject: str = None,
         slsregion: str = None,
     ):
+        # The name of the SLS Logstore.
         self.slslog_store = slslog_store
+        # The name of the SLS project.
         self.slsproject = slsproject
+        # The region in which the SLS project resides.
         self.slsregion = slsregion
 
     def validate(self):
@@ -8903,20 +13455,51 @@ class CreateUserDeliveryTaskRequest(TeaModel):
         sls_delivery: CreateUserDeliveryTaskRequestSlsDelivery = None,
         task_name: str = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   dcdn_log_access_l1 (default): access logs.
+        # *   dcdn_log_er: Edge Routine logs.
+        # *   dcdn_log_waf: firewall logs.
+        # *   dcdn_log_ipa: TCP/UDP proxy logs.
+        # 
         # This parameter is required.
         self.business_type = business_type
+        # The data center. Valid values:
+        # 
+        # *   cn: the Chinese mainland.
+        # *   sg: outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.data_center = data_center
+        # The destination of the delivery. Valid values:
+        # 
+        # 1.  sls: Alibaba Cloud SLS.
+        # 2.  http: HTTP server.
+        # 3.  aws3: Amazon S3.
+        # 4.  oss: Alibaba Cloud OSS.
+        # 5.  kafka: Kafka.
+        # 6.  aws3cmpt: S3-compatible storage service.
+        # 
         # This parameter is required.
         self.delivery_type = delivery_type
+        # The discard rate. Default value: 0.
         self.discard_rate = discard_rate
+        # The log field. If you specify multiple fields, separate them with commas (,).
+        # 
         # This parameter is required.
         self.field_name = field_name
+        # The configurations for delivery to an HTTP server.
         self.http_delivery = http_delivery
+        # The configurations for delivery to Kafka.
         self.kafka_delivery = kafka_delivery
+        # The configurations for delivery to OSS.
         self.oss_delivery = oss_delivery
+        # The configurations for delivery to Amazon S3 or an S3-compatible service.
         self.s_3delivery = s_3delivery
+        # The configurations for delivery to SLS.
         self.sls_delivery = sls_delivery
+        # The task name.
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -9009,20 +13592,51 @@ class CreateUserDeliveryTaskShrinkRequest(TeaModel):
         sls_delivery_shrink: str = None,
         task_name: str = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   dcdn_log_access_l1 (default): access logs.
+        # *   dcdn_log_er: Edge Routine logs.
+        # *   dcdn_log_waf: firewall logs.
+        # *   dcdn_log_ipa: TCP/UDP proxy logs.
+        # 
         # This parameter is required.
         self.business_type = business_type
+        # The data center. Valid values:
+        # 
+        # *   cn: the Chinese mainland.
+        # *   sg: outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.data_center = data_center
+        # The destination of the delivery. Valid values:
+        # 
+        # 1.  sls: Alibaba Cloud SLS.
+        # 2.  http: HTTP server.
+        # 3.  aws3: Amazon S3.
+        # 4.  oss: Alibaba Cloud OSS.
+        # 5.  kafka: Kafka.
+        # 6.  aws3cmpt: S3-compatible storage service.
+        # 
         # This parameter is required.
         self.delivery_type = delivery_type
+        # The discard rate. Default value: 0.
         self.discard_rate = discard_rate
+        # The log field. If you specify multiple fields, separate them with commas (,).
+        # 
         # This parameter is required.
         self.field_name = field_name
+        # The configurations for delivery to an HTTP server.
         self.http_delivery_shrink = http_delivery_shrink
+        # The configurations for delivery to Kafka.
         self.kafka_delivery_shrink = kafka_delivery_shrink
+        # The configurations for delivery to OSS.
         self.oss_delivery_shrink = oss_delivery_shrink
+        # The configurations for delivery to Amazon S3 or an S3-compatible service.
         self.s_3delivery_shrink = s_3delivery_shrink
+        # The configurations for delivery to SLS.
         self.sls_delivery_shrink = sls_delivery_shrink
+        # The task name.
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -9094,10 +13708,16 @@ class CreateUserDeliveryTaskResponseBody(TeaModel):
         status: str = None,
         task_name: str = None,
     ):
+        # The data center. Valid values:
+        # 
+        # *   cn: the Chinese mainland.
+        # *   sg: outside the Chinese mainland.
         self.data_center = data_center
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status of the delivery task.
         self.status = status
+        # The name of the delivery task.
         self.task_name = task_name
 
     def validate(self):
@@ -9181,11 +13801,17 @@ class CreateWafRuleRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The configuration of the rule that you want to create.
         self.config = config
+        # The WAF rule category.
+        # 
         # This parameter is required.
         self.phase = phase
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -9230,11 +13856,17 @@ class CreateWafRuleShrinkRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The configuration of the rule that you want to create.
         self.config_shrink = config_shrink
+        # The WAF rule category.
+        # 
         # This parameter is required.
         self.phase = phase
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -9276,9 +13908,11 @@ class CreateWafRuleResponseBody(TeaModel):
         request_id: str = None,
         ruleset_id: int = None,
     ):
+        # The ID of the WAF rule.[](~~2850237~~)
         self.id = id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The ID of the WAF ruleset.[](~~2850233~~)
         self.ruleset_id = ruleset_id
 
     def validate(self):
@@ -9879,35 +14513,97 @@ class CreateWaitingRoomEventRequest(TeaModel):
         waiting_room_id: str = None,
         waiting_room_type: str = None,
     ):
+        # The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
         self.custom_page_html = custom_page_html
+        # The description of the waiting room.
         self.description = description
+        # Specifies whether to disable session renewal. Valid values:
+        # 
+        # *   on
+        # *   off
         self.disable_session_renewal_enable = disable_session_renewal_enable
+        # Specifies whether to enable the waiting room. Valid values:
+        # 
+        # *   on
+        # *   off
+        # 
         # This parameter is required.
         self.enable = enable
+        # The end time of the event. This value is a UNIX timestamp.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+        # 
+        # *   on
+        # *   off
         self.json_response_enable = json_response_enable
+        # The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
+        # 
+        # *   enus: English.
+        # *   zhcn: Simplified Chinese.
+        # *   zhhk: Traditional Chinese.
         self.language = language
+        # The name of the waiting room event.
+        # 
         # This parameter is required.
         self.name = name
+        # The maximum number of new users per minute.
+        # 
         # This parameter is required.
         self.new_users_per_minute = new_users_per_minute
+        # Specifies whether to enable pre-queuing.
+        # 
+        # *   on
+        # *   off
         self.pre_queue_enable = pre_queue_enable
+        # The start time for pre-queuing.
         self.pre_queue_start_time = pre_queue_start_time
+        # The queuing method. Valid values:
+        # 
+        # *   random: Users gain access to the origin randomly, regardless of the arrival time.
+        # *   fifo: Users gain access to the origin in order of arrival.
+        # *   passthrough: Users pass through the waiting room and go straight to the origin.
+        # *   reject-all: Users are blocked from reaching the origin.
+        # 
         # This parameter is required.
         self.queuing_method = queuing_method
+        # The HTTP status code to return while a user is in the queue. Valid values:
+        # 
+        # *   200
+        # *   202
+        # *   429
+        # 
         # This parameter is required.
         self.queuing_status_code = queuing_status_code
+        # Specifies whether to enable random queuing.
+        # 
+        # *   on
+        # *   off
         self.random_pre_queue_enable = random_pre_queue_enable
+        # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        # 
         # This parameter is required.
         self.session_duration = session_duration
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The start time of the event. This value is a UNIX timestamp.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The maximum number of active users.
+        # 
         # This parameter is required.
         self.total_active_users = total_active_users
+        # The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
         self.waiting_room_id = waiting_room_id
+        # The type of the waiting room. Valid values:
+        # 
+        # *   default
+        # *   custom
+        # 
         # This parameter is required.
         self.waiting_room_type = waiting_room_type
 
@@ -10012,6 +14708,7 @@ class CreateWaitingRoomEventResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10084,14 +14781,27 @@ class CreateWaitingRoomRuleRequest(TeaModel):
         site_id: int = None,
         waiting_room_id: str = None,
     ):
+        # The rule content, which is a policy or conditional expression.
+        # 
         # This parameter is required.
         self.rule = rule
+        # Specifies whether to enable the rule. Valid values:
+        # 
+        # *   on
+        # *   off
+        # 
         # This parameter is required.
         self.rule_enable = rule_enable
+        # The rule name.
+        # 
         # This parameter is required.
         self.rule_name = rule_name
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The ID of the waiting room to be bypassed.
+        # 
         # This parameter is required.
         self.waiting_room_id = waiting_room_id
 
@@ -10136,6 +14846,7 @@ class CreateWaitingRoomRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10204,6 +14915,8 @@ class DeleteCustomScenePolicyRequest(TeaModel):
         self,
         policy_id: int = None,
     ):
+        # The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
 
@@ -10233,8 +14946,9 @@ class DeleteCustomScenePolicyResponseBody(TeaModel):
         policy_id: int = None,
         request_id: str = None,
     ):
+        # The policy ID.
         self.policy_id = policy_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10307,6 +15021,7 @@ class DeleteEdgeContainerAppRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
         self.app_id = app_id
 
     def validate(self):
@@ -10335,8 +15050,9 @@ class DeleteEdgeContainerAppResponseBody(TeaModel):
         request_id: str = None,
         state: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Specifies whether the deletion is successful.
         self.state = state
 
     def validate(self):
@@ -10411,10 +15127,15 @@ class DeleteEdgeContainerAppRecordRequest(TeaModel):
         record_name: str = None,
         site_id: int = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The associated domain name.
+        # 
         # This parameter is required.
         self.record_name = record_name
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -10450,6 +15171,7 @@ class DeleteEdgeContainerAppRecordResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10519,8 +15241,12 @@ class DeleteEdgeContainerAppVersionRequest(TeaModel):
         app_id: str = None,
         version_id: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of the version that you want to delete. To obtain the version ID, call the [ListEdgeContainerAppVersions](~~ListEdgeContainerAppVersions~~) operation.
+        # 
         # This parameter is required.
         self.version_id = version_id
 
@@ -10553,7 +15279,7 @@ class DeleteEdgeContainerAppVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10623,8 +15349,12 @@ class DeleteKvRequest(TeaModel):
         key: str = None,
         namespace: str = None,
     ):
+        # The name of the key that you want to delete.
+        # 
         # This parameter is required.
         self.key = key
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
 
@@ -10657,7 +15387,7 @@ class DeleteKvResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10726,6 +15456,8 @@ class DeleteKvNamespaceRequest(TeaModel):
         self,
         namespace: str = None,
     ):
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
 
@@ -10754,6 +15486,7 @@ class DeleteKvNamespaceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10822,6 +15555,8 @@ class DeleteListRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -10850,7 +15585,7 @@ class DeleteListResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10914,11 +15649,109 @@ class DeleteListResponse(TeaModel):
         return self
 
 
+class DeleteOriginProtectionRequest(TeaModel):
+    def __init__(
+        self,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteOriginProtectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteOriginProtectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteOriginProtectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteOriginProtectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeletePageRequest(TeaModel):
     def __init__(
         self,
         id: int = None,
     ):
+        # The ID of the custom error page, which can be obtained by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -10948,8 +15781,9 @@ class DeletePageResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The ID of the custom error page.[](~~2850223~~)
         self.id = id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11022,6 +15856,8 @@ class DeleteRecordRequest(TeaModel):
         self,
         record_id: int = None,
     ):
+        # The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
+        # 
         # This parameter is required.
         self.record_id = record_id
 
@@ -11050,7 +15886,7 @@ class DeleteRecordResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11119,6 +15955,7 @@ class DeleteRoutineRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The routine name.
         self.name = name
 
     def validate(self):
@@ -11147,8 +15984,9 @@ class DeleteRoutineResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful.
         self.status = status
 
     def validate(self):
@@ -11222,7 +16060,9 @@ class DeleteRoutineCodeVersionRequest(TeaModel):
         code_version: str = None,
         name: str = None,
     ):
+        # The code version.
         self.code_version = code_version
+        # The routine name.
         self.name = name
 
     def validate(self):
@@ -11255,8 +16095,9 @@ class DeleteRoutineCodeVersionResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful.
         self.status = status
 
     def validate(self):
@@ -11332,9 +16173,13 @@ class DeleteRoutineRelatedRecordRequest(TeaModel):
         record_name: str = None,
         site_id: int = None,
     ):
+        # The routine name.
         self.name = name
+        # The record ID.
         self.record_id = record_id
+        # The record name.
         self.record_name = record_name
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -11375,8 +16220,12 @@ class DeleteRoutineRelatedRecordResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful.
+        # 
+        # *   OK
+        # *   Fail
         self.status = status
 
     def validate(self):
@@ -11452,9 +16301,13 @@ class DeleteRoutineRelatedRouteRequest(TeaModel):
         route_id: str = None,
         site_id: int = None,
     ):
+        # The routine name.
         self.name = name
+        # The route URL.
         self.route = route
+        # The route ID.
         self.route_id = route_id
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -11495,8 +16348,9 @@ class DeleteRoutineRelatedRouteResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful.
         self.status = status
 
     def validate(self):
@@ -11569,6 +16423,8 @@ class DeleteScheduledPreloadExecutionRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The ID of the prefetch plan.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -11597,7 +16453,7 @@ class DeleteScheduledPreloadExecutionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11666,6 +16522,8 @@ class DeleteScheduledPreloadJobRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The ID of the scheduled prefetch task.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -11694,7 +16552,7 @@ class DeleteScheduledPreloadJobResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11767,6 +16625,7 @@ class DeleteSiteRequest(TeaModel):
     ):
         self.owner_id = owner_id
         self.security_token = security_token
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):
@@ -11802,6 +16661,7 @@ class DeleteSiteResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11871,8 +16731,12 @@ class DeleteSiteDeliveryTaskRequest(TeaModel):
         site_id: int = None,
         task_name: str = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The name of the delivery task.
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -11905,7 +16769,7 @@ class DeleteSiteDeliveryTaskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11969,11 +16833,117 @@ class DeleteSiteDeliveryTaskResponse(TeaModel):
         return self
 
 
+class DeleteSiteFunctionRequest(TeaModel):
+    def __init__(
+        self,
+        config_ids: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_ids = config_ids
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_ids is not None:
+            result['ConfigIds'] = self.config_ids
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigIds') is not None:
+            self.config_ids = m.get('ConfigIds')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteSiteFunctionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteSiteFunctionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSiteFunctionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSiteFunctionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteUserDeliveryTaskRequest(TeaModel):
     def __init__(
         self,
         task_name: str = None,
     ):
+        # The name of the delivery task.
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -12002,7 +16972,7 @@ class DeleteUserDeliveryTaskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12073,10 +17043,15 @@ class DeleteWafRuleRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -12112,7 +17087,7 @@ class DeleteWafRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12183,9 +17158,13 @@ class DeleteWafRulesetRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -12221,7 +17200,7 @@ class DeleteWafRulesetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12291,8 +17270,12 @@ class DeleteWaitingRoomRequest(TeaModel):
         site_id: int = None,
         waiting_room_id: str = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The waiting room ID.
+        # 
         # This parameter is required.
         self.waiting_room_id = waiting_room_id
 
@@ -12325,6 +17308,7 @@ class DeleteWaitingRoomResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12394,8 +17378,11 @@ class DeleteWaitingRoomEventRequest(TeaModel):
         site_id: int = None,
         waiting_room_event_id: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The ID of the waiting room event.
         self.waiting_room_event_id = waiting_room_event_id
 
     def validate(self):
@@ -12427,6 +17414,7 @@ class DeleteWaitingRoomEventResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12496,8 +17484,11 @@ class DeleteWaitingRoomRuleRequest(TeaModel):
         site_id: int = None,
         waiting_room_rule_id: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The ID of the waiting room bypass rule.
         self.waiting_room_rule_id = waiting_room_rule_id
 
     def validate(self):
@@ -12529,6 +17520,7 @@ class DeleteWaitingRoomRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12599,9 +17591,13 @@ class DescribeCustomScenePoliciesRequest(TeaModel):
         page_size: int = None,
         policy_id: int = None,
     ):
+        # The page number. Valid values: 1 to 100000.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Valid values: 5, 10, and 20.
         self.page_size = page_size
+        # The ID of the policy, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
         self.policy_id = policy_id
 
     def validate(self):
@@ -12643,12 +17639,30 @@ class DescribeCustomScenePoliciesResponseBodyDataModule(TeaModel):
         status: str = None,
         template: str = None,
     ):
+        # The time when the policy expires.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
+        # The name of the scenario-specific policy.
         self.name = name
+        # The IDs of websites that are associated with the policy.
         self.objects = objects
+        # The policy ID.
         self.policy_id = policy_id
+        # The time when the policy takes effect.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
+        # The status of the policy. Valid values:
+        # 
+        # *   **Disabled**\
+        # *   **Pending**\
+        # *   **Running**\
+        # *   **Expired**\
         self.status = status
+        # The name of the policy template. Valid value:
+        # 
+        # *   **promotion**: major events.
         self.template = template
 
     def validate(self):
@@ -12705,12 +17719,17 @@ class DescribeCustomScenePoliciesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The scenario-specific policies.
         self.data_module = data_module
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The policy quota.
         self.quota = quota
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -12812,14 +17831,33 @@ class DescribeDDoSAllEventListRequest(TeaModel):
         site_id: int = None,
         start_time: str = None,
     ):
+        # The end of the time range to query.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The maximum time range is 31 days.
+        # 
+        # If you do not configure this parameter, the current time is used as the end of the time range to query.
         self.end_time = end_time
+        # The type of DDoS attacks to query. Valid values:
+        # 
+        # *   **web-cc**: web resource exhaustion attacks.
+        # *   **cc**: connection flood attacks.
+        # *   **traffic**: volumetric attacks.
+        # 
+        # Default value: web-cc.
         self.event_type = event_type
+        # The page number. Valid values: **1** to **100000**.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Default value: **10**. Valid values: 5, 10, and 20.
         self.page_size = page_size
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
-        # A short description of struct
+        # The beginning of the time range to query.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -12880,17 +17918,35 @@ class DescribeDDoSAllEventListResponseBodyDataList(TeaModel):
         target: str = None,
         target_id: str = None,
     ):
+        # The peak of volumetric attacks. Unit: bit/s.
         self.bps = bps
         self.coverage = coverage
+        # The peak of connection flood attacks. Unit: connections per seconds (CPS).
         self.cps = cps
+        # The time when the DDoS attack ends.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
+        # The attack event ID.
         self.event_id = event_id
         self.event_result = event_result
+        # The type of DDoS attacks that was queried. Valid values:
+        # 
+        # *   **web-cc**: web resource exhaustion attacks.
+        # *   **cc**: connection flood attacks.
+        # *   **traffic**: volumetric attacks.
         self.event_type = event_type
+        # The peak of volumetric attacks. Unit: packets per second (PPS).
         self.pps = pps
+        # The peak QPS of web resource exhaustion attacks.
         self.qps = qps
+        # The time when the DDoS attack starts.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
+        # The attack target.
         self.target = target
+        # The ID of the web resource exhaustion attack target.
         self.target_id = target_id
 
     def validate(self):
@@ -12967,12 +18023,17 @@ class DescribeDDoSAllEventListResponseBody(TeaModel):
         site_id: int = None,
         total_count: int = None,
     ):
+        # The DDoS attack events.
         self.data_list = data_list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -13069,6 +18130,8 @@ class DescribeHttpDDoSAttackIntelligentProtectionRequest(TeaModel):
         self,
         site_id: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -13100,10 +18163,21 @@ class DescribeHttpDDoSAttackIntelligentProtectionResponseBody(TeaModel):
         request_id: str = None,
         site_id: int = None,
     ):
+        # The mode of smart HTTP DDoS protection. Valid values:
+        # 
+        # *   **observe**: alert.
+        # *   **defense**: block.
         self.ai_mode = ai_mode
+        # The level of smart HTTP DDoS protection. Valid values:
+        # 
+        # *   **level0**: very loose.
+        # *   **level30**: loose.
+        # *   **level60**: normal.
+        # *   **level90**: strict.
         self.ai_template = ai_template
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -13184,6 +18258,8 @@ class DescribeHttpDDoSAttackProtectionRequest(TeaModel):
         self,
         site_id: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -13214,9 +18290,16 @@ class DescribeHttpDDoSAttackProtectionResponseBody(TeaModel):
         request_id: str = None,
         site_id: int = None,
     ):
+        # The level of HTTP DDoS attack protection. Valid values:
+        # 
+        # *   **very weak**: very loose.
+        # *   **weak**: loose.
+        # *   **default**: normal.
+        # *   **hard**: strict.
         self.global_mode = global_mode
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -13294,7 +18377,12 @@ class DescribeKvAccountStatusResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether Edge KV is activated for the Alibaba Cloud account.
+        # 
+        # *   **online**\
+        # *   **offline**\
         self.status = status
 
     def validate(self):
@@ -13373,12 +18461,25 @@ class DescribePreloadTasksRequest(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The content to prefetch. Exact match is supported.
         self.content = content
+        # The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # >  The end time must be later than the start time.
         self.end_time = end_time
+        # The page number. Valid values: **1** to **100000**. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Valid values: 1 to 50.
         self.page_size = page_size
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         self.site_id = site_id
+        # The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
+        # The task status. Valid values:
+        # 
+        # *   **Complete**: The task is complete.
+        # *   **Refreshing**: The task is running.
+        # *   **Failed**: The task failed.
         self.status = status
 
     def validate(self):
@@ -13435,11 +18536,25 @@ class DescribePreloadTasksResponseBodyTasks(TeaModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The prefetched content.
         self.content = content
+        # The time when the task was created.
         self.create_time = create_time
+        # The error message returned upon a prefetch task failure. Valid values:
+        # 
+        # *   **Internal Error**\
+        # *   **Origin Timeout**\
+        # *   **Origin Return StatusCode 5XX**\
         self.description = description
+        # The progress of the task, in percentage.
         self.process = process
+        # The task status.
+        # 
+        # *   **Complete**: The task is complete.
+        # *   **Refreshing**: The task is in progress.
+        # *   **Failed**: The task failed.
         self.status = status
+        # The ID of the queried task.
         self.task_id = task_id
 
     def validate(self):
@@ -13491,10 +18606,15 @@ class DescribePreloadTasksResponseBody(TeaModel):
         tasks: List[DescribePreloadTasksResponseBodyTasks] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The tasks.
         self.tasks = tasks
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -13594,13 +18714,34 @@ class DescribePurgeTasksRequest(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The content to purge. Exact match is supported.
         self.content = content
+        # The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # >  The end time must be later than the start time.
         self.end_time = end_time
+        # The page number. Valid values: 1 to 100000.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Valid values: 1 to 50.
         self.page_size = page_size
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         self.site_id = site_id
+        # The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
+        # The task status. Valid values:
+        # 
+        # *   **Complete**: The task is complete.
+        # *   **Refreshing**: The task is in progress.
+        # *   **Failed**: The task failed.
         self.status = status
+        # The task type. Valid values:
+        # 
+        # *   **file** (default): purges the cache by file.
+        # *   **cachetag**: purges the cache by cache tag.
+        # *   **directory**: purges the cache by directory.
+        # *   **ignoreParams**: purges the cache by URL with specified parameters ignored.
+        # *   **hostname**: purges the cache by hostname.
+        # *   **purgeall**: purges all cache.
         self.type = type
 
     def validate(self):
@@ -13662,12 +18803,30 @@ class DescribePurgeTasksResponseBodyTasks(TeaModel):
         task_id: str = None,
         type: str = None,
     ):
+        # The purged content.
         self.content = content
+        # The time when the task was created.
         self.create_time = create_time
+        # The error description returned when the purge task failed.
         self.description = description
+        # The progress of the task, in percentage.
         self.process = process
+        # The task status.
+        # 
+        # *   **Complete**: The task is complete.
+        # *   **Refreshing**: The task is in progress.
+        # *   **Failed**: The task failed.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The type of the purge task. Valid values:
+        # 
+        # *   **file** (default): purges the cache by file.
+        # *   **cachetag**: purges the cache by cache tag.
+        # *   **directory**: purges the cache by directory.
+        # *   **ignoreParams**: purges the cache by URL with specified parameters ignored.
+        # *   **hostname**: purges the cache by hostname.
+        # *   **purgeall**: purges all cache.
         self.type = type
 
     def validate(self):
@@ -13723,10 +18882,15 @@ class DescribePurgeTasksResponseBody(TeaModel):
         tasks: List[DescribePurgeTasksResponseBodyTasks] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The tasks.
         self.tasks = tasks
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -13819,6 +18983,8 @@ class DisableCustomScenePolicyRequest(TeaModel):
         self,
         policy_id: int = None,
     ):
+        # The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
 
@@ -13848,8 +19014,9 @@ class DisableCustomScenePolicyResponseBody(TeaModel):
         policy_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the disabled policy.
         self.policy_id = policy_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13924,8 +19091,11 @@ class EditSiteWafSettingsRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The WAF configuration of the website in the JSON format.
         self.settings = settings
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -13965,8 +19135,11 @@ class EditSiteWafSettingsShrinkRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The WAF configuration of the website in the JSON format.
         self.settings_shrink = settings_shrink
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -14002,7 +19175,7 @@ class EditSiteWafSettingsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14071,6 +19244,8 @@ class EnableCustomScenePolicyRequest(TeaModel):
         self,
         policy_id: int = None,
     ):
+        # The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
 
@@ -14100,8 +19275,9 @@ class EnableCustomScenePolicyResponseBody(TeaModel):
         policy_id: int = None,
         request_id: str = None,
     ):
+        # The policy ID.
         self.policy_id = policy_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14174,6 +19350,7 @@ class ExportRecordsRequest(TeaModel):
         self,
         site_id: int = None,
     ):
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         self.site_id = site_id
 
     def validate(self):
@@ -14202,8 +19379,9 @@ class ExportRecordsResponseBody(TeaModel):
         content: str = None,
         request_id: str = None,
     ):
+        # The exported DNS records.
         self.content = content
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14278,9 +19456,11 @@ class GetCacheReserveSpecificationResponseBody(TeaModel):
         cache_reserve_region: List[str] = None,
         request_id: str = None,
     ):
+        # The capacities of cache reserve instances that can be created.
         self.cache_reserve_capacity = cache_reserve_capacity
+        # The regions in which cache reserve instances can be created.
         self.cache_reserve_region = cache_reserve_region
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14357,6 +19537,8 @@ class GetEdgeContainerAppRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # 
         # This parameter is required.
         self.app_id = app_id
 
@@ -14394,15 +19576,28 @@ class GetEdgeContainerAppResponseBodyAppHealthCheck(TeaModel):
         type: str = None,
         uri: str = None,
     ):
+        # The number of consecutive failed health checks required for an application to be considered as unhealthy.
         self.fail_times = fail_times
+        # The domain name that is used for health checks.
         self.host = host
+        # The range of health check status codes that indicate successful health checks.
         self.http_code = http_code
+        # The interval between health checks. Unit: seconds.
         self.interval = interval
+        # The HTTP method that the health check request uses.
         self.method = method
+        # The health check port.
         self.port = port
+        # The number of consecutive successful health checks required for an application to be considered as healthy.
         self.succ_times = succ_times
+        # The timeout period of the health check. Unit: seconds.
         self.timeout = timeout
+        # The health check type. Valid values:
+        # 
+        # *   l7
+        # *   l4
         self.type = type
+        # The health check URL.
         self.uri = uri
 
     def validate(self):
@@ -14478,18 +19673,38 @@ class GetEdgeContainerAppResponseBodyApp(TeaModel):
         update_time: str = None,
         version_count: int = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The time when the application was created.
         self.create_time = create_time
+        # The domain name that is associated with the application. If no domain name is associated with the application, the value is an empty string.
         self.domain_name = domain_name
+        # The type of the gateway. Valid values:
+        # 
+        # *   l7: Layer 7 gateway.
+        # *   l4: Layer 4 gateway.
         self.gateway_type = gateway_type
+        # The information about health checks.
         self.health_check = health_check
+        # The application name.
         self.name = name
+        # Indicates whether QUIC is enabled.
         self.quic_cid = quic_cid
+        # The remarks about the application.
         self.remarks = remarks
+        # The server port. Valid values: 1 to 65535.
         self.service_port = service_port
+        # The status of the application. Valid values:
+        # 
+        # *   creating: The application is being created.
+        # *   failed: The application failed to be created.
+        # *   created: The application is created.
         self.status = status
+        # The backend port, which is also the service port of the application. Valid values: 1 to 65535.
         self.target_port = target_port
+        # The time when the application was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
+        # The number of versions of the application.
         self.version_count = version_count
 
     def validate(self):
@@ -14568,7 +19783,9 @@ class GetEdgeContainerAppResponseBody(TeaModel):
         app: GetEdgeContainerAppResponseBodyApp = None,
         request_id: str = None,
     ):
+        # The basic information about the application.
         self.app = app
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14644,8 +19861,11 @@ class GetEdgeContainerAppStatusRequest(TeaModel):
         app_id: str = None,
         publish_env: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The release environment. Valid values: prod and staging.
         self.publish_env = publish_env
 
     def validate(self):
@@ -14718,20 +19938,53 @@ class GetEdgeContainerAppStatusResponseBodyAppStatus(TeaModel):
         rollback_time: str = None,
         un_deploy_time: str = None,
     ):
+        # The base version of the application.
         self.base_line_version = base_line_version
+        # The deployment status of the application.
+        # 
+        # *   **undeploy**: The application is not deployed.
+        # *   **deploying**: The application is being deployed.
+        # *   **deployed**: The application is deployed.
+        # *   **undeploying**: The deployment is being canceled.
         self.deploy_status = deploy_status
+        # The time when the application was deployed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.deploy_time = deploy_time
+        # The release version of the application.
         self.deployed_version = deployed_version
+        # The expected release percentage of the application.
         self.expect_percentage = expect_percentage
+        # Specifies whether to fully release the version. This parameter takes effect only when PublishType is set to region.
         self.full_release = full_release
+        # The environment to which the application was released. Valid values:
+        # 
+        # *   **prod**: the production environment.
+        # *   **staging**: the staging environment.
         self.publish_env = publish_env
+        # The release percentage of the application.
         self.publish_percentage = publish_percentage
+        # The release status of the application. Valid values:
+        # 
+        # *   **publishing**\
+        # *   **published**\
+        # *   **rollbacking**\
+        # *   **rollbacked**\
         self.publish_status = publish_status
+        # The time when the application was released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.publish_time = publish_time
+        # Specifies how the version is released. Valid values:
+        # 
+        # *   percentage: releases the version by percentage.
+        # *   region: releases the version by region.
+        # 
+        # If you do not specify this parameter, the version is released by percentage by default.
         self.publish_type = publish_type
+        # The release version of the application.
         self.publishing_version = publishing_version
+        # The regions to which the version is released.
         self.regions = regions
+        # The time when the last rollback was performed.
         self.rollback_time = rollback_time
+        # The time when the application deployment was canceled. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.un_deploy_time = un_deploy_time
 
     def validate(self):
@@ -14818,7 +20071,9 @@ class GetEdgeContainerAppStatusResponseBody(TeaModel):
         app_status: GetEdgeContainerAppStatusResponseBodyAppStatus = None,
         request_id: str = None,
     ):
+        # The status of the application.
         self.app_status = app_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14894,8 +20149,12 @@ class GetEdgeContainerAppVersionRequest(TeaModel):
         app_id: str = None,
         version_id: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The version ID, which can be obtained by calling the [ListEdgeContainerAppVersions](~~ListEdgeContainerAppVersions~~) operation.
+        # 
         # This parameter is required.
         self.version_id = version_id
 
@@ -14936,14 +20195,23 @@ class GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo(TeaMod
         tag: str = None,
         tag_url: str = None,
     ):
+        # The domain name of the Container Registry image.
         self.domain = domain
+        # The ID of the Container Registry instance.
         self.instance_id = instance_id
+        # Indicates whether the image is an enterprise-level image.
         self.is_enterprise_registry = is_enterprise_registry
+        # The region ID.
         self.region_id = region_id
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The namespace to which the image repository belongs.
         self.repo_namespace = repo_namespace
+        # The tag value.
         self.tag = tag
+        # The URL of the Container Registry image tag.
         self.tag_url = tag_url
 
     def validate(self):
@@ -15013,16 +20281,27 @@ class GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent(TeaMod
         success_threshold: int = None,
         timeout_seconds: int = None,
     ):
+        # The probe command.
         self.command = command
+        # The number of consecutive failed health checks required for a container to be considered as unhealthy.
         self.failure_threshold = failure_threshold
+        # The domain name that is used for health checks.
         self.host = host
+        # The request headers that are included in the container health check request.
         self.http_headers = http_headers
+        # The latency for container probe initialization.
         self.initial_delay_seconds = initial_delay_seconds
+        # The path of the container health check.
         self.path = path
+        # The interval between container health checks.
         self.period_seconds = period_seconds
+        # The port of the container health check. Valid values: **1** to **65535**.
         self.port = port
+        # The protocol that the container health check request uses.
         self.scheme = scheme
+        # The number of consecutive successful health checks required for a container to be considered as healthy.
         self.success_threshold = success_threshold
+        # The timeout period of the container health check.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -15102,18 +20381,31 @@ class GetEdgeContainerAppVersionResponseBodyVersionContainers(TeaModel):
         spec: str = None,
         storage: str = None,
     ):
+        # The information about the Container Registry image.
         self.acrimage_info = acrimage_info
+        # The arguments that are passed to the container startup command.
         self.args = args
+        # The command that is used to start the container.
         self.command = command
+        # The environment variables.
         self.env_variables = env_variables
+        # The image address.
         self.image = image
+        # Indicates whether the image is a Container Registry image.
         self.is_acrimage = is_acrimage
+        # The version name.
         self.name = name
+        # The command that is run before the container is started. Format: `{"exec":{"command":["cat","/etc/group"\\]}}`. If you want to cancel this configuration, set the parameter value to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
         self.post_start = post_start
+        # The command that is run before the container is stopped.
         self.pre_stop = pre_stop
+        # The probe content.
         self.probe_content = probe_content
+        # The probe type.
         self.probe_type = probe_type
+        # The compute specification.
         self.spec = spec
+        # The storage capacity of the container. Valid values: 0.5G, 10G, 20G, and 30G.
         self.storage = storage
 
     def validate(self):
@@ -15203,15 +20495,29 @@ class GetEdgeContainerAppVersionResponseBodyVersion(TeaModel):
         update_time: str = None,
         version_id: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The container images deployed for this version.
         self.containers = containers
+        # The time when the version was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the version was last released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.last_publish_time = last_publish_time
+        # The version name.
         self.name = name
+        # The time when the version was released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.publish_time = publish_time
+        # The remarks.
         self.remarks = remarks
+        # The status of the current version. Valid values:
+        # 
+        # *   created: The version is created.
+        # *   failed: The version failed to be created.
+        # *   creating: The version is being created.
         self.status = status
+        # The time when the version was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
+        # The ID of the created version.
         self.version_id = version_id
 
     def validate(self):
@@ -15284,7 +20590,9 @@ class GetEdgeContainerAppVersionResponseBody(TeaModel):
         request_id: str = None,
         version: GetEdgeContainerAppVersionResponseBodyVersion = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the version.
         self.version = version
 
     def validate(self):
@@ -15359,6 +20667,7 @@ class GetEdgeContainerDeployRegionsRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
         self.app_id = app_id
 
     def validate(self):
@@ -15387,8 +20696,9 @@ class GetEdgeContainerDeployRegionsResponseBody(TeaModel):
         regions: List[str] = None,
         request_id: str = None,
     ):
+        # The regions.
         self.regions = regions
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15462,8 +20772,12 @@ class GetEdgeContainerLogsRequest(TeaModel):
         app_id: str = None,
         lines: int = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The number of log entries to output.
+        # 
         # This parameter is required.
         self.lines = lines
 
@@ -15497,8 +20811,9 @@ class GetEdgeContainerLogsResponseBody(TeaModel):
         items: List[str] = None,
         request_id: str = None,
     ):
+        # The logs.
         self.items = items
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15571,6 +20886,7 @@ class GetEdgeContainerStagingDeployStatusRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
         self.app_id = app_id
 
     def validate(self):
@@ -15599,7 +20915,9 @@ class GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState(TeaModel):
         last_terminated_reason: str = None,
         restart_count: int = None,
     ):
+        # The reason for the last restart.
         self.last_terminated_reason = last_terminated_reason
+        # The number of times that the container restarted.
         self.restart_count = restart_count
 
     def validate(self):
@@ -15639,14 +20957,39 @@ class GetEdgeContainerStagingDeployStatusResponseBody(TeaModel):
         scheduled: str = None,
         vips: List[str] = None,
     ):
+        # Indicates whether the container is ready.
+        # 
+        # *   ok
+        # *   unready
         self.containers_ready = containers_ready
+        # The time when the container was created. The value is a timestamp.
         self.creation_timestamp = creation_timestamp
+        # The initialization status of the container.
+        # 
+        # *   ok
+        # *   unready
         self.initialized = initialized
+        # The status of the container in the staging environment.
+        # 
+        # *   NoContainer: created.
+        # *   Running: running.
+        # *   Failed: abnormal.
         self.phase = phase
+        # The details of container restart.
         self.pod_restart_state = pod_restart_state
+        # Indicates whether domain names are associated with the container.
+        # 
+        # *   ok
+        # *   unready
         self.ready = ready
+        # The request ID.
         self.request_id = request_id
+        # The scheduling status of the container.
+        # 
+        # *   ok
+        # *   unready
         self.scheduled = scheduled
+        # The virtual IP addresses.
         self.vips = vips
 
     def validate(self):
@@ -15749,6 +21092,7 @@ class GetEdgeContainerTerminalRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
         self.app_id = app_id
 
     def validate(self):
@@ -15782,13 +21126,19 @@ class GetEdgeContainerTerminalResponseBody(TeaModel):
         session_id: str = None,
         token: str = None,
     ):
+        # The cluster name.
         self.cluster = cluster
+        # The container name.
         self.container = container
+        # The name of the namespace.
         self.namespace = namespace
+        # The name of the container group.
         self.pod = pod
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The session ID.
         self.session_id = session_id
+        # The information about the shared token.
         self.token = token
 
     def validate(self):
@@ -15916,9 +21266,20 @@ class GetErServiceResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The billing mode. Valid values:
+        # 
+        # *   er_paymode: billed for customers on the China site.
+        # *   er_freemode: free for customers on the China site.
+        # *   er_paymodeintl: billed for customers on the International site.
+        # *   err_freemodeintl: free for customers on the International site
         self.plan_name = plan_name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The service status. Valid values:
+        # 
+        # *   Creating
+        # *   Running
+        # *   NotOpened
         self.status = status
 
     def validate(self):
@@ -15997,9 +21358,14 @@ class GetKvRequest(TeaModel):
         key: str = None,
         namespace: str = None,
     ):
+        # Specifies whether to decode the value by using Base 64. If you call the [PutKv](https://help.aliyun.com/document_detail/2850482.html) operation and set the Base64 parameter to true, set this parameter to true to read the original content.
         self.base_64 = base_64
+        # The key name for the query.
+        # 
         # This parameter is required.
         self.key = key
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
 
@@ -16037,7 +21403,9 @@ class GetKvResponseBody(TeaModel):
         request_id: str = None,
         value: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The value of the key.
         self.value = value
 
     def validate(self):
@@ -16117,13 +21485,26 @@ class GetKvAccountResponseBodyNamespaceList(TeaModel):
         namespace_id: str = None,
         status: str = None,
     ):
+        # The available capacity of the namespace. Unit: bytes.
         self.capacity = capacity
+        # The available capacity of the namespace.
         self.capacity_string = capacity_string
+        # The used capacity of the namespace. Unit: bytes.
         self.capacity_used = capacity_used
+        # The used capacity of the namespace.
         self.capacity_used_string = capacity_used_string
+        # The description of the namespace.
         self.description = description
+        # The name of the namespace.
         self.namespace = namespace
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The status of the namespace. Valid values:
+        # 
+        # *   **online**: normal.
+        # *   **delete**: pending deletion.
+        # *   **deleting**: being deleted.
+        # *   **deleted**: deleted.
         self.status = status
 
     def validate(self):
@@ -16187,14 +21568,26 @@ class GetKvAccountResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The available capacity of all namespaces in the account. Unit: bytes.
         self.capacity = capacity
+        # The available capacity of all namespaces in the account.
         self.capacity_string = capacity_string
+        # The used capacity of all namespaces in the account. Unit: bytes.
         self.capacity_used = capacity_used
+        # The used capacity of all namespaces in the account.
         self.capacity_used_string = capacity_used_string
+        # The namespaces in the account.
         self.namespace_list = namespace_list
+        # The maximum number of namespaces that can be created in the account.
         self.namespace_quota = namespace_quota
+        # The number of created namespaces that store key-value data in the account.
         self.namespace_used = namespace_used
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether Edge KV is activated for the Alibaba Cloud account.
+        # 
+        # *   **online**\
+        # *   **offline**\
         self.status = status
 
     def validate(self):
@@ -16303,6 +21696,8 @@ class GetKvNamespaceRequest(TeaModel):
         self,
         namespace: str = None,
     ):
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
 
@@ -16339,14 +21734,28 @@ class GetKvNamespaceResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The available capacity of the namespace. Unit: bytes.
         self.capacity = capacity
+        # The available capacity of the namespace.
         self.capacity_string = capacity_string
+        # The used capacity of the namespace. Unit: bytes.
         self.capacity_used = capacity_used
+        # The used capacity of the namespace.
         self.capacity_used_string = capacity_used_string
+        # The description of the namespace.
         self.description = description
+        # The name of the namespace.
         self.namespace = namespace
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The request ID.
         self.request_id = request_id
+        # The status of the namespace. Valid values:
+        # 
+        # *   **online**: working as expected.
+        # *   **delete**: pending deletion.
+        # *   **deleting**: being deleted.
+        # *   **deleted**: deleted.
         self.status = status
 
     def validate(self):
@@ -16447,6 +21856,7 @@ class GetListRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
         self.id = id
 
     def validate(self):
@@ -16480,18 +21890,21 @@ class GetListResponseBody(TeaModel):
         request_id: str = None,
         update_time: str = None,
     ):
-        # 自定义响应页面描述
+        # The description of the custom list.
         self.description = description
-        # 自定义响应页面ID
+        # The ID of the custom list.[](~~2850217~~)
         self.id = id
+        # The items in the custom list, which are displayed as an array.
         self.items = items
+        # The type of the custom list.
         self.kind = kind
-        # 自定义响应页面名称
+        # The name of the custom list.
         # 
         # This parameter is required.
         self.name = name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The time when the custom list was last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -16579,11 +21992,369 @@ class GetListResponse(TeaModel):
         return self
 
 
+class GetOriginProtectionRequest(TeaModel):
+    def __init__(
+        self,
+        site_id: int = None,
+    ):
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetOriginProtectionResponseBodyCurrentIPWhitelist(TeaModel):
+    def __init__(
+        self,
+        ipv_4: List[str] = None,
+        ipv_6: List[str] = None,
+    ):
+        self.ipv_4 = ipv_4
+        self.ipv_6 = ipv_6
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipv_4 is not None:
+            result['IPv4'] = self.ipv_4
+        if self.ipv_6 is not None:
+            result['IPv6'] = self.ipv_6
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IPv4') is not None:
+            self.ipv_4 = m.get('IPv4')
+        if m.get('IPv6') is not None:
+            self.ipv_6 = m.get('IPv6')
+        return self
+
+
+class GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist(TeaModel):
+    def __init__(
+        self,
+        ipv_4: List[str] = None,
+        ipv_6: List[str] = None,
+    ):
+        self.ipv_4 = ipv_4
+        self.ipv_6 = ipv_6
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipv_4 is not None:
+            result['IPv4'] = self.ipv_4
+        if self.ipv_6 is not None:
+            result['IPv6'] = self.ipv_6
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IPv4') is not None:
+            self.ipv_4 = m.get('IPv4')
+        if m.get('IPv6') is not None:
+            self.ipv_6 = m.get('IPv6')
+        return self
+
+
+class GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist(TeaModel):
+    def __init__(
+        self,
+        ipv_4: List[str] = None,
+        ipv_6: List[str] = None,
+    ):
+        self.ipv_4 = ipv_4
+        self.ipv_6 = ipv_6
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipv_4 is not None:
+            result['IPv4'] = self.ipv_4
+        if self.ipv_6 is not None:
+            result['IPv6'] = self.ipv_6
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IPv4') is not None:
+            self.ipv_4 = m.get('IPv4')
+        if m.get('IPv6') is not None:
+            self.ipv_6 = m.get('IPv6')
+        return self
+
+
+class GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist(TeaModel):
+    def __init__(
+        self,
+        ipv_4: List[str] = None,
+        ipv_6: List[str] = None,
+    ):
+        self.ipv_4 = ipv_4
+        self.ipv_6 = ipv_6
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipv_4 is not None:
+            result['IPv4'] = self.ipv_4
+        if self.ipv_6 is not None:
+            result['IPv6'] = self.ipv_6
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IPv4') is not None:
+            self.ipv_4 = m.get('IPv4')
+        if m.get('IPv6') is not None:
+            self.ipv_6 = m.get('IPv6')
+        return self
+
+
+class GetOriginProtectionResponseBodyDiffIPWhitelist(TeaModel):
+    def __init__(
+        self,
+        added_ipwhitelist: GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist = None,
+        no_change_ip_whitelist: GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist = None,
+        removed_ipwhitelist: GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist = None,
+    ):
+        self.added_ipwhitelist = added_ipwhitelist
+        self.no_change_ip_whitelist = no_change_ip_whitelist
+        self.removed_ipwhitelist = removed_ipwhitelist
+
+    def validate(self):
+        if self.added_ipwhitelist:
+            self.added_ipwhitelist.validate()
+        if self.no_change_ip_whitelist:
+            self.no_change_ip_whitelist.validate()
+        if self.removed_ipwhitelist:
+            self.removed_ipwhitelist.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.added_ipwhitelist is not None:
+            result['AddedIPWhitelist'] = self.added_ipwhitelist.to_map()
+        if self.no_change_ip_whitelist is not None:
+            result['NoChangeIpWhitelist'] = self.no_change_ip_whitelist.to_map()
+        if self.removed_ipwhitelist is not None:
+            result['RemovedIPWhitelist'] = self.removed_ipwhitelist.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddedIPWhitelist') is not None:
+            temp_model = GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist()
+            self.added_ipwhitelist = temp_model.from_map(m['AddedIPWhitelist'])
+        if m.get('NoChangeIpWhitelist') is not None:
+            temp_model = GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist()
+            self.no_change_ip_whitelist = temp_model.from_map(m['NoChangeIpWhitelist'])
+        if m.get('RemovedIPWhitelist') is not None:
+            temp_model = GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist()
+            self.removed_ipwhitelist = temp_model.from_map(m['RemovedIPWhitelist'])
+        return self
+
+
+class GetOriginProtectionResponseBodyLatestIPWhitelist(TeaModel):
+    def __init__(
+        self,
+        ipv_4: List[str] = None,
+        ipv_6: List[str] = None,
+    ):
+        self.ipv_4 = ipv_4
+        self.ipv_6 = ipv_6
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipv_4 is not None:
+            result['IPv4'] = self.ipv_4
+        if self.ipv_6 is not None:
+            result['IPv6'] = self.ipv_6
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IPv4') is not None:
+            self.ipv_4 = m.get('IPv4')
+        if m.get('IPv6') is not None:
+            self.ipv_6 = m.get('IPv6')
+        return self
+
+
+class GetOriginProtectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_ipwhitelist: GetOriginProtectionResponseBodyCurrentIPWhitelist = None,
+        diff_ipwhitelist: GetOriginProtectionResponseBodyDiffIPWhitelist = None,
+        latest_ipwhitelist: GetOriginProtectionResponseBodyLatestIPWhitelist = None,
+        need_update: bool = None,
+        origin_converge: str = None,
+        origin_protection: str = None,
+        request_id: str = None,
+        site_id: int = None,
+    ):
+        self.current_ipwhitelist = current_ipwhitelist
+        self.diff_ipwhitelist = diff_ipwhitelist
+        self.latest_ipwhitelist = latest_ipwhitelist
+        self.need_update = need_update
+        self.origin_converge = origin_converge
+        self.origin_protection = origin_protection
+        self.request_id = request_id
+        self.site_id = site_id
+
+    def validate(self):
+        if self.current_ipwhitelist:
+            self.current_ipwhitelist.validate()
+        if self.diff_ipwhitelist:
+            self.diff_ipwhitelist.validate()
+        if self.latest_ipwhitelist:
+            self.latest_ipwhitelist.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_ipwhitelist is not None:
+            result['CurrentIPWhitelist'] = self.current_ipwhitelist.to_map()
+        if self.diff_ipwhitelist is not None:
+            result['DiffIPWhitelist'] = self.diff_ipwhitelist.to_map()
+        if self.latest_ipwhitelist is not None:
+            result['LatestIPWhitelist'] = self.latest_ipwhitelist.to_map()
+        if self.need_update is not None:
+            result['NeedUpdate'] = self.need_update
+        if self.origin_converge is not None:
+            result['OriginConverge'] = self.origin_converge
+        if self.origin_protection is not None:
+            result['OriginProtection'] = self.origin_protection
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentIPWhitelist') is not None:
+            temp_model = GetOriginProtectionResponseBodyCurrentIPWhitelist()
+            self.current_ipwhitelist = temp_model.from_map(m['CurrentIPWhitelist'])
+        if m.get('DiffIPWhitelist') is not None:
+            temp_model = GetOriginProtectionResponseBodyDiffIPWhitelist()
+            self.diff_ipwhitelist = temp_model.from_map(m['DiffIPWhitelist'])
+        if m.get('LatestIPWhitelist') is not None:
+            temp_model = GetOriginProtectionResponseBodyLatestIPWhitelist()
+            self.latest_ipwhitelist = temp_model.from_map(m['LatestIPWhitelist'])
+        if m.get('NeedUpdate') is not None:
+            self.need_update = m.get('NeedUpdate')
+        if m.get('OriginConverge') is not None:
+            self.origin_converge = m.get('OriginConverge')
+        if m.get('OriginProtection') is not None:
+            self.origin_protection = m.get('OriginProtection')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetOriginProtectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOriginProtectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOriginProtectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetPageRequest(TeaModel):
     def __init__(
         self,
         id: int = None,
     ):
+        # The ID of the custom error page, which can be obtained by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
         self.id = id
 
     def validate(self):
@@ -16618,25 +22389,27 @@ class GetPageResponseBody(TeaModel):
         request_id: str = None,
         update_time: str = None,
     ):
-        # 自定义响应页面内容BASE64编码
+        # The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
         # 
         # This parameter is required.
         self.content = content
-        # 自定义响应页面内容类型
+        # The Content-Type field in the HTTP header.
         # 
         # This parameter is required.
         self.content_type = content_type
-        # 自定义响应页面描述
+        # The description of the custom error page.
         self.description = description
-        # 自定义响应页面ID
+        # The ID of the custom error page.[](~~2850223~~)
         self.id = id
+        # The type of the custom response page.
         self.kind = kind
-        # 自定义响应页面名称
+        # The name of the custom response page.
         # 
         # This parameter is required.
         self.name = name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The time when the custom error page was last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -16734,7 +22507,16 @@ class GetPurgeQuotaRequest(TeaModel):
         site_id: int = None,
         type: str = None,
     ):
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         self.site_id = site_id
+        # The type of the purge task. Valid values:
+        # 
+        # *   **file** (default): purges the cache by file.
+        # *   **cachetag**: purges the cache by cache tag.
+        # *   **directory**: purges the cache by directory.
+        # *   **ignoreParams**: purges the cache by URL with specific parameters ignored.
+        # *   **hostname**: purges the cache by hostname.
+        # *   **purgeall**: purges all cache.
         self.type = type
 
     def validate(self):
@@ -16768,9 +22550,11 @@ class GetPurgeQuotaResponseBody(TeaModel):
         request_id: str = None,
         usage: str = None,
     ):
+        # The total quota.
         self.quota = quota
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The quota usage.
         self.usage = usage
 
     def validate(self):
@@ -16847,6 +22631,13 @@ class GetRealtimeDeliveryFieldRequest(TeaModel):
         self,
         business_type: str = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   **dcdn_log_access_l1** (default): access logs.
+        # *   **dcdn_log_er**: Edge Routine logs.
+        # *   **dcdn_log_waf**: firewall logs.
+        # *   **dcdn_log_ipa**: TCP/UDP proxy logs.
+        # 
         # This parameter is required.
         self.business_type = business_type
 
@@ -16876,8 +22667,9 @@ class GetRealtimeDeliveryFieldResponseBody(TeaModel):
         field_content: Dict[str, FieldContentValue] = None,
         request_id: str = None,
     ):
+        # The fields returned.
         self.field_content = field_content
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17341,6 +23133,7 @@ class GetRoutineRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # The routine name.
         self.name = name
 
     def validate(self):
@@ -17370,8 +23163,11 @@ class GetRoutineResponseBodyCodeVersions(TeaModel):
         code_version: str = None,
         create_time: str = None,
     ):
+        # The description of the code version.
         self.code_description = code_description
+        # The code version.
         self.code_version = code_version
+        # The time when the code version was created.
         self.create_time = create_time
 
     def validate(self):
@@ -17411,10 +23207,15 @@ class GetRoutineResponseBodyEnvs(TeaModel):
         env: str = None,
         spec_name: str = None,
     ):
+        # The regions for canary release.
         self.canary_area_list = canary_area_list
+        # The version number for canary release.
         self.canary_code_version = canary_code_version
+        # The version number of the code in the environment.
         self.code_version = code_version
+        # The environment type.
         self.env = env
+        # The specification.
         self.spec_name = spec_name
 
     def validate(self):
@@ -17461,9 +23262,13 @@ class GetRoutineResponseBodyRelatedRecords(TeaModel):
         site_id: int = None,
         site_name: str = None,
     ):
+        # The record ID.
         self.record_id = record_id
+        # The record name.
         self.record_name = record_name
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
 
     def validate(self):
@@ -17506,9 +23311,13 @@ class GetRoutineResponseBodyRelatedRoutes(TeaModel):
         site_id: int = None,
         site_name: str = None,
     ):
+        # The route.
         self.route = route
+        # The route ID.
         self.route_id = route_id
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
 
     def validate(self):
@@ -17555,14 +23364,21 @@ class GetRoutineResponseBody(TeaModel):
         related_routes: List[GetRoutineResponseBodyRelatedRoutes] = None,
         request_id: str = None,
     ):
+        # The code versions.
         self.code_versions = code_versions
+        # The time when the routine was created.
         self.create_time = create_time
+        # The default record name to access.
         self.default_related_record = default_related_record
+        # The description of the routine.
         self.description = description
+        # The information about the environments.
         self.envs = envs
+        # The records associated with the routine.
         self.related_records = related_records
+        # The routes associated with the routine.
         self.related_routes = related_routes
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17695,7 +23511,9 @@ class GetRoutineStagingCodeUploadInfoRequest(TeaModel):
         code_description: str = None,
         name: str = None,
     ):
+        # The code description.
         self.code_description = code_description
+        # The routine name.
         self.name = name
 
     def validate(self):
@@ -17729,9 +23547,11 @@ class GetRoutineStagingCodeUploadInfoResponseBody(TeaModel):
         oss_post_config: Dict[str, Any] = None,
         request_id: str = None,
     ):
+        # The code version.
         self.code_version = code_version
+        # The configuration information that can be used to upload to OSS.
         self.oss_post_config = oss_post_config
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17809,8 +23629,9 @@ class GetRoutineStagingEnvIpResponseBody(TeaModel):
         ipv4: List[str] = None,
         request_id: str = None,
     ):
+        # The IPv4 addresses.
         self.ipv4 = ipv4
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17885,8 +23706,11 @@ class GetRoutineUserInfoResponseBodyRoutines(TeaModel):
         description: str = None,
         routine_name: str = None,
     ):
+        # The time when the routine was created.
         self.create_time = create_time
+        # The routine description, which is Base64-encoded.
         self.description = description
+        # The routine name.
         self.routine_name = routine_name
 
     def validate(self):
@@ -17924,9 +23748,11 @@ class GetRoutineUserInfoResponseBody(TeaModel):
         routines: List[GetRoutineUserInfoResponseBodyRoutines] = None,
         subdomains: List[str] = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The routines.
         self.routines = routines
+        # The subdomains.
         self.subdomains = subdomains
 
     def validate(self):
@@ -18011,6 +23837,8 @@ class GetScheduledPreloadJobRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The ID of the scheduled prefetch task.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -18053,21 +23881,35 @@ class GetScheduledPreloadJobResponseBody(TeaModel):
         url_count: int = None,
         url_submitted: int = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The time when the task was created.
         self.created_at = created_at
+        # The domain names to be prefetched.
         self.domains = domains
+        # The error message that is returned.
         self.error_info = error_info
+        # The URL of the OSS object that stores a list of URLs that failed the conditional check for prefetching.
         self.failed_file_oss = failed_file_oss
+        # The ID of the URL list file, which can be used during downloads.
         self.file_id = file_id
+        # The ID of the prefetch task.
         self.id = id
+        # The method to submit the URLs to be prefetched.
         self.insert_way = insert_way
+        # The task name.
         self.name = name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
+        # The number of submitted prefetch tasks.
         self.task_submitted = task_submitted
+        # The task type. Valid values: refresh and preload.
         self.task_type = task_type
+        # The total number of URLs.
         self.url_count = url_count
+        # The number of submitted URLs.
         self.url_submitted = url_submitted
 
     def validate(self):
@@ -18192,6 +24034,8 @@ class GetSiteRequest(TeaModel):
         self,
         site_id: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -18236,22 +24080,51 @@ class GetSiteResponseBodySiteModel(TeaModel):
         verify_code: str = None,
         version_management: bool = None,
     ):
+        # The DNS setup option for the website. Valid values:
+        # 
+        # *   **NS**\
+        # *   **CNAME**\
         self.access_type = access_type
+        # The CNAME of the website domain. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
         self.cname_zone = cname_zone
+        # The service location. Valid values:
+        # 
+        # *   **domestic**: the Chinese mainland.
+        # *   **global**: global.
+        # *   **overseas**: outside the Chinese mainland.
         self.coverage = coverage
+        # The time when the WEBsite was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
         self.create_time = create_time
+        # The plan ID.
         self.instance_id = instance_id
+        # The nameservers assigned to the website domain. They are separated by commas (,).
         self.name_server_list = name_server_list
+        # The plan name.
         self.plan_name = plan_name
+        # The specification of the plan associated with the website.
         self.plan_spec_name = plan_spec_name
+        # The ID of your Alibaba Cloud resource group.
         self.resource_group_id = resource_group_id
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The website status. Valid values:
+        # 
+        # *   **pending**: The website is to be configured.
+        # *   **active**: The website is active.
+        # *   **offline**: The website is suspended.
+        # *   **moved**: The website has been added and verified by another Alibaba Cloud account.
         self.status = status
+        # The tags of the website.
         self.tags = tags
+        # The time when the WEBsite was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
         self.update_time = update_time
+        # The information about custom nameservers of the website domain. The key is a custom nameserver name, and the value is the IP address of the custom nameserver. Multiple IP addresses are separated by commas (,).
         self.vanity_nslist = vanity_nslist
+        # The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
         self.verify_code = verify_code
+        # The status of version management. If true is returned, version management is enabled for the website.
         self.version_management = version_management
 
     def validate(self):
@@ -18344,8 +24217,9 @@ class GetSiteResponseBody(TeaModel):
         request_id: str = None,
         site_model: GetSiteResponseBodySiteModel = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The queried website information.
         self.site_model = site_model
 
     def validate(self):
@@ -18420,6 +24294,8 @@ class GetSiteCurrentNSRequest(TeaModel):
         self,
         site_id: int = None,
     ):
+        # The website ID. It can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -18449,7 +24325,9 @@ class GetSiteCurrentNSResponseBody(TeaModel):
         nslist: List[str] = None,
         request_id: str = None,
     ):
+        # The nameservers of the website.
         self.nslist = nslist
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18522,6 +24400,8 @@ class GetSiteCustomLogRequest(TeaModel):
         self,
         site_id: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -18552,8 +24432,11 @@ class GetSiteCustomLogResponseBodyLogCustomField(TeaModel):
         request_headers: List[str] = None,
         response_headers: List[str] = None,
     ):
+        # The cookie fields.
         self.cookies = cookies
+        # The request header fields.
         self.request_headers = request_headers
+        # The response header fields.
         self.response_headers = response_headers
 
     def validate(self):
@@ -18593,11 +24476,15 @@ class GetSiteCustomLogResponseBody(TeaModel):
         request_id: str = None,
         site_id: int = None,
     ):
+        # The ID of the custom log field configuration.
         self.config_id = config_id
+        # Indicates whether the custom configuration exists.
         self.is_exist = is_exist
+        # The custom fields.
         self.log_custom_field = log_custom_field
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -18685,7 +24572,10 @@ class GetSiteDeliveryTaskRequest(TeaModel):
         site_id: int = None,
         task_name: str = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The name of the delivery task.
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -18729,18 +24619,47 @@ class GetSiteDeliveryTaskResponseBody(TeaModel):
         status: str = None,
         task_name: str = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   dcdn_log_access_l1 (default): access logs.
+        # *   dcdn_log_er: Edge Routine logs.
+        # *   dcdn_log_waf: firewall logs.
+        # *   dcdn_log_ipa: TCP/UDP proxy logs.
         self.business_type = business_type
+        # The data center. Valid values:
+        # 
+        # 1.  cn: the Chinese mainland.
+        # 2.  sg: outside the Chinese mainland.
         self.data_center = data_center
+        # The destination of the delivery. Valid values:
+        # 
+        # 1.  sls: Alibaba Cloud Simple Log Service (SLS).
+        # 2.  http: HTTP server.
+        # 3.  aws3: Amazon Simple Storage Service (S3).
+        # 4.  oss: Alibaba Cloud Object Storage Service (OSS).
+        # 5.  kafka: Kafka.
+        # 6.  aws3cmpt: S3-compatible storage service.
         self.delivery_type = delivery_type
+        # The discard rate.
         self.discard_rate = discard_rate
+        # The log fields.
         self.field_list = field_list
+        # The filtering rules.
         self.filter_rules = filter_rules
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The delivery configuration.
         self.sink_config = sink_config
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The status of the delivery task.
+        # 
+        # *   **online**\
+        # *   **offline**\
         self.status = status
+        # The name of the delivery task.
         self.task_name = task_name
 
     def validate(self):
@@ -18854,8 +24773,17 @@ class GetSiteLogDeliveryQuotaRequest(TeaModel):
         business_type: str = None,
         site_id: int = None,
     ):
+        # The log category. Valid values:
+        # 
+        # 1.  dcdn_log_access_l1 (default): access logs.
+        # 2.  dcdn_log_er: Edge Routine logs.
+        # 3.  dcdn_log_waf: firewall logs.
+        # 4.  dcdn_log_ipa: TCP/UDP proxy logs.
+        # 
         # This parameter is required.
         self.business_type = business_type
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -18891,10 +24819,18 @@ class GetSiteLogDeliveryQuotaResponseBody(TeaModel):
         request_id: str = None,
         site_id: int = None,
     ):
+        # The log category. Valid values:
+        # 
+        # 1.  dcdn_log_access_l1 (default): access logs.
+        # 2.  dcdn_log_er: Edge Routine logs.
+        # 3.  dcdn_log_waf: firewall logs.
+        # 4.  dcdn_log_ipa: TCP/UDP proxy logs.
         self.business_type = business_type
+        # The remaining quota.
         self.free_quota = free_quota
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -18976,7 +24912,9 @@ class GetSiteWafSettingsRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -19009,8 +24947,9 @@ class GetSiteWafSettingsResponseBody(TeaModel):
         request_id: str = None,
         settings: WafSiteSettings = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The WAF configurations of the website.
         self.settings = settings
 
     def validate(self):
@@ -19086,7 +25025,9 @@ class GetUploadTaskRequest(TeaModel):
         site_id: int = None,
         upload_id: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The ID of the file upload task. This field is assigned after you call the [UploadFile](https://help.aliyun.com/document_detail/435925.html) operation.
         self.upload_id = upload_id
 
     def validate(self):
@@ -19120,9 +25061,18 @@ class GetUploadTaskResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The error message returned when the file upload task failed.
         self.description = description
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The task status.
+        # 
+        # *   **INIT**: The task is being initialized.
+        # *   **activacted**: The task is activated.
+        # *   **running**: The task is running.
+        # *   **success**: The task is successful.
+        # *   **partial**: The task is partially successful.
+        # *   **fail**: The task failed.
         self.status = status
 
     def validate(self):
@@ -19199,6 +25149,8 @@ class GetUserDeliveryTaskRequest(TeaModel):
         self,
         task_name: str = None,
     ):
+        # The name of the delivery task.
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -19236,16 +25188,40 @@ class GetUserDeliveryTaskResponseBody(TeaModel):
         status: str = None,
         task_name: str = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   **dcdn_log_access_l1** (default): access logs.
+        # *   **dcdn_log_er**: Edge Routine logs.
+        # *   **dcdn_log_waf**: firewall logs.
+        # *   **dcdn_log_ipa**: TCP/UDP proxy logs.
         self.business_type = business_type
+        # The data center. Valid values:
+        # 
+        # *   cn: the Chinese mainland.
+        # *   sg: outside the Chinese mainland.
         self.data_center = data_center
+        # The destination of the delivery. Valid values:
+        # 
+        # *   sls: Alibaba Cloud Simple Log Service (SLS).
+        # *   http: HTTP server.
+        # *   aws3: Amazon Simple Storage Service (S3).
+        # *   oss: Alibaba Cloud Object Storage Service (OSS).
+        # *   kafka: Kafka.
+        # *   aws3cmpt: S3-compatible storage service.
         self.delivery_type = delivery_type
+        # The discard rate.
         self.discard_rate = discard_rate
+        # The fields.
         self.field_list = field_list
+        # The filtering rules.
         self.filter_rules = filter_rules
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The delivery configuration.
         self.sink_config = sink_config
+        # The status of the delivery task.
         self.status = status
+        # The name of the delivery task.
         self.task_name = task_name
 
     def validate(self):
@@ -19350,6 +25326,13 @@ class GetUserLogDeliveryQuotaRequest(TeaModel):
         self,
         business_type: str = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   dcdn_log_access_l1 (default): access logs.
+        # *   dcdn_log_er: Edge Routine logs.
+        # *   dcdn_log_waf: firewall logs.
+        # *   dcdn_log_ipa: TCP/UDP proxy logs.
+        # 
         # This parameter is required.
         self.business_type = business_type
 
@@ -19380,9 +25363,16 @@ class GetUserLogDeliveryQuotaResponseBody(TeaModel):
         free_quota: int = None,
         request_id: str = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   dcdn_log_access_l1 (default): access logs.
+        # *   dcdn_log_er: Edge Routine logs.
+        # *   dcdn_log_waf: firewall logs.
+        # *   dcdn_log_ipa: TCP/UDP proxy logs.
         self.business_type = business_type
+        # The remaining quota.
         self.free_quota = free_quota
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19460,8 +25450,9 @@ class GetWafBotAppKeyResponseBody(TeaModel):
         app_key: str = None,
         request_id: str = None,
     ):
-        # APP key
+        # The application key.
         self.app_key = app_key
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19537,9 +25528,13 @@ class GetWafFilterRequest(TeaModel):
         target: str = None,
         type: str = None,
     ):
+        # The WAF rule category to which the filter conditions to query belong.
         self.phase = phase
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The condition for matching incoming requests.
         self.target = target
+        # The rule type.
         self.type = type
 
     def validate(self):
@@ -19582,9 +25577,13 @@ class GetWafFilterResponseBodyFilterFieldsLogicsValidator(TeaModel):
         pattern: str = None,
         range: WafQuotaInteger = None,
     ):
+        # The error message when the validation fails.
         self.err_msg = err_msg
+        # The length of the value.
         self.length = length
+        # The regular expression pattern of the value, which is used to validate strings.
         self.pattern = pattern
+        # The range of the value, which is used to validate numbers.
         self.range = range
 
     def validate(self):
@@ -19636,13 +25635,31 @@ class GetWafFilterResponseBodyFilterFieldsLogics(TeaModel):
         type: str = None,
         validator: GetWafFilterResponseBodyFilterFieldsLogicsValidator = None,
     ):
+        # A custom attribute. For example, this parameter can specify whether the value is case-sensitive.
         self.attributes = attributes
+        # The type of the value input box. Valid values:
+        # 
+        # *   select:single
+        # *   select:multi
+        # *   input:single
+        # *   input:multi
         self.kind = kind
+        # Indicates whether the match result is inverted.
         self.negative = negative
+        # The displayed matching characters.
         self.operator = operator
+        # The matching characters in the system.
         self.symbol = symbol
+        # The tip on how to enter a valid value that is required by the rules.
         self.tip = tip
+        # The type of the value. Valid values:
+        # 
+        # *   integer
+        # *   integer_slice
+        # *   string
+        # *   string_slice
         self.type = type
+        # The validator, which defines the validation rules for a value.
         self.validator = validator
 
     def validate(self):
@@ -19701,7 +25718,9 @@ class GetWafFilterResponseBodyFilterFieldsSelectorData(TeaModel):
         label: str = None,
         value: str = None,
     ):
+        # The label of the data.
         self.label = label
+        # The value of the data.
         self.value = value
 
     def validate(self):
@@ -19734,7 +25753,9 @@ class GetWafFilterResponseBodyFilterFieldsSelector(TeaModel):
         data: List[GetWafFilterResponseBodyFilterFieldsSelectorData] = None,
         kind: str = None,
     ):
+        # The data. This parameter is available only when the value of the Kind parameter is data.
         self.data = data
+        # The type of selector. Valid values: data and others.
         self.kind = kind
 
     def validate(self):
@@ -19779,11 +25800,17 @@ class GetWafFilterResponseBodyFilterFields(TeaModel):
         sub: bool = None,
         sub_tip: str = None,
     ):
+        # The field for matched objects in the system.
         self.key = key
+        # The label of the matched object.
         self.label = label
+        # The logical conditions.
         self.logics = logics
+        # The selector, which defines how to select a matched object.
         self.selector = selector
+        # Indicates whether the matched object contains a subfield.
         self.sub = sub
+        # The tip on how to enter a subfield.
         self.sub_tip = sub_tip
 
     def validate(self):
@@ -19845,9 +25872,13 @@ class GetWafFilterResponseBodyFilter(TeaModel):
         target: str = None,
         type: str = None,
     ):
+        # The matched objects and related properties.
         self.fields = fields
+        # The WAF rule category.
         self.phase = phase
+        # The condition for matching incoming requests.
         self.target = target
+        # The rule type.
         self.type = type
 
     def validate(self):
@@ -19896,8 +25927,9 @@ class GetWafFilterResponseBody(TeaModel):
         filter: GetWafFilterResponseBodyFilter = None,
         request_id: str = None,
     ):
+        # The returned match conditions.
         self.filter = filter
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19972,6 +26004,12 @@ class GetWafQuotaRequest(TeaModel):
         self,
         paths: str = None,
     ):
+        # The type of WAF resources. Valid values:
+        # 
+        # *   managed_rules_group: the managed rule group.
+        # *   list: the custom list.
+        # *   page: the custom error page.
+        # *   scene_policy: the scenario-specific policy.
         self.paths = paths
 
     def validate(self):
@@ -20003,10 +26041,15 @@ class GetWafQuotaResponseBodyQuotaList(TeaModel):
         number_items_total: WafQuotaInteger = None,
         number_total: WafQuotaInteger = None,
     ):
+        # Indicates whether custom lists are enabled.
         self.enable = enable
+        # The quota information about all item types in the custom lists.
         self.items = items
+        # The maximum number of items in each custom list.
         self.number_items_per_list = number_items_per_list
+        # The maximum number of items in all custom lists.
         self.number_items_total = number_items_total
+        # The maximum number of custom lists.
         self.number_total = number_total
 
     def validate(self):
@@ -20068,7 +26111,9 @@ class GetWafQuotaResponseBodyQuotaManagedRulesGroup(TeaModel):
         enable: bool = None,
         number_total: WafQuotaInteger = None,
     ):
+        # Indicates whether the WAF managed rule group is enabled.
         self.enable = enable
+        # The maximum number of WAF managed rule groups.
         self.number_total = number_total
 
     def validate(self):
@@ -20104,8 +26149,11 @@ class GetWafQuotaResponseBodyQuotaPage(TeaModel):
         enable: bool = None,
         number_total: WafQuotaInteger = None,
     ):
+        # The quota information about custom error pages of all Content-Types.
         self.content_types = content_types
+        # Indicates whether custom error pages are enabled.
         self.enable = enable
+        # The maximum number of custom error pages.
         self.number_total = number_total
 
     def validate(self):
@@ -20153,7 +26201,9 @@ class GetWafQuotaResponseBodyQuotaScenePolicy(TeaModel):
         enable: bool = None,
         number_total: WafQuotaInteger = None,
     ):
+        # Indicates whether scenario-specific policies are enabled.
         self.enable = enable
+        # The maximum number of scenario-specific policies.
         self.number_total = number_total
 
     def validate(self):
@@ -20190,9 +26240,13 @@ class GetWafQuotaResponseBodyQuota(TeaModel):
         page: GetWafQuotaResponseBodyQuotaPage = None,
         scene_policy: GetWafQuotaResponseBodyQuotaScenePolicy = None,
     ):
+        # The quota information about custom lists.
         self.list = list
+        # The quota information about WAF managed rule groups.
         self.managed_rules_group = managed_rules_group
+        # The quota information about custom error pages.
         self.page = page
+        # The quota information about scenario-specific policies.
         self.scene_policy = scene_policy
 
     def validate(self):
@@ -20244,8 +26298,9 @@ class GetWafQuotaResponseBody(TeaModel):
         quota: GetWafQuotaResponseBodyQuota = None,
         request_id: str = None,
     ):
+        # The quota information returned.
         self.quota = quota
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20321,8 +26376,12 @@ class GetWafRuleRequest(TeaModel):
         id: int = None,
         site_id: int = None,
     ):
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -20362,21 +26421,25 @@ class GetWafRuleResponseBody(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The configuration of the rule.
         self.config = config
-        # 自定义响应页面ID
+        # The ID of the WAF rule.[](~~2850237~~)
         self.id = id
-        # 自定义响应页面名称
+        # The rule name.
         # 
         # This parameter is required.
         self.name = name
-        # 自定义响应页面内容类型
+        # The WAF rule category.
         # 
         # This parameter is required.
         self.phase = phase
+        # The order of the rule in the ruleset.
         self.position = position
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the rule is enabled.
         self.status = status
+        # The time when the rule was last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -20477,8 +26540,11 @@ class GetWafRulesetRequest(TeaModel):
         phase: str = None,
         site_id: int = None,
     ):
+        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
         self.id = id
+        # The WAF rule category of rulesets to query.
         self.phase = phase
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):
@@ -20521,21 +26587,25 @@ class GetWafRulesetResponseBody(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
-        # 自定义响应页面ID
+        # The ruleset ID.
         self.id = id
-        # 自定义响应页面名称
+        # The ruleset name.
         # 
         # This parameter is required.
         self.name = name
-        # 自定义响应页面内容类型
+        # The WAF rule category of the ruleset.
         # 
         # This parameter is required.
         self.phase = phase
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The rule configurations in the ruleset.
         self.rules = rules
+        # The configurations shared by the rules in the ruleset.
         self.shared = shared
+        # The ruleset status.
         self.status = status
+        # The time when the ruleset was last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -20648,11 +26718,28 @@ class ListCacheReserveInstancesRequest(TeaModel):
         sort_order: str = None,
         status: str = None,
     ):
+        # The ID of the cache reserve instance.
         self.instance_id = instance_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Valid values: **1 to 500**. Default value: **500**.
         self.page_size = page_size
+        # The criterion by which you want to sort the queried instances. Valid values:
+        # 
+        # *   ExpireTime: sorts the instances by the time when the instances expire.
+        # *   CreateTime: sorts the instances by the time when the instances were purchased.
         self.sort_by = sort_by
+        # The order by which you want to sort the queried instances. Valid values:
+        # 
+        # *   asc: in ascending order.
+        # *   desc: in descending order.
         self.sort_order = sort_order
+        # The status of the cache reserve instance. Valid values:
+        # 
+        # *   online: The instance is in service.
+        # *   offline: The instance has expired within an allowable period. In this state, the plan is unavailable.
+        # *   disable: The instance is released.
+        # *   overdue: The instance is stopped due to overdue payments.
         self.status = status
 
     def validate(self):
@@ -20706,12 +26793,24 @@ class ListCacheReserveInstancesResponseBodyInstanceInfo(TeaModel):
         instance_id: str = None,
         status: str = None,
     ):
+        # The capacity of the cache reserve instance. Unit: GB.
         self.cache_reserve_capacity = cache_reserve_capacity
+        # The region in which the cache reserve instance resides.
         self.cache_reserve_region = cache_reserve_region
+        # The time when the cache reserve instance was purchased.
         self.create_time = create_time
+        # The subscription period of the cache reserve instance. Unit: months.
         self.duration = duration
+        # The time when the cache reserve instance expires.
         self.expire_time = expire_time
+        # The ID of the cache reserve instance.
         self.instance_id = instance_id
+        # The status of the cache reserve instance. Valid values:
+        # 
+        # *   online: The instance is in service.
+        # *   offline: The instance has expired within an allowable period. In this state, the plan is unavailable.
+        # *   disable: The instance is released.
+        # *   overdue: The service was stopped due to overdue payments.
         self.status = status
 
     def validate(self):
@@ -20768,12 +26867,17 @@ class ListCacheReserveInstancesResponseBody(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The cache reserve instances.
         self.instance_info = instance_info
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Default value: **500**. Valid values: **1 to 500**.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The total number of pages returned.
         self.total_page = total_page
 
     def validate(self):
@@ -21157,12 +27261,25 @@ class ListEdgeContainerAppRecordsRequest(TeaModel):
         page_size: int = None,
         search_key: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The sorting field. Valid values:
+        # 
+        # *   CreateTime: the time when the domain name was associated.
+        # *   CreateTime: the time when the domain name was last modified.
         self.order_key = order_key
+        # The order in which you want to sort the query results. Valid values:
+        # 
+        # *   ASC: in ascending order.
+        # *   DESC: in descending order.
         self.order_type = order_type
+        # The page number. Valid values: **1** to **100000**. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Valid values: 1 to 500.
         self.page_size = page_size
+        # The keyword that is used for the search.
         self.search_key = search_key
 
     def validate(self):
@@ -21218,14 +27335,23 @@ class ListEdgeContainerAppRecordsResponseBodyRecords(TeaModel):
         site_id: int = None,
         update_time: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The CNAME of the associated domain name.
         self.cname = cname
+        # The configuration ID of the associated domain name.
         self.config_id = config_id
+        # The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # The record ID of the associated domain name.
         self.record_id = record_id
+        # The associated domain name.
         self.record_name = record_name
+        # The scheduling domain ID of the associated domain name.
         self.schemd_id = schemd_id
+        # The website ID.
         self.site_id = site_id
+        # The time when the scheduling domain ID or CNAME was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -21289,10 +27415,15 @@ class ListEdgeContainerAppRecordsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The details about the associated domain names.
         self.records = records
+        # The request ID.
         self.request_id = request_id
+        # The number of domain names that are associated with the specified application.
         self.total_count = total_count
 
     def validate(self):
@@ -21391,13 +27522,28 @@ class ListEdgeContainerAppVersionsRequest(TeaModel):
         search_key: str = None,
         search_type: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The sorting field. Valid values:
+        # 
+        # *   Name: the version name.
+        # *   CreateTime: the time when the version was created.
+        # *   UpdateTime: the time when the version was last modified.
         self.order_key = order_key
+        # The order in which you want to sort the query results. Valid values:
+        # 
+        # *   ASC: in ascending order.
+        # *   DESC: in descending order.
         self.order_type = order_type
+        # The page number. Valid values: 1 to 65535.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
+        # The keyword used for the search.
         self.search_key = search_key
+        # The parameter used for fuzzy search. Valid values: VersionId and Name.
         self.search_type = search_type
 
     def validate(self):
@@ -21459,16 +27605,27 @@ class ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent(Tea
         success_threshold: int = None,
         timeout_seconds: int = None,
     ):
+        # The probe command.
         self.command = command
+        # The number of consecutive failed health checks required for a container to be considered as unhealthy.
         self.failure_threshold = failure_threshold
+        # The domain name that is used for health checks.
         self.host = host
+        # The request headers that are included in the container health check request.
         self.http_headers = http_headers
+        # The latency for container probe initialization.
         self.initial_delay_seconds = initial_delay_seconds
+        # The path of the container health check.
         self.path = path
+        # The interval between container health checks.
         self.period_seconds = period_seconds
+        # The port of the container health check.
         self.port = port
+        # The protocol that the container health check request uses.
         self.scheme = scheme
+        # The number of consecutive successful health checks required for a container to be considered as healthy.
         self.success_threshold = success_threshold
+        # The timeout period of the container health check.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -21545,15 +27702,27 @@ class ListEdgeContainerAppVersionsResponseBodyVersionsContainers(TeaModel):
         probe_type: str = None,
         spec: str = None,
     ):
+        # The arguments that are passed to the container startup command.
         self.args = args
+        # The command that is used to start the container.
         self.command = command
+        # The environment variables of the container.
         self.env_variables = env_variables
+        # The address of the container image.
         self.image = image
+        # The container name.
         self.name = name
+        # The command that is run before the container is started. Format: `{"exec":{"command":["cat","/etc/group"\\]}}`.
+        # 
+        # If you want to cancel this configuration, set the parameter value to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
         self.post_start = post_start
+        # The command that is run before the container is stopped.
         self.pre_stop = pre_stop
+        # The container probe content.
         self.probe_content = probe_content
+        # The probe type of the container.
         self.probe_type = probe_type
+        # The compute specification of the container.
         self.spec = spec
 
     def validate(self):
@@ -21628,15 +27797,29 @@ class ListEdgeContainerAppVersionsResponseBodyVersions(TeaModel):
         update_time: str = None,
         version_id: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The containers in the version.
         self.containers = containers
+        # The time when the version was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the version was last released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.last_publish_time = last_publish_time
+        # The version name.
         self.name = name
+        # The time when the version was released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.publish_time = publish_time
+        # The remarks.
         self.remarks = remarks
+        # The status of the current version. Valid values:
+        # 
+        # *   **created**\
+        # *   **failed**\
+        # *   **creating**\
         self.status = status
+        # The time when the version was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
+        # The version ID.
         self.version_id = version_id
 
     def validate(self):
@@ -21712,10 +27895,15 @@ class ListEdgeContainerAppVersionsResponseBody(TeaModel):
         total_count: int = None,
         versions: List[ListEdgeContainerAppVersionsResponseBodyVersions] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The versions.
         self.versions = versions
 
     def validate(self):
@@ -21813,11 +28001,27 @@ class ListEdgeContainerAppsRequest(TeaModel):
         search_key: str = None,
         search_type: str = None,
     ):
+        # The sorting field. This parameter is left empty by default. Valid values:
+        # 
+        # *   Name: the version name.
+        # *   CreateTime: the time when the version was created.
+        # *   UpdateTime: the time when the version was last modified.
         self.order_key = order_key
+        # The order in which you want to sort the query results. This parameter is left empty by default. Valid values:
+        # 
+        # *   ASC: in ascending order.
+        # *   DESC: in descending order.
         self.order_type = order_type
+        # The page number. Default value: **1**. Valid values: 1 to 65535.
         self.page_number = page_number
+        # The number of entries per page. Default value: **20**. Valid values: 1 to 500.
         self.page_size = page_size
+        # The search keyword.
         self.search_key = search_key
+        # The search criterion based on which you want to perform fuzzy search. Valid values:
+        # 
+        # *   Appid: the application ID.
+        # *   Name: the application name.
         self.search_type = search_type
 
     def validate(self):
@@ -21874,15 +28078,28 @@ class ListEdgeContainerAppsResponseBodyAppsHealthCheck(TeaModel):
         type: str = None,
         uri: str = None,
     ):
+        # The number of consecutive failed health checks for an application to be considered unhealthy.
         self.fail_times = fail_times
+        # The domain name that is used for health checks.
         self.host = host
+        # The range of health check status codes that indicate successful health checks.
         self.http_code = http_code
+        # The interval between health checks. Unit: seconds.
         self.interval = interval
+        # The HTTP method used for health checks.
         self.method = method
+        # The health check port.
         self.port = port
+        # The number of consecutive successful health checks for an application to be considered healthy.
         self.succ_times = succ_times
+        # The timeout period of health checks. Unit: seconds.
         self.timeout = timeout
+        # The type of health checks. Valid values:
+        # 
+        # *   l7
+        # *   l4
         self.type = type
+        # The health check URL.
         self.uri = uri
 
     def validate(self):
@@ -21959,19 +28176,40 @@ class ListEdgeContainerAppsResponseBodyApps(TeaModel):
         update_time: str = None,
         version_count: int = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The time when the version was created.
         self.create_time = create_time
+        # The domain name associated with the application.
         self.domain_name = domain_name
+        # The type of the gateway. Valid values:
+        # 
+        # *   l7: Layer 7 gateway.
+        # *   l4: Layer 4 gateway.
         self.gateway_type = gateway_type
+        # The information about health checks.
         self.health_check = health_check
+        # The application name.
         self.name = name
+        # The progress of the application creation task in percentage.
         self.percentage = percentage
+        # Indicates whether QUIC is enabled.
         self.quic_cid = quic_cid
+        # The remarks.
         self.remarks = remarks
+        # The server port. Valid values: 1 to 65535.
         self.service_port = service_port
+        # The status of the application. Valid values:
+        # 
+        # *   creating: The application is being created.
+        # *   failed: The application failed to be created.
+        # *   created: The application is created.
         self.status = status
+        # The backend port, which is also the service port of the application. Valid values: 1 to 65535.
         self.target_port = target_port
+        # The time when the application was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
+        # The number of versions of the application.
         self.version_count = version_count
 
     def validate(self):
@@ -22057,10 +28295,15 @@ class ListEdgeContainerAppsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The queried applications.
         self.apps = apps
+        # The page number. Default value: **1**. Valid values: 1 to 65535.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 500.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -22157,10 +28400,21 @@ class ListEdgeContainerRecordsRequest(TeaModel):
         record_name: str = None,
         site_id: int = None,
     ):
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Default value: **500**.
         self.page_size = page_size
+        # The match mode to filter the record names:
+        # 
+        # *   **fuzzy**\
+        # *   **prefix**\
+        # *   **suffix**\
+        # *   **exact** (default)
         self.record_match_type = record_match_type
+        # The record name.
         self.record_name = record_name
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -22210,11 +28464,17 @@ class ListEdgeContainerRecordsResponseBodyRecords(TeaModel):
         site_name: str = None,
         update_time: str = None,
     ):
+        # The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The CNAME. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured.
         self.record_cname = record_cname
+        # The record name.
         self.record_name = record_name
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The time when the record was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -22266,11 +28526,15 @@ class ListEdgeContainerRecordsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The records.
         self.records = records
         # Id of the request
         self.request_id = request_id
+        # The total number of records returned.
         self.total_count = total_count
 
     def validate(self):
@@ -22368,11 +28632,23 @@ class ListEdgeRoutinePlansResponseBodyPlanInfo(TeaModel):
         payment_method: str = None,
         plan_name: str = None,
     ):
+        # The billing method. Valid values:
+        # 
+        # *   PREPAY: subscription.
+        # *   POSTPAY: pay-as-you-go.
         self.billing_mode = billing_mode
+        # The maximum number of versions that each routine supports.
         self.er_routine_code_version_quota = er_routine_code_version_quota
+        # The maximum of routines that can be created.
         self.er_routine_quota = er_routine_quota
+        # The maximum number of websites with which each routine can be associated.
         self.er_routine_route_site_count_quota = er_routine_route_site_count_quota
+        # The payment method. Valid values:
+        # 
+        # *   er_free
+        # *   er_pay
         self.payment_method = payment_method
+        # The plan name.
         self.plan_name = plan_name
 
     def validate(self):
@@ -22425,12 +28701,17 @@ class ListEdgeRoutinePlansResponseBody(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 500.
         self.page_size = page_size
+        # The plans.
         self.plan_info = plan_info
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The total number of pages returned.
         self.total_page = total_page
 
     def validate(self):
@@ -22531,10 +28812,21 @@ class ListEdgeRoutineRecordsRequest(TeaModel):
         record_name: str = None,
         site_id: int = None,
     ):
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Default value: **500**.
         self.page_size = page_size
+        # The match mode to filter the record names.
+        # 
+        # *   **fuzzy**: fuzzy match.
+        # *   **prefix**: match by prefix.
+        # *   **suffix**: match by suffix.
+        # *   **exact** (default): exact match .
         self.record_match_type = record_match_type
+        # The record name.
         self.record_name = record_name
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -22584,11 +28876,17 @@ class ListEdgeRoutineRecordsResponseBodyRecords(TeaModel):
         site_name: str = None,
         update_time: str = None,
     ):
+        # The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The CNAME. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
         self.record_cname = record_cname
+        # The record name.
         self.record_name = record_name
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The time when the record was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -22640,11 +28938,15 @@ class ListEdgeRoutineRecordsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The total number of pages returned.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The list of records.
         self.records = records
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of records returned.
         self.total_count = total_count
 
     def validate(self):
@@ -22739,9 +29041,102 @@ class ListInstanceQuotasRequest(TeaModel):
         quota_names: str = None,
         site_id: int = None,
     ):
+        # The plan ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.instance_id = instance_id
+        # The quota names in the plan. Separate multiple names with commas (,). Valid values:
+        # 
+        # *   **waf:phase:http_anti_scan:actions**: the actions in WAF scan protection rules.
+        # *   **waf:phase:http_bot:actions**: all actions in WAF bot management rules.
+        # *   **waf:phase:http_bot:http_custom_cc_dev:characteristic:fields**: the statistical objects for the custom device-based throttling in WAF bot management rules.
+        # *   **waf:phase:http_bot:http_custom_cc_ip:characteristic:fields**: the statistical objects for the custom IP address-based throttling in WAF bot management rules.
+        # *   ****waf:phase:http_bot:match:symbols****: the match operators in WAF bot management rules.
+        # *   **waf:phase:http_bot:http_custom_cc:characteristic:fields**: the statistical objects for the custom session-based throttling in WAF bot management rules.
+        # *   **waf:phase:http_bot:match:fields**: the match fields in WAF bot management rules.
+        # *   **waf:phase:http_whitelist:match:symbols**: the match operators in WAF whitelist rules.
+        # *   **waf:phase:http_whitelist:match:fields**: the match fields in WAF whitelist rules.
+        # *   **waf:phase:http_anti_scan:http_directory_traversal:characteristic:fields**: the statistical objects for directory traversal blocking in WAF scan protection rules.
+        # *   **waf:phase:http_anti_scan:http_high_frequency:characteristic:fields**: the statistical objects for high-frequency scanning blocking in WAF scan protection rules.
+        # *   **waf:phase:http_anti_scan:match:symbols**: the match operators in WAF scan protection rules.
+        # *   **waf:phase:http_anti_scan:match:fields**: the match fields in WAF scan protection rules.
+        # *   **waf:phase:http_managed:actions**: the actions in WAF managed rules.
+        # *   **waf:phase:http_managed:group:reference:ids**: the referenced rule groups in WAF managed rules.
+        # *   **waf:phase:http_ratelimit:actions**: the actions in WAF rate limiting rules.
+        # *   **waf:phase:http_ratelimit:ttls**: the action durations in WAF rate limiting rules.
+        # *   **waf:phase:http_ratelimit:intervals**: the statistical durations in WAF rate limiting rules.
+        # *   **waf:phase:http_ratelimit:http_ratelimit:characteristic:fields**: the match characteristics in WAF rate limiting rules.
+        # *   **waf:phase:http_ratelimit:match:symbols**: the match operators in WAF rate limiting rules.
+        # *   **waf:phase:http_ratelimit:match:fields**: the match fields in WAF rate limiting rules.
+        # *   **waf:phase:http_custom:actions**: the actions in custom WAF rules.
+        # *   **waf:phase:http_custom:match:symbols**: the match operators in custom WAF rules.
+        # *   **waf:phase:http_custom:match:fields**: the match fields in custom WAF rules.
+        # *   **waiting_room|queuing_method**: the queuing method in Waiting Room.
+        # *   **origin_rules|origin_scheme**: the origin protocol in origin rules.
+        # *   **origin_rules|origin_sni**: the origin Server Name Indication (SNI) in origin rules.
+        # *   **origin_rules|origin_host**: the origin host in origin rules.
+        # *   **fourlayeracceleration**: TCP/UDP proxy.
+        # *   **rtlog_service**: the availability to collect real-time logs.
+        # *   **dashboard_traffic**: the value-added capability of traffic analytics.
+        # *   **custom_name_server**: the availability to configure custom nameservers.
+        # *   **waf:phase:http_bot:enable**: the availability to enable WAF bot management.
+        # *   **waf:phase:http_whitelist:enable**: the availability to configure WAF whitelist rules.
+        # *   **instantlog**: the availability to collect instant logs.
+        # *   **waf:phase:http_anti_scan:enable**: the availability to enable WAF scan protection.
+        # *   **waf:phase:http_managed:group:reference:enable**: the availability to configure reference rule groups in WAF managed rules.
+        # *   **waf:phase:http_managed:enable**: the availability to configure WAF managed rules.
+        # *   **waf:phase:http_ratelimit:on_hit:enable**: the availability to configure whether to apply rate limiting to all requests that hit the cache.
+        # *   **ddos**: DDoS mitigation.
+        # *   **waf:phase:http_ratelimit:enable**: the availability to configure WAF rate limiting.
+        # *   **waf:phase:http_custom:enable**: the availability to configure custom WAF rules.
+        # *   **waf:phase:all:page:reference:enable**: the availability to configure custom error pages.
+        # *   **rules_support_regex**: the support for regular expressions in rules engine.
+        # *   **waiting_room_event**: scheduled events in Waiting Room.
+        # *   **waiting_room_rule**: the availability to allow requests to bypass the waiting room.
+        # *   **waiting_room|json_response**: the availability to enable JSON response in Waiting Room.
+        # *   **waiting_room|disable_session_renewal**: the availability to disable session renewal in Waiting Room.
+        # *   **origin_rules|dns_record**: DNS records in origin rules.
+        # *   **managed_transforms|add_client_geolocation_headers**: the availability to configure whether to add geolocation headers in transform rules.
+        # *   **tiered_cache|regional_enable**: regional tiered cache.
+        # *   **real_client_ip_header**: the availability to configure whether to add the real IP address of a client to the request header.
+        # *   **data_timerange**: minute-level time range for data query.
+        # *   **cache_rules|edge_cache_ttl**: POP cache TTL.
+        # *   **cache_rules|browser_cache_ttl**: browser cache TTL.
+        # *   **fourLayerRecordCount**: the maximum number of records of websites for which TCP/UDP acceleration is enabled.
+        # *   **waitingroomRuleCount**: the maximum number of rules per waiting room.
+        # *   **waitingroomEventCount**: the maximum number of events per waiting room.
+        # *   **waitingroom_custom_pathhost**: the availability to configure the hostname and path in Waiting Room.
+        # *   **er_routers**: Edge Routine routes.
+        # *   **cache_rules|rule_quota**: the maximum number of cache rules.
+        # *   **configuration_rules|rule_quota**: the maximum number of configuration rules.
+        # *   **redirect_rules|rule_quota**: the redirect rules.
+        # *   **compression_rules|rule_quota**: the maximum number of compression rules.
+        # *   **origin_rules|rule_quota**: the maximum number of origin rules.
+        # *   **waf:phase:http_bot:rulesets_per_instance:less_than_or_equal**: the maximum number of rulesets in WAF bot management per plan.
+        # *   **waf:phase:http_whitelist:rules_per_instance:less_than_or_equal**: the maximum number of WAF whitelist rules per plan.
+        # *   **rtlog_quota**: the maximum number of real-time log delivery tasks.
+        # *   **waf:phase:http_anti_scan:rulesets_per_instance:less_than_or_equal**: the maximum number of rulesets in WAF scan protection per plan.
+        # *   **ddos_instance**: the number of Anti-DDoS Proxy instances.
+        # *   **waf:phase:http_ratelimit:rules_per_instance:less_than_or_equal**: the maximum number of WAF rate limiting rules.
+        # *   **waf:phase:http_custom:rules_per_instance:less_than_or_equal**: the maximum number of custom WAF rules per plan.
+        # *   **ruleNestedConditionalCount**: the number of nested layers in a rule.
+        # *   **waiting_room_rule**: Waiting Room.
+        # *   **transition_rule**: the maximum number of transform rules.
+        # *   **customHttpCert**: the maximum number of custom certificates.
+        # *   **free_cert**: the maximum number of free certificates.
+        # *   **preload**: prefetch.
+        # *   **refresh_cache_tag**: purge by cache tag.
+        # *   **refresh_ignore_param**: purge by URL with specified parameters ignored.
+        # *   **refresh_directory**: purge by directory.
+        # *   **refresh_hostname**: purge by hostname.
+        # *   **refresh_all**: purge all cache.
+        # *   **refresh_file**: purge by URL.
+        # *   **wildcard**: the maximum number of wildcard domains.
+        # *   **recordCount**: the maximum number of Layer 7 records.
+        # *   **siteCount**: the maximum number of websites that can be associated with the plan.
+        # *   **https|rule_quota**: the maximum number of SSL/TLS rules.
+        # 
         # This parameter is required.
         self.quota_names = quota_names
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):
@@ -22779,8 +29174,17 @@ class ListInstanceQuotasResponseBodyQuotas(TeaModel):
         quota_value: str = None,
         quota_value_type: str = None,
     ):
+        # The quota name.
         self.quota_name = quota_name
+        # The quota value.
         self.quota_value = quota_value
+        # The threshold type of the quota. Valid values:
+        # 
+        # *   value: enumerates the values of the quota.
+        # *   bool: specifies whether the quota is available.
+        # *   num: the upper limit of the quota.
+        # *   range: the value range for the quota.
+        # *   custom: other types than the preceding four quota threshold types.
         self.quota_value_type = quota_value_type
 
     def validate(self):
@@ -22819,10 +29223,17 @@ class ListInstanceQuotasResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The plan ID.
         self.instance_id = instance_id
+        # The quotas in the plan.
         self.quotas = quotas
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The plan status. Valid values:
+        # 
+        # *   online: The plan is in service.
+        # *   offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
+        # *   disable: The plan is released.
         self.status = status
 
     def validate(self):
@@ -22913,9 +29324,23 @@ class ListInstanceQuotasWithUsageRequest(TeaModel):
         quota_names: str = None,
         site_id: int = None,
     ):
+        # The plan ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.instance_id = instance_id
+        # The quota names in the plan. Separate the quota names with commas (,). You can query up to 10 quota names at a time. Valid values:
+        # 
+        # *   **customHttpCert**: the custom certificates.
+        # *   **transition_rule**: the transform rules.
+        # *   **waiting_room**: the waiting rooms.
+        # *   **https|rule_quota**: the SSL/TLS rules.
+        # *   **cache_rules|rule_quota**: the cache rules.
+        # *   **configuration_rules|rule_quota**: the configuration rules.
+        # *   **redirect_rules|rule_quota**: the redirect rules.
+        # *   **compression_rules|rule_quota**: the compression rules.
+        # *   **origin_rules|rule_quota**: the origin rules.
+        # 
         # This parameter is required.
         self.quota_names = quota_names
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):
@@ -22953,8 +29378,11 @@ class ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage(TeaModel):
         site_name: str = None,
         site_usage: str = None,
     ):
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The quota usage of the website.
         self.site_usage = site_usage
 
     def validate(self):
@@ -22993,9 +29421,13 @@ class ListInstanceQuotasWithUsageResponseBodyQuotas(TeaModel):
         site_usage: List[ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage] = None,
         usage: str = None,
     ):
+        # The quota name.
         self.quota_name = quota_name
+        # The quota value.
         self.quota_value = quota_value
+        # The usage of the quota in each website associated with the plan.
         self.site_usage = site_usage
+        # The quota usage.
         self.usage = usage
 
     def validate(self):
@@ -23046,10 +29478,17 @@ class ListInstanceQuotasWithUsageResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The plan ID.[](~~2850189~~)
         self.instance_id = instance_id
+        # The quotas and their actual usage in the plan.
         self.quotas = quotas
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The plan status. Valid values:
+        # 
+        # *   online: The plan is in service.
+        # *   offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
+        # *   disable: The plan is released.
         self.status = status
 
     def validate(self):
@@ -23141,10 +29580,15 @@ class ListKvsRequest(TeaModel):
         page_size: int = None,
         prefix: str = None,
     ):
+        # The name of the namespace that you specify when you call the [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The page number. The product of PageNumber and PageSize cannot exceed 50,000.
         self.page_number = page_number
+        # The number of entries per page. Default value: 50. Maximum value: 100.
         self.page_size = page_size
+        # The prefix to query.
         self.prefix = prefix
 
     def validate(self):
@@ -23185,7 +29629,9 @@ class ListKvsResponseBodyKeys(TeaModel):
         name: str = None,
         update_time: str = None,
     ):
+        # The key name.
         self.name = name
+        # The time when the key was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -23221,10 +29667,15 @@ class ListKvsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The key-value pairs.
         self.keys = keys
+        # The total number of pages returned.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -23324,13 +29775,20 @@ class ListListsRequestQueryArgs(TeaModel):
         name_like: str = None,
         order_by: str = None,
     ):
+        # Specifies whether to sort the returned data in descending order.
         self.desc = desc
+        # The list description for fuzzy search.
         self.description_like = description_like
+        # The list ID for fuzzy search.
         self.id_like = id_like
+        # The list content for fuzzy search.
         self.item_like = item_like
         self.kind = kind
+        # The list name and content for fuzzy search.
         self.name_item_like = name_item_like
+        # The list name for fuzzy search.
         self.name_like = name_like
+        # The column by which you want to sort the returned data.
         self.order_by = order_by
 
     def validate(self):
@@ -23388,8 +29846,11 @@ class ListListsRequest(TeaModel):
         page_size: int = None,
         query_args: ListListsRequestQueryArgs = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The query arguments in the JSON format, which contain filter conditions.
         self.query_args = query_args
 
     def validate(self):
@@ -23429,8 +29890,11 @@ class ListListsShrinkRequest(TeaModel):
         page_size: int = None,
         query_args_shrink: str = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The query arguments in the JSON format, which contain filter conditions.
         self.query_args_shrink = query_args_shrink
 
     def validate(self):
@@ -23471,12 +29935,17 @@ class ListListsResponseBodyLists(TeaModel):
         name: str = None,
         update_time: str = None,
     ):
-        # 自定义响应页面描述
+        # The list description.
         self.description = description
+        # The ID of the custom list.[](~~2850217~~)
         self.id = id
+        # The list type.
         self.kind = kind
+        # The length of the list information array, which indicates how many items the list contains.
         self.length = length
+        # The list name.
         self.name = name
+        # The time when the list was last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -23529,12 +29998,17 @@ class ListListsResponseBody(TeaModel):
         total_count: int = None,
         usage: int = None,
     ):
+        # The array that contains list information, including list data after paging.
         self.lists = lists
+        # The page number returned.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of filtered lists.
         self.total_count = total_count
+        # The number of created lists.
         self.usage = usage
 
     def validate(self):
@@ -23632,7 +30106,9 @@ class ListLoadBalancerRegionsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -23666,8 +30142,11 @@ class ListLoadBalancerRegionsResponseBodyRegionsSubRegions(TeaModel):
         sub_region_code: str = None,
         sub_region_en_name: str = None,
     ):
+        # The Chinese name of the region.
         self.sub_region_cn_name = sub_region_cn_name
+        # The code of the subregion.
         self.sub_region_code = sub_region_code
+        # The English name of the subregion.
         self.sub_region_en_name = sub_region_en_name
 
     def validate(self):
@@ -23706,9 +30185,13 @@ class ListLoadBalancerRegionsResponseBodyRegions(TeaModel):
         region_en_name: str = None,
         sub_regions: List[ListLoadBalancerRegionsResponseBodyRegionsSubRegions] = None,
     ):
+        # The Chinese name of the region.
         self.region_cn_name = region_cn_name
+        # The code of the region.
         self.region_code = region_code
+        # The English name of the region.
         self.region_en_name = region_en_name
+        # The subregions of the region.
         self.sub_regions = sub_regions
 
     def validate(self):
@@ -23761,12 +30244,17 @@ class ListLoadBalancerRegionsResponseBody(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The regions.
         self.regions = regions
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The total number of pages returned.
         self.total_page = total_page
 
     def validate(self):
@@ -23864,7 +30352,9 @@ class ListManagedRulesGroupsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -23897,7 +30387,9 @@ class ListManagedRulesGroupsResponseBodyManagedRulesGroups(TeaModel):
         name: str = None,
         rule_count: int = None,
     ):
+        # The name of the managed rule group.
         self.name = name
+        # The number of rules in the managed rule group.
         self.rule_count = rule_count
 
     def validate(self):
@@ -23933,11 +30425,15 @@ class ListManagedRulesGroupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The information about the managed rule groups.
         self.managed_rules_groups = managed_rules_groups
+        # The page number returned.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of managed rule groups returned.
         self.total_count = total_count
 
     def validate(self):
@@ -24031,7 +30527,9 @@ class ListPagesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number. Valid values: **1 to 100000**. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
 
     def validate(self):
@@ -24069,19 +30567,23 @@ class ListPagesResponseBodyPages(TeaModel):
         name: str = None,
         update_time: str = None,
     ):
-        # 自定义响应页面内容BASE64编码
+        # The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
         # 
         # This parameter is required.
         self.content = content
-        # 自定义响应页面内容类型
+        # The Content-Type field in the HTTP header.
         # 
         # This parameter is required.
         self.content_type = content_type
-        # 自定义响应页面描述
+        # The description of the custom error page.
         self.description = description
+        # The ID of the custom error page.[](~~2850223~~)
         self.id = id
+        # The type of the custom error page.
         self.kind = kind
+        # The name of the custom error page.
         self.name = name
+        # The time when the custom error page was last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -24138,12 +30640,17 @@ class ListPagesResponseBody(TeaModel):
         total_count: int = None,
         usage: int = None,
     ):
+        # The page number returned.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The custom error pages. Each element in the array contains error page-specific information.
         self.pages = pages
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The number of custom error pages after filtering.
         self.total_count = total_count
+        # The number of custom error pages that you created.
         self.usage = usage
 
     def validate(self):
@@ -24248,15 +30755,43 @@ class ListRecordsRequest(TeaModel):
         source_type: str = None,
         type: str = None,
     ):
+        # The business scenario of the record for acceleration. Valid values:
+        # 
+        # *   **image_video**: video and image.
+        # *   **api**: API.
+        # *   **web**: web page.
         self.biz_name = biz_name
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Default value: **500**.
         self.page_size = page_size
+        # Filters by whether the record is proxied. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.proxied = proxied
+        # The match mode to search for the record name. Default value: exact. Valid values:
+        # 
+        # *   **prefix**: match by prefix.
+        # *   **suffix**: match by suffix.
+        # *   **exact**: exact match.
+        # *   **fuzzy**: fuzzy match.
         self.record_match_type = record_match_type
+        # The record name. This parameter specifies a filter condition for the query.
         self.record_name = record_name
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
+        # 
+        # *   **OSS**: OSS bucket.
+        # *   **S3**: S3 bucket.
+        # *   **LB**: load balancer.
+        # *   **OP**: origin pool.
+        # *   **Domain**: domain name.
         self.source_type = source_type
+        # The DNS record type.
         self.type = type
 
     def validate(self):
@@ -24320,10 +30855,25 @@ class ListRecordsResponseBodyRecordsAuthConf(TeaModel):
         secret_key: str = None,
         version: str = None,
     ):
+        # The access key of the account to which the origin server belongs. This value is returned when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
         self.access_key = access_key
+        # The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, the authentication type of the origin must be specified. Valid values:
+        # 
+        # *   **public**: public read. This value is returned when the origin is a public OSS or S3 bucket.
+        # *   **private**: private read. This value is returned when the origin is a private S3 bucket.
+        # *   **private_same_account**: private read under the same account. This value is returned when the origin is a private OSS bucket in your Alibaba Cloud account.
+        # *   **private_cross_account**: private read across accounts. This value is returned when the origin is a private OSS bucket in a different Alibaba Cloud account.
         self.auth_type = auth_type
+        # The region of the origin. This parameter is returned if the origin type is S3. You can get the region information from the official website of Amazon S3.
         self.region = region
+        # The secret access key of the account to which the origin server belongs. This value is returned when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
         self.secret_key = secret_key
+        # The version of the signature algorithm. This value is returned when the origin type is S3 and AuthType is private. Valid values:
+        # 
+        # *   **v2**\
+        # *   **v4**\
+        # 
+        # If this parameter is left empty, the default value v4 is used.
         self.version = version
 
     def validate(self):
@@ -24380,19 +30930,42 @@ class ListRecordsResponseBodyRecordsData(TeaModel):
         value: str = None,
         weight: int = None,
     ):
+        # The encryption algorithm used for the record. Valid values: 0 to 255. Exclusive to CERT and SSHFP records.
         self.algorithm = algorithm
+        # The public key of the certificate. Exclusive to CERT, SMIMEA, and TLSA records.
         self.certificate = certificate
+        # The public key fingerprint of the record. Exclusive to SSHFP records.
         self.fingerprint = fingerprint
+        # The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed. Valid values: 0 to 255. Exclusive to CAA records.
         self.flag = flag
+        # The public key identification for the record. Valid values: 0 to 65535. Exclusive to CERT records.
         self.key_tag = key_tag
+        # The algorithm policy used to match or validate the certificate. Valid values: 0 to 255. Exclusive to SMIMEA and TLSA records.
         self.matching_type = matching_type
+        # The port of the record. Valid values: 0 to 65535. Exclusive to SRV records.
         self.port = port
+        # The priority of the record. Valid values: 0 to 65535. A smaller value indicates a higher priority. Exclusive to MX, SRV, and URI records.
         self.priority = priority
+        # The type of certificate or public key. Valid values: 0 to 255. Exclusive to SMIMEA, and TLSA records.
         self.selector = selector
+        # The tag of the record. The Tag of a CAA record indicate its specific type and usage. Exclusive to CAA records.
         self.tag = tag
+        # The certificate type of the record (in CERT records), or the public key type (in SSHFP records).
         self.type = type
+        # The usage identifier of the record. Valid values: 0 to 255. Exclusive to SMIMEA, and TLSA records.
         self.usage = usage
+        # Record value or part of the record content. This value is returned when the record is A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, or URI. It has different meanings based on types of records:
+        # 
+        # *   **A/AAAA**: the IP addresses. IP addresses are separated by commas (,). There is at least one IPv4 address.
+        # *   **CNAME**: the pointed/mapped domain name.
+        # *   **NS**: the nameservers for the domain name.
+        # *   **MX**: a valid domain name of the mail server.
+        # *   **TXT**: a valid text string.
+        # *   **CAA**: a valid domain name of the certificate authority.
+        # *   **SRV**: a valid domain name of the target host.
+        # *   **URI**: a valid URI string.
         self.value = value
+        # The weight of the record. Valid values: 0 to 65535. Exclusive to SRV and URI records.
         self.weight = weight
 
     def validate(self):
@@ -24487,21 +31060,55 @@ class ListRecordsResponseBodyRecords(TeaModel):
         ttl: int = None,
         update_time: str = None,
     ):
+        # The origin authentication information of the CNAME record.
         self.auth_conf = auth_conf
+        # The business scenario of the record for acceleration. Valid values:
+        # 
+        # *   **image_video**: video and image.
+        # *   **api**: API.
+        # *   **web**: web page.
         self.biz_name = biz_name
+        # The comments of the record.
         self.comment = comment
+        # The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The DNS record information. Different types of records contain different information.
         self.data = data
+        # The origin host policy. This policy takes effect when the record type is CNAME. Valid values:
+        # 
+        # *   follow_hostname: matches the requested domain name.
+        # *   follow_origin_domain: matches the origin\\"s domain name.
         self.host_policy = host_policy
+        # Indicates whether the record is proxied. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.proxied = proxied
+        # The CNAME. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
         self.record_cname = record_cname
+        # The record ID.
         self.record_id = record_id
+        # The record name.
         self.record_name = record_name
+        # The origin type for the CNAME record. This parameter is returned when you add a CNAME record. Valid values:
+        # 
+        # *   **OSS**: OSS bucket.
+        # *   **S3**: S3 bucket.
+        # *   **LB**: load balancer.
+        # *   **OP**: origin pool.
+        # *   **Domain**: domain name.
+        # 
+        # If you do not pass this parameter or if you leave its value empty, Domain is returned by default.
         self.record_source_type = record_source_type
+        # The DNS type of the record, such as **A/AAAA, CNAME, and TXT**.
         self.record_type = record_type
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         self.ttl = ttl
+        # The time when the record was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -24598,11 +31205,15 @@ class ListRecordsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number returned.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The DNS record information. The format of this field varies based on the record type. For more information, see Add DNS records.
         self.records = records
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of records returned.
         self.total_count = total_count
 
     def validate(self):
@@ -24696,8 +31307,9 @@ class ListRoutineCanaryAreasResponseBody(TeaModel):
         canary_areas: List[str] = None,
         request_id: str = None,
     ):
+        # The regions for canary release.
         self.canary_areas = canary_areas
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24771,7 +31383,12 @@ class ListRoutineOptionalSpecsResponseBodySpecs(TeaModel):
         is_available: bool = None,
         spec_name: str = None,
     ):
+        # Indicates whether the specification is available. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_available = is_available
+        # The specification name.
         self.spec_name = spec_name
 
     def validate(self):
@@ -24804,8 +31421,9 @@ class ListRoutineOptionalSpecsResponseBody(TeaModel):
         request_id: str = None,
         specs: List[ListRoutineOptionalSpecsResponseBodySpecs] = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The available specifications.
         self.specs = specs
 
     def validate(self):
@@ -24886,6 +31504,8 @@ class ListScheduledPreloadExecutionsRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The ID of the scheduled prefetch task.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -24921,13 +31541,27 @@ class ListScheduledPreloadExecutionsResponseBodyExecutions(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The end time of the prefetch plan.
         self.end_time = end_time
+        # The ID of the prefetch plan.
         self.id = id
+        # The time interval between each batch execution in the plan. Unit: seconds.
         self.interval = interval
+        # The ID of the prefetch task.
         self.job_id = job_id
+        # The number of URLs prefetched in each batch.
         self.slice_len = slice_len
+        # The start time of the prefetch plan.
         self.start_time = start_time
+        # The status of the prefetch plan. Valid values:
+        # 
+        # *   **waiting**\
+        # *   **running**\
+        # *   **finished**\
+        # *   **failed**\
+        # *   **stopped**\
         self.status = status
 
     def validate(self):
@@ -24985,9 +31619,11 @@ class ListScheduledPreloadExecutionsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The information about prefetch plans returned.
         self.executions = executions
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -25076,11 +31712,17 @@ class ListScheduledPreloadJobsRequest(TeaModel):
         site_id: int = None,
         start_time: int = None,
     ):
+        # The end time for querying the task creation time range. Specify the timestamp in milliseconds.
         self.end_time = end_time
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The website ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The beginning of the task creation time range to query. Specify the timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -25137,19 +31779,33 @@ class ListScheduledPreloadJobsResponseBodyJobs(TeaModel):
         url_count: int = None,
         url_submitted: int = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The time when the task was created.
         self.created_at = created_at
+        # The domain names to be prefetched.
         self.domains = domains
+        # The error message that is returned.
         self.error_info = error_info
+        # The URL of the OSS object that stores a list of URLs that failed the conditional check for prefetching.
         self.failed_file_oss = failed_file_oss
+        # The ID of the URL list file, which can be used during downloads.
         self.file_id = file_id
+        # The ID of the prefetch task.
         self.id = id
+        # The method to submit the URLs to be prefetched.
         self.insert_way = insert_way
+        # The task name.
         self.name = name
+        # The website ID.
         self.site_id = site_id
+        # The number of submitted prefetch tasks.
         self.task_submitted = task_submitted
+        # The task type. Valid values: refresh and preload.
         self.task_type = task_type
+        # The total number of URLs.
         self.url_count = url_count
+        # The number of submitted URLs.
         self.url_submitted = url_submitted
 
     def validate(self):
@@ -25231,9 +31887,11 @@ class ListScheduledPreloadJobsResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The list of the prefetch tasks.
         self.jobs = jobs
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of tasks returned.
         self.total_count = total_count
 
     def validate(self):
@@ -25321,9 +31979,19 @@ class ListSiteDeliveryTasksRequest(TeaModel):
         page_size: int = None,
         site_id: int = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   dcdn_log_access_l1 (default): access logs.
+        # *   dcdn_log_er: Edge Routine logs.
+        # *   dcdn_log_waf: firewall logs.
+        # *   dcdn_log_ipa: TCP/UDP proxy logs.
         self.business_type = business_type
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -25368,10 +32036,33 @@ class ListSiteDeliveryTasksResponseBodyTasks(TeaModel):
         status: str = None,
         task_name: str = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   dcdn_log_access_l1 (default): access logs.
+        # *   dcdn_log_er: Edge Routine logs.
+        # *   dcdn_log_waf: firewall logs.
+        # *   dcdn_log_ipa: TCP/UDP proxy logs.
         self.business_type = business_type
+        # The data center. Valid values:
+        # 
+        # *   cn: the Chinese mainland.
+        # *   sg: outside the Chinese mainland.
         self.data_center = data_center
+        # The destination of the delivery. Valid values:
+        # 
+        # 1.  sls: Alibaba Cloud Simple Log Service (SLS).
+        # 2.  http: HTTP server.
+        # 3.  aws3: Amazon Simple Storage Service (S3).
+        # 4.  oss: Alibaba Cloud Object Storage Service (OSS).
+        # 5.  kafka: Kafka.
+        # 6.  aws3cmpt: S3-compatible storage service.
         self.delivery_type = delivery_type
+        # The status of the delivery task.
+        # 
+        # *   **online**\
+        # *   **offline**\
         self.status = status
+        # The name of the delivery task.
         self.task_name = task_name
 
     def validate(self):
@@ -25419,11 +32110,15 @@ class ListSiteDeliveryTasksResponseBody(TeaModel):
         tasks: List[ListSiteDeliveryTasksResponseBodyTasks] = None,
         total_count: int = None,
     ):
+        # The page number. Default value: 0.
         self.page_number = page_number
+        # The number of entries per page. Valid values: **1 to 500**. Default value: **20**.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The delivery tasks.
         self.tasks = tasks
+        # The total number of log delivery tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -25511,13 +32206,2004 @@ class ListSiteDeliveryTasksResponse(TeaModel):
         return self
 
 
+class ListSiteFunctionsRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        config_type: str = None,
+        function_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        rule_name: str = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        self.config_id = config_id
+        self.config_type = config_type
+        self.function_name = function_name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.site_id = site_id
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.function_name is not None:
+            result['FunctionName'] = self.function_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('FunctionName') is not None:
+            self.function_name = m.get('FunctionName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsCacheReserve(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        instance_id: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsCacheRules(TeaModel):
+    def __init__(
+        self,
+        additional_cacheable_ports: str = None,
+        browser_cache_mode: str = None,
+        browser_cache_ttl: str = None,
+        bypass_cache: str = None,
+        cache_deception_armor: str = None,
+        cache_reserve_eligibility: str = None,
+        check_presence_cookie: str = None,
+        check_presence_header: str = None,
+        config_id: int = None,
+        edge_cache_mode: str = None,
+        edge_cache_ttl: str = None,
+        edge_status_code_cache_ttl: str = None,
+        include_cookie: str = None,
+        include_header: str = None,
+        query_string: str = None,
+        query_string_mode: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+        serve_stale: str = None,
+        sort_query_string_for_cache: str = None,
+        user_device_type: str = None,
+        user_geo: str = None,
+        user_language: str = None,
+    ):
+        self.additional_cacheable_ports = additional_cacheable_ports
+        self.browser_cache_mode = browser_cache_mode
+        self.browser_cache_ttl = browser_cache_ttl
+        self.bypass_cache = bypass_cache
+        self.cache_deception_armor = cache_deception_armor
+        self.cache_reserve_eligibility = cache_reserve_eligibility
+        self.check_presence_cookie = check_presence_cookie
+        self.check_presence_header = check_presence_header
+        self.config_id = config_id
+        self.edge_cache_mode = edge_cache_mode
+        self.edge_cache_ttl = edge_cache_ttl
+        self.edge_status_code_cache_ttl = edge_status_code_cache_ttl
+        self.include_cookie = include_cookie
+        self.include_header = include_header
+        self.query_string = query_string
+        self.query_string_mode = query_string_mode
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.serve_stale = serve_stale
+        self.sort_query_string_for_cache = sort_query_string_for_cache
+        self.user_device_type = user_device_type
+        self.user_geo = user_geo
+        self.user_language = user_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_cacheable_ports is not None:
+            result['AdditionalCacheablePorts'] = self.additional_cacheable_ports
+        if self.browser_cache_mode is not None:
+            result['BrowserCacheMode'] = self.browser_cache_mode
+        if self.browser_cache_ttl is not None:
+            result['BrowserCacheTtl'] = self.browser_cache_ttl
+        if self.bypass_cache is not None:
+            result['BypassCache'] = self.bypass_cache
+        if self.cache_deception_armor is not None:
+            result['CacheDeceptionArmor'] = self.cache_deception_armor
+        if self.cache_reserve_eligibility is not None:
+            result['CacheReserveEligibility'] = self.cache_reserve_eligibility
+        if self.check_presence_cookie is not None:
+            result['CheckPresenceCookie'] = self.check_presence_cookie
+        if self.check_presence_header is not None:
+            result['CheckPresenceHeader'] = self.check_presence_header
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.edge_cache_mode is not None:
+            result['EdgeCacheMode'] = self.edge_cache_mode
+        if self.edge_cache_ttl is not None:
+            result['EdgeCacheTtl'] = self.edge_cache_ttl
+        if self.edge_status_code_cache_ttl is not None:
+            result['EdgeStatusCodeCacheTtl'] = self.edge_status_code_cache_ttl
+        if self.include_cookie is not None:
+            result['IncludeCookie'] = self.include_cookie
+        if self.include_header is not None:
+            result['IncludeHeader'] = self.include_header
+        if self.query_string is not None:
+            result['QueryString'] = self.query_string
+        if self.query_string_mode is not None:
+            result['QueryStringMode'] = self.query_string_mode
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.serve_stale is not None:
+            result['ServeStale'] = self.serve_stale
+        if self.sort_query_string_for_cache is not None:
+            result['SortQueryStringForCache'] = self.sort_query_string_for_cache
+        if self.user_device_type is not None:
+            result['UserDeviceType'] = self.user_device_type
+        if self.user_geo is not None:
+            result['UserGeo'] = self.user_geo
+        if self.user_language is not None:
+            result['UserLanguage'] = self.user_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdditionalCacheablePorts') is not None:
+            self.additional_cacheable_ports = m.get('AdditionalCacheablePorts')
+        if m.get('BrowserCacheMode') is not None:
+            self.browser_cache_mode = m.get('BrowserCacheMode')
+        if m.get('BrowserCacheTtl') is not None:
+            self.browser_cache_ttl = m.get('BrowserCacheTtl')
+        if m.get('BypassCache') is not None:
+            self.bypass_cache = m.get('BypassCache')
+        if m.get('CacheDeceptionArmor') is not None:
+            self.cache_deception_armor = m.get('CacheDeceptionArmor')
+        if m.get('CacheReserveEligibility') is not None:
+            self.cache_reserve_eligibility = m.get('CacheReserveEligibility')
+        if m.get('CheckPresenceCookie') is not None:
+            self.check_presence_cookie = m.get('CheckPresenceCookie')
+        if m.get('CheckPresenceHeader') is not None:
+            self.check_presence_header = m.get('CheckPresenceHeader')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('EdgeCacheMode') is not None:
+            self.edge_cache_mode = m.get('EdgeCacheMode')
+        if m.get('EdgeCacheTtl') is not None:
+            self.edge_cache_ttl = m.get('EdgeCacheTtl')
+        if m.get('EdgeStatusCodeCacheTtl') is not None:
+            self.edge_status_code_cache_ttl = m.get('EdgeStatusCodeCacheTtl')
+        if m.get('IncludeCookie') is not None:
+            self.include_cookie = m.get('IncludeCookie')
+        if m.get('IncludeHeader') is not None:
+            self.include_header = m.get('IncludeHeader')
+        if m.get('QueryString') is not None:
+            self.query_string = m.get('QueryString')
+        if m.get('QueryStringMode') is not None:
+            self.query_string_mode = m.get('QueryStringMode')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('ServeStale') is not None:
+            self.serve_stale = m.get('ServeStale')
+        if m.get('SortQueryStringForCache') is not None:
+            self.sort_query_string_for_cache = m.get('SortQueryStringForCache')
+        if m.get('UserDeviceType') is not None:
+            self.user_device_type = m.get('UserDeviceType')
+        if m.get('UserGeo') is not None:
+            self.user_geo = m.get('UserGeo')
+        if m.get('UserLanguage') is not None:
+            self.user_language = m.get('UserLanguage')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsCacheTags(TeaModel):
+    def __init__(
+        self,
+        case_insensitive: str = None,
+        config_id: int = None,
+        sequence: str = None,
+        tag_name: str = None,
+    ):
+        self.case_insensitive = case_insensitive
+        self.config_id = config_id
+        self.sequence = sequence
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.case_insensitive is not None:
+            result['CaseInsensitive'] = self.case_insensitive
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CaseInsensitive') is not None:
+            self.case_insensitive = m.get('CaseInsensitive')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsCnameFlattening(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        flatten_mode: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.flatten_mode = flatten_mode
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.flatten_mode is not None:
+            result['FlattenMode'] = self.flatten_mode
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('FlattenMode') is not None:
+            self.flatten_mode = m.get('FlattenMode')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsCompressionRules(TeaModel):
+    def __init__(
+        self,
+        brotli: str = None,
+        config_id: int = None,
+        gzip: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+    ):
+        self.brotli = brotli
+        self.config_id = config_id
+        self.gzip = gzip
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brotli is not None:
+            result['Brotli'] = self.brotli
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.gzip is not None:
+            result['Gzip'] = self.gzip
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Brotli') is not None:
+            self.brotli = m.get('Brotli')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Gzip') is not None:
+            self.gzip = m.get('Gzip')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsDevelopmentMode(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operation = operation
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        request_header_modification: List[ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.request_header_modification = request_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+
+    def validate(self):
+        if self.request_header_modification:
+            for k in self.request_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        result['RequestHeaderModification'] = []
+        if self.request_header_modification is not None:
+            for k in self.request_header_modification:
+                result['RequestHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        self.request_header_modification = []
+        if m.get('RequestHeaderModification') is not None:
+            for k in m.get('RequestHeaderModification'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification()
+                self.request_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operation = operation
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        response_header_modification: List[ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.response_header_modification = response_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+
+    def validate(self):
+        if self.response_header_modification:
+            for k in self.response_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        result['ResponseHeaderModification'] = []
+        if self.response_header_modification is not None:
+            for k in self.response_header_modification:
+                result['ResponseHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        self.response_header_modification = []
+        if m.get('ResponseHeaderModification') is not None:
+            for k in m.get('ResponseHeaderModification'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification()
+                self.response_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration(TeaModel):
+    def __init__(
+        self,
+        alt_svc: str = None,
+        alt_svc_clear: str = None,
+        alt_svc_ma: str = None,
+        alt_svc_persist: str = None,
+        config_id: int = None,
+        hsts: str = None,
+        hsts_include_subdomains: str = None,
+        hsts_max_age: str = None,
+        hsts_preload: str = None,
+        https_force: str = None,
+        https_force_code: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+    ):
+        self.alt_svc = alt_svc
+        self.alt_svc_clear = alt_svc_clear
+        self.alt_svc_ma = alt_svc_ma
+        self.alt_svc_persist = alt_svc_persist
+        self.config_id = config_id
+        self.hsts = hsts
+        self.hsts_include_subdomains = hsts_include_subdomains
+        self.hsts_max_age = hsts_max_age
+        self.hsts_preload = hsts_preload
+        self.https_force = https_force
+        self.https_force_code = https_force_code
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alt_svc is not None:
+            result['AltSvc'] = self.alt_svc
+        if self.alt_svc_clear is not None:
+            result['AltSvcClear'] = self.alt_svc_clear
+        if self.alt_svc_ma is not None:
+            result['AltSvcMa'] = self.alt_svc_ma
+        if self.alt_svc_persist is not None:
+            result['AltSvcPersist'] = self.alt_svc_persist
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.hsts is not None:
+            result['Hsts'] = self.hsts
+        if self.hsts_include_subdomains is not None:
+            result['HstsIncludeSubdomains'] = self.hsts_include_subdomains
+        if self.hsts_max_age is not None:
+            result['HstsMaxAge'] = self.hsts_max_age
+        if self.hsts_preload is not None:
+            result['HstsPreload'] = self.hsts_preload
+        if self.https_force is not None:
+            result['HttpsForce'] = self.https_force
+        if self.https_force_code is not None:
+            result['HttpsForceCode'] = self.https_force_code
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AltSvc') is not None:
+            self.alt_svc = m.get('AltSvc')
+        if m.get('AltSvcClear') is not None:
+            self.alt_svc_clear = m.get('AltSvcClear')
+        if m.get('AltSvcMa') is not None:
+            self.alt_svc_ma = m.get('AltSvcMa')
+        if m.get('AltSvcPersist') is not None:
+            self.alt_svc_persist = m.get('AltSvcPersist')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Hsts') is not None:
+            self.hsts = m.get('Hsts')
+        if m.get('HstsIncludeSubdomains') is not None:
+            self.hsts_include_subdomains = m.get('HstsIncludeSubdomains')
+        if m.get('HstsMaxAge') is not None:
+            self.hsts_max_age = m.get('HstsMaxAge')
+        if m.get('HstsPreload') is not None:
+            self.hsts_preload = m.get('HstsPreload')
+        if m.get('HttpsForce') is not None:
+            self.https_force = m.get('HttpsForce')
+        if m.get('HttpsForceCode') is not None:
+            self.https_force_code = m.get('HttpsForceCode')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration(TeaModel):
+    def __init__(
+        self,
+        ciphersuite: str = None,
+        ciphersuite_group: str = None,
+        config_id: int = None,
+        http_2: str = None,
+        http_3: str = None,
+        https: str = None,
+        ocsp_stapling: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+        tls_10: str = None,
+        tls_11: str = None,
+        tls_12: str = None,
+        tls_13: str = None,
+    ):
+        self.ciphersuite = ciphersuite
+        self.ciphersuite_group = ciphersuite_group
+        self.config_id = config_id
+        self.http_2 = http_2
+        self.http_3 = http_3
+        self.https = https
+        self.ocsp_stapling = ocsp_stapling
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.tls_10 = tls_10
+        self.tls_11 = tls_11
+        self.tls_12 = tls_12
+        self.tls_13 = tls_13
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ciphersuite is not None:
+            result['Ciphersuite'] = self.ciphersuite
+        if self.ciphersuite_group is not None:
+            result['CiphersuiteGroup'] = self.ciphersuite_group
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.http_2 is not None:
+            result['Http2'] = self.http_2
+        if self.http_3 is not None:
+            result['Http3'] = self.http_3
+        if self.https is not None:
+            result['Https'] = self.https
+        if self.ocsp_stapling is not None:
+            result['OcspStapling'] = self.ocsp_stapling
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.tls_10 is not None:
+            result['Tls10'] = self.tls_10
+        if self.tls_11 is not None:
+            result['Tls11'] = self.tls_11
+        if self.tls_12 is not None:
+            result['Tls12'] = self.tls_12
+        if self.tls_13 is not None:
+            result['Tls13'] = self.tls_13
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ciphersuite') is not None:
+            self.ciphersuite = m.get('Ciphersuite')
+        if m.get('CiphersuiteGroup') is not None:
+            self.ciphersuite_group = m.get('CiphersuiteGroup')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Http2') is not None:
+            self.http_2 = m.get('Http2')
+        if m.get('Http3') is not None:
+            self.http_3 = m.get('Http3')
+        if m.get('Https') is not None:
+            self.https = m.get('Https')
+        if m.get('OcspStapling') is not None:
+            self.ocsp_stapling = m.get('OcspStapling')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('Tls10') is not None:
+            self.tls_10 = m.get('Tls10')
+        if m.get('Tls11') is not None:
+            self.tls_11 = m.get('Tls11')
+        if m.get('Tls12') is not None:
+            self.tls_12 = m.get('Tls12')
+        if m.get('Tls13') is not None:
+            self.tls_13 = m.get('Tls13')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsImageTransform(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsIpv6(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsManagedTransforms(TeaModel):
+    def __init__(
+        self,
+        add_client_geolocation_headers: str = None,
+        add_real_client_ip_header: str = None,
+        config_id: int = None,
+        sequence: str = None,
+    ):
+        self.add_client_geolocation_headers = add_client_geolocation_headers
+        self.add_real_client_ip_header = add_real_client_ip_header
+        self.config_id = config_id
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_client_geolocation_headers is not None:
+            result['AddClientGeolocationHeaders'] = self.add_client_geolocation_headers
+        if self.add_real_client_ip_header is not None:
+            result['AddRealClientIpHeader'] = self.add_real_client_ip_header
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddClientGeolocationHeaders') is not None:
+            self.add_client_geolocation_headers = m.get('AddClientGeolocationHeaders')
+        if m.get('AddRealClientIpHeader') is not None:
+            self.add_real_client_ip_header = m.get('AddRealClientIpHeader')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsNetworkOptimization(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        grpc: str = None,
+        http_2origin: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+        smart_routing: str = None,
+        upload_max_filesize: str = None,
+        websocket: str = None,
+    ):
+        self.config_id = config_id
+        self.grpc = grpc
+        self.http_2origin = http_2origin
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.smart_routing = smart_routing
+        self.upload_max_filesize = upload_max_filesize
+        self.websocket = websocket
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.grpc is not None:
+            result['Grpc'] = self.grpc
+        if self.http_2origin is not None:
+            result['Http2Origin'] = self.http_2origin
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.smart_routing is not None:
+            result['SmartRouting'] = self.smart_routing
+        if self.upload_max_filesize is not None:
+            result['UploadMaxFilesize'] = self.upload_max_filesize
+        if self.websocket is not None:
+            result['Websocket'] = self.websocket
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Grpc') is not None:
+            self.grpc = m.get('Grpc')
+        if m.get('Http2Origin') is not None:
+            self.http_2origin = m.get('Http2Origin')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SmartRouting') is not None:
+            self.smart_routing = m.get('SmartRouting')
+        if m.get('UploadMaxFilesize') is not None:
+            self.upload_max_filesize = m.get('UploadMaxFilesize')
+        if m.get('Websocket') is not None:
+            self.websocket = m.get('Websocket')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsOriginRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        dns_record: str = None,
+        origin_host: str = None,
+        origin_http_port: str = None,
+        origin_https_port: str = None,
+        origin_scheme: str = None,
+        origin_sni: str = None,
+        range: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.dns_record = dns_record
+        self.origin_host = origin_host
+        self.origin_http_port = origin_http_port
+        self.origin_https_port = origin_https_port
+        self.origin_scheme = origin_scheme
+        self.origin_sni = origin_sni
+        self.range = range
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.dns_record is not None:
+            result['DnsRecord'] = self.dns_record
+        if self.origin_host is not None:
+            result['OriginHost'] = self.origin_host
+        if self.origin_http_port is not None:
+            result['OriginHttpPort'] = self.origin_http_port
+        if self.origin_https_port is not None:
+            result['OriginHttpsPort'] = self.origin_https_port
+        if self.origin_scheme is not None:
+            result['OriginScheme'] = self.origin_scheme
+        if self.origin_sni is not None:
+            result['OriginSni'] = self.origin_sni
+        if self.range is not None:
+            result['Range'] = self.range
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('DnsRecord') is not None:
+            self.dns_record = m.get('DnsRecord')
+        if m.get('OriginHost') is not None:
+            self.origin_host = m.get('OriginHost')
+        if m.get('OriginHttpPort') is not None:
+            self.origin_http_port = m.get('OriginHttpPort')
+        if m.get('OriginHttpsPort') is not None:
+            self.origin_https_port = m.get('OriginHttpsPort')
+        if m.get('OriginScheme') is not None:
+            self.origin_scheme = m.get('OriginScheme')
+        if m.get('OriginSni') is not None:
+            self.origin_sni = m.get('OriginSni')
+        if m.get('Range') is not None:
+            self.range = m.get('Range')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsRedirectRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        reserve_query_string: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+        status_code: str = None,
+        target_url: str = None,
+        type: str = None,
+    ):
+        self.config_id = config_id
+        self.reserve_query_string = reserve_query_string
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.status_code = status_code
+        self.target_url = target_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.reserve_query_string is not None:
+            result['ReserveQueryString'] = self.reserve_query_string
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ReserveQueryString') is not None:
+            self.reserve_query_string = m.get('ReserveQueryString')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsRewriteUrlRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        query_string: str = None,
+        rewrite_query_string_type: str = None,
+        rewrite_uri_type: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+        uri: str = None,
+    ):
+        self.config_id = config_id
+        self.query_string = query_string
+        self.rewrite_query_string_type = rewrite_query_string_type
+        self.rewrite_uri_type = rewrite_uri_type
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.query_string is not None:
+            result['QueryString'] = self.query_string
+        if self.rewrite_query_string_type is not None:
+            result['RewriteQueryStringType'] = self.rewrite_query_string_type
+        if self.rewrite_uri_type is not None:
+            result['RewriteUriType'] = self.rewrite_uri_type
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('QueryString') is not None:
+            self.query_string = m.get('QueryString')
+        if m.get('RewriteQueryStringType') is not None:
+            self.rewrite_query_string_type = m.get('RewriteQueryStringType')
+        if m.get('RewriteUriType') is not None:
+            self.rewrite_uri_type = m.get('RewriteUriType')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsSeoBypass(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsSiteNameExclusive(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsSitePause(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        paused: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.paused = paused
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.paused is not None:
+            result['Paused'] = self.paused
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Paused') is not None:
+            self.paused = m.get('Paused')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigsTieredCache(TeaModel):
+    def __init__(
+        self,
+        cache_architecture_mode: str = None,
+        config_id: int = None,
+        sequence: str = None,
+    ):
+        self.cache_architecture_mode = cache_architecture_mode
+        self.config_id = config_id
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cache_architecture_mode is not None:
+            result['CacheArchitectureMode'] = self.cache_architecture_mode
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CacheArchitectureMode') is not None:
+            self.cache_architecture_mode = m.get('CacheArchitectureMode')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        return self
+
+
+class ListSiteFunctionsResponseBodyConfigs(TeaModel):
+    def __init__(
+        self,
+        cache_reserve: List[ListSiteFunctionsResponseBodyConfigsCacheReserve] = None,
+        cache_rules: List[ListSiteFunctionsResponseBodyConfigsCacheRules] = None,
+        cache_tags: List[ListSiteFunctionsResponseBodyConfigsCacheTags] = None,
+        cname_flattening: List[ListSiteFunctionsResponseBodyConfigsCnameFlattening] = None,
+        compression_rules: List[ListSiteFunctionsResponseBodyConfigsCompressionRules] = None,
+        cross_border_optimization: List[ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization] = None,
+        development_mode: List[ListSiteFunctionsResponseBodyConfigsDevelopmentMode] = None,
+        http_request_header_modification_rules: List[ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules] = None,
+        http_response_header_modification_rules: List[ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules] = None,
+        https_application_configuration: List[ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration] = None,
+        https_basic_configuration: List[ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration] = None,
+        image_transform: List[ListSiteFunctionsResponseBodyConfigsImageTransform] = None,
+        ipv_6: List[ListSiteFunctionsResponseBodyConfigsIpv6] = None,
+        managed_transforms: List[ListSiteFunctionsResponseBodyConfigsManagedTransforms] = None,
+        network_optimization: List[ListSiteFunctionsResponseBodyConfigsNetworkOptimization] = None,
+        origin_rules: List[ListSiteFunctionsResponseBodyConfigsOriginRules] = None,
+        redirect_rules: List[ListSiteFunctionsResponseBodyConfigsRedirectRules] = None,
+        rewrite_url_rules: List[ListSiteFunctionsResponseBodyConfigsRewriteUrlRules] = None,
+        seo_bypass: List[ListSiteFunctionsResponseBodyConfigsSeoBypass] = None,
+        site_name_exclusive: List[ListSiteFunctionsResponseBodyConfigsSiteNameExclusive] = None,
+        site_pause: List[ListSiteFunctionsResponseBodyConfigsSitePause] = None,
+        tiered_cache: List[ListSiteFunctionsResponseBodyConfigsTieredCache] = None,
+    ):
+        self.cache_reserve = cache_reserve
+        self.cache_rules = cache_rules
+        self.cache_tags = cache_tags
+        self.cname_flattening = cname_flattening
+        self.compression_rules = compression_rules
+        self.cross_border_optimization = cross_border_optimization
+        self.development_mode = development_mode
+        self.http_request_header_modification_rules = http_request_header_modification_rules
+        self.http_response_header_modification_rules = http_response_header_modification_rules
+        self.https_application_configuration = https_application_configuration
+        self.https_basic_configuration = https_basic_configuration
+        self.image_transform = image_transform
+        self.ipv_6 = ipv_6
+        self.managed_transforms = managed_transforms
+        self.network_optimization = network_optimization
+        self.origin_rules = origin_rules
+        self.redirect_rules = redirect_rules
+        self.rewrite_url_rules = rewrite_url_rules
+        self.seo_bypass = seo_bypass
+        self.site_name_exclusive = site_name_exclusive
+        self.site_pause = site_pause
+        self.tiered_cache = tiered_cache
+
+    def validate(self):
+        if self.cache_reserve:
+            for k in self.cache_reserve:
+                if k:
+                    k.validate()
+        if self.cache_rules:
+            for k in self.cache_rules:
+                if k:
+                    k.validate()
+        if self.cache_tags:
+            for k in self.cache_tags:
+                if k:
+                    k.validate()
+        if self.cname_flattening:
+            for k in self.cname_flattening:
+                if k:
+                    k.validate()
+        if self.compression_rules:
+            for k in self.compression_rules:
+                if k:
+                    k.validate()
+        if self.cross_border_optimization:
+            for k in self.cross_border_optimization:
+                if k:
+                    k.validate()
+        if self.development_mode:
+            for k in self.development_mode:
+                if k:
+                    k.validate()
+        if self.http_request_header_modification_rules:
+            for k in self.http_request_header_modification_rules:
+                if k:
+                    k.validate()
+        if self.http_response_header_modification_rules:
+            for k in self.http_response_header_modification_rules:
+                if k:
+                    k.validate()
+        if self.https_application_configuration:
+            for k in self.https_application_configuration:
+                if k:
+                    k.validate()
+        if self.https_basic_configuration:
+            for k in self.https_basic_configuration:
+                if k:
+                    k.validate()
+        if self.image_transform:
+            for k in self.image_transform:
+                if k:
+                    k.validate()
+        if self.ipv_6:
+            for k in self.ipv_6:
+                if k:
+                    k.validate()
+        if self.managed_transforms:
+            for k in self.managed_transforms:
+                if k:
+                    k.validate()
+        if self.network_optimization:
+            for k in self.network_optimization:
+                if k:
+                    k.validate()
+        if self.origin_rules:
+            for k in self.origin_rules:
+                if k:
+                    k.validate()
+        if self.redirect_rules:
+            for k in self.redirect_rules:
+                if k:
+                    k.validate()
+        if self.rewrite_url_rules:
+            for k in self.rewrite_url_rules:
+                if k:
+                    k.validate()
+        if self.seo_bypass:
+            for k in self.seo_bypass:
+                if k:
+                    k.validate()
+        if self.site_name_exclusive:
+            for k in self.site_name_exclusive:
+                if k:
+                    k.validate()
+        if self.site_pause:
+            for k in self.site_pause:
+                if k:
+                    k.validate()
+        if self.tiered_cache:
+            for k in self.tiered_cache:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CacheReserve'] = []
+        if self.cache_reserve is not None:
+            for k in self.cache_reserve:
+                result['CacheReserve'].append(k.to_map() if k else None)
+        result['CacheRules'] = []
+        if self.cache_rules is not None:
+            for k in self.cache_rules:
+                result['CacheRules'].append(k.to_map() if k else None)
+        result['CacheTags'] = []
+        if self.cache_tags is not None:
+            for k in self.cache_tags:
+                result['CacheTags'].append(k.to_map() if k else None)
+        result['CnameFlattening'] = []
+        if self.cname_flattening is not None:
+            for k in self.cname_flattening:
+                result['CnameFlattening'].append(k.to_map() if k else None)
+        result['CompressionRules'] = []
+        if self.compression_rules is not None:
+            for k in self.compression_rules:
+                result['CompressionRules'].append(k.to_map() if k else None)
+        result['CrossBorderOptimization'] = []
+        if self.cross_border_optimization is not None:
+            for k in self.cross_border_optimization:
+                result['CrossBorderOptimization'].append(k.to_map() if k else None)
+        result['DevelopmentMode'] = []
+        if self.development_mode is not None:
+            for k in self.development_mode:
+                result['DevelopmentMode'].append(k.to_map() if k else None)
+        result['HttpRequestHeaderModificationRules'] = []
+        if self.http_request_header_modification_rules is not None:
+            for k in self.http_request_header_modification_rules:
+                result['HttpRequestHeaderModificationRules'].append(k.to_map() if k else None)
+        result['HttpResponseHeaderModificationRules'] = []
+        if self.http_response_header_modification_rules is not None:
+            for k in self.http_response_header_modification_rules:
+                result['HttpResponseHeaderModificationRules'].append(k.to_map() if k else None)
+        result['HttpsApplicationConfiguration'] = []
+        if self.https_application_configuration is not None:
+            for k in self.https_application_configuration:
+                result['HttpsApplicationConfiguration'].append(k.to_map() if k else None)
+        result['HttpsBasicConfiguration'] = []
+        if self.https_basic_configuration is not None:
+            for k in self.https_basic_configuration:
+                result['HttpsBasicConfiguration'].append(k.to_map() if k else None)
+        result['ImageTransform'] = []
+        if self.image_transform is not None:
+            for k in self.image_transform:
+                result['ImageTransform'].append(k.to_map() if k else None)
+        result['Ipv6'] = []
+        if self.ipv_6 is not None:
+            for k in self.ipv_6:
+                result['Ipv6'].append(k.to_map() if k else None)
+        result['ManagedTransforms'] = []
+        if self.managed_transforms is not None:
+            for k in self.managed_transforms:
+                result['ManagedTransforms'].append(k.to_map() if k else None)
+        result['NetworkOptimization'] = []
+        if self.network_optimization is not None:
+            for k in self.network_optimization:
+                result['NetworkOptimization'].append(k.to_map() if k else None)
+        result['OriginRules'] = []
+        if self.origin_rules is not None:
+            for k in self.origin_rules:
+                result['OriginRules'].append(k.to_map() if k else None)
+        result['RedirectRules'] = []
+        if self.redirect_rules is not None:
+            for k in self.redirect_rules:
+                result['RedirectRules'].append(k.to_map() if k else None)
+        result['RewriteUrlRules'] = []
+        if self.rewrite_url_rules is not None:
+            for k in self.rewrite_url_rules:
+                result['RewriteUrlRules'].append(k.to_map() if k else None)
+        result['SeoBypass'] = []
+        if self.seo_bypass is not None:
+            for k in self.seo_bypass:
+                result['SeoBypass'].append(k.to_map() if k else None)
+        result['SiteNameExclusive'] = []
+        if self.site_name_exclusive is not None:
+            for k in self.site_name_exclusive:
+                result['SiteNameExclusive'].append(k.to_map() if k else None)
+        result['SitePause'] = []
+        if self.site_pause is not None:
+            for k in self.site_pause:
+                result['SitePause'].append(k.to_map() if k else None)
+        result['TieredCache'] = []
+        if self.tiered_cache is not None:
+            for k in self.tiered_cache:
+                result['TieredCache'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cache_reserve = []
+        if m.get('CacheReserve') is not None:
+            for k in m.get('CacheReserve'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsCacheReserve()
+                self.cache_reserve.append(temp_model.from_map(k))
+        self.cache_rules = []
+        if m.get('CacheRules') is not None:
+            for k in m.get('CacheRules'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsCacheRules()
+                self.cache_rules.append(temp_model.from_map(k))
+        self.cache_tags = []
+        if m.get('CacheTags') is not None:
+            for k in m.get('CacheTags'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsCacheTags()
+                self.cache_tags.append(temp_model.from_map(k))
+        self.cname_flattening = []
+        if m.get('CnameFlattening') is not None:
+            for k in m.get('CnameFlattening'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsCnameFlattening()
+                self.cname_flattening.append(temp_model.from_map(k))
+        self.compression_rules = []
+        if m.get('CompressionRules') is not None:
+            for k in m.get('CompressionRules'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsCompressionRules()
+                self.compression_rules.append(temp_model.from_map(k))
+        self.cross_border_optimization = []
+        if m.get('CrossBorderOptimization') is not None:
+            for k in m.get('CrossBorderOptimization'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization()
+                self.cross_border_optimization.append(temp_model.from_map(k))
+        self.development_mode = []
+        if m.get('DevelopmentMode') is not None:
+            for k in m.get('DevelopmentMode'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsDevelopmentMode()
+                self.development_mode.append(temp_model.from_map(k))
+        self.http_request_header_modification_rules = []
+        if m.get('HttpRequestHeaderModificationRules') is not None:
+            for k in m.get('HttpRequestHeaderModificationRules'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules()
+                self.http_request_header_modification_rules.append(temp_model.from_map(k))
+        self.http_response_header_modification_rules = []
+        if m.get('HttpResponseHeaderModificationRules') is not None:
+            for k in m.get('HttpResponseHeaderModificationRules'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules()
+                self.http_response_header_modification_rules.append(temp_model.from_map(k))
+        self.https_application_configuration = []
+        if m.get('HttpsApplicationConfiguration') is not None:
+            for k in m.get('HttpsApplicationConfiguration'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration()
+                self.https_application_configuration.append(temp_model.from_map(k))
+        self.https_basic_configuration = []
+        if m.get('HttpsBasicConfiguration') is not None:
+            for k in m.get('HttpsBasicConfiguration'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration()
+                self.https_basic_configuration.append(temp_model.from_map(k))
+        self.image_transform = []
+        if m.get('ImageTransform') is not None:
+            for k in m.get('ImageTransform'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsImageTransform()
+                self.image_transform.append(temp_model.from_map(k))
+        self.ipv_6 = []
+        if m.get('Ipv6') is not None:
+            for k in m.get('Ipv6'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsIpv6()
+                self.ipv_6.append(temp_model.from_map(k))
+        self.managed_transforms = []
+        if m.get('ManagedTransforms') is not None:
+            for k in m.get('ManagedTransforms'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsManagedTransforms()
+                self.managed_transforms.append(temp_model.from_map(k))
+        self.network_optimization = []
+        if m.get('NetworkOptimization') is not None:
+            for k in m.get('NetworkOptimization'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsNetworkOptimization()
+                self.network_optimization.append(temp_model.from_map(k))
+        self.origin_rules = []
+        if m.get('OriginRules') is not None:
+            for k in m.get('OriginRules'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsOriginRules()
+                self.origin_rules.append(temp_model.from_map(k))
+        self.redirect_rules = []
+        if m.get('RedirectRules') is not None:
+            for k in m.get('RedirectRules'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsRedirectRules()
+                self.redirect_rules.append(temp_model.from_map(k))
+        self.rewrite_url_rules = []
+        if m.get('RewriteUrlRules') is not None:
+            for k in m.get('RewriteUrlRules'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsRewriteUrlRules()
+                self.rewrite_url_rules.append(temp_model.from_map(k))
+        self.seo_bypass = []
+        if m.get('SeoBypass') is not None:
+            for k in m.get('SeoBypass'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsSeoBypass()
+                self.seo_bypass.append(temp_model.from_map(k))
+        self.site_name_exclusive = []
+        if m.get('SiteNameExclusive') is not None:
+            for k in m.get('SiteNameExclusive'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsSiteNameExclusive()
+                self.site_name_exclusive.append(temp_model.from_map(k))
+        self.site_pause = []
+        if m.get('SitePause') is not None:
+            for k in m.get('SitePause'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsSitePause()
+                self.site_pause.append(temp_model.from_map(k))
+        self.tiered_cache = []
+        if m.get('TieredCache') is not None:
+            for k in m.get('TieredCache'):
+                temp_model = ListSiteFunctionsResponseBodyConfigsTieredCache()
+                self.tiered_cache.append(temp_model.from_map(k))
+        return self
+
+
+class ListSiteFunctionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        configs: ListSiteFunctionsResponseBodyConfigs = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.configs = configs
+        self.page_number = page_number
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.configs:
+            self.configs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configs is not None:
+            result['Configs'] = self.configs.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Configs') is not None:
+            temp_model = ListSiteFunctionsResponseBodyConfigs()
+            self.configs = temp_model.from_map(m['Configs'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class ListSiteFunctionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSiteFunctionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSiteFunctionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListSitesRequestTagFilter(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
+        # The tag key. This parameter specifies a filter condition for the query.
         self.key = key
+        # The tag value. This parameter specifies a filter condition for the query.
         self.value = value
 
     def validate(self):
@@ -25559,16 +34245,44 @@ class ListSitesRequest(TeaModel):
         status: str = None,
         tag_filter: List[ListSitesRequestTagFilter] = None,
     ):
+        # The DNS setup. Valid values:
+        # 
+        # *   **NS**\
+        # *   **CNAME**\
         self.access_type = access_type
+        # The service location. Valid values:
+        # 
+        # *   **domestic**: the Chinese mainland
+        # *   **global**: global
+        # *   **overseas**: outside the Chinese mainland
         self.coverage = coverage
+        # Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
         self.only_enterprise = only_enterprise
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Default value: **500**.
         self.page_size = page_size
+        # The plan type. Valid values:
+        # 
+        # *   **basicplan**: Entrance (coming soon)
+        # *   **standardplan**: Pro
+        # *   **advancedplan**: Premium
+        # *   **enterpriseplan**: Enterprise
         self.plan_subscribe_type = plan_subscribe_type
+        # The ID of the resource group. This parameter specifies a filter condition for the query.
         self.resource_group_id = resource_group_id
+        # The website name. This parameter specifies a filter condition for the query.
         self.site_name = site_name
+        # The match mode to search for the website name. Default value: exact. Valid values:
+        # 
+        # *   **prefix**: match by prefix.
+        # *   **suffix**: match by suffix.
+        # *   **exact**: exact match.
+        # *   **fuzzy**: fuzzy match.
         self.site_search_type = site_search_type
+        # The website status. This parameter specifies a filter condition for the query.
         self.status = status
+        # The tag filtering rule.
         self.tag_filter = tag_filter
 
     def validate(self):
@@ -25654,16 +34368,44 @@ class ListSitesShrinkRequest(TeaModel):
         status: str = None,
         tag_filter_shrink: str = None,
     ):
+        # The DNS setup. Valid values:
+        # 
+        # *   **NS**\
+        # *   **CNAME**\
         self.access_type = access_type
+        # The service location. Valid values:
+        # 
+        # *   **domestic**: the Chinese mainland
+        # *   **global**: global
+        # *   **overseas**: outside the Chinese mainland
         self.coverage = coverage
+        # Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
         self.only_enterprise = only_enterprise
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Default value: **500**.
         self.page_size = page_size
+        # The plan type. Valid values:
+        # 
+        # *   **basicplan**: Entrance (coming soon)
+        # *   **standardplan**: Pro
+        # *   **advancedplan**: Premium
+        # *   **enterpriseplan**: Enterprise
         self.plan_subscribe_type = plan_subscribe_type
+        # The ID of the resource group. This parameter specifies a filter condition for the query.
         self.resource_group_id = resource_group_id
+        # The website name. This parameter specifies a filter condition for the query.
         self.site_name = site_name
+        # The match mode to search for the website name. Default value: exact. Valid values:
+        # 
+        # *   **prefix**: match by prefix.
+        # *   **suffix**: match by suffix.
+        # *   **exact**: exact match.
+        # *   **fuzzy**: fuzzy match.
         self.site_search_type = site_search_type
+        # The website status. This parameter specifies a filter condition for the query.
         self.status = status
+        # The tag filtering rule.
         self.tag_filter_shrink = tag_filter_shrink
 
     def validate(self):
@@ -25745,20 +34487,47 @@ class ListSitesResponseBodySites(TeaModel):
         update_time: str = None,
         verify_code: str = None,
     ):
+        # The DNS setup for the website. Valid values:
+        # 
+        # *   **NS**\
+        # *   **CNAME**\
         self.access_type = access_type
+        # The CNAME of the website domain. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
         self.cname_zone = cname_zone
+        # The service location for the website. Valid values:
+        # 
+        # *   **domestic**: the Chinese mainland
+        # *   **global**: global
+        # *   **overseas**: outside the Chinese mainland
         self.coverage = coverage
+        # The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The ID of the plan associated with the website.
         self.instance_id = instance_id
+        # The nameservers assigned to the website domain, which are separated by commas (,).
         self.name_server_list = name_server_list
+        # The plan name.
         self.plan_name = plan_name
+        # The plan associated with the website.
         self.plan_spec_name = plan_spec_name
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The website status. Valid values:
+        # 
+        # *   **pending**: The website is to be configured.
+        # *   **active**: The website is active.
+        # *   **offline**: The website is suspended.
+        # *   **moved**: The website has been added and verified by another Alibaba Cloud account.
         self.status = status
+        # The tags of the website.
         self.tags = tags
+        # The time when the website was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
+        # The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
         self.verify_code = verify_code
 
     def validate(self):
@@ -25846,11 +34615,15 @@ class ListSitesResponseBody(TeaModel):
         sites: List[ListSitesResponseBodySites] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of websites per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The queried websites.
         self.sites = sites
+        # The total number of websites.
         self.total_count = total_count
 
     def validate(self):
@@ -25944,9 +34717,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
+        # The tag key.
         self.key = key
-        # 标签值
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -25985,18 +34758,25 @@ class ListTagResourcesRequest(TeaModel):
         security_token: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The maximum number of tags to return.
         self.max_item = max_item
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # >  This parameter is not required for the first request. If not all results are returned in one query, you can specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
         self.owner_id = owner_id
-        # 要创建并绑定标签的资源所在的地域ID。
+        # The ID of the region where the resources reside.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 资源ID,最多 50个子项
+        # The website information. Valid values of he number of website IDs: **1** to **50**.
         self.resource_id = resource_id
+        # The resource type.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
         self.security_token = security_token
+        # A list of tags. You can enter up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -26063,9 +34843,13 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -26108,9 +34892,13 @@ class ListTagResourcesResponseBody(TeaModel):
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
         total_count: int = None,
     ):
+        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The tags of the resource.
         self.tag_resources = tag_resources
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -26202,9 +34990,18 @@ class ListUploadTasksRequest(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
+        # The time when the task ends. Specify the time in the YYYY-MM-DDThh:mm:ssZ format.
         self.end_time = end_time
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The time when the task starts. Specify the time in the YYYY-MM-DDThh:mm:ssZ format.
         self.start_time = start_time
+        # The task type. Valid values:
+        # 
+        # *   **file**: purges the cache by file URL.
+        # *   **preload**: prefetches files.
+        # *   **directory**: purges the cache by directory.
+        # *   **ignoreparams**: purges the cache by URL with specified parameters ignored.
         self.type = type
 
     def validate(self):
@@ -26250,12 +35047,33 @@ class ListUploadTasksResponseBodyTasks(TeaModel):
         upload_id: str = None,
         upload_task_name: str = None,
     ):
+        # The time when the task was created.
         self.create_time = create_time
+        # The error message returned when the file upload task failed.
         self.description = description
+        # The error code. Multiple error codes are separated by commas (,).
+        # 
+        # *   **InvalidUrl**: The URL format is incorrect.
+        # *   **InvalidDomain**: The domain ownership fails to be verified.
+        # *   **QuotaExcess**: The quota limit has been reached.
+        # *   **OtherErrors**: Other errors.
         self.error_code = error_code
+        # The task status.
+        # 
+        # *   **Complete**: The task is complete.
+        # *   **Refreshing**: The task is in progress.
+        # *   **Failed**: The task failed.
         self.status = status
+        # The task type. Valid values:
+        # 
+        # *   **file**: purges the cache by file URL.
+        # *   **preload**: prefetches files.
+        # *   **directory**: purges the cache by directory.
+        # *   **ignoreparams**: purges the cache by URL with specified parameters ignored.
         self.type = type
+        # The ID of the file upload task.
         self.upload_id = upload_id
+        # The name of the file upload task.
         self.upload_task_name = upload_task_name
 
     def validate(self):
@@ -26308,8 +35126,9 @@ class ListUploadTasksResponseBody(TeaModel):
         request_id: str = None,
         tasks: List[ListUploadTasksResponseBodyTasks] = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The file upload tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -26392,8 +35211,16 @@ class ListUserDeliveryTasksRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The log category. Valid values:
+        # 
+        # 1.  dcdn_log_access_l1 (default): access logs.
+        # 2.  dcdn_log_er: Edge Routine logs.
+        # 3.  dcdn_log_waf: firewall logs.
+        # 4.  dcdn_log_ipa: TCP/UDP proxy logs.
         self.business_type = business_type
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
 
     def validate(self):
@@ -26433,10 +35260,18 @@ class ListUserDeliveryTasksResponseBodyTasks(TeaModel):
         status: str = None,
         task_name: str = None,
     ):
+        # The log category.
         self.business_type = business_type
+        # The data center. Valid values:
+        # 
+        # 1.  cn: the Chinese mainland.
+        # 2.  sg: outside the Chinese mainland.
         self.data_center = data_center
+        # The delivery destination.
         self.delivery_type = delivery_type
+        # The status of the delivery task.
         self.status = status
+        # The name of the delivery task.
         self.task_name = task_name
 
     def validate(self):
@@ -26484,11 +35319,15 @@ class ListUserDeliveryTasksResponseBody(TeaModel):
         tasks: List[ListUserDeliveryTasksResponseBodyTasks] = None,
         total_count: int = None,
     ):
+        # The page number returned.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The delivery tasks.
         self.tasks = tasks
+        # The total number of delivery tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -26587,12 +35426,33 @@ class ListUserRatePlanInstancesRequest(TeaModel):
         sort_order: str = None,
         status: str = None,
     ):
+        # Specifies whether to query only the plans that have remaining quota for associating websites. Valid values:
+        # 
+        # *   true: queries only the plans that have remaining quota for associating websites.
+        # *   false: queries all plans in your account.
         self.check_remaining_site_quota = check_remaining_site_quota
+        # The plan ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.instance_id = instance_id
+        # The page number. Valid values: **1** to **100000**. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The sorting field. By default, the queried plans are sorted by purchase time. Valid values:
+        # 
+        # *   CreateTime: the time when the plans were purchased.
+        # *   ExpireTime: the time when the plans expire.
         self.sort_by = sort_by
+        # The order in which you want to sort the query results. Default value: desc. Valid values:
+        # 
+        # *   asc: in ascending order.
+        # *   desc: in descending order.
         self.sort_order = sort_order
+        # The plan status. Valid values:
+        # 
+        # *   online: The plan is in service.
+        # *   offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
+        # *   disable: The plan is released.
+        # *   overdue: The plan is stopped due to overdue payments.
         self.status = status
 
     def validate(self):
@@ -26646,8 +35506,16 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfoSites(TeaModel):
         site_name: str = None,
         site_status: str = None,
     ):
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The website status. Valid values:
+        # 
+        # *   pending: The website is to be configured.
+        # *   active: The website is active.
+        # *   offline: The website is suspended.
+        # *   moved: The website has been added and verified by another Alibaba Cloud account.
         self.site_status = site_status
 
     def validate(self):
@@ -26705,28 +35573,53 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
         static_request: str = None,
         status: str = None,
     ):
+        # The billing method. Valid values:
+        # 
+        # *   PREPAY: subscription.
+        # *   POSTPAY: pay-as-you-go.
         self.billing_mode = billing_mode
         self.bot_instance_level = bot_instance_level
+        # The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
+        # 
+        # *   domestic: the Chinese mainland.
+        # *   overseas: outside the Chinese mainland.
+        # *   global: global.
         self.coverages = coverages
+        # The time when the plan was purchased.
         self.create_time = create_time
         self.crossborder_traffic = crossborder_traffic
         self.ddos_burstable_domestic_protection = ddos_burstable_domestic_protection
         self.ddos_burstable_overseas_protection = ddos_burstable_overseas_protection
         self.ddos_instance_level = ddos_instance_level
+        # The subscription duration of the plan. Unit: month.
         self.duration = duration
         self.edge_routine_rquest = edge_routine_rquest
         self.edge_waf_request = edge_waf_request
+        # The time when the plan expires.
         self.expire_time = expire_time
+        # The plan ID.
         self.instance_id = instance_id
         self.layer_4traffic = layer_4traffic
         self.layer_4traffic_intl = layer_4traffic_intl
+        # The plan name.
         self.plan_name = plan_name
         self.plan_traffic = plan_traffic
+        # The plan type. Valid values:
+        # 
+        # *   normal
+        # *   enterprise
         self.plan_type = plan_type
+        # The maximum number of websites that can be associated with the plan.
         self.site_quota = site_quota
+        # The websites that have been associated with the plan.
         self.sites = sites
         self.smart_routing_request = smart_routing_request
         self.static_request = static_request
+        # The plan status. Valid values:
+        # 
+        # *   online: The plan is in service.
+        # *   offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
+        # *   disable: The plan is released.
         self.status = status
 
     def validate(self):
@@ -26855,12 +35748,17 @@ class ListUserRatePlanInstancesResponseBody(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The queried plans.
         self.instance_info = instance_info
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The total number of pages returned.
         self.total_page = total_page
 
     def validate(self):
@@ -26960,9 +35858,13 @@ class ListWafManagedRulesRequestQueryArgs(TeaModel):
         protection_levels: List[int] = None,
         status: str = None,
     ):
+        # The action that you want WAF to perform on requests that match the rule.
         self.action = action
+        # The rule ID or name for fuzzy search.
         self.id_name_like = id_name_like
+        # The protection levels of the rules.
         self.protection_levels = protection_levels
+        # The status.
         self.status = status
 
     def validate(self):
@@ -27009,15 +35911,39 @@ class ListWafManagedRulesRequest(TeaModel):
         query_args: ListWafManagedRulesRequestQueryArgs = None,
         site_id: int = None,
     ):
+        # The attack type. Valid values:
+        # 
+        # *   SQL injection
+        # *   Cross-site scripting
+        # *   Code execution
+        # *   CRLF
+        # *   Local file inclusion
+        # *   Remote file inclusion
+        # *   webshell
+        # *   Cross-site request forgery
+        # *   Others
+        # *   SEMA
+        # 
         # This parameter is required.
         self.attack_type = attack_type
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](~~ListWafRules~~) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The language of the response. Valid values:
+        # 
+        # *   **en**: English.
+        # *   **zh**: Chinese.
         self.language = language
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
         self.protection_level = protection_level
+        # The query conditions.
         self.query_args = query_args
+        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -27083,15 +36009,39 @@ class ListWafManagedRulesShrinkRequest(TeaModel):
         query_args_shrink: str = None,
         site_id: int = None,
     ):
+        # The attack type. Valid values:
+        # 
+        # *   SQL injection
+        # *   Cross-site scripting
+        # *   Code execution
+        # *   CRLF
+        # *   Local file inclusion
+        # *   Remote file inclusion
+        # *   webshell
+        # *   Cross-site request forgery
+        # *   Others
+        # *   SEMA
+        # 
         # This parameter is required.
         self.attack_type = attack_type
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](~~ListWafRules~~) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The language of the response. Valid values:
+        # 
+        # *   **en**: English.
+        # *   **zh**: Chinese.
         self.language = language
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
         self.protection_level = protection_level
+        # The query conditions.
         self.query_args_shrink = query_args_shrink
+        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -27152,10 +36102,15 @@ class ListWafManagedRulesResponseBodyRules(TeaModel):
         protection_level: int = None,
         status: str = None,
     ):
+        # The action that WAF performs on requests that match the managed rule.
         self.action = action
+        # The ID of the managed rule.
         self.id = id
+        # The name of the managed rule.
         self.name = name
+        # The protection level of the managed rule.
         self.protection_level = protection_level
+        # The status of the protection rule.
         self.status = status
 
     def validate(self):
@@ -27203,10 +36158,15 @@ class ListWafManagedRulesResponseBody(TeaModel):
         rules: List[ListWafManagedRulesResponseBodyRules] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The managed rules.
         self.rules = rules
+        # The total number of filtered rules.
         self.total_count = total_count
 
     def validate(self):
@@ -27300,8 +36260,11 @@ class ListWafPhasesRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -27336,9 +36299,13 @@ class ListWafPhasesResponseBodyPhasesRulesets(TeaModel):
         rules: List[WafRuleConfig] = None,
         shared: WafBatchRuleShared = None,
     ):
+        # The ID of the WAF ruleset.[](~~2850233~~)
         self.id = id
+        # The name of the WAF ruleset.
         self.name = name
+        # The rule configurations in the WAF ruleset.
         self.rules = rules
+        # The configurations shared by the rules in the WAF ruleset.
         self.shared = shared
 
     def validate(self):
@@ -27390,7 +36357,9 @@ class ListWafPhasesResponseBodyPhases(TeaModel):
         phase: str = None,
         rulesets: List[ListWafPhasesResponseBodyPhasesRulesets] = None,
     ):
+        # The name of the WAF rule category.
         self.phase = phase
+        # The WAF rulesets.
         self.rulesets = rulesets
 
     def validate(self):
@@ -27431,8 +36400,9 @@ class ListWafPhasesResponseBody(TeaModel):
         phases: List[ListWafPhasesResponseBodyPhases] = None,
         request_id: str = None,
     ):
+        # The WAF rule categories.
         self.phases = phases
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -27519,12 +36489,19 @@ class ListWafRulesRequestQueryArgs(TeaModel):
         ruleset_id: int = None,
         status: str = None,
     ):
+        # Specifies whether to sort the returned data in descending order.
         self.desc = desc
+        # The ID of a WAF rule for exact search.
         self.id = id
+        # The ID or name of a WAF rule for fuzzy search.
         self.id_name_like = id_name_like
+        # The name of a WAF rule for fuzzy search.
         self.name_like = name_like
+        # The column by which you want to sort the returned data.
         self.order_by = order_by
+        # The ID of a WAF ruleset for exact search.
         self.ruleset_id = ruleset_id
+        # The status of a WAF rule for exact search.
         self.status = status
 
     def validate(self):
@@ -27581,12 +36558,19 @@ class ListWafRulesRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The WAF rule category. You can filter rules of a specific category.
         self.phase = phase
+        # The filter conditions.
         self.query_args = query_args
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -27641,12 +36625,19 @@ class ListWafRulesShrinkRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The WAF rule category. You can filter rules of a specific category.
         self.phase = phase
+        # The filter conditions.
         self.query_args_shrink = query_args_shrink
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -27708,20 +36699,35 @@ class ListWafRulesResponseBodyRules(TeaModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The action triggered when requests match conditions defined in the rule.
         self.action = action
+        # The fields in rate limiting rules.
         self.characteristics_fields = characteristics_fields
+        # The configuration of the rule.
         self.config = config
+        # The fields in the rule.
         self.fields = fields
+        # The rule ID.
         self.id = id
+        # The rule name.
         self.name = name
+        # The WAF rule category.
         self.phase = phase
+        # The position of the rule in the ruleset.
         self.position = position
+        # The ruleset ID.
         self.ruleset_id = ruleset_id
+        # The skip scope applied when requests match conditions defined in the whitelist rule.
         self.skip = skip
+        # Indicates whether the rule is enabled.
         self.status = status
+        # The skipped WAF rule categories when requests match conditions defined in the whitelist rule.
         self.tags = tags
+        # The time when the rule takes effect.
         self.timer = timer
+        # The WAF rule type.
         self.type = type
+        # The time when the rule was modified.
         self.update_time = update_time
 
     def validate(self):
@@ -27816,12 +36822,19 @@ class ListWafRulesResponseBody(TeaModel):
         site_usage: int = None,
         total_count: int = None,
     ):
+        # The rule usage of the instance that corresponds to the website in the WAF rule category.
         self.instance_usage = instance_usage
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The rules returned.
         self.rules = rules
+        # The rule usage of the website.
         self.site_usage = site_usage
+        # The total number of filtered rules.
         self.total_count = total_count
 
     def validate(self):
@@ -27925,9 +36938,13 @@ class ListWafRulesetsRequestQueryArgs(TeaModel):
         name_like: str = None,
         order_by: str = None,
     ):
+        # The ruleset ID, ruleset name, rule ID, or rule name for fuzzy search.
         self.any_like = any_like
+        # Specifies whether to sort the returned data in descending order.
         self.desc = desc
+        # The ruleset name for fuzzy search.
         self.name_like = name_like
+        # The column by which you want to sort the returned data.
         self.order_by = order_by
 
     def validate(self):
@@ -27972,11 +36989,17 @@ class ListWafRulesetsRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The WAF rule category of rulesets to query.
         self.phase = phase
+        # The query arguments in the JSON format, which contain filter conditions.
         self.query_args = query_args
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -28031,11 +37054,17 @@ class ListWafRulesetsShrinkRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The WAF rule category of rulesets to query.
         self.phase = phase
+        # The query arguments in the JSON format, which contain filter conditions.
         self.query_args_shrink = query_args_shrink
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
 
     def validate(self):
@@ -28090,13 +37119,21 @@ class ListWafRulesetsResponseBodyRulesets(TeaModel):
         types: List[str] = None,
         update_time: str = None,
     ):
+        # The matched objects.
         self.fields = fields
+        # The ID of the WAF ruleset.[](~~2850233~~)
         self.id = id
+        # The ruleset name.
         self.name = name
+        # The WAF rule category.
         self.phase = phase
+        # The ruleset status.
         self.status = status
+        # The type of the protection target in the http_bot rule category.
         self.target = target
+        # The types of rules.
         self.types = types
+        # The time when the ruleset was last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -28158,13 +37195,19 @@ class ListWafRulesetsResponseBody(TeaModel):
         site_usage: int = None,
         total_count: int = None,
     ):
+        # The number of WAF rulesets that are used by the instance in the WAF rule category.
         self.instance_usage = instance_usage
+        # The page number returned.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The details of the rulesets.
         self.rulesets = rulesets
+        # The number of WAF rulesets that are used by the website in the WAF rule category.
         self.site_usage = site_usage
+        # The total number of filtered rulesets.
         self.total_count = total_count
 
     def validate(self):
@@ -28265,6 +37308,7 @@ class ListWafTemplateRulesRequestQueryArgs(TeaModel):
         self,
         type: str = None,
     ):
+        # The rule type.
         self.type = type
 
     def validate(self):
@@ -28294,8 +37338,11 @@ class ListWafTemplateRulesRequest(TeaModel):
         query_args: ListWafTemplateRulesRequestQueryArgs = None,
         site_id: int = None,
     ):
+        # The WAF rule category, which is used to filter template rules of a specific category.
         self.phase = phase
+        # The query parameter, which is used to filter template rules based on criteria such as the rule type.
         self.query_args = query_args
+        # 站点ID，可通过调用[ListSites](https://help.aliyun.com/document_detail/2850189.html)接口获取。
         self.site_id = site_id
 
     def validate(self):
@@ -28335,8 +37382,11 @@ class ListWafTemplateRulesShrinkRequest(TeaModel):
         query_args_shrink: str = None,
         site_id: int = None,
     ):
+        # The WAF rule category, which is used to filter template rules of a specific category.
         self.phase = phase
+        # The query parameter, which is used to filter template rules based on criteria such as the rule type.
         self.query_args_shrink = query_args_shrink
+        # 站点ID，可通过调用[ListSites](https://help.aliyun.com/document_detail/2850189.html)接口获取。
         self.site_id = site_id
 
     def validate(self):
@@ -28376,10 +37426,15 @@ class ListWafTemplateRulesResponseBodyRules(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The configuration of the rule.
         self.config = config
+        # The rule name.
         self.name = name
+        # The WAF rule category.
         self.phase = phase
+        # Indicates whether the rule is enabled.
         self.status = status
+        # The rule type.
         self.type = type
 
     def validate(self):
@@ -28426,8 +37481,9 @@ class ListWafTemplateRulesResponseBody(TeaModel):
         request_id: str = None,
         rules: List[ListWafTemplateRulesResponseBodyRules] = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The returned template rules.
         self.rules = rules
 
     def validate(self):
@@ -28509,7 +37565,9 @@ class ListWafUsageOfRulesRequest(TeaModel):
         phase: str = None,
         site_id: int = None,
     ):
+        # The WAF rule category.
         self.phase = phase
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):
@@ -28543,8 +37601,11 @@ class ListWafUsageOfRulesResponseBodySites(TeaModel):
         name: str = None,
         usage: int = None,
     ):
+        # The website ID.
         self.id = id
+        # The website name.
         self.name = name
+        # The usage of WAF rules or WAF rulesets.
         self.usage = usage
 
     def validate(self):
@@ -28581,8 +37642,9 @@ class ListWafUsageOfRulesResponseBody(TeaModel):
         request_id: str = None,
         sites: List[ListWafUsageOfRulesResponseBodySites] = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The usage details of WAF rules of the website.
         self.sites = sites
 
     def validate(self):
@@ -28665,9 +37727,14 @@ class ListWaitingRoomEventsRequest(TeaModel):
         waiting_room_event_id: int = None,
         waiting_room_id: str = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The ID of the waiting room event. This parameter is optional. You can specify this parameter to query a specific waiting room event.
         self.waiting_room_event_id = waiting_room_event_id
+        # The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+        # 
         # This parameter is required.
         self.waiting_room_id = waiting_room_id
 
@@ -28723,25 +37790,76 @@ class ListWaitingRoomEventsResponseBodyWaitingRoomEvents(TeaModel):
         waiting_room_id: str = None,
         waiting_room_type: str = None,
     ):
+        # The content of the custom waiting room page. This parameter is returned when the waiting room type is set to custom. The content is URL-encoded.
         self.custom_page_html = custom_page_html
+        # The event description.
         self.description = description
+        # Indicates whether session renewal is disabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.disable_session_renewal_enable = disable_session_renewal_enable
+        # The event status. Valid values:
+        # 
+        # *   on
+        # *   off
         self.enable = enable
+        # The end time of the event. This value is a UNIX timestamp.
         self.end_time = end_time
+        # Indicates whether JOSN response is enabled. If JSON response is enabled, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+        # 
+        # *   on
+        # *   off
         self.json_response_enable = json_response_enable
+        # The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
+        # 
+        # *   enus: English.
+        # *   zhcn: Simplified Chinese.
+        # *   zhhk: Traditional Chinese.
         self.language = language
+        # The custom event name.
         self.name = name
+        # The maximum number of new users per minute.
         self.new_users_per_minute = new_users_per_minute
+        # Indicates whether pre-queuing is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.pre_queue_enable = pre_queue_enable
+        # The start time for pre-queuing. This value is a UNIX timestamp. This parameter is valid only when pre-queuing is enabled.
         self.pre_queue_start_time = pre_queue_start_time
+        # The queuing method. Valid values:
+        # 
+        # *   random: Users gain access to the origin randomly, regardless of the arrival time.
+        # *   fifo: Users gain access to the origin in order of arrival.
+        # *   passthrough: Users pass through the waiting room and go straight to the origin.
+        # *   reject-all: Users are blocked from reaching the origin.
         self.queuing_method = queuing_method
+        # The HTTP status code to return while a user is in the queue. Valid values:
+        # 
+        # *   200
+        # *   202
+        # *   429
         self.queuing_status_code = queuing_status_code
+        # Indicates whether random queuing is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.random_pre_queue_enable = random_pre_queue_enable
+        # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
         self.session_duration = session_duration
+        # The start time of the event. This value is a UNIX timestamp.
         self.start_time = start_time
+        # The maximum number of active users.
         self.total_active_users = total_active_users
+        # The unique ID of the waiting room event.
         self.waiting_room_event_id = waiting_room_event_id
+        # The ID of the waiting room associated with the event.
         self.waiting_room_id = waiting_room_id
+        # The type of the waiting room. Valid values:
+        # 
+        # *   default
+        # *   custom
         self.waiting_room_type = waiting_room_type
 
     def validate(self):
@@ -28846,8 +37964,9 @@ class ListWaitingRoomEventsResponseBody(TeaModel):
         request_id: str = None,
         waiting_room_events: List[ListWaitingRoomEventsResponseBodyWaitingRoomEvents] = None,
     ):
-        # Id of the request
+        # The request ID, which is used to trace a call.
         self.request_id = request_id
+        # The details of the waiting room events.
         self.waiting_room_events = waiting_room_events
 
     def validate(self):
@@ -28931,11 +38050,17 @@ class ListWaitingRoomRulesRequest(TeaModel):
         waiting_room_id: str = None,
         waiting_room_rule_id: int = None,
     ):
+        # Optional. The rule name, which can be used to query a specific bypass rule.
         self.rule_name = rule_name
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The ID of the waiting room to be bypassed, which can be obtained by calling the [ListWatingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+        # 
         # This parameter is required.
         self.waiting_room_id = waiting_room_id
+        # Optional. The rule ID, which can be used to query a specific rule.
         self.waiting_room_rule_id = waiting_room_rule_id
 
     def validate(self):
@@ -28978,9 +38103,16 @@ class ListWaitingRoomRulesResponseBodyWaitingRoomRules(TeaModel):
         rule_name: str = None,
         waiting_room_rule_id: int = None,
     ):
+        # The rule content, which is a policy or conditional expression.
         self.rule = rule
+        # Indicates whether the rule is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
+        # The rule ID.
         self.waiting_room_rule_id = waiting_room_rule_id
 
     def validate(self):
@@ -29021,8 +38153,9 @@ class ListWaitingRoomRulesResponseBody(TeaModel):
         request_id: str = None,
         waiting_room_rules: List[ListWaitingRoomRulesResponseBodyWaitingRoomRules] = None,
     ):
-        # Id of the request
+        # The request ID, which is used to trace a call.
         self.request_id = request_id
+        # The waiting room bypass rules.
         self.waiting_room_rules = waiting_room_rules
 
     def validate(self):
@@ -29104,8 +38237,11 @@ class ListWaitingRoomsRequest(TeaModel):
         site_id: int = None,
         waiting_room_id: str = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The ID of the waiting room. Specify this parameter to query the information about a specific waiting room.
         self.waiting_room_id = waiting_room_id
 
     def validate(self):
@@ -29139,8 +38275,11 @@ class ListWaitingRoomsResponseBodyWaitingRoomsHostNameAndPath(TeaModel):
         path: str = None,
         subdomain: str = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The path.
         self.path = path
+        # The subdomain.
         self.subdomain = subdomain
 
     def validate(self):
@@ -29192,22 +38331,67 @@ class ListWaitingRoomsResponseBodyWaitingRooms(TeaModel):
         waiting_room_id: str = None,
         waiting_room_type: str = None,
     ):
+        # The name of the custom cookie.
         self.cookie_name = cookie_name
+        # The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
         self.custom_page_html = custom_page_html
+        # The description of the waiting room.
         self.description = description
+        # Indicates whether session renewal is disabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.disable_session_renewal_enable = disable_session_renewal_enable
+        # Indicates whether the waiting room is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.enable = enable
+        # The hostname and path.
         self.host_name_and_path = host_name_and_path
+        # Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+        # 
+        # *   on
+        # *   off
         self.json_response_enable = json_response_enable
+        # The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
+        # 
+        # *   enus: English.
+        # *   zhcn: Simplified Chinese.
+        # *   zhhk: Traditional Chinese.
         self.language = language
+        # The name of the waiting room.
         self.name = name
+        # The maximum number of new users per minute.
         self.new_users_per_minute = new_users_per_minute
+        # Indicates whether all requests must be queued. Valid values:
+        # 
+        # *   on
+        # *   off
         self.queue_all_enable = queue_all_enable
+        # The queuing method. Valid values:
+        # 
+        # *   random: Users gain access to the origin randomly, regardless of the arrival time.
+        # *   fifo: Users gain access to the origin in order of arrival.
+        # *   passthrough: Users pass through the waiting room and go straight to the origin.
+        # *   reject-all: Users are blocked from reaching the origin.
         self.queuing_method = queuing_method
+        # The HTTP status code to return while a user is in the queue. Valid values:
+        # 
+        # *   200
+        # *   202
+        # *   429
         self.queuing_status_code = queuing_status_code
+        # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
         self.session_duration = session_duration
+        # The maximum number of active users.
         self.total_active_users = total_active_users
+        # The unique ID of the waiting room.
         self.waiting_room_id = waiting_room_id
+        # The type of the waiting room. Valid values:
+        # 
+        # *   default
+        # *   custom
         self.waiting_room_type = waiting_room_type
 
     def validate(self):
@@ -29308,8 +38492,9 @@ class ListWaitingRoomsResponseBody(TeaModel):
         request_id: str = None,
         waiting_rooms: List[ListWaitingRoomsResponseBodyWaitingRooms] = None,
     ):
-        # Id of the request
+        # The request ID, which is used to trace a call.
         self.request_id = request_id
+        # The waiting rooms.
         self.waiting_rooms = waiting_rooms
 
     def validate(self):
@@ -29392,8 +38577,11 @@ class PreloadCachesRequest(TeaModel):
         headers: Dict[str, str] = None,
         site_id: int = None,
     ):
+        # The files to be prefetched.
         self.content = content
+        # By default, prefetch requests include the Accept-Encoding:gzip header. If you want a prefetch request to include other headers or implement multi-replica prefetch, you can specify a custom prefetch header by configuring the Headers parameter.
         self.headers = headers
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         self.site_id = site_id
 
     def validate(self):
@@ -29431,8 +38619,11 @@ class PreloadCachesShrinkRequest(TeaModel):
         headers_shrink: str = None,
         site_id: int = None,
     ):
+        # The files to be prefetched.
         self.content_shrink = content_shrink
+        # By default, prefetch requests include the Accept-Encoding:gzip header. If you want a prefetch request to include other headers or implement multi-replica prefetch, you can specify a custom prefetch header by configuring the Headers parameter.
         self.headers_shrink = headers_shrink
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         self.site_id = site_id
 
     def validate(self):
@@ -29469,8 +38660,9 @@ class PreloadCachesResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The prefetch task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -29551,16 +38743,38 @@ class PublishEdgeContainerAppVersionRequest(TeaModel):
         start_time: str = None,
         version_id: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Specifies whether to fully release the version. This parameter takes effect only when PublishType is set to region.
         self.full_release = full_release
+        # The release percentage. Valid values: 1 to 100. Default value: 100.
         self.percentage = percentage
+        # The environment to which you want to release the version. Valid values:
+        # 
+        # *   prod: the production environment.
+        # *   staging: the staging environment.
+        # 
         # This parameter is required.
         self.publish_env = publish_env
+        # Specifies how the version is released. Valid values:
+        # 
+        # *   percentage: releases the version by percentage.
+        # *   region: releases the version by region.
+        # 
+        # If you do not specify this parameter, the version is released by percentage by default.
         self.publish_type = publish_type
+        # The regions to which the version is released.
         self.regions = regions
+        # The remarks. This parameter is empty by default.
         self.remarks = remarks
+        # The time when the application version starts to be released. If you do not specify this parameter, the current time is used by default.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
+        # The version ID.
+        # 
         # This parameter is required.
         self.version_id = version_id
 
@@ -29629,16 +38843,38 @@ class PublishEdgeContainerAppVersionShrinkRequest(TeaModel):
         start_time: str = None,
         version_id: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Specifies whether to fully release the version. This parameter takes effect only when PublishType is set to region.
         self.full_release = full_release
+        # The release percentage. Valid values: 1 to 100. Default value: 100.
         self.percentage = percentage
+        # The environment to which you want to release the version. Valid values:
+        # 
+        # *   prod: the production environment.
+        # *   staging: the staging environment.
+        # 
         # This parameter is required.
         self.publish_env = publish_env
+        # Specifies how the version is released. Valid values:
+        # 
+        # *   percentage: releases the version by percentage.
+        # *   region: releases the version by region.
+        # 
+        # If you do not specify this parameter, the version is released by percentage by default.
         self.publish_type = publish_type
+        # The regions to which the version is released.
         self.regions_shrink = regions_shrink
+        # The remarks. This parameter is empty by default.
         self.remarks = remarks
+        # The time when the application version starts to be released. If you do not specify this parameter, the current time is used by default.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
+        # The version ID.
+        # 
         # This parameter is required.
         self.version_id = version_id
 
@@ -29699,6 +38935,7 @@ class PublishEdgeContainerAppVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29771,10 +39008,15 @@ class PublishRoutineCodeVersionRequest(TeaModel):
         env: str = None,
         name: str = None,
     ):
+        # The regions for canary release.
         self.canary_area_list = canary_area_list
+        # The version number for canary release.
         self.canary_code_version = canary_code_version
+        # The code version to be released.
         self.code_version = code_version
+        # The environment name.
         self.env = env
+        # The routine name.
         self.name = name
 
     def validate(self):
@@ -29822,10 +39064,15 @@ class PublishRoutineCodeVersionShrinkRequest(TeaModel):
         env: str = None,
         name: str = None,
     ):
+        # The regions for canary release.
         self.canary_area_list_shrink = canary_area_list_shrink
+        # The version number for canary release.
         self.canary_code_version = canary_code_version
+        # The code version to be released.
         self.code_version = code_version
+        # The environment name.
         self.env = env
+        # The routine name.
         self.name = name
 
     def validate(self):
@@ -29870,8 +39117,9 @@ class PublishRoutineCodeVersionResponseBody(TeaModel):
         code_version: str = None,
         request_id: str = None,
     ):
+        # The code version.
         self.code_version = code_version
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29949,11 +39197,17 @@ class PurgeCachesRequestContent(TeaModel):
         ignore_params: List[str] = None,
         purge_all: bool = None,
     ):
+        # The cache tags that are used to purge the cache. This parameter is required if Type is set to cachetag.
         self.cache_tags = cache_tags
+        # The directories that are used to purge the cache. This parameter is required if Type is set to directory.
         self.directories = directories
+        # The files to purge. This parameter is required if Type is set to file.
         self.files = files
+        # The hostnames that are used to purge the cache. This parameter is required if Type is set to hostname.
         self.hostnames = hostnames
+        # The file URLs with parameters ignored that are used to purge the cache. This parameter is required if Type is set to ignoreParams.
         self.ignore_params = ignore_params
+        # Specifies whether to purge all cache of the website. Default value: false. The value is true when Type is set to purgeall.
         self.purge_all = purge_all
 
     def validate(self):
@@ -30005,10 +39259,28 @@ class PurgeCachesRequest(TeaModel):
         site_id: int = None,
         type: str = None,
     ):
+        # The content to purge.
         self.content = content
+        # Specifies whether to purge cached resources for edge computing. For example, purge the resources cached by the CacheAPI operation of Edge Routine.
         self.edge_compute_purge = edge_compute_purge
+        # Specifies whether to purge resources in a directory if the resources requested are different from the resources on the origin server. Default value: false.
+        # 
+        # *   **true**: purges all resources in the directory.
+        # *   **false**: purges only changed resources in the directory.
+        # 
+        # >  This configuration takes effect for the following purge task types: directory, cachetag, ignoreParams, hostname, and purgeall.
         self.force = force
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         self.site_id = site_id
+        # The type of the purge task. Valid values:
+        # 
+        # *   **file** (default): purges the cache by file.
+        # *   **cachetag**: purges the cache by cache tag.
+        # *   **directory**: purges the cache by directory.
+        # *   **ignoreParams**: purges the cache by URL with specific parameters ignored. This option ignores the question mark (?) and parameters after the question mark (?) in a request URL and purges the cache. After you call this operation with the request URL submitted, the system compares the submitted URL with the URL of the cached resource without specified parameters. If the URLs match, the POPs purge the cached resources.
+        # *   **hostname**: purges the cache by hostname.
+        # *   **purgeall**: purges all cache.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -30059,10 +39331,28 @@ class PurgeCachesShrinkRequest(TeaModel):
         site_id: int = None,
         type: str = None,
     ):
+        # The content to purge.
         self.content_shrink = content_shrink
+        # Specifies whether to purge cached resources for edge computing. For example, purge the resources cached by the CacheAPI operation of Edge Routine.
         self.edge_compute_purge = edge_compute_purge
+        # Specifies whether to purge resources in a directory if the resources requested are different from the resources on the origin server. Default value: false.
+        # 
+        # *   **true**: purges all resources in the directory.
+        # *   **false**: purges only changed resources in the directory.
+        # 
+        # >  This configuration takes effect for the following purge task types: directory, cachetag, ignoreParams, hostname, and purgeall.
         self.force = force
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         self.site_id = site_id
+        # The type of the purge task. Valid values:
+        # 
+        # *   **file** (default): purges the cache by file.
+        # *   **cachetag**: purges the cache by cache tag.
+        # *   **directory**: purges the cache by directory.
+        # *   **ignoreParams**: purges the cache by URL with specific parameters ignored. This option ignores the question mark (?) and parameters after the question mark (?) in a request URL and purges the cache. After you call this operation with the request URL submitted, the system compares the submitted URL with the URL of the cached resource without specified parameters. If the URLs match, the POPs purge the cached resources.
+        # *   **hostname**: purges the cache by hostname.
+        # *   **purgeall**: purges all cache.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -30108,8 +39398,9 @@ class PurgeCachesResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The task ID, which is generated after you create a task.
         self.task_id = task_id
 
     def validate(self):
@@ -30187,13 +39478,22 @@ class PutKvRequest(TeaModel):
         namespace: str = None,
         value: str = None,
     ):
+        # Specifies whether the content of the key is Base64-encoded. Set this parameter to true if you want to store the key content in binary format. When this parameter is set to true, the Value parameter must be Base64-encoded.
         self.base_64 = base_64
+        # The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
         self.expiration = expiration
+        # The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
         self.expiration_ttl = expiration_ttl
+        # The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\\\).
+        # 
         # This parameter is required.
         self.key = key
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://help.aliyun.com/document_detail/2850486.html).
+        # 
         # This parameter is required.
         self.value = value
 
@@ -30244,9 +39544,11 @@ class PutKvResponseBody(TeaModel):
         request_id: str = None,
         value: str = None,
     ):
+        # The length of the value in the key-value pair.
         self.length = length
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
         self.value = value
 
     def validate(self):
@@ -30325,10 +39627,16 @@ class PutKvWithHighCapacityRequest(TeaModel):
         namespace: str = None,
         url: str = None,
     ):
+        # The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\\\).
+        # 
         # This parameter is required.
         self.key = key
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The download URL of the key-value pair that you want to upload. This parameter is automatically filled in when you use the SDK to call the operation.
+        # 
         # This parameter is required.
         self.url = url
 
@@ -30367,10 +39675,16 @@ class PutKvWithHighCapacityAdvanceRequest(TeaModel):
         namespace: str = None,
         url_object: BinaryIO = None,
     ):
+        # The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\\\).
+        # 
         # This parameter is required.
         self.key = key
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The download URL of the key-value pair that you want to upload. This parameter is automatically filled in when you use the SDK to call the operation.
+        # 
         # This parameter is required.
         self.url_object = url_object
 
@@ -30409,9 +39723,11 @@ class PutKvWithHighCapacityResponseBody(TeaModel):
         request_id: str = None,
         value: str = None,
     ):
+        # The length of the value in the key-value pair.
         self.length = length
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
         self.value = value
 
     def validate(self):
@@ -30488,6 +39804,7 @@ class RebuildEdgeContainerAppStagingEnvRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
         self.app_id = app_id
 
     def validate(self):
@@ -30515,7 +39832,7 @@ class RebuildEdgeContainerAppStagingEnvResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30584,6 +39901,7 @@ class ResetScheduledPreloadJobRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The ID of the scheduled prefetch task.
         self.id = id
 
     def validate(self):
@@ -30625,21 +39943,35 @@ class ResetScheduledPreloadJobResponseBody(TeaModel):
         url_count: int = None,
         url_submitted: int = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The time when the SQL task was created.
         self.created_at = created_at
+        # The domain names to be prefetched.
         self.domains = domains
+        # The error message that is returned.
         self.error_info = error_info
+        # The URL of the OSS object that stores a list of URLs that failed the conditional check for prefetching.
         self.failed_file_oss = failed_file_oss
+        # The ID of the URL list file, which can be used during downloads.
         self.file_id = file_id
+        # The ID of the prefetch task.
         self.id = id
+        # The method to submit the URLs to be prefetched.
         self.insert_way = insert_way
+        # The delivery project name.
         self.name = name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
+        # The number of submitted prefetch tasks.
         self.task_submitted = task_submitted
+        # The task type. Valid values: refresh and preload.
         self.task_type = task_type
+        # The total number of URLs.
         self.url_count = url_count
+        # The number of submitted URLs.
         self.url_submitted = url_submitted
 
     def validate(self):
@@ -30766,9 +40098,14 @@ class RollbackEdgeContainerAppVersionRequest(TeaModel):
         remarks: str = None,
         version_id: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The remarks.
         self.remarks = remarks
+        # The ID of version that you want to roll back.
+        # 
         # This parameter is required.
         self.version_id = version_id
 
@@ -30805,6 +40142,7 @@ class RollbackEdgeContainerAppVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30883,18 +40221,32 @@ class SetCertificateRequest(TeaModel):
         type: str = None,
         update: bool = None,
     ):
+        # The certificate ID on Certificate Management Service.
         self.cas_id = cas_id
+        # The certificate content.
         self.certificate = certificate
+        # The certificate ID on ESA.
         self.id = id
+        # The certificate name.
         self.name = name
         self.owner_id = owner_id
+        # The private key of the certificate.
         self.private_key = private_key
+        # The region.
         self.region = region
         self.security_token = security_token
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The certificate type. Valid values:
+        # 
+        # *   cas: a certificate purchased by using Certificate Management Service.
+        # *   upload: a custom certificate that you upload.
+        # 
         # This parameter is required.
         self.type = type
+        # Specifies whether to update the certificate.
         self.update = update
 
     def validate(self):
@@ -30962,7 +40314,7 @@ class SetCertificateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -31033,10 +40385,24 @@ class SetHttpDDoSAttackIntelligentProtectionRequest(TeaModel):
         ai_template: str = None,
         site_id: int = None,
     ):
+        # The mode of smart HTTP DDoS protection. Valid values:
+        # 
+        # *   **observe**: alert.
+        # *   **defense**: block.
+        # 
         # This parameter is required.
         self.ai_mode = ai_mode
+        # The level of smart HTTP DDoS protection. Valid values:
+        # 
+        # *   **level0**: very loose.
+        # *   **level30**: loose.
+        # *   **level60**: normal.
+        # *   **level90**: strict.
+        # 
         # This parameter is required.
         self.ai_template = ai_template
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -31076,10 +40442,21 @@ class SetHttpDDoSAttackIntelligentProtectionResponseBody(TeaModel):
         request_id: str = None,
         site_id: int = None,
     ):
+        # The mode of smart HTTP DDoS protection. Valid values:
+        # 
+        # *   **observe**: alert.
+        # *   **defense**: block.
         self.ai_mode = ai_mode
+        # The level of smart HTTP DDoS protection. Valid values:
+        # 
+        # *   **level0**: very loose.
+        # *   **level30**: loose.
+        # *   **level60**: normal.
+        # *   **level90**: strict.
         self.ai_template = ai_template
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -31161,8 +40538,17 @@ class SetHttpDDoSAttackProtectionRequest(TeaModel):
         global_mode: str = None,
         site_id: int = None,
     ):
+        # The level of HTTP DDoS attack protection. Valid values:
+        # 
+        # *   **very weak**: very loose.
+        # *   **weak**: loose.
+        # *   **default**: normal.
+        # *   **hard**: strict.
+        # 
         # This parameter is required.
         self.global_mode = global_mode
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -31197,9 +40583,11 @@ class SetHttpDDoSAttackProtectionResponseBody(TeaModel):
         request_id: str = None,
         site_id: int = None,
     ):
+        # The level of HTTP DDoS attack protection.
         self.global_mode = global_mode
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -31276,6 +40664,8 @@ class StartScheduledPreloadExecutionRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The ID of the prefetch plan.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -31312,15 +40702,29 @@ class StartScheduledPreloadExecutionResponseBody(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The end time of the prefetch plan.
         self.end_time = end_time
+        # The ID of the prefetch plan.
         self.id = id
+        # The time interval between each batch execution. Unit: seconds.
         self.interval = interval
+        # The ID of the prefetch task.
         self.job_id = job_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The number of URLs prefetched in each batch.
         self.slice_len = slice_len
+        # The start time of the prefetch plan.
         self.start_time = start_time
+        # The status of the prefetch plan. Valid values:
+        # 
+        # *   **waiting**\
+        # *   **running**\
+        # *   **finished**\
+        # *   **failed**\
+        # *   **stopped**\
         self.status = status
 
     def validate(self):
@@ -31421,6 +40825,8 @@ class StopScheduledPreloadExecutionRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The ID of the prefetch plan.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -31457,15 +40863,29 @@ class StopScheduledPreloadExecutionResponseBody(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The end time of the prefetch plan.
         self.end_time = end_time
+        # The ID of the prefetch plan.
         self.id = id
+        # The time interval between each batch execution in the plan. Unit: seconds.
         self.interval = interval
+        # The ID of the prefetch task.
         self.job_id = job_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The number of URLs prefetched in each batch.
         self.slice_len = slice_len
+        # The start time of the prefetch plan.
         self.start_time = start_time
+        # The status of the prefetch plan. Valid values:
+        # 
+        # *   **waiting**\
+        # *   **running**\
+        # *   **finished**\
+        # *   **failed**\
+        # *   **stopped**\
         self.status = status
 
     def validate(self):
@@ -31572,20 +40992,28 @@ class UntagResourcesRequest(TeaModel):
         security_token: str = None,
         tag_key: List[str] = None,
     ):
-        # 是否全部删除，只针对TagKey.N为空时有效
+        # Specifies whether to remove all tags. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # Default value: **false**.
         self.all = all
         self.owner_id = owner_id
-        # 要创建并绑定标签的资源所在的地域ID。
+        # The ID of the region where the resources reside. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 资源ID,最多 50个子项
+        # The ID of resource N. Valid values of N: **1** to **50**.
         # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
         self.security_token = security_token
+        # The key of tag N to remove from the resource. Valid values of N: **1** to **20**.
         self.tag_key = tag_key
 
     def validate(self):
@@ -31637,6 +41065,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -31710,15 +41139,32 @@ class UpdateCustomScenePolicyRequest(TeaModel):
         start_time: str = None,
         template: str = None,
     ):
+        # The time when the policy expires.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The policy name.
+        # 
         # This parameter is required.
         self.name = name
+        # The IDs of the websites that you want to associate with the policy. Separate multiple IDs with commas (,).
         self.objects = objects
+        # The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
+        # The time when the policy takes effect.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The name of the policy template. Valid value:
+        # 
+        # *   **promotion**: major events.
+        # 
         # This parameter is required.
         self.template = template
 
@@ -31773,13 +41219,25 @@ class UpdateCustomScenePolicyResponseBody(TeaModel):
         start_time: str = None,
         template: str = None,
     ):
+        # The time when the policy expires.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
+        # The policy name.
         self.name = name
+        # The IDs of websites associated.
         self.objects = objects
+        # The policy ID.
         self.policy_id = policy_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The time when the policy takes effect.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
+        # The name of the policy template. Valid value:
+        # 
+        # *   **promotion**: major events.
         self.template = template
 
     def validate(self):
@@ -31873,8 +41331,12 @@ class UpdateKvNamespaceRequest(TeaModel):
         namespace: str = None,
         title: str = None,
     ):
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The new name of the namespace.
+        # 
         # This parameter is required.
         self.title = title
 
@@ -31911,10 +41373,20 @@ class UpdateKvNamespaceResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The description of the namespace.
         self.description = description
+        # The updated name of the namespace.
         self.namespace = namespace
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The request ID.
         self.request_id = request_id
+        # The status of the namespace. Valid values:
+        # 
+        # *   **online**: normal.
+        # *   **delete**: pending deletion.
+        # *   **deleting**: being deleted.
+        # *   **deleted**: deleted.
         self.status = status
 
     def validate(self):
@@ -32002,10 +41474,15 @@ class UpdateListRequest(TeaModel):
         items: List[str] = None,
         name: str = None,
     ):
+        # The new description of the list.
         self.description = description
+        # The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The items in the updated list. The value is a JSON array.
         self.items = items
+        # The new name of the list.
         self.name = name
 
     def validate(self):
@@ -32048,10 +41525,15 @@ class UpdateListShrinkRequest(TeaModel):
         items_shrink: str = None,
         name: str = None,
     ):
+        # The new description of the list.
         self.description = description
+        # The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The items in the updated list. The value is a JSON array.
         self.items_shrink = items_shrink
+        # The new name of the list.
         self.name = name
 
     def validate(self):
@@ -32091,6 +41573,7 @@ class UpdateListResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -32154,6 +41637,205 @@ class UpdateListResponse(TeaModel):
         return self
 
 
+class UpdateOriginProtectionRequest(TeaModel):
+    def __init__(
+        self,
+        origin_converge: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.origin_converge = origin_converge
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.origin_converge is not None:
+            result['OriginConverge'] = self.origin_converge
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OriginConverge') is not None:
+            self.origin_converge = m.get('OriginConverge')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UpdateOriginProtectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateOriginProtectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateOriginProtectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateOriginProtectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateOriginProtectionIpWhiteListRequest(TeaModel):
+    def __init__(
+        self,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UpdateOriginProtectionIpWhiteListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateOriginProtectionIpWhiteListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateOriginProtectionIpWhiteListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateOriginProtectionIpWhiteListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdatePageRequest(TeaModel):
     def __init__(
         self,
@@ -32163,13 +41845,25 @@ class UpdatePageRequest(TeaModel):
         id: int = None,
         name: str = None,
     ):
+        # The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
+        # 
         # This parameter is required.
         self.content = content
+        # The Content-Type field in the HTTP header. Valid values:
+        # 
+        # *   text/html
+        # *   application/json
+        # 
         # This parameter is required.
         self.content_type = content_type
+        # The description of the custom error page.
         self.description = description
+        # The ID of the custom error page, which can be obtained by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the custom error page.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -32214,7 +41908,7 @@ class UpdatePageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -32287,10 +41981,24 @@ class UpdateRecordRequestAuthConf(TeaModel):
         secret_key: str = None,
         version: str = None,
     ):
+        # The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
         self.access_key = access_key
+        # The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
+        # 
+        # *   **public**: public read. Select this value when the origin type is OSS or S3 and the origin access is public read.
+        # *   **private**: private read. Select this value when the origin type is S3 and the origin access is private read.
+        # *   **private_same_account**: private read under the same account. Select this value when the origin type is OSS, the origins belong to the same Alibaba Cloud account, and the origins have private read access.
         self.auth_type = auth_type
+        # The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+        # 
+        # *   **v2**\
+        # *   **v4**\
+        # 
+        # If you leave this parameter empty, the default value v4 is used.
         self.region = region
+        # The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
         self.secret_key = secret_key
+        # The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
         self.version = version
 
     def validate(self):
@@ -32347,19 +42055,42 @@ class UpdateRecordRequestData(TeaModel):
         value: str = None,
         weight: int = None,
     ):
+        # The encryption algorithm used for the record, specified within the range from 0 to 255. This parameter is required when you add CERT or SSHFP records.
         self.algorithm = algorithm
+        # The public key of the certificate. This parameter is required when you add CERT, SMIMEA, or TLSA records.
         self.certificate = certificate
+        # The public key fingerprint of the record. This parameter is required when you add a SSHFP record.
         self.fingerprint = fingerprint
+        # The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed, specified within the range of 0 to 255. This parameter is required when you add a CAA record.
         self.flag = flag
+        # The public key identification for the record, specified within the range of 0 to 65,535. This parameter is required when you add a CAA record.
         self.key_tag = key_tag
+        # The algorithm policy used to match or validate the certificate, specified within the range 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
         self.matching_type = matching_type
+        # The port of the record, specified within the range of 0 to 65,535. This parameter is required when you add an SRV record.
         self.port = port
+        # The priority of the record, specified within the range of 0 to 65,535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
         self.priority = priority
+        # The type of certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
         self.selector = selector
+        # The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
         self.tag = tag
+        # The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
         self.type = type
+        # The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
         self.usage = usage
+        # The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
+        # 
+        # *   **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+        # *   **CNAME**: the target domain name.
+        # *   **NS**: the name servers for the domain name.
+        # *   **MX**: a valid domain name of the target mail server.
+        # *   **TXT**: a valid text string.
+        # *   **CAA**: a valid domain name of the certificate authority.
+        # *   **SRV**: a valid domain name of the target host.
+        # *   **URI**: a valid URI string.
         self.value = value
+        # The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
         self.weight = weight
 
     def validate(self):
@@ -32447,17 +42178,45 @@ class UpdateRecordRequest(TeaModel):
         source_type: str = None,
         ttl: int = None,
     ):
+        # The origin authentication information of the CNAME record.
         self.auth_conf = auth_conf
+        # The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+        # 
+        # *   **video_image**: video and image.
+        # *   **api**: API.
+        # *   **web**: web page.
         self.biz_name = biz_name
+        # The comments of the record.
         self.comment = comment
+        # The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html).
+        # 
         # This parameter is required.
         self.data = data
+        # The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
+        # 
+        # *   **follow_hostname**: match the requested domain name.
+        # *   **follow_origin_domain**: match the origin\\"s domain name.
         self.host_policy = host_policy
-        # 是否代理加速
+        # Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.proxied = proxied
+        # The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
+        # 
         # This parameter is required.
         self.record_id = record_id
+        # The type of the origin for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+        # 
+        # *   **OSS** : OSS origin.
+        # *   **S3** : S3 origin.
+        # *   **LB**: Load Balancer origin.
+        # *   **OP**: origin in an origin pool.
+        # *   **Domain**: common domain name.
+        # 
+        # If you leave the parameter empty or set its value as null, the default is Domain, which is common domain name.
         self.source_type = source_type
+        # The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
         self.ttl = ttl
 
     def validate(self):
@@ -32530,17 +42289,45 @@ class UpdateRecordShrinkRequest(TeaModel):
         source_type: str = None,
         ttl: int = None,
     ):
+        # The origin authentication information of the CNAME record.
         self.auth_conf_shrink = auth_conf_shrink
+        # The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+        # 
+        # *   **video_image**: video and image.
+        # *   **api**: API.
+        # *   **web**: web page.
         self.biz_name = biz_name
+        # The comments of the record.
         self.comment = comment
+        # The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html).
+        # 
         # This parameter is required.
         self.data_shrink = data_shrink
+        # The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
+        # 
+        # *   **follow_hostname**: match the requested domain name.
+        # *   **follow_origin_domain**: match the origin\\"s domain name.
         self.host_policy = host_policy
-        # 是否代理加速
+        # Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.proxied = proxied
+        # The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
+        # 
         # This parameter is required.
         self.record_id = record_id
+        # The type of the origin for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+        # 
+        # *   **OSS** : OSS origin.
+        # *   **S3** : S3 origin.
+        # *   **LB**: Load Balancer origin.
+        # *   **OP**: origin in an origin pool.
+        # *   **Domain**: common domain name.
+        # 
+        # If you leave the parameter empty or set its value as null, the default is Domain, which is common domain name.
         self.source_type = source_type
+        # The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
         self.ttl = ttl
 
     def validate(self):
@@ -32600,6 +42387,7 @@ class UpdateRecordResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -32672,11 +42460,17 @@ class UpdateScheduledPreloadExecutionRequest(TeaModel):
         slice_len: int = None,
         start_time: str = None,
     ):
+        # The end time of the prefetch plan.
         self.end_time = end_time
+        # The ID of the prefetch plan.
+        # 
         # This parameter is required.
         self.id = id
+        # The time interval between each batch execution. Unit: seconds.
         self.interval = interval
+        # The number of URLs prefetched in each batch.
         self.slice_len = slice_len
+        # The start time of the prefetch plan.
         self.start_time = start_time
 
     def validate(self):
@@ -32728,15 +42522,29 @@ class UpdateScheduledPreloadExecutionResponseBody(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The end time of the prefetch plan.
         self.end_time = end_time
+        # The ID of the prefetch plan.
         self.id = id
+        # The time interval between each batch execution. Unit: seconds.
         self.interval = interval
+        # The ID of the prefetch task.
         self.job_id = job_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The number of URLs prefetched in each batch.
         self.slice_len = slice_len
+        # The start time of the prefetch plan.
         self.start_time = start_time
+        # The status of the prefetch plan. Valid values:
+        # 
+        # *   **waiting**\
+        # *   **running**\
+        # *   **finished**\
+        # *   **failed**\
+        # *   **stopped**\
         self.status = status
 
     def validate(self):
@@ -32838,8 +42646,15 @@ class UpdateSiteAccessTypeRequest(TeaModel):
         access_type: str = None,
         site_id: int = None,
     ):
+        # The new DNS setup of the website. Valid values:
+        # 
+        # *   **NS**\
+        # *   **CNAME**\
+        # 
         # This parameter is required.
         self.access_type = access_type
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -32872,7 +42687,7 @@ class UpdateSiteAccessTypeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -32942,8 +42757,16 @@ class UpdateSiteCoverageRequest(TeaModel):
         coverage: str = None,
         site_id: int = None,
     ):
+        # The desired service location. Valid values:
+        # 
+        # *   **domestic**: the Chinese mainland
+        # *   **global**: global
+        # *   **overseas**: outside the Chinese mainland
+        # 
         # This parameter is required.
         self.coverage = coverage
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -32976,6 +42799,7 @@ class UpdateSiteCoverageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33047,8 +42871,11 @@ class UpdateSiteCustomLogRequest(TeaModel):
         response_headers: List[str] = None,
         site_id: int = None,
     ):
+        # The cookie fields.
         self.cookies = cookies
+        # The request header fields.
         self.request_headers = request_headers
+        # The response header fields.
         self.response_headers = response_headers
         # site id
         self.site_id = site_id
@@ -33093,8 +42920,11 @@ class UpdateSiteCustomLogShrinkRequest(TeaModel):
         response_headers_shrink: str = None,
         site_id: int = None,
     ):
+        # The cookie fields.
         self.cookies_shrink = cookies_shrink
+        # The request header fields.
         self.request_headers_shrink = request_headers_shrink
+        # The response header fields.
         self.response_headers_shrink = response_headers_shrink
         # site id
         self.site_id = site_id
@@ -33136,7 +42966,7 @@ class UpdateSiteCustomLogResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33209,11 +43039,23 @@ class UpdateSiteDeliveryTaskRequest(TeaModel):
         site_id: int = None,
         task_name: str = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   dcdn_log_access_l1 (default): access logs.
+        # *   dcdn_log_er: Edge Routine logs.
+        # *   dcdn_log_waf: firewall logs.
+        # *   dcdn_log_ipa: TCP/UDP proxy logs.
         self.business_type = business_type
+        # The discard rate.
         self.discard_rate = discard_rate
+        # The log fields that you want to include in real-time logs to be delivered. Separate the log fields with commas (,).
+        # 
         # This parameter is required.
         self.field_name = field_name
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The name of the delivery task.
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -33258,7 +43100,7 @@ class UpdateSiteDeliveryTaskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33329,9 +43171,14 @@ class UpdateSiteDeliveryTaskStatusRequest(TeaModel):
         site_id: int = None,
         task_name: str = None,
     ):
+        # Specifies whether to enable the delivery task.
+        # 
         # This parameter is required.
         self.method = method
+        # The website ID.
         self.site_id = site_id
+        # The name of the delivery task.
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -33370,9 +43217,14 @@ class UpdateSiteDeliveryTaskStatusResponseBody(TeaModel):
         status: str = None,
         task_name: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status of the delivery task. Valid values:
+        # 
+        # *   **online**\
+        # *   **offline**\
         self.status = status
+        # The name of the delivery task.
         self.task_name = task_name
 
     def validate(self):
@@ -33444,14 +43296,1945 @@ class UpdateSiteDeliveryTaskStatusResponse(TeaModel):
         return self
 
 
+class UpdateSiteFunctionRequestCacheReserve(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        instance_id: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateSiteFunctionRequestCacheRules(TeaModel):
+    def __init__(
+        self,
+        additional_cacheable_ports: str = None,
+        browser_cache_mode: str = None,
+        browser_cache_ttl: str = None,
+        bypass_cache: str = None,
+        cache_deception_armor: str = None,
+        cache_reserve_eligibility: str = None,
+        check_presence_cookie: str = None,
+        check_presence_header: str = None,
+        config_id: int = None,
+        edge_cache_mode: str = None,
+        edge_cache_ttl: str = None,
+        edge_status_code_cache_ttl: str = None,
+        include_cookie: str = None,
+        include_header: str = None,
+        query_string: str = None,
+        query_string_mode: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        serve_stale: str = None,
+        sort_query_string_for_cache: str = None,
+        user_device_type: str = None,
+        user_geo: str = None,
+        user_language: str = None,
+    ):
+        self.additional_cacheable_ports = additional_cacheable_ports
+        self.browser_cache_mode = browser_cache_mode
+        self.browser_cache_ttl = browser_cache_ttl
+        self.bypass_cache = bypass_cache
+        self.cache_deception_armor = cache_deception_armor
+        self.cache_reserve_eligibility = cache_reserve_eligibility
+        self.check_presence_cookie = check_presence_cookie
+        self.check_presence_header = check_presence_header
+        self.config_id = config_id
+        self.edge_cache_mode = edge_cache_mode
+        self.edge_cache_ttl = edge_cache_ttl
+        self.edge_status_code_cache_ttl = edge_status_code_cache_ttl
+        self.include_cookie = include_cookie
+        self.include_header = include_header
+        self.query_string = query_string
+        self.query_string_mode = query_string_mode
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.serve_stale = serve_stale
+        self.sort_query_string_for_cache = sort_query_string_for_cache
+        self.user_device_type = user_device_type
+        self.user_geo = user_geo
+        self.user_language = user_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_cacheable_ports is not None:
+            result['AdditionalCacheablePorts'] = self.additional_cacheable_ports
+        if self.browser_cache_mode is not None:
+            result['BrowserCacheMode'] = self.browser_cache_mode
+        if self.browser_cache_ttl is not None:
+            result['BrowserCacheTtl'] = self.browser_cache_ttl
+        if self.bypass_cache is not None:
+            result['BypassCache'] = self.bypass_cache
+        if self.cache_deception_armor is not None:
+            result['CacheDeceptionArmor'] = self.cache_deception_armor
+        if self.cache_reserve_eligibility is not None:
+            result['CacheReserveEligibility'] = self.cache_reserve_eligibility
+        if self.check_presence_cookie is not None:
+            result['CheckPresenceCookie'] = self.check_presence_cookie
+        if self.check_presence_header is not None:
+            result['CheckPresenceHeader'] = self.check_presence_header
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.edge_cache_mode is not None:
+            result['EdgeCacheMode'] = self.edge_cache_mode
+        if self.edge_cache_ttl is not None:
+            result['EdgeCacheTtl'] = self.edge_cache_ttl
+        if self.edge_status_code_cache_ttl is not None:
+            result['EdgeStatusCodeCacheTtl'] = self.edge_status_code_cache_ttl
+        if self.include_cookie is not None:
+            result['IncludeCookie'] = self.include_cookie
+        if self.include_header is not None:
+            result['IncludeHeader'] = self.include_header
+        if self.query_string is not None:
+            result['QueryString'] = self.query_string
+        if self.query_string_mode is not None:
+            result['QueryStringMode'] = self.query_string_mode
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.serve_stale is not None:
+            result['ServeStale'] = self.serve_stale
+        if self.sort_query_string_for_cache is not None:
+            result['SortQueryStringForCache'] = self.sort_query_string_for_cache
+        if self.user_device_type is not None:
+            result['UserDeviceType'] = self.user_device_type
+        if self.user_geo is not None:
+            result['UserGeo'] = self.user_geo
+        if self.user_language is not None:
+            result['UserLanguage'] = self.user_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdditionalCacheablePorts') is not None:
+            self.additional_cacheable_ports = m.get('AdditionalCacheablePorts')
+        if m.get('BrowserCacheMode') is not None:
+            self.browser_cache_mode = m.get('BrowserCacheMode')
+        if m.get('BrowserCacheTtl') is not None:
+            self.browser_cache_ttl = m.get('BrowserCacheTtl')
+        if m.get('BypassCache') is not None:
+            self.bypass_cache = m.get('BypassCache')
+        if m.get('CacheDeceptionArmor') is not None:
+            self.cache_deception_armor = m.get('CacheDeceptionArmor')
+        if m.get('CacheReserveEligibility') is not None:
+            self.cache_reserve_eligibility = m.get('CacheReserveEligibility')
+        if m.get('CheckPresenceCookie') is not None:
+            self.check_presence_cookie = m.get('CheckPresenceCookie')
+        if m.get('CheckPresenceHeader') is not None:
+            self.check_presence_header = m.get('CheckPresenceHeader')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('EdgeCacheMode') is not None:
+            self.edge_cache_mode = m.get('EdgeCacheMode')
+        if m.get('EdgeCacheTtl') is not None:
+            self.edge_cache_ttl = m.get('EdgeCacheTtl')
+        if m.get('EdgeStatusCodeCacheTtl') is not None:
+            self.edge_status_code_cache_ttl = m.get('EdgeStatusCodeCacheTtl')
+        if m.get('IncludeCookie') is not None:
+            self.include_cookie = m.get('IncludeCookie')
+        if m.get('IncludeHeader') is not None:
+            self.include_header = m.get('IncludeHeader')
+        if m.get('QueryString') is not None:
+            self.query_string = m.get('QueryString')
+        if m.get('QueryStringMode') is not None:
+            self.query_string_mode = m.get('QueryStringMode')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ServeStale') is not None:
+            self.serve_stale = m.get('ServeStale')
+        if m.get('SortQueryStringForCache') is not None:
+            self.sort_query_string_for_cache = m.get('SortQueryStringForCache')
+        if m.get('UserDeviceType') is not None:
+            self.user_device_type = m.get('UserDeviceType')
+        if m.get('UserGeo') is not None:
+            self.user_geo = m.get('UserGeo')
+        if m.get('UserLanguage') is not None:
+            self.user_language = m.get('UserLanguage')
+        return self
+
+
+class UpdateSiteFunctionRequestCacheTags(TeaModel):
+    def __init__(
+        self,
+        case_insensitive: str = None,
+        config_id: int = None,
+        tag_name: str = None,
+    ):
+        self.case_insensitive = case_insensitive
+        self.config_id = config_id
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.case_insensitive is not None:
+            result['CaseInsensitive'] = self.case_insensitive
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CaseInsensitive') is not None:
+            self.case_insensitive = m.get('CaseInsensitive')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class UpdateSiteFunctionRequestCnameFlattening(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        flatten_mode: str = None,
+    ):
+        self.config_id = config_id
+        self.flatten_mode = flatten_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.flatten_mode is not None:
+            result['FlattenMode'] = self.flatten_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('FlattenMode') is not None:
+            self.flatten_mode = m.get('FlattenMode')
+        return self
+
+
+class UpdateSiteFunctionRequestCompressionRules(TeaModel):
+    def __init__(
+        self,
+        brotli: str = None,
+        config_id: int = None,
+        gzip: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+    ):
+        self.brotli = brotli
+        self.config_id = config_id
+        self.gzip = gzip
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brotli is not None:
+            result['Brotli'] = self.brotli
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.gzip is not None:
+            result['Gzip'] = self.gzip
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Brotli') is not None:
+            self.brotli = m.get('Brotli')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Gzip') is not None:
+            self.gzip = m.get('Gzip')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class UpdateSiteFunctionRequestCrossBorderOptimization(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class UpdateSiteFunctionRequestDevelopmentMode(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operation = operation
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateSiteFunctionRequestHttpRequestHeaderModificationRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        request_header_modification: List[UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+    ):
+        self.config_id = config_id
+        self.request_header_modification = request_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.request_header_modification:
+            for k in self.request_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        result['RequestHeaderModification'] = []
+        if self.request_header_modification is not None:
+            for k in self.request_header_modification:
+                result['RequestHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        self.request_header_modification = []
+        if m.get('RequestHeaderModification') is not None:
+            for k in m.get('RequestHeaderModification'):
+                temp_model = UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification()
+                self.request_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operation = operation
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateSiteFunctionRequestHttpResponseHeaderModificationRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        response_header_modification: List[UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+    ):
+        self.config_id = config_id
+        self.response_header_modification = response_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.response_header_modification:
+            for k in self.response_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        result['ResponseHeaderModification'] = []
+        if self.response_header_modification is not None:
+            for k in self.response_header_modification:
+                result['ResponseHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        self.response_header_modification = []
+        if m.get('ResponseHeaderModification') is not None:
+            for k in m.get('ResponseHeaderModification'):
+                temp_model = UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification()
+                self.response_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class UpdateSiteFunctionRequestHttpsApplicationConfiguration(TeaModel):
+    def __init__(
+        self,
+        alt_svc: str = None,
+        alt_svc_clear: str = None,
+        alt_svc_ma: str = None,
+        alt_svc_persist: str = None,
+        config_id: int = None,
+        hsts: str = None,
+        hsts_include_subdomains: str = None,
+        hsts_max_age: str = None,
+        hsts_preload: str = None,
+        https_force: str = None,
+        https_force_code: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+    ):
+        self.alt_svc = alt_svc
+        self.alt_svc_clear = alt_svc_clear
+        self.alt_svc_ma = alt_svc_ma
+        self.alt_svc_persist = alt_svc_persist
+        self.config_id = config_id
+        self.hsts = hsts
+        self.hsts_include_subdomains = hsts_include_subdomains
+        self.hsts_max_age = hsts_max_age
+        self.hsts_preload = hsts_preload
+        self.https_force = https_force
+        self.https_force_code = https_force_code
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alt_svc is not None:
+            result['AltSvc'] = self.alt_svc
+        if self.alt_svc_clear is not None:
+            result['AltSvcClear'] = self.alt_svc_clear
+        if self.alt_svc_ma is not None:
+            result['AltSvcMa'] = self.alt_svc_ma
+        if self.alt_svc_persist is not None:
+            result['AltSvcPersist'] = self.alt_svc_persist
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.hsts is not None:
+            result['Hsts'] = self.hsts
+        if self.hsts_include_subdomains is not None:
+            result['HstsIncludeSubdomains'] = self.hsts_include_subdomains
+        if self.hsts_max_age is not None:
+            result['HstsMaxAge'] = self.hsts_max_age
+        if self.hsts_preload is not None:
+            result['HstsPreload'] = self.hsts_preload
+        if self.https_force is not None:
+            result['HttpsForce'] = self.https_force
+        if self.https_force_code is not None:
+            result['HttpsForceCode'] = self.https_force_code
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AltSvc') is not None:
+            self.alt_svc = m.get('AltSvc')
+        if m.get('AltSvcClear') is not None:
+            self.alt_svc_clear = m.get('AltSvcClear')
+        if m.get('AltSvcMa') is not None:
+            self.alt_svc_ma = m.get('AltSvcMa')
+        if m.get('AltSvcPersist') is not None:
+            self.alt_svc_persist = m.get('AltSvcPersist')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Hsts') is not None:
+            self.hsts = m.get('Hsts')
+        if m.get('HstsIncludeSubdomains') is not None:
+            self.hsts_include_subdomains = m.get('HstsIncludeSubdomains')
+        if m.get('HstsMaxAge') is not None:
+            self.hsts_max_age = m.get('HstsMaxAge')
+        if m.get('HstsPreload') is not None:
+            self.hsts_preload = m.get('HstsPreload')
+        if m.get('HttpsForce') is not None:
+            self.https_force = m.get('HttpsForce')
+        if m.get('HttpsForceCode') is not None:
+            self.https_force_code = m.get('HttpsForceCode')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class UpdateSiteFunctionRequestHttpsBasicConfiguration(TeaModel):
+    def __init__(
+        self,
+        ciphersuite: str = None,
+        ciphersuite_group: str = None,
+        config_id: int = None,
+        http_2: str = None,
+        http_3: str = None,
+        https: str = None,
+        ocsp_stapling: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        tls_10: str = None,
+        tls_11: str = None,
+        tls_12: str = None,
+        tls_13: str = None,
+    ):
+        self.ciphersuite = ciphersuite
+        self.ciphersuite_group = ciphersuite_group
+        self.config_id = config_id
+        self.http_2 = http_2
+        self.http_3 = http_3
+        self.https = https
+        self.ocsp_stapling = ocsp_stapling
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.tls_10 = tls_10
+        self.tls_11 = tls_11
+        self.tls_12 = tls_12
+        self.tls_13 = tls_13
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ciphersuite is not None:
+            result['Ciphersuite'] = self.ciphersuite
+        if self.ciphersuite_group is not None:
+            result['CiphersuiteGroup'] = self.ciphersuite_group
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.http_2 is not None:
+            result['Http2'] = self.http_2
+        if self.http_3 is not None:
+            result['Http3'] = self.http_3
+        if self.https is not None:
+            result['Https'] = self.https
+        if self.ocsp_stapling is not None:
+            result['OcspStapling'] = self.ocsp_stapling
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.tls_10 is not None:
+            result['Tls10'] = self.tls_10
+        if self.tls_11 is not None:
+            result['Tls11'] = self.tls_11
+        if self.tls_12 is not None:
+            result['Tls12'] = self.tls_12
+        if self.tls_13 is not None:
+            result['Tls13'] = self.tls_13
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ciphersuite') is not None:
+            self.ciphersuite = m.get('Ciphersuite')
+        if m.get('CiphersuiteGroup') is not None:
+            self.ciphersuite_group = m.get('CiphersuiteGroup')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Http2') is not None:
+            self.http_2 = m.get('Http2')
+        if m.get('Http3') is not None:
+            self.http_3 = m.get('Http3')
+        if m.get('Https') is not None:
+            self.https = m.get('Https')
+        if m.get('OcspStapling') is not None:
+            self.ocsp_stapling = m.get('OcspStapling')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Tls10') is not None:
+            self.tls_10 = m.get('Tls10')
+        if m.get('Tls11') is not None:
+            self.tls_11 = m.get('Tls11')
+        if m.get('Tls12') is not None:
+            self.tls_12 = m.get('Tls12')
+        if m.get('Tls13') is not None:
+            self.tls_13 = m.get('Tls13')
+        return self
+
+
+class UpdateSiteFunctionRequestImageTransform(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class UpdateSiteFunctionRequestIpv6(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class UpdateSiteFunctionRequestManagedTransforms(TeaModel):
+    def __init__(
+        self,
+        add_client_geolocation_headers: str = None,
+        add_real_client_ip_header: str = None,
+        config_id: int = None,
+    ):
+        self.add_client_geolocation_headers = add_client_geolocation_headers
+        self.add_real_client_ip_header = add_real_client_ip_header
+        self.config_id = config_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_client_geolocation_headers is not None:
+            result['AddClientGeolocationHeaders'] = self.add_client_geolocation_headers
+        if self.add_real_client_ip_header is not None:
+            result['AddRealClientIpHeader'] = self.add_real_client_ip_header
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddClientGeolocationHeaders') is not None:
+            self.add_client_geolocation_headers = m.get('AddClientGeolocationHeaders')
+        if m.get('AddRealClientIpHeader') is not None:
+            self.add_real_client_ip_header = m.get('AddRealClientIpHeader')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        return self
+
+
+class UpdateSiteFunctionRequestNetworkOptimization(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        grpc: str = None,
+        http_2origin: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        smart_routing: str = None,
+        upload_max_filesize: str = None,
+        websocket: str = None,
+    ):
+        self.config_id = config_id
+        self.grpc = grpc
+        self.http_2origin = http_2origin
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.smart_routing = smart_routing
+        self.upload_max_filesize = upload_max_filesize
+        self.websocket = websocket
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.grpc is not None:
+            result['Grpc'] = self.grpc
+        if self.http_2origin is not None:
+            result['Http2Origin'] = self.http_2origin
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.smart_routing is not None:
+            result['SmartRouting'] = self.smart_routing
+        if self.upload_max_filesize is not None:
+            result['UploadMaxFilesize'] = self.upload_max_filesize
+        if self.websocket is not None:
+            result['Websocket'] = self.websocket
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Grpc') is not None:
+            self.grpc = m.get('Grpc')
+        if m.get('Http2Origin') is not None:
+            self.http_2origin = m.get('Http2Origin')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SmartRouting') is not None:
+            self.smart_routing = m.get('SmartRouting')
+        if m.get('UploadMaxFilesize') is not None:
+            self.upload_max_filesize = m.get('UploadMaxFilesize')
+        if m.get('Websocket') is not None:
+            self.websocket = m.get('Websocket')
+        return self
+
+
+class UpdateSiteFunctionRequestOriginRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        dns_record: str = None,
+        origin_host: str = None,
+        origin_http_port: str = None,
+        origin_https_port: str = None,
+        origin_scheme: str = None,
+        origin_sni: str = None,
+        range: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+    ):
+        self.config_id = config_id
+        self.dns_record = dns_record
+        self.origin_host = origin_host
+        self.origin_http_port = origin_http_port
+        self.origin_https_port = origin_https_port
+        self.origin_scheme = origin_scheme
+        self.origin_sni = origin_sni
+        self.range = range
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.dns_record is not None:
+            result['DnsRecord'] = self.dns_record
+        if self.origin_host is not None:
+            result['OriginHost'] = self.origin_host
+        if self.origin_http_port is not None:
+            result['OriginHttpPort'] = self.origin_http_port
+        if self.origin_https_port is not None:
+            result['OriginHttpsPort'] = self.origin_https_port
+        if self.origin_scheme is not None:
+            result['OriginScheme'] = self.origin_scheme
+        if self.origin_sni is not None:
+            result['OriginSni'] = self.origin_sni
+        if self.range is not None:
+            result['Range'] = self.range
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('DnsRecord') is not None:
+            self.dns_record = m.get('DnsRecord')
+        if m.get('OriginHost') is not None:
+            self.origin_host = m.get('OriginHost')
+        if m.get('OriginHttpPort') is not None:
+            self.origin_http_port = m.get('OriginHttpPort')
+        if m.get('OriginHttpsPort') is not None:
+            self.origin_https_port = m.get('OriginHttpsPort')
+        if m.get('OriginScheme') is not None:
+            self.origin_scheme = m.get('OriginScheme')
+        if m.get('OriginSni') is not None:
+            self.origin_sni = m.get('OriginSni')
+        if m.get('Range') is not None:
+            self.range = m.get('Range')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class UpdateSiteFunctionRequestRedirectRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        reserve_query_string: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        status_code: str = None,
+        target_url: str = None,
+        type: str = None,
+    ):
+        self.config_id = config_id
+        self.reserve_query_string = reserve_query_string
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.status_code = status_code
+        self.target_url = target_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.reserve_query_string is not None:
+            result['ReserveQueryString'] = self.reserve_query_string
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ReserveQueryString') is not None:
+            self.reserve_query_string = m.get('ReserveQueryString')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class UpdateSiteFunctionRequestRewriteUrlRules(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        query_string: str = None,
+        rewrite_query_string_type: str = None,
+        rewrite_uri_type: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        uri: str = None,
+    ):
+        self.config_id = config_id
+        self.query_string = query_string
+        self.rewrite_query_string_type = rewrite_query_string_type
+        self.rewrite_uri_type = rewrite_uri_type
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.query_string is not None:
+            result['QueryString'] = self.query_string
+        if self.rewrite_query_string_type is not None:
+            result['RewriteQueryStringType'] = self.rewrite_query_string_type
+        if self.rewrite_uri_type is not None:
+            result['RewriteUriType'] = self.rewrite_uri_type
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('QueryString') is not None:
+            self.query_string = m.get('QueryString')
+        if m.get('RewriteQueryStringType') is not None:
+            self.rewrite_query_string_type = m.get('RewriteQueryStringType')
+        if m.get('RewriteUriType') is not None:
+            self.rewrite_uri_type = m.get('RewriteUriType')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class UpdateSiteFunctionRequestSeoBypass(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class UpdateSiteFunctionRequestSiteNameExclusive(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class UpdateSiteFunctionRequestSitePause(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        paused: str = None,
+    ):
+        self.config_id = config_id
+        self.paused = paused
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.paused is not None:
+            result['Paused'] = self.paused
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Paused') is not None:
+            self.paused = m.get('Paused')
+        return self
+
+
+class UpdateSiteFunctionRequestTieredCache(TeaModel):
+    def __init__(
+        self,
+        cache_architecture_mode: str = None,
+        config_id: int = None,
+    ):
+        self.cache_architecture_mode = cache_architecture_mode
+        self.config_id = config_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cache_architecture_mode is not None:
+            result['CacheArchitectureMode'] = self.cache_architecture_mode
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CacheArchitectureMode') is not None:
+            self.cache_architecture_mode = m.get('CacheArchitectureMode')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        return self
+
+
+class UpdateSiteFunctionRequest(TeaModel):
+    def __init__(
+        self,
+        cache_reserve: List[UpdateSiteFunctionRequestCacheReserve] = None,
+        cache_rules: List[UpdateSiteFunctionRequestCacheRules] = None,
+        cache_tags: List[UpdateSiteFunctionRequestCacheTags] = None,
+        cname_flattening: List[UpdateSiteFunctionRequestCnameFlattening] = None,
+        compression_rules: List[UpdateSiteFunctionRequestCompressionRules] = None,
+        cross_border_optimization: List[UpdateSiteFunctionRequestCrossBorderOptimization] = None,
+        development_mode: List[UpdateSiteFunctionRequestDevelopmentMode] = None,
+        http_request_header_modification_rules: List[UpdateSiteFunctionRequestHttpRequestHeaderModificationRules] = None,
+        http_response_header_modification_rules: List[UpdateSiteFunctionRequestHttpResponseHeaderModificationRules] = None,
+        https_application_configuration: List[UpdateSiteFunctionRequestHttpsApplicationConfiguration] = None,
+        https_basic_configuration: List[UpdateSiteFunctionRequestHttpsBasicConfiguration] = None,
+        image_transform: List[UpdateSiteFunctionRequestImageTransform] = None,
+        ipv_6: List[UpdateSiteFunctionRequestIpv6] = None,
+        managed_transforms: List[UpdateSiteFunctionRequestManagedTransforms] = None,
+        network_optimization: List[UpdateSiteFunctionRequestNetworkOptimization] = None,
+        origin_rules: List[UpdateSiteFunctionRequestOriginRules] = None,
+        redirect_rules: List[UpdateSiteFunctionRequestRedirectRules] = None,
+        rewrite_url_rules: List[UpdateSiteFunctionRequestRewriteUrlRules] = None,
+        seo_bypass: List[UpdateSiteFunctionRequestSeoBypass] = None,
+        site_id: int = None,
+        site_name_exclusive: List[UpdateSiteFunctionRequestSiteNameExclusive] = None,
+        site_pause: List[UpdateSiteFunctionRequestSitePause] = None,
+        tiered_cache: List[UpdateSiteFunctionRequestTieredCache] = None,
+    ):
+        self.cache_reserve = cache_reserve
+        self.cache_rules = cache_rules
+        self.cache_tags = cache_tags
+        self.cname_flattening = cname_flattening
+        self.compression_rules = compression_rules
+        self.cross_border_optimization = cross_border_optimization
+        self.development_mode = development_mode
+        self.http_request_header_modification_rules = http_request_header_modification_rules
+        self.http_response_header_modification_rules = http_response_header_modification_rules
+        self.https_application_configuration = https_application_configuration
+        self.https_basic_configuration = https_basic_configuration
+        self.image_transform = image_transform
+        self.ipv_6 = ipv_6
+        self.managed_transforms = managed_transforms
+        self.network_optimization = network_optimization
+        self.origin_rules = origin_rules
+        self.redirect_rules = redirect_rules
+        self.rewrite_url_rules = rewrite_url_rules
+        self.seo_bypass = seo_bypass
+        # This parameter is required.
+        self.site_id = site_id
+        self.site_name_exclusive = site_name_exclusive
+        self.site_pause = site_pause
+        self.tiered_cache = tiered_cache
+
+    def validate(self):
+        if self.cache_reserve:
+            for k in self.cache_reserve:
+                if k:
+                    k.validate()
+        if self.cache_rules:
+            for k in self.cache_rules:
+                if k:
+                    k.validate()
+        if self.cache_tags:
+            for k in self.cache_tags:
+                if k:
+                    k.validate()
+        if self.cname_flattening:
+            for k in self.cname_flattening:
+                if k:
+                    k.validate()
+        if self.compression_rules:
+            for k in self.compression_rules:
+                if k:
+                    k.validate()
+        if self.cross_border_optimization:
+            for k in self.cross_border_optimization:
+                if k:
+                    k.validate()
+        if self.development_mode:
+            for k in self.development_mode:
+                if k:
+                    k.validate()
+        if self.http_request_header_modification_rules:
+            for k in self.http_request_header_modification_rules:
+                if k:
+                    k.validate()
+        if self.http_response_header_modification_rules:
+            for k in self.http_response_header_modification_rules:
+                if k:
+                    k.validate()
+        if self.https_application_configuration:
+            for k in self.https_application_configuration:
+                if k:
+                    k.validate()
+        if self.https_basic_configuration:
+            for k in self.https_basic_configuration:
+                if k:
+                    k.validate()
+        if self.image_transform:
+            for k in self.image_transform:
+                if k:
+                    k.validate()
+        if self.ipv_6:
+            for k in self.ipv_6:
+                if k:
+                    k.validate()
+        if self.managed_transforms:
+            for k in self.managed_transforms:
+                if k:
+                    k.validate()
+        if self.network_optimization:
+            for k in self.network_optimization:
+                if k:
+                    k.validate()
+        if self.origin_rules:
+            for k in self.origin_rules:
+                if k:
+                    k.validate()
+        if self.redirect_rules:
+            for k in self.redirect_rules:
+                if k:
+                    k.validate()
+        if self.rewrite_url_rules:
+            for k in self.rewrite_url_rules:
+                if k:
+                    k.validate()
+        if self.seo_bypass:
+            for k in self.seo_bypass:
+                if k:
+                    k.validate()
+        if self.site_name_exclusive:
+            for k in self.site_name_exclusive:
+                if k:
+                    k.validate()
+        if self.site_pause:
+            for k in self.site_pause:
+                if k:
+                    k.validate()
+        if self.tiered_cache:
+            for k in self.tiered_cache:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CacheReserve'] = []
+        if self.cache_reserve is not None:
+            for k in self.cache_reserve:
+                result['CacheReserve'].append(k.to_map() if k else None)
+        result['CacheRules'] = []
+        if self.cache_rules is not None:
+            for k in self.cache_rules:
+                result['CacheRules'].append(k.to_map() if k else None)
+        result['CacheTags'] = []
+        if self.cache_tags is not None:
+            for k in self.cache_tags:
+                result['CacheTags'].append(k.to_map() if k else None)
+        result['CnameFlattening'] = []
+        if self.cname_flattening is not None:
+            for k in self.cname_flattening:
+                result['CnameFlattening'].append(k.to_map() if k else None)
+        result['CompressionRules'] = []
+        if self.compression_rules is not None:
+            for k in self.compression_rules:
+                result['CompressionRules'].append(k.to_map() if k else None)
+        result['CrossBorderOptimization'] = []
+        if self.cross_border_optimization is not None:
+            for k in self.cross_border_optimization:
+                result['CrossBorderOptimization'].append(k.to_map() if k else None)
+        result['DevelopmentMode'] = []
+        if self.development_mode is not None:
+            for k in self.development_mode:
+                result['DevelopmentMode'].append(k.to_map() if k else None)
+        result['HttpRequestHeaderModificationRules'] = []
+        if self.http_request_header_modification_rules is not None:
+            for k in self.http_request_header_modification_rules:
+                result['HttpRequestHeaderModificationRules'].append(k.to_map() if k else None)
+        result['HttpResponseHeaderModificationRules'] = []
+        if self.http_response_header_modification_rules is not None:
+            for k in self.http_response_header_modification_rules:
+                result['HttpResponseHeaderModificationRules'].append(k.to_map() if k else None)
+        result['HttpsApplicationConfiguration'] = []
+        if self.https_application_configuration is not None:
+            for k in self.https_application_configuration:
+                result['HttpsApplicationConfiguration'].append(k.to_map() if k else None)
+        result['HttpsBasicConfiguration'] = []
+        if self.https_basic_configuration is not None:
+            for k in self.https_basic_configuration:
+                result['HttpsBasicConfiguration'].append(k.to_map() if k else None)
+        result['ImageTransform'] = []
+        if self.image_transform is not None:
+            for k in self.image_transform:
+                result['ImageTransform'].append(k.to_map() if k else None)
+        result['Ipv6'] = []
+        if self.ipv_6 is not None:
+            for k in self.ipv_6:
+                result['Ipv6'].append(k.to_map() if k else None)
+        result['ManagedTransforms'] = []
+        if self.managed_transforms is not None:
+            for k in self.managed_transforms:
+                result['ManagedTransforms'].append(k.to_map() if k else None)
+        result['NetworkOptimization'] = []
+        if self.network_optimization is not None:
+            for k in self.network_optimization:
+                result['NetworkOptimization'].append(k.to_map() if k else None)
+        result['OriginRules'] = []
+        if self.origin_rules is not None:
+            for k in self.origin_rules:
+                result['OriginRules'].append(k.to_map() if k else None)
+        result['RedirectRules'] = []
+        if self.redirect_rules is not None:
+            for k in self.redirect_rules:
+                result['RedirectRules'].append(k.to_map() if k else None)
+        result['RewriteUrlRules'] = []
+        if self.rewrite_url_rules is not None:
+            for k in self.rewrite_url_rules:
+                result['RewriteUrlRules'].append(k.to_map() if k else None)
+        result['SeoBypass'] = []
+        if self.seo_bypass is not None:
+            for k in self.seo_bypass:
+                result['SeoBypass'].append(k.to_map() if k else None)
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        result['SiteNameExclusive'] = []
+        if self.site_name_exclusive is not None:
+            for k in self.site_name_exclusive:
+                result['SiteNameExclusive'].append(k.to_map() if k else None)
+        result['SitePause'] = []
+        if self.site_pause is not None:
+            for k in self.site_pause:
+                result['SitePause'].append(k.to_map() if k else None)
+        result['TieredCache'] = []
+        if self.tiered_cache is not None:
+            for k in self.tiered_cache:
+                result['TieredCache'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cache_reserve = []
+        if m.get('CacheReserve') is not None:
+            for k in m.get('CacheReserve'):
+                temp_model = UpdateSiteFunctionRequestCacheReserve()
+                self.cache_reserve.append(temp_model.from_map(k))
+        self.cache_rules = []
+        if m.get('CacheRules') is not None:
+            for k in m.get('CacheRules'):
+                temp_model = UpdateSiteFunctionRequestCacheRules()
+                self.cache_rules.append(temp_model.from_map(k))
+        self.cache_tags = []
+        if m.get('CacheTags') is not None:
+            for k in m.get('CacheTags'):
+                temp_model = UpdateSiteFunctionRequestCacheTags()
+                self.cache_tags.append(temp_model.from_map(k))
+        self.cname_flattening = []
+        if m.get('CnameFlattening') is not None:
+            for k in m.get('CnameFlattening'):
+                temp_model = UpdateSiteFunctionRequestCnameFlattening()
+                self.cname_flattening.append(temp_model.from_map(k))
+        self.compression_rules = []
+        if m.get('CompressionRules') is not None:
+            for k in m.get('CompressionRules'):
+                temp_model = UpdateSiteFunctionRequestCompressionRules()
+                self.compression_rules.append(temp_model.from_map(k))
+        self.cross_border_optimization = []
+        if m.get('CrossBorderOptimization') is not None:
+            for k in m.get('CrossBorderOptimization'):
+                temp_model = UpdateSiteFunctionRequestCrossBorderOptimization()
+                self.cross_border_optimization.append(temp_model.from_map(k))
+        self.development_mode = []
+        if m.get('DevelopmentMode') is not None:
+            for k in m.get('DevelopmentMode'):
+                temp_model = UpdateSiteFunctionRequestDevelopmentMode()
+                self.development_mode.append(temp_model.from_map(k))
+        self.http_request_header_modification_rules = []
+        if m.get('HttpRequestHeaderModificationRules') is not None:
+            for k in m.get('HttpRequestHeaderModificationRules'):
+                temp_model = UpdateSiteFunctionRequestHttpRequestHeaderModificationRules()
+                self.http_request_header_modification_rules.append(temp_model.from_map(k))
+        self.http_response_header_modification_rules = []
+        if m.get('HttpResponseHeaderModificationRules') is not None:
+            for k in m.get('HttpResponseHeaderModificationRules'):
+                temp_model = UpdateSiteFunctionRequestHttpResponseHeaderModificationRules()
+                self.http_response_header_modification_rules.append(temp_model.from_map(k))
+        self.https_application_configuration = []
+        if m.get('HttpsApplicationConfiguration') is not None:
+            for k in m.get('HttpsApplicationConfiguration'):
+                temp_model = UpdateSiteFunctionRequestHttpsApplicationConfiguration()
+                self.https_application_configuration.append(temp_model.from_map(k))
+        self.https_basic_configuration = []
+        if m.get('HttpsBasicConfiguration') is not None:
+            for k in m.get('HttpsBasicConfiguration'):
+                temp_model = UpdateSiteFunctionRequestHttpsBasicConfiguration()
+                self.https_basic_configuration.append(temp_model.from_map(k))
+        self.image_transform = []
+        if m.get('ImageTransform') is not None:
+            for k in m.get('ImageTransform'):
+                temp_model = UpdateSiteFunctionRequestImageTransform()
+                self.image_transform.append(temp_model.from_map(k))
+        self.ipv_6 = []
+        if m.get('Ipv6') is not None:
+            for k in m.get('Ipv6'):
+                temp_model = UpdateSiteFunctionRequestIpv6()
+                self.ipv_6.append(temp_model.from_map(k))
+        self.managed_transforms = []
+        if m.get('ManagedTransforms') is not None:
+            for k in m.get('ManagedTransforms'):
+                temp_model = UpdateSiteFunctionRequestManagedTransforms()
+                self.managed_transforms.append(temp_model.from_map(k))
+        self.network_optimization = []
+        if m.get('NetworkOptimization') is not None:
+            for k in m.get('NetworkOptimization'):
+                temp_model = UpdateSiteFunctionRequestNetworkOptimization()
+                self.network_optimization.append(temp_model.from_map(k))
+        self.origin_rules = []
+        if m.get('OriginRules') is not None:
+            for k in m.get('OriginRules'):
+                temp_model = UpdateSiteFunctionRequestOriginRules()
+                self.origin_rules.append(temp_model.from_map(k))
+        self.redirect_rules = []
+        if m.get('RedirectRules') is not None:
+            for k in m.get('RedirectRules'):
+                temp_model = UpdateSiteFunctionRequestRedirectRules()
+                self.redirect_rules.append(temp_model.from_map(k))
+        self.rewrite_url_rules = []
+        if m.get('RewriteUrlRules') is not None:
+            for k in m.get('RewriteUrlRules'):
+                temp_model = UpdateSiteFunctionRequestRewriteUrlRules()
+                self.rewrite_url_rules.append(temp_model.from_map(k))
+        self.seo_bypass = []
+        if m.get('SeoBypass') is not None:
+            for k in m.get('SeoBypass'):
+                temp_model = UpdateSiteFunctionRequestSeoBypass()
+                self.seo_bypass.append(temp_model.from_map(k))
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        self.site_name_exclusive = []
+        if m.get('SiteNameExclusive') is not None:
+            for k in m.get('SiteNameExclusive'):
+                temp_model = UpdateSiteFunctionRequestSiteNameExclusive()
+                self.site_name_exclusive.append(temp_model.from_map(k))
+        self.site_pause = []
+        if m.get('SitePause') is not None:
+            for k in m.get('SitePause'):
+                temp_model = UpdateSiteFunctionRequestSitePause()
+                self.site_pause.append(temp_model.from_map(k))
+        self.tiered_cache = []
+        if m.get('TieredCache') is not None:
+            for k in m.get('TieredCache'):
+                temp_model = UpdateSiteFunctionRequestTieredCache()
+                self.tiered_cache.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateSiteFunctionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cache_reserve_shrink: str = None,
+        cache_rules_shrink: str = None,
+        cache_tags_shrink: str = None,
+        cname_flattening_shrink: str = None,
+        compression_rules_shrink: str = None,
+        cross_border_optimization_shrink: str = None,
+        development_mode_shrink: str = None,
+        http_request_header_modification_rules_shrink: str = None,
+        http_response_header_modification_rules_shrink: str = None,
+        https_application_configuration_shrink: str = None,
+        https_basic_configuration_shrink: str = None,
+        image_transform_shrink: str = None,
+        ipv_6shrink: str = None,
+        managed_transforms_shrink: str = None,
+        network_optimization_shrink: str = None,
+        origin_rules_shrink: str = None,
+        redirect_rules_shrink: str = None,
+        rewrite_url_rules_shrink: str = None,
+        seo_bypass_shrink: str = None,
+        site_id: int = None,
+        site_name_exclusive_shrink: str = None,
+        site_pause_shrink: str = None,
+        tiered_cache_shrink: str = None,
+    ):
+        self.cache_reserve_shrink = cache_reserve_shrink
+        self.cache_rules_shrink = cache_rules_shrink
+        self.cache_tags_shrink = cache_tags_shrink
+        self.cname_flattening_shrink = cname_flattening_shrink
+        self.compression_rules_shrink = compression_rules_shrink
+        self.cross_border_optimization_shrink = cross_border_optimization_shrink
+        self.development_mode_shrink = development_mode_shrink
+        self.http_request_header_modification_rules_shrink = http_request_header_modification_rules_shrink
+        self.http_response_header_modification_rules_shrink = http_response_header_modification_rules_shrink
+        self.https_application_configuration_shrink = https_application_configuration_shrink
+        self.https_basic_configuration_shrink = https_basic_configuration_shrink
+        self.image_transform_shrink = image_transform_shrink
+        self.ipv_6shrink = ipv_6shrink
+        self.managed_transforms_shrink = managed_transforms_shrink
+        self.network_optimization_shrink = network_optimization_shrink
+        self.origin_rules_shrink = origin_rules_shrink
+        self.redirect_rules_shrink = redirect_rules_shrink
+        self.rewrite_url_rules_shrink = rewrite_url_rules_shrink
+        self.seo_bypass_shrink = seo_bypass_shrink
+        # This parameter is required.
+        self.site_id = site_id
+        self.site_name_exclusive_shrink = site_name_exclusive_shrink
+        self.site_pause_shrink = site_pause_shrink
+        self.tiered_cache_shrink = tiered_cache_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cache_reserve_shrink is not None:
+            result['CacheReserve'] = self.cache_reserve_shrink
+        if self.cache_rules_shrink is not None:
+            result['CacheRules'] = self.cache_rules_shrink
+        if self.cache_tags_shrink is not None:
+            result['CacheTags'] = self.cache_tags_shrink
+        if self.cname_flattening_shrink is not None:
+            result['CnameFlattening'] = self.cname_flattening_shrink
+        if self.compression_rules_shrink is not None:
+            result['CompressionRules'] = self.compression_rules_shrink
+        if self.cross_border_optimization_shrink is not None:
+            result['CrossBorderOptimization'] = self.cross_border_optimization_shrink
+        if self.development_mode_shrink is not None:
+            result['DevelopmentMode'] = self.development_mode_shrink
+        if self.http_request_header_modification_rules_shrink is not None:
+            result['HttpRequestHeaderModificationRules'] = self.http_request_header_modification_rules_shrink
+        if self.http_response_header_modification_rules_shrink is not None:
+            result['HttpResponseHeaderModificationRules'] = self.http_response_header_modification_rules_shrink
+        if self.https_application_configuration_shrink is not None:
+            result['HttpsApplicationConfiguration'] = self.https_application_configuration_shrink
+        if self.https_basic_configuration_shrink is not None:
+            result['HttpsBasicConfiguration'] = self.https_basic_configuration_shrink
+        if self.image_transform_shrink is not None:
+            result['ImageTransform'] = self.image_transform_shrink
+        if self.ipv_6shrink is not None:
+            result['Ipv6'] = self.ipv_6shrink
+        if self.managed_transforms_shrink is not None:
+            result['ManagedTransforms'] = self.managed_transforms_shrink
+        if self.network_optimization_shrink is not None:
+            result['NetworkOptimization'] = self.network_optimization_shrink
+        if self.origin_rules_shrink is not None:
+            result['OriginRules'] = self.origin_rules_shrink
+        if self.redirect_rules_shrink is not None:
+            result['RedirectRules'] = self.redirect_rules_shrink
+        if self.rewrite_url_rules_shrink is not None:
+            result['RewriteUrlRules'] = self.rewrite_url_rules_shrink
+        if self.seo_bypass_shrink is not None:
+            result['SeoBypass'] = self.seo_bypass_shrink
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name_exclusive_shrink is not None:
+            result['SiteNameExclusive'] = self.site_name_exclusive_shrink
+        if self.site_pause_shrink is not None:
+            result['SitePause'] = self.site_pause_shrink
+        if self.tiered_cache_shrink is not None:
+            result['TieredCache'] = self.tiered_cache_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CacheReserve') is not None:
+            self.cache_reserve_shrink = m.get('CacheReserve')
+        if m.get('CacheRules') is not None:
+            self.cache_rules_shrink = m.get('CacheRules')
+        if m.get('CacheTags') is not None:
+            self.cache_tags_shrink = m.get('CacheTags')
+        if m.get('CnameFlattening') is not None:
+            self.cname_flattening_shrink = m.get('CnameFlattening')
+        if m.get('CompressionRules') is not None:
+            self.compression_rules_shrink = m.get('CompressionRules')
+        if m.get('CrossBorderOptimization') is not None:
+            self.cross_border_optimization_shrink = m.get('CrossBorderOptimization')
+        if m.get('DevelopmentMode') is not None:
+            self.development_mode_shrink = m.get('DevelopmentMode')
+        if m.get('HttpRequestHeaderModificationRules') is not None:
+            self.http_request_header_modification_rules_shrink = m.get('HttpRequestHeaderModificationRules')
+        if m.get('HttpResponseHeaderModificationRules') is not None:
+            self.http_response_header_modification_rules_shrink = m.get('HttpResponseHeaderModificationRules')
+        if m.get('HttpsApplicationConfiguration') is not None:
+            self.https_application_configuration_shrink = m.get('HttpsApplicationConfiguration')
+        if m.get('HttpsBasicConfiguration') is not None:
+            self.https_basic_configuration_shrink = m.get('HttpsBasicConfiguration')
+        if m.get('ImageTransform') is not None:
+            self.image_transform_shrink = m.get('ImageTransform')
+        if m.get('Ipv6') is not None:
+            self.ipv_6shrink = m.get('Ipv6')
+        if m.get('ManagedTransforms') is not None:
+            self.managed_transforms_shrink = m.get('ManagedTransforms')
+        if m.get('NetworkOptimization') is not None:
+            self.network_optimization_shrink = m.get('NetworkOptimization')
+        if m.get('OriginRules') is not None:
+            self.origin_rules_shrink = m.get('OriginRules')
+        if m.get('RedirectRules') is not None:
+            self.redirect_rules_shrink = m.get('RedirectRules')
+        if m.get('RewriteUrlRules') is not None:
+            self.rewrite_url_rules_shrink = m.get('RewriteUrlRules')
+        if m.get('SeoBypass') is not None:
+            self.seo_bypass_shrink = m.get('SeoBypass')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteNameExclusive') is not None:
+            self.site_name_exclusive_shrink = m.get('SiteNameExclusive')
+        if m.get('SitePause') is not None:
+            self.site_pause_shrink = m.get('SitePause')
+        if m.get('TieredCache') is not None:
+            self.tiered_cache_shrink = m.get('TieredCache')
+        return self
+
+
+class UpdateSiteFunctionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateSiteFunctionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSiteFunctionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSiteFunctionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateSiteVanityNSRequest(TeaModel):
     def __init__(
         self,
         site_id: int = None,
         vanity_nslist: str = None,
     ):
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The custom nameserver names. You can specify two to five custom nameserver names. Separate multiple names with commas (,).
         self.vanity_nslist = vanity_nslist
 
     def validate(self):
@@ -33483,7 +45266,7 @@ class UpdateSiteVanityNSResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33555,10 +45338,21 @@ class UpdateUserDeliveryTaskRequest(TeaModel):
         field_name: str = None,
         task_name: str = None,
     ):
+        # The log category. Valid values:
+        # 
+        # *   dcdn_log_access_l1 (default): access logs.
+        # *   dcdn_log_er: Edge Routine logs.
+        # *   dcdn_log_waf: firewall logs.
+        # *   dcdn_log_ipa: TCP/UDP proxy logs.
         self.business_type = business_type
+        # The discard rate. Default value: 0.
         self.discard_rate = discard_rate
+        # The log fields that you want to include in logs to be delivered. Separate the log fields with commas (,).
+        # 
         # This parameter is required.
         self.field_name = field_name
+        # The name of the delivery task.
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -33599,7 +45393,7 @@ class UpdateUserDeliveryTaskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33669,8 +45463,12 @@ class UpdateUserDeliveryTaskStatusRequest(TeaModel):
         method: str = None,
         task_name: str = None,
     ):
+        # Enables or disables the delivery task. Valid values: online and offline.
+        # 
         # This parameter is required.
         self.method = method
+        # The name of the delivery task.
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -33705,9 +45503,11 @@ class UpdateUserDeliveryTaskStatusResponseBody(TeaModel):
         status: str = None,
         task_name: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status of the delivery task.
         self.status = status
+        # The name of the delivery task.
         self.task_name = task_name
 
     def validate(self):
@@ -33789,13 +45589,21 @@ class UpdateWafRuleRequest(TeaModel):
         site_version: int = None,
         status: str = None,
     ):
+        # The configuration of the rule.
         self.config = config
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The order of the rule in the ruleset.
         self.position = position
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
+        # The status of the rule.
         self.status = status
 
     def validate(self):
@@ -33850,13 +45658,21 @@ class UpdateWafRuleShrinkRequest(TeaModel):
         site_version: int = None,
         status: str = None,
     ):
+        # The configuration of the rule.
         self.config_shrink = config_shrink
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The order of the rule in the ruleset.
         self.position = position
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
+        # The status of the rule.
         self.status = status
 
     def validate(self):
@@ -33905,7 +45721,9 @@ class UpdateWafRuleResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The ID of the WAF rule.[](~~2850237~~)
         self.id = id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33981,10 +45799,15 @@ class UpdateWafRulesetRequest(TeaModel):
         site_version: int = None,
         status: str = None,
     ):
+        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
+        # The version of the website.
         self.site_version = site_version
+        # The status to which you want to change the ruleset.
         self.status = status
 
     def validate(self):
@@ -34024,6 +45847,7 @@ class UpdateWafRulesetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -34094,8 +45918,11 @@ class UpdateWaitingRoomRequestHostNameAndPath(TeaModel):
         path: str = None,
         subdomain: str = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The probe path.
         self.path = path
+        # The subdomain.
         self.subdomain = subdomain
 
     def validate(self):
@@ -34148,25 +45975,73 @@ class UpdateWaitingRoomRequest(TeaModel):
         waiting_room_id: str = None,
         waiting_room_type: str = None,
     ):
+        # The name of the custom cookie.
         self.cookie_name = cookie_name
+        # The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
         self.custom_page_html = custom_page_html
+        # The description of the waiting room.
         self.description = description
+        # Specifies whether to disable session renewal. Valid values:
+        # 
+        # *   on
+        # *   off
         self.disable_session_renewal_enable = disable_session_renewal_enable
+        # Specifies whether to enable the waiting room. Valid values:
+        # 
+        # *   on
+        # *   off
         self.enable = enable
+        # The hostname and path.
         self.host_name_and_path = host_name_and_path
+        # Specifies whether to enable JSON response. If JSON response is enabled, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+        # 
+        # *   on
+        # *   off
         self.json_response_enable = json_response_enable
+        # The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
+        # 
+        # *   enus: English.
+        # *   zhcn: Simplified Chinese.
+        # *   zhhk: Traditional Chinese.
         self.language = language
+        # The name of the waiting room.
         self.name = name
+        # The maximum number of new users per minute.
         self.new_users_per_minute = new_users_per_minute
+        # Specifies whether to queue all requests. Valid values:
+        # 
+        # *   on
+        # *   off
         self.queue_all_enable = queue_all_enable
+        # The queuing method. Valid values:
+        # 
+        # *   random: Users gain access to the origin randomly, regardless of the arrival time.
+        # *   fifo: Users gain access to the origin in order of arrival.
+        # *   passthrough: Users pass through the waiting room and go straight to the origin.
+        # *   reject-all: Users are blocked from reaching the origin.
         self.queuing_method = queuing_method
+        # The HTTP status code to return while a user is in the queue. Valid values:
+        # 
+        # *   200
+        # *   202
+        # *   429
         self.queuing_status_code = queuing_status_code
+        # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
         self.session_duration = session_duration
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The maximum number of active users.
         self.total_active_users = total_active_users
+        # The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+        # 
         # This parameter is required.
         self.waiting_room_id = waiting_room_id
+        # The type of the waiting room. Valid values:
+        # 
+        # *   default
+        # *   custom
         self.waiting_room_type = waiting_room_type
 
     def validate(self):
@@ -34287,25 +46162,73 @@ class UpdateWaitingRoomShrinkRequest(TeaModel):
         waiting_room_id: str = None,
         waiting_room_type: str = None,
     ):
+        # The name of the custom cookie.
         self.cookie_name = cookie_name
+        # The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
         self.custom_page_html = custom_page_html
+        # The description of the waiting room.
         self.description = description
+        # Specifies whether to disable session renewal. Valid values:
+        # 
+        # *   on
+        # *   off
         self.disable_session_renewal_enable = disable_session_renewal_enable
+        # Specifies whether to enable the waiting room. Valid values:
+        # 
+        # *   on
+        # *   off
         self.enable = enable
+        # The hostname and path.
         self.host_name_and_path_shrink = host_name_and_path_shrink
+        # Specifies whether to enable JSON response. If JSON response is enabled, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+        # 
+        # *   on
+        # *   off
         self.json_response_enable = json_response_enable
+        # The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
+        # 
+        # *   enus: English.
+        # *   zhcn: Simplified Chinese.
+        # *   zhhk: Traditional Chinese.
         self.language = language
+        # The name of the waiting room.
         self.name = name
+        # The maximum number of new users per minute.
         self.new_users_per_minute = new_users_per_minute
+        # Specifies whether to queue all requests. Valid values:
+        # 
+        # *   on
+        # *   off
         self.queue_all_enable = queue_all_enable
+        # The queuing method. Valid values:
+        # 
+        # *   random: Users gain access to the origin randomly, regardless of the arrival time.
+        # *   fifo: Users gain access to the origin in order of arrival.
+        # *   passthrough: Users pass through the waiting room and go straight to the origin.
+        # *   reject-all: Users are blocked from reaching the origin.
         self.queuing_method = queuing_method
+        # The HTTP status code to return while a user is in the queue. Valid values:
+        # 
+        # *   200
+        # *   202
+        # *   429
         self.queuing_status_code = queuing_status_code
+        # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
         self.session_duration = session_duration
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The maximum number of active users.
         self.total_active_users = total_active_users
+        # The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+        # 
         # This parameter is required.
         self.waiting_room_id = waiting_room_id
+        # The type of the waiting room. Valid values:
+        # 
+        # *   default
+        # *   custom
         self.waiting_room_type = waiting_room_type
 
     def validate(self):
@@ -34401,6 +46324,7 @@ class UpdateWaitingRoomResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -34488,26 +46412,78 @@ class UpdateWaitingRoomEventRequest(TeaModel):
         waiting_room_event_id: int = None,
         waiting_room_type: str = None,
     ):
+        # The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
         self.custom_page_html = custom_page_html
+        # The description of the waiting room.
         self.description = description
+        # Specifies whether to disable session renewal. Valid values:
+        # 
+        # *   on
+        # *   off
         self.disable_session_renewal_enable = disable_session_renewal_enable
+        # Specifies whether to enable the waiting room event. Valid values:
+        # 
+        # *   `on`
+        # *   `off`
         self.enable = enable
+        # The end time of the event. This value is a UNIX timestamp.
         self.end_time = end_time
+        # Specifies whether to enable JSON response. Valid values:
+        # 
+        # *   on
+        # *   off
         self.json_response_enable = json_response_enable
+        # The default language. Valid values:
+        # 
+        # *   `enus`: English.
+        # *   `zhcn`: Simplified Chinese.
+        # *   `zhhk`: Traditional Chinese.
         self.language = language
+        # The name of the waiting room event.
         self.name = name
+        # The maximum number of new users per minute.
         self.new_users_per_minute = new_users_per_minute
+        # Specifies whether to enable pre-queuing.
+        # 
+        # *   on
+        # *   off
         self.pre_queue_enable = pre_queue_enable
+        # The start time for pre-queuing.
         self.pre_queue_start_time = pre_queue_start_time
+        # The queuing method. Valid values:
+        # 
+        # *   random: Users gain access to the origin randomly, regardless of the arrival time.
+        # *   fifo: Users gain access to the origin in order of arrival.
+        # *   passthrough: Users pass through the waiting room and go straight to the origin.
+        # *   reject-all: All requests are blocked from accessing the origin.
         self.queuing_method = queuing_method
+        # The HTTP status code to return while a user is in the queue. Valid values:
+        # 
+        # *   200
+        # *   202
+        # *   429
         self.queuing_status_code = queuing_status_code
+        # Specifies whether to enable random queuing.
+        # 
+        # *   on
+        # *   off
         self.random_pre_queue_enable = random_pre_queue_enable
+        # The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
         self.session_duration = session_duration
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The start time of the event. This value is a UNIX timestamp.
         self.start_time = start_time
+        # The maximum number of active users.
         self.total_active_users = total_active_users
+        # The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
         self.waiting_room_event_id = waiting_room_event_id
+        # The type of the waiting room. Valid values:
+        # 
+        # *   default
+        # *   custom
         self.waiting_room_type = waiting_room_type
 
     def validate(self):
@@ -34611,6 +46587,7 @@ class UpdateWaitingRoomEventResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -34683,14 +46660,26 @@ class UpdateWaitingRoomRuleRequest(TeaModel):
         site_id: int = None,
         waiting_room_rule_id: int = None,
     ):
+        # The rule content, which is a policy or conditional expression.
+        # 
         # This parameter is required.
         self.rule = rule
+        # Specifies whether to enable the rule. Valid values:
+        # 
+        # *   on
+        # *   off
+        # 
         # This parameter is required.
         self.rule_enable = rule_enable
+        # The rule name.
+        # 
         # This parameter is required.
         self.rule_name = rule_name
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The ID of the waiting room bypass rule that you want to update. You can call [ListWaitingRoomRules](https://help.aliyun.com/document_detail/2850279.html) to obtain the ID.
         self.waiting_room_rule_id = waiting_room_rule_id
 
     def validate(self):
@@ -34734,6 +46723,7 @@ class UpdateWaitingRoomRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID, which is used to trace a call.
         self.request_id = request_id
 
     def validate(self):
@@ -34805,12 +46795,25 @@ class UploadFileRequest(TeaModel):
         upload_task_name: str = None,
         url: str = None,
     ):
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The type of the purge or prefetch task. Valid values:
+        # 
+        # *   **file** (default): purges the cache by file.
+        # *   **preload**: prefetches the file.
+        # *   **directory**: purges the cache by directory.
+        # *   **ignoreParams**: purges the cache by URL with specified parameters ignored.
+        # 
         # This parameter is required.
         self.type = type
+        # The name of the upload task.
+        # 
         # This parameter is required.
         self.upload_task_name = upload_task_name
+        # The OSS URL of the file that contains resources to be purged or prefetched.
+        # 
         # This parameter is required.
         self.url = url
 
@@ -34854,12 +46857,25 @@ class UploadFileAdvanceRequest(TeaModel):
         upload_task_name: str = None,
         url_object: BinaryIO = None,
     ):
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The type of the purge or prefetch task. Valid values:
+        # 
+        # *   **file** (default): purges the cache by file.
+        # *   **preload**: prefetches the file.
+        # *   **directory**: purges the cache by directory.
+        # *   **ignoreParams**: purges the cache by URL with specified parameters ignored.
+        # 
         # This parameter is required.
         self.type = type
+        # The name of the upload task.
+        # 
         # This parameter is required.
         self.upload_task_name = upload_task_name
+        # The OSS URL of the file that contains resources to be purged or prefetched.
+        # 
         # This parameter is required.
         self.url_object = url_object
 
@@ -34901,8 +46917,9 @@ class UploadFileResponseBody(TeaModel):
         request_id: str = None,
         upload_id: int = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The ID of the file upload task. You can use this ID for task submission or query subsequently.
         self.upload_id = upload_id
 
     def validate(self):
@@ -34975,6 +46992,8 @@ class VerifySiteRequest(TeaModel):
         self,
         site_id: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -35004,7 +47023,12 @@ class VerifySiteResponseBody(TeaModel):
         passed: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the verification passed. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.passed = passed
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
