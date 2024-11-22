@@ -3298,12 +3298,69 @@ class GetUserCertificateDetailRequest(TeaModel):
         return self
 
 
+class GetUserCertificateDetailResponseBodyCertChain(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        issuer_common_name: str = None,
+        not_after: int = None,
+        not_before: int = None,
+        remain_day: int = None,
+    ):
+        # The common name of the certificate.
+        self.common_name = common_name
+        # The common name of the issuer.
+        self.issuer_common_name = issuer_common_name
+        # The end of the validity period of the certificate.
+        self.not_after = not_after
+        # The beginning of the validity period of the certificate.
+        self.not_before = not_before
+        # The remaining days of the certificate validity period.
+        self.remain_day = remain_day
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.issuer_common_name is not None:
+            result['IssuerCommonName'] = self.issuer_common_name
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.remain_day is not None:
+            result['RemainDay'] = self.remain_day
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('IssuerCommonName') is not None:
+            self.issuer_common_name = m.get('IssuerCommonName')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('RemainDay') is not None:
+            self.remain_day = m.get('RemainDay')
+        return self
+
+
 class GetUserCertificateDetailResponseBody(TeaModel):
     def __init__(
         self,
         algorithm: str = None,
         buy_in_aliyun: bool = None,
         cert: str = None,
+        cert_chain: List[GetUserCertificateDetailResponseBodyCertChain] = None,
         cert_identifier: str = None,
         city: str = None,
         common: str = None,
@@ -3339,6 +3396,8 @@ class GetUserCertificateDetailResponseBody(TeaModel):
         self.buy_in_aliyun = buy_in_aliyun
         # The content of the certificate if the certificate does not use an SM algorithm. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
         self.cert = cert
+        # The certificate chain.
+        self.cert_chain = cert_chain
         # The unique identifier of the certificate. The value of this parameter must be in the {Certificate ID}-cn-hangzhou format.
         self.cert_identifier = cert_identifier
         # The city of the company or organization to which the certificate purchaser belongs.
@@ -3362,7 +3421,7 @@ class GetUserCertificateDetailResponseBody(TeaModel):
         self.fingerprint = fingerprint
         # The ID of the certificate.
         self.id = id
-        # The instance ID.
+        # The instance ID of the resource.
         self.instance_id = instance_id
         # The certificate authority (CA) that issued the certificate.
         self.issuer = issuer
@@ -3382,9 +3441,9 @@ class GetUserCertificateDetailResponseBody(TeaModel):
         self.resource_group_id = resource_group_id
         # All domain names that are bound to the certificate.
         self.sans = sans
-        # The certificate serial No.
+        # The serial number of the certificate.
         self.serial_no = serial_no
-        # The certificate sha2 value.
+        # The SHA-2 value of the certificate.
         self.sha_2 = sha_2
         # The content of the signing certificate if the certificate uses an SM algorithm and is encoded in the PEM format. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
         self.sign_cert = sign_cert
@@ -3394,7 +3453,10 @@ class GetUserCertificateDetailResponseBody(TeaModel):
         self.start_date = start_date
 
     def validate(self):
-        pass
+        if self.cert_chain:
+            for k in self.cert_chain:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3408,6 +3470,10 @@ class GetUserCertificateDetailResponseBody(TeaModel):
             result['BuyInAliyun'] = self.buy_in_aliyun
         if self.cert is not None:
             result['Cert'] = self.cert
+        result['CertChain'] = []
+        if self.cert_chain is not None:
+            for k in self.cert_chain:
+                result['CertChain'].append(k.to_map() if k else None)
         if self.cert_identifier is not None:
             result['CertIdentifier'] = self.cert_identifier
         if self.city is not None:
@@ -3468,6 +3534,11 @@ class GetUserCertificateDetailResponseBody(TeaModel):
             self.buy_in_aliyun = m.get('BuyInAliyun')
         if m.get('Cert') is not None:
             self.cert = m.get('Cert')
+        self.cert_chain = []
+        if m.get('CertChain') is not None:
+            for k in m.get('CertChain'):
+                temp_model = GetUserCertificateDetailResponseBodyCertChain()
+                self.cert_chain.append(temp_model.from_map(k))
         if m.get('CertIdentifier') is not None:
             self.cert_identifier = m.get('CertIdentifier')
         if m.get('City') is not None:
@@ -4330,23 +4401,63 @@ class ListCloudResourcesRequest(TeaModel):
         secret_id: str = None,
         show_size: int = None,
     ):
+        # The certificate IDs.
         self.cert_ids = cert_ids
         # The cloud service provider.
         # 
         # Valid values:
         # 
-        # *   Tencent: Tencent Cloud
-        # *   aliyun: Alibaba Cloud
+        # *   Tencent
+        # *   Huawei
+        # *   Aws
+        # *   aliyun
         self.cloud_name = cloud_name
-        # The cloud service. Only Content Delivery Network (CDN) is supported for Tencent Cloud.
+        # The cloud service.
+        # 
+        # Valid values when CloudName is set to aliyun:
+        # 
+        # *   SLB: Classic Load Balancer (CLB). This value is available only on the China site (aliyun.com).
+        # *   LIVE: ApsaraVideo Live. This value is available only on the China site (aliyun.com).
+        # *   webHosting: Cloud Web Hosting. This value is available only on the China site (aliyun.com).
+        # *   VOD: ApsaraVideo VOD. This value is available only on the China site (aliyun.com).
+        # *   CR: Container Registry. This value is available only on the China site (aliyun.com).
+        # *   DCDN: Dynamic Content Delivery Network (DCDN).
+        # *   DDOS: Anti-DDoS.
+        # *   CDN: Alibaba Cloud CDN (CDN).
+        # *   ALB: Application Load Balancer (ALB).
+        # *   APIGateway: API Gateway.
+        # *   FC: Function Compute.
+        # *   GA: Global Accelerator (GA).
+        # *   MSE: Microservices Engine (MSE).
+        # *   NLB: Network Load Balancer (NLB).
+        # *   OSS: Object Storage Service (OSS).
+        # *   SAE: Serverless App Engine (SAE).
+        # *   WAF: Web Application Firewall (WAF).
+        # 
+        # Valid values when CloudName is set to Tencent:
+        # 
+        # *   TencentCDN: Content Delivery Network (CDN).
+        # *   TencentCLB: CLB.
+        # *   TencentWAF: WAF.
+        # 
+        # Valid value when CloudName is set to Huawei:
+        # 
+        # *   HuaweiCDN: CDN.
+        # 
+        # Valid values when CloudName is set to Aws:
+        # 
+        # *   AwsCloudFront: Amazon CloudFront.
+        # *   AwsCLB: CLB.
+        # *   AwsALB: ALB.
+        # *   AwsNLB: NLB.
         self.cloud_product = cloud_product
         # The page number. Default value: **1**.
         self.current_page = current_page
-        # The domain name bound to the cloud resource.
+        # The keyword of the domain name or instance ID bound to the cloud resource.
         self.keyword = keyword
-        # The AccessKey ID used to access cloud resources.
+        # The AccessKey ID that is used to access cloud resources.
         self.secret_id = secret_id
-        # The number of revoked certificates per page. Default value: **20**.
+        # The number of entries per page. Default value: **20**.
         self.show_size = show_size
 
     def validate(self):
@@ -4404,23 +4515,63 @@ class ListCloudResourcesShrinkRequest(TeaModel):
         secret_id: str = None,
         show_size: int = None,
     ):
+        # The certificate IDs.
         self.cert_ids_shrink = cert_ids_shrink
         # The cloud service provider.
         # 
         # Valid values:
         # 
-        # *   Tencent: Tencent Cloud
-        # *   aliyun: Alibaba Cloud
+        # *   Tencent
+        # *   Huawei
+        # *   Aws
+        # *   aliyun
         self.cloud_name = cloud_name
-        # The cloud service. Only Content Delivery Network (CDN) is supported for Tencent Cloud.
+        # The cloud service.
+        # 
+        # Valid values when CloudName is set to aliyun:
+        # 
+        # *   SLB: Classic Load Balancer (CLB). This value is available only on the China site (aliyun.com).
+        # *   LIVE: ApsaraVideo Live. This value is available only on the China site (aliyun.com).
+        # *   webHosting: Cloud Web Hosting. This value is available only on the China site (aliyun.com).
+        # *   VOD: ApsaraVideo VOD. This value is available only on the China site (aliyun.com).
+        # *   CR: Container Registry. This value is available only on the China site (aliyun.com).
+        # *   DCDN: Dynamic Content Delivery Network (DCDN).
+        # *   DDOS: Anti-DDoS.
+        # *   CDN: Alibaba Cloud CDN (CDN).
+        # *   ALB: Application Load Balancer (ALB).
+        # *   APIGateway: API Gateway.
+        # *   FC: Function Compute.
+        # *   GA: Global Accelerator (GA).
+        # *   MSE: Microservices Engine (MSE).
+        # *   NLB: Network Load Balancer (NLB).
+        # *   OSS: Object Storage Service (OSS).
+        # *   SAE: Serverless App Engine (SAE).
+        # *   WAF: Web Application Firewall (WAF).
+        # 
+        # Valid values when CloudName is set to Tencent:
+        # 
+        # *   TencentCDN: Content Delivery Network (CDN).
+        # *   TencentCLB: CLB.
+        # *   TencentWAF: WAF.
+        # 
+        # Valid value when CloudName is set to Huawei:
+        # 
+        # *   HuaweiCDN: CDN.
+        # 
+        # Valid values when CloudName is set to Aws:
+        # 
+        # *   AwsCloudFront: Amazon CloudFront.
+        # *   AwsCLB: CLB.
+        # *   AwsALB: ALB.
+        # *   AwsNLB: NLB.
         self.cloud_product = cloud_product
         # The page number. Default value: **1**.
         self.current_page = current_page
-        # The domain name bound to the cloud resource.
+        # The keyword of the domain name or instance ID bound to the cloud resource.
         self.keyword = keyword
-        # The AccessKey ID used to access cloud resources.
+        # The AccessKey ID that is used to access cloud resources.
         self.secret_id = secret_id
-        # The number of revoked certificates per page. Default value: **20**.
+        # The number of entries per page. Default value: **20**.
         self.show_size = show_size
 
     def validate(self):
@@ -4500,14 +4651,18 @@ class ListCloudResourcesResponseBodyData(TeaModel):
         self.cert_name = cert_name
         # The start date of the certificate bound to the cloud resource. The value is a timestamp in seconds.
         self.cert_start_time = cert_start_time
-        # The AccessKey ID used to access cloud resources.
+        # The AccessKey ID that is used to access cloud resources.
         # 
-        # >  This parameter is required only when you deploy certificates to services of multiple clouds.
+        # >  This parameter is returned only when you deploy certificates to cloud services of third-party clouds.
         self.cloud_access_id = cloud_access_id
-        # The cloud service provider of the cloud resource. Valid values:
+        # The cloud service provider.
         # 
-        # *   **aliyun**: Alibaba Cloud
-        # *   **Tencent**: Tencent Cloud
+        # Valid values:
+        # 
+        # *   Tencent
+        # *   Huawei
+        # *   Aws
+        # *   aliyun
         self.cloud_name = cloud_name
         # The cloud service.
         self.cloud_product = cloud_product
@@ -4524,8 +4679,8 @@ class ListCloudResourcesResponseBodyData(TeaModel):
         self.domain = domain
         # Indicates whether HTTPS is enabled for the cloud resource. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # *   **1**: yes.
+        # *   **0**: no.
         self.enable_https = enable_https
         # The time when the cloud resource was created. The time is a timestamp in seconds.
         self.gmt_create = gmt_create
@@ -4670,11 +4825,11 @@ class ListCloudResourcesResponseBody(TeaModel):
     ):
         # The page number. Default value: 1.
         self.current_page = current_page
-        # The response parameters.
+        # The data returned for the request.
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # The number of certificate authority (CA) certificates per page. Default value: **20**.
+        # The number of entries per page. Default value: **20**.
         self.show_size = show_size
         # The total number of entries returned.
         self.total = total
