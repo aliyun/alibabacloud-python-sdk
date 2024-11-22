@@ -1,3 +1,7 @@
+2024-11-22 Version: 2.0.18
+- Update API CreateTask: update param body.
+
+
 2024-09-10 Version: 2.0.17
 - Update API CreateTask: update param body.
 

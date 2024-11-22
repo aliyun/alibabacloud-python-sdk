@@ -7,6 +7,7 @@ from typing import List, Dict, Any
 class CreateTaskRequestInput(TeaModel):
     def __init__(
         self,
+        audio_channel_mode: str = None,
         file_url: str = None,
         format: str = None,
         language_hints: List[str] = None,
@@ -18,6 +19,7 @@ class CreateTaskRequestInput(TeaModel):
         task_id: str = None,
         task_key: str = None,
     ):
+        self.audio_channel_mode = audio_channel_mode
         self.file_url = file_url
         self.format = format
         self.language_hints = language_hints
@@ -39,6 +41,8 @@ class CreateTaskRequestInput(TeaModel):
             return _map
 
         result = dict()
+        if self.audio_channel_mode is not None:
+            result['AudioChannelMode'] = self.audio_channel_mode
         if self.file_url is not None:
             result['FileUrl'] = self.file_url
         if self.format is not None:
@@ -63,6 +67,8 @@ class CreateTaskRequestInput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AudioChannelMode') is not None:
+            self.audio_channel_mode = m.get('AudioChannelMode')
         if m.get('FileUrl') is not None:
             self.file_url = m.get('FileUrl')
         if m.get('Format') is not None:
