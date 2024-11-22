@@ -9120,13 +9120,13 @@ class SetRunningPlanResponse(TeaModel):
 class SubmitDocumentAnalyzeJobRequest(TeaModel):
     def __init__(
         self,
-        data_type: str = None,
+        analysis_type: str = None,
         file_name: str = None,
         file_url: str = None,
         folder_id: str = None,
         template_id: str = None,
     ):
-        self.data_type = data_type
+        self.analysis_type = analysis_type
         # This parameter is required.
         self.file_name = file_name
         self.file_url = file_url
@@ -9143,8 +9143,8 @@ class SubmitDocumentAnalyzeJobRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.data_type is not None:
-            result['dataType'] = self.data_type
+        if self.analysis_type is not None:
+            result['analysisType'] = self.analysis_type
         if self.file_name is not None:
             result['fileName'] = self.file_name
         if self.file_url is not None:
@@ -9157,8 +9157,8 @@ class SubmitDocumentAnalyzeJobRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('dataType') is not None:
-            self.data_type = m.get('dataType')
+        if m.get('analysisType') is not None:
+            self.analysis_type = m.get('analysisType')
         if m.get('fileName') is not None:
             self.file_name = m.get('fileName')
         if m.get('fileUrl') is not None:
@@ -9173,13 +9173,13 @@ class SubmitDocumentAnalyzeJobRequest(TeaModel):
 class SubmitDocumentAnalyzeJobAdvanceRequest(TeaModel):
     def __init__(
         self,
-        data_type: str = None,
+        analysis_type: str = None,
         file_name: str = None,
         file_url_object: BinaryIO = None,
         folder_id: str = None,
         template_id: str = None,
     ):
-        self.data_type = data_type
+        self.analysis_type = analysis_type
         # This parameter is required.
         self.file_name = file_name
         self.file_url_object = file_url_object
@@ -9196,8 +9196,8 @@ class SubmitDocumentAnalyzeJobAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.data_type is not None:
-            result['dataType'] = self.data_type
+        if self.analysis_type is not None:
+            result['analysisType'] = self.analysis_type
         if self.file_name is not None:
             result['fileName'] = self.file_name
         if self.file_url_object is not None:
@@ -9210,8 +9210,8 @@ class SubmitDocumentAnalyzeJobAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('dataType') is not None:
-            self.data_type = m.get('dataType')
+        if m.get('analysisType') is not None:
+            self.analysis_type = m.get('analysisType')
         if m.get('fileName') is not None:
             self.file_name = m.get('fileName')
         if m.get('fileUrl') is not None:

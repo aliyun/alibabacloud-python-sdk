@@ -1,3 +1,8 @@
+2024-11-22 Version: 3.0.0
+- Update API SubmitDocumentAnalyzeJob: add param analysisType.
+- Update API SubmitDocumentAnalyzeJob: delete param dataType.
+
+
 2024-09-27 Version: 2.1.1
 - Update API SubmitDocumentAnalyzeJob: add param dataType.
 

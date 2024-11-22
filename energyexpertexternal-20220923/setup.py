@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_energyexpertexternal20220923.
 
-Created on 27/09/2024
+Created on 22/11/2024
 
 @author: Alibaba Cloud SDK
 """
@@ -43,7 +43,7 @@ REQUIRES = [
     "alibabacloud_oss_util>=0.0.5, <1.0.0",
     "alibabacloud_tea_fileform>=0.0.3, <1.0.0",
     "alibabacloud_tea_openapi>=0.3.12, <1.0.0",
-    "alibabacloud_openapi_util>=0.2.1, <1.0.0",
+    "alibabacloud_openapi_util>=0.2.2, <1.0.0",
     "alibabacloud_endpoint_util>=0.0.3, <1.0.0"
 ]
 
