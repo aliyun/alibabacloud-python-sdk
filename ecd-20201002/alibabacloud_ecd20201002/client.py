@@ -1318,6 +1318,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.uuid):
@@ -1377,6 +1379,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.uuid):

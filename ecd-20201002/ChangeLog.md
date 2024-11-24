@@ -1,3 +1,7 @@
+2024-11-24 Version: 1.1.5
+- Update API GetConnectionTicket: add param Tag.
+
+
 2024-11-09 Version: 1.1.4
 - Update API DescribeGlobalDesktops: add param Language.
 - Update API DescribeGlobalDesktops: update response param.

@@ -2545,6 +2545,39 @@ class GetCloudDriveServiceMountTokenResponse(TeaModel):
         return self
 
 
+class GetConnectionTicketRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetConnectionTicketRequest(TeaModel):
     def __init__(
         self,
@@ -2560,6 +2593,7 @@ class GetConnectionTicketRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         session_id: str = None,
+        tag: List[GetConnectionTicketRequestTag] = None,
         task_id: str = None,
         uuid: str = None,
     ):
@@ -2578,11 +2612,15 @@ class GetConnectionTicketRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.session_id = session_id
+        self.tag = tag
         self.task_id = task_id
         self.uuid = uuid
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2614,6 +2652,10 @@ class GetConnectionTicketRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.uuid is not None:
@@ -2646,6 +2688,11 @@ class GetConnectionTicketRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = GetConnectionTicketRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('Uuid') is not None:
