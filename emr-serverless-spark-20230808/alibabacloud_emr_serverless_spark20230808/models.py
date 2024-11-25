@@ -78,8 +78,10 @@ class Artifact(TeaModel):
     def __init__(
         self,
         biz_id: str = None,
+        catagory_biz_id: str = None,
         creator: int = None,
         credential: Credential = None,
+        full_path: List[str] = None,
         gmt_created: str = None,
         gmt_modified: str = None,
         location: str = None,
@@ -88,9 +90,11 @@ class Artifact(TeaModel):
     ):
         # This parameter is required.
         self.biz_id = biz_id
+        self.catagory_biz_id = catagory_biz_id
         # This parameter is required.
         self.creator = creator
         self.credential = credential
+        self.full_path = full_path
         # This parameter is required.
         self.gmt_created = gmt_created
         # This parameter is required.
@@ -114,10 +118,14 @@ class Artifact(TeaModel):
         result = dict()
         if self.biz_id is not None:
             result['bizId'] = self.biz_id
+        if self.catagory_biz_id is not None:
+            result['catagoryBizId'] = self.catagory_biz_id
         if self.creator is not None:
             result['creator'] = self.creator
         if self.credential is not None:
             result['credential'] = self.credential.to_map()
+        if self.full_path is not None:
+            result['fullPath'] = self.full_path
         if self.gmt_created is not None:
             result['gmtCreated'] = self.gmt_created
         if self.gmt_modified is not None:
@@ -134,11 +142,15 @@ class Artifact(TeaModel):
         m = m or dict()
         if m.get('bizId') is not None:
             self.biz_id = m.get('bizId')
+        if m.get('catagoryBizId') is not None:
+            self.catagory_biz_id = m.get('catagoryBizId')
         if m.get('creator') is not None:
             self.creator = m.get('creator')
         if m.get('credential') is not None:
             temp_model = Credential()
             self.credential = temp_model.from_map(m['credential'])
+        if m.get('fullPath') is not None:
+            self.full_path = m.get('fullPath')
         if m.get('gmtCreated') is not None:
             self.gmt_created = m.get('gmtCreated')
         if m.get('gmtModified') is not None:
@@ -741,6 +753,75 @@ class Tag(TeaModel):
         return self
 
 
+class TaskCredential(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        access_url: str = None,
+        expire: int = None,
+        host: str = None,
+        path: str = None,
+        policy: str = None,
+        security_token: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.access_url = access_url
+        self.expire = expire
+        self.host = host
+        self.path = path
+        self.policy = policy
+        self.security_token = security_token
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['accessId'] = self.access_id
+        if self.access_url is not None:
+            result['accessUrl'] = self.access_url
+        if self.expire is not None:
+            result['expire'] = self.expire
+        if self.host is not None:
+            result['host'] = self.host
+        if self.path is not None:
+            result['path'] = self.path
+        if self.policy is not None:
+            result['policy'] = self.policy
+        if self.security_token is not None:
+            result['securityToken'] = self.security_token
+        if self.signature is not None:
+            result['signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessId') is not None:
+            self.access_id = m.get('accessId')
+        if m.get('accessUrl') is not None:
+            self.access_url = m.get('accessUrl')
+        if m.get('expire') is not None:
+            self.expire = m.get('expire')
+        if m.get('host') is not None:
+            self.host = m.get('host')
+        if m.get('path') is not None:
+            self.path = m.get('path')
+        if m.get('policy') is not None:
+            self.policy = m.get('policy')
+        if m.get('securityToken') is not None:
+            self.security_token = m.get('securityToken')
+        if m.get('signature') is not None:
+            self.signature = m.get('signature')
+        return self
+
+
 class Task(TeaModel):
     def __init__(
         self,
@@ -750,11 +831,13 @@ class Task(TeaModel):
         category_biz_id: str = None,
         content: str = None,
         creator: int = None,
+        credential: TaskCredential = None,
         default_catalog_id: str = None,
         default_database: str = None,
         default_resource_queue_id: str = None,
         default_sql_compute_id: str = None,
         deployment_id: str = None,
+        environment_id: str = None,
         extra_artifact_ids: List[str] = None,
         extra_spark_submit_params: str = None,
         files: List[str] = None,
@@ -792,11 +875,13 @@ class Task(TeaModel):
         self.content = content
         # This parameter is required.
         self.creator = creator
+        self.credential = credential
         self.default_catalog_id = default_catalog_id
         self.default_database = default_database
         self.default_resource_queue_id = default_resource_queue_id
         self.default_sql_compute_id = default_sql_compute_id
         self.deployment_id = deployment_id
+        self.environment_id = environment_id
         self.extra_artifact_ids = extra_artifact_ids
         self.extra_spark_submit_params = extra_spark_submit_params
         self.files = files
@@ -840,6 +925,8 @@ class Task(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.credential:
+            self.credential.validate()
         if self.spark_conf:
             for k in self.spark_conf:
                 if k:
@@ -863,6 +950,8 @@ class Task(TeaModel):
             result['content'] = self.content
         if self.creator is not None:
             result['creator'] = self.creator
+        if self.credential is not None:
+            result['credential'] = self.credential.to_map()
         if self.default_catalog_id is not None:
             result['defaultCatalogId'] = self.default_catalog_id
         if self.default_database is not None:
@@ -873,6 +962,8 @@ class Task(TeaModel):
             result['defaultSqlComputeId'] = self.default_sql_compute_id
         if self.deployment_id is not None:
             result['deploymentId'] = self.deployment_id
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
         if self.extra_artifact_ids is not None:
             result['extraArtifactIds'] = self.extra_artifact_ids
         if self.extra_spark_submit_params is not None:
@@ -947,6 +1038,9 @@ class Task(TeaModel):
             self.content = m.get('content')
         if m.get('creator') is not None:
             self.creator = m.get('creator')
+        if m.get('credential') is not None:
+            temp_model = TaskCredential()
+            self.credential = temp_model.from_map(m['credential'])
         if m.get('defaultCatalogId') is not None:
             self.default_catalog_id = m.get('defaultCatalogId')
         if m.get('defaultDatabase') is not None:
@@ -957,6 +1051,8 @@ class Task(TeaModel):
             self.default_sql_compute_id = m.get('defaultSqlComputeId')
         if m.get('deploymentId') is not None:
             self.deployment_id = m.get('deploymentId')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
         if m.get('extraArtifactIds') is not None:
             self.extra_artifact_ids = m.get('extraArtifactIds')
         if m.get('extraSparkSubmitParams') is not None:
@@ -1555,7 +1651,7 @@ class CreateSqlStatementRequest(TeaModel):
         self.default_database = default_database
         # The maximum number of entries to return. Valid values: 1 to 10000.
         self.limit = limit
-        # The SQL compute ID. You can create an SQL compute in the workspace created in EMR Serverless Spark.
+        # The SQL session ID. You can create an SQL session in the workspace created in EMR Serverless Spark.
         self.sql_compute_id = sql_compute_id
         # The region ID.
         self.region_id = region_id
@@ -1812,6 +1908,7 @@ class GetJobRunResponseBodyJobRun(TeaModel):
         configuration_overrides: GetJobRunResponseBodyJobRunConfigurationOverrides = None,
         display_release_version: str = None,
         end_time: int = None,
+        environment_id: str = None,
         execution_timeout_seconds: int = None,
         fusion: bool = None,
         job_driver: JobDriver = None,
@@ -1839,6 +1936,7 @@ class GetJobRunResponseBodyJobRun(TeaModel):
         self.display_release_version = display_release_version
         # The end time of the job.
         self.end_time = end_time
+        self.environment_id = environment_id
         # The timeout period of the job.
         self.execution_timeout_seconds = execution_timeout_seconds
         self.fusion = fusion
@@ -1897,6 +1995,8 @@ class GetJobRunResponseBodyJobRun(TeaModel):
             result['displayReleaseVersion'] = self.display_release_version
         if self.end_time is not None:
             result['endTime'] = self.end_time
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
         if self.execution_timeout_seconds is not None:
             result['executionTimeoutSeconds'] = self.execution_timeout_seconds
         if self.fusion is not None:
@@ -1942,6 +2042,8 @@ class GetJobRunResponseBodyJobRun(TeaModel):
             self.display_release_version = m.get('displayReleaseVersion')
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
         if m.get('executionTimeoutSeconds') is not None:
             self.execution_timeout_seconds = m.get('executionTimeoutSeconds')
         if m.get('fusion') is not None:
@@ -2055,6 +2157,417 @@ class GetJobRunResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetJobRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSessionClusterRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class GetSessionClusterResponseBodySessionClusterApplicationConfigs(TeaModel):
+    def __init__(
+        self,
+        config_file_name: str = None,
+        config_item_key: str = None,
+        config_item_value: str = None,
+    ):
+        self.config_file_name = config_file_name
+        self.config_item_key = config_item_key
+        self.config_item_value = config_item_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_file_name is not None:
+            result['configFileName'] = self.config_file_name
+        if self.config_item_key is not None:
+            result['configItemKey'] = self.config_item_key
+        if self.config_item_value is not None:
+            result['configItemValue'] = self.config_item_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configFileName') is not None:
+            self.config_file_name = m.get('configFileName')
+        if m.get('configItemKey') is not None:
+            self.config_item_key = m.get('configItemKey')
+        if m.get('configItemValue') is not None:
+            self.config_item_value = m.get('configItemValue')
+        return self
+
+
+class GetSessionClusterResponseBodySessionClusterAutoStartConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
+class GetSessionClusterResponseBodySessionClusterAutoStopConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        idle_timeout_minutes: int = None,
+    ):
+        self.enable = enable
+        self.idle_timeout_minutes = idle_timeout_minutes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.idle_timeout_minutes is not None:
+            result['idleTimeoutMinutes'] = self.idle_timeout_minutes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('idleTimeoutMinutes') is not None:
+            self.idle_timeout_minutes = m.get('idleTimeoutMinutes')
+        return self
+
+
+class GetSessionClusterResponseBodySessionClusterStateChangeReason(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+    ):
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        return self
+
+
+class GetSessionClusterResponseBodySessionCluster(TeaModel):
+    def __init__(
+        self,
+        application_configs: List[GetSessionClusterResponseBodySessionClusterApplicationConfigs] = None,
+        auto_start_configuration: GetSessionClusterResponseBodySessionClusterAutoStartConfiguration = None,
+        auto_stop_configuration: GetSessionClusterResponseBodySessionClusterAutoStopConfiguration = None,
+        display_release_version: str = None,
+        domain: str = None,
+        domain_inner: str = None,
+        draft_id: str = None,
+        env_id: str = None,
+        fusion: bool = None,
+        gmt_create: int = None,
+        kind: str = None,
+        name: str = None,
+        queue_name: str = None,
+        release_version: str = None,
+        session_cluster_id: str = None,
+        start_time: int = None,
+        state: str = None,
+        state_change_reason: GetSessionClusterResponseBodySessionClusterStateChangeReason = None,
+        user_id: str = None,
+        user_name: str = None,
+        web_ui: str = None,
+        workspace_id: str = None,
+    ):
+        self.application_configs = application_configs
+        self.auto_start_configuration = auto_start_configuration
+        self.auto_stop_configuration = auto_stop_configuration
+        self.display_release_version = display_release_version
+        self.domain = domain
+        self.domain_inner = domain_inner
+        self.draft_id = draft_id
+        self.env_id = env_id
+        self.fusion = fusion
+        self.gmt_create = gmt_create
+        self.kind = kind
+        self.name = name
+        # 作业实例名称。
+        self.queue_name = queue_name
+        self.release_version = release_version
+        # 交互式作业会话id。
+        self.session_cluster_id = session_cluster_id
+        self.start_time = start_time
+        # 作业状态。
+        self.state = state
+        self.state_change_reason = state_change_reason
+        # 任务实例ID。
+        self.user_id = user_id
+        self.user_name = user_name
+        self.web_ui = web_ui
+        # 工作空间id。
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.application_configs:
+            for k in self.application_configs:
+                if k:
+                    k.validate()
+        if self.auto_start_configuration:
+            self.auto_start_configuration.validate()
+        if self.auto_stop_configuration:
+            self.auto_stop_configuration.validate()
+        if self.state_change_reason:
+            self.state_change_reason.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['applicationConfigs'] = []
+        if self.application_configs is not None:
+            for k in self.application_configs:
+                result['applicationConfigs'].append(k.to_map() if k else None)
+        if self.auto_start_configuration is not None:
+            result['autoStartConfiguration'] = self.auto_start_configuration.to_map()
+        if self.auto_stop_configuration is not None:
+            result['autoStopConfiguration'] = self.auto_stop_configuration.to_map()
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
+        if self.domain is not None:
+            result['domain'] = self.domain
+        if self.domain_inner is not None:
+            result['domainInner'] = self.domain_inner
+        if self.draft_id is not None:
+            result['draftId'] = self.draft_id
+        if self.env_id is not None:
+            result['envId'] = self.env_id
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.kind is not None:
+            result['kind'] = self.kind
+        if self.name is not None:
+            result['name'] = self.name
+        if self.queue_name is not None:
+            result['queueName'] = self.queue_name
+        if self.release_version is not None:
+            result['releaseVersion'] = self.release_version
+        if self.session_cluster_id is not None:
+            result['sessionClusterId'] = self.session_cluster_id
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.state is not None:
+            result['state'] = self.state
+        if self.state_change_reason is not None:
+            result['stateChangeReason'] = self.state_change_reason.to_map()
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        if self.web_ui is not None:
+            result['webUI'] = self.web_ui
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_configs = []
+        if m.get('applicationConfigs') is not None:
+            for k in m.get('applicationConfigs'):
+                temp_model = GetSessionClusterResponseBodySessionClusterApplicationConfigs()
+                self.application_configs.append(temp_model.from_map(k))
+        if m.get('autoStartConfiguration') is not None:
+            temp_model = GetSessionClusterResponseBodySessionClusterAutoStartConfiguration()
+            self.auto_start_configuration = temp_model.from_map(m['autoStartConfiguration'])
+        if m.get('autoStopConfiguration') is not None:
+            temp_model = GetSessionClusterResponseBodySessionClusterAutoStopConfiguration()
+            self.auto_stop_configuration = temp_model.from_map(m['autoStopConfiguration'])
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
+        if m.get('domain') is not None:
+            self.domain = m.get('domain')
+        if m.get('domainInner') is not None:
+            self.domain_inner = m.get('domainInner')
+        if m.get('draftId') is not None:
+            self.draft_id = m.get('draftId')
+        if m.get('envId') is not None:
+            self.env_id = m.get('envId')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('kind') is not None:
+            self.kind = m.get('kind')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('queueName') is not None:
+            self.queue_name = m.get('queueName')
+        if m.get('releaseVersion') is not None:
+            self.release_version = m.get('releaseVersion')
+        if m.get('sessionClusterId') is not None:
+            self.session_cluster_id = m.get('sessionClusterId')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('stateChangeReason') is not None:
+            temp_model = GetSessionClusterResponseBodySessionClusterStateChangeReason()
+            self.state_change_reason = temp_model.from_map(m['stateChangeReason'])
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        if m.get('webUI') is not None:
+            self.web_ui = m.get('webUI')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class GetSessionClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        session_cluster: GetSessionClusterResponseBodySessionCluster = None,
+    ):
+        # 请求ID。
+        self.request_id = request_id
+        self.session_cluster = session_cluster
+
+    def validate(self):
+        if self.session_cluster:
+            self.session_cluster.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.session_cluster is not None:
+            result['sessionCluster'] = self.session_cluster.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('sessionCluster') is not None:
+            temp_model = GetSessionClusterResponseBodySessionCluster()
+            self.session_cluster = temp_model.from_map(m['sessionCluster'])
+        return self
+
+
+class GetSessionClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSessionClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSessionClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2286,8 +2799,9 @@ class GrantRoleToUsersRequest(TeaModel):
         user_arns: List[str] = None,
         region_id: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the role.
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.role_arn = role_arn
+        # The user ARNs.
         self.user_arns = user_arns
         # The region ID.
         self.region_id = region_id
@@ -3593,9 +4107,9 @@ class ListSessionClustersResponseBodySessionClustersApplicationConfigs(TeaModel)
     ):
         # The name of the configuration file.
         self.config_file_name = config_file_name
-        # The key of the configuration item.
+        # The key of the configuration.
         self.config_item_key = config_item_key
-        # The value of the configuration item.
+        # The configuration value.
         self.config_item_value = config_item_value
 
     def validate(self):
@@ -3732,13 +4246,16 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         auto_stop_configuration: ListSessionClustersResponseBodySessionClustersAutoStopConfiguration = None,
         display_release_version: str = None,
         domain: str = None,
+        domain_inner: str = None,
         draft_id: str = None,
         fusion: bool = None,
+        gmt_create: int = None,
         kind: str = None,
         name: str = None,
         queue_name: str = None,
         release_version: str = None,
         session_cluster_id: str = None,
+        start_time: int = None,
         state: str = None,
         state_change_reason: ListSessionClustersResponseBodySessionClustersStateChangeReason = None,
         user_id: str = None,
@@ -3755,10 +4272,12 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         # The version of the Spark engine.
         self.display_release_version = display_release_version
         self.domain = domain
+        self.domain_inner = domain_inner
         # The ID of the job that is associated with the session.
         self.draft_id = draft_id
         # Indicates whether the Fusion engine is used for acceleration.
         self.fusion = fusion
+        self.gmt_create = gmt_create
         # The session type.
         # 
         # Valid values:
@@ -3775,13 +4294,14 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         self.release_version = release_version
         # The session ID.
         self.session_cluster_id = session_cluster_id
+        self.start_time = start_time
         # The status of the session.
         self.state = state
         # The details of the most recent status change of the session.
         self.state_change_reason = state_change_reason
         # The user ID.
         self.user_id = user_id
-        # The name of the user.
+        # The username.
         self.user_name = user_name
         # The Spark UI of the session.
         self.web_ui = web_ui
@@ -3818,10 +4338,14 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
             result['displayReleaseVersion'] = self.display_release_version
         if self.domain is not None:
             result['domain'] = self.domain
+        if self.domain_inner is not None:
+            result['domainInner'] = self.domain_inner
         if self.draft_id is not None:
             result['draftId'] = self.draft_id
         if self.fusion is not None:
             result['fusion'] = self.fusion
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
         if self.kind is not None:
             result['kind'] = self.kind
         if self.name is not None:
@@ -3832,6 +4356,8 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
             result['releaseVersion'] = self.release_version
         if self.session_cluster_id is not None:
             result['sessionClusterId'] = self.session_cluster_id
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
         if self.state is not None:
             result['state'] = self.state
         if self.state_change_reason is not None:
@@ -3863,10 +4389,14 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
             self.display_release_version = m.get('displayReleaseVersion')
         if m.get('domain') is not None:
             self.domain = m.get('domain')
+        if m.get('domainInner') is not None:
+            self.domain_inner = m.get('domainInner')
         if m.get('draftId') is not None:
             self.draft_id = m.get('draftId')
         if m.get('fusion') is not None:
             self.fusion = m.get('fusion')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
         if m.get('kind') is not None:
             self.kind = m.get('kind')
         if m.get('name') is not None:
@@ -3877,6 +4407,8 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
             self.release_version = m.get('releaseVersion')
         if m.get('sessionClusterId') is not None:
             self.session_cluster_id = m.get('sessionClusterId')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
         if m.get('state') is not None:
             self.state = m.get('state')
         if m.get('stateChangeReason') is not None:

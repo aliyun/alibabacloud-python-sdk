@@ -513,6 +513,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_job_run_with_options_async(workspace_id, job_run_id, request, headers, runtime)
 
+    def get_session_cluster_with_options(
+        self,
+        workspace_id: str,
+        session_cluster_id: str,
+        request: emr_serverless_spark_20230808_models.GetSessionClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetSessionClusterResponse:
+        """
+        @summary 查询SessionCluster集群
+        
+        @param request: GetSessionClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSessionClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSessionCluster',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/sessionClusters/{OpenApiUtilClient.get_encode_param(session_cluster_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetSessionClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_session_cluster_with_options_async(
+        self,
+        workspace_id: str,
+        session_cluster_id: str,
+        request: emr_serverless_spark_20230808_models.GetSessionClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetSessionClusterResponse:
+        """
+        @summary 查询SessionCluster集群
+        
+        @param request: GetSessionClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSessionClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSessionCluster',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/sessionClusters/{OpenApiUtilClient.get_encode_param(session_cluster_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetSessionClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_session_cluster(
+        self,
+        workspace_id: str,
+        session_cluster_id: str,
+        request: emr_serverless_spark_20230808_models.GetSessionClusterRequest,
+    ) -> emr_serverless_spark_20230808_models.GetSessionClusterResponse:
+        """
+        @summary 查询SessionCluster集群
+        
+        @param request: GetSessionClusterRequest
+        @return: GetSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_session_cluster_with_options(workspace_id, session_cluster_id, request, headers, runtime)
+
+    async def get_session_cluster_async(
+        self,
+        workspace_id: str,
+        session_cluster_id: str,
+        request: emr_serverless_spark_20230808_models.GetSessionClusterRequest,
+    ) -> emr_serverless_spark_20230808_models.GetSessionClusterResponse:
+        """
+        @summary 查询SessionCluster集群
+        
+        @param request: GetSessionClusterRequest
+        @return: GetSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_session_cluster_with_options_async(workspace_id, session_cluster_id, request, headers, runtime)
+
     def get_sql_statement_with_options(
         self,
         workspace_id: str,
@@ -921,7 +1033,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListLogContentsResponse:
         """
-        @summary 获取日志内容
+        @summary Obtains the log content.
         
         @param request: ListLogContentsRequest
         @param headers: map
@@ -966,7 +1078,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListLogContentsResponse:
         """
-        @summary 获取日志内容
+        @summary Obtains the log content.
         
         @param request: ListLogContentsRequest
         @param headers: map
@@ -1009,7 +1121,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListLogContentsRequest,
     ) -> emr_serverless_spark_20230808_models.ListLogContentsResponse:
         """
-        @summary 获取日志内容
+        @summary Obtains the log content.
         
         @param request: ListLogContentsRequest
         @return: ListLogContentsResponse
@@ -1024,7 +1136,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListLogContentsRequest,
     ) -> emr_serverless_spark_20230808_models.ListLogContentsResponse:
         """
-        @summary 获取日志内容
+        @summary Obtains the log content.
         
         @param request: ListLogContentsRequest
         @return: ListLogContentsResponse
@@ -1161,7 +1273,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListSessionClustersResponse:
         """
-        @summary Queries a list of sessions.
+        @summary Queries the list of sessions.
         
         @param request: ListSessionClustersRequest
         @param headers: map
@@ -1210,7 +1322,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListSessionClustersResponse:
         """
-        @summary Queries a list of sessions.
+        @summary Queries the list of sessions.
         
         @param request: ListSessionClustersRequest
         @param headers: map
@@ -1257,7 +1369,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListSessionClustersRequest,
     ) -> emr_serverless_spark_20230808_models.ListSessionClustersResponse:
         """
-        @summary Queries a list of sessions.
+        @summary Queries the list of sessions.
         
         @param request: ListSessionClustersRequest
         @return: ListSessionClustersResponse
@@ -1272,7 +1384,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListSessionClustersRequest,
     ) -> emr_serverless_spark_20230808_models.ListSessionClustersResponse:
         """
-        @summary Queries a list of sessions.
+        @summary Queries the list of sessions.
         
         @param request: ListSessionClustersRequest
         @return: ListSessionClustersResponse
@@ -1289,7 +1401,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListWorkspaceQueuesResponse:
         """
-        @summary 查看工作空间队列列表
+        @summary Queries the list of queues in a Spark workspace.
         
         @param request: ListWorkspaceQueuesRequest
         @param headers: map
@@ -1330,7 +1442,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListWorkspaceQueuesResponse:
         """
-        @summary 查看工作空间队列列表
+        @summary Queries the list of queues in a Spark workspace.
         
         @param request: ListWorkspaceQueuesRequest
         @param headers: map
@@ -1369,7 +1481,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListWorkspaceQueuesRequest,
     ) -> emr_serverless_spark_20230808_models.ListWorkspaceQueuesResponse:
         """
-        @summary 查看工作空间队列列表
+        @summary Queries the list of queues in a Spark workspace.
         
         @param request: ListWorkspaceQueuesRequest
         @return: ListWorkspaceQueuesResponse
@@ -1384,7 +1496,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListWorkspaceQueuesRequest,
     ) -> emr_serverless_spark_20230808_models.ListWorkspaceQueuesResponse:
         """
-        @summary 查看工作空间队列列表
+        @summary Queries the list of queues in a Spark workspace.
         
         @param request: ListWorkspaceQueuesRequest
         @return: ListWorkspaceQueuesResponse

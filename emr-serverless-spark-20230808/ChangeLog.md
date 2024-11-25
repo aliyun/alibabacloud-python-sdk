@@ -1,3 +1,9 @@
+2024-11-25 Version: 1.7.0
+- Support API GetSessionCluster.
+- Update API GetJobRun: update response param.
+- Update API ListSessionClusters: update response param.
+
+
 2024-11-06 Version: 1.6.0
 - Support API ListLogContents.
 
