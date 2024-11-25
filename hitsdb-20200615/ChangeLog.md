@@ -1,3 +1,7 @@
+2024-11-25 Version: 4.7.0
+- Support API GetLindormV2StorageUsage.
+
+
 2024-11-19 Version: 5.0.0
 - Support API ChangeResourceGroup.
 - Support API CreateLindormV2Instance.

@@ -2617,6 +2617,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_lindorm_v2instance_engine_list_with_options_async(request, runtime)
 
+    def get_lindorm_v2storage_usage_with_options(
+        self,
+        request: hitsdb_20200615_models.GetLindormV2StorageUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLindormV2StorageUsageResponse:
+        """
+        @param request: GetLindormV2StorageUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormV2StorageUsageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormV2StorageUsage',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormV2StorageUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_lindorm_v2storage_usage_with_options_async(
+        self,
+        request: hitsdb_20200615_models.GetLindormV2StorageUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLindormV2StorageUsageResponse:
+        """
+        @param request: GetLindormV2StorageUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormV2StorageUsageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormV2StorageUsage',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormV2StorageUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_lindorm_v2storage_usage(
+        self,
+        request: hitsdb_20200615_models.GetLindormV2StorageUsageRequest,
+    ) -> hitsdb_20200615_models.GetLindormV2StorageUsageResponse:
+        """
+        @param request: GetLindormV2StorageUsageRequest
+        @return: GetLindormV2StorageUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_lindorm_v2storage_usage_with_options(request, runtime)
+
+    async def get_lindorm_v2storage_usage_async(
+        self,
+        request: hitsdb_20200615_models.GetLindormV2StorageUsageRequest,
+    ) -> hitsdb_20200615_models.GetLindormV2StorageUsageResponse:
+        """
+        @param request: GetLindormV2StorageUsageRequest
+        @return: GetLindormV2StorageUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_lindorm_v2storage_usage_with_options_async(request, runtime)
+
     def list_ldps_compute_groups_with_options(
         self,
         request: hitsdb_20200615_models.ListLdpsComputeGroupsRequest,
