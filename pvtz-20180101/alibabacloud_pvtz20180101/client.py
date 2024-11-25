@@ -47,6 +47,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddCustomLineResponse:
         """
+        @summary Creates a custom line.
+        
         @param request: AddCustomLineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddCustomLineResponse
@@ -88,6 +90,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddCustomLineResponse:
         """
+        @summary Creates a custom line.
+        
         @param request: AddCustomLineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddCustomLineResponse
@@ -128,6 +132,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddCustomLineRequest,
     ) -> pvtz_20180101_models.AddCustomLineResponse:
         """
+        @summary Creates a custom line.
+        
         @param request: AddCustomLineRequest
         @return: AddCustomLineResponse
         """
@@ -139,6 +145,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddCustomLineRequest,
     ) -> pvtz_20180101_models.AddCustomLineResponse:
         """
+        @summary Creates a custom line.
+        
         @param request: AddCustomLineRequest
         @return: AddCustomLineResponse
         """
@@ -269,6 +277,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a forwarding rule.
         
+        @description #### [](#)*Precautions**\
+        If a virtual private cloud (VPC) serves as both an inbound VPC and an outbound VPC, the IP addresses of external Domain Name System (DNS) servers cannot be the same as the IP addresses of the inbound endpoint in the VPC. The IP addresses of the external DNS servers are specified in the forwarding rule associated with the outbound endpoint in the same VPC. If the IP addresses are the same, the DNS requests sent from the IP addresses of the inbound endpoint are returned to the VPC. This results in resolution failures.
+        
         @param request: AddResolverRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddResolverRuleResponse
@@ -314,6 +325,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a forwarding rule.
         
+        @description #### [](#)*Precautions**\
+        If a virtual private cloud (VPC) serves as both an inbound VPC and an outbound VPC, the IP addresses of external Domain Name System (DNS) servers cannot be the same as the IP addresses of the inbound endpoint in the VPC. The IP addresses of the external DNS servers are specified in the forwarding rule associated with the outbound endpoint in the same VPC. If the IP addresses are the same, the DNS requests sent from the IP addresses of the inbound endpoint are returned to the VPC. This results in resolution failures.
+        
         @param request: AddResolverRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddResolverRuleResponse
@@ -358,6 +372,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a forwarding rule.
         
+        @description #### [](#)*Precautions**\
+        If a virtual private cloud (VPC) serves as both an inbound VPC and an outbound VPC, the IP addresses of external Domain Name System (DNS) servers cannot be the same as the IP addresses of the inbound endpoint in the VPC. The IP addresses of the external DNS servers are specified in the forwarding rule associated with the outbound endpoint in the same VPC. If the IP addresses are the same, the DNS requests sent from the IP addresses of the inbound endpoint are returned to the VPC. This results in resolution failures.
+        
         @param request: AddResolverRuleRequest
         @return: AddResolverRuleResponse
         """
@@ -370,6 +387,9 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.AddResolverRuleResponse:
         """
         @summary Creates a forwarding rule.
+        
+        @description #### [](#)*Precautions**\
+        If a virtual private cloud (VPC) serves as both an inbound VPC and an outbound VPC, the IP addresses of external Domain Name System (DNS) servers cannot be the same as the IP addresses of the inbound endpoint in the VPC. The IP addresses of the external DNS servers are specified in the forwarding rule associated with the outbound endpoint in the same VPC. If the IP addresses are the same, the DNS requests sent from the IP addresses of the inbound endpoint are returned to the VPC. This results in resolution failures.
         
         @param request: AddResolverRuleRequest
         @return: AddResolverRuleResponse
@@ -384,6 +404,12 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.AddUserVpcAuthorizationResponse:
         """
         @summary Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
+        
+        @description #### *Limits**\
+        You can set an effective scope across accounts only by using an Alibaba Cloud account instead of a RAM user. You can set an effective scope across accounts registered on the same site. For example, you can perform the operation across accounts that are both registered on the Alibaba Cloud China site or Alibaba Cloud international site. You cannot set an effective scope across accounts registered on different sites. For example, you cannot perform the operation across accounts that are separately registered on the Alibaba Cloud China site and Alibaba Cloud international site.
+        No API operation is provided for sending the verification codes that are required for authorization.
+        #### *Precautions**\
+        If you set an effective scope across accounts, bills are settled within the account that is used to perform routine management on built-in authoritative zones.
         
         @param request: AddUserVpcAuthorizationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -426,6 +452,12 @@ class Client(OpenApiClient):
         """
         @summary Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
         
+        @description #### *Limits**\
+        You can set an effective scope across accounts only by using an Alibaba Cloud account instead of a RAM user. You can set an effective scope across accounts registered on the same site. For example, you can perform the operation across accounts that are both registered on the Alibaba Cloud China site or Alibaba Cloud international site. You cannot set an effective scope across accounts registered on different sites. For example, you cannot perform the operation across accounts that are separately registered on the Alibaba Cloud China site and Alibaba Cloud international site.
+        No API operation is provided for sending the verification codes that are required for authorization.
+        #### *Precautions**\
+        If you set an effective scope across accounts, bills are settled within the account that is used to perform routine management on built-in authoritative zones.
+        
         @param request: AddUserVpcAuthorizationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddUserVpcAuthorizationResponse
@@ -466,6 +498,12 @@ class Client(OpenApiClient):
         """
         @summary Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
         
+        @description #### *Limits**\
+        You can set an effective scope across accounts only by using an Alibaba Cloud account instead of a RAM user. You can set an effective scope across accounts registered on the same site. For example, you can perform the operation across accounts that are both registered on the Alibaba Cloud China site or Alibaba Cloud international site. You cannot set an effective scope across accounts registered on different sites. For example, you cannot perform the operation across accounts that are separately registered on the Alibaba Cloud China site and Alibaba Cloud international site.
+        No API operation is provided for sending the verification codes that are required for authorization.
+        #### *Precautions**\
+        If you set an effective scope across accounts, bills are settled within the account that is used to perform routine management on built-in authoritative zones.
+        
         @param request: AddUserVpcAuthorizationRequest
         @return: AddUserVpcAuthorizationResponse
         """
@@ -479,6 +517,12 @@ class Client(OpenApiClient):
         """
         @summary Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
         
+        @description #### *Limits**\
+        You can set an effective scope across accounts only by using an Alibaba Cloud account instead of a RAM user. You can set an effective scope across accounts registered on the same site. For example, you can perform the operation across accounts that are both registered on the Alibaba Cloud China site or Alibaba Cloud international site. You cannot set an effective scope across accounts registered on different sites. For example, you cannot perform the operation across accounts that are separately registered on the Alibaba Cloud China site and Alibaba Cloud international site.
+        No API operation is provided for sending the verification codes that are required for authorization.
+        #### *Precautions**\
+        If you set an effective scope across accounts, bills are settled within the account that is used to perform routine management on built-in authoritative zones.
+        
         @param request: AddUserVpcAuthorizationRequest
         @return: AddUserVpcAuthorizationResponse
         """
@@ -491,7 +535,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddZoneResponse:
         """
-        @summary Creates a zone.
+        @summary Creates a built-in authoritative zone in the regular module or acceleration module.
         
         @param request: AddZoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -540,7 +584,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddZoneResponse:
         """
-        @summary Creates a zone.
+        @summary Creates a built-in authoritative zone in the regular module or acceleration module.
         
         @param request: AddZoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -588,7 +632,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddZoneRequest,
     ) -> pvtz_20180101_models.AddZoneResponse:
         """
-        @summary Creates a zone.
+        @summary Creates a built-in authoritative zone in the regular module or acceleration module.
         
         @param request: AddZoneRequest
         @return: AddZoneResponse
@@ -601,7 +645,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddZoneRequest,
     ) -> pvtz_20180101_models.AddZoneResponse:
         """
-        @summary Creates a zone.
+        @summary Creates a built-in authoritative zone in the regular module or acceleration module.
         
         @param request: AddZoneRequest
         @return: AddZoneResponse
@@ -615,7 +659,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddZoneRecordResponse:
         """
-        @summary Adds a Domain Name System (DNS) record for a zone.
+        @summary Adds a Domain Name System (DNS) record for a built-in authoritative zone. Within the effective scope, the intranet DNS records rather than the Internet DNS records take effect for the zone.
         
         @param request: AddZoneRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -672,7 +716,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddZoneRecordResponse:
         """
-        @summary Adds a Domain Name System (DNS) record for a zone.
+        @summary Adds a Domain Name System (DNS) record for a built-in authoritative zone. Within the effective scope, the intranet DNS records rather than the Internet DNS records take effect for the zone.
         
         @param request: AddZoneRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -728,7 +772,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddZoneRecordRequest,
     ) -> pvtz_20180101_models.AddZoneRecordResponse:
         """
-        @summary Adds a Domain Name System (DNS) record for a zone.
+        @summary Adds a Domain Name System (DNS) record for a built-in authoritative zone. Within the effective scope, the intranet DNS records rather than the Internet DNS records take effect for the zone.
         
         @param request: AddZoneRecordRequest
         @return: AddZoneRecordResponse
@@ -741,7 +785,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddZoneRecordRequest,
     ) -> pvtz_20180101_models.AddZoneRecordResponse:
         """
-        @summary Adds a Domain Name System (DNS) record for a zone.
+        @summary Adds a Domain Name System (DNS) record for a built-in authoritative zone. Within the effective scope, the intranet DNS records rather than the Internet DNS records take effect for the zone.
         
         @param request: AddZoneRecordRequest
         @return: AddZoneRecordResponse
@@ -859,7 +903,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.BindZoneVpcResponse:
         """
-        @summary Binds a zone to virtual private clouds (VPCs) or unbinds a zone from VPCs.
+        @summary Associates or dissociates virtual private clouds (VPCs) from a zone to set the effective scope of the zone.
+        
+        @description ##### [](#)Precautions:
+        We recommend that you set the effective scope of a zone after you configure all Domain Name System (DNS) records. If you set an effective scope before you configure DNS records, the DNS resolution for the zone within the effective scope will fail unless you enable the recursive resolution proxy for subdomain names.
         
         @param request: BindZoneVpcRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -902,7 +949,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.BindZoneVpcResponse:
         """
-        @summary Binds a zone to virtual private clouds (VPCs) or unbinds a zone from VPCs.
+        @summary Associates or dissociates virtual private clouds (VPCs) from a zone to set the effective scope of the zone.
+        
+        @description ##### [](#)Precautions:
+        We recommend that you set the effective scope of a zone after you configure all Domain Name System (DNS) records. If you set an effective scope before you configure DNS records, the DNS resolution for the zone within the effective scope will fail unless you enable the recursive resolution proxy for subdomain names.
         
         @param request: BindZoneVpcRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -944,7 +994,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.BindZoneVpcRequest,
     ) -> pvtz_20180101_models.BindZoneVpcResponse:
         """
-        @summary Binds a zone to virtual private clouds (VPCs) or unbinds a zone from VPCs.
+        @summary Associates or dissociates virtual private clouds (VPCs) from a zone to set the effective scope of the zone.
+        
+        @description ##### [](#)Precautions:
+        We recommend that you set the effective scope of a zone after you configure all Domain Name System (DNS) records. If you set an effective scope before you configure DNS records, the DNS resolution for the zone within the effective scope will fail unless you enable the recursive resolution proxy for subdomain names.
         
         @param request: BindZoneVpcRequest
         @return: BindZoneVpcResponse
@@ -957,7 +1010,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.BindZoneVpcRequest,
     ) -> pvtz_20180101_models.BindZoneVpcResponse:
         """
-        @summary Binds a zone to virtual private clouds (VPCs) or unbinds a zone from VPCs.
+        @summary Associates or dissociates virtual private clouds (VPCs) from a zone to set the effective scope of the zone.
+        
+        @description ##### [](#)Precautions:
+        We recommend that you set the effective scope of a zone after you configure all Domain Name System (DNS) records. If you set an effective scope before you configure DNS records, the DNS resolution for the zone within the effective scope will fail unless you enable the recursive resolution proxy for subdomain names.
         
         @param request: BindZoneVpcRequest
         @return: BindZoneVpcResponse
@@ -971,6 +1027,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.ChangeZoneDnsGroupResponse:
         """
+        @summary Changes the logical location of a zone.
+        
         @param request: ChangeZoneDnsGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ChangeZoneDnsGroupResponse
@@ -1008,6 +1066,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.ChangeZoneDnsGroupResponse:
         """
+        @summary Changes the logical location of a zone.
+        
         @param request: ChangeZoneDnsGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ChangeZoneDnsGroupResponse
@@ -1044,6 +1104,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.ChangeZoneDnsGroupRequest,
     ) -> pvtz_20180101_models.ChangeZoneDnsGroupResponse:
         """
+        @summary Changes the logical location of a zone.
+        
         @param request: ChangeZoneDnsGroupRequest
         @return: ChangeZoneDnsGroupResponse
         """
@@ -1055,6 +1117,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.ChangeZoneDnsGroupRequest,
     ) -> pvtz_20180101_models.ChangeZoneDnsGroupResponse:
         """
+        @summary Changes the logical location of a zone.
+        
         @param request: ChangeZoneDnsGroupRequest
         @return: ChangeZoneDnsGroupResponse
         """
@@ -1067,7 +1131,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.CheckZoneNameResponse:
         """
-        @summary Checks whether the name of a zone is valid based on specific rules.
+        @summary Checks whether a zone name can be added based on a rule.
         
         @param request: CheckZoneNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1106,7 +1170,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.CheckZoneNameResponse:
         """
-        @summary Checks whether the name of a zone is valid based on specific rules.
+        @summary Checks whether a zone name can be added based on a rule.
         
         @param request: CheckZoneNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1144,7 +1208,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.CheckZoneNameRequest,
     ) -> pvtz_20180101_models.CheckZoneNameResponse:
         """
-        @summary Checks whether the name of a zone is valid based on specific rules.
+        @summary Checks whether a zone name can be added based on a rule.
         
         @param request: CheckZoneNameRequest
         @return: CheckZoneNameResponse
@@ -1157,7 +1221,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.CheckZoneNameRequest,
     ) -> pvtz_20180101_models.CheckZoneNameResponse:
         """
-        @summary Checks whether the name of a zone is valid based on specific rules.
+        @summary Checks whether a zone name can be added based on a rule.
         
         @param request: CheckZoneNameRequest
         @return: CheckZoneNameResponse
@@ -1171,6 +1235,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteCustomLineResponse:
         """
+        @summary Deletes a custom line.
+        
         @param request: DeleteCustomLineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCustomLineResponse
@@ -1206,6 +1272,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteCustomLineResponse:
         """
+        @summary Deletes a custom line.
+        
         @param request: DeleteCustomLineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCustomLineResponse
@@ -1240,6 +1308,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteCustomLineRequest,
     ) -> pvtz_20180101_models.DeleteCustomLineResponse:
         """
+        @summary Deletes a custom line.
+        
         @param request: DeleteCustomLineRequest
         @return: DeleteCustomLineResponse
         """
@@ -1251,6 +1321,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteCustomLineRequest,
     ) -> pvtz_20180101_models.DeleteCustomLineResponse:
         """
+        @summary Deletes a custom line.
+        
         @param request: DeleteCustomLineRequest
         @return: DeleteCustomLineResponse
         """
@@ -1263,7 +1335,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteResolverEndpointResponse:
         """
-        @summary Deletes an endpoint.
+        @summary Deletes an endpoint based on the endpoint ID.
         
         @param request: DeleteResolverEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1300,7 +1372,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteResolverEndpointResponse:
         """
-        @summary Deletes an endpoint.
+        @summary Deletes an endpoint based on the endpoint ID.
         
         @param request: DeleteResolverEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1336,7 +1408,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteResolverEndpointRequest,
     ) -> pvtz_20180101_models.DeleteResolverEndpointResponse:
         """
-        @summary Deletes an endpoint.
+        @summary Deletes an endpoint based on the endpoint ID.
         
         @param request: DeleteResolverEndpointRequest
         @return: DeleteResolverEndpointResponse
@@ -1349,7 +1421,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteResolverEndpointRequest,
     ) -> pvtz_20180101_models.DeleteResolverEndpointResponse:
         """
-        @summary Deletes an endpoint.
+        @summary Deletes an endpoint based on the endpoint ID.
         
         @param request: DeleteResolverEndpointRequest
         @return: DeleteResolverEndpointResponse
@@ -1363,7 +1435,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteResolverRuleResponse:
         """
-        @summary Deletes a forwarding rule.
+        @summary Deletes a forwarding rule based on the rule ID.
         
         @param request: DeleteResolverRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1400,7 +1472,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteResolverRuleResponse:
         """
-        @summary Deletes a forwarding rule.
+        @summary Deletes a forwarding rule based on the rule ID.
         
         @param request: DeleteResolverRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1436,7 +1508,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteResolverRuleRequest,
     ) -> pvtz_20180101_models.DeleteResolverRuleResponse:
         """
-        @summary Deletes a forwarding rule.
+        @summary Deletes a forwarding rule based on the rule ID.
         
         @param request: DeleteResolverRuleRequest
         @return: DeleteResolverRuleResponse
@@ -1449,7 +1521,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteResolverRuleRequest,
     ) -> pvtz_20180101_models.DeleteResolverRuleResponse:
         """
-        @summary Deletes a forwarding rule.
+        @summary Deletes a forwarding rule based on the rule ID.
         
         @param request: DeleteResolverRuleRequest
         @return: DeleteResolverRuleResponse
@@ -1463,7 +1535,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteUserVpcAuthorizationResponse:
         """
-        @summary Deletes an account whose one or more virtual private clouds (VPCs) are associated with a private zone.
+        @summary Removes an account from the central management of private Domain Name System (DNS) resolution based on the account ID and authorization type.
         
         @param request: DeleteUserVpcAuthorizationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1500,7 +1572,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteUserVpcAuthorizationResponse:
         """
-        @summary Deletes an account whose one or more virtual private clouds (VPCs) are associated with a private zone.
+        @summary Removes an account from the central management of private Domain Name System (DNS) resolution based on the account ID and authorization type.
         
         @param request: DeleteUserVpcAuthorizationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1536,7 +1608,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteUserVpcAuthorizationRequest,
     ) -> pvtz_20180101_models.DeleteUserVpcAuthorizationResponse:
         """
-        @summary Deletes an account whose one or more virtual private clouds (VPCs) are associated with a private zone.
+        @summary Removes an account from the central management of private Domain Name System (DNS) resolution based on the account ID and authorization type.
         
         @param request: DeleteUserVpcAuthorizationRequest
         @return: DeleteUserVpcAuthorizationResponse
@@ -1549,7 +1621,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteUserVpcAuthorizationRequest,
     ) -> pvtz_20180101_models.DeleteUserVpcAuthorizationResponse:
         """
-        @summary Deletes an account whose one or more virtual private clouds (VPCs) are associated with a private zone.
+        @summary Removes an account from the central management of private Domain Name System (DNS) resolution based on the account ID and authorization type.
         
         @param request: DeleteUserVpcAuthorizationRequest
         @return: DeleteUserVpcAuthorizationResponse
@@ -1563,7 +1635,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteZoneResponse:
         """
-        @summary Deletes a zone.
+        @summary Deletes an idle built-in authoritative zone.
+        
+        @description #### [](#)Precautions
+        If you want to delete a built-in authoritative zone whose effective scope is configured, you must disassociate the zone from the effective scope first.
         
         @param request: DeleteZoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1604,7 +1679,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteZoneResponse:
         """
-        @summary Deletes a zone.
+        @summary Deletes an idle built-in authoritative zone.
+        
+        @description #### [](#)Precautions
+        If you want to delete a built-in authoritative zone whose effective scope is configured, you must disassociate the zone from the effective scope first.
         
         @param request: DeleteZoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1644,7 +1722,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteZoneRequest,
     ) -> pvtz_20180101_models.DeleteZoneResponse:
         """
-        @summary Deletes a zone.
+        @summary Deletes an idle built-in authoritative zone.
+        
+        @description #### [](#)Precautions
+        If you want to delete a built-in authoritative zone whose effective scope is configured, you must disassociate the zone from the effective scope first.
         
         @param request: DeleteZoneRequest
         @return: DeleteZoneResponse
@@ -1657,7 +1738,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteZoneRequest,
     ) -> pvtz_20180101_models.DeleteZoneResponse:
         """
-        @summary Deletes a zone.
+        @summary Deletes an idle built-in authoritative zone.
+        
+        @description #### [](#)Precautions
+        If you want to delete a built-in authoritative zone whose effective scope is configured, you must disassociate the zone from the effective scope first.
         
         @param request: DeleteZoneRequest
         @return: DeleteZoneResponse
@@ -1671,7 +1755,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
         """
-        @summary Deletes a Domain Name System (DNS) record of a zone.
+        @summary Deletes a Domain Name System (DNS) record based on the ID of the DNS record.
+        
+        @description #### *Precautions**\
+        Deleted DNS records cannot be restored. Exercise caution when you perform this operation.
         
         @param request: DeleteZoneRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1712,7 +1799,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
         """
-        @summary Deletes a Domain Name System (DNS) record of a zone.
+        @summary Deletes a Domain Name System (DNS) record based on the ID of the DNS record.
+        
+        @description #### *Precautions**\
+        Deleted DNS records cannot be restored. Exercise caution when you perform this operation.
         
         @param request: DeleteZoneRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1752,7 +1842,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteZoneRecordRequest,
     ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
         """
-        @summary Deletes a Domain Name System (DNS) record of a zone.
+        @summary Deletes a Domain Name System (DNS) record based on the ID of the DNS record.
+        
+        @description #### *Precautions**\
+        Deleted DNS records cannot be restored. Exercise caution when you perform this operation.
         
         @param request: DeleteZoneRecordRequest
         @return: DeleteZoneRecordResponse
@@ -1765,7 +1858,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteZoneRecordRequest,
     ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
         """
-        @summary Deletes a Domain Name System (DNS) record of a zone.
+        @summary Deletes a Domain Name System (DNS) record based on the ID of the DNS record.
+        
+        @description #### *Precautions**\
+        Deleted DNS records cannot be restored. Exercise caution when you perform this operation.
         
         @param request: DeleteZoneRecordRequest
         @return: DeleteZoneRecordResponse
@@ -1779,7 +1875,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeChangeLogsResponse:
         """
-        @summary Queries a list of operation logs.
+        @summary Queries the operation logs of Private DNS. Operation logs record operations in modules such as the built-in authoritative module, cache module, forward module, and service address module and record the queries for Domain Name System (DNS) records. You can query operation logs by operation or operation content.
+        
+        @description #### *Precautions**\
+        You can query the operation logs of Private DNS that are generated within the last six months.
         
         @param request: DescribeChangeLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1830,7 +1929,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeChangeLogsResponse:
         """
-        @summary Queries a list of operation logs.
+        @summary Queries the operation logs of Private DNS. Operation logs record operations in modules such as the built-in authoritative module, cache module, forward module, and service address module and record the queries for Domain Name System (DNS) records. You can query operation logs by operation or operation content.
+        
+        @description #### *Precautions**\
+        You can query the operation logs of Private DNS that are generated within the last six months.
         
         @param request: DescribeChangeLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1880,7 +1982,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeChangeLogsRequest,
     ) -> pvtz_20180101_models.DescribeChangeLogsResponse:
         """
-        @summary Queries a list of operation logs.
+        @summary Queries the operation logs of Private DNS. Operation logs record operations in modules such as the built-in authoritative module, cache module, forward module, and service address module and record the queries for Domain Name System (DNS) records. You can query operation logs by operation or operation content.
+        
+        @description #### *Precautions**\
+        You can query the operation logs of Private DNS that are generated within the last six months.
         
         @param request: DescribeChangeLogsRequest
         @return: DescribeChangeLogsResponse
@@ -1893,7 +1998,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeChangeLogsRequest,
     ) -> pvtz_20180101_models.DescribeChangeLogsResponse:
         """
-        @summary Queries a list of operation logs.
+        @summary Queries the operation logs of Private DNS. Operation logs record operations in modules such as the built-in authoritative module, cache module, forward module, and service address module and record the queries for Domain Name System (DNS) records. You can query operation logs by operation or operation content.
+        
+        @description #### *Precautions**\
+        You can query the operation logs of Private DNS that are generated within the last six months.
         
         @param request: DescribeChangeLogsRequest
         @return: DescribeChangeLogsResponse
@@ -1907,6 +2015,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeCustomLineInfoResponse:
         """
+        @summary Queries the information about a custom line.
+        
         @param request: DescribeCustomLineInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCustomLineInfoResponse
@@ -1942,6 +2052,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeCustomLineInfoResponse:
         """
+        @summary Queries the information about a custom line.
+        
         @param request: DescribeCustomLineInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCustomLineInfoResponse
@@ -1976,6 +2088,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeCustomLineInfoRequest,
     ) -> pvtz_20180101_models.DescribeCustomLineInfoResponse:
         """
+        @summary Queries the information about a custom line.
+        
         @param request: DescribeCustomLineInfoRequest
         @return: DescribeCustomLineInfoResponse
         """
@@ -1987,6 +2101,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeCustomLineInfoRequest,
     ) -> pvtz_20180101_models.DescribeCustomLineInfoResponse:
         """
+        @summary Queries the information about a custom line.
+        
         @param request: DescribeCustomLineInfoRequest
         @return: DescribeCustomLineInfoResponse
         """
@@ -1999,6 +2115,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeCustomLinesResponse:
         """
+        @summary Queries a list of custom lines.
+        
         @param request: DescribeCustomLinesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCustomLinesResponse
@@ -2036,6 +2154,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeCustomLinesResponse:
         """
+        @summary Queries a list of custom lines.
+        
         @param request: DescribeCustomLinesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCustomLinesResponse
@@ -2072,6 +2192,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeCustomLinesRequest,
     ) -> pvtz_20180101_models.DescribeCustomLinesResponse:
         """
+        @summary Queries a list of custom lines.
+        
         @param request: DescribeCustomLinesRequest
         @return: DescribeCustomLinesResponse
         """
@@ -2083,6 +2205,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeCustomLinesRequest,
     ) -> pvtz_20180101_models.DescribeCustomLinesResponse:
         """
+        @summary Queries a list of custom lines.
+        
         @param request: DescribeCustomLinesRequest
         @return: DescribeCustomLinesResponse
         """
@@ -2095,7 +2219,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeRegionsResponse:
         """
-        @summary Queries a list of available regions.
+        @summary Queries a list of regions for selection based on the scenario and virtual private cloud (VPC) type.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2140,7 +2264,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeRegionsResponse:
         """
-        @summary Queries a list of available regions.
+        @summary Queries a list of regions for selection based on the scenario and virtual private cloud (VPC) type.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2184,7 +2308,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeRegionsRequest,
     ) -> pvtz_20180101_models.DescribeRegionsResponse:
         """
-        @summary Queries a list of available regions.
+        @summary Queries a list of regions for selection based on the scenario and virtual private cloud (VPC) type.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -2197,7 +2321,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeRegionsRequest,
     ) -> pvtz_20180101_models.DescribeRegionsResponse:
         """
-        @summary Queries a list of available regions.
+        @summary Queries a list of regions for selection based on the scenario and virtual private cloud (VPC) type.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -2211,7 +2335,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeRequestGraphResponse:
         """
-        @summary Queries the information about Domain Name System (DNS) requests.
+        @summary Queries the information about Domain Name System (DNS) requests based on conditions such as the time range.
         
         @param request: DescribeRequestGraphRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2260,7 +2384,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeRequestGraphResponse:
         """
-        @summary Queries the information about Domain Name System (DNS) requests.
+        @summary Queries the information about Domain Name System (DNS) requests based on conditions such as the time range.
         
         @param request: DescribeRequestGraphRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2308,7 +2432,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeRequestGraphRequest,
     ) -> pvtz_20180101_models.DescribeRequestGraphResponse:
         """
-        @summary Queries the information about Domain Name System (DNS) requests.
+        @summary Queries the information about Domain Name System (DNS) requests based on conditions such as the time range.
         
         @param request: DescribeRequestGraphRequest
         @return: DescribeRequestGraphResponse
@@ -2321,7 +2445,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeRequestGraphRequest,
     ) -> pvtz_20180101_models.DescribeRequestGraphResponse:
         """
-        @summary Queries the information about Domain Name System (DNS) requests.
+        @summary Queries the information about Domain Name System (DNS) requests based on conditions such as the time range.
         
         @param request: DescribeRequestGraphRequest
         @return: DescribeRequestGraphResponse
@@ -2439,7 +2563,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverEndpointResponse:
         """
-        @summary Queries the information about an endpoint.
+        @summary Queries the information about an endpoint based on the endpoint ID.
         
         @param request: DescribeResolverEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2476,7 +2600,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverEndpointResponse:
         """
-        @summary Queries the information about an endpoint.
+        @summary Queries the information about an endpoint based on the endpoint ID.
         
         @param request: DescribeResolverEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2512,7 +2636,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverEndpointRequest,
     ) -> pvtz_20180101_models.DescribeResolverEndpointResponse:
         """
-        @summary Queries the information about an endpoint.
+        @summary Queries the information about an endpoint based on the endpoint ID.
         
         @param request: DescribeResolverEndpointRequest
         @return: DescribeResolverEndpointResponse
@@ -2525,7 +2649,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverEndpointRequest,
     ) -> pvtz_20180101_models.DescribeResolverEndpointResponse:
         """
-        @summary Queries the information about an endpoint.
+        @summary Queries the information about an endpoint based on the endpoint ID.
         
         @param request: DescribeResolverEndpointRequest
         @return: DescribeResolverEndpointResponse
@@ -2655,7 +2779,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverRuleResponse:
         """
-        @summary Queries the information about a forwarding rule.
+        @summary Queries the information about a forwarding rule based on the ID of the forwarding rule.
         
         @param request: DescribeResolverRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2692,7 +2816,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverRuleResponse:
         """
-        @summary Queries the information about a forwarding rule.
+        @summary Queries the information about a forwarding rule based on the ID of the forwarding rule.
         
         @param request: DescribeResolverRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2728,7 +2852,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverRuleRequest,
     ) -> pvtz_20180101_models.DescribeResolverRuleResponse:
         """
-        @summary Queries the information about a forwarding rule.
+        @summary Queries the information about a forwarding rule based on the ID of the forwarding rule.
         
         @param request: DescribeResolverRuleRequest
         @return: DescribeResolverRuleResponse
@@ -2741,7 +2865,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverRuleRequest,
     ) -> pvtz_20180101_models.DescribeResolverRuleResponse:
         """
-        @summary Queries the information about a forwarding rule.
+        @summary Queries the information about a forwarding rule based on the ID of the forwarding rule.
         
         @param request: DescribeResolverRuleRequest
         @return: DescribeResolverRuleResponse
@@ -2871,7 +2995,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeStatisticSummaryResponse:
         """
-        @summary Queries the statistics on the Domain Name System (DNS) requests received on the previous day.
+        @summary Queries the statistics on Domain Name System (DNS) requests received on the previous day, including the top three zones and virtual private clouds (VPCs) with the largest number of DNS requests.
         
         @param request: DescribeStatisticSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2908,7 +3032,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeStatisticSummaryResponse:
         """
-        @summary Queries the statistics on the Domain Name System (DNS) requests received on the previous day.
+        @summary Queries the statistics on Domain Name System (DNS) requests received on the previous day, including the top three zones and virtual private clouds (VPCs) with the largest number of DNS requests.
         
         @param request: DescribeStatisticSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2944,7 +3068,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeStatisticSummaryRequest,
     ) -> pvtz_20180101_models.DescribeStatisticSummaryResponse:
         """
-        @summary Queries the statistics on the Domain Name System (DNS) requests received on the previous day.
+        @summary Queries the statistics on Domain Name System (DNS) requests received on the previous day, including the top three zones and virtual private clouds (VPCs) with the largest number of DNS requests.
         
         @param request: DescribeStatisticSummaryRequest
         @return: DescribeStatisticSummaryResponse
@@ -2957,7 +3081,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeStatisticSummaryRequest,
     ) -> pvtz_20180101_models.DescribeStatisticSummaryResponse:
         """
-        @summary Queries the statistics on the Domain Name System (DNS) requests received on the previous day.
+        @summary Queries the statistics on Domain Name System (DNS) requests received on the previous day, including the top three zones and virtual private clouds (VPCs) with the largest number of DNS requests.
         
         @param request: DescribeStatisticSummaryRequest
         @return: DescribeStatisticSummaryResponse
@@ -2971,7 +3095,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeSyncEcsHostTaskResponse:
         """
-        @summary Queries the information about a hostname synchronization task.
+        @summary Queries the information about a hostname synchronization task based on a zone ID.
+        
+        @description You can call the DescribeSyncEcsHostTask operation to query the information about a hostname synchronization task based on a zone ID.
         
         @param request: DescribeSyncEcsHostTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3008,7 +3134,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeSyncEcsHostTaskResponse:
         """
-        @summary Queries the information about a hostname synchronization task.
+        @summary Queries the information about a hostname synchronization task based on a zone ID.
+        
+        @description You can call the DescribeSyncEcsHostTask operation to query the information about a hostname synchronization task based on a zone ID.
         
         @param request: DescribeSyncEcsHostTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3044,7 +3172,9 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeSyncEcsHostTaskRequest,
     ) -> pvtz_20180101_models.DescribeSyncEcsHostTaskResponse:
         """
-        @summary Queries the information about a hostname synchronization task.
+        @summary Queries the information about a hostname synchronization task based on a zone ID.
+        
+        @description You can call the DescribeSyncEcsHostTask operation to query the information about a hostname synchronization task based on a zone ID.
         
         @param request: DescribeSyncEcsHostTaskRequest
         @return: DescribeSyncEcsHostTaskResponse
@@ -3057,7 +3187,9 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeSyncEcsHostTaskRequest,
     ) -> pvtz_20180101_models.DescribeSyncEcsHostTaskResponse:
         """
-        @summary Queries the information about a hostname synchronization task.
+        @summary Queries the information about a hostname synchronization task based on a zone ID.
+        
+        @description You can call the DescribeSyncEcsHostTask operation to query the information about a hostname synchronization task based on a zone ID.
         
         @param request: DescribeSyncEcsHostTaskRequest
         @return: DescribeSyncEcsHostTaskResponse
@@ -3071,7 +3203,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeTagsResponse:
         """
-        @summary Queries a list of existing tags.
+        @summary Queries a list of tags added to zones.
+        
+        @description #### *Precautions**\
+        You can call this API operation to query the information about tags added only to zones.
         
         @param request: DescribeTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3112,7 +3247,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeTagsResponse:
         """
-        @summary Queries a list of existing tags.
+        @summary Queries a list of tags added to zones.
+        
+        @description #### *Precautions**\
+        You can call this API operation to query the information about tags added only to zones.
         
         @param request: DescribeTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3152,7 +3290,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeTagsRequest,
     ) -> pvtz_20180101_models.DescribeTagsResponse:
         """
-        @summary Queries a list of existing tags.
+        @summary Queries a list of tags added to zones.
+        
+        @description #### *Precautions**\
+        You can call this API operation to query the information about tags added only to zones.
         
         @param request: DescribeTagsRequest
         @return: DescribeTagsResponse
@@ -3165,7 +3306,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeTagsRequest,
     ) -> pvtz_20180101_models.DescribeTagsResponse:
         """
-        @summary Queries a list of existing tags.
+        @summary Queries a list of tags added to zones.
+        
+        @description #### *Precautions**\
+        You can call this API operation to query the information about tags added only to zones.
         
         @param request: DescribeTagsRequest
         @return: DescribeTagsResponse
@@ -3179,6 +3323,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeUserServiceStatusResponse:
         """
+        @summary Query the current user\\"s service status, such as whether the service is activated, whether there are any unpaid fees, etc.
+        
         @param request: DescribeUserServiceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUserServiceStatusResponse
@@ -3212,6 +3358,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeUserServiceStatusResponse:
         """
+        @summary Query the current user\\"s service status, such as whether the service is activated, whether there are any unpaid fees, etc.
+        
         @param request: DescribeUserServiceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUserServiceStatusResponse
@@ -3244,6 +3392,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeUserServiceStatusRequest,
     ) -> pvtz_20180101_models.DescribeUserServiceStatusResponse:
         """
+        @summary Query the current user\\"s service status, such as whether the service is activated, whether there are any unpaid fees, etc.
+        
         @param request: DescribeUserServiceStatusRequest
         @return: DescribeUserServiceStatusResponse
         """
@@ -3255,6 +3405,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeUserServiceStatusRequest,
     ) -> pvtz_20180101_models.DescribeUserServiceStatusResponse:
         """
+        @summary Query the current user\\"s service status, such as whether the service is activated, whether there are any unpaid fees, etc.
+        
         @param request: DescribeUserServiceStatusRequest
         @return: DescribeUserServiceStatusResponse
         """
@@ -3375,7 +3527,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneInfoResponse:
         """
-        @summary Queries the information about a zone.
+        @summary Queries the information about a built-in authoritative zone, such as the virtual private clouds (VPCs) that are associated with the zone.
         
         @param request: DescribeZoneInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3412,7 +3564,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneInfoResponse:
         """
-        @summary Queries the information about a zone.
+        @summary Queries the information about a built-in authoritative zone, such as the virtual private clouds (VPCs) that are associated with the zone.
         
         @param request: DescribeZoneInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3448,7 +3600,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneInfoRequest,
     ) -> pvtz_20180101_models.DescribeZoneInfoResponse:
         """
-        @summary Queries the information about a zone.
+        @summary Queries the information about a built-in authoritative zone, such as the virtual private clouds (VPCs) that are associated with the zone.
         
         @param request: DescribeZoneInfoRequest
         @return: DescribeZoneInfoResponse
@@ -3461,7 +3613,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneInfoRequest,
     ) -> pvtz_20180101_models.DescribeZoneInfoResponse:
         """
-        @summary Queries the information about a zone.
+        @summary Queries the information about a built-in authoritative zone, such as the virtual private clouds (VPCs) that are associated with the zone.
         
         @param request: DescribeZoneInfoRequest
         @return: DescribeZoneInfoResponse
@@ -3475,6 +3627,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneRecordResponse:
         """
+        @summary Queries the information about a Domain Name System (DNS) record.
+        
         @param request: DescribeZoneRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeZoneRecordResponse
@@ -3508,6 +3662,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneRecordResponse:
         """
+        @summary Queries the information about a Domain Name System (DNS) record.
+        
         @param request: DescribeZoneRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeZoneRecordResponse
@@ -3540,6 +3696,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneRecordRequest,
     ) -> pvtz_20180101_models.DescribeZoneRecordResponse:
         """
+        @summary Queries the information about a Domain Name System (DNS) record.
+        
         @param request: DescribeZoneRecordRequest
         @return: DescribeZoneRecordResponse
         """
@@ -3551,6 +3709,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneRecordRequest,
     ) -> pvtz_20180101_models.DescribeZoneRecordResponse:
         """
+        @summary Queries the information about a Domain Name System (DNS) record.
+        
         @param request: DescribeZoneRecordRequest
         @return: DescribeZoneRecordResponse
         """
@@ -3563,7 +3723,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneRecordsResponse:
         """
-        @summary Queries a list of Domain Name System (DNS) records for a zone.
+        @summary Queries a list of Domain Name System (DNS) records.
         
         @param request: DescribeZoneRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3612,7 +3772,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneRecordsResponse:
         """
-        @summary Queries a list of Domain Name System (DNS) records for a zone.
+        @summary Queries a list of Domain Name System (DNS) records.
         
         @param request: DescribeZoneRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3660,7 +3820,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneRecordsRequest,
     ) -> pvtz_20180101_models.DescribeZoneRecordsResponse:
         """
-        @summary Queries a list of Domain Name System (DNS) records for a zone.
+        @summary Queries a list of Domain Name System (DNS) records.
         
         @param request: DescribeZoneRecordsRequest
         @return: DescribeZoneRecordsResponse
@@ -3673,7 +3833,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneRecordsRequest,
     ) -> pvtz_20180101_models.DescribeZoneRecordsResponse:
         """
-        @summary Queries a list of Domain Name System (DNS) records for a zone.
+        @summary Queries a list of Domain Name System (DNS) records.
         
         @param request: DescribeZoneRecordsRequest
         @return: DescribeZoneRecordsResponse
@@ -3687,9 +3847,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneVpcTreeResponse:
         """
-        @summary Queries a list of zones and a list of virtual private clouds (VPCs) that are bound to the zones.
+        @summary Queries a list of zones within the current account and a list of virtual private clouds (VPCs) associated with the zones.
         
-        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs to which a zone is bound, you can call the DescribeZoneInfo operation based on the zone ID.
+        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs with which a zone is associated, you can call the DescribeZoneInfo operation based on the zone ID.
         
         @param request: DescribeZoneVpcTreeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3726,9 +3886,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneVpcTreeResponse:
         """
-        @summary Queries a list of zones and a list of virtual private clouds (VPCs) that are bound to the zones.
+        @summary Queries a list of zones within the current account and a list of virtual private clouds (VPCs) associated with the zones.
         
-        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs to which a zone is bound, you can call the DescribeZoneInfo operation based on the zone ID.
+        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs with which a zone is associated, you can call the DescribeZoneInfo operation based on the zone ID.
         
         @param request: DescribeZoneVpcTreeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3764,9 +3924,9 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneVpcTreeRequest,
     ) -> pvtz_20180101_models.DescribeZoneVpcTreeResponse:
         """
-        @summary Queries a list of zones and a list of virtual private clouds (VPCs) that are bound to the zones.
+        @summary Queries a list of zones within the current account and a list of virtual private clouds (VPCs) associated with the zones.
         
-        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs to which a zone is bound, you can call the DescribeZoneInfo operation based on the zone ID.
+        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs with which a zone is associated, you can call the DescribeZoneInfo operation based on the zone ID.
         
         @param request: DescribeZoneVpcTreeRequest
         @return: DescribeZoneVpcTreeResponse
@@ -3779,9 +3939,9 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneVpcTreeRequest,
     ) -> pvtz_20180101_models.DescribeZoneVpcTreeResponse:
         """
-        @summary Queries a list of zones and a list of virtual private clouds (VPCs) that are bound to the zones.
+        @summary Queries a list of zones within the current account and a list of virtual private clouds (VPCs) associated with the zones.
         
-        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs to which a zone is bound, you can call the DescribeZoneInfo operation based on the zone ID.
+        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs with which a zone is associated, you can call the DescribeZoneInfo operation based on the zone ID.
         
         @param request: DescribeZoneVpcTreeRequest
         @return: DescribeZoneVpcTreeResponse
@@ -3795,7 +3955,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZonesResponse:
         """
-        @summary Queries a list of zones for a user.
+        @summary Queries a list of zones within the current account.
         
         @param request: DescribeZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3850,7 +4010,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZonesResponse:
         """
-        @summary Queries a list of zones for a user.
+        @summary Queries a list of zones within the current account.
         
         @param request: DescribeZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3904,7 +4064,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZonesRequest,
     ) -> pvtz_20180101_models.DescribeZonesResponse:
         """
-        @summary Queries a list of zones for a user.
+        @summary Queries a list of zones within the current account.
         
         @param request: DescribeZonesRequest
         @return: DescribeZonesResponse
@@ -3917,7 +4077,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZonesRequest,
     ) -> pvtz_20180101_models.DescribeZonesResponse:
         """
-        @summary Queries a list of zones for a user.
+        @summary Queries a list of zones within the current account.
         
         @param request: DescribeZonesRequest
         @return: DescribeZonesResponse
@@ -3931,7 +4091,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.ListTagResourcesResponse:
         """
-        @summary Queries a list of tags added to one or more resources.
+        @summary Queries a list of tags added to zones.
+        
+        @description #### [](#)*Precautions**\
+        You can call this API operation to query tags added only to zones.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3976,7 +4139,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.ListTagResourcesResponse:
         """
-        @summary Queries a list of tags added to one or more resources.
+        @summary Queries a list of tags added to zones.
+        
+        @description #### [](#)*Precautions**\
+        You can call this API operation to query tags added only to zones.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4020,7 +4186,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.ListTagResourcesRequest,
     ) -> pvtz_20180101_models.ListTagResourcesResponse:
         """
-        @summary Queries a list of tags added to one or more resources.
+        @summary Queries a list of tags added to zones.
+        
+        @description #### [](#)*Precautions**\
+        You can call this API operation to query tags added only to zones.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -4033,7 +4202,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.ListTagResourcesRequest,
     ) -> pvtz_20180101_models.ListTagResourcesResponse:
         """
-        @summary Queries a list of tags added to one or more resources.
+        @summary Queries a list of tags added to zones.
+        
+        @description #### [](#)*Precautions**\
+        You can call this API operation to query tags added only to zones.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -4047,7 +4219,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.MoveResourceGroupResponse:
         """
-        @summary Moves a zone to another resource group.
+        @summary Changes a resource group.
+        
+        @description #### [](#)Precautions
+        You can call this API operation to change a resource group only for a zone.
         
         @param request: MoveResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4088,7 +4263,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.MoveResourceGroupResponse:
         """
-        @summary Moves a zone to another resource group.
+        @summary Changes a resource group.
+        
+        @description #### [](#)Precautions
+        You can call this API operation to change a resource group only for a zone.
         
         @param request: MoveResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4128,7 +4306,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.MoveResourceGroupRequest,
     ) -> pvtz_20180101_models.MoveResourceGroupResponse:
         """
-        @summary Moves a zone to another resource group.
+        @summary Changes a resource group.
+        
+        @description #### [](#)Precautions
+        You can call this API operation to change a resource group only for a zone.
         
         @param request: MoveResourceGroupRequest
         @return: MoveResourceGroupResponse
@@ -4141,7 +4322,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.MoveResourceGroupRequest,
     ) -> pvtz_20180101_models.MoveResourceGroupResponse:
         """
-        @summary Moves a zone to another resource group.
+        @summary Changes a resource group.
+        
+        @description #### [](#)Precautions
+        You can call this API operation to change a resource group only for a zone.
         
         @param request: MoveResourceGroupRequest
         @return: MoveResourceGroupResponse
@@ -4155,6 +4339,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.SearchCustomLinesResponse:
         """
+        @summary Queries a list of custom lines.
+        
         @param request: SearchCustomLinesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchCustomLinesResponse
@@ -4206,6 +4392,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.SearchCustomLinesResponse:
         """
+        @summary Queries a list of custom lines.
+        
         @param request: SearchCustomLinesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchCustomLinesResponse
@@ -4256,6 +4444,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.SearchCustomLinesRequest,
     ) -> pvtz_20180101_models.SearchCustomLinesResponse:
         """
+        @summary Queries a list of custom lines.
+        
         @param request: SearchCustomLinesRequest
         @return: SearchCustomLinesResponse
         """
@@ -4267,6 +4457,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.SearchCustomLinesRequest,
     ) -> pvtz_20180101_models.SearchCustomLinesResponse:
         """
+        @summary Queries a list of custom lines.
+        
         @param request: SearchCustomLinesRequest
         @return: SearchCustomLinesResponse
         """
@@ -4279,7 +4471,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.SetProxyPatternResponse:
         """
-        @summary Configures the recursive resolution proxy feature.
+        @summary Enables the recursive resolution proxy for subdomain names.
         
         @param request: SetProxyPatternRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4322,7 +4514,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.SetProxyPatternResponse:
         """
-        @summary Configures the recursive resolution proxy feature.
+        @summary Enables the recursive resolution proxy for subdomain names.
         
         @param request: SetProxyPatternRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4364,7 +4556,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.SetProxyPatternRequest,
     ) -> pvtz_20180101_models.SetProxyPatternResponse:
         """
-        @summary Configures the recursive resolution proxy feature.
+        @summary Enables the recursive resolution proxy for subdomain names.
         
         @param request: SetProxyPatternRequest
         @return: SetProxyPatternResponse
@@ -4377,7 +4569,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.SetProxyPatternRequest,
     ) -> pvtz_20180101_models.SetProxyPatternResponse:
         """
-        @summary Configures the recursive resolution proxy feature.
+        @summary Enables the recursive resolution proxy for subdomain names.
         
         @param request: SetProxyPatternRequest
         @return: SetProxyPatternResponse
@@ -4391,7 +4583,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
         """
-        @summary Specifies the status of a Domain Name System (DNS) record for a zone.
+        @summary Enables or disables a Domain Name System (DNS) record.
         
         @param request: SetZoneRecordStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4434,7 +4626,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
         """
-        @summary Specifies the status of a Domain Name System (DNS) record for a zone.
+        @summary Enables or disables a Domain Name System (DNS) record.
         
         @param request: SetZoneRecordStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4476,7 +4668,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.SetZoneRecordStatusRequest,
     ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
         """
-        @summary Specifies the status of a Domain Name System (DNS) record for a zone.
+        @summary Enables or disables a Domain Name System (DNS) record.
         
         @param request: SetZoneRecordStatusRequest
         @return: SetZoneRecordStatusResponse
@@ -4489,7 +4681,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.SetZoneRecordStatusRequest,
     ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
         """
-        @summary Specifies the status of a Domain Name System (DNS) record for a zone.
+        @summary Enables or disables a Domain Name System (DNS) record.
         
         @param request: SetZoneRecordStatusRequest
         @return: SetZoneRecordStatusResponse
@@ -4503,7 +4695,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.TagResourcesResponse:
         """
-        @summary Adds tags to resources.
+        @summary Adds or modifies tags for zones.
+        
+        @description ##### [](#)Precautions
+        You can configure tags only for zones.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4546,7 +4741,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.TagResourcesResponse:
         """
-        @summary Adds tags to resources.
+        @summary Adds or modifies tags for zones.
+        
+        @description ##### [](#)Precautions
+        You can configure tags only for zones.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4588,7 +4786,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.TagResourcesRequest,
     ) -> pvtz_20180101_models.TagResourcesResponse:
         """
-        @summary Adds tags to resources.
+        @summary Adds or modifies tags for zones.
+        
+        @description ##### [](#)Precautions
+        You can configure tags only for zones.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -4601,7 +4802,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.TagResourcesRequest,
     ) -> pvtz_20180101_models.TagResourcesResponse:
         """
-        @summary Adds tags to resources.
+        @summary Adds or modifies tags for zones.
+        
+        @description ##### [](#)Precautions
+        You can configure tags only for zones.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -4615,7 +4819,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UntagResourcesResponse:
         """
-        @summary Removes tags from resources.
+        @summary Removes the tags of multiple zones at a time.
+        
+        @description #### [](#)*Precautions**\
+        You can call this API operation to remove tags added only to zones.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4658,7 +4865,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UntagResourcesResponse:
         """
-        @summary Removes tags from resources.
+        @summary Removes the tags of multiple zones at a time.
+        
+        @description #### [](#)*Precautions**\
+        You can call this API operation to remove tags added only to zones.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4700,7 +4910,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UntagResourcesRequest,
     ) -> pvtz_20180101_models.UntagResourcesResponse:
         """
-        @summary Removes tags from resources.
+        @summary Removes the tags of multiple zones at a time.
+        
+        @description #### [](#)*Precautions**\
+        You can call this API operation to remove tags added only to zones.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -4713,7 +4926,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UntagResourcesRequest,
     ) -> pvtz_20180101_models.UntagResourcesResponse:
         """
-        @summary Removes tags from resources.
+        @summary Removes the tags of multiple zones at a time.
+        
+        @description #### [](#)*Precautions**\
+        You can call this API operation to remove tags added only to zones.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -4727,6 +4943,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateCustomLineResponse:
         """
+        @summary Modifies a custom line.
+        
         @param request: UpdateCustomLineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCustomLineResponse
@@ -4766,6 +4984,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateCustomLineResponse:
         """
+        @summary Modifies a custom line.
+        
         @param request: UpdateCustomLineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCustomLineResponse
@@ -4804,6 +5024,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateCustomLineRequest,
     ) -> pvtz_20180101_models.UpdateCustomLineResponse:
         """
+        @summary Modifies a custom line.
+        
         @param request: UpdateCustomLineRequest
         @return: UpdateCustomLineResponse
         """
@@ -4815,6 +5037,8 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateCustomLineRequest,
     ) -> pvtz_20180101_models.UpdateCustomLineResponse:
         """
+        @summary Modifies a custom line.
+        
         @param request: UpdateCustomLineRequest
         @return: UpdateCustomLineResponse
         """
@@ -4827,7 +5051,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
         """
-        @summary Modifies the description of a Domain Name System (DNS) record that is added for a zone.
+        @summary Modifies the description of a Domain Name System (DNS) record based on the record ID.
         
         @param request: UpdateRecordRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4868,7 +5092,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
         """
-        @summary Modifies the description of a Domain Name System (DNS) record that is added for a zone.
+        @summary Modifies the description of a Domain Name System (DNS) record based on the record ID.
         
         @param request: UpdateRecordRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4908,7 +5132,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateRecordRemarkRequest,
     ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
         """
-        @summary Modifies the description of a Domain Name System (DNS) record that is added for a zone.
+        @summary Modifies the description of a Domain Name System (DNS) record based on the record ID.
         
         @param request: UpdateRecordRemarkRequest
         @return: UpdateRecordRemarkResponse
@@ -4921,7 +5145,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateRecordRemarkRequest,
     ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
         """
-        @summary Modifies the description of a Domain Name System (DNS) record that is added for a zone.
+        @summary Modifies the description of a Domain Name System (DNS) record based on the record ID.
         
         @param request: UpdateRecordRemarkRequest
         @return: UpdateRecordRemarkResponse
@@ -5155,7 +5379,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateSyncEcsHostTaskResponse:
         """
-        @summary Creates and updates a hostname synchronize task.
+        @summary Adds or updates a hostname synchronization task.
         
         @param request: UpdateSyncEcsHostTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5196,7 +5420,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateSyncEcsHostTaskResponse:
         """
-        @summary Creates and updates a hostname synchronize task.
+        @summary Adds or updates a hostname synchronization task.
         
         @param request: UpdateSyncEcsHostTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5236,7 +5460,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateSyncEcsHostTaskRequest,
     ) -> pvtz_20180101_models.UpdateSyncEcsHostTaskResponse:
         """
-        @summary Creates and updates a hostname synchronize task.
+        @summary Adds or updates a hostname synchronization task.
         
         @param request: UpdateSyncEcsHostTaskRequest
         @return: UpdateSyncEcsHostTaskResponse
@@ -5249,7 +5473,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateSyncEcsHostTaskRequest,
     ) -> pvtz_20180101_models.UpdateSyncEcsHostTaskResponse:
         """
-        @summary Creates and updates a hostname synchronize task.
+        @summary Adds or updates a hostname synchronization task.
         
         @param request: UpdateSyncEcsHostTaskRequest
         @return: UpdateSyncEcsHostTaskResponse
@@ -5263,7 +5487,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
         """
-        @summary Modifies a Domain Name System (DNS) record of a zone.
+        @summary Modifies a Domain Name System (DNS) record of a zone, including the hostname, record value, and weight value of the DNS record.
+        
+        @description #### *Precautions**\
+        The DNS record modification for a zone in the regular module takes effect only after the time to live (TTL) expires. The DNS record modification for a zone in the acceleration module takes effect immediately.
         
         @param request: UpdateZoneRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5318,7 +5545,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
         """
-        @summary Modifies a Domain Name System (DNS) record of a zone.
+        @summary Modifies a Domain Name System (DNS) record of a zone, including the hostname, record value, and weight value of the DNS record.
+        
+        @description #### *Precautions**\
+        The DNS record modification for a zone in the regular module takes effect only after the time to live (TTL) expires. The DNS record modification for a zone in the acceleration module takes effect immediately.
         
         @param request: UpdateZoneRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5372,7 +5602,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateZoneRecordRequest,
     ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
         """
-        @summary Modifies a Domain Name System (DNS) record of a zone.
+        @summary Modifies a Domain Name System (DNS) record of a zone, including the hostname, record value, and weight value of the DNS record.
+        
+        @description #### *Precautions**\
+        The DNS record modification for a zone in the regular module takes effect only after the time to live (TTL) expires. The DNS record modification for a zone in the acceleration module takes effect immediately.
         
         @param request: UpdateZoneRecordRequest
         @return: UpdateZoneRecordResponse
@@ -5385,7 +5618,10 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateZoneRecordRequest,
     ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
         """
-        @summary Modifies a Domain Name System (DNS) record of a zone.
+        @summary Modifies a Domain Name System (DNS) record of a zone, including the hostname, record value, and weight value of the DNS record.
+        
+        @description #### *Precautions**\
+        The DNS record modification for a zone in the regular module takes effect only after the time to live (TTL) expires. The DNS record modification for a zone in the acceleration module takes effect immediately.
         
         @param request: UpdateZoneRecordRequest
         @return: UpdateZoneRecordResponse
@@ -5399,7 +5635,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
         """
-        @summary Modifies the description of a zone.
+        @summary Modifies the description of a built-in authoritative zone.
         
         @param request: UpdateZoneRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5442,7 +5678,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
         """
-        @summary Modifies the description of a zone.
+        @summary Modifies the description of a built-in authoritative zone.
         
         @param request: UpdateZoneRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5484,7 +5720,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateZoneRemarkRequest,
     ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
         """
-        @summary Modifies the description of a zone.
+        @summary Modifies the description of a built-in authoritative zone.
         
         @param request: UpdateZoneRemarkRequest
         @return: UpdateZoneRemarkResponse
@@ -5497,7 +5733,7 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateZoneRemarkRequest,
     ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
         """
-        @summary Modifies the description of a zone.
+        @summary Modifies the description of a built-in authoritative zone.
         
         @param request: UpdateZoneRemarkRequest
         @return: UpdateZoneRemarkResponse

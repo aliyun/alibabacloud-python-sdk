@@ -1,3 +1,10 @@
+2024-11-25 Version: 1.3.0
+- Support API DescribeUserServiceStatus.
+- Update API BindResolverRuleVpc: update param Vpc.
+- Update API BindZoneVpc: update param Vpcs.
+- Update API DescribeChangeLogs: update response param.
+
+
 2024-08-08 Version: 1.2.0
 - Support API DescribeUserServiceStatus.
 
