@@ -680,11 +680,13 @@ class BicyclingDirectionNovaResponseBody(TeaModel):
         data: BicyclingDirectionNovaResponseBodyData = None,
         error_code: int = None,
         error_message: str = None,
+        request_id: str = None,
         success: bool = None,
     ):
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
+        self.request_id = request_id
         self.success = success
 
     def validate(self):
@@ -703,6 +705,8 @@ class BicyclingDirectionNovaResponseBody(TeaModel):
             result['errorCode'] = self.error_code
         if self.error_message is not None:
             result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
         return result
@@ -716,6 +720,8 @@ class BicyclingDirectionNovaResponseBody(TeaModel):
             self.error_code = m.get('errorCode')
         if m.get('errorMessage') is not None:
             self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
         return self
@@ -1213,11 +1219,13 @@ class DrivingDirectionNovaResponseBody(TeaModel):
         data: DrivingDirectionNovaResponseBodyData = None,
         error_code: int = None,
         error_message: str = None,
+        request_id: str = None,
         success: bool = None,
     ):
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
+        self.request_id = request_id
         self.success = success
 
     def validate(self):
@@ -1236,6 +1244,8 @@ class DrivingDirectionNovaResponseBody(TeaModel):
             result['errorCode'] = self.error_code
         if self.error_message is not None:
             result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
         return result
@@ -1249,6 +1259,8 @@ class DrivingDirectionNovaResponseBody(TeaModel):
             self.error_code = m.get('errorCode')
         if m.get('errorMessage') is not None:
             self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
         return self
@@ -1973,11 +1985,13 @@ class ElectrobikeDirectionNovaResponseBody(TeaModel):
         data: ElectrobikeDirectionNovaResponseBodyData = None,
         error_code: int = None,
         error_message: str = None,
+        request_id: str = None,
         success: bool = None,
     ):
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
+        self.request_id = request_id
         self.success = success
 
     def validate(self):
@@ -1996,6 +2010,8 @@ class ElectrobikeDirectionNovaResponseBody(TeaModel):
             result['errorCode'] = self.error_code
         if self.error_message is not None:
             result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
         return result
@@ -2009,6 +2025,8 @@ class ElectrobikeDirectionNovaResponseBody(TeaModel):
             self.error_code = m.get('errorCode')
         if m.get('errorMessage') is not None:
             self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
         return self
@@ -2216,11 +2234,13 @@ class GeoCodeResponseBody(TeaModel):
         data: List[GeoCodeResponseBodyData] = None,
         error_code: int = None,
         error_message: str = None,
+        request_id: str = None,
         success: bool = None,
     ):
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
+        self.request_id = request_id
         self.success = success
 
     def validate(self):
@@ -2243,6 +2263,8 @@ class GeoCodeResponseBody(TeaModel):
             result['errorCode'] = self.error_code
         if self.error_message is not None:
             result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
         return result
@@ -2258,6 +2280,8 @@ class GeoCodeResponseBody(TeaModel):
             self.error_code = m.get('errorCode')
         if m.get('errorMessage') is not None:
             self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
         return self
@@ -2603,11 +2627,13 @@ class NearbySearchNovaResponseBody(TeaModel):
         data: List[NearbySearchNovaResponseBodyData] = None,
         error_code: int = None,
         error_message: str = None,
+        request_id: str = None,
         success: bool = None,
     ):
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
+        self.request_id = request_id
         self.success = success
 
     def validate(self):
@@ -2630,6 +2656,8 @@ class NearbySearchNovaResponseBody(TeaModel):
             result['errorCode'] = self.error_code
         if self.error_message is not None:
             result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
         return result
@@ -2645,6 +2673,8 @@ class NearbySearchNovaResponseBody(TeaModel):
             self.error_code = m.get('errorCode')
         if m.get('errorMessage') is not None:
             self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
         return self
@@ -2972,11 +3002,13 @@ class PlaceSearchNovaResponseBody(TeaModel):
         data: List[PlaceSearchNovaResponseBodyData] = None,
         error_code: int = None,
         error_message: str = None,
+        request_id: str = None,
         success: bool = None,
     ):
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
+        self.request_id = request_id
         self.success = success
 
     def validate(self):
@@ -2999,6 +3031,8 @@ class PlaceSearchNovaResponseBody(TeaModel):
             result['errorCode'] = self.error_code
         if self.error_message is not None:
             result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
         return result
@@ -3014,6 +3048,8 @@ class PlaceSearchNovaResponseBody(TeaModel):
             self.error_code = m.get('errorCode')
         if m.get('errorMessage') is not None:
             self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
         return self
@@ -3383,11 +3419,13 @@ class RgeoCodeResponseBody(TeaModel):
         data: RgeoCodeResponseBodyData = None,
         error_code: int = None,
         error_message: str = None,
+        request_id: str = None,
         success: bool = None,
     ):
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
+        self.request_id = request_id
         self.success = success
 
     def validate(self):
@@ -3406,6 +3444,8 @@ class RgeoCodeResponseBody(TeaModel):
             result['errorCode'] = self.error_code
         if self.error_message is not None:
             result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
         return result
@@ -3419,6 +3459,8 @@ class RgeoCodeResponseBody(TeaModel):
             self.error_code = m.get('errorCode')
         if m.get('errorMessage') is not None:
             self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
         return self
@@ -4890,11 +4932,13 @@ class TransitIntegratedDirectionResponseBody(TeaModel):
         data: TransitIntegratedDirectionResponseBodyData = None,
         error_code: int = None,
         error_message: str = None,
+        request_id: str = None,
         success: bool = None,
     ):
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
+        self.request_id = request_id
         self.success = success
 
     def validate(self):
@@ -4913,6 +4957,8 @@ class TransitIntegratedDirectionResponseBody(TeaModel):
             result['errorCode'] = self.error_code
         if self.error_message is not None:
             result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
         return result
@@ -4926,6 +4972,8 @@ class TransitIntegratedDirectionResponseBody(TeaModel):
             self.error_code = m.get('errorCode')
         if m.get('errorMessage') is not None:
             self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
         return self
@@ -5341,11 +5389,13 @@ class WalkingDirectionNovaResponseBody(TeaModel):
         data: WalkingDirectionNovaResponseBodyData = None,
         error_code: int = None,
         error_message: str = None,
+        request_id: str = None,
         success: bool = None,
     ):
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
+        self.request_id = request_id
         self.success = success
 
     def validate(self):
@@ -5364,6 +5414,8 @@ class WalkingDirectionNovaResponseBody(TeaModel):
             result['errorCode'] = self.error_code
         if self.error_message is not None:
             result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
         return result
@@ -5377,6 +5429,8 @@ class WalkingDirectionNovaResponseBody(TeaModel):
             self.error_code = m.get('errorCode')
         if m.get('errorMessage') is not None:
             self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
         return self

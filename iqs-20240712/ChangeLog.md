@@ -1,3 +1,15 @@
+2024-11-25 Version: 2.0.1
+- Update API BicyclingDirectionNova: update response param.
+- Update API DrivingDirectionNova: update response param.
+- Update API ElectrobikeDirectionNova: update response param.
+- Update API GeoCode: update response param.
+- Update API NearbySearchNova: update response param.
+- Update API PlaceSearchNova: update response param.
+- Update API RgeoCode: update response param.
+- Update API TransitIntegratedDirection: update response param.
+- Update API WalkingDirectionNova: update response param.
+
+
 2024-11-22 Version: 2.0.0
 - Delete API BicyclingDirection.
 - Delete API CircleTrafficStatus.
