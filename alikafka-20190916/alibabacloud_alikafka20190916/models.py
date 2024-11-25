@@ -6719,6 +6719,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         all_config: str = None,
         auto_create_group_enable: bool = None,
         auto_create_topic_enable: bool = None,
+        backup_zone_id: str = None,
         confluent_config: GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig = None,
         create_time: int = None,
         default_partition_num: int = None,
@@ -6766,6 +6767,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.all_config = all_config
         self.auto_create_group_enable = auto_create_group_enable
         self.auto_create_topic_enable = auto_create_topic_enable
+        self.backup_zone_id = backup_zone_id
         # The parameters that are returned for the ApsaraMQ for Confluent instance.
         self.confluent_config = confluent_config
         # The time when the instance was created. Unit: milliseconds.
@@ -6943,6 +6945,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             result['AutoCreateGroupEnable'] = self.auto_create_group_enable
         if self.auto_create_topic_enable is not None:
             result['AutoCreateTopicEnable'] = self.auto_create_topic_enable
+        if self.backup_zone_id is not None:
+            result['BackupZoneId'] = self.backup_zone_id
         if self.confluent_config is not None:
             result['ConfluentConfig'] = self.confluent_config.to_map()
         if self.create_time is not None:
@@ -7037,6 +7041,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             self.auto_create_group_enable = m.get('AutoCreateGroupEnable')
         if m.get('AutoCreateTopicEnable') is not None:
             self.auto_create_topic_enable = m.get('AutoCreateTopicEnable')
+        if m.get('BackupZoneId') is not None:
+            self.backup_zone_id = m.get('BackupZoneId')
         if m.get('ConfluentConfig') is not None:
             temp_model = GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig()
             self.confluent_config = temp_model.from_map(m['ConfluentConfig'])

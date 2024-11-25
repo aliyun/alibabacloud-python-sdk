@@ -1,3 +1,7 @@
+2024-11-25 Version: 2.8.1
+- Update API GetInstanceList: update response param.
+
+
 2024-11-15 Version: 2.8.0
 - Support API GetKafkaClientIp.
 - Update API GetInstanceList: update response param.
