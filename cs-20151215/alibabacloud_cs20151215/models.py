@@ -2935,6 +2935,171 @@ class CreateAutoscalingConfigResponse(TeaModel):
         return self
 
 
+class CreateClusterRequestControlPlaneConfig(TeaModel):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        auto_renew_period: int = None,
+        charge_type: str = None,
+        cloud_monitor_flags: bool = None,
+        cpu_policy: str = None,
+        deploymentset_id: str = None,
+        image_id: str = None,
+        image_type: str = None,
+        instance_types: List[str] = None,
+        key_pair: str = None,
+        login_password: str = None,
+        node_port_range: str = None,
+        period: int = None,
+        period_unit: str = None,
+        runtime: str = None,
+        security_hardening_os: bool = None,
+        size: int = None,
+        soc_enabled: bool = None,
+        system_disk_bursting_enabled: bool = None,
+        system_disk_category: str = None,
+        system_disk_performance_level: str = None,
+        system_disk_provisioned_iops: int = None,
+        system_disk_size: int = None,
+        system_disk_snapshot_policy_id: str = None,
+    ):
+        self.auto_renew = auto_renew
+        self.auto_renew_period = auto_renew_period
+        self.charge_type = charge_type
+        self.cloud_monitor_flags = cloud_monitor_flags
+        self.cpu_policy = cpu_policy
+        self.deploymentset_id = deploymentset_id
+        self.image_id = image_id
+        self.image_type = image_type
+        self.instance_types = instance_types
+        self.key_pair = key_pair
+        self.login_password = login_password
+        self.node_port_range = node_port_range
+        self.period = period
+        self.period_unit = period_unit
+        self.runtime = runtime
+        self.security_hardening_os = security_hardening_os
+        self.size = size
+        self.soc_enabled = soc_enabled
+        self.system_disk_bursting_enabled = system_disk_bursting_enabled
+        self.system_disk_category = system_disk_category
+        self.system_disk_performance_level = system_disk_performance_level
+        self.system_disk_provisioned_iops = system_disk_provisioned_iops
+        self.system_disk_size = system_disk_size
+        self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['auto_renew'] = self.auto_renew
+        if self.auto_renew_period is not None:
+            result['auto_renew_period'] = self.auto_renew_period
+        if self.charge_type is not None:
+            result['charge_type'] = self.charge_type
+        if self.cloud_monitor_flags is not None:
+            result['cloud_monitor_flags'] = self.cloud_monitor_flags
+        if self.cpu_policy is not None:
+            result['cpu_policy'] = self.cpu_policy
+        if self.deploymentset_id is not None:
+            result['deploymentset_id'] = self.deploymentset_id
+        if self.image_id is not None:
+            result['image_id'] = self.image_id
+        if self.image_type is not None:
+            result['image_type'] = self.image_type
+        if self.instance_types is not None:
+            result['instance_types'] = self.instance_types
+        if self.key_pair is not None:
+            result['key_pair'] = self.key_pair
+        if self.login_password is not None:
+            result['login_password'] = self.login_password
+        if self.node_port_range is not None:
+            result['node_port_range'] = self.node_port_range
+        if self.period is not None:
+            result['period'] = self.period
+        if self.period_unit is not None:
+            result['period_unit'] = self.period_unit
+        if self.runtime is not None:
+            result['runtime'] = self.runtime
+        if self.security_hardening_os is not None:
+            result['security_hardening_os'] = self.security_hardening_os
+        if self.size is not None:
+            result['size'] = self.size
+        if self.soc_enabled is not None:
+            result['soc_enabled'] = self.soc_enabled
+        if self.system_disk_bursting_enabled is not None:
+            result['system_disk_bursting_enabled'] = self.system_disk_bursting_enabled
+        if self.system_disk_category is not None:
+            result['system_disk_category'] = self.system_disk_category
+        if self.system_disk_performance_level is not None:
+            result['system_disk_performance_level'] = self.system_disk_performance_level
+        if self.system_disk_provisioned_iops is not None:
+            result['system_disk_provisioned_iops'] = self.system_disk_provisioned_iops
+        if self.system_disk_size is not None:
+            result['system_disk_size'] = self.system_disk_size
+        if self.system_disk_snapshot_policy_id is not None:
+            result['system_disk_snapshot_policy_id'] = self.system_disk_snapshot_policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_renew') is not None:
+            self.auto_renew = m.get('auto_renew')
+        if m.get('auto_renew_period') is not None:
+            self.auto_renew_period = m.get('auto_renew_period')
+        if m.get('charge_type') is not None:
+            self.charge_type = m.get('charge_type')
+        if m.get('cloud_monitor_flags') is not None:
+            self.cloud_monitor_flags = m.get('cloud_monitor_flags')
+        if m.get('cpu_policy') is not None:
+            self.cpu_policy = m.get('cpu_policy')
+        if m.get('deploymentset_id') is not None:
+            self.deploymentset_id = m.get('deploymentset_id')
+        if m.get('image_id') is not None:
+            self.image_id = m.get('image_id')
+        if m.get('image_type') is not None:
+            self.image_type = m.get('image_type')
+        if m.get('instance_types') is not None:
+            self.instance_types = m.get('instance_types')
+        if m.get('key_pair') is not None:
+            self.key_pair = m.get('key_pair')
+        if m.get('login_password') is not None:
+            self.login_password = m.get('login_password')
+        if m.get('node_port_range') is not None:
+            self.node_port_range = m.get('node_port_range')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        if m.get('period_unit') is not None:
+            self.period_unit = m.get('period_unit')
+        if m.get('runtime') is not None:
+            self.runtime = m.get('runtime')
+        if m.get('security_hardening_os') is not None:
+            self.security_hardening_os = m.get('security_hardening_os')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('soc_enabled') is not None:
+            self.soc_enabled = m.get('soc_enabled')
+        if m.get('system_disk_bursting_enabled') is not None:
+            self.system_disk_bursting_enabled = m.get('system_disk_bursting_enabled')
+        if m.get('system_disk_category') is not None:
+            self.system_disk_category = m.get('system_disk_category')
+        if m.get('system_disk_performance_level') is not None:
+            self.system_disk_performance_level = m.get('system_disk_performance_level')
+        if m.get('system_disk_provisioned_iops') is not None:
+            self.system_disk_provisioned_iops = m.get('system_disk_provisioned_iops')
+        if m.get('system_disk_size') is not None:
+            self.system_disk_size = m.get('system_disk_size')
+        if m.get('system_disk_snapshot_policy_id') is not None:
+            self.system_disk_snapshot_policy_id = m.get('system_disk_snapshot_policy_id')
+        return self
+
+
 class CreateClusterRequestOperationPolicyClusterAutoUpgrade(TeaModel):
     def __init__(
         self,
@@ -3077,6 +3242,7 @@ class CreateClusterRequest(TeaModel):
         cluster_spec: str = None,
         cluster_type: str = None,
         container_cidr: str = None,
+        control_plane_config: CreateClusterRequestControlPlaneConfig = None,
         controlplane_log_components: List[str] = None,
         controlplane_log_project: str = None,
         controlplane_log_ttl: str = None,
@@ -3255,6 +3421,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # >  This parameter is required if the cluster uses the Flannel plug-in.
         self.container_cidr = container_cidr
+        self.control_plane_config = control_plane_config
         # The control plane component for which you want to enable log collection.
         # 
         # By default, the log of kube-apiserver, kube-controller-manager, and kube-scheduler is collected.
@@ -3675,6 +3842,8 @@ class CreateClusterRequest(TeaModel):
             for k in self.addons:
                 if k:
                     k.validate()
+        if self.control_plane_config:
+            self.control_plane_config.validate()
         if self.maintenance_window:
             self.maintenance_window.validate()
         if self.nodepools:
@@ -3730,6 +3899,8 @@ class CreateClusterRequest(TeaModel):
             result['cluster_type'] = self.cluster_type
         if self.container_cidr is not None:
             result['container_cidr'] = self.container_cidr
+        if self.control_plane_config is not None:
+            result['control_plane_config'] = self.control_plane_config.to_map()
         if self.controlplane_log_components is not None:
             result['controlplane_log_components'] = self.controlplane_log_components
         if self.controlplane_log_project is not None:
@@ -3939,6 +4110,9 @@ class CreateClusterRequest(TeaModel):
             self.cluster_type = m.get('cluster_type')
         if m.get('container_cidr') is not None:
             self.container_cidr = m.get('container_cidr')
+        if m.get('control_plane_config') is not None:
+            temp_model = CreateClusterRequestControlPlaneConfig()
+            self.control_plane_config = temp_model.from_map(m['control_plane_config'])
         if m.get('controlplane_log_components') is not None:
             self.controlplane_log_components = m.get('controlplane_log_components')
         if m.get('controlplane_log_project') is not None:
@@ -4589,7 +4763,7 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
         self.runtime = runtime
         # The version of the container runtime.
         self.runtime_version = runtime_version
-        # The taints.
+        # The configuration of the taint.
         self.taints = taints
         # Specifies whether the nodes are schedulable after a scale-out operation is performed.
         self.unschedulable = unschedulable
@@ -5213,7 +5387,10 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # 
         # Default value: `false`.
         self.auto_renew = auto_renew
-        # The auto-renewal duration of nodes in the node pool. This parameter is available and required only if you set instance_charge_type to PrePaid and auto_renew to true. If `PeriodUnit=Month` is configured, the valid values are 1, 2, 3, 6, and 12.
+        # The auto-renewal period. Valid values:
+        # 
+        # *   Valid values when PeriodUnit is set to Week: 1, 2, and 3
+        # *   Valid values when PeriodUnit is set to Month: 1, 2, 3, 6, 12, 24, 36, 48, and 60
         # 
         # Default value: 1.
         self.auto_renew_period = auto_renew_period
@@ -8600,17 +8777,17 @@ class DescribeClusterAttachScriptsRequest(TeaModel):
         # *   `true`: retains the instance name.
         # *   `false`: does not retain the instance name.
         # 
-        # Default value: `true`
+        # Default value: `true`.
         self.keep_instance_name = keep_instance_name
-        # The ID of the node pool to which you want to add an existing node. This parameter allows you to add an existing node to a specified node pool.
+        # The ID of the node pool to which you want to add an existing node.
         # 
-        # >  If you do not specify a node pool ID, the node is added to the default node pool.
+        # >  If you do not specify a node pool ID, the node is added to a default node pool.
         self.nodepool_id = nodepool_id
         # The node configurations for the existing instance that you want to add as a node.
         # 
         # >  This parameter is required if you want to add the existing node to an ACK Edge cluster.
         self.options = options
-        # After you specify the list of RDS instances, the ECS instances in the cluster are automatically added to the whitelist of the RDS instances.
+        # The ApsaraDB RDS instances. If you specify a list of ApsaraDB RDS instances, ECS instances in the cluster are automatically added to the whitelist of the ApsaraDB RDS instances.
         self.rds_instances = rds_instances
 
     def validate(self):
@@ -8689,6 +8866,165 @@ class DescribeClusterAttachScriptsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             self.body = m.get('body')
+        return self
+
+
+class DescribeClusterDetailResponseBodyControlPlaneConfig(TeaModel):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        auto_renew_period: int = None,
+        charge_type: str = None,
+        cloud_monitor_flags: bool = None,
+        cpu_policy: str = None,
+        deploymentset_id: str = None,
+        image_id: str = None,
+        image_type: str = None,
+        instance_types: List[str] = None,
+        key_pair: str = None,
+        node_port_range: str = None,
+        period: int = None,
+        period_unit: str = None,
+        runtime: str = None,
+        security_hardening_os: bool = None,
+        size: int = None,
+        soc_enabled: bool = None,
+        system_disk_bursting_enabled: bool = None,
+        system_disk_category: str = None,
+        system_disk_performance_level: str = None,
+        system_disk_provisioned_iops: int = None,
+        system_disk_size: int = None,
+        system_disk_snapshot_policy_id: str = None,
+    ):
+        self.auto_renew = auto_renew
+        self.auto_renew_period = auto_renew_period
+        self.charge_type = charge_type
+        self.cloud_monitor_flags = cloud_monitor_flags
+        self.cpu_policy = cpu_policy
+        self.deploymentset_id = deploymentset_id
+        self.image_id = image_id
+        self.image_type = image_type
+        self.instance_types = instance_types
+        self.key_pair = key_pair
+        self.node_port_range = node_port_range
+        self.period = period
+        self.period_unit = period_unit
+        self.runtime = runtime
+        self.security_hardening_os = security_hardening_os
+        self.size = size
+        self.soc_enabled = soc_enabled
+        self.system_disk_bursting_enabled = system_disk_bursting_enabled
+        self.system_disk_category = system_disk_category
+        self.system_disk_performance_level = system_disk_performance_level
+        self.system_disk_provisioned_iops = system_disk_provisioned_iops
+        self.system_disk_size = system_disk_size
+        self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['auto_renew'] = self.auto_renew
+        if self.auto_renew_period is not None:
+            result['auto_renew_period'] = self.auto_renew_period
+        if self.charge_type is not None:
+            result['charge_type'] = self.charge_type
+        if self.cloud_monitor_flags is not None:
+            result['cloud_monitor_flags'] = self.cloud_monitor_flags
+        if self.cpu_policy is not None:
+            result['cpu_policy'] = self.cpu_policy
+        if self.deploymentset_id is not None:
+            result['deploymentset_id'] = self.deploymentset_id
+        if self.image_id is not None:
+            result['image_id'] = self.image_id
+        if self.image_type is not None:
+            result['image_type'] = self.image_type
+        if self.instance_types is not None:
+            result['instance_types'] = self.instance_types
+        if self.key_pair is not None:
+            result['key_pair'] = self.key_pair
+        if self.node_port_range is not None:
+            result['node_port_range'] = self.node_port_range
+        if self.period is not None:
+            result['period'] = self.period
+        if self.period_unit is not None:
+            result['period_unit'] = self.period_unit
+        if self.runtime is not None:
+            result['runtime'] = self.runtime
+        if self.security_hardening_os is not None:
+            result['security_hardening_os'] = self.security_hardening_os
+        if self.size is not None:
+            result['size'] = self.size
+        if self.soc_enabled is not None:
+            result['soc_enabled'] = self.soc_enabled
+        if self.system_disk_bursting_enabled is not None:
+            result['system_disk_bursting_enabled'] = self.system_disk_bursting_enabled
+        if self.system_disk_category is not None:
+            result['system_disk_category'] = self.system_disk_category
+        if self.system_disk_performance_level is not None:
+            result['system_disk_performance_level'] = self.system_disk_performance_level
+        if self.system_disk_provisioned_iops is not None:
+            result['system_disk_provisioned_iops'] = self.system_disk_provisioned_iops
+        if self.system_disk_size is not None:
+            result['system_disk_size'] = self.system_disk_size
+        if self.system_disk_snapshot_policy_id is not None:
+            result['system_disk_snapshot_policy_id'] = self.system_disk_snapshot_policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_renew') is not None:
+            self.auto_renew = m.get('auto_renew')
+        if m.get('auto_renew_period') is not None:
+            self.auto_renew_period = m.get('auto_renew_period')
+        if m.get('charge_type') is not None:
+            self.charge_type = m.get('charge_type')
+        if m.get('cloud_monitor_flags') is not None:
+            self.cloud_monitor_flags = m.get('cloud_monitor_flags')
+        if m.get('cpu_policy') is not None:
+            self.cpu_policy = m.get('cpu_policy')
+        if m.get('deploymentset_id') is not None:
+            self.deploymentset_id = m.get('deploymentset_id')
+        if m.get('image_id') is not None:
+            self.image_id = m.get('image_id')
+        if m.get('image_type') is not None:
+            self.image_type = m.get('image_type')
+        if m.get('instance_types') is not None:
+            self.instance_types = m.get('instance_types')
+        if m.get('key_pair') is not None:
+            self.key_pair = m.get('key_pair')
+        if m.get('node_port_range') is not None:
+            self.node_port_range = m.get('node_port_range')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        if m.get('period_unit') is not None:
+            self.period_unit = m.get('period_unit')
+        if m.get('runtime') is not None:
+            self.runtime = m.get('runtime')
+        if m.get('security_hardening_os') is not None:
+            self.security_hardening_os = m.get('security_hardening_os')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('soc_enabled') is not None:
+            self.soc_enabled = m.get('soc_enabled')
+        if m.get('system_disk_bursting_enabled') is not None:
+            self.system_disk_bursting_enabled = m.get('system_disk_bursting_enabled')
+        if m.get('system_disk_category') is not None:
+            self.system_disk_category = m.get('system_disk_category')
+        if m.get('system_disk_performance_level') is not None:
+            self.system_disk_performance_level = m.get('system_disk_performance_level')
+        if m.get('system_disk_provisioned_iops') is not None:
+            self.system_disk_provisioned_iops = m.get('system_disk_provisioned_iops')
+        if m.get('system_disk_size') is not None:
+            self.system_disk_size = m.get('system_disk_size')
+        if m.get('system_disk_snapshot_policy_id') is not None:
+            self.system_disk_snapshot_policy_id = m.get('system_disk_snapshot_policy_id')
         return self
 
 
@@ -8771,6 +9107,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         cluster_spec: str = None,
         cluster_type: str = None,
         container_cidr: str = None,
+        control_plane_config: DescribeClusterDetailResponseBodyControlPlaneConfig = None,
         created: str = None,
         current_version: str = None,
         deletion_protection: bool = None,
@@ -8821,6 +9158,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         self.cluster_type = cluster_type
         # The CIDR block of the pod.
         self.container_cidr = container_cidr
+        self.control_plane_config = control_plane_config
         # The time when the cluster was created.
         self.created = created
         # The current Kubernetes version of the cluster. For more information about the Kubernetes versions supported by ACK, see [Release notes for Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
@@ -8932,6 +9270,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.control_plane_config:
+            self.control_plane_config.validate()
         if self.maintenance_window:
             self.maintenance_window.validate()
         if self.operation_policy:
@@ -8957,6 +9297,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
             result['cluster_type'] = self.cluster_type
         if self.container_cidr is not None:
             result['container_cidr'] = self.container_cidr
+        if self.control_plane_config is not None:
+            result['control_plane_config'] = self.control_plane_config.to_map()
         if self.created is not None:
             result['created'] = self.created
         if self.current_version is not None:
@@ -9041,6 +9383,9 @@ class DescribeClusterDetailResponseBody(TeaModel):
             self.cluster_type = m.get('cluster_type')
         if m.get('container_cidr') is not None:
             self.container_cidr = m.get('container_cidr')
+        if m.get('control_plane_config') is not None:
+            temp_model = DescribeClusterDetailResponseBodyControlPlaneConfig()
+            self.control_plane_config = temp_model.from_map(m['control_plane_config'])
         if m.get('created') is not None:
             self.created = m.get('created')
         if m.get('current_version') is not None:
@@ -9736,10 +10081,10 @@ class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
         # *   `static`: allows pods with specific resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
         # *   `none`: indicates that the default CPU affinity is used.
         self.cpu_policy = cpu_policy
-        # The labels of the nodes in the node pool. You can add labels to the nodes in the cluster. You must add labels based on the following rules:
+        # The labels that you want to add to the nodes in the cluster. You must add labels based on the following rules:
         # 
-        # *   Each label is a case-sensitive key-value pair. You can add up to 20 labels.
-        # *   A key must be unique and cannot exceed 64 characters in length. A value can be empty and cannot exceed 128 characters in length. Keys and values cannot start with `aliyun`, `acs:`, `https://`, or `http://`. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
+        # *   A label is a case-sensitive key-value pair. You can add up to 20 labels.
+        # *   The key must be unique and cannot exceed 64 characters in length. The value can be empty and cannot exceed 128 characters in length. Keys and values cannot start with `aliyun`, `acs:`, `https://`, or `http://`. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
         self.labels = labels
         # A custom node name consists of a prefix, an IP substring, and a suffix.
         # 
@@ -9754,7 +10099,7 @@ class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
         self.runtime = runtime
         # The version of the container runtime.
         self.runtime_version = runtime_version
-        # The taints of the nodes in the node pool. Taints are added to nodes to prevent pods from being scheduled to inappropriate nodes. However, tolerations allow pods to be scheduled to nodes with matching taints. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        # The taints that you want to add to nodes. Taints can be used together with tolerations to prevent pods from being scheduled to specific nodes. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
         self.taints = taints
         # Whether the expanded node is schedulable.
         self.unschedulable = unschedulable
@@ -10078,7 +10423,7 @@ class DescribeClusterNodePoolDetailResponseBodyNodeConfig(TeaModel):
         self,
         kubelet_configuration: KubeletConfig = None,
     ):
-        # Kubelet parameter configuration.
+        # The configurations of the kubelet.
         self.kubelet_configuration = kubelet_configuration
 
     def validate(self):
@@ -10326,7 +10671,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         # *   `true`: Pay-as-you-go instances are automatically created to meet the required number of ECS instances if preemptible instances cannot be created.
         # *   `false`: Pay-as-you-go instances are not automatically created to meet the required number of ECS instances if preemptible instances cannot be created.
         self.compensate_with_on_demand = compensate_with_on_demand
-        # The configurations of the data disks that are attached to the nodes in the node pool. The configurations include the disk type and disk size.
+        # The configurations of the data disks that are attached to the nodes in the node pool. The configurations include the disk category and disk size.
         self.data_disks = data_disks
         # The ID of the deployment set to which the ECS instances in the node pool belong.
         self.deploymentset_id = deploymentset_id
@@ -10341,7 +10686,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         # *   `PrePaid`: the subscription billing method.
         # *   `PostPaid`: the pay-as-you-go billing method.
         self.instance_charge_type = instance_charge_type
-        # Instance attributes
+        # The instance properties.
         self.instance_patterns = instance_patterns
         # A list of instance types. You can select multiple instance types. When the system needs to create a node, it starts from the first instance type until the node is created. The instance type that is used to create the node varies based on the actual instance stock.
         self.instance_types = instance_types
@@ -10436,14 +10781,14 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         self.spot_strategy = spot_strategy
         # Whether to enable Burst (performance burst) for the node system disk, configured when the disk type is cloud_auto.
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
-        # The system disk types. The system attempts to create system disks from a disk type with a lower priority when the disk type with a higher priority is unavailable. Valid values: Valid values:
+        # The categories of the system disk for nodes. The system attempts to create system disks of a disk category with a lower priority if the disk category with a higher priority is unavailable. Valid values: Valid values:
         # 
-        # *   `cloud`: basic disk
-        # *   `cloud_efficiency`: ultra disk
-        # *   `cloud_ssd`: standard SSD
-        # *   `cloud_essd`: ESSD
-        # *   `cloud_auto`: ESSD AutoPL disk
-        # *   `cloud_essd_entry`: ESSD Entry disk
+        # *   `cloud`: basic disk.
+        # *   `cloud_efficiency`: ultra disk.
+        # *   `cloud_ssd`: standard SSD.
+        # *   `cloud_essd`: Enterprise SSD (ESSD).
+        # *   `cloud_auto`: ESSD AutoPL disk.
+        # *   `cloud_essd_entry`: ESSD Entry disk.
         # 
         # Default value: `cloud_efficiency`.
         self.system_disk_categories = system_disk_categories
@@ -10458,7 +10803,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         # 
         # Default value: `cloud_efficiency`.
         self.system_disk_category = system_disk_category
-        # Encryption algorithm used for the system disk. Valid values: aes-256.
+        # The encryption algorithm that is used to encrypt the system disk. Set the value to aes-256.
         self.system_disk_encrypt_algorithm = system_disk_encrypt_algorithm
         # Specifies whether to encrypt the system disk. Valid values: Valid values:
         # 
@@ -10475,9 +10820,9 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         # 
         # Valid values: 20 to 500.
         self.system_disk_size = system_disk_size
-        # The labels that you want to add to the ECS instances.
+        # The labels that you want to add only to ECS instances.
         # 
-        # A key must be unique and cannot exceed 128 characters in length. Neither keys nor values can start with aliyun or acs:. Neither keys nor values can contain https:// or http://.
+        # The label key must be unique and cannot exceed 128 characters in length. The label key and value cannot start with aliyun or acs: or contain https:// or http://.
         self.tags = tags
         # The IDs of vSwitches. You can specify 1 to 20 vSwitches.
         # 
@@ -10863,23 +11208,25 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
     ):
         # The auto scaling configuration of the node pool.
         self.auto_scaling = auto_scaling
+        # Indicates whether the pods in the edge node pool can use the host network.
         self.host_network = host_network
         # The network configuration of the edge node pool. This parameter takes effect only for edge node pools.
         self.interconnect_config = interconnect_config
         # The network type of the edge node pool. Valid values: basic and enhanced. This parameter takes effect only for edge node pools.
         self.interconnect_mode = interconnect_mode
+        # Indicates whether all nodes in the edge node pool can communicate with each other at Layer 3.
         self.intranet = intranet
-        # The configurations of the cluster in which the node pool is deployed.
+        # The configurations of the cluster.
         self.kubernetes_config = kubernetes_config
         # The configuration of the managed node pool feature.
         self.management = management
         # The maximum number of nodes that are supported by the edge node pool. The value of this parameter must be equal to or greater than 0. A value of 0 indicates that the number of nodes in the node pool is limited only by the quota of nodes in the cluster. In most cases, this parameter is set to a value larger than 0 for edge node pools. This parameter is set to 0 for node pools whose types are ess or default edge node pools.
         self.max_nodes = max_nodes
-        # Node configuration.
+        # The node configurations.
         self.node_config = node_config
         # The configuration of the node pool.
         self.nodepool_info = nodepool_info
-        # The configurations of the scaling group.
+        # The configurations of the scaling group used by the node pool.
         self.scaling_group = scaling_group
         # The status details about the node pool.
         self.status = status
@@ -16200,8 +16547,11 @@ class DescribeEventsForRegionRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The number of pages.
         self.page_number = page_number
+        # The number of records on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -16239,8 +16589,11 @@ class DescribeEventsForRegionResponseBodyEventsData(TeaModel):
         message: str = None,
         reason: str = None,
     ):
+        # The severity level of the event.
         self.level = level
+        # The details of the event.
         self.message = message
+        # The event status.
         self.reason = reason
 
     def validate(self):
@@ -16282,12 +16635,19 @@ class DescribeEventsForRegionResponseBodyEvents(TeaModel):
         time: str = None,
         type: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The description of the event.
         self.data = data
+        # The event ID.
         self.event_id = event_id
+        # The event source.
         self.source = source
+        # The object associated with the event.
         self.subject = subject
+        # The time when the event was generated.
         self.time = time
+        # The event type.
         self.type = type
 
     def validate(self):
@@ -16343,8 +16703,11 @@ class DescribeEventsForRegionResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of pages.
         self.page_number = page_number
+        # The number of records on each page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -16381,7 +16744,9 @@ class DescribeEventsForRegionResponseBody(TeaModel):
         events: List[DescribeEventsForRegionResponseBodyEvents] = None,
         page_info: DescribeEventsForRegionResponseBodyPageInfo = None,
     ):
+        # The events.
         self.events = events
+        # The pagination details.
         self.page_info = page_info
 
     def validate(self):
@@ -17906,10 +18271,15 @@ class DescribePolicyInstancesResponseBody(TeaModel):
         # *   `deny`: Deployments that match the policy are denied.
         # *   `warn`: Alerts are generated for deployments that match the policy.
         self.policy_action = policy_action
+        # Creation time (deprecated, do not use).
         self.created = created
+        # Update time (deprecated, do not use).
         self.updated = updated
+        # Resource ID (deprecated, do not use).
         self.resource_id = resource_id
+        # Violation count processing in the cluster (deprecated, do not use).
         self.total_violations = total_violations
+        # Deletion status (deprecated, do not use).
         self.is_deleted = is_deleted
 
     def validate(self):
@@ -23074,6 +23444,171 @@ class ModifyClusterRequestApiServerCustomCertSans(TeaModel):
         return self
 
 
+class ModifyClusterRequestControlPlaneConfig(TeaModel):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        auto_renew_period: int = None,
+        charge_type: str = None,
+        cloud_monitor_flags: bool = None,
+        cpu_policy: str = None,
+        deploymentset_id: str = None,
+        image_id: str = None,
+        image_type: str = None,
+        instance_types: List[str] = None,
+        key_pair: str = None,
+        login_password: str = None,
+        node_port_range: str = None,
+        period: int = None,
+        period_unit: str = None,
+        runtime: str = None,
+        security_hardening_os: bool = None,
+        size: int = None,
+        soc_enabled: bool = None,
+        system_disk_bursting_enabled: bool = None,
+        system_disk_category: str = None,
+        system_disk_performance_level: str = None,
+        system_disk_provisioned_iops: int = None,
+        system_disk_size: int = None,
+        system_disk_snapshot_policy_id: str = None,
+    ):
+        self.auto_renew = auto_renew
+        self.auto_renew_period = auto_renew_period
+        self.charge_type = charge_type
+        self.cloud_monitor_flags = cloud_monitor_flags
+        self.cpu_policy = cpu_policy
+        self.deploymentset_id = deploymentset_id
+        self.image_id = image_id
+        self.image_type = image_type
+        self.instance_types = instance_types
+        self.key_pair = key_pair
+        self.login_password = login_password
+        self.node_port_range = node_port_range
+        self.period = period
+        self.period_unit = period_unit
+        self.runtime = runtime
+        self.security_hardening_os = security_hardening_os
+        self.size = size
+        self.soc_enabled = soc_enabled
+        self.system_disk_bursting_enabled = system_disk_bursting_enabled
+        self.system_disk_category = system_disk_category
+        self.system_disk_performance_level = system_disk_performance_level
+        self.system_disk_provisioned_iops = system_disk_provisioned_iops
+        self.system_disk_size = system_disk_size
+        self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['auto_renew'] = self.auto_renew
+        if self.auto_renew_period is not None:
+            result['auto_renew_period'] = self.auto_renew_period
+        if self.charge_type is not None:
+            result['charge_type'] = self.charge_type
+        if self.cloud_monitor_flags is not None:
+            result['cloud_monitor_flags'] = self.cloud_monitor_flags
+        if self.cpu_policy is not None:
+            result['cpu_policy'] = self.cpu_policy
+        if self.deploymentset_id is not None:
+            result['deploymentset_id'] = self.deploymentset_id
+        if self.image_id is not None:
+            result['image_id'] = self.image_id
+        if self.image_type is not None:
+            result['image_type'] = self.image_type
+        if self.instance_types is not None:
+            result['instance_types'] = self.instance_types
+        if self.key_pair is not None:
+            result['key_pair'] = self.key_pair
+        if self.login_password is not None:
+            result['login_password'] = self.login_password
+        if self.node_port_range is not None:
+            result['node_port_range'] = self.node_port_range
+        if self.period is not None:
+            result['period'] = self.period
+        if self.period_unit is not None:
+            result['period_unit'] = self.period_unit
+        if self.runtime is not None:
+            result['runtime'] = self.runtime
+        if self.security_hardening_os is not None:
+            result['security_hardening_os'] = self.security_hardening_os
+        if self.size is not None:
+            result['size'] = self.size
+        if self.soc_enabled is not None:
+            result['soc_enabled'] = self.soc_enabled
+        if self.system_disk_bursting_enabled is not None:
+            result['system_disk_bursting_enabled'] = self.system_disk_bursting_enabled
+        if self.system_disk_category is not None:
+            result['system_disk_category'] = self.system_disk_category
+        if self.system_disk_performance_level is not None:
+            result['system_disk_performance_level'] = self.system_disk_performance_level
+        if self.system_disk_provisioned_iops is not None:
+            result['system_disk_provisioned_iops'] = self.system_disk_provisioned_iops
+        if self.system_disk_size is not None:
+            result['system_disk_size'] = self.system_disk_size
+        if self.system_disk_snapshot_policy_id is not None:
+            result['system_disk_snapshot_policy_id'] = self.system_disk_snapshot_policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_renew') is not None:
+            self.auto_renew = m.get('auto_renew')
+        if m.get('auto_renew_period') is not None:
+            self.auto_renew_period = m.get('auto_renew_period')
+        if m.get('charge_type') is not None:
+            self.charge_type = m.get('charge_type')
+        if m.get('cloud_monitor_flags') is not None:
+            self.cloud_monitor_flags = m.get('cloud_monitor_flags')
+        if m.get('cpu_policy') is not None:
+            self.cpu_policy = m.get('cpu_policy')
+        if m.get('deploymentset_id') is not None:
+            self.deploymentset_id = m.get('deploymentset_id')
+        if m.get('image_id') is not None:
+            self.image_id = m.get('image_id')
+        if m.get('image_type') is not None:
+            self.image_type = m.get('image_type')
+        if m.get('instance_types') is not None:
+            self.instance_types = m.get('instance_types')
+        if m.get('key_pair') is not None:
+            self.key_pair = m.get('key_pair')
+        if m.get('login_password') is not None:
+            self.login_password = m.get('login_password')
+        if m.get('node_port_range') is not None:
+            self.node_port_range = m.get('node_port_range')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        if m.get('period_unit') is not None:
+            self.period_unit = m.get('period_unit')
+        if m.get('runtime') is not None:
+            self.runtime = m.get('runtime')
+        if m.get('security_hardening_os') is not None:
+            self.security_hardening_os = m.get('security_hardening_os')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('soc_enabled') is not None:
+            self.soc_enabled = m.get('soc_enabled')
+        if m.get('system_disk_bursting_enabled') is not None:
+            self.system_disk_bursting_enabled = m.get('system_disk_bursting_enabled')
+        if m.get('system_disk_category') is not None:
+            self.system_disk_category = m.get('system_disk_category')
+        if m.get('system_disk_performance_level') is not None:
+            self.system_disk_performance_level = m.get('system_disk_performance_level')
+        if m.get('system_disk_provisioned_iops') is not None:
+            self.system_disk_provisioned_iops = m.get('system_disk_provisioned_iops')
+        if m.get('system_disk_size') is not None:
+            self.system_disk_size = m.get('system_disk_size')
+        if m.get('system_disk_snapshot_policy_id') is not None:
+            self.system_disk_snapshot_policy_id = m.get('system_disk_snapshot_policy_id')
+        return self
+
+
 class ModifyClusterRequestOperationPolicyClusterAutoUpgrade(TeaModel):
     def __init__(
         self,
@@ -23186,6 +23721,7 @@ class ModifyClusterRequest(TeaModel):
         api_server_eip: bool = None,
         api_server_eip_id: str = None,
         cluster_name: str = None,
+        control_plane_config: ModifyClusterRequestControlPlaneConfig = None,
         deletion_protection: bool = None,
         enable_rrsa: bool = None,
         ingress_domain_rebinding: bool = None,
@@ -23212,6 +23748,7 @@ class ModifyClusterRequest(TeaModel):
         # 
         # The cluster name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). The cluster name cannot start with a hyphen (-).
         self.cluster_name = cluster_name
+        self.control_plane_config = control_plane_config
         # Specifies whether to enable cluster deletion protection. If you enable this option, the cluster cannot be deleted in the console or by calling API operations. Valid values:
         # 
         # *   `true`: enables cluster deletion protection.
@@ -23253,6 +23790,8 @@ class ModifyClusterRequest(TeaModel):
     def validate(self):
         if self.api_server_custom_cert_sans:
             self.api_server_custom_cert_sans.validate()
+        if self.control_plane_config:
+            self.control_plane_config.validate()
         if self.maintenance_window:
             self.maintenance_window.validate()
         if self.operation_policy:
@@ -23276,6 +23815,8 @@ class ModifyClusterRequest(TeaModel):
             result['api_server_eip_id'] = self.api_server_eip_id
         if self.cluster_name is not None:
             result['cluster_name'] = self.cluster_name
+        if self.control_plane_config is not None:
+            result['control_plane_config'] = self.control_plane_config.to_map()
         if self.deletion_protection is not None:
             result['deletion_protection'] = self.deletion_protection
         if self.enable_rrsa is not None:
@@ -23311,6 +23852,9 @@ class ModifyClusterRequest(TeaModel):
             self.api_server_eip_id = m.get('api_server_eip_id')
         if m.get('cluster_name') is not None:
             self.cluster_name = m.get('cluster_name')
+        if m.get('control_plane_config') is not None:
+            temp_model = ModifyClusterRequestControlPlaneConfig()
+            self.control_plane_config = temp_model.from_map(m['control_plane_config'])
         if m.get('deletion_protection') is not None:
             self.deletion_protection = m.get('deletion_protection')
         if m.get('enable_rrsa') is not None:
@@ -24922,7 +25466,7 @@ class ModifyNodePoolNodeConfigRequestOsConfig(TeaModel):
         self,
         sysctl: Dict[str, Any] = None,
     ):
-        # sysctl parameter configuration
+        # The sysctl configuration.
         self.sysctl = sysctl
 
     def validate(self):
@@ -24980,11 +25524,11 @@ class ModifyNodePoolNodeConfigRequest(TeaModel):
         os_config: ModifyNodePoolNodeConfigRequestOsConfig = None,
         rolling_policy: ModifyNodePoolNodeConfigRequestRollingPolicy = None,
     ):
-        # The parameters of the kubelet.
+        # The kubelet configuration.
         self.kubelet_config = kubelet_config
-        # Operating system parameter configuration.
+        # The OS configuration.
         self.os_config = os_config
-        # The rotation configurations.
+        # The rotation configuration.
         self.rolling_policy = rolling_policy
 
     def validate(self):

@@ -1412,6 +1412,8 @@ class Client(OpenApiClient):
             body['cluster_type'] = request.cluster_type
         if not UtilClient.is_unset(request.container_cidr):
             body['container_cidr'] = request.container_cidr
+        if not UtilClient.is_unset(request.control_plane_config):
+            body['control_plane_config'] = request.control_plane_config
         if not UtilClient.is_unset(request.controlplane_log_components):
             body['controlplane_log_components'] = request.controlplane_log_components
         if not UtilClient.is_unset(request.controlplane_log_project):
@@ -1650,6 +1652,8 @@ class Client(OpenApiClient):
             body['cluster_type'] = request.cluster_type
         if not UtilClient.is_unset(request.container_cidr):
             body['container_cidr'] = request.container_cidr
+        if not UtilClient.is_unset(request.control_plane_config):
+            body['control_plane_config'] = request.control_plane_config
         if not UtilClient.is_unset(request.controlplane_log_components):
             body['controlplane_log_components'] = request.controlplane_log_components
         if not UtilClient.is_unset(request.controlplane_log_project):
@@ -6866,7 +6870,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEventsForRegionResponse:
         """
-        @summary 查询指定地域内全部事件列表
+        @summary Queries all events in a specified region.
         
         @param request: DescribeEventsForRegionRequest
         @param headers: map
@@ -6909,7 +6913,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEventsForRegionResponse:
         """
-        @summary 查询指定地域内全部事件列表
+        @summary Queries all events in a specified region.
         
         @param request: DescribeEventsForRegionRequest
         @param headers: map
@@ -6950,7 +6954,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeEventsForRegionRequest,
     ) -> cs20151215_models.DescribeEventsForRegionResponse:
         """
-        @summary 查询指定地域内全部事件列表
+        @summary Queries all events in a specified region.
         
         @param request: DescribeEventsForRegionRequest
         @return: DescribeEventsForRegionResponse
@@ -6965,7 +6969,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeEventsForRegionRequest,
     ) -> cs20151215_models.DescribeEventsForRegionResponse:
         """
-        @summary 查询指定地域内全部事件列表
+        @summary Queries all events in a specified region.
         
         @param request: DescribeEventsForRegionRequest
         @return: DescribeEventsForRegionResponse
@@ -10867,6 +10871,8 @@ class Client(OpenApiClient):
             body['api_server_eip_id'] = request.api_server_eip_id
         if not UtilClient.is_unset(request.cluster_name):
             body['cluster_name'] = request.cluster_name
+        if not UtilClient.is_unset(request.control_plane_config):
+            body['control_plane_config'] = request.control_plane_config
         if not UtilClient.is_unset(request.deletion_protection):
             body['deletion_protection'] = request.deletion_protection
         if not UtilClient.is_unset(request.enable_rrsa):
@@ -10934,6 +10940,8 @@ class Client(OpenApiClient):
             body['api_server_eip_id'] = request.api_server_eip_id
         if not UtilClient.is_unset(request.cluster_name):
             body['cluster_name'] = request.cluster_name
+        if not UtilClient.is_unset(request.control_plane_config):
+            body['control_plane_config'] = request.control_plane_config
         if not UtilClient.is_unset(request.deletion_protection):
             body['deletion_protection'] = request.deletion_protection
         if not UtilClient.is_unset(request.enable_rrsa):

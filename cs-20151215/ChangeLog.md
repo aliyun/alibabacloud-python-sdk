@@ -1,3 +1,14 @@
+2024-11-25 Version: 4.8.1
+- Update API CreateCluster: update param body.
+- Update API DescribeClusterAttachScripts: add param body.
+- Update API DescribeClusterAttachScripts: update param body.
+- Update API DescribeClusterDetail: update response param.
+- Update API DescribeClustersForRegion: update response param.
+- Update API ModifyCluster: update param body.
+- Update API ModifyClusterConfiguration: add param body.
+- Update API ModifyClusterConfiguration: update param body.
+
+
 2024-11-07 Version: 4.8.0
 - Support API DescribeClustersForRegion.
 - Support API DescribeEventsForRegion.
