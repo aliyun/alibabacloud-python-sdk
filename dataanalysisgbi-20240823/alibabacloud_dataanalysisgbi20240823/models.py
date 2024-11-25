@@ -163,6 +163,7 @@ class RunDataAnalysisResponseBodyData(TeaModel):
         error_message: str = None,
         event: str = None,
         evidence: str = None,
+        http_status_code: int = None,
         request_id: str = None,
         rewrite: str = None,
         selector: List[str] = None,
@@ -175,6 +176,7 @@ class RunDataAnalysisResponseBodyData(TeaModel):
         self.error_message = error_message
         self.event = event
         self.evidence = evidence
+        self.http_status_code = http_status_code
         self.request_id = request_id
         self.rewrite = rewrite
         self.selector = selector
@@ -202,6 +204,8 @@ class RunDataAnalysisResponseBodyData(TeaModel):
             result['event'] = self.event
         if self.evidence is not None:
             result['evidence'] = self.evidence
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.rewrite is not None:
@@ -228,6 +232,8 @@ class RunDataAnalysisResponseBodyData(TeaModel):
             self.event = m.get('event')
         if m.get('evidence') is not None:
             self.evidence = m.get('evidence')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('rewrite') is not None:
@@ -252,9 +258,15 @@ class RunDataAnalysisResponseBodyData(TeaModel):
 class RunDataAnalysisResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         data: RunDataAnalysisResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
     ):
+        self.code = code
         self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
 
     def validate(self):
         if self.data:
@@ -266,15 +278,27 @@ class RunDataAnalysisResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
         if m.get('data') is not None:
             temp_model = RunDataAnalysisResponseBodyData()
             self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
         return self
 
 
