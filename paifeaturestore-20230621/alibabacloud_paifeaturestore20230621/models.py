@@ -4732,7 +4732,6 @@ class ListFeatureEntitiesRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
-        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -4802,7 +4801,6 @@ class ListFeatureEntitiesShrinkRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
-        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -5487,7 +5485,6 @@ class ListFeatureViewsRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
-        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
         self.tag = tag
@@ -5575,7 +5572,6 @@ class ListFeatureViewsShrinkRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
-        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
         self.tag = tag
@@ -6083,7 +6079,6 @@ class ListLabelTablesRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
-        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -6153,7 +6148,6 @@ class ListLabelTablesShrinkRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
-        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -6546,7 +6540,6 @@ class ListModelFeaturesRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
-        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -6616,7 +6609,6 @@ class ListModelFeaturesShrinkRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
-        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -7477,7 +7469,6 @@ class ListTasksRequest(TeaModel):
         self.object_type = object_type
         self.page_number = page_number
         self.page_size = page_size
-        # This parameter is required.
         self.project_id = project_id
         self.status = status
         self.task_ids = task_ids
@@ -7547,7 +7538,6 @@ class ListTasksShrinkRequest(TeaModel):
         self.object_type = object_type
         self.page_number = page_number
         self.page_size = page_size
-        # This parameter is required.
         self.project_id = project_id
         self.status = status
         self.task_ids_shrink = task_ids_shrink

@@ -1,3 +1,11 @@
+2024-11-25 Version: 4.0.2
+- Update API ListFeatureEntities: update param ProjectId.
+- Update API ListFeatureViews: update param ProjectId.
+- Update API ListLabelTables: update param ProjectId.
+- Update API ListModelFeatures: update param ProjectId.
+- Update API ListTasks: update param ProjectId.
+
+
 2024-10-16 Version: 4.0.1
 - Update API GetInstance: update response param.
 - Update API ListInstances: update response param.
