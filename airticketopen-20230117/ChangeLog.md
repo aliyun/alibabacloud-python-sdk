@@ -1,3 +1,6 @@
+2024-11-25 Version: 4.0.1
+- Generated python 2023-01-17 for airticketOpen.
+
 2024-11-21 Version: 4.0.0
 - Update API CollectFlightLowestPrice: add param lowest_price_flight_info_list.
 - Update API CollectFlightLowestPrice: delete param lowestPriceFlightList.
