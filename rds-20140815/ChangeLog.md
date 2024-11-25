@@ -1,3 +1,54 @@
+2024-11-25 Version: 8.0.0
+- Support API AttachRCDisk.
+- Support API AttachRCInstances.
+- Support API CreateRCDisk.
+- Support API CreateRCSnapshot.
+- Support API DeleteRCClusterNodes.
+- Support API DeleteRCDisk.
+- Support API DeleteRCSnapshot.
+- Support API DescribeRCClusterConfig.
+- Support API DescribeRCClusterNodes.
+- Support API DescribeRCClusters.
+- Support API DescribeRCDisks.
+- Support API DescribeRCInstanceVncUrl.
+- Support API DescribeRCSnapshots.
+- Support API DetachRCDisk.
+- Support API ModifyRCInstanceAttribute.
+- Support API ModifyRCInstanceDescription.
+- Support API ModifyRCInstanceKeyPair.
+- Support API ReplaceRCInstanceSystemDisk.
+- Delete API CreateDiagnosticReport.
+- Update API CheckAccountNameAvailable: update response param.
+- Update API CreateDBInstance: add param AutoUseCoupon.
+- Update API CreateDBInstance: add param PromotionCode.
+- Update API CreateRCDeploymentSet: add param Tag.
+- Update API CreateReadOnlyDBInstance: add param AutoUseCoupon.
+- Update API CreateReadOnlyDBInstance: add param PromotionCode.
+- Update API CreateReadOnlyDBInstance: update param Category.
+- Update API DescribeAccounts: update response param.
+- Update API DescribeDBInstanceTDE: update response param.
+- Update API DescribeDBProxyPerformance: add param Dimension.
+- Update API DescribeDBProxyPerformance: update response param.
+- Update API DescribeRCDeploymentSets: add param Tag.
+- Update API DescribeRCDeploymentSets: update response param.
+- Update API DescribeRCImageList: add param ImageId.
+- Update API DescribeRCImageList: add param ImageName.
+- Update API DescribeRCImageList: update response param.
+- Update API DescribeRCInstanceAttribute: update response param.
+- Update API DescribeRCInstances: update response param.
+- Update API DescribeUpgradeMajorVersionPrecheckTask: update response param.
+- Update API DescribeUpgradeMajorVersionTasks: update response param.
+- Update API ImportUserBackupFile: add param DBInstanceId.
+- Update API ModifyDBInstanceSpec: add param PromotionCode.
+- Update API RenewInstance: add param AutoUseCoupon.
+- Update API RenewInstance: add param PromotionCode.
+- Update API ResizeRCInstanceDisk: add param DiskId.
+- Update API RunRCInstances: update param Amount.
+- Update API RunRCInstances: update param SystemDisk.
+- Update API TransformDBInstancePayType: add param AutoUseCoupon.
+- Update API TransformDBInstancePayType: add param PromotionCode.
+
+
 2024-10-24 Version: 7.3.1
 - Update API DescribeRCImageList: update param Type.
 - Update API DescribeRCInstanceAttribute: update response param.
