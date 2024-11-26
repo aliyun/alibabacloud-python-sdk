@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import List, Dict, Any
 
 
 class AICreateSessionMessageRequestContext(TeaModel):
@@ -121,6 +121,39 @@ class AICreateSessionMessageRequest(TeaModel):
         return self
 
 
+class AICreateSessionMessageResponseBodyReference(TeaModel):
+    def __init__(
+        self,
+        title: str = None,
+        url: str = None,
+    ):
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
 class AICreateSessionMessageResponseBody(TeaModel):
     def __init__(
         self,
@@ -128,6 +161,7 @@ class AICreateSessionMessageResponseBody(TeaModel):
         code: int = None,
         data: str = None,
         msg: str = None,
+        reference: List[AICreateSessionMessageResponseBodyReference] = None,
         request_id: str = None,
         session_id: str = None,
     ):
@@ -135,11 +169,15 @@ class AICreateSessionMessageResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.msg = msg
+        self.reference = reference
         self.request_id = request_id
         self.session_id = session_id
 
     def validate(self):
-        pass
+        if self.reference:
+            for k in self.reference:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -155,6 +193,10 @@ class AICreateSessionMessageResponseBody(TeaModel):
             result['data'] = self.data
         if self.msg is not None:
             result['msg'] = self.msg
+        result['reference'] = []
+        if self.reference is not None:
+            for k in self.reference:
+                result['reference'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.session_id is not None:
@@ -171,6 +213,11 @@ class AICreateSessionMessageResponseBody(TeaModel):
             self.data = m.get('data')
         if m.get('msg') is not None:
             self.msg = m.get('msg')
+        self.reference = []
+        if m.get('reference') is not None:
+            for k in m.get('reference'):
+                temp_model = AICreateSessionMessageResponseBodyReference()
+                self.reference.append(temp_model.from_map(k))
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('session_id') is not None:
