@@ -77,6 +77,8 @@ class Client(OpenApiClient):
             body['serviceInspection'] = request.service_inspection
         if not UtilClient.is_unset(request.stream):
             body['stream'] = request.stream
+        if not UtilClient.is_unset(request.time_constraint_list):
+            body['timeConstraintList'] = request.time_constraint_list
         if not UtilClient.is_unset(request.user_profiles):
             body['userProfiles'] = request.user_profiles
         req = open_api_models.OpenApiRequest(
@@ -135,6 +137,8 @@ class Client(OpenApiClient):
             body['serviceInspection'] = request.service_inspection
         if not UtilClient.is_unset(request.stream):
             body['stream'] = request.stream
+        if not UtilClient.is_unset(request.time_constraint_list):
+            body['timeConstraintList'] = request.time_constraint_list
         if not UtilClient.is_unset(request.user_profiles):
             body['userProfiles'] = request.user_profiles
         req = open_api_models.OpenApiRequest(
@@ -189,59 +193,39 @@ class Client(OpenApiClient):
         headers = {}
         return await self.analyze_conversation_with_options_async(workspace_id, app_id, request, headers, runtime)
 
-    def create_conversation_analysis_task_with_options(
+    def analyze_image_with_options(
         self,
         workspace_id: str,
         app_id: str,
-        request: contact_center_ai20240603_models.CreateConversationAnalysisTaskRequest,
+        request: contact_center_ai20240603_models.AnalyzeImageRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> contact_center_ai20240603_models.CreateConversationAnalysisTaskResponse:
+    ) -> contact_center_ai20240603_models.AnalyzeImageResponse:
         """
-        @summary 创建语音文件调用llm任务
+        @summary 图片分析
         
-        @param request: CreateConversationAnalysisTaskRequest
+        @param request: AnalyzeImageRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateConversationAnalysisTaskResponse
+        @return: AnalyzeImageResponse
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.auto_split):
-            body['autoSplit'] = request.auto_split
-        if not UtilClient.is_unset(request.client_channel):
-            body['clientChannel'] = request.client_channel
-        if not UtilClient.is_unset(request.examples):
-            body['examples'] = request.examples
-        if not UtilClient.is_unset(request.fields):
-            body['fields'] = request.fields
-        if not UtilClient.is_unset(request.file_name):
-            body['fileName'] = request.file_name
-        if not UtilClient.is_unset(request.model_code):
-            body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.image_urls):
+            body['imageUrls'] = request.image_urls
         if not UtilClient.is_unset(request.result_types):
             body['resultTypes'] = request.result_types
-        if not UtilClient.is_unset(request.scene_name):
-            body['sceneName'] = request.scene_name
-        if not UtilClient.is_unset(request.service_channel):
-            body['serviceChannel'] = request.service_channel
-        if not UtilClient.is_unset(request.service_channel_keywords):
-            body['serviceChannelKeywords'] = request.service_channel_keywords
-        if not UtilClient.is_unset(request.service_inspection):
-            body['serviceInspection'] = request.service_inspection
-        if not UtilClient.is_unset(request.template_ids):
-            body['templateIds'] = request.template_ids
-        if not UtilClient.is_unset(request.voice_file_url):
-            body['voiceFileUrl'] = request.voice_file_url
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='CreateConversationAnalysisTask',
+            action='AnalyzeImage',
             version='2024-06-03',
             protocol='HTTPS',
-            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/createConversationAnalysisTask',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/analyzeImage',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -249,63 +233,43 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            contact_center_ai20240603_models.CreateConversationAnalysisTaskResponse(),
+            contact_center_ai20240603_models.AnalyzeImageResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def create_conversation_analysis_task_with_options_async(
+    async def analyze_image_with_options_async(
         self,
         workspace_id: str,
         app_id: str,
-        request: contact_center_ai20240603_models.CreateConversationAnalysisTaskRequest,
+        request: contact_center_ai20240603_models.AnalyzeImageRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> contact_center_ai20240603_models.CreateConversationAnalysisTaskResponse:
+    ) -> contact_center_ai20240603_models.AnalyzeImageResponse:
         """
-        @summary 创建语音文件调用llm任务
+        @summary 图片分析
         
-        @param request: CreateConversationAnalysisTaskRequest
+        @param request: AnalyzeImageRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateConversationAnalysisTaskResponse
+        @return: AnalyzeImageResponse
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.auto_split):
-            body['autoSplit'] = request.auto_split
-        if not UtilClient.is_unset(request.client_channel):
-            body['clientChannel'] = request.client_channel
-        if not UtilClient.is_unset(request.examples):
-            body['examples'] = request.examples
-        if not UtilClient.is_unset(request.fields):
-            body['fields'] = request.fields
-        if not UtilClient.is_unset(request.file_name):
-            body['fileName'] = request.file_name
-        if not UtilClient.is_unset(request.model_code):
-            body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.image_urls):
+            body['imageUrls'] = request.image_urls
         if not UtilClient.is_unset(request.result_types):
             body['resultTypes'] = request.result_types
-        if not UtilClient.is_unset(request.scene_name):
-            body['sceneName'] = request.scene_name
-        if not UtilClient.is_unset(request.service_channel):
-            body['serviceChannel'] = request.service_channel
-        if not UtilClient.is_unset(request.service_channel_keywords):
-            body['serviceChannelKeywords'] = request.service_channel_keywords
-        if not UtilClient.is_unset(request.service_inspection):
-            body['serviceInspection'] = request.service_inspection
-        if not UtilClient.is_unset(request.template_ids):
-            body['templateIds'] = request.template_ids
-        if not UtilClient.is_unset(request.voice_file_url):
-            body['voiceFileUrl'] = request.voice_file_url
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='CreateConversationAnalysisTask',
+            action='AnalyzeImage',
             version='2024-06-03',
             protocol='HTTPS',
-            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/createConversationAnalysisTask',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/analyzeImage',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -313,41 +277,41 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            contact_center_ai20240603_models.CreateConversationAnalysisTaskResponse(),
+            contact_center_ai20240603_models.AnalyzeImageResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_conversation_analysis_task(
+    def analyze_image(
         self,
         workspace_id: str,
         app_id: str,
-        request: contact_center_ai20240603_models.CreateConversationAnalysisTaskRequest,
-    ) -> contact_center_ai20240603_models.CreateConversationAnalysisTaskResponse:
+        request: contact_center_ai20240603_models.AnalyzeImageRequest,
+    ) -> contact_center_ai20240603_models.AnalyzeImageResponse:
         """
-        @summary 创建语音文件调用llm任务
+        @summary 图片分析
         
-        @param request: CreateConversationAnalysisTaskRequest
-        @return: CreateConversationAnalysisTaskResponse
+        @param request: AnalyzeImageRequest
+        @return: AnalyzeImageResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_conversation_analysis_task_with_options(workspace_id, app_id, request, headers, runtime)
+        return self.analyze_image_with_options(workspace_id, app_id, request, headers, runtime)
 
-    async def create_conversation_analysis_task_async(
+    async def analyze_image_async(
         self,
         workspace_id: str,
         app_id: str,
-        request: contact_center_ai20240603_models.CreateConversationAnalysisTaskRequest,
-    ) -> contact_center_ai20240603_models.CreateConversationAnalysisTaskResponse:
+        request: contact_center_ai20240603_models.AnalyzeImageRequest,
+    ) -> contact_center_ai20240603_models.AnalyzeImageResponse:
         """
-        @summary 创建语音文件调用llm任务
+        @summary 图片分析
         
-        @param request: CreateConversationAnalysisTaskRequest
-        @return: CreateConversationAnalysisTaskResponse
+        @param request: AnalyzeImageRequest
+        @return: AnalyzeImageResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_conversation_analysis_task_with_options_async(workspace_id, app_id, request, headers, runtime)
+        return await self.analyze_image_with_options_async(workspace_id, app_id, request, headers, runtime)
 
     def create_task_with_options(
         self,

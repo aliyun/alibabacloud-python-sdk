@@ -1,3 +1,11 @@
+2024-11-26 Version: 3.3.0
+- Support API AnalyzeImage.
+- Update API AnalyzeConversation: update param body.
+- Update API AnalyzeConversation: update response param.
+- Update API RunCompletion: update response param.
+- Update API RunCompletionMessage: update response param.
+
+
 2024-10-11 Version: 3.2.0
 - Support API CreateTask.
 

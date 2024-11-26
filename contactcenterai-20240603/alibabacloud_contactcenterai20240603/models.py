@@ -418,6 +418,7 @@ class AnalyzeConversationRequest(TeaModel):
         scene_name: str = None,
         service_inspection: AnalyzeConversationRequestServiceInspection = None,
         stream: bool = None,
+        time_constraint_list: List[str] = None,
         user_profiles: List[AnalyzeConversationRequestUserProfiles] = None,
     ):
         self.category_tags = category_tags
@@ -432,6 +433,7 @@ class AnalyzeConversationRequest(TeaModel):
         self.service_inspection = service_inspection
         # This parameter is required.
         self.stream = stream
+        self.time_constraint_list = time_constraint_list
         self.user_profiles = user_profiles
 
     def validate(self):
@@ -486,6 +488,8 @@ class AnalyzeConversationRequest(TeaModel):
             result['serviceInspection'] = self.service_inspection.to_map()
         if self.stream is not None:
             result['stream'] = self.stream
+        if self.time_constraint_list is not None:
+            result['timeConstraintList'] = self.time_constraint_list
         result['userProfiles'] = []
         if self.user_profiles is not None:
             for k in self.user_profiles:
@@ -523,6 +527,8 @@ class AnalyzeConversationRequest(TeaModel):
             self.service_inspection = temp_model.from_map(m['serviceInspection'])
         if m.get('stream') is not None:
             self.stream = m.get('stream')
+        if m.get('timeConstraintList') is not None:
+            self.time_constraint_list = m.get('timeConstraintList')
         self.user_profiles = []
         if m.get('userProfiles') is not None:
             for k in m.get('userProfiles'):
@@ -537,16 +543,22 @@ class AnalyzeConversationResponseBody(TeaModel):
         error_code: str = None,
         error_info: str = None,
         finish_reason: str = None,
+        input_tokens: str = None,
+        output_tokens: str = None,
         request_id: str = None,
         success: bool = None,
         text: str = None,
+        total_tokens: str = None,
     ):
         self.error_code = error_code
         self.error_info = error_info
         self.finish_reason = finish_reason
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
         self.request_id = request_id
         self.success = success
         self.text = text
+        self.total_tokens = total_tokens
 
     def validate(self):
         pass
@@ -563,12 +575,18 @@ class AnalyzeConversationResponseBody(TeaModel):
             result['errorInfo'] = self.error_info
         if self.finish_reason is not None:
             result['finishReason'] = self.finish_reason
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
         if self.text is not None:
             result['text'] = self.text
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
         return result
 
     def from_map(self, m: dict = None):
@@ -579,12 +597,18 @@ class AnalyzeConversationResponseBody(TeaModel):
             self.error_info = m.get('errorInfo')
         if m.get('finishReason') is not None:
             self.finish_reason = m.get('finishReason')
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
         if m.get('text') is not None:
             self.text = m.get('text')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
         return self
 
 
@@ -629,308 +653,20 @@ class AnalyzeConversationResponse(TeaModel):
         return self
 
 
-class CreateConversationAnalysisTaskRequestExamplesSentences(TeaModel):
+class AnalyzeImageRequest(TeaModel):
     def __init__(
         self,
-        chat_id: str = None,
-        role: str = None,
-        text: str = None,
-    ):
-        self.chat_id = chat_id
-        # This parameter is required.
-        self.role = role
-        # This parameter is required.
-        self.text = text
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.chat_id is not None:
-            result['chatId'] = self.chat_id
-        if self.role is not None:
-            result['role'] = self.role
-        if self.text is not None:
-            result['text'] = self.text
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('chatId') is not None:
-            self.chat_id = m.get('chatId')
-        if m.get('role') is not None:
-            self.role = m.get('role')
-        if m.get('text') is not None:
-            self.text = m.get('text')
-        return self
-
-
-class CreateConversationAnalysisTaskRequestExamples(TeaModel):
-    def __init__(
-        self,
-        output: str = None,
-        sentences: List[CreateConversationAnalysisTaskRequestExamplesSentences] = None,
-    ):
-        self.output = output
-        # This parameter is required.
-        self.sentences = sentences
-
-    def validate(self):
-        if self.sentences:
-            for k in self.sentences:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.output is not None:
-            result['output'] = self.output
-        result['sentences'] = []
-        if self.sentences is not None:
-            for k in self.sentences:
-                result['sentences'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('output') is not None:
-            self.output = m.get('output')
-        self.sentences = []
-        if m.get('sentences') is not None:
-            for k in m.get('sentences'):
-                temp_model = CreateConversationAnalysisTaskRequestExamplesSentences()
-                self.sentences.append(temp_model.from_map(k))
-        return self
-
-
-class CreateConversationAnalysisTaskRequestFieldsEnumValues(TeaModel):
-    def __init__(
-        self,
-        desc: str = None,
-        enum_value: str = None,
-    ):
-        # This parameter is required.
-        self.desc = desc
-        # This parameter is required.
-        self.enum_value = enum_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.desc is not None:
-            result['desc'] = self.desc
-        if self.enum_value is not None:
-            result['enumValue'] = self.enum_value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('desc') is not None:
-            self.desc = m.get('desc')
-        if m.get('enumValue') is not None:
-            self.enum_value = m.get('enumValue')
-        return self
-
-
-class CreateConversationAnalysisTaskRequestFields(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        desc: str = None,
-        enum_values: List[CreateConversationAnalysisTaskRequestFieldsEnumValues] = None,
-        name: str = None,
-    ):
-        self.code = code
-        # This parameter is required.
-        self.desc = desc
-        # This parameter is required.
-        self.enum_values = enum_values
-        # This parameter is required.
-        self.name = name
-
-    def validate(self):
-        if self.enum_values:
-            for k in self.enum_values:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['code'] = self.code
-        if self.desc is not None:
-            result['desc'] = self.desc
-        result['enumValues'] = []
-        if self.enum_values is not None:
-            for k in self.enum_values:
-                result['enumValues'].append(k.to_map() if k else None)
-        if self.name is not None:
-            result['name'] = self.name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('code') is not None:
-            self.code = m.get('code')
-        if m.get('desc') is not None:
-            self.desc = m.get('desc')
-        self.enum_values = []
-        if m.get('enumValues') is not None:
-            for k in m.get('enumValues'):
-                temp_model = CreateConversationAnalysisTaskRequestFieldsEnumValues()
-                self.enum_values.append(temp_model.from_map(k))
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        return self
-
-
-class CreateConversationAnalysisTaskRequestServiceInspectionInspectionContents(TeaModel):
-    def __init__(
-        self,
-        content: str = None,
-        title: str = None,
-    ):
-        # This parameter is required.
-        self.content = content
-        # This parameter is required.
-        self.title = title
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content is not None:
-            result['content'] = self.content
-        if self.title is not None:
-            result['title'] = self.title
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('content') is not None:
-            self.content = m.get('content')
-        if m.get('title') is not None:
-            self.title = m.get('title')
-        return self
-
-
-class CreateConversationAnalysisTaskRequestServiceInspection(TeaModel):
-    def __init__(
-        self,
-        inspection_contents: List[CreateConversationAnalysisTaskRequestServiceInspectionInspectionContents] = None,
-        inspection_introduction: str = None,
-        scene_introduction: str = None,
-    ):
-        # This parameter is required.
-        self.inspection_contents = inspection_contents
-        # This parameter is required.
-        self.inspection_introduction = inspection_introduction
-        # This parameter is required.
-        self.scene_introduction = scene_introduction
-
-    def validate(self):
-        if self.inspection_contents:
-            for k in self.inspection_contents:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['inspectionContents'] = []
-        if self.inspection_contents is not None:
-            for k in self.inspection_contents:
-                result['inspectionContents'].append(k.to_map() if k else None)
-        if self.inspection_introduction is not None:
-            result['inspectionIntroduction'] = self.inspection_introduction
-        if self.scene_introduction is not None:
-            result['sceneIntroduction'] = self.scene_introduction
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.inspection_contents = []
-        if m.get('inspectionContents') is not None:
-            for k in m.get('inspectionContents'):
-                temp_model = CreateConversationAnalysisTaskRequestServiceInspectionInspectionContents()
-                self.inspection_contents.append(temp_model.from_map(k))
-        if m.get('inspectionIntroduction') is not None:
-            self.inspection_introduction = m.get('inspectionIntroduction')
-        if m.get('sceneIntroduction') is not None:
-            self.scene_introduction = m.get('sceneIntroduction')
-        return self
-
-
-class CreateConversationAnalysisTaskRequest(TeaModel):
-    def __init__(
-        self,
-        auto_split: int = None,
-        client_channel: int = None,
-        examples: CreateConversationAnalysisTaskRequestExamples = None,
-        fields: List[CreateConversationAnalysisTaskRequestFields] = None,
-        file_name: str = None,
-        model_code: str = None,
+        image_urls: List[str] = None,
         result_types: List[str] = None,
-        scene_name: str = None,
-        service_channel: int = None,
-        service_channel_keywords: List[str] = None,
-        service_inspection: CreateConversationAnalysisTaskRequestServiceInspection = None,
-        template_ids: List[str] = None,
-        voice_file_url: str = None,
+        stream: bool = None,
     ):
-        self.auto_split = auto_split
-        self.client_channel = client_channel
-        self.examples = examples
-        self.fields = fields
-        # This parameter is required.
-        self.file_name = file_name
-        # This parameter is required.
-        self.model_code = model_code
+        self.image_urls = image_urls
         self.result_types = result_types
-        self.scene_name = scene_name
-        self.service_channel = service_channel
-        self.service_channel_keywords = service_channel_keywords
-        self.service_inspection = service_inspection
-        self.template_ids = template_ids
         # This parameter is required.
-        self.voice_file_url = voice_file_url
+        self.stream = stream
 
     def validate(self):
-        if self.examples:
-            self.examples.validate()
-        if self.fields:
-            for k in self.fields:
-                if k:
-                    k.validate()
-        if self.service_inspection:
-            self.service_inspection.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -938,78 +674,43 @@ class CreateConversationAnalysisTaskRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.auto_split is not None:
-            result['autoSplit'] = self.auto_split
-        if self.client_channel is not None:
-            result['clientChannel'] = self.client_channel
-        if self.examples is not None:
-            result['examples'] = self.examples.to_map()
-        result['fields'] = []
-        if self.fields is not None:
-            for k in self.fields:
-                result['fields'].append(k.to_map() if k else None)
-        if self.file_name is not None:
-            result['fileName'] = self.file_name
-        if self.model_code is not None:
-            result['modelCode'] = self.model_code
+        if self.image_urls is not None:
+            result['imageUrls'] = self.image_urls
         if self.result_types is not None:
             result['resultTypes'] = self.result_types
-        if self.scene_name is not None:
-            result['sceneName'] = self.scene_name
-        if self.service_channel is not None:
-            result['serviceChannel'] = self.service_channel
-        if self.service_channel_keywords is not None:
-            result['serviceChannelKeywords'] = self.service_channel_keywords
-        if self.service_inspection is not None:
-            result['serviceInspection'] = self.service_inspection.to_map()
-        if self.template_ids is not None:
-            result['templateIds'] = self.template_ids
-        if self.voice_file_url is not None:
-            result['voiceFileUrl'] = self.voice_file_url
+        if self.stream is not None:
+            result['stream'] = self.stream
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('autoSplit') is not None:
-            self.auto_split = m.get('autoSplit')
-        if m.get('clientChannel') is not None:
-            self.client_channel = m.get('clientChannel')
-        if m.get('examples') is not None:
-            temp_model = CreateConversationAnalysisTaskRequestExamples()
-            self.examples = temp_model.from_map(m['examples'])
-        self.fields = []
-        if m.get('fields') is not None:
-            for k in m.get('fields'):
-                temp_model = CreateConversationAnalysisTaskRequestFields()
-                self.fields.append(temp_model.from_map(k))
-        if m.get('fileName') is not None:
-            self.file_name = m.get('fileName')
-        if m.get('modelCode') is not None:
-            self.model_code = m.get('modelCode')
+        if m.get('imageUrls') is not None:
+            self.image_urls = m.get('imageUrls')
         if m.get('resultTypes') is not None:
             self.result_types = m.get('resultTypes')
-        if m.get('sceneName') is not None:
-            self.scene_name = m.get('sceneName')
-        if m.get('serviceChannel') is not None:
-            self.service_channel = m.get('serviceChannel')
-        if m.get('serviceChannelKeywords') is not None:
-            self.service_channel_keywords = m.get('serviceChannelKeywords')
-        if m.get('serviceInspection') is not None:
-            temp_model = CreateConversationAnalysisTaskRequestServiceInspection()
-            self.service_inspection = temp_model.from_map(m['serviceInspection'])
-        if m.get('templateIds') is not None:
-            self.template_ids = m.get('templateIds')
-        if m.get('voiceFileUrl') is not None:
-            self.voice_file_url = m.get('voiceFileUrl')
+        if m.get('stream') is not None:
+            self.stream = m.get('stream')
         return self
 
 
-class CreateConversationAnalysisTaskResponseBodyData(TeaModel):
+class AnalyzeImageResponseBody(TeaModel):
     def __init__(
         self,
-        task_id: str = None,
+        finish_reason: str = None,
+        input_tokens: str = None,
+        output_tokens: str = None,
+        request_id: str = None,
+        success: bool = None,
+        text: str = None,
+        total_tokens: str = None,
     ):
-        self.task_id = task_id
+        self.finish_reason = finish_reason
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.request_id = request_id
+        self.success = success
+        self.text = text
+        self.total_tokens = total_tokens
 
     def validate(self):
         pass
@@ -1020,64 +721,47 @@ class CreateConversationAnalysisTaskResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        if self.task_id is not None:
-            result['taskId'] = self.task_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('taskId') is not None:
-            self.task_id = m.get('taskId')
-        return self
-
-
-class CreateConversationAnalysisTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: CreateConversationAnalysisTaskResponseBodyData = None,
-        request_id: str = None,
-        success: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['data'] = self.data.to_map()
+        if self.finish_reason is not None:
+            result['finishReason'] = self.finish_reason
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
+        if self.text is not None:
+            result['text'] = self.text
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('data') is not None:
-            temp_model = CreateConversationAnalysisTaskResponseBodyData()
-            self.data = temp_model.from_map(m['data'])
+        if m.get('finishReason') is not None:
+            self.finish_reason = m.get('finishReason')
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
         return self
 
 
-class CreateConversationAnalysisTaskResponse(TeaModel):
+class AnalyzeImageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: CreateConversationAnalysisTaskResponseBody = None,
+        body: AnalyzeImageResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -1108,7 +792,7 @@ class CreateConversationAnalysisTaskResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = CreateConversationAnalysisTaskResponseBody()
+            temp_model = AnalyzeImageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2186,10 +1870,16 @@ class RunCompletionResponseBody(TeaModel):
         finish_reason: str = None,
         request_id: str = None,
         text: str = None,
+        input_tokens: str = None,
+        output_tokens: str = None,
+        total_tokens: str = None,
     ):
         self.finish_reason = finish_reason
         self.request_id = request_id
         self.text = text
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
 
     def validate(self):
         pass
@@ -2206,6 +1896,12 @@ class RunCompletionResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.text is not None:
             result['Text'] = self.text
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
         return result
 
     def from_map(self, m: dict = None):
@@ -2216,6 +1912,12 @@ class RunCompletionResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Text') is not None:
             self.text = m.get('Text')
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
         return self
 
 
@@ -2349,10 +2051,16 @@ class RunCompletionMessageResponseBody(TeaModel):
         finish_reason: str = None,
         request_id: str = None,
         text: str = None,
+        input_tokens: str = None,
+        output_tokens: str = None,
+        total_tokens: str = None,
     ):
         self.finish_reason = finish_reason
         self.request_id = request_id
         self.text = text
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
 
     def validate(self):
         pass
@@ -2369,6 +2077,12 @@ class RunCompletionMessageResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.text is not None:
             result['Text'] = self.text
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
         return result
 
     def from_map(self, m: dict = None):
@@ -2379,6 +2093,12 @@ class RunCompletionMessageResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Text') is not None:
             self.text = m.get('Text')
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
         return self
 
 
