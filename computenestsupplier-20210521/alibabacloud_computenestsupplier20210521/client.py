@@ -4049,6 +4049,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.restart_service_instance_with_options_async(request, runtime)
 
+    def rollback_service_instance_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.RollbackServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.RollbackServiceInstanceResponse:
+        """
+        @summary 回滚服务实例
+        
+        @param request: RollbackServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RollbackServiceInstance',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.RollbackServiceInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rollback_service_instance_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.RollbackServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.RollbackServiceInstanceResponse:
+        """
+        @summary 回滚服务实例
+        
+        @param request: RollbackServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RollbackServiceInstance',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.RollbackServiceInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rollback_service_instance(
+        self,
+        request: compute_nest_supplier_20210521_models.RollbackServiceInstanceRequest,
+    ) -> compute_nest_supplier_20210521_models.RollbackServiceInstanceResponse:
+        """
+        @summary 回滚服务实例
+        
+        @param request: RollbackServiceInstanceRequest
+        @return: RollbackServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.rollback_service_instance_with_options(request, runtime)
+
+    async def rollback_service_instance_async(
+        self,
+        request: compute_nest_supplier_20210521_models.RollbackServiceInstanceRequest,
+    ) -> compute_nest_supplier_20210521_models.RollbackServiceInstanceResponse:
+        """
+        @summary 回滚服务实例
+        
+        @param request: RollbackServiceInstanceRequest
+        @return: RollbackServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.rollback_service_instance_with_options_async(request, runtime)
+
     def start_service_instance_with_options(
         self,
         request: compute_nest_supplier_20210521_models.StartServiceInstanceRequest,

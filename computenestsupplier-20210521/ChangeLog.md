@@ -1,3 +1,7 @@
+2024-11-26 Version: 4.1.0
+- Support API RollbackServiceInstance.
+
+
 2024-11-12 Version: 4.0.1
 - Update API GetService: update response param.
 
