@@ -1,3 +1,8 @@
+2024-11-26 Version: 3.1.0
+- Support API DescribeInstanceForIsv.
+- Support API DescribeOrderForIsv.
+
+
 2024-11-26 Version: 3.0.5
 - Update API DescribeInstances: update param PageNumber.
 - Update API DescribeInstances: update param PageSize.

@@ -938,6 +938,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_with_options_async(request, runtime)
 
+    def describe_instance_for_isv_with_options(
+        self,
+        request: market_20151101_models.DescribeInstanceForIsvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.DescribeInstanceForIsvResponse:
+        """
+        @summary 服务商侧查询实例信息
+        
+        @param request: DescribeInstanceForIsvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceForIsvResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceForIsv',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.DescribeInstanceForIsvResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_for_isv_with_options_async(
+        self,
+        request: market_20151101_models.DescribeInstanceForIsvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.DescribeInstanceForIsvResponse:
+        """
+        @summary 服务商侧查询实例信息
+        
+        @param request: DescribeInstanceForIsvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceForIsvResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceForIsv',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.DescribeInstanceForIsvResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_for_isv(
+        self,
+        request: market_20151101_models.DescribeInstanceForIsvRequest,
+    ) -> market_20151101_models.DescribeInstanceForIsvResponse:
+        """
+        @summary 服务商侧查询实例信息
+        
+        @param request: DescribeInstanceForIsvRequest
+        @return: DescribeInstanceForIsvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_for_isv_with_options(request, runtime)
+
+    async def describe_instance_for_isv_async(
+        self,
+        request: market_20151101_models.DescribeInstanceForIsvRequest,
+    ) -> market_20151101_models.DescribeInstanceForIsvResponse:
+        """
+        @summary 服务商侧查询实例信息
+        
+        @param request: DescribeInstanceForIsvRequest
+        @return: DescribeInstanceForIsvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_for_isv_with_options_async(request, runtime)
+
     def describe_instances_with_options(
         self,
         request: market_20151101_models.DescribeInstancesRequest,
@@ -1225,6 +1321,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_order_with_options_async(request, runtime)
+
+    def describe_order_for_isv_with_options(
+        self,
+        request: market_20151101_models.DescribeOrderForIsvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.DescribeOrderForIsvResponse:
+        """
+        @summary 服务商侧查询订单详情
+        
+        @param request: DescribeOrderForIsvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOrderForIsvResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOrderForIsv',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.DescribeOrderForIsvResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_order_for_isv_with_options_async(
+        self,
+        request: market_20151101_models.DescribeOrderForIsvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.DescribeOrderForIsvResponse:
+        """
+        @summary 服务商侧查询订单详情
+        
+        @param request: DescribeOrderForIsvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOrderForIsvResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOrderForIsv',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            market_20151101_models.DescribeOrderForIsvResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_order_for_isv(
+        self,
+        request: market_20151101_models.DescribeOrderForIsvRequest,
+    ) -> market_20151101_models.DescribeOrderForIsvResponse:
+        """
+        @summary 服务商侧查询订单详情
+        
+        @param request: DescribeOrderForIsvRequest
+        @return: DescribeOrderForIsvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_order_for_isv_with_options(request, runtime)
+
+    async def describe_order_for_isv_async(
+        self,
+        request: market_20151101_models.DescribeOrderForIsvRequest,
+    ) -> market_20151101_models.DescribeOrderForIsvResponse:
+        """
+        @summary 服务商侧查询订单详情
+        
+        @param request: DescribeOrderForIsvRequest
+        @return: DescribeOrderForIsvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_order_for_isv_with_options_async(request, runtime)
 
     def describe_price_with_options(
         self,

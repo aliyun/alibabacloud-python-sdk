@@ -2056,6 +2056,221 @@ class DescribeInstanceResponse(TeaModel):
         return self
 
 
+class DescribeInstanceForIsvRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeInstanceForIsvResponseBodyRelationalData(TeaModel):
+    def __init__(
+        self,
+        service_status: str = None,
+    ):
+        self.service_status = service_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_status is not None:
+            result['ServiceStatus'] = self.service_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceStatus') is not None:
+            self.service_status = m.get('ServiceStatus')
+        return self
+
+
+class DescribeInstanceForIsvResponseBody(TeaModel):
+    def __init__(
+        self,
+        began_on: int = None,
+        component_json: str = None,
+        created_on: int = None,
+        end_on: int = None,
+        extend_json: str = None,
+        instance_id: int = None,
+        is_trial: bool = None,
+        order_id: int = None,
+        product_code: str = None,
+        product_name: str = None,
+        product_sku_code: str = None,
+        product_type: str = None,
+        relational_data: DescribeInstanceForIsvResponseBodyRelationalData = None,
+        request_id: str = None,
+        status: str = None,
+        supplier_name: str = None,
+    ):
+        self.began_on = began_on
+        self.component_json = component_json
+        self.created_on = created_on
+        self.end_on = end_on
+        self.extend_json = extend_json
+        self.instance_id = instance_id
+        self.is_trial = is_trial
+        self.order_id = order_id
+        self.product_code = product_code
+        self.product_name = product_name
+        self.product_sku_code = product_sku_code
+        self.product_type = product_type
+        self.relational_data = relational_data
+        self.request_id = request_id
+        self.status = status
+        self.supplier_name = supplier_name
+
+    def validate(self):
+        if self.relational_data:
+            self.relational_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.began_on is not None:
+            result['BeganOn'] = self.began_on
+        if self.component_json is not None:
+            result['ComponentJson'] = self.component_json
+        if self.created_on is not None:
+            result['CreatedOn'] = self.created_on
+        if self.end_on is not None:
+            result['EndOn'] = self.end_on
+        if self.extend_json is not None:
+            result['ExtendJson'] = self.extend_json
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.is_trial is not None:
+            result['IsTrial'] = self.is_trial
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.product_sku_code is not None:
+            result['ProductSkuCode'] = self.product_sku_code
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.relational_data is not None:
+            result['RelationalData'] = self.relational_data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.supplier_name is not None:
+            result['SupplierName'] = self.supplier_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeganOn') is not None:
+            self.began_on = m.get('BeganOn')
+        if m.get('ComponentJson') is not None:
+            self.component_json = m.get('ComponentJson')
+        if m.get('CreatedOn') is not None:
+            self.created_on = m.get('CreatedOn')
+        if m.get('EndOn') is not None:
+            self.end_on = m.get('EndOn')
+        if m.get('ExtendJson') is not None:
+            self.extend_json = m.get('ExtendJson')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IsTrial') is not None:
+            self.is_trial = m.get('IsTrial')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('ProductSkuCode') is not None:
+            self.product_sku_code = m.get('ProductSkuCode')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('RelationalData') is not None:
+            temp_model = DescribeInstanceForIsvResponseBodyRelationalData()
+            self.relational_data = temp_model.from_map(m['RelationalData'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SupplierName') is not None:
+            self.supplier_name = m.get('SupplierName')
+        return self
+
+
+class DescribeInstanceForIsvResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceForIsvResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceForIsvResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -2953,6 +3168,217 @@ class DescribeOrderResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeOrderForIsvRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+    ):
+        # This parameter is required.
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class DescribeOrderForIsvResponseBody(TeaModel):
+    def __init__(
+        self,
+        account_quantity: int = None,
+        ali_uid: int = None,
+        components: Dict[str, Any] = None,
+        coupon_price: float = None,
+        created_on: int = None,
+        instance_ids: List[str] = None,
+        order_id: int = None,
+        order_status: str = None,
+        order_type: str = None,
+        original_price: float = None,
+        paid_on: int = None,
+        pay_status: str = None,
+        payment_price: float = None,
+        period_type: str = None,
+        product_code: str = None,
+        product_name: str = None,
+        product_sku_code: str = None,
+        quantity: int = None,
+        request_id: str = None,
+        total_price: float = None,
+    ):
+        self.account_quantity = account_quantity
+        self.ali_uid = ali_uid
+        self.components = components
+        self.coupon_price = coupon_price
+        self.created_on = created_on
+        # List
+        self.instance_ids = instance_ids
+        self.order_id = order_id
+        self.order_status = order_status
+        self.order_type = order_type
+        self.original_price = original_price
+        self.paid_on = paid_on
+        self.pay_status = pay_status
+        self.payment_price = payment_price
+        self.period_type = period_type
+        self.product_code = product_code
+        self.product_name = product_name
+        self.product_sku_code = product_sku_code
+        self.quantity = quantity
+        self.request_id = request_id
+        self.total_price = total_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_quantity is not None:
+            result['AccountQuantity'] = self.account_quantity
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.components is not None:
+            result['Components'] = self.components
+        if self.coupon_price is not None:
+            result['CouponPrice'] = self.coupon_price
+        if self.created_on is not None:
+            result['CreatedOn'] = self.created_on
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.order_status is not None:
+            result['OrderStatus'] = self.order_status
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.original_price is not None:
+            result['OriginalPrice'] = self.original_price
+        if self.paid_on is not None:
+            result['PaidOn'] = self.paid_on
+        if self.pay_status is not None:
+            result['PayStatus'] = self.pay_status
+        if self.payment_price is not None:
+            result['PaymentPrice'] = self.payment_price
+        if self.period_type is not None:
+            result['PeriodType'] = self.period_type
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.product_sku_code is not None:
+            result['ProductSkuCode'] = self.product_sku_code
+        if self.quantity is not None:
+            result['Quantity'] = self.quantity
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_price is not None:
+            result['TotalPrice'] = self.total_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountQuantity') is not None:
+            self.account_quantity = m.get('AccountQuantity')
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('Components') is not None:
+            self.components = m.get('Components')
+        if m.get('CouponPrice') is not None:
+            self.coupon_price = m.get('CouponPrice')
+        if m.get('CreatedOn') is not None:
+            self.created_on = m.get('CreatedOn')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OrderStatus') is not None:
+            self.order_status = m.get('OrderStatus')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('OriginalPrice') is not None:
+            self.original_price = m.get('OriginalPrice')
+        if m.get('PaidOn') is not None:
+            self.paid_on = m.get('PaidOn')
+        if m.get('PayStatus') is not None:
+            self.pay_status = m.get('PayStatus')
+        if m.get('PaymentPrice') is not None:
+            self.payment_price = m.get('PaymentPrice')
+        if m.get('PeriodType') is not None:
+            self.period_type = m.get('PeriodType')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('ProductSkuCode') is not None:
+            self.product_sku_code = m.get('ProductSkuCode')
+        if m.get('Quantity') is not None:
+            self.quantity = m.get('Quantity')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalPrice') is not None:
+            self.total_price = m.get('TotalPrice')
+        return self
+
+
+class DescribeOrderForIsvResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeOrderForIsvResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeOrderForIsvResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
