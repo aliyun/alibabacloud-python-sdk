@@ -49,7 +49,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.AddGatewaySecurityGroupRuleResponse:
         """
-        @summary 授权网关访问服务的安全组
+        @summary Authorize the security group for gateway to access services
         
         @param request: AddGatewaySecurityGroupRuleRequest
         @param headers: map
@@ -92,7 +92,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.AddGatewaySecurityGroupRuleResponse:
         """
-        @summary 授权网关访问服务的安全组
+        @summary Authorize the security group for gateway to access services
         
         @param request: AddGatewaySecurityGroupRuleRequest
         @param headers: map
@@ -133,7 +133,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.AddGatewaySecurityGroupRuleRequest,
     ) -> apig20240327_models.AddGatewaySecurityGroupRuleResponse:
         """
-        @summary 授权网关访问服务的安全组
+        @summary Authorize the security group for gateway to access services
         
         @param request: AddGatewaySecurityGroupRuleRequest
         @return: AddGatewaySecurityGroupRuleResponse
@@ -148,7 +148,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.AddGatewaySecurityGroupRuleRequest,
     ) -> apig20240327_models.AddGatewaySecurityGroupRuleResponse:
         """
-        @summary 授权网关访问服务的安全组
+        @summary Authorize the security group for gateway to access services
         
         @param request: AddGatewaySecurityGroupRuleRequest
         @return: AddGatewaySecurityGroupRuleResponse
@@ -164,7 +164,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateDomainResponse:
         """
-        @summary 创建域名
+        @summary Create Domain
+        
+        @description Create Domain.
         
         @param request: CreateDomainRequest
         @param headers: map
@@ -173,10 +175,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.ca_cert_indentifier):
-            body['caCertIndentifier'] = request.ca_cert_indentifier
-        if not UtilClient.is_unset(request.cert_indentifier):
-            body['certIndentifier'] = request.cert_indentifier
+        if not UtilClient.is_unset(request.ca_cert_identifier):
+            body['caCertIdentifier'] = request.ca_cert_identifier
+        if not UtilClient.is_unset(request.cert_identifier):
+            body['certIdentifier'] = request.cert_identifier
         if not UtilClient.is_unset(request.force_https):
             body['forceHttps'] = request.force_https
         if not UtilClient.is_unset(request.http_2option):
@@ -185,6 +187,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not UtilClient.is_unset(request.protocol):
             body['protocol'] = request.protocol
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tls_max):
             body['tlsMax'] = request.tls_max
         if not UtilClient.is_unset(request.tls_min):
@@ -216,7 +220,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateDomainResponse:
         """
-        @summary 创建域名
+        @summary Create Domain
+        
+        @description Create Domain.
         
         @param request: CreateDomainRequest
         @param headers: map
@@ -225,10 +231,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.ca_cert_indentifier):
-            body['caCertIndentifier'] = request.ca_cert_indentifier
-        if not UtilClient.is_unset(request.cert_indentifier):
-            body['certIndentifier'] = request.cert_indentifier
+        if not UtilClient.is_unset(request.ca_cert_identifier):
+            body['caCertIdentifier'] = request.ca_cert_identifier
+        if not UtilClient.is_unset(request.cert_identifier):
+            body['certIdentifier'] = request.cert_identifier
         if not UtilClient.is_unset(request.force_https):
             body['forceHttps'] = request.force_https
         if not UtilClient.is_unset(request.http_2option):
@@ -237,6 +243,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not UtilClient.is_unset(request.protocol):
             body['protocol'] = request.protocol
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tls_max):
             body['tlsMax'] = request.tls_max
         if not UtilClient.is_unset(request.tls_min):
@@ -266,7 +274,9 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateDomainRequest,
     ) -> apig20240327_models.CreateDomainResponse:
         """
-        @summary 创建域名
+        @summary Create Domain
+        
+        @description Create Domain.
         
         @param request: CreateDomainRequest
         @return: CreateDomainResponse
@@ -280,7 +290,9 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateDomainRequest,
     ) -> apig20240327_models.CreateDomainResponse:
         """
-        @summary 创建域名
+        @summary Create Domain
+        
+        @description Create Domain.
         
         @param request: CreateDomainRequest
         @return: CreateDomainResponse
@@ -298,6 +310,8 @@ class Client(OpenApiClient):
         """
         @summary CreateEnvironment
         
+        @description Create environment.
+        
         @param request: CreateEnvironmentRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -313,6 +327,8 @@ class Client(OpenApiClient):
             body['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -342,6 +358,8 @@ class Client(OpenApiClient):
         """
         @summary CreateEnvironment
         
+        @description Create environment.
+        
         @param request: CreateEnvironmentRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -357,6 +375,8 @@ class Client(OpenApiClient):
             body['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -384,6 +404,8 @@ class Client(OpenApiClient):
         """
         @summary CreateEnvironment
         
+        @description Create environment.
+        
         @param request: CreateEnvironmentRequest
         @return: CreateEnvironmentResponse
         """
@@ -398,364 +420,14 @@ class Client(OpenApiClient):
         """
         @summary CreateEnvironment
         
+        @description Create environment.
+        
         @param request: CreateEnvironmentRequest
         @return: CreateEnvironmentResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_environment_with_options_async(request, headers, runtime)
-
-    def create_gateway_route_with_options(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.CreateGatewayRouteRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.CreateGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @param request: CreateGatewayRouteRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateGatewayRouteResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.backend_config):
-            body['backendConfig'] = request.backend_config
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.domain_config):
-            body['domainConfig'] = request.domain_config
-        if not UtilClient.is_unset(request.match):
-            body['match'] = request.match
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateGatewayRoute',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.CreateGatewayRouteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_gateway_route_with_options_async(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.CreateGatewayRouteRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.CreateGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @param request: CreateGatewayRouteRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateGatewayRouteResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.backend_config):
-            body['backendConfig'] = request.backend_config
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.domain_config):
-            body['domainConfig'] = request.domain_config
-        if not UtilClient.is_unset(request.match):
-            body['match'] = request.match
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateGatewayRoute',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.CreateGatewayRouteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_gateway_route(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.CreateGatewayRouteRequest,
-    ) -> apig20240327_models.CreateGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @param request: CreateGatewayRouteRequest
-        @return: CreateGatewayRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_gateway_route_with_options(gateway_id, request, headers, runtime)
-
-    async def create_gateway_route_async(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.CreateGatewayRouteRequest,
-    ) -> apig20240327_models.CreateGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @param request: CreateGatewayRouteRequest
-        @return: CreateGatewayRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_gateway_route_with_options_async(gateway_id, request, headers, runtime)
-
-    def create_gateway_service_with_options(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.CreateGatewayServiceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.CreateGatewayServiceResponse:
-        """
-        @summary 创建服务
-        
-        @param request: CreateGatewayServiceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateGatewayServiceResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.gateway_service_configs):
-            body['gatewayServiceConfigs'] = request.gateway_service_configs
-        if not UtilClient.is_unset(request.source_type):
-            body['sourceType'] = request.source_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateGatewayService',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.CreateGatewayServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_gateway_service_with_options_async(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.CreateGatewayServiceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.CreateGatewayServiceResponse:
-        """
-        @summary 创建服务
-        
-        @param request: CreateGatewayServiceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateGatewayServiceResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.gateway_service_configs):
-            body['gatewayServiceConfigs'] = request.gateway_service_configs
-        if not UtilClient.is_unset(request.source_type):
-            body['sourceType'] = request.source_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateGatewayService',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.CreateGatewayServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_gateway_service(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.CreateGatewayServiceRequest,
-    ) -> apig20240327_models.CreateGatewayServiceResponse:
-        """
-        @summary 创建服务
-        
-        @param request: CreateGatewayServiceRequest
-        @return: CreateGatewayServiceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_gateway_service_with_options(gateway_id, request, headers, runtime)
-
-    async def create_gateway_service_async(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.CreateGatewayServiceRequest,
-    ) -> apig20240327_models.CreateGatewayServiceResponse:
-        """
-        @summary 创建服务
-        
-        @param request: CreateGatewayServiceRequest
-        @return: CreateGatewayServiceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_gateway_service_with_options_async(gateway_id, request, headers, runtime)
-
-    def create_gateway_service_version_with_options(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        request: apig20240327_models.CreateGatewayServiceVersionRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.CreateGatewayServiceVersionResponse:
-        """
-        @summary 创建服务版本
-        
-        @param request: CreateGatewayServiceVersionRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateGatewayServiceVersionResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.labels):
-            body['labels'] = request.labels
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateGatewayServiceVersion',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services/{OpenApiUtilClient.get_encode_param(gateway_service_id)}/service-versions',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.CreateGatewayServiceVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_gateway_service_version_with_options_async(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        request: apig20240327_models.CreateGatewayServiceVersionRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.CreateGatewayServiceVersionResponse:
-        """
-        @summary 创建服务版本
-        
-        @param request: CreateGatewayServiceVersionRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateGatewayServiceVersionResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.labels):
-            body['labels'] = request.labels
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateGatewayServiceVersion',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services/{OpenApiUtilClient.get_encode_param(gateway_service_id)}/service-versions',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.CreateGatewayServiceVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_gateway_service_version(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        request: apig20240327_models.CreateGatewayServiceVersionRequest,
-    ) -> apig20240327_models.CreateGatewayServiceVersionResponse:
-        """
-        @summary 创建服务版本
-        
-        @param request: CreateGatewayServiceVersionRequest
-        @return: CreateGatewayServiceVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_gateway_service_version_with_options(gateway_id, gateway_service_id, request, headers, runtime)
-
-    async def create_gateway_service_version_async(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        request: apig20240327_models.CreateGatewayServiceVersionRequest,
-    ) -> apig20240327_models.CreateGatewayServiceVersionResponse:
-        """
-        @summary 创建服务版本
-        
-        @param request: CreateGatewayServiceVersionRequest
-        @return: CreateGatewayServiceVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_gateway_service_version_with_options_async(gateway_id, gateway_service_id, request, headers, runtime)
 
     def create_http_api_with_options(
         self,
@@ -764,7 +436,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateHttpApiResponse:
         """
-        @summary 创建一个HTTP类型的API
+        @summary Create an API of HTTP type
         
         @param request: CreateHttpApiRequest
         @param headers: map
@@ -773,14 +445,24 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.ai_protocols):
+            body['aiProtocols'] = request.ai_protocols
         if not UtilClient.is_unset(request.base_path):
             body['basePath'] = request.base_path
+        if not UtilClient.is_unset(request.deploy_configs):
+            body['deployConfigs'] = request.deploy_configs
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.ingress_config):
+            body['ingressConfig'] = request.ingress_config
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.protocols):
             body['protocols'] = request.protocols
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         if not UtilClient.is_unset(request.version_config):
             body['versionConfig'] = request.version_config
         req = open_api_models.OpenApiRequest(
@@ -810,7 +492,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateHttpApiResponse:
         """
-        @summary 创建一个HTTP类型的API
+        @summary Create an API of HTTP type
         
         @param request: CreateHttpApiRequest
         @param headers: map
@@ -819,14 +501,24 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.ai_protocols):
+            body['aiProtocols'] = request.ai_protocols
         if not UtilClient.is_unset(request.base_path):
             body['basePath'] = request.base_path
+        if not UtilClient.is_unset(request.deploy_configs):
+            body['deployConfigs'] = request.deploy_configs
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.ingress_config):
+            body['ingressConfig'] = request.ingress_config
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.protocols):
             body['protocols'] = request.protocols
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         if not UtilClient.is_unset(request.version_config):
             body['versionConfig'] = request.version_config
         req = open_api_models.OpenApiRequest(
@@ -854,7 +546,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateHttpApiRequest,
     ) -> apig20240327_models.CreateHttpApiResponse:
         """
-        @summary 创建一个HTTP类型的API
+        @summary Create an API of HTTP type
         
         @param request: CreateHttpApiRequest
         @return: CreateHttpApiResponse
@@ -868,7 +560,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateHttpApiRequest,
     ) -> apig20240327_models.CreateHttpApiResponse:
         """
-        @summary 创建一个HTTP类型的API
+        @summary Create an API of HTTP type
         
         @param request: CreateHttpApiRequest
         @return: CreateHttpApiResponse
@@ -885,7 +577,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateHttpApiOperationResponse:
         """
-        @summary 为HTTP API创建Operation
+        @summary Create an Operation for HTTP API
         
         @param request: CreateHttpApiOperationRequest
         @param headers: map
@@ -924,7 +616,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateHttpApiOperationResponse:
         """
-        @summary 为HTTP API创建Operation
+        @summary Create an Operation for HTTP API
         
         @param request: CreateHttpApiOperationRequest
         @param headers: map
@@ -961,7 +653,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateHttpApiOperationRequest,
     ) -> apig20240327_models.CreateHttpApiOperationResponse:
         """
-        @summary 为HTTP API创建Operation
+        @summary Create an Operation for HTTP API
         
         @param request: CreateHttpApiOperationRequest
         @return: CreateHttpApiOperationResponse
@@ -976,7 +668,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateHttpApiOperationRequest,
     ) -> apig20240327_models.CreateHttpApiOperationResponse:
         """
-        @summary 为HTTP API创建Operation
+        @summary Create an Operation for HTTP API
         
         @param request: CreateHttpApiOperationRequest
         @return: CreateHttpApiOperationResponse
@@ -984,122 +676,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_http_api_operation_with_options_async(http_api_id, request, headers, runtime)
-
-    def create_service_source_with_options(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.CreateServiceSourceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.CreateServiceSourceResponse:
-        """
-        @summary 创建服务来源
-        
-        @param request: CreateServiceSourceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateServiceSourceResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.k_8s_service_source_config):
-            body['k8sServiceSourceConfig'] = request.k_8s_service_source_config
-        if not UtilClient.is_unset(request.nacos_service_source_config):
-            body['nacosServiceSourceConfig'] = request.nacos_service_source_config
-        if not UtilClient.is_unset(request.type):
-            body['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateServiceSource',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/service-sources',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.CreateServiceSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_service_source_with_options_async(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.CreateServiceSourceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.CreateServiceSourceResponse:
-        """
-        @summary 创建服务来源
-        
-        @param request: CreateServiceSourceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateServiceSourceResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.k_8s_service_source_config):
-            body['k8sServiceSourceConfig'] = request.k_8s_service_source_config
-        if not UtilClient.is_unset(request.nacos_service_source_config):
-            body['nacosServiceSourceConfig'] = request.nacos_service_source_config
-        if not UtilClient.is_unset(request.type):
-            body['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateServiceSource',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/service-sources',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.CreateServiceSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_service_source(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.CreateServiceSourceRequest,
-    ) -> apig20240327_models.CreateServiceSourceResponse:
-        """
-        @summary 创建服务来源
-        
-        @param request: CreateServiceSourceRequest
-        @return: CreateServiceSourceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_service_source_with_options(gateway_id, request, headers, runtime)
-
-    async def create_service_source_async(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.CreateServiceSourceRequest,
-    ) -> apig20240327_models.CreateServiceSourceResponse:
-        """
-        @summary 创建服务来源
-        
-        @param request: CreateServiceSourceRequest
-        @return: CreateServiceSourceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_service_source_with_options_async(gateway_id, request, headers, runtime)
 
     def delete_domain_with_options(
         self,
@@ -1288,7 +864,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteGatewayResponse:
         """
-        @summary 删除网关
+        @summary Delete Gateway
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1320,7 +896,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteGatewayResponse:
         """
-        @summary 删除网关
+        @summary Delete Gateway
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1350,7 +926,7 @@ class Client(OpenApiClient):
         gateway_id: str,
     ) -> apig20240327_models.DeleteGatewayResponse:
         """
-        @summary 删除网关
+        @summary Delete Gateway
         
         @return: DeleteGatewayResponse
         """
@@ -1363,299 +939,13 @@ class Client(OpenApiClient):
         gateway_id: str,
     ) -> apig20240327_models.DeleteGatewayResponse:
         """
-        @summary 删除网关
+        @summary Delete Gateway
         
         @return: DeleteGatewayResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_gateway_with_options_async(gateway_id, headers, runtime)
-
-    def delete_gateway_route_with_options(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.DeleteGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteGatewayRouteResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteGatewayRoute',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes/{OpenApiUtilClient.get_encode_param(gateway_route_id)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.DeleteGatewayRouteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_gateway_route_with_options_async(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.DeleteGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteGatewayRouteResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteGatewayRoute',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes/{OpenApiUtilClient.get_encode_param(gateway_route_id)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.DeleteGatewayRouteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_gateway_route(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-    ) -> apig20240327_models.DeleteGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @return: DeleteGatewayRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_gateway_route_with_options(gateway_id, gateway_route_id, headers, runtime)
-
-    async def delete_gateway_route_async(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-    ) -> apig20240327_models.DeleteGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @return: DeleteGatewayRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_gateway_route_with_options_async(gateway_id, gateway_route_id, headers, runtime)
-
-    def delete_gateway_service_with_options(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.DeleteGatewayServiceResponse:
-        """
-        @summary 删除服务
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteGatewayServiceResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteGatewayService',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services/{OpenApiUtilClient.get_encode_param(gateway_service_id)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.DeleteGatewayServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_gateway_service_with_options_async(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.DeleteGatewayServiceResponse:
-        """
-        @summary 删除服务
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteGatewayServiceResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteGatewayService',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services/{OpenApiUtilClient.get_encode_param(gateway_service_id)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.DeleteGatewayServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_gateway_service(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-    ) -> apig20240327_models.DeleteGatewayServiceResponse:
-        """
-        @summary 删除服务
-        
-        @return: DeleteGatewayServiceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_gateway_service_with_options(gateway_id, gateway_service_id, headers, runtime)
-
-    async def delete_gateway_service_async(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-    ) -> apig20240327_models.DeleteGatewayServiceResponse:
-        """
-        @summary 删除服务
-        
-        @return: DeleteGatewayServiceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_gateway_service_with_options_async(gateway_id, gateway_service_id, headers, runtime)
-
-    def delete_gateway_service_version_with_options(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.DeleteGatewayServiceVersionResponse:
-        """
-        @summary 删除服务版本
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteGatewayServiceVersionResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteGatewayServiceVersion',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services/{OpenApiUtilClient.get_encode_param(gateway_service_id)}/service-versions/{OpenApiUtilClient.get_encode_param(name)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.DeleteGatewayServiceVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_gateway_service_version_with_options_async(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.DeleteGatewayServiceVersionResponse:
-        """
-        @summary 删除服务版本
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteGatewayServiceVersionResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteGatewayServiceVersion',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services/{OpenApiUtilClient.get_encode_param(gateway_service_id)}/service-versions/{OpenApiUtilClient.get_encode_param(name)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.DeleteGatewayServiceVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_gateway_service_version(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        name: str,
-    ) -> apig20240327_models.DeleteGatewayServiceVersionResponse:
-        """
-        @summary 删除服务版本
-        
-        @return: DeleteGatewayServiceVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_gateway_service_version_with_options(gateway_id, gateway_service_id, name, headers, runtime)
-
-    async def delete_gateway_service_version_async(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        name: str,
-    ) -> apig20240327_models.DeleteGatewayServiceVersionResponse:
-        """
-        @summary 删除服务版本
-        
-        @return: DeleteGatewayServiceVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_gateway_service_version_with_options_async(gateway_id, gateway_service_id, name, headers, runtime)
 
     def delete_http_api_with_options(
         self,
@@ -1664,7 +954,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteHttpApiResponse:
         """
-        @summary 删除HTTP API
+        @summary Delete HTTP API
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1696,7 +986,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteHttpApiResponse:
         """
-        @summary 删除HTTP API
+        @summary Delete HTTP API
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1726,7 +1016,7 @@ class Client(OpenApiClient):
         http_api_id: str,
     ) -> apig20240327_models.DeleteHttpApiResponse:
         """
-        @summary 删除HTTP API
+        @summary Delete HTTP API
         
         @return: DeleteHttpApiResponse
         """
@@ -1739,7 +1029,7 @@ class Client(OpenApiClient):
         http_api_id: str,
     ) -> apig20240327_models.DeleteHttpApiResponse:
         """
-        @summary 删除HTTP API
+        @summary Delete HTTP API
         
         @return: DeleteHttpApiResponse
         """
@@ -1755,7 +1045,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteHttpApiOperationResponse:
         """
-        @summary 删除Operation
+        @summary Delete Operation
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1788,7 +1078,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteHttpApiOperationResponse:
         """
-        @summary 删除Operation
+        @summary Delete Operation
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1819,7 +1109,7 @@ class Client(OpenApiClient):
         operation_id: str,
     ) -> apig20240327_models.DeleteHttpApiOperationResponse:
         """
-        @summary 删除Operation
+        @summary Delete Operation
         
         @return: DeleteHttpApiOperationResponse
         """
@@ -1833,7 +1123,7 @@ class Client(OpenApiClient):
         operation_id: str,
     ) -> apig20240327_models.DeleteHttpApiOperationResponse:
         """
-        @summary 删除Operation
+        @summary Delete Operation
         
         @return: DeleteHttpApiOperationResponse
         """
@@ -1841,115 +1131,28 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_http_api_operation_with_options_async(http_api_id, operation_id, headers, runtime)
 
-    def delete_service_source_with_options(
-        self,
-        gateway_id: str,
-        service_source_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.DeleteServiceSourceResponse:
-        """
-        @summary 删除服务来源
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteServiceSourceResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteServiceSource',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/service-sources/{OpenApiUtilClient.get_encode_param(service_source_id)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.DeleteServiceSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_service_source_with_options_async(
-        self,
-        gateway_id: str,
-        service_source_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.DeleteServiceSourceResponse:
-        """
-        @summary 删除服务来源
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteServiceSourceResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteServiceSource',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/service-sources/{OpenApiUtilClient.get_encode_param(service_source_id)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.DeleteServiceSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_service_source(
-        self,
-        gateway_id: str,
-        service_source_id: str,
-    ) -> apig20240327_models.DeleteServiceSourceResponse:
-        """
-        @summary 删除服务来源
-        
-        @return: DeleteServiceSourceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_service_source_with_options(gateway_id, service_source_id, headers, runtime)
-
-    async def delete_service_source_async(
-        self,
-        gateway_id: str,
-        service_source_id: str,
-    ) -> apig20240327_models.DeleteServiceSourceResponse:
-        """
-        @summary 删除服务来源
-        
-        @return: DeleteServiceSourceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_service_source_with_options_async(gateway_id, service_source_id, headers, runtime)
-
     def get_domain_with_options(
         self,
         domain_id: str,
+        request: apig20240327_models.GetDomainRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetDomainResponse:
         """
-        @summary 查询域名详情
+        @summary Query domain details
         
+        @param request: GetDomainRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetDomainResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.with_statistics):
+            query['withStatistics'] = request.with_statistics
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetDomain',
@@ -1970,18 +1173,25 @@ class Client(OpenApiClient):
     async def get_domain_with_options_async(
         self,
         domain_id: str,
+        request: apig20240327_models.GetDomainRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetDomainResponse:
         """
-        @summary 查询域名详情
+        @summary Query domain details
         
+        @param request: GetDomainRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetDomainResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.with_statistics):
+            query['withStatistics'] = request.with_statistics
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetDomain',
@@ -2002,44 +1212,57 @@ class Client(OpenApiClient):
     def get_domain(
         self,
         domain_id: str,
+        request: apig20240327_models.GetDomainRequest,
     ) -> apig20240327_models.GetDomainResponse:
         """
-        @summary 查询域名详情
+        @summary Query domain details
         
+        @param request: GetDomainRequest
         @return: GetDomainResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_domain_with_options(domain_id, headers, runtime)
+        return self.get_domain_with_options(domain_id, request, headers, runtime)
 
     async def get_domain_async(
         self,
         domain_id: str,
+        request: apig20240327_models.GetDomainRequest,
     ) -> apig20240327_models.GetDomainResponse:
         """
-        @summary 查询域名详情
+        @summary Query domain details
         
+        @param request: GetDomainRequest
         @return: GetDomainResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_domain_with_options_async(domain_id, headers, runtime)
+        return await self.get_domain_with_options_async(domain_id, request, headers, runtime)
 
     def get_environment_with_options(
         self,
         environment_id: str,
+        request: apig20240327_models.GetEnvironmentRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetEnvironmentResponse:
         """
         @summary GetEnvironment
         
+        @param request: GetEnvironmentRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetEnvironmentResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.with_statistics):
+            query['withStatistics'] = request.with_statistics
+        if not UtilClient.is_unset(request.with_vpc_info):
+            query['withVpcInfo'] = request.with_vpc_info
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetEnvironment',
@@ -2060,18 +1283,27 @@ class Client(OpenApiClient):
     async def get_environment_with_options_async(
         self,
         environment_id: str,
+        request: apig20240327_models.GetEnvironmentRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetEnvironmentResponse:
         """
         @summary GetEnvironment
         
+        @param request: GetEnvironmentRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetEnvironmentResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.with_statistics):
+            query['withStatistics'] = request.with_statistics
+        if not UtilClient.is_unset(request.with_vpc_info):
+            query['withVpcInfo'] = request.with_vpc_info
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetEnvironment',
@@ -2092,28 +1324,32 @@ class Client(OpenApiClient):
     def get_environment(
         self,
         environment_id: str,
+        request: apig20240327_models.GetEnvironmentRequest,
     ) -> apig20240327_models.GetEnvironmentResponse:
         """
         @summary GetEnvironment
         
+        @param request: GetEnvironmentRequest
         @return: GetEnvironmentResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_environment_with_options(environment_id, headers, runtime)
+        return self.get_environment_with_options(environment_id, request, headers, runtime)
 
     async def get_environment_async(
         self,
         environment_id: str,
+        request: apig20240327_models.GetEnvironmentRequest,
     ) -> apig20240327_models.GetEnvironmentResponse:
         """
         @summary GetEnvironment
         
+        @param request: GetEnvironmentRequest
         @return: GetEnvironmentResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_environment_with_options_async(environment_id, headers, runtime)
+        return await self.get_environment_with_options_async(environment_id, request, headers, runtime)
 
     def get_gateway_with_options(
         self,
@@ -2122,7 +1358,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetGatewayResponse:
         """
-        @summary 获取网关实例详情
+        @summary Get a gateway.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2154,7 +1390,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetGatewayResponse:
         """
-        @summary 获取网关实例详情
+        @summary Get a gateway.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2184,7 +1420,7 @@ class Client(OpenApiClient):
         gateway_id: str,
     ) -> apig20240327_models.GetGatewayResponse:
         """
-        @summary 获取网关实例详情
+        @summary Get a gateway.
         
         @return: GetGatewayResponse
         """
@@ -2197,201 +1433,13 @@ class Client(OpenApiClient):
         gateway_id: str,
     ) -> apig20240327_models.GetGatewayResponse:
         """
-        @summary 获取网关实例详情
+        @summary Get a gateway.
         
         @return: GetGatewayResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_gateway_with_options_async(gateway_id, headers, runtime)
-
-    def get_gateway_route_with_options(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.GetGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetGatewayRouteResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetGatewayRoute',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes/{OpenApiUtilClient.get_encode_param(gateway_route_id)}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.GetGatewayRouteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_gateway_route_with_options_async(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.GetGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetGatewayRouteResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetGatewayRoute',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes/{OpenApiUtilClient.get_encode_param(gateway_route_id)}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.GetGatewayRouteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_gateway_route(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-    ) -> apig20240327_models.GetGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @return: GetGatewayRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_gateway_route_with_options(gateway_id, gateway_route_id, headers, runtime)
-
-    async def get_gateway_route_async(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-    ) -> apig20240327_models.GetGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @return: GetGatewayRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_gateway_route_with_options_async(gateway_id, gateway_route_id, headers, runtime)
-
-    def get_gateway_service_with_options(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.GetGatewayServiceResponse:
-        """
-        @summary 查询服务
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetGatewayServiceResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetGatewayService',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services/{OpenApiUtilClient.get_encode_param(gateway_service_id)}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.GetGatewayServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_gateway_service_with_options_async(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.GetGatewayServiceResponse:
-        """
-        @summary 查询服务
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetGatewayServiceResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetGatewayService',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services/{OpenApiUtilClient.get_encode_param(gateway_service_id)}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.GetGatewayServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_gateway_service(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-    ) -> apig20240327_models.GetGatewayServiceResponse:
-        """
-        @summary 查询服务
-        
-        @return: GetGatewayServiceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_gateway_service_with_options(gateway_id, gateway_service_id, headers, runtime)
-
-    async def get_gateway_service_async(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-    ) -> apig20240327_models.GetGatewayServiceResponse:
-        """
-        @summary 查询服务
-        
-        @return: GetGatewayServiceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_gateway_service_with_options_async(gateway_id, gateway_service_id, headers, runtime)
 
     def get_http_api_with_options(
         self,
@@ -2400,7 +1448,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetHttpApiResponse:
         """
-        @summary 读取HttpApi
+        @summary Read HttpApi
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2432,7 +1480,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetHttpApiResponse:
         """
-        @summary 读取HttpApi
+        @summary Read HttpApi
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2462,7 +1510,7 @@ class Client(OpenApiClient):
         http_api_id: str,
     ) -> apig20240327_models.GetHttpApiResponse:
         """
-        @summary 读取HttpApi
+        @summary Read HttpApi
         
         @return: GetHttpApiResponse
         """
@@ -2475,7 +1523,7 @@ class Client(OpenApiClient):
         http_api_id: str,
     ) -> apig20240327_models.GetHttpApiResponse:
         """
-        @summary 读取HttpApi
+        @summary Read HttpApi
         
         @return: GetHttpApiResponse
         """
@@ -2491,7 +1539,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetHttpApiOperationResponse:
         """
-        @summary 读取Operation
+        @summary Get Operation
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2524,7 +1572,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetHttpApiOperationResponse:
         """
-        @summary 读取Operation
+        @summary Get Operation
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2555,7 +1603,7 @@ class Client(OpenApiClient):
         operation_id: str,
     ) -> apig20240327_models.GetHttpApiOperationResponse:
         """
-        @summary 读取Operation
+        @summary Get Operation
         
         @return: GetHttpApiOperationResponse
         """
@@ -2569,13 +1617,107 @@ class Client(OpenApiClient):
         operation_id: str,
     ) -> apig20240327_models.GetHttpApiOperationResponse:
         """
-        @summary 读取Operation
+        @summary Get Operation
         
         @return: GetHttpApiOperationResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_http_api_operation_with_options_async(http_api_id, operation_id, headers, runtime)
+
+    def get_http_api_route_with_options(
+        self,
+        http_api_id: str,
+        route_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.GetHttpApiRouteResponse:
+        """
+        @summary 获取HttpApi的路由详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHttpApiRouteResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetHttpApiRoute',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/http-apis/{OpenApiUtilClient.get_encode_param(http_api_id)}/routes/{OpenApiUtilClient.get_encode_param(route_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.GetHttpApiRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_http_api_route_with_options_async(
+        self,
+        http_api_id: str,
+        route_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.GetHttpApiRouteResponse:
+        """
+        @summary 获取HttpApi的路由详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHttpApiRouteResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetHttpApiRoute',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/http-apis/{OpenApiUtilClient.get_encode_param(http_api_id)}/routes/{OpenApiUtilClient.get_encode_param(route_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.GetHttpApiRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_http_api_route(
+        self,
+        http_api_id: str,
+        route_id: str,
+    ) -> apig20240327_models.GetHttpApiRouteResponse:
+        """
+        @summary 获取HttpApi的路由详情
+        
+        @return: GetHttpApiRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_http_api_route_with_options(http_api_id, route_id, headers, runtime)
+
+    async def get_http_api_route_async(
+        self,
+        http_api_id: str,
+        route_id: str,
+    ) -> apig20240327_models.GetHttpApiRouteResponse:
+        """
+        @summary 获取HttpApi的路由详情
+        
+        @return: GetHttpApiRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_http_api_route_with_options_async(http_api_id, route_id, headers, runtime)
 
     def list_domains_with_options(
         self,
@@ -2601,6 +1743,8 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2645,6 +1789,8 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2721,6 +1867,8 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2769,6 +1917,8 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2817,269 +1967,25 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_environments_with_options_async(request, headers, runtime)
 
-    def list_gateway_routes_with_options(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.ListGatewayRoutesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.ListGatewayRoutesResponse:
-        """
-        @summary 创建网关路由
-        
-        @param request: ListGatewayRoutesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListGatewayRoutesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.keyword):
-            query['keyword'] = request.keyword
-        if not UtilClient.is_unset(request.name):
-            query['name'] = request.name
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.path):
-            query['path'] = request.path
-        if not UtilClient.is_unset(request.status):
-            query['status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListGatewayRoutes',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.ListGatewayRoutesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_gateway_routes_with_options_async(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.ListGatewayRoutesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.ListGatewayRoutesResponse:
-        """
-        @summary 创建网关路由
-        
-        @param request: ListGatewayRoutesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListGatewayRoutesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.keyword):
-            query['keyword'] = request.keyword
-        if not UtilClient.is_unset(request.name):
-            query['name'] = request.name
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.path):
-            query['path'] = request.path
-        if not UtilClient.is_unset(request.status):
-            query['status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListGatewayRoutes',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.ListGatewayRoutesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_gateway_routes(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.ListGatewayRoutesRequest,
-    ) -> apig20240327_models.ListGatewayRoutesResponse:
-        """
-        @summary 创建网关路由
-        
-        @param request: ListGatewayRoutesRequest
-        @return: ListGatewayRoutesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_gateway_routes_with_options(gateway_id, request, headers, runtime)
-
-    async def list_gateway_routes_async(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.ListGatewayRoutesRequest,
-    ) -> apig20240327_models.ListGatewayRoutesResponse:
-        """
-        @summary 创建网关路由
-        
-        @param request: ListGatewayRoutesRequest
-        @return: ListGatewayRoutesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_gateway_routes_with_options_async(gateway_id, request, headers, runtime)
-
-    def list_gateway_services_with_options(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.ListGatewayServicesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.ListGatewayServicesResponse:
-        """
-        @summary 查询服务列表
-        
-        @param request: ListGatewayServicesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListGatewayServicesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.name):
-            query['name'] = request.name
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.source_type):
-            query['sourceType'] = request.source_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListGatewayServices',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.ListGatewayServicesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_gateway_services_with_options_async(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.ListGatewayServicesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.ListGatewayServicesResponse:
-        """
-        @summary 查询服务列表
-        
-        @param request: ListGatewayServicesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListGatewayServicesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.name):
-            query['name'] = request.name
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.source_type):
-            query['sourceType'] = request.source_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListGatewayServices',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.ListGatewayServicesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_gateway_services(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.ListGatewayServicesRequest,
-    ) -> apig20240327_models.ListGatewayServicesResponse:
-        """
-        @summary 查询服务列表
-        
-        @param request: ListGatewayServicesRequest
-        @return: ListGatewayServicesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_gateway_services_with_options(gateway_id, request, headers, runtime)
-
-    async def list_gateway_services_async(
-        self,
-        gateway_id: str,
-        request: apig20240327_models.ListGatewayServicesRequest,
-    ) -> apig20240327_models.ListGatewayServicesResponse:
-        """
-        @summary 查询服务列表
-        
-        @param request: ListGatewayServicesRequest
-        @return: ListGatewayServicesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_gateway_services_with_options_async(gateway_id, request, headers, runtime)
-
     def list_gateways_with_options(
         self,
-        request: apig20240327_models.ListGatewaysRequest,
+        tmp_req: apig20240327_models.ListGatewaysRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListGatewaysResponse:
         """
-        @summary 获取已经创建的云原生网关列表
+        @summary Retrieve the list of created cloud-native gateways
         
-        @param request: ListGatewaysRequest
+        @param tmp_req: ListGatewaysRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListGatewaysResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = apig20240327_models.ListGatewaysShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.gateway_id):
             query['gatewayId'] = request.gateway_id
@@ -3091,6 +1997,10 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3113,19 +2023,23 @@ class Client(OpenApiClient):
 
     async def list_gateways_with_options_async(
         self,
-        request: apig20240327_models.ListGatewaysRequest,
+        tmp_req: apig20240327_models.ListGatewaysRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListGatewaysResponse:
         """
-        @summary 获取已经创建的云原生网关列表
+        @summary Retrieve the list of created cloud-native gateways
         
-        @param request: ListGatewaysRequest
+        @param tmp_req: ListGatewaysRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListGatewaysResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = apig20240327_models.ListGatewaysShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.gateway_id):
             query['gatewayId'] = request.gateway_id
@@ -3137,6 +2051,10 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3162,7 +2080,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListGatewaysRequest,
     ) -> apig20240327_models.ListGatewaysResponse:
         """
-        @summary 获取已经创建的云原生网关列表
+        @summary Retrieve the list of created cloud-native gateways
         
         @param request: ListGatewaysRequest
         @return: ListGatewaysResponse
@@ -3176,7 +2094,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListGatewaysRequest,
     ) -> apig20240327_models.ListGatewaysResponse:
         """
-        @summary 获取已经创建的云原生网关列表
+        @summary Retrieve the list of created cloud-native gateways
         
         @param request: ListGatewaysRequest
         @return: ListGatewaysResponse
@@ -3193,7 +2111,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListHttpApiOperationsResponse:
         """
-        @summary 列举Operation
+        @summary List Operations
         
         @param request: ListHttpApiOperationsRequest
         @param headers: map
@@ -3202,6 +2120,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.consumer_authorization_rule_id):
+            query['consumerAuthorizationRuleId'] = request.consumer_authorization_rule_id
         if not UtilClient.is_unset(request.method):
             query['method'] = request.method
         if not UtilClient.is_unset(request.name):
@@ -3214,6 +2134,10 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.path_like):
             query['pathLike'] = request.path_like
+        if not UtilClient.is_unset(request.with_consumer_in_environment_id):
+            query['withConsumerInEnvironmentId'] = request.with_consumer_in_environment_id
+        if not UtilClient.is_unset(request.with_consumer_info_by_id):
+            query['withConsumerInfoById'] = request.with_consumer_info_by_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3242,7 +2166,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListHttpApiOperationsResponse:
         """
-        @summary 列举Operation
+        @summary List Operations
         
         @param request: ListHttpApiOperationsRequest
         @param headers: map
@@ -3251,6 +2175,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.consumer_authorization_rule_id):
+            query['consumerAuthorizationRuleId'] = request.consumer_authorization_rule_id
         if not UtilClient.is_unset(request.method):
             query['method'] = request.method
         if not UtilClient.is_unset(request.name):
@@ -3263,6 +2189,10 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.path_like):
             query['pathLike'] = request.path_like
+        if not UtilClient.is_unset(request.with_consumer_in_environment_id):
+            query['withConsumerInEnvironmentId'] = request.with_consumer_in_environment_id
+        if not UtilClient.is_unset(request.with_consumer_info_by_id):
+            query['withConsumerInfoById'] = request.with_consumer_info_by_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3289,7 +2219,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListHttpApiOperationsRequest,
     ) -> apig20240327_models.ListHttpApiOperationsResponse:
         """
-        @summary 列举Operation
+        @summary List Operations
         
         @param request: ListHttpApiOperationsRequest
         @return: ListHttpApiOperationsResponse
@@ -3304,7 +2234,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListHttpApiOperationsRequest,
     ) -> apig20240327_models.ListHttpApiOperationsResponse:
         """
-        @summary 列举Operation
+        @summary List Operations
         
         @param request: ListHttpApiOperationsRequest
         @return: ListHttpApiOperationsResponse
@@ -3320,7 +2250,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListHttpApisResponse:
         """
-        @summary 列举HTTP API
+        @summary List HTTP APIs
         
         @param request: ListHttpApisRequest
         @param headers: map
@@ -3329,6 +2259,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
         if not UtilClient.is_unset(request.name):
@@ -3337,8 +2269,16 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.published_only):
-            query['publishedOnly'] = request.published_only
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.types):
+            query['types'] = request.types
+        if not UtilClient.is_unset(request.with_auth_policy_in_environment_id):
+            query['withAuthPolicyInEnvironmentId'] = request.with_auth_policy_in_environment_id
+        if not UtilClient.is_unset(request.with_consumer_info_by_id):
+            query['withConsumerInfoById'] = request.with_consumer_info_by_id
+        if not UtilClient.is_unset(request.with_environment_info):
+            query['withEnvironmentInfo'] = request.with_environment_info
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3366,7 +2306,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListHttpApisResponse:
         """
-        @summary 列举HTTP API
+        @summary List HTTP APIs
         
         @param request: ListHttpApisRequest
         @param headers: map
@@ -3375,6 +2315,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
         if not UtilClient.is_unset(request.name):
@@ -3383,8 +2325,16 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.published_only):
-            query['publishedOnly'] = request.published_only
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.types):
+            query['types'] = request.types
+        if not UtilClient.is_unset(request.with_auth_policy_in_environment_id):
+            query['withAuthPolicyInEnvironmentId'] = request.with_auth_policy_in_environment_id
+        if not UtilClient.is_unset(request.with_consumer_info_by_id):
+            query['withConsumerInfoById'] = request.with_consumer_info_by_id
+        if not UtilClient.is_unset(request.with_environment_info):
+            query['withEnvironmentInfo'] = request.with_environment_info
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3410,7 +2360,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListHttpApisRequest,
     ) -> apig20240327_models.ListHttpApisResponse:
         """
-        @summary 列举HTTP API
+        @summary List HTTP APIs
         
         @param request: ListHttpApisRequest
         @return: ListHttpApisResponse
@@ -3424,7 +2374,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListHttpApisRequest,
     ) -> apig20240327_models.ListHttpApisResponse:
         """
-        @summary 列举HTTP API
+        @summary List HTTP APIs
         
         @param request: ListHttpApisRequest
         @return: ListHttpApisResponse
@@ -3432,422 +2382,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_http_apis_with_options_async(request, headers, runtime)
-
-    def offline_gateway_route_with_options(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.OfflineGatewayRouteResponse:
-        """
-        @summary 发布路由
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OfflineGatewayRouteResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='OfflineGatewayRoute',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes/{OpenApiUtilClient.get_encode_param(gateway_route_id)}/offline',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.OfflineGatewayRouteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def offline_gateway_route_with_options_async(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.OfflineGatewayRouteResponse:
-        """
-        @summary 发布路由
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OfflineGatewayRouteResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='OfflineGatewayRoute',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes/{OpenApiUtilClient.get_encode_param(gateway_route_id)}/offline',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.OfflineGatewayRouteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def offline_gateway_route(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-    ) -> apig20240327_models.OfflineGatewayRouteResponse:
-        """
-        @summary 发布路由
-        
-        @return: OfflineGatewayRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.offline_gateway_route_with_options(gateway_id, gateway_route_id, headers, runtime)
-
-    async def offline_gateway_route_async(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-    ) -> apig20240327_models.OfflineGatewayRouteResponse:
-        """
-        @summary 发布路由
-        
-        @return: OfflineGatewayRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.offline_gateway_route_with_options_async(gateway_id, gateway_route_id, headers, runtime)
-
-    def offline_http_api_with_options(
-        self,
-        http_api_id: str,
-        request: apig20240327_models.OfflineHttpApiRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.OfflineHttpApiResponse:
-        """
-        @summary 下线已发布的HTTP API
-        
-        @param request: OfflineHttpApiRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OfflineHttpApiResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.environment_id):
-            body['environmentId'] = request.environment_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OfflineHttpApi',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/http-apis/{OpenApiUtilClient.get_encode_param(http_api_id)}/offline',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.OfflineHttpApiResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def offline_http_api_with_options_async(
-        self,
-        http_api_id: str,
-        request: apig20240327_models.OfflineHttpApiRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.OfflineHttpApiResponse:
-        """
-        @summary 下线已发布的HTTP API
-        
-        @param request: OfflineHttpApiRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OfflineHttpApiResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.environment_id):
-            body['environmentId'] = request.environment_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OfflineHttpApi',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/http-apis/{OpenApiUtilClient.get_encode_param(http_api_id)}/offline',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.OfflineHttpApiResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def offline_http_api(
-        self,
-        http_api_id: str,
-        request: apig20240327_models.OfflineHttpApiRequest,
-    ) -> apig20240327_models.OfflineHttpApiResponse:
-        """
-        @summary 下线已发布的HTTP API
-        
-        @param request: OfflineHttpApiRequest
-        @return: OfflineHttpApiResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.offline_http_api_with_options(http_api_id, request, headers, runtime)
-
-    async def offline_http_api_async(
-        self,
-        http_api_id: str,
-        request: apig20240327_models.OfflineHttpApiRequest,
-    ) -> apig20240327_models.OfflineHttpApiResponse:
-        """
-        @summary 下线已发布的HTTP API
-        
-        @param request: OfflineHttpApiRequest
-        @return: OfflineHttpApiResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.offline_http_api_with_options_async(http_api_id, request, headers, runtime)
-
-    def publish_gateway_route_with_options(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.PublishGatewayRouteResponse:
-        """
-        @summary 发布路由
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PublishGatewayRouteResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='PublishGatewayRoute',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes/{OpenApiUtilClient.get_encode_param(gateway_route_id)}/publish',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.PublishGatewayRouteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def publish_gateway_route_with_options_async(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.PublishGatewayRouteResponse:
-        """
-        @summary 发布路由
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PublishGatewayRouteResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='PublishGatewayRoute',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes/{OpenApiUtilClient.get_encode_param(gateway_route_id)}/publish',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.PublishGatewayRouteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def publish_gateway_route(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-    ) -> apig20240327_models.PublishGatewayRouteResponse:
-        """
-        @summary 发布路由
-        
-        @return: PublishGatewayRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.publish_gateway_route_with_options(gateway_id, gateway_route_id, headers, runtime)
-
-    async def publish_gateway_route_async(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-    ) -> apig20240327_models.PublishGatewayRouteResponse:
-        """
-        @summary 发布路由
-        
-        @return: PublishGatewayRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.publish_gateway_route_with_options_async(gateway_id, gateway_route_id, headers, runtime)
-
-    def publish_http_api_with_options(
-        self,
-        http_api_id: str,
-        request: apig20240327_models.PublishHttpApiRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.PublishHttpApiResponse:
-        """
-        @summary 发布HTTP API
-        
-        @param request: PublishHttpApiRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PublishHttpApiResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.allow_overwrite):
-            body['allowOverwrite'] = request.allow_overwrite
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.environment):
-            body['environment'] = request.environment
-        if not UtilClient.is_unset(request.revision_id):
-            body['revisionId'] = request.revision_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='PublishHttpApi',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/http-apis/{OpenApiUtilClient.get_encode_param(http_api_id)}/publish',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.PublishHttpApiResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def publish_http_api_with_options_async(
-        self,
-        http_api_id: str,
-        request: apig20240327_models.PublishHttpApiRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.PublishHttpApiResponse:
-        """
-        @summary 发布HTTP API
-        
-        @param request: PublishHttpApiRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PublishHttpApiResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.allow_overwrite):
-            body['allowOverwrite'] = request.allow_overwrite
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.environment):
-            body['environment'] = request.environment
-        if not UtilClient.is_unset(request.revision_id):
-            body['revisionId'] = request.revision_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='PublishHttpApi',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/http-apis/{OpenApiUtilClient.get_encode_param(http_api_id)}/publish',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.PublishHttpApiResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def publish_http_api(
-        self,
-        http_api_id: str,
-        request: apig20240327_models.PublishHttpApiRequest,
-    ) -> apig20240327_models.PublishHttpApiResponse:
-        """
-        @summary 发布HTTP API
-        
-        @param request: PublishHttpApiRequest
-        @return: PublishHttpApiResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.publish_http_api_with_options(http_api_id, request, headers, runtime)
-
-    async def publish_http_api_async(
-        self,
-        http_api_id: str,
-        request: apig20240327_models.PublishHttpApiRequest,
-    ) -> apig20240327_models.PublishHttpApiResponse:
-        """
-        @summary 发布HTTP API
-        
-        @param request: PublishHttpApiRequest
-        @return: PublishHttpApiResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.publish_http_api_with_options_async(http_api_id, request, headers, runtime)
 
     def update_domain_with_options(
         self,
@@ -4093,362 +2627,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_environment_with_options_async(environment_id, request, headers, runtime)
 
-    def update_gateway_route_with_options(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-        request: apig20240327_models.UpdateGatewayRouteRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.UpdateGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @param request: UpdateGatewayRouteRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateGatewayRouteResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.backend_config):
-            body['backendConfig'] = request.backend_config
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.domain_config):
-            body['domainConfig'] = request.domain_config
-        if not UtilClient.is_unset(request.match):
-            body['match'] = request.match
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateGatewayRoute',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes/{OpenApiUtilClient.get_encode_param(gateway_route_id)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.UpdateGatewayRouteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_gateway_route_with_options_async(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-        request: apig20240327_models.UpdateGatewayRouteRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.UpdateGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @param request: UpdateGatewayRouteRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateGatewayRouteResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.backend_config):
-            body['backendConfig'] = request.backend_config
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.domain_config):
-            body['domainConfig'] = request.domain_config
-        if not UtilClient.is_unset(request.match):
-            body['match'] = request.match
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateGatewayRoute',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/http-routes/{OpenApiUtilClient.get_encode_param(gateway_route_id)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.UpdateGatewayRouteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_gateway_route(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-        request: apig20240327_models.UpdateGatewayRouteRequest,
-    ) -> apig20240327_models.UpdateGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @param request: UpdateGatewayRouteRequest
-        @return: UpdateGatewayRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_gateway_route_with_options(gateway_id, gateway_route_id, request, headers, runtime)
-
-    async def update_gateway_route_async(
-        self,
-        gateway_id: str,
-        gateway_route_id: str,
-        request: apig20240327_models.UpdateGatewayRouteRequest,
-    ) -> apig20240327_models.UpdateGatewayRouteResponse:
-        """
-        @summary 创建网关路由
-        
-        @param request: UpdateGatewayRouteRequest
-        @return: UpdateGatewayRouteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_gateway_route_with_options_async(gateway_id, gateway_route_id, request, headers, runtime)
-
-    def update_gateway_service_with_options(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        request: apig20240327_models.UpdateGatewayServiceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.UpdateGatewayServiceResponse:
-        """
-        @summary 更新服务
-        
-        @param request: UpdateGatewayServiceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateGatewayServiceResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.addresses):
-            body['addresses'] = request.addresses
-        if not UtilClient.is_unset(request.port):
-            body['port'] = request.port
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateGatewayService',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services/{OpenApiUtilClient.get_encode_param(gateway_service_id)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.UpdateGatewayServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_gateway_service_with_options_async(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        request: apig20240327_models.UpdateGatewayServiceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.UpdateGatewayServiceResponse:
-        """
-        @summary 更新服务
-        
-        @param request: UpdateGatewayServiceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateGatewayServiceResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.addresses):
-            body['addresses'] = request.addresses
-        if not UtilClient.is_unset(request.port):
-            body['port'] = request.port
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateGatewayService',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services/{OpenApiUtilClient.get_encode_param(gateway_service_id)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.UpdateGatewayServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_gateway_service(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        request: apig20240327_models.UpdateGatewayServiceRequest,
-    ) -> apig20240327_models.UpdateGatewayServiceResponse:
-        """
-        @summary 更新服务
-        
-        @param request: UpdateGatewayServiceRequest
-        @return: UpdateGatewayServiceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_gateway_service_with_options(gateway_id, gateway_service_id, request, headers, runtime)
-
-    async def update_gateway_service_async(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        request: apig20240327_models.UpdateGatewayServiceRequest,
-    ) -> apig20240327_models.UpdateGatewayServiceResponse:
-        """
-        @summary 更新服务
-        
-        @param request: UpdateGatewayServiceRequest
-        @return: UpdateGatewayServiceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_gateway_service_with_options_async(gateway_id, gateway_service_id, request, headers, runtime)
-
-    def update_gateway_service_version_with_options(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        name: str,
-        request: apig20240327_models.UpdateGatewayServiceVersionRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.UpdateGatewayServiceVersionResponse:
-        """
-        @summary 更新服务版本
-        
-        @param request: UpdateGatewayServiceVersionRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateGatewayServiceVersionResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.labels):
-            body['labels'] = request.labels
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateGatewayServiceVersion',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services/{OpenApiUtilClient.get_encode_param(gateway_service_id)}/service-versions/{OpenApiUtilClient.get_encode_param(name)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.UpdateGatewayServiceVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_gateway_service_version_with_options_async(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        name: str,
-        request: apig20240327_models.UpdateGatewayServiceVersionRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.UpdateGatewayServiceVersionResponse:
-        """
-        @summary 更新服务版本
-        
-        @param request: UpdateGatewayServiceVersionRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateGatewayServiceVersionResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.labels):
-            body['labels'] = request.labels
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateGatewayServiceVersion',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-services/{OpenApiUtilClient.get_encode_param(gateway_service_id)}/service-versions/{OpenApiUtilClient.get_encode_param(name)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.UpdateGatewayServiceVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_gateway_service_version(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        name: str,
-        request: apig20240327_models.UpdateGatewayServiceVersionRequest,
-    ) -> apig20240327_models.UpdateGatewayServiceVersionResponse:
-        """
-        @summary 更新服务版本
-        
-        @param request: UpdateGatewayServiceVersionRequest
-        @return: UpdateGatewayServiceVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_gateway_service_version_with_options(gateway_id, gateway_service_id, name, request, headers, runtime)
-
-    async def update_gateway_service_version_async(
-        self,
-        gateway_id: str,
-        gateway_service_id: str,
-        name: str,
-        request: apig20240327_models.UpdateGatewayServiceVersionRequest,
-    ) -> apig20240327_models.UpdateGatewayServiceVersionResponse:
-        """
-        @summary 更新服务版本
-        
-        @param request: UpdateGatewayServiceVersionRequest
-        @return: UpdateGatewayServiceVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_gateway_service_version_with_options_async(gateway_id, gateway_service_id, name, request, headers, runtime)
-
     def update_http_api_with_options(
         self,
         http_api_id: str,
@@ -4457,7 +2635,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateHttpApiResponse:
         """
-        @summary 更新HTTP API
+        @summary Update HTTP API
         
         @param request: UpdateHttpApiRequest
         @param headers: map
@@ -4466,10 +2644,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.ai_protocols):
+            body['aiProtocols'] = request.ai_protocols
         if not UtilClient.is_unset(request.base_path):
             body['basePath'] = request.base_path
+        if not UtilClient.is_unset(request.deploy_configs):
+            body['deployConfigs'] = request.deploy_configs
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.ingress_config):
+            body['ingressConfig'] = request.ingress_config
         if not UtilClient.is_unset(request.protocols):
             body['protocols'] = request.protocols
         if not UtilClient.is_unset(request.version_config):
@@ -4502,7 +2686,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateHttpApiResponse:
         """
-        @summary 更新HTTP API
+        @summary Update HTTP API
         
         @param request: UpdateHttpApiRequest
         @param headers: map
@@ -4511,10 +2695,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.ai_protocols):
+            body['aiProtocols'] = request.ai_protocols
         if not UtilClient.is_unset(request.base_path):
             body['basePath'] = request.base_path
+        if not UtilClient.is_unset(request.deploy_configs):
+            body['deployConfigs'] = request.deploy_configs
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.ingress_config):
+            body['ingressConfig'] = request.ingress_config
         if not UtilClient.is_unset(request.protocols):
             body['protocols'] = request.protocols
         if not UtilClient.is_unset(request.version_config):
@@ -4545,7 +2735,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateHttpApiRequest,
     ) -> apig20240327_models.UpdateHttpApiResponse:
         """
-        @summary 更新HTTP API
+        @summary Update HTTP API
         
         @param request: UpdateHttpApiRequest
         @return: UpdateHttpApiResponse
@@ -4560,7 +2750,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateHttpApiRequest,
     ) -> apig20240327_models.UpdateHttpApiResponse:
         """
-        @summary 更新HTTP API
+        @summary Update HTTP API
         
         @param request: UpdateHttpApiRequest
         @return: UpdateHttpApiResponse
@@ -4578,7 +2768,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateHttpApiOperationResponse:
         """
-        @summary 更新Operation
+        @summary Update Operation
         
         @param request: UpdateHttpApiOperationRequest
         @param headers: map
@@ -4618,7 +2808,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateHttpApiOperationResponse:
         """
-        @summary 更新Operation
+        @summary Update Operation
         
         @param request: UpdateHttpApiOperationRequest
         @param headers: map
@@ -4656,7 +2846,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateHttpApiOperationRequest,
     ) -> apig20240327_models.UpdateHttpApiOperationResponse:
         """
-        @summary 更新Operation
+        @summary Update Operation
         
         @param request: UpdateHttpApiOperationRequest
         @return: UpdateHttpApiOperationResponse
@@ -4672,7 +2862,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateHttpApiOperationRequest,
     ) -> apig20240327_models.UpdateHttpApiOperationResponse:
         """
-        @summary 更新Operation
+        @summary Update Operation
         
         @param request: UpdateHttpApiOperationRequest
         @return: UpdateHttpApiOperationResponse
@@ -4680,115 +2870,3 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_http_api_operation_with_options_async(http_api_id, operation_id, request, headers, runtime)
-
-    def update_service_source_with_options(
-        self,
-        gateway_id: str,
-        service_source_id: str,
-        request: apig20240327_models.UpdateServiceSourceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.UpdateServiceSourceResponse:
-        """
-        @summary 更新服务来源
-        
-        @param request: UpdateServiceSourceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateServiceSourceResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.k_8s_service_source_config):
-            body['k8sServiceSourceConfig'] = request.k_8s_service_source_config
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateServiceSource',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/service-sources/{OpenApiUtilClient.get_encode_param(service_source_id)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.UpdateServiceSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_service_source_with_options_async(
-        self,
-        gateway_id: str,
-        service_source_id: str,
-        request: apig20240327_models.UpdateServiceSourceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> apig20240327_models.UpdateServiceSourceResponse:
-        """
-        @summary 更新服务来源
-        
-        @param request: UpdateServiceSourceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateServiceSourceResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.k_8s_service_source_config):
-            body['k8sServiceSourceConfig'] = request.k_8s_service_source_config
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateServiceSource',
-            version='2024-03-27',
-            protocol='HTTPS',
-            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/service-sources/{OpenApiUtilClient.get_encode_param(service_source_id)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            apig20240327_models.UpdateServiceSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_service_source(
-        self,
-        gateway_id: str,
-        service_source_id: str,
-        request: apig20240327_models.UpdateServiceSourceRequest,
-    ) -> apig20240327_models.UpdateServiceSourceResponse:
-        """
-        @summary 更新服务来源
-        
-        @param request: UpdateServiceSourceRequest
-        @return: UpdateServiceSourceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_service_source_with_options(gateway_id, service_source_id, request, headers, runtime)
-
-    async def update_service_source_async(
-        self,
-        gateway_id: str,
-        service_source_id: str,
-        request: apig20240327_models.UpdateServiceSourceRequest,
-    ) -> apig20240327_models.UpdateServiceSourceResponse:
-        """
-        @summary 更新服务来源
-        
-        @param request: UpdateServiceSourceRequest
-        @return: UpdateServiceSourceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_service_source_with_options_async(gateway_id, service_source_id, request, headers, runtime)
