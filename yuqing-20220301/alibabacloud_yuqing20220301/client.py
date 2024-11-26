@@ -47,6 +47,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.CloseProductResponse:
+        """
+        @summary 关闭舆情产品
+        
+        @param request: CloseProductRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -81,6 +89,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.CloseProductResponse:
+        """
+        @summary 关闭舆情产品
+        
+        @param request: CloseProductRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -113,6 +129,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.CloseProductRequest,
     ) -> yuqing_20220301_models.CloseProductResponse:
+        """
+        @summary 关闭舆情产品
+        
+        @param request: CloseProductRequest
+        @return: CloseProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.close_product_with_options(request, headers, runtime)
@@ -121,6 +143,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.CloseProductRequest,
     ) -> yuqing_20220301_models.CloseProductResponse:
+        """
+        @summary 关闭舆情产品
+        
+        @param request: CloseProductRequest
+        @return: CloseProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.close_product_with_options_async(request, headers, runtime)
@@ -131,6 +159,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.ConsoleApiProxyResponse:
+        """
+        @summary 控制台统一代理API
+        
+        @param request: ConsoleApiProxyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConsoleApiProxyResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -158,6 +194,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.ConsoleApiProxyResponse:
+        """
+        @summary 控制台统一代理API
+        
+        @param request: ConsoleApiProxyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConsoleApiProxyResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -183,6 +227,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.ConsoleApiProxyRequest,
     ) -> yuqing_20220301_models.ConsoleApiProxyResponse:
+        """
+        @summary 控制台统一代理API
+        
+        @param request: ConsoleApiProxyRequest
+        @return: ConsoleApiProxyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.console_api_proxy_with_options(request, headers, runtime)
@@ -191,6 +241,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.ConsoleApiProxyRequest,
     ) -> yuqing_20220301_models.ConsoleApiProxyResponse:
+        """
+        @summary 控制台统一代理API
+        
+        @param request: ConsoleApiProxyRequest
+        @return: ConsoleApiProxyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.console_api_proxy_with_options_async(request, headers, runtime)
@@ -202,7 +258,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.ConsoleProxyResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ConsoleProxy is deprecated
+        
+        @summary 控制台统一代理API
         
         @param request: ConsoleProxyRequest
         @param headers: map
@@ -251,7 +309,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.ConsoleProxyResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ConsoleProxy is deprecated
+        
+        @summary 控制台统一代理API
         
         @param request: ConsoleProxyRequest
         @param headers: map
@@ -298,7 +358,9 @@ class Client(OpenApiClient):
         request: yuqing_20220301_models.ConsoleProxyRequest,
     ) -> yuqing_20220301_models.ConsoleProxyResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ConsoleProxy is deprecated
+        
+        @summary 控制台统一代理API
         
         @param request: ConsoleProxyRequest
         @return: ConsoleProxyResponse
@@ -313,7 +375,9 @@ class Client(OpenApiClient):
         request: yuqing_20220301_models.ConsoleProxyRequest,
     ) -> yuqing_20220301_models.ConsoleProxyResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ConsoleProxy is deprecated
+        
+        @summary 控制台统一代理API
         
         @param request: ConsoleProxyRequest
         @return: ConsoleProxyResponse
@@ -329,6 +393,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.GetAnalysisTaskResultResponse:
+        """
+        @summary 读取分析组件计算任务结果
+        
+        @param request: GetAnalysisTaskResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAnalysisTaskResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.analysis_id):
@@ -363,6 +435,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.GetAnalysisTaskResultResponse:
+        """
+        @summary 读取分析组件计算任务结果
+        
+        @param request: GetAnalysisTaskResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAnalysisTaskResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.analysis_id):
@@ -395,6 +475,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.GetAnalysisTaskResultRequest,
     ) -> yuqing_20220301_models.GetAnalysisTaskResultResponse:
+        """
+        @summary 读取分析组件计算任务结果
+        
+        @param request: GetAnalysisTaskResultRequest
+        @return: GetAnalysisTaskResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_analysis_task_result_with_options(request, headers, runtime)
@@ -403,6 +489,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.GetAnalysisTaskResultRequest,
     ) -> yuqing_20220301_models.GetAnalysisTaskResultResponse:
+        """
+        @summary 读取分析组件计算任务结果
+        
+        @param request: GetAnalysisTaskResultRequest
+        @return: GetAnalysisTaskResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_analysis_task_result_with_options_async(request, headers, runtime)
@@ -413,6 +505,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.OpenProductResponse:
+        """
+        @summary 开通舆情产品
+        
+        @param request: OpenProductRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -449,6 +549,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.OpenProductResponse:
+        """
+        @summary 开通舆情产品
+        
+        @param request: OpenProductRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -483,6 +591,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.OpenProductRequest,
     ) -> yuqing_20220301_models.OpenProductResponse:
+        """
+        @summary 开通舆情产品
+        
+        @param request: OpenProductRequest
+        @return: OpenProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.open_product_with_options(request, headers, runtime)
@@ -491,6 +605,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.OpenProductRequest,
     ) -> yuqing_20220301_models.OpenProductResponse:
+        """
+        @summary 开通舆情产品
+        
+        @param request: OpenProductRequest
+        @return: OpenProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.open_product_with_options_async(request, headers, runtime)
@@ -501,6 +621,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.QueryProductInstanceListResponse:
+        """
+        @summary 查询产品开通实例列表
+        
+        @param request: QueryProductInstanceListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProductInstanceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_code):
@@ -539,6 +667,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.QueryProductInstanceListResponse:
+        """
+        @summary 查询产品开通实例列表
+        
+        @param request: QueryProductInstanceListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProductInstanceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_code):
@@ -575,6 +711,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.QueryProductInstanceListRequest,
     ) -> yuqing_20220301_models.QueryProductInstanceListResponse:
+        """
+        @summary 查询产品开通实例列表
+        
+        @param request: QueryProductInstanceListRequest
+        @return: QueryProductInstanceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.query_product_instance_list_with_options(request, headers, runtime)
@@ -583,6 +725,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.QueryProductInstanceListRequest,
     ) -> yuqing_20220301_models.QueryProductInstanceListResponse:
+        """
+        @summary 查询产品开通实例列表
+        
+        @param request: QueryProductInstanceListRequest
+        @return: QueryProductInstanceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_product_instance_list_with_options_async(request, headers, runtime)
@@ -593,6 +741,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.QueryYuqingMessageResponse:
+        """
+        @summary 查询舆情文章列表
+        
+        @param request: QueryYuqingMessageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryYuqingMessageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -629,6 +785,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.QueryYuqingMessageResponse:
+        """
+        @summary 查询舆情文章列表
+        
+        @param request: QueryYuqingMessageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryYuqingMessageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -663,6 +827,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.QueryYuqingMessageRequest,
     ) -> yuqing_20220301_models.QueryYuqingMessageResponse:
+        """
+        @summary 查询舆情文章列表
+        
+        @param request: QueryYuqingMessageRequest
+        @return: QueryYuqingMessageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.query_yuqing_message_with_options(request, headers, runtime)
@@ -671,6 +841,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.QueryYuqingMessageRequest,
     ) -> yuqing_20220301_models.QueryYuqingMessageResponse:
+        """
+        @summary 查询舆情文章列表
+        
+        @param request: QueryYuqingMessageRequest
+        @return: QueryYuqingMessageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_yuqing_message_with_options_async(request, headers, runtime)
@@ -681,6 +857,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.SubmitAnalysisTaskResponse:
+        """
+        @summary 提交分析组件计算任务
+        
+        @param request: SubmitAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAnalysisTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -719,6 +903,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.SubmitAnalysisTaskResponse:
+        """
+        @summary 提交分析组件计算任务
+        
+        @param request: SubmitAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAnalysisTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -755,6 +947,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.SubmitAnalysisTaskRequest,
     ) -> yuqing_20220301_models.SubmitAnalysisTaskResponse:
+        """
+        @summary 提交分析组件计算任务
+        
+        @param request: SubmitAnalysisTaskRequest
+        @return: SubmitAnalysisTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.submit_analysis_task_with_options(request, headers, runtime)
@@ -763,6 +961,12 @@ class Client(OpenApiClient):
         self,
         request: yuqing_20220301_models.SubmitAnalysisTaskRequest,
     ) -> yuqing_20220301_models.SubmitAnalysisTaskResponse:
+        """
+        @summary 提交分析组件计算任务
+        
+        @param request: SubmitAnalysisTaskRequest
+        @return: SubmitAnalysisTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.submit_analysis_task_with_options_async(request, headers, runtime)

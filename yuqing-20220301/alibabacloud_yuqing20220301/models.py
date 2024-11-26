@@ -123,18 +123,26 @@ class ProductInstance(TeaModel):
         tenant_name: str = None,
         tenant_uid: str = None,
     ):
+        # This parameter is required.
         self.app_code = app_code
         self.buyer_name = buyer_name
+        # This parameter is required.
         self.buyer_uid = buyer_uid
+        # This parameter is required.
         self.channel = channel
         self.config = config
         self.end = end
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.order_no = order_no
+        # This parameter is required.
         self.product_code = product_code
+        # This parameter is required.
         self.product_spec_code = product_spec_code
         self.start = start
         self.tenant_name = tenant_name
+        # This parameter is required.
         self.tenant_uid = tenant_uid
 
     def validate(self):
@@ -235,6 +243,7 @@ class SearchCondition(TeaModel):
         filter_id: int = None,
         has_audio: bool = None,
         has_image: bool = None,
+        has_multi_mode_content: bool = None,
         has_video: bool = None,
         host_name_list: List[str] = None,
         influence_level: int = None,
@@ -290,6 +299,7 @@ class SearchCondition(TeaModel):
         self.filter_id = filter_id
         self.has_audio = has_audio
         self.has_image = has_image
+        self.has_multi_mode_content = has_multi_mode_content
         self.has_video = has_video
         self.host_name_list = host_name_list
         self.influence_level = influence_level
@@ -386,6 +396,8 @@ class SearchCondition(TeaModel):
             result['hasAudio'] = self.has_audio
         if self.has_image is not None:
             result['hasImage'] = self.has_image
+        if self.has_multi_mode_content is not None:
+            result['hasMultiModeContent'] = self.has_multi_mode_content
         if self.has_video is not None:
             result['hasVideo'] = self.has_video
         if self.host_name_list is not None:
@@ -501,6 +513,8 @@ class SearchCondition(TeaModel):
             self.has_audio = m.get('hasAudio')
         if m.get('hasImage') is not None:
             self.has_image = m.get('hasImage')
+        if m.get('hasMultiModeContent') is not None:
+            self.has_multi_mode_content = m.get('hasMultiModeContent')
         if m.get('hasVideo') is not None:
             self.has_video = m.get('hasVideo')
         if m.get('hostNameList') is not None:
@@ -1222,9 +1236,6 @@ class CloseProductResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1328,9 +1339,6 @@ class ConsoleApiProxyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1456,9 +1464,6 @@ class ConsoleProxyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1578,9 +1583,6 @@ class GetAnalysisTaskResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1696,9 +1698,6 @@ class OpenProductResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1832,9 +1831,6 @@ class QueryProductInstanceListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1965,9 +1961,6 @@ class QueryYuqingMessageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2095,9 +2088,6 @@ class SubmitAnalysisTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
