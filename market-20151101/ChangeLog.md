@@ -1,3 +1,8 @@
+2024-11-26 Version: 3.0.5
+- Update API DescribeInstances: update param PageNumber.
+- Update API DescribeInstances: update param PageSize.
+
+
 2024-07-29 Version: 3.0.4
 - Update API CrossAccountVerifyToken: update response param.
 - Update API DescribeApiMetering: update param type.
