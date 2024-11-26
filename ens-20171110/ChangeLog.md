@@ -1,3 +1,10 @@
+2024-11-26 Version: 7.4.1
+- Update API DescribeSDGDeploymentStatus: update response param.
+- Update API DescribeSnapshots: add param EnsRegionIds.
+- Update API DescribeSnapshots: add param SnapshotName.
+- Update API ExportImage: update param OSSPrefix.
+
+
 2024-11-18 Version: 7.4.0
 - Support API CreateNetworkInterface.
 - Support API DeleteNetworkInterfaces.

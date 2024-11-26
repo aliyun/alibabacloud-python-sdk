@@ -40791,6 +40791,7 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
         self,
         instance_id: str = None,
         mount_type: str = None,
+        phase: str = None,
         region_id: str = None,
         status: str = None,
         update_time: str = None,
@@ -40804,6 +40805,7 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
         # *   overlay: read/write splitting.
         # *   common: common deployment.
         self.mount_type = mount_type
+        self.phase = phase
         # The ID of the edge node.
         self.region_id = region_id
         # the deployment status of the shared data group SDG.
@@ -40830,6 +40832,8 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.mount_type is not None:
             result['MountType'] = self.mount_type
+        if self.phase is not None:
+            result['Phase'] = self.phase
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.status is not None:
@@ -40844,6 +40848,8 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('MountType') is not None:
             self.mount_type = m.get('MountType')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
@@ -43321,15 +43327,18 @@ class DescribeSnapshotsRequest(TeaModel):
         self,
         disk_id: str = None,
         ens_region_id: str = None,
+        ens_region_ids: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         snapshot_id: str = None,
+        snapshot_name: str = None,
     ):
         # The ID of the disk.
         self.disk_id = disk_id
         # The region ID of the disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
         self.ens_region_id = ens_region_id
+        self.ens_region_ids = ens_region_ids
         # The ID of the instance.
         self.instance_id = instance_id
         # The page number of the returned page.
@@ -43338,6 +43347,7 @@ class DescribeSnapshotsRequest(TeaModel):
         self.page_size = page_size
         # The ID of the snapshot. The value can be a JSON array that consists of up to 100 snapshot IDs. Separate the snapshot IDs with commas (,).
         self.snapshot_id = snapshot_id
+        self.snapshot_name = snapshot_name
 
     def validate(self):
         pass
@@ -43352,6 +43362,8 @@ class DescribeSnapshotsRequest(TeaModel):
             result['DiskId'] = self.disk_id
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.ens_region_ids is not None:
+            result['EnsRegionIds'] = self.ens_region_ids
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.page_number is not None:
@@ -43360,6 +43372,8 @@ class DescribeSnapshotsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
+        if self.snapshot_name is not None:
+            result['SnapshotName'] = self.snapshot_name
         return result
 
     def from_map(self, m: dict = None):
@@ -43368,6 +43382,8 @@ class DescribeSnapshotsRequest(TeaModel):
             self.disk_id = m.get('DiskId')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('EnsRegionIds') is not None:
+            self.ens_region_ids = m.get('EnsRegionIds')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('PageNumber') is not None:
@@ -43376,6 +43392,8 @@ class DescribeSnapshotsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
+        if m.get('SnapshotName') is not None:
+            self.snapshot_name = m.get('SnapshotName')
         return self
 
 

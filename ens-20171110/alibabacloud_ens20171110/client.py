@@ -18793,6 +18793,8 @@ class Client(OpenApiClient):
             query['DiskId'] = request.disk_id
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.ens_region_ids):
+            query['EnsRegionIds'] = request.ens_region_ids
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
@@ -18801,6 +18803,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.snapshot_name):
+            query['SnapshotName'] = request.snapshot_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18838,6 +18842,8 @@ class Client(OpenApiClient):
             query['DiskId'] = request.disk_id
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.ens_region_ids):
+            query['EnsRegionIds'] = request.ens_region_ids
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
@@ -18846,6 +18852,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.snapshot_name):
+            query['SnapshotName'] = request.snapshot_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
