@@ -1,3 +1,11 @@
+2024-11-26 Version: 1.8.0
+- Support API GetMailTaskStatus.
+- Support API GetWorksEmbedList.
+- Support API ManualRunMailTask.
+- Support API SmartqQueryAbility.
+- Update API AddUser: add param AccountId.
+
+
 2024-10-10 Version: 1.7.0
 - Support API GetMailTaskStatus.
 - Support API GetWorksEmbedList.

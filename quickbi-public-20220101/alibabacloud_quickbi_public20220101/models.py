@@ -428,6 +428,7 @@ class AddShareReportResponse(TeaModel):
 class AddUserRequest(TeaModel):
     def __init__(
         self,
+        account_id: str = None,
         account_name: str = None,
         admin_user: bool = None,
         auth_admin_user: bool = None,
@@ -435,6 +436,7 @@ class AddUserRequest(TeaModel):
         role_ids: str = None,
         user_type: int = None,
     ):
+        self.account_id = account_id
         # This parameter is required.
         self.account_name = account_name
         # Add organization members.
@@ -455,6 +457,8 @@ class AddUserRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
         if self.account_name is not None:
             result['AccountName'] = self.account_name
         if self.admin_user is not None:
@@ -471,6 +475,8 @@ class AddUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
         if m.get('AdminUser') is not None:
@@ -19048,6 +19054,246 @@ class SetDataLevelPermissionWhiteListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetDataLevelPermissionWhiteListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SmartqQueryAbilityRequest(TeaModel):
+    def __init__(
+        self,
+        cube_id: str = None,
+        user_id: str = None,
+        user_question: str = None,
+    ):
+        # This parameter is required.
+        self.cube_id = cube_id
+        self.user_id = user_id
+        # This parameter is required.
+        self.user_question = user_question
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cube_id is not None:
+            result['CubeId'] = self.cube_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_question is not None:
+            result['UserQuestion'] = self.user_question
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CubeId') is not None:
+            self.cube_id = m.get('CubeId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserQuestion') is not None:
+            self.user_question = m.get('UserQuestion')
+        return self
+
+
+class SmartqQueryAbilityResponseBodyResultMetaType(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class SmartqQueryAbilityResponseBodyResultValues(TeaModel):
+    def __init__(
+        self,
+        row: List[str] = None,
+    ):
+        self.row = row
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.row is not None:
+            result['Row'] = self.row
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Row') is not None:
+            self.row = m.get('Row')
+        return self
+
+
+class SmartqQueryAbilityResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        chart_type: str = None,
+        meta_type: List[SmartqQueryAbilityResponseBodyResultMetaType] = None,
+        values: List[SmartqQueryAbilityResponseBodyResultValues] = None,
+    ):
+        self.chart_type = chart_type
+        self.meta_type = meta_type
+        self.values = values
+
+    def validate(self):
+        if self.meta_type:
+            for k in self.meta_type:
+                if k:
+                    k.validate()
+        if self.values:
+            for k in self.values:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chart_type is not None:
+            result['ChartType'] = self.chart_type
+        result['MetaType'] = []
+        if self.meta_type is not None:
+            for k in self.meta_type:
+                result['MetaType'].append(k.to_map() if k else None)
+        result['Values'] = []
+        if self.values is not None:
+            for k in self.values:
+                result['Values'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChartType') is not None:
+            self.chart_type = m.get('ChartType')
+        self.meta_type = []
+        if m.get('MetaType') is not None:
+            for k in m.get('MetaType'):
+                temp_model = SmartqQueryAbilityResponseBodyResultMetaType()
+                self.meta_type.append(temp_model.from_map(k))
+        self.values = []
+        if m.get('Values') is not None:
+            for k in m.get('Values'):
+                temp_model = SmartqQueryAbilityResponseBodyResultValues()
+                self.values.append(temp_model.from_map(k))
+        return self
+
+
+class SmartqQueryAbilityResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: SmartqQueryAbilityResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        # This parameter is required.
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = SmartqQueryAbilityResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SmartqQueryAbilityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SmartqQueryAbilityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SmartqQueryAbilityResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

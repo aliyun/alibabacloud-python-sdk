@@ -391,6 +391,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.admin_user):
@@ -438,6 +440,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.admin_user):
@@ -9802,6 +9806,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_data_level_permission_white_list_with_options_async(request, runtime)
+
+    def smartq_query_ability_with_options(
+        self,
+        request: quickbi_public_20220101_models.SmartqQueryAbilityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.SmartqQueryAbilityResponse:
+        """
+        @summary 问数能力开放
+        
+        @param request: SmartqQueryAbilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SmartqQueryAbilityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.user_question):
+            query['UserQuestion'] = request.user_question
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SmartqQueryAbility',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.SmartqQueryAbilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def smartq_query_ability_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.SmartqQueryAbilityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.SmartqQueryAbilityResponse:
+        """
+        @summary 问数能力开放
+        
+        @param request: SmartqQueryAbilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SmartqQueryAbilityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.user_question):
+            query['UserQuestion'] = request.user_question
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SmartqQueryAbility',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.SmartqQueryAbilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def smartq_query_ability(
+        self,
+        request: quickbi_public_20220101_models.SmartqQueryAbilityRequest,
+    ) -> quickbi_public_20220101_models.SmartqQueryAbilityResponse:
+        """
+        @summary 问数能力开放
+        
+        @param request: SmartqQueryAbilityRequest
+        @return: SmartqQueryAbilityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.smartq_query_ability_with_options(request, runtime)
+
+    async def smartq_query_ability_async(
+        self,
+        request: quickbi_public_20220101_models.SmartqQueryAbilityRequest,
+    ) -> quickbi_public_20220101_models.SmartqQueryAbilityResponse:
+        """
+        @summary 问数能力开放
+        
+        @param request: SmartqQueryAbilityRequest
+        @return: SmartqQueryAbilityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.smartq_query_ability_with_options_async(request, runtime)
 
     def update_data_level_permission_status_with_options(
         self,
