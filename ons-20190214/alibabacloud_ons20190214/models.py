@@ -67,6 +67,8 @@ class ListTagResourcesRequest(TeaModel):
         # *   **INSTANCE**\
         # *   **TOPIC**\
         # *   **GROUP**\
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags that you want to query. A maximum of 20 tags can be included in the list.
         self.tag = tag
@@ -237,9 +239,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -282,6 +281,8 @@ class OnsConsumerAccumulateRequest(TeaModel):
         # *   **false**: The details of each topic are not queried. This is the default value. If you use this value, the value of the **DetailInTopicList** response parameter is empty.
         self.detail = detail
         # The ID of the consumer group.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the instance.
         self.instance_id = instance_id
@@ -515,9 +516,6 @@ class OnsConsumerAccumulateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -554,6 +552,8 @@ class OnsConsumerGetConnectionRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the consumer group whose client connection status you want to query.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the instance to which the consumer group belongs.
         self.instance_id = instance_id
@@ -745,9 +745,6 @@ class OnsConsumerGetConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -787,12 +784,16 @@ class OnsConsumerResetOffsetRequest(TeaModel):
         type: int = None,
     ):
         # The ID of the consumer group whose dead-letter message you want to query.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the instance to which the consumer group belongs.
         self.instance_id = instance_id
         # The timestamp to which you want to reset the consumer offset. This parameter takes effect only when the **Type** parameter is set to **1**. Unit: milliseconds.
         self.reset_timestamp = reset_timestamp
         # The name of the topic for which you want to reset the consumer offset.
+        # 
+        # This parameter is required.
         self.topic = topic
         # The method that you want to use to clear accumulated messages. Valid values:
         # 
@@ -803,6 +804,8 @@ class OnsConsumerResetOffsetRequest(TeaModel):
         # *   **1:** The messages that were published to the topic before the specified point in time are cleared. You must specify a point in time. Consumers in the specified consumer group consume only the messages that are published to the topic after the specified point in time.
         # 
         # You can specify a point in time from the earliest point in time when a message was published to the topic to the most recent point in time when a message was published to the topic. Points in time that are not within the allowed time range are invalid.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -881,9 +884,6 @@ class OnsConsumerResetOffsetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -927,6 +927,8 @@ class OnsConsumerStatusRequest(TeaModel):
         # *   **false**: The details of the consumer group are not queried. The values of the **ConsumerConnectionInfoList** and **DetailInTopicList** response parameters are empty. This value is the default value of the Detail parameter.
         self.detail = detail
         # The ID of the consumer group whose details you want to query.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the instance to which the consumer group belongs.
         self.instance_id = instance_id
@@ -1166,7 +1168,6 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnect
         self,
         failed_count_per_hour: int = None,
         failed_tps: float = None,
-        group_id: str = None,
         ok_tps: float = None,
         rt: float = None,
         topic: str = None,
@@ -1175,8 +1176,6 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnect
         self.failed_count_per_hour = failed_count_per_hour
         # The TPS for failed message consumption.
         self.failed_tps = failed_tps
-        # The ID of the consumer group.
-        self.group_id = group_id
         # The TPS for successful message consumption.
         self.ok_tps = ok_tps
         # The consumption RT. Unit: milliseconds.
@@ -1197,8 +1196,6 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnect
             result['FailedCountPerHour'] = self.failed_count_per_hour
         if self.failed_tps is not None:
             result['FailedTps'] = self.failed_tps
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
         if self.ok_tps is not None:
             result['OkTps'] = self.ok_tps
         if self.rt is not None:
@@ -1213,8 +1210,6 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnect
             self.failed_count_per_hour = m.get('FailedCountPerHour')
         if m.get('FailedTps') is not None:
             self.failed_tps = m.get('FailedTps')
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
         if m.get('OkTps') is not None:
             self.ok_tps = m.get('OkTps')
         if m.get('Rt') is not None:
@@ -1397,7 +1392,7 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnect
         # *   **CLUSTERING**: the clustering consumption mode
         # *   **BROADCASTING**: the broadcasting consumption mode
         # 
-        # For more information about consumption modes, see [Clustering consumption and broadcasting consumption](~~43163~~).
+        # For more information about consumption modes, see [Clustering consumption and broadcasting consumption](https://help.aliyun.com/document_detail/43163.html).
         self.consume_model = consume_model
         # The mode in which the consumer consumes messages. Valid values:
         # 
@@ -1641,7 +1636,7 @@ class OnsConsumerStatusResponseBodyData(TeaModel):
         # *   **CLUSTERING**: the clustering consumption mode
         # *   **BROADCASTING**: the broadcasting consumption mode
         # 
-        # For more information about consumption modes, see [Clustering consumption and broadcasting consumption](~~43163~~).
+        # For more information about consumption modes, see [Clustering consumption and broadcasting consumption](https://help.aliyun.com/document_detail/43163.html).
         self.consume_model = consume_model
         # The TPS for message consumption.
         self.consume_tps = consume_tps
@@ -1790,9 +1785,6 @@ class OnsConsumerStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1830,10 +1822,14 @@ class OnsConsumerTimeSpanRequest(TeaModel):
         topic: str = None,
     ):
         # The ID of the consumer group whose reset time range you want to query.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the instance to which the consumer group belongs.
         self.instance_id = instance_id
         # The topic to which the consumer group subscribes.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -1969,9 +1965,6 @@ class OnsConsumerTimeSpanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2009,10 +2002,14 @@ class OnsDLQMessageGetByIdRequest(TeaModel):
         msg_id: str = None,
     ):
         # The ID of the consumer group whose dead-letter message you want to query.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the instance to which the message you want to query belongs.
         self.instance_id = instance_id
         # The ID of the dead-letter message that you want to query.
+        # 
+        # This parameter is required.
         self.msg_id = msg_id
 
     def validate(self):
@@ -2056,7 +2053,7 @@ class OnsDLQMessageGetByIdResponseBodyDataPropertyListMessageProperty(TeaModel):
         # *   **TAGS**: indicates the tag that is attached to the message.
         # *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
         # 
-        # For information about the terms that are used in ApsaraMQ for RocketMQ, see [Terms](~~29533~~).
+        # For information about the terms that are used in ApsaraMQ for RocketMQ, see [Terms](https://help.aliyun.com/document_detail/29533.html).
         self.name = name
         # The value of the attribute.
         self.value = value
@@ -2269,9 +2266,6 @@ class OnsDLQMessageGetByIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2313,12 +2307,20 @@ class OnsDLQMessagePageQueryByGroupIdRequest(TeaModel):
         task_id: str = None,
     ):
         # The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the BeginTime parameter that you specified in the request when you created the specified query task.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The number of the page to return. Pages start from page 1. Valid values: 1 to 50.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the EndTime parameter that you specified in the request when you created the specified query task.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the consumer group whose dead-letter messages you want to query.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the instance to which the dead-letter messages you want to query belong.
         self.instance_id = instance_id
@@ -2384,7 +2386,7 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMe
         # *   **TAGS**: indicates the tag that is attached to the message.
         # *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
         # 
-        # For information about the terms that are used in ApsaraMQ for RocketMQ, see [Terms](~~29533~~).
+        # For information about the terms that are used in ApsaraMQ for RocketMQ, see [Terms](https://help.aliyun.com/document_detail/29533.html).
         self.name = name
         # The value of the attribute.
         self.value = value
@@ -2595,7 +2597,7 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDo(TeaModel):
         self.current_page = current_page
         # The total number of returned pages.
         self.max_page_count = max_page_count
-        # The information about dead-letter messages that are returned on the current page. The information that is contained in this parameter is the same as the information that is returned by the [OnsDLQMessageGetById](~~112667~~) operation.
+        # The information about dead-letter messages that are returned on the current page. The information that is contained in this parameter is the same as the information that is returned by the [OnsDLQMessageGetById](https://help.aliyun.com/document_detail/112667.html) operation.
         self.msg_found_list = msg_found_list
         # The ID of the query task. The first time you call this operation to query the dead-letter messages that are sent to a specified consumer group within a specified time range, this parameter is returned. You can use the task ID to query the details of dead-letter messages on other returned pages.
         self.task_id = task_id
@@ -2683,9 +2685,6 @@ class OnsDLQMessagePageQueryByGroupIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2723,10 +2722,14 @@ class OnsDLQMessageResendByIdRequest(TeaModel):
         msg_id: str = None,
     ):
         # The ID of the consumer group in which you want to query dead-letter messages.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the instance in which the dead-letter message you want to query resides.
         self.instance_id = instance_id
         # The ID of the dead-letter message that you want to send to a consumer group for consumption.
+        # 
+        # This parameter is required.
         self.msg_id = msg_id
 
     def validate(self):
@@ -2833,9 +2836,6 @@ class OnsDLQMessageResendByIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2873,6 +2873,8 @@ class OnsGroupConsumerUpdateRequest(TeaModel):
         read_enable: bool = None,
     ):
         # The ID of the consumer group for which you want to configure read permissions.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the instance to which the consumer group you want to configure belongs.
         self.instance_id = instance_id
@@ -2882,6 +2884,8 @@ class OnsGroupConsumerUpdateRequest(TeaModel):
         # *   **false**: The consumer group cannot read messages.
         # 
         # Default value: **true**.
+        # 
+        # This parameter is required.
         self.read_enable = read_enable
 
     def validate(self):
@@ -2952,9 +2956,6 @@ class OnsGroupConsumerUpdateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2994,7 +2995,7 @@ class OnsGroupCreateRequest(TeaModel):
     ):
         # The ID of the consumer group that you want to create. The group ID must meet the following rules:
         # 
-        # *   The group ID must be 2 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (\_).
+        # *   The group ID must be 2 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (_).
         # *   If the ApsaraMQ for RocketMQ instance in which you want to create the consumer group uses a namespace, the group ID must be unique in the instance. The group ID cannot be the same as an existing group ID or a topic name in the instance. The group ID can be the same as a group ID or a topic name in another instance that uses a different namespace. For example, if Instance A and Instance B use different namespaces, a group ID in Instance A can be the same as a group ID or a topic name in Instance B.
         # *   If the instance does not use a namespace, the group ID must be globally unique across instances and regions. The group ID cannot be the same as an existing group ID or topic name in ApsaraMQ for RocketMQ instances that belong to your Alibaba Cloud account.
         # 
@@ -3003,6 +3004,8 @@ class OnsGroupCreateRequest(TeaModel):
         # *   After the consumer group is created, the group ID cannot be changed.
         # 
         # *   To check whether an instance uses a namespace, log on to the ApsaraMQ for RocketMQ console, go to the **Instance Details** page, and then view the value of the Namespace field in the **Basic Information** section.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The protocol over which clients in the consumer group communicate with the ApsaraMQ for RocketMQ broker. All clients in a consumer group communicate with the ApsaraMQ for RocketMQ broker over the same protocol. You must create different groups for TCP clients and HTTP clients. Valid values:
         # 
@@ -3086,9 +3089,6 @@ class OnsGroupCreateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3125,6 +3125,8 @@ class OnsGroupDeleteRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the consumer group that you want to delete.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the ApsaraMQ for RocketMQ instance to which the specified consumer group belongs.
         self.instance_id = instance_id
@@ -3193,9 +3195,6 @@ class OnsGroupDeleteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3235,11 +3234,15 @@ class OnsGroupListRequestTag(TeaModel):
         # 
         # *   The value of this parameter cannot be an empty string.
         # *   The tag value must be 1 to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of the tag that is attached to the group. This parameter is not required. If you configure this parameter, you must configure the **Key** parameter.**** If you configure both the Key and Value parameters, the consumer groups are filtered based on the specified tag. If you do not configure these parameters, all consumer groups are queried.
         # 
         # *   The value of this parameter can be an empty string.
         # *   The tag key must be 1 to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -3276,7 +3279,7 @@ class OnsGroupListRequest(TeaModel):
     ):
         # This parameter is required only when you query specific consumer groups by using the fuzzy search method. If this parameter is not configured, the system queries all consumer groups that can be accessed by the current account.
         # 
-        # If you set this parameter to GID_ABC, the information about the consumer groups whose IDs contain GID_ABC is returned. For example, the information about the GID_test_GID_ABC\_123 and GID_ABC\_356 consumer groups is returned.
+        # If you set this parameter to GID_ABC, the information about the consumer groups whose IDs contain GID_ABC is returned. For example, the information about the GID_test_GID_ABC_123 and GID_ABC_356 consumer groups is returned.
         self.group_id = group_id
         # The protocol over which the queried consumer group publishes and subscribes to messages. All clients in a consumer group communicate with the ApsaraMQ for RocketMQ broker over the same protocol. You must create different consumer groups for TCP clients and HTTP clients. Valid values:
         # 
@@ -3574,9 +3577,6 @@ class OnsGroupListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3613,8 +3613,12 @@ class OnsGroupSubDetailRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the consumer group that you want to query.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the instance to which the consumer group you want to query belongs.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3726,7 +3730,7 @@ class OnsGroupSubDetailResponseBodyData(TeaModel):
         # *   **CLUSTERING**: the clustering consumption mode
         # *   **BROADCASTING**: the broadcasting consumption mode
         # 
-        # For more information about consumption modes, see [Clustering consumption and broadcasting consumption](~~43163~~).
+        # For more information about consumption modes, see [Clustering consumption and broadcasting consumption](https://help.aliyun.com/document_detail/43163.html).
         self.message_model = message_model
         # Indicates whether consumers in the group are online.
         self.online = online
@@ -3816,9 +3820,6 @@ class OnsGroupSubDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3854,6 +3855,8 @@ class OnsInstanceBaseInfoRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the instance that you want to query.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3899,10 +3902,10 @@ class OnsInstanceBaseInfoResponseBodyInstanceBaseInfoEndpoints(TeaModel):
         # 
         # *   Before you use a public TCP endpoint, make sure that your client SDK meets the following requirements:
         # 
-        #     *   TCP client SDK for Java: V2.0.0.Final or later For more information, see [Release notes for the SDK for Java](~~325569~~).
-        #     *   TCP client SDK for C++: V3.0.0 or later For more information, see [Release notes for the SDK for C++](~~325570~~).
+        #     *   TCP client SDK for Java: V2.0.0.Final or later For more information, see [Release notes for the SDK for Java](https://help.aliyun.com/document_detail/325569.html).
+        #     *   TCP client SDK for C++: V3.0.0 or later For more information, see [Release notes for the SDK for C++](https://help.aliyun.com/document_detail/325570.html).
         # 
-        # *   You are charged for Internet traffic when you use a public TCP endpoint. For more information, see [Internet traffic fee](~~325571~~).
+        # *   You are charged for Internet traffic when you use a public TCP endpoint. For more information, see [Internet traffic fee](https://help.aliyun.com/document_detail/325571.html).
         self.tcp_internet_endpoint = tcp_internet_endpoint
 
     def validate(self):
@@ -3971,7 +3974,7 @@ class OnsInstanceBaseInfoResponseBodyInstanceBaseInfo(TeaModel):
         self.instance_id = instance_id
         # The name of the instance.
         # 
-        # The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         self.instance_name = instance_name
         # The status of the instance. Valid values:
         # 
@@ -3985,7 +3988,7 @@ class OnsInstanceBaseInfoResponseBodyInstanceBaseInfo(TeaModel):
         # *   **1**: Standard Edition instances that use the pay-as-you-go billing method.
         # *   **2**: Enterprise Platinum Edition instances that use the subscription billing method.
         # 
-        # For information about the editions and specifications of ApsaraMQ for RocketMQ instances, see [Instance editions](~~185261~~).
+        # For information about the editions and specifications of ApsaraMQ for RocketMQ instances, see [Instance editions](https://help.aliyun.com/document_detail/185261.html).
         self.instance_type = instance_type
         # The maximum messaging transactions per second (TPS). Valid values: 5000, 10000, 20000, 50000, 100000, 200000, 300000, 500000, 800000, and 1000000.
         # 
@@ -4125,9 +4128,6 @@ class OnsInstanceBaseInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4166,7 +4166,9 @@ class OnsInstanceCreateRequest(TeaModel):
         # The name of the instance. The name must meet the following rules:
         # 
         # *   The name of the instance must be unique in the region where the instance is deployed.
-        # *   The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # *   The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+        # 
+        # This parameter is required.
         self.instance_name = instance_name
         # The description of the instance.
         self.remark = remark
@@ -4281,9 +4283,6 @@ class OnsInstanceCreateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4319,6 +4318,8 @@ class OnsInstanceDeleteRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4381,9 +4382,6 @@ class OnsInstanceDeleteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4419,15 +4417,15 @@ class OnsInstanceInServiceListRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that is attached to the instance you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Value** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the instances that use the specified tags. If you do not include these parameters in a request, this operation queries all instances that you can access.
+        # The tag key. This parameter is not required. If you configure this parameter, you must also configure **Value**.**** If you configure Key and Value in a request, this operation queries only the instances that use the specified tags. If you do not configure these parameters in a request, this operation queries all instances that you can access.
         # 
         # *   The value of this parameter cannot be an empty string.
-        # *   The tag value must be 1 to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag that is attached to the instance you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Value** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the instances that use the specified tags. If you do not include these parameters in a request, this operation queries all instances that you can access.
+        # The tag value. This parameter is not required. If you configure this parameter, you must also configure **Key**.**** If you configure Key and Value in a request, this operation queries only the instances that use the specified tags. If you do not configure these parameters in a request, this operation queries all instances that you can access.
         # 
         # *   The value of this parameter can be an empty string.
-        # *   The tag key must be 1 to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
+        # *   The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
         self.value = value
 
     def validate(self):
@@ -4460,8 +4458,9 @@ class OnsInstanceInServiceListRequest(TeaModel):
         need_resource_info: bool = None,
         tag: List[OnsInstanceInServiceListRequestTag] = None,
     ):
+        # Specifies whether you want the resource information to be returned.
         self.need_resource_info = need_resource_info
-        # The list of tags that are attached to the instance. A maximum of 20 tags can be included in a list.
+        # The tags that you want to attach to the instance. You can attach up to 20 tags to the instance.
         self.tag = tag
 
     def validate(self):
@@ -4502,9 +4501,9 @@ class OnsInstanceInServiceListResponseBodyDataInstanceVOTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that is attached to the instance.
+        # The tag key.
         self.key = key
-        # The value of the tag that is attached to the instance.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -4582,36 +4581,38 @@ class OnsInstanceInServiceListResponseBodyDataInstanceVO(TeaModel):
     ):
         # The time when the instance was created. The value of this parameter is a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        # The number of consumer groups.
         self.group_count = group_count
-        # Indicates whether the instance uses a namespace. Valid values:
+        # Indicates whether a namespace is used for the instance. Valid values:
         # 
-        # *   **true**: The instance uses a separate namespace. The name of each resource must be unique in the instance. The names of resources in different instances can be the same.
-        # *   **false**: The instance does not use a separate namespace. The name of each resource must be globally unique within the instance and across all instances.
+        # *   **true**: A separate namespace is used for the instance. The identifier of each resource in the instance must be unique within the instance. However, the identifier of a resource in the instance can be the same as the identifier of a resource in another instance that uses a different namespace.
+        # *   **false**: A separate namespace is not used for the instance. The name of each resource must be globally unique within the instance and across all instances.
         self.independent_naming = independent_naming
-        # The ID of the instance
+        # The instance ID.
         self.instance_id = instance_id
-        # The name of the instance.
+        # The instance name.
         # 
-        # The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         self.instance_name = instance_name
-        # The status of the instance. Valid values:
+        # The instance status. Valid values:
         # 
         # *   **0**: The instance is being deployed. This value is valid only for Enterprise Platinum Edition instances.
         # *   **2**: The instance has overdue payments. This value is valid only for Standard Edition instances.
-        # *   **5**: The instance is running. This value is valid for Standard Edition instances and Enterprise Platinum Edition instances.
+        # *   **5**: The instance is running. This value is valid only for Standard Edition instances and Enterprise Platinum Edition instances.
         # *   **7**: The instance is being upgraded and is running. This value is valid only for Enterprise Platinum Edition instances.
         self.instance_status = instance_status
         # The instance type. Valid values:
         # 
-        # *   **1**: Standard Edition instances
-        # *   **2**: Enterprise Platinum Edition instances
+        # *   **1**: Standard Edition
+        # *   **2**: Enterprise Platinum Edition
         # 
-        # For more information about the instance editions and differences between the editions, see [Instance editions](~~185261~~).
+        # For information about the instance editions and the differences between the editions, see [Instance editions](https://help.aliyun.com/document_detail/185261.html).
         self.instance_type = instance_type
-        # The time when the instance expires. If the instance is an Enterprise Platinum Edition instance, this parameter is returned.
+        # The time when the instance expires. If the instance is of Enterprise Platinum Edition, this parameter is returned.
         self.release_time = release_time
-        # The tags that are attached to the instance you want to query.
+        # The tags that are attached to the instance.
         self.tags = tags
+        # The number of topics.
         self.topic_count = topic_count
 
     def validate(self):
@@ -4713,7 +4714,7 @@ class OnsInstanceInServiceListResponseBody(TeaModel):
         data: OnsInstanceInServiceListResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned list of all published instances.
+        # The returned information about the queried instances.
         self.data = data
         # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
@@ -4756,9 +4757,6 @@ class OnsInstanceInServiceListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4796,11 +4794,13 @@ class OnsInstanceUpdateRequest(TeaModel):
         remark: str = None,
     ):
         # The ID of the instance whose name or description you want to update.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The new name of the instance. The name must meet the following rules:
         # 
         # *   The name of the instance must be unique in the region where the instance is deployed.
-        # *   The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), underscores (\_), and Chinese characters.
+        # *   The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), underscores (_), and Chinese characters.
         # *   If you do not configure this parameter, the instance name remains unchanged.
         self.instance_name = instance_name
         # The updated description of the instance. If you do not configure this parameter, the instance description remains unchanged.
@@ -4874,9 +4874,6 @@ class OnsInstanceUpdateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4914,10 +4911,16 @@ class OnsMessageDetailRequest(TeaModel):
         topic: str = None,
     ):
         # The ID of the ApsaraMQ for RocketMQ Instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the message that you want to query.
+        # 
+        # This parameter is required.
         self.msg_id = msg_id
         # The name of the topic in which the message you want to query is stored.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -4958,11 +4961,11 @@ class OnsMessageDetailResponseBodyDataPropertyList(TeaModel):
         # 
         # *   **TRACE_ON**: indicates whether the trace of the message exists.
         # *   **MSG_REGION**: The region ID of the instance to which the topic belongs.
-        # *   **\__MESSAGE_DECODED_TIME**: The time when the message was decoded.
-        # *   **\__BORNHOST**: The IP address of the producer client.
+        # *   **__MESSAGE_DECODED_TIME**: The time when the message was decoded.
+        # *   **__BORNHOST**: The IP address of the producer client.
         # *   **UNIQ_KEY**: The ID of the message.
         # 
-        # For information about the terms that are used in ApsaraMQ for RocketMQ, see [Terms](~~29533~~).
+        # For information about the terms that are used in ApsaraMQ for RocketMQ, see [Terms](https://help.aliyun.com/document_detail/29533.html).
         self.name = name
         # The value of the attribute.
         self.value = value
@@ -5160,9 +5163,6 @@ class OnsMessageDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5202,8 +5202,12 @@ class OnsMessageGetByKeyRequest(TeaModel):
         # The ID of the instance to which the messages that you want to query belong.
         self.instance_id = instance_id
         # The key of the messages that you want to query.
+        # 
+        # This parameter is required.
         self.key = key
         # The topic that contains the messages that you want to query.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -5242,14 +5246,15 @@ class OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyListMessagePrope
     ):
         # The name of the attribute. Valid values:
         # 
-        # *   **TRACE_ON**: indicates whether the message trace exists.
+        # -  **TRACE_ON**: indicates whether the message trace exists.
         # 
-        # \-\*\* KEYS\*\*: indicates the key of the message.
+        # -   **KEYS**: indicates the key of the message.
         # 
-        # *   **TAGS**: indicates the tag that is attached to the message.
-        # *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
+        # - **TAGS**: indicates the tag that is attached to the message.
         # 
-        # For information about the terms that are used in ApsaraMQ for RocketMQ, see [Terms](~~29533~~).
+        # - **INSTANCE_ID**: indicates the ID of the instance that contains the message.
+        # 
+        # For information about the terms that are used in ApsaraMQ for RocketMQ, see [Terms](https://help.aliyun.com/document_detail/29533.html).
         self.name = name
         # The value of the attribute.
         self.value = value
@@ -5497,9 +5502,6 @@ class OnsMessageGetByKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5539,8 +5541,12 @@ class OnsMessageGetByMsgIdRequest(TeaModel):
         # The ID of the instance to which the message you want to query belongs.
         self.instance_id = instance_id
         # The ID of the message that you want to query.
+        # 
+        # This parameter is required.
         self.msg_id = msg_id
         # The topic that contains the message you want to query.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -5584,7 +5590,7 @@ class OnsMessageGetByMsgIdResponseBodyDataPropertyListMessageProperty(TeaModel):
         # *   **TAGS**: indicates the tag that is attached to the message.
         # *   **INSTANCE_ID**: indicates the ID of the instance which contains the message.
         # 
-        # For information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](~~29533~~).
+        # For information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](https://help.aliyun.com/document_detail/29533.html).
         self.name = name
         # The value of the attribute.
         self.value = value
@@ -5797,9 +5803,6 @@ class OnsMessageGetByMsgIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5841,10 +5844,16 @@ class OnsMessagePageQueryByTopicRequest(TeaModel):
         topic: str = None,
     ):
         # The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the BeginTime parameter that you specified in the request when you created the specified query task.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The number of the page to return. Pages start from page 1. Valid values: 1 to 50.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the EndTime parameter that you specified in the request when you created the specified query task.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the instance to which the message you want to query belongs.
         self.instance_id = instance_id
@@ -5853,6 +5862,8 @@ class OnsMessagePageQueryByTopicRequest(TeaModel):
         # The ID of the query task. The first time you call this operation to query the information about messages in a specified topic within a specified time range, this parameter is not required. This parameter is required in subsequent queries for messages on a specified page. You can obtain the task ID from the returned result of the first query.
         self.task_id = task_id
         # The name of the topic whose messages you want to query.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -5912,7 +5923,7 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessage
         # *   **TAGS**: indicates the tag of the message.
         # *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
         # 
-        # For information about the terms that are used in ApsaraMQ for RocketMQ see [Terms](~~29533~~).
+        # For information about the terms that are used in ApsaraMQ for RocketMQ see [Terms](https://help.aliyun.com/document_detail/29533.html).
         self.name = name
         # The value of the attribute.
         self.value = value
@@ -6123,7 +6134,7 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDo(TeaModel):
         self.current_page = current_page
         # The total number of returned pages.
         self.max_page_count = max_page_count
-        # The information about messages on the returned page. The information that is contained in this parameter is the same as the information that is returned by the [OnsMessageGetByMsgId](~~29607~~) operation.
+        # The information about messages on the returned page. The information that is contained in this parameter is the same as the information that is returned by the [OnsMessageGetByMsgId](https://help.aliyun.com/document_detail/29607.html) operation.
         self.msg_found_list = msg_found_list
         # The ID of the query task. The first time you call this operation to query the messages that are sent to a specified consumer group within a specified time range, this parameter is returned. You can use the task ID to query the details of messages on other returned pages.
         self.task_id = task_id
@@ -6211,9 +6222,6 @@ class OnsMessagePageQueryByTopicResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6252,15 +6260,23 @@ class OnsMessagePushRequest(TeaModel):
         msg_id: str = None,
         topic: str = None,
     ):
-        # The ID of the consumer client. You can call the [OnsConsumerGetConnection](~~29598~~) operation to query client IDs.
+        # The ID of the consumer client. You can call the [OnsConsumerGetConnection](https://help.aliyun.com/document_detail/29598.html) operation to query client IDs.
+        # 
+        # This parameter is required.
         self.client_id = client_id
-        # The ID of the consumer group. For information about what a consumer group is, see [Terms](~~29533~~).
+        # The ID of the consumer group. For information about what a consumer group is, see [Terms](https://help.aliyun.com/document_detail/29533.html).
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the ApsaraMQ for RocketMQ instance to which the specified consumer group belongs.
         self.instance_id = instance_id
         # The ID of the message.
+        # 
+        # This parameter is required.
         self.msg_id = msg_id
         # The topic to which the message is pushed.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -6339,9 +6355,6 @@ class OnsMessagePushResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6381,8 +6394,12 @@ class OnsMessageTraceRequest(TeaModel):
         # The ID of the instance to which the message you want to query belongs.
         self.instance_id = instance_id
         # The ID of the message that you want to query.
+        # 
+        # This parameter is required.
         self.msg_id = msg_id
         # The topic to which the message belongs.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -6545,9 +6562,6 @@ class OnsMessageTraceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6580,13 +6594,25 @@ class OnsMessageTraceResponse(TeaModel):
 class OnsRegionListResponseBodyDataRegionDo(TeaModel):
     def __init__(
         self,
+        channel_name: str = None,
+        create_time: int = None,
+        id: int = None,
         ons_region_id: str = None,
         region_name: str = None,
+        update_time: int = None,
     ):
-        # The ID of the region.
+        # The channel name.
+        self.channel_name = channel_name
+        # The time when the instance was created.
+        self.create_time = create_time
+        # The instance ID.
+        self.id = id
+        # The region ID.
         self.ons_region_id = ons_region_id
-        # The name of the region.
+        # The region name.
         self.region_name = region_name
+        # The time when the instance was updated.
+        self.update_time = update_time
 
     def validate(self):
         pass
@@ -6597,18 +6623,34 @@ class OnsRegionListResponseBodyDataRegionDo(TeaModel):
             return _map
 
         result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.id is not None:
+            result['Id'] = self.id
         if self.ons_region_id is not None:
             result['OnsRegionId'] = self.ons_region_id
         if self.region_name is not None:
             result['RegionName'] = self.region_name
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('OnsRegionId') is not None:
             self.ons_region_id = m.get('OnsRegionId')
         if m.get('RegionName') is not None:
             self.region_name = m.get('RegionName')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
         return self
 
 
@@ -6653,7 +6695,7 @@ class OnsRegionListResponseBody(TeaModel):
         data: OnsRegionListResponseBodyData = None,
         request_id: str = None,
     ):
-        # The result returned
+        # The returned data.
         self.data = data
         # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
@@ -6696,9 +6738,6 @@ class OnsRegionListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6746,18 +6785,22 @@ class OnsTopicCreateRequest(TeaModel):
         # *   **4**: transactional messages
         # *   **5**: scheduled or delayed messages
         # 
-        # For more information about message types, see [Message types](~~155952~~).
+        # For more information about message types, see [Message types](https://help.aliyun.com/document_detail/155952.html).
+        # 
+        # This parameter is required.
         self.message_type = message_type
         # The description of the topic that you want to create.
         self.remark = remark
         # The name of the topic that you want to create. The name must meet the following rules:
         # 
-        # *   The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # *   The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # *   The topic name cannot start with CID or GID because CID and GID are reserved prefixes for group IDs.
         # *   If the ApsaraMQ for RocketMQ instance in which you want to create the topic uses a namespace, the topic name must be unique in the instance. The topic name cannot be the same as an existing topic name or a group ID in the instance. The topic name can be the same as a topic name or a group ID in another instance that uses a different namespace. For example, if Instance A and Instance B use different namespaces, a topic name in Instance A can be the same as a topic name or a group ID in Instance B.
         # *   If the instance in which you want to create the topic does not use a namespace, the topic name must be globally unique across instances and regions. The topic name cannot be the same as an existing topic name or group ID in all ApsaraMQ for RocketMQ instances that belong to your Alibaba Cloud account.
         # 
         # > To check whether an instance uses a namespace, log on to the ApsaraMQ for RocketMQ console, go to the **Instance Details** page, and then view the value of the Namespace field in the **Basic Information** section.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -6832,9 +6875,6 @@ class OnsTopicCreateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6873,6 +6913,8 @@ class OnsTopicDeleteRequest(TeaModel):
         # The ID of the instance to which the topic you want to delete belongs.
         self.instance_id = instance_id
         # The name of the topic that you want to delete.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -6939,9 +6981,6 @@ class OnsTopicDeleteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6981,11 +7020,15 @@ class OnsTopicListRequestTag(TeaModel):
         # 
         # *   The value of this parameter cannot be an empty string.
         # *   A tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of the tag that is attached to the topics you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Key** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the topics that use the specified tag. If you do not include these parameters in a request, this operation queries all topics that you can access.
         # 
         # *   The value of this parameter can be an empty string.
         # *   A tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -7340,9 +7383,6 @@ class OnsTopicListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7381,6 +7421,8 @@ class OnsTopicStatusRequest(TeaModel):
         # The ID of the instance that contains the topic you want to query.
         self.instance_id = instance_id
         # The name of the topic that you want to query.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -7418,7 +7460,7 @@ class OnsTopicStatusResponseBodyData(TeaModel):
         # 
         # The value of this parameter is a UNIX timestamp in milliseconds.
         # 
-        # For information about the definition of ready messages and ready time, see [Terms](~~29533~~).
+        # For information about the definition of ready messages and ready time, see [Terms](https://help.aliyun.com/document_detail/29533.html).
         self.last_time_stamp = last_time_stamp
         # Indicates the operations that you can perform on the topic. Valid values:
         # 
@@ -7506,9 +7548,6 @@ class OnsTopicStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7545,8 +7584,12 @@ class OnsTopicSubDetailRequest(TeaModel):
         topic: str = None,
     ):
         # The ID of the instance that contains the topic you want to query.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The name of the topic that you want to query.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -7587,7 +7630,7 @@ class OnsTopicSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList(
         # *   **CLUSTERING**: the clustering consumption mode
         # *   **BROADCASTING**: the broadcasting consumption mode
         # 
-        # For more information about consumption modes, see [Clustering consumption and broadcasting consumption](~~43163~~).
+        # For more information about consumption modes, see [Clustering consumption and broadcasting consumption](https://help.aliyun.com/document_detail/43163.html).
         self.message_model = message_model
         # The expression based on which consumers in the consumer group subscribe to the topic.
         self.sub_string = sub_string
@@ -7741,9 +7784,6 @@ class OnsTopicSubDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7787,8 +7827,12 @@ class OnsTopicUpdateRequest(TeaModel):
         # *   **6**: Both read and write operations are allowed.
         # *   **4**: Write operations are forbidden.
         # *   **2**: Read operations are forbidden.
+        # 
+        # This parameter is required.
         self.perm = perm
         # The name of the topic that you want to manage.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -7859,9 +7903,6 @@ class OnsTopicUpdateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7894,10 +7935,18 @@ class OnsTopicUpdateResponse(TeaModel):
 class OnsTraceGetResultRequest(TeaModel):
     def __init__(
         self,
+        instance_id: str = None,
         query_id: str = None,
+        topic: str = None,
     ):
+        # The ID of the instance to which the message you want to query belongs.
+        self.instance_id = instance_id
         # The ID of the task that was created to query the trace of the message.
+        # 
+        # This parameter is required.
         self.query_id = query_id
+        # The topic to which the message belongs.
+        self.topic = topic
 
     def validate(self):
         pass
@@ -7908,14 +7957,22 @@ class OnsTraceGetResultRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.query_id is not None:
             result['QueryId'] = self.query_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('QueryId') is not None:
             self.query_id = m.get('QueryId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
@@ -8389,9 +8446,6 @@ class OnsTraceGetResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8431,14 +8485,22 @@ class OnsTraceQueryByMsgIdRequest(TeaModel):
         topic: str = None,
     ):
         # The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the ApsaraMQ for RocketMQ instance that contains the specified topic.
         self.instance_id = instance_id
         # The ID of the message that you want to query.
+        # 
+        # This parameter is required.
         self.msg_id = msg_id
         # The topic that contains the message you want to query.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -8483,7 +8545,7 @@ class OnsTraceQueryByMsgIdResponseBody(TeaModel):
         query_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the query task. You can call the [OnsTraceGetResult](~~59832~~) operation to query the details of the message trace based on the task ID.
+        # The ID of the query task. You can call the [OnsTraceGetResult](https://help.aliyun.com/document_detail/59832.html) operation to query the details of the message trace based on the task ID.
         self.query_id = query_id
         # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
@@ -8524,9 +8586,6 @@ class OnsTraceQueryByMsgIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8566,14 +8625,22 @@ class OnsTraceQueryByMsgKeyRequest(TeaModel):
         topic: str = None,
     ):
         # The start of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the ApsaraMQ for RocketMQ instance that contains the specified topic.
         self.instance_id = instance_id
         # The key of the message that you want to query.
+        # 
+        # This parameter is required.
         self.msg_key = msg_key
         # The topic that contains the message you want to query.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -8618,7 +8685,7 @@ class OnsTraceQueryByMsgKeyResponseBody(TeaModel):
         query_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the query task. You can call the [OnsTraceGetResult](~~59832~~) operation to query the details of the message trace based on the task ID.
+        # The ID of the query task. You can call the [OnsTraceGetResult](https://help.aliyun.com/document_detail/59832.html) operation to query the details of the message trace based on the task ID.
         self.query_id = query_id
         # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
@@ -8659,9 +8726,6 @@ class OnsTraceQueryByMsgKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8703,21 +8767,31 @@ class OnsTrendGroupOutputTpsRequest(TeaModel):
         type: int = None,
     ):
         # The timestamp that indicates the beginning of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The timestamp that indicates the end of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the consumer group that you want to query.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the instance to which the consumer group you want to query belongs.
         self.instance_id = instance_id
         # The sampling period. Unit: minutes. Valid values: 1, 5, and 10.
         self.period = period
         # The name of the topic that you want to query.
+        # 
+        # This parameter is required.
         self.topic = topic
         # The type of information that you want to query. Valid values:
         # 
         # *   **0**: the number of messages that are consumed during each sampling period.
         # *   **1**: the TPS for message consumption during each sampling period.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -8934,9 +9008,6 @@ class OnsTrendGroupOutputTpsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8977,19 +9048,27 @@ class OnsTrendTopicInputTpsRequest(TeaModel):
         type: int = None,
     ):
         # The timestamp that indicates the beginning of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The timestamp that indicates the end of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the instance to which the topic you want to query belongs.
         self.instance_id = instance_id
         # The sampling period. Unit: minutes. Valid values: 1, 5, and 10.
         self.period = period
         # The name of the topic that you want to query.
+        # 
+        # This parameter is required.
         self.topic = topic
         # The type of information that you want to query. Valid values:
         # 
         # *   **0**: the number of messages that are published to the topic during each sampling period.
         # *   **1**: the TPS for message publishing in the topic during each sampling period.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -9202,9 +9281,6 @@ class OnsTrendTopicInputTpsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9281,9 +9357,6 @@ class OpenOnsServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9322,10 +9395,14 @@ class TagResourcesRequestTag(TeaModel):
         # The tag key. If you configure this parameter, you must also configure the **Value** parameter.****\
         # *   The value of this parameter cannot be an empty string.
         # *   A tag key must be 1 to 128 characters in length and cannot contain `http://` or `https://`. A tag key cannot start with `acs:` or `aliyun`.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of the tag that you want to attach to the resource. If you configure this parameter, you must also configure the **Key** parameter.****\
         # *   The value of this parameter can be an empty string.
         # *   A tag value must be 1 to 128 characters in length and cannot contain `http://` or `https://`. A tag value cannot start with `acs:` or `aliyun`.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -9365,14 +9442,20 @@ class TagResourcesRequest(TeaModel):
         # > This parameter is required when you attach tags to a topic or a group.
         self.instance_id = instance_id
         # The resource IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource to which you want to attach tags. Valid values:
         # 
         # *   **INSTANCE**\
         # *   **TOPIC**\
         # *   **GROUP**\
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags that you want to attach to the resource.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -9455,9 +9538,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9501,12 +9581,16 @@ class UntagResourcesRequest(TeaModel):
         # This parameter is required when you detach tags from a topic or a group.
         self.instance_id = instance_id
         # The resource IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource from which you want to detach tags. Valid values:
         # 
         # *   **INSTANCE**\
         # *   **TOPIC**\
         # *   **GROUP**\
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys of the resource.
         self.tag_key = tag_key
@@ -9587,9 +9671,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

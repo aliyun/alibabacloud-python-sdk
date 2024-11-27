@@ -1,3 +1,10 @@
+2024-11-27 Version: 2.0.0
+- Update API OnsConsumerStatus: update response param.
+- Update API OnsRegionList: update response param.
+- Update API OnsTraceGetResult: add param InstanceId.
+- Update API OnsTraceGetResult: add param Topic.
+
+
 2023-08-23 Version: 1.0.4
 - Generated python 2019-02-14 for Ons.
 
