@@ -436,10 +436,9 @@ class CreateApiExportRequest(TeaModel):
         # *   **orderKey**: the name of the field used to sort exported data
         # *   **orderWay**: the sorting method of the exported data
         self.param = param
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
-        # 
-        # - **cn** (default): Chinese mainland.
-        # - **cn-hongkong**: outside the Chinese mainland.
+        # Language type. Valid values:
+        # - **cn**: Chinese.
+        # - **en**: English.
         self.region = region
         # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
         # 
@@ -3050,6 +3049,7 @@ class DeleteApisecAbnormalsRequest(TeaModel):
         # This parameter is required.
         self.abnormal_ids = abnormal_ids
         # The ID of the hybrid cloud cluster.
+        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
         self.cluster_id = cluster_id
         # The ID of the Web Application Firewall (WAF) instance.
         # 
@@ -3062,7 +3062,7 @@ class DeleteApisecAbnormalsRequest(TeaModel):
         # *   **cn-hangzhou**: the Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # 阿里云资源组ID。
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -3180,6 +3180,7 @@ class DeleteApisecEventsRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
     ):
         # The ID of the hybrid cloud cluster.
+        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
         self.cluster_id = cluster_id
         # The IDs of the security events.
         # 
@@ -3196,7 +3197,7 @@ class DeleteApisecEventsRequest(TeaModel):
         # *   **cn-hangzhou**: the Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # 阿里云资源组ID。
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -4415,19 +4416,27 @@ class DescribeApiExportsRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The returned data export tasks.
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The response parameters.
+        # Language type. Valid values:
+        # 
+        # - **cn**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The request ID.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The total number of entries returned.
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
-        # The returned data export task.
+        # The region ID of the Web Application Firewall (WAF) instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The name of the file.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -4552,9 +4561,9 @@ class DescribeApiExportsResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The time when the data export task was created. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The returned data export tasks.
         self.api_exports = api_exports
-        # The format of the exported file.
+        # The request ID.
         self.request_id = request_id
         # The status of the data export task. Valid values:
         # 
@@ -4654,8 +4663,9 @@ class DescribeApisecAbnormalDomainStatisticRequest(TeaModel):
         start_time: int = None,
     ):
         # The ID of the hybrid cloud cluster.
+        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
         self.cluster_id = cluster_id
-        # The end of the time range to query.
+        # The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
         self.end_time = end_time
         # The ID of the WAF instance.
         # 
@@ -4663,14 +4673,14 @@ class DescribeApisecAbnormalDomainStatisticRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The sorting order.
+        # The sorting order. Valid values:
         # 
-        # *   asc: ascending order.
-        # *   desc: descending order.
+        # - **asc**: ascending order.
+        # - **desc**: descending order.
         self.order_way = order_way
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**.
+        # The number of entries per page. Default value: **5**.
         self.page_size = page_size
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -4679,7 +4689,7 @@ class DescribeApisecAbnormalDomainStatisticRequest(TeaModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query.
+        # The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -4799,7 +4809,7 @@ class DescribeApisecAbnormalDomainStatisticResponseBody(TeaModel):
     ):
         # The response parameters.
         self.data = data
-        # Id of the request
+        # Id of the request.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -4914,7 +4924,7 @@ class DescribeApisecAbnormalsRequest(TeaModel):
         self.abnormal_level = abnormal_level
         # The type of the risk.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of risks.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
         self.abnormal_tag = abnormal_tag
         # The risk-related API.
         self.api_format = api_format
@@ -4922,7 +4932,7 @@ class DescribeApisecAbnormalsRequest(TeaModel):
         self.api_id = api_id
         # The business purpose of the API.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purposes of APIs.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
         self.api_tag = api_tag
         # The ID of the hybrid cloud cluster.
         # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
@@ -5109,7 +5119,7 @@ class DescribeApisecAbnormalsResponseBodyData(TeaModel):
         self.abnormal_level = abnormal_level
         # The type of the risk.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of risks.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
         self.abnormal_tag = abnormal_tag
         # The status of the risk.
         self.abnromal_status = abnromal_status
@@ -5119,7 +5129,7 @@ class DescribeApisecAbnormalsResponseBodyData(TeaModel):
         self.api_id = api_id
         # The business purpose of the API.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purposes of APIs.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
         self.api_tag = api_tag
         # The time at which the risk was detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.discover_time = discover_time
@@ -5387,7 +5397,7 @@ class DescribeApisecApiResourcesRequest(TeaModel):
         self.api_status = api_status
         # The business purpose of the API.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purpose of the API.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
         self.api_tag = api_tag
         # The service object. Valid values:
         # 
@@ -5446,7 +5456,7 @@ class DescribeApisecApiResourcesRequest(TeaModel):
         self.region_id = region_id
         # The sensitive data type in the request.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported sensitive data types.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
         self.request_sensitive_type = request_sensitive_type
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -5459,7 +5469,7 @@ class DescribeApisecApiResourcesRequest(TeaModel):
         self.sensitive_level = sensitive_level
         # The sensitive data type in the response.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported sensitive data types.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
         self.sensitive_type = sensitive_type
         # The beginning of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
         self.start_time = start_time
@@ -5647,7 +5657,7 @@ class DescribeApisecApiResourcesResponseBodyData(TeaModel):
         self.api_status = api_status
         # The business purpose of the API.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purpose of the API.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
         self.api_tag = api_tag
         # The service object. Valid values:
         # 
@@ -5889,11 +5899,11 @@ class DescribeApisecAssetTrendRequest(TeaModel):
     ):
         # The ID of the hybrid cloud cluster.
         self.cluster_id = cluster_id
-        # The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+        # The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
         self.end_time = end_time
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -5904,7 +5914,7 @@ class DescribeApisecAssetTrendRequest(TeaModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+        # The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -5961,7 +5971,7 @@ class DescribeApisecAssetTrendResponseBodyData(TeaModel):
         self.asset_count = asset_count
         # The number of deactivated assets.
         self.asset_offline = asset_offline
-        # The timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time for statistics. Specify a UNIX timestamp in UTC. Unit: seconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -6004,7 +6014,7 @@ class DescribeApisecAssetTrendResponseBody(TeaModel):
     ):
         # The data returned.
         self.data = data
-        # Id of the request
+        # Id of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6094,8 +6104,9 @@ class DescribeApisecEventDomainStatisticRequest(TeaModel):
         start_time: int = None,
     ):
         # The ID of the hybrid cloud cluster.
+        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
         self.cluster_id = cluster_id
-        # The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+        # The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
         self.end_time = end_time
         # The ID of the Web Application Firewall (WAF) instance.
         # 
@@ -6103,14 +6114,14 @@ class DescribeApisecEventDomainStatisticRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The sorting order.
+        # The sorting order. Valid values:
         # 
-        # *   asc: ascending order.
-        # *   desc: descending order.
+        # - **asc**: ascending order.
+        # - **desc**: descending order.
         self.order_way = order_way
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**.
+        # The number of entries per page. Default value: **5**.
         self.page_size = page_size
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -6119,7 +6130,7 @@ class DescribeApisecEventDomainStatisticRequest(TeaModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+        # The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -6239,7 +6250,7 @@ class DescribeApisecEventDomainStatisticResponseBody(TeaModel):
     ):
         # The response parameters.
         self.data = data
-        # Id of the request
+        # Id of the request.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -6351,7 +6362,7 @@ class DescribeApisecEventsRequest(TeaModel):
         self.api_id = api_id
         # The business purpose of the API.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purpose of the API.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
         self.api_tag = api_tag
         # The Attack source IP.
         self.attack_ip = attack_ip
@@ -6370,7 +6381,7 @@ class DescribeApisecEventsRequest(TeaModel):
         self.event_level = event_level
         # The type of the event.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported event types.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
         self.event_tag = event_tag
         # The ID of the Web Application Firewall (WAF) instance.
         # 
@@ -6547,7 +6558,7 @@ class DescribeApisecEventsResponseBodyData(TeaModel):
         self.api_id = api_id
         # The business purpose of the API.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purpose of the API.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
         self.api_tag = api_tag
         # The client that is attacked.
         self.attack_client = attack_client
@@ -6580,7 +6591,7 @@ class DescribeApisecEventsResponseBodyData(TeaModel):
         self.event_level = event_level
         # The type of the event.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported event types.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
         self.event_tag = event_tag
         # Indicates whether the API is followed. Valid values:
         # 
@@ -7970,14 +7981,14 @@ class DescribeApisecSensitiveDomainStatisticRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The sorting order.
+        # The sorting order. Valid values:
         # 
-        # *   asc: ascending order.
-        # *   desc: descending order.
+        # -  **asc**: ascending order.
+        # - **desc**: descending order.
         self.order_way = order_way
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**.
+        # The number of entries per page. Default value: **5**.
         self.page_size = page_size
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -7988,10 +7999,10 @@ class DescribeApisecSensitiveDomainStatisticRequest(TeaModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
         self.start_time = start_time
-        # The sensitive data type.
+        # The sensitive data type. Valid values:
         # 
-        # *   request: sensitive data in requests.
-        # *   response: sensitive data in responses.
+        # - **request**: sensitive data in requests.
+        # - **response**: sensitive data in responses.
         self.type = type
 
     def validate(self):
@@ -8064,8 +8075,13 @@ class DescribeApisecSensitiveDomainStatisticResponseBodyData(TeaModel):
         # The number of sites that are involved.
         self.domain_count = domain_count
         # The code of the sensitive data.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
         self.sensitive_code = sensitive_code
-        # The sensitivity level of the sensitive data.
+        # The sensitivity level of the sensitive data.Valid values:
+        # 
+        # * **S1**: low sensitivity.
+        # * **S2**: moderate sensitivity.
+        # * **S3**: high sensitivity.
         self.sensitive_level = sensitive_level
         # The name of the sensitive data.
         self.sensitive_name = sensitive_name
@@ -8115,7 +8131,7 @@ class DescribeApisecSensitiveDomainStatisticResponseBody(TeaModel):
     ):
         # The response parameters.
         self.data = data
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -10349,17 +10365,22 @@ class DescribeCloudResourcesRequest(TeaModel):
         self.resource_function = resource_function
         # The ID of the resource.
         self.resource_instance_id = resource_instance_id
+        # The name of the instance that is added to WAF.
         self.resource_instance_name = resource_instance_name
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The name of the resource.
         self.resource_name = resource_name
-        # The cloud service to which the resource belongs. Valid values:
+        # The cloud service to which the resource belongs. If you do not specify this parameter, the system automatically returns the Application Load Balancer (ALB), Microservices Engine (MSE), Function Compute, and Serverless App Engine (SAE) resources that are added to WAF. Valid values:
         # 
-        # *   **alb**: Application Load Balancer (ALB).
-        # *   **mse**: Microservices Engine (MSE).
+        # *   **alb**: ALB.
+        # *   **mse**: MSE.
         # *   **fc**: Function Compute.
-        # *   **sae**: Serverless App Engine (SAE).
+        # *   **sae**: SAE.
+        # *   **ecs**: Elastic Compute Service (ECS).
+        # *   **clb4**: Layer 4 Classic Load Balancer (CLB).
+        # *   **clb7**: Layer 7 CLB.
+        # *   **nlb**: Network Load Balancer (NLB).
         # 
         # >  Different cloud services are available in different regions. The specified cloud service must be available in the specified region.
         self.resource_product = resource_product
@@ -10460,7 +10481,13 @@ class DescribeCloudResourcesResponseBodyCloudResources(TeaModel):
         resource_route_name: str = None,
         resource_service: str = None,
     ):
+        # The number of the HTTP ports that are added to WAF.
+        # 
+        # >  This parameter is returned only if the cloud service is ECS or CLB.
         self.http_port_count = http_port_count
+        # The number of the HTTPS ports that are added to WAF.
+        # 
+        # >  This parameter is returned only if the cloud service is ECS or CLB.
         self.https_port_count = https_port_count
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
@@ -10470,8 +10497,11 @@ class DescribeCloudResourcesResponseBodyCloudResources(TeaModel):
         self.resource_function = resource_function
         # The ID of the resource.
         self.resource_instance = resource_instance
+        # The ID of the instance that is added to WAF.
         self.resource_instance_id = resource_instance_id
+        # The IP address of the instance that is added to WAF.
         self.resource_instance_ip = resource_instance_ip
+        # The name of the instance that is added to WAF.
         self.resource_instance_name = resource_instance_name
         # The name of the resource.
         self.resource_name = resource_name
@@ -10481,6 +10511,9 @@ class DescribeCloudResourcesResponseBodyCloudResources(TeaModel):
         # *   **mse**: MSE.
         # *   **fc**: Function Compute.
         # *   **sae**: SAE.
+        # *   **ecs**: ECS.
+        # *   **clb4**: Layer 4 CLB.
+        # *   **clb7**: Layer 7 CLB.
         self.resource_product = resource_product
         # The region ID of the resource.
         self.resource_region_id = resource_region_id
@@ -16653,7 +16686,7 @@ class DescribeFreeUserEventsResponseBodyEvent(TeaModel):
         self.event_level = event_level
         # The type of the security event.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of security events.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of security events.
         self.event_tag = event_tag
 
     def validate(self):
@@ -24134,7 +24167,7 @@ class DescribeSensitiveOutboundStatisticRequest(TeaModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The type of the sensitive data. Separate multiple types with commas (,).
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data. Only built-in types of sensitive data are supported for this operation.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data. Only built-in types of sensitive data are supported for this operation.
         self.sensitive_code = sensitive_code
         # The sensitivity level. Valid values:
         # 
@@ -24245,7 +24278,7 @@ class DescribeSensitiveOutboundStatisticResponseBodyData(TeaModel):
         self.outbound_count = outbound_count
         # The type of the sensitive data.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
         self.sensitive_code = sensitive_code
         # The sensitivity level. Valid values:
         # 
@@ -24652,7 +24685,7 @@ class DescribeSensitiveRequestLogRequest(TeaModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The type of the sensitive data.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
         self.sensitive_code = sensitive_code
         # The response sensitive data.
         self.sensitive_data = sensitive_data
@@ -24735,6 +24768,7 @@ class DescribeSensitiveRequestLogResponseBodyData(TeaModel):
         client_ip: str = None,
         count: int = None,
         matched_host: str = None,
+        remote_country_id: str = None,
         request_time: int = None,
         sensitive_list: str = None,
         trace_id: str = None,
@@ -24749,6 +24783,7 @@ class DescribeSensitiveRequestLogResponseBodyData(TeaModel):
         self.count = count
         # The domain name of the API.
         self.matched_host = matched_host
+        self.remote_country_id = remote_country_id
         # The time when the request was initiated. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.request_time = request_time
         # The sensitive data.
@@ -24775,6 +24810,8 @@ class DescribeSensitiveRequestLogResponseBodyData(TeaModel):
             result['Count'] = self.count
         if self.matched_host is not None:
             result['MatchedHost'] = self.matched_host
+        if self.remote_country_id is not None:
+            result['RemoteCountryId'] = self.remote_country_id
         if self.request_time is not None:
             result['RequestTime'] = self.request_time
         if self.sensitive_list is not None:
@@ -24795,6 +24832,8 @@ class DescribeSensitiveRequestLogResponseBodyData(TeaModel):
             self.count = m.get('Count')
         if m.get('MatchedHost') is not None:
             self.matched_host = m.get('MatchedHost')
+        if m.get('RemoteCountryId') is not None:
+            self.remote_country_id = m.get('RemoteCountryId')
         if m.get('RequestTime') is not None:
             self.request_time = m.get('RequestTime')
         if m.get('SensitiveList') is not None:
@@ -24933,7 +24972,7 @@ class DescribeSensitiveRequestsRequest(TeaModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The type of the sensitive data.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
         self.sensitive_code = sensitive_code
         # The sensitive data.
         self.sensitive_data = sensitive_data
@@ -25333,7 +25372,7 @@ class DescribeSensitiveStatisticResponseBodyData(TeaModel):
         self.matched_host = matched_host
         # The type of the sensitive data.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
         self.sensitive_code = sensitive_code
 
     def validate(self):
@@ -26275,6 +26314,8 @@ class DescribeUserAbnormalTrendResponseBodyTrend(TeaModel):
         # The number of medium risks.
         self.abnormal_medium = abnormal_medium
         # The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # 
+        # >Notice: The parameter has been deprecated, it is recommended to use the Timestamp parameter.
         self.time_stamp = time_stamp
         # The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.timestamp = timestamp
@@ -26486,7 +26527,7 @@ class DescribeUserAbnormalTypeResponseBodyAbnormal(TeaModel):
         self.abnormal_parent_type = abnormal_parent_type
         # The type of the risk.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of risks.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
         self.abnormal_type = abnormal_type
 
     def validate(self):
@@ -26618,6 +26659,7 @@ class DescribeUserApiRequestRequest(TeaModel):
         type: str = None,
     ):
         # The API.
+        # >Notice: This parameter is deprecated, please use ApiId to query.
         self.api_format = api_format
         # The ID of the API.
         # 
@@ -26627,6 +26669,7 @@ class DescribeUserApiRequestRequest(TeaModel):
         # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
         self.cluster_id = cluster_id
         # The domain name or IP address of the API.
+        # >Notice: This parameter is deprecated, please use ApiId to query.
         self.domain = domain
         # The ID of the Web Application Firewall (WAF) instance.
         # 
@@ -26854,6 +26897,7 @@ class DescribeUserAssetRequest(TeaModel):
         # This parameter is required.
         self.data_type = data_type
         # The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # >Notice: The parameter has been deprecated.
         self.days = days
         # The ID of the Web Application Firewall (WAF) instance.
         # 
@@ -27101,6 +27145,7 @@ class DescribeUserEventTrendResponseBodyTrend(TeaModel):
         # The number of medium-risk events.
         self.event_medium = event_medium
         # The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # >Notice: The parameter has been deprecated, it is recommended to use the Timestamp parameter.
         self.time_stamp = time_stamp
         # The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.timestamp = timestamp
@@ -27312,7 +27357,7 @@ class DescribeUserEventTypeResponseBodyEvent(TeaModel):
         self.event_parent_type = event_parent_type
         # The type of the security event.
         # 
-        # >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of security events.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of security events.
         self.event_type = event_type
 
     def validate(self):
@@ -27574,7 +27619,7 @@ class DescribeUserWafLogStatusRequest(TeaModel):
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # 阿里云资源组ID。
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -27619,7 +27664,6 @@ class DescribeUserWafLogStatusResponseBody(TeaModel):
         # *   **cn-beijing**: China (Beijing).
         # *   **cn-hongkong**: China (Hong Kong).
         # *   **ap-southeast-1**: Singapore.
-        # *   **ap-southeast-2**: Australia (Sydney).
         # *   **ap-southeast-3**: Malaysia (Kuala Lumpur).
         # *   **ap-southeast-5**: Indonesia (Jakarta).
         # *   **ap-southeast-6**: Philippines (Manila).
@@ -28886,6 +28930,7 @@ class ModifyApisecAbnormalsRequest(TeaModel):
         # This parameter is required.
         self.abnormal_ids = abnormal_ids
         # The ID of the hybrid cloud cluster.
+        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
         self.cluster_id = cluster_id
         # The ID of the Web Application Firewall (WAF) instance.
         # 
@@ -28900,7 +28945,7 @@ class ModifyApisecAbnormalsRequest(TeaModel):
         # *   **cn-hangzhou**: the Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # 阿里云资源组ID。
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The risk status. Valid values:
         # 
@@ -29190,6 +29235,7 @@ class ModifyApisecEventsRequest(TeaModel):
         user_status: str = None,
     ):
         # The ID of the hybrid cloud cluster.
+        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
         self.cluster_id = cluster_id
         # The IDs of the security events.
         # 
@@ -29208,7 +29254,7 @@ class ModifyApisecEventsRequest(TeaModel):
         # *   **cn-hangzhou**: the Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # 阿里云资源组ID。
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The status of the event. Valid values:
         # 

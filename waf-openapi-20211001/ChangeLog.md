@@ -1,3 +1,7 @@
+2024-11-27 Version: 5.0.1
+- Update API DescribeSensitiveRequestLog: update response param.
+
+
 2024-11-14 Version: 5.0.0
 - Support API CreateApiExport.
 - Support API DeleteApisecAbnormals.
