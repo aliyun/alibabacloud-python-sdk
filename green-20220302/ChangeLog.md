@@ -1,3 +1,7 @@
+2024-11-27 Version: 2.19.0
+- Support API ImageBatchModeration.
+
+
 2024-11-08 Version: 2.18.0
 - Generated python 2022-03-02 for Green.
 

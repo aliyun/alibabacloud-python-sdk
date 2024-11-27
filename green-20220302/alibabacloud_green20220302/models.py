@@ -2052,6 +2052,825 @@ class ImageAsyncModerationResponse(TeaModel):
         return self
 
 
+class ImageBatchModerationRequest(TeaModel):
+    def __init__(
+        self,
+        service_parameters: str = None,
+        services: str = None,
+    ):
+        self.service_parameters = service_parameters
+        self.services = services
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_parameters is not None:
+            result['ServiceParameters'] = self.service_parameters
+        if self.services is not None:
+            result['Services'] = self.services
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceParameters') is not None:
+            self.service_parameters = m.get('ServiceParameters')
+        if m.get('Services') is not None:
+            self.services = m.get('Services')
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        description: str = None,
+        label: str = None,
+    ):
+        self.confidence = confidence
+        self.description = description
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResultsExtCustomImage(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        lib_id: str = None,
+        lib_name: str = None,
+    ):
+        self.image_id = image_id
+        self.lib_id = lib_id
+        self.lib_name = lib_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.lib_id is not None:
+            result['LibId'] = self.lib_id
+        if self.lib_name is not None:
+            result['LibName'] = self.lib_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('LibId') is not None:
+            self.lib_id = m.get('LibId')
+        if m.get('LibName') is not None:
+            self.lib_name = m.get('LibName')
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation(TeaModel):
+    def __init__(
+        self,
+        h: int = None,
+        w: int = None,
+        x: int = None,
+        y: int = None,
+    ):
+        self.h = h
+        self.w = w
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.h is not None:
+            result['H'] = self.h
+        if self.w is not None:
+            result['W'] = self.w
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('H') is not None:
+            self.h = m.get('H')
+        if m.get('W') is not None:
+            self.w = m.get('W')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        label: str = None,
+        name: str = None,
+    ):
+        self.confidence = confidence
+        self.label = label
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResultsExtLogoData(TeaModel):
+    def __init__(
+        self,
+        location: ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation = None,
+        logo: List[ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo] = None,
+    ):
+        self.location = location
+        self.logo = logo
+
+    def validate(self):
+        if self.location:
+            self.location.validate()
+        if self.logo:
+            for k in self.logo:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.location is not None:
+            result['Location'] = self.location.to_map()
+        result['Logo'] = []
+        if self.logo is not None:
+            for k in self.logo:
+                result['Logo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Location') is not None:
+            temp_model = ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation()
+            self.location = temp_model.from_map(m['Location'])
+        self.logo = []
+        if m.get('Logo') is not None:
+            for k in m.get('Logo'):
+                temp_model = ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo()
+                self.logo.append(temp_model.from_map(k))
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation(TeaModel):
+    def __init__(
+        self,
+        h: int = None,
+        w: int = None,
+        x: int = None,
+        y: int = None,
+    ):
+        self.h = h
+        self.w = w
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.h is not None:
+            result['H'] = self.h
+        if self.w is not None:
+            result['W'] = self.w
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('H') is not None:
+            self.h = m.get('H')
+        if m.get('W') is not None:
+            self.w = m.get('W')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResultsExtPublicFigure(TeaModel):
+    def __init__(
+        self,
+        figure_id: str = None,
+        figure_name: str = None,
+        location: List[ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation] = None,
+    ):
+        self.figure_id = figure_id
+        self.figure_name = figure_name
+        self.location = location
+
+    def validate(self):
+        if self.location:
+            for k in self.location:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.figure_id is not None:
+            result['FigureId'] = self.figure_id
+        if self.figure_name is not None:
+            result['FigureName'] = self.figure_name
+        result['Location'] = []
+        if self.location is not None:
+            for k in self.location:
+                result['Location'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FigureId') is not None:
+            self.figure_id = m.get('FigureId')
+        if m.get('FigureName') is not None:
+            self.figure_name = m.get('FigureName')
+        self.location = []
+        if m.get('Location') is not None:
+            for k in m.get('Location'):
+                temp_model = ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation()
+                self.location.append(temp_model.from_map(k))
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText(TeaModel):
+    def __init__(
+        self,
+        key_words: str = None,
+        lib_id: str = None,
+        lib_name: str = None,
+    ):
+        self.key_words = key_words
+        self.lib_id = lib_id
+        self.lib_name = lib_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_words is not None:
+            result['KeyWords'] = self.key_words
+        if self.lib_id is not None:
+            result['LibId'] = self.lib_id
+        if self.lib_name is not None:
+            result['LibName'] = self.lib_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyWords') is not None:
+            self.key_words = m.get('KeyWords')
+        if m.get('LibId') is not None:
+            self.lib_id = m.get('LibId')
+        if m.get('LibName') is not None:
+            self.lib_name = m.get('LibName')
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation(TeaModel):
+    def __init__(
+        self,
+        h: int = None,
+        w: int = None,
+        x: int = None,
+        y: int = None,
+    ):
+        self.h = h
+        self.w = w
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.h is not None:
+            result['H'] = self.h
+        if self.w is not None:
+            result['W'] = self.w
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('H') is not None:
+            self.h = m.get('H')
+        if m.get('W') is not None:
+            self.w = m.get('W')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult(TeaModel):
+    def __init__(
+        self,
+        location: ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation = None,
+        text: str = None,
+    ):
+        self.location = location
+        self.text = text
+
+    def validate(self):
+        if self.location:
+            self.location.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.location is not None:
+            result['Location'] = self.location.to_map()
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Location') is not None:
+            temp_model = ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation()
+            self.location = temp_model.from_map(m['Location'])
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResultsExtTextInImage(TeaModel):
+    def __init__(
+        self,
+        custom_text: List[ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText] = None,
+        ocr_result: List[ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult] = None,
+        risk_word: List[str] = None,
+    ):
+        self.custom_text = custom_text
+        self.ocr_result = ocr_result
+        self.risk_word = risk_word
+
+    def validate(self):
+        if self.custom_text:
+            for k in self.custom_text:
+                if k:
+                    k.validate()
+        if self.ocr_result:
+            for k in self.ocr_result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomText'] = []
+        if self.custom_text is not None:
+            for k in self.custom_text:
+                result['CustomText'].append(k.to_map() if k else None)
+        result['OcrResult'] = []
+        if self.ocr_result is not None:
+            for k in self.ocr_result:
+                result['OcrResult'].append(k.to_map() if k else None)
+        if self.risk_word is not None:
+            result['RiskWord'] = self.risk_word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_text = []
+        if m.get('CustomText') is not None:
+            for k in m.get('CustomText'):
+                temp_model = ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText()
+                self.custom_text.append(temp_model.from_map(k))
+        self.ocr_result = []
+        if m.get('OcrResult') is not None:
+            for k in m.get('OcrResult'):
+                temp_model = ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult()
+                self.ocr_result.append(temp_model.from_map(k))
+        if m.get('RiskWord') is not None:
+            self.risk_word = m.get('RiskWord')
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResultsExt(TeaModel):
+    def __init__(
+        self,
+        custom_image: List[ImageBatchModerationResponseBodyDataResultsExtCustomImage] = None,
+        logo_data: ImageBatchModerationResponseBodyDataResultsExtLogoData = None,
+        public_figure: List[ImageBatchModerationResponseBodyDataResultsExtPublicFigure] = None,
+        text_in_image: ImageBatchModerationResponseBodyDataResultsExtTextInImage = None,
+    ):
+        self.custom_image = custom_image
+        self.logo_data = logo_data
+        self.public_figure = public_figure
+        self.text_in_image = text_in_image
+
+    def validate(self):
+        if self.custom_image:
+            for k in self.custom_image:
+                if k:
+                    k.validate()
+        if self.logo_data:
+            self.logo_data.validate()
+        if self.public_figure:
+            for k in self.public_figure:
+                if k:
+                    k.validate()
+        if self.text_in_image:
+            self.text_in_image.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomImage'] = []
+        if self.custom_image is not None:
+            for k in self.custom_image:
+                result['CustomImage'].append(k.to_map() if k else None)
+        if self.logo_data is not None:
+            result['LogoData'] = self.logo_data.to_map()
+        result['PublicFigure'] = []
+        if self.public_figure is not None:
+            for k in self.public_figure:
+                result['PublicFigure'].append(k.to_map() if k else None)
+        if self.text_in_image is not None:
+            result['TextInImage'] = self.text_in_image.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_image = []
+        if m.get('CustomImage') is not None:
+            for k in m.get('CustomImage'):
+                temp_model = ImageBatchModerationResponseBodyDataResultsExtCustomImage()
+                self.custom_image.append(temp_model.from_map(k))
+        if m.get('LogoData') is not None:
+            temp_model = ImageBatchModerationResponseBodyDataResultsExtLogoData()
+            self.logo_data = temp_model.from_map(m['LogoData'])
+        self.public_figure = []
+        if m.get('PublicFigure') is not None:
+            for k in m.get('PublicFigure'):
+                temp_model = ImageBatchModerationResponseBodyDataResultsExtPublicFigure()
+                self.public_figure.append(temp_model.from_map(k))
+        if m.get('TextInImage') is not None:
+            temp_model = ImageBatchModerationResponseBodyDataResultsExtTextInImage()
+            self.text_in_image = temp_model.from_map(m['TextInImage'])
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResultsResult(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        description: str = None,
+        label: str = None,
+    ):
+        self.confidence = confidence
+        self.description = description
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
+class ImageBatchModerationResponseBodyDataResults(TeaModel):
+    def __init__(
+        self,
+        ext: ImageBatchModerationResponseBodyDataResultsExt = None,
+        result: List[ImageBatchModerationResponseBodyDataResultsResult] = None,
+        risk_level: str = None,
+        service: str = None,
+    ):
+        self.ext = ext
+        self.result = result
+        self.risk_level = risk_level
+        self.service = service
+
+    def validate(self):
+        if self.ext:
+            self.ext.validate()
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext is not None:
+            result['Ext'] = self.ext.to_map()
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.service is not None:
+            result['Service'] = self.service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ext') is not None:
+            temp_model = ImageBatchModerationResponseBodyDataResultsExt()
+            self.ext = temp_model.from_map(m['Ext'])
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ImageBatchModerationResponseBodyDataResultsResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        return self
+
+
+class ImageBatchModerationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        result: List[ImageBatchModerationResponseBodyDataResult] = None,
+        results: List[ImageBatchModerationResponseBodyDataResults] = None,
+        risk_level: str = None,
+    ):
+        self.data_id = data_id
+        self.result = result
+        self.results = results
+        self.risk_level = risk_level
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ImageBatchModerationResponseBodyDataResult()
+                self.result.append(temp_model.from_map(k))
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = ImageBatchModerationResponseBodyDataResults()
+                self.results.append(temp_model.from_map(k))
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        return self
+
+
+class ImageBatchModerationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ImageBatchModerationResponseBodyData = None,
+        msg: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.msg = msg
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ImageBatchModerationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ImageBatchModerationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImageBatchModerationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImageBatchModerationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ImageModerationRequest(TeaModel):
     def __init__(
         self,
@@ -3169,6 +3988,7 @@ class ImageModerationResponseBodyDataExtVlContent(TeaModel):
         self,
         output_text: str = None,
     ):
+        # the vl output content
         self.output_text = output_text
 
     def validate(self):
@@ -3217,6 +4037,7 @@ class ImageModerationResponseBodyDataExt(TeaModel):
         self.recognition = recognition
         # Returns the text information in the hit image.
         self.text_in_image = text_in_image
+        # the vl output content
         self.vl_content = vl_content
 
     def validate(self):

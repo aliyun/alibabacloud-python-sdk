@@ -755,6 +755,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.image_async_moderation_with_options_async(request, runtime)
 
+    def image_batch_moderation_with_options(
+        self,
+        request: green_20220302_models.ImageBatchModerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.ImageBatchModerationResponse:
+        """
+        @summary 图片批量调用
+        
+        @param request: ImageBatchModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageBatchModerationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
+        if not UtilClient.is_unset(request.services):
+            query['Services'] = request.services
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImageBatchModeration',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.ImageBatchModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_batch_moderation_with_options_async(
+        self,
+        request: green_20220302_models.ImageBatchModerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.ImageBatchModerationResponse:
+        """
+        @summary 图片批量调用
+        
+        @param request: ImageBatchModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageBatchModerationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
+        if not UtilClient.is_unset(request.services):
+            query['Services'] = request.services
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImageBatchModeration',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.ImageBatchModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_batch_moderation(
+        self,
+        request: green_20220302_models.ImageBatchModerationRequest,
+    ) -> green_20220302_models.ImageBatchModerationResponse:
+        """
+        @summary 图片批量调用
+        
+        @param request: ImageBatchModerationRequest
+        @return: ImageBatchModerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.image_batch_moderation_with_options(request, runtime)
+
+    async def image_batch_moderation_async(
+        self,
+        request: green_20220302_models.ImageBatchModerationRequest,
+    ) -> green_20220302_models.ImageBatchModerationResponse:
+        """
+        @summary 图片批量调用
+        
+        @param request: ImageBatchModerationRequest
+        @return: ImageBatchModerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.image_batch_moderation_with_options_async(request, runtime)
+
     def image_moderation_with_options(
         self,
         request: green_20220302_models.ImageModerationRequest,
