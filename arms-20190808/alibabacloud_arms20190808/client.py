@@ -17973,6 +17973,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_env_service_monitors_with_options_async(request, runtime)
 
+    def list_environment_addons_with_options(
+        self,
+        request: arms20190808_models.ListEnvironmentAddonsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.ListEnvironmentAddonsResponse:
+        """
+        @summary 环境addon列表
+        
+        @param request: ListEnvironmentAddonsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnvironmentAddonsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.environment_id):
+            query['EnvironmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnvironmentAddons',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.ListEnvironmentAddonsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_environment_addons_with_options_async(
+        self,
+        request: arms20190808_models.ListEnvironmentAddonsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.ListEnvironmentAddonsResponse:
+        """
+        @summary 环境addon列表
+        
+        @param request: ListEnvironmentAddonsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnvironmentAddonsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.environment_id):
+            query['EnvironmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnvironmentAddons',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.ListEnvironmentAddonsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_environment_addons(
+        self,
+        request: arms20190808_models.ListEnvironmentAddonsRequest,
+    ) -> arms20190808_models.ListEnvironmentAddonsResponse:
+        """
+        @summary 环境addon列表
+        
+        @param request: ListEnvironmentAddonsRequest
+        @return: ListEnvironmentAddonsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_environment_addons_with_options(request, runtime)
+
+    async def list_environment_addons_async(
+        self,
+        request: arms20190808_models.ListEnvironmentAddonsRequest,
+    ) -> arms20190808_models.ListEnvironmentAddonsResponse:
+        """
+        @summary 环境addon列表
+        
+        @param request: ListEnvironmentAddonsRequest
+        @return: ListEnvironmentAddonsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_environment_addons_with_options_async(request, runtime)
+
+    def list_environment_alert_rules_with_options(
+        self,
+        request: arms20190808_models.ListEnvironmentAlertRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.ListEnvironmentAlertRulesResponse:
+        """
+        @summary 环境的告警组列表
+        
+        @param request: ListEnvironmentAlertRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnvironmentAlertRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.addon_name):
+            query['AddonName'] = request.addon_name
+        if not UtilClient.is_unset(request.environment_id):
+            query['EnvironmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scene):
+            query['Scene'] = request.scene
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnvironmentAlertRules',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.ListEnvironmentAlertRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_environment_alert_rules_with_options_async(
+        self,
+        request: arms20190808_models.ListEnvironmentAlertRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.ListEnvironmentAlertRulesResponse:
+        """
+        @summary 环境的告警组列表
+        
+        @param request: ListEnvironmentAlertRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnvironmentAlertRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.addon_name):
+            query['AddonName'] = request.addon_name
+        if not UtilClient.is_unset(request.environment_id):
+            query['EnvironmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scene):
+            query['Scene'] = request.scene
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnvironmentAlertRules',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.ListEnvironmentAlertRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_environment_alert_rules(
+        self,
+        request: arms20190808_models.ListEnvironmentAlertRulesRequest,
+    ) -> arms20190808_models.ListEnvironmentAlertRulesResponse:
+        """
+        @summary 环境的告警组列表
+        
+        @param request: ListEnvironmentAlertRulesRequest
+        @return: ListEnvironmentAlertRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_environment_alert_rules_with_options(request, runtime)
+
+    async def list_environment_alert_rules_async(
+        self,
+        request: arms20190808_models.ListEnvironmentAlertRulesRequest,
+    ) -> arms20190808_models.ListEnvironmentAlertRulesResponse:
+        """
+        @summary 环境的告警组列表
+        
+        @param request: ListEnvironmentAlertRulesRequest
+        @return: ListEnvironmentAlertRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_environment_alert_rules_with_options_async(request, runtime)
+
     def list_environment_dashboards_with_options(
         self,
         request: arms20190808_models.ListEnvironmentDashboardsRequest,
@@ -18184,6 +18392,230 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_environment_features_with_options_async(request, runtime)
+
+    def list_environment_kube_resources_with_options(
+        self,
+        tmp_req: arms20190808_models.ListEnvironmentKubeResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.ListEnvironmentKubeResourcesResponse:
+        """
+        @summary 环境中的kube资源列表
+        
+        @param tmp_req: ListEnvironmentKubeResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnvironmentKubeResourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = arms20190808_models.ListEnvironmentKubeResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label_selectors):
+            request.label_selectors_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_selectors, 'LabelSelectors', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.environment_id):
+            query['EnvironmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.kind):
+            query['Kind'] = request.kind
+        if not UtilClient.is_unset(request.label_selectors_shrink):
+            query['LabelSelectors'] = request.label_selectors_shrink
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnvironmentKubeResources',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.ListEnvironmentKubeResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_environment_kube_resources_with_options_async(
+        self,
+        tmp_req: arms20190808_models.ListEnvironmentKubeResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.ListEnvironmentKubeResourcesResponse:
+        """
+        @summary 环境中的kube资源列表
+        
+        @param tmp_req: ListEnvironmentKubeResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnvironmentKubeResourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = arms20190808_models.ListEnvironmentKubeResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label_selectors):
+            request.label_selectors_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_selectors, 'LabelSelectors', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.environment_id):
+            query['EnvironmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.kind):
+            query['Kind'] = request.kind
+        if not UtilClient.is_unset(request.label_selectors_shrink):
+            query['LabelSelectors'] = request.label_selectors_shrink
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnvironmentKubeResources',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.ListEnvironmentKubeResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_environment_kube_resources(
+        self,
+        request: arms20190808_models.ListEnvironmentKubeResourcesRequest,
+    ) -> arms20190808_models.ListEnvironmentKubeResourcesResponse:
+        """
+        @summary 环境中的kube资源列表
+        
+        @param request: ListEnvironmentKubeResourcesRequest
+        @return: ListEnvironmentKubeResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_environment_kube_resources_with_options(request, runtime)
+
+    async def list_environment_kube_resources_async(
+        self,
+        request: arms20190808_models.ListEnvironmentKubeResourcesRequest,
+    ) -> arms20190808_models.ListEnvironmentKubeResourcesResponse:
+        """
+        @summary 环境中的kube资源列表
+        
+        @param request: ListEnvironmentKubeResourcesRequest
+        @return: ListEnvironmentKubeResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_environment_kube_resources_with_options_async(request, runtime)
+
+    def list_environment_metric_targets_with_options(
+        self,
+        request: arms20190808_models.ListEnvironmentMetricTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.ListEnvironmentMetricTargetsResponse:
+        """
+        @summary 环境指标target列表
+        
+        @param request: ListEnvironmentMetricTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnvironmentMetricTargetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.environment_id):
+            query['EnvironmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.job_name):
+            query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnvironmentMetricTargets',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.ListEnvironmentMetricTargetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_environment_metric_targets_with_options_async(
+        self,
+        request: arms20190808_models.ListEnvironmentMetricTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.ListEnvironmentMetricTargetsResponse:
+        """
+        @summary 环境指标target列表
+        
+        @param request: ListEnvironmentMetricTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnvironmentMetricTargetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.environment_id):
+            query['EnvironmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.job_name):
+            query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnvironmentMetricTargets',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.ListEnvironmentMetricTargetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_environment_metric_targets(
+        self,
+        request: arms20190808_models.ListEnvironmentMetricTargetsRequest,
+    ) -> arms20190808_models.ListEnvironmentMetricTargetsResponse:
+        """
+        @summary 环境指标target列表
+        
+        @param request: ListEnvironmentMetricTargetsRequest
+        @return: ListEnvironmentMetricTargetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_environment_metric_targets_with_options(request, runtime)
+
+    async def list_environment_metric_targets_async(
+        self,
+        request: arms20190808_models.ListEnvironmentMetricTargetsRequest,
+    ) -> arms20190808_models.ListEnvironmentMetricTargetsResponse:
+        """
+        @summary 环境指标target列表
+        
+        @param request: ListEnvironmentMetricTargetsRequest
+        @return: ListEnvironmentMetricTargetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_environment_metric_targets_with_options_async(request, runtime)
 
     def list_environments_with_options(
         self,
