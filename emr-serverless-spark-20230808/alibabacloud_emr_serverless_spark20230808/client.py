@@ -737,6 +737,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_sql_statement_with_options_async(workspace_id, statement_id, request, headers, runtime)
 
+    def get_template_with_options(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.GetTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetTemplateResponse:
+        """
+        @summary 获取任务模板
+        
+        @param request: GetTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_type):
+            query['templateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/template',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_template_with_options_async(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.GetTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetTemplateResponse:
+        """
+        @summary 获取任务模板
+        
+        @param request: GetTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_type):
+            query['templateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/template',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_template(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.GetTemplateRequest,
+    ) -> emr_serverless_spark_20230808_models.GetTemplateResponse:
+        """
+        @summary 获取任务模板
+        
+        @param request: GetTemplateRequest
+        @return: GetTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_template_with_options(workspace_biz_id, request, headers, runtime)
+
+    async def get_template_async(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.GetTemplateRequest,
+    ) -> emr_serverless_spark_20230808_models.GetTemplateResponse:
+        """
+        @summary 获取任务模板
+        
+        @param request: GetTemplateRequest
+        @return: GetTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_template_with_options_async(workspace_biz_id, request, headers, runtime)
+
     def grant_role_to_users_with_options(
         self,
         request: emr_serverless_spark_20230808_models.GrantRoleToUsersRequest,

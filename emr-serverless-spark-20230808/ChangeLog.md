@@ -1,3 +1,7 @@
+2024-11-27 Version: 1.8.0
+- Support API GetTemplate.
+
+
 2024-11-25 Version: 1.7.0
 - Support API GetSessionCluster.
 - Update API GetJobRun: update response param.
