@@ -41,6 +41,118 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_authority_template_items_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.AddAuthorityTemplateItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AddAuthorityTemplateItemsResponse:
+        """
+        @summary 添加权限模板资源
+        
+        @param tmp_req: AddAuthorityTemplateItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAuthorityTemplateItemsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.AddAuthorityTemplateItemsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.items):
+            request.items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.items, 'Items', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.items_shrink):
+            query['Items'] = request.items_shrink
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddAuthorityTemplateItems',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AddAuthorityTemplateItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_authority_template_items_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.AddAuthorityTemplateItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AddAuthorityTemplateItemsResponse:
+        """
+        @summary 添加权限模板资源
+        
+        @param tmp_req: AddAuthorityTemplateItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAuthorityTemplateItemsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.AddAuthorityTemplateItemsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.items):
+            request.items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.items, 'Items', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.items_shrink):
+            query['Items'] = request.items_shrink
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddAuthorityTemplateItems',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AddAuthorityTemplateItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_authority_template_items(
+        self,
+        request: dms_enterprise_20181101_models.AddAuthorityTemplateItemsRequest,
+    ) -> dms_enterprise_20181101_models.AddAuthorityTemplateItemsResponse:
+        """
+        @summary 添加权限模板资源
+        
+        @param request: AddAuthorityTemplateItemsRequest
+        @return: AddAuthorityTemplateItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_authority_template_items_with_options(request, runtime)
+
+    async def add_authority_template_items_async(
+        self,
+        request: dms_enterprise_20181101_models.AddAuthorityTemplateItemsRequest,
+    ) -> dms_enterprise_20181101_models.AddAuthorityTemplateItemsResponse:
+        """
+        @summary 添加权限模板资源
+        
+        @param request: AddAuthorityTemplateItemsRequest
+        @return: AddAuthorityTemplateItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_authority_template_items_with_options_async(request, runtime)
+
     def add_desensitization_rule_with_options(
         self,
         request: dms_enterprise_20181101_models.AddDesensitizationRuleRequest,
@@ -1730,6 +1842,226 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.close_order_with_options_async(request, runtime)
+
+    def create_abac_authorization_with_options(
+        self,
+        request: dms_enterprise_20181101_models.CreateAbacAuthorizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateAbacAuthorizationResponse:
+        """
+        @summary 创建权限策略授权
+        
+        @param request: CreateAbacAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAbacAuthorizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.role_id):
+            query['RoleId'] = request.role_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAbacAuthorization',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateAbacAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_abac_authorization_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateAbacAuthorizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateAbacAuthorizationResponse:
+        """
+        @summary 创建权限策略授权
+        
+        @param request: CreateAbacAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAbacAuthorizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.role_id):
+            query['RoleId'] = request.role_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAbacAuthorization',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateAbacAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_abac_authorization(
+        self,
+        request: dms_enterprise_20181101_models.CreateAbacAuthorizationRequest,
+    ) -> dms_enterprise_20181101_models.CreateAbacAuthorizationResponse:
+        """
+        @summary 创建权限策略授权
+        
+        @param request: CreateAbacAuthorizationRequest
+        @return: CreateAbacAuthorizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_abac_authorization_with_options(request, runtime)
+
+    async def create_abac_authorization_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateAbacAuthorizationRequest,
+    ) -> dms_enterprise_20181101_models.CreateAbacAuthorizationResponse:
+        """
+        @summary 创建权限策略授权
+        
+        @param request: CreateAbacAuthorizationRequest
+        @return: CreateAbacAuthorizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_abac_authorization_with_options_async(request, runtime)
+
+    def create_abac_policy_with_options(
+        self,
+        request: dms_enterprise_20181101_models.CreateAbacPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateAbacPolicyResponse:
+        """
+        @summary 创建权限策略
+        
+        @param request: CreateAbacPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAbacPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abac_policy_content):
+            query['AbacPolicyContent'] = request.abac_policy_content
+        if not UtilClient.is_unset(request.abac_policy_desc):
+            query['AbacPolicyDesc'] = request.abac_policy_desc
+        if not UtilClient.is_unset(request.abac_policy_name):
+            query['AbacPolicyName'] = request.abac_policy_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAbacPolicy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateAbacPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_abac_policy_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateAbacPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateAbacPolicyResponse:
+        """
+        @summary 创建权限策略
+        
+        @param request: CreateAbacPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAbacPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abac_policy_content):
+            query['AbacPolicyContent'] = request.abac_policy_content
+        if not UtilClient.is_unset(request.abac_policy_desc):
+            query['AbacPolicyDesc'] = request.abac_policy_desc
+        if not UtilClient.is_unset(request.abac_policy_name):
+            query['AbacPolicyName'] = request.abac_policy_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAbacPolicy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateAbacPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_abac_policy(
+        self,
+        request: dms_enterprise_20181101_models.CreateAbacPolicyRequest,
+    ) -> dms_enterprise_20181101_models.CreateAbacPolicyResponse:
+        """
+        @summary 创建权限策略
+        
+        @param request: CreateAbacPolicyRequest
+        @return: CreateAbacPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_abac_policy_with_options(request, runtime)
+
+    async def create_abac_policy_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateAbacPolicyRequest,
+    ) -> dms_enterprise_20181101_models.CreateAbacPolicyResponse:
+        """
+        @summary 创建权限策略
+        
+        @param request: CreateAbacPolicyRequest
+        @return: CreateAbacPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_abac_policy_with_options_async(request, runtime)
 
     def create_authority_template_with_options(
         self,
@@ -4719,6 +5051,210 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_upload_ossfile_job_with_options_async(request, runtime)
 
+    def delete_abac_authorization_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DeleteAbacAuthorizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteAbacAuthorizationResponse:
+        """
+        @summary 删除权限策略授权
+        
+        @param request: DeleteAbacAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAbacAuthorizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAbacAuthorization',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteAbacAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_abac_authorization_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteAbacAuthorizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteAbacAuthorizationResponse:
+        """
+        @summary 删除权限策略授权
+        
+        @param request: DeleteAbacAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAbacAuthorizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAbacAuthorization',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteAbacAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_abac_authorization(
+        self,
+        request: dms_enterprise_20181101_models.DeleteAbacAuthorizationRequest,
+    ) -> dms_enterprise_20181101_models.DeleteAbacAuthorizationResponse:
+        """
+        @summary 删除权限策略授权
+        
+        @param request: DeleteAbacAuthorizationRequest
+        @return: DeleteAbacAuthorizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_abac_authorization_with_options(request, runtime)
+
+    async def delete_abac_authorization_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteAbacAuthorizationRequest,
+    ) -> dms_enterprise_20181101_models.DeleteAbacAuthorizationResponse:
+        """
+        @summary 删除权限策略授权
+        
+        @param request: DeleteAbacAuthorizationRequest
+        @return: DeleteAbacAuthorizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_abac_authorization_with_options_async(request, runtime)
+
+    def delete_abac_policy_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DeleteAbacPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteAbacPolicyResponse:
+        """
+        @summary 删除权限策略
+        
+        @param request: DeleteAbacPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAbacPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abac_policy_id):
+            query['AbacPolicyId'] = request.abac_policy_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAbacPolicy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteAbacPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_abac_policy_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteAbacPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteAbacPolicyResponse:
+        """
+        @summary 删除权限策略
+        
+        @param request: DeleteAbacPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAbacPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abac_policy_id):
+            query['AbacPolicyId'] = request.abac_policy_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAbacPolicy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteAbacPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_abac_policy(
+        self,
+        request: dms_enterprise_20181101_models.DeleteAbacPolicyRequest,
+    ) -> dms_enterprise_20181101_models.DeleteAbacPolicyResponse:
+        """
+        @summary 删除权限策略
+        
+        @param request: DeleteAbacPolicyRequest
+        @return: DeleteAbacPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_abac_policy_with_options(request, runtime)
+
+    async def delete_abac_policy_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteAbacPolicyRequest,
+    ) -> dms_enterprise_20181101_models.DeleteAbacPolicyResponse:
+        """
+        @summary 删除权限策略
+        
+        @param request: DeleteAbacPolicyRequest
+        @return: DeleteAbacPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_abac_policy_with_options_async(request, runtime)
+
     def delete_authority_template_with_options(
         self,
         request: dms_enterprise_20181101_models.DeleteAuthorityTemplateRequest,
@@ -7163,6 +7699,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.execute_struct_sync_with_options_async(request, runtime)
 
+    def get_abac_policy_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetAbacPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetAbacPolicyResponse:
+        """
+        @summary 获取策略详情
+        
+        @param request: GetAbacPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAbacPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abac_policy_id):
+            query['AbacPolicyId'] = request.abac_policy_id
+        if not UtilClient.is_unset(request.abac_policy_name):
+            query['AbacPolicyName'] = request.abac_policy_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAbacPolicy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetAbacPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_abac_policy_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetAbacPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetAbacPolicyResponse:
+        """
+        @summary 获取策略详情
+        
+        @param request: GetAbacPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAbacPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abac_policy_id):
+            query['AbacPolicyId'] = request.abac_policy_id
+        if not UtilClient.is_unset(request.abac_policy_name):
+            query['AbacPolicyName'] = request.abac_policy_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAbacPolicy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetAbacPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_abac_policy(
+        self,
+        request: dms_enterprise_20181101_models.GetAbacPolicyRequest,
+    ) -> dms_enterprise_20181101_models.GetAbacPolicyResponse:
+        """
+        @summary 获取策略详情
+        
+        @param request: GetAbacPolicyRequest
+        @return: GetAbacPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_abac_policy_with_options(request, runtime)
+
+    async def get_abac_policy_async(
+        self,
+        request: dms_enterprise_20181101_models.GetAbacPolicyRequest,
+    ) -> dms_enterprise_20181101_models.GetAbacPolicyResponse:
+        """
+        @summary 获取策略详情
+        
+        @param request: GetAbacPolicyRequest
+        @return: GetAbacPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_abac_policy_with_options_async(request, runtime)
+
     def get_approval_detail_with_options(
         self,
         request: dms_enterprise_20181101_models.GetApprovalDetailRequest,
@@ -9134,6 +9774,330 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_import_sqlwith_options_async(request, runtime)
+
+    def get_data_lake_catalog_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeCatalogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataLakeCatalogResponse:
+        """
+        @summary 获取uc的数据库目录
+        
+        @param request: GetDataLakeCatalogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataLakeCatalogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataLakeCatalog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataLakeCatalogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_lake_catalog_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeCatalogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataLakeCatalogResponse:
+        """
+        @summary 获取uc的数据库目录
+        
+        @param request: GetDataLakeCatalogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataLakeCatalogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataLakeCatalog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataLakeCatalogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_lake_catalog(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeCatalogRequest,
+    ) -> dms_enterprise_20181101_models.GetDataLakeCatalogResponse:
+        """
+        @summary 获取uc的数据库目录
+        
+        @param request: GetDataLakeCatalogRequest
+        @return: GetDataLakeCatalogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_lake_catalog_with_options(request, runtime)
+
+    async def get_data_lake_catalog_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeCatalogRequest,
+    ) -> dms_enterprise_20181101_models.GetDataLakeCatalogResponse:
+        """
+        @summary 获取uc的数据库目录
+        
+        @param request: GetDataLakeCatalogRequest
+        @return: GetDataLakeCatalogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_lake_catalog_with_options_async(request, runtime)
+
+    def get_data_lake_database_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataLakeDatabaseResponse:
+        """
+        @summary 获取UC的数据库
+        
+        @param request: GetDataLakeDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataLakeDatabaseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataLakeDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataLakeDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_lake_database_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataLakeDatabaseResponse:
+        """
+        @summary 获取UC的数据库
+        
+        @param request: GetDataLakeDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataLakeDatabaseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataLakeDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataLakeDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_lake_database(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeDatabaseRequest,
+    ) -> dms_enterprise_20181101_models.GetDataLakeDatabaseResponse:
+        """
+        @summary 获取UC的数据库
+        
+        @param request: GetDataLakeDatabaseRequest
+        @return: GetDataLakeDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_lake_database_with_options(request, runtime)
+
+    async def get_data_lake_database_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeDatabaseRequest,
+    ) -> dms_enterprise_20181101_models.GetDataLakeDatabaseResponse:
+        """
+        @summary 获取UC的数据库
+        
+        @param request: GetDataLakeDatabaseRequest
+        @return: GetDataLakeDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_lake_database_with_options_async(request, runtime)
+
+    def get_data_lake_table_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataLakeTableResponse:
+        """
+        @summary 获取表信息
+        
+        @param request: GetDataLakeTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataLakeTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataLakeTable',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataLakeTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_lake_table_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataLakeTableResponse:
+        """
+        @summary 获取表信息
+        
+        @param request: GetDataLakeTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataLakeTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataLakeTable',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataLakeTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_lake_table(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeTableRequest,
+    ) -> dms_enterprise_20181101_models.GetDataLakeTableResponse:
+        """
+        @summary 获取表信息
+        
+        @param request: GetDataLakeTableRequest
+        @return: GetDataLakeTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_lake_table_with_options(request, runtime)
+
+    async def get_data_lake_table_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeTableRequest,
+    ) -> dms_enterprise_20181101_models.GetDataLakeTableResponse:
+        """
+        @summary 获取表信息
+        
+        @param request: GetDataLakeTableRequest
+        @return: GetDataLakeTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_lake_table_with_options_async(request, runtime)
 
     def get_data_track_job_degree_with_options(
         self,
@@ -13715,6 +14679,226 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.inspect_proxy_access_secret_with_options_async(request, runtime)
 
+    def list_abac_authorizations_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListAbacAuthorizationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAbacAuthorizationsResponse:
+        """
+        @summary 获取权限策略授权列表
+        
+        @param request: ListAbacAuthorizationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAbacAuthorizationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_source):
+            query['PolicySource'] = request.policy_source
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAbacAuthorizations',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAbacAuthorizationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_abac_authorizations_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAbacAuthorizationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAbacAuthorizationsResponse:
+        """
+        @summary 获取权限策略授权列表
+        
+        @param request: ListAbacAuthorizationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAbacAuthorizationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_source):
+            query['PolicySource'] = request.policy_source
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAbacAuthorizations',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAbacAuthorizationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_abac_authorizations(
+        self,
+        request: dms_enterprise_20181101_models.ListAbacAuthorizationsRequest,
+    ) -> dms_enterprise_20181101_models.ListAbacAuthorizationsResponse:
+        """
+        @summary 获取权限策略授权列表
+        
+        @param request: ListAbacAuthorizationsRequest
+        @return: ListAbacAuthorizationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_abac_authorizations_with_options(request, runtime)
+
+    async def list_abac_authorizations_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAbacAuthorizationsRequest,
+    ) -> dms_enterprise_20181101_models.ListAbacAuthorizationsResponse:
+        """
+        @summary 获取权限策略授权列表
+        
+        @param request: ListAbacAuthorizationsRequest
+        @return: ListAbacAuthorizationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_abac_authorizations_with_options_async(request, runtime)
+
+    def list_abac_policies_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListAbacPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAbacPoliciesResponse:
+        """
+        @summary 获取权限策略列表
+        
+        @param request: ListAbacPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAbacPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAbacPolicies',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAbacPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_abac_policies_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAbacPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAbacPoliciesResponse:
+        """
+        @summary 获取权限策略列表
+        
+        @param request: ListAbacPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAbacPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAbacPolicies',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAbacPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_abac_policies(
+        self,
+        request: dms_enterprise_20181101_models.ListAbacPoliciesRequest,
+    ) -> dms_enterprise_20181101_models.ListAbacPoliciesResponse:
+        """
+        @summary 获取权限策略列表
+        
+        @param request: ListAbacPoliciesRequest
+        @return: ListAbacPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_abac_policies_with_options(request, runtime)
+
+    async def list_abac_policies_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAbacPoliciesRequest,
+    ) -> dms_enterprise_20181101_models.ListAbacPoliciesResponse:
+        """
+        @summary 获取权限策略列表
+        
+        @param request: ListAbacPoliciesRequest
+        @return: ListAbacPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_abac_policies_with_options_async(request, runtime)
+
     def list_authority_template_with_options(
         self,
         request: dms_enterprise_20181101_models.ListAuthorityTemplateRequest,
@@ -13822,6 +15006,478 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_authority_template_with_options_async(request, runtime)
+
+    def list_authorized_databases_for_user_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserResponse:
+        """
+        @summary 获取用户有权限的数据库
+        
+        @param request: ListAuthorizedDatabasesForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedDatabasesForUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedDatabasesForUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorized_databases_for_user_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserResponse:
+        """
+        @summary 获取用户有权限的数据库
+        
+        @param request: ListAuthorizedDatabasesForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedDatabasesForUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedDatabasesForUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorized_databases_for_user(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserRequest,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserResponse:
+        """
+        @summary 获取用户有权限的数据库
+        
+        @param request: ListAuthorizedDatabasesForUserRequest
+        @return: ListAuthorizedDatabasesForUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_authorized_databases_for_user_with_options(request, runtime)
+
+    async def list_authorized_databases_for_user_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserRequest,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserResponse:
+        """
+        @summary 获取用户有权限的数据库
+        
+        @param request: ListAuthorizedDatabasesForUserRequest
+        @return: ListAuthorizedDatabasesForUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_authorized_databases_for_user_with_options_async(request, runtime)
+
+    def list_authorized_instances_for_user_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedInstancesForUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedInstancesForUserResponse:
+        """
+        @summary 获取用户有权限的实例
+        
+        @param request: ListAuthorizedInstancesForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedInstancesForUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedInstancesForUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAuthorizedInstancesForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorized_instances_for_user_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedInstancesForUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedInstancesForUserResponse:
+        """
+        @summary 获取用户有权限的实例
+        
+        @param request: ListAuthorizedInstancesForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedInstancesForUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedInstancesForUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAuthorizedInstancesForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorized_instances_for_user(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedInstancesForUserRequest,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedInstancesForUserResponse:
+        """
+        @summary 获取用户有权限的实例
+        
+        @param request: ListAuthorizedInstancesForUserRequest
+        @return: ListAuthorizedInstancesForUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_authorized_instances_for_user_with_options(request, runtime)
+
+    async def list_authorized_instances_for_user_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedInstancesForUserRequest,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedInstancesForUserResponse:
+        """
+        @summary 获取用户有权限的实例
+        
+        @param request: ListAuthorizedInstancesForUserRequest
+        @return: ListAuthorizedInstancesForUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_authorized_instances_for_user_with_options_async(request, runtime)
+
+    def list_authorized_users_for_database_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseResponse:
+        """
+        @summary 查询有数据库权限的用户
+        
+        @param request: ListAuthorizedUsersForDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedUsersForDatabaseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedUsersForDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorized_users_for_database_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseResponse:
+        """
+        @summary 查询有数据库权限的用户
+        
+        @param request: ListAuthorizedUsersForDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedUsersForDatabaseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedUsersForDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorized_users_for_database(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseRequest,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseResponse:
+        """
+        @summary 查询有数据库权限的用户
+        
+        @param request: ListAuthorizedUsersForDatabaseRequest
+        @return: ListAuthorizedUsersForDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_authorized_users_for_database_with_options(request, runtime)
+
+    async def list_authorized_users_for_database_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseRequest,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseResponse:
+        """
+        @summary 查询有数据库权限的用户
+        
+        @param request: ListAuthorizedUsersForDatabaseRequest
+        @return: ListAuthorizedUsersForDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_authorized_users_for_database_with_options_async(request, runtime)
+
+    def list_authorized_users_for_instance_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceResponse:
+        """
+        @summary 查询有实例权限的用户
+        
+        @param request: ListAuthorizedUsersForInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedUsersForInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedUsersForInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorized_users_for_instance_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceResponse:
+        """
+        @summary 查询有实例权限的用户
+        
+        @param request: ListAuthorizedUsersForInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedUsersForInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedUsersForInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorized_users_for_instance(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceRequest,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceResponse:
+        """
+        @summary 查询有实例权限的用户
+        
+        @param request: ListAuthorizedUsersForInstanceRequest
+        @return: ListAuthorizedUsersForInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_authorized_users_for_instance_with_options(request, runtime)
+
+    async def list_authorized_users_for_instance_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceRequest,
+    ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceResponse:
+        """
+        @summary 查询有实例权限的用户
+        
+        @param request: ListAuthorizedUsersForInstanceRequest
+        @return: ListAuthorizedUsersForInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_authorized_users_for_instance_with_options_async(request, runtime)
 
     def list_classification_templates_with_options(
         self,
@@ -14922,6 +16578,338 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_import_sqltype_with_options_async(request, runtime)
+
+    def list_data_lake_catalog_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeCatalogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataLakeCatalogResponse:
+        """
+        @summary 获取uc的数据库目录列表
+        
+        @param request: ListDataLakeCatalogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataLakeCatalogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataLakeCatalog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataLakeCatalogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_lake_catalog_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeCatalogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataLakeCatalogResponse:
+        """
+        @summary 获取uc的数据库目录列表
+        
+        @param request: ListDataLakeCatalogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataLakeCatalogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataLakeCatalog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataLakeCatalogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_lake_catalog(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeCatalogRequest,
+    ) -> dms_enterprise_20181101_models.ListDataLakeCatalogResponse:
+        """
+        @summary 获取uc的数据库目录列表
+        
+        @param request: ListDataLakeCatalogRequest
+        @return: ListDataLakeCatalogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_lake_catalog_with_options(request, runtime)
+
+    async def list_data_lake_catalog_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeCatalogRequest,
+    ) -> dms_enterprise_20181101_models.ListDataLakeCatalogResponse:
+        """
+        @summary 获取uc的数据库目录列表
+        
+        @param request: ListDataLakeCatalogRequest
+        @return: ListDataLakeCatalogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_lake_catalog_with_options_async(request, runtime)
+
+    def list_data_lake_database_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataLakeDatabaseResponse:
+        """
+        @summary 获取数据库列表
+        
+        @param request: ListDataLakeDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataLakeDatabaseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataLakeDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataLakeDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_lake_database_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataLakeDatabaseResponse:
+        """
+        @summary 获取数据库列表
+        
+        @param request: ListDataLakeDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataLakeDatabaseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataLakeDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataLakeDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_lake_database(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeDatabaseRequest,
+    ) -> dms_enterprise_20181101_models.ListDataLakeDatabaseResponse:
+        """
+        @summary 获取数据库列表
+        
+        @param request: ListDataLakeDatabaseRequest
+        @return: ListDataLakeDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_lake_database_with_options(request, runtime)
+
+    async def list_data_lake_database_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeDatabaseRequest,
+    ) -> dms_enterprise_20181101_models.ListDataLakeDatabaseResponse:
+        """
+        @summary 获取数据库列表
+        
+        @param request: ListDataLakeDatabaseRequest
+        @return: ListDataLakeDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_lake_database_with_options_async(request, runtime)
+
+    def list_data_lake_tablebase_info_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeTablebaseInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataLakeTablebaseInfoResponse:
+        """
+        @summary 获取表信息
+        
+        @param request: ListDataLakeTablebaseInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataLakeTablebaseInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.rows):
+            query['Rows'] = request.rows
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataLakeTablebaseInfo',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataLakeTablebaseInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_lake_tablebase_info_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeTablebaseInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataLakeTablebaseInfoResponse:
+        """
+        @summary 获取表信息
+        
+        @param request: ListDataLakeTablebaseInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataLakeTablebaseInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.rows):
+            query['Rows'] = request.rows
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataLakeTablebaseInfo',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataLakeTablebaseInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_lake_tablebase_info(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeTablebaseInfoRequest,
+    ) -> dms_enterprise_20181101_models.ListDataLakeTablebaseInfoResponse:
+        """
+        @summary 获取表信息
+        
+        @param request: ListDataLakeTablebaseInfoRequest
+        @return: ListDataLakeTablebaseInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_lake_tablebase_info_with_options(request, runtime)
+
+    async def list_data_lake_tablebase_info_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeTablebaseInfoRequest,
+    ) -> dms_enterprise_20181101_models.ListDataLakeTablebaseInfoResponse:
+        """
+        @summary 获取表信息
+        
+        @param request: ListDataLakeTablebaseInfoRequest
+        @return: ListDataLakeTablebaseInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_lake_tablebase_info_with_options_async(request, runtime)
 
     def list_database_user_permssions_with_options(
         self,
@@ -22687,6 +24675,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_owners_with_options_async(request, runtime)
 
+    def set_workflow_extra_info_with_options(
+        self,
+        request: dms_enterprise_20181101_models.SetWorkflowExtraInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SetWorkflowExtraInfoResponse:
+        """
+        @summary 修改审批流额外信息
+        
+        @param request: SetWorkflowExtraInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetWorkflowExtraInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.render_add_approval_node):
+            query['RenderAddApprovalNode'] = request.render_add_approval_node
+        if not UtilClient.is_unset(request.render_agree):
+            query['RenderAgree'] = request.render_agree
+        if not UtilClient.is_unset(request.render_cancel):
+            query['RenderCancel'] = request.render_cancel
+        if not UtilClient.is_unset(request.render_reject):
+            query['RenderReject'] = request.render_reject
+        if not UtilClient.is_unset(request.render_transfer):
+            query['RenderTransfer'] = request.render_transfer
+        if not UtilClient.is_unset(request.thirdparty_workflow_comment):
+            query['ThirdpartyWorkflowComment'] = request.thirdparty_workflow_comment
+        if not UtilClient.is_unset(request.thirdparty_workflow_url):
+            query['ThirdpartyWorkflowUrl'] = request.thirdparty_workflow_url
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workflow_instance_id):
+            query['WorkflowInstanceId'] = request.workflow_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetWorkflowExtraInfo',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SetWorkflowExtraInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_workflow_extra_info_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.SetWorkflowExtraInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SetWorkflowExtraInfoResponse:
+        """
+        @summary 修改审批流额外信息
+        
+        @param request: SetWorkflowExtraInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetWorkflowExtraInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.render_add_approval_node):
+            query['RenderAddApprovalNode'] = request.render_add_approval_node
+        if not UtilClient.is_unset(request.render_agree):
+            query['RenderAgree'] = request.render_agree
+        if not UtilClient.is_unset(request.render_cancel):
+            query['RenderCancel'] = request.render_cancel
+        if not UtilClient.is_unset(request.render_reject):
+            query['RenderReject'] = request.render_reject
+        if not UtilClient.is_unset(request.render_transfer):
+            query['RenderTransfer'] = request.render_transfer
+        if not UtilClient.is_unset(request.thirdparty_workflow_comment):
+            query['ThirdpartyWorkflowComment'] = request.thirdparty_workflow_comment
+        if not UtilClient.is_unset(request.thirdparty_workflow_url):
+            query['ThirdpartyWorkflowUrl'] = request.thirdparty_workflow_url
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workflow_instance_id):
+            query['WorkflowInstanceId'] = request.workflow_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetWorkflowExtraInfo',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SetWorkflowExtraInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_workflow_extra_info(
+        self,
+        request: dms_enterprise_20181101_models.SetWorkflowExtraInfoRequest,
+    ) -> dms_enterprise_20181101_models.SetWorkflowExtraInfoResponse:
+        """
+        @summary 修改审批流额外信息
+        
+        @param request: SetWorkflowExtraInfoRequest
+        @return: SetWorkflowExtraInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_workflow_extra_info_with_options(request, runtime)
+
+    async def set_workflow_extra_info_async(
+        self,
+        request: dms_enterprise_20181101_models.SetWorkflowExtraInfoRequest,
+    ) -> dms_enterprise_20181101_models.SetWorkflowExtraInfoResponse:
+        """
+        @summary 修改审批流额外信息
+        
+        @param request: SetWorkflowExtraInfoRequest
+        @return: SetWorkflowExtraInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_workflow_extra_info_with_options_async(request, runtime)
+
     def skip_data_correct_row_check_with_options(
         self,
         request: dms_enterprise_20181101_models.SkipDataCorrectRowCheckRequest,
@@ -23522,6 +25638,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.sync_instance_meta_with_options_async(request, runtime)
+
+    def update_abac_policy_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateAbacPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateAbacPolicyResponse:
+        """
+        @summary 更新权限策略
+        
+        @param request: UpdateAbacPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAbacPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abac_policy_content):
+            query['AbacPolicyContent'] = request.abac_policy_content
+        if not UtilClient.is_unset(request.abac_policy_desc):
+            query['AbacPolicyDesc'] = request.abac_policy_desc
+        if not UtilClient.is_unset(request.abac_policy_id):
+            query['AbacPolicyId'] = request.abac_policy_id
+        if not UtilClient.is_unset(request.abac_policy_name):
+            query['AbacPolicyName'] = request.abac_policy_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAbacPolicy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateAbacPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_abac_policy_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateAbacPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateAbacPolicyResponse:
+        """
+        @summary 更新权限策略
+        
+        @param request: UpdateAbacPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAbacPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abac_policy_content):
+            query['AbacPolicyContent'] = request.abac_policy_content
+        if not UtilClient.is_unset(request.abac_policy_desc):
+            query['AbacPolicyDesc'] = request.abac_policy_desc
+        if not UtilClient.is_unset(request.abac_policy_id):
+            query['AbacPolicyId'] = request.abac_policy_id
+        if not UtilClient.is_unset(request.abac_policy_name):
+            query['AbacPolicyName'] = request.abac_policy_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAbacPolicy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateAbacPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_abac_policy(
+        self,
+        request: dms_enterprise_20181101_models.UpdateAbacPolicyRequest,
+    ) -> dms_enterprise_20181101_models.UpdateAbacPolicyResponse:
+        """
+        @summary 更新权限策略
+        
+        @param request: UpdateAbacPolicyRequest
+        @return: UpdateAbacPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_abac_policy_with_options(request, runtime)
+
+    async def update_abac_policy_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateAbacPolicyRequest,
+    ) -> dms_enterprise_20181101_models.UpdateAbacPolicyResponse:
+        """
+        @summary 更新权限策略
+        
+        @param request: UpdateAbacPolicyRequest
+        @return: UpdateAbacPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_abac_policy_with_options_async(request, runtime)
 
     def update_authority_template_with_options(
         self,
