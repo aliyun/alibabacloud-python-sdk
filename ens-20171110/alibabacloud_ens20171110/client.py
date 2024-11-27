@@ -1153,6 +1153,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_ens_instances_with_options_async(request, runtime)
 
+    def attach_instance_sdgwith_options(
+        self,
+        tmp_req: ens_20171110_models.AttachInstanceSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.AttachInstanceSDGResponse:
+        """
+        @summary 将某个SDG attach到对应的AIC上
+        
+        @param tmp_req: AttachInstanceSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachInstanceSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.AttachInstanceSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachInstanceSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.AttachInstanceSDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_instance_sdgwith_options_async(
+        self,
+        tmp_req: ens_20171110_models.AttachInstanceSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.AttachInstanceSDGResponse:
+        """
+        @summary 将某个SDG attach到对应的AIC上
+        
+        @param tmp_req: AttachInstanceSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachInstanceSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.AttachInstanceSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachInstanceSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.AttachInstanceSDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_instance_sdg(
+        self,
+        request: ens_20171110_models.AttachInstanceSDGRequest,
+    ) -> ens_20171110_models.AttachInstanceSDGResponse:
+        """
+        @summary 将某个SDG attach到对应的AIC上
+        
+        @param request: AttachInstanceSDGRequest
+        @return: AttachInstanceSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.attach_instance_sdgwith_options(request, runtime)
+
+    async def attach_instance_sdg_async(
+        self,
+        request: ens_20171110_models.AttachInstanceSDGRequest,
+    ) -> ens_20171110_models.AttachInstanceSDGResponse:
+        """
+        @summary 将某个SDG attach到对应的AIC上
+        
+        @param request: AttachInstanceSDGRequest
+        @return: AttachInstanceSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_instance_sdgwith_options_async(request, runtime)
+
     def attach_network_interface_with_options(
         self,
         request: ens_20171110_models.AttachNetworkInterfaceRequest,
@@ -14705,6 +14813,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_monitor_data_with_options_async(request, runtime)
 
+    def describe_instance_sdgstatus_with_options(
+        self,
+        tmp_req: ens_20171110_models.DescribeInstanceSDGStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeInstanceSDGStatusResponse:
+        """
+        @summary 描述某个AIC实例下的SDG挂载情况
+        
+        @param tmp_req: DescribeInstanceSDGStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSDGStatusResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DescribeInstanceSDGStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sdgids):
+            request.sdgids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdgids, 'SDGIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceSDGStatus',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeInstanceSDGStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_sdgstatus_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.DescribeInstanceSDGStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeInstanceSDGStatusResponse:
+        """
+        @summary 描述某个AIC实例下的SDG挂载情况
+        
+        @param tmp_req: DescribeInstanceSDGStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSDGStatusResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DescribeInstanceSDGStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sdgids):
+            request.sdgids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdgids, 'SDGIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceSDGStatus',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeInstanceSDGStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_sdgstatus(
+        self,
+        request: ens_20171110_models.DescribeInstanceSDGStatusRequest,
+    ) -> ens_20171110_models.DescribeInstanceSDGStatusResponse:
+        """
+        @summary 描述某个AIC实例下的SDG挂载情况
+        
+        @param request: DescribeInstanceSDGStatusRequest
+        @return: DescribeInstanceSDGStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_sdgstatus_with_options(request, runtime)
+
+    async def describe_instance_sdgstatus_async(
+        self,
+        request: ens_20171110_models.DescribeInstanceSDGStatusRequest,
+    ) -> ens_20171110_models.DescribeInstanceSDGStatusResponse:
+        """
+        @summary 描述某个AIC实例下的SDG挂载情况
+        
+        @param request: DescribeInstanceSDGStatusRequest
+        @return: DescribeInstanceSDGStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_sdgstatus_with_options_async(request, runtime)
+
     def describe_instance_spec_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -19659,6 +19867,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_disk_with_options_async(request, runtime)
 
+    def detach_instance_sdgwith_options(
+        self,
+        tmp_req: ens_20171110_models.DetachInstanceSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DetachInstanceSDGResponse:
+        """
+        @summary 解除SDG的attach状态
+        
+        @param tmp_req: DetachInstanceSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachInstanceSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DetachInstanceSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachInstanceSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DetachInstanceSDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_instance_sdgwith_options_async(
+        self,
+        tmp_req: ens_20171110_models.DetachInstanceSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DetachInstanceSDGResponse:
+        """
+        @summary 解除SDG的attach状态
+        
+        @param tmp_req: DetachInstanceSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachInstanceSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DetachInstanceSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachInstanceSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DetachInstanceSDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_instance_sdg(
+        self,
+        request: ens_20171110_models.DetachInstanceSDGRequest,
+    ) -> ens_20171110_models.DetachInstanceSDGResponse:
+        """
+        @summary 解除SDG的attach状态
+        
+        @param request: DetachInstanceSDGRequest
+        @return: DetachInstanceSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.detach_instance_sdgwith_options(request, runtime)
+
+    async def detach_instance_sdg_async(
+        self,
+        request: ens_20171110_models.DetachInstanceSDGRequest,
+    ) -> ens_20171110_models.DetachInstanceSDGResponse:
+        """
+        @summary 解除SDG的attach状态
+        
+        @param request: DetachInstanceSDGRequest
+        @return: DetachInstanceSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_instance_sdgwith_options_async(request, runtime)
+
     def detach_network_interface_with_options(
         self,
         request: ens_20171110_models.DetachNetworkInterfaceRequest,
@@ -23730,6 +24046,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_vswitch_attribute_with_options_async(request, runtime)
+
+    def mount_instance_sdgwith_options(
+        self,
+        tmp_req: ens_20171110_models.MountInstanceSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.MountInstanceSDGResponse:
+        """
+        @summary 将已经attach在instance上的SDG实际部署到对应的AIC
+        
+        @param tmp_req: MountInstanceSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MountInstanceSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.MountInstanceSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MountInstanceSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.MountInstanceSDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mount_instance_sdgwith_options_async(
+        self,
+        tmp_req: ens_20171110_models.MountInstanceSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.MountInstanceSDGResponse:
+        """
+        @summary 将已经attach在instance上的SDG实际部署到对应的AIC
+        
+        @param tmp_req: MountInstanceSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MountInstanceSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.MountInstanceSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MountInstanceSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.MountInstanceSDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mount_instance_sdg(
+        self,
+        request: ens_20171110_models.MountInstanceSDGRequest,
+    ) -> ens_20171110_models.MountInstanceSDGResponse:
+        """
+        @summary 将已经attach在instance上的SDG实际部署到对应的AIC
+        
+        @param request: MountInstanceSDGRequest
+        @return: MountInstanceSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.mount_instance_sdgwith_options(request, runtime)
+
+    async def mount_instance_sdg_async(
+        self,
+        request: ens_20171110_models.MountInstanceSDGRequest,
+    ) -> ens_20171110_models.MountInstanceSDGResponse:
+        """
+        @summary 将已经attach在instance上的SDG实际部署到对应的AIC
+        
+        @param request: MountInstanceSDGRequest
+        @return: MountInstanceSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.mount_instance_sdgwith_options_async(request, runtime)
 
     def preload_region_sdgwith_options(
         self,
@@ -30618,6 +31042,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.unload_region_sdgwith_options_async(request, runtime)
+
+    def unmount_instance_sdgwith_options(
+        self,
+        tmp_req: ens_20171110_models.UnmountInstanceSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UnmountInstanceSDGResponse:
+        """
+        @summary 将已经Mount的SDG从对应的Instance上解除下来，恢复到attach状态
+        
+        @param tmp_req: UnmountInstanceSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnmountInstanceSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.UnmountInstanceSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnmountInstanceSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UnmountInstanceSDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unmount_instance_sdgwith_options_async(
+        self,
+        tmp_req: ens_20171110_models.UnmountInstanceSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UnmountInstanceSDGResponse:
+        """
+        @summary 将已经Mount的SDG从对应的Instance上解除下来，恢复到attach状态
+        
+        @param tmp_req: UnmountInstanceSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnmountInstanceSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.UnmountInstanceSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnmountInstanceSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UnmountInstanceSDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unmount_instance_sdg(
+        self,
+        request: ens_20171110_models.UnmountInstanceSDGRequest,
+    ) -> ens_20171110_models.UnmountInstanceSDGResponse:
+        """
+        @summary 将已经Mount的SDG从对应的Instance上解除下来，恢复到attach状态
+        
+        @param request: UnmountInstanceSDGRequest
+        @return: UnmountInstanceSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.unmount_instance_sdgwith_options(request, runtime)
+
+    async def unmount_instance_sdg_async(
+        self,
+        request: ens_20171110_models.UnmountInstanceSDGRequest,
+    ) -> ens_20171110_models.UnmountInstanceSDGResponse:
+        """
+        @summary 将已经Mount的SDG从对应的Instance上解除下来，恢复到attach状态
+        
+        @param request: UnmountInstanceSDGRequest
+        @return: UnmountInstanceSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.unmount_instance_sdgwith_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,

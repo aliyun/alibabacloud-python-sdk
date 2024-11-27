@@ -1,3 +1,11 @@
+2024-11-27 Version: 7.5.0
+- Support API AttachInstanceSDG.
+- Support API DescribeInstanceSDGStatus.
+- Support API DetachInstanceSDG.
+- Support API MountInstanceSDG.
+- Support API UnmountInstanceSDG.
+
+
 2024-11-27 Version: 7.4.2
 - Generated python 2017-11-10 for Ens.
 
