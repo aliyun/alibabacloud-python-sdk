@@ -256,18 +256,24 @@ class DemoCategory(TeaModel):
 class ForwardInfo(TeaModel):
     def __init__(
         self,
+        access_type: List[str] = None,
         container_name: str = None,
         eip_allocation_id: str = None,
         enable: bool = None,
+        external_port: str = None,
+        forward_port: str = None,
+        name: str = None,
         nat_gateway_id: str = None,
-        port: str = None,
         sshpublic_key: str = None,
     ):
+        self.access_type = access_type
         self.container_name = container_name
         self.eip_allocation_id = eip_allocation_id
         self.enable = enable
+        self.external_port = external_port
+        self.forward_port = forward_port
+        self.name = name
         self.nat_gateway_id = nat_gateway_id
-        self.port = port
         self.sshpublic_key = sshpublic_key
 
     def validate(self):
@@ -279,32 +285,44 @@ class ForwardInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.access_type is not None:
+            result['AccessType'] = self.access_type
         if self.container_name is not None:
             result['ContainerName'] = self.container_name
         if self.eip_allocation_id is not None:
             result['EipAllocationId'] = self.eip_allocation_id
         if self.enable is not None:
             result['Enable'] = self.enable
+        if self.external_port is not None:
+            result['ExternalPort'] = self.external_port
+        if self.forward_port is not None:
+            result['ForwardPort'] = self.forward_port
+        if self.name is not None:
+            result['Name'] = self.name
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
-        if self.port is not None:
-            result['Port'] = self.port
         if self.sshpublic_key is not None:
             result['SSHPublicKey'] = self.sshpublic_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessType') is not None:
+            self.access_type = m.get('AccessType')
         if m.get('ContainerName') is not None:
             self.container_name = m.get('ContainerName')
         if m.get('EipAllocationId') is not None:
             self.eip_allocation_id = m.get('EipAllocationId')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        if m.get('ExternalPort') is not None:
+            self.external_port = m.get('ExternalPort')
+        if m.get('ForwardPort') is not None:
+            self.forward_port = m.get('ForwardPort')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
         if m.get('SSHPublicKey') is not None:
             self.sshpublic_key = m.get('SSHPublicKey')
         return self
@@ -429,20 +447,26 @@ class ForwardInfoResponseConnectInfo(TeaModel):
 class ForwardInfoResponse(TeaModel):
     def __init__(
         self,
+        access_type: List[str] = None,
         connect_info: ForwardInfoResponseConnectInfo = None,
         container_name: str = None,
         eip_allocation_id: str = None,
         enable: bool = None,
+        external_port: str = None,
+        forward_port: str = None,
+        name: str = None,
         nat_gateway_id: str = None,
-        port: str = None,
         sshpublic_key: str = None,
     ):
+        self.access_type = access_type
         self.connect_info = connect_info
         self.container_name = container_name
         self.eip_allocation_id = eip_allocation_id
         self.enable = enable
+        self.external_port = external_port
+        self.forward_port = forward_port
+        self.name = name
         self.nat_gateway_id = nat_gateway_id
-        self.port = port
         self.sshpublic_key = sshpublic_key
 
     def validate(self):
@@ -455,6 +479,8 @@ class ForwardInfoResponse(TeaModel):
             return _map
 
         result = dict()
+        if self.access_type is not None:
+            result['AccessType'] = self.access_type
         if self.connect_info is not None:
             result['ConnectInfo'] = self.connect_info.to_map()
         if self.container_name is not None:
@@ -463,16 +489,22 @@ class ForwardInfoResponse(TeaModel):
             result['EipAllocationId'] = self.eip_allocation_id
         if self.enable is not None:
             result['Enable'] = self.enable
+        if self.external_port is not None:
+            result['ExternalPort'] = self.external_port
+        if self.forward_port is not None:
+            result['ForwardPort'] = self.forward_port
+        if self.name is not None:
+            result['Name'] = self.name
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
-        if self.port is not None:
-            result['Port'] = self.port
         if self.sshpublic_key is not None:
             result['SSHPublicKey'] = self.sshpublic_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessType') is not None:
+            self.access_type = m.get('AccessType')
         if m.get('ConnectInfo') is not None:
             temp_model = ForwardInfoResponseConnectInfo()
             self.connect_info = temp_model.from_map(m['ConnectInfo'])
@@ -482,10 +514,14 @@ class ForwardInfoResponse(TeaModel):
             self.eip_allocation_id = m.get('EipAllocationId')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        if m.get('ExternalPort') is not None:
+            self.external_port = m.get('ExternalPort')
+        if m.get('ForwardPort') is not None:
+            self.forward_port = m.get('ForwardPort')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
         if m.get('SSHPublicKey') is not None:
             self.sshpublic_key = m.get('SSHPublicKey')
         return self
@@ -905,6 +941,39 @@ class CreateInstanceRequestRequestedResource(TeaModel):
         return self
 
 
+class CreateInstanceRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateInstanceRequestUserVpc(TeaModel):
     def __init__(
         self,
@@ -989,6 +1058,7 @@ class CreateInstanceRequest(TeaModel):
         priority: int = None,
         requested_resource: CreateInstanceRequestRequestedResource = None,
         resource_id: str = None,
+        tag: List[CreateInstanceRequestTag] = None,
         user_id: str = None,
         user_vpc: CreateInstanceRequestUserVpc = None,
         workspace_id: str = None,
@@ -1010,6 +1080,7 @@ class CreateInstanceRequest(TeaModel):
         self.priority = priority
         self.requested_resource = requested_resource
         self.resource_id = resource_id
+        self.tag = tag
         self.user_id = user_id
         self.user_vpc = user_vpc
         self.workspace_id = workspace_id
@@ -1034,6 +1105,10 @@ class CreateInstanceRequest(TeaModel):
                     k.validate()
         if self.requested_resource:
             self.requested_resource.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
         if self.user_vpc:
             self.user_vpc.validate()
 
@@ -1081,6 +1156,10 @@ class CreateInstanceRequest(TeaModel):
             result['RequestedResource'] = self.requested_resource.to_map()
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.user_vpc is not None:
@@ -1137,6 +1216,11 @@ class CreateInstanceRequest(TeaModel):
             self.requested_resource = temp_model.from_map(m['RequestedResource'])
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateInstanceRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('UserVpc') is not None:
@@ -2752,6 +2836,39 @@ class GetInstanceResponseBodyRequestedResource(TeaModel):
         return self
 
 
+class GetInstanceResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class GetInstanceResponseBodyUserVpc(TeaModel):
     def __init__(
         self,
@@ -2860,6 +2977,7 @@ class GetInstanceResponseBody(TeaModel):
         resource_name: str = None,
         status: str = None,
         success: bool = None,
+        tags: List[GetInstanceResponseBodyTags] = None,
         terminal_url: str = None,
         user_id: str = None,
         user_name: str = None,
@@ -2909,6 +3027,7 @@ class GetInstanceResponseBody(TeaModel):
         self.resource_name = resource_name
         self.status = status
         self.success = success
+        self.tags = tags
         self.terminal_url = terminal_url
         self.user_id = user_id
         self.user_name = user_name
@@ -2950,6 +3069,10 @@ class GetInstanceResponseBody(TeaModel):
             self.node_error_recovery.validate()
         if self.requested_resource:
             self.requested_resource.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
         if self.user_vpc:
             self.user_vpc.validate()
 
@@ -3045,6 +3168,10 @@ class GetInstanceResponseBody(TeaModel):
             result['Status'] = self.status
         if self.success is not None:
             result['Success'] = self.success
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.terminal_url is not None:
             result['TerminalUrl'] = self.terminal_url
         if self.user_id is not None:
@@ -3162,6 +3289,11 @@ class GetInstanceResponseBody(TeaModel):
             self.status = m.get('Status')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetInstanceResponseBodyTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TerminalUrl') is not None:
             self.terminal_url = m.get('TerminalUrl')
         if m.get('UserId') is not None:
@@ -5518,6 +5650,39 @@ class ListInstanceStatisticsResponse(TeaModel):
         return self
 
 
+class ListInstancesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -5544,6 +5709,7 @@ class ListInstancesRequest(TeaModel):
         resource_id: str = None,
         sort_by: str = None,
         status: str = None,
+        tag: List[ListInstancesRequestTag] = None,
         workspace_id: str = None,
     ):
         self.accelerator_type = accelerator_type
@@ -5569,10 +5735,14 @@ class ListInstancesRequest(TeaModel):
         self.resource_id = resource_id
         self.sort_by = sort_by
         self.status = status
+        self.tag = tag
         self.workspace_id = workspace_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5626,6 +5796,10 @@ class ListInstancesRequest(TeaModel):
             result['SortBy'] = self.sort_by
         if self.status is not None:
             result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -5678,6 +5852,11 @@ class ListInstancesRequest(TeaModel):
             self.sort_by = m.get('SortBy')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListInstancesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -5709,6 +5888,7 @@ class ListInstancesShrinkRequest(TeaModel):
         resource_id: str = None,
         sort_by: str = None,
         status: str = None,
+        tag_shrink: str = None,
         workspace_id: str = None,
     ):
         self.accelerator_type = accelerator_type
@@ -5734,6 +5914,7 @@ class ListInstancesShrinkRequest(TeaModel):
         self.resource_id = resource_id
         self.sort_by = sort_by
         self.status = status
+        self.tag_shrink = tag_shrink
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5791,6 +5972,8 @@ class ListInstancesShrinkRequest(TeaModel):
             result['SortBy'] = self.sort_by
         if self.status is not None:
             result['Status'] = self.status
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -5843,6 +6026,8 @@ class ListInstancesShrinkRequest(TeaModel):
             self.sort_by = m.get('SortBy')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -6336,6 +6521,39 @@ class ListInstancesResponseBodyInstancesRequestedResource(TeaModel):
         return self
 
 
+class ListInstancesResponseBodyInstancesTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
     def __init__(
         self,
@@ -6437,6 +6655,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         resource_id: str = None,
         resource_name: str = None,
         status: str = None,
+        tags: List[ListInstancesResponseBodyInstancesTags] = None,
         terminal_url: str = None,
         user_id: str = None,
         user_name: str = None,
@@ -6480,6 +6699,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.resource_id = resource_id
         self.resource_name = resource_name
         self.status = status
+        self.tags = tags
         self.terminal_url = terminal_url
         self.user_id = user_id
         self.user_name = user_name
@@ -6519,6 +6739,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.latest_snapshot.validate()
         if self.requested_resource:
             self.requested_resource.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
         if self.user_vpc:
             self.user_vpc.validate()
 
@@ -6602,6 +6826,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['ResourceName'] = self.resource_name
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.terminal_url is not None:
             result['TerminalUrl'] = self.terminal_url
         if self.user_id is not None:
@@ -6706,6 +6934,11 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.resource_name = m.get('ResourceName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListInstancesResponseBodyInstancesTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TerminalUrl') is not None:
             self.terminal_url = m.get('TerminalUrl')
         if m.get('UserId') is not None:

@@ -197,6 +197,8 @@ class Client(OpenApiClient):
             body['RequestedResource'] = request.requested_resource
         if not UtilClient.is_unset(request.resource_id):
             body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_id):
             body['UserId'] = request.user_id
         if not UtilClient.is_unset(request.user_vpc):
@@ -273,6 +275,8 @@ class Client(OpenApiClient):
             body['RequestedResource'] = request.requested_resource
         if not UtilClient.is_unset(request.resource_id):
             body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_id):
             body['UserId'] = request.user_id
         if not UtilClient.is_unset(request.user_vpc):
@@ -2538,6 +2542,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.labels):
             request.labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
             query['AcceleratorType'] = request.accelerator_type
@@ -2585,6 +2591,8 @@ class Client(OpenApiClient):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -2624,6 +2632,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.labels):
             request.labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
             query['AcceleratorType'] = request.accelerator_type
@@ -2671,6 +2681,8 @@ class Client(OpenApiClient):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
