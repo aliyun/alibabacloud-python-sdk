@@ -1,3 +1,11 @@
+2024-11-28 Version: 1.10.0
+- Support API GetCategoriesByTaskId.
+- Support API GetEnterpriseVocAnalysisTask.
+- Support API ListAnalysisTagDetailByTaskId.
+- Support API SubmitEnterpriseVocAnalysisTask.
+- Support API ValidateUploadTemplate.
+
+
 2024-11-01 Version: 1.9.0
 - Support API GetCustomHotTopicBroadcastJob.
 - Support API GetHotTopicBroadcast.

@@ -2261,6 +2261,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.generate_view_point_with_options_async(request, runtime)
 
+    def get_categories_by_task_id_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetCategoriesByTaskIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetCategoriesByTaskIdResponse:
+        """
+        @summary 获取某次标签挖掘结果分类
+        
+        @param request: GetCategoriesByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCategoriesByTaskIdResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCategoriesByTaskId',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetCategoriesByTaskIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_categories_by_task_id_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetCategoriesByTaskIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetCategoriesByTaskIdResponse:
+        """
+        @summary 获取某次标签挖掘结果分类
+        
+        @param request: GetCategoriesByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCategoriesByTaskIdResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCategoriesByTaskId',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetCategoriesByTaskIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_categories_by_task_id(
+        self,
+        request: ai_miao_bi_20230801_models.GetCategoriesByTaskIdRequest,
+    ) -> ai_miao_bi_20230801_models.GetCategoriesByTaskIdResponse:
+        """
+        @summary 获取某次标签挖掘结果分类
+        
+        @param request: GetCategoriesByTaskIdRequest
+        @return: GetCategoriesByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_categories_by_task_id_with_options(request, runtime)
+
+    async def get_categories_by_task_id_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetCategoriesByTaskIdRequest,
+    ) -> ai_miao_bi_20230801_models.GetCategoriesByTaskIdResponse:
+        """
+        @summary 获取某次标签挖掘结果分类
+        
+        @param request: GetCategoriesByTaskIdRequest
+        @return: GetCategoriesByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_categories_by_task_id_with_options_async(request, runtime)
+
     def get_custom_hot_topic_broadcast_job_with_options(
         self,
         request: ai_miao_bi_20230801_models.GetCustomHotTopicBroadcastJobRequest,
@@ -2780,6 +2880,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_doc_cluster_task_with_options_async(request, runtime)
+
+    def get_enterprise_voc_analysis_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetEnterpriseVocAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 获取企业VOC分析任务结果
+        
+        @param request: GetEnterpriseVocAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEnterpriseVocAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetEnterpriseVocAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetEnterpriseVocAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_enterprise_voc_analysis_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetEnterpriseVocAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 获取企业VOC分析任务结果
+        
+        @param request: GetEnterpriseVocAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEnterpriseVocAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetEnterpriseVocAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetEnterpriseVocAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_enterprise_voc_analysis_task(
+        self,
+        request: ai_miao_bi_20230801_models.GetEnterpriseVocAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 获取企业VOC分析任务结果
+        
+        @param request: GetEnterpriseVocAnalysisTaskRequest
+        @return: GetEnterpriseVocAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_enterprise_voc_analysis_task_with_options(request, runtime)
+
+    async def get_enterprise_voc_analysis_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetEnterpriseVocAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 获取企业VOC分析任务结果
+        
+        @param request: GetEnterpriseVocAnalysisTaskRequest
+        @return: GetEnterpriseVocAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_enterprise_voc_analysis_task_with_options_async(request, runtime)
 
     def get_generated_content_with_options(
         self,
@@ -4284,6 +4484,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.insert_intervene_rule_with_options_async(request, runtime)
+
+    def list_analysis_tag_detail_by_task_id_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListAnalysisTagDetailByTaskIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 分页获取企业VOC分析任务明细列表
+        
+        @param tmp_req: ListAnalysisTagDetailByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnalysisTagDetailByTaskIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListAnalysisTagDetailByTaskIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.categories):
+            request.categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.categories, 'Categories', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.categories_shrink):
+            body['Categories'] = request.categories_shrink
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAnalysisTagDetailByTaskId',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListAnalysisTagDetailByTaskIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_analysis_tag_detail_by_task_id_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListAnalysisTagDetailByTaskIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 分页获取企业VOC分析任务明细列表
+        
+        @param tmp_req: ListAnalysisTagDetailByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnalysisTagDetailByTaskIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListAnalysisTagDetailByTaskIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.categories):
+            request.categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.categories, 'Categories', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.categories_shrink):
+            body['Categories'] = request.categories_shrink
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAnalysisTagDetailByTaskId',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListAnalysisTagDetailByTaskIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_analysis_tag_detail_by_task_id(
+        self,
+        request: ai_miao_bi_20230801_models.ListAnalysisTagDetailByTaskIdRequest,
+    ) -> ai_miao_bi_20230801_models.ListAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 分页获取企业VOC分析任务明细列表
+        
+        @param request: ListAnalysisTagDetailByTaskIdRequest
+        @return: ListAnalysisTagDetailByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_analysis_tag_detail_by_task_id_with_options(request, runtime)
+
+    async def list_analysis_tag_detail_by_task_id_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListAnalysisTagDetailByTaskIdRequest,
+    ) -> ai_miao_bi_20230801_models.ListAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 分页获取企业VOC分析任务明细列表
+        
+        @param request: ListAnalysisTagDetailByTaskIdRequest
+        @return: ListAnalysisTagDetailByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_analysis_tag_detail_by_task_id_with_options_async(request, runtime)
 
     def list_async_tasks_with_options(
         self,
@@ -9665,6 +9993,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_doc_cluster_task_with_options_async(request, runtime)
 
+    def submit_enterprise_voc_analysis_task_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitEnterpriseVocAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 提交VOC异步任务
+        
+        @param tmp_req: SubmitEnterpriseVocAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitEnterpriseVocAnalysisTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitEnterpriseVocAnalysisTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.content_tags):
+            request.content_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content_tags, 'ContentTags', 'json')
+        if not UtilClient.is_unset(tmp_req.contents):
+            request.contents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contents, 'Contents', 'json')
+        if not UtilClient.is_unset(tmp_req.filter_tags):
+            request.filter_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_tags, 'FilterTags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.content_tags_shrink):
+            body['ContentTags'] = request.content_tags_shrink
+        if not UtilClient.is_unset(request.contents_shrink):
+            body['Contents'] = request.contents_shrink
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.filter_tags_shrink):
+            body['FilterTags'] = request.filter_tags_shrink
+        if not UtilClient.is_unset(request.material_type):
+            body['MaterialType'] = request.material_type
+        if not UtilClient.is_unset(request.model_id):
+            body['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.positive_sample):
+            body['PositiveSample'] = request.positive_sample
+        if not UtilClient.is_unset(request.positive_sample_file_key):
+            body['PositiveSampleFileKey'] = request.positive_sample_file_key
+        if not UtilClient.is_unset(request.task_type):
+            body['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitEnterpriseVocAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitEnterpriseVocAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_enterprise_voc_analysis_task_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitEnterpriseVocAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 提交VOC异步任务
+        
+        @param tmp_req: SubmitEnterpriseVocAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitEnterpriseVocAnalysisTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitEnterpriseVocAnalysisTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.content_tags):
+            request.content_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content_tags, 'ContentTags', 'json')
+        if not UtilClient.is_unset(tmp_req.contents):
+            request.contents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contents, 'Contents', 'json')
+        if not UtilClient.is_unset(tmp_req.filter_tags):
+            request.filter_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_tags, 'FilterTags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.content_tags_shrink):
+            body['ContentTags'] = request.content_tags_shrink
+        if not UtilClient.is_unset(request.contents_shrink):
+            body['Contents'] = request.contents_shrink
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.filter_tags_shrink):
+            body['FilterTags'] = request.filter_tags_shrink
+        if not UtilClient.is_unset(request.material_type):
+            body['MaterialType'] = request.material_type
+        if not UtilClient.is_unset(request.model_id):
+            body['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.positive_sample):
+            body['PositiveSample'] = request.positive_sample
+        if not UtilClient.is_unset(request.positive_sample_file_key):
+            body['PositiveSampleFileKey'] = request.positive_sample_file_key
+        if not UtilClient.is_unset(request.task_type):
+            body['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitEnterpriseVocAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitEnterpriseVocAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_enterprise_voc_analysis_task(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitEnterpriseVocAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 提交VOC异步任务
+        
+        @param request: SubmitEnterpriseVocAnalysisTaskRequest
+        @return: SubmitEnterpriseVocAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_enterprise_voc_analysis_task_with_options(request, runtime)
+
+    async def submit_enterprise_voc_analysis_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitEnterpriseVocAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitEnterpriseVocAnalysisTaskResponse:
+        """
+        @summary 提交VOC异步任务
+        
+        @param request: SubmitEnterpriseVocAnalysisTaskRequest
+        @return: SubmitEnterpriseVocAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_enterprise_voc_analysis_task_with_options_async(request, runtime)
+
     def submit_topic_selection_perspective_analysis_task_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.SubmitTopicSelectionPerspectiveAnalysisTaskRequest,
@@ -10200,3 +10676,111 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_material_document_with_options_async(request, runtime)
+
+    def validate_upload_template_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ValidateUploadTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ValidateUploadTemplateResponse:
+        """
+        @summary 校验企业VOC上传模板
+        
+        @param request: ValidateUploadTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateUploadTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.task_type):
+            body['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.template_type):
+            body['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ValidateUploadTemplate',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ValidateUploadTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_upload_template_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ValidateUploadTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ValidateUploadTemplateResponse:
+        """
+        @summary 校验企业VOC上传模板
+        
+        @param request: ValidateUploadTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateUploadTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.task_type):
+            body['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.template_type):
+            body['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ValidateUploadTemplate',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ValidateUploadTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_upload_template(
+        self,
+        request: ai_miao_bi_20230801_models.ValidateUploadTemplateRequest,
+    ) -> ai_miao_bi_20230801_models.ValidateUploadTemplateResponse:
+        """
+        @summary 校验企业VOC上传模板
+        
+        @param request: ValidateUploadTemplateRequest
+        @return: ValidateUploadTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.validate_upload_template_with_options(request, runtime)
+
+    async def validate_upload_template_async(
+        self,
+        request: ai_miao_bi_20230801_models.ValidateUploadTemplateRequest,
+    ) -> ai_miao_bi_20230801_models.ValidateUploadTemplateResponse:
+        """
+        @summary 校验企业VOC上传模板
+        
+        @param request: ValidateUploadTemplateRequest
+        @return: ValidateUploadTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.validate_upload_template_with_options_async(request, runtime)
