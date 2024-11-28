@@ -19300,6 +19300,8 @@ class Client(OpenApiClient):
             query['PipelineId'] = request.pipeline_id
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.template_group_id):
             query['TemplateGroupId'] = request.template_group_id
         if not UtilClient.is_unset(request.user_data):
@@ -19353,6 +19355,8 @@ class Client(OpenApiClient):
             query['PipelineId'] = request.pipeline_id
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.template_group_id):
             query['TemplateGroupId'] = request.template_group_id
         if not UtilClient.is_unset(request.user_data):
@@ -20486,6 +20490,8 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.title):
             query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         if not UtilClient.is_unset(request.video_id):
             query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
@@ -20533,6 +20539,8 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.title):
             query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         if not UtilClient.is_unset(request.video_id):
             query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(

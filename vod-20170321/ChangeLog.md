@@ -1,3 +1,10 @@
+2024-11-28 Version: 3.3.1
+- Update API GetVideoInfo: update response param.
+- Update API GetVideoInfos: update response param.
+- Update API SubmitTranscodeJobs: add param SessionId.
+- Update API UpdateVideoInfo: add param UserData.
+
+
 2024-10-11 Version: 3.3.0
 - Support API ChangeResourceGroup.
 - Update API GetPlayInfo: update response param.

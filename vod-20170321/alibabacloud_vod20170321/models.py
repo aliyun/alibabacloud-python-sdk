@@ -25854,6 +25854,11 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         # *   **0**: The media stream is not encrypted.
         # *   **1**: The media stream is encrypted.
         self.encrypt = encrypt
+        # The encryption type of the media stream. Valid values:
+        # 
+        # *   **License**: decryption on local devices
+        # 
+        # >  If the encryption type is **License**, only ApsaraVideo Player SDK can be used to play videos.
         self.encrypt_mode = encrypt_mode
         # The encryption type of the media stream. Valid values:
         # 
@@ -27960,6 +27965,7 @@ class GetVideoInfoResponseBodyVideo(TeaModel):
         tags: str = None,
         template_group_id: str = None,
         title: str = None,
+        user_data: str = None,
         video_id: str = None,
     ):
         # The ID of the application.
@@ -28034,6 +28040,7 @@ class GetVideoInfoResponseBodyVideo(TeaModel):
         self.template_group_id = template_group_id
         # The title of the media file.
         self.title = title
+        self.user_data = user_data
         # The ID of the media file.
         self.video_id = video_id
 
@@ -28091,6 +28098,8 @@ class GetVideoInfoResponseBodyVideo(TeaModel):
             result['TemplateGroupId'] = self.template_group_id
         if self.title is not None:
             result['Title'] = self.title
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         if self.video_id is not None:
             result['VideoId'] = self.video_id
         return result
@@ -28142,6 +28151,8 @@ class GetVideoInfoResponseBodyVideo(TeaModel):
             self.template_group_id = m.get('TemplateGroupId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         if m.get('VideoId') is not None:
             self.video_id = m.get('VideoId')
         return self
@@ -28277,6 +28288,7 @@ class GetVideoInfosResponseBodyVideoList(TeaModel):
         tags: str = None,
         template_group_id: str = None,
         title: str = None,
+        user_data: str = None,
         video_id: str = None,
     ):
         # The ID of the application.
@@ -28342,6 +28354,7 @@ class GetVideoInfosResponseBodyVideoList(TeaModel):
         self.template_group_id = template_group_id
         # The title of the audio or video file.
         self.title = title
+        self.user_data = user_data
         # The ID of the audio or video file.
         self.video_id = video_id
 
@@ -28392,6 +28405,8 @@ class GetVideoInfosResponseBodyVideoList(TeaModel):
             result['TemplateGroupId'] = self.template_group_id
         if self.title is not None:
             result['Title'] = self.title
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         if self.video_id is not None:
             result['VideoId'] = self.video_id
         return result
@@ -28436,6 +28451,8 @@ class GetVideoInfosResponseBodyVideoList(TeaModel):
             self.template_group_id = m.get('TemplateGroupId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         if m.get('VideoId') is not None:
             self.video_id = m.get('VideoId')
         return self
@@ -38368,6 +38385,7 @@ class SubmitTranscodeJobsRequest(TeaModel):
         override_params: str = None,
         pipeline_id: str = None,
         priority: str = None,
+        session_id: str = None,
         template_group_id: str = None,
         user_data: str = None,
         video_id: str = None,
@@ -38392,6 +38410,7 @@ class SubmitTranscodeJobsRequest(TeaModel):
         # 
         # >  This parameter takes effect only on the queued transcoding jobs. The priorities of the in-progress transcoding jobs are not affected.
         self.priority = priority
+        self.session_id = session_id
         # The ID of the transcoding template group that you want to use. To view the template group ID, perform the following operations: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Transcoding Template Groups**.
         # 
         # This parameter is required.
@@ -38424,6 +38443,8 @@ class SubmitTranscodeJobsRequest(TeaModel):
             result['PipelineId'] = self.pipeline_id
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.template_group_id is not None:
             result['TemplateGroupId'] = self.template_group_id
         if self.user_data is not None:
@@ -38442,6 +38463,8 @@ class SubmitTranscodeJobsRequest(TeaModel):
             self.pipeline_id = m.get('PipelineId')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('TemplateGroupId') is not None:
             self.template_group_id = m.get('TemplateGroupId')
         if m.get('UserData') is not None:
@@ -39900,6 +39923,7 @@ class UpdateVideoInfoRequest(TeaModel):
         description: str = None,
         tags: str = None,
         title: str = None,
+        user_data: str = None,
         video_id: str = None,
     ):
         # The ID of the video category.
@@ -39922,6 +39946,7 @@ class UpdateVideoInfoRequest(TeaModel):
         # *   The value can be up to 128 bytes in length.
         # *   The string must be encoded in the UTF-8 format.
         self.title = title
+        self.user_data = user_data
         # The ID of the video.
         # 
         # This parameter is required.
@@ -39946,6 +39971,8 @@ class UpdateVideoInfoRequest(TeaModel):
             result['Tags'] = self.tags
         if self.title is not None:
             result['Title'] = self.title
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         if self.video_id is not None:
             result['VideoId'] = self.video_id
         return result
@@ -39962,6 +39989,8 @@ class UpdateVideoInfoRequest(TeaModel):
             self.tags = m.get('Tags')
         if m.get('Title') is not None:
             self.title = m.get('Title')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         if m.get('VideoId') is not None:
             self.video_id = m.get('VideoId')
         return self
