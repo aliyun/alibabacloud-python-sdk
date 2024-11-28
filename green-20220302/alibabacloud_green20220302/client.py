@@ -769,10 +769,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
         if not UtilClient.is_unset(request.service_parameters):
             query['ServiceParameters'] = request.service_parameters
-        if not UtilClient.is_unset(request.services):
-            query['Services'] = request.services
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -806,10 +806,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
         if not UtilClient.is_unset(request.service_parameters):
             query['ServiceParameters'] = request.service_parameters
-        if not UtilClient.is_unset(request.services):
-            query['Services'] = request.services
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

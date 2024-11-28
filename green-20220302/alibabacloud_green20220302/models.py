@@ -2055,11 +2055,11 @@ class ImageAsyncModerationResponse(TeaModel):
 class ImageBatchModerationRequest(TeaModel):
     def __init__(
         self,
+        service: str = None,
         service_parameters: str = None,
-        services: str = None,
     ):
+        self.service = service
         self.service_parameters = service_parameters
-        self.services = services
 
     def validate(self):
         pass
@@ -2070,18 +2070,18 @@ class ImageBatchModerationRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.service is not None:
+            result['Service'] = self.service
         if self.service_parameters is not None:
             result['ServiceParameters'] = self.service_parameters
-        if self.services is not None:
-            result['Services'] = self.services
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
         if m.get('ServiceParameters') is not None:
             self.service_parameters = m.get('ServiceParameters')
-        if m.get('Services') is not None:
-            self.services = m.get('Services')
         return self
 
 

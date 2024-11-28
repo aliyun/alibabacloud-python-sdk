@@ -1,3 +1,7 @@
+2024-11-28 Version: 2.19.1
+- Update API ImageBatchModeration: add param Service.
+
+
 2024-11-27 Version: 2.19.0
 - Support API ImageBatchModeration.
 
