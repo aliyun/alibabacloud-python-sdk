@@ -99,6 +99,102 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def cancel_coupon_with_options(
+        self,
+        request: agency_20221216_models.CancelCouponRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.CancelCouponResponse:
+        """
+        @summary 作废优惠券
+        
+        @param request: CancelCouponRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCouponResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.coupon_id):
+            query['CouponId'] = request.coupon_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelCoupon',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.CancelCouponResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_coupon_with_options_async(
+        self,
+        request: agency_20221216_models.CancelCouponRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.CancelCouponResponse:
+        """
+        @summary 作废优惠券
+        
+        @param request: CancelCouponRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCouponResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.coupon_id):
+            query['CouponId'] = request.coupon_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelCoupon',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.CancelCouponResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_coupon(
+        self,
+        request: agency_20221216_models.CancelCouponRequest,
+    ) -> agency_20221216_models.CancelCouponResponse:
+        """
+        @summary 作废优惠券
+        
+        @param request: CancelCouponRequest
+        @return: CancelCouponResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_coupon_with_options(request, runtime)
+
+    async def cancel_coupon_async(
+        self,
+        request: agency_20221216_models.CancelCouponRequest,
+    ) -> agency_20221216_models.CancelCouponResponse:
+        """
+        @summary 作废优惠券
+        
+        @param request: CancelCouponRequest
+        @return: CancelCouponResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_coupon_with_options_async(request, runtime)
+
     def cancel_subscription_bill_with_options(
         self,
         request: agency_20221216_models.CancelSubscriptionBillRequest,
@@ -214,6 +310,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_subscription_bill_with_options_async(request, runtime)
+
+    def coupon_approval_status_list_with_options(
+        self,
+        request: agency_20221216_models.CouponApprovalStatusListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.CouponApprovalStatusListResponse:
+        """
+        @summary 优惠券审批状态列表
+        
+        @param request: CouponApprovalStatusListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CouponApprovalStatusListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_status):
+            query['TemplateStatus'] = request.template_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CouponApprovalStatusList',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.CouponApprovalStatusListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def coupon_approval_status_list_with_options_async(
+        self,
+        request: agency_20221216_models.CouponApprovalStatusListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.CouponApprovalStatusListResponse:
+        """
+        @summary 优惠券审批状态列表
+        
+        @param request: CouponApprovalStatusListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CouponApprovalStatusListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_status):
+            query['TemplateStatus'] = request.template_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CouponApprovalStatusList',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.CouponApprovalStatusListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def coupon_approval_status_list(
+        self,
+        request: agency_20221216_models.CouponApprovalStatusListRequest,
+    ) -> agency_20221216_models.CouponApprovalStatusListResponse:
+        """
+        @summary 优惠券审批状态列表
+        
+        @param request: CouponApprovalStatusListRequest
+        @return: CouponApprovalStatusListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.coupon_approval_status_list_with_options(request, runtime)
+
+    async def coupon_approval_status_list_async(
+        self,
+        request: agency_20221216_models.CouponApprovalStatusListRequest,
+    ) -> agency_20221216_models.CouponApprovalStatusListResponse:
+        """
+        @summary 优惠券审批状态列表
+        
+        @param request: CouponApprovalStatusListRequest
+        @return: CouponApprovalStatusListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.coupon_approval_status_list_with_options_async(request, runtime)
 
     def create_coupon_template_with_options(
         self,
@@ -686,6 +894,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.deduct_outstanding_balance_with_options_async(request, runtime)
+
+    def delete_coupon_template_with_options(
+        self,
+        request: agency_20221216_models.DeleteCouponTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.DeleteCouponTemplateResponse:
+        """
+        @summary 作废优惠券模板
+        
+        @param request: DeleteCouponTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCouponTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCouponTemplate',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.DeleteCouponTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_coupon_template_with_options_async(
+        self,
+        request: agency_20221216_models.DeleteCouponTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.DeleteCouponTemplateResponse:
+        """
+        @summary 作废优惠券模板
+        
+        @param request: DeleteCouponTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCouponTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCouponTemplate',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.DeleteCouponTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_coupon_template(
+        self,
+        request: agency_20221216_models.DeleteCouponTemplateRequest,
+    ) -> agency_20221216_models.DeleteCouponTemplateResponse:
+        """
+        @summary 作废优惠券模板
+        
+        @param request: DeleteCouponTemplateRequest
+        @return: DeleteCouponTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_coupon_template_with_options(request, runtime)
+
+    async def delete_coupon_template_async(
+        self,
+        request: agency_20221216_models.DeleteCouponTemplateRequest,
+    ) -> agency_20221216_models.DeleteCouponTemplateResponse:
+        """
+        @summary 作废优惠券模板
+        
+        @param request: DeleteCouponTemplateRequest
+        @return: DeleteCouponTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_coupon_template_with_options_async(request, runtime)
 
     def edit_end_user_status_with_options(
         self,
@@ -1226,6 +1530,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_info_with_options_async(request, runtime)
+
+    def get_coupon_template_detail_with_options(
+        self,
+        request: agency_20221216_models.GetCouponTemplateDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.GetCouponTemplateDetailResponse:
+        """
+        @summary 查询优惠券模板详情
+        
+        @param request: GetCouponTemplateDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCouponTemplateDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCouponTemplateDetail',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCouponTemplateDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_coupon_template_detail_with_options_async(
+        self,
+        request: agency_20221216_models.GetCouponTemplateDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.GetCouponTemplateDetailResponse:
+        """
+        @summary 查询优惠券模板详情
+        
+        @param request: GetCouponTemplateDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCouponTemplateDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCouponTemplateDetail',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCouponTemplateDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_coupon_template_detail(
+        self,
+        request: agency_20221216_models.GetCouponTemplateDetailRequest,
+    ) -> agency_20221216_models.GetCouponTemplateDetailResponse:
+        """
+        @summary 查询优惠券模板详情
+        
+        @param request: GetCouponTemplateDetailRequest
+        @return: GetCouponTemplateDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_coupon_template_detail_with_options(request, runtime)
+
+    async def get_coupon_template_detail_async(
+        self,
+        request: agency_20221216_models.GetCouponTemplateDetailRequest,
+    ) -> agency_20221216_models.GetCouponTemplateDetailResponse:
+        """
+        @summary 查询优惠券模板详情
+        
+        @param request: GetCouponTemplateDetailRequest
+        @return: GetCouponTemplateDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_coupon_template_detail_with_options_async(request, runtime)
 
     def get_coupondeduct_product_code_with_options(
         self,

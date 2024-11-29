@@ -1,3 +1,10 @@
+2024-11-29 Version: 1.6.0
+- Support API CancelCoupon.
+- Support API CouponApprovalStatusList.
+- Support API DeleteCouponTemplate.
+- Support API GetCouponTemplateDetail.
+
+
 2024-11-05 Version: 1.5.1
 - Update API CreateCouponTemplate: update param CouponDescription.
 - Update API CreateCouponTemplate: update param ReasonForApplication.
