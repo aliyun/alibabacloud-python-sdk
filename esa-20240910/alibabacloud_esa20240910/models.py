@@ -5066,6 +5066,199 @@ class CommitRoutineStagingCodeResponse(TeaModel):
         return self
 
 
+class CreateClientCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        csr: str = None,
+        pkey_type: str = None,
+        site_id: int = None,
+        validity_days: int = None,
+    ):
+        self.csr = csr
+        self.pkey_type = pkey_type
+        # This parameter is required.
+        self.site_id = site_id
+        # This parameter is required.
+        self.validity_days = validity_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.csr is not None:
+            result['CSR'] = self.csr
+        if self.pkey_type is not None:
+            result['PkeyType'] = self.pkey_type
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.validity_days is not None:
+            result['ValidityDays'] = self.validity_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CSR') is not None:
+            self.csr = m.get('CSR')
+        if m.get('PkeyType') is not None:
+            self.pkey_type = m.get('PkeyType')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('ValidityDays') is not None:
+            self.validity_days = m.get('ValidityDays')
+        return self
+
+
+class CreateClientCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        cacertificate_id: str = None,
+        certificate: str = None,
+        common_name: str = None,
+        fingerprint_sha_256: str = None,
+        id: str = None,
+        issuer: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        private_key: str = None,
+        request_id: str = None,
+        serial_number: str = None,
+        signature_algorithm: str = None,
+        status: str = None,
+        validity_days: str = None,
+    ):
+        self.cacertificate_id = cacertificate_id
+        self.certificate = certificate
+        self.common_name = common_name
+        self.fingerprint_sha_256 = fingerprint_sha_256
+        self.id = id
+        self.issuer = issuer
+        self.not_after = not_after
+        self.not_before = not_before
+        self.private_key = private_key
+        self.request_id = request_id
+        self.serial_number = serial_number
+        self.signature_algorithm = signature_algorithm
+        self.status = status
+        self.validity_days = validity_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cacertificate_id is not None:
+            result['CACertificateId'] = self.cacertificate_id
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.fingerprint_sha_256 is not None:
+            result['FingerprintSha256'] = self.fingerprint_sha_256
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.private_key is not None:
+            result['PrivateKey'] = self.private_key
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.signature_algorithm is not None:
+            result['SignatureAlgorithm'] = self.signature_algorithm
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.validity_days is not None:
+            result['ValidityDays'] = self.validity_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CACertificateId') is not None:
+            self.cacertificate_id = m.get('CACertificateId')
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('FingerprintSha256') is not None:
+            self.fingerprint_sha_256 = m.get('FingerprintSha256')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('PrivateKey') is not None:
+            self.private_key = m.get('PrivateKey')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('SignatureAlgorithm') is not None:
+            self.signature_algorithm = m.get('SignatureAlgorithm')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ValidityDays') is not None:
+            self.validity_days = m.get('ValidityDays')
+        return self
+
+
+class CreateClientCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateClientCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateClientCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCustomScenePolicyRequest(TeaModel):
     def __init__(
         self,
@@ -9359,24 +9552,62 @@ class CreateSiteFunctionRequestCacheRules(TeaModel):
         user_language: str = None,
     ):
         self.additional_cacheable_ports = additional_cacheable_ports
+        # The browser cache configuration. Valid values:
+        # 
+        # *   no_cache: does not cache resources.
+        # *   follow_origin: follows the origin\\"s cache rule.
+        # *   override_origin: uses a custom cache rule instead of the origin\\"s.
         self.browser_cache_mode = browser_cache_mode
+        # The browser cache TTL. Unit: seconds.
         self.browser_cache_ttl = browser_cache_ttl
+        # The configuration of bypass cache. Valid values:
+        # 
+        # *   cache_all: Responses of all requests are cached.
+        # *   default_cache (default): Resources are cached only based on supported file extensions.
+        # *   bypass_all: All requests bypass the cache component.
         self.bypass_cache = bypass_cache
         self.cache_deception_armor = cache_deception_armor
         self.cache_reserve_eligibility = cache_reserve_eligibility
         self.check_presence_cookie = check_presence_cookie
         self.check_presence_header = check_presence_header
+        # The edge cache configuration. Valid values:
+        # 
+        # *   follow_origin: follows the origin\\"s cache rule. If the origin does not have a cache rule, the default cache rule is used.
+        # *   no-cache: does not cache resources.
+        # *   override_origin: uses a custom cache rule instead of the origin\\"s.
+        # *   follow_origin_bypass: follows the origin\\"s cache rule. If the origin does not have a cache rule, no resources are cached.
         self.edge_cache_mode = edge_cache_mode
+        # The edge cache TTL. Unit: seconds.
         self.edge_cache_ttl = edge_cache_ttl
+        # The status code TTL. Unit: seconds.
         self.edge_status_code_cache_ttl = edge_status_code_cache_ttl
+        # The cookie names and values included in the cache key. Separate multiple combinations with spaces.
         self.include_cookie = include_cookie
+        # The header names and values included in the cache key. Separate multiple combinations with spaces.
         self.include_header = include_header
+        # The parameters to be retained or ignored in the query string. Separate multiple values with spaces.
         self.query_string = query_string
+        # Specifies how to process the query string when cache keys are generated. Valid values:
+        # 
+        # *   ignore_all: ignores the entire query string.
+        # *   exclude_query_string: ignores specified parameters in the query string.
+        # *   reserve_all (default): retains the entire query string.
+        # *   include_query_string: retains specified parameters in the query string.
         self.query_string_mode = query_string_mode
+        # The rule content.
         self.rule = rule
+        # Specifies whether to enable the rule. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
         self.serve_stale = serve_stale
+        # Specifies whether to sort query strings. Valid values:
+        # 
+        # *   on
+        # *   off
         self.sort_query_string_for_cache = sort_query_string_for_cache
         self.user_device_type = user_device_type
         self.user_geo = user_geo
@@ -9496,7 +9727,12 @@ class CreateSiteFunctionRequestCacheTags(TeaModel):
         case_insensitive: str = None,
         tag_name: str = None,
     ):
+        # Specifies whether the matching is not case-sensitive. Valid values:
+        # 
+        # *   on
+        # *   off
         self.case_insensitive = case_insensitive
+        # The name of the custom cache tag.
         self.tag_name = tag_name
 
     def validate(self):
@@ -9528,6 +9764,10 @@ class CreateSiteFunctionRequestCnameFlattening(TeaModel):
         self,
         flatten_mode: str = None,
     ):
+        # The CNAME flattening mode. Valid values:
+        # 
+        # *   flatten_all: flattens all CNAMEs.
+        # *   flatten_all (default): flattens only the root domain.
         self.flatten_mode = flatten_mode
 
     def validate(self):
@@ -9559,10 +9799,24 @@ class CreateSiteFunctionRequestCompressionRules(TeaModel):
         rule_enable: str = None,
         rule_name: str = None,
     ):
+        # Specifies whether to enable Brotli compression. Valid values:
+        # 
+        # *   on
+        # *   off
         self.brotli = brotli
+        # Specifies whether to enable Gzip compression. Valid values:
+        # 
+        # *   on
+        # *   off
         self.gzip = gzip
+        # The rule content.
         self.rule = rule
+        # Specifies whether to enable the rule. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
 
     def validate(self):
@@ -9633,6 +9887,10 @@ class CreateSiteFunctionRequestDevelopmentMode(TeaModel):
         self,
         enable: str = None,
     ):
+        # Specifies whether to enable the development mode. Valid values:
+        # 
+        # *   on
+        # *   off
         self.enable = enable
 
     def validate(self):
@@ -9702,9 +9960,16 @@ class CreateSiteFunctionRequestHttpRequestHeaderModificationRules(TeaModel):
         rule_enable: str = None,
         rule_name: str = None,
     ):
+        # Modifies a request header. You can add, delete, or modify a response header.
         self.request_header_modification = request_header_modification
+        # The rule content.
         self.rule = rule
+        # Specifies whether to enable the rule. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
 
     def validate(self):
@@ -9794,9 +10059,16 @@ class CreateSiteFunctionRequestHttpResponseHeaderModificationRules(TeaModel):
         rule_enable: str = None,
         rule_name: str = None,
     ):
+        # Modifies a response header. You can add, delete, or modify a request header.
         self.response_header_modification = response_header_modification
+        # The rule content.
         self.rule = rule
+        # Specifies whether to enable the rule. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
 
     def validate(self):
@@ -10042,6 +10314,10 @@ class CreateSiteFunctionRequestImageTransform(TeaModel):
         self,
         enable: str = None,
     ):
+        # Specifies whether to enable image transformations. Valid values:
+        # 
+        # *   on
+        # *   off (default)
         self.enable = enable
 
     def validate(self):
@@ -10069,6 +10345,10 @@ class CreateSiteFunctionRequestIpv6(TeaModel):
         self,
         enable: str = None,
     ):
+        # Specifies whether to enable IPv6. Valid values:
+        # 
+        # *   on (default)
+        # *   off
         self.enable = enable
 
     def validate(self):
@@ -10097,7 +10377,15 @@ class CreateSiteFunctionRequestManagedTransforms(TeaModel):
         add_client_geolocation_headers: str = None,
         add_real_client_ip_header: str = None,
     ):
+        # Specifies whether to include the header that indicates the geographical location of a client in an origin request. Valid values:
+        # 
+        # *   on
+        # *   off
         self.add_client_geolocation_headers = add_client_geolocation_headers
+        # Specifies whether to include the "ali-real-client-ip" header that contains the client\\"s real IP address in an origin request. Valid values:
+        # 
+        # *   on
+        # *   off
         self.add_real_client_ip_header = add_real_client_ip_header
 
     def validate(self):
@@ -10198,6 +10486,10 @@ class CreateSiteFunctionRequestOriginProtection(TeaModel):
         self,
         enable: str = None,
     ):
+        # Specifies whether to enable origin protection. Valid values:
+        # 
+        # *   on
+        # *   off
         self.enable = enable
 
     def validate(self):
@@ -10234,15 +10526,29 @@ class CreateSiteFunctionRequestOriginRules(TeaModel):
         rule_enable: str = None,
         rule_name: str = None,
     ):
+        # The hostname that overrides the resolved hostname of an incoming request.
         self.dns_record = dns_record
+        # The Host header in origin requests.
         self.origin_host = origin_host
         self.origin_http_port = origin_http_port
         self.origin_https_port = origin_https_port
+        # The protocol used for origin requests. Valid values:
+        # 
+        # *   http: HTTP.
+        # *   https: HTTPS.
+        # *   follow: follows the protocol used by the client.
         self.origin_scheme = origin_scheme
+        # The SNI in origin requests.
         self.origin_sni = origin_sni
         self.range = range
+        # The rule content.
         self.rule = rule
+        # Specifies whether to enable the rule. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
 
     def validate(self):
@@ -10312,12 +10618,33 @@ class CreateSiteFunctionRequestRedirectRules(TeaModel):
         target_url: str = None,
         type: str = None,
     ):
+        # Specifies whether to retain the query string. Valid values:
+        # 
+        # *   on
+        # *   off
         self.reserve_query_string = reserve_query_string
+        # The rule content.
         self.rule = rule
+        # Specifies whether to enable the rule. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
+        # The response code that you want to use to indicate URL redirection. Valid value:
+        # 
+        # *   301
+        # *   302
+        # *   303
+        # *   307
+        # *   308
         self.status_code = status_code
+        # The destination URL to which requests are redirected.
         self.target_url = target_url
+        # The redirect type. Valid value:
+        # 
+        # *   static
         self.type = type
 
     def validate(self):
@@ -10375,12 +10702,28 @@ class CreateSiteFunctionRequestRewriteUrlRules(TeaModel):
         rule_name: str = None,
         uri: str = None,
     ):
+        # The desired query string to which you want to rewrite the query string in the original request.
         self.query_string = query_string
+        # The query string rewrite method. Valid values:
+        # 
+        # *   static
+        # *   dynamic
         self.rewrite_query_string_type = rewrite_query_string_type
+        # The path rewrite method. Valid values:
+        # 
+        # *   static
+        # *   dynamic
         self.rewrite_uri_type = rewrite_uri_type
+        # The rule content.
         self.rule = rule
+        # Specifies whether to enable the rule. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
+        # The desired URI to which you want to rewrite the path in the original request.
         self.uri = uri
 
     def validate(self):
@@ -10432,6 +10775,10 @@ class CreateSiteFunctionRequestSeoBypass(TeaModel):
         self,
         enable: str = None,
     ):
+        # Specifies whether to enable SEO crawler bypassing. Valid values:
+        # 
+        # *   on
+        # *   off
         self.enable = enable
 
     def validate(self):
@@ -10459,6 +10806,10 @@ class CreateSiteFunctionRequestSiteNameExclusive(TeaModel):
         self,
         enable: str = None,
     ):
+        # Specifies whether to enable site hold. Valid values:
+        # 
+        # *   on
+        # *   off
         self.enable = enable
 
     def validate(self):
@@ -10486,6 +10837,10 @@ class CreateSiteFunctionRequestSitePause(TeaModel):
         self,
         paused: str = None,
     ):
+        # Specifies whether ESA is paused on the website. Valid values:
+        # 
+        # *   true
+        # *   false
         self.paused = paused
 
     def validate(self):
@@ -10565,29 +10920,49 @@ class CreateSiteFunctionRequest(TeaModel):
         tiered_cache: List[CreateSiteFunctionRequestTieredCache] = None,
     ):
         self.cache_reserve = cache_reserve
+        # The cache rules.
         self.cache_rules = cache_rules
+        # The cache tags.
         self.cache_tags = cache_tags
+        # The configuration of CNAME flattening.
         self.cname_flattening = cname_flattening
+        # The configuration of a compression rule.
         self.compression_rules = compression_rules
         self.cross_border_optimization = cross_border_optimization
+        # The configuration of development mode.
         self.development_mode = development_mode
+        # The configuration of a request header modification rule.
         self.http_request_header_modification_rules = http_request_header_modification_rules
+        # The configuration of a response header modification rule.
         self.http_response_header_modification_rules = http_response_header_modification_rules
         self.https_application_configuration = https_application_configuration
         self.https_basic_configuration = https_basic_configuration
+        # The configuration of image transformations.
         self.image_transform = image_transform
+        # The IPv6 configuration.
         self.ipv_6 = ipv_6
+        # The configuration of managed transforms.
         self.managed_transforms = managed_transforms
         self.network_optimization = network_optimization
+        # The configuration of origin protection.
         self.origin_protection = origin_protection
+        # The configuration of an origin rule.
         self.origin_rules = origin_rules
+        # The configuration of a redirect rule.
         self.redirect_rules = redirect_rules
+        # The configuration of a URL rewrite rule.
         self.rewrite_url_rules = rewrite_url_rules
+        # The configuration of SEO crawler bypassing.
         self.seo_bypass = seo_bypass
+        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The configuration of site hold. After this feature is enabled, other accounts cannot add your website domain or its subdomains to ESA.
         self.site_name_exclusive = site_name_exclusive
+        # The configuration of temporarily pausing ESA proxy on the website. If you pause ESA proxy, all requests to the domains in your DNS records go directly to your origin server.
         self.site_pause = site_pause
+        # The version number of the website. You can use this parameter to specify a version of your website to apply the new feature settings. By default, version 0 is used.
         self.site_version = site_version
         self.tiered_cache = tiered_cache
 
@@ -10943,29 +11318,49 @@ class CreateSiteFunctionShrinkRequest(TeaModel):
         tiered_cache_shrink: str = None,
     ):
         self.cache_reserve_shrink = cache_reserve_shrink
+        # The cache rules.
         self.cache_rules_shrink = cache_rules_shrink
+        # The cache tags.
         self.cache_tags_shrink = cache_tags_shrink
+        # The configuration of CNAME flattening.
         self.cname_flattening_shrink = cname_flattening_shrink
+        # The configuration of a compression rule.
         self.compression_rules_shrink = compression_rules_shrink
         self.cross_border_optimization_shrink = cross_border_optimization_shrink
+        # The configuration of development mode.
         self.development_mode_shrink = development_mode_shrink
+        # The configuration of a request header modification rule.
         self.http_request_header_modification_rules_shrink = http_request_header_modification_rules_shrink
+        # The configuration of a response header modification rule.
         self.http_response_header_modification_rules_shrink = http_response_header_modification_rules_shrink
         self.https_application_configuration_shrink = https_application_configuration_shrink
         self.https_basic_configuration_shrink = https_basic_configuration_shrink
+        # The configuration of image transformations.
         self.image_transform_shrink = image_transform_shrink
+        # The IPv6 configuration.
         self.ipv_6shrink = ipv_6shrink
+        # The configuration of managed transforms.
         self.managed_transforms_shrink = managed_transforms_shrink
         self.network_optimization_shrink = network_optimization_shrink
+        # The configuration of origin protection.
         self.origin_protection_shrink = origin_protection_shrink
+        # The configuration of an origin rule.
         self.origin_rules_shrink = origin_rules_shrink
+        # The configuration of a redirect rule.
         self.redirect_rules_shrink = redirect_rules_shrink
+        # The configuration of a URL rewrite rule.
         self.rewrite_url_rules_shrink = rewrite_url_rules_shrink
+        # The configuration of SEO crawler bypassing.
         self.seo_bypass_shrink = seo_bypass_shrink
+        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The configuration of site hold. After this feature is enabled, other accounts cannot add your website domain or its subdomains to ESA.
         self.site_name_exclusive_shrink = site_name_exclusive_shrink
+        # The configuration of temporarily pausing ESA proxy on the website. If you pause ESA proxy, all requests to the domains in your DNS records go directly to your origin server.
         self.site_pause_shrink = site_pause_shrink
+        # The version number of the website. You can use this parameter to specify a version of your website to apply the new feature settings. By default, version 0 is used.
         self.site_version = site_version
         self.tiered_cache_shrink = tiered_cache_shrink
 
@@ -11154,26 +11549,66 @@ class CreateSiteFunctionResponseBodyConfigsCacheRules(TeaModel):
         user_language: str = None,
     ):
         self.additional_cacheable_ports = additional_cacheable_ports
+        # The browser cache configuration. Valid values:
+        # 
+        # *   no_cache: does not cache resources.
+        # *   follow_origin: follows the origin\\"s cache rule.
+        # *   override_origin: uses a custom cache rule instead of the origin\\"s.
         self.browser_cache_mode = browser_cache_mode
+        # The browser cache TTL. Unit: seconds.
         self.browser_cache_ttl = browser_cache_ttl
+        # The configuration of bypass cache. Valid values:
+        # 
+        # *   cache_all: Responses of all requests are cached.
+        # *   default_cache (default): Resources are cached only based on supported file extensions.
+        # *   bypass_all: All requests bypass the cache component.
         self.bypass_cache = bypass_cache
         self.cache_deception_armor = cache_deception_armor
         self.cache_reserve_eligibility = cache_reserve_eligibility
         self.check_presence_cookie = check_presence_cookie
         self.check_presence_header = check_presence_header
+        # The configuration ID.
         self.config_id = config_id
+        # The edge cache configuration. Valid values:
+        # 
+        # *   follow_origin: follows the origin\\"s cache rule. If the origin does not have a cache rule, the default cache rule is used.
+        # *   no-cache: does not cache resources.
+        # *   override_origin: uses a custom cache rule instead of the origin\\"s.
+        # *   follow_origin_bypass: follows the origin\\"s cache rule. If the origin does not have a cache rule, no resources are cached.
         self.edge_cache_mode = edge_cache_mode
+        # The edge cache TTL. Unit: seconds.
         self.edge_cache_ttl = edge_cache_ttl
+        # The status code TTL. Unit: seconds.
         self.edge_status_code_cache_ttl = edge_status_code_cache_ttl
+        # The cookie names and values included in the cache key. Multiple combinations are separated by spaces.
         self.include_cookie = include_cookie
+        # The header names and values included in the cache key. Multiple combinations are separated by spaces.
         self.include_header = include_header
+        # The parameters to be retained or ignored in the query string. Multiple values are separated by spaces.
         self.query_string = query_string
+        # The method to process the query string when cache keys are generated. Valid values:
+        # 
+        # *   ignore_all: ignores the entire query string.
+        # *   exclude_query_string: ignores specified parameters in the query string.
+        # *   reserve_all (default): retains the entire query string.
+        # *   include_query_string: retains specified parameters in the query string.
         self.query_string_mode = query_string_mode
+        # The rule content.
         self.rule = rule
+        # Indicates whether the rule is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
+        # The order in which the rule is executed.
         self.sequence = sequence
         self.serve_stale = serve_stale
+        # Indicates whether query string sorting is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.sort_query_string_for_cache = sort_query_string_for_cache
         self.user_device_type = user_device_type
         self.user_geo = user_geo
@@ -11303,9 +11738,16 @@ class CreateSiteFunctionResponseBodyConfigsCacheTags(TeaModel):
         sequence: str = None,
         tag_name: str = None,
     ):
+        # Specifies whether the matching is not case-sensitive. Valid values:
+        # 
+        # *   on
+        # *   off
         self.case_insensitive = case_insensitive
+        # The configuration ID.
         self.config_id = config_id
+        # The order in which the rule is executed.
         self.sequence = sequence
+        # The name of the custom cache tag.
         self.tag_name = tag_name
 
     def validate(self):
@@ -11390,12 +11832,28 @@ class CreateSiteFunctionResponseBodyConfigsCompressionRules(TeaModel):
         rule_name: str = None,
         sequence: str = None,
     ):
+        # Indicates whether Brotli compression is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.brotli = brotli
+        # The configuration ID.
         self.config_id = config_id
+        # Indicates whether Gzip compression is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.gzip = gzip
+        # The rule content.
         self.rule = rule
+        # Indicates whether the rule is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
+        # The order in which the rule is executed.
         self.sequence = sequence
 
     def validate(self):
@@ -11482,8 +11940,14 @@ class CreateSiteFunctionResponseBodyConfigsDevelopmentMode(TeaModel):
         enable: str = None,
         sequence: str = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # Indicates whether the development mode is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.enable = enable
+        # The order in which the rule is executed.
         self.sequence = sequence
 
     def validate(self):
@@ -11563,11 +12027,20 @@ class CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules(Te
         rule_name: str = None,
         sequence: str = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # Modifies a request header. You can add, delete, or modify a request header.
         self.request_header_modification = request_header_modification
+        # The rule content.
         self.rule = rule
+        # Indicates whether the rule is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
+        # The order in which the rule is executed.
         self.sequence = sequence
 
     def validate(self):
@@ -11667,11 +12140,20 @@ class CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules(T
         rule_name: str = None,
         sequence: str = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # Modifies a response header. You can add, delete, or modify a request header.
         self.response_header_modification = response_header_modification
+        # The rule content.
         self.rule = rule
+        # Indicates whether the rule is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
+        # The order in which the rule is executed.
         self.sequence = sequence
 
     def validate(self):
@@ -11951,8 +12433,15 @@ class CreateSiteFunctionResponseBodyConfigsImageTransform(TeaModel):
         enable: str = None,
         sequence: str = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # Indicates whether the image transformations feature is enabled. Valid values:
+        # 
+        # on
+        # 
+        # off (default)
         self.enable = enable
+        # The order in which the rule is executed.
         self.sequence = sequence
 
     def validate(self):
@@ -11990,8 +12479,15 @@ class CreateSiteFunctionResponseBodyConfigsIpv6(TeaModel):
         enable: str = None,
         sequence: str = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # Indicates whether IPv6 is enabled. Valid values:
+        # 
+        # on (default)
+        # 
+        # off
         self.enable = enable
+        # The order in which the rule is executed.
         self.sequence = sequence
 
     def validate(self):
@@ -12030,9 +12526,19 @@ class CreateSiteFunctionResponseBodyConfigsManagedTransforms(TeaModel):
         config_id: int = None,
         sequence: str = None,
     ):
+        # Indicates whether the header that indicates the geographical location of a client is included in an origin request. Valid values:
+        # 
+        # *   on
+        # *   off
         self.add_client_geolocation_headers = add_client_geolocation_headers
+        # Indicates whether the "ali-real-client-ip" header that contains the client\\"s real IP address is included in an origin request. Valid values:
+        # 
+        # *   on
+        # *   off
         self.add_real_client_ip_header = add_real_client_ip_header
+        # The configuration ID.
         self.config_id = config_id
+        # The order in which the rule is executed.
         self.sequence = sequence
 
     def validate(self):
@@ -12164,17 +12670,33 @@ class CreateSiteFunctionResponseBodyConfigsOriginRules(TeaModel):
         rule_name: str = None,
         sequence: str = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # The hostname that overrides the resolved hostname of an incoming request.
         self.dns_record = dns_record
+        # The Host header in origin requests.
         self.origin_host = origin_host
         self.origin_http_port = origin_http_port
         self.origin_https_port = origin_https_port
+        # The protocol used for origin requests. Valid values:
+        # 
+        # *   http: HTTP.
+        # *   https: HTTPS.
+        # *   follow: follows the protocol used by the client.
         self.origin_scheme = origin_scheme
+        # The SNI in origin requests.
         self.origin_sni = origin_sni
         self.range = range
+        # The rule content.
         self.rule = rule
+        # Indicates whether the rule is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
+        # The order in which the rule is executed.
         self.sequence = sequence
 
     def validate(self):
@@ -12254,14 +12776,37 @@ class CreateSiteFunctionResponseBodyConfigsRedirectRules(TeaModel):
         target_url: str = None,
         type: str = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # Indicates whether the feature of retaining the query string is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.reserve_query_string = reserve_query_string
+        # The rule content.
         self.rule = rule
+        # Indicates whether the rule is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
+        # The order in which the rule is executed.
         self.sequence = sequence
+        # The response code that you want to use to indicate URL redirection. Valid values:
+        # 
+        # *   301
+        # *   302
+        # *   303
+        # *   307
+        # *   308
         self.status_code = status_code
+        # The destination URL to which requests are redirected.
         self.target_url = target_url
+        # The redirect type. Valid value:
+        # 
+        # *   static
         self.type = type
 
     def validate(self):
@@ -12329,14 +12874,32 @@ class CreateSiteFunctionResponseBodyConfigsRewriteUrlRules(TeaModel):
         sequence: str = None,
         uri: str = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # The desired query string to which you want to rewrite the query string in the original request.
         self.query_string = query_string
+        # The query string rewrite method. Valid values:
+        # 
+        # *   static
+        # *   dynamic
         self.rewrite_query_string_type = rewrite_query_string_type
+        # The path rewrite method. Valid values:
+        # 
+        # *   static
+        # *   dynamic
         self.rewrite_uri_type = rewrite_uri_type
+        # The rule content.
         self.rule = rule
+        # Indicates whether the rule is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
+        # The rule name.
         self.rule_name = rule_name
+        # The order in which the rule is executed.
         self.sequence = sequence
+        # The desired URI to which you want to rewrite the path in the original request.
         self.uri = uri
 
     def validate(self):
@@ -12398,8 +12961,14 @@ class CreateSiteFunctionResponseBodyConfigsSeoBypass(TeaModel):
         enable: str = None,
         sequence: str = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # Indicates whether SEO crawler bypassing is enabled. Valid values:
+        # 
+        # *   on
+        # *   off
         self.enable = enable
+        # The order in which the rule is executed.
         self.sequence = sequence
 
     def validate(self):
@@ -12476,8 +13045,14 @@ class CreateSiteFunctionResponseBodyConfigsSitePause(TeaModel):
         paused: str = None,
         sequence: str = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # Indicates whether ESA is paused on the website. Valid values:
+        # 
+        # *   true
+        # *   false
         self.paused = paused
+        # The order in which the rule is executed.
         self.sequence = sequence
 
     def validate(self):
@@ -12574,25 +13149,39 @@ class CreateSiteFunctionResponseBodyConfigs(TeaModel):
         tiered_cache: List[CreateSiteFunctionResponseBodyConfigsTieredCache] = None,
     ):
         self.cache_reserve = cache_reserve
+        # The cache rules.
         self.cache_rules = cache_rules
+        # The cache tags.
         self.cache_tags = cache_tags
         self.cname_flattening = cname_flattening
+        # The configuration of a compression rule.
         self.compression_rules = compression_rules
         self.cross_border_optimization = cross_border_optimization
+        # The configuration of development mode.
         self.development_mode = development_mode
+        # The configuration of a request header modification rule.
         self.http_request_header_modification_rules = http_request_header_modification_rules
+        # The configuration of a response header modification rule.
         self.http_response_header_modification_rules = http_response_header_modification_rules
         self.https_application_configuration = https_application_configuration
         self.https_basic_configuration = https_basic_configuration
+        # The configuration of image transformations.
         self.image_transform = image_transform
+        # The IPv6 configuration.
         self.ipv_6 = ipv_6
+        # The configuration of managed transforms.
         self.managed_transforms = managed_transforms
         self.network_optimization = network_optimization
+        # The configuration of an origin rule.
         self.origin_rules = origin_rules
+        # The configuration of a redirect rule.
         self.redirect_rules = redirect_rules
+        # The configuration of a URL rewrite rule.
         self.rewrite_url_rules = rewrite_url_rules
+        # The configuration of SEO crawler bypassing.
         self.seo_bypass = seo_bypass
         self.site_name_exclusive = site_name_exclusive
+        # The configuration of temporarily pausing ESA proxy on the website. If you pause ESA proxy, all requests to the domains in your DNS records go directly to your origin server.
         self.site_pause = site_pause
         self.tiered_cache = tiered_cache
 
@@ -12903,6 +13492,7 @@ class CreateSiteFunctionResponseBody(TeaModel):
         configs: CreateSiteFunctionResponseBodyConfigs = None,
         request_id: str = None,
     ):
+        # The returned configurations.
         self.configs = configs
         # Id of the request
         self.request_id = request_id
@@ -14906,6 +15496,369 @@ class CreateWaitingRoomRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateWaitingRoomRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+        site_id: int = None,
+        site_name: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+        self.site_id = site_id
+        self.site_name = site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class DeleteCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteClientCaCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteClientCaCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+        site_id: int = None,
+        site_name: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+        self.site_id = site_id
+        self.site_name = site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class DeleteClientCaCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteClientCaCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteClientCaCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteClientCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteClientCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+        site_id: int = None,
+        site_name: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+        self.site_id = site_id
+        self.site_name = site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class DeleteClientCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteClientCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteClientCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19532,6 +20485,660 @@ class GetCacheReserveSpecificationResponse(TeaModel):
         return self
 
 
+class GetCertificateQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        site_id: int = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.site_id = site_id
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetCertificateQuotaResponseBodySiteUsage(TeaModel):
+    def __init__(
+        self,
+        site_id: str = None,
+        site_name: str = None,
+        site_usage: int = None,
+    ):
+        self.site_id = site_id
+        self.site_name = site_name
+        self.site_usage = site_usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.site_usage is not None:
+            result['SiteUsage'] = self.site_usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('SiteUsage') is not None:
+            self.site_usage = m.get('SiteUsage')
+        return self
+
+
+class GetCertificateQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        quota: int = None,
+        quota_usage: int = None,
+        request_id: str = None,
+        site_count: int = None,
+        site_usage: List[GetCertificateQuotaResponseBodySiteUsage] = None,
+        type: str = None,
+    ):
+        self.quota = quota
+        self.quota_usage = quota_usage
+        self.request_id = request_id
+        self.site_count = site_count
+        self.site_usage = site_usage
+        self.type = type
+
+    def validate(self):
+        if self.site_usage:
+            for k in self.site_usage:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.quota is not None:
+            result['Quota'] = self.quota
+        if self.quota_usage is not None:
+            result['QuotaUsage'] = self.quota_usage
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_count is not None:
+            result['SiteCount'] = self.site_count
+        result['SiteUsage'] = []
+        if self.site_usage is not None:
+            for k in self.site_usage:
+                result['SiteUsage'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Quota') is not None:
+            self.quota = m.get('Quota')
+        if m.get('QuotaUsage') is not None:
+            self.quota_usage = m.get('QuotaUsage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteCount') is not None:
+            self.site_count = m.get('SiteCount')
+        self.site_usage = []
+        if m.get('SiteUsage') is not None:
+            for k in m.get('SiteUsage'):
+                temp_model = GetCertificateQuotaResponseBodySiteUsage()
+                self.site_usage.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetCertificateQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCertificateQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCertificateQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetClientCaCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetClientCaCertificateResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        create_time: str = None,
+        id: str = None,
+        issuer: str = None,
+        name: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        pubkey_algorithm: str = None,
+        san: str = None,
+        signature_algorithm: str = None,
+        status: str = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        self.common_name = common_name
+        self.create_time = create_time
+        self.id = id
+        self.issuer = issuer
+        self.name = name
+        self.not_after = not_after
+        self.not_before = not_before
+        self.pubkey_algorithm = pubkey_algorithm
+        self.san = san
+        self.signature_algorithm = signature_algorithm
+        self.status = status
+        self.type = type
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.pubkey_algorithm is not None:
+            result['PubkeyAlgorithm'] = self.pubkey_algorithm
+        if self.san is not None:
+            result['SAN'] = self.san
+        if self.signature_algorithm is not None:
+            result['SignatureAlgorithm'] = self.signature_algorithm
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('PubkeyAlgorithm') is not None:
+            self.pubkey_algorithm = m.get('PubkeyAlgorithm')
+        if m.get('SAN') is not None:
+            self.san = m.get('SAN')
+        if m.get('SignatureAlgorithm') is not None:
+            self.signature_algorithm = m.get('SignatureAlgorithm')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetClientCaCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        certificate: str = None,
+        request_id: str = None,
+        result: GetClientCaCertificateResponseBodyResult = None,
+        site_id: int = None,
+        site_name: str = None,
+        status: str = None,
+    ):
+        self.certificate = certificate
+        self.request_id = request_id
+        self.result = result
+        self.site_id = site_id
+        self.site_name = site_name
+        self.status = status
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetClientCaCertificateResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetClientCaCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetClientCaCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetClientCaCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetClientCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetClientCertificateResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        cacertificate_id: str = None,
+        common_name: str = None,
+        create_time: str = None,
+        id: str = None,
+        issuer: str = None,
+        name: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        pubkey_algorithm: str = None,
+        san: str = None,
+        signature_algorithm: str = None,
+        status: str = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        self.cacertificate_id = cacertificate_id
+        self.common_name = common_name
+        self.create_time = create_time
+        self.id = id
+        self.issuer = issuer
+        self.name = name
+        self.not_after = not_after
+        self.not_before = not_before
+        self.pubkey_algorithm = pubkey_algorithm
+        self.san = san
+        self.signature_algorithm = signature_algorithm
+        self.status = status
+        self.type = type
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cacertificate_id is not None:
+            result['CACertificateId'] = self.cacertificate_id
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.pubkey_algorithm is not None:
+            result['PubkeyAlgorithm'] = self.pubkey_algorithm
+        if self.san is not None:
+            result['SAN'] = self.san
+        if self.signature_algorithm is not None:
+            result['SignatureAlgorithm'] = self.signature_algorithm
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CACertificateId') is not None:
+            self.cacertificate_id = m.get('CACertificateId')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('PubkeyAlgorithm') is not None:
+            self.pubkey_algorithm = m.get('PubkeyAlgorithm')
+        if m.get('SAN') is not None:
+            self.san = m.get('SAN')
+        if m.get('SignatureAlgorithm') is not None:
+            self.signature_algorithm = m.get('SignatureAlgorithm')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetClientCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        certificate: str = None,
+        request_id: str = None,
+        result: GetClientCertificateResponseBodyResult = None,
+        site_id: int = None,
+        site_name: str = None,
+        status: str = None,
+    ):
+        self.certificate = certificate
+        self.request_id = request_id
+        self.result = result
+        self.site_id = site_id
+        self.site_name = site_name
+        self.status = status
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetClientCertificateResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetClientCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetClientCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetClientCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetEdgeContainerAppRequest(TeaModel):
     def __init__(
         self,
@@ -22750,6 +24357,8 @@ class GetRecordRequest(TeaModel):
         self,
         record_id: int = None,
     ):
+        # The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
+        # 
         # This parameter is required.
         self.record_id = record_id
 
@@ -22782,10 +24391,25 @@ class GetRecordResponseBodyRecordModelAuthConf(TeaModel):
         secret_key: str = None,
         version: str = None,
     ):
+        # The access key ID of the account to which the origin server belongs. This parameter is returned if the origin type is OSS and AuthType is set to private_cross_account, or the origin type is S3 and AuthType is set to private.
         self.access_key = access_key
+        # The authentication type of the origin server. Different origins support different authentication types. The origin type refers to the SourceType parameter in this operation. This parameter is returned if the origin type is OSS or S3Valid values:
+        # 
+        # *   **public**: public read. This value is returned when the origin is a public OSS or S3 bucket.
+        # *   **private**: private read. This value is returned when the origin is a private S3 bucket.
+        # *   **private_same_account**: private read in the same account. This value is returned when the origin is a private OSS bucket in your account.
+        # *   **private_cross_account**: private read across accounts. This value is returned when the origin is a private OSS bucket in a different Alibaba Cloud account.
         self.auth_type = auth_type
+        # The region of the origin. If the origin type is S3, you must specify this value. You can obtain the region information from the official website of S3.
         self.region = region
+        # The secret access key of the account to which the origin server belongs. This parameter is returned if the origin type is OSS and AuthType is set to private_cross_account, or the origin type is S3 and AuthType is set to private.SecretKey
         self.secret_key = secret_key
+        # The version of the signature algorithm. This parameter is returned when the origin type is S3 and AuthType is private. The following two types are supported:
+        # 
+        # *   **v2**\
+        # *   **v4**\
+        # 
+        # If this parameter is left empty, the default value v4 is used.
         self.version = version
 
     def validate(self):
@@ -22842,19 +24466,42 @@ class GetRecordResponseBodyRecordModelData(TeaModel):
         value: str = None,
         weight: int = None,
     ):
+        # The encryption algorithm used for the record, specified within the range from 0 to 255. This parameter is required when you add CERT or SSHFP records.
         self.algorithm = algorithm
+        # The public key of the certificate. This parameter is required when you add CERT, SMIMEA, or TLSA records.
         self.certificate = certificate
+        # The public key fingerprint of the record. This parameter is required when you add a SSHFP record.
         self.fingerprint = fingerprint
+        # The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed, specified within the range of 0 to 255. This parameter is required when you add a CAA record.
         self.flag = flag
+        # The public key identification for the record. Valid values: 0 to 65535. This parameter is required when you add a CAA record.
         self.key_tag = key_tag
+        # The algorithm policy used to match or validate the certificate, specified within the range 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
         self.matching_type = matching_type
+        # The port of the record. Valid values: 0 to 65535. This parameter is required when you add an SRV record.
         self.port = port
+        # The priority of the record. Valid values: 0 to 65535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
         self.priority = priority
+        # The type of the certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
         self.selector = selector
+        # The tag of the record. The Tag of a CAA record indicate its specific type and usage.
         self.tag = tag
+        # The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
         self.type = type
+        # The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
         self.usage = usage
+        # The record value or part of the record content. This parameter is returned when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records.
+        # 
+        # *   **A/AAAA**: the IP address. Multiple IP addresses are separated with commas (,). There is at least one IPv4 address.
+        # *   **CNAME**: the target domain name.
+        # *   **NS**: the nameserver for the domain name.
+        # *   **MX**: a valid domain name of the target mail server.
+        # *   **TXT**: a valid text string.
+        # *   **CAA**: a valid domain name of the certificate authority.
+        # *   **SRV**: a valid domain name of the target host.
+        # *   **URI**: a valid URI string.
         self.value = value
+        # The weight of the record, specified within the range of 0 to 65535. This parameter is required when you add SRV or URI records.
         self.weight = weight
 
     def validate(self):
@@ -22949,21 +24596,55 @@ class GetRecordResponseBodyRecordModel(TeaModel):
         ttl: int = None,
         update_time: str = None,
     ):
+        # The origin authentication information of the CNAME record.
         self.auth_conf = auth_conf
+        # The business scenario of the record for acceleration. Leave this parameter empty if your record is not proxied. Valid values:
+        # 
+        # *   **image_video**\
+        # *   **api**\
+        # *   **web**\
         self.biz_name = biz_name
+        # The comments of the record.
         self.comment = comment
+        # The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The DNS record information. The content returned by this parameter varies based on the record type.
         self.data = data
+        # The origin host policy. This policy takes effect when the record type is CNAME. Valid values:
+        # 
+        # *   follow_hostname: matches the requested domain name.
+        # *   follow_origin_domain: matches the origin\\"s domain name.
         self.host_policy = host_policy
+        # Indicates whether the record is proxied. Only CNAME and A/AAAA records can be proxied. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.proxied = proxied
+        # The CNAME. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
         self.record_cname = record_cname
+        # The record ID.
         self.record_id = record_id
+        # The record name.
         self.record_name = record_name
+        # The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+        # 
+        # *   **OSS**: OSS bucket.
+        # *   **S3**: S3 bucket.
+        # *   **LB**: load balancer.
+        # *   **OP**: origin pool.
+        # *   **Domain**: domain name.
+        # 
+        # If you do not pass this parameter or if you leave its value empty, Domain is returned by default.
         self.record_source_type = record_source_type
+        # The type of the DNS record, such as **A/AAAA, CNAME, and TXT**.
         self.record_type = record_type
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         self.ttl = ttl
+        # The time when the record was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -23057,8 +24738,9 @@ class GetRecordResponseBody(TeaModel):
         record_model: GetRecordResponseBodyRecordModel = None,
         request_id: str = None,
     ):
+        # The information about the queried record.
         self.record_model = record_model
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25027,7 +26709,7 @@ class GetUploadTaskRequest(TeaModel):
     ):
         # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
-        # The ID of the file upload task. This field is assigned after you call the [UploadFile](https://help.aliyun.com/document_detail/435925.html) operation.
+        # The ID of the file upload task. This field is assigned after you call the [UploadFile](https://help.aliyun.com/document_detail/2850466.html) operation.
         self.upload_id = upload_id
 
     def validate(self):
@@ -26965,6 +28647,371 @@ class ListCacheReserveInstancesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCacheReserveInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCiphersRequest(TeaModel):
+    def __init__(
+        self,
+        ciphers_group: str = None,
+    ):
+        # This parameter is required.
+        self.ciphers_group = ciphers_group
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ciphers_group is not None:
+            result['CiphersGroup'] = self.ciphers_group
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CiphersGroup') is not None:
+            self.ciphers_group = m.get('CiphersGroup')
+        return self
+
+
+class ListCiphersResponseBody(TeaModel):
+    def __init__(
+        self,
+        ciphers_group: str = None,
+        request_id: str = None,
+        result: List[str] = None,
+        total_count: int = None,
+    ):
+        self.ciphers_group = ciphers_group
+        self.request_id = request_id
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ciphers_group is not None:
+            result['CiphersGroup'] = self.ciphers_group
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CiphersGroup') is not None:
+            self.ciphers_group = m.get('CiphersGroup')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCiphersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCiphersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCiphersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListClientCaCertificatesRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        site_id: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class ListClientCaCertificatesResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        create_time: str = None,
+        id: str = None,
+        issuer: str = None,
+        name: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        pubkey_algorithm: str = None,
+        san: str = None,
+        signature_algorithm: str = None,
+        status: str = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        self.common_name = common_name
+        self.create_time = create_time
+        self.id = id
+        self.issuer = issuer
+        self.name = name
+        self.not_after = not_after
+        self.not_before = not_before
+        self.pubkey_algorithm = pubkey_algorithm
+        self.san = san
+        self.signature_algorithm = signature_algorithm
+        self.status = status
+        self.type = type
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.pubkey_algorithm is not None:
+            result['PubkeyAlgorithm'] = self.pubkey_algorithm
+        if self.san is not None:
+            result['SAN'] = self.san
+        if self.signature_algorithm is not None:
+            result['SignatureAlgorithm'] = self.signature_algorithm
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('PubkeyAlgorithm') is not None:
+            self.pubkey_algorithm = m.get('PubkeyAlgorithm')
+        if m.get('SAN') is not None:
+            self.san = m.get('SAN')
+        if m.get('SignatureAlgorithm') is not None:
+            self.signature_algorithm = m.get('SignatureAlgorithm')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListClientCaCertificatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        result: List[ListClientCaCertificatesResponseBodyResult] = None,
+        site_id: int = None,
+        site_name: str = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.result = result
+        self.site_id = site_id
+        self.site_name = site_name
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ListClientCaCertificatesResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListClientCaCertificatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListClientCaCertificatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListClientCaCertificatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -34236,6 +36283,7 @@ class ListSitesRequest(TeaModel):
         access_type: str = None,
         coverage: str = None,
         only_enterprise: bool = None,
+        order_by: str = None,
         page_number: int = None,
         page_size: int = None,
         plan_subscribe_type: str = None,
@@ -34258,6 +36306,7 @@ class ListSitesRequest(TeaModel):
         self.coverage = coverage
         # Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
         self.only_enterprise = only_enterprise
+        self.order_by = order_by
         # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Default value: **500**.
@@ -34303,6 +36352,8 @@ class ListSitesRequest(TeaModel):
             result['Coverage'] = self.coverage
         if self.only_enterprise is not None:
             result['OnlyEnterprise'] = self.only_enterprise
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -34331,6 +36382,8 @@ class ListSitesRequest(TeaModel):
             self.coverage = m.get('Coverage')
         if m.get('OnlyEnterprise') is not None:
             self.only_enterprise = m.get('OnlyEnterprise')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -34359,6 +36412,7 @@ class ListSitesShrinkRequest(TeaModel):
         access_type: str = None,
         coverage: str = None,
         only_enterprise: bool = None,
+        order_by: str = None,
         page_number: int = None,
         page_size: int = None,
         plan_subscribe_type: str = None,
@@ -34381,6 +36435,7 @@ class ListSitesShrinkRequest(TeaModel):
         self.coverage = coverage
         # Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
         self.only_enterprise = only_enterprise
+        self.order_by = order_by
         # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Default value: **500**.
@@ -34423,6 +36478,8 @@ class ListSitesShrinkRequest(TeaModel):
             result['Coverage'] = self.coverage
         if self.only_enterprise is not None:
             result['OnlyEnterprise'] = self.only_enterprise
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -34449,6 +36506,8 @@ class ListSitesShrinkRequest(TeaModel):
             self.coverage = m.get('Coverage')
         if m.get('OnlyEnterprise') is not None:
             self.only_enterprise = m.get('OnlyEnterprise')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -34486,6 +36545,7 @@ class ListSitesResponseBodySites(TeaModel):
         tags: Dict[str, Any] = None,
         update_time: str = None,
         verify_code: str = None,
+        visit_time: str = None,
     ):
         # The DNS setup for the website. Valid values:
         # 
@@ -34529,6 +36589,7 @@ class ListSitesResponseBodySites(TeaModel):
         self.update_time = update_time
         # The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
         self.verify_code = verify_code
+        self.visit_time = visit_time
 
     def validate(self):
         pass
@@ -34569,6 +36630,8 @@ class ListSitesResponseBodySites(TeaModel):
             result['UpdateTime'] = self.update_time
         if self.verify_code is not None:
             result['VerifyCode'] = self.verify_code
+        if self.visit_time is not None:
+            result['VisitTime'] = self.visit_time
         return result
 
     def from_map(self, m: dict = None):
@@ -34603,6 +36666,8 @@ class ListSitesResponseBodySites(TeaModel):
             self.update_time = m.get('UpdateTime')
         if m.get('VerifyCode') is not None:
             self.verify_code = m.get('VerifyCode')
+        if m.get('VisitTime') is not None:
+            self.visit_time = m.get('VisitTime')
         return self
 
 
@@ -35422,6 +37487,7 @@ class ListUserRatePlanInstancesRequest(TeaModel):
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        remaining_expire_days: int = None,
         sort_by: str = None,
         sort_order: str = None,
         status: str = None,
@@ -35437,6 +37503,7 @@ class ListUserRatePlanInstancesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
+        self.remaining_expire_days = remaining_expire_days
         # The sorting field. By default, the queried plans are sorted by purchase time. Valid values:
         # 
         # *   CreateTime: the time when the plans were purchased.
@@ -35472,6 +37539,8 @@ class ListUserRatePlanInstancesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.remaining_expire_days is not None:
+            result['RemainingExpireDays'] = self.remaining_expire_days
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.sort_order is not None:
@@ -35490,6 +37559,8 @@ class ListUserRatePlanInstancesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RemainingExpireDays') is not None:
+            self.remaining_expire_days = m.get('RemainingExpireDays')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('SortOrder') is not None:
@@ -40087,6 +42158,127 @@ class ResetScheduledPreloadJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ResetScheduledPreloadJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RevokeClientCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class RevokeClientCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+        site_id: int = None,
+        site_name: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+        self.site_id = site_id
+        self.site_name = site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class RevokeClientCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RevokeClientCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RevokeClientCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -46783,6 +48975,175 @@ class UpdateWaitingRoomRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateWaitingRoomRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadClientCaCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        certificate: str = None,
+        name: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.certificate = certificate
+        self.name = name
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UploadClientCaCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        fingerprint_sha_256: str = None,
+        id: str = None,
+        issuer: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        request_id: str = None,
+        serial_number: str = None,
+        signature_algorithm: str = None,
+        status: str = None,
+        validity_days: str = None,
+    ):
+        self.common_name = common_name
+        self.fingerprint_sha_256 = fingerprint_sha_256
+        self.id = id
+        self.issuer = issuer
+        self.not_after = not_after
+        self.not_before = not_before
+        self.request_id = request_id
+        self.serial_number = serial_number
+        self.signature_algorithm = signature_algorithm
+        self.status = status
+        self.validity_days = validity_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.fingerprint_sha_256 is not None:
+            result['FingerprintSha256'] = self.fingerprint_sha_256
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.signature_algorithm is not None:
+            result['SignatureAlgorithm'] = self.signature_algorithm
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.validity_days is not None:
+            result['ValidityDays'] = self.validity_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('FingerprintSha256') is not None:
+            self.fingerprint_sha_256 = m.get('FingerprintSha256')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('SignatureAlgorithm') is not None:
+            self.signature_algorithm = m.get('SignatureAlgorithm')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ValidityDays') is not None:
+            self.validity_days = m.get('ValidityDays')
+        return self
+
+
+class UploadClientCaCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UploadClientCaCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UploadClientCaCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

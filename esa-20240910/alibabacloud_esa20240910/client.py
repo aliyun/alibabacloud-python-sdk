@@ -2275,6 +2275,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.commit_routine_staging_code_with_options_async(request, runtime)
 
+    def create_client_certificate_with_options(
+        self,
+        request: esa20240910_models.CreateClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateClientCertificateResponse:
+        """
+        @summary 创建客户端证书
+        
+        @param request: CreateClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        body = {}
+        if not UtilClient.is_unset(request.csr):
+            body['CSR'] = request.csr
+        if not UtilClient.is_unset(request.pkey_type):
+            body['PkeyType'] = request.pkey_type
+        if not UtilClient.is_unset(request.validity_days):
+            body['ValidityDays'] = request.validity_days
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateClientCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_client_certificate_with_options_async(
+        self,
+        request: esa20240910_models.CreateClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateClientCertificateResponse:
+        """
+        @summary 创建客户端证书
+        
+        @param request: CreateClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        body = {}
+        if not UtilClient.is_unset(request.csr):
+            body['CSR'] = request.csr
+        if not UtilClient.is_unset(request.pkey_type):
+            body['PkeyType'] = request.pkey_type
+        if not UtilClient.is_unset(request.validity_days):
+            body['ValidityDays'] = request.validity_days
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateClientCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_client_certificate(
+        self,
+        request: esa20240910_models.CreateClientCertificateRequest,
+    ) -> esa20240910_models.CreateClientCertificateResponse:
+        """
+        @summary 创建客户端证书
+        
+        @param request: CreateClientCertificateRequest
+        @return: CreateClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_client_certificate_with_options(request, runtime)
+
+    async def create_client_certificate_async(
+        self,
+        request: esa20240910_models.CreateClientCertificateRequest,
+    ) -> esa20240910_models.CreateClientCertificateResponse:
+        """
+        @summary 创建客户端证书
+        
+        @param request: CreateClientCertificateRequest
+        @return: CreateClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_client_certificate_with_options_async(request, runtime)
+
     def create_custom_scene_policy_with_options(
         self,
         request: esa20240910_models.CreateCustomScenePolicyRequest,
@@ -4293,7 +4405,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateSiteFunctionResponse:
         """
-        @summary 新增站点功能配置
+        @summary Configures one or more feature settings for a website.
+        
+        @description This API operation is used the first time you configure feature settings for your website. To modify existing feature settings, call the UpdateSiteFunction operation.
         
         @param tmp_req: CreateSiteFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4424,7 +4538,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateSiteFunctionResponse:
         """
-        @summary 新增站点功能配置
+        @summary Configures one or more feature settings for a website.
+        
+        @description This API operation is used the first time you configure feature settings for your website. To modify existing feature settings, call the UpdateSiteFunction operation.
         
         @param tmp_req: CreateSiteFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4554,7 +4670,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateSiteFunctionRequest,
     ) -> esa20240910_models.CreateSiteFunctionResponse:
         """
-        @summary 新增站点功能配置
+        @summary Configures one or more feature settings for a website.
+        
+        @description This API operation is used the first time you configure feature settings for your website. To modify existing feature settings, call the UpdateSiteFunction operation.
         
         @param request: CreateSiteFunctionRequest
         @return: CreateSiteFunctionResponse
@@ -4567,7 +4685,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateSiteFunctionRequest,
     ) -> esa20240910_models.CreateSiteFunctionResponse:
         """
-        @summary 新增站点功能配置
+        @summary Configures one or more feature settings for a website.
+        
+        @description This API operation is used the first time you configure feature settings for your website. To modify existing feature settings, call the UpdateSiteFunction operation.
         
         @param request: CreateSiteFunctionRequest
         @return: CreateSiteFunctionResponse
@@ -5346,6 +5466,282 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_waiting_room_rule_with_options_async(request, runtime)
+
+    def delete_certificate_with_options(
+        self,
+        request: esa20240910_models.DeleteCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteCertificateResponse:
+        """
+        @summary 删除证书
+        
+        @param request: DeleteCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_certificate_with_options_async(
+        self,
+        request: esa20240910_models.DeleteCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteCertificateResponse:
+        """
+        @summary 删除证书
+        
+        @param request: DeleteCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_certificate(
+        self,
+        request: esa20240910_models.DeleteCertificateRequest,
+    ) -> esa20240910_models.DeleteCertificateResponse:
+        """
+        @summary 删除证书
+        
+        @param request: DeleteCertificateRequest
+        @return: DeleteCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_certificate_with_options(request, runtime)
+
+    async def delete_certificate_async(
+        self,
+        request: esa20240910_models.DeleteCertificateRequest,
+    ) -> esa20240910_models.DeleteCertificateResponse:
+        """
+        @summary 删除证书
+        
+        @param request: DeleteCertificateRequest
+        @return: DeleteCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_certificate_with_options_async(request, runtime)
+
+    def delete_client_ca_certificate_with_options(
+        self,
+        request: esa20240910_models.DeleteClientCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteClientCaCertificateResponse:
+        """
+        @summary 删除客户端CA证书
+        
+        @param request: DeleteClientCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClientCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteClientCaCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteClientCaCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_client_ca_certificate_with_options_async(
+        self,
+        request: esa20240910_models.DeleteClientCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteClientCaCertificateResponse:
+        """
+        @summary 删除客户端CA证书
+        
+        @param request: DeleteClientCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClientCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteClientCaCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteClientCaCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_client_ca_certificate(
+        self,
+        request: esa20240910_models.DeleteClientCaCertificateRequest,
+    ) -> esa20240910_models.DeleteClientCaCertificateResponse:
+        """
+        @summary 删除客户端CA证书
+        
+        @param request: DeleteClientCaCertificateRequest
+        @return: DeleteClientCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_client_ca_certificate_with_options(request, runtime)
+
+    async def delete_client_ca_certificate_async(
+        self,
+        request: esa20240910_models.DeleteClientCaCertificateRequest,
+    ) -> esa20240910_models.DeleteClientCaCertificateResponse:
+        """
+        @summary 删除客户端CA证书
+        
+        @param request: DeleteClientCaCertificateRequest
+        @return: DeleteClientCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_client_ca_certificate_with_options_async(request, runtime)
+
+    def delete_client_certificate_with_options(
+        self,
+        request: esa20240910_models.DeleteClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteClientCertificateResponse:
+        """
+        @summary 删除客户端证书
+        
+        @param request: DeleteClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteClientCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_client_certificate_with_options_async(
+        self,
+        request: esa20240910_models.DeleteClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteClientCertificateResponse:
+        """
+        @summary 删除客户端证书
+        
+        @param request: DeleteClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteClientCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_client_certificate(
+        self,
+        request: esa20240910_models.DeleteClientCertificateRequest,
+    ) -> esa20240910_models.DeleteClientCertificateResponse:
+        """
+        @summary 删除客户端证书
+        
+        @param request: DeleteClientCertificateRequest
+        @return: DeleteClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_client_certificate_with_options(request, runtime)
+
+    async def delete_client_certificate_async(
+        self,
+        request: esa20240910_models.DeleteClientCertificateRequest,
+    ) -> esa20240910_models.DeleteClientCertificateResponse:
+        """
+        @summary 删除客户端证书
+        
+        @param request: DeleteClientCertificateRequest
+        @return: DeleteClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_client_certificate_with_options_async(request, runtime)
 
     def delete_custom_scene_policy_with_options(
         self,
@@ -9003,6 +9399,282 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_cache_reserve_specification_with_options_async(runtime)
 
+    def get_certificate_quota_with_options(
+        self,
+        request: esa20240910_models.GetCertificateQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetCertificateQuotaResponse:
+        """
+        @summary 查询证书quota及用量
+        
+        @param request: GetCertificateQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCertificateQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCertificateQuota',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetCertificateQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_certificate_quota_with_options_async(
+        self,
+        request: esa20240910_models.GetCertificateQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetCertificateQuotaResponse:
+        """
+        @summary 查询证书quota及用量
+        
+        @param request: GetCertificateQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCertificateQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCertificateQuota',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetCertificateQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_certificate_quota(
+        self,
+        request: esa20240910_models.GetCertificateQuotaRequest,
+    ) -> esa20240910_models.GetCertificateQuotaResponse:
+        """
+        @summary 查询证书quota及用量
+        
+        @param request: GetCertificateQuotaRequest
+        @return: GetCertificateQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_certificate_quota_with_options(request, runtime)
+
+    async def get_certificate_quota_async(
+        self,
+        request: esa20240910_models.GetCertificateQuotaRequest,
+    ) -> esa20240910_models.GetCertificateQuotaResponse:
+        """
+        @summary 查询证书quota及用量
+        
+        @param request: GetCertificateQuotaRequest
+        @return: GetCertificateQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_certificate_quota_with_options_async(request, runtime)
+
+    def get_client_ca_certificate_with_options(
+        self,
+        request: esa20240910_models.GetClientCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetClientCaCertificateResponse:
+        """
+        @summary 获取客户端CA证书信息
+        
+        @param request: GetClientCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClientCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientCaCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetClientCaCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_client_ca_certificate_with_options_async(
+        self,
+        request: esa20240910_models.GetClientCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetClientCaCertificateResponse:
+        """
+        @summary 获取客户端CA证书信息
+        
+        @param request: GetClientCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClientCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientCaCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetClientCaCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_client_ca_certificate(
+        self,
+        request: esa20240910_models.GetClientCaCertificateRequest,
+    ) -> esa20240910_models.GetClientCaCertificateResponse:
+        """
+        @summary 获取客户端CA证书信息
+        
+        @param request: GetClientCaCertificateRequest
+        @return: GetClientCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_client_ca_certificate_with_options(request, runtime)
+
+    async def get_client_ca_certificate_async(
+        self,
+        request: esa20240910_models.GetClientCaCertificateRequest,
+    ) -> esa20240910_models.GetClientCaCertificateResponse:
+        """
+        @summary 获取客户端CA证书信息
+        
+        @param request: GetClientCaCertificateRequest
+        @return: GetClientCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_client_ca_certificate_with_options_async(request, runtime)
+
+    def get_client_certificate_with_options(
+        self,
+        request: esa20240910_models.GetClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetClientCertificateResponse:
+        """
+        @summary 获取客户端证书以及证书信息
+        
+        @param request: GetClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetClientCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_client_certificate_with_options_async(
+        self,
+        request: esa20240910_models.GetClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetClientCertificateResponse:
+        """
+        @summary 获取客户端证书以及证书信息
+        
+        @param request: GetClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetClientCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_client_certificate(
+        self,
+        request: esa20240910_models.GetClientCertificateRequest,
+    ) -> esa20240910_models.GetClientCertificateResponse:
+        """
+        @summary 获取客户端证书以及证书信息
+        
+        @param request: GetClientCertificateRequest
+        @return: GetClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_client_certificate_with_options(request, runtime)
+
+    async def get_client_certificate_async(
+        self,
+        request: esa20240910_models.GetClientCertificateRequest,
+    ) -> esa20240910_models.GetClientCertificateResponse:
+        """
+        @summary 获取客户端证书以及证书信息
+        
+        @param request: GetClientCertificateRequest
+        @return: GetClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_client_certificate_with_options_async(request, runtime)
+
     def get_edge_container_app_with_options(
         self,
         request: esa20240910_models.GetEdgeContainerAppRequest,
@@ -10487,7 +11159,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRecordResponse:
         """
-        @summary 查询单个记录信息
+        @summary Queries the configuration of a single DNS record, such as the record value, priority, and origin authentication setting (exclusive to CNAME records).
         
         @param request: GetRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10520,7 +11192,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRecordResponse:
         """
-        @summary 查询单个记录信息
+        @summary Queries the configuration of a single DNS record, such as the record value, priority, and origin authentication setting (exclusive to CNAME records).
         
         @param request: GetRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10552,7 +11224,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRecordRequest,
     ) -> esa20240910_models.GetRecordResponse:
         """
-        @summary 查询单个记录信息
+        @summary Queries the configuration of a single DNS record, such as the record value, priority, and origin authentication setting (exclusive to CNAME records).
         
         @param request: GetRecordRequest
         @return: GetRecordResponse
@@ -10565,7 +11237,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRecordRequest,
     ) -> esa20240910_models.GetRecordResponse:
         """
-        @summary 查询单个记录信息
+        @summary Queries the configuration of a single DNS record, such as the record value, priority, and origin authentication setting (exclusive to CNAME records).
         
         @param request: GetRecordRequest
         @return: GetRecordResponse
@@ -12502,6 +13174,190 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_cache_reserve_instances_with_options_async(request, runtime)
+
+    def list_ciphers_with_options(
+        self,
+        request: esa20240910_models.ListCiphersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListCiphersResponse:
+        """
+        @summary 查询TLS密码套件列表
+        
+        @param request: ListCiphersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCiphersResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCiphers',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListCiphersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ciphers_with_options_async(
+        self,
+        request: esa20240910_models.ListCiphersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListCiphersResponse:
+        """
+        @summary 查询TLS密码套件列表
+        
+        @param request: ListCiphersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCiphersResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCiphers',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListCiphersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ciphers(
+        self,
+        request: esa20240910_models.ListCiphersRequest,
+    ) -> esa20240910_models.ListCiphersResponse:
+        """
+        @summary 查询TLS密码套件列表
+        
+        @param request: ListCiphersRequest
+        @return: ListCiphersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_ciphers_with_options(request, runtime)
+
+    async def list_ciphers_async(
+        self,
+        request: esa20240910_models.ListCiphersRequest,
+    ) -> esa20240910_models.ListCiphersResponse:
+        """
+        @summary 查询TLS密码套件列表
+        
+        @param request: ListCiphersRequest
+        @return: ListCiphersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_ciphers_with_options_async(request, runtime)
+
+    def list_client_ca_certificates_with_options(
+        self,
+        request: esa20240910_models.ListClientCaCertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListClientCaCertificatesResponse:
+        """
+        @summary 查询站点下客户端CA证书列表
+        
+        @param request: ListClientCaCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClientCaCertificatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClientCaCertificates',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListClientCaCertificatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_client_ca_certificates_with_options_async(
+        self,
+        request: esa20240910_models.ListClientCaCertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListClientCaCertificatesResponse:
+        """
+        @summary 查询站点下客户端CA证书列表
+        
+        @param request: ListClientCaCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClientCaCertificatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClientCaCertificates',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListClientCaCertificatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_client_ca_certificates(
+        self,
+        request: esa20240910_models.ListClientCaCertificatesRequest,
+    ) -> esa20240910_models.ListClientCaCertificatesResponse:
+        """
+        @summary 查询站点下客户端CA证书列表
+        
+        @param request: ListClientCaCertificatesRequest
+        @return: ListClientCaCertificatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_client_ca_certificates_with_options(request, runtime)
+
+    async def list_client_ca_certificates_async(
+        self,
+        request: esa20240910_models.ListClientCaCertificatesRequest,
+    ) -> esa20240910_models.ListClientCaCertificatesResponse:
+        """
+        @summary 查询站点下客户端CA证书列表
+        
+        @param request: ListClientCaCertificatesRequest
+        @return: ListClientCaCertificatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_client_ca_certificates_with_options_async(request, runtime)
 
     def list_client_certificates_with_options(
         self,
@@ -17169,6 +18025,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reset_scheduled_preload_job_with_options_async(request, runtime)
 
+    def revoke_client_certificate_with_options(
+        self,
+        request: esa20240910_models.RevokeClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.RevokeClientCertificateResponse:
+        """
+        @summary 吊销客户端证书
+        
+        @param request: RevokeClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.RevokeClientCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_client_certificate_with_options_async(
+        self,
+        request: esa20240910_models.RevokeClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.RevokeClientCertificateResponse:
+        """
+        @summary 吊销客户端证书
+        
+        @param request: RevokeClientCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeClientCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeClientCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.RevokeClientCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_client_certificate(
+        self,
+        request: esa20240910_models.RevokeClientCertificateRequest,
+    ) -> esa20240910_models.RevokeClientCertificateResponse:
+        """
+        @summary 吊销客户端证书
+        
+        @param request: RevokeClientCertificateRequest
+        @return: RevokeClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.revoke_client_certificate_with_options(request, runtime)
+
+    async def revoke_client_certificate_async(
+        self,
+        request: esa20240910_models.RevokeClientCertificateRequest,
+    ) -> esa20240910_models.RevokeClientCertificateResponse:
+        """
+        @summary 吊销客户端证书
+        
+        @param request: RevokeClientCertificateRequest
+        @return: RevokeClientCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.revoke_client_certificate_with_options_async(request, runtime)
+
     def rollback_edge_container_app_version_with_options(
         self,
         request: esa20240910_models.RollbackEdgeContainerAppVersionRequest,
@@ -20697,6 +21645,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_waiting_room_rule_with_options_async(request, runtime)
 
+    def upload_client_ca_certificate_with_options(
+        self,
+        request: esa20240910_models.UploadClientCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UploadClientCaCertificateResponse:
+        """
+        @summary 上传客户端CA证书
+        
+        @param request: UploadClientCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadClientCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        body = {}
+        if not UtilClient.is_unset(request.certificate):
+            body['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadClientCaCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UploadClientCaCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_client_ca_certificate_with_options_async(
+        self,
+        request: esa20240910_models.UploadClientCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UploadClientCaCertificateResponse:
+        """
+        @summary 上传客户端CA证书
+        
+        @param request: UploadClientCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadClientCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        body = {}
+        if not UtilClient.is_unset(request.certificate):
+            body['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadClientCaCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UploadClientCaCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_client_ca_certificate(
+        self,
+        request: esa20240910_models.UploadClientCaCertificateRequest,
+    ) -> esa20240910_models.UploadClientCaCertificateResponse:
+        """
+        @summary 上传客户端CA证书
+        
+        @param request: UploadClientCaCertificateRequest
+        @return: UploadClientCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upload_client_ca_certificate_with_options(request, runtime)
+
+    async def upload_client_ca_certificate_async(
+        self,
+        request: esa20240910_models.UploadClientCaCertificateRequest,
+    ) -> esa20240910_models.UploadClientCaCertificateResponse:
+        """
+        @summary 上传客户端CA证书
+        
+        @param request: UploadClientCaCertificateRequest
+        @return: UploadClientCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_client_ca_certificate_with_options_async(request, runtime)
+
     def upload_file_with_options(
         self,
         request: esa20240910_models.UploadFileRequest,
@@ -20707,7 +21763,6 @@ class Client(OpenApiClient):
         
         @description >
         The file can be up to 10 MB in size.
-        After the file is uploaded, you can call [SubmitUploadTask](~~SubmitUploadTask~~) to submit the purge or prefetch task.
         
         @param request: UploadFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20752,7 +21807,6 @@ class Client(OpenApiClient):
         
         @description >
         The file can be up to 10 MB in size.
-        After the file is uploaded, you can call [SubmitUploadTask](~~SubmitUploadTask~~) to submit the purge or prefetch task.
         
         @param request: UploadFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20796,7 +21850,6 @@ class Client(OpenApiClient):
         
         @description >
         The file can be up to 10 MB in size.
-        After the file is uploaded, you can call [SubmitUploadTask](~~SubmitUploadTask~~) to submit the purge or prefetch task.
         
         @param request: UploadFileRequest
         @return: UploadFileResponse
@@ -20813,7 +21866,6 @@ class Client(OpenApiClient):
         
         @description >
         The file can be up to 10 MB in size.
-        After the file is uploaded, you can call [SubmitUploadTask](~~SubmitUploadTask~~) to submit the purge or prefetch task.
         
         @param request: UploadFileRequest
         @return: UploadFileResponse
