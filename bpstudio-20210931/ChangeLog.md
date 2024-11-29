@@ -1,3 +1,6 @@
+2024-11-29 Version: 6.0.4
+- Generated python 2021-09-31 for BPStudio.
+
 2024-11-29 Version: 6.0.3
 - Generated python 2021-09-31 for BPStudio.
 
