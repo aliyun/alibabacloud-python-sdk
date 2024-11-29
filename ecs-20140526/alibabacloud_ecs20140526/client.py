@@ -10398,6 +10398,8 @@ class Client(OpenApiClient):
             query['CommittedAmount'] = request.committed_amount
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
+        if not UtilClient.is_unset(request.instance_type_family_group):
+            query['InstanceTypeFamilyGroup'] = request.instance_type_family_group
         if not UtilClient.is_unset(request.offering_type):
             query['OfferingType'] = request.offering_type
         if not UtilClient.is_unset(request.period):
@@ -10449,6 +10451,8 @@ class Client(OpenApiClient):
             query['CommittedAmount'] = request.committed_amount
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
+        if not UtilClient.is_unset(request.instance_type_family_group):
+            query['InstanceTypeFamilyGroup'] = request.instance_type_family_group
         if not UtilClient.is_unset(request.offering_type):
             query['OfferingType'] = request.offering_type
         if not UtilClient.is_unset(request.period):
@@ -30220,6 +30224,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.estimation_resource):
+            query['EstimationResource'] = request.estimation_resource
+        if not UtilClient.is_unset(request.instance_type_scope):
+            query['InstanceTypeScope'] = request.instance_type_scope
         if not UtilClient.is_unset(request.offering_type):
             query['OfferingType'] = request.offering_type
         if not UtilClient.is_unset(request.period):
@@ -30265,6 +30273,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.estimation_resource):
+            query['EstimationResource'] = request.estimation_resource
+        if not UtilClient.is_unset(request.instance_type_scope):
+            query['InstanceTypeScope'] = request.instance_type_scope
         if not UtilClient.is_unset(request.offering_type):
             query['OfferingType'] = request.offering_type
         if not UtilClient.is_unset(request.period):
@@ -30340,6 +30352,8 @@ class Client(OpenApiClient):
             query['CommittedAmount'] = request.committed_amount
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
+        if not UtilClient.is_unset(request.instance_type_family_group):
+            query['InstanceTypeFamilyGroup'] = request.instance_type_family_group
         if not UtilClient.is_unset(request.offering_type):
             query['OfferingType'] = request.offering_type
         if not UtilClient.is_unset(request.period):
@@ -30389,6 +30403,8 @@ class Client(OpenApiClient):
             query['CommittedAmount'] = request.committed_amount
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
+        if not UtilClient.is_unset(request.instance_type_family_group):
+            query['InstanceTypeFamilyGroup'] = request.instance_type_family_group
         if not UtilClient.is_unset(request.offering_type):
             query['OfferingType'] = request.offering_type
         if not UtilClient.is_unset(request.period):
@@ -30452,7 +30468,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSecurityGroupAttributeResponse:
         """
-        @summary Queries the rules of a security group.
+        @summary Queries the details of a specified security group and the security group rules of the security group.
         
         @param request: DescribeSecurityGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30505,7 +30521,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSecurityGroupAttributeResponse:
         """
-        @summary Queries the rules of a security group.
+        @summary Queries the details of a specified security group and the security group rules of the security group.
         
         @param request: DescribeSecurityGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30557,7 +30573,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSecurityGroupAttributeRequest,
     ) -> ecs_20140526_models.DescribeSecurityGroupAttributeResponse:
         """
-        @summary Queries the rules of a security group.
+        @summary Queries the details of a specified security group and the security group rules of the security group.
         
         @param request: DescribeSecurityGroupAttributeRequest
         @return: DescribeSecurityGroupAttributeResponse
@@ -30570,7 +30586,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSecurityGroupAttributeRequest,
     ) -> ecs_20140526_models.DescribeSecurityGroupAttributeResponse:
         """
-        @summary Queries the rules of a security group.
+        @summary Queries the details of a specified security group and the security group rules of the security group.
         
         @param request: DescribeSecurityGroupAttributeRequest
         @return: DescribeSecurityGroupAttributeResponse
@@ -30720,11 +30736,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSecurityGroupsResponse:
         """
-        @summary Queries the basic information of security groups.
+        @summary Queries the basic information of security groups. You can query the information by various filter conditions, such as the region ID, security group ID, and security group type.
         
-        @description Take note of the following items:
-        The basic information of security groups includes their IDs and descriptions. The response returns security groups in descending order of their IDs.
-        We recommend that you use `MaxResults` and `NextToken` for a paged query. We recommend that you use `MaxResults` to specify the maximum number of entries to return for each request. The return value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value that is returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call. If the return value of `NextToken` is empty, the current page of results is the last page and no more results are to be returned.
+        @description    **Paged query**: We recommend that you specify `MaxResults` and `NextToken`.
+        If the response does not include `NextToken`, the current page of results is the last page and no more results are to be returned.
+        During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results.
+        When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
         When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
         
         @param request: DescribeSecurityGroupsRequest
@@ -30800,11 +30817,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSecurityGroupsResponse:
         """
-        @summary Queries the basic information of security groups.
+        @summary Queries the basic information of security groups. You can query the information by various filter conditions, such as the region ID, security group ID, and security group type.
         
-        @description Take note of the following items:
-        The basic information of security groups includes their IDs and descriptions. The response returns security groups in descending order of their IDs.
-        We recommend that you use `MaxResults` and `NextToken` for a paged query. We recommend that you use `MaxResults` to specify the maximum number of entries to return for each request. The return value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value that is returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call. If the return value of `NextToken` is empty, the current page of results is the last page and no more results are to be returned.
+        @description    **Paged query**: We recommend that you specify `MaxResults` and `NextToken`.
+        If the response does not include `NextToken`, the current page of results is the last page and no more results are to be returned.
+        During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results.
+        When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
         When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
         
         @param request: DescribeSecurityGroupsRequest
@@ -30879,11 +30897,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSecurityGroupsRequest,
     ) -> ecs_20140526_models.DescribeSecurityGroupsResponse:
         """
-        @summary Queries the basic information of security groups.
+        @summary Queries the basic information of security groups. You can query the information by various filter conditions, such as the region ID, security group ID, and security group type.
         
-        @description Take note of the following items:
-        The basic information of security groups includes their IDs and descriptions. The response returns security groups in descending order of their IDs.
-        We recommend that you use `MaxResults` and `NextToken` for a paged query. We recommend that you use `MaxResults` to specify the maximum number of entries to return for each request. The return value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value that is returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call. If the return value of `NextToken` is empty, the current page of results is the last page and no more results are to be returned.
+        @description    **Paged query**: We recommend that you specify `MaxResults` and `NextToken`.
+        If the response does not include `NextToken`, the current page of results is the last page and no more results are to be returned.
+        During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results.
+        When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
         When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
         
         @param request: DescribeSecurityGroupsRequest
@@ -30897,11 +30916,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSecurityGroupsRequest,
     ) -> ecs_20140526_models.DescribeSecurityGroupsResponse:
         """
-        @summary Queries the basic information of security groups.
+        @summary Queries the basic information of security groups. You can query the information by various filter conditions, such as the region ID, security group ID, and security group type.
         
-        @description Take note of the following items:
-        The basic information of security groups includes their IDs and descriptions. The response returns security groups in descending order of their IDs.
-        We recommend that you use `MaxResults` and `NextToken` for a paged query. We recommend that you use `MaxResults` to specify the maximum number of entries to return for each request. The return value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value that is returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call. If the return value of `NextToken` is empty, the current page of results is the last page and no more results are to be returned.
+        @description    **Paged query**: We recommend that you specify `MaxResults` and `NextToken`.
+        If the response does not include `NextToken`, the current page of results is the last page and no more results are to be returned.
+        During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results.
+        When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
         When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
         
         @param request: DescribeSecurityGroupsRequest
@@ -51324,7 +51344,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ResetDiskResponse:
         """
-        @summary Rolls back a disk to the state at a specific point in time based on a snapshot of the disk.
+        @summary Rolls back a cloud disk to a snapshot from an earlier point in time.
         
         @description When you call this operation, take note of the following items:
         The disk must be in the In Use (In_Use) or Unattached (Available) state.
@@ -51377,7 +51397,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ResetDiskResponse:
         """
-        @summary Rolls back a disk to the state at a specific point in time based on a snapshot of the disk.
+        @summary Rolls back a cloud disk to a snapshot from an earlier point in time.
         
         @description When you call this operation, take note of the following items:
         The disk must be in the In Use (In_Use) or Unattached (Available) state.
@@ -51429,7 +51449,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ResetDiskRequest,
     ) -> ecs_20140526_models.ResetDiskResponse:
         """
-        @summary Rolls back a disk to the state at a specific point in time based on a snapshot of the disk.
+        @summary Rolls back a cloud disk to a snapshot from an earlier point in time.
         
         @description When you call this operation, take note of the following items:
         The disk must be in the In Use (In_Use) or Unattached (Available) state.
@@ -51448,7 +51468,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ResetDiskRequest,
     ) -> ecs_20140526_models.ResetDiskResponse:
         """
-        @summary Rolls back a disk to the state at a specific point in time based on a snapshot of the disk.
+        @summary Rolls back a cloud disk to a snapshot from an earlier point in time.
         
         @description When you call this operation, take note of the following items:
         The disk must be in the In Use (In_Use) or Unattached (Available) state.

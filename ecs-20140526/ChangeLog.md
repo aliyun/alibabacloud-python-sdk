@@ -1,3 +1,12 @@
+2024-11-29 Version: 4.4.9
+- Update API CreateAutoProvisioningGroup: update param LaunchTemplateConfig.
+- Update API CreateSavingsPlan: add param InstanceTypeFamilyGroup.
+- Update API DescribeSavingsPlanEstimation: add param EstimationResource.
+- Update API DescribeSavingsPlanEstimation: add param InstanceTypeScope.
+- Update API DescribeSavingsPlanEstimation: update response param.
+- Update API DescribeSavingsPlanPrice: add param InstanceTypeFamilyGroup.
+
+
 2024-11-25 Version: 4.4.8
 - Update API DescribeInstanceTypes: update response param.
 - Update API RedeployDedicatedHost: add param MigrationType.
