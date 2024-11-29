@@ -12719,7 +12719,19 @@ class CreateNatGatewayRequestAccessMode(TeaModel):
         mode_value: str = None,
         tunnel_type: str = None,
     ):
+        # Access mode. Valid values:
+        # 
+        # - **route**: route mode
+        # 
+        # - **tunnel**: tunnel mode
+        # 
+        # > If this parameter is specified, you must set **PrivateLinkEnabled** to **true**.
         self.mode_value = mode_value
+        # Tunnel mode type:
+        # 
+        # - **geneve**: Geneve type
+        # 
+        # > This value takes effect if the access mode is the tunnel mode.
         self.tunnel_type = tunnel_type
 
     def validate(self):
@@ -12752,9 +12764,9 @@ class CreateNatGatewayRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. The format of Tag.N.Key when you call the operation. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+        # The tag key. The format of Tag.N.Key when you call the operation. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
         self.key = key
-        # The tag value. The format of Tag.N.Value when you call the operation. Valid values of N: 1 to 20. The tag value cannot be an empty string. The tag value can be up to 128 characters in length, and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+        # The tag value. The format of Tag.N.Value when you call the operation. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
         self.value = value
 
     def validate(self):
@@ -12809,6 +12821,7 @@ class CreateNatGatewayRequest(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The access mode for reverse access to the VPC NAT gateway.
         self.access_mode = access_mode
         # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
         self.auto_pay = auto_pay
@@ -12826,13 +12839,11 @@ class CreateNatGatewayRequest(TeaModel):
         self.duration = duration
         # The mode in which the EIP is associated with the NAT gateway. Valid values:
         # 
-        # *   **MULTI_BINDED** (default): Multi-EIP-to-ENI mode.
+        # - **MULTI_BINDED**(default): the multi-EIP-to-ENI mode.
         # 
-        # *   **NAT**: NAT mode. IPv4 gateways are supported in this mode.
+        # - **NAT**: NAT mode, which is compatible with IPv4 addresses.
         # 
-        #     **\
-        # 
-        #     **Note** If a NAT gateway is associated with an EIP in NAT mode, the EIP occupies one private IP address in the vSwitch. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, a maximum number of 50 EIPs can be associated with each NAT gateway.
+        # > If an EIP is associated with a NAT gateway in NAT mode, the EIP occupies a private IP address of the vSwitch where the NAT gateway is deployed. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, EIPs cannot be associated with the NAT gateway. In NAT mode, a maximum number of 50 EIPs can be associated with each NAT gateway.
         self.eip_bind_mode = eip_bind_mode
         # Specifies whether to enable ICMP retrieval. Valid values:
         # 
@@ -12849,7 +12860,7 @@ class CreateNatGatewayRequest(TeaModel):
         self.internet_charge_type = internet_charge_type
         # The name of the NAT gateway.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         # 
         # If this parameter is not set, the system assigns a default name to the NAT gateway.
         self.name = name
@@ -12864,6 +12875,7 @@ class CreateNatGatewayRequest(TeaModel):
         self.owner_id = owner_id
         # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
         self.pricing_cycle = pricing_cycle
+        # PrivateLink is not supported by default. If you set the value to true, PrivateLink is supported.
         self.private_link_enabled = private_link_enabled
         # The region ID of the NAT gateway.
         # 
@@ -13024,9 +13036,9 @@ class CreateNatGatewayShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. The format of Tag.N.Key when you call the operation. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+        # The tag key. The format of Tag.N.Key when you call the operation. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
         self.key = key
-        # The tag value. The format of Tag.N.Value when you call the operation. Valid values of N: 1 to 20. The tag value cannot be an empty string. The tag value can be up to 128 characters in length, and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+        # The tag value. The format of Tag.N.Value when you call the operation. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
         self.value = value
 
     def validate(self):
@@ -13081,6 +13093,7 @@ class CreateNatGatewayShrinkRequest(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The access mode for reverse access to the VPC NAT gateway.
         self.access_mode_shrink = access_mode_shrink
         # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
         self.auto_pay = auto_pay
@@ -13098,13 +13111,11 @@ class CreateNatGatewayShrinkRequest(TeaModel):
         self.duration = duration
         # The mode in which the EIP is associated with the NAT gateway. Valid values:
         # 
-        # *   **MULTI_BINDED** (default): Multi-EIP-to-ENI mode.
+        # - **MULTI_BINDED**(default): the multi-EIP-to-ENI mode.
         # 
-        # *   **NAT**: NAT mode. IPv4 gateways are supported in this mode.
+        # - **NAT**: NAT mode, which is compatible with IPv4 addresses.
         # 
-        #     **\
-        # 
-        #     **Note** If a NAT gateway is associated with an EIP in NAT mode, the EIP occupies one private IP address in the vSwitch. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, a maximum number of 50 EIPs can be associated with each NAT gateway.
+        # > If an EIP is associated with a NAT gateway in NAT mode, the EIP occupies a private IP address of the vSwitch where the NAT gateway is deployed. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, EIPs cannot be associated with the NAT gateway. In NAT mode, a maximum number of 50 EIPs can be associated with each NAT gateway.
         self.eip_bind_mode = eip_bind_mode
         # Specifies whether to enable ICMP retrieval. Valid values:
         # 
@@ -13121,7 +13132,7 @@ class CreateNatGatewayShrinkRequest(TeaModel):
         self.internet_charge_type = internet_charge_type
         # The name of the NAT gateway.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         # 
         # If this parameter is not set, the system assigns a default name to the NAT gateway.
         self.name = name
@@ -13136,6 +13147,7 @@ class CreateNatGatewayShrinkRequest(TeaModel):
         self.owner_id = owner_id
         # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
         self.pricing_cycle = pricing_cycle
+        # PrivateLink is not supported by default. If you set the value to true, PrivateLink is supported.
         self.private_link_enabled = private_link_enabled
         # The region ID of the NAT gateway.
         # 
@@ -17341,18 +17353,25 @@ class CreateSslVpnServerRequest(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.compress = compress
-        # Specifies whether to enable two-factor authentication. If you enable two-factor authentication, you must configure `IDaaSInstanceId` and `IDaaSRegionId`. Valid values:
+        # Specifies whether to enable two-factor authentication. To enable two-factor authentication, you need to specify `IDaaSInstanceId`, `IDaaSRegionId`, and `IDaaSApplicationId`. Valid values:
         # 
-        # *   **true**: enables this feature.
-        # *   **false** (default): disables this feature.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # > - Two-factor authentication supports only earlier versions of IDaaS instances. If you do not have and cannot create earlier versions of IDaaS instances, you cannot enable two-factor authentication.
-        # > - If two-factor authentication is already enabled for existing SSL servers, you can continue to use two-factor authentication.
+        # > 
+        # 
+        # *   If you use two-factor authentication for the first time, you need to complete [authorization](https://ram.console.aliyun.com/role/authorization?request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22VPN%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunVpnAccessingIdaasRole%22%2C%22TemplateId%22%3A%22IdaasRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fvpc.console.aliyun.com%2Fsslvpn%2Fcn-shanghai%2Fvpn-servers%22%7D) before you create an SSL server.
+        # 
+        # *   IDaaS EIAM 1.0 instances are no longer available for purchase. If your Alibaba Cloud account has IDaaS EIAM 1.0 instances, IDaaS EIAM 1.0 instances can be associated after two-factor authentication is enabled. If your Alibaba Cloud account does not have IDaaS EIAM 1.0 instances, only IDaaS EIAM 2.0 instances can be associated after two-factor authentication is enabled.
         self.enable_multi_factor_auth = enable_multi_factor_auth
+        # The ID of the IDaaS application.
+        # 
+        # *   If an IDaaS EIAM 2.0 instance is associated, you need to specify an IDaaS application ID.
+        # *   If an IDaaS EIAM 1.0 instance is associated, you do not need to specify an IDaaS application ID.
         self.idaa_sapplication_id = idaa_sapplication_id
-        # The Identity as a Service (IDaaS) instance ID.
+        # The ID of the IDaaS EIAM instance.
         self.idaa_sinstance_id = idaa_sinstance_id
-        # The ID of the region where the IDaaS instance is created.
+        # The region ID of the IDaaS EIAM instance.
         self.idaa_sregion_id = idaa_sregion_id
         # The local CIDR block.
         # 
@@ -21446,6 +21465,236 @@ class CreateVpnAttachmentRequestTags(TeaModel):
         return self
 
 
+class CreateVpnAttachmentRequestTunnelOptionsSpecificationTunnelBgpConfig(TeaModel):
+    def __init__(
+        self,
+        local_asn: int = None,
+        local_bgp_ip: str = None,
+        tunnel_cidr: str = None,
+    ):
+        self.local_asn = local_asn
+        self.local_bgp_ip = local_bgp_ip
+        self.tunnel_cidr = tunnel_cidr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.local_asn is not None:
+            result['LocalAsn'] = self.local_asn
+        if self.local_bgp_ip is not None:
+            result['LocalBgpIp'] = self.local_bgp_ip
+        if self.tunnel_cidr is not None:
+            result['TunnelCidr'] = self.tunnel_cidr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalAsn') is not None:
+            self.local_asn = m.get('LocalAsn')
+        if m.get('LocalBgpIp') is not None:
+            self.local_bgp_ip = m.get('LocalBgpIp')
+        if m.get('TunnelCidr') is not None:
+            self.tunnel_cidr = m.get('TunnelCidr')
+        return self
+
+
+class CreateVpnAttachmentRequestTunnelOptionsSpecificationTunnelIkeConfig(TeaModel):
+    def __init__(
+        self,
+        ike_auth_alg: str = None,
+        ike_enc_alg: str = None,
+        ike_lifetime: int = None,
+        ike_mode: str = None,
+        ike_pfs: str = None,
+        ike_version: str = None,
+        local_id: str = None,
+        psk: str = None,
+        remote_id: str = None,
+    ):
+        self.ike_auth_alg = ike_auth_alg
+        self.ike_enc_alg = ike_enc_alg
+        self.ike_lifetime = ike_lifetime
+        self.ike_mode = ike_mode
+        self.ike_pfs = ike_pfs
+        self.ike_version = ike_version
+        self.local_id = local_id
+        self.psk = psk
+        self.remote_id = remote_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ike_auth_alg is not None:
+            result['IkeAuthAlg'] = self.ike_auth_alg
+        if self.ike_enc_alg is not None:
+            result['IkeEncAlg'] = self.ike_enc_alg
+        if self.ike_lifetime is not None:
+            result['IkeLifetime'] = self.ike_lifetime
+        if self.ike_mode is not None:
+            result['IkeMode'] = self.ike_mode
+        if self.ike_pfs is not None:
+            result['IkePfs'] = self.ike_pfs
+        if self.ike_version is not None:
+            result['IkeVersion'] = self.ike_version
+        if self.local_id is not None:
+            result['LocalId'] = self.local_id
+        if self.psk is not None:
+            result['Psk'] = self.psk
+        if self.remote_id is not None:
+            result['RemoteId'] = self.remote_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IkeAuthAlg') is not None:
+            self.ike_auth_alg = m.get('IkeAuthAlg')
+        if m.get('IkeEncAlg') is not None:
+            self.ike_enc_alg = m.get('IkeEncAlg')
+        if m.get('IkeLifetime') is not None:
+            self.ike_lifetime = m.get('IkeLifetime')
+        if m.get('IkeMode') is not None:
+            self.ike_mode = m.get('IkeMode')
+        if m.get('IkePfs') is not None:
+            self.ike_pfs = m.get('IkePfs')
+        if m.get('IkeVersion') is not None:
+            self.ike_version = m.get('IkeVersion')
+        if m.get('LocalId') is not None:
+            self.local_id = m.get('LocalId')
+        if m.get('Psk') is not None:
+            self.psk = m.get('Psk')
+        if m.get('RemoteId') is not None:
+            self.remote_id = m.get('RemoteId')
+        return self
+
+
+class CreateVpnAttachmentRequestTunnelOptionsSpecificationTunnelIpsecConfig(TeaModel):
+    def __init__(
+        self,
+        ipsec_auth_alg: str = None,
+        ipsec_enc_alg: str = None,
+        ipsec_lifetime: int = None,
+        ipsec_pfs: str = None,
+    ):
+        self.ipsec_auth_alg = ipsec_auth_alg
+        self.ipsec_enc_alg = ipsec_enc_alg
+        self.ipsec_lifetime = ipsec_lifetime
+        self.ipsec_pfs = ipsec_pfs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipsec_auth_alg is not None:
+            result['IpsecAuthAlg'] = self.ipsec_auth_alg
+        if self.ipsec_enc_alg is not None:
+            result['IpsecEncAlg'] = self.ipsec_enc_alg
+        if self.ipsec_lifetime is not None:
+            result['IpsecLifetime'] = self.ipsec_lifetime
+        if self.ipsec_pfs is not None:
+            result['IpsecPfs'] = self.ipsec_pfs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpsecAuthAlg') is not None:
+            self.ipsec_auth_alg = m.get('IpsecAuthAlg')
+        if m.get('IpsecEncAlg') is not None:
+            self.ipsec_enc_alg = m.get('IpsecEncAlg')
+        if m.get('IpsecLifetime') is not None:
+            self.ipsec_lifetime = m.get('IpsecLifetime')
+        if m.get('IpsecPfs') is not None:
+            self.ipsec_pfs = m.get('IpsecPfs')
+        return self
+
+
+class CreateVpnAttachmentRequestTunnelOptionsSpecification(TeaModel):
+    def __init__(
+        self,
+        customer_gateway_id: str = None,
+        enable_dpd: bool = None,
+        enable_nat_traversal: bool = None,
+        tunnel_bgp_config: CreateVpnAttachmentRequestTunnelOptionsSpecificationTunnelBgpConfig = None,
+        tunnel_ike_config: CreateVpnAttachmentRequestTunnelOptionsSpecificationTunnelIkeConfig = None,
+        tunnel_index: int = None,
+        tunnel_ipsec_config: CreateVpnAttachmentRequestTunnelOptionsSpecificationTunnelIpsecConfig = None,
+    ):
+        self.customer_gateway_id = customer_gateway_id
+        self.enable_dpd = enable_dpd
+        self.enable_nat_traversal = enable_nat_traversal
+        self.tunnel_bgp_config = tunnel_bgp_config
+        self.tunnel_ike_config = tunnel_ike_config
+        self.tunnel_index = tunnel_index
+        self.tunnel_ipsec_config = tunnel_ipsec_config
+
+    def validate(self):
+        if self.tunnel_bgp_config:
+            self.tunnel_bgp_config.validate()
+        if self.tunnel_ike_config:
+            self.tunnel_ike_config.validate()
+        if self.tunnel_ipsec_config:
+            self.tunnel_ipsec_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.customer_gateway_id is not None:
+            result['CustomerGatewayId'] = self.customer_gateway_id
+        if self.enable_dpd is not None:
+            result['EnableDpd'] = self.enable_dpd
+        if self.enable_nat_traversal is not None:
+            result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.tunnel_bgp_config is not None:
+            result['TunnelBgpConfig'] = self.tunnel_bgp_config.to_map()
+        if self.tunnel_ike_config is not None:
+            result['TunnelIkeConfig'] = self.tunnel_ike_config.to_map()
+        if self.tunnel_index is not None:
+            result['TunnelIndex'] = self.tunnel_index
+        if self.tunnel_ipsec_config is not None:
+            result['TunnelIpsecConfig'] = self.tunnel_ipsec_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomerGatewayId') is not None:
+            self.customer_gateway_id = m.get('CustomerGatewayId')
+        if m.get('EnableDpd') is not None:
+            self.enable_dpd = m.get('EnableDpd')
+        if m.get('EnableNatTraversal') is not None:
+            self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('TunnelBgpConfig') is not None:
+            temp_model = CreateVpnAttachmentRequestTunnelOptionsSpecificationTunnelBgpConfig()
+            self.tunnel_bgp_config = temp_model.from_map(m['TunnelBgpConfig'])
+        if m.get('TunnelIkeConfig') is not None:
+            temp_model = CreateVpnAttachmentRequestTunnelOptionsSpecificationTunnelIkeConfig()
+            self.tunnel_ike_config = temp_model.from_map(m['TunnelIkeConfig'])
+        if m.get('TunnelIndex') is not None:
+            self.tunnel_index = m.get('TunnelIndex')
+        if m.get('TunnelIpsecConfig') is not None:
+            temp_model = CreateVpnAttachmentRequestTunnelOptionsSpecificationTunnelIpsecConfig()
+            self.tunnel_ipsec_config = temp_model.from_map(m['TunnelIpsecConfig'])
+        return self
+
+
 class CreateVpnAttachmentRequest(TeaModel):
     def __init__(
         self,
@@ -21456,6 +21705,7 @@ class CreateVpnAttachmentRequest(TeaModel):
         effect_immediately: bool = None,
         enable_dpd: bool = None,
         enable_nat_traversal: bool = None,
+        enable_tunnels_bgp: bool = None,
         health_check_config: str = None,
         ike_config: str = None,
         ipsec_config: str = None,
@@ -21470,6 +21720,7 @@ class CreateVpnAttachmentRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tags: List[CreateVpnAttachmentRequestTags] = None,
+        tunnel_options_specification: List[CreateVpnAttachmentRequestTunnelOptionsSpecification] = None,
     ):
         # Specifies whether to automatically configure routes. Valid values:
         # 
@@ -21499,9 +21750,7 @@ class CreateVpnAttachmentRequest(TeaModel):
         # 
         # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The ID of the customer gateway.
-        # 
-        # This parameter is required.
+        # The customer gateway ID.
         self.customer_gateway_id = customer_gateway_id
         # Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
         # 
@@ -21518,6 +21767,7 @@ class CreateVpnAttachmentRequest(TeaModel):
         # *   **true** (default) After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the VPN tunnel.
         # *   **false**\
         self.enable_nat_traversal = enable_nat_traversal
+        self.enable_tunnels_bgp = enable_tunnels_bgp
         # The health check configuration:
         # 
         # *   **HealthCheckConfig.enable**: specifies whether to enable health checks. Valid values: **true** and **false**. Default value: false.
@@ -21537,14 +21787,14 @@ class CreateVpnAttachmentRequest(TeaModel):
         self.health_check_config = health_check_config
         # The configurations of Phase 1 negotiations:
         # 
-        # *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the data center.
+        # *   **IkeConfig.Psk**: the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center.
         # 
-        #     *   It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\\",.<>/?``
-        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key that is generated by the system.
+        #     *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ``~!`@#$%^&*()_-+={}[]|;:\\",.<>/?``
+        #     *   If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key that is automatically generated by the system.
         # 
-        #     > The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, a connection cannot be established between the data center and the VPN gateway.
+        #     > The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
         # 
-        # *   **IkeConfig.IkeVersion**: the IKE version. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
+        # *   **IkeConfig.IkeVersion**: the version of the Internet Key Exchange (IKE) protocol. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
         # 
         # *   **IkeConfig.IkeMode**: the negotiation mode. Valid values: **main** and **aggressive**. Default value: **main**.
         # 
@@ -21554,9 +21804,9 @@ class CreateVpnAttachmentRequest(TeaModel):
         # 
         # *   **IkeConfig.IkePfs**: the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**. Default value: **group2**.
         # 
-        # *   **IkeConfig.IkeLifetime**: the SA lifetime determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
+        # *   **IkeConfig.IkeLifetime**: the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
         # 
-        # *   **IkeConfig.LocalId**: the identifier on the Alibaba Cloud side. The identifier cannot exceed 100 characters in length. This parameter is empty by default.
+        # *   **IkeConfig.LocalIdIPsec**: the identifier on the Alibaba Cloud side. The identifier cannot exceed 100 characters in length. This parameter is left empty by default.
         # 
         # *   **IkeConfig.RemoteId**: the identifier on the data center side. The identifier cannot exceed 100 characters in length. The default value is the IP address of the customer gateway.
         self.ike_config = ike_config
@@ -21620,10 +21870,15 @@ class CreateVpnAttachmentRequest(TeaModel):
         # 
         # Each tag key corresponds to one tag value. You can specify up to 20 tag values in each call.
         self.tags = tags
+        self.tunnel_options_specification = tunnel_options_specification
 
     def validate(self):
         if self.tags:
             for k in self.tags:
+                if k:
+                    k.validate()
+        if self.tunnel_options_specification:
+            for k in self.tunnel_options_specification:
                 if k:
                     k.validate()
 
@@ -21647,6 +21902,8 @@ class CreateVpnAttachmentRequest(TeaModel):
             result['EnableDpd'] = self.enable_dpd
         if self.enable_nat_traversal is not None:
             result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.enable_tunnels_bgp is not None:
+            result['EnableTunnelsBgp'] = self.enable_tunnels_bgp
         if self.health_check_config is not None:
             result['HealthCheckConfig'] = self.health_check_config
         if self.ike_config is not None:
@@ -21677,6 +21934,10 @@ class CreateVpnAttachmentRequest(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        result['TunnelOptionsSpecification'] = []
+        if self.tunnel_options_specification is not None:
+            for k in self.tunnel_options_specification:
+                result['TunnelOptionsSpecification'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -21695,6 +21956,8 @@ class CreateVpnAttachmentRequest(TeaModel):
             self.enable_dpd = m.get('EnableDpd')
         if m.get('EnableNatTraversal') is not None:
             self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('EnableTunnelsBgp') is not None:
+            self.enable_tunnels_bgp = m.get('EnableTunnelsBgp')
         if m.get('HealthCheckConfig') is not None:
             self.health_check_config = m.get('HealthCheckConfig')
         if m.get('IkeConfig') is not None:
@@ -21726,6 +21989,11 @@ class CreateVpnAttachmentRequest(TeaModel):
             for k in m.get('Tags'):
                 temp_model = CreateVpnAttachmentRequestTags()
                 self.tags.append(temp_model.from_map(k))
+        self.tunnel_options_specification = []
+        if m.get('TunnelOptionsSpecification') is not None:
+            for k in m.get('TunnelOptionsSpecification'):
+                temp_model = CreateVpnAttachmentRequestTunnelOptionsSpecification()
+                self.tunnel_options_specification.append(temp_model.from_map(k))
         return self
 
 
@@ -21895,17 +22163,19 @@ class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig(TeaMod
         local_bgp_ip: str = None,
         tunnel_cidr: str = None,
     ):
-        # The ASN on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
+        # The autonomous system number (ASN) of the tunnel on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
         # 
-        # > *   If you set **EnableTunnelsBgp** to **true**, this parameter is required.
-        # >*   Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](https://help.aliyun.com/document_detail/170235.html).
-        # >*   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. For information about the range of private ASNs, see the relevant documentation.
+        #  
+        # 
+        # > - If you set **EnableTunnelsBgp** to **true**, you must set this parameter.
+        # > - Before you add BGP configurations, we recommend that you learn about how BGP dynamic routing works and the limits. For more information, see [VPN Gateway supports BGP dynamic routing](https://help.aliyun.com/document_detail/170235.html).
+        # > - We recommend that you use a private ASN to establish BGP connections to Alibaba Cloud. For information about the range of private ASNs, see the relevant documentation.
         self.local_asn = local_asn
-        # The BGP address on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block range.
+        # The BGP IP address of the tunnel on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block.
         self.local_bgp_ip = local_bgp_ip
-        # The BGP CIDR block of the tunnel. The CIDR block must belong to 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+        # The BGP CIDR block of the tunnel. The CIDR block must fall within the 169.254.0.0/16 range. The subnet mask of the CIDR block must be 30 bits in length.
         # 
-        # >  The BGP CIDR block of a tunnel associated with a VPN gateway must be unique.
+        # >  The BGP CIDR block of each tunnel must be unique on a VPN gateway.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -21957,36 +22227,36 @@ class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig(TeaMod
         # 
         # Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
         self.ike_enc_alg = ike_enc_alg
-        # The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds.
+        # The SA lifetime as a result of Phase 1 negotiations. Unit: seconds.
         # 
         # Valid values: **0** to **86400**. Default value: **86400**.
         self.ike_lifetime = ike_lifetime
         # The negotiation mode of IKE. Valid values: **main** and **aggressive**. Default value: **main**.
         # 
-        # *   **main**: This mode offers higher security during negotiations.
-        # *   **aggressive**: This mode is faster and has a higher success rate.
+        # *   **main:** This mode offers higher security during negotiations.
+        # *   **aggressive**: This mode supports faster negotiations and a higher success rate.
         self.ike_mode = ike_mode
-        # The DH key exchange algorithm that is used in Phase 1 negotiations. Default value: **group2**.\\
+        # The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: **group2**.\\
         # Valid values: **group1**, **group2**, **group5**, and **group14**.
         self.ike_pfs = ike_pfs
         # The version of the IKE protocol. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
         # 
-        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
+        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for scenarios with multiple CIDR blocks.
         self.ike_version = ike_version
-        # The identifier on the Alibaba Cloud side, which is used in Phase 1 negotiations. The value can be up to 100 characters in length. The default identifier is the IP address of the tunnel.
+        # The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the tunnel.
         # 
-        # You can set **LocalId** to a fully qualified domain name (FQDN). In this case, we recommend that you set IkeMode to **aggressive**.
+        # **LocalId** supports fully qualified domain names (FQDNs). If you use an FQDN, we recommend that you set the negotiation mode to **aggressive**.
         self.local_id = local_id
-        # The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
+        # The pre-shared key that is used for identity authentication between the tunnel and the tunnel peer.
         # 
-        # *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ``~!\\`@#$%^&*()_-+={}[]|;:\\",.<>/?``
-        # *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key that is generated by the system.
+        # *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ``~!\\`@#$%^&*()_-+={}[]|;:\\",.<>/?``
+        # *   If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key that is automatically generated by the system.
         # 
         # >  The tunnel and the tunnel peer must use the same pre-shared key. Otherwise, the tunnel cannot be established.
         self.psk = psk
-        # The identifier of the tunnel peer, which is used in Phase 1 negotiations. The value can be up to 100 characters in length. The default identifier is the IP address of the customer gateway associated with the tunnel.
+        # The identifier of the tunnel peer, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the customer gateway that is associated with the tunnel.
         # 
-        # You can set **RemoteId** to an FQDN. In this case, we recommend that you set IkeMode to **aggressive**.
+        # **RemoteId** supports FQDNs. If you use an FQDN, we recommend that you set the negotiation mode to **aggressive**.
         self.remote_id = remote_id
 
     def validate(self):
@@ -22057,11 +22327,11 @@ class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig(TeaM
         # 
         # Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds.
+        # The SA lifetime as a result of Phase 2 negotiations. Unit: seconds.
         # 
         # Valid values: **0** to **86400**. Default value: **86400**.
         self.ipsec_lifetime = ipsec_lifetime
-        # The DH key exchange algorithm that is used in Phase 2 negotiations. Default value: **group2**.
+        # The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations. Default value: **group2**.
         # 
         # Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
         self.ipsec_pfs = ipsec_pfs
@@ -22110,33 +22380,33 @@ class CreateVpnConnectionRequestTunnelOptionsSpecification(TeaModel):
         tunnel_ike_config: CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig = None,
         tunnel_ipsec_config: CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig = None,
     ):
-        # The ID of the customer gateway associated with the tunnel.
+        # The ID of the customer gateway that is associated with the tunnel.
         # 
-        # > *   This parameter is required if the VPN gateway supports the dual-tunnel mode.
-        # >*   You can specify the parameters in the **TunnelOptionsSpecification** array if you create an IPsec-VPN connection in dual-tunnel mode.
-        # >*   If you create an IPsec-VPN connection in dual-tunnel mode, you need to configure an active tunnel and a standby tunnel. Each IPsec-VPN connection supports only one active tunnel and one standby tunnel.
+        # > - This parameter is required when you create an IPsec-VPN connection in dual-tunnel mode.
+        # > - You can specify parameters in the **TunnelOptionsSpecification** array when you create an IPsec-VPN connection in dual tunnel mode.
+        # > - When you create an IPsec-VPN connection in dual tunnel mode, you must add configurations of the active and standby tunnels for the IPsec-VPN connection. Each IPsec-VPN connection supports only one active tunnel and one standby tunnel.
         self.customer_gateway_id = customer_gateway_id
-        # Specifies whether to enable DPD for the tunnel. Valid values:
+        # Specifies whether to enable the Dead Peer Detection (DPD) feature for the tunnel. Valid values:
         # 
-        # *   **true** (default) The initiator of the IPsec-VPN connection sends DPD packets to verify the existence and availability of the peer. If no feedback is received from the peer within a specified period of time, the connection fails. ISAKMP SAs and IPsec SAs are deleted. The IPsec tunnel is also deleted.
-        # *   **false**\
+        # *   **true** (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted. The security tunnel is also deleted.
+        # *   **false**: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
         self.enable_dpd = enable_dpd
         # Specifies whether to enable NAT traversal for the tunnel. Valid values:
         # 
-        # *   **true** (default) After NAT traversal is enabled, the verification process for the peer UDP port is deleted from IKE negotiations. In addition, the NAT gateway in the tunnel can be found.
-        # *   **false**\
+        # *   **true** (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec-VPN tunnel.
+        # *   **false**: disables NAT traversal.
         self.enable_nat_traversal = enable_nat_traversal
-        # The CA certificate. If the VPN gateway is of the SM type, you must configure a CA certificate for the peer gateway device.
+        # If the VPN gateway uses an SM certificate, you need to configure the CA certificate used by the IPsec peer.
         # 
-        # *   If an SM VPN gateway is used to create the IPsec-VPN connection, this parameter is required.
-        # *   If a standard VPN gateway is used to create the IPsec-VPN connection, leave this parameter empty.
+        # *   If the VPN gateway uses an SM certificate, this parameter is required.
+        # *   If the VPN gateway does not use an SM certificate, leave this parameter empty.
         self.remote_ca_certificate = remote_ca_certificate
-        # The role of the tunnel. Valid values:
+        # The role of the tunnel. Valid values: Valid values:
         # 
-        # *   **master**: The tunnel is the active tunnel.
-        # *   **slave**: The tunnel is the standby tunnel.
+        # *   **master**: The tunnel is an active tunnel.
+        # *   **slave**: The tunnel is a standby tunnel.
         self.role = role
-        # The BGP configurations for the tunnel.
+        # The Border Gateway Protocol (BGP) configurations of the tunnel.
         self.tunnel_bgp_config = tunnel_bgp_config
         # The configurations of Phase 1 negotiations.
         self.tunnel_ike_config = tunnel_ike_config
@@ -22295,26 +22565,28 @@ class CreateVpnConnectionRequest(TeaModel):
         # *   **HealthCheckConfig.interval**: the time interval of health check retries. Unit: seconds. Default value: **3**.
         # *   **HealthCheckConfig.retry**: the maximum number of health check retries. Default value: **3**.
         self.health_check_config = health_check_config
-        # This parameter is available if you create an IPsec-VPN connection in single-tunnel mode.
+        # This parameter is supported if you create an IPsec-VPN connection in single-tunnel mode.
         # 
         # The configurations of Phase 1 negotiations:
         # 
-        # *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the on-premises database.
+        # *   **IkeConfig.Psk**: the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center.
         # 
-        #     *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ``~!\\`@#$%^&*()_-+={}[]|;:\\",.<>/?``
+        #     *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ``~!\\`@#$%^&*()_-+={}[]|;:\\",.<>/?``
         # 
-        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key that is generated by the system.
+        #     *   If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key that is automatically generated by the system.
         # 
-        #          >The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises database. Otherwise, the on-premises database and the VPN gateway cannot establish a connection.
+        #         **\
+        # 
+        #         **Note** The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
         # 
         # *   **IkeConfig.IkeVersion**: the version of the Internet Key Exchange (IKE) protocol. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
         # 
-        #     Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
+        #     Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
         # 
         # *   **IkeConfig.IkeMode**: the negotiation mode of IKE. Valid values: **main** and **aggressive**. Default value: **main**.
         # 
         #     *   **main:** This mode offers higher security during negotiations.
-        #     *   **aggressive:** This mode is faster and has a higher success rate.
+        #     *   **aggressive**: This mode supports faster negotiations and a higher success rate.
         # 
         # *   **IkeConfig.IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations.
         # 
@@ -22324,13 +22596,13 @@ class CreateVpnConnectionRequest(TeaModel):
         # 
         #     Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
         # 
-        # *   **IkeConfig.IkePfs**: the Diffie-Hellman (DH) key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**. Default value: **group2**.
+        # *   **IkeConfig.IkePfs**: the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**. Default value: **group2**.
         # 
-        # *   **IkeConfig.IkeLifetime**: the SA lifetime determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
+        # *   **IkeConfig.IkeLifetime**: the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
         # 
-        # *   **IkeConfig.LocalId**: the identifier of the VPN gateway. The value can be up to 100 characters in length. The default value is the IP address of the VPN gateway.
+        # *   **IkeConfig.LocalId**: the identifier of the VPN gateway. It can contain at most 100 characters. The default value is the IP address of the VPN gateway.
         # 
-        # *   **IkeConfig.RemoteId**: the identifier of the customer gateway. The value can be up to 100 characters in length. The default value is the IP address of the customer gateway.
+        # *   **IkeConfig.RemoteId**: the identifier of the customer gateway. It can contain at most 100 characters. The default value is the IP address of the customer gateway.
         self.ike_config = ike_config
         # This parameter is available if you create an IPsec-VPN connection in single-tunnel mode.
         # 
@@ -22397,8 +22669,8 @@ class CreateVpnConnectionRequest(TeaModel):
         self.tags = tags
         # The tunnel configurations.
         # 
-        # *   You can specify the parameters in the **TunnelOptionsSpecification** array if you create an IPsec-VPN connection in dual-tunnel mode.
-        # *   If you create an IPsec-VPN connection in dual-tunnel mode, you need to configure an active tunnel and a standby tunnel. Each IPsec-VPN connection supports only one active tunnel and one standby tunnel.
+        # *   You can specify parameters in the **TunnelOptionsSpecification** array when you create an IPsec-VPN connection in dual tunnel mode.
+        # *   When you create an IPsec-VPN connection in dual tunnel mode, you must add configurations of the active and standby tunnels for the IPsec-VPN connection. Each IPsec-VPN connection supports only one active tunnel and one standby tunnel.
         self.tunnel_options_specification = tunnel_options_specification
         # The ID of the VPN gateway.
         # 
@@ -56989,6 +57261,7 @@ class DescribeVcoRouteEntriesResponseBodyVcoRouteEntries(TeaModel):
         community: str = None,
         create_time: int = None,
         next_hop: str = None,
+        next_hop_tunnel_id_list: List[str] = None,
         route_dest: str = None,
         route_entry_type: str = None,
         source: str = None,
@@ -57006,6 +57279,7 @@ class DescribeVcoRouteEntriesResponseBodyVcoRouteEntries(TeaModel):
         self.create_time = create_time
         # The next hop of the route.
         self.next_hop = next_hop
+        self.next_hop_tunnel_id_list = next_hop_tunnel_id_list
         # The destination CIDR block of the route.
         self.route_dest = route_dest
         # The route type. Valid values:
@@ -57048,6 +57322,8 @@ class DescribeVcoRouteEntriesResponseBodyVcoRouteEntries(TeaModel):
             result['CreateTime'] = self.create_time
         if self.next_hop is not None:
             result['NextHop'] = self.next_hop
+        if self.next_hop_tunnel_id_list is not None:
+            result['NextHopTunnelIdList'] = self.next_hop_tunnel_id_list
         if self.route_dest is not None:
             result['RouteDest'] = self.route_dest
         if self.route_entry_type is not None:
@@ -57072,6 +57348,8 @@ class DescribeVcoRouteEntriesResponseBodyVcoRouteEntries(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('NextHop') is not None:
             self.next_hop = m.get('NextHop')
+        if m.get('NextHopTunnelIdList') is not None:
+            self.next_hop_tunnel_id_list = m.get('NextHopTunnelIdList')
         if m.get('RouteDest') is not None:
             self.route_dest = m.get('RouteDest')
         if m.get('RouteEntryType') is not None:
@@ -57087,6 +57365,45 @@ class DescribeVcoRouteEntriesResponseBodyVcoRouteEntries(TeaModel):
         return self
 
 
+class DescribeVcoRouteEntriesResponseBodyVpnRouteCounts(TeaModel):
+    def __init__(
+        self,
+        route_count: int = None,
+        route_entry_type: str = None,
+        source: str = None,
+    ):
+        self.route_count = route_count
+        self.route_entry_type = route_entry_type
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_count is not None:
+            result['RouteCount'] = self.route_count
+        if self.route_entry_type is not None:
+            result['RouteEntryType'] = self.route_entry_type
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RouteCount') is not None:
+            self.route_count = m.get('RouteCount')
+        if m.get('RouteEntryType') is not None:
+            self.route_entry_type = m.get('RouteEntryType')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
 class DescribeVcoRouteEntriesResponseBody(TeaModel):
     def __init__(
         self,
@@ -57095,6 +57412,7 @@ class DescribeVcoRouteEntriesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
         vco_route_entries: List[DescribeVcoRouteEntriesResponseBodyVcoRouteEntries] = None,
+        vpn_route_counts: List[DescribeVcoRouteEntriesResponseBodyVpnRouteCounts] = None,
     ):
         # The number of the returned page.
         self.page_number = page_number
@@ -57106,10 +57424,15 @@ class DescribeVcoRouteEntriesResponseBody(TeaModel):
         self.total_count = total_count
         # The list of routes.
         self.vco_route_entries = vco_route_entries
+        self.vpn_route_counts = vpn_route_counts
 
     def validate(self):
         if self.vco_route_entries:
             for k in self.vco_route_entries:
+                if k:
+                    k.validate()
+        if self.vpn_route_counts:
+            for k in self.vpn_route_counts:
                 if k:
                     k.validate()
 
@@ -57131,6 +57454,10 @@ class DescribeVcoRouteEntriesResponseBody(TeaModel):
         if self.vco_route_entries is not None:
             for k in self.vco_route_entries:
                 result['VcoRouteEntries'].append(k.to_map() if k else None)
+        result['VpnRouteCounts'] = []
+        if self.vpn_route_counts is not None:
+            for k in self.vpn_route_counts:
+                result['VpnRouteCounts'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -57148,6 +57475,11 @@ class DescribeVcoRouteEntriesResponseBody(TeaModel):
             for k in m.get('VcoRouteEntries'):
                 temp_model = DescribeVcoRouteEntriesResponseBodyVcoRouteEntries()
                 self.vco_route_entries.append(temp_model.from_map(k))
+        self.vpn_route_counts = []
+        if m.get('VpnRouteCounts') is not None:
+            for k in m.get('VpnRouteCounts'):
+                temp_model = DescribeVcoRouteEntriesResponseBodyVpnRouteCounts()
+                self.vpn_route_counts.append(temp_model.from_map(k))
         return self
 
 
@@ -60471,6 +60803,39 @@ class DescribeVpnAttachmentsRequest(TeaModel):
         return self
 
 
+class DescribeVpnAttachmentsResponseBodyVpnAttachmentsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeVpnAttachmentsResponseBodyVpnAttachments(TeaModel):
     def __init__(
         self,
@@ -60479,6 +60844,8 @@ class DescribeVpnAttachmentsResponseBodyVpnAttachments(TeaModel):
         description: str = None,
         instance_id: str = None,
         name: str = None,
+        tag: str = None,
+        tags: List[DescribeVpnAttachmentsResponseBodyVpnAttachmentsTags] = None,
         transit_router_id: str = None,
         transit_router_name: str = None,
     ):
@@ -60495,13 +60862,18 @@ class DescribeVpnAttachmentsResponseBodyVpnAttachments(TeaModel):
         self.instance_id = instance_id
         # The name of the IPsec-VPN connection.
         self.name = name
+        self.tag = tag
+        self.tags = tags
         # The ID of the transit router with which the IPsec-VPN connection is associated.
         self.transit_router_id = transit_router_id
         # The name of the transit router.
         self.transit_router_name = transit_router_name
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -60519,6 +60891,12 @@ class DescribeVpnAttachmentsResponseBodyVpnAttachments(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.transit_router_id is not None:
             result['TransitRouterId'] = self.transit_router_id
         if self.transit_router_name is not None:
@@ -60537,6 +60915,13 @@ class DescribeVpnAttachmentsResponseBodyVpnAttachments(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeVpnAttachmentsResponseBodyVpnAttachmentsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
         if m.get('TransitRouterName') is not None:
@@ -61141,6 +61526,7 @@ class DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions(T
         tunnel_bgp_config: DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig = None,
         tunnel_id: str = None,
         tunnel_ike_config: DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig = None,
+        tunnel_index: int = None,
         tunnel_ipsec_config: DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig = None,
         zone_no: str = None,
     ):
@@ -61186,6 +61572,7 @@ class DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions(T
         self.tunnel_id = tunnel_id
         # The configuration of Phase 1 negotiations.
         self.tunnel_ike_config = tunnel_ike_config
+        self.tunnel_index = tunnel_index
         # The configurations of Phase 2 negotiations.
         self.tunnel_ipsec_config = tunnel_ipsec_config
         # The zone where the tunnel is deployed.
@@ -61229,6 +61616,8 @@ class DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions(T
             result['TunnelId'] = self.tunnel_id
         if self.tunnel_ike_config is not None:
             result['TunnelIkeConfig'] = self.tunnel_ike_config.to_map()
+        if self.tunnel_index is not None:
+            result['TunnelIndex'] = self.tunnel_index
         if self.tunnel_ipsec_config is not None:
             result['TunnelIpsecConfig'] = self.tunnel_ipsec_config.to_map()
         if self.zone_no is not None:
@@ -61261,6 +61650,8 @@ class DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions(T
         if m.get('TunnelIkeConfig') is not None:
             temp_model = DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig()
             self.tunnel_ike_config = temp_model.from_map(m['TunnelIkeConfig'])
+        if m.get('TunnelIndex') is not None:
+            self.tunnel_index = m.get('TunnelIndex')
         if m.get('TunnelIpsecConfig') is not None:
             temp_model = DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig()
             self.tunnel_ipsec_config = temp_model.from_map(m['TunnelIpsecConfig'])
@@ -62656,6 +63047,7 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
         tunnel_bgp_config: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig = None,
         tunnel_id: str = None,
         tunnel_ike_config: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig = None,
+        tunnel_index: int = None,
         tunnel_ipsec_config: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig = None,
         zone_no: str = None,
     ):
@@ -62701,6 +63093,7 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
         self.tunnel_id = tunnel_id
         # The configuration of Phase 1 negotiations.
         self.tunnel_ike_config = tunnel_ike_config
+        self.tunnel_index = tunnel_index
         # The configurations of Phase 2 negotiations.
         self.tunnel_ipsec_config = tunnel_ipsec_config
         # The zone of the tunnel.
@@ -62742,6 +63135,8 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
             result['TunnelId'] = self.tunnel_id
         if self.tunnel_ike_config is not None:
             result['TunnelIkeConfig'] = self.tunnel_ike_config.to_map()
+        if self.tunnel_index is not None:
+            result['TunnelIndex'] = self.tunnel_index
         if self.tunnel_ipsec_config is not None:
             result['TunnelIpsecConfig'] = self.tunnel_ipsec_config.to_map()
         if self.zone_no is not None:
@@ -62774,6 +63169,8 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
         if m.get('TunnelIkeConfig') is not None:
             temp_model = DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig()
             self.tunnel_ike_config = temp_model.from_map(m['TunnelIkeConfig'])
+        if m.get('TunnelIndex') is not None:
+            self.tunnel_index = m.get('TunnelIndex')
         if m.get('TunnelIpsecConfig') is not None:
             temp_model = DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig()
             self.tunnel_ipsec_config = temp_model.from_map(m['TunnelIpsecConfig'])
@@ -64033,33 +64430,38 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         # *   **updating**\
         # *   **deleting**\
         self.status = status
-        # The automatically generated tag of the VPN gateway.
+        # The tag that is automatically generated for the VPN gateway. The tag consists of the following parameters:
         # 
         # *   **VpnEnableBgp**: indicates whether the VPN gateway supports BGP. Valid values:
         # 
         #     *   **true**\
         #     *   **false**\
         # 
-        # *   **VisuallySsl**: indicates whether the VPN gateway allows you to view information about connected SSL clients.
+        # *   **VisuallySsl**: indicates whether the VPN gateway allows you to view the connection information of SSL clients. Valid values:
         # 
         #     *   **true**\
         #     *   **false**\
         # 
-        # *   **PbrPriority**: indicates whether the VPN gateway allows you to configure priorities for policy-based routes.
+        # *   **PbrPriority**: indicates whether the VPN gateway allows you to configure priorities for policy-based routes. Valid values:
         # 
         #     *   **true**\
         #     *   **false**\
         # 
-        # *   **VpnNewImage**: indicates whether the VPN gateway is upgraded.
+        # *   **VpnNewImage**: indicates whether the VPN gateway is upgraded. Valid values:
         # 
         #     *   **true**\
         #     *   **false**\
         # 
-        # *   **description**\
+        # *   **description**: the description of the VPN gateway. This parameter is only for internal use.
         # 
-        # *   **VpnVersion**\
+        # *   **VpnVersion**: the version of the VPN gateway.
+        # 
+        # *   **IDaaSNewVersion**: indicates whether the VPN gateway can be associated with an EIAM 2.0 instance.
+        # 
+        #     *   **true**\
+        #     *   **false**\
         self.tag = tag
-        # The tag value.
+        # The tags that are added to the VPN gateway.
         self.tags = tags
         # The ID of the vSwitch to which the VPN gateway belongs.
         self.v_switch_id = v_switch_id
@@ -64067,9 +64469,7 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         self.vpc_id = vpc_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
-        # The type of the VPN gateway.
-        # 
-        # Only **Normal** may be returned, which indicates a standard VPN gateway.
+        # The type of VPN gateway. Only **Normal** may be returned, which indicates a standard VPN gateway.
         self.vpn_type = vpn_type
 
     def validate(self):
@@ -64441,17 +64841,13 @@ class DescribeVpnGatewaysRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. The tag key cannot be an empty string.
+        # The tag key.
         # 
-        # It can be at most 64 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
-        # 
-        # You can specify at most 20 tag keys in each call.
+        # You can specify at most 20 tag keys at a time.
         self.key = key
         # The tag value.
         # 
-        # The tag value can be an empty string and cannot exceed 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-        # 
-        # Each tag key corresponds to one tag value. You can specify at most 20 tag values in each call.
+        # Each tag key corresponds to one tag value. You can specify at most 20 tag values at a time.
         self.value = value
 
     def validate(self):
@@ -64532,11 +64928,7 @@ class DescribeVpnGatewaysRequest(TeaModel):
         # *   **updating**\
         # *   **deleting**\
         self.status = status
-        # The value of tag N to add to the resource.
-        # 
-        # The value of this parameter can be an empty string and cannot exceed 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-        # 
-        # Each tag key corresponds to one tag value. You can specify at most 20 tag values in each call.
+        # The tags that are added to the VPN gateway.
         self.tag = tag
         # The ID of the virtual private cloud (VPC) to which the VPN gateway belongs.
         self.vpc_id = vpc_id
@@ -64922,7 +65314,7 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         # *   **updating**\
         # *   **deleting**\
         self.status = status
-        # The tag that is automatically generated for the VPN gateway. The tag consists of the following parameters:
+        # The tag that is automatically generated for the VPN gateway.
         # 
         # *   **VpnEnableBgp**: indicates whether the VPN gateway supports BGP. Valid values:
         # 
@@ -64941,12 +65333,17 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         # 
         # *   **VpnNewImage**: indicates whether the VPN gateway is upgraded. Valid values:
         # 
-        #     *   **true**\
+        #     *   **true**: queries only SQL templates that need to be optimized.
         #     *   **false**: does not query only SQL statements that need to be optimized.
         # 
         # *   **description**: the description of the VPN gateway. This parameter is only for internal use.
         # 
         # *   **VpnVersion**: the version of the VPN gateway.
+        # 
+        # *   **IDaaSNewVersion**: indicates whether the VPN gateway can be associated with an EIAM 2.0 instance.
+        # 
+        #     *   **true**\
+        #     *   **false**\
         self.tag = tag
         # The tags that are added to the VPN gateway.
         self.tags = tags
@@ -65145,7 +65542,7 @@ class DescribeVpnGatewaysResponseBody(TeaModel):
         self.request_id = request_id
         # The number of entries returned.
         self.total_count = total_count
-        # The VPN gateways.
+        # The information about the VPN gateways.
         self.vpn_gateways = vpn_gateways
 
     def validate(self):
@@ -65629,6 +66026,80 @@ class DescribeVpnRouteEntriesRequest(TeaModel):
         return self
 
 
+class DescribeVpnRouteEntriesResponseBodyVpnRouteCountsVpnRouteCount(TeaModel):
+    def __init__(
+        self,
+        route_count: int = None,
+        route_entry_type: str = None,
+        source: str = None,
+    ):
+        self.route_count = route_count
+        self.route_entry_type = route_entry_type
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_count is not None:
+            result['RouteCount'] = self.route_count
+        if self.route_entry_type is not None:
+            result['RouteEntryType'] = self.route_entry_type
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RouteCount') is not None:
+            self.route_count = m.get('RouteCount')
+        if m.get('RouteEntryType') is not None:
+            self.route_entry_type = m.get('RouteEntryType')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class DescribeVpnRouteEntriesResponseBodyVpnRouteCounts(TeaModel):
+    def __init__(
+        self,
+        vpn_route_count: List[DescribeVpnRouteEntriesResponseBodyVpnRouteCountsVpnRouteCount] = None,
+    ):
+        self.vpn_route_count = vpn_route_count
+
+    def validate(self):
+        if self.vpn_route_count:
+            for k in self.vpn_route_count:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['VpnRouteCount'] = []
+        if self.vpn_route_count is not None:
+            for k in self.vpn_route_count:
+                result['VpnRouteCount'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.vpn_route_count = []
+        if m.get('VpnRouteCount') is not None:
+            for k in m.get('VpnRouteCount'):
+                temp_model = DescribeVpnRouteEntriesResponseBodyVpnRouteCountsVpnRouteCount()
+                self.vpn_route_count.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry(TeaModel):
     def __init__(
         self,
@@ -65781,6 +66252,7 @@ class DescribeVpnRouteEntriesResponseBody(TeaModel):
         page_size: int = None,
         request_id: str = None,
         total_count: int = None,
+        vpn_route_counts: DescribeVpnRouteEntriesResponseBodyVpnRouteCounts = None,
         vpn_route_entries: DescribeVpnRouteEntriesResponseBodyVpnRouteEntries = None,
     ):
         # The page number of the returned page.
@@ -65791,10 +66263,13 @@ class DescribeVpnRouteEntriesResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
+        self.vpn_route_counts = vpn_route_counts
         # The list of route entries.
         self.vpn_route_entries = vpn_route_entries
 
     def validate(self):
+        if self.vpn_route_counts:
+            self.vpn_route_counts.validate()
         if self.vpn_route_entries:
             self.vpn_route_entries.validate()
 
@@ -65812,6 +66287,8 @@ class DescribeVpnRouteEntriesResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
+        if self.vpn_route_counts is not None:
+            result['VpnRouteCounts'] = self.vpn_route_counts.to_map()
         if self.vpn_route_entries is not None:
             result['VpnRouteEntries'] = self.vpn_route_entries.to_map()
         return result
@@ -65826,6 +66303,9 @@ class DescribeVpnRouteEntriesResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('VpnRouteCounts') is not None:
+            temp_model = DescribeVpnRouteEntriesResponseBodyVpnRouteCounts()
+            self.vpn_route_counts = temp_model.from_map(m['VpnRouteCounts'])
         if m.get('VpnRouteEntries') is not None:
             temp_model = DescribeVpnRouteEntriesResponseBodyVpnRouteEntries()
             self.vpn_route_entries = temp_model.from_map(m['VpnRouteEntries'])
@@ -67547,7 +68027,7 @@ class DissociateVpnGatewayWithCertificateRequest(TeaModel):
     ):
         # The certificate ID.
         # 
-        # >  The certificate ID refers to the ID generated after the SSL certificate is associated with a VPN gateway. It is not the ID of the certificate itself. You can call [ListVpnCertificateAssociations](https://help.aliyun.com/document_detail/448813.html) to query certificate IDs.
+        # > The certificate ID refers to the ID generated after the SSL certificate is associated with the VPN gateway. It is not the ID of the SSL certificate. You can call the [ListVpnCertificateAssociations](https://help.aliyun.com/document_detail/2521961.html) operation to query certificate IDs.
         # 
         # This parameter is required.
         self.certificate_id = certificate_id
@@ -89062,6 +89542,7 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig(Te
 class ModifyTunnelAttributeRequestTunnelOptionsSpecification(TeaModel):
     def __init__(
         self,
+        customer_gateway_id: str = None,
         enable_dpd: bool = None,
         enable_nat_traversal: bool = None,
         remote_ca_certificate: str = None,
@@ -89069,6 +89550,7 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecification(TeaModel):
         tunnel_ike_config: ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig = None,
         tunnel_ipsec_config: ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig = None,
     ):
+        self.customer_gateway_id = customer_gateway_id
         # Specifies whether to enable the dead peer detection (DPD) feature. Valid values:
         # 
         # *   **true**: DPD is enabled. The IPsec initiator sends DPD packets to verify the existence and availability of the IPsec peer. If no response is received from the peer within a specified period of time, the IPsec peer is considered disconnected. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
@@ -89104,6 +89586,8 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecification(TeaModel):
             return _map
 
         result = dict()
+        if self.customer_gateway_id is not None:
+            result['CustomerGatewayId'] = self.customer_gateway_id
         if self.enable_dpd is not None:
             result['EnableDpd'] = self.enable_dpd
         if self.enable_nat_traversal is not None:
@@ -89120,6 +89604,8 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecification(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomerGatewayId') is not None:
+            self.customer_gateway_id = m.get('CustomerGatewayId')
         if m.get('EnableDpd') is not None:
             self.enable_dpd = m.get('EnableDpd')
         if m.get('EnableNatTraversal') is not None:
@@ -91070,6 +91556,242 @@ class ModifyVpcPrefixListResponse(TeaModel):
         return self
 
 
+class ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig(TeaModel):
+    def __init__(
+        self,
+        local_asn: int = None,
+        local_bgp_ip: str = None,
+        tunnel_cidr: str = None,
+    ):
+        self.local_asn = local_asn
+        self.local_bgp_ip = local_bgp_ip
+        self.tunnel_cidr = tunnel_cidr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.local_asn is not None:
+            result['LocalAsn'] = self.local_asn
+        if self.local_bgp_ip is not None:
+            result['LocalBgpIp'] = self.local_bgp_ip
+        if self.tunnel_cidr is not None:
+            result['TunnelCidr'] = self.tunnel_cidr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalAsn') is not None:
+            self.local_asn = m.get('LocalAsn')
+        if m.get('LocalBgpIp') is not None:
+            self.local_bgp_ip = m.get('LocalBgpIp')
+        if m.get('TunnelCidr') is not None:
+            self.tunnel_cidr = m.get('TunnelCidr')
+        return self
+
+
+class ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig(TeaModel):
+    def __init__(
+        self,
+        ike_auth_alg: str = None,
+        ike_enc_alg: str = None,
+        ike_lifetime: int = None,
+        ike_mode: str = None,
+        ike_pfs: str = None,
+        ike_version: str = None,
+        local_id: str = None,
+        psk: str = None,
+        remote_id: str = None,
+    ):
+        self.ike_auth_alg = ike_auth_alg
+        self.ike_enc_alg = ike_enc_alg
+        self.ike_lifetime = ike_lifetime
+        self.ike_mode = ike_mode
+        self.ike_pfs = ike_pfs
+        self.ike_version = ike_version
+        self.local_id = local_id
+        self.psk = psk
+        self.remote_id = remote_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ike_auth_alg is not None:
+            result['IkeAuthAlg'] = self.ike_auth_alg
+        if self.ike_enc_alg is not None:
+            result['IkeEncAlg'] = self.ike_enc_alg
+        if self.ike_lifetime is not None:
+            result['IkeLifetime'] = self.ike_lifetime
+        if self.ike_mode is not None:
+            result['IkeMode'] = self.ike_mode
+        if self.ike_pfs is not None:
+            result['IkePfs'] = self.ike_pfs
+        if self.ike_version is not None:
+            result['IkeVersion'] = self.ike_version
+        if self.local_id is not None:
+            result['LocalId'] = self.local_id
+        if self.psk is not None:
+            result['Psk'] = self.psk
+        if self.remote_id is not None:
+            result['RemoteId'] = self.remote_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IkeAuthAlg') is not None:
+            self.ike_auth_alg = m.get('IkeAuthAlg')
+        if m.get('IkeEncAlg') is not None:
+            self.ike_enc_alg = m.get('IkeEncAlg')
+        if m.get('IkeLifetime') is not None:
+            self.ike_lifetime = m.get('IkeLifetime')
+        if m.get('IkeMode') is not None:
+            self.ike_mode = m.get('IkeMode')
+        if m.get('IkePfs') is not None:
+            self.ike_pfs = m.get('IkePfs')
+        if m.get('IkeVersion') is not None:
+            self.ike_version = m.get('IkeVersion')
+        if m.get('LocalId') is not None:
+            self.local_id = m.get('LocalId')
+        if m.get('Psk') is not None:
+            self.psk = m.get('Psk')
+        if m.get('RemoteId') is not None:
+            self.remote_id = m.get('RemoteId')
+        return self
+
+
+class ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig(TeaModel):
+    def __init__(
+        self,
+        ipsec_auth_alg: str = None,
+        ipsec_enc_alg: str = None,
+        ipsec_lifetime: int = None,
+        ipsec_pfs: str = None,
+    ):
+        self.ipsec_auth_alg = ipsec_auth_alg
+        self.ipsec_enc_alg = ipsec_enc_alg
+        self.ipsec_lifetime = ipsec_lifetime
+        self.ipsec_pfs = ipsec_pfs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipsec_auth_alg is not None:
+            result['IpsecAuthAlg'] = self.ipsec_auth_alg
+        if self.ipsec_enc_alg is not None:
+            result['IpsecEncAlg'] = self.ipsec_enc_alg
+        if self.ipsec_lifetime is not None:
+            result['IpsecLifetime'] = self.ipsec_lifetime
+        if self.ipsec_pfs is not None:
+            result['IpsecPfs'] = self.ipsec_pfs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpsecAuthAlg') is not None:
+            self.ipsec_auth_alg = m.get('IpsecAuthAlg')
+        if m.get('IpsecEncAlg') is not None:
+            self.ipsec_enc_alg = m.get('IpsecEncAlg')
+        if m.get('IpsecLifetime') is not None:
+            self.ipsec_lifetime = m.get('IpsecLifetime')
+        if m.get('IpsecPfs') is not None:
+            self.ipsec_pfs = m.get('IpsecPfs')
+        return self
+
+
+class ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecification(TeaModel):
+    def __init__(
+        self,
+        customer_gateway_id: str = None,
+        enable_dpd: bool = None,
+        enable_nat_traversal: bool = None,
+        tunnel_bgp_config: ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig = None,
+        tunnel_id: str = None,
+        tunnel_ike_config: ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig = None,
+        tunnel_index: int = None,
+        tunnel_ipsec_config: ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig = None,
+    ):
+        self.customer_gateway_id = customer_gateway_id
+        self.enable_dpd = enable_dpd
+        self.enable_nat_traversal = enable_nat_traversal
+        self.tunnel_bgp_config = tunnel_bgp_config
+        self.tunnel_id = tunnel_id
+        self.tunnel_ike_config = tunnel_ike_config
+        self.tunnel_index = tunnel_index
+        self.tunnel_ipsec_config = tunnel_ipsec_config
+
+    def validate(self):
+        if self.tunnel_bgp_config:
+            self.tunnel_bgp_config.validate()
+        if self.tunnel_ike_config:
+            self.tunnel_ike_config.validate()
+        if self.tunnel_ipsec_config:
+            self.tunnel_ipsec_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.customer_gateway_id is not None:
+            result['CustomerGatewayId'] = self.customer_gateway_id
+        if self.enable_dpd is not None:
+            result['EnableDpd'] = self.enable_dpd
+        if self.enable_nat_traversal is not None:
+            result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.tunnel_bgp_config is not None:
+            result['TunnelBgpConfig'] = self.tunnel_bgp_config.to_map()
+        if self.tunnel_id is not None:
+            result['TunnelId'] = self.tunnel_id
+        if self.tunnel_ike_config is not None:
+            result['TunnelIkeConfig'] = self.tunnel_ike_config.to_map()
+        if self.tunnel_index is not None:
+            result['TunnelIndex'] = self.tunnel_index
+        if self.tunnel_ipsec_config is not None:
+            result['TunnelIpsecConfig'] = self.tunnel_ipsec_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomerGatewayId') is not None:
+            self.customer_gateway_id = m.get('CustomerGatewayId')
+        if m.get('EnableDpd') is not None:
+            self.enable_dpd = m.get('EnableDpd')
+        if m.get('EnableNatTraversal') is not None:
+            self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('TunnelBgpConfig') is not None:
+            temp_model = ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig()
+            self.tunnel_bgp_config = temp_model.from_map(m['TunnelBgpConfig'])
+        if m.get('TunnelId') is not None:
+            self.tunnel_id = m.get('TunnelId')
+        if m.get('TunnelIkeConfig') is not None:
+            temp_model = ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig()
+            self.tunnel_ike_config = temp_model.from_map(m['TunnelIkeConfig'])
+        if m.get('TunnelIndex') is not None:
+            self.tunnel_index = m.get('TunnelIndex')
+        if m.get('TunnelIpsecConfig') is not None:
+            temp_model = ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig()
+            self.tunnel_ipsec_config = temp_model.from_map(m['TunnelIpsecConfig'])
+        return self
+
+
 class ModifyVpnAttachmentAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -91080,6 +91802,7 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
         effect_immediately: bool = None,
         enable_dpd: bool = None,
         enable_nat_traversal: bool = None,
+        enable_tunnels_bgp: bool = None,
         health_check_config: str = None,
         ike_config: str = None,
         ipsec_config: str = None,
@@ -91092,6 +91815,7 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
         remote_subnet: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tunnel_options_specification: List[ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecification] = None,
         vpn_connection_id: str = None,
     ):
         # Specifies whether to automatically configure routes. Valid values:
@@ -91142,6 +91866,7 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
         # *   **true** After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
         # *   **false**\
         self.enable_nat_traversal = enable_nat_traversal
+        self.enable_tunnels_bgp = enable_tunnels_bgp
         # The health check configurations:
         # 
         # *   **HealthCheckConfig.enable**: specifies whether to enable the health check feature. Valid values:
@@ -91232,13 +91957,17 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
         self.remote_subnet = remote_subnet
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tunnel_options_specification = tunnel_options_specification
         # The ID of the IPsec-VPN connection.
         # 
         # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):
-        pass
+        if self.tunnel_options_specification:
+            for k in self.tunnel_options_specification:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -91260,6 +91989,8 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
             result['EnableDpd'] = self.enable_dpd
         if self.enable_nat_traversal is not None:
             result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.enable_tunnels_bgp is not None:
+            result['EnableTunnelsBgp'] = self.enable_tunnels_bgp
         if self.health_check_config is not None:
             result['HealthCheckConfig'] = self.health_check_config
         if self.ike_config is not None:
@@ -91284,6 +92015,10 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['TunnelOptionsSpecification'] = []
+        if self.tunnel_options_specification is not None:
+            for k in self.tunnel_options_specification:
+                result['TunnelOptionsSpecification'].append(k.to_map() if k else None)
         if self.vpn_connection_id is not None:
             result['VpnConnectionId'] = self.vpn_connection_id
         return result
@@ -91304,6 +92039,8 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
             self.enable_dpd = m.get('EnableDpd')
         if m.get('EnableNatTraversal') is not None:
             self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('EnableTunnelsBgp') is not None:
+            self.enable_tunnels_bgp = m.get('EnableTunnelsBgp')
         if m.get('HealthCheckConfig') is not None:
             self.health_check_config = m.get('HealthCheckConfig')
         if m.get('IkeConfig') is not None:
@@ -91328,6 +92065,11 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tunnel_options_specification = []
+        if m.get('TunnelOptionsSpecification') is not None:
+            for k in m.get('TunnelOptionsSpecification'):
+                temp_model = ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecification()
+                self.tunnel_options_specification.append(temp_model.from_map(k))
         if m.get('VpnConnectionId') is not None:
             self.vpn_connection_id = m.get('VpnConnectionId')
         return self
@@ -91465,6 +92207,272 @@ class ModifyVpnAttachmentAttributeResponseBodyIpsecConfig(TeaModel):
             self.ipsec_lifetime = m.get('IpsecLifetime')
         if m.get('IpsecPfs') is not None:
             self.ipsec_pfs = m.get('IpsecPfs')
+        return self
+
+
+class ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelBgpConfig(TeaModel):
+    def __init__(
+        self,
+        local_asn: int = None,
+        local_bgp_ip: str = None,
+        peer_asn: int = None,
+        peer_bgp_ip: str = None,
+        tunnel_cidr: str = None,
+    ):
+        self.local_asn = local_asn
+        self.local_bgp_ip = local_bgp_ip
+        self.peer_asn = peer_asn
+        self.peer_bgp_ip = peer_bgp_ip
+        self.tunnel_cidr = tunnel_cidr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.local_asn is not None:
+            result['LocalAsn'] = self.local_asn
+        if self.local_bgp_ip is not None:
+            result['LocalBgpIp'] = self.local_bgp_ip
+        if self.peer_asn is not None:
+            result['PeerAsn'] = self.peer_asn
+        if self.peer_bgp_ip is not None:
+            result['PeerBgpIp'] = self.peer_bgp_ip
+        if self.tunnel_cidr is not None:
+            result['TunnelCidr'] = self.tunnel_cidr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalAsn') is not None:
+            self.local_asn = m.get('LocalAsn')
+        if m.get('LocalBgpIp') is not None:
+            self.local_bgp_ip = m.get('LocalBgpIp')
+        if m.get('PeerAsn') is not None:
+            self.peer_asn = m.get('PeerAsn')
+        if m.get('PeerBgpIp') is not None:
+            self.peer_bgp_ip = m.get('PeerBgpIp')
+        if m.get('TunnelCidr') is not None:
+            self.tunnel_cidr = m.get('TunnelCidr')
+        return self
+
+
+class ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelIkeConfig(TeaModel):
+    def __init__(
+        self,
+        ike_auth_alg: str = None,
+        ike_enc_alg: str = None,
+        ike_lifetime: int = None,
+        ike_mode: str = None,
+        ike_pfs: str = None,
+        ike_version: str = None,
+        local_id: str = None,
+        psk: str = None,
+        remote_id: str = None,
+    ):
+        self.ike_auth_alg = ike_auth_alg
+        self.ike_enc_alg = ike_enc_alg
+        self.ike_lifetime = ike_lifetime
+        self.ike_mode = ike_mode
+        self.ike_pfs = ike_pfs
+        self.ike_version = ike_version
+        self.local_id = local_id
+        self.psk = psk
+        self.remote_id = remote_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ike_auth_alg is not None:
+            result['IkeAuthAlg'] = self.ike_auth_alg
+        if self.ike_enc_alg is not None:
+            result['IkeEncAlg'] = self.ike_enc_alg
+        if self.ike_lifetime is not None:
+            result['IkeLifetime'] = self.ike_lifetime
+        if self.ike_mode is not None:
+            result['IkeMode'] = self.ike_mode
+        if self.ike_pfs is not None:
+            result['IkePfs'] = self.ike_pfs
+        if self.ike_version is not None:
+            result['IkeVersion'] = self.ike_version
+        if self.local_id is not None:
+            result['LocalId'] = self.local_id
+        if self.psk is not None:
+            result['Psk'] = self.psk
+        if self.remote_id is not None:
+            result['RemoteId'] = self.remote_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IkeAuthAlg') is not None:
+            self.ike_auth_alg = m.get('IkeAuthAlg')
+        if m.get('IkeEncAlg') is not None:
+            self.ike_enc_alg = m.get('IkeEncAlg')
+        if m.get('IkeLifetime') is not None:
+            self.ike_lifetime = m.get('IkeLifetime')
+        if m.get('IkeMode') is not None:
+            self.ike_mode = m.get('IkeMode')
+        if m.get('IkePfs') is not None:
+            self.ike_pfs = m.get('IkePfs')
+        if m.get('IkeVersion') is not None:
+            self.ike_version = m.get('IkeVersion')
+        if m.get('LocalId') is not None:
+            self.local_id = m.get('LocalId')
+        if m.get('Psk') is not None:
+            self.psk = m.get('Psk')
+        if m.get('RemoteId') is not None:
+            self.remote_id = m.get('RemoteId')
+        return self
+
+
+class ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelIpsecConfig(TeaModel):
+    def __init__(
+        self,
+        ipsec_auth_alg: str = None,
+        ipsec_enc_alg: str = None,
+        ipsec_lifetime: int = None,
+        ipsec_pfs: str = None,
+    ):
+        self.ipsec_auth_alg = ipsec_auth_alg
+        self.ipsec_enc_alg = ipsec_enc_alg
+        self.ipsec_lifetime = ipsec_lifetime
+        self.ipsec_pfs = ipsec_pfs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipsec_auth_alg is not None:
+            result['IpsecAuthAlg'] = self.ipsec_auth_alg
+        if self.ipsec_enc_alg is not None:
+            result['IpsecEncAlg'] = self.ipsec_enc_alg
+        if self.ipsec_lifetime is not None:
+            result['IpsecLifetime'] = self.ipsec_lifetime
+        if self.ipsec_pfs is not None:
+            result['IpsecPfs'] = self.ipsec_pfs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpsecAuthAlg') is not None:
+            self.ipsec_auth_alg = m.get('IpsecAuthAlg')
+        if m.get('IpsecEncAlg') is not None:
+            self.ipsec_enc_alg = m.get('IpsecEncAlg')
+        if m.get('IpsecLifetime') is not None:
+            self.ipsec_lifetime = m.get('IpsecLifetime')
+        if m.get('IpsecPfs') is not None:
+            self.ipsec_pfs = m.get('IpsecPfs')
+        return self
+
+
+class ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecification(TeaModel):
+    def __init__(
+        self,
+        customer_gateway_id: str = None,
+        enable_dpd: bool = None,
+        enable_nat_traversal: bool = None,
+        internet_ip: str = None,
+        role: str = None,
+        state: str = None,
+        tunnel_bgp_config: ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelBgpConfig = None,
+        tunnel_id: str = None,
+        tunnel_ike_config: ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelIkeConfig = None,
+        tunnel_index: int = None,
+        tunnel_ipsec_config: ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelIpsecConfig = None,
+    ):
+        self.customer_gateway_id = customer_gateway_id
+        self.enable_dpd = enable_dpd
+        self.enable_nat_traversal = enable_nat_traversal
+        self.internet_ip = internet_ip
+        self.role = role
+        self.state = state
+        self.tunnel_bgp_config = tunnel_bgp_config
+        self.tunnel_id = tunnel_id
+        self.tunnel_ike_config = tunnel_ike_config
+        self.tunnel_index = tunnel_index
+        self.tunnel_ipsec_config = tunnel_ipsec_config
+
+    def validate(self):
+        if self.tunnel_bgp_config:
+            self.tunnel_bgp_config.validate()
+        if self.tunnel_ike_config:
+            self.tunnel_ike_config.validate()
+        if self.tunnel_ipsec_config:
+            self.tunnel_ipsec_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.customer_gateway_id is not None:
+            result['CustomerGatewayId'] = self.customer_gateway_id
+        if self.enable_dpd is not None:
+            result['EnableDpd'] = self.enable_dpd
+        if self.enable_nat_traversal is not None:
+            result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.state is not None:
+            result['State'] = self.state
+        if self.tunnel_bgp_config is not None:
+            result['TunnelBgpConfig'] = self.tunnel_bgp_config.to_map()
+        if self.tunnel_id is not None:
+            result['TunnelId'] = self.tunnel_id
+        if self.tunnel_ike_config is not None:
+            result['TunnelIkeConfig'] = self.tunnel_ike_config.to_map()
+        if self.tunnel_index is not None:
+            result['TunnelIndex'] = self.tunnel_index
+        if self.tunnel_ipsec_config is not None:
+            result['TunnelIpsecConfig'] = self.tunnel_ipsec_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomerGatewayId') is not None:
+            self.customer_gateway_id = m.get('CustomerGatewayId')
+        if m.get('EnableDpd') is not None:
+            self.enable_dpd = m.get('EnableDpd')
+        if m.get('EnableNatTraversal') is not None:
+            self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('TunnelBgpConfig') is not None:
+            temp_model = ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelBgpConfig()
+            self.tunnel_bgp_config = temp_model.from_map(m['TunnelBgpConfig'])
+        if m.get('TunnelId') is not None:
+            self.tunnel_id = m.get('TunnelId')
+        if m.get('TunnelIkeConfig') is not None:
+            temp_model = ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelIkeConfig()
+            self.tunnel_ike_config = temp_model.from_map(m['TunnelIkeConfig'])
+        if m.get('TunnelIndex') is not None:
+            self.tunnel_index = m.get('TunnelIndex')
+        if m.get('TunnelIpsecConfig') is not None:
+            temp_model = ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelIpsecConfig()
+            self.tunnel_ipsec_config = temp_model.from_map(m['TunnelIpsecConfig'])
         return self
 
 
@@ -91624,6 +92632,7 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
         effect_immediately: bool = None,
         enable_dpd: bool = None,
         enable_nat_traversal: bool = None,
+        enable_tunnels_bgp: bool = None,
         ike_config: ModifyVpnAttachmentAttributeResponseBodyIkeConfig = None,
         ipsec_config: ModifyVpnAttachmentAttributeResponseBodyIpsecConfig = None,
         local_subnet: str = None,
@@ -91634,6 +92643,7 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
         resource_group_id: str = None,
         spec: str = None,
         status: str = None,
+        tunnel_options_specification: List[ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecification] = None,
         vco_health_check: ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck = None,
         vpn_bgp_config: ModifyVpnAttachmentAttributeResponseBodyVpnBgpConfig = None,
         vpn_connection_id: str = None,
@@ -91670,6 +92680,7 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
         # *   **true**\
         # *   **false**\
         self.enable_nat_traversal = enable_nat_traversal
+        self.enable_tunnels_bgp = enable_tunnels_bgp
         # The configuration of Phase 1 negotiations.
         self.ike_config = ike_config
         # The configuration of Phase 2 negotiations.
@@ -91702,6 +92713,7 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
         # *   **ipsec_sa_not_established**: Phase 2 negotiations failed.
         # *   **ipsec_sa_established**: Phase 2 negotiations succeeded.
         self.status = status
+        self.tunnel_options_specification = tunnel_options_specification
         # The health check configuration of the IPsec-VPN connection.
         self.vco_health_check = vco_health_check
         # The BGP configuration of the IPsec-VPN connection.
@@ -91716,6 +92728,10 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
             self.ike_config.validate()
         if self.ipsec_config:
             self.ipsec_config.validate()
+        if self.tunnel_options_specification:
+            for k in self.tunnel_options_specification:
+                if k:
+                    k.validate()
         if self.vco_health_check:
             self.vco_health_check.validate()
         if self.vpn_bgp_config:
@@ -91743,6 +92759,8 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
             result['EnableDpd'] = self.enable_dpd
         if self.enable_nat_traversal is not None:
             result['EnableNatTraversal'] = self.enable_nat_traversal
+        if self.enable_tunnels_bgp is not None:
+            result['EnableTunnelsBgp'] = self.enable_tunnels_bgp
         if self.ike_config is not None:
             result['IkeConfig'] = self.ike_config.to_map()
         if self.ipsec_config is not None:
@@ -91763,6 +92781,10 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
             result['Spec'] = self.spec
         if self.status is not None:
             result['Status'] = self.status
+        result['TunnelOptionsSpecification'] = []
+        if self.tunnel_options_specification is not None:
+            for k in self.tunnel_options_specification:
+                result['TunnelOptionsSpecification'].append(k.to_map() if k else None)
         if self.vco_health_check is not None:
             result['VcoHealthCheck'] = self.vco_health_check.to_map()
         if self.vpn_bgp_config is not None:
@@ -91791,6 +92813,8 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
             self.enable_dpd = m.get('EnableDpd')
         if m.get('EnableNatTraversal') is not None:
             self.enable_nat_traversal = m.get('EnableNatTraversal')
+        if m.get('EnableTunnelsBgp') is not None:
+            self.enable_tunnels_bgp = m.get('EnableTunnelsBgp')
         if m.get('IkeConfig') is not None:
             temp_model = ModifyVpnAttachmentAttributeResponseBodyIkeConfig()
             self.ike_config = temp_model.from_map(m['IkeConfig'])
@@ -91813,6 +92837,11 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
             self.spec = m.get('Spec')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tunnel_options_specification = []
+        if m.get('TunnelOptionsSpecification') is not None:
+            for k in m.get('TunnelOptionsSpecification'):
+                temp_model = ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecification()
+                self.tunnel_options_specification.append(temp_model.from_map(k))
         if m.get('VcoHealthCheck') is not None:
             temp_model = ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck()
             self.vco_health_check = temp_model.from_map(m['VcoHealthCheck'])
@@ -91876,15 +92905,19 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConf
     ):
         # The ASN of the tunnel on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
         # 
-        # > - You can specify or modify this parameter if BGP is enabled for the IPsec-VPN connection (**EnableTunnelsBgp** is set to **true**).
-        # > - Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](https://help.aliyun.com/document_detail/170235.html).
-        # > - We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. For information about the range of private ASNs, see the relevant documentation.
-        self.local_asn = local_asn
-        # The BGP IP address of the tunnel on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block range.
-        self.local_bgp_ip = local_bgp_ip
-        # The BGP CIDR block of the tunnel. The CIDR block must belong to 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+        # >  You can specify this parameter only if **EnableTunnelsBgp** is set to **true**.
         # 
-        # >  The BGP CIDR block of a tunnel associated with a VPN gateway must be unique.
+        # *   Before you add BGP configurations, we recommend that you learn about how BGP dynamic routing works and the limits. For more information, see [Configure BGP dynamic routing](https://help.aliyun.com/document_detail/2638220.html).
+        # 
+        # *   We recommend that you use a private ASN to establish BGP connections to Alibaba Cloud. For information about the range of private ASNs, see the relevant documentation.
+        self.local_asn = local_asn
+        # The BGP IP address of the tunnel on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block.
+        self.local_bgp_ip = local_bgp_ip
+        # The BGP CIDR block of the tunnel.
+        # 
+        # The CIDR block must fall within 169.254.0.0/16 and the mask of the CIDR block must be 30 bits in length. The CIDR block cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
+        # 
+        # >  The BGP CIDR block of each tunnel must be unique on a VPN gateway.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -91936,33 +92969,33 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConf
         # 
         # Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
         self.ike_enc_alg = ike_enc_alg
-        # The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**.
+        # The SA lifetime as a result of Phase 1 negotiations. Unit: seconds Valid values: **0** to **86400**.
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode. Valid values:
+        # The negotiation mode of IKE. Valid values:
         # 
-        # *   **main**: This mode offers higher security during negotiations.
-        # *   **aggressive**: This mode is faster and has a higher success rate.
+        # *   **main:** This mode offers higher security during negotiations.
+        # *   **aggressive:** This mode supports faster negotiations and a higher success rate.
         self.ike_mode = ike_mode
-        # The DH key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
+        # The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
         self.ike_pfs = ike_pfs
         # The version of the IKE protocol. Valid values: **ikev1** and **ikev2**.
         # 
-        # Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
+        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for scenarios with multiple CIDR blocks.
         self.ike_version = ike_version
-        # The identifier on the Alibaba Cloud side, which is used in Phase 1 negotiations. The identifier cannot exceed 100 characters in length. The default identifier is the IP address of the tunnel.
+        # The identifier on the Alibaba Cloud side, which is used in Phase 1 negotiations. The identifier cannot exceed 100 characters in length and cannot contain space characters. The default value is the IP address of the tunnel.
         # 
-        # You can set **LocalId** to a fully qualified domain name (FQDN). In this case, we recommend that you set IkeMode to **aggressive**.
+        # **LocalId** supports fully qualified domain names (FQDNs). If you use an FQDN, we recommend that you set the negotiation mode to **aggressive**.
         self.local_id = local_id
         # The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
         # 
-        # *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ``~!\\`@#$%^&*()_-+={}[]|;:\\",.<>/?``
-        # *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key that is generated by the system.
+        # *   The key cannot contain space characters. The key must be 1 to 100 characters in length, and can contain digits, letters, and the following special characters: ``~!\\`@#$%^&*()_-+={}[]|;:\\",.<>/?``
+        # *   If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key that is automatically generated by the system.
         # 
-        # >  The tunnel and the tunnel peer must use the same pre-shared key. Otherwise, the tunnel cannot be established.
+        # >  The tunnel and the tunnel peer must use the same pre-shared key. Otherwise, the tunnel cannot be built.
         self.psk = psk
-        # The identifier of the tunnel peer, which is used in Phase 1 negotiations. The identifier cannot exceed 100 characters in length. The default identifier is the IP address of the customer gateway associated with the tunnel.
+        # The identifier of the tunnel peer, which is used in Phase 1 negotiations. The identifier cannot exceed 100 characters in length and cannot contain space characters. The default value is the IP address of the customer gateway that is associated with the tunnel.
         # 
-        # You can set **RemoteId** to an FQDN. In this case, we recommend that you set IkeMode to **aggressive**.
+        # **RemoteId** supports FQDNs. If you use an FQDN, we recommend that you set the negotiation mode to **aggressive**.
         self.remote_id = remote_id
 
     def validate(self):
@@ -92033,9 +93066,9 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecCo
         # 
         # Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**.
+        # The SA lifetime as a result of Phase 2 negotiations. Unit: seconds Valid values: **0** to **86400**.
         self.ipsec_lifetime = ipsec_lifetime
-        # The DH key exchange algorithm that is used in Phase 2 negotiations.
+        # The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations.
         # 
         # Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
         self.ipsec_pfs = ipsec_pfs
@@ -92075,6 +93108,7 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecCo
 class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification(TeaModel):
     def __init__(
         self,
+        customer_gateway_id: str = None,
         enable_dpd: bool = None,
         enable_nat_traversal: bool = None,
         remote_ca_certificate: str = None,
@@ -92084,15 +93118,17 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification(TeaModel):
         tunnel_ike_config: ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig = None,
         tunnel_ipsec_config: ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig = None,
     ):
+        # The ID of the customer gateway associated with the tunnel.
+        self.customer_gateway_id = customer_gateway_id
         # Specifies whether to enable the Dead Peer Detection (DPD) feature for the tunnel. Valid values:
         # 
-        # *   **true** The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within a specified period of time, the connection fails. ISAKMP SA and IPsec SA are deleted. The security tunnel is also deleted.
-        # *   **false**\
+        # *   **true**: enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted. The security tunnel is also deleted.
+        # *   **false**: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
         self.enable_dpd = enable_dpd
         # Specifies whether to enable NAT traversal for the tunnel. Valid values:
         # 
-        # *   **true** After NAT traversal is enabled, the initiator does not check the UDP ports during Internet Key Exchange (IKE) negotiations and can automatically discover NAT gateway devices along the IPsec-VPN tunnel.
-        # *   **false**\
+        # *   **true**: enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec-VPN tunnel.
+        # *   **false**: disables NAT traversal.
         self.enable_nat_traversal = enable_nat_traversal
         # If the VPN gateway uses an SM certificate, you can modify the CA certificate used by the IPsec peer.
         # 
@@ -92105,8 +93141,6 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification(TeaModel):
         self.role = role
         # The Border Gateway Protocol (BGP) configurations of the tunnel.
         self.tunnel_bgp_config = tunnel_bgp_config
-        # **TunnelOptionsSpecification** parameters are supported by dual-tunnel IPsec-VPN gateways. You can modify both the active and standby tunnels of the IPsec-VPN connection.
-        # 
         # The tunnel ID.
         self.tunnel_id = tunnel_id
         # The configurations of Phase 1 negotiations.
@@ -92128,6 +93162,8 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification(TeaModel):
             return _map
 
         result = dict()
+        if self.customer_gateway_id is not None:
+            result['CustomerGatewayId'] = self.customer_gateway_id
         if self.enable_dpd is not None:
             result['EnableDpd'] = self.enable_dpd
         if self.enable_nat_traversal is not None:
@@ -92148,6 +93184,8 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomerGatewayId') is not None:
+            self.customer_gateway_id = m.get('CustomerGatewayId')
         if m.get('EnableDpd') is not None:
             self.enable_dpd = m.get('EnableDpd')
         if m.get('EnableNatTraversal') is not None:
@@ -92200,27 +93238,27 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         # *   **true**\
         # *   **false**\
         self.auto_config_route = auto_config_route
-        # This parameter is supported by single-tunnel IPsec-VPN connections.
+        # This parameter is supported if you modify the configurations of an IPsec-VPN connection in single-tunnel mode.
         # 
-        # The Border Gateway Protocol (BGP) configurations:
+        # BGP configuration:
         # 
-        # *   **BgpConfig.EnableBgp:** specifies whether to enable BGP. Valid values: **true** and **false**.
+        # *   **BgpConfig.EnableBgp**: specifies whether to enable BGP. Valid values: **true** and **false**.
         # 
         # *   **BgpConfig.LocalAsn:** the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**.
         # 
-        #     You can enter the ASN in two segments. Separate the first 16 bits of the ASN from the remaining 16 bits with a period (.). Enter the number in each segment in decimal format.
+        #     You can enter a value in two segments separated by a period (.). Each segment is 16 bits in length. Enter the number in each segment in decimal format.
         # 
-        #     For example, if you enter 123.456, the ASN is: 123 × 65536 + 456 = 8061384.
+        #     For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
         # 
-        # *   **BgpConfig.TunnelCidr**: the CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+        # *   **BgpConfig.TunnelCidr**: The CIDR block of the IPsec tunnel. The CIDR block must fall within 169.254.0.0/16 and the mask of the CIDR block must be 30 bits in length. The CIDR block cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
         # 
-        #     > The CIDR block of the IPsec tunnel of each IPsec-VPN connection must be unique on a VPN gateway.
+        #     > The CIDR block of the IPsec tunnel for each IPsec-VPN connection on a VPN gateway must be unique.
         # 
-        # *   **LocalBgpIp**: the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block range of the IPsec tunnel.
+        # *   **LocalBgpIp**: the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
         # 
         # > - This parameter is required when the VPN gateway has dynamic BGP enabled.
-        # > - Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [BGP dynamic routing ](https://help.aliyun.com/document_detail/170235.html).
-        # > - We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. For information about the range of private ASNs, see the relevant documentation.
+        # > - Before you add BGP configurations, we recommend that you learn about how BGP dynamic routing works and the limits. For more information, see [Configure BGP dynamic routing](https://help.aliyun.com/document_detail/2638220.html).
+        # > - We recommend that you use a private ASN to establish BGP connections to Alibaba Cloud. For information about the range of private ASNs, see the relevant documentation.
         self.bgp_config = bgp_config
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -92261,25 +93299,27 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         # *   **HealthCheckConfig.interval**: the interval between two consecutive health checks. Unit: seconds.
         # *   **HealthCheckConfig.retry**: the maximum number of health check retries.
         self.health_check_config = health_check_config
-        # This parameter is supported by single-tunnel IPsec-VPN connections.
+        # This parameter is supported if you modify the configurations of an IPsec-VPN connection in single-tunnel mode.
         # 
         # The configurations of Phase 1 negotiations:
         # 
-        # *   **IkeConfig.Psk**: the pre-shared key that is used for authentication between the VPN gateway and the data center.
+        # *   **IkeConfig.Psk**: The pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center.
         # 
-        #     *   It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\\",.<>/?``
-        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key that is generated by the system.
+        #     *   The key cannot contain space characters. The key must be 1 to 100 characters in length, and can contain digits, letters, and the following special characters: ``~!`@#$%^&*()_-+={}[]|;:\\",.<>/?``
+        #     *   If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key that is automatically generated by the system.
         # 
-        #      > The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises database. Otherwise, the on-premises database and the VPN gateway cannot establish a connection.
+        #     **\
+        # 
+        #     **Description** The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
         # 
         # *   **IkeConfig.IkeVersion**: the version of the Internet Key Exchange (IKE) protocol. Valid values: **ikev1** and **ikev2**.
         # 
-        #     Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
+        #     Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
         # 
         # *   **IkeConfig.IkeMode**: the negotiation mode of IKE. Valid values: **main** and **aggressive**.
         # 
-        #     *   **main**: This mode offers higher security during negotiations.
-        #     *   **aggressive**: This mode is faster and has a higher success rate.
+        #     *   **main:** This mode offers higher security during negotiations.
+        #     *   **aggressive:** This mode supports faster negotiations and a higher success rate.
         # 
         # *   **IkeConfig.IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations.
         # 
@@ -92289,13 +93329,13 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         # 
         #     Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
         # 
-        # *   **IkeConfig.IkePfs**: the Diffie-Hellman (DH) key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
+        # *   **IkeConfig.IkePfs**: the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
         # 
-        # *   **IkeConfig.IkeLifetime**: the security association (SA) lifetime that is determined by Phase 1 negotiations. Unit: seconds. Valid values: **0 to 86400**.
+        # *   **IkeConfig.IkeLifetime**: the SA lifetime as a result of Phase 1 negotiations. Unit: seconds Valid values: **0 to 86400**.
         # 
-        # *   **IkeConfig.LocalId**: the identifier of the VPN gateway. The identifier cannot exceed 100 characters in length. The default value is the IP address of the VPN gateway.
+        # *   **IkeConfig.LocalId**: the identifier of the VPN gateway. The identifier cannot exceed 100 characters in length and cannot contain space characters. The default value is the IP address of the VPN gateway.
         # 
-        # *   **IkeConfig.RemoteId**: the identifier of the customer gateway. The identifier cannot exceed 100 characters in length. The default value is the IP address of the customer gateway.
+        # *   **IkeConfig.RemoteId**: the identifier of the customer gateway. The identifier cannot exceed 100 characters in length and cannot contain space characters. The default value is the IP address of the customer gateway.
         self.ike_config = ike_config
         # You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
         # 
@@ -92353,7 +93393,7 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The tunnel configurations.
         # 
-        # You can specify the parameters in **TunnelOptionsSpecification** if you modify the configuration of a dual-tunnel IPsec-VPN connection. You can modify both the active and standby tunnels of the IPsec-VPN connection.
+        # You can specify parameters in the **TunnelOptionsSpecification** array when you modify the configurations of an IPsec-VPN connection in dual-tunnel mode. You can modify the configurations of both the active and standby tunnels of the IPsec-VPN connection.
         self.tunnel_options_specification = tunnel_options_specification
         # The ID of the IPsec-VPN connection.
         # 

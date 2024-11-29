@@ -1,3 +1,22 @@
+2024-11-29 Version: 6.9.5
+- Update API CreateVpnAttachment: add param EnableTunnelsBgp.
+- Update API CreateVpnAttachment: add param TunnelOptionsSpecification.
+- Update API CreateVpnAttachment: update param CustomerGatewayId.
+- Update API CreateVpnAttachment: update param RemoteCaCert.
+- Update API DescribeVcoRouteEntries: update response param.
+- Update API DescribeVpnAttachments: update response param.
+- Update API DescribeVpnConnection: update response param.
+- Update API DescribeVpnConnections: update response param.
+- Update API DescribeVpnRouteEntries: update response param.
+- Update API ModifyRouteEntry: update param RouteEntryId.
+- Update API ModifyTunnelAttribute: update param TunnelOptionsSpecification.
+- Update API ModifyVpnAttachmentAttribute: add param EnableTunnelsBgp.
+- Update API ModifyVpnAttachmentAttribute: add param TunnelOptionsSpecification.
+- Update API ModifyVpnAttachmentAttribute: update param RemoteCaCert.
+- Update API ModifyVpnAttachmentAttribute: update response param.
+- Update API ModifyVpnConnectionAttribute: update param TunnelOptionsSpecification.
+
+
 2024-10-24 Version: 6.9.4
 - Update API CreateFlowLog: add param IpVersion.
 - Update API CreateNatGateway: add param AccessMode.
