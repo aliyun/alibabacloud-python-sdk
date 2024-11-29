@@ -1,3 +1,14 @@
+2024-11-29 Version: 2.5.0
+- Support API CreateLatestDeadLockAnalysis.
+- Support API GetDeadLockDetail.
+- Support API GetDeadLockHistory.
+- Support API GetDeadlockHistogram.
+- Delete API CreateAdamBenchTask.
+- Delete API StopCloudBenchTask.
+- Delete API SyncHDMAliyunResource.
+- Update API GetAsyncErrorRequestStatResult: update response param.
+
+
 2024-07-23 Version: 2.4.4
 - Update API DescribeSqlLogConfig: update response param.
 

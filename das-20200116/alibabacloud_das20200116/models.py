@@ -11,11 +11,8 @@ class DataResultValue(TeaModel):
         instance_id: str = None,
         count: int = None,
     ):
-        # The SQL ID.
         self.sql_id = sql_id
-        # The instance ID.
         self.instance_id = instance_id
-        # The number of failed executions.
         self.count = count
 
     def validate(self):
@@ -493,231 +490,6 @@ class AddHDMInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddHDMInstanceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateAdamBenchTaskRequest(TeaModel):
-    def __init__(
-        self,
-        description: str = None,
-        dst_instance_id: str = None,
-        dst_super_account: str = None,
-        dst_super_password: str = None,
-        rate: int = None,
-        request_duration: int = None,
-        request_start_time: int = None,
-        src_engine: str = None,
-        src_engine_version: str = None,
-        src_max_qps: float = None,
-        src_mean_qps: float = None,
-        src_sql_oss_addr: str = None,
-    ):
-        # The description of the stress testing task.
-        # 
-        # This parameter is required.
-        self.description = description
-        # The ID of the destination instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to query the ID.
-        # 
-        # This parameter is required.
-        self.dst_instance_id = dst_instance_id
-        # The name of the privileged account for the destination instance.
-        # 
-        # This parameter is required.
-        self.dst_super_account = dst_super_account
-        # The password of the privileged account for the destination instance.
-        # 
-        # This parameter is required.
-        self.dst_super_password = dst_super_password
-        # The rate at which the traffic captured from the source database instance is replayed on the destination database instance. Valid values: 1 to 30. Default value: 1.
-        self.rate = rate
-        # The duration of the stress testing task for which the traffic is captured from the source instance. Unit: milliseconds.
-        # 
-        # This parameter is required.
-        self.request_duration = request_duration
-        # The start time of the stress testing task. Specify the time in the UNIX timestamp format. Unit: milliseconds.
-        # 
-        # This parameter is required.
-        self.request_start_time = request_start_time
-        # The database engine that the source database instance runs.
-        self.src_engine = src_engine
-        # The version of the database engine that the source database instance runs.
-        self.src_engine_version = src_engine_version
-        # The maximum number of queries per second (QPS) within the time period during which traffic on the source database instance is captured. The value must be accurate to two decimal places.
-        # 
-        # This parameter is required.
-        self.src_max_qps = src_max_qps
-        # The average QPS within the time period in which traffic on the source database instance is captured. The value must be accurate to two decimal places.
-        # 
-        # This parameter is required.
-        self.src_mean_qps = src_mean_qps
-        # The URL of the Object Storage Service (OSS) folder in which the archived objects for SQL statements that run on the source database instance are stored. You can obtain the URL after you upload the archived files to OSS.
-        # 
-        # This parameter is required.
-        self.src_sql_oss_addr = src_sql_oss_addr
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.dst_instance_id is not None:
-            result['DstInstanceId'] = self.dst_instance_id
-        if self.dst_super_account is not None:
-            result['DstSuperAccount'] = self.dst_super_account
-        if self.dst_super_password is not None:
-            result['DstSuperPassword'] = self.dst_super_password
-        if self.rate is not None:
-            result['Rate'] = self.rate
-        if self.request_duration is not None:
-            result['RequestDuration'] = self.request_duration
-        if self.request_start_time is not None:
-            result['RequestStartTime'] = self.request_start_time
-        if self.src_engine is not None:
-            result['SrcEngine'] = self.src_engine
-        if self.src_engine_version is not None:
-            result['SrcEngineVersion'] = self.src_engine_version
-        if self.src_max_qps is not None:
-            result['SrcMaxQps'] = self.src_max_qps
-        if self.src_mean_qps is not None:
-            result['SrcMeanQps'] = self.src_mean_qps
-        if self.src_sql_oss_addr is not None:
-            result['SrcSqlOssAddr'] = self.src_sql_oss_addr
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('DstInstanceId') is not None:
-            self.dst_instance_id = m.get('DstInstanceId')
-        if m.get('DstSuperAccount') is not None:
-            self.dst_super_account = m.get('DstSuperAccount')
-        if m.get('DstSuperPassword') is not None:
-            self.dst_super_password = m.get('DstSuperPassword')
-        if m.get('Rate') is not None:
-            self.rate = m.get('Rate')
-        if m.get('RequestDuration') is not None:
-            self.request_duration = m.get('RequestDuration')
-        if m.get('RequestStartTime') is not None:
-            self.request_start_time = m.get('RequestStartTime')
-        if m.get('SrcEngine') is not None:
-            self.src_engine = m.get('SrcEngine')
-        if m.get('SrcEngineVersion') is not None:
-            self.src_engine_version = m.get('SrcEngineVersion')
-        if m.get('SrcMaxQps') is not None:
-            self.src_max_qps = m.get('SrcMaxQps')
-        if m.get('SrcMeanQps') is not None:
-            self.src_mean_qps = m.get('SrcMeanQps')
-        if m.get('SrcSqlOssAddr') is not None:
-            self.src_sql_oss_addr = m.get('SrcSqlOssAddr')
-        return self
-
-
-class CreateAdamBenchTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: str = None,
-    ):
-        # The HTTP status code returned.
-        self.code = code
-        # The detailed information, including the error codes and the number of entries that are returned.
-        self.data = data
-        # The returned message.
-        # 
-        # > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
-        self.message = message
-        # The request ID.
-        self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class CreateAdamBenchTaskResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateAdamBenchTaskResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateAdamBenchTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1941,6 +1713,132 @@ class CreateKillInstanceSessionTaskWithMaintainUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateKillInstanceSessionTaskWithMaintainUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateLatestDeadLockAnalysisRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        node_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.node_id = node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class CreateLatestDeadLockAnalysisResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateLatestDeadLockAnalysisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLatestDeadLockAnalysisResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLatestDeadLockAnalysisResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3383,10 +3281,10 @@ class DescribeAutoScalingConfigResponseBodyDataSpec(TeaModel):
         self.downgrade = downgrade
         # The maximum number of read-only nodes of the instance.
         self.max_read_only_nodes = max_read_only_nodes
-        # The maximum specifications to which the database instance can be upgraded. For more information about the specifications of each type of supported database instances, see the following topics:
+        # The maximum specifications to which the cluster can be scaled up. For more information about the specifications of each type of supported database instances, see the following topics:
         # 
-        # *   PolarDB for MySQL Cluster Edition instances: [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html).
-        # *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs): [Specifications](https://help.aliyun.com/document_detail/276974.html).
+        # *   PolarDB for MySQL Cluster Edition instances: [Compute node specifications of PolarDB for MySQL Enterprise Edition](https://help.aliyun.com/document_detail/102542.html)
+        # *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: [Specifications](https://help.aliyun.com/document_detail/276974.html)
         self.max_spec = max_spec
         # The average memory usage threshold that triggers automatic specification scale-up. Unit: %.
         self.mem_usage_upper_threshold = mem_usage_upper_threshold
@@ -3579,7 +3477,7 @@ class DescribeAutoScalingConfigResponseBody(TeaModel):
     ):
         # The HTTP status code returned.
         self.code = code
-        # The configurations of the auto scaling feature.
+        # The configurations of the auto scaling feature for instances.
         self.data = data
         # The returned message.
         # 
@@ -8005,7 +7903,7 @@ class DescribeSqlLogConfigResponseBody(TeaModel):
     ):
         # The response code.
         self.code = code
-        # The data returned.
+        # The data that is returned.
         self.data = data
         # The returned message.
         # 
@@ -9540,7 +9438,7 @@ class DescribeSqlLogTasksRequest(TeaModel):
         self.node_id = node_id
         # The page number. Pages start from page 1. Default value: 1.
         self.page_no = page_no
-        # The number of entries per page. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
@@ -12702,7 +12600,7 @@ class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
         complete: bool = None,
         fail: bool = None,
         is_finish: bool = None,
-        result: List[Dict[str, DataResultValue]] = None,
+        result: Dict[str, DataResultValue] = None,
         result_id: str = None,
         state: str = None,
         timestamp: int = None,
@@ -12736,7 +12634,10 @@ class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
         self.timestamp = timestamp
 
     def validate(self):
-        pass
+        if self.result:
+            for v in self.result.values():
+                if v:
+                    v.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12750,13 +12651,10 @@ class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
             result['fail'] = self.fail
         if self.is_finish is not None:
             result['isFinish'] = self.is_finish
-        result['result'] = []
+        result['result'] = {}
         if self.result is not None:
-            for k in self.result:
-                d1 = {}
-                for k1 ,v1 in k.items():
-                    d1[k1] = v1.to_map()
-                result['result'].append(d1)
+            for k, v in self.result.items():
+                result['result'][k] = v.to_map()
         if self.result_id is not None:
             result['resultId'] = self.result_id
         if self.state is not None:
@@ -12773,14 +12671,11 @@ class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
             self.fail = m.get('fail')
         if m.get('isFinish') is not None:
             self.is_finish = m.get('isFinish')
-        self.result = []
+        self.result = {}
         if m.get('result') is not None:
-            for k in m.get('result'):
-                d1 = {}
-                for k1, v1 in k.items():
-                    temp_model = DataResultValue()
-                    d1[k1] = temp_model.from_map(v1)
-                self.result.append(d1)
+            for k, v in m.get('result').items():
+                temp_model = DataResultValue()
+                self.result[k] = temp_model.from_map(v)
         if m.get('resultId') is not None:
             self.result_id = m.get('resultId')
         if m.get('state') is not None:
@@ -14572,15 +14467,13 @@ class GetBlockingDetailListRequest(TeaModel):
         query_hash: str = None,
         start_time: str = None,
     ):
-        # The database name list.
-        # 
-        # *   Separate multiple database names with commas (,).
+        # The name of the database. Separate multiple database names with commas (,).
         self.db_name_list = db_name_list
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The database instance ID.
+        # The ID of the database instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -14588,9 +14481,9 @@ class GetBlockingDetailListRequest(TeaModel):
         self.page_no = page_no
         # The number of entries per page. The value must be an integer that is greater than 0. Default value: 10.
         self.page_size = page_size
-        # The hash value of the SQL statement.
+        # The hash value of the SQL statement. The hash values of SQL statements of the same type are the same.
         self.query_hash = query_hash
-        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -14659,9 +14552,9 @@ class GetBlockingDetailListResponseBodyDataList(TeaModel):
         self.batch_id = batch_id
         # The client name.
         self.client_app_name = client_app_name
-        # The time when the blocking data was collected.
+        # The time when the blocking data was collected. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.current_collection_time = current_collection_time
-        # The database name.
+        # The name of the database.
         self.data_base = data_base
         # The client hostname.
         self.host_name = host_name
@@ -14673,11 +14566,11 @@ class GetBlockingDetailListResponseBodyDataList(TeaModel):
         self.spid = spid
         # The SQL statement.
         self.sql_text = sql_text
-        # The time when the execution started.
+        # The time when the execution started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
-        # The blocking duration. Unit: milliseconds.
+        # The duration of the blocking. Unit: milliseconds.
         self.wait_time_ms = wait_time_ms
-        # The wait type.
+        # The wait type. For more information about wait types, see [sys.dm_os_wait_stats (Transact-SQL)](https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql?view=sql-server-ver15).
         self.wait_type = wait_type
 
     def validate(self):
@@ -14820,10 +14713,10 @@ class GetBlockingDetailListResponseBody(TeaModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -15497,7 +15390,7 @@ class GetDasSQLLogHotDataRequest(TeaModel):
         self.page_numbers = page_numbers
         # The keyword that is used for the query.
         # 
-        # >  The keyword must be at least four characters in length. You can specify multiple keywords that are separated by spaces. Fuzzy queries are not supported.
+        # >  Fuzzy search is not supported. You can query data by using multiple keywords. Separate keywords with spaces.
         self.query_keyword = query_keyword
         # The reserved parameter. This parameter is not supported.
         self.role = role
@@ -15519,9 +15412,9 @@ class GetDasSQLLogHotDataRequest(TeaModel):
         # *   **UPDATE**\
         # *   **DELETE**\
         self.sql_type = sql_type
-        # The beginning of the time range to query. Specify the time in the UNIX timestamp format. Unit: millisecond.
+        # The beginning of the time range to query. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  You can query only the data generated after DAS Enterprise Edition V2 or V3 was enabled. The beginning of the time range to query can be up to seven days earlier than the current time.
+        # >  The beginning of the time range to query must be later than the time when DAS Enterprise Edition is enabled, and can be up to seven days earlier than the current time.
         # 
         # This parameter is required.
         self.start = start
@@ -15990,6 +15883,151 @@ class GetDasSQLLogHotDataResponse(TeaModel):
         return self
 
 
+class GetDeadLockDetailRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        node_id: str = None,
+        source: str = None,
+        text_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.node_id = node_id
+        self.source = source
+        # This parameter is required.
+        self.text_id = text_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.text_id is not None:
+            result['TextId'] = self.text_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('TextId') is not None:
+            self.text_id = m.get('TextId')
+        return self
+
+
+class GetDeadLockDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+        synchro: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.synchro = synchro
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class GetDeadLockDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDeadLockDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDeadLockDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDeadLockDetailListRequest(TeaModel):
     def __init__(
         self,
@@ -16000,13 +16038,13 @@ class GetDeadLockDetailListRequest(TeaModel):
         page_size: str = None,
         start_time: str = None,
     ):
-        # The database name list.
+        # The name of the database. When you specify multiple databases, you must separate the database names with commas (,).
         self.db_name_list = db_name_list
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The instance ID.
+        # The ID of the database instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -16080,39 +16118,42 @@ class GetDeadLockDetailListResponseBodyDataListBlockProcessList(TeaModel):
         wait_resource: str = None,
         wait_resource_description: str = None,
     ):
-        # The client application.
+        # The name of the client that initiates the transaction in the session.
         self.client_app = client_app
-        # The database name.
+        # The name of the database.
         self.database_name = database_name
-        # The host name.
+        # The hostname.
         self.host_name = host_name
-        # The time when the transaction started.
+        # The time when the transaction was started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_tran_started = last_tran_started
-        # The lock mode.
+        # The mode of the lock. For more information, see [Lock modes](https://help.aliyun.com/document_detail/2362804.html).
         self.lock_mode = lock_mode
-        # The size of the logs generated by the session.
+        # The size of the logs generated in the session. Unit: bytes.
         self.log_used = log_used
-        # The username that is used for login.
+        # The logon name of the user.
         self.login_name = login_name
         # The locked object.
         self.object_owned = object_owned
-        # The object that the current transaction requested to lock.
+        # The object that the transaction requested to lock.
         self.object_requested = object_requested
-        # The holding mode.
+        # The lock mode held by the session. For more information, see [Lock modes](https://help.aliyun.com/document_detail/2362804.html).
         self.own_mode = own_mode
-        # The ID of the session that started the transaction.
+        # The ID of the session in which the transaction is started.
         self.spid = spid
         # The SQL statement.
         self.sql_text = sql_text
-        # The transaction status.
+        # The status of the transaction.
         self.status = status
-        # The victim.
+        # Indicates whether the session is the victim of the deadlock. Valid values:
+        # 
+        # *   **0**: no.
+        # *   **1**: yes.
         self.victim = victim
-        # The wait mode.
+        # The lock mode requested by the session. For more information, see [Lock modes](https://help.aliyun.com/document_detail/2362804.html).
         self.wait_mode = wait_mode
-        # The pending resource.
+        # The resources requested by the transaction.
         self.wait_resource = wait_resource
-        # The description of the pending resource.
+        # The details of the resources requested by the transaction.
         self.wait_resource_description = wait_resource_description
 
     def validate(self):
@@ -16222,43 +16263,46 @@ class GetDeadLockDetailListResponseBodyDataList(TeaModel):
         wait_resource: str = None,
         wait_resource_description: str = None,
     ):
-        # The time when the data was collected.
+        # The time when the data was collected. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.batch_id = batch_id
-        # The blocking list.
+        # The blocking details of the instance. The details are information about the session that caused the lock.
         self.block_process_list = block_process_list
-        # The client application.
+        # The name of the client.
         self.client_app = client_app
-        # The database name.
+        # The name of the database.
         self.database_name = database_name
-        # The host name.
+        # The hostname.
         self.host_name = host_name
-        # The time when the transaction started.
+        # The time when the transaction was started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_tran_started = last_tran_started
-        # The lock mode.
+        # The mode of the lock. For more information, see [Lock modes](https://help.aliyun.com/document_detail/2362804.html).
         self.lock_mode = lock_mode
-        # The size of the logs generated by the session.
+        # The size of the logs generated in the session. Unit: bytes.
         self.log_used = log_used
-        # The username that is used for login.
+        # The logon name of the user.
         self.login_name = login_name
         # The locked object.
         self.object_owned = object_owned
-        # The object that the current transaction requested to lock.
+        # The object that the transaction requested to lock.
         self.object_requested = object_requested
-        # The holding mode.
+        # The lock mode held by the session. For more information, see [Lock modes](https://help.aliyun.com/document_detail/2362804.html).
         self.own_mode = own_mode
-        # The ID of the session that started the transaction.
+        # The ID of the session in which the transaction is started.
         self.spid = spid
         # The SQL statement.
         self.sql_text = sql_text
-        # The transaction status.
+        # The status of the transaction.
         self.status = status
-        # The victim.
+        # Indicates whether the session is the victim of the deadlock. Valid values:
+        # 
+        # *   **0**: no.
+        # *   **1**: yes.
         self.victim = victim
-        # The wait mode.
+        # The lock mode requested by the session. For more information, see [Lock modes](https://help.aliyun.com/document_detail/2362804.html).
         self.wait_mode = wait_mode
-        # The pending resource.
+        # The resources requested by the transaction.
         self.wait_resource = wait_resource
-        # The description of the pending resource.
+        # The details of the resources requested by the transaction.
         self.wait_resource_description = wait_resource_description
 
     def validate(self):
@@ -16371,9 +16415,9 @@ class GetDeadLockDetailListResponseBodyData(TeaModel):
     ):
         # The details of the data returned.
         self.list = list
-        # The page number of the returned page.
+        # The page number.
         self.page_no = page_no
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of entries returned.
         self.total = total
@@ -16429,7 +16473,7 @@ class GetDeadLockDetailListResponseBody(TeaModel):
     ):
         # The HTTP status code returned.
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
         # The returned message.
         # 
@@ -16518,6 +16562,393 @@ class GetDeadLockDetailListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDeadLockDetailListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDeadLockHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        instance_id: str = None,
+        node_id: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        source: str = None,
+        start_time: int = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.node_id = node_id
+        self.page_no = page_no
+        self.page_size = page_size
+        self.source = source
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetDeadLockHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+        synchro: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.synchro = synchro
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class GetDeadLockHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDeadLockHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDeadLockHistoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDeadlockHistogramRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        instance_id: str = None,
+        node_id: str = None,
+        start_time: int = None,
+        status: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.node_id = node_id
+        # This parameter is required.
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetDeadlockHistogramResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        instance_id: str = None,
+        lock_number: int = None,
+        node_id: str = None,
+        start_time: str = None,
+        status: str = None,
+        task_id: str = None,
+        user_id: str = None,
+    ):
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.lock_number = lock_number
+        self.node_id = node_id
+        self.start_time = start_time
+        self.status = status
+        self.task_id = task_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lock_number is not None:
+            result['LockNumber'] = self.lock_number
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LockNumber') is not None:
+            self.lock_number = m.get('LockNumber')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetDeadlockHistogramResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[GetDeadlockHistogramResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetDeadlockHistogramResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDeadlockHistogramResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDeadlockHistogramResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDeadlockHistogramResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17491,9 +17922,9 @@ class GetFullRequestOriginStatByInstanceIdRequest(TeaModel):
         # *   **polarx_cn**: compute node.
         # *   **polarx_en**: data node.
         self.role = role
-        # The type of the SQL statement. Valid values: **SELECT**, **INSERT**, **UPDATE**, **DELETE**, **LOGIN**, **LOGOUT**, **MERGE**, **ALTER**, **CREATEINDEX**, **DROPINDEX**, **CREATE**, **DROP**, **SET**, **DESC**, **REPLACE**, **CALL**, **BEGIN**, **DESCRIBE**, **ROLLBACK**, **FLUSH**, **USE**, **SHOW**, **START**, **COMMIT**, and **RENAME**.
+        # The type of the SQL statement. Valid values: **SELECT**, **INSERT**, **UPDATE**, **DELETE**, **MERGE**, **ALTER**, **CREATEINDEX**, **DROPINDEX**, **CREATE**, **DROP**, **SET**, **DESC**, **REPLACE**, **CALL**, **BEGIN**, **DESCRIBE**, **ROLLBACK**, **FLUSH**, **USE**, **SHOW**, **START**, **COMMIT**, and **RENAME**.
         # 
-        # >  If the database instance is an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, or a PolarDB-X 2.0 instance, the statistics can be collected based on the SQL statement type.
+        # >  If the database instance is an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL instance, or a PolarDB-X 2.0 instance, statistics can be collected based on the SQL statement type.
         self.sql_type = sql_type
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
@@ -22437,7 +22868,7 @@ class GetPfsMetricTrendsRequest(TeaModel):
         self.metric = metric
         # The node ID.
         # 
-        # >  You must specify this parameter for an ApsaraDB RDS for MySQL cluster instance and a PolarDB for MySQL cluster.
+        # >  This parameter is required if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL clusters.
         self.node_id = node_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
@@ -23059,7 +23490,7 @@ class GetPfsSqlSummariesRequest(TeaModel):
         self.keywords = keywords
         # The node ID.
         # 
-        # >  This parameter must be specified if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster.
+        # >  This parameter is required if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster.
         self.node_id = node_id
         # The field by which to sort the returned entries. Default value: **count**.
         # 
@@ -23255,7 +23686,7 @@ class GetPfsSqlSummariesResponseBodyDataList(TeaModel):
         self.mutex_waits = mutex_waits
         # The node ID.
         # 
-        # > This parameter is returned only if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster.
+        # >  This parameter is returned only if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster.
         self.node_id = node_id
         # The number of physical asynchronous nodes.
         self.physical_async_reads = physical_async_reads
@@ -23627,7 +24058,7 @@ class GetPfsSqlSummariesResponseBodyData(TeaModel):
     ):
         # The reserved parameter.
         self.extra = extra
-        # The detailed information.
+        # The details of the data returned.
         self.list = list
         # The page number.
         self.page_no = page_no
@@ -23691,7 +24122,7 @@ class GetPfsSqlSummariesResponseBody(TeaModel):
     ):
         # The HTTP status code returned.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
         # The returned message.
         # 
@@ -27428,7 +27859,9 @@ class GetRequestDiagnosisResultRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The unique ID of the diagnostics task. You can call the [CreateRequestDiagnosis](https://help.aliyun.com/document_detail/341609.html) operation to query the diagnostics task ID.
+        # The unique ID of the diagnostic task.[](~~341609~~)
+        # 
+        # >  If you set MessageId to the task ID of the automatic SQL optimization feature, no result is returned.
         # 
         # This parameter is required.
         self.message_id = message_id
@@ -29524,7 +29957,7 @@ class ModifyAutoScalingConfigRequestBandwidth(TeaModel):
         observation_window_size: str = None,
         upgrade: bool = None,
     ):
-        # Specifies whether to apply the **Bandwidth** configuration of the automatic bandwidth adjustment feature. Valid values:
+        # Specifies whether to apply the **Bandwidth** configuration of the bandwidth auto scaling feature. Valid values:
         # 
         # *   **true**\
         # *   **false**\
@@ -29544,12 +29977,12 @@ class ModifyAutoScalingConfigRequestBandwidth(TeaModel):
         # *   **90**\
         # *   **95**\
         self.bandwidth_usage_upper_threshold = bandwidth_usage_upper_threshold
-        # Specifies whether to enable the automatic bandwidth downgrade feature. Valid values:
+        # Specifies whether to enable automatic bandwidth downgrade. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.downgrade = downgrade
-        # The observation window of the automatic bandwidth adjustment feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
+        # The observation window of the bandwidth auto scaling feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
         # 
         # *   **1m**\
         # *   **5m**\
@@ -29557,7 +29990,7 @@ class ModifyAutoScalingConfigRequestBandwidth(TeaModel):
         # *   **15m**\
         # *   **30m**\
         self.observation_window_size = observation_window_size
-        # Specifies whether to enable the automatic bandwidth upgrade feature. Valid values:
+        # Specifies whether to enable automatic bandwidth upgrade. Valid values:
         # 
         # *   **true**\
         # *   **false**\
@@ -29612,12 +30045,12 @@ class ModifyAutoScalingConfigRequestResource(TeaModel):
         enable: bool = None,
         upgrade_observation_window_size: str = None,
     ):
-        # Specifies whether to apply the **Resource** configuration of the auto scaling feature for resources. Valid values:
+        # Specifies whether to apply the **Resource** configuration of the resource auto scaling feature. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.apply = apply
-        # The average CPU utilization threshold that triggers automatic scale-out of resources. Unit: %. Valid values:
+        # The average CPU utilization threshold that triggers automatic resource scale-out. Unit: %. Valid values:
         # 
         # *   **70**\
         # *   **80**\
@@ -29632,7 +30065,7 @@ class ModifyAutoScalingConfigRequestResource(TeaModel):
         # *   **20m**\
         # *   **30m**\
         self.downgrade_observation_window_size = downgrade_observation_window_size
-        # Specifies whether to enable the auto scaling feature for resources. Valid values:
+        # Specifies whether to enable resource auto scaling. Valid values:
         # 
         # *   **true**\
         # *   **false**\
@@ -29696,21 +30129,21 @@ class ModifyAutoScalingConfigRequestShard(TeaModel):
         upgrade: bool = None,
         upgrade_observation_window_size: str = None,
     ):
-        # Specifies whether to apply the **Shard** configuration of the auto scaling feature for shards. Valid values:
+        # Specifies whether to apply the **Shard** configuration of the shard auto scaling feature. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # > The auto scaling feature for shards is available only for ApsaraDB for Redis Community Edition cloud-native instances on the China site (aliyun.com).
+        # >  The shard auto scaling feature is available only for Tair (Redis OSS-compatible) cloud-native cluster instances on the China site (aliyun.com).
         self.apply = apply
-        # Specifies whether to enable the feature of automatically removing shards. Valid values:
+        # Specifies whether to enable automatic shard removal. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  The feature of automatically removing shards is in canary release.
+        # >  The automatic shard removal feature is in a canary release.
         self.downgrade = downgrade
-        # The observation window of the feature of automatically removing shards. The value of this parameter consists of a numeric value and a time unit suffix. The **h** time unit suffix specifies the hour. The **d** time unit suffix specifies the day. Valid values:
+        # The observation window of the automatic shard removal feature. The value of this parameter consists of a numeric value and a time unit suffix. The **h** time unit suffix specifies the hour. The **d** time unit suffix specifies the day. Valid values:
         # 
         # *   **1h**\
         # *   **2h**\
@@ -29720,13 +30153,13 @@ class ModifyAutoScalingConfigRequestShard(TeaModel):
         self.downgrade_observation_window_size = downgrade_observation_window_size
         # The maximum number of shards in the instance. The value must be a positive integer. Valid values: 4 to 32.
         self.max_shards = max_shards
-        # The average memory usage threshold that triggers automatic removal of shards. Unit: %. Valid values:
+        # The average memory usage threshold that triggers automatic shard removal. Unit: %. Valid values:
         # 
         # *   **10**\
         # *   **20**\
         # *   **30**\
         self.mem_usage_lower_threshold = mem_usage_lower_threshold
-        # The average memory usage threshold that triggers automatic adding of shards. Unit: %. Valid values:
+        # The average memory usage threshold that triggers automatic shard addition. Unit: %. Valid values:
         # 
         # *   **50**\
         # *   **60**\
@@ -29736,12 +30169,12 @@ class ModifyAutoScalingConfigRequestShard(TeaModel):
         self.mem_usage_upper_threshold = mem_usage_upper_threshold
         # The minimum number of shards in the instance. The value must be a positive integer. Valid values: 4 to 32.
         self.min_shards = min_shards
-        # Specifies whether to enable the feature of automatically adding shards. Valid values:
+        # Specifies whether to enable automatic shard addition. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.upgrade = upgrade
-        # The observation window of the feature of automatically adding shards. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
+        # The observation window of the automatic shard addition feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
         # 
         # *   **5m**\
         # *   **10m**\
@@ -29814,15 +30247,15 @@ class ModifyAutoScalingConfigRequestSpec(TeaModel):
         observation_window_size: str = None,
         upgrade: bool = None,
     ):
-        # Specifies whether to apply the **Spec** configuration of the auto scaling feature for specifications. Valid values:
+        # Specifies whether to apply the **Spec** configuration of the specification auto scaling feature. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.apply = apply
-        # The quiescent period. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute, the **h** time unit suffix specifies the hour, and the **d** time suffix unit specifies the day.
+        # The quiescent period. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute, the **h** time unit suffix specifies the hour, and the **d** time unit suffix specifies the day.
         # 
         # *   Valid values for PolarDB for MySQL Cluster Edition instances: **5m**, **10m**, **30m**, **1h**, **2h**, **3h**, **1d**, and **7d**.
-        # *   Valid values for ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: **5m**, **10m**, **30m**, **1h**, **2h**, **3h**, **1d**, and **7d**.
+        # *   Valid values for ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or Enterprise SSDs (ESSDs): **5m**, **10m**, **30m**, **1h**, **2h**, **3h**, **1d**, and **7d**.
         self.cool_down_time = cool_down_time
         # The average CPU utilization threshold that triggers automatic specification scale-up. Unit: %. Valid values:
         # 
@@ -29832,18 +30265,18 @@ class ModifyAutoScalingConfigRequestSpec(TeaModel):
         # *   **80**\
         # *   **90**\
         # 
-        # > This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance or an ApsaraDB RDS for MySQL High-availability Edition instance that uses standard SSDs or ESSDs.
+        # >  This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance or an ApsaraDB RDS for MySQL High-availability Edition instance that uses standard SSDs or ESSDs.
         self.cpu_usage_upper_threshold = cpu_usage_upper_threshold
-        # Specifies whether to enable the automatic specification scale-down feature. Valid values:
+        # Specifies whether to enable automatic specification scale-down. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # > This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance or an ApsaraDB RDS for MySQL High-availability Edition instance that uses standard SSDs or ESSDs.
+        # >  This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance or an ApsaraDB RDS for MySQL High-availability Edition instance that uses standard SSDs or ESSDs.
         self.downgrade = downgrade
         # The maximum number of read-only nodes of the instance.
         # 
-        # > This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance.
+        # >  This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance.
         self.max_read_only_nodes = max_read_only_nodes
         # The maximum specifications to which the database instance can be scaled up. The database instance can be upgraded only to a database instance of the same edition with higher specifications. For information about the specifications of different database instances, see the following topics:
         # 
@@ -29858,15 +30291,15 @@ class ModifyAutoScalingConfigRequestSpec(TeaModel):
         # *   **80**\
         # *   **90**\
         # 
-        # > This parameter must be specified if the database instance is an ApsaraDB for Redis Community Edition cloud-native instance on the China site (aliyun.com).
+        # >  This parameter must be specified if the database instance is a Tair (Redis OSS-compatible) Community Edition cloud-native instance on the China site (aliyun.com).
         self.mem_usage_upper_threshold = mem_usage_upper_threshold
         # The observation window. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute and the **h** time unit suffix specifies the hour.
         # 
         # *   Valid values for PolarDB for MySQL Cluster Edition instances: **5m**, **10m**, **15m**, and **30m**.
         # *   Valid values for ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: **5m**, **20m**, **30m**, **40m**, and **1h**.
-        # *   Valid values for ApsaraDB for Redis Community Edition cloud-native instances: **5m**, **10m**, **15m**, and **30m**.
+        # *   Valid values for Tair (Redis OSS-compatible) Community Edition cloud-native instances: **5m**, **10m**, **15m**, and **30m**.
         self.observation_window_size = observation_window_size
-        # Specifies whether to enable the automatic specification scale-up feature. Valid values:
+        # Specifies whether to enable automatic specification scale-up. Valid values:
         # 
         # *   **true**\
         # *   **false**\
@@ -29945,14 +30378,14 @@ class ModifyAutoScalingConfigRequestStorage(TeaModel):
         # *   **80**\
         # *   **90**\
         self.disk_usage_upper_threshold = disk_usage_upper_threshold
-        # The maximum storage size of the database instance. The value must be greater than or equal to the total storage size of the instance. Valid values of different types of instances:
+        # The maximum storage size of the database instance. Unit: GB. The value must be greater than or equal to the total storage size of the instance.
         # 
-        # *   If the ApsaraDB for RDS instance uses ESSDs, the value of this parameter can be set to 32000, in GB.
-        # *   If the ApsaraDB for RDS instance uses standard SSDs, the value of this parameter can be set to 6000, in GB.
+        # *   If the instance uses ESSDs, the maximum value of this parameter can be 32000.
+        # *   If the instance uses standard SSDs, the maximum value of this parameter can be 6000.
         # 
-        # >  The ApsaraDB RDS for MySQL instances that use standard SSDs are discontinued. We recommend that you [upgrade the storage type of an ApsaraDB RDS for MySQL instance from standard SSDs to ESSDs](https://help.aliyun.com/document_detail/314678.html).
+        # >  The standard SSD storage type is phased out. We recommend that you [upgrade the storage type of your instance from standard SSDs to ESSDs](https://help.aliyun.com/document_detail/314678.html).
         self.max_storage = max_storage
-        # Specifies whether to enable the automatic storage expansion feature. Valid values:
+        # Specifies whether to enable automatic storage expansion. Valid values:
         # 
         # *   **true**\
         # *   **false**\
@@ -30000,17 +30433,17 @@ class ModifyAutoScalingConfigRequest(TeaModel):
         spec: ModifyAutoScalingConfigRequestSpec = None,
         storage: ModifyAutoScalingConfigRequestStorage = None,
     ):
-        # The configuration item of the automatic bandwidth adjustment feature.
+        # The configuration item of the bandwidth auto scaling feature.
         self.bandwidth = bandwidth
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The configuration item of the auto scaling feature for resources.
+        # The configuration item of the resource auto scaling feature.
         self.resource = resource
-        # The configuration item of the auto scaling feature for shards.
+        # The configuration item of the shard auto scaling feature.
         self.shard = shard
-        # The configuration item of the auto scaling feature for specifications.
+        # The configuration item of the specification auto scaling feature.
         self.spec = spec
         # The configuration item of the automatic storage expansion feature.
         self.storage = storage
@@ -31175,317 +31608,6 @@ class SetEventSubscriptionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetEventSubscriptionResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class StopCloudBenchTaskRequest(TeaModel):
-    def __init__(
-        self,
-        task_id: str = None,
-    ):
-        # The stress testing task ID. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the task ID.
-        # 
-        # This parameter is required.
-        self.task_id = task_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        return self
-
-
-class StopCloudBenchTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: str = None,
-    ):
-        # The HTTP status code returned.
-        self.code = code
-        # The reserved parameter.
-        self.data = data
-        # The returned message.
-        # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
-        self.message = message
-        # The request ID.
-        self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**\
-        # *   **false**\
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class StopCloudBenchTaskResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: StopCloudBenchTaskResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = StopCloudBenchTaskResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SyncHDMAliyunResourceRequest(TeaModel):
-    def __init__(
-        self,
-        async_: str = None,
-        resource_types: str = None,
-        uid: str = None,
-        user_id: str = None,
-        wait_for_modify_security_ips: str = None,
-        context: str = None,
-        access_key: str = None,
-        signature: str = None,
-        skip_auth: str = None,
-        timestamp: str = None,
-    ):
-        self.async_ = async_
-        self.resource_types = resource_types
-        self.uid = uid
-        self.user_id = user_id
-        self.wait_for_modify_security_ips = wait_for_modify_security_ips
-        self.context = context
-        self.access_key = access_key
-        self.signature = signature
-        self.skip_auth = skip_auth
-        self.timestamp = timestamp
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.async_ is not None:
-            result['Async'] = self.async_
-        if self.resource_types is not None:
-            result['ResourceTypes'] = self.resource_types
-        if self.uid is not None:
-            result['Uid'] = self.uid
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-        if self.wait_for_modify_security_ips is not None:
-            result['WaitForModifySecurityIps'] = self.wait_for_modify_security_ips
-        if self.context is not None:
-            result['__context'] = self.context
-        if self.access_key is not None:
-            result['accessKey'] = self.access_key
-        if self.signature is not None:
-            result['signature'] = self.signature
-        if self.skip_auth is not None:
-            result['skipAuth'] = self.skip_auth
-        if self.timestamp is not None:
-            result['timestamp'] = self.timestamp
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-        if m.get('ResourceTypes') is not None:
-            self.resource_types = m.get('ResourceTypes')
-        if m.get('Uid') is not None:
-            self.uid = m.get('Uid')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        if m.get('WaitForModifySecurityIps') is not None:
-            self.wait_for_modify_security_ips = m.get('WaitForModifySecurityIps')
-        if m.get('__context') is not None:
-            self.context = m.get('__context')
-        if m.get('accessKey') is not None:
-            self.access_key = m.get('accessKey')
-        if m.get('signature') is not None:
-            self.signature = m.get('signature')
-        if m.get('skipAuth') is not None:
-            self.skip_auth = m.get('skipAuth')
-        if m.get('timestamp') is not None:
-            self.timestamp = m.get('timestamp')
-        return self
-
-
-class SyncHDMAliyunResourceResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: str = None,
-        synchro: str = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-        self.synchro = synchro
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        if self.synchro is not None:
-            result['Synchro'] = self.synchro
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        if m.get('Synchro') is not None:
-            self.synchro = m.get('Synchro')
-        return self
-
-
-class SyncHDMAliyunResourceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SyncHDMAliyunResourceResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SyncHDMAliyunResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
