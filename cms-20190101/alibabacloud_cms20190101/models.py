@@ -4358,7 +4358,7 @@ class CreateGroupMetricRulesRequestGroupMetricRules(TeaModel):
         # *   UIS: Ultimate Internet Service (UIS)
         # *   nls: Intelligent Speech Interaction
         # *   ots: Tablestore
-        # *   NAS: Apsara File Storage NAS
+        # *   NAS: File Storage NAS
         # *   ECI: Elastic Container Instance (ECI)
         # *   OpenAPI: OpenAPI Explorer
         # *   pvtzpost: Alibaba Cloud DNS PrivateZone
@@ -5603,13 +5603,13 @@ class CreateHostAvailabilityRequestAlertConfigTargetList(TeaModel):
     ):
         # The Alibaba Cloud Resource Name (ARN) of the resource. Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Fields:
         # 
-        # *   {Service name abbreviation}: the abbreviation of the service name. Valid value: mns.
+        # *   {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
         # 
         # *   {userId}: the ID of the Alibaba Cloud account.
         # 
-        # *   {regionId}: the region ID of the message queue or topic.
+        # *   {regionId}: the region ID of the SMQ queue or topic.
         # 
-        # *   {Resource type}: the type of the resource that triggers the alert. Valid values:
+        # *   {Resource type}: the type of the resource for which alerts are triggered. Valid values:
         # 
         #     *   **queues**\
         #     *   **topics**\
@@ -5682,7 +5682,7 @@ class CreateHostAvailabilityRequest(TeaModel):
         # 
         # This parameter is required.
         self.alert_config_escalation_list = alert_config_escalation_list
-        # The information about the resources for which alerts are triggered.
+        # The resources for which alerts are triggered.
         self.alert_config_target_list = alert_config_target_list
         # The ID of the application group.
         # 
@@ -20975,11 +20975,11 @@ class DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter(TeaModel)
         self.arn = arn
         # The ID of the recipient.
         self.id = id
-        # The name of the MNS queue.
+        # The name of the SMQ queue.
         self.queue = queue
-        # The region where MNS is deployed.
+        # The region for SMQ.
         self.region = region
-        # The MNS topic.
+        # The SMQ topic.
         self.topic = topic
 
     def validate(self):
@@ -21379,7 +21379,7 @@ class DescribeEventRuleTargetListResponseBody(TeaModel):
         self.fc_parameters = fc_parameters
         # The error message.
         self.message = message
-        # The information about the recipients in Message Service (MNS).
+        # The notifications of Simple Message Queue (formerly MNS) (SMQ).
         self.mns_parameters = mns_parameters
         # The information about the recipients in OpenAPI Explorer.
         self.open_api_parameters = open_api_parameters
@@ -21507,9 +21507,9 @@ class DescribeExporterOutputListRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
         self.region_id = region_id
 
@@ -36557,6 +36557,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         expect_value: str = None,
         failure_rate: float = None,
         header: str = None,
+        host_binding: str = None,
+        host_binding_type: int = None,
         http_method: str = None,
         ip_network: str = None,
         is_base_64encode: str = None,
@@ -36636,6 +36638,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         self.failure_rate = failure_rate
         # The header of the HTTP request.
         self.header = header
+        self.host_binding = host_binding
+        self.host_binding_type = host_binding_type
         # The HTTP request method. Valid values:
         # 
         # *   get
@@ -36770,6 +36774,10 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             result['failure_rate'] = self.failure_rate
         if self.header is not None:
             result['header'] = self.header
+        if self.host_binding is not None:
+            result['host_binding'] = self.host_binding
+        if self.host_binding_type is not None:
+            result['host_binding_type'] = self.host_binding_type
         if self.http_method is not None:
             result['http_method'] = self.http_method
         if self.ip_network is not None:
@@ -36879,6 +36887,10 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             self.failure_rate = m.get('failure_rate')
         if m.get('header') is not None:
             self.header = m.get('header')
+        if m.get('host_binding') is not None:
+            self.host_binding = m.get('host_binding')
+        if m.get('host_binding_type') is not None:
+            self.host_binding_type = m.get('host_binding_type')
         if m.get('http_method') is not None:
             self.http_method = m.get('http_method')
         if m.get('ip_network') is not None:
@@ -43633,13 +43645,13 @@ class ModifyHostAvailabilityRequestAlertConfigTargetList(TeaModel):
         # 
         # Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Fields:
         # 
-        # *   {Service name abbreviation}: the abbreviation of the service name. Valid value: mns.
+        # *   {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
         # 
         # *   {userId}: the ID of the Alibaba Cloud account.
         # 
-        # *   {regionId}: the region ID of the message queue or topic.
+        # *   {regionId}: the region ID of the SMQ queue or topic.
         # 
-        # *   {Resource type}: the type of the resource that triggers the alert. Valid values:
+        # *   {Resource type}: the type of the resource for which alerts are triggered. Valid values:
         # 
         #     *   **queues**\
         #     *   **topics**\
@@ -47996,9 +48008,9 @@ class PutEventRuleTargetsRequestContactParameters(TeaModel):
         self.contact_group_name = contact_group_name
         # The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
         self.id = id
-        # The alert level and the corresponding notification methods. Valid values of N: 1 to 5. Valid values:
+        # The alert notification methods. Valid values of N: 1 to 5. Valid values:
         # 
-        # 4: Alert notifications are sent by using DingTalk chatbots and emails.
+        # 4: Alert notifications are sent by using DingTalk and emails.
         self.level = level
 
     def validate(self):
@@ -48088,11 +48100,11 @@ class PutEventRuleTargetsRequestMnsParameters(TeaModel):
     ):
         # The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
         self.id = id
-        # The name of the MNS queue. Valid values of N: 1 to 5.
+        # The name of the SMQ queue. Valid values of N: 1 to 5.
         self.queue = queue
-        # The region where Message Service (MNS) is deployed. Valid values of N: 1 to 5.
+        # The region for SMQ. Valid values of N: 1 to 5.
         self.region = region
-        # The MNS topic.
+        # The SMQ topic.
         self.topic = topic
 
     def validate(self):
@@ -48330,7 +48342,7 @@ class PutEventRuleTargetsRequest(TeaModel):
         self.contact_parameters = contact_parameters
         # The information about the recipients in Function Compute.
         self.fc_parameters = fc_parameters
-        # The information about the recipients in Message Service (MNS).
+        # The notifications of Simple Message Queue (formerly MNS) (SMQ).
         self.mns_parameters = mns_parameters
         # The parameters of API callback notification.
         self.open_api_parameters = open_api_parameters
@@ -48456,9 +48468,9 @@ class PutEventRuleTargetsResponseBodyFailedContactParametersContactParameter(Tea
         self.contact_group_name = contact_group_name
         # The ID of the recipient.
         self.id = id
-        # The alert level and the corresponding notification methods. Valid values:
+        # The alert notification methods. Valid values:
         # 
-        # 4: Alert notifications are sent by using DingTalk chatbots and emails.
+        # 4: Alert notifications are sent by using DingTalk and emails.
         self.level = level
 
     def validate(self):
@@ -48705,7 +48717,7 @@ class PutEventRuleTargetsResponseBody(TeaModel):
         self.failed_contact_parameters = failed_contact_parameters
         # This parameter is returned if the specified functions in the request failed to be created or modified in Function Compute.
         self.failed_fc_parameters = failed_fc_parameters
-        # This parameter is returned if the specified queues in the request failed to be created or modified in MNS.
+        # This parameter is returned if the specified queues in the request failed to be created or modified in SMQ.
         self.failed_mns_parameters = failed_mns_parameters
         # The number of resources that failed to be created or modified.
         self.failed_parameter_count = failed_parameter_count
@@ -50497,13 +50509,13 @@ class PutMetricRuleTargetsRequestTargets(TeaModel):
         json_params: str = None,
         level: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the resource. Message Service (MNS), Auto Scaling, Simple Log Service, and Function Compute are supported.
+        # The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported.
         # 
-        # The following part describes the ARN of MNS and the parameters provided by the ARN:
+        # The following part describes the ARN of SMQ and the parameters in the ARN:
         # 
         # `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`.
         # 
-        # *   {regionId}: the region ID of the message queue or topic.
+        # *   {regionId}: the region ID of the SMQ queue or topic.
         # 
         # *   {userId}: the ID of the Alibaba Cloud account that owns the resource.
         # 
@@ -50537,7 +50549,7 @@ class PutMetricRuleTargetsRequestTargets(TeaModel):
         # 
         # This parameter is required.
         self.id = id
-        # The JSON-formatted parameters of the alert callback.
+        # The parameters of the alert callback. The parameters are in the JSON format.
         self.json_params = json_params
         # The alert level. Valid values:
         # 
@@ -50592,7 +50604,7 @@ class PutMetricRuleTargetsRequest(TeaModel):
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # N/A.
+        # None.
         # 
         # This parameter is required.
         self.targets = targets
@@ -50640,13 +50652,13 @@ class PutMetricRuleTargetsResponseBodyFailDataTargetsTarget(TeaModel):
         id: str = None,
         level: str = None,
     ):
-        # The ARN of the resource. Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. MNS, Auto Scaling, Simple Log Service, and Function Compute are supported. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. The following part describes the ARN of MNS and the parameters in the ARN:
+        # The ARN of the resource. Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. SMQ, Auto Scaling, Simple Log Service, and Function Compute are supported. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. The following part describes the ARN of SMQ and the parameters in the ARN:
         # 
         # *   {Service name abbreviation}: mns.
         # 
         # *   {userId}: the ID of the Alibaba Cloud account.
         # 
-        # *   {regionId}: the region ID of the message queue or topic.
+        # *   {regionId}: the region ID of the SMQ queue or topic.
         # 
         # *   {Resource type}: the type of the resource for which alerts are triggered. Valid values:
         # 

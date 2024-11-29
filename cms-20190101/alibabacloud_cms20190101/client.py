@@ -1159,12 +1159,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHybridMonitorSLSGroupResponse:
         """
-        @summary Creates a Logstore group for the metrics of Simple Log Service logs.
+        @summary Creates a Logstore group of Hybrid Cloud Monitoring.
         
-        @description # Prerequisites
+        @description ## [](#)Prerequisites
         Simple Log Service is activated. A project and a Logstore are created in Simple Log Service. For more information, see [Getting Started](https://help.aliyun.com/document_detail/54604.html).
-        # Description
-        In this example, a Logstore group named `Logstore_test` is created. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
+        ## [](#)Description
+        This topic provides an example on how to create a Logstore group named `Logstore_test`. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
         
         @param request: CreateHybridMonitorSLSGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1203,12 +1203,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHybridMonitorSLSGroupResponse:
         """
-        @summary Creates a Logstore group for the metrics of Simple Log Service logs.
+        @summary Creates a Logstore group of Hybrid Cloud Monitoring.
         
-        @description # Prerequisites
+        @description ## [](#)Prerequisites
         Simple Log Service is activated. A project and a Logstore are created in Simple Log Service. For more information, see [Getting Started](https://help.aliyun.com/document_detail/54604.html).
-        # Description
-        In this example, a Logstore group named `Logstore_test` is created. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
+        ## [](#)Description
+        This topic provides an example on how to create a Logstore group named `Logstore_test`. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
         
         @param request: CreateHybridMonitorSLSGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1246,12 +1246,12 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHybridMonitorSLSGroupRequest,
     ) -> cms_20190101_models.CreateHybridMonitorSLSGroupResponse:
         """
-        @summary Creates a Logstore group for the metrics of Simple Log Service logs.
+        @summary Creates a Logstore group of Hybrid Cloud Monitoring.
         
-        @description # Prerequisites
+        @description ## [](#)Prerequisites
         Simple Log Service is activated. A project and a Logstore are created in Simple Log Service. For more information, see [Getting Started](https://help.aliyun.com/document_detail/54604.html).
-        # Description
-        In this example, a Logstore group named `Logstore_test` is created. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
+        ## [](#)Description
+        This topic provides an example on how to create a Logstore group named `Logstore_test`. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
         
         @param request: CreateHybridMonitorSLSGroupRequest
         @return: CreateHybridMonitorSLSGroupResponse
@@ -1264,12 +1264,12 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHybridMonitorSLSGroupRequest,
     ) -> cms_20190101_models.CreateHybridMonitorSLSGroupResponse:
         """
-        @summary Creates a Logstore group for the metrics of Simple Log Service logs.
+        @summary Creates a Logstore group of Hybrid Cloud Monitoring.
         
-        @description # Prerequisites
+        @description ## [](#)Prerequisites
         Simple Log Service is activated. A project and a Logstore are created in Simple Log Service. For more information, see [Getting Started](https://help.aliyun.com/document_detail/54604.html).
-        # Description
-        In this example, a Logstore group named `Logstore_test` is created. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
+        ## [](#)Description
+        This topic provides an example on how to create a Logstore group named `Logstore_test`. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
         
         @param request: CreateHybridMonitorSLSGroupRequest
         @return: CreateHybridMonitorSLSGroupResponse
@@ -7403,7 +7403,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeEventRuleTargetListResponse:
         """
-        @summary Queries the push channels of an event-triggered alert rule.
+        @summary Queries event-triggered alert rules.
         
         @description This topic provides an example to show how to query the details of an event-triggered alert rule named `testRule`.
         
@@ -7440,7 +7440,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeEventRuleTargetListResponse:
         """
-        @summary Queries the push channels of an event-triggered alert rule.
+        @summary Queries event-triggered alert rules.
         
         @description This topic provides an example to show how to query the details of an event-triggered alert rule named `testRule`.
         
@@ -7476,7 +7476,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeEventRuleTargetListRequest,
     ) -> cms_20190101_models.DescribeEventRuleTargetListResponse:
         """
-        @summary Queries the push channels of an event-triggered alert rule.
+        @summary Queries event-triggered alert rules.
         
         @description This topic provides an example to show how to query the details of an event-triggered alert rule named `testRule`.
         
@@ -7491,7 +7491,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeEventRuleTargetListRequest,
     ) -> cms_20190101_models.DescribeEventRuleTargetListResponse:
         """
-        @summary Queries the push channels of an event-triggered alert rule.
+        @summary Queries event-triggered alert rules.
         
         @description This topic provides an example to show how to query the details of an event-triggered alert rule named `testRule`.
         
@@ -17940,6 +17940,7 @@ class Client(OpenApiClient):
         @summary Configures an alert rule.
         
         @description This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
+        >  Statistics verification was added on August 15, 2024. Only the statistical value of the corresponding metric can be set for the Statistics parameter. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
         
         @param tmp_req: PutResourceMetricRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18017,6 +18018,7 @@ class Client(OpenApiClient):
         @summary Configures an alert rule.
         
         @description This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
+        >  Statistics verification was added on August 15, 2024. Only the statistical value of the corresponding metric can be set for the Statistics parameter. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
         
         @param tmp_req: PutResourceMetricRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18093,6 +18095,7 @@ class Client(OpenApiClient):
         @summary Configures an alert rule.
         
         @description This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
+        >  Statistics verification was added on August 15, 2024. Only the statistical value of the corresponding metric can be set for the Statistics parameter. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
         
         @param request: PutResourceMetricRuleRequest
         @return: PutResourceMetricRuleResponse
@@ -18108,6 +18111,7 @@ class Client(OpenApiClient):
         @summary Configures an alert rule.
         
         @description This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
+        >  Statistics verification was added on August 15, 2024. Only the statistical value of the corresponding metric can be set for the Statistics parameter. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
         
         @param request: PutResourceMetricRuleRequest
         @return: PutResourceMetricRuleResponse
@@ -18124,6 +18128,7 @@ class Client(OpenApiClient):
         @summary Creates multiple alert rules for the specified metric of a specified resource.
         
         @description This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
+        >  Statistics verification was added on August 15, 2024. Only the statistical value of the corresponding metric can be set for the Statistics parameter. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
         
         @param request: PutResourceMetricRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18161,6 +18166,7 @@ class Client(OpenApiClient):
         @summary Creates multiple alert rules for the specified metric of a specified resource.
         
         @description This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
+        >  Statistics verification was added on August 15, 2024. Only the statistical value of the corresponding metric can be set for the Statistics parameter. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
         
         @param request: PutResourceMetricRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18197,6 +18203,7 @@ class Client(OpenApiClient):
         @summary Creates multiple alert rules for the specified metric of a specified resource.
         
         @description This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
+        >  Statistics verification was added on August 15, 2024. Only the statistical value of the corresponding metric can be set for the Statistics parameter. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
         
         @param request: PutResourceMetricRulesRequest
         @return: PutResourceMetricRulesResponse
@@ -18212,6 +18219,7 @@ class Client(OpenApiClient):
         @summary Creates multiple alert rules for the specified metric of a specified resource.
         
         @description This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
+        >  Statistics verification was added on August 15, 2024. Only the statistical value of the corresponding metric can be set for the Statistics parameter. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
         
         @param request: PutResourceMetricRulesRequest
         @return: PutResourceMetricRulesResponse
