@@ -49481,6 +49481,7 @@ class ListServiceSourceResponseBodyData(TeaModel):
         group_list: List[str] = None,
         id: int = None,
         ingress_options: ListServiceSourceResponseBodyDataIngressOptions = None,
+        invalid: bool = None,
         name: str = None,
         path_list: List[str] = None,
         source: str = None,
@@ -49505,6 +49506,7 @@ class ListServiceSourceResponseBodyData(TeaModel):
         self.id = id
         # The information about the support for Ingresses by applications.
         self.ingress_options = ingress_options
+        self.invalid = invalid
         # The name.
         self.name = name
         # The array of root paths of service lists.
@@ -49544,6 +49546,8 @@ class ListServiceSourceResponseBodyData(TeaModel):
             result['Id'] = self.id
         if self.ingress_options is not None:
             result['IngressOptions'] = self.ingress_options.to_map()
+        if self.invalid is not None:
+            result['Invalid'] = self.invalid
         if self.name is not None:
             result['Name'] = self.name
         if self.path_list is not None:
@@ -49577,6 +49581,8 @@ class ListServiceSourceResponseBodyData(TeaModel):
         if m.get('IngressOptions') is not None:
             temp_model = ListServiceSourceResponseBodyDataIngressOptions()
             self.ingress_options = temp_model.from_map(m['IngressOptions'])
+        if m.get('Invalid') is not None:
+            self.invalid = m.get('Invalid')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PathList') is not None:
