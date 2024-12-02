@@ -223,6 +223,8 @@ class Client(OpenApiClient):
             query['ClusterName'] = request.cluster_name
         if not UtilClient.is_unset(request.cluster_type):
             query['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.deploy_mode):
             query['DeployMode'] = request.deploy_mode
         if not UtilClient.is_unset(request.description):
@@ -290,6 +292,8 @@ class Client(OpenApiClient):
             query['ClusterName'] = request.cluster_name
         if not UtilClient.is_unset(request.cluster_type):
             query['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.deploy_mode):
             query['DeployMode'] = request.deploy_mode
         if not UtilClient.is_unset(request.description):
@@ -591,6 +595,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.batch_interval):
+            query['BatchInterval'] = request.batch_interval
+        if not UtilClient.is_unset(request.batch_size):
+            query['BatchSize'] = request.batch_size
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.decrease_node_count):
@@ -634,6 +642,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.batch_interval):
+            query['BatchInterval'] = request.batch_interval
+        if not UtilClient.is_unset(request.batch_size):
+            query['BatchSize'] = request.batch_size
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.decrease_node_count):
@@ -7224,6 +7236,8 @@ class Client(OpenApiClient):
             body['ClusterName'] = request.cluster_name
         if not UtilClient.is_unset(request.cluster_type):
             body['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.deletion_protection):
+            body['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.deploy_mode):
             body['DeployMode'] = request.deploy_mode
         if not UtilClient.is_unset(request.description):
@@ -7311,6 +7325,8 @@ class Client(OpenApiClient):
             body['ClusterName'] = request.cluster_name
         if not UtilClient.is_unset(request.cluster_type):
             body['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.deletion_protection):
+            body['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.deploy_mode):
             body['DeployMode'] = request.deploy_mode
         if not UtilClient.is_unset(request.description):

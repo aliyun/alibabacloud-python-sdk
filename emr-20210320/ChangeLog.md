@@ -1,3 +1,14 @@
+2024-12-02 Version: 2.1.2
+- Update API CreateCluster: add param DeletionProtection.
+- Update API DecreaseNodes: add param BatchInterval.
+- Update API DecreaseNodes: add param BatchSize.
+- Update API GetAutoScalingActivity: update response param.
+- Update API GetClusterCloneMeta: update response param.
+- Update API ListAutoScalingActivities: add param ScalingPolicyType.
+- Update API ListAutoScalingActivities: update response param.
+- Update API RunCluster: add param DeletionProtection.
+
+
 2024-11-19 Version: 2.1.1
 - Update API GetAutoScalingActivity: update response param.
 - Update API ListAutoScalingActivities: add param ScalingPolicyType.

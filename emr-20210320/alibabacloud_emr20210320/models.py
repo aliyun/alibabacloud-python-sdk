@@ -1998,13 +1998,25 @@ class ClickhouseConf(TeaModel):
 class NodeAttributes(TeaModel):
     def __init__(
         self,
+        data_disk_encrypted: bool = None,
+        data_disk_kmskey_id: str = None,
         key_pair_name: str = None,
         master_root_password: str = None,
         ram_role: str = None,
         security_group_id: str = None,
+        system_disk_encrypted: bool = None,
+        system_disk_kmskey_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # 是否启用云盘加密。取值范围：
+        # - true：启用加密。
+        # - false：不加密。
+        # 
+        # 默认值：false，不加密
+        self.data_disk_encrypted = data_disk_encrypted
+        # KMS加密秘钥ID。
+        self.data_disk_kmskey_id = data_disk_kmskey_id
         # ECS ssh登录秘钥。
         self.key_pair_name = key_pair_name
         # MASTER节点root密码。
@@ -2015,6 +2027,14 @@ class NodeAttributes(TeaModel):
         # 
         # This parameter is required.
         self.security_group_id = security_group_id
+        # 是否启用云盘加密。取值范围：
+        # - true：启用加密。
+        # - false：不加密。
+        # 
+        # 默认值：false，不加密
+        self.system_disk_encrypted = system_disk_encrypted
+        # KMS加密秘钥ID。
+        self.system_disk_kmskey_id = system_disk_kmskey_id
         # 专有网络ID。
         # 
         # This parameter is required.
@@ -2033,6 +2053,10 @@ class NodeAttributes(TeaModel):
             return _map
 
         result = dict()
+        if self.data_disk_encrypted is not None:
+            result['DataDiskEncrypted'] = self.data_disk_encrypted
+        if self.data_disk_kmskey_id is not None:
+            result['DataDiskKMSKeyId'] = self.data_disk_kmskey_id
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
         if self.master_root_password is not None:
@@ -2041,6 +2065,10 @@ class NodeAttributes(TeaModel):
             result['RamRole'] = self.ram_role
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.system_disk_encrypted is not None:
+            result['SystemDiskEncrypted'] = self.system_disk_encrypted
+        if self.system_disk_kmskey_id is not None:
+            result['SystemDiskKMSKeyId'] = self.system_disk_kmskey_id
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.zone_id is not None:
@@ -2049,6 +2077,10 @@ class NodeAttributes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DataDiskEncrypted') is not None:
+            self.data_disk_encrypted = m.get('DataDiskEncrypted')
+        if m.get('DataDiskKMSKeyId') is not None:
+            self.data_disk_kmskey_id = m.get('DataDiskKMSKeyId')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
         if m.get('MasterRootPassword') is not None:
@@ -2057,6 +2089,10 @@ class NodeAttributes(TeaModel):
             self.ram_role = m.get('RamRole')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SystemDiskEncrypted') is not None:
+            self.system_disk_encrypted = m.get('SystemDiskEncrypted')
+        if m.get('SystemDiskKMSKeyId') is not None:
+            self.system_disk_kmskey_id = m.get('SystemDiskKMSKeyId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('ZoneId') is not None:
@@ -7731,6 +7767,7 @@ class CreateClusterRequest(TeaModel):
         client_token: str = None,
         cluster_name: str = None,
         cluster_type: str = None,
+        deletion_protection: bool = None,
         deploy_mode: str = None,
         description: str = None,
         node_attributes: NodeAttributes = None,
@@ -7770,6 +7807,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
+        self.deletion_protection = deletion_protection
         # The deployment mode of master nodes in the cluster. Valid values:
         # 
         # *   NORMAL: regular mode. This is the default value. A cluster that contains only one master node is created.
@@ -7861,6 +7899,8 @@ class CreateClusterRequest(TeaModel):
             result['ClusterName'] = self.cluster_name
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.deploy_mode is not None:
             result['DeployMode'] = self.deploy_mode
         if self.description is not None:
@@ -7912,6 +7952,8 @@ class CreateClusterRequest(TeaModel):
             self.cluster_name = m.get('ClusterName')
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('DeployMode') is not None:
             self.deploy_mode = m.get('DeployMode')
         if m.get('Description') is not None:
@@ -8301,12 +8343,16 @@ class CreateScriptResponse(TeaModel):
 class DecreaseNodesRequest(TeaModel):
     def __init__(
         self,
+        batch_interval: int = None,
+        batch_size: int = None,
         cluster_id: str = None,
         decrease_node_count: int = None,
         node_group_id: str = None,
         node_ids: List[str] = None,
         region_id: str = None,
     ):
+        self.batch_interval = batch_interval
+        self.batch_size = batch_size
         # The cluster ID.
         # 
         # This parameter is required.
@@ -8333,6 +8379,10 @@ class DecreaseNodesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.batch_interval is not None:
+            result['BatchInterval'] = self.batch_interval
+        if self.batch_size is not None:
+            result['BatchSize'] = self.batch_size
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.decrease_node_count is not None:
@@ -8347,6 +8397,10 @@ class DecreaseNodesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BatchInterval') is not None:
+            self.batch_interval = m.get('BatchInterval')
+        if m.get('BatchSize') is not None:
+            self.batch_size = m.get('BatchSize')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('DecreaseNodeCount') is not None:
@@ -10033,10 +10087,12 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints(
     def __init__(
         self,
         max_capacity: int = None,
+        max_on_demand_capacity: int = None,
         min_capacity: int = None,
     ):
         # The maximum number of nodes in the node group. Default value: 2000.
         self.max_capacity = max_capacity
+        self.max_on_demand_capacity = max_on_demand_capacity
         # The minimum number of nodes in the node group. Default value: 0.
         self.min_capacity = min_capacity
 
@@ -10051,6 +10107,8 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints(
         result = dict()
         if self.max_capacity is not None:
             result['MaxCapacity'] = self.max_capacity
+        if self.max_on_demand_capacity is not None:
+            result['MaxOnDemandCapacity'] = self.max_on_demand_capacity
         if self.min_capacity is not None:
             result['MinCapacity'] = self.min_capacity
         return result
@@ -10059,6 +10117,8 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints(
         m = m or dict()
         if m.get('MaxCapacity') is not None:
             self.max_capacity = m.get('MaxCapacity')
+        if m.get('MaxOnDemandCapacity') is not None:
+            self.max_on_demand_capacity = m.get('MaxOnDemandCapacity')
         if m.get('MinCapacity') is not None:
             self.min_capacity = m.get('MinCapacity')
         return self
@@ -10145,6 +10205,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies(TeaModel):
         constraints: GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints = None,
         node_group_id: str = None,
         scaling_policy_id: str = None,
+        scaling_policy_type: str = None,
         scaling_rules: List[GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules] = None,
     ):
         # The cluster ID.
@@ -10155,6 +10216,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies(TeaModel):
         self.node_group_id = node_group_id
         # The ID of the auto scaling policy.
         self.scaling_policy_id = scaling_policy_id
+        self.scaling_policy_type = scaling_policy_type
         # The list of auto scaling rules.
         self.scaling_rules = scaling_rules
 
@@ -10180,6 +10242,8 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies(TeaModel):
             result['NodeGroupId'] = self.node_group_id
         if self.scaling_policy_id is not None:
             result['ScalingPolicyId'] = self.scaling_policy_id
+        if self.scaling_policy_type is not None:
+            result['ScalingPolicyType'] = self.scaling_policy_type
         result['ScalingRules'] = []
         if self.scaling_rules is not None:
             for k in self.scaling_rules:
@@ -10197,6 +10261,8 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies(TeaModel):
             self.node_group_id = m.get('NodeGroupId')
         if m.get('ScalingPolicyId') is not None:
             self.scaling_policy_id = m.get('ScalingPolicyId')
+        if m.get('ScalingPolicyType') is not None:
+            self.scaling_policy_type = m.get('ScalingPolicyType')
         self.scaling_rules = []
         if m.get('ScalingRules') is not None:
             for k in m.get('ScalingRules'):
@@ -10215,6 +10281,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
         cluster_name: str = None,
         cluster_state: str = None,
         cluster_type: str = None,
+        deletion_protection: bool = None,
         deploy_mode: str = None,
         emr_default_role: str = None,
         exist_clone_config: bool = None,
@@ -10259,6 +10326,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
         # *   CUSTOM
         # *   HADOOP
         self.cluster_type = cluster_type
+        self.deletion_protection = deletion_protection
         # The deployment mode of master nodes in the cluster. Valid values:
         # 
         # *   NORMAL: regular mode.
@@ -10354,6 +10422,8 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
             result['ClusterState'] = self.cluster_state
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.deploy_mode is not None:
             result['DeployMode'] = self.deploy_mode
         if self.emr_default_role is not None:
@@ -10413,6 +10483,8 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
             self.cluster_state = m.get('ClusterState')
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('DeployMode') is not None:
             self.deploy_mode = m.get('DeployMode')
         if m.get('EmrDefaultRole') is not None:
@@ -48490,6 +48562,7 @@ class RunClusterRequest(TeaModel):
         client_token: str = None,
         cluster_name: str = None,
         cluster_type: str = None,
+        deletion_protection: bool = None,
         deploy_mode: str = None,
         description: str = None,
         node_attributes: NodeAttributes = None,
@@ -48529,6 +48602,7 @@ class RunClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
+        self.deletion_protection = deletion_protection
         # The deployment mode of master nodes in the cluster. Valid values:
         # 
         # *   NORMAL: regular mode. This is the default value. A cluster that contains only one master node is created.
@@ -48619,6 +48693,8 @@ class RunClusterRequest(TeaModel):
             result['ClusterName'] = self.cluster_name
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.deploy_mode is not None:
             result['DeployMode'] = self.deploy_mode
         if self.description is not None:
@@ -48670,6 +48746,8 @@ class RunClusterRequest(TeaModel):
             self.cluster_name = m.get('ClusterName')
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('DeployMode') is not None:
             self.deploy_mode = m.get('DeployMode')
         if m.get('Description') is not None:
@@ -48712,6 +48790,7 @@ class RunClusterShrinkRequest(TeaModel):
         client_token: str = None,
         cluster_name: str = None,
         cluster_type: str = None,
+        deletion_protection: bool = None,
         deploy_mode: str = None,
         description: str = None,
         node_attributes_shrink: str = None,
@@ -48751,6 +48830,7 @@ class RunClusterShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
+        self.deletion_protection = deletion_protection
         # The deployment mode of master nodes in the cluster. Valid values:
         # 
         # *   NORMAL: regular mode. This is the default value. A cluster that contains only one master node is created.
@@ -48812,6 +48892,8 @@ class RunClusterShrinkRequest(TeaModel):
             result['ClusterName'] = self.cluster_name
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.deploy_mode is not None:
             result['DeployMode'] = self.deploy_mode
         if self.description is not None:
@@ -48850,6 +48932,8 @@ class RunClusterShrinkRequest(TeaModel):
             self.cluster_name = m.get('ClusterName')
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('DeployMode') is not None:
             self.deploy_mode = m.get('DeployMode')
         if m.get('Description') is not None:
