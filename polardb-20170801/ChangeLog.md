@@ -1,3 +1,7 @@
+2024-12-02 Version: 5.2.3
+- Update API CreateDBCluster: add param TargetMinorVersion.
+
+
 2024-11-15 Version: 5.2.2
 - Update API CreateDBCluster: add param BurstingEnabled.
 - Update API CreateDBCluster: update param DBNodeNum.

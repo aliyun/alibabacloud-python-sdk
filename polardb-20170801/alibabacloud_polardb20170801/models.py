@@ -1828,6 +1828,7 @@ class CreateDBClusterRequest(TeaModel):
         strict_consistency: str = None,
         tdestatus: bool = None,
         tag: List[CreateDBClusterRequestTag] = None,
+        target_minor_version: str = None,
         used_time: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
@@ -1942,12 +1943,16 @@ class CreateDBClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbnode_class = dbnode_class
-        # Number of standard edition nodes. Values are as follows:
+        # The number of nodes. This parameter is supported for Standard Edition clusters. Valid values:
         # 
-        # - **1** (default): Indicates there is only one read-write node.
-        # - **2**: Indicates there is one read-only node and one read-write node.
-        # > - Enterprise edition defaults to 2 nodes, while the standard edition defaults to 1 node.
-        # > - Only supported by PolarDB MySQL edition.
+        # *   **1** (default): only one primary node.
+        # *   **2**: one read-only node and one primary node.
+        # 
+        # > 
+        # 
+        # *   By default, an Enterprise Edition cluster has two nodes and a Standard Edition cluster has one node.
+        # 
+        # *   This parameter is supported only for PolarDB for MySQL clusters.
         self.dbnode_num = dbnode_num
         # Database engine type, with available values as follows:
         # 
@@ -2138,6 +2143,7 @@ class CreateDBClusterRequest(TeaModel):
         self.tdestatus = tdestatus
         # List of tags.
         self.tag = tag
+        self.target_minor_version = target_minor_version
         # If the payment type is **Prepaid**, this parameter is required.
         # - When **Period** is **Month**, **UsedTime** should be an integer within `[1-9]`.
         # - When **Period** is **Year**, **UsedTime** should be an integer within `[1-3]`.
@@ -2269,6 +2275,8 @@ class CreateDBClusterRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.target_minor_version is not None:
+            result['TargetMinorVersion'] = self.target_minor_version
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
         if self.vpcid is not None:
@@ -2386,6 +2394,8 @@ class CreateDBClusterRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateDBClusterRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('TargetMinorVersion') is not None:
+            self.target_minor_version = m.get('TargetMinorVersion')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
         if m.get('VPCId') is not None:
@@ -7009,7 +7019,10 @@ class DescribeActivationCodeDetailsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the activation code.
         self.activation_code_id = activation_code_id
+        # The Alibaba Cloud order ID (including the virtual order ID).
+        # 
         # This parameter is required.
         self.aliyun_order_id = aliyun_order_id
         self.owner_account = owner_account
@@ -7072,17 +7085,27 @@ class DescribeActivationCodeDetailsResponseBody(TeaModel):
         request_id: str = None,
         system_identifier: str = None,
     ):
+        # The time when the activation code takes effect.
         self.activate_at = activate_at
+        # The activation code in the base64 format. The activation code is decoded and stored into a file named license.lic. PolarDB can access and read the license.lic file upon startup to validate the license or perform related operations.
         self.cert_content_b64 = cert_content_b64
+        # The description of the activation code.
         self.description = description
+        # The time when the activation code expires.
         self.expire_at = expire_at
+        # The time when the activation code was created.
         self.gmt_created = gmt_created
+        # The time when the activation code was last updated.
         self.gmt_modified = gmt_modified
+        # The ID of the activation code.
         self.id = id
+        # The MAC address.
         self.mac_address = mac_address
+        # The name of the activation code.
         self.name = name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The system identifier of the database.
         self.system_identifier = system_identifier
 
     def validate(self):
@@ -8766,8 +8789,7 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         self.consistent_time = consistent_time
         # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
-        # The expected expiration time of the backup set.
-        # > This parameter is supported only for instances that are enabled with sparse backup.
+        # The expected expiration time of the backup set (This parameter is supported only for clusters for which sparse backup is enabled).
         self.expect_expire_time = expect_expire_time
         # The expected expiration type of the backup set (This parameter is supported only for instances that are enabled with sparse backup).
         # 
@@ -8920,7 +8942,7 @@ class DescribeBackupsResponseBody(TeaModel):
         total_level_2backup_size: str = None,
         total_record_count: str = None,
     ):
-        # The details of backup sets.
+        # The queried backup sets.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -9457,7 +9479,7 @@ class DescribeClassListResponseBody(TeaModel):
         region_id: str = None,
         request_id: str = None,
     ):
-        # The specifications of the cluster.
+        # The cluster specifications.
         self.items = items
         # The region ID of the cluster.
         self.region_id = region_id
@@ -10328,6 +10350,10 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         # - **StandbyClusterON**: Enable storage hot backup/Enable storage hot backup and Standby compute nodes.
         # - **StandbyClusterOFF**: Disable storage hot backup/Disable storage hot backup and Standby compute nodes.
         self.hot_standby_cluster = hot_standby_cluster
+        # Indicates whether the automatic IMCI-based query acceleration feature is enabled. Valid values:
+        # 
+        # *   `ON`: enabled
+        # *   `OFF`: disabled
         self.imci_auto_index = imci_auto_index
         # Maximum number of inodes in the file system.
         self.inode_total = inode_total
@@ -10422,7 +10448,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         # The maximum storage capacity of the current cluster specification, in bytes.
         self.storage_max = storage_max
         # Storage billing type. Valid values are as follows:
-        # - **Postpaid**：Pay-as-you-go (by capacity). - **Prepaid**：Subscription (by space).
+        # - **Postpaid**: Pay-as-you-go (by capacity).
+        # - **Prepaid**: Subscription (by space).
         self.storage_pay_type = storage_pay_type
         # Storage space for pay-by-space (subscription) billing. Unit: Byte.
         self.storage_space = storage_space
@@ -10440,7 +10467,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         # 
         # > This parameter is supported only for PolarDB MySQL Edition with the product series set to Cluster Edition.
         self.sub_category = sub_category
-        # Indicates whether the failover with hot replica feature is supported if the cluster has In-Memory Column Index (IMCI) nodes.
+        # Indicates whether queries based on In-Memory Column Indexes (IMCIs) are supported during and after a failover with hot replica.
         self.support_instant_switch_with_imci = support_instant_switch_with_imci
         # Details of tags.
         self.tags = tags
@@ -13004,7 +13031,7 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The Query Type
+        # The query type.
         self.type = type
 
     def validate(self):
@@ -19418,6 +19445,8 @@ class DescribeLicenseOrderDetailsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The Alibaba Cloud order ID (or virtual order ID).
+        # 
         # This parameter is required.
         self.aliyun_order_id = aliyun_order_id
         self.owner_account = owner_account
@@ -19479,19 +19508,39 @@ class DescribeLicenseOrderDetailsResponseBody(TeaModel):
         request_id: str = None,
         virtual_order_id: str = None,
     ):
+        # The number of generated activation codes.
         self.activated_code_count = activated_code_count
+        # The maximum number of activation codes that you can apply for.
         self.activation_code_quota = activation_code_quota
+        # The Alibaba Cloud order ID (including the virtual order ID).
         self.aliyun_order_id = aliyun_order_id
+        # Indicates whether activation codes can be generated without the system identifier.
         self.allow_empty_system_identifier = allow_empty_system_identifier
+        # The type of the engine. Valid values: PG, Oracle, and MySQL.
         self.engine = engine
+        # The time when the order was created.
         self.gmt_created = gmt_created
+        # The time when the order was last updated.
         self.gmt_modified = gmt_modified
+        # Indicates whether the order is a virtual order (virtual orders allow pre-generation of activation codes).
         self.is_virtual_order = is_virtual_order
+        # Indicates whether the virtual order is frozen (activation codes cannot be generated for a frozen virtual order).
         self.is_virtual_order_frozen = is_virtual_order_frozen
+        # The plan type. Valid values:
+        # 
+        # *   single_node_subscribe
+        # *   single_node_long_term
+        # *   primary_backup_subscribe
+        # *   primary_backup_long_term
+        # *   pre_generation_long_term
         self.package_type = package_type
+        # The validity period of the plan, which is one year (common) or thirty years (long-term).
         self.package_validity = package_validity
+        # The plan validity period, one year (common) or thirty years (long-term).
         self.purchase_channel = purchase_channel
+        # The request ID.
         self.request_id = request_id
+        # The virtual order ID.
         self.virtual_order_id = virtual_order_id
 
     def validate(self):

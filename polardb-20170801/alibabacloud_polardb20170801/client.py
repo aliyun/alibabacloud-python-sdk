@@ -1453,7 +1453,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBClusterResponse:
         """
-        @summary Create Database Cluster
+        @summary CreateDBCluster.
         
         @param request: CreateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1563,6 +1563,8 @@ class Client(OpenApiClient):
             query['TDEStatus'] = request.tdestatus
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.target_minor_version):
+            query['TargetMinorVersion'] = request.target_minor_version
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.vpcid):
@@ -1596,7 +1598,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBClusterResponse:
         """
-        @summary Create Database Cluster
+        @summary CreateDBCluster.
         
         @param request: CreateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1706,6 +1708,8 @@ class Client(OpenApiClient):
             query['TDEStatus'] = request.tdestatus
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.target_minor_version):
+            query['TargetMinorVersion'] = request.target_minor_version
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.vpcid):
@@ -1738,7 +1742,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateDBClusterRequest,
     ) -> polardb_20170801_models.CreateDBClusterResponse:
         """
-        @summary Create Database Cluster
+        @summary CreateDBCluster.
         
         @param request: CreateDBClusterRequest
         @return: CreateDBClusterResponse
@@ -1751,7 +1755,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateDBClusterRequest,
     ) -> polardb_20170801_models.CreateDBClusterResponse:
         """
-        @summary Create Database Cluster
+        @summary CreateDBCluster.
         
         @param request: CreateDBClusterRequest
         @return: CreateDBClusterResponse
@@ -5001,7 +5005,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeActivationCodeDetailsResponse:
         """
-        @summary 查询激活码详情
+        @summary Queries the details of an activation code.
         
         @param request: DescribeActivationCodeDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5046,7 +5050,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeActivationCodeDetailsResponse:
         """
-        @summary 查询激活码详情
+        @summary Queries the details of an activation code.
         
         @param request: DescribeActivationCodeDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5090,7 +5094,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeActivationCodeDetailsRequest,
     ) -> polardb_20170801_models.DescribeActivationCodeDetailsResponse:
         """
-        @summary 查询激活码详情
+        @summary Queries the details of an activation code.
         
         @param request: DescribeActivationCodeDetailsRequest
         @return: DescribeActivationCodeDetailsResponse
@@ -5103,7 +5107,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeActivationCodeDetailsRequest,
     ) -> polardb_20170801_models.DescribeActivationCodeDetailsResponse:
         """
-        @summary 查询激活码详情
+        @summary Queries the details of an activation code.
         
         @param request: DescribeActivationCodeDetailsRequest
         @return: DescribeActivationCodeDetailsResponse
@@ -9677,7 +9681,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeLicenseOrderDetailsResponse:
         """
-        @summary 查看License订单详情
+        @summary Queries the information of a license order.
         
         @param request: DescribeLicenseOrderDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9720,7 +9724,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeLicenseOrderDetailsResponse:
         """
-        @summary 查看License订单详情
+        @summary Queries the information of a license order.
         
         @param request: DescribeLicenseOrderDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9762,7 +9766,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeLicenseOrderDetailsRequest,
     ) -> polardb_20170801_models.DescribeLicenseOrderDetailsResponse:
         """
-        @summary 查看License订单详情
+        @summary Queries the information of a license order.
         
         @param request: DescribeLicenseOrderDetailsRequest
         @return: DescribeLicenseOrderDetailsResponse
@@ -9775,7 +9779,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeLicenseOrderDetailsRequest,
     ) -> polardb_20170801_models.DescribeLicenseOrderDetailsResponse:
         """
-        @summary 查看License订单详情
+        @summary Queries the information of a license order.
         
         @param request: DescribeLicenseOrderDetailsRequest
         @return: DescribeLicenseOrderDetailsResponse
@@ -16309,7 +16313,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
         """
-        @summary Enables or disables the hot standby node in a cluster.
+        @summary Enables or disables the failover with hot replica feature for a node in a cluster.
         
         @param request: ModifyDBNodeHotReplicaModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16356,7 +16360,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
         """
-        @summary Enables or disables the hot standby node in a cluster.
+        @summary Enables or disables the failover with hot replica feature for a node in a cluster.
         
         @param request: ModifyDBNodeHotReplicaModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16402,7 +16406,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBNodeHotReplicaModeRequest,
     ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
         """
-        @summary Enables or disables the hot standby node in a cluster.
+        @summary Enables or disables the failover with hot replica feature for a node in a cluster.
         
         @param request: ModifyDBNodeHotReplicaModeRequest
         @return: ModifyDBNodeHotReplicaModeResponse
@@ -16415,7 +16419,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBNodeHotReplicaModeRequest,
     ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
         """
-        @summary Enables or disables the hot standby node in a cluster.
+        @summary Enables or disables the failover with hot replica feature for a node in a cluster.
         
         @param request: ModifyDBNodeHotReplicaModeRequest
         @return: ModifyDBNodeHotReplicaModeResponse
