@@ -1,3 +1,7 @@
+2024-12-02 Version: 4.0.1
+- Update API DescribeDBInstanceAttribute: update response param.
+
+
 2024-11-14 Version: 4.0.0
 - Support API DescribeAllDBInstanceClass.
 - Support API DescribeDBClusterConfig.

@@ -2348,6 +2348,7 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         memory: int = None,
         modified_time: str = None,
         performance_level: str = None,
+        scaling_rules_enable: bool = None,
         start_time: str = None,
         status: str = None,
     ):
@@ -2382,10 +2383,11 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         self.db_instance_name = db_instance_name
         # The memory size.
         self.memory = memory
-        # 修改时间。
+        # The modified time.
         self.modified_time = modified_time
         # The performance level.
         self.performance_level = performance_level
+        self.scaling_rules_enable = scaling_rules_enable
         # The time when the cluster started.
         self.start_time = start_time
         # The state of the cluster. Valid values:
@@ -2431,6 +2433,8 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
             result['ModifiedTime'] = self.modified_time
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
+        if self.scaling_rules_enable is not None:
+            result['ScalingRulesEnable'] = self.scaling_rules_enable
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.status is not None:
@@ -2463,6 +2467,8 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
             self.modified_time = m.get('ModifiedTime')
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
+        if m.get('ScalingRulesEnable') is not None:
+            self.scaling_rules_enable = m.get('ScalingRulesEnable')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
@@ -2476,7 +2482,9 @@ class DescribeDBInstanceAttributeResponseBodyTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -2568,7 +2576,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         self.maintain_starttime = maintain_starttime
         # The storage capacity of the instance.
         self.object_store_size = object_store_size
-        # 地域ID。
+        # The Region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
@@ -2587,12 +2595,13 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         self.status = status
         # The cache size.
         self.storage_size = storage_size
-        # The zone ID.
+        # The subdomain zone ID.
         self.sub_domain = sub_domain
+        # The tags that are added to the instances. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. Format: `{"key1":"value1"}`.
         self.tags = tags
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # 实例可用区ID
+        # The Zone ID.
         self.zone_id = zone_id
 
     def validate(self):
