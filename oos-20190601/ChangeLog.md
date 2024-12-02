@@ -1,3 +1,9 @@
+2024-12-02 Version: 3.3.0
+- Support API AnalyzeGitRepository.
+- Support API ListGitRepositoryContents.
+- Update API ListExecutions: update response param.
+
+
 2024-11-08 Version: 3.2.3
 - Update API ListGitRepositories: add param OrgId.
 - Update API ListGitRepositories: update response param.

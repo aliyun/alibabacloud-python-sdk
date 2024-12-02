@@ -1,7 +1,240 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import List, Dict, Any
+
+
+class AnalyzeGitRepositoryRequest(TeaModel):
+    def __init__(
+        self,
+        branch: str = None,
+        client_token: str = None,
+        org_id: str = None,
+        owner: str = None,
+        platform: str = None,
+        region_id: str = None,
+        repo_full_name: str = None,
+        repo_id: str = None,
+    ):
+        self.branch = branch
+        self.client_token = client_token
+        self.org_id = org_id
+        # This parameter is required.
+        self.owner = owner
+        # This parameter is required.
+        self.platform = platform
+        self.region_id = region_id
+        self.repo_full_name = repo_full_name
+        self.repo_id = repo_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.branch is not None:
+            result['Branch'] = self.branch
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.repo_full_name is not None:
+            result['RepoFullName'] = self.repo_full_name
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Branch') is not None:
+            self.branch = m.get('Branch')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RepoFullName') is not None:
+            self.repo_full_name = m.get('RepoFullName')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+        return self
+
+
+class AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles(TeaModel):
+    def __init__(
+        self,
+        file_type: str = None,
+        paths: List[str] = None,
+    ):
+        self.file_type = file_type
+        self.paths = paths
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.paths is not None:
+            result['Paths'] = self.paths
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('Paths') is not None:
+            self.paths = m.get('Paths')
+        return self
+
+
+class AnalyzeGitRepositoryResponseBodyAnalysisResults(TeaModel):
+    def __init__(
+        self,
+        build_files: List[AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles] = None,
+        build_type: str = None,
+    ):
+        self.build_files = build_files
+        self.build_type = build_type
+
+    def validate(self):
+        if self.build_files:
+            for k in self.build_files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BuildFiles'] = []
+        if self.build_files is not None:
+            for k in self.build_files:
+                result['BuildFiles'].append(k.to_map() if k else None)
+        if self.build_type is not None:
+            result['BuildType'] = self.build_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.build_files = []
+        if m.get('BuildFiles') is not None:
+            for k in m.get('BuildFiles'):
+                temp_model = AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles()
+                self.build_files.append(temp_model.from_map(k))
+        if m.get('BuildType') is not None:
+            self.build_type = m.get('BuildType')
+        return self
+
+
+class AnalyzeGitRepositoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        analysis_results: List[AnalyzeGitRepositoryResponseBodyAnalysisResults] = None,
+        count: int = None,
+        request_id: str = None,
+    ):
+        self.analysis_results = analysis_results
+        self.count = count
+        self.request_id = request_id
+
+    def validate(self):
+        if self.analysis_results:
+            for k in self.analysis_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AnalysisResults'] = []
+        if self.analysis_results is not None:
+            for k in self.analysis_results:
+                result['AnalysisResults'].append(k.to_map() if k else None)
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.analysis_results = []
+        if m.get('AnalysisResults') is not None:
+            for k in m.get('AnalysisResults'):
+                temp_model = AnalyzeGitRepositoryResponseBodyAnalysisResults()
+                self.analysis_results.append(temp_model.from_map(k))
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AnalyzeGitRepositoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AnalyzeGitRepositoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AnalyzeGitRepositoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class CancelExecutionRequest(TeaModel):
@@ -10708,6 +10941,7 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
         last_trigger_status_message: str = None,
         last_trigger_time: str = None,
         mode: str = None,
+        next_schedule_time: str = None,
         outputs: str = None,
         parameters: Dict[str, Any] = None,
         parent_execution_id: str = None,
@@ -10757,6 +10991,7 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
         self.last_trigger_time = last_trigger_time
         # The execution mode.
         self.mode = mode
+        self.next_schedule_time = next_schedule_time
         # The output of the execution.
         self.outputs = outputs
         # The input parameters of the execution.
@@ -10838,6 +11073,8 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
             result['LastTriggerTime'] = self.last_trigger_time
         if self.mode is not None:
             result['Mode'] = self.mode
+        if self.next_schedule_time is not None:
+            result['NextScheduleTime'] = self.next_schedule_time
         if self.outputs is not None:
             result['Outputs'] = self.outputs
         if self.parameters is not None:
@@ -10911,6 +11148,8 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
             self.last_trigger_time = m.get('LastTriggerTime')
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
+        if m.get('NextScheduleTime') is not None:
+            self.next_schedule_time = m.get('NextScheduleTime')
         if m.get('Outputs') is not None:
             self.outputs = m.get('Outputs')
         if m.get('Parameters') is not None:
@@ -11254,6 +11493,222 @@ class ListGitRepositoriesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListGitRepositoriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListGitRepositoryContentsRequest(TeaModel):
+    def __init__(
+        self,
+        branch: str = None,
+        client_token: str = None,
+        content_type: str = None,
+        org_id: str = None,
+        owner: str = None,
+        path: str = None,
+        platform: str = None,
+        region_id: str = None,
+        repo_full_name: str = None,
+        repo_id: int = None,
+    ):
+        self.branch = branch
+        self.client_token = client_token
+        self.content_type = content_type
+        self.org_id = org_id
+        # This parameter is required.
+        self.owner = owner
+        self.path = path
+        # This parameter is required.
+        self.platform = platform
+        self.region_id = region_id
+        self.repo_full_name = repo_full_name
+        self.repo_id = repo_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.branch is not None:
+            result['Branch'] = self.branch
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.repo_full_name is not None:
+            result['RepoFullName'] = self.repo_full_name
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Branch') is not None:
+            self.branch = m.get('Branch')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RepoFullName') is not None:
+            self.repo_full_name = m.get('RepoFullName')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+        return self
+
+
+class ListGitRepositoryContentsResponseBodyContents(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        name: str = None,
+        path: str = None,
+        type: str = None,
+    ):
+        self.content = content
+        self.name = name
+        self.path = path
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListGitRepositoryContentsResponseBody(TeaModel):
+    def __init__(
+        self,
+        contents: List[ListGitRepositoryContentsResponseBodyContents] = None,
+        count: int = None,
+        request_id: str = None,
+    ):
+        self.contents = contents
+        self.count = count
+        self.request_id = request_id
+
+    def validate(self):
+        if self.contents:
+            for k in self.contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Contents'] = []
+        if self.contents is not None:
+            for k in self.contents:
+                result['Contents'].append(k.to_map() if k else None)
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.contents = []
+        if m.get('Contents') is not None:
+            for k in m.get('Contents'):
+                temp_model = ListGitRepositoryContentsResponseBodyContents()
+                self.contents.append(temp_model.from_map(k))
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListGitRepositoryContentsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListGitRepositoryContentsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListGitRepositoryContentsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
