@@ -1,3 +1,7 @@
+2024-12-02 Version: 1.0.6
+- Update API GetInstanceDetail: update response param.
+
+
 2024-08-28 Version: 1.0.5
 - Update API GetInstanceDetail: update response param.
 - Update API ListInstances: add param ResourceGroupId.

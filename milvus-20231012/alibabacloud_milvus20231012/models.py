@@ -553,6 +553,7 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         bucket_path: str = None,
         cluster_info: GetInstanceDetailResponseBodyDataClusterInfo = None,
         cluster_name: str = None,
+        enable_ha: bool = None,
         expire_time: int = None,
         instance_id: str = None,
         instance_status: str = None,
@@ -578,6 +579,7 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         self.bucket_path = bucket_path
         self.cluster_info = cluster_info
         self.cluster_name = cluster_name
+        self.enable_ha = enable_ha
         self.expire_time = expire_time
         self.instance_id = instance_id
         self.instance_status = instance_status
@@ -621,6 +623,8 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             result['ClusterInfo'] = self.cluster_info.to_map()
         if self.cluster_name is not None:
             result['ClusterName'] = self.cluster_name
+        if self.enable_ha is not None:
+            result['EnableHa'] = self.enable_ha
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.instance_id is not None:
@@ -674,6 +678,8 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             self.cluster_info = temp_model.from_map(m['ClusterInfo'])
         if m.get('ClusterName') is not None:
             self.cluster_name = m.get('ClusterName')
+        if m.get('EnableHa') is not None:
+            self.enable_ha = m.get('EnableHa')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('InstanceId') is not None:
