@@ -16355,15 +16355,27 @@ class DescribeEciScalingConfigurationsResponse(TeaModel):
 class DescribeElasticStrengthRequest(TeaModel):
     def __init__(
         self,
+        data_disk_categories: List[str] = None,
+        image_family: str = None,
+        image_id: str = None,
+        image_name: str = None,
         instance_types: List[str] = None,
+        ipv_6address_count: int = None,
         priority_strategy: str = None,
         region_id: str = None,
         scaling_group_id: str = None,
         scaling_group_ids: List[str] = None,
+        spot_strategy: str = None,
         system_disk_categories: List[str] = None,
+        v_switch_ids: List[str] = None,
     ):
+        self.data_disk_categories = data_disk_categories
+        self.image_family = image_family
+        self.image_id = image_id
+        self.image_name = image_name
         # The instance types. The instance types specified by this parameter overwrite the instance types specified in the scaling configuration.
         self.instance_types = instance_types
+        self.ipv_6address_count = ipv_6address_count
         # The preemption policy that you want to apply to pay-as-you-go instances. The preemption policy specified by this parameter overwrites the preemption policy specified in the scaling configuration. Valid values:
         # 
         # *   NoSpot: The instances are created as regular pay-as-you-go instances.
@@ -16380,6 +16392,7 @@ class DescribeElasticStrengthRequest(TeaModel):
         self.scaling_group_id = scaling_group_id
         # The IDs of the scaling groups that you want to query.
         self.scaling_group_ids = scaling_group_ids
+        self.spot_strategy = spot_strategy
         # The categories of the system disks. The categories of the system disks specified by this parameter overwrite the categories of the system disks specified in the scaling configuration. Valid values:
         # 
         # *   cloud: basic disk.
@@ -16387,6 +16400,7 @@ class DescribeElasticStrengthRequest(TeaModel):
         # *   cloud_ssd: standard SSD.
         # *   cloud_essd: Enterprise SSD (ESSD).
         self.system_disk_categories = system_disk_categories
+        self.v_switch_ids = v_switch_ids
 
     def validate(self):
         pass
@@ -16397,8 +16411,18 @@ class DescribeElasticStrengthRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.data_disk_categories is not None:
+            result['DataDiskCategories'] = self.data_disk_categories
+        if self.image_family is not None:
+            result['ImageFamily'] = self.image_family
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
         if self.instance_types is not None:
             result['InstanceTypes'] = self.instance_types
+        if self.ipv_6address_count is not None:
+            result['Ipv6AddressCount'] = self.ipv_6address_count
         if self.priority_strategy is not None:
             result['PriorityStrategy'] = self.priority_strategy
         if self.region_id is not None:
@@ -16407,14 +16431,28 @@ class DescribeElasticStrengthRequest(TeaModel):
             result['ScalingGroupId'] = self.scaling_group_id
         if self.scaling_group_ids is not None:
             result['ScalingGroupIds'] = self.scaling_group_ids
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
         if self.system_disk_categories is not None:
             result['SystemDiskCategories'] = self.system_disk_categories
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DataDiskCategories') is not None:
+            self.data_disk_categories = m.get('DataDiskCategories')
+        if m.get('ImageFamily') is not None:
+            self.image_family = m.get('ImageFamily')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
         if m.get('InstanceTypes') is not None:
             self.instance_types = m.get('InstanceTypes')
+        if m.get('Ipv6AddressCount') is not None:
+            self.ipv_6address_count = m.get('Ipv6AddressCount')
         if m.get('PriorityStrategy') is not None:
             self.priority_strategy = m.get('PriorityStrategy')
         if m.get('RegionId') is not None:
@@ -16423,8 +16461,12 @@ class DescribeElasticStrengthRequest(TeaModel):
             self.scaling_group_id = m.get('ScalingGroupId')
         if m.get('ScalingGroupIds') is not None:
             self.scaling_group_ids = m.get('ScalingGroupIds')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
         if m.get('SystemDiskCategories') is not None:
             self.system_disk_categories = m.get('SystemDiskCategories')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
         return self
 
 

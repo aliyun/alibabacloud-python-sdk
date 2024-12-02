@@ -1,3 +1,13 @@
+2024-12-02 Version: 1.10.2
+- Update API DescribeElasticStrength: add param DataDiskCategories.
+- Update API DescribeElasticStrength: add param ImageFamily.
+- Update API DescribeElasticStrength: add param ImageId.
+- Update API DescribeElasticStrength: add param ImageName.
+- Update API DescribeElasticStrength: add param Ipv6AddressCount.
+- Update API DescribeElasticStrength: add param SpotStrategy.
+- Update API DescribeElasticStrength: add param VSwitchIds.
+
+
 2024-11-12 Version: 1.10.1
 - Update API DescribePatternTypes: add param ZoneId.
 
