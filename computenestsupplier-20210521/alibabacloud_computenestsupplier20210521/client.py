@@ -403,6 +403,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.artifact_build_property_shrink):
             query['ArtifactBuildProperty'] = request.artifact_build_property_shrink
+        if not UtilClient.is_unset(request.artifact_build_type):
+            query['ArtifactBuildType'] = request.artifact_build_type
         if not UtilClient.is_unset(request.artifact_id):
             query['ArtifactId'] = request.artifact_id
         if not UtilClient.is_unset(request.artifact_property_shrink):
@@ -462,6 +464,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.artifact_build_property_shrink):
             query['ArtifactBuildProperty'] = request.artifact_build_property_shrink
+        if not UtilClient.is_unset(request.artifact_build_type):
+            query['ArtifactBuildType'] = request.artifact_build_type
         if not UtilClient.is_unset(request.artifact_id):
             query['ArtifactId'] = request.artifact_id
         if not UtilClient.is_unset(request.artifact_property_shrink):

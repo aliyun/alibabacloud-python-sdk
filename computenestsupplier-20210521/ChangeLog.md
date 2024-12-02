@@ -1,3 +1,13 @@
+2024-12-02 Version: 5.0.1
+- Update API CreateArtifact: add param ArtifactBuildType.
+- Update API CreateArtifact: update param ArtifactBuildProperty.
+- Update API CreateArtifact: update response param.
+- Update API GetArtifact: update response param.
+- Update API ListArtifactVersions: update response param.
+- Update API UpdateArtifact: update param ArtifactBuildProperty.
+- Update API UpdateArtifact: update response param.
+
+
 2024-12-02 Version: 5.0.0
 - Update API GetService: update response param.
 - Update API GetServiceInstance: update response param.

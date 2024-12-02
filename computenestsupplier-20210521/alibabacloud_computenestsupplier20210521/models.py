@@ -520,14 +520,98 @@ class ContinueDeployServiceInstanceResponse(TeaModel):
         return self
 
 
+class CreateArtifactRequestArtifactBuildPropertyBuildArgs(TeaModel):
+    def __init__(
+        self,
+        argument_name: str = None,
+        argument_value: str = None,
+    ):
+        self.argument_name = argument_name
+        self.argument_value = argument_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.argument_name is not None:
+            result['ArgumentName'] = self.argument_name
+        if self.argument_value is not None:
+            result['ArgumentValue'] = self.argument_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArgumentName') is not None:
+            self.argument_name = m.get('ArgumentName')
+        if m.get('ArgumentValue') is not None:
+            self.argument_value = m.get('ArgumentValue')
+        return self
+
+
+class CreateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
+    def __init__(
+        self,
+        branch: str = None,
+        owner: str = None,
+        platform: str = None,
+        repo_name: str = None,
+    ):
+        self.branch = branch
+        self.owner = owner
+        self.platform = platform
+        self.repo_name = repo_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.branch is not None:
+            result['Branch'] = self.branch
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.repo_name is not None:
+            result['RepoName'] = self.repo_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Branch') is not None:
+            self.branch = m.get('Branch')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('RepoName') is not None:
+            self.repo_name = m.get('RepoName')
+        return self
+
+
 class CreateArtifactRequestArtifactBuildProperty(TeaModel):
     def __init__(
         self,
+        build_args: List[CreateArtifactRequestArtifactBuildPropertyBuildArgs] = None,
+        code_repo: CreateArtifactRequestArtifactBuildPropertyCodeRepo = None,
         command_content: str = None,
         command_type: str = None,
+        dockerfile_path: str = None,
         region_id: str = None,
+        source_container_image: str = None,
         source_image_id: str = None,
     ):
+        self.build_args = build_args
+        self.code_repo = code_repo
         # The command content.
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
@@ -540,10 +624,12 @@ class CreateArtifactRequestArtifactBuildProperty(TeaModel):
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
         self.command_type = command_type
+        self.dockerfile_path = dockerfile_path
         # The region ID where the source mirror image is located.
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
         self.region_id = region_id
+        self.source_container_image = source_container_image
         # The source image id. Supported Types:
         # 
         # - Image ID: Pass the Image ID of the Ecs image directly.
@@ -554,7 +640,12 @@ class CreateArtifactRequestArtifactBuildProperty(TeaModel):
         self.source_image_id = source_image_id
 
     def validate(self):
-        pass
+        if self.build_args:
+            for k in self.build_args:
+                if k:
+                    k.validate()
+        if self.code_repo:
+            self.code_repo.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -562,24 +653,46 @@ class CreateArtifactRequestArtifactBuildProperty(TeaModel):
             return _map
 
         result = dict()
+        result['BuildArgs'] = []
+        if self.build_args is not None:
+            for k in self.build_args:
+                result['BuildArgs'].append(k.to_map() if k else None)
+        if self.code_repo is not None:
+            result['CodeRepo'] = self.code_repo.to_map()
         if self.command_content is not None:
             result['CommandContent'] = self.command_content
         if self.command_type is not None:
             result['CommandType'] = self.command_type
+        if self.dockerfile_path is not None:
+            result['DockerfilePath'] = self.dockerfile_path
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.source_container_image is not None:
+            result['SourceContainerImage'] = self.source_container_image
         if self.source_image_id is not None:
             result['SourceImageId'] = self.source_image_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.build_args = []
+        if m.get('BuildArgs') is not None:
+            for k in m.get('BuildArgs'):
+                temp_model = CreateArtifactRequestArtifactBuildPropertyBuildArgs()
+                self.build_args.append(temp_model.from_map(k))
+        if m.get('CodeRepo') is not None:
+            temp_model = CreateArtifactRequestArtifactBuildPropertyCodeRepo()
+            self.code_repo = temp_model.from_map(m['CodeRepo'])
         if m.get('CommandContent') is not None:
             self.command_content = m.get('CommandContent')
         if m.get('CommandType') is not None:
             self.command_type = m.get('CommandType')
+        if m.get('DockerfilePath') is not None:
+            self.dockerfile_path = m.get('DockerfilePath')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SourceContainerImage') is not None:
+            self.source_container_image = m.get('SourceContainerImage')
         if m.get('SourceImageId') is not None:
             self.source_image_id = m.get('SourceImageId')
         return self
@@ -737,6 +850,7 @@ class CreateArtifactRequest(TeaModel):
     def __init__(
         self,
         artifact_build_property: CreateArtifactRequestArtifactBuildProperty = None,
+        artifact_build_type: str = None,
         artifact_id: str = None,
         artifact_property: CreateArtifactRequestArtifactProperty = None,
         artifact_type: str = None,
@@ -749,6 +863,7 @@ class CreateArtifactRequest(TeaModel):
     ):
         # The build properties of the artifact, utilized for hosting and building the deployment package.
         self.artifact_build_property = artifact_build_property
+        self.artifact_build_type = artifact_build_type
         # The ID of the deployment package.
         self.artifact_id = artifact_id
         # The properties of the deployment object.
@@ -797,6 +912,8 @@ class CreateArtifactRequest(TeaModel):
         result = dict()
         if self.artifact_build_property is not None:
             result['ArtifactBuildProperty'] = self.artifact_build_property.to_map()
+        if self.artifact_build_type is not None:
+            result['ArtifactBuildType'] = self.artifact_build_type
         if self.artifact_id is not None:
             result['ArtifactId'] = self.artifact_id
         if self.artifact_property is not None:
@@ -824,6 +941,8 @@ class CreateArtifactRequest(TeaModel):
         if m.get('ArtifactBuildProperty') is not None:
             temp_model = CreateArtifactRequestArtifactBuildProperty()
             self.artifact_build_property = temp_model.from_map(m['ArtifactBuildProperty'])
+        if m.get('ArtifactBuildType') is not None:
+            self.artifact_build_type = m.get('ArtifactBuildType')
         if m.get('ArtifactId') is not None:
             self.artifact_id = m.get('ArtifactId')
         if m.get('ArtifactProperty') is not None:
@@ -888,6 +1007,7 @@ class CreateArtifactShrinkRequest(TeaModel):
     def __init__(
         self,
         artifact_build_property_shrink: str = None,
+        artifact_build_type: str = None,
         artifact_id: str = None,
         artifact_property_shrink: str = None,
         artifact_type: str = None,
@@ -900,6 +1020,7 @@ class CreateArtifactShrinkRequest(TeaModel):
     ):
         # The build properties of the artifact, utilized for hosting and building the deployment package.
         self.artifact_build_property_shrink = artifact_build_property_shrink
+        self.artifact_build_type = artifact_build_type
         # The ID of the deployment package.
         self.artifact_id = artifact_id
         # The properties of the deployment object.
@@ -944,6 +1065,8 @@ class CreateArtifactShrinkRequest(TeaModel):
         result = dict()
         if self.artifact_build_property_shrink is not None:
             result['ArtifactBuildProperty'] = self.artifact_build_property_shrink
+        if self.artifact_build_type is not None:
+            result['ArtifactBuildType'] = self.artifact_build_type
         if self.artifact_id is not None:
             result['ArtifactId'] = self.artifact_id
         if self.artifact_property_shrink is not None:
@@ -970,6 +1093,8 @@ class CreateArtifactShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('ArtifactBuildProperty') is not None:
             self.artifact_build_property_shrink = m.get('ArtifactBuildProperty')
+        if m.get('ArtifactBuildType') is not None:
+            self.artifact_build_type = m.get('ArtifactBuildType')
         if m.get('ArtifactId') is not None:
             self.artifact_id = m.get('ArtifactId')
         if m.get('ArtifactProperty') is not None:
@@ -998,6 +1123,7 @@ class CreateArtifactResponseBody(TeaModel):
     def __init__(
         self,
         artifact_build_property: str = None,
+        artifact_build_type: str = None,
         artifact_id: str = None,
         artifact_property: str = None,
         artifact_type: str = None,
@@ -1014,6 +1140,7 @@ class CreateArtifactResponseBody(TeaModel):
     ):
         # The build properties of the artifact, utilized for hosting and building the deployment package.
         self.artifact_build_property = artifact_build_property
+        self.artifact_build_type = artifact_build_type
         # The ID of the deployment package.
         self.artifact_id = artifact_id
         # The properties of the deployment object.
@@ -1052,6 +1179,8 @@ class CreateArtifactResponseBody(TeaModel):
         result = dict()
         if self.artifact_build_property is not None:
             result['ArtifactBuildProperty'] = self.artifact_build_property
+        if self.artifact_build_type is not None:
+            result['ArtifactBuildType'] = self.artifact_build_type
         if self.artifact_id is not None:
             result['ArtifactId'] = self.artifact_id
         if self.artifact_property is not None:
@@ -1084,6 +1213,8 @@ class CreateArtifactResponseBody(TeaModel):
         m = m or dict()
         if m.get('ArtifactBuildProperty') is not None:
             self.artifact_build_property = m.get('ArtifactBuildProperty')
+        if m.get('ArtifactBuildType') is not None:
+            self.artifact_build_type = m.get('ArtifactBuildType')
         if m.get('ArtifactId') is not None:
             self.artifact_id = m.get('ArtifactId')
         if m.get('ArtifactProperty') is not None:
@@ -3409,6 +3540,7 @@ class GetArtifactResponseBody(TeaModel):
     def __init__(
         self,
         artifact_build_property: str = None,
+        artifact_build_type: str = None,
         artifact_id: str = None,
         artifact_property: str = None,
         artifact_type: str = None,
@@ -3428,6 +3560,7 @@ class GetArtifactResponseBody(TeaModel):
     ):
         # The build properties of the artifact, utilized for hosting and building the deployment package.
         self.artifact_build_property = artifact_build_property
+        self.artifact_build_type = artifact_build_type
         # The ID of the deployment package.
         self.artifact_id = artifact_id
         # The properties of the deployment package.
@@ -3475,6 +3608,8 @@ class GetArtifactResponseBody(TeaModel):
         result = dict()
         if self.artifact_build_property is not None:
             result['ArtifactBuildProperty'] = self.artifact_build_property
+        if self.artifact_build_type is not None:
+            result['ArtifactBuildType'] = self.artifact_build_type
         if self.artifact_id is not None:
             result['ArtifactId'] = self.artifact_id
         if self.artifact_property is not None:
@@ -3515,6 +3650,8 @@ class GetArtifactResponseBody(TeaModel):
         m = m or dict()
         if m.get('ArtifactBuildProperty') is not None:
             self.artifact_build_property = m.get('ArtifactBuildProperty')
+        if m.get('ArtifactBuildType') is not None:
+            self.artifact_build_type = m.get('ArtifactBuildType')
         if m.get('ArtifactId') is not None:
             self.artifact_id = m.get('ArtifactId')
         if m.get('ArtifactProperty') is not None:
@@ -7881,6 +8018,7 @@ class ListArtifactVersionsResponseBodyArtifacts(TeaModel):
     def __init__(
         self,
         artifact_build_property: str = None,
+        artifact_build_type: str = None,
         artifact_id: str = None,
         artifact_property: str = None,
         artifact_type: str = None,
@@ -7898,6 +8036,7 @@ class ListArtifactVersionsResponseBodyArtifacts(TeaModel):
     ):
         # The build properties of the artifact, utilized for hosting and building the deployment package.
         self.artifact_build_property = artifact_build_property
+        self.artifact_build_type = artifact_build_type
         # The ID of the deployment package.
         self.artifact_id = artifact_id
         # The properties of the deployment package.
@@ -7949,6 +8088,8 @@ class ListArtifactVersionsResponseBodyArtifacts(TeaModel):
         result = dict()
         if self.artifact_build_property is not None:
             result['ArtifactBuildProperty'] = self.artifact_build_property
+        if self.artifact_build_type is not None:
+            result['ArtifactBuildType'] = self.artifact_build_type
         if self.artifact_id is not None:
             result['ArtifactId'] = self.artifact_id
         if self.artifact_property is not None:
@@ -7983,6 +8124,8 @@ class ListArtifactVersionsResponseBodyArtifacts(TeaModel):
         m = m or dict()
         if m.get('ArtifactBuildProperty') is not None:
             self.artifact_build_property = m.get('ArtifactBuildProperty')
+        if m.get('ArtifactBuildType') is not None:
+            self.artifact_build_type = m.get('ArtifactBuildType')
         if m.get('ArtifactId') is not None:
             self.artifact_id = m.get('ArtifactId')
         if m.get('ArtifactProperty') is not None:
@@ -11949,14 +12092,98 @@ class StopServiceInstanceResponse(TeaModel):
         return self
 
 
+class UpdateArtifactRequestArtifactBuildPropertyBuildArgs(TeaModel):
+    def __init__(
+        self,
+        argument_name: str = None,
+        argument_value: str = None,
+    ):
+        self.argument_name = argument_name
+        self.argument_value = argument_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.argument_name is not None:
+            result['ArgumentName'] = self.argument_name
+        if self.argument_value is not None:
+            result['ArgumentValue'] = self.argument_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArgumentName') is not None:
+            self.argument_name = m.get('ArgumentName')
+        if m.get('ArgumentValue') is not None:
+            self.argument_value = m.get('ArgumentValue')
+        return self
+
+
+class UpdateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
+    def __init__(
+        self,
+        branch: str = None,
+        owner: str = None,
+        platform: str = None,
+        repo_name: str = None,
+    ):
+        self.branch = branch
+        self.owner = owner
+        self.platform = platform
+        self.repo_name = repo_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.branch is not None:
+            result['Branch'] = self.branch
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.repo_name is not None:
+            result['RepoName'] = self.repo_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Branch') is not None:
+            self.branch = m.get('Branch')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('RepoName') is not None:
+            self.repo_name = m.get('RepoName')
+        return self
+
+
 class UpdateArtifactRequestArtifactBuildProperty(TeaModel):
     def __init__(
         self,
+        build_args: List[UpdateArtifactRequestArtifactBuildPropertyBuildArgs] = None,
+        code_repo: UpdateArtifactRequestArtifactBuildPropertyCodeRepo = None,
         command_content: str = None,
         command_type: str = None,
+        dockerfile_path: str = None,
         region_id: str = None,
+        source_container_image: str = None,
         source_image_id: str = None,
     ):
+        self.build_args = build_args
+        self.code_repo = code_repo
         # The command content.
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
@@ -11969,10 +12196,12 @@ class UpdateArtifactRequestArtifactBuildProperty(TeaModel):
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
         self.command_type = command_type
+        self.dockerfile_path = dockerfile_path
         # The region ID where the source mirror image is located.
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
         self.region_id = region_id
+        self.source_container_image = source_container_image
         # The source image id. Supported Types:
         # 
         # - Image ID: Pass the Image ID of the Ecs image directly.
@@ -11983,7 +12212,12 @@ class UpdateArtifactRequestArtifactBuildProperty(TeaModel):
         self.source_image_id = source_image_id
 
     def validate(self):
-        pass
+        if self.build_args:
+            for k in self.build_args:
+                if k:
+                    k.validate()
+        if self.code_repo:
+            self.code_repo.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11991,24 +12225,46 @@ class UpdateArtifactRequestArtifactBuildProperty(TeaModel):
             return _map
 
         result = dict()
+        result['BuildArgs'] = []
+        if self.build_args is not None:
+            for k in self.build_args:
+                result['BuildArgs'].append(k.to_map() if k else None)
+        if self.code_repo is not None:
+            result['CodeRepo'] = self.code_repo.to_map()
         if self.command_content is not None:
             result['CommandContent'] = self.command_content
         if self.command_type is not None:
             result['CommandType'] = self.command_type
+        if self.dockerfile_path is not None:
+            result['DockerfilePath'] = self.dockerfile_path
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.source_container_image is not None:
+            result['SourceContainerImage'] = self.source_container_image
         if self.source_image_id is not None:
             result['SourceImageId'] = self.source_image_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.build_args = []
+        if m.get('BuildArgs') is not None:
+            for k in m.get('BuildArgs'):
+                temp_model = UpdateArtifactRequestArtifactBuildPropertyBuildArgs()
+                self.build_args.append(temp_model.from_map(k))
+        if m.get('CodeRepo') is not None:
+            temp_model = UpdateArtifactRequestArtifactBuildPropertyCodeRepo()
+            self.code_repo = temp_model.from_map(m['CodeRepo'])
         if m.get('CommandContent') is not None:
             self.command_content = m.get('CommandContent')
         if m.get('CommandType') is not None:
             self.command_type = m.get('CommandType')
+        if m.get('DockerfilePath') is not None:
+            self.dockerfile_path = m.get('DockerfilePath')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SourceContainerImage') is not None:
+            self.source_container_image = m.get('SourceContainerImage')
         if m.get('SourceImageId') is not None:
             self.source_image_id = m.get('SourceImageId')
         return self
@@ -12270,6 +12526,7 @@ class UpdateArtifactResponseBody(TeaModel):
     def __init__(
         self,
         artifact_build_property: str = None,
+        artifact_build_type: str = None,
         artifact_id: str = None,
         artifact_property: str = None,
         artifact_type: str = None,
@@ -12278,11 +12535,13 @@ class UpdateArtifactResponseBody(TeaModel):
         gmt_modified: str = None,
         request_id: str = None,
         status: str = None,
+        status_detail: str = None,
         support_region_ids: str = None,
         version_name: str = None,
     ):
         # The build properties of the artifact, utilized for hosting and building the deployment package.
         self.artifact_build_property = artifact_build_property
+        self.artifact_build_type = artifact_build_type
         # The ID of the deployment package.
         self.artifact_id = artifact_id
         # The properties of the deployment package.
@@ -12306,6 +12565,7 @@ class UpdateArtifactResponseBody(TeaModel):
         # *   Available: The deployment package is available.
         # *   Deleted: The deployment package is deleted.
         self.status = status
+        self.status_detail = status_detail
         # The ID of the region that supports the deployment package.
         self.support_region_ids = support_region_ids
         # The name of the deployment package.
@@ -12322,6 +12582,8 @@ class UpdateArtifactResponseBody(TeaModel):
         result = dict()
         if self.artifact_build_property is not None:
             result['ArtifactBuildProperty'] = self.artifact_build_property
+        if self.artifact_build_type is not None:
+            result['ArtifactBuildType'] = self.artifact_build_type
         if self.artifact_id is not None:
             result['ArtifactId'] = self.artifact_id
         if self.artifact_property is not None:
@@ -12338,6 +12600,8 @@ class UpdateArtifactResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.status_detail is not None:
+            result['StatusDetail'] = self.status_detail
         if self.support_region_ids is not None:
             result['SupportRegionIds'] = self.support_region_ids
         if self.version_name is not None:
@@ -12348,6 +12612,8 @@ class UpdateArtifactResponseBody(TeaModel):
         m = m or dict()
         if m.get('ArtifactBuildProperty') is not None:
             self.artifact_build_property = m.get('ArtifactBuildProperty')
+        if m.get('ArtifactBuildType') is not None:
+            self.artifact_build_type = m.get('ArtifactBuildType')
         if m.get('ArtifactId') is not None:
             self.artifact_id = m.get('ArtifactId')
         if m.get('ArtifactProperty') is not None:
@@ -12364,6 +12630,8 @@ class UpdateArtifactResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('StatusDetail') is not None:
+            self.status_detail = m.get('StatusDetail')
         if m.get('SupportRegionIds') is not None:
             self.support_region_ids = m.get('SupportRegionIds')
         if m.get('VersionName') is not None:
