@@ -4856,11 +4856,9 @@ class GetServiceResponseBody(TeaModel):
         build_info: str = None,
         categories: str = None,
         commodity: GetServiceResponseBodyCommodity = None,
-        commodity_code: str = None,
         compliance_metadata: GetServiceResponseBodyComplianceMetadata = None,
         create_time: str = None,
         cross_region_connection_status: str = None,
-        default_license_days: int = None,
         deploy_metadata: str = None,
         deploy_type: str = None,
         duration: int = None,
@@ -4870,7 +4868,6 @@ class GetServiceResponseBody(TeaModel):
         log_metadata: str = None,
         operation_metadata: str = None,
         pay_from_type: str = None,
-        pay_type: str = None,
         permission: str = None,
         policy_names: str = None,
         progress: int = None,
@@ -4881,7 +4878,6 @@ class GetServiceResponseBody(TeaModel):
         resource_group_id: str = None,
         service_audit_document_url: str = None,
         service_discoverable: str = None,
-        service_doc_url: str = None,
         service_document_infos: List[GetServiceResponseBodyServiceDocumentInfos] = None,
         service_id: str = None,
         service_infos: List[GetServiceResponseBodyServiceInfos] = None,
@@ -4924,15 +4920,11 @@ class GetServiceResponseBody(TeaModel):
         self.categories = categories
         # The commodity details.
         self.commodity = commodity
-        # The commodity code of the service in Alibaba Cloud Marketplace.
-        self.commodity_code = commodity_code
         self.compliance_metadata = compliance_metadata
         # The time when the service was created.
         self.create_time = create_time
         # The binding configurations of the commodity module.
         self.cross_region_connection_status = cross_region_connection_status
-        # The validity period of the default license. Unit: day. Valid values: 1 to 1000.
-        self.default_license_days = default_license_days
         # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
         self.deploy_metadata = deploy_metadata
         # The deployment type of the service. Valid values:
@@ -4967,13 +4959,6 @@ class GetServiceResponseBody(TeaModel):
         # *   Marketplace: Fees are generated for Alibaba Cloud Marketplace.
         # *   Custom: The custom fees.
         self.pay_from_type = pay_from_type
-        # The billing method of the service. Valid values:
-        # 
-        # *   Permanent: Once you purchase the service, you can use it permanently.
-        # *   Subscription: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a subscription basis.
-        # *   PayAsYouGo: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a pay-as-you-go basis.
-        # *   CustomFixTime: You are charged for the service based on a custom duration fixed by the service provider.
-        self.pay_type = pay_type
         # The permissions on the service. Valid values:
         # 
         # *   Deployable: Permissions to deploy the service.
@@ -5003,8 +4988,6 @@ class GetServiceResponseBody(TeaModel):
         # *   INVISIBLE
         # *   DISCOVERABLE
         self.service_discoverable = service_discoverable
-        # The URL of the service documentation.
-        self.service_doc_url = service_doc_url
         self.service_document_infos = service_document_infos
         # The service ID.
         self.service_id = service_id
@@ -5125,16 +5108,12 @@ class GetServiceResponseBody(TeaModel):
             result['Categories'] = self.categories
         if self.commodity is not None:
             result['Commodity'] = self.commodity.to_map()
-        if self.commodity_code is not None:
-            result['CommodityCode'] = self.commodity_code
         if self.compliance_metadata is not None:
             result['ComplianceMetadata'] = self.compliance_metadata.to_map()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.cross_region_connection_status is not None:
             result['CrossRegionConnectionStatus'] = self.cross_region_connection_status
-        if self.default_license_days is not None:
-            result['DefaultLicenseDays'] = self.default_license_days
         if self.deploy_metadata is not None:
             result['DeployMetadata'] = self.deploy_metadata
         if self.deploy_type is not None:
@@ -5153,8 +5132,6 @@ class GetServiceResponseBody(TeaModel):
             result['OperationMetadata'] = self.operation_metadata
         if self.pay_from_type is not None:
             result['PayFromType'] = self.pay_from_type
-        if self.pay_type is not None:
-            result['PayType'] = self.pay_type
         if self.permission is not None:
             result['Permission'] = self.permission
         if self.policy_names is not None:
@@ -5175,8 +5152,6 @@ class GetServiceResponseBody(TeaModel):
             result['ServiceAuditDocumentUrl'] = self.service_audit_document_url
         if self.service_discoverable is not None:
             result['ServiceDiscoverable'] = self.service_discoverable
-        if self.service_doc_url is not None:
-            result['ServiceDocUrl'] = self.service_doc_url
         result['ServiceDocumentInfos'] = []
         if self.service_document_infos is not None:
             for k in self.service_document_infos:
@@ -5250,8 +5225,6 @@ class GetServiceResponseBody(TeaModel):
         if m.get('Commodity') is not None:
             temp_model = GetServiceResponseBodyCommodity()
             self.commodity = temp_model.from_map(m['Commodity'])
-        if m.get('CommodityCode') is not None:
-            self.commodity_code = m.get('CommodityCode')
         if m.get('ComplianceMetadata') is not None:
             temp_model = GetServiceResponseBodyComplianceMetadata()
             self.compliance_metadata = temp_model.from_map(m['ComplianceMetadata'])
@@ -5259,8 +5232,6 @@ class GetServiceResponseBody(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('CrossRegionConnectionStatus') is not None:
             self.cross_region_connection_status = m.get('CrossRegionConnectionStatus')
-        if m.get('DefaultLicenseDays') is not None:
-            self.default_license_days = m.get('DefaultLicenseDays')
         if m.get('DeployMetadata') is not None:
             self.deploy_metadata = m.get('DeployMetadata')
         if m.get('DeployType') is not None:
@@ -5279,8 +5250,6 @@ class GetServiceResponseBody(TeaModel):
             self.operation_metadata = m.get('OperationMetadata')
         if m.get('PayFromType') is not None:
             self.pay_from_type = m.get('PayFromType')
-        if m.get('PayType') is not None:
-            self.pay_type = m.get('PayType')
         if m.get('Permission') is not None:
             self.permission = m.get('Permission')
         if m.get('PolicyNames') is not None:
@@ -5301,8 +5270,6 @@ class GetServiceResponseBody(TeaModel):
             self.service_audit_document_url = m.get('ServiceAuditDocumentUrl')
         if m.get('ServiceDiscoverable') is not None:
             self.service_discoverable = m.get('ServiceDiscoverable')
-        if m.get('ServiceDocUrl') is not None:
-            self.service_doc_url = m.get('ServiceDocUrl')
         self.service_document_infos = []
         if m.get('ServiceDocumentInfos') is not None:
             for k in m.get('ServiceDocumentInfos'):
@@ -6044,6 +6011,39 @@ class GetServiceInstanceResponseBodyServiceServiceInfos(TeaModel):
         return self
 
 
+class GetServiceInstanceResponseBodyServiceUpgradableServiceInfos(TeaModel):
+    def __init__(
+        self,
+        version: str = None,
+        version_name: str = None,
+    ):
+        self.version = version
+        self.version_name = version_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
+        return self
+
+
 class GetServiceInstanceResponseBodyService(TeaModel):
     def __init__(
         self,
@@ -6058,6 +6058,7 @@ class GetServiceInstanceResponseBodyService(TeaModel):
         status: str = None,
         supplier_name: str = None,
         supplier_url: str = None,
+        upgradable_service_infos: List[GetServiceInstanceResponseBodyServiceUpgradableServiceInfos] = None,
         upgradable_service_versions: List[str] = None,
         version: str = None,
         version_name: str = None,
@@ -6108,6 +6109,7 @@ class GetServiceInstanceResponseBodyService(TeaModel):
         self.supplier_name = supplier_name
         # The URL of the service provider.
         self.supplier_url = supplier_url
+        self.upgradable_service_infos = upgradable_service_infos
         # The service versions that can be updated.
         self.upgradable_service_versions = upgradable_service_versions
         # The service version.
@@ -6118,6 +6120,10 @@ class GetServiceInstanceResponseBodyService(TeaModel):
     def validate(self):
         if self.service_infos:
             for k in self.service_infos:
+                if k:
+                    k.validate()
+        if self.upgradable_service_infos:
+            for k in self.upgradable_service_infos:
                 if k:
                     k.validate()
 
@@ -6151,6 +6157,10 @@ class GetServiceInstanceResponseBodyService(TeaModel):
             result['SupplierName'] = self.supplier_name
         if self.supplier_url is not None:
             result['SupplierUrl'] = self.supplier_url
+        result['UpgradableServiceInfos'] = []
+        if self.upgradable_service_infos is not None:
+            for k in self.upgradable_service_infos:
+                result['UpgradableServiceInfos'].append(k.to_map() if k else None)
         if self.upgradable_service_versions is not None:
             result['UpgradableServiceVersions'] = self.upgradable_service_versions
         if self.version is not None:
@@ -6186,6 +6196,11 @@ class GetServiceInstanceResponseBodyService(TeaModel):
             self.supplier_name = m.get('SupplierName')
         if m.get('SupplierUrl') is not None:
             self.supplier_url = m.get('SupplierUrl')
+        self.upgradable_service_infos = []
+        if m.get('UpgradableServiceInfos') is not None:
+            for k in m.get('UpgradableServiceInfos'):
+                temp_model = GetServiceInstanceResponseBodyServiceUpgradableServiceInfos()
+                self.upgradable_service_infos.append(temp_model.from_map(k))
         if m.get('UpgradableServiceVersions') is not None:
             self.upgradable_service_versions = m.get('UpgradableServiceVersions')
         if m.get('Version') is not None:
