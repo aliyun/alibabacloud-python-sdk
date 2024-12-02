@@ -3089,7 +3089,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateOriginProtectionResponse:
         """
-        @summary 开启源站防护
+        @summary Enables origin protection.
         
         @param request: CreateOriginProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3124,7 +3124,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateOriginProtectionResponse:
         """
-        @summary 开启源站防护
+        @summary Enables origin protection.
         
         @param request: CreateOriginProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3158,7 +3158,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateOriginProtectionRequest,
     ) -> esa20240910_models.CreateOriginProtectionResponse:
         """
-        @summary 开启源站防护
+        @summary Enables origin protection.
         
         @param request: CreateOriginProtectionRequest
         @return: CreateOriginProtectionResponse
@@ -3171,7 +3171,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateOriginProtectionRequest,
     ) -> esa20240910_models.CreateOriginProtectionResponse:
         """
-        @summary 开启源站防护
+        @summary Enables origin protection.
         
         @param request: CreateOriginProtectionRequest
         @return: CreateOriginProtectionResponse
@@ -6429,7 +6429,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteOriginProtectionResponse:
         """
-        @summary 关闭源站防护功能
+        @summary Disables origin protection.
         
         @param request: DeleteOriginProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6464,7 +6464,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteOriginProtectionResponse:
         """
-        @summary 关闭源站防护功能
+        @summary Disables origin protection.
         
         @param request: DeleteOriginProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6498,7 +6498,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteOriginProtectionRequest,
     ) -> esa20240910_models.DeleteOriginProtectionResponse:
         """
-        @summary 关闭源站防护功能
+        @summary Disables origin protection.
         
         @param request: DeleteOriginProtectionRequest
         @return: DeleteOriginProtectionResponse
@@ -6511,7 +6511,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteOriginProtectionRequest,
     ) -> esa20240910_models.DeleteOriginProtectionResponse:
         """
-        @summary 关闭源站防护功能
+        @summary Disables origin protection.
         
         @param request: DeleteOriginProtectionRequest
         @return: DeleteOriginProtectionResponse
@@ -9675,6 +9675,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_client_certificate_with_options_async(request, runtime)
 
+    def get_client_certificate_hostnames_with_options(
+        self,
+        request: esa20240910_models.GetClientCertificateHostnamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetClientCertificateHostnamesResponse:
+        """
+        @summary 获取客户端证书绑定的域名列表
+        
+        @param request: GetClientCertificateHostnamesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClientCertificateHostnamesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientCertificateHostnames',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetClientCertificateHostnamesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_client_certificate_hostnames_with_options_async(
+        self,
+        request: esa20240910_models.GetClientCertificateHostnamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetClientCertificateHostnamesResponse:
+        """
+        @summary 获取客户端证书绑定的域名列表
+        
+        @param request: GetClientCertificateHostnamesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClientCertificateHostnamesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClientCertificateHostnames',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetClientCertificateHostnamesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_client_certificate_hostnames(
+        self,
+        request: esa20240910_models.GetClientCertificateHostnamesRequest,
+    ) -> esa20240910_models.GetClientCertificateHostnamesResponse:
+        """
+        @summary 获取客户端证书绑定的域名列表
+        
+        @param request: GetClientCertificateHostnamesRequest
+        @return: GetClientCertificateHostnamesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_client_certificate_hostnames_with_options(request, runtime)
+
+    async def get_client_certificate_hostnames_async(
+        self,
+        request: esa20240910_models.GetClientCertificateHostnamesRequest,
+    ) -> esa20240910_models.GetClientCertificateHostnamesResponse:
+        """
+        @summary 获取客户端证书绑定的域名列表
+        
+        @param request: GetClientCertificateHostnamesRequest
+        @return: GetClientCertificateHostnamesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_client_certificate_hostnames_with_options_async(request, runtime)
+
     def get_edge_container_app_with_options(
         self,
         request: esa20240910_models.GetEdgeContainerAppRequest,
@@ -10787,7 +10879,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetOriginProtectionResponse:
         """
-        @summary 查询站点源站防护相关配置，查看回源IP白名单信息
+        @summary Queries the origin protection configurations of a website, including the origin protection, IP convergence, and the status and details of the IP whitelist for origin protection. The details includes the IP whitelist used by the website, the latest IP whitelist, and the differences between them.
         
         @param request: GetOriginProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10820,7 +10912,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetOriginProtectionResponse:
         """
-        @summary 查询站点源站防护相关配置，查看回源IP白名单信息
+        @summary Queries the origin protection configurations of a website, including the origin protection, IP convergence, and the status and details of the IP whitelist for origin protection. The details includes the IP whitelist used by the website, the latest IP whitelist, and the differences between them.
         
         @param request: GetOriginProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10852,7 +10944,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetOriginProtectionRequest,
     ) -> esa20240910_models.GetOriginProtectionResponse:
         """
-        @summary 查询站点源站防护相关配置，查看回源IP白名单信息
+        @summary Queries the origin protection configurations of a website, including the origin protection, IP convergence, and the status and details of the IP whitelist for origin protection. The details includes the IP whitelist used by the website, the latest IP whitelist, and the differences between them.
         
         @param request: GetOriginProtectionRequest
         @return: GetOriginProtectionResponse
@@ -10865,7 +10957,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetOriginProtectionRequest,
     ) -> esa20240910_models.GetOriginProtectionResponse:
         """
-        @summary 查询站点源站防护相关配置，查看回源IP白名单信息
+        @summary Queries the origin protection configurations of a website, including the origin protection, IP convergence, and the status and details of the IP whitelist for origin protection. The details includes the IP whitelist used by the website, the latest IP whitelist, and the differences between them.
         
         @param request: GetOriginProtectionRequest
         @return: GetOriginProtectionResponse
@@ -18365,6 +18457,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_certificate_with_options_async(request, runtime)
 
+    def set_client_certificate_hostnames_with_options(
+        self,
+        tmp_req: esa20240910_models.SetClientCertificateHostnamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.SetClientCertificateHostnamesResponse:
+        """
+        @summary 为客户端证书绑定域名
+        
+        @param tmp_req: SetClientCertificateHostnamesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetClientCertificateHostnamesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.SetClientCertificateHostnamesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hostnames):
+            request.hostnames_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hostnames, 'Hostnames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        body = {}
+        if not UtilClient.is_unset(request.hostnames_shrink):
+            body['Hostnames'] = request.hostnames_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetClientCertificateHostnames',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.SetClientCertificateHostnamesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_client_certificate_hostnames_with_options_async(
+        self,
+        tmp_req: esa20240910_models.SetClientCertificateHostnamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.SetClientCertificateHostnamesResponse:
+        """
+        @summary 为客户端证书绑定域名
+        
+        @param tmp_req: SetClientCertificateHostnamesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetClientCertificateHostnamesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.SetClientCertificateHostnamesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hostnames):
+            request.hostnames_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hostnames, 'Hostnames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        body = {}
+        if not UtilClient.is_unset(request.hostnames_shrink):
+            body['Hostnames'] = request.hostnames_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetClientCertificateHostnames',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.SetClientCertificateHostnamesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_client_certificate_hostnames(
+        self,
+        request: esa20240910_models.SetClientCertificateHostnamesRequest,
+    ) -> esa20240910_models.SetClientCertificateHostnamesResponse:
+        """
+        @summary 为客户端证书绑定域名
+        
+        @param request: SetClientCertificateHostnamesRequest
+        @return: SetClientCertificateHostnamesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_client_certificate_hostnames_with_options(request, runtime)
+
+    async def set_client_certificate_hostnames_async(
+        self,
+        request: esa20240910_models.SetClientCertificateHostnamesRequest,
+    ) -> esa20240910_models.SetClientCertificateHostnamesResponse:
+        """
+        @summary 为客户端证书绑定域名
+        
+        @param request: SetClientCertificateHostnamesRequest
+        @return: SetClientCertificateHostnamesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_client_certificate_hostnames_with_options_async(request, runtime)
+
     def set_http_ddo_sattack_intelligent_protection_with_options(
         self,
         request: esa20240910_models.SetHttpDDoSAttackIntelligentProtectionRequest,
@@ -19219,7 +19427,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateOriginProtectionResponse:
         """
-        @summary 修改源站防护
+        @summary Enables or disables IP convergence.
         
         @param request: UpdateOriginProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19256,7 +19464,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateOriginProtectionResponse:
         """
-        @summary 修改源站防护
+        @summary Enables or disables IP convergence.
         
         @param request: UpdateOriginProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19292,7 +19500,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateOriginProtectionRequest,
     ) -> esa20240910_models.UpdateOriginProtectionResponse:
         """
-        @summary 修改源站防护
+        @summary Enables or disables IP convergence.
         
         @param request: UpdateOriginProtectionRequest
         @return: UpdateOriginProtectionResponse
@@ -19305,7 +19513,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateOriginProtectionRequest,
     ) -> esa20240910_models.UpdateOriginProtectionResponse:
         """
-        @summary 修改源站防护
+        @summary Enables or disables IP convergence.
         
         @param request: UpdateOriginProtectionRequest
         @return: UpdateOriginProtectionResponse
@@ -19319,7 +19527,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateOriginProtectionIpWhiteListResponse:
         """
-        @summary 确认更新站点回源IP白名单到最新版本
+        @summary Updates the IP whitelist for origin protection used by a website to the latest version.
         
         @param request: UpdateOriginProtectionIpWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19354,7 +19562,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateOriginProtectionIpWhiteListResponse:
         """
-        @summary 确认更新站点回源IP白名单到最新版本
+        @summary Updates the IP whitelist for origin protection used by a website to the latest version.
         
         @param request: UpdateOriginProtectionIpWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19388,7 +19596,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateOriginProtectionIpWhiteListRequest,
     ) -> esa20240910_models.UpdateOriginProtectionIpWhiteListResponse:
         """
-        @summary 确认更新站点回源IP白名单到最新版本
+        @summary Updates the IP whitelist for origin protection used by a website to the latest version.
         
         @param request: UpdateOriginProtectionIpWhiteListRequest
         @return: UpdateOriginProtectionIpWhiteListResponse
@@ -19401,7 +19609,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateOriginProtectionIpWhiteListRequest,
     ) -> esa20240910_models.UpdateOriginProtectionIpWhiteListResponse:
         """
-        @summary 确认更新站点回源IP白名单到最新版本
+        @summary Updates the IP whitelist for origin protection used by a website to the latest version.
         
         @param request: UpdateOriginProtectionIpWhiteListRequest
         @return: UpdateOriginProtectionIpWhiteListResponse

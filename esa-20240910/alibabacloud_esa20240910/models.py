@@ -6608,6 +6608,8 @@ class CreateOriginProtectionRequest(TeaModel):
         self,
         site_id: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -6636,6 +6638,7 @@ class CreateOriginProtectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16607,6 +16610,8 @@ class DeleteOriginProtectionRequest(TeaModel):
         self,
         site_id: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -16635,6 +16640,7 @@ class DeleteOriginProtectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21139,6 +21145,132 @@ class GetClientCertificateResponse(TeaModel):
         return self
 
 
+class GetClientCertificateHostnamesRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        self.id = id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetClientCertificateHostnamesResponseBody(TeaModel):
+    def __init__(
+        self,
+        hostnames: List[str] = None,
+        id: str = None,
+        request_id: str = None,
+        site_id: int = None,
+        site_name: str = None,
+    ):
+        self.hostnames = hostnames
+        self.id = id
+        self.request_id = request_id
+        self.site_id = site_id
+        self.site_name = site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hostnames is not None:
+            result['Hostnames'] = self.hostnames
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hostnames') is not None:
+            self.hostnames = m.get('Hostnames')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class GetClientCertificateHostnamesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetClientCertificateHostnamesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetClientCertificateHostnamesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetEdgeContainerAppRequest(TeaModel):
     def __init__(
         self,
@@ -23604,6 +23736,7 @@ class GetOriginProtectionRequest(TeaModel):
         self,
         site_id: int = None,
     ):
+        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         self.site_id = site_id
 
     def validate(self):
@@ -23632,7 +23765,9 @@ class GetOriginProtectionResponseBodyCurrentIPWhitelist(TeaModel):
         ipv_4: List[str] = None,
         ipv_6: List[str] = None,
     ):
+        # The IP whitelist for origin protection used by the website, specified as IPv4 addresses or CIDR blocks.
         self.ipv_4 = ipv_4
+        # The IP whitelist for origin protection used by the website, specified as IPv6 addresses or CIDR blocks.
         self.ipv_6 = ipv_6
 
     def validate(self):
@@ -23665,7 +23800,9 @@ class GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist(TeaModel):
         ipv_4: List[str] = None,
         ipv_6: List[str] = None,
     ):
+        # The IP whitelist for origin protection, specified as IPv4 addresses or CIDR blocks.
         self.ipv_4 = ipv_4
+        # The IP whitelist for origin protection, specified as IPv6 addresses or CIDR blocks.
         self.ipv_6 = ipv_6
 
     def validate(self):
@@ -23698,7 +23835,9 @@ class GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist(TeaModel
         ipv_4: List[str] = None,
         ipv_6: List[str] = None,
     ):
+        # The IP whitelist for origin protection, specified as IPv4 addresses or CIDR blocks.
         self.ipv_4 = ipv_4
+        # The IP whitelist for origin protection, specified as IPv6 addresses or CIDR blocks.
         self.ipv_6 = ipv_6
 
     def validate(self):
@@ -23731,7 +23870,9 @@ class GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist(TeaModel)
         ipv_4: List[str] = None,
         ipv_6: List[str] = None,
     ):
+        # The IP whitelist for origin protection, specified as IPv4 addresses or CIDR blocks.
         self.ipv_4 = ipv_4
+        # The IP whitelist for origin protection, specified as IPv6 addresses or CIDR blocks.
         self.ipv_6 = ipv_6
 
     def validate(self):
@@ -23765,8 +23906,11 @@ class GetOriginProtectionResponseBodyDiffIPWhitelist(TeaModel):
         no_change_ip_whitelist: GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist = None,
         removed_ipwhitelist: GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist = None,
     ):
+        # The new IP whitelist for origin protection.
         self.added_ipwhitelist = added_ipwhitelist
+        # The IP whitelist for origin protection that remains unchanged.
         self.no_change_ip_whitelist = no_change_ip_whitelist
+        # The IP whitelist for origin protection that has been deleted.
         self.removed_ipwhitelist = removed_ipwhitelist
 
     def validate(self):
@@ -23811,7 +23955,9 @@ class GetOriginProtectionResponseBodyLatestIPWhitelist(TeaModel):
         ipv_4: List[str] = None,
         ipv_6: List[str] = None,
     ):
+        # The latest IP whitelist for origin protection, specified as IPv4 addresses or CIDR blocks.
         self.ipv_4 = ipv_4
+        # The latest IP whitelist for origin protection, specified as IPv6 addresses or CIDR blocks.
         self.ipv_6 = ipv_6
 
     def validate(self):
@@ -23850,13 +23996,30 @@ class GetOriginProtectionResponseBody(TeaModel):
         request_id: str = None,
         site_id: int = None,
     ):
+        # The IP whitelist for origin protection used by the website.
         self.current_ipwhitelist = current_ipwhitelist
+        # The IP whitelist for origin protection that has been updated.
         self.diff_ipwhitelist = diff_ipwhitelist
+        # The latest IP whitelist for origin protection.
         self.latest_ipwhitelist = latest_ipwhitelist
+        # Indicates whether the IP whitelist for origin protection needs to be updated. If the currently used IP whitelist is different from the latest IP whitelist, it needs to be updated, and the value is true.
+        # 
+        # *   true: The update is required.
+        # *   false: No update is required.
         self.need_update = need_update
+        # Indicates whether IP convergence is enabled.
+        # 
+        # *   on
+        # *   off
         self.origin_converge = origin_converge
+        # Indicates whether origin protection is enabled.
+        # 
+        # *   on
+        # *   off
         self.origin_protection = origin_protection
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
 
     def validate(self):
@@ -42570,6 +42733,174 @@ class SetCertificateResponse(TeaModel):
         return self
 
 
+class SetClientCertificateHostnamesRequest(TeaModel):
+    def __init__(
+        self,
+        hostnames: List[str] = None,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.hostnames = hostnames
+        self.id = id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hostnames is not None:
+            result['Hostnames'] = self.hostnames
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hostnames') is not None:
+            self.hostnames = m.get('Hostnames')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class SetClientCertificateHostnamesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        hostnames_shrink: str = None,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.hostnames_shrink = hostnames_shrink
+        self.id = id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hostnames_shrink is not None:
+            result['Hostnames'] = self.hostnames_shrink
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hostnames') is not None:
+            self.hostnames_shrink = m.get('Hostnames')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class SetClientCertificateHostnamesResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+        site_id: int = None,
+        site_name: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+        self.site_id = site_id
+        self.site_name = site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class SetClientCertificateHostnamesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetClientCertificateHostnamesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetClientCertificateHostnamesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SetHttpDDoSAttackIntelligentProtectionRequest(TeaModel):
     def __init__(
         self,
@@ -43835,8 +44166,15 @@ class UpdateOriginProtectionRequest(TeaModel):
         origin_converge: str = None,
         site_id: int = None,
     ):
+        # The IP convergence status.
+        # 
+        # *   on
+        # *   off
+        # 
         # This parameter is required.
         self.origin_converge = origin_converge
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -43869,6 +44207,7 @@ class UpdateOriginProtectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -43937,6 +44276,8 @@ class UpdateOriginProtectionIpWhiteListRequest(TeaModel):
         self,
         site_id: int = None,
     ):
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -43965,6 +44306,7 @@ class UpdateOriginProtectionIpWhiteListResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

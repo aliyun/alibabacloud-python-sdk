@@ -1,3 +1,8 @@
+2024-12-02 Version: 2.7.0
+- Support API GetClientCertificateHostnames.
+- Support API SetClientCertificateHostnames.
+
+
 2024-11-29 Version: 2.6.0
 - Support API CreateClientCertificate.
 - Support API DeleteCertificate.
