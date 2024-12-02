@@ -5885,6 +5885,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.idle_timeout):
             query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.isp_affinity):
+            query['IspAffinity'] = request.isp_affinity
         if not UtilClient.is_unset(request.nat_gateway_id):
             query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.snat_entry_name):
@@ -5934,6 +5936,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.idle_timeout):
             query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.isp_affinity):
+            query['IspAffinity'] = request.isp_affinity
         if not UtilClient.is_unset(request.nat_gateway_id):
             query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.snat_entry_name):
@@ -15176,6 +15180,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribeInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.service_status):
+            request.service_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.service_status, 'ServiceStatus', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
@@ -15211,6 +15217,8 @@ class Client(OpenApiClient):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.service_status_shrink):
+            query['ServiceStatus'] = request.service_status_shrink
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tags_shrink):
@@ -15255,6 +15263,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribeInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.service_status):
+            request.service_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.service_status, 'ServiceStatus', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
@@ -15290,6 +15300,8 @@ class Client(OpenApiClient):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.service_status_shrink):
+            query['ServiceStatus'] = request.service_status_shrink
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tags_shrink):
@@ -23930,6 +23942,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_snapshot_attribute_with_options_async(request, runtime)
+
+    def modify_snat_entry_with_options(
+        self,
+        request: ens_20171110_models.ModifySnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifySnatEntryResponse:
+        """
+        @summary 修改snat规则
+        
+        @param request: ModifySnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySnatEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.isp_affinity):
+            query['IspAffinity'] = request.isp_affinity
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_entry_name):
+            query['SnatEntryName'] = request.snat_entry_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifySnatEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_snat_entry_with_options_async(
+        self,
+        request: ens_20171110_models.ModifySnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifySnatEntryResponse:
+        """
+        @summary 修改snat规则
+        
+        @param request: ModifySnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySnatEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.isp_affinity):
+            query['IspAffinity'] = request.isp_affinity
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_entry_name):
+            query['SnatEntryName'] = request.snat_entry_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifySnatEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_snat_entry(
+        self,
+        request: ens_20171110_models.ModifySnatEntryRequest,
+    ) -> ens_20171110_models.ModifySnatEntryResponse:
+        """
+        @summary 修改snat规则
+        
+        @param request: ModifySnatEntryRequest
+        @return: ModifySnatEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_snat_entry_with_options(request, runtime)
+
+    async def modify_snat_entry_async(
+        self,
+        request: ens_20171110_models.ModifySnatEntryRequest,
+    ) -> ens_20171110_models.ModifySnatEntryResponse:
+        """
+        @summary 修改snat规则
+        
+        @param request: ModifySnatEntryRequest
+        @return: ModifySnatEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_snat_entry_with_options_async(request, runtime)
 
     def modify_vswitch_attribute_with_options(
         self,

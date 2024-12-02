@@ -9362,6 +9362,7 @@ class CreateSnatEntryRequest(TeaModel):
     def __init__(
         self,
         idle_timeout: int = None,
+        isp_affinity: bool = None,
         nat_gateway_id: str = None,
         snat_entry_name: str = None,
         snat_ip: str = None,
@@ -9372,6 +9373,7 @@ class CreateSnatEntryRequest(TeaModel):
     ):
         # The timeout period for idle connections. Valid values: **1** to **86400**. Unit: seconds.
         self.idle_timeout = idle_timeout
+        self.isp_affinity = isp_affinity
         # The ID of the Network Address Translation (NAT) gateway.
         # 
         # This parameter is required.
@@ -9408,6 +9410,8 @@ class CreateSnatEntryRequest(TeaModel):
         result = dict()
         if self.idle_timeout is not None:
             result['IdleTimeout'] = self.idle_timeout
+        if self.isp_affinity is not None:
+            result['IspAffinity'] = self.isp_affinity
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
         if self.snat_entry_name is not None:
@@ -9428,6 +9432,8 @@ class CreateSnatEntryRequest(TeaModel):
         m = m or dict()
         if m.get('IdleTimeout') is not None:
             self.idle_timeout = m.get('IdleTimeout')
+        if m.get('IspAffinity') is not None:
+            self.isp_affinity = m.get('IspAffinity')
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
         if m.get('SnatEntryName') is not None:
@@ -29381,6 +29387,7 @@ class DescribeInstancesRequest(TeaModel):
         page_size: str = None,
         search_key: str = None,
         security_group_id: str = None,
+        service_status: List[str] = None,
         status: str = None,
         tags: List[DescribeInstancesRequestTags] = None,
         v_switch_id: str = None,
@@ -29428,6 +29435,7 @@ class DescribeInstancesRequest(TeaModel):
         self.search_key = search_key
         # The ID of the security group.
         self.security_group_id = security_group_id
+        self.service_status = service_status
         # The status of the instance. Valid values:
         # 
         # *   Running
@@ -29483,6 +29491,8 @@ class DescribeInstancesRequest(TeaModel):
             result['SearchKey'] = self.search_key
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.service_status is not None:
+            result['ServiceStatus'] = self.service_status
         if self.status is not None:
             result['Status'] = self.status
         result['Tags'] = []
@@ -29527,6 +29537,8 @@ class DescribeInstancesRequest(TeaModel):
             self.search_key = m.get('SearchKey')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('ServiceStatus') is not None:
+            self.service_status = m.get('ServiceStatus')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         self.tags = []
@@ -29558,6 +29570,7 @@ class DescribeInstancesShrinkRequest(TeaModel):
         page_size: str = None,
         search_key: str = None,
         security_group_id: str = None,
+        service_status_shrink: str = None,
         status: str = None,
         tags_shrink: str = None,
         v_switch_id: str = None,
@@ -29605,6 +29618,7 @@ class DescribeInstancesShrinkRequest(TeaModel):
         self.search_key = search_key
         # The ID of the security group.
         self.security_group_id = security_group_id
+        self.service_status_shrink = service_status_shrink
         # The status of the instance. Valid values:
         # 
         # *   Running
@@ -29657,6 +29671,8 @@ class DescribeInstancesShrinkRequest(TeaModel):
             result['SearchKey'] = self.search_key
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.service_status_shrink is not None:
+            result['ServiceStatus'] = self.service_status_shrink
         if self.status is not None:
             result['Status'] = self.status
         if self.tags_shrink is not None:
@@ -29699,6 +29715,8 @@ class DescribeInstancesShrinkRequest(TeaModel):
             self.search_key = m.get('SearchKey')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('ServiceStatus') is not None:
+            self.service_status_shrink = m.get('ServiceStatus')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Tags') is not None:
@@ -30582,6 +30600,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         public_ip_address: DescribeInstancesResponseBodyInstancesInstancePublicIpAddress = None,
         public_ip_addresses: DescribeInstancesResponseBodyInstancesInstancePublicIpAddresses = None,
         security_group_ids: DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds = None,
+        service_status: str = None,
         spec_name: str = None,
         spot_strategy: str = None,
         status: str = None,
@@ -30653,6 +30672,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.public_ip_addresses = public_ip_addresses
         # The IDs of the security groups.
         self.security_group_ids = security_group_ids
+        self.service_status = service_status
         # The instance type.
         self.spec_name = spec_name
         # The bidding policy of the preemptible instance.
@@ -30748,6 +30768,8 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
             result['PublicIpAddresses'] = self.public_ip_addresses.to_map()
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids.to_map()
+        if self.service_status is not None:
+            result['ServiceStatus'] = self.service_status
         if self.spec_name is not None:
             result['SpecName'] = self.spec_name
         if self.spot_strategy is not None:
@@ -30820,6 +30842,8 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         if m.get('SecurityGroupIds') is not None:
             temp_model = DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds()
             self.security_group_ids = temp_model.from_map(m['SecurityGroupIds'])
+        if m.get('ServiceStatus') is not None:
+            self.service_status = m.get('ServiceStatus')
         if m.get('SpecName') is not None:
             self.spec_name = m.get('SpecName')
         if m.get('SpotStrategy') is not None:
@@ -44238,6 +44262,7 @@ class DescribeSnatAttributeResponseBody(TeaModel):
         creation_time: str = None,
         dest_cidr: str = None,
         idle_timeout: int = None,
+        isp_affinity: bool = None,
         nat_gateway_id: str = None,
         request_id: str = None,
         snat_entry_id: str = None,
@@ -44256,6 +44281,7 @@ class DescribeSnatAttributeResponseBody(TeaModel):
         self.dest_cidr = dest_cidr
         # The timeout period. Unit: seconds.
         self.idle_timeout = idle_timeout
+        self.isp_affinity = isp_affinity
         # The ID of the Network Address Translation (NAT) gateway.
         self.nat_gateway_id = nat_gateway_id
         # The ID of the request.
@@ -44309,6 +44335,8 @@ class DescribeSnatAttributeResponseBody(TeaModel):
             result['DestCIDR'] = self.dest_cidr
         if self.idle_timeout is not None:
             result['IdleTimeout'] = self.idle_timeout
+        if self.isp_affinity is not None:
+            result['IspAffinity'] = self.isp_affinity
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
         if self.request_id is not None:
@@ -44343,6 +44371,8 @@ class DescribeSnatAttributeResponseBody(TeaModel):
             self.dest_cidr = m.get('DestCIDR')
         if m.get('IdleTimeout') is not None:
             self.idle_timeout = m.get('IdleTimeout')
+        if m.get('IspAffinity') is not None:
+            self.isp_affinity = m.get('IspAffinity')
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
         if m.get('RequestId') is not None:
@@ -44492,6 +44522,7 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntries(TeaModel):
     def __init__(
         self,
         idle_timeout: int = None,
+        isp_affinity: bool = None,
         nat_gateway_id: str = None,
         snat_entry_id: str = None,
         snat_entry_name: str = None,
@@ -44503,6 +44534,7 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntries(TeaModel):
     ):
         # The timeout period for idle connections. Valid values: **1** to **86400**. Unit: seconds.
         self.idle_timeout = idle_timeout
+        self.isp_affinity = isp_affinity
         # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
         # The ID of the SNAT entry.
@@ -44540,6 +44572,8 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntries(TeaModel):
         result = dict()
         if self.idle_timeout is not None:
             result['IdleTimeout'] = self.idle_timeout
+        if self.isp_affinity is not None:
+            result['IspAffinity'] = self.isp_affinity
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
         if self.snat_entry_id is not None:
@@ -44562,6 +44596,8 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntries(TeaModel):
         m = m or dict()
         if m.get('IdleTimeout') is not None:
             self.idle_timeout = m.get('IdleTimeout')
+        if m.get('IspAffinity') is not None:
+            self.isp_affinity = m.get('IspAffinity')
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
         if m.get('SnatEntryId') is not None:
@@ -51769,6 +51805,114 @@ class ModifySnapshotAttributeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySnapshotAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifySnatEntryRequest(TeaModel):
+    def __init__(
+        self,
+        isp_affinity: bool = None,
+        snat_entry_id: str = None,
+        snat_entry_name: str = None,
+    ):
+        self.isp_affinity = isp_affinity
+        # This parameter is required.
+        self.snat_entry_id = snat_entry_id
+        self.snat_entry_name = snat_entry_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.isp_affinity is not None:
+            result['IspAffinity'] = self.isp_affinity
+        if self.snat_entry_id is not None:
+            result['SnatEntryId'] = self.snat_entry_id
+        if self.snat_entry_name is not None:
+            result['SnatEntryName'] = self.snat_entry_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IspAffinity') is not None:
+            self.isp_affinity = m.get('IspAffinity')
+        if m.get('SnatEntryId') is not None:
+            self.snat_entry_id = m.get('SnatEntryId')
+        if m.get('SnatEntryName') is not None:
+            self.snat_entry_name = m.get('SnatEntryName')
+        return self
+
+
+class ModifySnatEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifySnatEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifySnatEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifySnatEntryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

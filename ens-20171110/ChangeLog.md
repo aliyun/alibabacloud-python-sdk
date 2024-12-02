@@ -1,3 +1,12 @@
+2024-12-02 Version: 7.6.0
+- Support API ModifySnatEntry.
+- Update API CreateSnatEntry: add param IspAffinity.
+- Update API DescribeInstances: add param ServiceStatus.
+- Update API DescribeInstances: update response param.
+- Update API DescribeSnatAttribute: update response param.
+- Update API DescribeSnatTableEntries: update response param.
+
+
 2024-11-27 Version: 7.5.0
 - Support API AttachInstanceSDG.
 - Support API DescribeInstanceSDGStatus.
