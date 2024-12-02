@@ -26208,6 +26208,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -26243,6 +26245,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -38662,6 +38666,8 @@ class Client(OpenApiClient):
             query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.db_endpoint_aliases):
             query['DbEndpointAliases'] = request.db_endpoint_aliases
+        if not UtilClient.is_unset(request.db_endpoint_min_slave_count):
+            query['DbEndpointMinSlaveCount'] = request.db_endpoint_min_slave_count
         if not UtilClient.is_unset(request.db_endpoint_operator):
             query['DbEndpointOperator'] = request.db_endpoint_operator
         if not UtilClient.is_unset(request.db_endpoint_read_write_mode):
@@ -38741,6 +38747,8 @@ class Client(OpenApiClient):
             query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.db_endpoint_aliases):
             query['DbEndpointAliases'] = request.db_endpoint_aliases
+        if not UtilClient.is_unset(request.db_endpoint_min_slave_count):
+            query['DbEndpointMinSlaveCount'] = request.db_endpoint_min_slave_count
         if not UtilClient.is_unset(request.db_endpoint_operator):
             query['DbEndpointOperator'] = request.db_endpoint_operator
         if not UtilClient.is_unset(request.db_endpoint_read_write_mode):
@@ -41578,7 +41586,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyRCInstanceDescriptionResponse:
         """
-        @summary 修改RC实例描述
+        @summary Modifies the name of an RDS Custom instance.
         
         @param request: ModifyRCInstanceDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41617,7 +41625,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyRCInstanceDescriptionResponse:
         """
-        @summary 修改RC实例描述
+        @summary Modifies the name of an RDS Custom instance.
         
         @param request: ModifyRCInstanceDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41655,7 +41663,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyRCInstanceDescriptionRequest,
     ) -> rds_20140815_models.ModifyRCInstanceDescriptionResponse:
         """
-        @summary 修改RC实例描述
+        @summary Modifies the name of an RDS Custom instance.
         
         @param request: ModifyRCInstanceDescriptionRequest
         @return: ModifyRCInstanceDescriptionResponse
@@ -41668,7 +41676,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyRCInstanceDescriptionRequest,
     ) -> rds_20140815_models.ModifyRCInstanceDescriptionResponse:
         """
-        @summary 修改RC实例描述
+        @summary Modifies the name of an RDS Custom instance.
         
         @param request: ModifyRCInstanceDescriptionRequest
         @return: ModifyRCInstanceDescriptionResponse
@@ -46694,6 +46702,8 @@ class Client(OpenApiClient):
             query['SecurityEnhancementStrategy'] = request.security_enhancement_strategy
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.spot_strategy):
+            query['SpotStrategy'] = request.spot_strategy
         if not UtilClient.is_unset(request.system_disk_shrink):
             query['SystemDisk'] = request.system_disk_shrink
         if not UtilClient.is_unset(request.tag):
@@ -46795,6 +46805,8 @@ class Client(OpenApiClient):
             query['SecurityEnhancementStrategy'] = request.security_enhancement_strategy
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.spot_strategy):
+            query['SpotStrategy'] = request.spot_strategy
         if not UtilClient.is_unset(request.system_disk_shrink):
             query['SystemDisk'] = request.system_disk_shrink
         if not UtilClient.is_unset(request.tag):

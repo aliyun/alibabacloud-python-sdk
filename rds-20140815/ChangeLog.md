@@ -1,3 +1,14 @@
+2024-12-02 Version: 8.0.1
+- Update API CreateRCDisk: update param InstanceChargeType.
+- Update API DescribeDBProxyEndpoint: update response param.
+- Update API DescribeRCClusters: add param VpcId.
+- Update API DescribeRCClusters: update response param.
+- Update API DescribeRCInstanceAttribute: update response param.
+- Update API DescribeRCInstances: update response param.
+- Update API ModifyDBProxyEndpoint: add param DbEndpointMinSlaveCount.
+- Update API RunRCInstances: add param SpotStrategy.
+
+
 2024-11-25 Version: 8.0.0
 - Support API AttachRCDisk.
 - Support API AttachRCInstances.

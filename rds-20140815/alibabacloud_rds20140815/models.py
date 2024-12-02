@@ -749,6 +749,7 @@ class AttachRCDiskRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The reserved parameter. This parameter is not supported.
         self.delete_with_instance = delete_with_instance
         # This parameter is required.
         self.disk_id = disk_id
@@ -4825,11 +4826,8 @@ class CreateDBInstanceRequestServerlessConfig(TeaModel):
         # *   **true**\
         # *   **false** (default)
         # 
-        # > 
-        # 
-        # *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts approximately 30 to 120 seconds occurs during forced scaling. Process with caution.
-        # 
-        # *   The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
+        # > *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts approximately 30 to 120 seconds occurs during forced scaling. Process with caution.
+        # > *   The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
         self.switch_force = switch_force
 
     def validate(self):
@@ -5200,13 +5198,9 @@ class CreateDBInstanceRequest(TeaModel):
         # *   **VPC**: a virtual private cloud (VPC)
         # *   **Classic**: the classic network
         # 
-        # > 
-        # 
-        # *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
-        # 
-        # *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
-        # 
-        # *   If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
+        # > *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+        # > *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+        # > *   If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
         self.instance_network_type = instance_network_type
         # Specifies whether to enable the I/O acceleration feature of general ESSDs. Valid values:
         # 
@@ -5968,13 +5962,9 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # *   **VPC**: a virtual private cloud (VPC)
         # *   **Classic**: the classic network
         # 
-        # > 
-        # 
-        # *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
-        # 
-        # *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
-        # 
-        # *   If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
+        # > *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+        # > *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+        # > *   If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
         self.instance_network_type = instance_network_type
         # Specifies whether to enable the I/O acceleration feature of general ESSDs. Valid values:
         # 
@@ -11539,7 +11529,7 @@ class CreateRCSnapshotRequest(TeaModel):
         # 
         # By default, this parameter is left empty, which specifies that the snapshot is not automatically released.
         self.retention_days = retention_days
-        # The zone ID.
+        # This parameter has been deprecated.
         self.zone_id = zone_id
 
     def validate(self):
@@ -35656,6 +35646,7 @@ class DescribeDBProxyEndpointResponseBody(TeaModel):
         dbproxy_connect_string_net_type: str = None,
         dbproxy_connect_string_port: str = None,
         dbproxy_endpoint_id: str = None,
+        dbproxy_endpoint_min_slave_count: str = None,
         dbproxy_engine_type: str = None,
         dbproxy_features: str = None,
         dbproxy_nodes: DescribeDBProxyEndpointResponseBodyDBProxyNodes = None,
@@ -35680,6 +35671,8 @@ class DescribeDBProxyEndpointResponseBody(TeaModel):
         self.dbproxy_connect_string_port = dbproxy_connect_string_port
         # The ID of the proxy endpoint.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
+        # The minimum number of reserved instances.
+        self.dbproxy_endpoint_min_slave_count = dbproxy_endpoint_min_slave_count
         # An internal parameter. You can ignore this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
         # The configuration of the proxy terminal. The value of this parameter is a JSON string that consists of the following parameters:
@@ -35745,6 +35738,8 @@ class DescribeDBProxyEndpointResponseBody(TeaModel):
             result['DBProxyConnectStringPort'] = self.dbproxy_connect_string_port
         if self.dbproxy_endpoint_id is not None:
             result['DBProxyEndpointId'] = self.dbproxy_endpoint_id
+        if self.dbproxy_endpoint_min_slave_count is not None:
+            result['DBProxyEndpointMinSlaveCount'] = self.dbproxy_endpoint_min_slave_count
         if self.dbproxy_engine_type is not None:
             result['DBProxyEngineType'] = self.dbproxy_engine_type
         if self.dbproxy_features is not None:
@@ -35781,6 +35776,8 @@ class DescribeDBProxyEndpointResponseBody(TeaModel):
             self.dbproxy_connect_string_port = m.get('DBProxyConnectStringPort')
         if m.get('DBProxyEndpointId') is not None:
             self.dbproxy_endpoint_id = m.get('DBProxyEndpointId')
+        if m.get('DBProxyEndpointMinSlaveCount') is not None:
+            self.dbproxy_endpoint_min_slave_count = m.get('DBProxyEndpointMinSlaveCount')
         if m.get('DBProxyEngineType') is not None:
             self.dbproxy_engine_type = m.get('DBProxyEngineType')
         if m.get('DBProxyFeatures') is not None:
@@ -49613,9 +49610,11 @@ class DescribeRCClustersRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
+        vpc_id: str = None,
     ):
         # The region ID.
         self.region_id = region_id
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -49628,22 +49627,29 @@ class DescribeRCClustersRequest(TeaModel):
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
 class DescribeRCClustersResponseBodyClusters(TeaModel):
     def __init__(
         self,
+        cluster_id: str = None,
         cluster_name: str = None,
         create_time: str = None,
         status: str = None,
+        vpc_id: str = None,
     ):
+        self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
         # The time when the cluster was created.
@@ -49656,6 +49662,7 @@ class DescribeRCClustersResponseBodyClusters(TeaModel):
         # *   **Stopping**\
         # *   **Stopped**\
         self.status = status
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -49666,22 +49673,30 @@ class DescribeRCClustersResponseBodyClusters(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.cluster_name is not None:
             result['ClusterName'] = self.cluster_name
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.status is not None:
             result['Status'] = self.status
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('ClusterName') is not None:
             self.cluster_name = m.get('ClusterName')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -51511,6 +51526,7 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         resource_group_id: str = None,
         security_group_ids: DescribeRCInstanceAttributeResponseBodySecurityGroupIds = None,
         serial_number: str = None,
+        spot_strategy: str = None,
         status: str = None,
         stopped_mode: str = None,
         vlan_id: str = None,
@@ -51605,6 +51621,7 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         self.security_group_ids = security_group_ids
         # The serial number of the instance.
         self.serial_number = serial_number
+        self.spot_strategy = spot_strategy
         # The instance status. Valid values:
         # 
         # *   **Pending**\
@@ -51724,6 +51741,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             result['SecurityGroupIds'] = self.security_group_ids.to_map()
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
         if self.status is not None:
             result['Status'] = self.status
         if self.stopped_mode is not None:
@@ -51817,6 +51836,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             self.security_group_ids = temp_model.from_map(m['SecurityGroupIds'])
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StoppedMode') is not None:
@@ -52123,6 +52144,7 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
         instance_charge_type: str = None,
         instance_id: str = None,
         region_id: str = None,
+        spot_strategy: str = None,
         status: str = None,
         tag_resources: List[DescribeRCInstancesResponseBodyRCInstancesTagResources] = None,
         vpc_id: str = None,
@@ -52146,6 +52168,7 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
         self.instance_id = instance_id
         # The region ID.
         self.region_id = region_id
+        self.spot_strategy = spot_strategy
         # The instance status. Valid values:
         # 
         # *   **Pending**\
@@ -52193,6 +52216,8 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
         if self.status is not None:
             result['Status'] = self.status
         result['TagResources'] = []
@@ -52227,6 +52252,8 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         self.tag_resources = []
@@ -71099,6 +71126,7 @@ class ModifyDBProxyEndpointRequest(TeaModel):
         dbproxy_endpoint_id: str = None,
         dbproxy_engine_type: str = None,
         db_endpoint_aliases: str = None,
+        db_endpoint_min_slave_count: str = None,
         db_endpoint_operator: str = None,
         db_endpoint_read_write_mode: str = None,
         db_endpoint_type: str = None,
@@ -71113,20 +71141,25 @@ class ModifyDBProxyEndpointRequest(TeaModel):
         resource_owner_id: int = None,
         v_switch_id: str = None,
     ):
-        # The features that you want to enable for the proxy endpoint. If you specify more than one feature, separate the features with semicolons (;). Format: `Feature 1:Status;Feature 2:Status;...`. Do not add a semicolon (;) at the end of the value.
+        # The capabilities that you want to enable for the proxy endpoint. If you specify more than one capability, separate the capabilities with semicolons (;). Format: `Capability 1:Status;Capability 2:Status;...`. Do not add a semicolon (;) at the end of the value.
         # 
-        # Valid feature values:
+        # Valid capability values:
         # 
         # *   **ReadWriteSpliting**: read/write splitting
         # *   **ConnectionPersist**: connection pooling
         # *   **TransactionReadSqlRouteOptimizeStatus**: transaction splitting
+        # *   **AZProximityAccess**: nearest access
         # 
         # Valid status values:
         # 
         # *   **1**: enabled
         # *   **0**: disabled
         # 
-        # >  If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by **ReadWriteSpliting**.
+        # > 
+        # 
+        # *   If the instance runs PostgreSQL, you can enable only read/write splitting, which is specified by **ReadWriteSpliting**.
+        # 
+        # *   Nearest access is supported only by dedicated database proxies for RDS instances that run MySQL.
         self.config_dbproxy_features = config_dbproxy_features
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
@@ -71141,6 +71174,7 @@ class ModifyDBProxyEndpointRequest(TeaModel):
         self.dbproxy_engine_type = dbproxy_engine_type
         # The description of the proxy terminal.
         self.db_endpoint_aliases = db_endpoint_aliases
+        self.db_endpoint_min_slave_count = db_endpoint_min_slave_count
         # The type of operation that you want to perform. Valid values:
         # 
         # *   **Modify**: Modify a proxy terminal. This is the default value.
@@ -71157,27 +71191,25 @@ class ModifyDBProxyEndpointRequest(TeaModel):
         self.db_endpoint_read_write_mode = db_endpoint_read_write_mode
         # The type of the proxy terminal. This is a reserved parameter. You do not need to specify this parameter.
         self.db_endpoint_type = db_endpoint_type
-        # The specified time takes effect. Format: yyyy-MM-ddTHH:mm:ssZ (UTC time).
+        # The point in time that you want to specify. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
-        # > This parameter must be passed when EffectiveTime is SpecificTime.
+        # >  If **EffectiveTime** is set to **SpecificTime**, you must specify this parameter.
         self.effective_specific_time = effective_specific_time
-        # Effective time, value:
+        # The effective time. Valid values:
         # 
-        # - **Immediate**: effective immediately.
+        # *   **Immediate**: The effective time is immediate.
+        # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        # *   **SpecificTime**: The effective time is a specified point in time.
         # 
-        # - **MaintainTime**: effective during the operational and maintainable time period, see ModifyDBInstanceMaintainTime.
-        # 
-        # - **SpecificTime**: effective at a specified time.
-        # 
-        # Default value: MaintainTime.
+        # Default value: **MaintainTime**.
         self.effective_time = effective_time
         self.owner_id = owner_id
         # The policy that is used to allocate read weights. Valid values:
         # 
-        # *   **Standard**: The system automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
-        # *   **Custom**: You must manually allocate read weights to the instance and its read-only instances.
+        # *   **Standard** (default): The system automatically assigns read weights to the primary and read-only instances based on the specifications of these instances.
+        # *   **Custom**: You must manually allocate read weights to the primary and read-only instances.
         # 
-        # > You must specify this parameter only when the read/write splitting feature is enabled. For more information about the permission allocation policy, see [Modify the latency threshold and read weights of ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/96076.html) and [Enable and configure the database proxy feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/418272.html).
+        # >  You must specify this parameter when read/write splitting is enabled. For more information about the permission allocation policy, see [Modify the latency threshold and read weights of ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/96076.html) and [Enable and configure the database proxy feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/418272.html).
         self.read_only_instance_distribution_type = read_only_instance_distribution_type
         # The latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, the system no longer forwards read requests to the read-only instance. Unit: seconds If you do not specify this parameter, the original value of this parameter is retained. Valid values: **0** to **3600**. Default value: **30**.
         # 
@@ -71199,7 +71231,7 @@ class ModifyDBProxyEndpointRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies the switch ID corresponding to the availability zone of the proxy connection address. By default, it is the switch ID corresponding to the default terminal of the proxy instance. You can query the created switch by calling the DescribeVSwitches interface.
+        # The ID of the vSwitch in the zone in which the proxy endpoint is specified. The default value is the ID of the vSwitch that corresponds to the default terminal of the database proxy. You can call the DescribeVSwitches operation to query existing vSwitches.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -71221,6 +71253,8 @@ class ModifyDBProxyEndpointRequest(TeaModel):
             result['DBProxyEngineType'] = self.dbproxy_engine_type
         if self.db_endpoint_aliases is not None:
             result['DbEndpointAliases'] = self.db_endpoint_aliases
+        if self.db_endpoint_min_slave_count is not None:
+            result['DbEndpointMinSlaveCount'] = self.db_endpoint_min_slave_count
         if self.db_endpoint_operator is not None:
             result['DbEndpointOperator'] = self.db_endpoint_operator
         if self.db_endpoint_read_write_mode is not None:
@@ -71261,6 +71295,8 @@ class ModifyDBProxyEndpointRequest(TeaModel):
             self.dbproxy_engine_type = m.get('DBProxyEngineType')
         if m.get('DbEndpointAliases') is not None:
             self.db_endpoint_aliases = m.get('DbEndpointAliases')
+        if m.get('DbEndpointMinSlaveCount') is not None:
+            self.db_endpoint_min_slave_count = m.get('DbEndpointMinSlaveCount')
         if m.get('DbEndpointOperator') is not None:
             self.db_endpoint_operator = m.get('DbEndpointOperator')
         if m.get('DbEndpointReadWriteMode') is not None:
@@ -74912,8 +74948,13 @@ class ModifyRCInstanceDescriptionRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The instance name.
+        # 
+        # >  The name must be 2 to 255 characters in length and can contain letters, digits, `underscores (_)`, and `hyphens (-)`. It must start with a letter.
         self.instance_description = instance_description
+        # The instance ID.
         self.instance_id = instance_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -74949,6 +74990,7 @@ class ModifyRCInstanceDescriptionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -80894,6 +80936,7 @@ class RunRCInstancesRequest(TeaModel):
         resource_group_id: str = None,
         security_enhancement_strategy: str = None,
         security_group_id: str = None,
+        spot_strategy: str = None,
         system_disk: RunRCInstancesRequestSystemDisk = None,
         tag: List[RunRCInstancesRequestTag] = None,
         v_switch_id: str = None,
@@ -80970,6 +81013,7 @@ class RunRCInstancesRequest(TeaModel):
         # 
         # >  The network type of the instance is determined by the security group specified by the SecurityGroupId parameter. For example, if the network type of the specified security group is VPC, the instance is a VPC-type instance. In this case, you must specify the VSwitchId parameter.
         self.security_group_id = security_group_id
+        self.spot_strategy = spot_strategy
         # The specification of the system disk.
         self.system_disk = system_disk
         self.tag = tag
@@ -81054,6 +81098,8 @@ class RunRCInstancesRequest(TeaModel):
             result['SecurityEnhancementStrategy'] = self.security_enhancement_strategy
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
         if self.system_disk is not None:
             result['SystemDisk'] = self.system_disk.to_map()
         result['Tag'] = []
@@ -81121,6 +81167,8 @@ class RunRCInstancesRequest(TeaModel):
             self.security_enhancement_strategy = m.get('SecurityEnhancementStrategy')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
         if m.get('SystemDisk') is not None:
             temp_model = RunRCInstancesRequestSystemDisk()
             self.system_disk = temp_model.from_map(m['SystemDisk'])
@@ -81197,6 +81245,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         resource_group_id: str = None,
         security_enhancement_strategy: str = None,
         security_group_id: str = None,
+        spot_strategy: str = None,
         system_disk_shrink: str = None,
         tag: List[RunRCInstancesShrinkRequestTag] = None,
         v_switch_id: str = None,
@@ -81273,6 +81322,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         # 
         # >  The network type of the instance is determined by the security group specified by the SecurityGroupId parameter. For example, if the network type of the specified security group is VPC, the instance is a VPC-type instance. In this case, you must specify the VSwitchId parameter.
         self.security_group_id = security_group_id
+        self.spot_strategy = spot_strategy
         # The specification of the system disk.
         self.system_disk_shrink = system_disk_shrink
         self.tag = tag
@@ -81349,6 +81399,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
             result['SecurityEnhancementStrategy'] = self.security_enhancement_strategy
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
         if self.system_disk_shrink is not None:
             result['SystemDisk'] = self.system_disk_shrink
         result['Tag'] = []
@@ -81413,6 +81465,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
             self.security_enhancement_strategy = m.get('SecurityEnhancementStrategy')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
         if m.get('SystemDisk') is not None:
             self.system_disk_shrink = m.get('SystemDisk')
         self.tag = []
