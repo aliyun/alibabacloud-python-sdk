@@ -1,3 +1,13 @@
+2024-12-03 Version: 2.0.1
+- Update API CreateDomain: update param body.
+- Update API GetDomain: update response param.
+- Update API ListHttpApiOperations: add param withPluginAttachmentByPluginId.
+- Update API ListHttpApis: add param withAuthPolicyList.
+- Update API ListHttpApis: add param withEnvironmentInfoById.
+- Update API ListHttpApis: add param withPluginAttachmentByPluginId.
+- Update API UpdateDomain: update param body.
+
+
 2024-11-26 Version: 2.0.0
 - Support API GetHttpApiRoute.
 - Delete API CreateGatewayRoute.

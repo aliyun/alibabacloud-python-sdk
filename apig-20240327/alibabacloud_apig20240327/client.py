@@ -189,6 +189,8 @@ class Client(OpenApiClient):
             body['protocol'] = request.protocol
         if not UtilClient.is_unset(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tls_cipher_suites_config):
+            body['tlsCipherSuitesConfig'] = request.tls_cipher_suites_config
         if not UtilClient.is_unset(request.tls_max):
             body['tlsMax'] = request.tls_max
         if not UtilClient.is_unset(request.tls_min):
@@ -245,6 +247,8 @@ class Client(OpenApiClient):
             body['protocol'] = request.protocol
         if not UtilClient.is_unset(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tls_cipher_suites_config):
+            body['tlsCipherSuitesConfig'] = request.tls_cipher_suites_config
         if not UtilClient.is_unset(request.tls_max):
             body['tlsMax'] = request.tls_max
         if not UtilClient.is_unset(request.tls_min):
@@ -2138,6 +2142,8 @@ class Client(OpenApiClient):
             query['withConsumerInEnvironmentId'] = request.with_consumer_in_environment_id
         if not UtilClient.is_unset(request.with_consumer_info_by_id):
             query['withConsumerInfoById'] = request.with_consumer_info_by_id
+        if not UtilClient.is_unset(request.with_plugin_attachment_by_plugin_id):
+            query['withPluginAttachmentByPluginId'] = request.with_plugin_attachment_by_plugin_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2193,6 +2199,8 @@ class Client(OpenApiClient):
             query['withConsumerInEnvironmentId'] = request.with_consumer_in_environment_id
         if not UtilClient.is_unset(request.with_consumer_info_by_id):
             query['withConsumerInfoById'] = request.with_consumer_info_by_id
+        if not UtilClient.is_unset(request.with_plugin_attachment_by_plugin_id):
+            query['withPluginAttachmentByPluginId'] = request.with_plugin_attachment_by_plugin_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2275,10 +2283,16 @@ class Client(OpenApiClient):
             query['types'] = request.types
         if not UtilClient.is_unset(request.with_auth_policy_in_environment_id):
             query['withAuthPolicyInEnvironmentId'] = request.with_auth_policy_in_environment_id
+        if not UtilClient.is_unset(request.with_auth_policy_list):
+            query['withAuthPolicyList'] = request.with_auth_policy_list
         if not UtilClient.is_unset(request.with_consumer_info_by_id):
             query['withConsumerInfoById'] = request.with_consumer_info_by_id
         if not UtilClient.is_unset(request.with_environment_info):
             query['withEnvironmentInfo'] = request.with_environment_info
+        if not UtilClient.is_unset(request.with_environment_info_by_id):
+            query['withEnvironmentInfoById'] = request.with_environment_info_by_id
+        if not UtilClient.is_unset(request.with_plugin_attachment_by_plugin_id):
+            query['withPluginAttachmentByPluginId'] = request.with_plugin_attachment_by_plugin_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2331,10 +2345,16 @@ class Client(OpenApiClient):
             query['types'] = request.types
         if not UtilClient.is_unset(request.with_auth_policy_in_environment_id):
             query['withAuthPolicyInEnvironmentId'] = request.with_auth_policy_in_environment_id
+        if not UtilClient.is_unset(request.with_auth_policy_list):
+            query['withAuthPolicyList'] = request.with_auth_policy_list
         if not UtilClient.is_unset(request.with_consumer_info_by_id):
             query['withConsumerInfoById'] = request.with_consumer_info_by_id
         if not UtilClient.is_unset(request.with_environment_info):
             query['withEnvironmentInfo'] = request.with_environment_info
+        if not UtilClient.is_unset(request.with_environment_info_by_id):
+            query['withEnvironmentInfoById'] = request.with_environment_info_by_id
+        if not UtilClient.is_unset(request.with_plugin_attachment_by_plugin_id):
+            query['withPluginAttachmentByPluginId'] = request.with_plugin_attachment_by_plugin_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2410,6 +2430,8 @@ class Client(OpenApiClient):
             body['http2Option'] = request.http_2option
         if not UtilClient.is_unset(request.protocol):
             body['protocol'] = request.protocol
+        if not UtilClient.is_unset(request.tls_cipher_suites_config):
+            body['tlsCipherSuitesConfig'] = request.tls_cipher_suites_config
         if not UtilClient.is_unset(request.tls_max):
             body['tlsMax'] = request.tls_max
         if not UtilClient.is_unset(request.tls_min):
@@ -2461,6 +2483,8 @@ class Client(OpenApiClient):
             body['http2Option'] = request.http_2option
         if not UtilClient.is_unset(request.protocol):
             body['protocol'] = request.protocol
+        if not UtilClient.is_unset(request.tls_cipher_suites_config):
+            body['tlsCipherSuitesConfig'] = request.tls_cipher_suites_config
         if not UtilClient.is_unset(request.tls_max):
             body['tlsMax'] = request.tls_max
         if not UtilClient.is_unset(request.tls_min):

@@ -3972,6 +3972,164 @@ class JwtIdentityConfig(TeaModel):
         return self
 
 
+class ParentResourceInfo(TeaModel):
+    def __init__(
+        self,
+        api_info: HttpApiApiInfo = None,
+        resource_type: str = None,
+    ):
+        self.api_info = api_info
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.api_info:
+            self.api_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_info is not None:
+            result['apiInfo'] = self.api_info.to_map()
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('apiInfo') is not None:
+            temp_model = HttpApiApiInfo()
+            self.api_info = temp_model.from_map(m['apiInfo'])
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        return self
+
+
+class PluginClassInfo(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        config_example: str = None,
+        description: str = None,
+        execute_priority: int = None,
+        execute_stage: str = None,
+        image_name: str = None,
+        inner_plugin: bool = None,
+        mode: str = None,
+        name: str = None,
+        plugin_class_id: str = None,
+        source: str = None,
+        supported_min_gateway_version: str = None,
+        type: str = None,
+        version: str = None,
+        version_description: str = None,
+        wasm_language: str = None,
+        wasm_url: str = None,
+    ):
+        self.alias = alias
+        self.config_example = config_example
+        self.description = description
+        self.execute_priority = execute_priority
+        self.execute_stage = execute_stage
+        self.image_name = image_name
+        self.inner_plugin = inner_plugin
+        self.mode = mode
+        self.name = name
+        self.plugin_class_id = plugin_class_id
+        self.source = source
+        self.supported_min_gateway_version = supported_min_gateway_version
+        self.type = type
+        self.version = version
+        self.version_description = version_description
+        self.wasm_language = wasm_language
+        self.wasm_url = wasm_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['alias'] = self.alias
+        if self.config_example is not None:
+            result['configExample'] = self.config_example
+        if self.description is not None:
+            result['description'] = self.description
+        if self.execute_priority is not None:
+            result['executePriority'] = self.execute_priority
+        if self.execute_stage is not None:
+            result['executeStage'] = self.execute_stage
+        if self.image_name is not None:
+            result['imageName'] = self.image_name
+        if self.inner_plugin is not None:
+            result['innerPlugin'] = self.inner_plugin
+        if self.mode is not None:
+            result['mode'] = self.mode
+        if self.name is not None:
+            result['name'] = self.name
+        if self.plugin_class_id is not None:
+            result['pluginClassId'] = self.plugin_class_id
+        if self.source is not None:
+            result['source'] = self.source
+        if self.supported_min_gateway_version is not None:
+            result['supportedMinGatewayVersion'] = self.supported_min_gateway_version
+        if self.type is not None:
+            result['type'] = self.type
+        if self.version is not None:
+            result['version'] = self.version
+        if self.version_description is not None:
+            result['versionDescription'] = self.version_description
+        if self.wasm_language is not None:
+            result['wasmLanguage'] = self.wasm_language
+        if self.wasm_url is not None:
+            result['wasmUrl'] = self.wasm_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alias') is not None:
+            self.alias = m.get('alias')
+        if m.get('configExample') is not None:
+            self.config_example = m.get('configExample')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('executePriority') is not None:
+            self.execute_priority = m.get('executePriority')
+        if m.get('executeStage') is not None:
+            self.execute_stage = m.get('executeStage')
+        if m.get('imageName') is not None:
+            self.image_name = m.get('imageName')
+        if m.get('innerPlugin') is not None:
+            self.inner_plugin = m.get('innerPlugin')
+        if m.get('mode') is not None:
+            self.mode = m.get('mode')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('pluginClassId') is not None:
+            self.plugin_class_id = m.get('pluginClassId')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('supportedMinGatewayVersion') is not None:
+            self.supported_min_gateway_version = m.get('supportedMinGatewayVersion')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('versionDescription') is not None:
+            self.version_description = m.get('versionDescription')
+        if m.get('wasmLanguage') is not None:
+            self.wasm_language = m.get('wasmLanguage')
+        if m.get('wasmUrl') is not None:
+            self.wasm_url = m.get('wasmUrl')
+        return self
+
+
 class PolicyClassInfo(TeaModel):
     def __init__(
         self,
@@ -4214,6 +4372,51 @@ class PolicyInfo(TeaModel):
             self.policy_id = m.get('policyId')
         if m.get('type') is not None:
             self.type = m.get('type')
+        return self
+
+
+class ResourceInfo(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_name: str = None,
+        resource_type: str = None,
+        resource_version: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+        self.resource_type = resource_type
+        self.resource_version = resource_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['resourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['resourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        if self.resource_version is not None:
+            result['resourceVersion'] = self.resource_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('resourceId') is not None:
+            self.resource_id = m.get('resourceId')
+        if m.get('resourceName') is not None:
+            self.resource_name = m.get('resourceName')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        if m.get('resourceVersion') is not None:
+            self.resource_version = m.get('resourceVersion')
         return self
 
 
@@ -4699,6 +4902,80 @@ class SslCertMetaInfo(TeaModel):
         return self
 
 
+class TlsCipherSuitesConfigCipherSuites(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        support_versions: List[str] = None,
+    ):
+        self.name = name
+        self.support_versions = support_versions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.support_versions is not None:
+            result['supportVersions'] = self.support_versions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('supportVersions') is not None:
+            self.support_versions = m.get('supportVersions')
+        return self
+
+
+class TlsCipherSuitesConfig(TeaModel):
+    def __init__(
+        self,
+        cipher_suites: List[TlsCipherSuitesConfigCipherSuites] = None,
+        config_type: str = None,
+    ):
+        self.cipher_suites = cipher_suites
+        self.config_type = config_type
+
+    def validate(self):
+        if self.cipher_suites:
+            for k in self.cipher_suites:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['cipherSuites'] = []
+        if self.cipher_suites is not None:
+            for k in self.cipher_suites:
+                result['cipherSuites'].append(k.to_map() if k else None)
+        if self.config_type is not None:
+            result['configType'] = self.config_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cipher_suites = []
+        if m.get('cipherSuites') is not None:
+            for k in m.get('cipherSuites'):
+                temp_model = TlsCipherSuitesConfigCipherSuites()
+                self.cipher_suites.append(temp_model.from_map(k))
+        if m.get('configType') is not None:
+            self.config_type = m.get('configType')
+        return self
+
+
 class AddGatewaySecurityGroupRuleRequest(TeaModel):
     def __init__(
         self,
@@ -4834,6 +5111,7 @@ class CreateDomainRequest(TeaModel):
         name: str = None,
         protocol: str = None,
         resource_group_id: str = None,
+        tls_cipher_suites_config: TlsCipherSuitesConfig = None,
         tls_max: str = None,
         tls_min: str = None,
     ):
@@ -4857,13 +5135,15 @@ class CreateDomainRequest(TeaModel):
         # This parameter is required.
         self.protocol = protocol
         self.resource_group_id = resource_group_id
+        self.tls_cipher_suites_config = tls_cipher_suites_config
         # Maximum TLS protocol version, supports up to TLS 1.3.
         self.tls_max = tls_max
         # Minimum TLS protocol version, supports down to TLS 1.0.
         self.tls_min = tls_min
 
     def validate(self):
-        pass
+        if self.tls_cipher_suites_config:
+            self.tls_cipher_suites_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4885,6 +5165,8 @@ class CreateDomainRequest(TeaModel):
             result['protocol'] = self.protocol
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
+        if self.tls_cipher_suites_config is not None:
+            result['tlsCipherSuitesConfig'] = self.tls_cipher_suites_config.to_map()
         if self.tls_max is not None:
             result['tlsMax'] = self.tls_max
         if self.tls_min is not None:
@@ -4907,6 +5189,9 @@ class CreateDomainRequest(TeaModel):
             self.protocol = m.get('protocol')
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
+        if m.get('tlsCipherSuitesConfig') is not None:
+            temp_model = TlsCipherSuitesConfig()
+            self.tls_cipher_suites_config = temp_model.from_map(m['tlsCipherSuitesConfig'])
         if m.get('tlsMax') is not None:
             self.tls_max = m.get('tlsMax')
         if m.get('tlsMin') is not None:
@@ -6202,6 +6487,7 @@ class GetDomainResponseBodyData(TeaModel):
         resource_group_id: str = None,
         sans: str = None,
         statistics_info: GetDomainResponseBodyDataStatisticsInfo = None,
+        tls_cipher_suites_config: TlsCipherSuitesConfig = None,
         tls_max: str = None,
         tls_min: str = None,
         updatetimestamp: int = None,
@@ -6243,6 +6529,7 @@ class GetDomainResponseBodyData(TeaModel):
         # All domain names bound to the certificate.
         self.sans = sans
         self.statistics_info = statistics_info
+        self.tls_cipher_suites_config = tls_cipher_suites_config
         # Maximum TLS protocol version, supports up to TLS 1.3.
         self.tls_max = tls_max
         # Minimum TLS protocol version, supports down to TLS 1.0.
@@ -6253,6 +6540,8 @@ class GetDomainResponseBodyData(TeaModel):
     def validate(self):
         if self.statistics_info:
             self.statistics_info.validate()
+        if self.tls_cipher_suites_config:
+            self.tls_cipher_suites_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6296,6 +6585,8 @@ class GetDomainResponseBodyData(TeaModel):
             result['sans'] = self.sans
         if self.statistics_info is not None:
             result['statisticsInfo'] = self.statistics_info.to_map()
+        if self.tls_cipher_suites_config is not None:
+            result['tlsCipherSuitesConfig'] = self.tls_cipher_suites_config.to_map()
         if self.tls_max is not None:
             result['tlsMax'] = self.tls_max
         if self.tls_min is not None:
@@ -6343,6 +6634,9 @@ class GetDomainResponseBodyData(TeaModel):
         if m.get('statisticsInfo') is not None:
             temp_model = GetDomainResponseBodyDataStatisticsInfo()
             self.statistics_info = temp_model.from_map(m['statisticsInfo'])
+        if m.get('tlsCipherSuitesConfig') is not None:
+            temp_model = TlsCipherSuitesConfig()
+            self.tls_cipher_suites_config = temp_model.from_map(m['tlsCipherSuitesConfig'])
         if m.get('tlsMax') is not None:
             self.tls_max = m.get('tlsMax')
         if m.get('tlsMin') is not None:
@@ -8976,6 +9270,7 @@ class ListHttpApiOperationsRequest(TeaModel):
         path_like: str = None,
         with_consumer_in_environment_id: str = None,
         with_consumer_info_by_id: str = None,
+        with_plugin_attachment_by_plugin_id: str = None,
     ):
         # Filter the operation list based on a specific consumer authorization rule ID, and the interface list in the response only contains authorized operations.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
@@ -8995,6 +9290,7 @@ class ListHttpApiOperationsRequest(TeaModel):
         self.with_consumer_in_environment_id = with_consumer_in_environment_id
         # Each operation information in the response carries a list of authorization rules for the specified consumer under the specified environment ID. The withConsumerInEnvironmentId field needs to be additionally specified.
         self.with_consumer_info_by_id = with_consumer_info_by_id
+        self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):
         pass
@@ -9023,6 +9319,8 @@ class ListHttpApiOperationsRequest(TeaModel):
             result['withConsumerInEnvironmentId'] = self.with_consumer_in_environment_id
         if self.with_consumer_info_by_id is not None:
             result['withConsumerInfoById'] = self.with_consumer_info_by_id
+        if self.with_plugin_attachment_by_plugin_id is not None:
+            result['withPluginAttachmentByPluginId'] = self.with_plugin_attachment_by_plugin_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9045,6 +9343,8 @@ class ListHttpApiOperationsRequest(TeaModel):
             self.with_consumer_in_environment_id = m.get('withConsumerInEnvironmentId')
         if m.get('withConsumerInfoById') is not None:
             self.with_consumer_info_by_id = m.get('withConsumerInfoById')
+        if m.get('withPluginAttachmentByPluginId') is not None:
+            self.with_plugin_attachment_by_plugin_id = m.get('withPluginAttachmentByPluginId')
         return self
 
 
@@ -9208,8 +9508,11 @@ class ListHttpApisRequest(TeaModel):
         resource_group_id: str = None,
         types: str = None,
         with_auth_policy_in_environment_id: str = None,
+        with_auth_policy_list: bool = None,
         with_consumer_info_by_id: str = None,
         with_environment_info: bool = None,
+        with_environment_info_by_id: str = None,
+        with_plugin_attachment_by_plugin_id: str = None,
     ):
         # Cloud-native API Gateway ID.
         self.gateway_id = gateway_id
@@ -9230,9 +9533,12 @@ class ListHttpApisRequest(TeaModel):
         self.types = types
         # Each API information in the response carries consumer authentication policy information under the specified environment ID.
         self.with_auth_policy_in_environment_id = with_auth_policy_in_environment_id
+        self.with_auth_policy_list = with_auth_policy_list
         # Each API information in the response carries a list of authorization rules for the specified consumer ID.
         self.with_consumer_info_by_id = with_consumer_info_by_id
         self.with_environment_info = with_environment_info
+        self.with_environment_info_by_id = with_environment_info_by_id
+        self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):
         pass
@@ -9259,10 +9565,16 @@ class ListHttpApisRequest(TeaModel):
             result['types'] = self.types
         if self.with_auth_policy_in_environment_id is not None:
             result['withAuthPolicyInEnvironmentId'] = self.with_auth_policy_in_environment_id
+        if self.with_auth_policy_list is not None:
+            result['withAuthPolicyList'] = self.with_auth_policy_list
         if self.with_consumer_info_by_id is not None:
             result['withConsumerInfoById'] = self.with_consumer_info_by_id
         if self.with_environment_info is not None:
             result['withEnvironmentInfo'] = self.with_environment_info
+        if self.with_environment_info_by_id is not None:
+            result['withEnvironmentInfoById'] = self.with_environment_info_by_id
+        if self.with_plugin_attachment_by_plugin_id is not None:
+            result['withPluginAttachmentByPluginId'] = self.with_plugin_attachment_by_plugin_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9283,10 +9595,16 @@ class ListHttpApisRequest(TeaModel):
             self.types = m.get('types')
         if m.get('withAuthPolicyInEnvironmentId') is not None:
             self.with_auth_policy_in_environment_id = m.get('withAuthPolicyInEnvironmentId')
+        if m.get('withAuthPolicyList') is not None:
+            self.with_auth_policy_list = m.get('withAuthPolicyList')
         if m.get('withConsumerInfoById') is not None:
             self.with_consumer_info_by_id = m.get('withConsumerInfoById')
         if m.get('withEnvironmentInfo') is not None:
             self.with_environment_info = m.get('withEnvironmentInfo')
+        if m.get('withEnvironmentInfoById') is not None:
+            self.with_environment_info_by_id = m.get('withEnvironmentInfoById')
+        if m.get('withPluginAttachmentByPluginId') is not None:
+            self.with_plugin_attachment_by_plugin_id = m.get('withPluginAttachmentByPluginId')
         return self
 
 
@@ -9447,6 +9765,7 @@ class UpdateDomainRequest(TeaModel):
         force_https: bool = None,
         http_2option: str = None,
         protocol: str = None,
+        tls_cipher_suites_config: TlsCipherSuitesConfig = None,
         tls_max: str = None,
         tls_min: str = None,
     ):
@@ -9465,13 +9784,15 @@ class UpdateDomainRequest(TeaModel):
         # 
         # This parameter is required.
         self.protocol = protocol
+        self.tls_cipher_suites_config = tls_cipher_suites_config
         # Maximum TLS protocol version, supports up to TLS 1.3.
         self.tls_max = tls_max
         # Minimum TLS protocol version, supports down to TLS 1.0.
         self.tls_min = tls_min
 
     def validate(self):
-        pass
+        if self.tls_cipher_suites_config:
+            self.tls_cipher_suites_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9489,6 +9810,8 @@ class UpdateDomainRequest(TeaModel):
             result['http2Option'] = self.http_2option
         if self.protocol is not None:
             result['protocol'] = self.protocol
+        if self.tls_cipher_suites_config is not None:
+            result['tlsCipherSuitesConfig'] = self.tls_cipher_suites_config.to_map()
         if self.tls_max is not None:
             result['tlsMax'] = self.tls_max
         if self.tls_min is not None:
@@ -9507,6 +9830,9 @@ class UpdateDomainRequest(TeaModel):
             self.http_2option = m.get('http2Option')
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')
+        if m.get('tlsCipherSuitesConfig') is not None:
+            temp_model = TlsCipherSuitesConfig()
+            self.tls_cipher_suites_config = temp_model.from_map(m['tlsCipherSuitesConfig'])
         if m.get('tlsMax') is not None:
             self.tls_max = m.get('tlsMax')
         if m.get('tlsMin') is not None:
