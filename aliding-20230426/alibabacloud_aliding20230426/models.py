@@ -13204,6 +13204,7 @@ class CreatePersonalTodoTaskRequest(TeaModel):
         executor_ids: List[str] = None,
         notify_configs: CreatePersonalTodoTaskRequestNotifyConfigs = None,
         participant_ids: List[str] = None,
+        reminder_time_stamp: int = None,
         subject: str = None,
         tenant_context: CreatePersonalTodoTaskRequestTenantContext = None,
     ):
@@ -13213,6 +13214,7 @@ class CreatePersonalTodoTaskRequest(TeaModel):
         self.executor_ids = executor_ids
         self.notify_configs = notify_configs
         self.participant_ids = participant_ids
+        self.reminder_time_stamp = reminder_time_stamp
         # This parameter is required.
         self.subject = subject
         self.tenant_context = tenant_context
@@ -13239,6 +13241,8 @@ class CreatePersonalTodoTaskRequest(TeaModel):
             result['NotifyConfigs'] = self.notify_configs.to_map()
         if self.participant_ids is not None:
             result['ParticipantIds'] = self.participant_ids
+        if self.reminder_time_stamp is not None:
+            result['ReminderTimeStamp'] = self.reminder_time_stamp
         if self.subject is not None:
             result['Subject'] = self.subject
         if self.tenant_context is not None:
@@ -13258,6 +13262,8 @@ class CreatePersonalTodoTaskRequest(TeaModel):
             self.notify_configs = temp_model.from_map(m['NotifyConfigs'])
         if m.get('ParticipantIds') is not None:
             self.participant_ids = m.get('ParticipantIds')
+        if m.get('ReminderTimeStamp') is not None:
+            self.reminder_time_stamp = m.get('ReminderTimeStamp')
         if m.get('Subject') is not None:
             self.subject = m.get('Subject')
         if m.get('TenantContext') is not None:
@@ -13274,6 +13280,7 @@ class CreatePersonalTodoTaskShrinkRequest(TeaModel):
         executor_ids_shrink: str = None,
         notify_configs_shrink: str = None,
         participant_ids_shrink: str = None,
+        reminder_time_stamp: int = None,
         subject: str = None,
         tenant_context_shrink: str = None,
     ):
@@ -13283,6 +13290,7 @@ class CreatePersonalTodoTaskShrinkRequest(TeaModel):
         self.executor_ids_shrink = executor_ids_shrink
         self.notify_configs_shrink = notify_configs_shrink
         self.participant_ids_shrink = participant_ids_shrink
+        self.reminder_time_stamp = reminder_time_stamp
         # This parameter is required.
         self.subject = subject
         self.tenant_context_shrink = tenant_context_shrink
@@ -13306,6 +13314,8 @@ class CreatePersonalTodoTaskShrinkRequest(TeaModel):
             result['NotifyConfigs'] = self.notify_configs_shrink
         if self.participant_ids_shrink is not None:
             result['ParticipantIds'] = self.participant_ids_shrink
+        if self.reminder_time_stamp is not None:
+            result['ReminderTimeStamp'] = self.reminder_time_stamp
         if self.subject is not None:
             result['Subject'] = self.subject
         if self.tenant_context_shrink is not None:
@@ -13324,6 +13334,8 @@ class CreatePersonalTodoTaskShrinkRequest(TeaModel):
             self.notify_configs_shrink = m.get('NotifyConfigs')
         if m.get('ParticipantIds') is not None:
             self.participant_ids_shrink = m.get('ParticipantIds')
+        if m.get('ReminderTimeStamp') is not None:
+            self.reminder_time_stamp = m.get('ReminderTimeStamp')
         if m.get('Subject') is not None:
             self.subject = m.get('Subject')
         if m.get('TenantContext') is not None:
