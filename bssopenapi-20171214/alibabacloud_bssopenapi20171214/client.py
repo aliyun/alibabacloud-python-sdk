@@ -109,7 +109,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a financial relationship.
         
-        @description For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html).
+        @description For more information about a financial relationship, see <props="intl">[Usage notes on the trusteeship]( https://www.alibabacloud.com/help/doc-detail/116383.html).
         If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
         
         @param request: AddAccountRelationRequest
@@ -159,7 +159,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a financial relationship.
         
-        @description For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html).
+        @description For more information about a financial relationship, see <props="intl">[Usage notes on the trusteeship]( https://www.alibabacloud.com/help/doc-detail/116383.html).
         If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
         
         @param request: AddAccountRelationRequest
@@ -208,7 +208,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a financial relationship.
         
-        @description For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html).
+        @description For more information about a financial relationship, see <props="intl">[Usage notes on the trusteeship]( https://www.alibabacloud.com/help/doc-detail/116383.html).
         If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
         
         @param request: AddAccountRelationRequest
@@ -224,7 +224,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a financial relationship.
         
-        @description For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html).
+        @description For more information about a financial relationship, see <props="intl">[Usage notes on the trusteeship]( https://www.alibabacloud.com/help/doc-detail/116383.html).
         If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
         
         @param request: AddAccountRelationRequest
@@ -1193,6 +1193,8 @@ class Client(OpenApiClient):
             query['Parameter'] = request.parameter
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_type):
@@ -1246,6 +1248,8 @@ class Client(OpenApiClient):
             query['Parameter'] = request.parameter
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_type):
@@ -4035,7 +4039,7 @@ class Client(OpenApiClient):
         
         @description    The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
         You can query split bills that were generated within the last 12 months by calling this operation.
-        You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
+        You can query split bills only after you enable the [Split Bill](https://usercenter2-intl.aliyun.com/finance/split-bill) service in the User Center console.
         
         @param request: DescribeSplitItemBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4102,7 +4106,7 @@ class Client(OpenApiClient):
         
         @description    The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
         You can query split bills that were generated within the last 12 months by calling this operation.
-        You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
+        You can query split bills only after you enable the [Split Bill](https://usercenter2-intl.aliyun.com/finance/split-bill) service in the User Center console.
         
         @param request: DescribeSplitItemBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4168,7 +4172,7 @@ class Client(OpenApiClient):
         
         @description    The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
         You can query split bills that were generated within the last 12 months by calling this operation.
-        You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
+        You can query split bills only after you enable the [Split Bill](https://usercenter2-intl.aliyun.com/finance/split-bill) service in the User Center console.
         
         @param request: DescribeSplitItemBillRequest
         @return: DescribeSplitItemBillResponse
@@ -4185,7 +4189,7 @@ class Client(OpenApiClient):
         
         @description    The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
         You can query split bills that were generated within the last 12 months by calling this operation.
-        You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
+        You can query split bills only after you enable the [Split Bill](https://usercenter2-intl.aliyun.com/finance/split-bill) service in the User Center console.
         
         @param request: DescribeSplitItemBillRequest
         @return: DescribeSplitItemBillResponse

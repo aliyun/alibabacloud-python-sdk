@@ -1,3 +1,7 @@
+2024-12-03 Version: 4.0.3
+- Update API CreateInstance: add param PricingCycle.
+
+
 2024-08-20 Version: 4.0.2
 - Update API QuerySavingsPlansDiscount: add param SpnCommodityCode.
 - Update API QuerySavingsPlansInstance: add param CommodityCode.
