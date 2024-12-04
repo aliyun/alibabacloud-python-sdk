@@ -1,3 +1,24 @@
+2024-12-04 Version: 3.1.0
+- Support API AttachDataQualityRulesToEvaluationTask.
+- Support API CreateDataQualityEvaluationTask.
+- Support API CreateDataQualityEvaluationTaskInstance.
+- Support API CreateDataQualityRule.
+- Support API CreateDataQualityRuleTemplate.
+- Support API DeleteDataQualityEvaluationTask.
+- Support API DeleteDataQualityRule.
+- Support API DeleteDataQualityRuleTemplate.
+- Support API DetachDataQualityRulesFromEvaluationTask.
+- Support API GetDataQualityEvaluationTask.
+- Support API GetDataQualityEvaluationTaskInstance.
+- Support API GetDataQualityRule.
+- Support API GetDataQualityRuleTemplate.
+- Support API ListDataQualityRuleTemplate.
+- Support API UpdateDataQualityEvaluationTask.
+- Support API UpdateDataQualityRule.
+- Support API UpdateDataQualityRuleTemplate.
+- Update API ListDataQualityRules: update response param.
+
+
 2024-11-21 Version: 3.0.0
 - Support API CreateAlertRule.
 - Support API DeleteAlertRule.

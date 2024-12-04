@@ -175,6 +175,10 @@ class Client(OpenApiClient):
         """
         @summary Associates a resource group with a workspace.
         
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  Your account must be assigned one of the following roles of the desired workspace:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+        
         @param request: AssociateProjectToResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AssociateProjectToResourceGroupResponse
@@ -212,6 +216,10 @@ class Client(OpenApiClient):
         """
         @summary Associates a resource group with a workspace.
         
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  Your account must be assigned one of the following roles of the desired workspace:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+        
         @param request: AssociateProjectToResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AssociateProjectToResourceGroupResponse
@@ -248,6 +256,10 @@ class Client(OpenApiClient):
         """
         @summary Associates a resource group with a workspace.
         
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  Your account must be assigned one of the following roles of the desired workspace:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+        
         @param request: AssociateProjectToResourceGroupRequest
         @return: AssociateProjectToResourceGroupResponse
         """
@@ -261,11 +273,127 @@ class Client(OpenApiClient):
         """
         @summary Associates a resource group with a workspace.
         
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  Your account must be assigned one of the following roles of the desired workspace:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+        
         @param request: AssociateProjectToResourceGroupRequest
         @return: AssociateProjectToResourceGroupResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.associate_project_to_resource_group_with_options_async(request, runtime)
+
+    def attach_data_quality_rules_to_evaluation_task_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse:
+        """
+        @summary 把数据质量规则关联到数据质量校验任务上
+        
+        @param tmp_req: AttachDataQualityRulesToEvaluationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachDataQualityRulesToEvaluationTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_quality_rule_ids):
+            request.data_quality_rule_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_quality_rule_ids, 'DataQualityRuleIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_quality_evaluation_task_id):
+            body['DataQualityEvaluationTaskId'] = request.data_quality_evaluation_task_id
+        if not UtilClient.is_unset(request.data_quality_rule_ids_shrink):
+            body['DataQualityRuleIds'] = request.data_quality_rule_ids_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AttachDataQualityRulesToEvaluationTask',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_data_quality_rules_to_evaluation_task_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse:
+        """
+        @summary 把数据质量规则关联到数据质量校验任务上
+        
+        @param tmp_req: AttachDataQualityRulesToEvaluationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachDataQualityRulesToEvaluationTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_quality_rule_ids):
+            request.data_quality_rule_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_quality_rule_ids, 'DataQualityRuleIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_quality_evaluation_task_id):
+            body['DataQualityEvaluationTaskId'] = request.data_quality_evaluation_task_id
+        if not UtilClient.is_unset(request.data_quality_rule_ids_shrink):
+            body['DataQualityRuleIds'] = request.data_quality_rule_ids_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AttachDataQualityRulesToEvaluationTask',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_data_quality_rules_to_evaluation_task(
+        self,
+        request: dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskRequest,
+    ) -> dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse:
+        """
+        @summary 把数据质量规则关联到数据质量校验任务上
+        
+        @param request: AttachDataQualityRulesToEvaluationTaskRequest
+        @return: AttachDataQualityRulesToEvaluationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.attach_data_quality_rules_to_evaluation_task_with_options(request, runtime)
+
+    async def attach_data_quality_rules_to_evaluation_task_async(
+        self,
+        request: dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskRequest,
+    ) -> dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse:
+        """
+        @summary 把数据质量规则关联到数据质量校验任务上
+        
+        @param request: AttachDataQualityRulesToEvaluationTaskRequest
+        @return: AttachDataQualityRulesToEvaluationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_data_quality_rules_to_evaluation_task_with_options_async(request, runtime)
 
     def clone_data_source_with_options(
         self,
@@ -273,7 +401,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CloneDataSourceResponse:
         """
-        @summary 验证用
+        @summary Clones an existing data source.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: CloneDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -310,7 +442,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CloneDataSourceResponse:
         """
-        @summary 验证用
+        @summary Clones an existing data source.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: CloneDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -346,7 +482,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CloneDataSourceRequest,
     ) -> dataworks_public_20240518_models.CloneDataSourceResponse:
         """
-        @summary 验证用
+        @summary Clones an existing data source.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: CloneDataSourceRequest
         @return: CloneDataSourceResponse
@@ -359,7 +499,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CloneDataSourceRequest,
     ) -> dataworks_public_20240518_models.CloneDataSourceResponse:
         """
-        @summary 验证用
+        @summary Clones an existing data source.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: CloneDataSourceRequest
         @return: CloneDataSourceResponse
@@ -373,7 +517,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateAlertRuleResponse:
         """
-        @summary 创建自定义监控报警规则
+        @summary Creates a custom monitoring alert rule.
         
         @param tmp_req: CreateAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -422,7 +566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateAlertRuleResponse:
         """
-        @summary 创建自定义监控报警规则
+        @summary Creates a custom monitoring alert rule.
         
         @param tmp_req: CreateAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -470,7 +614,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateAlertRuleRequest,
     ) -> dataworks_public_20240518_models.CreateAlertRuleResponse:
         """
-        @summary 创建自定义监控报警规则
+        @summary Creates a custom monitoring alert rule.
         
         @param request: CreateAlertRuleRequest
         @return: CreateAlertRuleResponse
@@ -483,7 +627,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateAlertRuleRequest,
     ) -> dataworks_public_20240518_models.CreateAlertRuleResponse:
         """
-        @summary 创建自定义监控报警规则
+        @summary Creates a custom monitoring alert rule.
         
         @param request: CreateAlertRuleRequest
         @return: CreateAlertRuleResponse
@@ -497,7 +641,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDIAlarmRuleResponse:
         """
-        @summary 创建数据集成报警规则
+        @summary Creates an alert rule for a synchronization task.
         
         @param tmp_req: CreateDIAlarmRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -536,7 +680,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDIAlarmRuleResponse:
         """
-        @summary 创建数据集成报警规则
+        @summary Creates an alert rule for a synchronization task.
         
         @param tmp_req: CreateDIAlarmRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -574,7 +718,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDIAlarmRuleRequest,
     ) -> dataworks_public_20240518_models.CreateDIAlarmRuleResponse:
         """
-        @summary 创建数据集成报警规则
+        @summary Creates an alert rule for a synchronization task.
         
         @param request: CreateDIAlarmRuleRequest
         @return: CreateDIAlarmRuleResponse
@@ -587,7 +731,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDIAlarmRuleRequest,
     ) -> dataworks_public_20240518_models.CreateDIAlarmRuleResponse:
         """
-        @summary 创建数据集成报警规则
+        @summary Creates an alert rule for a synchronization task.
         
         @param request: CreateDIAlarmRuleRequest
         @return: CreateDIAlarmRuleResponse
@@ -601,7 +745,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDIJobResponse:
         """
-        @summary 创建数据集成任务
+        @summary Creates a new-version synchronization task.
         
         @param tmp_req: CreateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -648,7 +792,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDIJobResponse:
         """
-        @summary 创建数据集成任务
+        @summary Creates a new-version synchronization task.
         
         @param tmp_req: CreateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -694,7 +838,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDIJobRequest,
     ) -> dataworks_public_20240518_models.CreateDIJobResponse:
         """
-        @summary 创建数据集成任务
+        @summary Creates a new-version synchronization task.
         
         @param request: CreateDIJobRequest
         @return: CreateDIJobResponse
@@ -707,7 +851,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDIJobRequest,
     ) -> dataworks_public_20240518_models.CreateDIJobResponse:
         """
-        @summary 创建数据集成任务
+        @summary Creates a new-version synchronization task.
         
         @param request: CreateDIJobRequest
         @return: CreateDIJobResponse
@@ -715,13 +859,569 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dijob_with_options_async(request, runtime)
 
+    def create_data_quality_evaluation_task_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse:
+        """
+        @summary 创建DataWorks数据质量监控
+        
+        @param tmp_req: CreateDataQualityEvaluationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityEvaluationTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityEvaluationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_quality_rules):
+            request.data_quality_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_quality_rules, 'DataQualityRules', 'json')
+        if not UtilClient.is_unset(tmp_req.hooks):
+            request.hooks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hooks, 'Hooks', 'json')
+        if not UtilClient.is_unset(tmp_req.notifications):
+            request.notifications_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notifications, 'Notifications', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger):
+            request.trigger_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger, 'Trigger', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_quality_rules_shrink):
+            body['DataQualityRules'] = request.data_quality_rules_shrink
+        if not UtilClient.is_unset(request.data_source_id):
+            body['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.hooks_shrink):
+            body['Hooks'] = request.hooks_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.notifications_shrink):
+            body['Notifications'] = request.notifications_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.runtime_conf):
+            body['RuntimeConf'] = request.runtime_conf
+        if not UtilClient.is_unset(request.target_shrink):
+            body['Target'] = request.target_shrink
+        if not UtilClient.is_unset(request.trigger_shrink):
+            body['Trigger'] = request.trigger_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityEvaluationTask',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_quality_evaluation_task_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse:
+        """
+        @summary 创建DataWorks数据质量监控
+        
+        @param tmp_req: CreateDataQualityEvaluationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityEvaluationTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityEvaluationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_quality_rules):
+            request.data_quality_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_quality_rules, 'DataQualityRules', 'json')
+        if not UtilClient.is_unset(tmp_req.hooks):
+            request.hooks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hooks, 'Hooks', 'json')
+        if not UtilClient.is_unset(tmp_req.notifications):
+            request.notifications_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notifications, 'Notifications', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger):
+            request.trigger_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger, 'Trigger', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_quality_rules_shrink):
+            body['DataQualityRules'] = request.data_quality_rules_shrink
+        if not UtilClient.is_unset(request.data_source_id):
+            body['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.hooks_shrink):
+            body['Hooks'] = request.hooks_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.notifications_shrink):
+            body['Notifications'] = request.notifications_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.runtime_conf):
+            body['RuntimeConf'] = request.runtime_conf
+        if not UtilClient.is_unset(request.target_shrink):
+            body['Target'] = request.target_shrink
+        if not UtilClient.is_unset(request.trigger_shrink):
+            body['Trigger'] = request.trigger_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityEvaluationTask',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_quality_evaluation_task(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse:
+        """
+        @summary 创建DataWorks数据质量监控
+        
+        @param request: CreateDataQualityEvaluationTaskRequest
+        @return: CreateDataQualityEvaluationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_quality_evaluation_task_with_options(request, runtime)
+
+    async def create_data_quality_evaluation_task_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse:
+        """
+        @summary 创建DataWorks数据质量监控
+        
+        @param request: CreateDataQualityEvaluationTaskRequest
+        @return: CreateDataQualityEvaluationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_quality_evaluation_task_with_options_async(request, runtime)
+
+    def create_data_quality_evaluation_task_instance_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse:
+        """
+        @summary 创建数据质量校验任务实例
+        
+        @param tmp_req: CreateDataQualityEvaluationTaskInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityEvaluationTaskInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.runtime_resource):
+            request.runtime_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_resource, 'RuntimeResource', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_quality_evaluation_task_id):
+            body['DataQualityEvaluationTaskId'] = request.data_quality_evaluation_task_id
+        if not UtilClient.is_unset(request.parameters):
+            body['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.runtime_resource_shrink):
+            body['RuntimeResource'] = request.runtime_resource_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityEvaluationTaskInstance',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_quality_evaluation_task_instance_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse:
+        """
+        @summary 创建数据质量校验任务实例
+        
+        @param tmp_req: CreateDataQualityEvaluationTaskInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityEvaluationTaskInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.runtime_resource):
+            request.runtime_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_resource, 'RuntimeResource', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_quality_evaluation_task_id):
+            body['DataQualityEvaluationTaskId'] = request.data_quality_evaluation_task_id
+        if not UtilClient.is_unset(request.parameters):
+            body['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.runtime_resource_shrink):
+            body['RuntimeResource'] = request.runtime_resource_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityEvaluationTaskInstance',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_quality_evaluation_task_instance(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse:
+        """
+        @summary 创建数据质量校验任务实例
+        
+        @param request: CreateDataQualityEvaluationTaskInstanceRequest
+        @return: CreateDataQualityEvaluationTaskInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_quality_evaluation_task_instance_with_options(request, runtime)
+
+    async def create_data_quality_evaluation_task_instance_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse:
+        """
+        @summary 创建数据质量校验任务实例
+        
+        @param request: CreateDataQualityEvaluationTaskInstanceRequest
+        @return: CreateDataQualityEvaluationTaskInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_quality_evaluation_task_instance_with_options_async(request, runtime)
+
+    def create_data_quality_rule_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityRuleResponse:
+        """
+        @summary Creates a data quality monitoring rule.
+        
+        @param tmp_req: CreateDataQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.checking_config):
+            request.checking_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.checking_config, 'CheckingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.error_handlers):
+            request.error_handlers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.error_handlers, 'ErrorHandlers', 'json')
+        if not UtilClient.is_unset(tmp_req.sampling_config):
+            request.sampling_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sampling_config, 'SamplingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.checking_config_shrink):
+            body['CheckingConfig'] = request.checking_config_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.enabled):
+            body['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.error_handlers_shrink):
+            body['ErrorHandlers'] = request.error_handlers_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sampling_config_shrink):
+            body['SamplingConfig'] = request.sampling_config_shrink
+        if not UtilClient.is_unset(request.severity):
+            body['Severity'] = request.severity
+        if not UtilClient.is_unset(request.target_shrink):
+            body['Target'] = request.target_shrink
+        if not UtilClient.is_unset(request.template_code):
+            body['TemplateCode'] = request.template_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_quality_rule_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityRuleResponse:
+        """
+        @summary Creates a data quality monitoring rule.
+        
+        @param tmp_req: CreateDataQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.checking_config):
+            request.checking_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.checking_config, 'CheckingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.error_handlers):
+            request.error_handlers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.error_handlers, 'ErrorHandlers', 'json')
+        if not UtilClient.is_unset(tmp_req.sampling_config):
+            request.sampling_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sampling_config, 'SamplingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.checking_config_shrink):
+            body['CheckingConfig'] = request.checking_config_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.enabled):
+            body['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.error_handlers_shrink):
+            body['ErrorHandlers'] = request.error_handlers_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sampling_config_shrink):
+            body['SamplingConfig'] = request.sampling_config_shrink
+        if not UtilClient.is_unset(request.severity):
+            body['Severity'] = request.severity
+        if not UtilClient.is_unset(request.target_shrink):
+            body['Target'] = request.target_shrink
+        if not UtilClient.is_unset(request.template_code):
+            body['TemplateCode'] = request.template_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_quality_rule(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityRuleRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityRuleResponse:
+        """
+        @summary Creates a data quality monitoring rule.
+        
+        @param request: CreateDataQualityRuleRequest
+        @return: CreateDataQualityRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_quality_rule_with_options(request, runtime)
+
+    async def create_data_quality_rule_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityRuleRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityRuleResponse:
+        """
+        @summary Creates a data quality monitoring rule.
+        
+        @param request: CreateDataQualityRuleRequest
+        @return: CreateDataQualityRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_quality_rule_with_options_async(request, runtime)
+
+    def create_data_quality_rule_template_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityRuleTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityRuleTemplateResponse:
+        """
+        @summary Creates a data quality monitoring rule template.
+        
+        @param tmp_req: CreateDataQualityRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityRuleTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityRuleTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.checking_config):
+            request.checking_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.checking_config, 'CheckingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sampling_config):
+            request.sampling_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sampling_config, 'SamplingConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.checking_config_shrink):
+            body['CheckingConfig'] = request.checking_config_shrink
+        if not UtilClient.is_unset(request.directory_path):
+            body['DirectoryPath'] = request.directory_path
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sampling_config_shrink):
+            body['SamplingConfig'] = request.sampling_config_shrink
+        if not UtilClient.is_unset(request.visible_scope):
+            body['VisibleScope'] = request.visible_scope
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityRuleTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityRuleTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_quality_rule_template_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityRuleTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityRuleTemplateResponse:
+        """
+        @summary Creates a data quality monitoring rule template.
+        
+        @param tmp_req: CreateDataQualityRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityRuleTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityRuleTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.checking_config):
+            request.checking_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.checking_config, 'CheckingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sampling_config):
+            request.sampling_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sampling_config, 'SamplingConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.checking_config_shrink):
+            body['CheckingConfig'] = request.checking_config_shrink
+        if not UtilClient.is_unset(request.directory_path):
+            body['DirectoryPath'] = request.directory_path
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sampling_config_shrink):
+            body['SamplingConfig'] = request.sampling_config_shrink
+        if not UtilClient.is_unset(request.visible_scope):
+            body['VisibleScope'] = request.visible_scope
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityRuleTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityRuleTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_quality_rule_template(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityRuleTemplateRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityRuleTemplateResponse:
+        """
+        @summary Creates a data quality monitoring rule template.
+        
+        @param request: CreateDataQualityRuleTemplateRequest
+        @return: CreateDataQualityRuleTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_quality_rule_template_with_options(request, runtime)
+
+    async def create_data_quality_rule_template_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityRuleTemplateRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityRuleTemplateResponse:
+        """
+        @summary Creates a data quality monitoring rule template.
+        
+        @param request: CreateDataQualityRuleTemplateRequest
+        @return: CreateDataQualityRuleTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_quality_rule_template_with_options_async(request, runtime)
+
     def create_data_source_with_options(
         self,
         request: dataworks_public_20240518_models.CreateDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataSourceResponse:
         """
-        @summary 验证用
+        @summary Adds a data source to the development environment or production environment of a workspace.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: CreateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -766,7 +1466,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataSourceResponse:
         """
-        @summary 验证用
+        @summary Adds a data source to the development environment or production environment of a workspace.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: CreateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -810,7 +1514,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataSourceRequest,
     ) -> dataworks_public_20240518_models.CreateDataSourceResponse:
         """
-        @summary 验证用
+        @summary Adds a data source to the development environment or production environment of a workspace.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: CreateDataSourceRequest
         @return: CreateDataSourceResponse
@@ -823,7 +1531,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataSourceRequest,
     ) -> dataworks_public_20240518_models.CreateDataSourceResponse:
         """
-        @summary 验证用
+        @summary Adds a data source to the development environment or production environment of a workspace.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: CreateDataSourceRequest
         @return: CreateDataSourceResponse
@@ -837,7 +1549,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse:
         """
-        @summary 验证用
+        @summary Creates a rule for sharing a data source to other workspaces or RAM users.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  If you want to share a data source from Workspace A to Workspace B, you must have the permissions to share the data source in both workspaces. You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
         
         @param request: CreateDataSourceSharedRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -878,7 +1594,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse:
         """
-        @summary 验证用
+        @summary Creates a rule for sharing a data source to other workspaces or RAM users.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  If you want to share a data source from Workspace A to Workspace B, you must have the permissions to share the data source in both workspaces. You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
         
         @param request: CreateDataSourceSharedRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -918,7 +1638,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataSourceSharedRuleRequest,
     ) -> dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse:
         """
-        @summary 验证用
+        @summary Creates a rule for sharing a data source to other workspaces or RAM users.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  If you want to share a data source from Workspace A to Workspace B, you must have the permissions to share the data source in both workspaces. You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
         
         @param request: CreateDataSourceSharedRuleRequest
         @return: CreateDataSourceSharedRuleResponse
@@ -931,7 +1655,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataSourceSharedRuleRequest,
     ) -> dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse:
         """
-        @summary 验证用
+        @summary Creates a rule for sharing a data source to other workspaces or RAM users.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  If you want to share a data source from Workspace A to Workspace B, you must have the permissions to share the data source in both workspaces. You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
         
         @param request: CreateDataSourceSharedRuleRequest
         @return: CreateDataSourceSharedRuleResponse
@@ -1177,7 +1905,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateNetworkResponse:
         """
-        @summary 创建并绑定通用资源组网络资源。
+        @summary Creates a network and associates the network with a general resource group.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateNetworkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1218,7 +1948,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateNetworkResponse:
         """
-        @summary 创建并绑定通用资源组网络资源。
+        @summary Creates a network and associates the network with a general resource group.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateNetworkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1258,7 +1990,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateNetworkRequest,
     ) -> dataworks_public_20240518_models.CreateNetworkResponse:
         """
-        @summary 创建并绑定通用资源组网络资源。
+        @summary Creates a network and associates the network with a general resource group.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateNetworkRequest
         @return: CreateNetworkResponse
@@ -1271,7 +2005,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateNetworkRequest,
     ) -> dataworks_public_20240518_models.CreateNetworkResponse:
         """
-        @summary 创建并绑定通用资源组网络资源。
+        @summary Creates a network and associates the network with a general resource group.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateNetworkRequest
         @return: CreateNetworkResponse
@@ -1401,7 +2137,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateProjectResponse:
         """
-        @summary 创建工作空间
+        @summary Creates a workspace.
         
         @param tmp_req: CreateProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1454,7 +2190,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateProjectResponse:
         """
-        @summary 创建工作空间
+        @summary Creates a workspace.
         
         @param tmp_req: CreateProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1506,7 +2242,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateProjectRequest,
     ) -> dataworks_public_20240518_models.CreateProjectResponse:
         """
-        @summary 创建工作空间
+        @summary Creates a workspace.
         
         @param request: CreateProjectRequest
         @return: CreateProjectResponse
@@ -1519,7 +2255,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateProjectRequest,
     ) -> dataworks_public_20240518_models.CreateProjectResponse:
         """
-        @summary 创建工作空间
+        @summary Creates a workspace.
         
         @param request: CreateProjectRequest
         @return: CreateProjectResponse
@@ -1533,7 +2269,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateProjectMemberResponse:
         """
-        @summary 添加工作空间成员
+        @summary Adds a member to a workspace.
         
         @param tmp_req: CreateProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1576,7 +2312,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateProjectMemberResponse:
         """
-        @summary 添加工作空间成员
+        @summary Adds a member to a workspace.
         
         @param tmp_req: CreateProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1618,7 +2354,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateProjectMemberRequest,
     ) -> dataworks_public_20240518_models.CreateProjectMemberResponse:
         """
-        @summary 添加工作空间成员
+        @summary Adds a member to a workspace.
         
         @param request: CreateProjectMemberRequest
         @return: CreateProjectMemberResponse
@@ -1631,7 +2367,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateProjectMemberRequest,
     ) -> dataworks_public_20240518_models.CreateProjectMemberResponse:
         """
-        @summary 添加工作空间成员
+        @summary Adds a member to a workspace.
         
         @param request: CreateProjectMemberRequest
         @return: CreateProjectMemberResponse
@@ -1753,7 +2489,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateResourceGroupResponse:
         """
-        @summary 创建通用资源组。
+        @summary Creates a serverless resource group.
+        
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
         
         @param request: CreateResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1806,7 +2545,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateResourceGroupResponse:
         """
-        @summary 创建通用资源组。
+        @summary Creates a serverless resource group.
+        
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
         
         @param request: CreateResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1858,7 +2600,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateResourceGroupRequest,
     ) -> dataworks_public_20240518_models.CreateResourceGroupResponse:
         """
-        @summary 创建通用资源组。
+        @summary Creates a serverless resource group.
+        
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
         
         @param request: CreateResourceGroupRequest
         @return: CreateResourceGroupResponse
@@ -1871,7 +2616,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateResourceGroupRequest,
     ) -> dataworks_public_20240518_models.CreateResourceGroupResponse:
         """
-        @summary 创建通用资源组。
+        @summary Creates a serverless resource group.
+        
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
         
         @param request: CreateResourceGroupRequest
         @return: CreateResourceGroupResponse
@@ -1885,7 +2633,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateRouteResponse:
         """
-        @summary 创建网络资源的路由。
+        @summary Creates a route for a network.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1922,7 +2672,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateRouteResponse:
         """
-        @summary 创建网络资源的路由。
+        @summary Creates a route for a network.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1958,7 +2710,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateRouteRequest,
     ) -> dataworks_public_20240518_models.CreateRouteResponse:
         """
-        @summary 创建网络资源的路由。
+        @summary Creates a route for a network.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateRouteRequest
         @return: CreateRouteResponse
@@ -1971,7 +2725,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateRouteRequest,
     ) -> dataworks_public_20240518_models.CreateRouteResponse:
         """
-        @summary 创建网络资源的路由。
+        @summary Creates a route for a network.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateRouteRequest
         @return: CreateRouteResponse
@@ -2093,7 +2849,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteAlertRuleResponse:
         """
-        @summary 删除自定义监控报警规则
+        @summary Deletes a custom alert monitoring rule.
         
         @param request: DeleteAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2128,7 +2884,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteAlertRuleResponse:
         """
-        @summary 删除自定义监控报警规则
+        @summary Deletes a custom alert monitoring rule.
         
         @param request: DeleteAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2162,7 +2918,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteAlertRuleRequest,
     ) -> dataworks_public_20240518_models.DeleteAlertRuleResponse:
         """
-        @summary 删除自定义监控报警规则
+        @summary Deletes a custom alert monitoring rule.
         
         @param request: DeleteAlertRuleRequest
         @return: DeleteAlertRuleResponse
@@ -2175,7 +2931,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteAlertRuleRequest,
     ) -> dataworks_public_20240518_models.DeleteAlertRuleResponse:
         """
-        @summary 删除自定义监控报警规则
+        @summary Deletes a custom alert monitoring rule.
         
         @param request: DeleteAlertRuleRequest
         @return: DeleteAlertRuleResponse
@@ -2281,7 +3037,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDIJobResponse:
         """
-        @summary 删除数据集成任务
+        @summary Deletes a new-version synchronization task.
         
         @param request: DeleteDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2314,7 +3070,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDIJobResponse:
         """
-        @summary 删除数据集成任务
+        @summary Deletes a new-version synchronization task.
         
         @param request: DeleteDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2346,7 +3102,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDIJobRequest,
     ) -> dataworks_public_20240518_models.DeleteDIJobResponse:
         """
-        @summary 删除数据集成任务
+        @summary Deletes a new-version synchronization task.
         
         @param request: DeleteDIJobRequest
         @return: DeleteDIJobResponse
@@ -2359,7 +3115,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDIJobRequest,
     ) -> dataworks_public_20240518_models.DeleteDIJobResponse:
         """
-        @summary 删除数据集成任务
+        @summary Deletes a new-version synchronization task.
         
         @param request: DeleteDIJobRequest
         @return: DeleteDIJobResponse
@@ -2367,13 +3123,317 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_dijob_with_options_async(request, runtime)
 
+    def delete_data_quality_evaluation_task_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse:
+        """
+        @summary 删除数据质量校验任务
+        
+        @param request: DeleteDataQualityEvaluationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataQualityEvaluationTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataQualityEvaluationTask',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_quality_evaluation_task_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse:
+        """
+        @summary 删除数据质量校验任务
+        
+        @param request: DeleteDataQualityEvaluationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataQualityEvaluationTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataQualityEvaluationTask',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_quality_evaluation_task(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse:
+        """
+        @summary 删除数据质量校验任务
+        
+        @param request: DeleteDataQualityEvaluationTaskRequest
+        @return: DeleteDataQualityEvaluationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_data_quality_evaluation_task_with_options(request, runtime)
+
+    async def delete_data_quality_evaluation_task_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse:
+        """
+        @summary 删除数据质量校验任务
+        
+        @param request: DeleteDataQualityEvaluationTaskRequest
+        @return: DeleteDataQualityEvaluationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_data_quality_evaluation_task_with_options_async(request, runtime)
+
+    def delete_data_quality_rule_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityRuleResponse:
+        """
+        @summary Deletes a data quality monitoring rule.
+        
+        @param request: DeleteDataQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataQualityRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataQualityRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_quality_rule_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityRuleResponse:
+        """
+        @summary Deletes a data quality monitoring rule.
+        
+        @param request: DeleteDataQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataQualityRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataQualityRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_quality_rule(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityRuleRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityRuleResponse:
+        """
+        @summary Deletes a data quality monitoring rule.
+        
+        @param request: DeleteDataQualityRuleRequest
+        @return: DeleteDataQualityRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_data_quality_rule_with_options(request, runtime)
+
+    async def delete_data_quality_rule_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityRuleRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityRuleResponse:
+        """
+        @summary Deletes a data quality monitoring rule.
+        
+        @param request: DeleteDataQualityRuleRequest
+        @return: DeleteDataQualityRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_data_quality_rule_with_options_async(request, runtime)
+
+    def delete_data_quality_rule_template_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityRuleTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityRuleTemplateResponse:
+        """
+        @summary Deletes a data quality monitoring rule template.
+        
+        @param request: DeleteDataQualityRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataQualityRuleTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataQualityRuleTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityRuleTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_quality_rule_template_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityRuleTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityRuleTemplateResponse:
+        """
+        @summary Deletes a data quality monitoring rule template.
+        
+        @param request: DeleteDataQualityRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataQualityRuleTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataQualityRuleTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityRuleTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_quality_rule_template(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityRuleTemplateRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityRuleTemplateResponse:
+        """
+        @summary Deletes a data quality monitoring rule template.
+        
+        @param request: DeleteDataQualityRuleTemplateRequest
+        @return: DeleteDataQualityRuleTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_data_quality_rule_template_with_options(request, runtime)
+
+    async def delete_data_quality_rule_template_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityRuleTemplateRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityRuleTemplateResponse:
+        """
+        @summary Deletes a data quality monitoring rule template.
+        
+        @param request: DeleteDataQualityRuleTemplateRequest
+        @return: DeleteDataQualityRuleTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_data_quality_rule_template_with_options_async(request, runtime)
+
     def delete_data_source_with_options(
         self,
         request: dataworks_public_20240518_models.DeleteDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataSourceResponse:
         """
-        @summary 验证用
+        @summary Removes a data source by ID.
+        
+        @description 1.  This API operation is available for all Dataworks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: DeleteDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2406,7 +3466,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataSourceResponse:
         """
-        @summary 验证用
+        @summary Removes a data source by ID.
+        
+        @description 1.  This API operation is available for all Dataworks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: DeleteDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2438,7 +3502,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataSourceRequest,
     ) -> dataworks_public_20240518_models.DeleteDataSourceResponse:
         """
-        @summary 验证用
+        @summary Removes a data source by ID.
+        
+        @description 1.  This API operation is available for all Dataworks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: DeleteDataSourceRequest
         @return: DeleteDataSourceResponse
@@ -2451,7 +3519,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataSourceRequest,
     ) -> dataworks_public_20240518_models.DeleteDataSourceResponse:
         """
-        @summary 验证用
+        @summary Removes a data source by ID.
+        
+        @description 1.  This API operation is available for all Dataworks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: DeleteDataSourceRequest
         @return: DeleteDataSourceResponse
@@ -2465,7 +3537,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse:
         """
-        @summary 验证用
+        @summary Deletes a sharing rule of a data source by ID.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  If you want to delete a sharing rule of a data source from Workspace A to Workspace B, you must have the permissions to share the data source in Workspace A or Workspace B. You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
         
         @param request: DeleteDataSourceSharedRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2500,7 +3576,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse:
         """
-        @summary 验证用
+        @summary Deletes a sharing rule of a data source by ID.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  If you want to delete a sharing rule of a data source from Workspace A to Workspace B, you must have the permissions to share the data source in Workspace A or Workspace B. You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
         
         @param request: DeleteDataSourceSharedRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2534,7 +3614,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataSourceSharedRuleRequest,
     ) -> dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse:
         """
-        @summary 验证用
+        @summary Deletes a sharing rule of a data source by ID.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  If you want to delete a sharing rule of a data source from Workspace A to Workspace B, you must have the permissions to share the data source in Workspace A or Workspace B. You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
         
         @param request: DeleteDataSourceSharedRuleRequest
         @return: DeleteDataSourceSharedRuleResponse
@@ -2547,7 +3631,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataSourceSharedRuleRequest,
     ) -> dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse:
         """
-        @summary 验证用
+        @summary Deletes a sharing rule of a data source by ID.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  If you want to delete a sharing rule of a data source from Workspace A to Workspace B, you must have the permissions to share the data source in Workspace A or Workspace B. You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
         
         @param request: DeleteDataSourceSharedRuleRequest
         @return: DeleteDataSourceSharedRuleResponse
@@ -2669,7 +3757,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteNetworkResponse:
         """
-        @summary 解绑并删除通用资源组网络资源。
+        @summary Disassociates and deletes a network from a general resource group.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteNetworkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2704,7 +3794,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteNetworkResponse:
         """
-        @summary 解绑并删除通用资源组网络资源。
+        @summary Disassociates and deletes a network from a general resource group.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteNetworkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2738,7 +3830,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteNetworkRequest,
     ) -> dataworks_public_20240518_models.DeleteNetworkResponse:
         """
-        @summary 解绑并删除通用资源组网络资源。
+        @summary Disassociates and deletes a network from a general resource group.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteNetworkRequest
         @return: DeleteNetworkResponse
@@ -2751,7 +3845,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteNetworkRequest,
     ) -> dataworks_public_20240518_models.DeleteNetworkResponse:
         """
-        @summary 解绑并删除通用资源组网络资源。
+        @summary Disassociates and deletes a network from a general resource group.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteNetworkRequest
         @return: DeleteNetworkResponse
@@ -2873,7 +3969,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteProjectResponse:
         """
-        @summary 销毁工作空间
+        @summary Deletes a DataWorks workspace.
         
         @param request: DeleteProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2908,7 +4004,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteProjectResponse:
         """
-        @summary 销毁工作空间
+        @summary Deletes a DataWorks workspace.
         
         @param request: DeleteProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2942,7 +4038,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteProjectRequest,
     ) -> dataworks_public_20240518_models.DeleteProjectResponse:
         """
-        @summary 销毁工作空间
+        @summary Deletes a DataWorks workspace.
         
         @param request: DeleteProjectRequest
         @return: DeleteProjectResponse
@@ -2955,7 +4051,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteProjectRequest,
     ) -> dataworks_public_20240518_models.DeleteProjectResponse:
         """
-        @summary 销毁工作空间
+        @summary Deletes a DataWorks workspace.
         
         @param request: DeleteProjectRequest
         @return: DeleteProjectResponse
@@ -3179,6 +4275,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes a serverless resource group.
         
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+        
         @param request: DeleteResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteResourceGroupResponse
@@ -3214,6 +4313,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes a serverless resource group.
         
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+        
         @param request: DeleteResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteResourceGroupResponse
@@ -3248,6 +4350,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes a serverless resource group.
         
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+        
         @param request: DeleteResourceGroupRequest
         @return: DeleteResourceGroupResponse
         """
@@ -3261,6 +4366,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes a serverless resource group.
         
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+        
         @param request: DeleteResourceGroupRequest
         @return: DeleteResourceGroupResponse
         """
@@ -3273,7 +4381,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteRouteResponse:
         """
-        @summary 删除网络资源的路由。
+        @summary Deletes a route from a network resource.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3308,7 +4418,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteRouteResponse:
         """
-        @summary 删除网络资源的路由。
+        @summary Deletes a route from a network resource.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3342,7 +4454,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteRouteRequest,
     ) -> dataworks_public_20240518_models.DeleteRouteResponse:
         """
-        @summary 删除网络资源的路由。
+        @summary Deletes a route from a network resource.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteRouteRequest
         @return: DeleteRouteResponse
@@ -3355,7 +4469,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteRouteRequest,
     ) -> dataworks_public_20240518_models.DeleteRouteResponse:
         """
-        @summary 删除网络资源的路由。
+        @summary Deletes a route from a network resource.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteRouteRequest
         @return: DeleteRouteResponse
@@ -3369,6 +4485,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteTaskResponse:
         """
+        @summary Deletes a task.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteTaskResponse
@@ -3404,6 +4524,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteTaskResponse:
         """
+        @summary Deletes a task.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteTaskResponse
@@ -3438,6 +4562,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteTaskRequest,
     ) -> dataworks_public_20240518_models.DeleteTaskResponse:
         """
+        @summary Deletes a task.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteTaskRequest
         @return: DeleteTaskResponse
         """
@@ -3449,6 +4577,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteTaskRequest,
     ) -> dataworks_public_20240518_models.DeleteTaskResponse:
         """
+        @summary Deletes a task.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteTaskRequest
         @return: DeleteTaskResponse
         """
@@ -3563,6 +4695,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_workflow_definition_with_options_async(request, runtime)
 
+    def detach_data_quality_rules_from_evaluation_task_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse:
+        """
+        @summary 取消数据质量规则和数据质量校验任务的关联
+        
+        @param tmp_req: DetachDataQualityRulesFromEvaluationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachDataQualityRulesFromEvaluationTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_quality_rule_ids):
+            request.data_quality_rule_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_quality_rule_ids, 'DataQualityRuleIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_quality_evaluation_task_id):
+            body['DataQualityEvaluationTaskId'] = request.data_quality_evaluation_task_id
+        if not UtilClient.is_unset(request.data_quality_rule_ids_shrink):
+            body['DataQualityRuleIds'] = request.data_quality_rule_ids_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetachDataQualityRulesFromEvaluationTask',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_data_quality_rules_from_evaluation_task_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse:
+        """
+        @summary 取消数据质量规则和数据质量校验任务的关联
+        
+        @param tmp_req: DetachDataQualityRulesFromEvaluationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachDataQualityRulesFromEvaluationTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_quality_rule_ids):
+            request.data_quality_rule_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_quality_rule_ids, 'DataQualityRuleIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_quality_evaluation_task_id):
+            body['DataQualityEvaluationTaskId'] = request.data_quality_evaluation_task_id
+        if not UtilClient.is_unset(request.data_quality_rule_ids_shrink):
+            body['DataQualityRuleIds'] = request.data_quality_rule_ids_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetachDataQualityRulesFromEvaluationTask',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_data_quality_rules_from_evaluation_task(
+        self,
+        request: dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskRequest,
+    ) -> dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse:
+        """
+        @summary 取消数据质量规则和数据质量校验任务的关联
+        
+        @param request: DetachDataQualityRulesFromEvaluationTaskRequest
+        @return: DetachDataQualityRulesFromEvaluationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.detach_data_quality_rules_from_evaluation_task_with_options(request, runtime)
+
+    async def detach_data_quality_rules_from_evaluation_task_async(
+        self,
+        request: dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskRequest,
+    ) -> dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse:
+        """
+        @summary 取消数据质量规则和数据质量校验任务的关联
+        
+        @param request: DetachDataQualityRulesFromEvaluationTaskRequest
+        @return: DetachDataQualityRulesFromEvaluationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_data_quality_rules_from_evaluation_task_with_options_async(request, runtime)
+
     def dissociate_project_from_resource_group_with_options(
         self,
         request: dataworks_public_20240518_models.DissociateProjectFromResourceGroupRequest,
@@ -3570,6 +4814,10 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse:
         """
         @summary Disassociates a resource group from a workspace.
+        
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  Your account must be assigned one of the following roles of the desired workspace:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: DissociateProjectFromResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3608,6 +4856,10 @@ class Client(OpenApiClient):
         """
         @summary Disassociates a resource group from a workspace.
         
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  Your account must be assigned one of the following roles of the desired workspace:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+        
         @param request: DissociateProjectFromResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DissociateProjectFromResourceGroupResponse
@@ -3644,6 +4896,10 @@ class Client(OpenApiClient):
         """
         @summary Disassociates a resource group from a workspace.
         
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  Your account must be assigned one of the following roles of the desired workspace:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+        
         @param request: DissociateProjectFromResourceGroupRequest
         @return: DissociateProjectFromResourceGroupResponse
         """
@@ -3656,6 +4912,10 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse:
         """
         @summary Disassociates a resource group from a workspace.
+        
+        @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        2.  Your account must be assigned one of the following roles of the desired workspace:
+        Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: DissociateProjectFromResourceGroupRequest
         @return: DissociateProjectFromResourceGroupResponse
@@ -3789,7 +5049,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetAlertRuleResponse:
         """
-        @summary 获取自定义监控报警规则
+        @summary Queries a list of custom alert monitoring rules.
         
         @param request: GetAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3822,7 +5082,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetAlertRuleResponse:
         """
-        @summary 获取自定义监控报警规则
+        @summary Queries a list of custom alert monitoring rules.
         
         @param request: GetAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3854,7 +5114,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetAlertRuleRequest,
     ) -> dataworks_public_20240518_models.GetAlertRuleResponse:
         """
-        @summary 获取自定义监控报警规则
+        @summary Queries a list of custom alert monitoring rules.
         
         @param request: GetAlertRuleRequest
         @return: GetAlertRuleResponse
@@ -3867,7 +5127,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetAlertRuleRequest,
     ) -> dataworks_public_20240518_models.GetAlertRuleResponse:
         """
-        @summary 获取自定义监控报警规则
+        @summary Queries a list of custom alert monitoring rules.
         
         @param request: GetAlertRuleRequest
         @return: GetAlertRuleResponse
@@ -3881,7 +5141,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDIJobResponse:
         """
-        @summary 查看数据集成任务
+        @summary Queries the information about a synchronization task.
         
         @param request: GetDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3914,7 +5174,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDIJobResponse:
         """
-        @summary 查看数据集成任务
+        @summary Queries the information about a synchronization task.
         
         @param request: GetDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3946,7 +5206,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDIJobRequest,
     ) -> dataworks_public_20240518_models.GetDIJobResponse:
         """
-        @summary 查看数据集成任务
+        @summary Queries the information about a synchronization task.
         
         @param request: GetDIJobRequest
         @return: GetDIJobResponse
@@ -3959,7 +5219,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDIJobRequest,
     ) -> dataworks_public_20240518_models.GetDIJobResponse:
         """
-        @summary 查看数据集成任务
+        @summary Queries the information about a synchronization task.
         
         @param request: GetDIJobRequest
         @return: GetDIJobResponse
@@ -4059,6 +5319,390 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_dijob_log_with_options_async(request, runtime)
 
+    def get_data_quality_evaluation_task_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityEvaluationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse:
+        """
+        @summary 查询数据质量校验任务详情
+        
+        @param request: GetDataQualityEvaluationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityEvaluationTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityEvaluationTask',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_quality_evaluation_task_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityEvaluationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse:
+        """
+        @summary 查询数据质量校验任务详情
+        
+        @param request: GetDataQualityEvaluationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityEvaluationTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityEvaluationTask',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_quality_evaluation_task(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityEvaluationTaskRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse:
+        """
+        @summary 查询数据质量校验任务详情
+        
+        @param request: GetDataQualityEvaluationTaskRequest
+        @return: GetDataQualityEvaluationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_quality_evaluation_task_with_options(request, runtime)
+
+    async def get_data_quality_evaluation_task_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityEvaluationTaskRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse:
+        """
+        @summary 查询数据质量校验任务详情
+        
+        @param request: GetDataQualityEvaluationTaskRequest
+        @return: GetDataQualityEvaluationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_quality_evaluation_task_with_options_async(request, runtime)
+
+    def get_data_quality_evaluation_task_instance_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse:
+        """
+        @summary 获取数据质量校验任务实例详情
+        
+        @param request: GetDataQualityEvaluationTaskInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityEvaluationTaskInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityEvaluationTaskInstance',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_quality_evaluation_task_instance_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse:
+        """
+        @summary 获取数据质量校验任务实例详情
+        
+        @param request: GetDataQualityEvaluationTaskInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityEvaluationTaskInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityEvaluationTaskInstance',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_quality_evaluation_task_instance(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse:
+        """
+        @summary 获取数据质量校验任务实例详情
+        
+        @param request: GetDataQualityEvaluationTaskInstanceRequest
+        @return: GetDataQualityEvaluationTaskInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_quality_evaluation_task_instance_with_options(request, runtime)
+
+    async def get_data_quality_evaluation_task_instance_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse:
+        """
+        @summary 获取数据质量校验任务实例详情
+        
+        @param request: GetDataQualityEvaluationTaskInstanceRequest
+        @return: GetDataQualityEvaluationTaskInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_quality_evaluation_task_instance_with_options_async(request, runtime)
+
+    def get_data_quality_rule_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityRuleResponse:
+        """
+        @summary 查询质量规则详情
+        
+        @description This API operation is available for all DataWorks editions.
+        
+        @param request: GetDataQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_quality_rule_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityRuleResponse:
+        """
+        @summary 查询质量规则详情
+        
+        @description This API operation is available for all DataWorks editions.
+        
+        @param request: GetDataQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_quality_rule(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityRuleRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityRuleResponse:
+        """
+        @summary 查询质量规则详情
+        
+        @description This API operation is available for all DataWorks editions.
+        
+        @param request: GetDataQualityRuleRequest
+        @return: GetDataQualityRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_quality_rule_with_options(request, runtime)
+
+    async def get_data_quality_rule_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityRuleRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityRuleResponse:
+        """
+        @summary 查询质量规则详情
+        
+        @description This API operation is available for all DataWorks editions.
+        
+        @param request: GetDataQualityRuleRequest
+        @return: GetDataQualityRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_quality_rule_with_options_async(request, runtime)
+
+    def get_data_quality_rule_template_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityRuleTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse:
+        """
+        @summary 获取质量规则模版详情
+        
+        @description This API operation is available for all DataWorks editions.
+        
+        @param request: GetDataQualityRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityRuleTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityRuleTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_quality_rule_template_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityRuleTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse:
+        """
+        @summary 获取质量规则模版详情
+        
+        @description This API operation is available for all DataWorks editions.
+        
+        @param request: GetDataQualityRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityRuleTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityRuleTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_quality_rule_template(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityRuleTemplateRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse:
+        """
+        @summary 获取质量规则模版详情
+        
+        @description This API operation is available for all DataWorks editions.
+        
+        @param request: GetDataQualityRuleTemplateRequest
+        @return: GetDataQualityRuleTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_quality_rule_template_with_options(request, runtime)
+
+    async def get_data_quality_rule_template_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityRuleTemplateRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse:
+        """
+        @summary 获取质量规则模版详情
+        
+        @description This API operation is available for all DataWorks editions.
+        
+        @param request: GetDataQualityRuleTemplateRequest
+        @return: GetDataQualityRuleTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_quality_rule_template_with_options_async(request, runtime)
+
     def get_data_source_with_options(
         self,
         request: dataworks_public_20240518_models.GetDataSourceRequest,
@@ -4067,7 +5711,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a data source by ID.
         
-        @description You can call this operation only if you are assigned one of the following roles in DataWorks:
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
         Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
         
         @param request: GetDataSourceRequest
@@ -4103,7 +5748,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a data source by ID.
         
-        @description You can call this operation only if you are assigned one of the following roles in DataWorks:
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
         Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
         
         @param request: GetDataSourceRequest
@@ -4138,7 +5784,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a data source by ID.
         
-        @description You can call this operation only if you are assigned one of the following roles in DataWorks:
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
         Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
         
         @param request: GetDataSourceRequest
@@ -4154,7 +5801,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a data source by ID.
         
-        @description You can call this operation only if you are assigned one of the following roles in DataWorks:
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
         Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
         
         @param request: GetDataSourceRequest
@@ -4353,7 +6001,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetJobStatusResponse:
         """
-        @summary 返回异步任务的状态信息
+        @summary Queries the status information of an asynchronous task. After you call an asynchronous operation, an asynchronous task is generated. You can call the GetJobStatus operation to query the status of the asynchronous task.
         
         @param request: GetJobStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4386,7 +6034,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetJobStatusResponse:
         """
-        @summary 返回异步任务的状态信息
+        @summary Queries the status information of an asynchronous task. After you call an asynchronous operation, an asynchronous task is generated. You can call the GetJobStatus operation to query the status of the asynchronous task.
         
         @param request: GetJobStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4418,7 +6066,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetJobStatusRequest,
     ) -> dataworks_public_20240518_models.GetJobStatusResponse:
         """
-        @summary 返回异步任务的状态信息
+        @summary Queries the status information of an asynchronous task. After you call an asynchronous operation, an asynchronous task is generated. You can call the GetJobStatus operation to query the status of the asynchronous task.
         
         @param request: GetJobStatusRequest
         @return: GetJobStatusResponse
@@ -4431,7 +6079,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetJobStatusRequest,
     ) -> dataworks_public_20240518_models.GetJobStatusResponse:
         """
-        @summary 返回异步任务的状态信息
+        @summary Queries the status information of an asynchronous task. After you call an asynchronous operation, an asynchronous task is generated. You can call the GetJobStatus operation to query the status of the asynchronous task.
         
         @param request: GetJobStatusRequest
         @return: GetJobStatusResponse
@@ -4445,7 +6093,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetNetworkResponse:
         """
-        @summary 获取某个网络资源详细信息。
+        @summary Queries the information about a network resource.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetNetworkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4478,7 +6128,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetNetworkResponse:
         """
-        @summary 获取某个网络资源详细信息。
+        @summary Queries the information about a network resource.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetNetworkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4510,7 +6162,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetNetworkRequest,
     ) -> dataworks_public_20240518_models.GetNetworkResponse:
         """
-        @summary 获取某个网络资源详细信息。
+        @summary Queries the information about a network resource.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetNetworkRequest
         @return: GetNetworkResponse
@@ -4523,7 +6177,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetNetworkRequest,
     ) -> dataworks_public_20240518_models.GetNetworkResponse:
         """
-        @summary 获取某个网络资源详细信息。
+        @summary Queries the information about a network resource.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetNetworkRequest
         @return: GetNetworkResponse
@@ -4821,7 +6477,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetProjectRoleResponse:
         """
-        @summary 查询工作空间角色详情
+        @summary Queries the information about a role in a DataWorks workspace.
         
         @param request: GetProjectRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4858,7 +6514,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetProjectRoleResponse:
         """
-        @summary 查询工作空间角色详情
+        @summary Queries the information about a role in a DataWorks workspace.
         
         @param request: GetProjectRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4894,7 +6550,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetProjectRoleRequest,
     ) -> dataworks_public_20240518_models.GetProjectRoleResponse:
         """
-        @summary 查询工作空间角色详情
+        @summary Queries the information about a role in a DataWorks workspace.
         
         @param request: GetProjectRoleRequest
         @return: GetProjectRoleResponse
@@ -4907,7 +6563,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetProjectRoleRequest,
     ) -> dataworks_public_20240518_models.GetProjectRoleResponse:
         """
-        @summary 查询工作空间角色详情
+        @summary Queries the information about a role in a DataWorks workspace.
         
         @param request: GetProjectRoleRequest
         @return: GetProjectRoleResponse
@@ -5015,6 +6671,8 @@ class Client(OpenApiClient):
         """
         @summary 根据id获取指定资源组。
         
+        @description You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        
         @param request: GetResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetResourceGroupResponse
@@ -5048,6 +6706,8 @@ class Client(OpenApiClient):
         """
         @summary 根据id获取指定资源组。
         
+        @description You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        
         @param request: GetResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetResourceGroupResponse
@@ -5080,6 +6740,8 @@ class Client(OpenApiClient):
         """
         @summary 根据id获取指定资源组。
         
+        @description You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        
         @param request: GetResourceGroupRequest
         @return: GetResourceGroupResponse
         """
@@ -5093,6 +6755,8 @@ class Client(OpenApiClient):
         """
         @summary 根据id获取指定资源组。
         
+        @description You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        
         @param request: GetResourceGroupRequest
         @return: GetResourceGroupResponse
         """
@@ -5105,7 +6769,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetRouteResponse:
         """
-        @summary 根据id获取指定路由。
+        @summary Queries the information about a route based on its ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5138,7 +6804,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetRouteResponse:
         """
-        @summary 根据id获取指定路由。
+        @summary Queries the information about a route based on its ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5170,7 +6838,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetRouteRequest,
     ) -> dataworks_public_20240518_models.GetRouteResponse:
         """
-        @summary 根据id获取指定路由。
+        @summary Queries the information about a route based on its ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetRouteRequest
         @return: GetRouteResponse
@@ -5183,7 +6853,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetRouteRequest,
     ) -> dataworks_public_20240518_models.GetRouteResponse:
         """
-        @summary 根据id获取指定路由。
+        @summary Queries the information about a route based on its ID.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetRouteRequest
         @return: GetRouteResponse
@@ -5197,6 +6869,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetTaskResponse:
         """
+        @summary Queries the information about a task.
+        
         @param request: GetTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTaskResponse
@@ -5228,6 +6902,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetTaskResponse:
         """
+        @summary Queries the information about a task.
+        
         @param request: GetTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTaskResponse
@@ -5258,6 +6934,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetTaskRequest,
     ) -> dataworks_public_20240518_models.GetTaskResponse:
         """
+        @summary Queries the information about a task.
+        
         @param request: GetTaskRequest
         @return: GetTaskResponse
         """
@@ -5269,6 +6947,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetTaskRequest,
     ) -> dataworks_public_20240518_models.GetTaskResponse:
         """
+        @summary Queries the information about a task.
+        
         @param request: GetTaskRequest
         @return: GetTaskResponse
         """
@@ -5373,6 +7053,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetTaskInstanceLogResponse:
         """
+        @summary Queries the run log generated during a specific run of an instance.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetTaskInstanceLogRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTaskInstanceLogResponse
@@ -5404,6 +7088,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetTaskInstanceLogResponse:
         """
+        @summary Queries the run log generated during a specific run of an instance.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetTaskInstanceLogRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTaskInstanceLogResponse
@@ -5434,6 +7122,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetTaskInstanceLogRequest,
     ) -> dataworks_public_20240518_models.GetTaskInstanceLogResponse:
         """
+        @summary Queries the run log generated during a specific run of an instance.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetTaskInstanceLogRequest
         @return: GetTaskInstanceLogResponse
         """
@@ -5445,6 +7137,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetTaskInstanceLogRequest,
     ) -> dataworks_public_20240518_models.GetTaskInstanceLogResponse:
         """
+        @summary Queries the run log generated during a specific run of an instance.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetTaskInstanceLogRequest
         @return: GetTaskInstanceLogResponse
         """
@@ -5661,7 +7357,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ImportWorkflowDefinitionResponse:
         """
-        @summary 调用此接口，可以将通过FlowSpec定义的工作流节点和其内部的子节点都导入到数据开发中
+        @summary Imports a workflow and its child nodes that are specified by the FlowSpec field to DataStudio.
+        
+        @description > You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
+        >  ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
         
         @param request: ImportWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5698,7 +7397,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ImportWorkflowDefinitionResponse:
         """
-        @summary 调用此接口，可以将通过FlowSpec定义的工作流节点和其内部的子节点都导入到数据开发中
+        @summary Imports a workflow and its child nodes that are specified by the FlowSpec field to DataStudio.
+        
+        @description > You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
+        >  ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
         
         @param request: ImportWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5734,7 +7436,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ImportWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.ImportWorkflowDefinitionResponse:
         """
-        @summary 调用此接口，可以将通过FlowSpec定义的工作流节点和其内部的子节点都导入到数据开发中
+        @summary Imports a workflow and its child nodes that are specified by the FlowSpec field to DataStudio.
+        
+        @description > You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
+        >  ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
         
         @param request: ImportWorkflowDefinitionRequest
         @return: ImportWorkflowDefinitionResponse
@@ -5747,7 +7452,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ImportWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.ImportWorkflowDefinitionResponse:
         """
-        @summary 调用此接口，可以将通过FlowSpec定义的工作流节点和其内部的子节点都导入到数据开发中
+        @summary Imports a workflow and its child nodes that are specified by the FlowSpec field to DataStudio.
+        
+        @description > You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
+        >  ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
         
         @param request: ImportWorkflowDefinitionRequest
         @return: ImportWorkflowDefinitionResponse
@@ -5761,7 +7469,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListAlertRulesResponse:
         """
-        @summary 分页获取自定义监控报警规则
+        @summary Queries a list of custom monitoring alert rule by page.
         
         @param tmp_req: ListAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5814,7 +7522,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListAlertRulesResponse:
         """
-        @summary 分页获取自定义监控报警规则
+        @summary Queries a list of custom monitoring alert rule by page.
         
         @param tmp_req: ListAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5866,7 +7574,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListAlertRulesRequest,
     ) -> dataworks_public_20240518_models.ListAlertRulesResponse:
         """
-        @summary 分页获取自定义监控报警规则
+        @summary Queries a list of custom monitoring alert rule by page.
         
         @param request: ListAlertRulesRequest
         @return: ListAlertRulesResponse
@@ -5879,7 +7587,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListAlertRulesRequest,
     ) -> dataworks_public_20240518_models.ListAlertRulesResponse:
         """
-        @summary 分页获取自定义监控报警规则
+        @summary Queries a list of custom monitoring alert rule by page.
         
         @param request: ListAlertRulesRequest
         @return: ListAlertRulesResponse
@@ -5893,7 +7601,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDIAlarmRulesResponse:
         """
-        @summary 查看数据集成报警规则
+        @summary Views alert rules configured for a synchronization task.
         
         @param request: ListDIAlarmRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5926,7 +7634,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDIAlarmRulesResponse:
         """
-        @summary 查看数据集成报警规则
+        @summary Views alert rules configured for a synchronization task.
         
         @param request: ListDIAlarmRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5958,7 +7666,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDIAlarmRulesRequest,
     ) -> dataworks_public_20240518_models.ListDIAlarmRulesResponse:
         """
-        @summary 查看数据集成报警规则
+        @summary Views alert rules configured for a synchronization task.
         
         @param request: ListDIAlarmRulesRequest
         @return: ListDIAlarmRulesResponse
@@ -5971,7 +7679,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDIAlarmRulesRequest,
     ) -> dataworks_public_20240518_models.ListDIAlarmRulesResponse:
         """
-        @summary 查看数据集成报警规则
+        @summary Views alert rules configured for a synchronization task.
         
         @param request: ListDIAlarmRulesRequest
         @return: ListDIAlarmRulesResponse
@@ -5985,7 +7693,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDIJobEventsResponse:
         """
-        @summary 获取数据集成任务事件
+        @summary Queries events for a synchronization task.
         
         @param request: ListDIJobEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6018,7 +7726,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDIJobEventsResponse:
         """
-        @summary 获取数据集成任务事件
+        @summary Queries events for a synchronization task.
         
         @param request: ListDIJobEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6050,7 +7758,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDIJobEventsRequest,
     ) -> dataworks_public_20240518_models.ListDIJobEventsResponse:
         """
-        @summary 获取数据集成任务事件
+        @summary Queries events for a synchronization task.
         
         @param request: ListDIJobEventsRequest
         @return: ListDIJobEventsResponse
@@ -6063,7 +7771,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDIJobEventsRequest,
     ) -> dataworks_public_20240518_models.ListDIJobEventsResponse:
         """
-        @summary 获取数据集成任务事件
+        @summary Queries events for a synchronization task.
         
         @param request: ListDIJobEventsRequest
         @return: ListDIJobEventsResponse
@@ -6077,7 +7785,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDIJobMetricsResponse:
         """
-        @summary 获取数据集成任务指标
+        @summary Queries metrics for a synchronization task.
         
         @param tmp_req: ListDIJobMetricsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6114,7 +7822,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDIJobMetricsResponse:
         """
-        @summary 获取数据集成任务指标
+        @summary Queries metrics for a synchronization task.
         
         @param tmp_req: ListDIJobMetricsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6150,7 +7858,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDIJobMetricsRequest,
     ) -> dataworks_public_20240518_models.ListDIJobMetricsResponse:
         """
-        @summary 获取数据集成任务指标
+        @summary Queries metrics for a synchronization task.
         
         @param request: ListDIJobMetricsRequest
         @return: ListDIJobMetricsResponse
@@ -6163,7 +7871,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDIJobMetricsRequest,
     ) -> dataworks_public_20240518_models.ListDIJobMetricsResponse:
         """
-        @summary 获取数据集成任务指标
+        @summary Queries metrics for a synchronization task.
         
         @param request: ListDIJobMetricsRequest
         @return: ListDIJobMetricsResponse
@@ -6177,7 +7885,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDIJobRunDetailsResponse:
         """
-        @summary 获取数据集成运行信息
+        @summary Queries the running information about a synchronization task.
         
         @param request: ListDIJobRunDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6210,7 +7918,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDIJobRunDetailsResponse:
         """
-        @summary 获取数据集成运行信息
+        @summary Queries the running information about a synchronization task.
         
         @param request: ListDIJobRunDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6242,7 +7950,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDIJobRunDetailsRequest,
     ) -> dataworks_public_20240518_models.ListDIJobRunDetailsResponse:
         """
-        @summary 获取数据集成运行信息
+        @summary Queries the running information about a synchronization task.
         
         @param request: ListDIJobRunDetailsRequest
         @return: ListDIJobRunDetailsResponse
@@ -6255,7 +7963,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDIJobRunDetailsRequest,
     ) -> dataworks_public_20240518_models.ListDIJobRunDetailsResponse:
         """
-        @summary 获取数据集成运行信息
+        @summary Queries the running information about a synchronization task.
         
         @param request: ListDIJobRunDetailsRequest
         @return: ListDIJobRunDetailsResponse
@@ -6363,6 +8071,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of instances generated by a data quality monitoring task by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDataQualityEvaluationTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataQualityEvaluationTaskInstancesResponse
@@ -6396,6 +8106,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of instances generated by a data quality monitoring task by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDataQualityEvaluationTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataQualityEvaluationTaskInstancesResponse
@@ -6428,6 +8140,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of instances generated by a data quality monitoring task by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDataQualityEvaluationTaskInstancesRequest
         @return: ListDataQualityEvaluationTaskInstancesResponse
         """
@@ -6440,6 +8154,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesResponse:
         """
         @summary Queries a list of instances generated by a data quality monitoring task by page.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityEvaluationTaskInstancesRequest
         @return: ListDataQualityEvaluationTaskInstancesResponse
@@ -6454,6 +8170,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListDataQualityEvaluationTasksResponse:
         """
         @summary Queries a list of data quality monitoring tasks by page.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityEvaluationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6488,6 +8206,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of data quality monitoring tasks by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDataQualityEvaluationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataQualityEvaluationTasksResponse
@@ -6520,6 +8240,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of data quality monitoring tasks by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDataQualityEvaluationTasksRequest
         @return: ListDataQualityEvaluationTasksResponse
         """
@@ -6533,6 +8255,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of data quality monitoring tasks by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDataQualityEvaluationTasksRequest
         @return: ListDataQualityEvaluationTasksResponse
         """
@@ -6545,6 +8269,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityResultsResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDataQualityResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataQualityResultsResponse
@@ -6576,6 +8302,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityResultsResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDataQualityResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataQualityResultsResponse
@@ -6606,6 +8334,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityResultsRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityResultsResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDataQualityResultsRequest
         @return: ListDataQualityResultsResponse
         """
@@ -6617,11 +8347,105 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityResultsRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityResultsResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDataQualityResultsRequest
         @return: ListDataQualityResultsResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_quality_results_with_options_async(request, runtime)
+
+    def list_data_quality_rule_template_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityRuleTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplateResponse:
+        """
+        @summary Queries a list of data quality monitoring rule templates.
+        
+        @param request: ListDataQualityRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataQualityRuleTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataQualityRuleTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityRuleTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_quality_rule_template_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityRuleTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplateResponse:
+        """
+        @summary Queries a list of data quality monitoring rule templates.
+        
+        @param request: ListDataQualityRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataQualityRuleTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataQualityRuleTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityRuleTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_quality_rule_template(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityRuleTemplateRequest,
+    ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplateResponse:
+        """
+        @summary Queries a list of data quality monitoring rule templates.
+        
+        @param request: ListDataQualityRuleTemplateRequest
+        @return: ListDataQualityRuleTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_quality_rule_template_with_options(request, runtime)
+
+    async def list_data_quality_rule_template_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityRuleTemplateRequest,
+    ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplateResponse:
+        """
+        @summary Queries a list of data quality monitoring rule templates.
+        
+        @param request: ListDataQualityRuleTemplateRequest
+        @return: ListDataQualityRuleTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_quality_rule_template_with_options_async(request, runtime)
 
     def list_data_quality_rules_with_options(
         self,
@@ -6630,6 +8454,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListDataQualityRulesResponse:
         """
         @summary Queries a list of data quality monitoring rules by page.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDataQualityRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6664,6 +8490,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of data quality monitoring rules by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDataQualityRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataQualityRulesResponse
@@ -6696,6 +8524,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of data quality monitoring rules by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDataQualityRulesRequest
         @return: ListDataQualityRulesResponse
         """
@@ -6709,6 +8539,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of data quality monitoring rules by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDataQualityRulesRequest
         @return: ListDataQualityRulesResponse
         """
@@ -6721,7 +8553,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataSourceSharedRulesResponse:
         """
-        @summary 验证用
+        @summary Queries a list of sharing rules of a data source.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  If you want to query the sharing rules of a data source that is associated with Workspace A, you must have the permissions to share the data source in Workspace A. You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
         
         @param request: ListDataSourceSharedRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6754,7 +8590,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataSourceSharedRulesResponse:
         """
-        @summary 验证用
+        @summary Queries a list of sharing rules of a data source.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  If you want to query the sharing rules of a data source that is associated with Workspace A, you must have the permissions to share the data source in Workspace A. You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
         
         @param request: ListDataSourceSharedRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6786,7 +8626,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataSourceSharedRulesRequest,
     ) -> dataworks_public_20240518_models.ListDataSourceSharedRulesResponse:
         """
-        @summary 验证用
+        @summary Queries a list of sharing rules of a data source.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  If you want to query the sharing rules of a data source that is associated with Workspace A, you must have the permissions to share the data source in Workspace A. You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
         
         @param request: ListDataSourceSharedRulesRequest
         @return: ListDataSourceSharedRulesResponse
@@ -6799,7 +8643,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataSourceSharedRulesRequest,
     ) -> dataworks_public_20240518_models.ListDataSourceSharedRulesResponse:
         """
-        @summary 验证用
+        @summary Queries a list of sharing rules of a data source.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  If you want to query the sharing rules of a data source that is associated with Workspace A, you must have the permissions to share the data source in Workspace A. You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
         
         @param request: ListDataSourceSharedRulesRequest
         @return: ListDataSourceSharedRulesResponse
@@ -6813,7 +8661,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataSourcesResponse:
         """
-        @summary 验证用
+        @summary Queries a list of data sources based on the business information of data sources.
+        
+        @description You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
         
         @param tmp_req: ListDataSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6850,7 +8701,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataSourcesResponse:
         """
-        @summary 验证用
+        @summary Queries a list of data sources based on the business information of data sources.
+        
+        @description You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
         
         @param tmp_req: ListDataSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6886,7 +8740,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataSourcesRequest,
     ) -> dataworks_public_20240518_models.ListDataSourcesResponse:
         """
-        @summary 验证用
+        @summary Queries a list of data sources based on the business information of data sources.
+        
+        @description You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
         
         @param request: ListDataSourcesRequest
         @return: ListDataSourcesResponse
@@ -6899,7 +8756,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataSourcesRequest,
     ) -> dataworks_public_20240518_models.ListDataSourcesResponse:
         """
-        @summary 验证用
+        @summary Queries a list of data sources based on the business information of data sources.
+        
+        @description You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
         
         @param request: ListDataSourcesRequest
         @return: ListDataSourcesResponse
@@ -7005,6 +8865,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDownstreamTaskInstancesResponse:
         """
+        @summary Queries a list of descendant instances of an instance by page.
+        
         @param request: ListDownstreamTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDownstreamTaskInstancesResponse
@@ -7036,6 +8898,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDownstreamTaskInstancesResponse:
         """
+        @summary Queries a list of descendant instances of an instance by page.
+        
         @param request: ListDownstreamTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDownstreamTaskInstancesResponse
@@ -7066,6 +8930,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDownstreamTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.ListDownstreamTaskInstancesResponse:
         """
+        @summary Queries a list of descendant instances of an instance by page.
+        
         @param request: ListDownstreamTaskInstancesRequest
         @return: ListDownstreamTaskInstancesResponse
         """
@@ -7077,6 +8943,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDownstreamTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.ListDownstreamTaskInstancesResponse:
         """
+        @summary Queries a list of descendant instances of an instance by page.
+        
         @param request: ListDownstreamTaskInstancesRequest
         @return: ListDownstreamTaskInstancesResponse
         """
@@ -7089,6 +8957,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDownstreamTasksResponse:
         """
+        @summary Queries a list of descendant tasks of a task by page.
+        
         @param request: ListDownstreamTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDownstreamTasksResponse
@@ -7120,6 +8990,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDownstreamTasksResponse:
         """
+        @summary Queries a list of descendant tasks of a task by page.
+        
         @param request: ListDownstreamTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDownstreamTasksResponse
@@ -7150,6 +9022,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDownstreamTasksRequest,
     ) -> dataworks_public_20240518_models.ListDownstreamTasksResponse:
         """
+        @summary Queries a list of descendant tasks of a task by page.
+        
         @param request: ListDownstreamTasksRequest
         @return: ListDownstreamTasksResponse
         """
@@ -7161,6 +9035,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDownstreamTasksRequest,
     ) -> dataworks_public_20240518_models.ListDownstreamTasksResponse:
         """
+        @summary Queries a list of descendant tasks of a task by page.
+        
         @param request: ListDownstreamTasksRequest
         @return: ListDownstreamTasksResponse
         """
@@ -7265,7 +9141,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListNetworksResponse:
         """
-        @summary 获取通用资源组网络资源列表。
+        @summary Queries a list of network resources of a serverless resource group.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListNetworksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7298,7 +9176,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListNetworksResponse:
         """
-        @summary 获取通用资源组网络资源列表。
+        @summary Queries a list of network resources of a serverless resource group.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListNetworksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7330,7 +9210,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListNetworksRequest,
     ) -> dataworks_public_20240518_models.ListNetworksResponse:
         """
-        @summary 获取通用资源组网络资源列表。
+        @summary Queries a list of network resources of a serverless resource group.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListNetworksRequest
         @return: ListNetworksResponse
@@ -7343,7 +9225,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListNetworksRequest,
     ) -> dataworks_public_20240518_models.ListNetworksResponse:
         """
-        @summary 获取通用资源组网络资源列表。
+        @summary Queries a list of network resources of a serverless resource group.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListNetworksRequest
         @return: ListNetworksResponse
@@ -7665,7 +9549,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListProjectRolesResponse:
         """
-        @summary 分页查询工作空间角色详情
+        @summary Queries the information about roles in a DataWorks workspace by page.
         
         @param tmp_req: ListProjectRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7716,7 +9600,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListProjectRolesResponse:
         """
-        @summary 分页查询工作空间角色详情
+        @summary Queries the information about roles in a DataWorks workspace by page.
         
         @param tmp_req: ListProjectRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7766,7 +9650,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListProjectRolesRequest,
     ) -> dataworks_public_20240518_models.ListProjectRolesResponse:
         """
-        @summary 分页查询工作空间角色详情
+        @summary Queries the information about roles in a DataWorks workspace by page.
         
         @param request: ListProjectRolesRequest
         @return: ListProjectRolesResponse
@@ -7779,7 +9663,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListProjectRolesRequest,
     ) -> dataworks_public_20240518_models.ListProjectRolesResponse:
         """
-        @summary 分页查询工作空间角色详情
+        @summary Queries the information about roles in a DataWorks workspace by page.
         
         @param request: ListProjectRolesRequest
         @return: ListProjectRolesResponse
@@ -7793,7 +9677,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListProjectsResponse:
         """
-        @summary 分页查询工作空间详情
+        @summary Queries a list of DataWorks workspaces of the tenant to which your account belongs.
         
         @param tmp_req: ListProjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7854,7 +9738,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListProjectsResponse:
         """
-        @summary 分页查询工作空间详情
+        @summary Queries a list of DataWorks workspaces of the tenant to which your account belongs.
         
         @param tmp_req: ListProjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7914,7 +9798,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListProjectsRequest,
     ) -> dataworks_public_20240518_models.ListProjectsResponse:
         """
-        @summary 分页查询工作空间详情
+        @summary Queries a list of DataWorks workspaces of the tenant to which your account belongs.
         
         @param request: ListProjectsRequest
         @return: ListProjectsResponse
@@ -7927,7 +9811,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListProjectsRequest,
     ) -> dataworks_public_20240518_models.ListProjectsResponse:
         """
-        @summary 分页查询工作空间详情
+        @summary Queries a list of DataWorks workspaces of the tenant to which your account belongs.
         
         @param request: ListProjectsRequest
         @return: ListProjectsResponse
@@ -7941,7 +9825,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListResourceGroupsResponse:
         """
-        @summary 获取资源组列表。
+        @summary Queries a list of resource groups.
         
         @param tmp_req: ListResourceGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7980,7 +9864,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListResourceGroupsResponse:
         """
-        @summary 获取资源组列表。
+        @summary Queries a list of resource groups.
         
         @param tmp_req: ListResourceGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8018,7 +9902,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListResourceGroupsRequest,
     ) -> dataworks_public_20240518_models.ListResourceGroupsResponse:
         """
-        @summary 获取资源组列表。
+        @summary Queries a list of resource groups.
         
         @param request: ListResourceGroupsRequest
         @return: ListResourceGroupsResponse
@@ -8031,7 +9915,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListResourceGroupsRequest,
     ) -> dataworks_public_20240518_models.ListResourceGroupsResponse:
         """
-        @summary 获取资源组列表。
+        @summary Queries a list of resource groups.
         
         @param request: ListResourceGroupsRequest
         @return: ListResourceGroupsResponse
@@ -8139,6 +10023,8 @@ class Client(OpenApiClient):
         """
         @summary 获取网络资源的路由列表。
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListRoutesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListRoutesResponse
@@ -8172,6 +10058,8 @@ class Client(OpenApiClient):
         """
         @summary 获取网络资源的路由列表。
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListRoutesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListRoutesResponse
@@ -8204,6 +10092,8 @@ class Client(OpenApiClient):
         """
         @summary 获取网络资源的路由列表。
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListRoutesRequest
         @return: ListRoutesResponse
         """
@@ -8217,6 +10107,8 @@ class Client(OpenApiClient):
         """
         @summary 获取网络资源的路由列表。
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListRoutesRequest
         @return: ListRoutesResponse
         """
@@ -8229,6 +10121,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListTaskInstanceOperationLogsResponse:
         """
+        @summary Queries a list of operation logs of an instance by page.
+        
+        @description This API operation is available for all DataWorks editions.
+        You can call this operation to query only the operation logs generated within the previous 31 days.
+        
         @param request: ListTaskInstanceOperationLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTaskInstanceOperationLogsResponse
@@ -8260,6 +10157,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListTaskInstanceOperationLogsResponse:
         """
+        @summary Queries a list of operation logs of an instance by page.
+        
+        @description This API operation is available for all DataWorks editions.
+        You can call this operation to query only the operation logs generated within the previous 31 days.
+        
         @param request: ListTaskInstanceOperationLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTaskInstanceOperationLogsResponse
@@ -8290,6 +10192,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListTaskInstanceOperationLogsRequest,
     ) -> dataworks_public_20240518_models.ListTaskInstanceOperationLogsResponse:
         """
+        @summary Queries a list of operation logs of an instance by page.
+        
+        @description This API operation is available for all DataWorks editions.
+        You can call this operation to query only the operation logs generated within the previous 31 days.
+        
         @param request: ListTaskInstanceOperationLogsRequest
         @return: ListTaskInstanceOperationLogsResponse
         """
@@ -8301,6 +10208,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListTaskInstanceOperationLogsRequest,
     ) -> dataworks_public_20240518_models.ListTaskInstanceOperationLogsResponse:
         """
+        @summary Queries a list of operation logs of an instance by page.
+        
+        @description This API operation is available for all DataWorks editions.
+        You can call this operation to query only the operation logs generated within the previous 31 days.
+        
         @param request: ListTaskInstanceOperationLogsRequest
         @return: ListTaskInstanceOperationLogsResponse
         """
@@ -8313,6 +10225,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListTaskInstancesResponse:
         """
+        @summary Queries a list of instances. You can also specify filter conditions to query specific instances.
+        
         @param tmp_req: ListTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTaskInstancesResponse
@@ -8388,6 +10302,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListTaskInstancesResponse:
         """
+        @summary Queries a list of instances. You can also specify filter conditions to query specific instances.
+        
         @param tmp_req: ListTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTaskInstancesResponse
@@ -8462,6 +10378,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.ListTaskInstancesResponse:
         """
+        @summary Queries a list of instances. You can also specify filter conditions to query specific instances.
+        
         @param request: ListTaskInstancesRequest
         @return: ListTaskInstancesResponse
         """
@@ -8473,6 +10391,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.ListTaskInstancesResponse:
         """
+        @summary Queries a list of instances. You can also specify filter conditions to query specific instances.
+        
         @param request: ListTaskInstancesRequest
         @return: ListTaskInstancesResponse
         """
@@ -8485,6 +10405,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListTaskOperationLogsResponse:
         """
+        @summary Queries a list of operation logs of a task by page.
+        
+        @description This API operation is available for all DataWorks editions.
+        You can call this operation to query only the operation logs generated within the previous 31 days.
+        
         @param request: ListTaskOperationLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTaskOperationLogsResponse
@@ -8516,6 +10441,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListTaskOperationLogsResponse:
         """
+        @summary Queries a list of operation logs of a task by page.
+        
+        @description This API operation is available for all DataWorks editions.
+        You can call this operation to query only the operation logs generated within the previous 31 days.
+        
         @param request: ListTaskOperationLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTaskOperationLogsResponse
@@ -8546,6 +10476,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListTaskOperationLogsRequest,
     ) -> dataworks_public_20240518_models.ListTaskOperationLogsResponse:
         """
+        @summary Queries a list of operation logs of a task by page.
+        
+        @description This API operation is available for all DataWorks editions.
+        You can call this operation to query only the operation logs generated within the previous 31 days.
+        
         @param request: ListTaskOperationLogsRequest
         @return: ListTaskOperationLogsResponse
         """
@@ -8557,6 +10492,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListTaskOperationLogsRequest,
     ) -> dataworks_public_20240518_models.ListTaskOperationLogsResponse:
         """
+        @summary Queries a list of operation logs of a task by page.
+        
+        @description This API operation is available for all DataWorks editions.
+        You can call this operation to query only the operation logs generated within the previous 31 days.
+        
         @param request: ListTaskOperationLogsRequest
         @return: ListTaskOperationLogsResponse
         """
@@ -8569,6 +10509,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListTasksResponse:
         """
+        @summary Queries a list of tasks by page. You can also specify filter conditions to query tasks.
+        
         @param request: ListTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTasksResponse
@@ -8624,6 +10566,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListTasksResponse:
         """
+        @summary Queries a list of tasks by page. You can also specify filter conditions to query tasks.
+        
         @param request: ListTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTasksResponse
@@ -8678,6 +10622,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListTasksRequest,
     ) -> dataworks_public_20240518_models.ListTasksResponse:
         """
+        @summary Queries a list of tasks by page. You can also specify filter conditions to query tasks.
+        
         @param request: ListTasksRequest
         @return: ListTasksResponse
         """
@@ -8689,6 +10635,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListTasksRequest,
     ) -> dataworks_public_20240518_models.ListTasksResponse:
         """
+        @summary Queries a list of tasks by page. You can also specify filter conditions to query tasks.
+        
         @param request: ListTasksRequest
         @return: ListTasksResponse
         """
@@ -8701,6 +10649,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListUpstreamTaskInstancesResponse:
         """
+        @summary Queries a list of ancestor instances of an instance by page.
+        
         @param request: ListUpstreamTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListUpstreamTaskInstancesResponse
@@ -8732,6 +10682,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListUpstreamTaskInstancesResponse:
         """
+        @summary Queries a list of ancestor instances of an instance by page.
+        
         @param request: ListUpstreamTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListUpstreamTaskInstancesResponse
@@ -8762,6 +10714,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListUpstreamTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.ListUpstreamTaskInstancesResponse:
         """
+        @summary Queries a list of ancestor instances of an instance by page.
+        
         @param request: ListUpstreamTaskInstancesRequest
         @return: ListUpstreamTaskInstancesResponse
         """
@@ -8773,6 +10727,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListUpstreamTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.ListUpstreamTaskInstancesResponse:
         """
+        @summary Queries a list of ancestor instances of an instance by page.
+        
         @param request: ListUpstreamTaskInstancesRequest
         @return: ListUpstreamTaskInstancesResponse
         """
@@ -8785,6 +10741,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListUpstreamTasksResponse:
         """
+        @summary Queries a list of ancestor tasks of a task by page.
+        
         @param request: ListUpstreamTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListUpstreamTasksResponse
@@ -8816,6 +10774,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListUpstreamTasksResponse:
         """
+        @summary Queries a list of ancestor tasks of a task by page.
+        
         @param request: ListUpstreamTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListUpstreamTasksResponse
@@ -8846,6 +10806,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListUpstreamTasksRequest,
     ) -> dataworks_public_20240518_models.ListUpstreamTasksResponse:
         """
+        @summary Queries a list of ancestor tasks of a task by page.
+        
         @param request: ListUpstreamTasksRequest
         @return: ListUpstreamTasksResponse
         """
@@ -8857,6 +10819,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListUpstreamTasksRequest,
     ) -> dataworks_public_20240518_models.ListUpstreamTasksResponse:
         """
+        @summary Queries a list of ancestor tasks of a task by page.
+        
         @param request: ListUpstreamTasksRequest
         @return: ListUpstreamTasksResponse
         """
@@ -9377,6 +11341,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RemoveTaskInstanceDependenciesResponse:
         """
+        @summary Removes multiple upstream dependencies of an instance at a time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: RemoveTaskInstanceDependenciesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveTaskInstanceDependenciesResponse
@@ -9420,6 +11388,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RemoveTaskInstanceDependenciesResponse:
         """
+        @summary Removes multiple upstream dependencies of an instance at a time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: RemoveTaskInstanceDependenciesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveTaskInstanceDependenciesResponse
@@ -9462,6 +11434,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RemoveTaskInstanceDependenciesRequest,
     ) -> dataworks_public_20240518_models.RemoveTaskInstanceDependenciesResponse:
         """
+        @summary Removes multiple upstream dependencies of an instance at a time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: RemoveTaskInstanceDependenciesRequest
         @return: RemoveTaskInstanceDependenciesResponse
         """
@@ -9473,6 +11449,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RemoveTaskInstanceDependenciesRequest,
     ) -> dataworks_public_20240518_models.RemoveTaskInstanceDependenciesResponse:
         """
+        @summary Removes multiple upstream dependencies of an instance at a time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: RemoveTaskInstanceDependenciesRequest
         @return: RemoveTaskInstanceDependenciesResponse
         """
@@ -9901,6 +11881,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RerunTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: RerunTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RerunTaskInstancesResponse
@@ -9940,6 +11922,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RerunTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: RerunTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RerunTaskInstancesResponse
@@ -9978,6 +11962,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RerunTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.RerunTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: RerunTaskInstancesRequest
         @return: RerunTaskInstancesResponse
         """
@@ -9989,6 +11975,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RerunTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.RerunTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: RerunTaskInstancesRequest
         @return: RerunTaskInstancesResponse
         """
@@ -10001,6 +11989,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ResumeTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ResumeTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ResumeTaskInstancesResponse
@@ -10040,6 +12030,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ResumeTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ResumeTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ResumeTaskInstancesResponse
@@ -10078,6 +12070,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ResumeTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.ResumeTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ResumeTaskInstancesRequest
         @return: ResumeTaskInstancesResponse
         """
@@ -10089,6 +12083,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ResumeTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.ResumeTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ResumeTaskInstancesRequest
         @return: ResumeTaskInstancesResponse
         """
@@ -10213,6 +12209,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.SetSuccessTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: SetSuccessTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetSuccessTaskInstancesResponse
@@ -10252,6 +12250,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.SetSuccessTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: SetSuccessTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetSuccessTaskInstancesResponse
@@ -10290,6 +12290,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.SetSuccessTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.SetSuccessTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: SetSuccessTaskInstancesRequest
         @return: SetSuccessTaskInstancesResponse
         """
@@ -10301,6 +12303,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.SetSuccessTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.SetSuccessTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: SetSuccessTaskInstancesRequest
         @return: SetSuccessTaskInstancesResponse
         """
@@ -10313,7 +12317,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.StartDIJobResponse:
         """
-        @summary 启动数据集成任务
+        @summary Starts a new-version synchronization task.
         
         @param tmp_req: StartDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10350,7 +12354,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.StartDIJobResponse:
         """
-        @summary 启动数据集成任务
+        @summary Starts a new-version synchronization task.
         
         @param tmp_req: StartDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10386,7 +12390,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.StartDIJobRequest,
     ) -> dataworks_public_20240518_models.StartDIJobResponse:
         """
-        @summary 启动数据集成任务
+        @summary Starts a new-version synchronization task.
         
         @param request: StartDIJobRequest
         @return: StartDIJobResponse
@@ -10399,7 +12403,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.StartDIJobRequest,
     ) -> dataworks_public_20240518_models.StartDIJobResponse:
         """
-        @summary 启动数据集成任务
+        @summary Starts a new-version synchronization task.
         
         @param request: StartDIJobRequest
         @return: StartDIJobResponse
@@ -10505,6 +12509,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.StopTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: StopTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StopTaskInstancesResponse
@@ -10544,6 +12550,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.StopTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: StopTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StopTaskInstancesResponse
@@ -10582,6 +12590,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.StopTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.StopTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: StopTaskInstancesRequest
         @return: StopTaskInstancesResponse
         """
@@ -10593,6 +12603,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.StopTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.StopTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: StopTaskInstancesRequest
         @return: StopTaskInstancesResponse
         """
@@ -10605,6 +12617,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.SuspendTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: SuspendTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SuspendTaskInstancesResponse
@@ -10644,6 +12658,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.SuspendTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: SuspendTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SuspendTaskInstancesResponse
@@ -10682,6 +12698,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.SuspendTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.SuspendTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: SuspendTaskInstancesRequest
         @return: SuspendTaskInstancesResponse
         """
@@ -10693,6 +12711,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.SuspendTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.SuspendTaskInstancesResponse:
         """
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: SuspendTaskInstancesRequest
         @return: SuspendTaskInstancesResponse
         """
@@ -10705,6 +12725,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.TriggerSchedulerTaskInstanceResponse:
         """
+        @summary Triggers a task to run by using an HTTP Trigger node at a specified time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: TriggerSchedulerTaskInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TriggerSchedulerTaskInstanceResponse
@@ -10740,6 +12764,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.TriggerSchedulerTaskInstanceResponse:
         """
+        @summary Triggers a task to run by using an HTTP Trigger node at a specified time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: TriggerSchedulerTaskInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TriggerSchedulerTaskInstanceResponse
@@ -10774,6 +12802,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.TriggerSchedulerTaskInstanceRequest,
     ) -> dataworks_public_20240518_models.TriggerSchedulerTaskInstanceResponse:
         """
+        @summary Triggers a task to run by using an HTTP Trigger node at a specified time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: TriggerSchedulerTaskInstanceRequest
         @return: TriggerSchedulerTaskInstanceResponse
         """
@@ -10785,6 +12817,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.TriggerSchedulerTaskInstanceRequest,
     ) -> dataworks_public_20240518_models.TriggerSchedulerTaskInstanceResponse:
         """
+        @summary Triggers a task to run by using an HTTP Trigger node at a specified time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: TriggerSchedulerTaskInstanceRequest
         @return: TriggerSchedulerTaskInstanceResponse
         """
@@ -10797,7 +12833,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateAlertRuleResponse:
         """
-        @summary 创建自定义监控报警规则
+        @summary Updates a custom alert monitoring rule.
         
         @param tmp_req: UpdateAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10848,7 +12884,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateAlertRuleResponse:
         """
-        @summary 创建自定义监控报警规则
+        @summary Updates a custom alert monitoring rule.
         
         @param tmp_req: UpdateAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10898,7 +12934,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateAlertRuleRequest,
     ) -> dataworks_public_20240518_models.UpdateAlertRuleResponse:
         """
-        @summary 创建自定义监控报警规则
+        @summary Updates a custom alert monitoring rule.
         
         @param request: UpdateAlertRuleRequest
         @return: UpdateAlertRuleResponse
@@ -10911,7 +12947,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateAlertRuleRequest,
     ) -> dataworks_public_20240518_models.UpdateAlertRuleResponse:
         """
-        @summary 创建自定义监控报警规则
+        @summary Updates a custom alert monitoring rule.
         
         @param request: UpdateAlertRuleRequest
         @return: UpdateAlertRuleResponse
@@ -10925,7 +12961,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDIAlarmRuleResponse:
         """
-        @summary 更新数据集成报警规则
+        @summary Updates an alert rule configured for a synchronization task.
         
         @param tmp_req: UpdateDIAlarmRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10964,7 +13000,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDIAlarmRuleResponse:
         """
-        @summary 更新数据集成报警规则
+        @summary Updates an alert rule configured for a synchronization task.
         
         @param tmp_req: UpdateDIAlarmRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11002,7 +13038,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDIAlarmRuleRequest,
     ) -> dataworks_public_20240518_models.UpdateDIAlarmRuleResponse:
         """
-        @summary 更新数据集成报警规则
+        @summary Updates an alert rule configured for a synchronization task.
         
         @param request: UpdateDIAlarmRuleRequest
         @return: UpdateDIAlarmRuleResponse
@@ -11015,7 +13051,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDIAlarmRuleRequest,
     ) -> dataworks_public_20240518_models.UpdateDIAlarmRuleResponse:
         """
-        @summary 更新数据集成报警规则
+        @summary Updates an alert rule configured for a synchronization task.
         
         @param request: UpdateDIAlarmRuleRequest
         @return: UpdateDIAlarmRuleResponse
@@ -11029,7 +13065,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDIJobResponse:
         """
-        @summary 更新数据集成任务
+        @summary Updates a synchronization task.
         
         @param tmp_req: UpdateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11072,7 +13108,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDIJobResponse:
         """
-        @summary 更新数据集成任务
+        @summary Updates a synchronization task.
         
         @param tmp_req: UpdateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11114,7 +13150,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDIJobRequest,
     ) -> dataworks_public_20240518_models.UpdateDIJobResponse:
         """
-        @summary 更新数据集成任务
+        @summary Updates a synchronization task.
         
         @param request: UpdateDIJobRequest
         @return: UpdateDIJobResponse
@@ -11127,7 +13163,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDIJobRequest,
     ) -> dataworks_public_20240518_models.UpdateDIJobResponse:
         """
-        @summary 更新数据集成任务
+        @summary Updates a synchronization task.
         
         @param request: UpdateDIJobRequest
         @return: UpdateDIJobResponse
@@ -11135,13 +13171,469 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_dijob_with_options_async(request, runtime)
 
+    def update_data_quality_evaluation_task_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse:
+        """
+        @summary 更新数据质量校验任务
+        
+        @param tmp_req: UpdateDataQualityEvaluationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataQualityEvaluationTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_quality_rules):
+            request.data_quality_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_quality_rules, 'DataQualityRules', 'json')
+        if not UtilClient.is_unset(tmp_req.hooks):
+            request.hooks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hooks, 'Hooks', 'json')
+        if not UtilClient.is_unset(tmp_req.notifications):
+            request.notifications_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notifications, 'Notifications', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger):
+            request.trigger_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger, 'Trigger', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_quality_rules_shrink):
+            body['DataQualityRules'] = request.data_quality_rules_shrink
+        if not UtilClient.is_unset(request.data_source_id):
+            body['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.hooks_shrink):
+            body['Hooks'] = request.hooks_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.notifications_shrink):
+            body['Notifications'] = request.notifications_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.runtime_conf):
+            body['RuntimeConf'] = request.runtime_conf
+        if not UtilClient.is_unset(request.target_shrink):
+            body['Target'] = request.target_shrink
+        if not UtilClient.is_unset(request.trigger_shrink):
+            body['Trigger'] = request.trigger_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataQualityEvaluationTask',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_quality_evaluation_task_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse:
+        """
+        @summary 更新数据质量校验任务
+        
+        @param tmp_req: UpdateDataQualityEvaluationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataQualityEvaluationTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_quality_rules):
+            request.data_quality_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_quality_rules, 'DataQualityRules', 'json')
+        if not UtilClient.is_unset(tmp_req.hooks):
+            request.hooks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hooks, 'Hooks', 'json')
+        if not UtilClient.is_unset(tmp_req.notifications):
+            request.notifications_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notifications, 'Notifications', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger):
+            request.trigger_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger, 'Trigger', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_quality_rules_shrink):
+            body['DataQualityRules'] = request.data_quality_rules_shrink
+        if not UtilClient.is_unset(request.data_source_id):
+            body['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.hooks_shrink):
+            body['Hooks'] = request.hooks_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.notifications_shrink):
+            body['Notifications'] = request.notifications_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.runtime_conf):
+            body['RuntimeConf'] = request.runtime_conf
+        if not UtilClient.is_unset(request.target_shrink):
+            body['Target'] = request.target_shrink
+        if not UtilClient.is_unset(request.trigger_shrink):
+            body['Trigger'] = request.trigger_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataQualityEvaluationTask',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_quality_evaluation_task(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse:
+        """
+        @summary 更新数据质量校验任务
+        
+        @param request: UpdateDataQualityEvaluationTaskRequest
+        @return: UpdateDataQualityEvaluationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_data_quality_evaluation_task_with_options(request, runtime)
+
+    async def update_data_quality_evaluation_task_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse:
+        """
+        @summary 更新数据质量校验任务
+        
+        @param request: UpdateDataQualityEvaluationTaskRequest
+        @return: UpdateDataQualityEvaluationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_data_quality_evaluation_task_with_options_async(request, runtime)
+
+    def update_data_quality_rule_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDataQualityRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityRuleResponse:
+        """
+        @summary Updates a data quality monitoring rule.
+        
+        @param tmp_req: UpdateDataQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataQualityRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDataQualityRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.checking_config):
+            request.checking_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.checking_config, 'CheckingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.error_handlers):
+            request.error_handlers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.error_handlers, 'ErrorHandlers', 'json')
+        if not UtilClient.is_unset(tmp_req.sampling_config):
+            request.sampling_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sampling_config, 'SamplingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.checking_config_shrink):
+            body['CheckingConfig'] = request.checking_config_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.enabled):
+            body['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.error_handlers_shrink):
+            body['ErrorHandlers'] = request.error_handlers_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.sampling_config_shrink):
+            body['SamplingConfig'] = request.sampling_config_shrink
+        if not UtilClient.is_unset(request.severity):
+            body['Severity'] = request.severity
+        if not UtilClient.is_unset(request.target_shrink):
+            body['Target'] = request.target_shrink
+        if not UtilClient.is_unset(request.template_code):
+            body['TemplateCode'] = request.template_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataQualityRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_quality_rule_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDataQualityRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityRuleResponse:
+        """
+        @summary Updates a data quality monitoring rule.
+        
+        @param tmp_req: UpdateDataQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataQualityRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDataQualityRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.checking_config):
+            request.checking_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.checking_config, 'CheckingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.error_handlers):
+            request.error_handlers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.error_handlers, 'ErrorHandlers', 'json')
+        if not UtilClient.is_unset(tmp_req.sampling_config):
+            request.sampling_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sampling_config, 'SamplingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.checking_config_shrink):
+            body['CheckingConfig'] = request.checking_config_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.enabled):
+            body['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.error_handlers_shrink):
+            body['ErrorHandlers'] = request.error_handlers_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.sampling_config_shrink):
+            body['SamplingConfig'] = request.sampling_config_shrink
+        if not UtilClient.is_unset(request.severity):
+            body['Severity'] = request.severity
+        if not UtilClient.is_unset(request.target_shrink):
+            body['Target'] = request.target_shrink
+        if not UtilClient.is_unset(request.template_code):
+            body['TemplateCode'] = request.template_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataQualityRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_quality_rule(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityRuleRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityRuleResponse:
+        """
+        @summary Updates a data quality monitoring rule.
+        
+        @param request: UpdateDataQualityRuleRequest
+        @return: UpdateDataQualityRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_data_quality_rule_with_options(request, runtime)
+
+    async def update_data_quality_rule_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityRuleRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityRuleResponse:
+        """
+        @summary Updates a data quality monitoring rule.
+        
+        @param request: UpdateDataQualityRuleRequest
+        @return: UpdateDataQualityRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_data_quality_rule_with_options_async(request, runtime)
+
+    def update_data_quality_rule_template_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDataQualityRuleTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityRuleTemplateResponse:
+        """
+        @summary Updates a data quality monitoring rule template.
+        
+        @param tmp_req: UpdateDataQualityRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataQualityRuleTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDataQualityRuleTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.checking_config):
+            request.checking_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.checking_config, 'CheckingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sampling_config):
+            request.sampling_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sampling_config, 'SamplingConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.checking_config_shrink):
+            body['CheckingConfig'] = request.checking_config_shrink
+        if not UtilClient.is_unset(request.code):
+            body['Code'] = request.code
+        if not UtilClient.is_unset(request.directory_path):
+            body['DirectoryPath'] = request.directory_path
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.sampling_config_shrink):
+            body['SamplingConfig'] = request.sampling_config_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataQualityRuleTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityRuleTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_quality_rule_template_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDataQualityRuleTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityRuleTemplateResponse:
+        """
+        @summary Updates a data quality monitoring rule template.
+        
+        @param tmp_req: UpdateDataQualityRuleTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataQualityRuleTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDataQualityRuleTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.checking_config):
+            request.checking_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.checking_config, 'CheckingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sampling_config):
+            request.sampling_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sampling_config, 'SamplingConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.checking_config_shrink):
+            body['CheckingConfig'] = request.checking_config_shrink
+        if not UtilClient.is_unset(request.code):
+            body['Code'] = request.code
+        if not UtilClient.is_unset(request.directory_path):
+            body['DirectoryPath'] = request.directory_path
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.sampling_config_shrink):
+            body['SamplingConfig'] = request.sampling_config_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataQualityRuleTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityRuleTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_quality_rule_template(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityRuleTemplateRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityRuleTemplateResponse:
+        """
+        @summary Updates a data quality monitoring rule template.
+        
+        @param request: UpdateDataQualityRuleTemplateRequest
+        @return: UpdateDataQualityRuleTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_data_quality_rule_template_with_options(request, runtime)
+
+    async def update_data_quality_rule_template_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityRuleTemplateRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityRuleTemplateResponse:
+        """
+        @summary Updates a data quality monitoring rule template.
+        
+        @param request: UpdateDataQualityRuleTemplateRequest
+        @return: UpdateDataQualityRuleTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_data_quality_rule_template_with_options_async(request, runtime)
+
     def update_data_source_with_options(
         self,
         request: dataworks_public_20240518_models.UpdateDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDataSourceResponse:
         """
-        @summary 验证用
+        @summary Modifies a data source by ID.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: UpdateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11184,7 +13676,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDataSourceResponse:
         """
-        @summary 验证用
+        @summary Modifies a data source by ID.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: UpdateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11226,7 +13722,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDataSourceRequest,
     ) -> dataworks_public_20240518_models.UpdateDataSourceResponse:
         """
-        @summary 验证用
+        @summary Modifies a data source by ID.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: UpdateDataSourceRequest
         @return: UpdateDataSourceResponse
@@ -11239,7 +13739,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDataSourceRequest,
     ) -> dataworks_public_20240518_models.UpdateDataSourceResponse:
         """
-        @summary 验证用
+        @summary Modifies a data source by ID.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+        Tenant Owner, Tenant Administrator, Workspace Administrator, Workspace Owner, and O\\&M
         
         @param request: UpdateDataSourceRequest
         @return: UpdateDataSourceResponse
@@ -11461,7 +13965,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateProjectResponse:
         """
-        @summary 更新工作空间
+        @summary Updates a DataWorks workspace.
         
         @param request: UpdateProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11508,7 +14012,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateProjectResponse:
         """
-        @summary 更新工作空间
+        @summary Updates a DataWorks workspace.
         
         @param request: UpdateProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11554,7 +14058,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateProjectRequest,
     ) -> dataworks_public_20240518_models.UpdateProjectResponse:
         """
-        @summary 更新工作空间
+        @summary Updates a DataWorks workspace.
         
         @param request: UpdateProjectRequest
         @return: UpdateProjectResponse
@@ -11567,7 +14071,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateProjectRequest,
     ) -> dataworks_public_20240518_models.UpdateProjectResponse:
         """
-        @summary 更新工作空间
+        @summary Updates a DataWorks workspace.
         
         @param request: UpdateProjectRequest
         @return: UpdateProjectResponse
@@ -11687,6 +14191,8 @@ class Client(OpenApiClient):
         """
         @summary Updates basic information about a resource group.
         
+        @description You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        
         @param request: UpdateResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateResourceGroupResponse
@@ -11726,6 +14232,8 @@ class Client(OpenApiClient):
         """
         @summary Updates basic information about a resource group.
         
+        @description You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        
         @param request: UpdateResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateResourceGroupResponse
@@ -11764,6 +14272,8 @@ class Client(OpenApiClient):
         """
         @summary Updates basic information about a resource group.
         
+        @description You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        
         @param request: UpdateResourceGroupRequest
         @return: UpdateResourceGroupResponse
         """
@@ -11777,6 +14287,8 @@ class Client(OpenApiClient):
         """
         @summary Updates basic information about a resource group.
         
+        @description You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+        
         @param request: UpdateResourceGroupRequest
         @return: UpdateResourceGroupResponse
         """
@@ -11789,7 +14301,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateRouteResponse:
         """
-        @summary 更新网络资源的路由。
+        @summary Updates the information about a route.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: UpdateRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11826,7 +14340,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateRouteResponse:
         """
-        @summary 更新网络资源的路由。
+        @summary Updates the information about a route.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: UpdateRouteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11862,7 +14378,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateRouteRequest,
     ) -> dataworks_public_20240518_models.UpdateRouteResponse:
         """
-        @summary 更新网络资源的路由。
+        @summary Updates the information about a route.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: UpdateRouteRequest
         @return: UpdateRouteResponse
@@ -11875,7 +14393,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateRouteRequest,
     ) -> dataworks_public_20240518_models.UpdateRouteResponse:
         """
-        @summary 更新网络资源的路由。
+        @summary Updates the information about a route.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: UpdateRouteRequest
         @return: UpdateRouteResponse
@@ -11889,6 +14409,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateTaskInstancesResponse:
         """
+        @summary Modifies properties configured for multiple instances at a time. The properties include the priority, resource group for scheduling, and data source.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: UpdateTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTaskInstancesResponse
@@ -11928,6 +14452,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateTaskInstancesResponse:
         """
+        @summary Modifies properties configured for multiple instances at a time. The properties include the priority, resource group for scheduling, and data source.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: UpdateTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTaskInstancesResponse
@@ -11966,6 +14494,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.UpdateTaskInstancesResponse:
         """
+        @summary Modifies properties configured for multiple instances at a time. The properties include the priority, resource group for scheduling, and data source.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: UpdateTaskInstancesRequest
         @return: UpdateTaskInstancesResponse
         """
@@ -11977,6 +14509,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.UpdateTaskInstancesResponse:
         """
+        @summary Modifies properties configured for multiple instances at a time. The properties include the priority, resource group for scheduling, and data source.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: UpdateTaskInstancesRequest
         @return: UpdateTaskInstancesResponse
         """
