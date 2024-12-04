@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class AlignStoragePrimaryAzoneRequest(TeaModel):
@@ -1256,6 +1256,7 @@ class CreateDBInstanceRequest(TeaModel):
         dn_class: str = None,
         dn_storage_space: str = None,
         engine_version: str = None,
+        extra_params: Dict[str, str] = None,
         is_columnar_read_dbinstance: bool = None,
         is_read_dbinstance: bool = None,
         network_type: str = None,
@@ -1285,6 +1286,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.dn_storage_space = dn_storage_space
         # This parameter is required.
         self.engine_version = engine_version
+        self.extra_params = extra_params
         self.is_columnar_read_dbinstance = is_columnar_read_dbinstance
         self.is_read_dbinstance = is_read_dbinstance
         self.network_type = network_type
@@ -1336,6 +1338,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['DnStorageSpace'] = self.dn_storage_space
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
+        if self.extra_params is not None:
+            result['ExtraParams'] = self.extra_params
         if self.is_columnar_read_dbinstance is not None:
             result['IsColumnarReadDBInstance'] = self.is_columnar_read_dbinstance
         if self.is_read_dbinstance is not None:
@@ -1394,6 +1398,202 @@ class CreateDBInstanceRequest(TeaModel):
             self.dn_storage_space = m.get('DnStorageSpace')
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
+        if m.get('ExtraParams') is not None:
+            self.extra_params = m.get('ExtraParams')
+        if m.get('IsColumnarReadDBInstance') is not None:
+            self.is_columnar_read_dbinstance = m.get('IsColumnarReadDBInstance')
+        if m.get('IsReadDBInstance') is not None:
+            self.is_read_dbinstance = m.get('IsReadDBInstance')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PrimaryDBInstanceName') is not None:
+            self.primary_dbinstance_name = m.get('PrimaryDBInstanceName')
+        if m.get('PrimaryZone') is not None:
+            self.primary_zone = m.get('PrimaryZone')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecondaryZone') is not None:
+            self.secondary_zone = m.get('SecondaryZone')
+        if m.get('Series') is not None:
+            self.series = m.get('Series')
+        if m.get('TertiaryZone') is not None:
+            self.tertiary_zone = m.get('TertiaryZone')
+        if m.get('TopologyType') is not None:
+            self.topology_type = m.get('TopologyType')
+        if m.get('UsedTime') is not None:
+            self.used_time = m.get('UsedTime')
+        if m.get('VPCId') is not None:
+            self.vpcid = m.get('VPCId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class CreateDBInstanceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        cnnode_count: str = None,
+        client_token: str = None,
+        cn_class: str = None,
+        dbnode_class: str = None,
+        dbnode_count: int = None,
+        dnnode_count: str = None,
+        dn_class: str = None,
+        dn_storage_space: str = None,
+        engine_version: str = None,
+        extra_params_shrink: str = None,
+        is_columnar_read_dbinstance: bool = None,
+        is_read_dbinstance: bool = None,
+        network_type: str = None,
+        pay_type: str = None,
+        period: str = None,
+        primary_dbinstance_name: str = None,
+        primary_zone: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        secondary_zone: str = None,
+        series: str = None,
+        tertiary_zone: str = None,
+        topology_type: str = None,
+        used_time: int = None,
+        vpcid: str = None,
+        v_switch_id: str = None,
+        zone_id: str = None,
+    ):
+        self.auto_renew = auto_renew
+        self.cnnode_count = cnnode_count
+        self.client_token = client_token
+        self.cn_class = cn_class
+        self.dbnode_class = dbnode_class
+        self.dbnode_count = dbnode_count
+        self.dnnode_count = dnnode_count
+        self.dn_class = dn_class
+        self.dn_storage_space = dn_storage_space
+        # This parameter is required.
+        self.engine_version = engine_version
+        self.extra_params_shrink = extra_params_shrink
+        self.is_columnar_read_dbinstance = is_columnar_read_dbinstance
+        self.is_read_dbinstance = is_read_dbinstance
+        self.network_type = network_type
+        # This parameter is required.
+        self.pay_type = pay_type
+        self.period = period
+        self.primary_dbinstance_name = primary_dbinstance_name
+        self.primary_zone = primary_zone
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.secondary_zone = secondary_zone
+        self.series = series
+        self.tertiary_zone = tertiary_zone
+        # This parameter is required.
+        self.topology_type = topology_type
+        self.used_time = used_time
+        # VPC ID。
+        self.vpcid = vpcid
+        self.v_switch_id = v_switch_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.cnnode_count is not None:
+            result['CNNodeCount'] = self.cnnode_count
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.cn_class is not None:
+            result['CnClass'] = self.cn_class
+        if self.dbnode_class is not None:
+            result['DBNodeClass'] = self.dbnode_class
+        if self.dbnode_count is not None:
+            result['DBNodeCount'] = self.dbnode_count
+        if self.dnnode_count is not None:
+            result['DNNodeCount'] = self.dnnode_count
+        if self.dn_class is not None:
+            result['DnClass'] = self.dn_class
+        if self.dn_storage_space is not None:
+            result['DnStorageSpace'] = self.dn_storage_space
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.extra_params_shrink is not None:
+            result['ExtraParams'] = self.extra_params_shrink
+        if self.is_columnar_read_dbinstance is not None:
+            result['IsColumnarReadDBInstance'] = self.is_columnar_read_dbinstance
+        if self.is_read_dbinstance is not None:
+            result['IsReadDBInstance'] = self.is_read_dbinstance
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.primary_dbinstance_name is not None:
+            result['PrimaryDBInstanceName'] = self.primary_dbinstance_name
+        if self.primary_zone is not None:
+            result['PrimaryZone'] = self.primary_zone
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.secondary_zone is not None:
+            result['SecondaryZone'] = self.secondary_zone
+        if self.series is not None:
+            result['Series'] = self.series
+        if self.tertiary_zone is not None:
+            result['TertiaryZone'] = self.tertiary_zone
+        if self.topology_type is not None:
+            result['TopologyType'] = self.topology_type
+        if self.used_time is not None:
+            result['UsedTime'] = self.used_time
+        if self.vpcid is not None:
+            result['VPCId'] = self.vpcid
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('CNNodeCount') is not None:
+            self.cnnode_count = m.get('CNNodeCount')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('CnClass') is not None:
+            self.cn_class = m.get('CnClass')
+        if m.get('DBNodeClass') is not None:
+            self.dbnode_class = m.get('DBNodeClass')
+        if m.get('DBNodeCount') is not None:
+            self.dbnode_count = m.get('DBNodeCount')
+        if m.get('DNNodeCount') is not None:
+            self.dnnode_count = m.get('DNNodeCount')
+        if m.get('DnClass') is not None:
+            self.dn_class = m.get('DnClass')
+        if m.get('DnStorageSpace') is not None:
+            self.dn_storage_space = m.get('DnStorageSpace')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('ExtraParams') is not None:
+            self.extra_params_shrink = m.get('ExtraParams')
         if m.get('IsColumnarReadDBInstance') is not None:
             self.is_columnar_read_dbinstance = m.get('IsColumnarReadDBInstance')
         if m.get('IsReadDBInstance') is not None:
@@ -4663,6 +4863,45 @@ class DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes(TeaModel):
         return self
 
 
+class DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList(TeaModel):
+    def __init__(
+        self,
+        member_name: str = None,
+        role: str = None,
+        status: str = None,
+    ):
+        self.member_name = member_name
+        self.role = role
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.member_name is not None:
+            result['MemberName'] = self.member_name
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MemberName') is not None:
+            self.member_name = m.get('MemberName')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet(TeaModel):
     def __init__(
         self,
@@ -4721,6 +4960,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         engine: str = None,
         expire_date: str = None,
         expired: str = None,
+        gdn_instance_name: str = None,
+        gdn_member_list: List[DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList] = None,
+        gdn_role: str = None,
         id: str = None,
         kind_code: int = None,
         ltsversions: List[str] = None,
@@ -4773,6 +5015,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         self.engine = engine
         self.expire_date = expire_date
         self.expired = expired
+        self.gdn_instance_name = gdn_instance_name
+        self.gdn_member_list = gdn_member_list
+        self.gdn_role = gdn_role
         self.id = id
         self.kind_code = kind_code
         # This parameter is required.
@@ -4823,6 +5068,10 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
                     k.validate()
         if self.dbnodes:
             for k in self.dbnodes:
+                if k:
+                    k.validate()
+        if self.gdn_member_list:
+            for k in self.gdn_member_list:
                 if k:
                     k.validate()
         if self.tag_set:
@@ -4884,6 +5133,14 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
             result['ExpireDate'] = self.expire_date
         if self.expired is not None:
             result['Expired'] = self.expired
+        if self.gdn_instance_name is not None:
+            result['GdnInstanceName'] = self.gdn_instance_name
+        result['GdnMemberList'] = []
+        if self.gdn_member_list is not None:
+            for k in self.gdn_member_list:
+                result['GdnMemberList'].append(k.to_map() if k else None)
+        if self.gdn_role is not None:
+            result['GdnRole'] = self.gdn_role
         if self.id is not None:
             result['Id'] = self.id
         if self.kind_code is not None:
@@ -4998,6 +5255,15 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
             self.expire_date = m.get('ExpireDate')
         if m.get('Expired') is not None:
             self.expired = m.get('Expired')
+        if m.get('GdnInstanceName') is not None:
+            self.gdn_instance_name = m.get('GdnInstanceName')
+        self.gdn_member_list = []
+        if m.get('GdnMemberList') is not None:
+            for k in m.get('GdnMemberList'):
+                temp_model = DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList()
+                self.gdn_member_list.append(temp_model.from_map(k))
+        if m.get('GdnRole') is not None:
+            self.gdn_role = m.get('GdnRole')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('KindCode') is not None:
@@ -5758,12 +6024,14 @@ class DescribeDBInstanceTopologyRequest(TeaModel):
         self,
         dbinstance_name: str = None,
         end_time: str = None,
+        minute_simple: bool = None,
         region_id: str = None,
         start_time: str = None,
     ):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.end_time = end_time
+        self.minute_simple = minute_simple
         # This parameter is required.
         self.region_id = region_id
         self.start_time = start_time
@@ -5781,6 +6049,8 @@ class DescribeDBInstanceTopologyRequest(TeaModel):
             result['DBInstanceName'] = self.dbinstance_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.minute_simple is not None:
+            result['MinuteSimple'] = self.minute_simple
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.start_time is not None:
@@ -5793,6 +6063,8 @@ class DescribeDBInstanceTopologyRequest(TeaModel):
             self.dbinstance_name = m.get('DBInstanceName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('MinuteSimple') is not None:
+            self.minute_simple = m.get('MinuteSimple')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('StartTime') is not None:
@@ -6949,6 +7221,7 @@ class DescribeDBInstanceViaEndpointResponse(TeaModel):
 class DescribeDBInstancesRequest(TeaModel):
     def __init__(
         self,
+        db_version: str = None,
         instance_id: str = None,
         must_has_cdc: bool = None,
         page_number: int = None,
@@ -6958,6 +7231,7 @@ class DescribeDBInstancesRequest(TeaModel):
         series: str = None,
         tags: str = None,
     ):
+        self.db_version = db_version
         self.instance_id = instance_id
         self.must_has_cdc = must_has_cdc
         self.page_number = page_number
@@ -6977,6 +7251,8 @@ class DescribeDBInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.db_version is not None:
+            result['DbVersion'] = self.db_version
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.must_has_cdc is not None:
@@ -6997,6 +7273,8 @@ class DescribeDBInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DbVersion') is not None:
+            self.db_version = m.get('DbVersion')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('MustHasCdc') is not None:
@@ -8504,15 +8782,130 @@ class DescribeEventsResponse(TeaModel):
         return self
 
 
+class DescribeOpenBackupSetRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        region_id: str = None,
+        restore_time: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_name = dbinstance_name
+        self.region_id = region_id
+        self.restore_time = restore_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.restore_time is not None:
+            result['RestoreTime'] = self.restore_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RestoreTime') is not None:
+            self.restore_time = m.get('RestoreTime')
+        return self
+
+
+class DescribeOpenBackupSetResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeOpenBackupSetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeOpenBackupSetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeOpenBackupSetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeParameterTemplatesRequest(TeaModel):
     def __init__(
         self,
         dbinstance_id: str = None,
+        engine_version: str = None,
         param_level: str = None,
         region_id: str = None,
     ):
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.engine_version = engine_version
         self.param_level = param_level
         # This parameter is required.
         self.region_id = region_id
@@ -8528,6 +8921,8 @@ class DescribeParameterTemplatesRequest(TeaModel):
         result = dict()
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
         if self.param_level is not None:
             result['ParamLevel'] = self.param_level
         if self.region_id is not None:
@@ -8538,6 +8933,8 @@ class DescribeParameterTemplatesRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
         if m.get('ParamLevel') is not None:
             self.param_level = m.get('ParamLevel')
         if m.get('RegionId') is not None:
@@ -8854,11 +9251,13 @@ class DescribeParametersResponseBodyData(TeaModel):
     def __init__(
         self,
         config_parameters: List[DescribeParametersResponseBodyDataConfigParameters] = None,
+        dbinstance_id: str = None,
         engine: str = None,
         engine_version: str = None,
         running_parameters: List[DescribeParametersResponseBodyDataRunningParameters] = None,
     ):
         self.config_parameters = config_parameters
+        self.dbinstance_id = dbinstance_id
         self.engine = engine
         self.engine_version = engine_version
         self.running_parameters = running_parameters
@@ -8883,6 +9282,8 @@ class DescribeParametersResponseBodyData(TeaModel):
         if self.config_parameters is not None:
             for k in self.config_parameters:
                 result['ConfigParameters'].append(k.to_map() if k else None)
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.engine_version is not None:
@@ -8900,6 +9301,8 @@ class DescribeParametersResponseBodyData(TeaModel):
             for k in m.get('ConfigParameters'):
                 temp_model = DescribeParametersResponseBodyDataConfigParameters()
                 self.config_parameters.append(temp_model.from_map(k))
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
@@ -11912,6 +12315,7 @@ class ModifyParameterRequest(TeaModel):
         client_token: str = None,
         dbinstance_id: str = None,
         param_level: str = None,
+        parameter_group_id: str = None,
         parameters: str = None,
         region_id: str = None,
     ):
@@ -11919,7 +12323,7 @@ class ModifyParameterRequest(TeaModel):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.param_level = param_level
-        # This parameter is required.
+        self.parameter_group_id = parameter_group_id
         self.parameters = parameters
         # This parameter is required.
         self.region_id = region_id
@@ -11939,6 +12343,8 @@ class ModifyParameterRequest(TeaModel):
             result['DBInstanceId'] = self.dbinstance_id
         if self.param_level is not None:
             result['ParamLevel'] = self.param_level
+        if self.parameter_group_id is not None:
+            result['ParameterGroupId'] = self.parameter_group_id
         if self.parameters is not None:
             result['Parameters'] = self.parameters
         if self.region_id is not None:
@@ -11953,6 +12359,8 @@ class ModifyParameterRequest(TeaModel):
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('ParamLevel') is not None:
             self.param_level = m.get('ParamLevel')
+        if m.get('ParameterGroupId') is not None:
+            self.parameter_group_id = m.get('ParameterGroupId')
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
         if m.get('RegionId') is not None:
@@ -12270,21 +12678,13 @@ class ReleaseInstancePublicConnectionRequest(TeaModel):
         self,
         current_connection_string: str = None,
         dbinstance_name: str = None,
-        owner_account: str = None,
-        owner_id: int = None,
         region_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
     ):
         # This parameter is required.
         self.current_connection_string = current_connection_string
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        self.owner_account = owner_account
-        self.owner_id = owner_id
         self.region_id = region_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -12299,16 +12699,8 @@ class ReleaseInstancePublicConnectionRequest(TeaModel):
             result['CurrentConnectionString'] = self.current_connection_string
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -12317,16 +12709,8 @@ class ReleaseInstancePublicConnectionRequest(TeaModel):
             self.current_connection_string = m.get('CurrentConnectionString')
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 

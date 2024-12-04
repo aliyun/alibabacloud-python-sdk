@@ -1,3 +1,39 @@
+2024-12-04 Version: 2.0.0
+- Support API DescribeOpenBackupSet.
+- Update API AllocateInstancePublicConnection: delete param AccessKeyId.
+- Update API AllocateInstancePublicConnection: delete param AccessKeyId.
+- Update API CreateBackup: update response param.
+- Update API CreateDBInstance: add param DnStorageSpace.
+- Update API CreateDBInstance: add param ExtraParams.
+- Update API CreateDBInstance: add param Series.
+- Update API DescribeArchiveTableList: add param Action.
+- Update API DescribeBackupPolicy: update response param.
+- Update API DescribeBackupSetList: update response param.
+- Update API DescribeColdDataBasicInfo: add param Action.
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API DescribeDBInstanceTopology: add param MinuteSimple.
+- Update API DescribeDBInstanceTopology: update response param.
+- Update API DescribeDBInstances: add param DbVersion.
+- Update API DescribeDBInstances: update param RegionId.
+- Update API DescribeDBInstances: update response param.
+- Update API DescribeParameterTemplates: add param EngineVersion.
+- Update API DescribeParameterTemplates: update param DBInstanceId.
+- Update API DescribeParameters: update response param.
+- Update API DescribeScaleOutMigrateTaskList: add param RegionId.
+- Update API DescribeScaleOutMigrateTaskList: delete param AccessKeyId.
+- Update API DescribeScaleOutMigrateTaskList: delete param AccessKeyId.
+- Update API ModifyParameter: add param ParameterGroupId.
+- Update API ModifyParameter: update param Parameters.
+- Update API ReleaseInstancePublicConnection: delete param AccessKeyId.
+- Update API ReleaseInstancePublicConnection: delete param AccessKeyId.
+- Update API ReleaseInstancePublicConnection: delete param Action.
+- Update API ReleaseInstancePublicConnection: delete param OwnerAccount.
+- Update API ReleaseInstancePublicConnection: delete param OwnerId.
+- Update API ReleaseInstancePublicConnection: delete param ResourceOwnerAccount.
+- Update API ReleaseInstancePublicConnection: delete param ResourceOwnerId.
+- Update API UpdateBackupPolicy: update response param.
+
+
 2024-06-19 Version: 1.0.15
 - Update API CreateBackup: update response param.
 - Update API CreateDBInstance: add param DnStorageSpace.

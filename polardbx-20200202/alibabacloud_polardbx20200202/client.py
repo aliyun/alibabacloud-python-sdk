@@ -1050,15 +1050,19 @@ class Client(OpenApiClient):
 
     def create_dbinstance_with_options(
         self,
-        request: polardbx_20200202_models.CreateDBInstanceRequest,
+        tmp_req: polardbx_20200202_models.CreateDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateDBInstanceResponse:
         """
-        @param request: CreateDBInstanceRequest
+        @param tmp_req: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDBInstanceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = polardbx_20200202_models.CreateDBInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extra_params):
+            request.extra_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra_params, 'ExtraParams', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
@@ -1080,6 +1084,8 @@ class Client(OpenApiClient):
             query['DnStorageSpace'] = request.dn_storage_space
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.extra_params_shrink):
+            query['ExtraParams'] = request.extra_params_shrink
         if not UtilClient.is_unset(request.is_columnar_read_dbinstance):
             query['IsColumnarReadDBInstance'] = request.is_columnar_read_dbinstance
         if not UtilClient.is_unset(request.is_read_dbinstance):
@@ -1135,15 +1141,19 @@ class Client(OpenApiClient):
 
     async def create_dbinstance_with_options_async(
         self,
-        request: polardbx_20200202_models.CreateDBInstanceRequest,
+        tmp_req: polardbx_20200202_models.CreateDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateDBInstanceResponse:
         """
-        @param request: CreateDBInstanceRequest
+        @param tmp_req: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDBInstanceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = polardbx_20200202_models.CreateDBInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extra_params):
+            request.extra_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra_params, 'ExtraParams', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
@@ -1165,6 +1175,8 @@ class Client(OpenApiClient):
             query['DnStorageSpace'] = request.dn_storage_space
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.extra_params_shrink):
+            query['ExtraParams'] = request.extra_params_shrink
         if not UtilClient.is_unset(request.is_columnar_read_dbinstance):
             query['IsColumnarReadDBInstance'] = request.is_columnar_read_dbinstance
         if not UtilClient.is_unset(request.is_read_dbinstance):
@@ -3200,6 +3212,8 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.minute_simple):
+            query['MinuteSimple'] = request.minute_simple
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.start_time):
@@ -3239,6 +3253,8 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.minute_simple):
+            query['MinuteSimple'] = request.minute_simple
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.start_time):
@@ -3396,6 +3412,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.db_version):
+            query['DbVersion'] = request.db_version
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.must_has_cdc):
@@ -3443,6 +3461,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.db_version):
+            query['DbVersion'] = request.db_version
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.must_has_cdc):
@@ -3900,6 +3920,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_events_with_options_async(request, runtime)
 
+    def describe_open_backup_set_with_options(
+        self,
+        request: polardbx_20200202_models.DescribeOpenBackupSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeOpenBackupSetResponse:
+        """
+        @summary 开放商业备份集
+        
+        @param request: DescribeOpenBackupSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOpenBackupSetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.restore_time):
+            query['RestoreTime'] = request.restore_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOpenBackupSet',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeOpenBackupSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_open_backup_set_with_options_async(
+        self,
+        request: polardbx_20200202_models.DescribeOpenBackupSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeOpenBackupSetResponse:
+        """
+        @summary 开放商业备份集
+        
+        @param request: DescribeOpenBackupSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOpenBackupSetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.restore_time):
+            query['RestoreTime'] = request.restore_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOpenBackupSet',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeOpenBackupSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_open_backup_set(
+        self,
+        request: polardbx_20200202_models.DescribeOpenBackupSetRequest,
+    ) -> polardbx_20200202_models.DescribeOpenBackupSetResponse:
+        """
+        @summary 开放商业备份集
+        
+        @param request: DescribeOpenBackupSetRequest
+        @return: DescribeOpenBackupSetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_open_backup_set_with_options(request, runtime)
+
+    async def describe_open_backup_set_async(
+        self,
+        request: polardbx_20200202_models.DescribeOpenBackupSetRequest,
+    ) -> polardbx_20200202_models.DescribeOpenBackupSetResponse:
+        """
+        @summary 开放商业备份集
+        
+        @param request: DescribeOpenBackupSetRequest
+        @return: DescribeOpenBackupSetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_open_backup_set_with_options_async(request, runtime)
+
     def describe_parameter_templates_with_options(
         self,
         request: polardbx_20200202_models.DescribeParameterTemplatesRequest,
@@ -3914,6 +4038,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.param_level):
             query['ParamLevel'] = request.param_level
         if not UtilClient.is_unset(request.region_id):
@@ -3951,6 +4077,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.param_level):
             query['ParamLevel'] = request.param_level
         if not UtilClient.is_unset(request.region_id):
@@ -5984,6 +6112,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.param_level):
             query['ParamLevel'] = request.param_level
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
         if not UtilClient.is_unset(request.parameters):
             query['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.region_id):
@@ -6025,6 +6155,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.param_level):
             query['ParamLevel'] = request.param_level
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
         if not UtilClient.is_unset(request.parameters):
             query['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.region_id):
@@ -6290,16 +6422,8 @@ class Client(OpenApiClient):
             query['CurrentConnectionString'] = request.current_connection_string
         if not UtilClient.is_unset(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6335,16 +6459,8 @@ class Client(OpenApiClient):
             query['CurrentConnectionString'] = request.current_connection_string
         if not UtilClient.is_unset(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
