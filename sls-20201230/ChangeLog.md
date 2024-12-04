@@ -1,3 +1,8 @@
+2024-12-04 Version: 5.5.1
+- Update API GetDownloadJob: update response param.
+- Update API ListDownloadJobs: update response param.
+
+
 2024-11-21 Version: 5.5.0
 - Support API DescribeRegions.
 - Support API PullLogs.

@@ -23,7 +23,6 @@ class Client(OpenApiClient):
         super().__init__(config)
         gateway_client = GatewayClientClient()
         self._spi = gateway_client
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'central'
 
     def apply_config_to_machine_group_with_options(

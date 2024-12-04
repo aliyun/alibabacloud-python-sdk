@@ -4242,11 +4242,13 @@ class Logstore(TeaModel):
 class Machine(TeaModel):
     def __init__(
         self,
+        host_id: str = None,
         ip: str = None,
         last_heartbeat_time: int = None,
         machine_uniqueid: str = None,
         userdefined_id: str = None,
     ):
+        self.host_id = host_id
         self.ip = ip
         self.last_heartbeat_time = last_heartbeat_time
         self.machine_uniqueid = machine_uniqueid
@@ -4261,6 +4263,8 @@ class Machine(TeaModel):
             return _map
 
         result = dict()
+        if self.host_id is not None:
+            result['host-id'] = self.host_id
         if self.ip is not None:
             result['ip'] = self.ip
         if self.last_heartbeat_time is not None:
@@ -4273,6 +4277,8 @@ class Machine(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('host-id') is not None:
+            self.host_id = m.get('host-id')
         if m.get('ip') is not None:
             self.ip = m.get('ip')
         if m.get('lastHeartbeatTime') is not None:
@@ -10143,6 +10149,7 @@ class GetDownloadJobResponseBodyExecutionDetails(TeaModel):
         file_path: str = None,
         file_size: int = None,
         log_count: int = None,
+        notice: str = None,
         progress: int = None,
     ):
         self.check_sum = check_sum
@@ -10156,6 +10163,7 @@ class GetDownloadJobResponseBodyExecutionDetails(TeaModel):
         self.file_size = file_size
         # 下载日志条数
         self.log_count = log_count
+        self.notice = notice
         # 下载进度
         self.progress = progress
 
@@ -10180,6 +10188,8 @@ class GetDownloadJobResponseBodyExecutionDetails(TeaModel):
             result['fileSize'] = self.file_size
         if self.log_count is not None:
             result['logCount'] = self.log_count
+        if self.notice is not None:
+            result['notice'] = self.notice
         if self.progress is not None:
             result['progress'] = self.progress
         return result
@@ -10198,6 +10208,8 @@ class GetDownloadJobResponseBodyExecutionDetails(TeaModel):
             self.file_size = m.get('fileSize')
         if m.get('logCount') is not None:
             self.log_count = m.get('logCount')
+        if m.get('notice') is not None:
+            self.notice = m.get('notice')
         if m.get('progress') is not None:
             self.progress = m.get('progress')
         return self
@@ -14268,6 +14280,7 @@ class ListDownloadJobsResponseBodyResultsExecutionDetails(TeaModel):
         file_path: str = None,
         file_size: int = None,
         log_count: int = None,
+        notice: str = None,
         progress: int = None,
     ):
         self.check_sum = check_sum
@@ -14281,6 +14294,7 @@ class ListDownloadJobsResponseBodyResultsExecutionDetails(TeaModel):
         self.file_size = file_size
         # 下载日志条数
         self.log_count = log_count
+        self.notice = notice
         # 下载进度
         self.progress = progress
 
@@ -14305,6 +14319,8 @@ class ListDownloadJobsResponseBodyResultsExecutionDetails(TeaModel):
             result['fileSize'] = self.file_size
         if self.log_count is not None:
             result['logCount'] = self.log_count
+        if self.notice is not None:
+            result['notice'] = self.notice
         if self.progress is not None:
             result['progress'] = self.progress
         return result
@@ -14323,6 +14339,8 @@ class ListDownloadJobsResponseBodyResultsExecutionDetails(TeaModel):
             self.file_size = m.get('fileSize')
         if m.get('logCount') is not None:
             self.log_count = m.get('logCount')
+        if m.get('notice') is not None:
+            self.notice = m.get('notice')
         if m.get('progress') is not None:
             self.progress = m.get('progress')
         return self
