@@ -1,3 +1,8 @@
+2024-12-04 Version: 8.0.1
+- Update API GetResult: update response param.
+- Update API GetResultToReview: update response param.
+
+
 2024-11-14 Version: 8.0.0
 - Support API DeleteCheckTypeToScheme.
 - Delete API CreateUser.

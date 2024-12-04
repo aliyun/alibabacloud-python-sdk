@@ -9552,6 +9552,7 @@ class GetResultResponseBodyDataResultInfoHitResultHitResult(TeaModel):
         rid: str = None,
         scheme_id: int = None,
         scheme_version: int = None,
+        score: int = None,
         type: str = None,
     ):
         self.conditions = conditions
@@ -9561,6 +9562,7 @@ class GetResultResponseBodyDataResultInfoHitResultHitResult(TeaModel):
         self.rid = rid
         self.scheme_id = scheme_id
         self.scheme_version = scheme_version
+        self.score = score
         self.type = type
 
     def validate(self):
@@ -9589,6 +9591,8 @@ class GetResultResponseBodyDataResultInfoHitResultHitResult(TeaModel):
             result['SchemeId'] = self.scheme_id
         if self.scheme_version is not None:
             result['SchemeVersion'] = self.scheme_version
+        if self.score is not None:
+            result['Score'] = self.score
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -9611,6 +9615,8 @@ class GetResultResponseBodyDataResultInfoHitResultHitResult(TeaModel):
             self.scheme_id = m.get('SchemeId')
         if m.get('SchemeVersion') is not None:
             self.scheme_version = m.get('SchemeVersion')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -10304,6 +10310,7 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
         status: int = None,
         task_id: str = None,
         task_name: str = None,
+        vid: str = None,
     ):
         self.agent = agent
         self.asr_result = asr_result
@@ -10331,6 +10338,7 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
         self.status = status
         self.task_id = task_id
         self.task_name = task_name
+        self.vid = vid
 
     def validate(self):
         if self.agent:
@@ -10410,6 +10418,8 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
             result['TaskId'] = self.task_id
         if self.task_name is not None:
             result['TaskName'] = self.task_name
+        if self.vid is not None:
+            result['Vid'] = self.vid
         return result
 
     def from_map(self, m: dict = None):
@@ -10475,6 +10485,8 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
+        if m.get('Vid') is not None:
+            self.vid = m.get('Vid')
         return self
 
 
@@ -10671,6 +10683,7 @@ class GetResultToReviewResponseBodyDataDialoguesDialogue(TeaModel):
         self,
         begin: int = None,
         begin_time: str = None,
+        begin_time_ms: int = None,
         emotion_value: int = None,
         end: int = None,
         hour_min_sec: str = None,
@@ -10682,6 +10695,7 @@ class GetResultToReviewResponseBodyDataDialoguesDialogue(TeaModel):
     ):
         self.begin = begin
         self.begin_time = begin_time
+        self.begin_time_ms = begin_time_ms
         self.emotion_value = emotion_value
         self.end = end
         self.hour_min_sec = hour_min_sec
@@ -10704,6 +10718,8 @@ class GetResultToReviewResponseBodyDataDialoguesDialogue(TeaModel):
             result['Begin'] = self.begin
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
+        if self.begin_time_ms is not None:
+            result['BeginTimeMs'] = self.begin_time_ms
         if self.emotion_value is not None:
             result['EmotionValue'] = self.emotion_value
         if self.end is not None:
@@ -10728,6 +10744,8 @@ class GetResultToReviewResponseBodyDataDialoguesDialogue(TeaModel):
             self.begin = m.get('Begin')
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
+        if m.get('BeginTimeMs') is not None:
+            self.begin_time_ms = m.get('BeginTimeMs')
         if m.get('EmotionValue') is not None:
             self.emotion_value = m.get('EmotionValue')
         if m.get('End') is not None:
