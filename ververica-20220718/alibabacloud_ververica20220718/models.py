@@ -2838,10 +2838,14 @@ class JobStatus(TeaModel):
         self,
         current_job_status: str = None,
         failure: JobFailure = None,
+        health_score: int = None,
+        risk_level: str = None,
         running: JobStatusRunning = None,
     ):
         self.current_job_status = current_job_status
         self.failure = failure
+        self.health_score = health_score
+        self.risk_level = risk_level
         self.running = running
 
     def validate(self):
@@ -2860,6 +2864,10 @@ class JobStatus(TeaModel):
             result['currentJobStatus'] = self.current_job_status
         if self.failure is not None:
             result['failure'] = self.failure.to_map()
+        if self.health_score is not None:
+            result['healthScore'] = self.health_score
+        if self.risk_level is not None:
+            result['riskLevel'] = self.risk_level
         if self.running is not None:
             result['running'] = self.running.to_map()
         return result
@@ -2871,6 +2879,10 @@ class JobStatus(TeaModel):
         if m.get('failure') is not None:
             temp_model = JobFailure()
             self.failure = temp_model.from_map(m['failure'])
+        if m.get('healthScore') is not None:
+            self.health_score = m.get('healthScore')
+        if m.get('riskLevel') is not None:
+            self.risk_level = m.get('riskLevel')
         if m.get('running') is not None:
             temp_model = JobStatusRunning()
             self.running = temp_model.from_map(m['running'])

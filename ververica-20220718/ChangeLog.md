@@ -1,3 +1,6 @@
+2024-12-05 Version: 1.6.2
+- Generated python 2022-07-18 for ververica.
+
 2024-10-09 Version: 1.6.1
 - Update API ListDeployments: add param sortName.
 
