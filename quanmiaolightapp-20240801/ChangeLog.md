@@ -1,3 +1,8 @@
+2024-12-05 Version: 2.0.0
+- Delete API RunCommentGeneration.
+- Update API RunHotTopicChat: update response param.
+
+
 2024-11-06 Version: 1.4.1
 - Update API RunMarketingInformationWriting: add param customLimitation.
 - Update API RunMarketingInformationWriting: add param inputExample.

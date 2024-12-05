@@ -741,297 +741,6 @@ class ListHotTopicSummariesResponse(TeaModel):
         return self
 
 
-class RunCommentGenerationRequest(TeaModel):
-    def __init__(
-        self,
-        length: str = None,
-        num_comments: str = None,
-        source_material: str = None,
-        style: str = None,
-    ):
-        self.length = length
-        self.num_comments = num_comments
-        self.source_material = source_material
-        self.style = style
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.length is not None:
-            result['length'] = self.length
-        if self.num_comments is not None:
-            result['numComments'] = self.num_comments
-        if self.source_material is not None:
-            result['sourceMaterial'] = self.source_material
-        if self.style is not None:
-            result['style'] = self.style
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('length') is not None:
-            self.length = m.get('length')
-        if m.get('numComments') is not None:
-            self.num_comments = m.get('numComments')
-        if m.get('sourceMaterial') is not None:
-            self.source_material = m.get('sourceMaterial')
-        if m.get('style') is not None:
-            self.style = m.get('style')
-        return self
-
-
-class RunCommentGenerationResponseBodyHeader(TeaModel):
-    def __init__(
-        self,
-        event: str = None,
-        event_info: str = None,
-        request_id: str = None,
-        session_id: str = None,
-        task_id: str = None,
-        trace_id: str = None,
-    ):
-        self.event = event
-        self.event_info = event_info
-        self.request_id = request_id
-        self.session_id = session_id
-        self.task_id = task_id
-        self.trace_id = trace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.event is not None:
-            result['event'] = self.event
-        if self.event_info is not None:
-            result['eventInfo'] = self.event_info
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.session_id is not None:
-            result['sessionId'] = self.session_id
-        if self.task_id is not None:
-            result['taskId'] = self.task_id
-        if self.trace_id is not None:
-            result['traceId'] = self.trace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('event') is not None:
-            self.event = m.get('event')
-        if m.get('eventInfo') is not None:
-            self.event_info = m.get('eventInfo')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('sessionId') is not None:
-            self.session_id = m.get('sessionId')
-        if m.get('taskId') is not None:
-            self.task_id = m.get('taskId')
-        if m.get('traceId') is not None:
-            self.trace_id = m.get('traceId')
-        return self
-
-
-class RunCommentGenerationResponseBodyPayloadOutput(TeaModel):
-    def __init__(
-        self,
-        text: str = None,
-    ):
-        self.text = text
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.text is not None:
-            result['text'] = self.text
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('text') is not None:
-            self.text = m.get('text')
-        return self
-
-
-class RunCommentGenerationResponseBodyPayloadUsage(TeaModel):
-    def __init__(
-        self,
-        input_tokens: int = None,
-        output_tokens: int = None,
-        total_tokens: int = None,
-    ):
-        self.input_tokens = input_tokens
-        self.output_tokens = output_tokens
-        self.total_tokens = total_tokens
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.input_tokens is not None:
-            result['inputTokens'] = self.input_tokens
-        if self.output_tokens is not None:
-            result['outputTokens'] = self.output_tokens
-        if self.total_tokens is not None:
-            result['totalTokens'] = self.total_tokens
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('inputTokens') is not None:
-            self.input_tokens = m.get('inputTokens')
-        if m.get('outputTokens') is not None:
-            self.output_tokens = m.get('outputTokens')
-        if m.get('totalTokens') is not None:
-            self.total_tokens = m.get('totalTokens')
-        return self
-
-
-class RunCommentGenerationResponseBodyPayload(TeaModel):
-    def __init__(
-        self,
-        output: RunCommentGenerationResponseBodyPayloadOutput = None,
-        usage: RunCommentGenerationResponseBodyPayloadUsage = None,
-    ):
-        self.output = output
-        self.usage = usage
-
-    def validate(self):
-        if self.output:
-            self.output.validate()
-        if self.usage:
-            self.usage.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.output is not None:
-            result['output'] = self.output.to_map()
-        if self.usage is not None:
-            result['usage'] = self.usage.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('output') is not None:
-            temp_model = RunCommentGenerationResponseBodyPayloadOutput()
-            self.output = temp_model.from_map(m['output'])
-        if m.get('usage') is not None:
-            temp_model = RunCommentGenerationResponseBodyPayloadUsage()
-            self.usage = temp_model.from_map(m['usage'])
-        return self
-
-
-class RunCommentGenerationResponseBody(TeaModel):
-    def __init__(
-        self,
-        end: bool = None,
-        header: RunCommentGenerationResponseBodyHeader = None,
-        payload: RunCommentGenerationResponseBodyPayload = None,
-    ):
-        self.end = end
-        self.header = header
-        self.payload = payload
-
-    def validate(self):
-        if self.header:
-            self.header.validate()
-        if self.payload:
-            self.payload.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.end is not None:
-            result['end'] = self.end
-        if self.header is not None:
-            result['header'] = self.header.to_map()
-        if self.payload is not None:
-            result['payload'] = self.payload.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('end') is not None:
-            self.end = m.get('end')
-        if m.get('header') is not None:
-            temp_model = RunCommentGenerationResponseBodyHeader()
-            self.header = temp_model.from_map(m['header'])
-        if m.get('payload') is not None:
-            temp_model = RunCommentGenerationResponseBodyPayload()
-            self.payload = temp_model.from_map(m['payload'])
-        return self
-
-
-class RunCommentGenerationResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: RunCommentGenerationResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = RunCommentGenerationResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights(TeaModel):
     def __init__(
         self,
@@ -1420,18 +1129,12 @@ class RunHotTopicChatResponseBodyPayloadOutputArticles(TeaModel):
         return self
 
 
-class RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries(TeaModel):
+class RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesImages(TeaModel):
     def __init__(
         self,
-        custom_hot_value: float = None,
-        hot_topic: str = None,
-        hot_topic_version: str = None,
-        hot_value: float = None,
+        url: str = None,
     ):
-        self.custom_hot_value = custom_hot_value
-        self.hot_topic = hot_topic
-        self.hot_topic_version = hot_topic_version
-        self.hot_value = hot_value
+        self.url = url
 
     def validate(self):
         pass
@@ -1442,26 +1145,133 @@ class RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries(TeaModel):
             return _map
 
         result = dict()
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews(TeaModel):
+    def __init__(
+        self,
+        title: str = None,
+        url: str = None,
+    ):
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.title is not None:
+            result['title'] = self.title
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries(TeaModel):
+    def __init__(
+        self,
+        custom_hot_value: float = None,
+        custom_text_summary: str = None,
+        hot_topic: str = None,
+        hot_topic_version: str = None,
+        hot_value: float = None,
+        images: List[RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesImages] = None,
+        news: List[RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews] = None,
+        text_summary: str = None,
+    ):
+        self.custom_hot_value = custom_hot_value
+        self.custom_text_summary = custom_text_summary
+        self.hot_topic = hot_topic
+        self.hot_topic_version = hot_topic_version
+        self.hot_value = hot_value
+        self.images = images
+        self.news = news
+        self.text_summary = text_summary
+
+    def validate(self):
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+        if self.news:
+            for k in self.news:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.custom_hot_value is not None:
             result['customHotValue'] = self.custom_hot_value
+        if self.custom_text_summary is not None:
+            result['customTextSummary'] = self.custom_text_summary
         if self.hot_topic is not None:
             result['hotTopic'] = self.hot_topic
         if self.hot_topic_version is not None:
             result['hotTopicVersion'] = self.hot_topic_version
         if self.hot_value is not None:
             result['hotValue'] = self.hot_value
+        result['images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['images'].append(k.to_map() if k else None)
+        result['news'] = []
+        if self.news is not None:
+            for k in self.news:
+                result['news'].append(k.to_map() if k else None)
+        if self.text_summary is not None:
+            result['textSummary'] = self.text_summary
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('customHotValue') is not None:
             self.custom_hot_value = m.get('customHotValue')
+        if m.get('customTextSummary') is not None:
+            self.custom_text_summary = m.get('customTextSummary')
         if m.get('hotTopic') is not None:
             self.hot_topic = m.get('hotTopic')
         if m.get('hotTopicVersion') is not None:
             self.hot_topic_version = m.get('hotTopicVersion')
         if m.get('hotValue') is not None:
             self.hot_value = m.get('hotValue')
+        self.images = []
+        if m.get('images') is not None:
+            for k in m.get('images'):
+                temp_model = RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesImages()
+                self.images.append(temp_model.from_map(k))
+        self.news = []
+        if m.get('news') is not None:
+            for k in m.get('news'):
+                temp_model = RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews()
+                self.news.append(temp_model.from_map(k))
+        if m.get('textSummary') is not None:
+            self.text_summary = m.get('textSummary')
         return self
 
 
