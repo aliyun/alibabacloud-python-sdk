@@ -8435,6 +8435,298 @@ class GetPropertiesResponse(TeaModel):
         return self
 
 
+class GetSmartClipTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetSmartClipTaskResponseBodyDataSubJobsFileAttr(TeaModel):
+    def __init__(
+        self,
+        duration: float = None,
+        file_length: str = None,
+        file_name: str = None,
+        height: int = None,
+        tmp_url: str = None,
+        width: int = None,
+    ):
+        self.duration = duration
+        self.file_length = file_length
+        self.file_name = file_name
+        self.height = height
+        self.tmp_url = tmp_url
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.file_length is not None:
+            result['FileLength'] = self.file_length
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.tmp_url is not None:
+            result['TmpUrl'] = self.tmp_url
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('FileLength') is not None:
+            self.file_length = m.get('FileLength')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('TmpUrl') is not None:
+            self.tmp_url = m.get('TmpUrl')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class GetSmartClipTaskResponseBodyDataSubJobs(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        file_attr: GetSmartClipTaskResponseBodyDataSubJobsFileAttr = None,
+        file_key: str = None,
+        status: str = None,
+        sub_job_id: str = None,
+    ):
+        self.error_message = error_message
+        self.file_attr = file_attr
+        self.file_key = file_key
+        self.status = status
+        self.sub_job_id = sub_job_id
+
+    def validate(self):
+        if self.file_attr:
+            self.file_attr.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.file_attr is not None:
+            result['FileAttr'] = self.file_attr.to_map()
+        if self.file_key is not None:
+            result['FileKey'] = self.file_key
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_job_id is not None:
+            result['SubJobId'] = self.sub_job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('FileAttr') is not None:
+            temp_model = GetSmartClipTaskResponseBodyDataSubJobsFileAttr()
+            self.file_attr = temp_model.from_map(m['FileAttr'])
+        if m.get('FileKey') is not None:
+            self.file_key = m.get('FileKey')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubJobId') is not None:
+            self.sub_job_id = m.get('SubJobId')
+        return self
+
+
+class GetSmartClipTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        status: str = None,
+        sub_jobs: List[GetSmartClipTaskResponseBodyDataSubJobs] = None,
+    ):
+        self.error_message = error_message
+        self.status = status
+        self.sub_jobs = sub_jobs
+
+    def validate(self):
+        if self.sub_jobs:
+            for k in self.sub_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.status is not None:
+            result['Status'] = self.status
+        result['SubJobs'] = []
+        if self.sub_jobs is not None:
+            for k in self.sub_jobs:
+                result['SubJobs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.sub_jobs = []
+        if m.get('SubJobs') is not None:
+            for k in m.get('SubJobs'):
+                temp_model = GetSmartClipTaskResponseBodyDataSubJobs()
+                self.sub_jobs.append(temp_model.from_map(k))
+        return self
+
+
+class GetSmartClipTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetSmartClipTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetSmartClipTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetSmartClipTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSmartClipTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSmartClipTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTopicByIdRequest(TeaModel):
     def __init__(
         self,
@@ -26706,6 +26998,613 @@ class SubmitEnterpriseVocAnalysisTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitEnterpriseVocAnalysisTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitSmartClipTaskRequestEditingConfigTitleConfig(TeaModel):
+    def __init__(
+        self,
+        alignment: str = None,
+        timeline_in: float = None,
+        timeline_out: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alignment = alignment
+        self.timeline_in = timeline_in
+        self.timeline_out = timeline_out
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alignment is not None:
+            result['Alignment'] = self.alignment
+        if self.timeline_in is not None:
+            result['TimelineIn'] = self.timeline_in
+        if self.timeline_out is not None:
+            result['TimelineOut'] = self.timeline_out
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alignment') is not None:
+            self.alignment = m.get('Alignment')
+        if m.get('TimelineIn') is not None:
+            self.timeline_in = m.get('TimelineIn')
+        if m.get('TimelineOut') is not None:
+            self.timeline_out = m.get('TimelineOut')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class SubmitSmartClipTaskRequestEditingConfig(TeaModel):
+    def __init__(
+        self,
+        title_config: SubmitSmartClipTaskRequestEditingConfigTitleConfig = None,
+    ):
+        self.title_config = title_config
+
+    def validate(self):
+        if self.title_config:
+            self.title_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.title_config is not None:
+            result['TitleConfig'] = self.title_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TitleConfig') is not None:
+            temp_model = SubmitSmartClipTaskRequestEditingConfigTitleConfig()
+            self.title_config = temp_model.from_map(m['TitleConfig'])
+        return self
+
+
+class SubmitSmartClipTaskRequestInputConfigBackgroundMusics(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class SubmitSmartClipTaskRequestInputConfigStickersStickerId(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class SubmitSmartClipTaskRequestInputConfigStickers(TeaModel):
+    def __init__(
+        self,
+        height: float = None,
+        sticker_id: SubmitSmartClipTaskRequestInputConfigStickersStickerId = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        # This parameter is required.
+        self.height = height
+        # This parameter is required.
+        self.sticker_id = sticker_id
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        if self.sticker_id:
+            self.sticker_id.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.sticker_id is not None:
+            result['StickerId'] = self.sticker_id.to_map()
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('StickerId') is not None:
+            temp_model = SubmitSmartClipTaskRequestInputConfigStickersStickerId()
+            self.sticker_id = temp_model.from_map(m['StickerId'])
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class SubmitSmartClipTaskRequestInputConfigVideoIds(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class SubmitSmartClipTaskRequestInputConfig(TeaModel):
+    def __init__(
+        self,
+        background_musics: List[SubmitSmartClipTaskRequestInputConfigBackgroundMusics] = None,
+        speech_texts: List[str] = None,
+        stickers: List[SubmitSmartClipTaskRequestInputConfigStickers] = None,
+        titles: List[str] = None,
+        video_ids: List[SubmitSmartClipTaskRequestInputConfigVideoIds] = None,
+    ):
+        self.background_musics = background_musics
+        self.speech_texts = speech_texts
+        self.stickers = stickers
+        self.titles = titles
+        # This parameter is required.
+        self.video_ids = video_ids
+
+    def validate(self):
+        if self.background_musics:
+            for k in self.background_musics:
+                if k:
+                    k.validate()
+        if self.stickers:
+            for k in self.stickers:
+                if k:
+                    k.validate()
+        if self.video_ids:
+            for k in self.video_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BackgroundMusics'] = []
+        if self.background_musics is not None:
+            for k in self.background_musics:
+                result['BackgroundMusics'].append(k.to_map() if k else None)
+        if self.speech_texts is not None:
+            result['SpeechTexts'] = self.speech_texts
+        result['Stickers'] = []
+        if self.stickers is not None:
+            for k in self.stickers:
+                result['Stickers'].append(k.to_map() if k else None)
+        if self.titles is not None:
+            result['Titles'] = self.titles
+        result['VideoIds'] = []
+        if self.video_ids is not None:
+            for k in self.video_ids:
+                result['VideoIds'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.background_musics = []
+        if m.get('BackgroundMusics') is not None:
+            for k in m.get('BackgroundMusics'):
+                temp_model = SubmitSmartClipTaskRequestInputConfigBackgroundMusics()
+                self.background_musics.append(temp_model.from_map(k))
+        if m.get('SpeechTexts') is not None:
+            self.speech_texts = m.get('SpeechTexts')
+        self.stickers = []
+        if m.get('Stickers') is not None:
+            for k in m.get('Stickers'):
+                temp_model = SubmitSmartClipTaskRequestInputConfigStickers()
+                self.stickers.append(temp_model.from_map(k))
+        if m.get('Titles') is not None:
+            self.titles = m.get('Titles')
+        self.video_ids = []
+        if m.get('VideoIds') is not None:
+            for k in m.get('VideoIds'):
+                temp_model = SubmitSmartClipTaskRequestInputConfigVideoIds()
+                self.video_ids.append(temp_model.from_map(k))
+        return self
+
+
+class SubmitSmartClipTaskRequestOutputConfig(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        file_name: str = None,
+        height: int = None,
+        max_duration: int = None,
+        save_to_generated_content: bool = None,
+        width: int = None,
+    ):
+        self.count = count
+        self.file_name = file_name
+        self.height = height
+        self.max_duration = max_duration
+        self.save_to_generated_content = save_to_generated_content
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.max_duration is not None:
+            result['MaxDuration'] = self.max_duration
+        if self.save_to_generated_content is not None:
+            result['SaveToGeneratedContent'] = self.save_to_generated_content
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('MaxDuration') is not None:
+            self.max_duration = m.get('MaxDuration')
+        if m.get('SaveToGeneratedContent') is not None:
+            self.save_to_generated_content = m.get('SaveToGeneratedContent')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class SubmitSmartClipTaskRequest(TeaModel):
+    def __init__(
+        self,
+        editing_config: SubmitSmartClipTaskRequestEditingConfig = None,
+        input_config: SubmitSmartClipTaskRequestInputConfig = None,
+        output_config: SubmitSmartClipTaskRequestOutputConfig = None,
+        workspace_id: str = None,
+    ):
+        self.editing_config = editing_config
+        # This parameter is required.
+        self.input_config = input_config
+        self.output_config = output_config
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.editing_config:
+            self.editing_config.validate()
+        if self.input_config:
+            self.input_config.validate()
+        if self.output_config:
+            self.output_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.editing_config is not None:
+            result['EditingConfig'] = self.editing_config.to_map()
+        if self.input_config is not None:
+            result['InputConfig'] = self.input_config.to_map()
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config.to_map()
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EditingConfig') is not None:
+            temp_model = SubmitSmartClipTaskRequestEditingConfig()
+            self.editing_config = temp_model.from_map(m['EditingConfig'])
+        if m.get('InputConfig') is not None:
+            temp_model = SubmitSmartClipTaskRequestInputConfig()
+            self.input_config = temp_model.from_map(m['InputConfig'])
+        if m.get('OutputConfig') is not None:
+            temp_model = SubmitSmartClipTaskRequestOutputConfig()
+            self.output_config = temp_model.from_map(m['OutputConfig'])
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class SubmitSmartClipTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        editing_config_shrink: str = None,
+        input_config_shrink: str = None,
+        output_config_shrink: str = None,
+        workspace_id: str = None,
+    ):
+        self.editing_config_shrink = editing_config_shrink
+        # This parameter is required.
+        self.input_config_shrink = input_config_shrink
+        self.output_config_shrink = output_config_shrink
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.editing_config_shrink is not None:
+            result['EditingConfig'] = self.editing_config_shrink
+        if self.input_config_shrink is not None:
+            result['InputConfig'] = self.input_config_shrink
+        if self.output_config_shrink is not None:
+            result['OutputConfig'] = self.output_config_shrink
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EditingConfig') is not None:
+            self.editing_config_shrink = m.get('EditingConfig')
+        if m.get('InputConfig') is not None:
+            self.input_config_shrink = m.get('InputConfig')
+        if m.get('OutputConfig') is not None:
+            self.output_config_shrink = m.get('OutputConfig')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class SubmitSmartClipTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class SubmitSmartClipTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitSmartClipTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitSmartClipTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitSmartClipTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitSmartClipTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitSmartClipTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

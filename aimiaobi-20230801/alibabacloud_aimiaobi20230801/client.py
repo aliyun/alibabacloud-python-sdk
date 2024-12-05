@@ -3829,6 +3829,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_properties_with_options_async(request, runtime)
 
+    def get_smart_clip_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetSmartClipTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetSmartClipTaskResponse:
+        """
+        @summary 查询一键成片剪辑任务
+        
+        @param request: GetSmartClipTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmartClipTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSmartClipTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetSmartClipTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_smart_clip_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetSmartClipTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetSmartClipTaskResponse:
+        """
+        @summary 查询一键成片剪辑任务
+        
+        @param request: GetSmartClipTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmartClipTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSmartClipTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetSmartClipTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_smart_clip_task(
+        self,
+        request: ai_miao_bi_20230801_models.GetSmartClipTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetSmartClipTaskResponse:
+        """
+        @summary 查询一键成片剪辑任务
+        
+        @param request: GetSmartClipTaskRequest
+        @return: GetSmartClipTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_smart_clip_task_with_options(request, runtime)
+
+    async def get_smart_clip_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetSmartClipTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetSmartClipTaskResponse:
+        """
+        @summary 查询一键成片剪辑任务
+        
+        @param request: GetSmartClipTaskRequest
+        @return: GetSmartClipTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_smart_clip_task_with_options_async(request, runtime)
+
     def get_topic_by_id_with_options(
         self,
         request: ai_miao_bi_20230801_models.GetTopicByIdRequest,
@@ -10140,6 +10240,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_enterprise_voc_analysis_task_with_options_async(request, runtime)
+
+    def submit_smart_clip_task_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitSmartClipTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitSmartClipTaskResponse:
+        """
+        @summary 提交一键成片剪辑任务
+        
+        @param tmp_req: SubmitSmartClipTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSmartClipTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitSmartClipTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.editing_config):
+            request.editing_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.editing_config, 'EditingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.input_config):
+            request.input_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_config, 'InputConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.output_config):
+            request.output_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output_config, 'OutputConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.editing_config_shrink):
+            body['EditingConfig'] = request.editing_config_shrink
+        if not UtilClient.is_unset(request.input_config_shrink):
+            body['InputConfig'] = request.input_config_shrink
+        if not UtilClient.is_unset(request.output_config_shrink):
+            body['OutputConfig'] = request.output_config_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSmartClipTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitSmartClipTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_smart_clip_task_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitSmartClipTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitSmartClipTaskResponse:
+        """
+        @summary 提交一键成片剪辑任务
+        
+        @param tmp_req: SubmitSmartClipTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSmartClipTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitSmartClipTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.editing_config):
+            request.editing_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.editing_config, 'EditingConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.input_config):
+            request.input_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_config, 'InputConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.output_config):
+            request.output_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output_config, 'OutputConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.editing_config_shrink):
+            body['EditingConfig'] = request.editing_config_shrink
+        if not UtilClient.is_unset(request.input_config_shrink):
+            body['InputConfig'] = request.input_config_shrink
+        if not UtilClient.is_unset(request.output_config_shrink):
+            body['OutputConfig'] = request.output_config_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSmartClipTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitSmartClipTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_smart_clip_task(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitSmartClipTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitSmartClipTaskResponse:
+        """
+        @summary 提交一键成片剪辑任务
+        
+        @param request: SubmitSmartClipTaskRequest
+        @return: SubmitSmartClipTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_smart_clip_task_with_options(request, runtime)
+
+    async def submit_smart_clip_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitSmartClipTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitSmartClipTaskResponse:
+        """
+        @summary 提交一键成片剪辑任务
+        
+        @param request: SubmitSmartClipTaskRequest
+        @return: SubmitSmartClipTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_smart_clip_task_with_options_async(request, runtime)
 
     def submit_topic_selection_perspective_analysis_task_with_options(
         self,

@@ -1,3 +1,8 @@
+2024-12-05 Version: 1.11.0
+- Support API GetSmartClipTask.
+- Support API SubmitSmartClipTask.
+
+
 2024-11-28 Version: 1.10.0
 - Support API GetCategoriesByTaskId.
 - Support API GetEnterpriseVocAnalysisTask.
