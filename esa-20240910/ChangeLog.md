@@ -1,3 +1,33 @@
+2024-12-05 Version: 2.7.1
+- Update API CommitRoutineStagingCode: update param Name.
+- Update API CreateRoutine: update param Description.
+- Update API CreateRoutine: update param Name.
+- Update API CreateRoutine: update param SpecName.
+- Update API CreateRoutineRelatedRecord: update param Name.
+- Update API CreateRoutineRelatedRecord: update param RecordName.
+- Update API CreateRoutineRelatedRecord: update param SiteId.
+- Update API CreateRoutineRelatedRoute: add param ByPass.
+- Update API CreateRoutineRelatedRoute: update param Name.
+- Update API CreateRoutineRelatedRoute: update param Route.
+- Update API CreateRoutineRelatedRoute: update param SiteId.
+- Update API DeleteRoutine: update param Name.
+- Update API DeleteRoutineCodeVersion: update param CodeVersion.
+- Update API DeleteRoutineCodeVersion: update param Name.
+- Update API DeleteRoutineRelatedRecord: update param Name.
+- Update API DeleteRoutineRelatedRecord: update param RecordId.
+- Update API DeleteRoutineRelatedRecord: update param RecordName.
+- Update API DeleteRoutineRelatedRecord: update param SiteId.
+- Update API DeleteRoutineRelatedRoute: update param Name.
+- Update API DeleteRoutineRelatedRoute: update param Route.
+- Update API DeleteRoutineRelatedRoute: update param RouteId.
+- Update API DeleteRoutineRelatedRoute: update param SiteId.
+- Update API GetRoutine: update param Name.
+- Update API GetRoutine: update response param.
+- Update API GetRoutineStagingCodeUploadInfo: update param Name.
+- Update API PublishRoutineCodeVersion: update param Env.
+- Update API PublishRoutineCodeVersion: update param Name.
+
+
 2024-12-02 Version: 2.7.0
 - Support API GetClientCertificateHostnames.
 - Support API SetClientCertificateHostnames.
