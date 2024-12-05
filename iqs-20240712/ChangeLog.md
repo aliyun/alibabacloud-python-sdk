@@ -1,3 +1,7 @@
+2024-12-05 Version: 2.0.2
+- Update API PlaceSearchNova: update response param.
+
+
 2024-11-25 Version: 2.0.1
 - Update API BicyclingDirectionNova: update response param.
 - Update API DrivingDirectionNova: update response param.

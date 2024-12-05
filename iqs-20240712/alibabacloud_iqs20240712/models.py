@@ -2813,6 +2813,7 @@ class PlaceSearchNovaResponseBodyDataMetadata(TeaModel):
         daily_opening_hours: str = None,
         main_tag: str = None,
         phone: str = None,
+        score: str = None,
         tag: str = None,
         weekly_opening_days: str = None,
     ):
@@ -2821,6 +2822,7 @@ class PlaceSearchNovaResponseBodyDataMetadata(TeaModel):
         self.daily_opening_hours = daily_opening_hours
         self.main_tag = main_tag
         self.phone = phone
+        self.score = score
         self.tag = tag
         self.weekly_opening_days = weekly_opening_days
 
@@ -2843,6 +2845,8 @@ class PlaceSearchNovaResponseBodyDataMetadata(TeaModel):
             result['mainTag'] = self.main_tag
         if self.phone is not None:
             result['phone'] = self.phone
+        if self.score is not None:
+            result['score'] = self.score
         if self.tag is not None:
             result['tag'] = self.tag
         if self.weekly_opening_days is not None:
@@ -2861,6 +2865,8 @@ class PlaceSearchNovaResponseBodyDataMetadata(TeaModel):
             self.main_tag = m.get('mainTag')
         if m.get('phone') is not None:
             self.phone = m.get('phone')
+        if m.get('score') is not None:
+            self.score = m.get('score')
         if m.get('tag') is not None:
             self.tag = m.get('tag')
         if m.get('weeklyOpeningDays') is not None:
