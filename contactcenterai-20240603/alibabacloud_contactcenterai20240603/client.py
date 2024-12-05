@@ -75,6 +75,8 @@ class Client(OpenApiClient):
             body['sceneName'] = request.scene_name
         if not UtilClient.is_unset(request.service_inspection):
             body['serviceInspection'] = request.service_inspection
+        if not UtilClient.is_unset(request.source_caller_uid):
+            body['sourceCallerUid'] = request.source_caller_uid
         if not UtilClient.is_unset(request.stream):
             body['stream'] = request.stream
         if not UtilClient.is_unset(request.time_constraint_list):
@@ -135,6 +137,8 @@ class Client(OpenApiClient):
             body['sceneName'] = request.scene_name
         if not UtilClient.is_unset(request.service_inspection):
             body['serviceInspection'] = request.service_inspection
+        if not UtilClient.is_unset(request.source_caller_uid):
+            body['sourceCallerUid'] = request.source_caller_uid
         if not UtilClient.is_unset(request.stream):
             body['stream'] = request.stream
         if not UtilClient.is_unset(request.time_constraint_list):
@@ -459,20 +463,26 @@ class Client(OpenApiClient):
 
     def get_task_result_with_options(
         self,
-        request: contact_center_ai20240603_models.GetTaskResultRequest,
+        tmp_req: contact_center_ai20240603_models.GetTaskResultRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> contact_center_ai20240603_models.GetTaskResultResponse:
         """
         @summary 语音文件调用大模型获取结果
         
-        @param request: GetTaskResultRequest
+        @param tmp_req: GetTaskResultRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTaskResultResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = contact_center_ai20240603_models.GetTaskResultShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.required_field_list):
+            request.required_field_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.required_field_list, 'requiredFieldList', 'simple')
         query = {}
+        if not UtilClient.is_unset(request.required_field_list_shrink):
+            query['requiredFieldList'] = request.required_field_list_shrink
         if not UtilClient.is_unset(request.task_id):
             query['taskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
@@ -497,20 +507,26 @@ class Client(OpenApiClient):
 
     async def get_task_result_with_options_async(
         self,
-        request: contact_center_ai20240603_models.GetTaskResultRequest,
+        tmp_req: contact_center_ai20240603_models.GetTaskResultRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> contact_center_ai20240603_models.GetTaskResultResponse:
         """
         @summary 语音文件调用大模型获取结果
         
-        @param request: GetTaskResultRequest
+        @param tmp_req: GetTaskResultRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTaskResultResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = contact_center_ai20240603_models.GetTaskResultShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.required_field_list):
+            request.required_field_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.required_field_list, 'requiredFieldList', 'simple')
         query = {}
+        if not UtilClient.is_unset(request.required_field_list_shrink):
+            query['requiredFieldList'] = request.required_field_list_shrink
         if not UtilClient.is_unset(request.task_id):
             query['taskId'] = request.task_id
         req = open_api_models.OpenApiRequest(

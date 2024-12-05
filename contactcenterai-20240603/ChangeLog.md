@@ -1,3 +1,9 @@
+2024-12-05 Version: 3.3.1
+- Update API AnalyzeConversation: update param body.
+- Update API GetTaskResult: add param requiredFieldList.
+- Update API GetTaskResult: update response param.
+
+
 2024-11-26 Version: 3.3.0
 - Support API AnalyzeImage.
 - Update API AnalyzeConversation: update param body.

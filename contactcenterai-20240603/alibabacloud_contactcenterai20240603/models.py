@@ -417,6 +417,7 @@ class AnalyzeConversationRequest(TeaModel):
         result_types: List[str] = None,
         scene_name: str = None,
         service_inspection: AnalyzeConversationRequestServiceInspection = None,
+        source_caller_uid: str = None,
         stream: bool = None,
         time_constraint_list: List[str] = None,
         user_profiles: List[AnalyzeConversationRequestUserProfiles] = None,
@@ -431,6 +432,7 @@ class AnalyzeConversationRequest(TeaModel):
         self.result_types = result_types
         self.scene_name = scene_name
         self.service_inspection = service_inspection
+        self.source_caller_uid = source_caller_uid
         # This parameter is required.
         self.stream = stream
         self.time_constraint_list = time_constraint_list
@@ -486,6 +488,8 @@ class AnalyzeConversationRequest(TeaModel):
             result['sceneName'] = self.scene_name
         if self.service_inspection is not None:
             result['serviceInspection'] = self.service_inspection.to_map()
+        if self.source_caller_uid is not None:
+            result['sourceCallerUid'] = self.source_caller_uid
         if self.stream is not None:
             result['stream'] = self.stream
         if self.time_constraint_list is not None:
@@ -525,6 +529,8 @@ class AnalyzeConversationRequest(TeaModel):
         if m.get('serviceInspection') is not None:
             temp_model = AnalyzeConversationRequestServiceInspection()
             self.service_inspection = temp_model.from_map(m['serviceInspection'])
+        if m.get('sourceCallerUid') is not None:
+            self.source_caller_uid = m.get('sourceCallerUid')
         if m.get('stream') is not None:
             self.stream = m.get('stream')
         if m.get('timeConstraintList') is not None:
@@ -1395,8 +1401,10 @@ class CreateTaskResponse(TeaModel):
 class GetTaskResultRequest(TeaModel):
     def __init__(
         self,
+        required_field_list: List[str] = None,
         task_id: str = None,
     ):
+        self.required_field_list = required_field_list
         self.task_id = task_id
 
     def validate(self):
@@ -1408,27 +1416,29 @@ class GetTaskResultRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.required_field_list is not None:
+            result['requiredFieldList'] = self.required_field_list
         if self.task_id is not None:
             result['taskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('requiredFieldList') is not None:
+            self.required_field_list = m.get('requiredFieldList')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
         return self
 
 
-class GetTaskResultResponseBodyData(TeaModel):
+class GetTaskResultShrinkRequest(TeaModel):
     def __init__(
         self,
+        required_field_list_shrink: str = None,
         task_id: str = None,
-        task_status: str = None,
-        text: str = None,
     ):
+        self.required_field_list_shrink = required_field_list_shrink
         self.task_id = task_id
-        self.task_status = task_status
-        self.text = text
 
     def validate(self):
         pass
@@ -1439,6 +1449,111 @@ class GetTaskResultResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.required_field_list_shrink is not None:
+            result['requiredFieldList'] = self.required_field_list_shrink
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requiredFieldList') is not None:
+            self.required_field_list_shrink = m.get('requiredFieldList')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetTaskResultResponseBodyDataAsrResult(TeaModel):
+    def __init__(
+        self,
+        begin: int = None,
+        emotion_value: int = None,
+        end: int = None,
+        role: str = None,
+        speech_rate: int = None,
+        words: str = None,
+    ):
+        self.begin = begin
+        self.emotion_value = emotion_value
+        self.end = end
+        self.role = role
+        self.speech_rate = speech_rate
+        self.words = words
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin is not None:
+            result['begin'] = self.begin
+        if self.emotion_value is not None:
+            result['emotionValue'] = self.emotion_value
+        if self.end is not None:
+            result['end'] = self.end
+        if self.role is not None:
+            result['role'] = self.role
+        if self.speech_rate is not None:
+            result['speechRate'] = self.speech_rate
+        if self.words is not None:
+            result['words'] = self.words
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('begin') is not None:
+            self.begin = m.get('begin')
+        if m.get('emotionValue') is not None:
+            self.emotion_value = m.get('emotionValue')
+        if m.get('end') is not None:
+            self.end = m.get('end')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('speechRate') is not None:
+            self.speech_rate = m.get('speechRate')
+        if m.get('words') is not None:
+            self.words = m.get('words')
+        return self
+
+
+class GetTaskResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        asr_result: List[GetTaskResultResponseBodyDataAsrResult] = None,
+        task_error_message: str = None,
+        task_id: str = None,
+        task_status: str = None,
+        text: str = None,
+    ):
+        self.asr_result = asr_result
+        self.task_error_message = task_error_message
+        self.task_id = task_id
+        self.task_status = task_status
+        self.text = text
+
+    def validate(self):
+        if self.asr_result:
+            for k in self.asr_result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['asrResult'] = []
+        if self.asr_result is not None:
+            for k in self.asr_result:
+                result['asrResult'].append(k.to_map() if k else None)
+        if self.task_error_message is not None:
+            result['taskErrorMessage'] = self.task_error_message
         if self.task_id is not None:
             result['taskId'] = self.task_id
         if self.task_status is not None:
@@ -1449,6 +1564,13 @@ class GetTaskResultResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.asr_result = []
+        if m.get('asrResult') is not None:
+            for k in m.get('asrResult'):
+                temp_model = GetTaskResultResponseBodyDataAsrResult()
+                self.asr_result.append(temp_model.from_map(k))
+        if m.get('taskErrorMessage') is not None:
+            self.task_error_message = m.get('taskErrorMessage')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
         if m.get('taskStatus') is not None:
