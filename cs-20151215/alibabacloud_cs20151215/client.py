@@ -1239,6 +1239,8 @@ class Client(OpenApiClient):
             body['scale_down_enabled'] = request.scale_down_enabled
         if not UtilClient.is_unset(request.scale_up_from_zero):
             body['scale_up_from_zero'] = request.scale_up_from_zero
+        if not UtilClient.is_unset(request.scaler_type):
+            body['scaler_type'] = request.scaler_type
         if not UtilClient.is_unset(request.scan_interval):
             body['scan_interval'] = request.scan_interval
         if not UtilClient.is_unset(request.skip_nodes_with_local_storage):
@@ -1262,7 +1264,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             cs20151215_models.CreateAutoscalingConfigResponse(),
@@ -1304,6 +1306,8 @@ class Client(OpenApiClient):
             body['scale_down_enabled'] = request.scale_down_enabled
         if not UtilClient.is_unset(request.scale_up_from_zero):
             body['scale_up_from_zero'] = request.scale_up_from_zero
+        if not UtilClient.is_unset(request.scaler_type):
+            body['scaler_type'] = request.scaler_type
         if not UtilClient.is_unset(request.scan_interval):
             body['scan_interval'] = request.scan_interval
         if not UtilClient.is_unset(request.skip_nodes_with_local_storage):
@@ -1327,7 +1331,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             cs20151215_models.CreateAutoscalingConfigResponse(),
@@ -6104,7 +6108,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClustersForRegionResponse:
         """
-        @summary 查询指定地域内全部集群列表
+        @summary Queries all clusters in a specified region.
         
         @param request: DescribeClustersForRegionRequest
         @param headers: map
@@ -6155,7 +6159,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClustersForRegionResponse:
         """
-        @summary 查询指定地域内全部集群列表
+        @summary Queries all clusters in a specified region.
         
         @param request: DescribeClustersForRegionRequest
         @param headers: map
@@ -6204,7 +6208,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClustersForRegionRequest,
     ) -> cs20151215_models.DescribeClustersForRegionResponse:
         """
-        @summary 查询指定地域内全部集群列表
+        @summary Queries all clusters in a specified region.
         
         @param request: DescribeClustersForRegionRequest
         @return: DescribeClustersForRegionResponse
@@ -6219,7 +6223,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClustersForRegionRequest,
     ) -> cs20151215_models.DescribeClustersForRegionResponse:
         """
-        @summary 查询指定地域内全部集群列表
+        @summary Queries all clusters in a specified region.
         
         @param request: DescribeClustersForRegionRequest
         @return: DescribeClustersForRegionResponse
@@ -12323,9 +12327,10 @@ class Client(OpenApiClient):
         """
         @summary Removes nodes from a node pool.
         
-        @description *\
-        ***\
-        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @description - When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        - The operation may have unexpected risks. Back up the data before you perform this operation.
+        - When the system removes a node, it sets the status of the node to Unschedulable.
+        - The system removes only worker nodes. It does not remove master nodes.
         
         @param tmp_req: RemoveNodePoolNodesRequest
         @param headers: map
@@ -12381,9 +12386,10 @@ class Client(OpenApiClient):
         """
         @summary Removes nodes from a node pool.
         
-        @description *\
-        ***\
-        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @description - When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        - The operation may have unexpected risks. Back up the data before you perform this operation.
+        - When the system removes a node, it sets the status of the node to Unschedulable.
+        - The system removes only worker nodes. It does not remove master nodes.
         
         @param tmp_req: RemoveNodePoolNodesRequest
         @param headers: map
@@ -12437,9 +12443,10 @@ class Client(OpenApiClient):
         """
         @summary Removes nodes from a node pool.
         
-        @description *\
-        ***\
-        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @description - When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        - The operation may have unexpected risks. Back up the data before you perform this operation.
+        - When the system removes a node, it sets the status of the node to Unschedulable.
+        - The system removes only worker nodes. It does not remove master nodes.
         
         @param request: RemoveNodePoolNodesRequest
         @return: RemoveNodePoolNodesResponse
@@ -12457,9 +12464,10 @@ class Client(OpenApiClient):
         """
         @summary Removes nodes from a node pool.
         
-        @description *\
-        ***\
-        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @description - When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        - The operation may have unexpected risks. Back up the data before you perform this operation.
+        - When the system removes a node, it sets the status of the node to Unschedulable.
+        - The system removes only worker nodes. It does not remove master nodes.
         
         @param request: RemoveNodePoolNodesRequest
         @return: RemoveNodePoolNodesResponse

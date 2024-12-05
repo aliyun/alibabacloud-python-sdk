@@ -1,3 +1,11 @@
+2024-12-05 Version: 4.8.2
+- Update API CreateAutoscalingConfig: update param body.
+- Update API CreateAutoscalingConfig: update response param.
+- Update API CreateCluster: update param body.
+- Update API CreateClusterNodePool: update param body.
+- Update API ModifyClusterNodePool: update param body.
+
+
 2024-11-25 Version: 4.8.1
 - Update API CreateCluster: update param body.
 - Update API DescribeClusterAttachScripts: add param body.

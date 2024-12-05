@@ -2769,6 +2769,7 @@ class CreateAutoscalingConfigRequest(TeaModel):
         recycle_node_deletion_enabled: bool = None,
         scale_down_enabled: bool = None,
         scale_up_from_zero: bool = None,
+        scaler_type: str = None,
         scan_interval: str = None,
         skip_nodes_with_local_storage: bool = None,
         skip_nodes_with_system_pods: bool = None,
@@ -2811,6 +2812,7 @@ class CreateAutoscalingConfigRequest(TeaModel):
         # *   `true`: performs a scale-out activity.
         # *   `false`: does not perform a scale-out activity.
         self.scale_up_from_zero = scale_up_from_zero
+        self.scaler_type = scaler_type
         # The interval at which the system scans for events that trigger scaling activities. Unit: seconds. Default value: 60.
         self.scan_interval = scan_interval
         # Specifies whether the cluster autoscaler scales in nodes that host pods mounted with local volumes, such as EmptyDir or HostPath volumes. Valid values:
@@ -2857,6 +2859,8 @@ class CreateAutoscalingConfigRequest(TeaModel):
             result['scale_down_enabled'] = self.scale_down_enabled
         if self.scale_up_from_zero is not None:
             result['scale_up_from_zero'] = self.scale_up_from_zero
+        if self.scaler_type is not None:
+            result['scaler_type'] = self.scaler_type
         if self.scan_interval is not None:
             result['scan_interval'] = self.scan_interval
         if self.skip_nodes_with_local_storage is not None:
@@ -2889,6 +2893,8 @@ class CreateAutoscalingConfigRequest(TeaModel):
             self.scale_down_enabled = m.get('scale_down_enabled')
         if m.get('scale_up_from_zero') is not None:
             self.scale_up_from_zero = m.get('scale_up_from_zero')
+        if m.get('scaler_type') is not None:
+            self.scaler_type = m.get('scaler_type')
         if m.get('scan_interval') is not None:
             self.scan_interval = m.get('scan_interval')
         if m.get('skip_nodes_with_local_storage') is not None:
@@ -2902,17 +2908,59 @@ class CreateAutoscalingConfigRequest(TeaModel):
         return self
 
 
+class CreateAutoscalingConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
 class CreateAutoscalingConfigResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
+        body: CreateAutoscalingConfigResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
+        self.body = body
 
     def validate(self):
-        pass
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2924,6 +2972,8 @@ class CreateAutoscalingConfigResponse(TeaModel):
             result['headers'] = self.headers
         if self.status_code is not None:
             result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -2932,6 +2982,9 @@ class CreateAutoscalingConfigResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAutoscalingConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -4733,7 +4786,7 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
         # *   `true`: installs the CloudMonitor agent on ECS nodes.
         # *   `false`: does not install the CloudMonitor agent on ECS nodes.
         # 
-        # Default value: `false`.
+        # Default value: `false`
         self.cms_enabled = cms_enabled
         # The CPU management policy of nodes. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later:
         # 
@@ -4996,7 +5049,7 @@ class CreateClusterNodePoolRequestManagementUpgradeConfig(TeaModel):
         self.auto_upgrade = auto_upgrade
         # The maximum number of nodes that can be in the Unavailable state. Valid values: 1 to 1000.
         # 
-        # Default value: 1.
+        # Default value: 1
         self.max_unavailable = max_unavailable
         # The number of additional nodes.
         self.surge = surge
@@ -5301,9 +5354,9 @@ class CreateClusterNodePoolRequestScalingGroupTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The label key.
+        # The tag key.
         self.key = key
-        # The label value.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -5385,14 +5438,14 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # *   `true`: enables auto-renewal.
         # *   `false`: disables auto-renewal.
         # 
-        # Default value: `false`.
+        # Default value: `false`
         self.auto_renew = auto_renew
         # The auto-renewal period. Valid values:
         # 
         # *   Valid values when PeriodUnit is set to Week: 1, 2, and 3
         # *   Valid values when PeriodUnit is set to Month: 1, 2, 3, 6, 12, 24, 36, 48, and 60
         # 
-        # Default value: 1.
+        # Default value: 1
         self.auto_renew_period = auto_renew_period
         # This parameter is deprecated. Use the security_hardening_os parameter instead.
         self.cis_enabled = cis_enabled
@@ -5892,6 +5945,10 @@ class CreateClusterNodePoolRequest(TeaModel):
         # 
         # The number of nodes in the node pool.
         self.count = count
+        # Specifies whether set the network type of the pod to host network.
+        # 
+        # *   `true`: sets to host network.
+        # *   `false`: sets to container network.
         self.host_network = host_network
         # This parameter is deprecated.
         # 
@@ -5899,18 +5956,21 @@ class CreateClusterNodePoolRequest(TeaModel):
         self.interconnect_config = interconnect_config
         # The network type of the edge node pool. This parameter takes effect only when the `type` of the node pool is set to `edge`. Valid values:
         # 
-        # *   `basic`: basic.
-        # *   `private`: dedicated. Only clusters that run Kubernetes 1.22 and later support this value.
+        # *   `basic`: Internet.
+        # *   `private`: private network.
         self.interconnect_mode = interconnect_mode
+        # Specifies whether all nodes in the edge node pool can communicate with each other at Layer 3.
+        # 
+        # *   `true`: The nodes in the edge node pool can communicate with each other at Layer 3.
+        # *   `false`: The nodes in the edge node pool cannot communicate with each other at Layer 3.
         self.intranet = intranet
         # The configurations of the cluster.
         self.kubernetes_config = kubernetes_config
         # The configurations of the managed node pool feature.
         self.management = management
-        # The maximum number of nodes that can be contained in the edge node pool. The value of this parameter must be greater than or equal to 0. A value of 0 indicates that the number of nodes in the node pool is limited only by the quota of nodes in the cluster.
+        # This parameter is deprecated.
         # 
-        # *   In most cases, this parameter is set to a value greater than 0 for edge node pools.
-        # *   This parameter is set to 0 for node pools whose types are ess or default edge node pools.
+        # The maximum number of nodes that can be contained in the edge node pool.
         self.max_nodes = max_nodes
         # The node configurations.
         self.node_config = node_config
@@ -14568,12 +14628,19 @@ class DescribeClustersForRegionRequest(TeaModel):
         page_size: int = None,
         profile: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The specification of the cluster.
         self.cluster_spec = cluster_spec
+        # The type of the cluster.
         self.cluster_type = cluster_type
+        # Perform a fuzzy search by using the cluster name.
         self.name = name
+        # The number of pages.
         self.page_number = page_number
+        # The number of records on each page.
         self.page_size = page_size
+        # The identifier of the cluster.
         self.profile = profile
 
     def validate(self):
@@ -14649,31 +14716,90 @@ class DescribeClustersForRegionResponseBodyClusters(TeaModel):
         vpc_id: str = None,
         vswitch_ids: List[str] = None,
     ):
+        # The domain name of the cluster.
         self.cluster_domain = cluster_domain
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The types of ACK managed clusters:
+        # 
+        # *   ack.pro.small: ACK Pro cluster
+        # *   ack.standard: ACK Basic cluster
         self.cluster_spec = cluster_spec
+        # The type of the cluster. Valid values:
+        # 
+        # *   Kubernetes: ACK dedicated cluster
+        # *   ManagedKubernetes: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
+        # *   ExternalKubernetes: registered cluster
         self.cluster_type = cluster_type
+        # The CIDR block of pods in the cluster.
         self.container_cidr = container_cidr
+        # The time at which the instance is created.
         self.created = created
+        # The current Kubernetes version of the cluster.
         self.current_version = current_version
+        # Specifies whether to enable cluster deletion protection. If you enable this option, the cluster cannot be deleted in the console or by calling API operations. You can obtain the terminal ID by calling one of the following operations:
+        # 
+        # *   true: enables deletion protection for the cluster. This way, the cluster cannot be deleted in the ACK console or by calling API operations.
+        # *   false: disables deletion protection for the cluster. This way, the cluster can be deleted in the ACK console or by calling API operations.
         self.deletion_protection = deletion_protection
+        # The initial Kubernetes version of the cluster.
         self.init_version = init_version
+        # The IP protocol stack of the cluster.
         self.ip_stack = ip_stack
+        # The name of the cluster.
         self.name = name
+        # The Kubernetes version to which the cluster can be updated.
         self.next_version = next_version
+        # The subtype of the cluster. Valid values:
+        # 
+        # *   Default: ACK managed clusters. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+        # *   Edge: ACK Edge clusters. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+        # *   Serverless: ACK Serverless clusters. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+        # *   Lingjun: ACK Lingjun Pro clusters.
         self.profile = profile
+        # The kube-proxy mode of the cluster.
+        # 
+        # Valid value:
+        # 
+        # *   iptables: iptables.
+        # *   ipvs: ipvs.
         self.proxy_mode = proxy_mode
+        # The region ID.
         self.region_id = region_id
+        # The ID of the cluster resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the security group of the cluster.
         self.security_group_id = security_group_id
+        # The CIDR block of the service network.
+        # 
         # This parameter is required.
         self.service_cidr = service_cidr
+        # The number of nodes in the ACK cluster.
         self.size = size
+        # The status of the cluster. Valid values:
+        # 
+        # *   initial: The cluster is being created.
+        # *   failed: The cluster failed to be created.
+        # *   running: The cluster is running.
+        # *   Upgrading: The cluster is being updated.
+        # *   scaling: The cluster is being scaled.
+        # *   waiting: The cluster is waiting for connection requests.
+        # *   disconnected: The cluster is disconnected.
+        # *   inactive: The cluster is inactive.
+        # *   unavailable: The cluster is unavailable.
+        # *   deleting: The cluster is being deleted.
+        # *   deleted: The ACK cluster is deleted.
+        # *   delete_failed: The cluster failed to be deleted.
         self.state = state
+        # The list of tags.
         self.tags = tags
+        # The time zone.
         self.timezone = timezone
+        # The time when the cluster was updated.
         self.updated = updated
+        # The ID of the virtual private cloud (VPC) to which the cluster belongs.
         self.vpc_id = vpc_id
+        # The vSwitches for the control plane of the cluster.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -14807,8 +14933,11 @@ class DescribeClustersForRegionResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of pages.
         self.page_number = page_number
+        # The number of records on each page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -14845,7 +14974,9 @@ class DescribeClustersForRegionResponseBody(TeaModel):
         clusters: List[DescribeClustersForRegionResponseBodyClusters] = None,
         page_info: DescribeClustersForRegionResponseBodyPageInfo = None,
     ):
+        # The details of the clusters.
         self.clusters = clusters
+        # The pagination details.
         self.page_info = page_info
 
     def validate(self):
