@@ -1,3 +1,6 @@
+2024-12-05 Version: 3.3.2
+- Generated python 2024-06-03 for ContactCenterAI.
+
 2024-12-05 Version: 3.3.1
 - Update API AnalyzeConversation: update param body.
 - Update API GetTaskResult: add param requiredFieldList.
