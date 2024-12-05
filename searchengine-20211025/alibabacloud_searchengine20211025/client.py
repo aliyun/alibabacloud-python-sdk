@@ -4359,10 +4359,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of an index table version.
         
-        @description ## Method
+        @description ## [](#)Method
         GET
-        ## URI
-        /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
+        ## [](#uri)URI
+        /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file
         
         @param request: GetFileRequest
         @param headers: map
@@ -4405,10 +4405,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of an index table version.
         
-        @description ## Method
+        @description ## [](#)Method
         GET
-        ## URI
-        /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
+        ## [](#uri)URI
+        /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file
         
         @param request: GetFileRequest
         @param headers: map
@@ -4449,10 +4449,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of an index table version.
         
-        @description ## Method
+        @description ## [](#)Method
         GET
-        ## URI
-        /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
+        ## [](#uri)URI
+        /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file
         
         @param request: GetFileRequest
         @return: GetFileResponse
@@ -4471,10 +4471,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of an index table version.
         
-        @description ## Method
+        @description ## [](#)Method
         GET
-        ## URI
-        /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
+        ## [](#uri)URI
+        /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file
         
         @param request: GetFileRequest
         @return: GetFileResponse
@@ -4492,6 +4492,11 @@ class Client(OpenApiClient):
     ) -> searchengine_20211025_models.GetIndexResponse:
         """
         @summary Queries the information about an index version.
+        
+        @description ## [](#)Method
+        GET
+        ## [](#uri)URI
+        /openapi/ha3/instances/{instanceId}/indexes/{indexName}
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4526,6 +4531,11 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about an index version.
         
+        @description ## [](#)Method
+        GET
+        ## [](#uri)URI
+        /openapi/ha3/instances/{instanceId}/indexes/{indexName}
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetIndexResponse
@@ -4557,6 +4567,11 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about an index version.
         
+        @description ## [](#)Method
+        GET
+        ## [](#uri)URI
+        /openapi/ha3/instances/{instanceId}/indexes/{indexName}
+        
         @return: GetIndexResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -4570,6 +4585,11 @@ class Client(OpenApiClient):
     ) -> searchengine_20211025_models.GetIndexResponse:
         """
         @summary Queries the information about an index version.
+        
+        @description ## [](#)Method
+        GET
+        ## [](#uri)URI
+        /openapi/ha3/instances/{instanceId}/indexes/{indexName}
         
         @return: GetIndexResponse
         """
@@ -4802,10 +4822,14 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of an instance based on the instance ID.
         
-        @description ### Method
-        `GET`
-        ### URI
-        `/openapi/ha3/instances/{instanceId}`
+        @description ### [](#)Method
+        ```java
+        GET
+        ```
+        ### [](#uri)URI
+        ```java
+        /openapi/ha3/instances/{instanceId}
+        ```
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4839,10 +4863,14 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of an instance based on the instance ID.
         
-        @description ### Method
-        `GET`
-        ### URI
-        `/openapi/ha3/instances/{instanceId}`
+        @description ### [](#)Method
+        ```java
+        GET
+        ```
+        ### [](#uri)URI
+        ```java
+        /openapi/ha3/instances/{instanceId}
+        ```
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4874,10 +4902,14 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of an instance based on the instance ID.
         
-        @description ### Method
-        `GET`
-        ### URI
-        `/openapi/ha3/instances/{instanceId}`
+        @description ### [](#)Method
+        ```java
+        GET
+        ```
+        ### [](#uri)URI
+        ```java
+        /openapi/ha3/instances/{instanceId}
+        ```
         
         @return: GetInstanceResponse
         """
@@ -4892,10 +4924,14 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of an instance based on the instance ID.
         
-        @description ### Method
-        `GET`
-        ### URI
-        `/openapi/ha3/instances/{instanceId}`
+        @description ### [](#)Method
+        ```java
+        GET
+        ```
+        ### [](#uri)URI
+        ```java
+        /openapi/ha3/instances/{instanceId}
+        ```
         
         @return: GetInstanceResponse
         """

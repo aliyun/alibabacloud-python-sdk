@@ -2083,6 +2083,7 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
         catalog: str = None,
         database: str = None,
         endpoint: str = None,
+        format: str = None,
         namespace: str = None,
         oss_path: str = None,
         partition: str = None,
@@ -2101,6 +2102,7 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
         self.database = database
         # The endpoint of the MaxCompute or Object Storage Service (OSS) data source.
         self.endpoint = endpoint
+        self.format = format
         # The namespace name.
         self.namespace = namespace
         # The path of the OSS object.
@@ -2136,6 +2138,8 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
             result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
+        if self.format is not None:
+            result['format'] = self.format
         if self.namespace is not None:
             result['namespace'] = self.namespace
         if self.oss_path is not None:
@@ -2166,6 +2170,8 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
             self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
+        if m.get('format') is not None:
+            self.format = m.get('format')
         if m.get('namespace') is not None:
             self.namespace = m.get('namespace')
         if m.get('ossPath') is not None:
@@ -7782,6 +7788,7 @@ class GetFileResponseBodyResult(TeaModel):
         self.content = content
         # The data source.
         self.data_source = data_source
+        # Extended information
         self.extend = extend
         # The full path of the file.
         self.full_path_name = full_path_name
@@ -7842,7 +7849,7 @@ class GetFileResponseBody(TeaModel):
         request_id: str = None,
         result: GetFileResponseBodyResult = None,
     ):
-        # id of request
+        # The request ID.
         self.request_id = request_id
         # The index information.
         self.result = result
@@ -7923,6 +7930,7 @@ class GetIndexResponseBodyResultDataSourceInfoConfig(TeaModel):
         catalog: str = None,
         database: str = None,
         endpoint: str = None,
+        format: str = None,
         namespace: str = None,
         oss_path: str = None,
         partition: str = None,
@@ -7941,6 +7949,7 @@ class GetIndexResponseBodyResultDataSourceInfoConfig(TeaModel):
         self.database = database
         # The endpoint of the MaxCompute data source.
         self.endpoint = endpoint
+        self.format = format
         # The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
         self.namespace = namespace
         # The Object Storage Service (OSS) path.
@@ -7976,6 +7985,8 @@ class GetIndexResponseBodyResultDataSourceInfoConfig(TeaModel):
             result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
+        if self.format is not None:
+            result['format'] = self.format
         if self.namespace is not None:
             result['namespace'] = self.namespace
         if self.oss_path is not None:
@@ -8006,6 +8017,8 @@ class GetIndexResponseBodyResultDataSourceInfoConfig(TeaModel):
             self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
+        if m.get('format') is not None:
+            self.format = m.get('format')
         if m.get('namespace') is not None:
             self.namespace = m.get('namespace')
         if m.get('ossPath') is not None:
@@ -8275,6 +8288,7 @@ class GetIndexResponseBodyResult(TeaModel):
         config: Dict[str, dict] = None,
         config_when_build: Dict[str, dict] = None,
         content: str = None,
+        create_time: str = None,
         data_source: str = None,
         data_source_info: GetIndexResponseBodyResultDataSourceInfo = None,
         description: str = None,
@@ -8287,6 +8301,7 @@ class GetIndexResponseBodyResult(TeaModel):
         index_status: str = None,
         name: str = None,
         partition: int = None,
+        update_time: str = None,
         versions: List[GetIndexResponseBodyResultVersions] = None,
     ):
         # The cluster information.
@@ -8297,6 +8312,7 @@ class GetIndexResponseBodyResult(TeaModel):
         self.config_when_build = config_when_build
         # The file content.
         self.content = content
+        self.create_time = create_time
         # The name of the data source.
         self.data_source = data_source
         # The information about the data source.
@@ -8305,6 +8321,7 @@ class GetIndexResponseBodyResult(TeaModel):
         self.description = description
         # The deployment name of the index.
         self.domain = domain
+        # Extended information
         self.extend = extend
         # The time when full data in the index was last updated.
         self.full_update_time = full_update_time
@@ -8328,6 +8345,7 @@ class GetIndexResponseBodyResult(TeaModel):
         self.name = name
         # The number of shards.
         self.partition = partition
+        self.update_time = update_time
         # The information about the versions.
         self.versions = versions
 
@@ -8359,6 +8377,8 @@ class GetIndexResponseBodyResult(TeaModel):
             result['configWhenBuild'] = self.config_when_build
         if self.content is not None:
             result['content'] = self.content
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
         if self.data_source is not None:
             result['dataSource'] = self.data_source
         if self.data_source_info is not None:
@@ -8383,6 +8403,8 @@ class GetIndexResponseBodyResult(TeaModel):
             result['name'] = self.name
         if self.partition is not None:
             result['partition'] = self.partition
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
         result['versions'] = []
         if self.versions is not None:
             for k in self.versions:
@@ -8402,6 +8424,8 @@ class GetIndexResponseBodyResult(TeaModel):
             self.config_when_build = m.get('configWhenBuild')
         if m.get('content') is not None:
             self.content = m.get('content')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
         if m.get('dataSource') is not None:
             self.data_source = m.get('dataSource')
         if m.get('dataSourceInfo') is not None:
@@ -8427,6 +8451,8 @@ class GetIndexResponseBodyResult(TeaModel):
             self.name = m.get('name')
         if m.get('partition') is not None:
             self.partition = m.get('partition')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
         self.versions = []
         if m.get('versions') is not None:
             for k in m.get('versions'):
@@ -8441,7 +8467,7 @@ class GetIndexResponseBody(TeaModel):
         request_id: str = None,
         result: GetIndexResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The index information.
         self.result = result
@@ -8798,10 +8824,15 @@ class GetInstanceResponseBodyResultNetwork(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The public domain name whitelist.
         self.allow = allow
+        # The instance endpoint.
         self.endpoint = endpoint
+        # The public endpoint.
         self.public_endpoint = public_endpoint
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -8849,10 +8880,15 @@ class GetInstanceResponseBodyResultSpecQrsResource(TeaModel):
         mem: int = None,
         node_count: int = None,
     ):
+        # The category. Valid values: local_ssd, SSD, and cloud.
         self.category = category
+        # The number of vCPUs.
         self.cpu = cpu
+        # The storage capacity. Unit: GB.
         self.disk = disk
+        # The memory of the instance. Unit: GB.
         self.mem = mem
+        # The number of nodes.
         self.node_count = node_count
 
     def validate(self):
@@ -8900,10 +8936,15 @@ class GetInstanceResponseBodyResultSpecSearchResource(TeaModel):
         mem: int = None,
         node_count: int = None,
     ):
+        # The category. Valid values: local_ssd, SSD, and cloud.
         self.category = category
+        # The number of vCPUs.
         self.cpu = cpu
+        # The storage capacity. Unit: GB.
         self.disk = disk
+        # The memory of the instance. Unit: GB.
         self.mem = mem
+        # The number of nodes.
         self.node_count = node_count
 
     def validate(self):
@@ -8948,7 +8989,9 @@ class GetInstanceResponseBodyResultSpec(TeaModel):
         qrs_resource: GetInstanceResponseBodyResultSpecQrsResource = None,
         search_resource: GetInstanceResponseBodyResultSpecSearchResource = None,
     ):
+        # The QRS worker specifications.
         self.qrs_resource = qrs_resource
+        # The searcher worker specifications.
         self.search_resource = search_resource
 
     def validate(self):
@@ -9046,6 +9089,7 @@ class GetInstanceResponseBodyResult(TeaModel):
         self.create_time = create_time
         # The description of the instance.
         self.description = description
+        # The edition of the instance. Valid values: vector and engine.
         self.edition = edition
         # The time when the instance expires.
         self.expired_time = expired_time
@@ -9055,11 +9099,15 @@ class GetInstanceResponseBodyResult(TeaModel):
         self.instance_id = instance_id
         # The lock status.
         self.lock_mode = lock_mode
+        # The network information of the instance.
         self.network = network
+        # Specifies whether the instance is of the new version.
         self.new_mode = new_mode
+        # Specifies whether the instance has only one node.
         self.no_qrs = no_qrs
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The node specifications.
         self.spec = spec
         # The status of the instance. Valid values:
         # 
@@ -9072,7 +9120,9 @@ class GetInstanceResponseBodyResult(TeaModel):
         self.tags = tags
         # The time when the instance was updated.
         self.update_time = update_time
+        # The username.
         self.user_name = user_name
+        # The version of the engine.
         self.version = version
 
     def validate(self):
@@ -9187,9 +9237,9 @@ class GetInstanceResponseBody(TeaModel):
         request_id: str = None,
         result: GetInstanceResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The results returned.
+        # Response parameters
         self.result = result
 
     def validate(self):
@@ -12992,6 +13042,7 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
         catalog: str = None,
         database: str = None,
         endpoint: str = None,
+        format: str = None,
         namespace: str = None,
         oss_path: str = None,
         partition: str = None,
@@ -13010,6 +13061,7 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
         self.database = database
         # The endpoint of the MaxCompute data source.
         self.endpoint = endpoint
+        self.format = format
         # The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
         self.namespace = namespace
         # The Object Storage Service (OSS) path.
@@ -13045,6 +13097,8 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
             result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
+        if self.format is not None:
+            result['format'] = self.format
         if self.namespace is not None:
             result['namespace'] = self.namespace
         if self.oss_path is not None:
@@ -13075,6 +13129,8 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
             self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
+        if m.get('format') is not None:
+            self.format = m.get('format')
         if m.get('namespace') is not None:
             self.namespace = m.get('namespace')
         if m.get('ossPath') is not None:
@@ -13334,6 +13390,7 @@ class ListIndexesResponseBodyResult(TeaModel):
     def __init__(
         self,
         content: str = None,
+        create_time: str = None,
         data_source: str = None,
         data_source_info: ListIndexesResponseBodyResultDataSourceInfo = None,
         description: str = None,
@@ -13345,10 +13402,12 @@ class ListIndexesResponseBodyResult(TeaModel):
         index_status: str = None,
         name: str = None,
         partition: int = None,
+        update_time: str = None,
         versions: List[ListIndexesResponseBodyResultVersions] = None,
     ):
         # The index schema, which is a JSON string.
         self.content = content
+        self.create_time = create_time
         # The name of the data source.
         self.data_source = data_source
         # The information about the data source.
@@ -13371,6 +13430,7 @@ class ListIndexesResponseBodyResult(TeaModel):
         self.name = name
         # The number of shards.
         self.partition = partition
+        self.update_time = update_time
         # The index versions.
         self.versions = versions
 
@@ -13390,6 +13450,8 @@ class ListIndexesResponseBodyResult(TeaModel):
         result = dict()
         if self.content is not None:
             result['content'] = self.content
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
         if self.data_source is not None:
             result['dataSource'] = self.data_source
         if self.data_source_info is not None:
@@ -13412,6 +13474,8 @@ class ListIndexesResponseBodyResult(TeaModel):
             result['name'] = self.name
         if self.partition is not None:
             result['partition'] = self.partition
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
         result['versions'] = []
         if self.versions is not None:
             for k in self.versions:
@@ -13422,6 +13486,8 @@ class ListIndexesResponseBodyResult(TeaModel):
         m = m or dict()
         if m.get('content') is not None:
             self.content = m.get('content')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
         if m.get('dataSource') is not None:
             self.data_source = m.get('dataSource')
         if m.get('dataSourceInfo') is not None:
@@ -13445,6 +13511,8 @@ class ListIndexesResponseBodyResult(TeaModel):
             self.name = m.get('name')
         if m.get('partition') is not None:
             self.partition = m.get('partition')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
         self.versions = []
         if m.get('versions') is not None:
             for k in m.get('versions'):
@@ -17694,6 +17762,7 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
         catalog: str = None,
         database: str = None,
         endpoint: str = None,
+        format: str = None,
         namespace: str = None,
         oss_path: str = None,
         partition: str = None,
@@ -17712,6 +17781,7 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
         self.database = database
         # The endpoint of the MaxCompute data source.
         self.endpoint = endpoint
+        self.format = format
         # The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
         self.namespace = namespace
         # The Object Storage Service (OSS) path.
@@ -17747,6 +17817,8 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
             result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
+        if self.format is not None:
+            result['format'] = self.format
         if self.namespace is not None:
             result['namespace'] = self.namespace
         if self.oss_path is not None:
@@ -17777,6 +17849,8 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
             self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
+        if m.get('format') is not None:
+            self.format = m.get('format')
         if m.get('namespace') is not None:
             self.namespace = m.get('namespace')
         if m.get('ossPath') is not None:
@@ -17839,6 +17913,8 @@ class ModifyIndexRequestDataSourceInfo(TeaModel):
         domain: str = None,
         generation: int = None,
         name: str = None,
+        oss_data_path: str = None,
+        partition: str = None,
         process_parallel_num: int = None,
         process_partition_count: int = None,
         saro_config: ModifyIndexRequestDataSourceInfoSaroConfig = None,
@@ -17858,6 +17934,8 @@ class ModifyIndexRequestDataSourceInfo(TeaModel):
         self.generation = generation
         # The name of the data source.
         self.name = name
+        self.oss_data_path = oss_data_path
+        self.partition = partition
         # The maximum number of full indexes that can be concurrently processed.
         self.process_parallel_num = process_parallel_num
         # The number of resources used for data update.
@@ -17893,6 +17971,10 @@ class ModifyIndexRequestDataSourceInfo(TeaModel):
             result['generation'] = self.generation
         if self.name is not None:
             result['name'] = self.name
+        if self.oss_data_path is not None:
+            result['ossDataPath'] = self.oss_data_path
+        if self.partition is not None:
+            result['partition'] = self.partition
         if self.process_parallel_num is not None:
             result['processParallelNum'] = self.process_parallel_num
         if self.process_partition_count is not None:
@@ -17920,6 +18002,10 @@ class ModifyIndexRequestDataSourceInfo(TeaModel):
             self.generation = m.get('generation')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('ossDataPath') is not None:
+            self.oss_data_path = m.get('ossDataPath')
+        if m.get('partition') is not None:
+            self.partition = m.get('partition')
         if m.get('processParallelNum') is not None:
             self.process_parallel_num = m.get('processParallelNum')
         if m.get('processPartitionCount') is not None:

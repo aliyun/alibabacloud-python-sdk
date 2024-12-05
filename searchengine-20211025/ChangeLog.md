@@ -1,3 +1,10 @@
+2024-12-05 Version: 4.2.5
+- Update API CreateIndex: update param body.
+- Update API GetIndex: update response param.
+- Update API ListIndexes: update response param.
+- Update API ModifyIndex: update param body.
+
+
 2024-09-18 Version: 4.2.4
 - Update API BuildIndex: update param body.
 - Update API BuildIndex: update response param.
