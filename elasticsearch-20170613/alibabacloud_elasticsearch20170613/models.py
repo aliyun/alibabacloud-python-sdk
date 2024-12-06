@@ -13587,6 +13587,7 @@ class GetRegionConfigurationResponseBodyResult(TeaModel):
         instance_support_nodes: List[str] = None,
         jvm_confine: GetRegionConfigurationResponseBodyResultJvmConfine = None,
         kibana_node_properties: GetRegionConfigurationResponseBodyResultKibanaNodeProperties = None,
+        logstash_zones: List[str] = None,
         master_disk_list: List[GetRegionConfigurationResponseBodyResultMasterDiskList] = None,
         master_spec: List[str] = None,
         node: GetRegionConfigurationResponseBodyResultNode = None,
@@ -13608,6 +13609,7 @@ class GetRegionConfigurationResponseBodyResult(TeaModel):
         self.instance_support_nodes = instance_support_nodes
         self.jvm_confine = jvm_confine
         self.kibana_node_properties = kibana_node_properties
+        self.logstash_zones = logstash_zones
         self.master_disk_list = master_disk_list
         self.master_spec = master_spec
         self.node = node
@@ -13691,6 +13693,8 @@ class GetRegionConfigurationResponseBodyResult(TeaModel):
             result['jvmConfine'] = self.jvm_confine.to_map()
         if self.kibana_node_properties is not None:
             result['kibanaNodeProperties'] = self.kibana_node_properties.to_map()
+        if self.logstash_zones is not None:
+            result['logstashZones'] = self.logstash_zones
         result['masterDiskList'] = []
         if self.master_disk_list is not None:
             for k in self.master_disk_list:
@@ -13754,6 +13758,8 @@ class GetRegionConfigurationResponseBodyResult(TeaModel):
         if m.get('kibanaNodeProperties') is not None:
             temp_model = GetRegionConfigurationResponseBodyResultKibanaNodeProperties()
             self.kibana_node_properties = temp_model.from_map(m['kibanaNodeProperties'])
+        if m.get('logstashZones') is not None:
+            self.logstash_zones = m.get('logstashZones')
         self.master_disk_list = []
         if m.get('masterDiskList') is not None:
             for k in m.get('masterDiskList'):

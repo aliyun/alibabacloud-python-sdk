@@ -1,3 +1,7 @@
+2024-12-06 Version: 2.0.9
+- Update API GetRegionConfiguration: update response param.
+
+
 2024-11-21 Version: 2.0.8
 - Update API GetRegionalInstanceConfig: update response param.
 - Update API UpgradeEngineVersion: update param body.
