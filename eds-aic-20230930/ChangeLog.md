@@ -1,3 +1,6 @@
+2024-12-06 Version: 3.0.3
+- Generated python 2023-09-30 for eds-aic.
+
 2024-12-06 Version: 3.0.2
 - Update API BackupFile: add param BackupFileName.
 - Update API DescribeAndroidInstanceGroups: update response param.
