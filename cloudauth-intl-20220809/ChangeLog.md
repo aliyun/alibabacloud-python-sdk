@@ -1,3 +1,8 @@
+2024-12-06 Version: 3.1.1
+- Update API DocOcr: add param CardSide.
+- Update API Initialize: add param AppQualityCheck.
+
+
 2024-11-21 Version: 3.1.0
 - Support API FaceGuardRisk.
 - Update API CheckResult: update response param.

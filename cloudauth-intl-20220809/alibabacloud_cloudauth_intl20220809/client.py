@@ -415,6 +415,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.card_side):
+            query['CardSide'] = request.card_side
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.id_face_quality):
@@ -470,6 +472,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.card_side):
+            query['CardSide'] = request.card_side
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.id_face_quality):
@@ -1267,6 +1271,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_quality_check):
+            query['AppQualityCheck'] = request.app_quality_check
         if not UtilClient.is_unset(request.authorize):
             query['Authorize'] = request.authorize
         if not UtilClient.is_unset(request.callback_token):
@@ -1360,6 +1366,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_quality_check):
+            query['AppQualityCheck'] = request.app_quality_check
         if not UtilClient.is_unset(request.authorize):
             query['Authorize'] = request.authorize
         if not UtilClient.is_unset(request.callback_token):

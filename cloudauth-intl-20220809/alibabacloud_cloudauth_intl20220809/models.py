@@ -591,6 +591,7 @@ class DeleteVerifyResultResponse(TeaModel):
 class DocOcrRequest(TeaModel):
     def __init__(
         self,
+        card_side: str = None,
         doc_type: str = None,
         id_face_quality: str = None,
         id_ocr_picture_base_64: str = None,
@@ -602,6 +603,7 @@ class DocOcrRequest(TeaModel):
         product_code: str = None,
         spoof: str = None,
     ):
+        self.card_side = card_side
         self.doc_type = doc_type
         self.id_face_quality = id_face_quality
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
@@ -622,6 +624,8 @@ class DocOcrRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.card_side is not None:
+            result['CardSide'] = self.card_side
         if self.doc_type is not None:
             result['DocType'] = self.doc_type
         if self.id_face_quality is not None:
@@ -646,6 +650,8 @@ class DocOcrRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CardSide') is not None:
+            self.card_side = m.get('CardSide')
         if m.get('DocType') is not None:
             self.doc_type = m.get('DocType')
         if m.get('IdFaceQuality') is not None:
@@ -1943,6 +1949,7 @@ class Id2MetaVerifyIntlResponse(TeaModel):
 class InitializeRequest(TeaModel):
     def __init__(
         self,
+        app_quality_check: str = None,
         authorize: str = None,
         callback_token: str = None,
         callback_url: str = None,
@@ -1973,6 +1980,7 @@ class InitializeRequest(TeaModel):
         show_ocr_result: str = None,
         style_config: str = None,
     ):
+        self.app_quality_check = app_quality_check
         self.authorize = authorize
         self.callback_token = callback_token
         self.callback_url = callback_url
@@ -2013,6 +2021,8 @@ class InitializeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_quality_check is not None:
+            result['AppQualityCheck'] = self.app_quality_check
         if self.authorize is not None:
             result['Authorize'] = self.authorize
         if self.callback_token is not None:
@@ -2075,6 +2085,8 @@ class InitializeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppQualityCheck') is not None:
+            self.app_quality_check = m.get('AppQualityCheck')
         if m.get('Authorize') is not None:
             self.authorize = m.get('Authorize')
         if m.get('CallbackToken') is not None:
