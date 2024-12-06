@@ -952,6 +952,7 @@ class EcsSpec(TeaModel):
         cpu: int = None,
         default_gpudriver: str = None,
         gpu: int = None,
+        gpu_memory: int = None,
         gpu_type: str = None,
         instance_type: str = None,
         is_available: bool = None,
@@ -966,6 +967,7 @@ class EcsSpec(TeaModel):
         self.cpu = cpu
         self.default_gpudriver = default_gpudriver
         self.gpu = gpu
+        self.gpu_memory = gpu_memory
         self.gpu_type = gpu_type
         self.instance_type = instance_type
         self.is_available = is_available
@@ -993,6 +995,8 @@ class EcsSpec(TeaModel):
             result['DefaultGPUDriver'] = self.default_gpudriver
         if self.gpu is not None:
             result['Gpu'] = self.gpu
+        if self.gpu_memory is not None:
+            result['GpuMemory'] = self.gpu_memory
         if self.gpu_type is not None:
             result['GpuType'] = self.gpu_type
         if self.instance_type is not None:
@@ -1023,6 +1027,8 @@ class EcsSpec(TeaModel):
             self.default_gpudriver = m.get('DefaultGPUDriver')
         if m.get('Gpu') is not None:
             self.gpu = m.get('Gpu')
+        if m.get('GpuMemory') is not None:
+            self.gpu_memory = m.get('GpuMemory')
         if m.get('GpuType') is not None:
             self.gpu_type = m.get('GpuType')
         if m.get('InstanceType') is not None:
@@ -3489,7 +3495,7 @@ class Tensorboard(TeaModel):
         token: str = None,
         user_id: str = None,
         username: str = None,
-        workspaceid: str = None,
+        workspace_id: str = None,
     ):
         self.accessibility = accessibility
         self.cpu = cpu
@@ -3520,7 +3526,7 @@ class Tensorboard(TeaModel):
         self.token = token
         self.user_id = user_id
         self.username = username
-        self.workspaceid = workspaceid
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.tensorboard_data_sources:
@@ -3596,8 +3602,8 @@ class Tensorboard(TeaModel):
             result['UserId'] = self.user_id
         if self.username is not None:
             result['Username'] = self.username
-        if self.workspaceid is not None:
-            result['Workspaceid'] = self.workspaceid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3664,8 +3670,8 @@ class Tensorboard(TeaModel):
             self.user_id = m.get('UserId')
         if m.get('Username') is not None:
             self.username = m.get('Username')
-        if m.get('Workspaceid') is not None:
-            self.workspaceid = m.get('Workspaceid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -6584,6 +6590,7 @@ class ListJobsRequest(TeaModel):
         job_id: str = None,
         job_type: str = None,
         order: str = None,
+        oversold_info: str = None,
         page_number: int = None,
         page_size: int = None,
         pipeline_id: str = None,
@@ -6607,6 +6614,7 @@ class ListJobsRequest(TeaModel):
         self.job_id = job_id
         self.job_type = job_type
         self.order = order
+        self.oversold_info = oversold_info
         self.page_number = page_number
         self.page_size = page_size
         self.pipeline_id = pipeline_id
@@ -6648,6 +6656,8 @@ class ListJobsRequest(TeaModel):
             result['JobType'] = self.job_type
         if self.order is not None:
             result['Order'] = self.order
+        if self.oversold_info is not None:
+            result['OversoldInfo'] = self.oversold_info
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -6696,6 +6706,8 @@ class ListJobsRequest(TeaModel):
             self.job_type = m.get('JobType')
         if m.get('Order') is not None:
             self.order = m.get('Order')
+        if m.get('OversoldInfo') is not None:
+            self.oversold_info = m.get('OversoldInfo')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -6737,6 +6749,7 @@ class ListJobsShrinkRequest(TeaModel):
         job_id: str = None,
         job_type: str = None,
         order: str = None,
+        oversold_info: str = None,
         page_number: int = None,
         page_size: int = None,
         pipeline_id: str = None,
@@ -6760,6 +6773,7 @@ class ListJobsShrinkRequest(TeaModel):
         self.job_id = job_id
         self.job_type = job_type
         self.order = order
+        self.oversold_info = oversold_info
         self.page_number = page_number
         self.page_size = page_size
         self.pipeline_id = pipeline_id
@@ -6801,6 +6815,8 @@ class ListJobsShrinkRequest(TeaModel):
             result['JobType'] = self.job_type
         if self.order is not None:
             result['Order'] = self.order
+        if self.oversold_info is not None:
+            result['OversoldInfo'] = self.oversold_info
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -6849,6 +6865,8 @@ class ListJobsShrinkRequest(TeaModel):
             self.job_type = m.get('JobType')
         if m.get('Order') is not None:
             self.order = m.get('Order')
+        if m.get('OversoldInfo') is not None:
+            self.oversold_info = m.get('OversoldInfo')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:

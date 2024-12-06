@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-1': 'pai-dlc.aliyuncs.com',
@@ -2097,6 +2096,8 @@ class Client(OpenApiClient):
             query['JobType'] = request.job_type
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
+        if not UtilClient.is_unset(request.oversold_info):
+            query['OversoldInfo'] = request.oversold_info
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -2181,6 +2182,8 @@ class Client(OpenApiClient):
             query['JobType'] = request.job_type
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
+        if not UtilClient.is_unset(request.oversold_info):
+            query['OversoldInfo'] = request.oversold_info
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
