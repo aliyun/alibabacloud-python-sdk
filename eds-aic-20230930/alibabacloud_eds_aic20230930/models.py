@@ -303,6 +303,7 @@ class BackupFileRequest(TeaModel):
     def __init__(
         self,
         android_instance_id_list: List[str] = None,
+        backup_file_name: str = None,
         backup_file_path: str = None,
         description: str = None,
         source_app_list: List[str] = None,
@@ -312,6 +313,7 @@ class BackupFileRequest(TeaModel):
     ):
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        self.backup_file_name = backup_file_name
         # This parameter is required.
         self.backup_file_path = backup_file_path
         self.description = description
@@ -331,6 +333,8 @@ class BackupFileRequest(TeaModel):
         result = dict()
         if self.android_instance_id_list is not None:
             result['AndroidInstanceIdList'] = self.android_instance_id_list
+        if self.backup_file_name is not None:
+            result['BackupFileName'] = self.backup_file_name
         if self.backup_file_path is not None:
             result['BackupFilePath'] = self.backup_file_path
         if self.description is not None:
@@ -349,6 +353,8 @@ class BackupFileRequest(TeaModel):
         m = m or dict()
         if m.get('AndroidInstanceIdList') is not None:
             self.android_instance_id_list = m.get('AndroidInstanceIdList')
+        if m.get('BackupFileName') is not None:
+            self.backup_file_name = m.get('BackupFileName')
         if m.get('BackupFilePath') is not None:
             self.backup_file_path = m.get('BackupFilePath')
         if m.get('Description') is not None:
@@ -2291,6 +2297,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         self,
         app_instance_group_id: str = None,
         architecture_type: str = None,
+        available_instance_amount: int = None,
         charge_type: str = None,
         cpu: str = None,
         disks: List[DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks] = None,
@@ -2319,6 +2326,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
     ):
         self.app_instance_group_id = app_instance_group_id
         self.architecture_type = architecture_type
+        self.available_instance_amount = available_instance_amount
         self.charge_type = charge_type
         self.cpu = cpu
         self.disks = disks
@@ -2361,6 +2369,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             result['AppInstanceGroupId'] = self.app_instance_group_id
         if self.architecture_type is not None:
             result['ArchitectureType'] = self.architecture_type
+        if self.available_instance_amount is not None:
+            result['AvailableInstanceAmount'] = self.available_instance_amount
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.cpu is not None:
@@ -2421,6 +2431,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             self.app_instance_group_id = m.get('AppInstanceGroupId')
         if m.get('ArchitectureType') is not None:
             self.architecture_type = m.get('ArchitectureType')
+        if m.get('AvailableInstanceAmount') is not None:
+            self.available_instance_amount = m.get('AvailableInstanceAmount')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('Cpu') is not None:

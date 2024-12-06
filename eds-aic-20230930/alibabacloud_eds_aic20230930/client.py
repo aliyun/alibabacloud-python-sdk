@@ -262,6 +262,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_id_list):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not UtilClient.is_unset(request.backup_file_name):
+            query['BackupFileName'] = request.backup_file_name
         if not UtilClient.is_unset(request.backup_file_path):
             query['BackupFilePath'] = request.backup_file_path
         if not UtilClient.is_unset(request.description):
@@ -309,6 +311,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_id_list):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not UtilClient.is_unset(request.backup_file_name):
+            query['BackupFileName'] = request.backup_file_name
         if not UtilClient.is_unset(request.backup_file_path):
             query['BackupFilePath'] = request.backup_file_path
         if not UtilClient.is_unset(request.description):

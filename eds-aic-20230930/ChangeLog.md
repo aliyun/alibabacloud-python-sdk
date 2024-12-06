@@ -1,3 +1,8 @@
+2024-12-06 Version: 3.0.2
+- Update API BackupFile: add param BackupFileName.
+- Update API DescribeAndroidInstanceGroups: update response param.
+
+
 2024-11-22 Version: 3.0.1
 - Update API CheckResourceStock: update param AcpSpecId.
 
