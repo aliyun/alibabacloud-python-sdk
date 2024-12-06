@@ -1,3 +1,11 @@
+2024-12-06 Version: 3.4.0
+- Support API GetJobDetail.
+- Support API ListJobInfo.
+- Update API GetTranscodeTask: add param JobIds.
+- Update API GetTranscodeTask: update param TranscodeTaskId.
+- Update API GetTranscodeTask: update response param.
+
+
 2024-11-29 Version: 3.3.2
 - Generated python 2017-03-21 for vod.
 

@@ -11916,6 +11916,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_image_infos_with_options_async(request, runtime)
 
+    def get_job_detail_with_options(
+        self,
+        request: vod_20170321_models.GetJobDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.GetJobDetailResponse:
+        """
+        @summary 异步任务管理能力建设
+        
+        @param request: GetJobDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobDetail',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.GetJobDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_job_detail_with_options_async(
+        self,
+        request: vod_20170321_models.GetJobDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.GetJobDetailResponse:
+        """
+        @summary 异步任务管理能力建设
+        
+        @param request: GetJobDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobDetail',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.GetJobDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_job_detail(
+        self,
+        request: vod_20170321_models.GetJobDetailRequest,
+    ) -> vod_20170321_models.GetJobDetailResponse:
+        """
+        @summary 异步任务管理能力建设
+        
+        @param request: GetJobDetailRequest
+        @return: GetJobDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_job_detail_with_options(request, runtime)
+
+    async def get_job_detail_async(
+        self,
+        request: vod_20170321_models.GetJobDetailRequest,
+    ) -> vod_20170321_models.GetJobDetailResponse:
+        """
+        @summary 异步任务管理能力建设
+        
+        @param request: GetJobDetailRequest
+        @return: GetJobDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_job_detail_with_options_async(request, runtime)
+
     def get_media_audit_audio_result_detail_with_options(
         self,
         request: vod_20170321_models.GetMediaAuditAudioResultDetailRequest,
@@ -13100,6 +13200,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
         if not UtilClient.is_unset(request.transcode_task_id):
             query['TranscodeTaskId'] = request.transcode_task_id
         req = open_api_models.OpenApiRequest(
@@ -13137,6 +13239,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
         if not UtilClient.is_unset(request.transcode_task_id):
             query['TranscodeTaskId'] = request.transcode_task_id
         req = open_api_models.OpenApiRequest(
@@ -14967,6 +15071,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_dynamic_image_with_options_async(request, runtime)
+
+    def list_job_info_with_options(
+        self,
+        request: vod_20170321_models.ListJobInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.ListJobInfoResponse:
+        """
+        @summary 异步任务管理能力建设
+        
+        @param request: ListJobInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.ListJobInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_job_info_with_options_async(
+        self,
+        request: vod_20170321_models.ListJobInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.ListJobInfoResponse:
+        """
+        @summary 异步任务管理能力建设
+        
+        @param request: ListJobInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.ListJobInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_job_info(
+        self,
+        request: vod_20170321_models.ListJobInfoRequest,
+    ) -> vod_20170321_models.ListJobInfoResponse:
+        """
+        @summary 异步任务管理能力建设
+        
+        @param request: ListJobInfoRequest
+        @return: ListJobInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_job_info_with_options(request, runtime)
+
+    async def list_job_info_async(
+        self,
+        request: vod_20170321_models.ListJobInfoRequest,
+    ) -> vod_20170321_models.ListJobInfoResponse:
+        """
+        @summary 异步任务管理能力建设
+        
+        @param request: ListJobInfoRequest
+        @return: ListJobInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_job_info_with_options_async(request, runtime)
 
     def list_live_record_video_with_options(
         self,
