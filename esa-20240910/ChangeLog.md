@@ -1,3 +1,8 @@
+2024-12-07 Version: 2.7.2
+- Update API PurgeCaches: update param SiteId.
+- Update API PurgeCaches: update param Type.
+
+
 2024-12-05 Version: 2.7.1
 - Update API CommitRoutineStagingCode: update param Name.
 - Update API CreateRoutine: update param Description.

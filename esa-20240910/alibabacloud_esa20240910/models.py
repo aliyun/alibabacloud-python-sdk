@@ -35403,6 +35403,8 @@ class PurgeCachesRequest(TeaModel):
         # >  This configuration takes effect for the following purge task types: directory, cachetag, ignoreParams, hostname, and purgeall.
         self.force = force
         # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.site_id = site_id
         # The type of the purge task. Valid values:
         # 
@@ -35475,6 +35477,8 @@ class PurgeCachesShrinkRequest(TeaModel):
         # >  This configuration takes effect for the following purge task types: directory, cachetag, ignoreParams, hostname, and purgeall.
         self.force = force
         # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.site_id = site_id
         # The type of the purge task. Valid values:
         # 
