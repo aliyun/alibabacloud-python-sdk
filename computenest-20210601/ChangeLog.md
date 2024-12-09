@@ -1,3 +1,15 @@
+2024-12-09 Version: 3.5.0
+- Support API CheckServiceDeployable.
+- Support API GetService.
+- Support API GetUserInformation.
+- Support API ListServices.
+- Support API ListTagResources.
+- Support API UpdateUserInformation.
+- Update API GetServiceInstance: update response param.
+- Update API ListServiceInstanceLogs: update response param.
+- Update API ListServiceInstanceResources: add param Filters.
+
+
 2024-07-26 Version: 3.4.0
 - Support API ListServiceInstanceUpgradeHistory.
 - Support API RollbackServiceInstance.
