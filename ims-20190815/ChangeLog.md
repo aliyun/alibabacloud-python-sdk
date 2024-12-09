@@ -1,3 +1,9 @@
+2024-12-09 Version: 3.1.2
+- Update API GetUserSsoSettings: update response param.
+- Update API SetUserSsoSettings: add param SsoLoginWithDomain.
+- Update API SetUserSsoSettings: update response param.
+
+
 2024-10-23 Version: 3.1.1
 - Update API ListUserBasicInfos: add param Status.
 - Update API ListUserBasicInfos: update response param.

@@ -3453,7 +3453,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetLoginProfileResponse:
         """
-        @summary Queries the console logon settings of a RAM user.
+        @summary Queries the logon configurations of a Resource Access Management (RAM) user.
         
         @param request: GetLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3488,7 +3488,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetLoginProfileResponse:
         """
-        @summary Queries the console logon settings of a RAM user.
+        @summary Queries the logon configurations of a Resource Access Management (RAM) user.
         
         @param request: GetLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3522,7 +3522,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetLoginProfileRequest,
     ) -> ims_20190815_models.GetLoginProfileResponse:
         """
-        @summary Queries the console logon settings of a RAM user.
+        @summary Queries the logon configurations of a Resource Access Management (RAM) user.
         
         @param request: GetLoginProfileRequest
         @return: GetLoginProfileResponse
@@ -3535,7 +3535,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetLoginProfileRequest,
     ) -> ims_20190815_models.GetLoginProfileResponse:
         """
-        @summary Queries the console logon settings of a RAM user.
+        @summary Queries the logon configurations of a Resource Access Management (RAM) user.
         
         @param request: GetLoginProfileRequest
         @return: GetLoginProfileResponse
@@ -6361,8 +6361,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
         """
-        @summary 设置用户SSO身份提供商信息
-        
         @param request: SetUserSsoSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetUserSsoSettingsResponse
@@ -6375,6 +6373,8 @@ class Client(OpenApiClient):
             query['MetadataDocument'] = request.metadata_document
         if not UtilClient.is_unset(request.sso_enabled):
             query['SsoEnabled'] = request.sso_enabled
+        if not UtilClient.is_unset(request.sso_login_with_domain):
+            query['SsoLoginWithDomain'] = request.sso_login_with_domain
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6400,8 +6400,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
         """
-        @summary 设置用户SSO身份提供商信息
-        
         @param request: SetUserSsoSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetUserSsoSettingsResponse
@@ -6414,6 +6412,8 @@ class Client(OpenApiClient):
             query['MetadataDocument'] = request.metadata_document
         if not UtilClient.is_unset(request.sso_enabled):
             query['SsoEnabled'] = request.sso_enabled
+        if not UtilClient.is_unset(request.sso_login_with_domain):
+            query['SsoLoginWithDomain'] = request.sso_login_with_domain
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6438,8 +6438,6 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetUserSsoSettingsRequest,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
         """
-        @summary 设置用户SSO身份提供商信息
-        
         @param request: SetUserSsoSettingsRequest
         @return: SetUserSsoSettingsResponse
         """
@@ -6451,8 +6449,6 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetUserSsoSettingsRequest,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
         """
-        @summary 设置用户SSO身份提供商信息
-        
         @param request: SetUserSsoSettingsRequest
         @return: SetUserSsoSettingsResponse
         """

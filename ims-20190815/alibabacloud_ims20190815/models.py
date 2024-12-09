@@ -5665,15 +5665,24 @@ class GetLoginProfileResponseBodyLoginProfile(TeaModel):
         update_date: str = None,
         user_principal_name: str = None,
     ):
-        # The last time when the RAM user logged on to the console.
+        # The time of the most recent logon. The time is displayed in UTC.
         self.last_login_time = last_login_time
-        # Indicates whether multi-factor authentication (MFA) must be enabled.
+        # Indicates whether multi-factor authentication (MFA) must be enabled. Valid values:
+        # 
+        # *   false
+        # *   true
         self.mfabind_required = mfabind_required
-        # Indicates whether the RAM user must reset the password at the next logon.
+        # Indicates whether the RAM user is required to reset the password upon the next logon. Valid values:
+        # 
+        # *   false
+        # *   true
         self.password_reset_required = password_reset_required
-        # The status of password-based logon.
+        # Indicates whether console logon is enabled. Valid values:
+        # 
+        # *   Active: enabled.
+        # *   Inactive: disabled.
         self.status = status
-        # The update time.
+        # The modification time. The time is displayed in UTC.
         self.update_date = update_date
         # The logon name of the RAM user.
         self.user_principal_name = user_principal_name
@@ -5724,7 +5733,7 @@ class GetLoginProfileResponseBody(TeaModel):
         login_profile: GetLoginProfileResponseBodyLoginProfile = None,
         request_id: str = None,
     ):
-        # The logon information.
+        # The console logon configurations.
         self.login_profile = login_profile
         # The request ID.
         self.request_id = request_id
@@ -7163,6 +7172,7 @@ class GetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
         auxiliary_domain: str = None,
         metadata_document: str = None,
         sso_enabled: bool = None,
+        sso_login_with_domain: bool = None,
     ):
         # The auxiliary domain name.
         self.auxiliary_domain = auxiliary_domain
@@ -7170,6 +7180,7 @@ class GetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
         self.metadata_document = metadata_document
         # Indicates whether user-based SSO is enabled.
         self.sso_enabled = sso_enabled
+        self.sso_login_with_domain = sso_login_with_domain
 
     def validate(self):
         pass
@@ -7186,6 +7197,8 @@ class GetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
             result['MetadataDocument'] = self.metadata_document
         if self.sso_enabled is not None:
             result['SsoEnabled'] = self.sso_enabled
+        if self.sso_login_with_domain is not None:
+            result['SsoLoginWithDomain'] = self.sso_login_with_domain
         return result
 
     def from_map(self, m: dict = None):
@@ -7196,6 +7209,8 @@ class GetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
             self.metadata_document = m.get('MetadataDocument')
         if m.get('SsoEnabled') is not None:
             self.sso_enabled = m.get('SsoEnabled')
+        if m.get('SsoLoginWithDomain') is not None:
+            self.sso_login_with_domain = m.get('SsoLoginWithDomain')
         return self
 
 
@@ -12321,6 +12336,7 @@ class SetUserSsoSettingsRequest(TeaModel):
         auxiliary_domain: str = None,
         metadata_document: str = None,
         sso_enabled: bool = None,
+        sso_login_with_domain: bool = None,
     ):
         # The auxiliary domain name.
         self.auxiliary_domain = auxiliary_domain
@@ -12333,6 +12349,7 @@ class SetUserSsoSettingsRequest(TeaModel):
         # *   true
         # *   false
         self.sso_enabled = sso_enabled
+        self.sso_login_with_domain = sso_login_with_domain
 
     def validate(self):
         pass
@@ -12349,6 +12366,8 @@ class SetUserSsoSettingsRequest(TeaModel):
             result['MetadataDocument'] = self.metadata_document
         if self.sso_enabled is not None:
             result['SsoEnabled'] = self.sso_enabled
+        if self.sso_login_with_domain is not None:
+            result['SsoLoginWithDomain'] = self.sso_login_with_domain
         return result
 
     def from_map(self, m: dict = None):
@@ -12359,6 +12378,8 @@ class SetUserSsoSettingsRequest(TeaModel):
             self.metadata_document = m.get('MetadataDocument')
         if m.get('SsoEnabled') is not None:
             self.sso_enabled = m.get('SsoEnabled')
+        if m.get('SsoLoginWithDomain') is not None:
+            self.sso_login_with_domain = m.get('SsoLoginWithDomain')
         return self
 
 
@@ -12368,6 +12389,7 @@ class SetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
         auxiliary_domain: str = None,
         metadata_document: str = None,
         sso_enabled: bool = None,
+        sso_login_with_domain: bool = None,
     ):
         # The auxiliary domain name.
         self.auxiliary_domain = auxiliary_domain
@@ -12375,6 +12397,7 @@ class SetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
         self.metadata_document = metadata_document
         # Indicates whether user-based SSO is enabled.
         self.sso_enabled = sso_enabled
+        self.sso_login_with_domain = sso_login_with_domain
 
     def validate(self):
         pass
@@ -12391,6 +12414,8 @@ class SetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
             result['MetadataDocument'] = self.metadata_document
         if self.sso_enabled is not None:
             result['SsoEnabled'] = self.sso_enabled
+        if self.sso_login_with_domain is not None:
+            result['SsoLoginWithDomain'] = self.sso_login_with_domain
         return result
 
     def from_map(self, m: dict = None):
@@ -12401,6 +12426,8 @@ class SetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
             self.metadata_document = m.get('MetadataDocument')
         if m.get('SsoEnabled') is not None:
             self.sso_enabled = m.get('SsoEnabled')
+        if m.get('SsoLoginWithDomain') is not None:
+            self.sso_login_with_domain = m.get('SsoLoginWithDomain')
         return self
 
 
