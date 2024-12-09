@@ -1,3 +1,30 @@
+2024-12-09 Version: 4.3.0
+- Support API CancelActiveOperationTasks.
+- Support API CheckServiceLinkedRole.
+- Support API CreateServiceLinkedRole.
+- Support API DescribeActiveOperationMaintainConf.
+- Support API DescribeActiveOperationTasks.
+- Support API DescribeHistoryEventsStat.
+- Support API DescribeKmsKeys.
+- Support API DescribeLoghubDetail.
+- Support API DescribeRegionsMixed.
+- Support API DescribeSyncAvailableDBClusterList.
+- Support API DescribeSyncJobList.
+- Support API DescribeVSwitchs.
+- Support API DescribeVpcs.
+- Support API ModifyActiveOperationMaintainConf.
+- Support API ModifyActiveOperationTasks.
+- Support API ModifyDBClusterVip.
+- Support API ModifyLogHubStatus.
+- Support API ModifySyncJob.
+- Support API OperateLogHub.
+- Update API AttachUserENI: add param AccessKeyId-copy.
+- Update API AttachUserENI: update param AccessKeyId.
+- Update API DescribeDiagnosisTasks: update response param.
+- Update API UpgradeKernelVersion: update param DBVersion.
+- Update API UpgradeKernelVersion: update param SwitchMode.
+
+
 2024-11-08 Version: 4.2.1
 - Update API DescribeDBClusterPerformance: update response param.
 - Update API DescribeDBClusterShardNumber: update response param.

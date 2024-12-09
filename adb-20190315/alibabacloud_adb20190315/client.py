@@ -309,6 +309,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.AttachUserENIResponse:
         """
+        @summary 打通用户ENI
+        
         @description You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition.
         
         @param request: AttachUserENIRequest
@@ -317,6 +319,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.access_key_id_copy):
+            query['AccessKeyId-copy'] = request.access_key_id_copy
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.owner_account):
@@ -352,6 +356,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.AttachUserENIResponse:
         """
+        @summary 打通用户ENI
+        
         @description You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition.
         
         @param request: AttachUserENIRequest
@@ -360,6 +366,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.access_key_id_copy):
+            query['AccessKeyId-copy'] = request.access_key_id_copy
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.owner_account):
@@ -394,6 +402,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.AttachUserENIRequest,
     ) -> adb_20190315_models.AttachUserENIResponse:
         """
+        @summary 打通用户ENI
+        
         @description You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition.
         
         @param request: AttachUserENIRequest
@@ -407,6 +417,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.AttachUserENIRequest,
     ) -> adb_20190315_models.AttachUserENIResponse:
         """
+        @summary 打通用户ENI
+        
         @description You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition.
         
         @param request: AttachUserENIRequest
@@ -782,6 +794,234 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.bind_dbresource_pool_with_user_with_options_async(request, runtime)
+
+    def cancel_active_operation_tasks_with_options(
+        self,
+        request: adb_20190315_models.CancelActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.CancelActiveOperationTasksResponse:
+        """
+        @summary CancelActiveOperationTasks
+        
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelActiveOperationTasks',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.CancelActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_active_operation_tasks_with_options_async(
+        self,
+        request: adb_20190315_models.CancelActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.CancelActiveOperationTasksResponse:
+        """
+        @summary CancelActiveOperationTasks
+        
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelActiveOperationTasks',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.CancelActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_active_operation_tasks(
+        self,
+        request: adb_20190315_models.CancelActiveOperationTasksRequest,
+    ) -> adb_20190315_models.CancelActiveOperationTasksResponse:
+        """
+        @summary CancelActiveOperationTasks
+        
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_active_operation_tasks_with_options(request, runtime)
+
+    async def cancel_active_operation_tasks_async(
+        self,
+        request: adb_20190315_models.CancelActiveOperationTasksRequest,
+    ) -> adb_20190315_models.CancelActiveOperationTasksResponse:
+        """
+        @summary CancelActiveOperationTasks
+        
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_active_operation_tasks_with_options_async(request, runtime)
+
+    def check_service_linked_role_with_options(
+        self,
+        request: adb_20190315_models.CheckServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.CheckServiceLinkedRoleResponse:
+        """
+        @param request: CheckServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckServiceLinkedRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceLinkedRole',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.CheckServiceLinkedRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_service_linked_role_with_options_async(
+        self,
+        request: adb_20190315_models.CheckServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.CheckServiceLinkedRoleResponse:
+        """
+        @param request: CheckServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckServiceLinkedRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceLinkedRole',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.CheckServiceLinkedRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_service_linked_role(
+        self,
+        request: adb_20190315_models.CheckServiceLinkedRoleRequest,
+    ) -> adb_20190315_models.CheckServiceLinkedRoleResponse:
+        """
+        @param request: CheckServiceLinkedRoleRequest
+        @return: CheckServiceLinkedRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_service_linked_role_with_options(request, runtime)
+
+    async def check_service_linked_role_async(
+        self,
+        request: adb_20190315_models.CheckServiceLinkedRoleRequest,
+    ) -> adb_20190315_models.CheckServiceLinkedRoleResponse:
+        """
+        @param request: CheckServiceLinkedRoleRequest
+        @return: CheckServiceLinkedRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_service_linked_role_with_options_async(request, runtime)
 
     def create_account_with_options(
         self,
@@ -1578,6 +1818,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_elastic_plan_with_options_async(request, runtime)
+
+    def create_service_linked_role_with_options(
+        self,
+        request: adb_20190315_models.CreateServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.CreateServiceLinkedRoleResponse:
+        """
+        @param request: CreateServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceLinkedRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRole',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.CreateServiceLinkedRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_linked_role_with_options_async(
+        self,
+        request: adb_20190315_models.CreateServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.CreateServiceLinkedRoleResponse:
+        """
+        @param request: CreateServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceLinkedRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRole',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.CreateServiceLinkedRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_linked_role(
+        self,
+        request: adb_20190315_models.CreateServiceLinkedRoleRequest,
+    ) -> adb_20190315_models.CreateServiceLinkedRoleResponse:
+        """
+        @param request: CreateServiceLinkedRoleRequest
+        @return: CreateServiceLinkedRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_service_linked_role_with_options(request, runtime)
+
+    async def create_service_linked_role_async(
+        self,
+        request: adb_20190315_models.CreateServiceLinkedRoleRequest,
+    ) -> adb_20190315_models.CreateServiceLinkedRoleResponse:
+        """
+        @param request: CreateServiceLinkedRoleRequest
+        @return: CreateServiceLinkedRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_service_linked_role_with_options_async(request, runtime)
 
     def delete_account_with_options(
         self,
@@ -2414,6 +2762,290 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_accounts_with_options_async(request, runtime)
+
+    def describe_active_operation_maintain_conf_with_options(
+        self,
+        request: adb_20190315_models.DescribeActiveOperationMaintainConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeActiveOperationMaintainConfResponse:
+        """
+        @summary DescribeActiveOperationMaintainConf
+        
+        @param request: DescribeActiveOperationMaintainConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationMaintainConfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationMaintainConf',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeActiveOperationMaintainConfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_active_operation_maintain_conf_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeActiveOperationMaintainConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeActiveOperationMaintainConfResponse:
+        """
+        @summary DescribeActiveOperationMaintainConf
+        
+        @param request: DescribeActiveOperationMaintainConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationMaintainConfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationMaintainConf',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeActiveOperationMaintainConfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_active_operation_maintain_conf(
+        self,
+        request: adb_20190315_models.DescribeActiveOperationMaintainConfRequest,
+    ) -> adb_20190315_models.DescribeActiveOperationMaintainConfResponse:
+        """
+        @summary DescribeActiveOperationMaintainConf
+        
+        @param request: DescribeActiveOperationMaintainConfRequest
+        @return: DescribeActiveOperationMaintainConfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_active_operation_maintain_conf_with_options(request, runtime)
+
+    async def describe_active_operation_maintain_conf_async(
+        self,
+        request: adb_20190315_models.DescribeActiveOperationMaintainConfRequest,
+    ) -> adb_20190315_models.DescribeActiveOperationMaintainConfResponse:
+        """
+        @summary DescribeActiveOperationMaintainConf
+        
+        @param request: DescribeActiveOperationMaintainConfRequest
+        @return: DescribeActiveOperationMaintainConfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_active_operation_maintain_conf_with_options_async(request, runtime)
+
+    def describe_active_operation_tasks_with_options(
+        self,
+        request: adb_20190315_models.DescribeActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeActiveOperationTasksResponse:
+        """
+        @summary DescribeActiveOperationTasks
+        
+        @param request: DescribeActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_cancel):
+            query['AllowCancel'] = request.allow_cancel
+        if not UtilClient.is_unset(request.allow_change):
+            query['AllowChange'] = request.allow_change
+        if not UtilClient.is_unset(request.change_level):
+            query['ChangeLevel'] = request.change_level
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.ins_name):
+            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationTasks',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_active_operation_tasks_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeActiveOperationTasksResponse:
+        """
+        @summary DescribeActiveOperationTasks
+        
+        @param request: DescribeActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_cancel):
+            query['AllowCancel'] = request.allow_cancel
+        if not UtilClient.is_unset(request.allow_change):
+            query['AllowChange'] = request.allow_change
+        if not UtilClient.is_unset(request.change_level):
+            query['ChangeLevel'] = request.change_level
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.ins_name):
+            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationTasks',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_active_operation_tasks(
+        self,
+        request: adb_20190315_models.DescribeActiveOperationTasksRequest,
+    ) -> adb_20190315_models.DescribeActiveOperationTasksResponse:
+        """
+        @summary DescribeActiveOperationTasks
+        
+        @param request: DescribeActiveOperationTasksRequest
+        @return: DescribeActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_active_operation_tasks_with_options(request, runtime)
+
+    async def describe_active_operation_tasks_async(
+        self,
+        request: adb_20190315_models.DescribeActiveOperationTasksRequest,
+    ) -> adb_20190315_models.DescribeActiveOperationTasksResponse:
+        """
+        @summary DescribeActiveOperationTasks
+        
+        @param request: DescribeActiveOperationTasksRequest
+        @return: DescribeActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_active_operation_tasks_with_options_async(request, runtime)
 
     def describe_advice_service_enabled_with_options(
         self,
@@ -6963,6 +7595,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_excessive_primary_keys_with_options_async(request, runtime)
 
+    def describe_history_events_stat_with_options(
+        self,
+        request: adb_20190315_models.DescribeHistoryEventsStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeHistoryEventsStatResponse:
+        """
+        @summary DescribeHistoryEventsStat
+        
+        @param request: DescribeHistoryEventsStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryEventsStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryEventsStat',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeHistoryEventsStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_events_stat_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeHistoryEventsStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeHistoryEventsStatResponse:
+        """
+        @summary DescribeHistoryEventsStat
+        
+        @param request: DescribeHistoryEventsStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryEventsStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryEventsStat',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeHistoryEventsStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_events_stat(
+        self,
+        request: adb_20190315_models.DescribeHistoryEventsStatRequest,
+    ) -> adb_20190315_models.DescribeHistoryEventsStatResponse:
+        """
+        @summary DescribeHistoryEventsStat
+        
+        @param request: DescribeHistoryEventsStatRequest
+        @return: DescribeHistoryEventsStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_history_events_stat_with_options(request, runtime)
+
+    async def describe_history_events_stat_async(
+        self,
+        request: adb_20190315_models.DescribeHistoryEventsStatRequest,
+    ) -> adb_20190315_models.DescribeHistoryEventsStatResponse:
+        """
+        @summary DescribeHistoryEventsStat
+        
+        @param request: DescribeHistoryEventsStatRequest
+        @return: DescribeHistoryEventsStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_history_events_stat_with_options_async(request, runtime)
+
     def describe_inclined_tables_with_options(
         self,
         request: adb_20190315_models.DescribeInclinedTablesRequest,
@@ -7215,6 +7979,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_kernel_version_with_options_async(request, runtime)
 
+    def describe_kms_keys_with_options(
+        self,
+        request: adb_20190315_models.DescribeKmsKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeKmsKeysResponse:
+        """
+        @summary 枚举当前账号kms服务key
+        
+        @param request: DescribeKmsKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKmsKeysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeKmsKeys',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeKmsKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_kms_keys_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeKmsKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeKmsKeysResponse:
+        """
+        @summary 枚举当前账号kms服务key
+        
+        @param request: DescribeKmsKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKmsKeysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeKmsKeys',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeKmsKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_kms_keys(
+        self,
+        request: adb_20190315_models.DescribeKmsKeysRequest,
+    ) -> adb_20190315_models.DescribeKmsKeysResponse:
+        """
+        @summary 枚举当前账号kms服务key
+        
+        @param request: DescribeKmsKeysRequest
+        @return: DescribeKmsKeysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_kms_keys_with_options(request, runtime)
+
+    async def describe_kms_keys_async(
+        self,
+        request: adb_20190315_models.DescribeKmsKeysRequest,
+    ) -> adb_20190315_models.DescribeKmsKeysResponse:
+        """
+        @summary 枚举当前账号kms服务key
+        
+        @param request: DescribeKmsKeysRequest
+        @return: DescribeKmsKeysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_kms_keys_with_options_async(request, runtime)
+
     def describe_load_tasks_records_with_options(
         self,
         request: adb_20190315_models.DescribeLoadTasksRecordsRequest,
@@ -7366,6 +8246,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_tasks_records_with_options_async(request, runtime)
+
+    def describe_loghub_detail_with_options(
+        self,
+        request: adb_20190315_models.DescribeLoghubDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeLoghubDetailResponse:
+        """
+        @param request: DescribeLoghubDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoghubDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.export_name):
+            query['ExportName'] = request.export_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoghubDetail',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeLoghubDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_loghub_detail_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeLoghubDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeLoghubDetailResponse:
+        """
+        @param request: DescribeLoghubDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoghubDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.export_name):
+            query['ExportName'] = request.export_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoghubDetail',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeLoghubDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_loghub_detail(
+        self,
+        request: adb_20190315_models.DescribeLoghubDetailRequest,
+    ) -> adb_20190315_models.DescribeLoghubDetailResponse:
+        """
+        @param request: DescribeLoghubDetailRequest
+        @return: DescribeLoghubDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_loghub_detail_with_options(request, runtime)
+
+    async def describe_loghub_detail_async(
+        self,
+        request: adb_20190315_models.DescribeLoghubDetailRequest,
+    ) -> adb_20190315_models.DescribeLoghubDetailResponse:
+        """
+        @param request: DescribeLoghubDetailRequest
+        @return: DescribeLoghubDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_loghub_detail_with_options_async(request, runtime)
 
     def describe_maintenance_action_with_options(
         self,
@@ -7970,6 +8966,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
+
+    def describe_regions_mixed_with_options(
+        self,
+        request: adb_20190315_models.DescribeRegionsMixedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeRegionsMixedResponse:
+        """
+        @param request: DescribeRegionsMixedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsMixedResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegionsMixed',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeRegionsMixedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_regions_mixed_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeRegionsMixedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeRegionsMixedResponse:
+        """
+        @param request: DescribeRegionsMixedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsMixedResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegionsMixed',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeRegionsMixedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_regions_mixed(
+        self,
+        request: adb_20190315_models.DescribeRegionsMixedRequest,
+    ) -> adb_20190315_models.DescribeRegionsMixedResponse:
+        """
+        @param request: DescribeRegionsMixedRequest
+        @return: DescribeRegionsMixedResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_regions_mixed_with_options(request, runtime)
+
+    async def describe_regions_mixed_async(
+        self,
+        request: adb_20190315_models.DescribeRegionsMixedRequest,
+    ) -> adb_20190315_models.DescribeRegionsMixedResponse:
+        """
+        @param request: DescribeRegionsMixedRequest
+        @return: DescribeRegionsMixedResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_regions_mixed_with_options_async(request, runtime)
 
     def describe_resubmit_config_with_options(
         self,
@@ -8939,6 +10039,258 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_sql_pattern_with_options_async(request, runtime)
 
+    def describe_sync_available_dbcluster_list_with_options(
+        self,
+        request: adb_20190315_models.DescribeSyncAvailableDBClusterListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeSyncAvailableDBClusterListResponse:
+        """
+        @param request: DescribeSyncAvailableDBClusterListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSyncAvailableDBClusterListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_dbcluster):
+            query['SourceDBCluster'] = request.source_dbcluster
+        if not UtilClient.is_unset(request.sync_platform):
+            query['SyncPlatform'] = request.sync_platform
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSyncAvailableDBClusterList',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeSyncAvailableDBClusterListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sync_available_dbcluster_list_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeSyncAvailableDBClusterListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeSyncAvailableDBClusterListResponse:
+        """
+        @param request: DescribeSyncAvailableDBClusterListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSyncAvailableDBClusterListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_dbcluster):
+            query['SourceDBCluster'] = request.source_dbcluster
+        if not UtilClient.is_unset(request.sync_platform):
+            query['SyncPlatform'] = request.sync_platform
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSyncAvailableDBClusterList',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeSyncAvailableDBClusterListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sync_available_dbcluster_list(
+        self,
+        request: adb_20190315_models.DescribeSyncAvailableDBClusterListRequest,
+    ) -> adb_20190315_models.DescribeSyncAvailableDBClusterListResponse:
+        """
+        @param request: DescribeSyncAvailableDBClusterListRequest
+        @return: DescribeSyncAvailableDBClusterListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sync_available_dbcluster_list_with_options(request, runtime)
+
+    async def describe_sync_available_dbcluster_list_async(
+        self,
+        request: adb_20190315_models.DescribeSyncAvailableDBClusterListRequest,
+    ) -> adb_20190315_models.DescribeSyncAvailableDBClusterListResponse:
+        """
+        @param request: DescribeSyncAvailableDBClusterListRequest
+        @return: DescribeSyncAvailableDBClusterListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sync_available_dbcluster_list_with_options_async(request, runtime)
+
+    def describe_sync_job_list_with_options(
+        self,
+        request: adb_20190315_models.DescribeSyncJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeSyncJobListResponse:
+        """
+        @param request: DescribeSyncJobListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSyncJobListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.get_source_detail):
+            query['GetSourceDetail'] = request.get_source_detail
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_dbcluster_description):
+            query['SourceDBClusterDescription'] = request.source_dbcluster_description
+        if not UtilClient.is_unset(request.source_dbcluster_id):
+            query['SourceDBClusterId'] = request.source_dbcluster_id
+        if not UtilClient.is_unset(request.source_dbtype):
+            query['SourceDBType'] = request.source_dbtype
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSyncJobList',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeSyncJobListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sync_job_list_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeSyncJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeSyncJobListResponse:
+        """
+        @param request: DescribeSyncJobListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSyncJobListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.get_source_detail):
+            query['GetSourceDetail'] = request.get_source_detail
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_dbcluster_description):
+            query['SourceDBClusterDescription'] = request.source_dbcluster_description
+        if not UtilClient.is_unset(request.source_dbcluster_id):
+            query['SourceDBClusterId'] = request.source_dbcluster_id
+        if not UtilClient.is_unset(request.source_dbtype):
+            query['SourceDBType'] = request.source_dbtype
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSyncJobList',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeSyncJobListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sync_job_list(
+        self,
+        request: adb_20190315_models.DescribeSyncJobListRequest,
+    ) -> adb_20190315_models.DescribeSyncJobListResponse:
+        """
+        @param request: DescribeSyncJobListRequest
+        @return: DescribeSyncJobListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sync_job_list_with_options(request, runtime)
+
+    async def describe_sync_job_list_async(
+        self,
+        request: adb_20190315_models.DescribeSyncJobListRequest,
+    ) -> adb_20190315_models.DescribeSyncJobListResponse:
+        """
+        @param request: DescribeSyncJobListRequest
+        @return: DescribeSyncJobListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sync_job_list_with_options_async(request, runtime)
+
     def describe_table_access_count_with_options(
         self,
         request: adb_20190315_models.DescribeTableAccessCountRequest,
@@ -9798,6 +11150,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vswitches_with_options_async(request, runtime)
+
+    def describe_vswitchs_with_options(
+        self,
+        request: adb_20190315_models.DescribeVSwitchsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeVSwitchsResponse:
+        """
+        @param request: DescribeVSwitchsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVSwitchsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVSwitchs',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeVSwitchsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vswitchs_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeVSwitchsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeVSwitchsResponse:
+        """
+        @param request: DescribeVSwitchsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVSwitchsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVSwitchs',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeVSwitchsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vswitchs(
+        self,
+        request: adb_20190315_models.DescribeVSwitchsRequest,
+    ) -> adb_20190315_models.DescribeVSwitchsResponse:
+        """
+        @param request: DescribeVSwitchsRequest
+        @return: DescribeVSwitchsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vswitchs_with_options(request, runtime)
+
+    async def describe_vswitchs_async(
+        self,
+        request: adb_20190315_models.DescribeVSwitchsRequest,
+    ) -> adb_20190315_models.DescribeVSwitchsResponse:
+        """
+        @param request: DescribeVSwitchsRequest
+        @return: DescribeVSwitchsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vswitchs_with_options_async(request, runtime)
+
+    def describe_vpcs_with_options(
+        self,
+        request: adb_20190315_models.DescribeVpcsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeVpcsResponse:
+        """
+        @param request: DescribeVpcsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcs',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeVpcsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpcs_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeVpcsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeVpcsResponse:
+        """
+        @param request: DescribeVpcsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcs',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeVpcsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpcs(
+        self,
+        request: adb_20190315_models.DescribeVpcsRequest,
+    ) -> adb_20190315_models.DescribeVpcsResponse:
+        """
+        @param request: DescribeVpcsRequest
+        @return: DescribeVpcsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vpcs_with_options(request, runtime)
+
+    async def describe_vpcs_async(
+        self,
+        request: adb_20190315_models.DescribeVpcsRequest,
+    ) -> adb_20190315_models.DescribeVpcsResponse:
+        """
+        @param request: DescribeVpcsRequest
+        @return: DescribeVpcsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vpcs_with_options_async(request, runtime)
 
     def detach_user_eniwith_options(
         self,
@@ -10870,6 +12454,270 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_description_with_options_async(request, runtime)
+
+    def modify_active_operation_maintain_conf_with_options(
+        self,
+        request: adb_20190315_models.ModifyActiveOperationMaintainConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyActiveOperationMaintainConfResponse:
+        """
+        @summary ModifyActiveOperationMaintainConf
+        
+        @param request: ModifyActiveOperationMaintainConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationMaintainConfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cycle_time):
+            query['CycleTime'] = request.cycle_time
+        if not UtilClient.is_unset(request.cycle_type):
+            query['CycleType'] = request.cycle_type
+        if not UtilClient.is_unset(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not UtilClient.is_unset(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationMaintainConf',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyActiveOperationMaintainConfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_active_operation_maintain_conf_with_options_async(
+        self,
+        request: adb_20190315_models.ModifyActiveOperationMaintainConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyActiveOperationMaintainConfResponse:
+        """
+        @summary ModifyActiveOperationMaintainConf
+        
+        @param request: ModifyActiveOperationMaintainConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationMaintainConfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cycle_time):
+            query['CycleTime'] = request.cycle_time
+        if not UtilClient.is_unset(request.cycle_type):
+            query['CycleType'] = request.cycle_type
+        if not UtilClient.is_unset(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not UtilClient.is_unset(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationMaintainConf',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyActiveOperationMaintainConfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_active_operation_maintain_conf(
+        self,
+        request: adb_20190315_models.ModifyActiveOperationMaintainConfRequest,
+    ) -> adb_20190315_models.ModifyActiveOperationMaintainConfResponse:
+        """
+        @summary ModifyActiveOperationMaintainConf
+        
+        @param request: ModifyActiveOperationMaintainConfRequest
+        @return: ModifyActiveOperationMaintainConfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_active_operation_maintain_conf_with_options(request, runtime)
+
+    async def modify_active_operation_maintain_conf_async(
+        self,
+        request: adb_20190315_models.ModifyActiveOperationMaintainConfRequest,
+    ) -> adb_20190315_models.ModifyActiveOperationMaintainConfResponse:
+        """
+        @summary ModifyActiveOperationMaintainConf
+        
+        @param request: ModifyActiveOperationMaintainConfRequest
+        @return: ModifyActiveOperationMaintainConfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_active_operation_maintain_conf_with_options_async(request, runtime)
+
+    def modify_active_operation_tasks_with_options(
+        self,
+        request: adb_20190315_models.ModifyActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyActiveOperationTasksResponse:
+        """
+        @summary ModifyActiveOperationTasks
+        
+        @param request: ModifyActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.immediate_start):
+            query['ImmediateStart'] = request.immediate_start
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationTasks',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_active_operation_tasks_with_options_async(
+        self,
+        request: adb_20190315_models.ModifyActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyActiveOperationTasksResponse:
+        """
+        @summary ModifyActiveOperationTasks
+        
+        @param request: ModifyActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.immediate_start):
+            query['ImmediateStart'] = request.immediate_start
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationTasks',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_active_operation_tasks(
+        self,
+        request: adb_20190315_models.ModifyActiveOperationTasksRequest,
+    ) -> adb_20190315_models.ModifyActiveOperationTasksResponse:
+        """
+        @summary ModifyActiveOperationTasks
+        
+        @param request: ModifyActiveOperationTasksRequest
+        @return: ModifyActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_active_operation_tasks_with_options(request, runtime)
+
+    async def modify_active_operation_tasks_async(
+        self,
+        request: adb_20190315_models.ModifyActiveOperationTasksRequest,
+    ) -> adb_20190315_models.ModifyActiveOperationTasksResponse:
+        """
+        @summary ModifyActiveOperationTasks
+        
+        @param request: ModifyActiveOperationTasksRequest
+        @return: ModifyActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_active_operation_tasks_with_options_async(request, runtime)
 
     def modify_audit_log_config_with_options(
         self,
@@ -12231,6 +14079,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_sslwith_options_async(request, runtime)
 
+    def modify_dbcluster_vip_with_options(
+        self,
+        request: adb_20190315_models.ModifyDBClusterVipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyDBClusterVipResponse:
+        """
+        @summary 修改访问VIP
+        
+        @param request: ModifyDBClusterVipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterVipResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterVip',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyDBClusterVipResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbcluster_vip_with_options_async(
+        self,
+        request: adb_20190315_models.ModifyDBClusterVipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyDBClusterVipResponse:
+        """
+        @summary 修改访问VIP
+        
+        @param request: ModifyDBClusterVipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterVipResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterVip',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyDBClusterVipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbcluster_vip(
+        self,
+        request: adb_20190315_models.ModifyDBClusterVipRequest,
+    ) -> adb_20190315_models.ModifyDBClusterVipResponse:
+        """
+        @summary 修改访问VIP
+        
+        @param request: ModifyDBClusterVipRequest
+        @return: ModifyDBClusterVipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbcluster_vip_with_options(request, runtime)
+
+    async def modify_dbcluster_vip_async(
+        self,
+        request: adb_20190315_models.ModifyDBClusterVipRequest,
+    ) -> adb_20190315_models.ModifyDBClusterVipResponse:
+        """
+        @summary 修改访问VIP
+        
+        @param request: ModifyDBClusterVipRequest
+        @return: ModifyDBClusterVipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbcluster_vip_with_options_async(request, runtime)
+
     def modify_dbresource_group_with_options(
         self,
         tmp_req: adb_20190315_models.ModifyDBResourceGroupRequest,
@@ -12815,6 +14791,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_log_backup_policy_with_options_async(request, runtime)
 
+    def modify_log_hub_status_with_options(
+        self,
+        request: adb_20190315_models.ModifyLogHubStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyLogHubStatusResponse:
+        """
+        @param request: ModifyLogHubStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLogHubStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.deliver_name):
+            query['DeliverName'] = request.deliver_name
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLogHubStatus',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyLogHubStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_log_hub_status_with_options_async(
+        self,
+        request: adb_20190315_models.ModifyLogHubStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyLogHubStatusResponse:
+        """
+        @param request: ModifyLogHubStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLogHubStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.deliver_name):
+            query['DeliverName'] = request.deliver_name
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLogHubStatus',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyLogHubStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_log_hub_status(
+        self,
+        request: adb_20190315_models.ModifyLogHubStatusRequest,
+    ) -> adb_20190315_models.ModifyLogHubStatusResponse:
+        """
+        @param request: ModifyLogHubStatusRequest
+        @return: ModifyLogHubStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_log_hub_status_with_options(request, runtime)
+
+    async def modify_log_hub_status_async(
+        self,
+        request: adb_20190315_models.ModifyLogHubStatusRequest,
+    ) -> adb_20190315_models.ModifyLogHubStatusResponse:
+        """
+        @param request: ModifyLogHubStatusRequest
+        @return: ModifyLogHubStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_log_hub_status_with_options_async(request, runtime)
+
     def modify_maintenance_action_with_options(
         self,
         request: adb_20190315_models.ModifyMaintenanceActionRequest,
@@ -13190,6 +15286,278 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_sqaconfig_with_options_async(request, runtime)
+
+    def modify_sync_job_with_options(
+        self,
+        request: adb_20190315_models.ModifySyncJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifySyncJobResponse:
+        """
+        @param request: ModifySyncJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySyncJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_dbcluster):
+            query['SourceDBCluster'] = request.source_dbcluster
+        if not UtilClient.is_unset(request.sync_platform):
+            query['SyncPlatform'] = request.sync_platform
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySyncJob',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifySyncJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_sync_job_with_options_async(
+        self,
+        request: adb_20190315_models.ModifySyncJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifySyncJobResponse:
+        """
+        @param request: ModifySyncJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySyncJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_dbcluster):
+            query['SourceDBCluster'] = request.source_dbcluster
+        if not UtilClient.is_unset(request.sync_platform):
+            query['SyncPlatform'] = request.sync_platform
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySyncJob',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifySyncJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_sync_job(
+        self,
+        request: adb_20190315_models.ModifySyncJobRequest,
+    ) -> adb_20190315_models.ModifySyncJobResponse:
+        """
+        @param request: ModifySyncJobRequest
+        @return: ModifySyncJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_sync_job_with_options(request, runtime)
+
+    async def modify_sync_job_async(
+        self,
+        request: adb_20190315_models.ModifySyncJobRequest,
+    ) -> adb_20190315_models.ModifySyncJobResponse:
+        """
+        @param request: ModifySyncJobRequest
+        @return: ModifySyncJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_sync_job_with_options_async(request, runtime)
+
+    def operate_log_hub_with_options(
+        self,
+        request: adb_20190315_models.OperateLogHubRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.OperateLogHubResponse:
+        """
+        @param request: OperateLogHubRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateLogHubResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create):
+            query['Create'] = request.create
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.deliver_name):
+            query['DeliverName'] = request.deliver_name
+        if not UtilClient.is_unset(request.deliver_time):
+            query['DeliverTime'] = request.deliver_time
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.filter_dirty_data):
+            query['FilterDirtyData'] = request.filter_dirty_data
+        if not UtilClient.is_unset(request.log_hub_stores):
+            query['LogHubStores'] = request.log_hub_stores
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.provider):
+            query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateLogHub',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.OperateLogHubResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_log_hub_with_options_async(
+        self,
+        request: adb_20190315_models.OperateLogHubRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.OperateLogHubResponse:
+        """
+        @param request: OperateLogHubRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateLogHubResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create):
+            query['Create'] = request.create
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.deliver_name):
+            query['DeliverName'] = request.deliver_name
+        if not UtilClient.is_unset(request.deliver_time):
+            query['DeliverTime'] = request.deliver_time
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.filter_dirty_data):
+            query['FilterDirtyData'] = request.filter_dirty_data
+        if not UtilClient.is_unset(request.log_hub_stores):
+            query['LogHubStores'] = request.log_hub_stores
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.provider):
+            query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateLogHub',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.OperateLogHubResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_log_hub(
+        self,
+        request: adb_20190315_models.OperateLogHubRequest,
+    ) -> adb_20190315_models.OperateLogHubResponse:
+        """
+        @param request: OperateLogHubRequest
+        @return: OperateLogHubResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.operate_log_hub_with_options(request, runtime)
+
+    async def operate_log_hub_async(
+        self,
+        request: adb_20190315_models.OperateLogHubRequest,
+    ) -> adb_20190315_models.OperateLogHubResponse:
+        """
+        @param request: OperateLogHubRequest
+        @return: OperateLogHubResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.operate_log_hub_with_options_async(request, runtime)
 
     def release_cluster_public_connection_with_options(
         self,
