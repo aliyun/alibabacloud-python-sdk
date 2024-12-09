@@ -1,3 +1,7 @@
+2024-12-09 Version: 3.4.1
+- Update API GetPlayInfo: update response param.
+
+
 2024-12-06 Version: 3.4.0
 - Support API GetJobDetail.
 - Support API ListJobInfo.

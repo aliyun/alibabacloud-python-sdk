@@ -26159,6 +26159,7 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         self,
         bit_depth: int = None,
         bitrate: str = None,
+        codec_name: str = None,
         creation_time: str = None,
         definition: str = None,
         duration: str = None,
@@ -26186,6 +26187,7 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         self.bit_depth = bit_depth
         # The bitrate of the media stream. Unit: Kbit/s.
         self.bitrate = bitrate
+        self.codec_name = codec_name
         # The time when the audio or video stream was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The quality of the video stream. Valid values:
@@ -26287,6 +26289,8 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
             result['BitDepth'] = self.bit_depth
         if self.bitrate is not None:
             result['Bitrate'] = self.bitrate
+        if self.codec_name is not None:
+            result['CodecName'] = self.codec_name
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
         if self.definition is not None:
@@ -26339,6 +26343,8 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
             self.bit_depth = m.get('BitDepth')
         if m.get('Bitrate') is not None:
             self.bitrate = m.get('Bitrate')
+        if m.get('CodecName') is not None:
+            self.codec_name = m.get('CodecName')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
         if m.get('Definition') is not None:
