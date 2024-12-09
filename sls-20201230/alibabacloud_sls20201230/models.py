@@ -2564,6 +2564,7 @@ class MaxComputeExportConfigurationSink(TeaModel):
         self.odps_endpoint = odps_endpoint
         # This parameter is required.
         self.odps_project = odps_project
+        # This parameter is required.
         self.odps_rolearn = odps_rolearn
         # This parameter is required.
         self.odps_table = odps_table
@@ -2703,6 +2704,7 @@ class MaxComputeExport(TeaModel):
         display_name: str = None,
         last_modified_time: int = None,
         name: str = None,
+        schedule_id: str = None,
         status: str = None,
     ):
         # This parameter is required.
@@ -2714,6 +2716,7 @@ class MaxComputeExport(TeaModel):
         self.last_modified_time = last_modified_time
         # This parameter is required.
         self.name = name
+        self.schedule_id = schedule_id
         self.status = status
 
     def validate(self):
@@ -2738,6 +2741,8 @@ class MaxComputeExport(TeaModel):
             result['lastModifiedTime'] = self.last_modified_time
         if self.name is not None:
             result['name'] = self.name
+        if self.schedule_id is not None:
+            result['scheduleId'] = self.schedule_id
         if self.status is not None:
             result['status'] = self.status
         return result
@@ -2757,6 +2762,8 @@ class MaxComputeExport(TeaModel):
             self.last_modified_time = m.get('lastModifiedTime')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('scheduleId') is not None:
+            self.schedule_id = m.get('scheduleId')
         if m.get('status') is not None:
             self.status = m.get('status')
         return self
@@ -4795,6 +4802,87 @@ class ConsumerGroupUpdateCheckPointRequest(TeaModel):
 
 
 class ConsumerGroupUpdateCheckPointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class CreateAgentInstanceConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        config_matcher: str = None,
+        config_name: str = None,
+        is_gray: bool = None,
+    ):
+        # This parameter is required.
+        self.config = config
+        # This parameter is required.
+        self.config_matcher = config_matcher
+        # This parameter is required.
+        self.config_name = config_name
+        self.is_gray = is_gray
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config
+        if self.config_matcher is not None:
+            result['configMatcher'] = self.config_matcher
+        if self.config_name is not None:
+            result['configName'] = self.config_name
+        if self.is_gray is not None:
+            result['isGray'] = self.is_gray
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('configMatcher') is not None:
+            self.config_matcher = m.get('configMatcher')
+        if m.get('configName') is not None:
+            self.config_name = m.get('configName')
+        if m.get('isGray') is not None:
+            self.is_gray = m.get('isGray')
+        return self
+
+
+class CreateAgentInstanceConfigResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -7600,6 +7688,66 @@ class CreateTicketResponse(TeaModel):
         return self
 
 
+class DeleteAgentInstanceConfigRequest(TeaModel):
+    def __init__(
+        self,
+        is_gray: bool = None,
+    ):
+        self.is_gray = is_gray
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_gray is not None:
+            result['isGray'] = self.is_gray
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('isGray') is not None:
+            self.is_gray = m.get('isGray')
+        return self
+
+
+class DeleteAgentInstanceConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class DeleteAlertResponse(TeaModel):
     def __init__(
         self,
@@ -8768,6 +8916,104 @@ class EnableScheduledSQLResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+        return self
+
+
+class GetAgentInstanceConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        config_matcher: str = None,
+        config_name: str = None,
+        create_time: int = None,
+        is_gray: bool = None,
+        last_modify_time: int = None,
+    ):
+        self.config = config
+        self.config_matcher = config_matcher
+        self.config_name = config_name
+        self.create_time = create_time
+        self.is_gray = is_gray
+        self.last_modify_time = last_modify_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config
+        if self.config_matcher is not None:
+            result['configMatcher'] = self.config_matcher
+        if self.config_name is not None:
+            result['configName'] = self.config_name
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.is_gray is not None:
+            result['isGray'] = self.is_gray
+        if self.last_modify_time is not None:
+            result['lastModifyTime'] = self.last_modify_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('configMatcher') is not None:
+            self.config_matcher = m.get('configMatcher')
+        if m.get('configName') is not None:
+            self.config_name = m.get('configName')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('isGray') is not None:
+            self.is_gray = m.get('isGray')
+        if m.get('lastModifyTime') is not None:
+            self.last_modify_time = m.get('lastModifyTime')
+        return self
+
+
+class GetAgentInstanceConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAgentInstanceConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAgentInstanceConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -12648,6 +12894,119 @@ class GetStoreViewIndexResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetStoreViewIndexResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAgentInstanceConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        offset: int = None,
+        size: int = None,
+    ):
+        self.offset = offset
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.size is not None:
+            result['size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        return self
+
+
+class ListAgentInstanceConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        configs: List[str] = None,
+        size: int = None,
+        total: int = None,
+    ):
+        self.configs = configs
+        self.size = size
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configs is not None:
+            result['configs'] = self.configs
+        if self.size is not None:
+            result['size'] = self.size
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configs') is not None:
+            self.configs = m.get('configs')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListAgentInstanceConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAgentInstanceConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAgentInstanceConfigsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17827,6 +18186,80 @@ class UntagResourcesRequest(TeaModel):
 
 
 class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class UpdateAgentInstanceConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        config_matcher: str = None,
+        is_gray: bool = None,
+    ):
+        # This parameter is required.
+        self.config = config
+        # This parameter is required.
+        self.config_matcher = config_matcher
+        self.is_gray = is_gray
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config
+        if self.config_matcher is not None:
+            result['configMatcher'] = self.config_matcher
+        if self.is_gray is not None:
+            result['isGray'] = self.is_gray
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('configMatcher') is not None:
+            self.config_matcher = m.get('configMatcher')
+        if m.get('isGray') is not None:
+            self.is_gray = m.get('isGray')
+        return self
+
+
+class UpdateAgentInstanceConfigResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,

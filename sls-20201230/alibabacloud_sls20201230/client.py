@@ -597,6 +597,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.consumer_group_update_check_point_with_options_async(project, logstore, consumer_group, request, headers, runtime)
 
+    def create_agent_instance_config_with_options(
+        self,
+        request: sls_20201230_models.CreateAgentInstanceConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateAgentInstanceConfigResponse:
+        """
+        @summary CreateAgentInstanceConfig
+        
+        @param request: CreateAgentInstanceConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAgentInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.config_matcher):
+            body['configMatcher'] = request.config_matcher
+        if not UtilClient.is_unset(request.config_name):
+            body['configName'] = request.config_name
+        if not UtilClient.is_unset(request.is_gray):
+            body['isGray'] = request.is_gray
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAgentInstanceConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/agentinstanceconfigs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateAgentInstanceConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_agent_instance_config_with_options_async(
+        self,
+        request: sls_20201230_models.CreateAgentInstanceConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateAgentInstanceConfigResponse:
+        """
+        @summary CreateAgentInstanceConfig
+        
+        @param request: CreateAgentInstanceConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAgentInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.config_matcher):
+            body['configMatcher'] = request.config_matcher
+        if not UtilClient.is_unset(request.config_name):
+            body['configName'] = request.config_name
+        if not UtilClient.is_unset(request.is_gray):
+            body['isGray'] = request.is_gray
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAgentInstanceConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/agentinstanceconfigs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateAgentInstanceConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_agent_instance_config(
+        self,
+        request: sls_20201230_models.CreateAgentInstanceConfigRequest,
+    ) -> sls_20201230_models.CreateAgentInstanceConfigResponse:
+        """
+        @summary CreateAgentInstanceConfig
+        
+        @param request: CreateAgentInstanceConfigRequest
+        @return: CreateAgentInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_agent_instance_config_with_options(request, headers, runtime)
+
+    async def create_agent_instance_config_async(
+        self,
+        request: sls_20201230_models.CreateAgentInstanceConfigRequest,
+    ) -> sls_20201230_models.CreateAgentInstanceConfigResponse:
+        """
+        @summary CreateAgentInstanceConfig
+        
+        @param request: CreateAgentInstanceConfigRequest
+        @return: CreateAgentInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_agent_instance_config_with_options_async(request, headers, runtime)
+
     def create_alert_with_options(
         self,
         project: str,
@@ -4063,6 +4179,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_ticket_with_options_async(request, headers, runtime)
 
+    def delete_agent_instance_config_with_options(
+        self,
+        config_name: str,
+        request: sls_20201230_models.DeleteAgentInstanceConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteAgentInstanceConfigResponse:
+        """
+        @summary DeleteAgentInstanceConfig
+        
+        @param request: DeleteAgentInstanceConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAgentInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_gray):
+            query['isGray'] = request.is_gray
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAgentInstanceConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/agentinstanceconfigs/{config_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteAgentInstanceConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_agent_instance_config_with_options_async(
+        self,
+        config_name: str,
+        request: sls_20201230_models.DeleteAgentInstanceConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteAgentInstanceConfigResponse:
+        """
+        @summary DeleteAgentInstanceConfig
+        
+        @param request: DeleteAgentInstanceConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAgentInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_gray):
+            query['isGray'] = request.is_gray
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAgentInstanceConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/agentinstanceconfigs/{config_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteAgentInstanceConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_agent_instance_config(
+        self,
+        config_name: str,
+        request: sls_20201230_models.DeleteAgentInstanceConfigRequest,
+    ) -> sls_20201230_models.DeleteAgentInstanceConfigResponse:
+        """
+        @summary DeleteAgentInstanceConfig
+        
+        @param request: DeleteAgentInstanceConfigRequest
+        @return: DeleteAgentInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_agent_instance_config_with_options(config_name, request, headers, runtime)
+
+    async def delete_agent_instance_config_async(
+        self,
+        config_name: str,
+        request: sls_20201230_models.DeleteAgentInstanceConfigRequest,
+    ) -> sls_20201230_models.DeleteAgentInstanceConfigResponse:
+        """
+        @summary DeleteAgentInstanceConfig
+        
+        @param request: DeleteAgentInstanceConfigRequest
+        @return: DeleteAgentInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_agent_instance_config_with_options_async(config_name, request, headers, runtime)
+
     def delete_alert_with_options(
         self,
         project: str,
@@ -7484,6 +7708,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.enable_scheduled_sqlwith_options_async(project, scheduled_sqlname, headers, runtime)
+
+    def get_agent_instance_config_with_options(
+        self,
+        config_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetAgentInstanceConfigResponse:
+        """
+        @summary GetAgentInstanceConfig
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAgentInstanceConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAgentInstanceConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/agentinstanceconfigs/{config_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetAgentInstanceConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_agent_instance_config_with_options_async(
+        self,
+        config_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetAgentInstanceConfigResponse:
+        """
+        @summary GetAgentInstanceConfig
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAgentInstanceConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAgentInstanceConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/agentinstanceconfigs/{config_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetAgentInstanceConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_agent_instance_config(
+        self,
+        config_name: str,
+    ) -> sls_20201230_models.GetAgentInstanceConfigResponse:
+        """
+        @summary GetAgentInstanceConfig
+        
+        @return: GetAgentInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_agent_instance_config_with_options(config_name, headers, runtime)
+
+    async def get_agent_instance_config_async(
+        self,
+        config_name: str,
+    ) -> sls_20201230_models.GetAgentInstanceConfigResponse:
+        """
+        @summary GetAgentInstanceConfig
+        
+        @return: GetAgentInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_agent_instance_config_with_options_async(config_name, headers, runtime)
 
     def get_alert_with_options(
         self,
@@ -12252,6 +12566,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_store_view_index_with_options_async(project, name, headers, runtime)
+
+    def list_agent_instance_configs_with_options(
+        self,
+        request: sls_20201230_models.ListAgentInstanceConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListAgentInstanceConfigsResponse:
+        """
+        @summary ListAgentInstanceConfigs
+        
+        @param request: ListAgentInstanceConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAgentInstanceConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAgentInstanceConfigs',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/agentinstanceconfigs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListAgentInstanceConfigsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_agent_instance_configs_with_options_async(
+        self,
+        request: sls_20201230_models.ListAgentInstanceConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListAgentInstanceConfigsResponse:
+        """
+        @summary ListAgentInstanceConfigs
+        
+        @param request: ListAgentInstanceConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAgentInstanceConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAgentInstanceConfigs',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/agentinstanceconfigs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListAgentInstanceConfigsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_agent_instance_configs(
+        self,
+        request: sls_20201230_models.ListAgentInstanceConfigsRequest,
+    ) -> sls_20201230_models.ListAgentInstanceConfigsResponse:
+        """
+        @summary ListAgentInstanceConfigs
+        
+        @param request: ListAgentInstanceConfigsRequest
+        @return: ListAgentInstanceConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_agent_instance_configs_with_options(request, headers, runtime)
+
+    async def list_agent_instance_configs_async(
+        self,
+        request: sls_20201230_models.ListAgentInstanceConfigsRequest,
+    ) -> sls_20201230_models.ListAgentInstanceConfigsResponse:
+        """
+        @summary ListAgentInstanceConfigs
+        
+        @param request: ListAgentInstanceConfigsRequest
+        @return: ListAgentInstanceConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_agent_instance_configs_with_options_async(request, headers, runtime)
 
     def list_alerts_with_options(
         self,
@@ -17994,6 +18416,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
+
+    def update_agent_instance_config_with_options(
+        self,
+        config_name: str,
+        request: sls_20201230_models.UpdateAgentInstanceConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateAgentInstanceConfigResponse:
+        """
+        @summary UpdateAgentInstanceConfig
+        
+        @param request: UpdateAgentInstanceConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAgentInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.config_matcher):
+            body['configMatcher'] = request.config_matcher
+        if not UtilClient.is_unset(request.is_gray):
+            body['isGray'] = request.is_gray
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAgentInstanceConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/agentinstanceconfigs/{config_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateAgentInstanceConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_agent_instance_config_with_options_async(
+        self,
+        config_name: str,
+        request: sls_20201230_models.UpdateAgentInstanceConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateAgentInstanceConfigResponse:
+        """
+        @summary UpdateAgentInstanceConfig
+        
+        @param request: UpdateAgentInstanceConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAgentInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.config_matcher):
+            body['configMatcher'] = request.config_matcher
+        if not UtilClient.is_unset(request.is_gray):
+            body['isGray'] = request.is_gray
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAgentInstanceConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/agentinstanceconfigs/{config_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateAgentInstanceConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_agent_instance_config(
+        self,
+        config_name: str,
+        request: sls_20201230_models.UpdateAgentInstanceConfigRequest,
+    ) -> sls_20201230_models.UpdateAgentInstanceConfigResponse:
+        """
+        @summary UpdateAgentInstanceConfig
+        
+        @param request: UpdateAgentInstanceConfigRequest
+        @return: UpdateAgentInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_agent_instance_config_with_options(config_name, request, headers, runtime)
+
+    async def update_agent_instance_config_async(
+        self,
+        config_name: str,
+        request: sls_20201230_models.UpdateAgentInstanceConfigRequest,
+    ) -> sls_20201230_models.UpdateAgentInstanceConfigResponse:
+        """
+        @summary UpdateAgentInstanceConfig
+        
+        @param request: UpdateAgentInstanceConfigRequest
+        @return: UpdateAgentInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_agent_instance_config_with_options_async(config_name, request, headers, runtime)
 
     def update_alert_with_options(
         self,
