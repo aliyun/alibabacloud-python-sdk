@@ -1,3 +1,14 @@
+2024-12-09 Version: 6.16.0
+- Support API CreateNamespace.
+- Support API ListNamespaces.
+- Update API GetGatewayServiceDetail: update response param.
+- Update API GetPluginConfig: update response param.
+- Update API GetPlugins: update response param.
+- Update API ImportServices: update param ServiceList.
+- Update API ListGatewayService: update response param.
+- Update API UpdateGatewayService: add param DnsServerList.
+
+
 2024-11-29 Version: 6.15.1
 - Update API ListServiceSource: update response param.
 

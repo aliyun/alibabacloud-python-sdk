@@ -4754,6 +4754,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_nacos_service_with_options_async(request, runtime)
 
+    def create_namespace_with_options(
+        self,
+        request: mse_20190531_models.CreateNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateNamespaceResponse:
+        """
+        @summary CreateNamespace
+        
+        @param request: CreateNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNamespaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.describe):
+            query['Describe'] = request.describe
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNamespace',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_namespace_with_options_async(
+        self,
+        request: mse_20190531_models.CreateNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateNamespaceResponse:
+        """
+        @summary CreateNamespace
+        
+        @param request: CreateNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNamespaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.describe):
+            query['Describe'] = request.describe
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNamespace',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_namespace(
+        self,
+        request: mse_20190531_models.CreateNamespaceRequest,
+    ) -> mse_20190531_models.CreateNamespaceResponse:
+        """
+        @summary CreateNamespace
+        
+        @param request: CreateNamespaceRequest
+        @return: CreateNamespaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_namespace_with_options(request, runtime)
+
+    async def create_namespace_async(
+        self,
+        request: mse_20190531_models.CreateNamespaceRequest,
+    ) -> mse_20190531_models.CreateNamespaceResponse:
+        """
+        @summary CreateNamespace
+        
+        @param request: CreateNamespaceRequest
+        @return: CreateNamespaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_namespace_with_options_async(request, runtime)
+
     def create_or_update_swimming_lane_with_options(
         self,
         tmp_req: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
@@ -17606,6 +17710,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_nacos_history_configs_with_options_async(request, runtime)
 
+    def list_namespaces_with_options(
+        self,
+        request: mse_20190531_models.ListNamespacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListNamespacesResponse:
+        """
+        @summary 展示命名空间列表
+        
+        @param request: ListNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNamespacesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNamespaces',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListNamespacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_namespaces_with_options_async(
+        self,
+        request: mse_20190531_models.ListNamespacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListNamespacesResponse:
+        """
+        @summary 展示命名空间列表
+        
+        @param request: ListNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNamespacesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNamespaces',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListNamespacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_namespaces(
+        self,
+        request: mse_20190531_models.ListNamespacesRequest,
+    ) -> mse_20190531_models.ListNamespacesResponse:
+        """
+        @summary 展示命名空间列表
+        
+        @param request: ListNamespacesRequest
+        @return: ListNamespacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_namespaces_with_options(request, runtime)
+
+    async def list_namespaces_async(
+        self,
+        request: mse_20190531_models.ListNamespacesRequest,
+    ) -> mse_20190531_models.ListNamespacesResponse:
+        """
+        @summary 展示命名空间列表
+        
+        @param request: ListNamespacesRequest
+        @return: ListNamespacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_namespaces_with_options_async(request, runtime)
+
     def list_naming_track_with_options(
         self,
         request: mse_20190531_models.ListNamingTrackRequest,
@@ -25393,11 +25609,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayServiceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dns_server_list):
+            request.dns_server_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dns_server_list, 'DnsServerList', 'json')
         if not UtilClient.is_unset(tmp_req.ip_list):
             request.ip_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ip_list, 'IpList', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.dns_server_list_shrink):
+            query['DnsServerList'] = request.dns_server_list_shrink
         if not UtilClient.is_unset(request.gateway_id):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_unique_id):
@@ -25448,11 +25668,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayServiceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dns_server_list):
+            request.dns_server_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dns_server_list, 'DnsServerList', 'json')
         if not UtilClient.is_unset(tmp_req.ip_list):
             request.ip_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ip_list, 'IpList', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.dns_server_list_shrink):
+            query['DnsServerList'] = request.dns_server_list_shrink
         if not UtilClient.is_unset(request.gateway_id):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_unique_id):

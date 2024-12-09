@@ -11620,6 +11620,172 @@ class CreateNacosServiceResponse(TeaModel):
         return self
 
 
+class CreateNamespaceRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        describe: str = None,
+        name: str = None,
+    ):
+        self.accept_language = accept_language
+        self.describe = describe
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.describe is not None:
+            result['Describe'] = self.describe
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('Describe') is not None:
+            self.describe = m.get('Describe')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateNamespaceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+        region: str = None,
+    ):
+        self.namespace = namespace
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class CreateNamespaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateNamespaceResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateNamespaceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateNamespaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateNamespaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateNamespaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems(TeaModel):
     def __init__(
         self,
@@ -26363,6 +26529,7 @@ class GetGatewayServiceDetailResponseBodyDataVersions(TeaModel):
 class GetGatewayServiceDetailResponseBodyData(TeaModel):
     def __init__(
         self,
+        dns_server_list: List[str] = None,
         gateway_id: int = None,
         gateway_traffic_policy: TrafficPolicy = None,
         gateway_unique_id: str = None,
@@ -26388,6 +26555,7 @@ class GetGatewayServiceDetailResponseBodyData(TeaModel):
         version_details: List[GetGatewayServiceDetailResponseBodyDataVersionDetails] = None,
         versions: List[GetGatewayServiceDetailResponseBodyDataVersions] = None,
     ):
+        self.dns_server_list = dns_server_list
         # The ID of the gateway.
         self.gateway_id = gateway_id
         # The traffic policy of the service.
@@ -26461,6 +26629,8 @@ class GetGatewayServiceDetailResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.dns_server_list is not None:
+            result['DnsServerList'] = self.dns_server_list
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
         if self.gateway_traffic_policy is not None:
@@ -26521,6 +26691,8 @@ class GetGatewayServiceDetailResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DnsServerList') is not None:
+            self.dns_server_list = m.get('DnsServerList')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
         if m.get('GatewayTrafficPolicy') is not None:
@@ -29132,6 +29304,7 @@ class GetPluginConfigResponseBodyData(TeaModel):
         route_config_start_index: int = None,
         status: str = None,
         summary: str = None,
+        summary_en: str = None,
         type: int = None,
         version: str = None,
         version_json: str = None,
@@ -29195,6 +29368,7 @@ class GetPluginConfigResponseBodyData(TeaModel):
         self.status = status
         # The summary of the plug-in.
         self.summary = summary
+        self.summary_en = summary_en
         # The type.
         self.type = type
         # The version of the plug-in.
@@ -29265,6 +29439,8 @@ class GetPluginConfigResponseBodyData(TeaModel):
             result['Status'] = self.status
         if self.summary is not None:
             result['Summary'] = self.summary
+        if self.summary_en is not None:
+            result['SummaryEn'] = self.summary_en
         if self.type is not None:
             result['Type'] = self.type
         if self.version is not None:
@@ -29318,6 +29494,8 @@ class GetPluginConfigResponseBodyData(TeaModel):
             self.status = m.get('Status')
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+        if m.get('SummaryEn') is not None:
+            self.summary_en = m.get('SummaryEn')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('Version') is not None:
@@ -29539,6 +29717,7 @@ class GetPluginsResponseBodyData(TeaModel):
         publish_state: int = None,
         status: str = None,
         summary: str = None,
+        summary_en: str = None,
         version: str = None,
         wasm_file: str = None,
         wasm_lang: int = None,
@@ -29586,6 +29765,7 @@ class GetPluginsResponseBodyData(TeaModel):
         self.status = status
         # The summary of the plug-in.
         self.summary = summary
+        self.summary_en = summary_en
         # The version of the plug-in.
         self.version = version
         # The URL of the Object Storage Service (OSS) bucket that stores the WebAssembly plug-in.
@@ -29634,6 +29814,8 @@ class GetPluginsResponseBodyData(TeaModel):
             result['Status'] = self.status
         if self.summary is not None:
             result['Summary'] = self.summary
+        if self.summary_en is not None:
+            result['SummaryEn'] = self.summary_en
         if self.version is not None:
             result['Version'] = self.version
         if self.wasm_file is not None:
@@ -29670,6 +29852,8 @@ class GetPluginsResponseBodyData(TeaModel):
             self.status = m.get('Status')
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+        if m.get('SummaryEn') is not None:
+            self.summary_en = m.get('SummaryEn')
         if m.get('Version') is not None:
             self.version = m.get('Version')
         if m.get('WasmFile') is not None:
@@ -31895,6 +32079,7 @@ class ImportNacosConfigResponse(TeaModel):
 class ImportServicesRequestServiceList(TeaModel):
     def __init__(
         self,
+        dns_server_list: List[str] = None,
         group_name: str = None,
         ips: List[str] = None,
         name: str = None,
@@ -31902,6 +32087,7 @@ class ImportServicesRequestServiceList(TeaModel):
         service_port: int = None,
         service_protocol: str = None,
     ):
+        self.dns_server_list = dns_server_list
         # The group.
         self.group_name = group_name
         # The IP addresses of the service.
@@ -31924,6 +32110,8 @@ class ImportServicesRequestServiceList(TeaModel):
             return _map
 
         result = dict()
+        if self.dns_server_list is not None:
+            result['DnsServerList'] = self.dns_server_list
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         if self.ips is not None:
@@ -31940,6 +32128,8 @@ class ImportServicesRequestServiceList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DnsServerList') is not None:
+            self.dns_server_list = m.get('DnsServerList')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         if m.get('Ips') is not None:
@@ -45076,6 +45266,7 @@ class ListGatewayServiceResponseBodyDataResultVersions(TeaModel):
 class ListGatewayServiceResponseBodyDataResult(TeaModel):
     def __init__(
         self,
+        dns_server_list: List[str] = None,
         gateway_id: int = None,
         gateway_traffic_policy: ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicy = None,
         gateway_unique_id: str = None,
@@ -45101,6 +45292,7 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
         unhealthy_endpoints: List[str] = None,
         versions: List[ListGatewayServiceResponseBodyDataResultVersions] = None,
     ):
+        self.dns_server_list = dns_server_list
         # The gateway ID.
         self.gateway_id = gateway_id
         # The traffic management policy.
@@ -45173,6 +45365,8 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
             return _map
 
         result = dict()
+        if self.dns_server_list is not None:
+            result['DnsServerList'] = self.dns_server_list
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
         if self.gateway_traffic_policy is not None:
@@ -45227,6 +45421,8 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DnsServerList') is not None:
+            self.dns_server_list = m.get('DnsServerList')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
         if m.get('GatewayTrafficPolicy') is not None:
@@ -48065,6 +48261,352 @@ class ListNacosHistoryConfigsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListNacosHistoryConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListNamespacesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region: str = None,
+    ):
+        self.accept_language = accept_language
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class ListNamespacesResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        app_count: int = None,
+        create_time: int = None,
+        describe: str = None,
+        instance_count: int = None,
+        namespace: str = None,
+        region: str = None,
+        update_time: int = None,
+        user_id: str = None,
+        version: int = None,
+    ):
+        self.app_count = app_count
+        self.create_time = create_time
+        self.describe = describe
+        self.instance_count = instance_count
+        self.namespace = namespace
+        self.region = region
+        self.update_time = update_time
+        self.user_id = user_id
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_count is not None:
+            result['AppCount'] = self.app_count
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.describe is not None:
+            result['Describe'] = self.describe
+        if self.instance_count is not None:
+            result['InstanceCount'] = self.instance_count
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppCount') is not None:
+            self.app_count = m.get('AppCount')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Describe') is not None:
+            self.describe = m.get('Describe')
+        if m.get('InstanceCount') is not None:
+            self.instance_count = m.get('InstanceCount')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListNamespacesResponseBodyDataResults(TeaModel):
+    def __init__(
+        self,
+        app_count: int = None,
+        create_time: int = None,
+        describe: str = None,
+        instance_count: int = None,
+        namespace: str = None,
+        region: str = None,
+        update_time: int = None,
+        user_id: str = None,
+        version: int = None,
+    ):
+        self.app_count = app_count
+        self.create_time = create_time
+        self.describe = describe
+        self.instance_count = instance_count
+        self.namespace = namespace
+        self.region = region
+        self.update_time = update_time
+        self.user_id = user_id
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_count is not None:
+            result['AppCount'] = self.app_count
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.describe is not None:
+            result['Describe'] = self.describe
+        if self.instance_count is not None:
+            result['InstanceCount'] = self.instance_count
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppCount') is not None:
+            self.app_count = m.get('AppCount')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Describe') is not None:
+            self.describe = m.get('Describe')
+        if m.get('InstanceCount') is not None:
+            self.instance_count = m.get('InstanceCount')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListNamespacesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        result: List[ListNamespacesResponseBodyDataResult] = None,
+        results: List[ListNamespacesResponseBodyDataResults] = None,
+        total_size: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.result = result
+        self.results = results
+        self.total_size = total_size
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ListNamespacesResponseBodyDataResult()
+                self.result.append(temp_model.from_map(k))
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = ListNamespacesResponseBodyDataResults()
+                self.results.append(temp_model.from_map(k))
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class ListNamespacesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListNamespacesResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListNamespacesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListNamespacesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListNamespacesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListNamespacesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -66909,6 +67451,7 @@ class UpdateGatewayServiceRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        dns_server_list: List[str] = None,
         gateway_id: int = None,
         gateway_unique_id: str = None,
         id: str = None,
@@ -66919,6 +67462,7 @@ class UpdateGatewayServiceRequest(TeaModel):
         tls_setting: str = None,
     ):
         self.accept_language = accept_language
+        self.dns_server_list = dns_server_list
         self.gateway_id = gateway_id
         self.gateway_unique_id = gateway_unique_id
         self.id = id
@@ -66939,6 +67483,8 @@ class UpdateGatewayServiceRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.dns_server_list is not None:
+            result['DnsServerList'] = self.dns_server_list
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
         if self.gateway_unique_id is not None:
@@ -66961,6 +67507,8 @@ class UpdateGatewayServiceRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('DnsServerList') is not None:
+            self.dns_server_list = m.get('DnsServerList')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
         if m.get('GatewayUniqueId') is not None:
@@ -66984,6 +67532,7 @@ class UpdateGatewayServiceShrinkRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        dns_server_list_shrink: str = None,
         gateway_id: int = None,
         gateway_unique_id: str = None,
         id: str = None,
@@ -66994,6 +67543,7 @@ class UpdateGatewayServiceShrinkRequest(TeaModel):
         tls_setting: str = None,
     ):
         self.accept_language = accept_language
+        self.dns_server_list_shrink = dns_server_list_shrink
         self.gateway_id = gateway_id
         self.gateway_unique_id = gateway_unique_id
         self.id = id
@@ -67014,6 +67564,8 @@ class UpdateGatewayServiceShrinkRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.dns_server_list_shrink is not None:
+            result['DnsServerList'] = self.dns_server_list_shrink
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
         if self.gateway_unique_id is not None:
@@ -67036,6 +67588,8 @@ class UpdateGatewayServiceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('DnsServerList') is not None:
+            self.dns_server_list_shrink = m.get('DnsServerList')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
         if m.get('GatewayUniqueId') is not None:
