@@ -49,6 +49,11 @@ class Client(OpenApiClient):
         """
         @summary Attaches shared storage to an Elastic High Performance Computing (E-HPC) cluster.
         
+        @description ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        The file system that you want to attach must be created in advance in the same virtual private cloud (VPC) as the destination cluster. For more information, see [Create a file system](https://help.aliyun.com/document_detail/27530.html) and [Manage mount targets](https://help.aliyun.com/document_detail/27531.html).
+        E-HPC clusters support Apsara File Storage NAS file systems.
+        
         @param tmp_req: AttachSharedStoragesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AttachSharedStoragesResponse
@@ -90,6 +95,11 @@ class Client(OpenApiClient):
         """
         @summary Attaches shared storage to an Elastic High Performance Computing (E-HPC) cluster.
         
+        @description ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        The file system that you want to attach must be created in advance in the same virtual private cloud (VPC) as the destination cluster. For more information, see [Create a file system](https://help.aliyun.com/document_detail/27530.html) and [Manage mount targets](https://help.aliyun.com/document_detail/27531.html).
+        E-HPC clusters support Apsara File Storage NAS file systems.
+        
         @param tmp_req: AttachSharedStoragesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AttachSharedStoragesResponse
@@ -130,6 +140,11 @@ class Client(OpenApiClient):
         """
         @summary Attaches shared storage to an Elastic High Performance Computing (E-HPC) cluster.
         
+        @description ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        The file system that you want to attach must be created in advance in the same virtual private cloud (VPC) as the destination cluster. For more information, see [Create a file system](https://help.aliyun.com/document_detail/27530.html) and [Manage mount targets](https://help.aliyun.com/document_detail/27531.html).
+        E-HPC clusters support Apsara File Storage NAS file systems.
+        
         @param request: AttachSharedStoragesRequest
         @return: AttachSharedStoragesResponse
         """
@@ -143,6 +158,11 @@ class Client(OpenApiClient):
         """
         @summary Attaches shared storage to an Elastic High Performance Computing (E-HPC) cluster.
         
+        @description ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        The file system that you want to attach must be created in advance in the same virtual private cloud (VPC) as the destination cluster. For more information, see [Create a file system](https://help.aliyun.com/document_detail/27530.html) and [Manage mount targets](https://help.aliyun.com/document_detail/27531.html).
+        E-HPC clusters support Apsara File Storage NAS file systems.
+        
         @param request: AttachSharedStoragesRequest
         @return: AttachSharedStoragesResponse
         """
@@ -155,7 +175,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.CreateClusterResponse:
         """
-        @summary 创建一个按量付费或者预付费（包年包月） 集群
+        @summary Creates a pay-as-you-go or subscription Elastic High Performance Computing (E-HPC) cluster.
+        
+        @description ## [](#)Usage notes
+        Before you call this operation, make sure that you are familiar with the billing and pricing of E-HPC. For more information, see [Overview](https://help.aliyun.com/document_detail/2842985.html).
         
         @param tmp_req: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -248,7 +271,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.CreateClusterResponse:
         """
-        @summary 创建一个按量付费或者预付费（包年包月） 集群
+        @summary Creates a pay-as-you-go or subscription Elastic High Performance Computing (E-HPC) cluster.
+        
+        @description ## [](#)Usage notes
+        Before you call this operation, make sure that you are familiar with the billing and pricing of E-HPC. For more information, see [Overview](https://help.aliyun.com/document_detail/2842985.html).
         
         @param tmp_req: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -340,7 +366,10 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.CreateClusterRequest,
     ) -> ehpc20240730_models.CreateClusterResponse:
         """
-        @summary 创建一个按量付费或者预付费（包年包月） 集群
+        @summary Creates a pay-as-you-go or subscription Elastic High Performance Computing (E-HPC) cluster.
+        
+        @description ## [](#)Usage notes
+        Before you call this operation, make sure that you are familiar with the billing and pricing of E-HPC. For more information, see [Overview](https://help.aliyun.com/document_detail/2842985.html).
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -353,7 +382,10 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.CreateClusterRequest,
     ) -> ehpc20240730_models.CreateClusterResponse:
         """
-        @summary 创建一个按量付费或者预付费（包年包月） 集群
+        @summary Creates a pay-as-you-go or subscription Elastic High Performance Computing (E-HPC) cluster.
+        
+        @description ## [](#)Usage notes
+        Before you call this operation, make sure that you are familiar with the billing and pricing of E-HPC. For more information, see [Overview](https://help.aliyun.com/document_detail/2842985.html).
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -507,6 +539,8 @@ class Client(OpenApiClient):
             query['ComputeNode'] = request.compute_node_shrink
         if not UtilClient.is_unset(request.count):
             query['Count'] = request.count
+        if not UtilClient.is_unset(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
         if not UtilClient.is_unset(request.hpcinter_connect):
             query['HPCInterConnect'] = request.hpcinter_connect
         if not UtilClient.is_unset(request.hostname_prefix):
@@ -566,6 +600,8 @@ class Client(OpenApiClient):
             query['ComputeNode'] = request.compute_node_shrink
         if not UtilClient.is_unset(request.count):
             query['Count'] = request.count
+        if not UtilClient.is_unset(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
         if not UtilClient.is_unset(request.hpcinter_connect):
             query['HPCInterConnect'] = request.hpcinter_connect
         if not UtilClient.is_unset(request.hostname_prefix):
@@ -853,6 +889,10 @@ class Client(OpenApiClient):
         """
         @summary Releases an Enterprise High Performance Computing (E-HPC) cluster.
         
+        @description ## [](#)Usage notes
+        Make sure that data of the cluster to be deleted is backed up before you call this operation.
+        > After a cluster is released, you cannot restore the data stored in the cluster. Exercise caution when you release a cluster.
+        
         @param request: DeleteClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteClusterResponse
@@ -888,6 +928,10 @@ class Client(OpenApiClient):
         """
         @summary Releases an Enterprise High Performance Computing (E-HPC) cluster.
         
+        @description ## [](#)Usage notes
+        Make sure that data of the cluster to be deleted is backed up before you call this operation.
+        > After a cluster is released, you cannot restore the data stored in the cluster. Exercise caution when you release a cluster.
+        
         @param request: DeleteClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteClusterResponse
@@ -922,6 +966,10 @@ class Client(OpenApiClient):
         """
         @summary Releases an Enterprise High Performance Computing (E-HPC) cluster.
         
+        @description ## [](#)Usage notes
+        Make sure that data of the cluster to be deleted is backed up before you call this operation.
+        > After a cluster is released, you cannot restore the data stored in the cluster. Exercise caution when you release a cluster.
+        
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
         """
@@ -934,6 +982,10 @@ class Client(OpenApiClient):
     ) -> ehpc20240730_models.DeleteClusterResponse:
         """
         @summary Releases an Enterprise High Performance Computing (E-HPC) cluster.
+        
+        @description ## [](#)Usage notes
+        Make sure that data of the cluster to be deleted is backed up before you call this operation.
+        > After a cluster is released, you cannot restore the data stored in the cluster. Exercise caution when you release a cluster.
         
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
@@ -1815,7 +1867,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.GetJobResponse:
         """
-        @summary 获取作业详情
+        @summary Obtains the details of a job.
         
         @param request: GetJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1852,7 +1904,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.GetJobResponse:
         """
-        @summary 获取作业详情
+        @summary Obtains the details of a job.
         
         @param request: GetJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1888,7 +1940,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.GetJobRequest,
     ) -> ehpc20240730_models.GetJobResponse:
         """
-        @summary 获取作业详情
+        @summary Obtains the details of a job.
         
         @param request: GetJobRequest
         @return: GetJobResponse
@@ -1901,7 +1953,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.GetJobRequest,
     ) -> ehpc20240730_models.GetJobResponse:
         """
-        @summary 获取作业详情
+        @summary Obtains the details of a job.
         
         @param request: GetJobRequest
         @return: GetJobResponse
@@ -2141,6 +2193,13 @@ class Client(OpenApiClient):
         """
         @summary Installs an addon.
         
+        @description ## [](#)Usage notes
+        Take note of the following items when you call this operation:
+        The cluster must be in the `Running` state.
+        Clusters fall into two types:
+        Regular clusters on Alibaba Cloud Public Cloud
+        Managed clusters on Alibaba Cloud Public Cloud
+        
         @param request: InstallAddonRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: InstallAddonResponse
@@ -2184,6 +2243,13 @@ class Client(OpenApiClient):
         """
         @summary Installs an addon.
         
+        @description ## [](#)Usage notes
+        Take note of the following items when you call this operation:
+        The cluster must be in the `Running` state.
+        Clusters fall into two types:
+        Regular clusters on Alibaba Cloud Public Cloud
+        Managed clusters on Alibaba Cloud Public Cloud
+        
         @param request: InstallAddonRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: InstallAddonResponse
@@ -2226,6 +2292,13 @@ class Client(OpenApiClient):
         """
         @summary Installs an addon.
         
+        @description ## [](#)Usage notes
+        Take note of the following items when you call this operation:
+        The cluster must be in the `Running` state.
+        Clusters fall into two types:
+        Regular clusters on Alibaba Cloud Public Cloud
+        Managed clusters on Alibaba Cloud Public Cloud
+        
         @param request: InstallAddonRequest
         @return: InstallAddonResponse
         """
@@ -2238,6 +2311,13 @@ class Client(OpenApiClient):
     ) -> ehpc20240730_models.InstallAddonResponse:
         """
         @summary Installs an addon.
+        
+        @description ## [](#)Usage notes
+        Take note of the following items when you call this operation:
+        The cluster must be in the `Running` state.
+        Clusters fall into two types:
+        Regular clusters on Alibaba Cloud Public Cloud
+        Managed clusters on Alibaba Cloud Public Cloud
         
         @param request: InstallAddonRequest
         @return: InstallAddonResponse
@@ -3913,6 +3993,13 @@ class Client(OpenApiClient):
         """
         @summary Uninstalls an addon.
         
+        @description ## [](#)Usage notes
+        Take note of the following items when you call this operation:
+        The cluster must be in the `Running` state.
+        Clusters fall into the following types:
+        Regular clusters on Alibaba Cloud Public Cloud
+        Managed clusters on Alibaba Cloud Public Cloud
+        
         @param request: UnInstallAddonRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnInstallAddonResponse
@@ -3950,6 +4037,13 @@ class Client(OpenApiClient):
         """
         @summary Uninstalls an addon.
         
+        @description ## [](#)Usage notes
+        Take note of the following items when you call this operation:
+        The cluster must be in the `Running` state.
+        Clusters fall into the following types:
+        Regular clusters on Alibaba Cloud Public Cloud
+        Managed clusters on Alibaba Cloud Public Cloud
+        
         @param request: UnInstallAddonRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnInstallAddonResponse
@@ -3986,6 +4080,13 @@ class Client(OpenApiClient):
         """
         @summary Uninstalls an addon.
         
+        @description ## [](#)Usage notes
+        Take note of the following items when you call this operation:
+        The cluster must be in the `Running` state.
+        Clusters fall into the following types:
+        Regular clusters on Alibaba Cloud Public Cloud
+        Managed clusters on Alibaba Cloud Public Cloud
+        
         @param request: UnInstallAddonRequest
         @return: UnInstallAddonResponse
         """
@@ -3998,6 +4099,13 @@ class Client(OpenApiClient):
     ) -> ehpc20240730_models.UnInstallAddonResponse:
         """
         @summary Uninstalls an addon.
+        
+        @description ## [](#)Usage notes
+        Take note of the following items when you call this operation:
+        The cluster must be in the `Running` state.
+        Clusters fall into the following types:
+        Regular clusters on Alibaba Cloud Public Cloud
+        Managed clusters on Alibaba Cloud Public Cloud
         
         @param request: UnInstallAddonRequest
         @return: UnInstallAddonResponse
@@ -4122,6 +4230,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.cluster_custom_configuration):
             request.cluster_custom_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cluster_custom_configuration, 'ClusterCustomConfiguration', 'json')
+        if not UtilClient.is_unset(tmp_req.monitor_spec):
+            request.monitor_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.monitor_spec, 'MonitorSpec', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_version):
             query['ClientVersion'] = request.client_version
@@ -4147,6 +4257,8 @@ class Client(OpenApiClient):
             query['MaxCoreCount'] = request.max_core_count
         if not UtilClient.is_unset(request.max_count):
             query['MaxCount'] = request.max_count
+        if not UtilClient.is_unset(request.monitor_spec_shrink):
+            query['MonitorSpec'] = request.monitor_spec_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4183,6 +4295,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.cluster_custom_configuration):
             request.cluster_custom_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cluster_custom_configuration, 'ClusterCustomConfiguration', 'json')
+        if not UtilClient.is_unset(tmp_req.monitor_spec):
+            request.monitor_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.monitor_spec, 'MonitorSpec', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_version):
             query['ClientVersion'] = request.client_version
@@ -4208,6 +4322,8 @@ class Client(OpenApiClient):
             query['MaxCoreCount'] = request.max_core_count
         if not UtilClient.is_unset(request.max_count):
             query['MaxCount'] = request.max_count
+        if not UtilClient.is_unset(request.monitor_spec_shrink):
+            query['MonitorSpec'] = request.monitor_spec_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

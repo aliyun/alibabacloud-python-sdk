@@ -890,7 +890,9 @@ class CreateClusterRequestAdditionalPackages(TeaModel):
         name: str = None,
         version: str = None,
     ):
+        # The name of the software that you want to install in the cluster.
         self.name = name
+        # The version of the software that you want to install in the cluster.
         self.version = version
 
     def validate(self):
@@ -925,10 +927,16 @@ class CreateClusterRequestAddons(TeaModel):
         services_spec: str = None,
         version: str = None,
     ):
+        # The addon name.
+        # 
         # This parameter is required.
         self.name = name
+        # The resource configurations of the addon.
         self.resources_spec = resources_spec
+        # The service configurations of the addon.
         self.services_spec = services_spec
+        # The addon version.
+        # 
         # This parameter is required.
         self.version = version
 
@@ -970,7 +978,13 @@ class CreateClusterRequestClusterCredentials(TeaModel):
         key_pair_name: str = None,
         password: str = None,
     ):
+        # The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain digits, letters, colons (:), underscores (_), and hyphens (-).
+        # 
+        # >  For more information, see [Create a key pair](https://help.aliyun.com/document_detail/51793.html).
         self.key_pair_name = key_pair_name
+        # The password for the root user to log on to the node. The password must be 8 to 20 characters in length, and must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: `() ~ ! @ # $ % ^ & * - = + { } [ ] : ; \\" < > , . ? /`
+        # 
+        # >  We recommend that you use HTTPS to call the API operation to prevent password leakage.
         self.password = password
 
     def validate(self):
@@ -1003,7 +1017,9 @@ class CreateClusterRequestClusterCustomConfiguration(TeaModel):
         args: str = None,
         script: str = None,
     ):
+        # The runtime parameters of the script after the cluster is created.
         self.args = args
+        # The URL that is used to download the post-processing script.
         self.script = script
 
     def validate(self):
@@ -1036,7 +1052,13 @@ class CreateClusterRequestManagerDNS(TeaModel):
         type: str = None,
         version: str = None,
     ):
+        # The domain name resolution type.
+        # 
+        # Valid values:
+        # 
+        # *   NIS: NIS.
         self.type = type
+        # The version of the domain name resolution service.
         self.version = version
 
     def validate(self):
@@ -1069,7 +1091,13 @@ class CreateClusterRequestManagerDirectoryService(TeaModel):
         type: str = None,
         version: str = None,
     ):
+        # The type of the domain account.
+        # 
+        # Valid values:
+        # 
+        # *   NIS: NIS.
         self.type = type
+        # The version of the domain account service.
         self.version = version
 
     def validate(self):
@@ -1102,7 +1130,15 @@ class CreateClusterRequestManagerScheduler(TeaModel):
         type: str = None,
         version: str = None,
     ):
+        # The scheduler type. Valid values:
+        # 
+        # *   SLURM
+        # *   PBS
+        # *   OPENGRIDSCHEDULER
+        # *   LSF_PLUGIN
+        # *   PBS_PLUGIN
         self.type = type
+        # The scheduler version.
         self.version = version
 
     def validate(self):
@@ -1137,9 +1173,13 @@ class CreateClusterRequestManager(TeaModel):
         manager_node: NodeTemplate = None,
         scheduler: CreateClusterRequestManagerScheduler = None,
     ):
+        # The configurations of the domain name resolution service.
         self.dns = dns
+        # The configurations of the directory service.
         self.directory_service = directory_service
+        # The hardware configurations of the management node.
         self.manager_node = manager_node
+        # The configurations of the scheduler service.
         self.scheduler = scheduler
 
     def validate(self):
@@ -1191,7 +1231,9 @@ class CreateClusterRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1243,26 +1285,70 @@ class CreateClusterRequest(TeaModel):
         shared_storages: List[SharedStorageTemplate] = None,
         tags: List[CreateClusterRequestTags] = None,
     ):
+        # The list of software that you want to install in the cluster. Valid values of N: 0 to 10.
         self.additional_packages = additional_packages
+        # The configurations of the custom addons in the cluster. Only one addon is supported.
         self.addons = addons
+        # The client version. By default, the latest version is used.
         self.client_version = client_version
+        # The cluster type. Valid values:
+        # 
+        # *   Standard
+        # *   Serverless
         self.cluster_category = cluster_category
+        # The access credentials of the cluster.
         self.cluster_credentials = cluster_credentials
+        # The post-processing script of the cluster.
         self.cluster_custom_configuration = cluster_custom_configuration
+        # The cluster description. The description must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         self.cluster_description = cluster_description
+        # The deployment mode of the cluster. Valid values:
+        # 
+        # *   Integrated
+        # *   Hybrid
+        # *   Custom
         self.cluster_mode = cluster_mode
+        # The cluster name. The name must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         self.cluster_name = cluster_name
+        # The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
+        # 
+        # You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/448581.html) operation to query information about the created VPCs and vSwitches.
         self.cluster_vswitch_id = cluster_vswitch_id
+        # The ID of the virtual private cloud (VPC) in which the cluster resides.
         self.cluster_vpc_id = cluster_vpc_id
+        # Specifies whether to enable deletion protection for the cluster. Deletion protection decides whether the cluster can be deleted in the console or by calling the [DeleteCluster](https://help.aliyun.com/document_detail/424406.html) operation. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.deletion_protection = deletion_protection
+        # Specifies whether to use an advanced security group. Valid values:
+        # 
+        # *   true: automatically creates and uses an advanced security group.
+        # *   false: automatically creates and uses a basic security group.
+        # 
+        # For more information, see [Basic security groups and advanced security groups](https://help.aliyun.com/document_detail/605897.html).
         self.is_enterprise_security_group = is_enterprise_security_group
+        # The configurations of the cluster management node.
         self.manager = manager
+        # The maximum number of vCPUs that can be used by compute nodes in the cluster. Valid values: 0 to 100,000.
         self.max_core_count = max_core_count
+        # The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
         self.max_count = max_count
+        # The configurations of the queues in the cluster. The number of queues can be 0 to 8.
         self.queues = queues
+        # The ID of the resource group to which the cluster belongs.
+        # 
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the IDs of the resource groups.
         self.resource_group_id = resource_group_id
+        # The ID of the security group to which the cluster belongs.
+        # 
+        # You can call the [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) operation to query available security groups in the current region.
         self.security_group_id = security_group_id
+        # The configurations of shared storage in the cluster.
         self.shared_storages = shared_storages
+        # The tags of the cluster.
         self.tags = tags
 
     def validate(self):
@@ -1443,26 +1529,70 @@ class CreateClusterShrinkRequest(TeaModel):
         shared_storages_shrink: str = None,
         tags_shrink: str = None,
     ):
+        # The list of software that you want to install in the cluster. Valid values of N: 0 to 10.
         self.additional_packages_shrink = additional_packages_shrink
+        # The configurations of the custom addons in the cluster. Only one addon is supported.
         self.addons_shrink = addons_shrink
+        # The client version. By default, the latest version is used.
         self.client_version = client_version
+        # The cluster type. Valid values:
+        # 
+        # *   Standard
+        # *   Serverless
         self.cluster_category = cluster_category
+        # The access credentials of the cluster.
         self.cluster_credentials_shrink = cluster_credentials_shrink
+        # The post-processing script of the cluster.
         self.cluster_custom_configuration_shrink = cluster_custom_configuration_shrink
+        # The cluster description. The description must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         self.cluster_description = cluster_description
+        # The deployment mode of the cluster. Valid values:
+        # 
+        # *   Integrated
+        # *   Hybrid
+        # *   Custom
         self.cluster_mode = cluster_mode
+        # The cluster name. The name must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         self.cluster_name = cluster_name
+        # The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
+        # 
+        # You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/448581.html) operation to query information about the created VPCs and vSwitches.
         self.cluster_vswitch_id = cluster_vswitch_id
+        # The ID of the virtual private cloud (VPC) in which the cluster resides.
         self.cluster_vpc_id = cluster_vpc_id
+        # Specifies whether to enable deletion protection for the cluster. Deletion protection decides whether the cluster can be deleted in the console or by calling the [DeleteCluster](https://help.aliyun.com/document_detail/424406.html) operation. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.deletion_protection = deletion_protection
+        # Specifies whether to use an advanced security group. Valid values:
+        # 
+        # *   true: automatically creates and uses an advanced security group.
+        # *   false: automatically creates and uses a basic security group.
+        # 
+        # For more information, see [Basic security groups and advanced security groups](https://help.aliyun.com/document_detail/605897.html).
         self.is_enterprise_security_group = is_enterprise_security_group
+        # The configurations of the cluster management node.
         self.manager_shrink = manager_shrink
+        # The maximum number of vCPUs that can be used by compute nodes in the cluster. Valid values: 0 to 100,000.
         self.max_core_count = max_core_count
+        # The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
         self.max_count = max_count
+        # The configurations of the queues in the cluster. The number of queues can be 0 to 8.
         self.queues_shrink = queues_shrink
+        # The ID of the resource group to which the cluster belongs.
+        # 
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the IDs of the resource groups.
         self.resource_group_id = resource_group_id
+        # The ID of the security group to which the cluster belongs.
+        # 
+        # You can call the [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) operation to query available security groups in the current region.
         self.security_group_id = security_group_id
+        # The configurations of shared storage in the cluster.
         self.shared_storages_shrink = shared_storages_shrink
+        # The tags of the cluster.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -1573,9 +1703,16 @@ class CreateClusterResponseBody(TeaModel):
         success: bool = None,
         task_id: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The request ID.
         self.request_id = request_id
+        # The request result. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -1720,9 +1857,9 @@ class CreateJobRequestJobSpec(TeaModel):
         # 
         # Format: X-Y:Z. X is the minimum index value. Y is the maximum index value. Z is the step size. For example, 2-7:2 indicates that three jobs need to be run and their index values are 2, 4, and 6.
         self.array_request = array_request
-        # The command or script to run the job. If you want to use a command, you must specify the full path of the command, for example, /bin/ping.
+        # The command or script that is used to run the job. If you want to use a command, you must specify the full path of the command, for example, /bin/ping.
         # 
-        # If you want to use a script, you must make sure that you have the execution permissions on it. By default, the user root directory ~/ is used as the default script path on the cluster side. If your script is not in that directory, you must specify the full path in this parameter, such as /home/xxx/job.sh
+        # If you want to use a script, you must make sure that you have the execution permissions on it. By default, the user root directory ~/ is used as the default script path on the cluster side. If your script is not in that directory, you must specify the full path in this parameter, such as /home/xxx/job.sh Note that in this mode, if requirements on resources such as CPU and memory are specified in the script, the job will be run based on the resource requirements specified in the script. In this case, do not specify resource requirements in the Resource parameter. Otherwise, the job may fail to run.
         # 
         # If you want to run the job directly by using the CLI, you must specify the absolute path of the command and add two hyphens and a space (-- ) before the path, such as -- /bin/ping -c 10 localhost.
         # 
@@ -1998,6 +2135,7 @@ class CreateNodesRequest(TeaModel):
         cluster_id: str = None,
         compute_node: NodeTemplate = None,
         count: int = None,
+        deployment_set_id: str = None,
         hpcinter_connect: str = None,
         hostname_prefix: str = None,
         hostname_suffix: str = None,
@@ -2018,6 +2156,7 @@ class CreateNodesRequest(TeaModel):
         # *   If the number of available ECS instances is larger than the MinCount value but smaller than the Count value, nodes are added based on the MinCount value.
         # *   If the number of available ECS instances is larger than the Count value, nodes are added based on the Count value.
         self.count = count
+        self.deployment_set_id = deployment_set_id
         # The type of the network between compute nodes. Valid values:
         # 
         # *   vpc
@@ -2052,6 +2191,8 @@ class CreateNodesRequest(TeaModel):
             result['ComputeNode'] = self.compute_node.to_map()
         if self.count is not None:
             result['Count'] = self.count
+        if self.deployment_set_id is not None:
+            result['DeploymentSetId'] = self.deployment_set_id
         if self.hpcinter_connect is not None:
             result['HPCInterConnect'] = self.hpcinter_connect
         if self.hostname_prefix is not None:
@@ -2077,6 +2218,8 @@ class CreateNodesRequest(TeaModel):
             self.compute_node = temp_model.from_map(m['ComputeNode'])
         if m.get('Count') is not None:
             self.count = m.get('Count')
+        if m.get('DeploymentSetId') is not None:
+            self.deployment_set_id = m.get('DeploymentSetId')
         if m.get('HPCInterConnect') is not None:
             self.hpcinter_connect = m.get('HPCInterConnect')
         if m.get('HostnamePrefix') is not None:
@@ -2100,6 +2243,7 @@ class CreateNodesShrinkRequest(TeaModel):
         cluster_id: str = None,
         compute_node_shrink: str = None,
         count: int = None,
+        deployment_set_id: str = None,
         hpcinter_connect: str = None,
         hostname_prefix: str = None,
         hostname_suffix: str = None,
@@ -2120,6 +2264,7 @@ class CreateNodesShrinkRequest(TeaModel):
         # *   If the number of available ECS instances is larger than the MinCount value but smaller than the Count value, nodes are added based on the MinCount value.
         # *   If the number of available ECS instances is larger than the Count value, nodes are added based on the Count value.
         self.count = count
+        self.deployment_set_id = deployment_set_id
         # The type of the network between compute nodes. Valid values:
         # 
         # *   vpc
@@ -2153,6 +2298,8 @@ class CreateNodesShrinkRequest(TeaModel):
             result['ComputeNode'] = self.compute_node_shrink
         if self.count is not None:
             result['Count'] = self.count
+        if self.deployment_set_id is not None:
+            result['DeploymentSetId'] = self.deployment_set_id
         if self.hpcinter_connect is not None:
             result['HPCInterConnect'] = self.hpcinter_connect
         if self.hostname_prefix is not None:
@@ -2177,6 +2324,8 @@ class CreateNodesShrinkRequest(TeaModel):
             self.compute_node_shrink = m.get('ComputeNode')
         if m.get('Count') is not None:
             self.count = m.get('Count')
+        if m.get('DeploymentSetId') is not None:
+            self.deployment_set_id = m.get('DeploymentSetId')
         if m.get('HPCInterConnect') is not None:
             self.hpcinter_connect = m.get('HPCInterConnect')
         if m.get('HostnamePrefix') is not None:
@@ -2650,7 +2799,7 @@ class DeleteClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the E-HPC cluster to be released.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -4884,6 +5033,33 @@ class GetClusterResponseBodyManager(TeaModel):
         return self
 
 
+class GetClusterResponseBodyMonitorSpec(TeaModel):
+    def __init__(
+        self,
+        enable_compute_load_monitor: bool = None,
+    ):
+        self.enable_compute_load_monitor = enable_compute_load_monitor
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_compute_load_monitor is not None:
+            result['EnableComputeLoadMonitor'] = self.enable_compute_load_monitor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableComputeLoadMonitor') is not None:
+            self.enable_compute_load_monitor = m.get('EnableComputeLoadMonitor')
+        return self
+
+
 class GetClusterResponseBody(TeaModel):
     def __init__(
         self,
@@ -4907,6 +5083,7 @@ class GetClusterResponseBody(TeaModel):
         manager: GetClusterResponseBodyManager = None,
         max_core_count: str = None,
         max_count: str = None,
+        monitor_spec: GetClusterResponseBodyMonitorSpec = None,
         request_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
@@ -4971,12 +5148,13 @@ class GetClusterResponseBody(TeaModel):
         self.grow_interval = grow_interval
         # The idle duration of the compute nodes allowed by the cluster.
         self.idle_interval = idle_interval
-        # The configurations of the cluster management node.
+        # The management node configurations.
         self.manager = manager
         # The maximum total number of vCPUs that can be used by all compute nodes managed by the cluster.
         self.max_core_count = max_core_count
         # The maximum number of compute nodes that the cluster can manage.
         self.max_count = max_count
+        self.monitor_spec = monitor_spec
         # The request ID.
         self.request_id = request_id
         # The resource group ID.
@@ -4989,6 +5167,8 @@ class GetClusterResponseBody(TeaModel):
             self.cluster_custom_configuration.validate()
         if self.manager:
             self.manager.validate()
+        if self.monitor_spec:
+            self.monitor_spec.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5036,6 +5216,8 @@ class GetClusterResponseBody(TeaModel):
             result['MaxCoreCount'] = self.max_core_count
         if self.max_count is not None:
             result['MaxCount'] = self.max_count
+        if self.monitor_spec is not None:
+            result['MonitorSpec'] = self.monitor_spec.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.resource_group_id is not None:
@@ -5088,6 +5270,9 @@ class GetClusterResponseBody(TeaModel):
             self.max_core_count = m.get('MaxCoreCount')
         if m.get('MaxCount') is not None:
             self.max_count = m.get('MaxCount')
+        if m.get('MonitorSpec') is not None:
+            temp_model = GetClusterResponseBodyMonitorSpec()
+            self.monitor_spec = temp_model.from_map(m['MonitorSpec'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ResourceGroupId') is not None:
@@ -5340,7 +5525,7 @@ class GetCommonLogDetailResponseBody(TeaModel):
         self.log_detail = log_detail
         # The log type.
         self.log_type = log_type
-        # The ID of the user who performed the action.
+        # The account ID of the operator.
         self.operator_uid = operator_uid
         # The request ID.
         self.request_id = request_id
@@ -5446,8 +5631,12 @@ class GetJobRequest(TeaModel):
         cluster_id: str = None,
         job_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The job ID. You can call the ListJobs operation to query the job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -5483,9 +5672,13 @@ class GetJobResponseBodyJobInfoResources(TeaModel):
         memory: str = None,
         nodes: str = None,
     ):
+        # The number of vCPUs used by the job on each node.
         self.cores = cores
+        # The number of GPUs used by the job on each node.
         self.gpus = gpus
+        # The memory size used by the job on each node.
         self.memory = memory
+        # The number of nodes that are used to run the job.
         self.nodes = nodes
 
     def validate(self):
@@ -5527,8 +5720,11 @@ class GetJobResponseBodyJobInfoResourcesUsed(TeaModel):
         memory: str = None,
         nodes: str = None,
     ):
+        # The number of vCPUs used by the job on each node.
         self.cores = cores
+        # The memory size used by the job on each node.
         self.memory = memory
+        # The number of nodes that are used to run the job.
         self.nodes = nodes
 
     def validate(self):
@@ -5565,7 +5761,9 @@ class GetJobResponseBodyJobInfoVariables(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the environment variable.
         self.name = name
+        # The value of the environment variable.
         self.value = value
 
     def validate(self):
@@ -5616,25 +5814,47 @@ class GetJobResponseBodyJobInfo(TeaModel):
         state: str = None,
         variables: List[GetJobResponseBodyJobInfoVariables] = None,
     ):
+        # The parent job ID. If the return value is a non-empty string, the job is an array job.
         self.array_job_id = array_job_id
+        # The sub-job ID. This parameter is valid when the ArrayJobId parameter is a non-empty string.
         self.array_job_sub_id = array_job_sub_id
+        # The job queue. If the job is not in a queue, the output is empty.
+        # 
+        # The format is X-Y:Z. X indicates the first index, Y indicates the final index, and Z indicates the step size. For example, 2-7:2 indicates three sub-jobs numbered 2, 4, and 6.
         self.array_request = array_request
+        # The command that is used to run the job.
         self.command_line = command_line
+        # The time when the job was submitted.
         self.create_time = create_time
+        # The error log file of the job.
         self.error_log = error_log
+        # Additional information.
         self.extra_info = extra_info
+        # The job ID.
         self.job_id = job_id
+        # The job name.
         self.job_name = job_name
+        # The queue to which the job belongs.
         self.job_queue = job_queue
+        # The time when the job was last modified.
         self.last_modify_time = last_modify_time
+        # The compute nodes that are used to run the job.
         self.node_list = node_list
+        # The standard output log file of the job.
         self.output_log = output_log
+        # The priority of the job.
         self.priority = priority
+        # The resources that were requested when the job was submitted.
         self.resources = resources
+        # The resources that are actually used by the job.
         self.resources_used = resources_used
+        # The user to which the job belongs or that is used to submit the job. This user is a cluster-side user.
         self.runas_user = runas_user
+        # The time when the job was started.
         self.start_time = start_time
+        # The job state.
         self.state = state
+        # The variables of the job.
         self.variables = variables
 
     def validate(self):
@@ -5754,8 +5974,14 @@ class GetJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The job details.
         self.job_info = job_info
+        # The request ID.
         self.request_id = request_id
+        # The request result. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6205,7 +6431,7 @@ class GetQueueResponseBody(TeaModel):
         queue: GetQueueResponseBodyQueue = None,
         request_id: str = None,
     ):
-        # The information about the queue.
+        # The queue configurations.
         self.queue = queue
         # The request ID.
         self.request_id = request_id
@@ -7506,16 +7732,18 @@ class ListAvailableImagesRequest(TeaModel):
         self.hpcinter_connect = hpcinter_connect
         # The image source. Valid values:
         # 
-        # *   system: system images
-        # *   self: custom images
-        # *   others: shared images
+        # *   system: system image.
+        # *   self: custom image.
+        # *   others: shared image.
         self.image_owner_alias = image_owner_alias
-        # The instance type for which you want to query available images. If you do not specify the instance type, all available images are returned, regardless of the supported instance types.
+        # The instance type.
+        # 
+        # >  By default, if you do not specify an instance type, the list of images that are supported by all instance types are queried. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
         self.instance_type = instance_type
         # Specifies whether to return published community images. Valid values:
         # 
-        # *   true: returns published community images. If you set the value of this parameter to true, the ImageOwnerAlias parameter must be set to others.
-        # *   false: returns non-community images. The value of the ImageOwnerAlias parameter prevails.
+        # *   true: returns published community images. If you set the value of this parameter to `true`, the `ImageOwnerAlias` parameter must be set to `others`.
+        # *   false: returns non-community images. The value of the `ImageOwnerAlias` parameter prevails.
         # 
         # Default value: false.
         self.is_public = is_public
@@ -7604,16 +7832,18 @@ class ListAvailableImagesShrinkRequest(TeaModel):
         self.hpcinter_connect = hpcinter_connect
         # The image source. Valid values:
         # 
-        # *   system: system images
-        # *   self: custom images
-        # *   others: shared images
+        # *   system: system image.
+        # *   self: custom image.
+        # *   others: shared image.
         self.image_owner_alias = image_owner_alias
-        # The instance type for which you want to query available images. If you do not specify the instance type, all available images are returned, regardless of the supported instance types.
+        # The instance type.
+        # 
+        # >  By default, if you do not specify an instance type, the list of images that are supported by all instance types are queried. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
         self.instance_type = instance_type
         # Specifies whether to return published community images. Valid values:
         # 
-        # *   true: returns published community images. If you set the value of this parameter to true, the ImageOwnerAlias parameter must be set to others.
-        # *   false: returns non-community images. The value of the ImageOwnerAlias parameter prevails.
+        # *   true: returns published community images. If you set the value of this parameter to `true`, the `ImageOwnerAlias` parameter must be set to `others`.
+        # *   false: returns non-community images. The value of the `ImageOwnerAlias` parameter prevails.
         # 
         # Default value: false.
         self.is_public = is_public
@@ -7697,8 +7927,8 @@ class ListAvailableImagesResponseBodyImages(TeaModel):
         self.architecture = architecture
         # The boot mode of the image. Valid values:
         # 
-        # *   BIOS: Basic Input/Output System (BIOS)
-        # *   UEFI: Unified Extensible Firmware Interface (UEFI)
+        # *   BIOS: Basic Input/Output System (BIOS).
+        # *   UEFI: Unified Extensible Firmware Interface (UEFI).
         # 
         # >  When you change the OS boot mode of an instance, you must make sure that the boot mode matches the boot mode of the associated image. Otherwise, the instance fails to be booted.
         self.boot_mode = boot_mode
@@ -7710,9 +7940,9 @@ class ListAvailableImagesResponseBodyImages(TeaModel):
         self.image_name = image_name
         # The image source. Valid values:
         # 
-        # *   system: system images
-        # *   self: custom images
-        # *   others: shared images
+        # *   system: system image.
+        # *   self: custom image.
+        # *   others: shared image.
         self.image_owner_alias = image_owner_alias
         # The OS name in Chinese.
         self.osname = osname
@@ -7794,18 +8024,21 @@ class ListAvailableImagesResponseBody(TeaModel):
     ):
         # The information about the images.
         self.images = images
-        # Id of the request
+        # The page number of the returned page.
+        # 
+        # *   Pages start from page 1.
+        # *   Default value: 1.
         self.page_number = page_number
-        # Id of the request
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
-        # Id of the request
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -8854,7 +9087,7 @@ class ListCommonLogsRequest(TeaModel):
         self.log_request_id = log_request_id
         # The log type. Logs of the specific type are returned.
         self.log_type = log_type
-        # The ID of the user who performed the action.
+        # The account ID of the operator.
         self.operator_uid = operator_uid
         # The page number of the page to return.
         # 
@@ -8977,7 +9210,7 @@ class ListCommonLogsShrinkRequest(TeaModel):
         self.log_request_id = log_request_id
         # The log type. Logs of the specific type are returned.
         self.log_type = log_type
-        # The ID of the user who performed the action.
+        # The account ID of the operator.
         self.operator_uid = operator_uid
         # The page number of the page to return.
         # 
@@ -9081,7 +9314,7 @@ class ListCommonLogsResponseBodyLogs(TeaModel):
         self.log_type = log_type
         # The message of the log.
         self.message = message
-        # The ID of the user who performed the action.
+        # The account ID of the operator.
         self.operator_uid = operator_uid
         # The request ID associated with the action that generated the log.
         self.request_id = request_id
@@ -9158,7 +9391,7 @@ class ListCommonLogsResponseBody(TeaModel):
         total_count: int = None,
         uid: str = None,
     ):
-        # The information about the returned logs.
+        # The brief information of operation logs.
         self.logs = logs
         # The page number of the returned page.
         self.page_number = page_number
@@ -9269,7 +9502,7 @@ class ListInstalledSoftwaresRequest(TeaModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number of the page to return.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -9513,6 +9746,45 @@ class ListInstalledSoftwaresResponse(TeaModel):
         return self
 
 
+class ListJobsRequestJobFilterDiagnosis(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        option: str = None,
+        threshold: str = None,
+    ):
+        self.operator = operator
+        self.option = option
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.option is not None:
+            result['Option'] = self.option
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Option') is not None:
+            self.option = m.get('Option')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
 class ListJobsRequestJobFilterSortBy(TeaModel):
     def __init__(
         self,
@@ -9575,6 +9847,7 @@ class ListJobsRequestJobFilter(TeaModel):
         self,
         create_time_end: str = None,
         create_time_start: str = None,
+        diagnosis: List[ListJobsRequestJobFilterDiagnosis] = None,
         job_name: str = None,
         job_status: str = None,
         nodes: List[str] = None,
@@ -9586,6 +9859,7 @@ class ListJobsRequestJobFilter(TeaModel):
         self.create_time_end = create_time_end
         # The time when the job started. The value is a UNIX timestamp representing the number of seconds that have elapsed since 1970-01-01T00:00:00Z.
         self.create_time_start = create_time_start
+        self.diagnosis = diagnosis
         # The job name. Fuzzy match is supported.
         self.job_name = job_name
         # The job state. Valid values:
@@ -9606,6 +9880,10 @@ class ListJobsRequestJobFilter(TeaModel):
         self.users = users
 
     def validate(self):
+        if self.diagnosis:
+            for k in self.diagnosis:
+                if k:
+                    k.validate()
         if self.sort_by:
             self.sort_by.validate()
 
@@ -9619,6 +9897,10 @@ class ListJobsRequestJobFilter(TeaModel):
             result['CreateTimeEnd'] = self.create_time_end
         if self.create_time_start is not None:
             result['CreateTimeStart'] = self.create_time_start
+        result['Diagnosis'] = []
+        if self.diagnosis is not None:
+            for k in self.diagnosis:
+                result['Diagnosis'].append(k.to_map() if k else None)
         if self.job_name is not None:
             result['JobName'] = self.job_name
         if self.job_status is not None:
@@ -9639,6 +9921,11 @@ class ListJobsRequestJobFilter(TeaModel):
             self.create_time_end = m.get('CreateTimeEnd')
         if m.get('CreateTimeStart') is not None:
             self.create_time_start = m.get('CreateTimeStart')
+        self.diagnosis = []
+        if m.get('Diagnosis') is not None:
+            for k in m.get('Diagnosis'):
+                temp_model = ListJobsRequestJobFilterDiagnosis()
+                self.diagnosis.append(temp_model.from_map(k))
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
         if m.get('JobStatus') is not None:
@@ -9824,6 +10111,51 @@ class ListJobsResponseBodyJobsJobSpecResources(TeaModel):
         return self
 
 
+class ListJobsResponseBodyJobsJobSpecResourcesActualOccupied(TeaModel):
+    def __init__(
+        self,
+        cores: str = None,
+        gpus: str = None,
+        memory: str = None,
+        nodes: str = None,
+    ):
+        self.cores = cores
+        self.gpus = gpus
+        self.memory = memory
+        self.nodes = nodes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cores is not None:
+            result['Cores'] = self.cores
+        if self.gpus is not None:
+            result['Gpus'] = self.gpus
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.nodes is not None:
+            result['Nodes'] = self.nodes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cores') is not None:
+            self.cores = m.get('Cores')
+        if m.get('Gpus') is not None:
+            self.gpus = m.get('Gpus')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('Nodes') is not None:
+            self.nodes = m.get('Nodes')
+        return self
+
+
 class ListJobsResponseBodyJobsJobSpec(TeaModel):
     def __init__(
         self,
@@ -9837,16 +10169,18 @@ class ListJobsResponseBodyJobsJobSpec(TeaModel):
         node_list: str = None,
         priority: str = None,
         resources: ListJobsResponseBodyJobsJobSpecResources = None,
+        resources_actual_occupied: ListJobsResponseBodyJobsJobSpecResourcesActualOccupied = None,
         runas_user: str = None,
+        start_time: str = None,
         state: str = None,
         stderr_path: str = None,
         stdout_path: str = None,
         submit_time: str = None,
         variables: str = None,
     ):
-        # 数组作业ID。
+        # The array job ID.
         self.array_job_id = array_job_id
-        # 数组子作业ID。
+        # The ID of the job in the array.
         self.array_job_sub_id = array_job_sub_id
         # The queue format of the job.
         # 
@@ -9867,8 +10201,10 @@ class ListJobsResponseBodyJobsJobSpec(TeaModel):
         self.priority = priority
         # The information about the resources required to run the job.
         self.resources = resources
+        self.resources_actual_occupied = resources_actual_occupied
         # The user that ran the job.
         self.runas_user = runas_user
+        self.start_time = start_time
         # The job state. Valid values: (PBS cluster and Slurm cluster)
         # 
         # *   FINISHED/Completed
@@ -9888,6 +10224,8 @@ class ListJobsResponseBodyJobsJobSpec(TeaModel):
     def validate(self):
         if self.resources:
             self.resources.validate()
+        if self.resources_actual_occupied:
+            self.resources_actual_occupied.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9915,8 +10253,12 @@ class ListJobsResponseBodyJobsJobSpec(TeaModel):
             result['Priority'] = self.priority
         if self.resources is not None:
             result['Resources'] = self.resources.to_map()
+        if self.resources_actual_occupied is not None:
+            result['ResourcesActualOccupied'] = self.resources_actual_occupied.to_map()
         if self.runas_user is not None:
             result['RunasUser'] = self.runas_user
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.state is not None:
             result['State'] = self.state
         if self.stderr_path is not None:
@@ -9952,8 +10294,13 @@ class ListJobsResponseBodyJobsJobSpec(TeaModel):
         if m.get('Resources') is not None:
             temp_model = ListJobsResponseBodyJobsJobSpecResources()
             self.resources = temp_model.from_map(m['Resources'])
+        if m.get('ResourcesActualOccupied') is not None:
+            temp_model = ListJobsResponseBodyJobsJobSpecResourcesActualOccupied()
+            self.resources_actual_occupied = temp_model.from_map(m['ResourcesActualOccupied'])
         if m.get('RunasUser') is not None:
             self.runas_user = m.get('RunasUser')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('StderrPath') is not None:
@@ -10014,7 +10361,7 @@ class ListJobsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The returned jobs.
+        # The jobs.
         self.jobs = jobs
         # The page number. Default value: 1
         self.page_number = page_number
@@ -10144,9 +10491,19 @@ class ListNodesRequest(TeaModel):
         self.private_ip_address = private_ip_address
         # The queues to which the nodes belong.
         self.queue_names = queue_names
-        # Specifies whether the results are sorted in ascending or descending order. Valid values: forward (ascending) and backward (descending).
+        # Specifies whether the results are sorted in ascending or descending order. Valid values:
+        # 
+        # *   Forward: ascending
+        # *   Backward: descending
+        # 
+        # Default value: Forward.
         self.sequence = sequence
-        # The sorting method of the node list. Valid values: addedtime: sorted by the time when the node was added. hostname: sorted by hostname. Default value: addedtime.
+        # The sorting method of the node list. Valid values:
+        # 
+        # *   AddedTime: sorts the nodes by the time that they were added.
+        # *   HostName: sorts the nodes by their hostnames.
+        # 
+        # Default value: addedtime.
         self.sort_by = sort_by
         # The states of the compute nodes to be queried.
         self.status = status
@@ -10228,9 +10585,19 @@ class ListNodesShrinkRequest(TeaModel):
         self.private_ip_address_shrink = private_ip_address_shrink
         # The queues to which the nodes belong.
         self.queue_names_shrink = queue_names_shrink
-        # Specifies whether the results are sorted in ascending or descending order. Valid values: forward (ascending) and backward (descending).
+        # Specifies whether the results are sorted in ascending or descending order. Valid values:
+        # 
+        # *   Forward: ascending
+        # *   Backward: descending
+        # 
+        # Default value: Forward.
         self.sequence = sequence
-        # The sorting method of the node list. Valid values: addedtime: sorted by the time when the node was added. hostname: sorted by hostname. Default value: addedtime.
+        # The sorting method of the node list. Valid values:
+        # 
+        # *   AddedTime: sorts the nodes by the time that they were added.
+        # *   HostName: sorts the nodes by their hostnames.
+        # 
+        # Default value: addedtime.
         self.sort_by = sort_by
         # The states of the compute nodes to be queried.
         self.status_shrink = status_shrink
@@ -10333,6 +10700,7 @@ class ListNodesResponseBodyNodes(TeaModel):
     def __init__(
         self,
         add_time: str = None,
+        deployment_set_id: str = None,
         expired_time: str = None,
         hostname: str = None,
         ht_enabled: bool = None,
@@ -10353,6 +10721,7 @@ class ListNodesResponseBodyNodes(TeaModel):
     ):
         # The time when the node was created.
         self.add_time = add_time
+        self.deployment_set_id = deployment_set_id
         # The time when the node expires.
         self.expired_time = expired_time
         # The hostname of the node.
@@ -10415,6 +10784,8 @@ class ListNodesResponseBodyNodes(TeaModel):
         result = dict()
         if self.add_time is not None:
             result['AddTime'] = self.add_time
+        if self.deployment_set_id is not None:
+            result['DeploymentSetId'] = self.deployment_set_id
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
         if self.hostname is not None:
@@ -10455,6 +10826,8 @@ class ListNodesResponseBodyNodes(TeaModel):
         m = m or dict()
         if m.get('AddTime') is not None:
             self.add_time = m.get('AddTime')
+        if m.get('DeploymentSetId') is not None:
+            self.deployment_set_id = m.get('DeploymentSetId')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
         if m.get('Hostname') is not None:
@@ -11272,7 +11645,7 @@ class ListSoftwaresRequest(TeaModel):
         self.name = name
         # The operating system (OS) information.
         self.os_infos = os_infos
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number of the page to return.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -11680,7 +12053,7 @@ class ListUsersRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The page number.
+        # The page number of the page to return.
         # 
         # Pages start from page 1.
         # 
@@ -12401,6 +12774,33 @@ class UpdateClusterRequestClusterCustomConfiguration(TeaModel):
         return self
 
 
+class UpdateClusterRequestMonitorSpec(TeaModel):
+    def __init__(
+        self,
+        enable_compute_load_monitor: bool = None,
+    ):
+        self.enable_compute_load_monitor = enable_compute_load_monitor
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_compute_load_monitor is not None:
+            result['EnableComputeLoadMonitor'] = self.enable_compute_load_monitor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableComputeLoadMonitor') is not None:
+            self.enable_compute_load_monitor = m.get('EnableComputeLoadMonitor')
+        return self
+
+
 class UpdateClusterRequest(TeaModel):
     def __init__(
         self,
@@ -12416,6 +12816,7 @@ class UpdateClusterRequest(TeaModel):
         idle_interval: int = None,
         max_core_count: int = None,
         max_count: int = None,
+        monitor_spec: UpdateClusterRequestMonitorSpec = None,
     ):
         # The client version. By default, the latest version is used.
         self.client_version = client_version
@@ -12454,10 +12855,13 @@ class UpdateClusterRequest(TeaModel):
         self.max_core_count = max_core_count
         # The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
         self.max_count = max_count
+        self.monitor_spec = monitor_spec
 
     def validate(self):
         if self.cluster_custom_configuration:
             self.cluster_custom_configuration.validate()
+        if self.monitor_spec:
+            self.monitor_spec.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12489,6 +12893,8 @@ class UpdateClusterRequest(TeaModel):
             result['MaxCoreCount'] = self.max_core_count
         if self.max_count is not None:
             result['MaxCount'] = self.max_count
+        if self.monitor_spec is not None:
+            result['MonitorSpec'] = self.monitor_spec.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -12518,6 +12924,9 @@ class UpdateClusterRequest(TeaModel):
             self.max_core_count = m.get('MaxCoreCount')
         if m.get('MaxCount') is not None:
             self.max_count = m.get('MaxCount')
+        if m.get('MonitorSpec') is not None:
+            temp_model = UpdateClusterRequestMonitorSpec()
+            self.monitor_spec = temp_model.from_map(m['MonitorSpec'])
         return self
 
 
@@ -12536,6 +12945,7 @@ class UpdateClusterShrinkRequest(TeaModel):
         idle_interval: int = None,
         max_core_count: int = None,
         max_count: int = None,
+        monitor_spec_shrink: str = None,
     ):
         # The client version. By default, the latest version is used.
         self.client_version = client_version
@@ -12574,6 +12984,7 @@ class UpdateClusterShrinkRequest(TeaModel):
         self.max_core_count = max_core_count
         # The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
         self.max_count = max_count
+        self.monitor_spec_shrink = monitor_spec_shrink
 
     def validate(self):
         pass
@@ -12608,6 +13019,8 @@ class UpdateClusterShrinkRequest(TeaModel):
             result['MaxCoreCount'] = self.max_core_count
         if self.max_count is not None:
             result['MaxCount'] = self.max_count
+        if self.monitor_spec_shrink is not None:
+            result['MonitorSpec'] = self.monitor_spec_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -12636,6 +13049,8 @@ class UpdateClusterShrinkRequest(TeaModel):
             self.max_core_count = m.get('MaxCoreCount')
         if m.get('MaxCount') is not None:
             self.max_count = m.get('MaxCount')
+        if m.get('MonitorSpec') is not None:
+            self.monitor_spec_shrink = m.get('MonitorSpec')
         return self
 
 
