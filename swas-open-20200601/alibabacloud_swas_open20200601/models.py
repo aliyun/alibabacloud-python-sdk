@@ -10562,7 +10562,7 @@ class ListCustomImagesRequest(TeaModel):
         self.image_ids = image_ids
         # The image names of the simple application servers. The value can be a JSON array that consists of up to 100 image names. Separate multiple image names with commas (,).
         self.image_names = image_names
-        # The ID of the Simple Application Server instance that the image originates from.
+        # The ID of the simple application server from which the image is derived.
         self.instance_id = instance_id
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -10577,13 +10577,12 @@ class ListCustomImagesRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Whether to query shared images. Value range:
+        # Specifies whether to query shared images. Valid values:
         # 
-        # - False: No. Indicates that shared images are not included in the returned results.
+        # *   False: do not query shared images. The shared images are not included in the response.
+        # *   True: query shared images. The shared images are included in the response.
         # 
-        # - True: Yes. Indicates that only shared images are returned.
-        # 
-        # If not filled, all images are returned by default.
+        # If you do not specify this parameter, all images are returned.
         self.share = share
         # The ID of the system disk snapshot.
         self.system_snapshot_id = system_snapshot_id
@@ -10724,7 +10723,7 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
         tags: List[ListCustomImagesResponseBodyCustomImagesTags] = None,
         user_id: int = None,
     ):
-        # The Information about instances created using the image.
+        # The simple application servers created from the image.
         self.create_instances = create_instances
         # The time when the snapshot was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
         self.creation_time = creation_time
@@ -10738,33 +10737,15 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
         self.image_id = image_id
         # Indicates whether the custom image is shared to Elastic Compute Service (ECS).
         self.in_share = in_share
-        # Whether the custom image is cross-account shared.
+        # Indicates whether the custom image is shared across accounts.
         self.in_share_user = in_share_user
-        # The ID of the simple application server.
+        # The ID of the simple application server from which the image is derived.
         self.instance_id = instance_id
         # The name of the simple application server.
         self.instance_name = instance_name
         # The name of the custom image.
         self.name = name
-        # The type of the operating system.
-        # 
-        # Valid values:
-        # 
-        # *   Linux
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Windows
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The operating system type of the image.
         self.os_type = os_type
         # The region ID.
         self.region_id = region_id
@@ -10774,7 +10755,13 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
         self.resource_group_id = resource_group_id
         self.source_image_name = source_image_name
         self.source_image_version = source_image_version
-        # The status of the custom image.
+        # The status of the custom image. Valid values:
+        # 
+        # *   0: copying
+        # *   1: available
+        # *   2: unavailable
+        # *   3: creation failed
+        # *   4: creating
         self.status = status
         # The ID of the system disk snapshot.
         self.system_snapshot_id = system_snapshot_id
@@ -10782,7 +10769,7 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
         self.system_snapshot_name = system_snapshot_name
         # The tags of the custom image.
         self.tags = tags
-        # The Primary Alibaba Cloud account ID of the image owner.
+        # The ID of the Alibaba Cloud account to which the image belongs.
         self.user_id = user_id
 
     def validate(self):
@@ -11433,9 +11420,9 @@ class ListFirewallRulesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to be added to the firewall rule. Valid values of N: 1 to 20.
+        # The tag key. A tag key must be 1 to 64 characters in length. You can add up to 20 tags.
         self.key = key
-        # The value of tag N to be added to the firewall rule. Valid values of N: 1 to 20.
+        # The tag value. A tag value must be 1 to 64 characters in length. You can add up to 20 tags.
         self.value = value
 
     def validate(self):
@@ -11551,9 +11538,9 @@ class ListFirewallRulesResponseBodyFirewallRulesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to be added to the firewall rule. Valid values of N: 1 to 20.
+        # The tag key.
         self.key = key
-        # The value of tag N to be added to the firewall rule. Valid values of N: 1 to 20.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -11674,7 +11661,7 @@ class ListFirewallRulesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The array of firewall rules.
+        # Details of the firewall rules.
         self.firewall_rules = firewall_rules
         # The page number.
         self.page_number = page_number
@@ -12445,7 +12432,7 @@ class ListInstancesRequest(TeaModel):
         # 
         # > If you specify both `InstanceIds` and `PublicIpAddresses`, make sure that the specified IDs and the specified public IP addresses belong to the same simple application servers. Otherwise, an empty result is returned.
         self.instance_ids = instance_ids
-        # The name of the simple application servers, which supports fuzzy search using wildcard *.
+        # The name of the simple application server. Fuzzy search with the asterisk (\\*) wildcard is supported.
         self.instance_name = instance_name
         # The page number.
         # 
@@ -13643,6 +13630,7 @@ class ListPlansResponseBodyPlans(TeaModel):
         memory: int = None,
         origin_price: float = None,
         plan_id: str = None,
+        plan_type: str = None,
         support_platform: str = None,
     ):
         # The peak bandwidth. Unit: Mbit/s.
@@ -13671,6 +13659,7 @@ class ListPlansResponseBodyPlans(TeaModel):
         self.origin_price = origin_price
         # The ID of the plan.
         self.plan_id = plan_id
+        self.plan_type = plan_type
         # The operating system types supported by the plan.
         self.support_platform = support_platform
 
@@ -13701,6 +13690,8 @@ class ListPlansResponseBodyPlans(TeaModel):
             result['OriginPrice'] = self.origin_price
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
+        if self.plan_type is not None:
+            result['PlanType'] = self.plan_type
         if self.support_platform is not None:
             result['SupportPlatform'] = self.support_platform
         return result
@@ -13725,6 +13716,8 @@ class ListPlansResponseBodyPlans(TeaModel):
             self.origin_price = m.get('OriginPrice')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
+        if m.get('PlanType') is not None:
+            self.plan_type = m.get('PlanType')
         if m.get('SupportPlatform') is not None:
             self.support_platform = m.get('SupportPlatform')
         return self
@@ -18161,7 +18154,12 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags. This parameter takes effect only when TagKey.N is not specified. Valid values: true and false. Default value: false.
+        # Specifies whether to remove all tags from the specified one or more resources. This parameter takes effect only if the TagKey.N parameter is not set. Valid values:
+        # 
+        # *   true: deletes all tags that are added to the specific lightweight resource. If no tags are added to the specific lightweight resource, the deletion operation is ignored.
+        # *   false: does not delete the tags that are added to the specific lightweight resource.
+        # 
+        # Default value: false.
         self.all = all
         # The client token that you want to use to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
@@ -18579,7 +18577,7 @@ class UpdateInstanceAttributeRequest(TeaModel):
         # 
         # For Windows instances, the password cannot start with a forward slash (/).
         # 
-        # >  For security reasons, we recommend that you use HTTPS to send requests if the `Password parameter` is specified.
+        # >  For security reasons, we recommend that you use HTTPS to send requests if `Password` is specified.
         self.password = password
         # The region ID of the simple application server.
         # 

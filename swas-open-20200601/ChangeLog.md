@@ -1,3 +1,7 @@
+2024-12-09 Version: 3.0.2
+- Update API ListPlans: update response param.
+
+
 2024-10-09 Version: 3.0.1
 - Update API ListCustomImages: update response param.
 
