@@ -22310,6 +22310,7 @@ class ListInstanceResponseBodyResult(TeaModel):
         created_at: str = None,
         dedicate_master: bool = None,
         description: str = None,
+        domain: str = None,
         elastic_data_node_configuration: ListInstanceResponseBodyResultElasticDataNodeConfiguration = None,
         end_time: int = None,
         es_version: str = None,
@@ -22352,6 +22353,7 @@ class ListInstanceResponseBodyResult(TeaModel):
         self.dedicate_master = dedicate_master
         # The key of the tag.
         self.description = description
+        self.domain = domain
         # The configuration of Kibana nodes.
         self.elastic_data_node_configuration = elastic_data_node_configuration
         self.end_time = end_time
@@ -22429,6 +22431,8 @@ class ListInstanceResponseBodyResult(TeaModel):
             result['dedicateMaster'] = self.dedicate_master
         if self.description is not None:
             result['description'] = self.description
+        if self.domain is not None:
+            result['domain'] = self.domain
         if self.elastic_data_node_configuration is not None:
             result['elasticDataNodeConfiguration'] = self.elastic_data_node_configuration.to_map()
         if self.end_time is not None:
@@ -22494,6 +22498,8 @@ class ListInstanceResponseBodyResult(TeaModel):
             self.dedicate_master = m.get('dedicateMaster')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('domain') is not None:
+            self.domain = m.get('domain')
         if m.get('elasticDataNodeConfiguration') is not None:
             temp_model = ListInstanceResponseBodyResultElasticDataNodeConfiguration()
             self.elastic_data_node_configuration = temp_model.from_map(m['elasticDataNodeConfiguration'])

@@ -1,3 +1,7 @@
+2024-12-10 Version: 2.0.10
+- Update API ListInstance: update response param.
+
+
 2024-12-06 Version: 2.0.9
 - Update API GetRegionConfiguration: update response param.
 
