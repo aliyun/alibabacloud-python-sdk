@@ -296,6 +296,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -340,6 +342,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -996,6 +1000,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         if not UtilClient.is_unset(request.vdb_id):
             body['vdbId'] = request.vdb_id
         req = open_api_models.OpenApiRequest(
@@ -1042,6 +1048,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         if not UtilClient.is_unset(request.vdb_id):
             body['vdbId'] = request.vdb_id
         req = open_api_models.OpenApiRequest(

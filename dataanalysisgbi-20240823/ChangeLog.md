@@ -1,3 +1,9 @@
+2024-12-10 Version: 1.1.3
+- Update API CreateVirtualDatasourceInstance: update param body.
+- Update API UpdateVirtualDatasourceInstance: update param body.
+- Update API UpdateVirtualDatasourceInstance: update param workspaceId.
+
+
 2024-12-09 Version: 1.1.2
 - Generated python 2024-08-23 for DataAnalysisGBI.
 

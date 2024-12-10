@@ -280,10 +280,12 @@ class CreateVirtualDatasourceInstanceRequest(TeaModel):
         self,
         description: str = None,
         name: str = None,
+        type: int = None,
         workspace_id: str = None,
     ):
         self.description = description
         self.name = name
+        self.type = type
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -300,6 +302,8 @@ class CreateVirtualDatasourceInstanceRequest(TeaModel):
             result['description'] = self.description
         if self.name is not None:
             result['name'] = self.name
+        if self.type is not None:
+            result['type'] = self.type
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
         return result
@@ -310,6 +314,8 @@ class CreateVirtualDatasourceInstanceRequest(TeaModel):
             self.description = m.get('description')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
         return self
@@ -1283,11 +1289,13 @@ class UpdateVirtualDatasourceInstanceRequest(TeaModel):
         self,
         description: str = None,
         name: str = None,
+        type: int = None,
         vdb_id: str = None,
         workspace_id: str = None,
     ):
         self.description = description
         self.name = name
+        self.type = type
         # This parameter is required.
         self.vdb_id = vdb_id
         self.workspace_id = workspace_id
@@ -1305,6 +1313,8 @@ class UpdateVirtualDatasourceInstanceRequest(TeaModel):
             result['description'] = self.description
         if self.name is not None:
             result['name'] = self.name
+        if self.type is not None:
+            result['type'] = self.type
         if self.vdb_id is not None:
             result['vdbId'] = self.vdb_id
         if self.workspace_id is not None:
@@ -1317,6 +1327,8 @@ class UpdateVirtualDatasourceInstanceRequest(TeaModel):
             self.description = m.get('description')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         if m.get('vdbId') is not None:
             self.vdb_id = m.get('vdbId')
         if m.get('workspaceId') is not None:
