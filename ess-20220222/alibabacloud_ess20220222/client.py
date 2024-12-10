@@ -2130,6 +2130,8 @@ class Client(OpenApiClient):
             query['EnableSls'] = request.enable_sls
         if not UtilClient.is_unset(request.ephemeral_storage):
             query['EphemeralStorage'] = request.ephemeral_storage
+        if not UtilClient.is_unset(request.gpu_driver_version):
+            query['GpuDriverVersion'] = request.gpu_driver_version
         if not UtilClient.is_unset(request.host_aliases):
             query['HostAliases'] = request.host_aliases
         if not UtilClient.is_unset(request.host_name):
@@ -2264,6 +2266,8 @@ class Client(OpenApiClient):
             query['EnableSls'] = request.enable_sls
         if not UtilClient.is_unset(request.ephemeral_storage):
             query['EphemeralStorage'] = request.ephemeral_storage
+        if not UtilClient.is_unset(request.gpu_driver_version):
+            query['GpuDriverVersion'] = request.gpu_driver_version
         if not UtilClient.is_unset(request.host_aliases):
             query['HostAliases'] = request.host_aliases
         if not UtilClient.is_unset(request.host_name):
@@ -3070,6 +3074,8 @@ class Client(OpenApiClient):
             query['AllocationStrategy'] = request.allocation_strategy
         if not UtilClient.is_unset(request.az_balance):
             query['AzBalance'] = request.az_balance
+        if not UtilClient.is_unset(request.capacity_options):
+            query['CapacityOptions'] = request.capacity_options
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.compensate_with_on_demand):
@@ -3218,6 +3224,8 @@ class Client(OpenApiClient):
             query['AllocationStrategy'] = request.allocation_strategy
         if not UtilClient.is_unset(request.az_balance):
             query['AzBalance'] = request.az_balance
+        if not UtilClient.is_unset(request.capacity_options):
+            query['CapacityOptions'] = request.capacity_options
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.compensate_with_on_demand):
@@ -10276,6 +10284,8 @@ class Client(OpenApiClient):
             query['EnableSls'] = request.enable_sls
         if not UtilClient.is_unset(request.ephemeral_storage):
             query['EphemeralStorage'] = request.ephemeral_storage
+        if not UtilClient.is_unset(request.gpu_driver_version):
+            query['GpuDriverVersion'] = request.gpu_driver_version
         if not UtilClient.is_unset(request.host_aliases):
             query['HostAliases'] = request.host_aliases
         if not UtilClient.is_unset(request.host_name):
@@ -10412,6 +10422,8 @@ class Client(OpenApiClient):
             query['EnableSls'] = request.enable_sls
         if not UtilClient.is_unset(request.ephemeral_storage):
             query['EphemeralStorage'] = request.ephemeral_storage
+        if not UtilClient.is_unset(request.gpu_driver_version):
+            query['GpuDriverVersion'] = request.gpu_driver_version
         if not UtilClient.is_unset(request.host_aliases):
             query['HostAliases'] = request.host_aliases
         if not UtilClient.is_unset(request.host_name):
@@ -11297,6 +11309,8 @@ class Client(OpenApiClient):
             query['AllocationStrategy'] = request.allocation_strategy
         if not UtilClient.is_unset(request.az_balance):
             query['AzBalance'] = request.az_balance
+        if not UtilClient.is_unset(request.capacity_options):
+            query['CapacityOptions'] = request.capacity_options
         if not UtilClient.is_unset(request.compensate_with_on_demand):
             query['CompensateWithOnDemand'] = request.compensate_with_on_demand
         if not UtilClient.is_unset(request.custom_policy_arn):
@@ -11410,6 +11424,8 @@ class Client(OpenApiClient):
             query['AllocationStrategy'] = request.allocation_strategy
         if not UtilClient.is_unset(request.az_balance):
             query['AzBalance'] = request.az_balance
+        if not UtilClient.is_unset(request.capacity_options):
+            query['CapacityOptions'] = request.capacity_options
         if not UtilClient.is_unset(request.compensate_with_on_demand):
             query['CompensateWithOnDemand'] = request.compensate_with_on_demand
         if not UtilClient.is_unset(request.custom_policy_arn):
@@ -13294,6 +13310,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.scaling_group_id):
             query['ScalingGroupId'] = request.scaling_group_id
+        if not UtilClient.is_unset(request.skip_matching):
+            query['SkipMatching'] = request.skip_matching
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13348,6 +13366,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.scaling_group_id):
             query['ScalingGroupId'] = request.scaling_group_id
+        if not UtilClient.is_unset(request.skip_matching):
+            query['SkipMatching'] = request.skip_matching
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

@@ -4367,6 +4367,7 @@ class CreateEciScalingConfigurationRequest(TeaModel):
         eip_bandwidth: int = None,
         enable_sls: bool = None,
         ephemeral_storage: int = None,
+        gpu_driver_version: str = None,
         host_aliases: List[CreateEciScalingConfigurationRequestHostAliases] = None,
         host_name: str = None,
         image_registry_credentials: List[CreateEciScalingConfigurationRequestImageRegistryCredentials] = None,
@@ -4471,6 +4472,7 @@ class CreateEciScalingConfigurationRequest(TeaModel):
         self.enable_sls = enable_sls
         # The size of the temporary storage space. By default, an Enterprise SSD (ESSD) of performance level 1 (PL1) is used. Unit: GiB.
         self.ephemeral_storage = ephemeral_storage
+        self.gpu_driver_version = gpu_driver_version
         # The custom hostnames of the containers.
         self.host_aliases = host_aliases
         # The hostname series of elastic container instances.
@@ -4647,6 +4649,8 @@ class CreateEciScalingConfigurationRequest(TeaModel):
             result['EnableSls'] = self.enable_sls
         if self.ephemeral_storage is not None:
             result['EphemeralStorage'] = self.ephemeral_storage
+        if self.gpu_driver_version is not None:
+            result['GpuDriverVersion'] = self.gpu_driver_version
         result['HostAliases'] = []
         if self.host_aliases is not None:
             for k in self.host_aliases:
@@ -4770,6 +4774,8 @@ class CreateEciScalingConfigurationRequest(TeaModel):
             self.enable_sls = m.get('EnableSls')
         if m.get('EphemeralStorage') is not None:
             self.ephemeral_storage = m.get('EphemeralStorage')
+        if m.get('GpuDriverVersion') is not None:
+            self.gpu_driver_version = m.get('GpuDriverVersion')
         self.host_aliases = []
         if m.get('HostAliases') is not None:
             for k in m.get('HostAliases'):
@@ -8249,6 +8255,51 @@ class CreateScalingGroupRequestAlbServerGroups(TeaModel):
         return self
 
 
+class CreateScalingGroupRequestCapacityOptions(TeaModel):
+    def __init__(
+        self,
+        compensate_with_on_demand: bool = None,
+        on_demand_base_capacity: int = None,
+        on_demand_percentage_above_base_capacity: int = None,
+        spot_auto_replace_on_demand: bool = None,
+    ):
+        self.compensate_with_on_demand = compensate_with_on_demand
+        self.on_demand_base_capacity = on_demand_base_capacity
+        self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        self.spot_auto_replace_on_demand = spot_auto_replace_on_demand
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compensate_with_on_demand is not None:
+            result['CompensateWithOnDemand'] = self.compensate_with_on_demand
+        if self.on_demand_base_capacity is not None:
+            result['OnDemandBaseCapacity'] = self.on_demand_base_capacity
+        if self.on_demand_percentage_above_base_capacity is not None:
+            result['OnDemandPercentageAboveBaseCapacity'] = self.on_demand_percentage_above_base_capacity
+        if self.spot_auto_replace_on_demand is not None:
+            result['SpotAutoReplaceOnDemand'] = self.spot_auto_replace_on_demand
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompensateWithOnDemand') is not None:
+            self.compensate_with_on_demand = m.get('CompensateWithOnDemand')
+        if m.get('OnDemandBaseCapacity') is not None:
+            self.on_demand_base_capacity = m.get('OnDemandBaseCapacity')
+        if m.get('OnDemandPercentageAboveBaseCapacity') is not None:
+            self.on_demand_percentage_above_base_capacity = m.get('OnDemandPercentageAboveBaseCapacity')
+        if m.get('SpotAutoReplaceOnDemand') is not None:
+            self.spot_auto_replace_on_demand = m.get('SpotAutoReplaceOnDemand')
+        return self
+
+
 class CreateScalingGroupRequestDBInstances(TeaModel):
     def __init__(
         self,
@@ -8682,6 +8733,7 @@ class CreateScalingGroupRequest(TeaModel):
         alb_server_groups: List[CreateScalingGroupRequestAlbServerGroups] = None,
         allocation_strategy: str = None,
         az_balance: bool = None,
+        capacity_options: CreateScalingGroupRequestCapacityOptions = None,
         client_token: str = None,
         compensate_with_on_demand: bool = None,
         container_group_id: str = None,
@@ -8744,6 +8796,7 @@ class CreateScalingGroupRequest(TeaModel):
         # 
         # Default value: false.
         self.az_balance = az_balance
+        self.capacity_options = capacity_options
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
@@ -8964,6 +9017,8 @@ class CreateScalingGroupRequest(TeaModel):
             for k in self.alb_server_groups:
                 if k:
                     k.validate()
+        if self.capacity_options:
+            self.capacity_options.validate()
         if self.dbinstances:
             for k in self.dbinstances:
                 if k:
@@ -9007,6 +9062,8 @@ class CreateScalingGroupRequest(TeaModel):
             result['AllocationStrategy'] = self.allocation_strategy
         if self.az_balance is not None:
             result['AzBalance'] = self.az_balance
+        if self.capacity_options is not None:
+            result['CapacityOptions'] = self.capacity_options.to_map()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.compensate_with_on_demand is not None:
@@ -9120,6 +9177,9 @@ class CreateScalingGroupRequest(TeaModel):
             self.allocation_strategy = m.get('AllocationStrategy')
         if m.get('AzBalance') is not None:
             self.az_balance = m.get('AzBalance')
+        if m.get('CapacityOptions') is not None:
+            temp_model = CreateScalingGroupRequestCapacityOptions()
+            self.capacity_options = temp_model.from_map(m['CapacityOptions'])
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('CompensateWithOnDemand') is not None:
@@ -15777,6 +15837,7 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
         egress_bandwidth: int = None,
         eip_bandwidth: int = None,
         ephemeral_storage: int = None,
+        gpu_driver_version: str = None,
         host_aliases: List[DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsHostAliases] = None,
         host_name: str = None,
         image_registry_credentials: List[DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsImageRegistryCredentials] = None,
@@ -15869,6 +15930,7 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
         self.eip_bandwidth = eip_bandwidth
         # The capacity of the ephemeral storage. Unit: GiB.
         self.ephemeral_storage = ephemeral_storage
+        self.gpu_driver_version = gpu_driver_version
         # The hostnames and IP addresses for a container that are added to the hosts file of the elastic container instance.
         self.host_aliases = host_aliases
         # The hostname series.
@@ -16043,6 +16105,8 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
             result['EipBandwidth'] = self.eip_bandwidth
         if self.ephemeral_storage is not None:
             result['EphemeralStorage'] = self.ephemeral_storage
+        if self.gpu_driver_version is not None:
+            result['GpuDriverVersion'] = self.gpu_driver_version
         result['HostAliases'] = []
         if self.host_aliases is not None:
             for k in self.host_aliases:
@@ -16170,6 +16234,8 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
             self.eip_bandwidth = m.get('EipBandwidth')
         if m.get('EphemeralStorage') is not None:
             self.ephemeral_storage = m.get('EphemeralStorage')
+        if m.get('GpuDriverVersion') is not None:
+            self.gpu_driver_version = m.get('GpuDriverVersion')
         self.host_aliases = []
         if m.get('HostAliases') is not None:
             for k in m.get('HostAliases'):
@@ -16884,6 +16950,7 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(TeaModel):
         min_healthy_percentage: int = None,
         region_id: str = None,
         scaling_group_id: str = None,
+        skip_matching: bool = None,
         start_time: str = None,
         status: str = None,
         total_need_update_capacity: int = None,
@@ -16906,6 +16973,7 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(TeaModel):
         self.region_id = region_id
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
+        self.skip_matching = skip_matching
         # The start time of the instance refresh task.
         self.start_time = start_time
         # The status of the instance refresh task. Valid values:
@@ -16952,6 +17020,8 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(TeaModel):
             result['RegionId'] = self.region_id
         if self.scaling_group_id is not None:
             result['ScalingGroupId'] = self.scaling_group_id
+        if self.skip_matching is not None:
+            result['SkipMatching'] = self.skip_matching
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.status is not None:
@@ -16981,6 +17051,8 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ScalingGroupId') is not None:
             self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('SkipMatching') is not None:
+            self.skip_matching = m.get('SkipMatching')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
@@ -22239,6 +22311,51 @@ class DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups(TeaModel):
         return self
 
 
+class DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions(TeaModel):
+    def __init__(
+        self,
+        compensate_with_on_demand: bool = None,
+        on_demand_base_capacity: int = None,
+        on_demand_percentage_above_base_capacity: int = None,
+        spot_auto_replace_on_demand: bool = None,
+    ):
+        self.compensate_with_on_demand = compensate_with_on_demand
+        self.on_demand_base_capacity = on_demand_base_capacity
+        self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        self.spot_auto_replace_on_demand = spot_auto_replace_on_demand
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compensate_with_on_demand is not None:
+            result['CompensateWithOnDemand'] = self.compensate_with_on_demand
+        if self.on_demand_base_capacity is not None:
+            result['OnDemandBaseCapacity'] = self.on_demand_base_capacity
+        if self.on_demand_percentage_above_base_capacity is not None:
+            result['OnDemandPercentageAboveBaseCapacity'] = self.on_demand_percentage_above_base_capacity
+        if self.spot_auto_replace_on_demand is not None:
+            result['SpotAutoReplaceOnDemand'] = self.spot_auto_replace_on_demand
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompensateWithOnDemand') is not None:
+            self.compensate_with_on_demand = m.get('CompensateWithOnDemand')
+        if m.get('OnDemandBaseCapacity') is not None:
+            self.on_demand_base_capacity = m.get('OnDemandBaseCapacity')
+        if m.get('OnDemandPercentageAboveBaseCapacity') is not None:
+            self.on_demand_percentage_above_base_capacity = m.get('OnDemandPercentageAboveBaseCapacity')
+        if m.get('SpotAutoReplaceOnDemand') is not None:
+            self.spot_auto_replace_on_demand = m.get('SpotAutoReplaceOnDemand')
+        return self
+
+
 class DescribeScalingGroupsResponseBodyScalingGroupsDBInstances(TeaModel):
     def __init__(
         self,
@@ -22556,6 +22673,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         alb_server_groups: List[DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups] = None,
         allocation_strategy: str = None,
         az_balance: bool = None,
+        capacity_options: DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions = None,
         compensate_with_on_demand: bool = None,
         creation_time: str = None,
         current_host_name: str = None,
@@ -22630,6 +22748,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         # *   true
         # *   false
         self.az_balance = az_balance
+        self.capacity_options = capacity_options
         # Indicates whether Auto Scaling can create pay-as-you-go instances to supplement preemptible instances if preemptible instances cannot be created due to price-related factors or insufficient inventory when MultiAZPolicy is set to COST_OPTIMIZED. Valid values:
         # 
         # *   true
@@ -22813,6 +22932,8 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
             for k in self.alb_server_groups:
                 if k:
                     k.validate()
+        if self.capacity_options:
+            self.capacity_options.validate()
         if self.dbinstances:
             for k in self.dbinstances:
                 if k:
@@ -22856,6 +22977,8 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
             result['AllocationStrategy'] = self.allocation_strategy
         if self.az_balance is not None:
             result['AzBalance'] = self.az_balance
+        if self.capacity_options is not None:
+            result['CapacityOptions'] = self.capacity_options.to_map()
         if self.compensate_with_on_demand is not None:
             result['CompensateWithOnDemand'] = self.compensate_with_on_demand
         if self.creation_time is not None:
@@ -22999,6 +23122,9 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
             self.allocation_strategy = m.get('AllocationStrategy')
         if m.get('AzBalance') is not None:
             self.az_balance = m.get('AzBalance')
+        if m.get('CapacityOptions') is not None:
+            temp_model = DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions()
+            self.capacity_options = temp_model.from_map(m['CapacityOptions'])
         if m.get('CompensateWithOnDemand') is not None:
             self.compensate_with_on_demand = m.get('CompensateWithOnDemand')
         if m.get('CreationTime') is not None:
@@ -30163,6 +30289,7 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
         eip_bandwidth: int = None,
         enable_sls: bool = None,
         ephemeral_storage: int = None,
+        gpu_driver_version: str = None,
         host_aliases: List[ModifyEciScalingConfigurationRequestHostAliases] = None,
         host_name: str = None,
         image_registry_credentials: List[ModifyEciScalingConfigurationRequestImageRegistryCredentials] = None,
@@ -30276,6 +30403,7 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
         self.enable_sls = enable_sls
         # The size of the temporary storage space. By default, an Enterprise SSD (ESSD) of the PL1 type is used. Unit: GiB.
         self.ephemeral_storage = ephemeral_storage
+        self.gpu_driver_version = gpu_driver_version
         # The hosts.
         self.host_aliases = host_aliases
         # The hostname series of elastic container instances.
@@ -30449,6 +30577,8 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
             result['EnableSls'] = self.enable_sls
         if self.ephemeral_storage is not None:
             result['EphemeralStorage'] = self.ephemeral_storage
+        if self.gpu_driver_version is not None:
+            result['GpuDriverVersion'] = self.gpu_driver_version
         result['HostAliases'] = []
         if self.host_aliases is not None:
             for k in self.host_aliases:
@@ -30574,6 +30704,8 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
             self.enable_sls = m.get('EnableSls')
         if m.get('EphemeralStorage') is not None:
             self.ephemeral_storage = m.get('EphemeralStorage')
+        if m.get('GpuDriverVersion') is not None:
+            self.gpu_driver_version = m.get('GpuDriverVersion')
         self.host_aliases = []
         if m.get('HostAliases') is not None:
             for k in m.get('HostAliases'):
@@ -34107,6 +34239,51 @@ class ModifyScalingConfigurationResponse(TeaModel):
         return self
 
 
+class ModifyScalingGroupRequestCapacityOptions(TeaModel):
+    def __init__(
+        self,
+        compensate_with_on_demand: bool = None,
+        on_demand_base_capacity: int = None,
+        on_demand_percentage_above_base_capacity: int = None,
+        spot_auto_replace_on_demand: bool = None,
+    ):
+        self.compensate_with_on_demand = compensate_with_on_demand
+        self.on_demand_base_capacity = on_demand_base_capacity
+        self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        self.spot_auto_replace_on_demand = spot_auto_replace_on_demand
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compensate_with_on_demand is not None:
+            result['CompensateWithOnDemand'] = self.compensate_with_on_demand
+        if self.on_demand_base_capacity is not None:
+            result['OnDemandBaseCapacity'] = self.on_demand_base_capacity
+        if self.on_demand_percentage_above_base_capacity is not None:
+            result['OnDemandPercentageAboveBaseCapacity'] = self.on_demand_percentage_above_base_capacity
+        if self.spot_auto_replace_on_demand is not None:
+            result['SpotAutoReplaceOnDemand'] = self.spot_auto_replace_on_demand
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompensateWithOnDemand') is not None:
+            self.compensate_with_on_demand = m.get('CompensateWithOnDemand')
+        if m.get('OnDemandBaseCapacity') is not None:
+            self.on_demand_base_capacity = m.get('OnDemandBaseCapacity')
+        if m.get('OnDemandPercentageAboveBaseCapacity') is not None:
+            self.on_demand_percentage_above_base_capacity = m.get('OnDemandPercentageAboveBaseCapacity')
+        if m.get('SpotAutoReplaceOnDemand') is not None:
+            self.spot_auto_replace_on_demand = m.get('SpotAutoReplaceOnDemand')
+        return self
+
+
 class ModifyScalingGroupRequestLaunchTemplateOverrides(TeaModel):
     def __init__(
         self,
@@ -34176,6 +34353,7 @@ class ModifyScalingGroupRequest(TeaModel):
         active_scaling_configuration_id: str = None,
         allocation_strategy: str = None,
         az_balance: bool = None,
+        capacity_options: ModifyScalingGroupRequestCapacityOptions = None,
         compensate_with_on_demand: bool = None,
         custom_policy_arn: str = None,
         default_cooldown: int = None,
@@ -34223,6 +34401,7 @@ class ModifyScalingGroupRequest(TeaModel):
         # 
         # Default value: false.
         self.az_balance = az_balance
+        self.capacity_options = capacity_options
         # Specifies whether to automatically create pay-as-you-go instances to meet the requirements on the number of ECS instances in the scaling group when the number of preemptible instances cannot be reached due to reasons such as cost-related issues and insufficient resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
         # 
         # *   true
@@ -34369,6 +34548,8 @@ class ModifyScalingGroupRequest(TeaModel):
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
+        if self.capacity_options:
+            self.capacity_options.validate()
         if self.launch_template_overrides:
             for k in self.launch_template_overrides:
                 if k:
@@ -34386,6 +34567,8 @@ class ModifyScalingGroupRequest(TeaModel):
             result['AllocationStrategy'] = self.allocation_strategy
         if self.az_balance is not None:
             result['AzBalance'] = self.az_balance
+        if self.capacity_options is not None:
+            result['CapacityOptions'] = self.capacity_options.to_map()
         if self.compensate_with_on_demand is not None:
             result['CompensateWithOnDemand'] = self.compensate_with_on_demand
         if self.custom_policy_arn is not None:
@@ -34458,6 +34641,9 @@ class ModifyScalingGroupRequest(TeaModel):
             self.allocation_strategy = m.get('AllocationStrategy')
         if m.get('AzBalance') is not None:
             self.az_balance = m.get('AzBalance')
+        if m.get('CapacityOptions') is not None:
+            temp_model = ModifyScalingGroupRequestCapacityOptions()
+            self.capacity_options = temp_model.from_map(m['CapacityOptions'])
         if m.get('CompensateWithOnDemand') is not None:
             self.compensate_with_on_demand = m.get('CompensateWithOnDemand')
         if m.get('CustomPolicyARN') is not None:
@@ -37195,6 +37381,7 @@ class StartInstanceRefreshRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         scaling_group_id: str = None,
+        skip_matching: bool = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see "How to ensure idempotence".
         self.client_token = client_token
@@ -37222,6 +37409,7 @@ class StartInstanceRefreshRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
+        self.skip_matching = skip_matching
 
     def validate(self):
         if self.desired_configuration:
@@ -37249,6 +37437,8 @@ class StartInstanceRefreshRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.scaling_group_id is not None:
             result['ScalingGroupId'] = self.scaling_group_id
+        if self.skip_matching is not None:
+            result['SkipMatching'] = self.skip_matching
         return result
 
     def from_map(self, m: dict = None):
@@ -37270,6 +37460,8 @@ class StartInstanceRefreshRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ScalingGroupId') is not None:
             self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('SkipMatching') is not None:
+            self.skip_matching = m.get('SkipMatching')
         return self
 
 
