@@ -1,3 +1,13 @@
+2024-12-10 Version: 2.0.0
+- Support API ListQuotaWorkloads.
+- Update API CreateTrainingJob: update param body.
+- Update API DeleteAlgorithmVersion: update param AlgorithmId.
+- Update API DeleteAlgorithmVersion: update param AlgorithmVersion.
+- Update API GetTrainingJob: update response param.
+- Update API ListTrainingJobMetrics: update response param.
+- Update API ListTrainingJobs: update response param.
+
+
 2024-08-30 Version: 1.2.0
 - Support API CheckInstanceWebTerminal.
 - Support API CreateInstanceWebTerminal.

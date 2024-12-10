@@ -805,6 +805,8 @@ class Client(OpenApiClient):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.output_channels):
             body['OutputChannels'] = request.output_channels
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
         if not UtilClient.is_unset(request.python_requirements):
             body['PythonRequirements'] = request.python_requirements
         if not UtilClient.is_unset(request.role_arn):
@@ -881,6 +883,8 @@ class Client(OpenApiClient):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.output_channels):
             body['OutputChannels'] = request.output_channels
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
         if not UtilClient.is_unset(request.python_requirements):
             body['PythonRequirements'] = request.python_requirements
         if not UtilClient.is_unset(request.role_arn):
@@ -2010,12 +2014,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetNodeMetricsResponse:
         """
+        @deprecated OpenAPI GetNodeMetrics is deprecated
+        
         @summary get resource group node metrics
         
         @param request: GetNodeMetricsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetNodeMetricsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -2058,12 +2065,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetNodeMetricsResponse:
         """
+        @deprecated OpenAPI GetNodeMetrics is deprecated
+        
         @summary get resource group node metrics
         
         @param request: GetNodeMetricsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetNodeMetricsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -2104,10 +2114,13 @@ class Client(OpenApiClient):
         request: pai_studio_20220112_models.GetNodeMetricsRequest,
     ) -> pai_studio_20220112_models.GetNodeMetricsResponse:
         """
+        @deprecated OpenAPI GetNodeMetrics is deprecated
+        
         @summary get resource group node metrics
         
         @param request: GetNodeMetricsRequest
         @return: GetNodeMetricsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2120,10 +2133,13 @@ class Client(OpenApiClient):
         request: pai_studio_20220112_models.GetNodeMetricsRequest,
     ) -> pai_studio_20220112_models.GetNodeMetricsResponse:
         """
+        @deprecated OpenAPI GetNodeMetrics is deprecated
+        
         @summary get resource group node metrics
         
         @param request: GetNodeMetricsRequest
         @return: GetNodeMetricsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2484,12 +2500,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupRequestResponse:
         """
+        @deprecated OpenAPI GetResourceGroupRequest is deprecated
+        
         @summary get resource group requested resource by resource group id
         
         @param request: GetResourceGroupRequestRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetResourceGroupRequestResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -2524,12 +2543,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupRequestResponse:
         """
+        @deprecated OpenAPI GetResourceGroupRequest is deprecated
+        
         @summary get resource group requested resource by resource group id
         
         @param request: GetResourceGroupRequestRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetResourceGroupRequestResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -2562,10 +2584,13 @@ class Client(OpenApiClient):
         request: pai_studio_20220112_models.GetResourceGroupRequestRequest,
     ) -> pai_studio_20220112_models.GetResourceGroupRequestResponse:
         """
+        @deprecated OpenAPI GetResourceGroupRequest is deprecated
+        
         @summary get resource group requested resource by resource group id
         
         @param request: GetResourceGroupRequestRequest
         @return: GetResourceGroupRequestResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2576,10 +2601,13 @@ class Client(OpenApiClient):
         request: pai_studio_20220112_models.GetResourceGroupRequestRequest,
     ) -> pai_studio_20220112_models.GetResourceGroupRequestResponse:
         """
+        @deprecated OpenAPI GetResourceGroupRequest is deprecated
+        
         @summary get resource group requested resource by resource group id
         
         @param request: GetResourceGroupRequestRequest
         @return: GetResourceGroupRequestResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -3093,12 +3121,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetUserViewMetricsResponse:
         """
+        @deprecated OpenAPI GetUserViewMetrics is deprecated
+        
         @summary get user view  metrics
         
         @param request: GetUserViewMetricsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetUserViewMetricsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -3144,12 +3175,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetUserViewMetricsResponse:
         """
+        @deprecated OpenAPI GetUserViewMetrics is deprecated
+        
         @summary get user view  metrics
         
         @param request: GetUserViewMetricsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetUserViewMetricsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -3193,10 +3227,13 @@ class Client(OpenApiClient):
         request: pai_studio_20220112_models.GetUserViewMetricsRequest,
     ) -> pai_studio_20220112_models.GetUserViewMetricsResponse:
         """
+        @deprecated OpenAPI GetUserViewMetrics is deprecated
+        
         @summary get user view  metrics
         
         @param request: GetUserViewMetricsRequest
         @return: GetUserViewMetricsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -3208,10 +3245,13 @@ class Client(OpenApiClient):
         request: pai_studio_20220112_models.GetUserViewMetricsRequest,
     ) -> pai_studio_20220112_models.GetUserViewMetricsResponse:
         """
+        @deprecated OpenAPI GetUserViewMetrics is deprecated
+        
         @summary get user view  metrics
         
         @param request: GetUserViewMetricsRequest
         @return: GetUserViewMetricsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -3612,6 +3652,182 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_nodes_with_options_async(request, headers, runtime)
+
+    def list_quota_workloads_with_options(
+        self,
+        quota_id: str,
+        request: pai_studio_20220112_models.ListQuotaWorkloadsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListQuotaWorkloadsResponse:
+        """
+        @summary 您可以通过此API获取Quota上的任务信息列表
+        
+        @param request: ListQuotaWorkloadsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuotaWorkloadsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.before_workload_id):
+            query['BeforeWorkloadId'] = request.before_workload_id
+        if not UtilClient.is_unset(request.gmt_dequeued_time_range):
+            query['GmtDequeuedTimeRange'] = request.gmt_dequeued_time_range
+        if not UtilClient.is_unset(request.gmt_enqueued_time_range):
+            query['GmtEnqueuedTimeRange'] = request.gmt_enqueued_time_range
+        if not UtilClient.is_unset(request.gmt_position_modified_time_range):
+            query['GmtPositionModifiedTimeRange'] = request.gmt_position_modified_time_range
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.show_own):
+            query['ShowOwn'] = request.show_own
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.sub_quota_ids):
+            query['SubQuotaIds'] = request.sub_quota_ids
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        if not UtilClient.is_unset(request.workload_created_time_range):
+            query['WorkloadCreatedTimeRange'] = request.workload_created_time_range
+        if not UtilClient.is_unset(request.workload_ids):
+            query['WorkloadIds'] = request.workload_ids
+        if not UtilClient.is_unset(request.workload_statuses):
+            query['WorkloadStatuses'] = request.workload_statuses
+        if not UtilClient.is_unset(request.workload_type):
+            query['WorkloadType'] = request.workload_type
+        if not UtilClient.is_unset(request.workspace_ids):
+            query['WorkspaceIds'] = request.workspace_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListQuotaWorkloads',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(quota_id)}/workloads',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListQuotaWorkloadsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_quota_workloads_with_options_async(
+        self,
+        quota_id: str,
+        request: pai_studio_20220112_models.ListQuotaWorkloadsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListQuotaWorkloadsResponse:
+        """
+        @summary 您可以通过此API获取Quota上的任务信息列表
+        
+        @param request: ListQuotaWorkloadsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuotaWorkloadsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.before_workload_id):
+            query['BeforeWorkloadId'] = request.before_workload_id
+        if not UtilClient.is_unset(request.gmt_dequeued_time_range):
+            query['GmtDequeuedTimeRange'] = request.gmt_dequeued_time_range
+        if not UtilClient.is_unset(request.gmt_enqueued_time_range):
+            query['GmtEnqueuedTimeRange'] = request.gmt_enqueued_time_range
+        if not UtilClient.is_unset(request.gmt_position_modified_time_range):
+            query['GmtPositionModifiedTimeRange'] = request.gmt_position_modified_time_range
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.show_own):
+            query['ShowOwn'] = request.show_own
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.sub_quota_ids):
+            query['SubQuotaIds'] = request.sub_quota_ids
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        if not UtilClient.is_unset(request.workload_created_time_range):
+            query['WorkloadCreatedTimeRange'] = request.workload_created_time_range
+        if not UtilClient.is_unset(request.workload_ids):
+            query['WorkloadIds'] = request.workload_ids
+        if not UtilClient.is_unset(request.workload_statuses):
+            query['WorkloadStatuses'] = request.workload_statuses
+        if not UtilClient.is_unset(request.workload_type):
+            query['WorkloadType'] = request.workload_type
+        if not UtilClient.is_unset(request.workspace_ids):
+            query['WorkspaceIds'] = request.workspace_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListQuotaWorkloads',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(quota_id)}/workloads',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListQuotaWorkloadsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_quota_workloads(
+        self,
+        quota_id: str,
+        request: pai_studio_20220112_models.ListQuotaWorkloadsRequest,
+    ) -> pai_studio_20220112_models.ListQuotaWorkloadsResponse:
+        """
+        @summary 您可以通过此API获取Quota上的任务信息列表
+        
+        @param request: ListQuotaWorkloadsRequest
+        @return: ListQuotaWorkloadsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_quota_workloads_with_options(quota_id, request, headers, runtime)
+
+    async def list_quota_workloads_async(
+        self,
+        quota_id: str,
+        request: pai_studio_20220112_models.ListQuotaWorkloadsRequest,
+    ) -> pai_studio_20220112_models.ListQuotaWorkloadsResponse:
+        """
+        @summary 您可以通过此API获取Quota上的任务信息列表
+        
+        @param request: ListQuotaWorkloadsRequest
+        @return: ListQuotaWorkloadsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_quota_workloads_with_options_async(quota_id, request, headers, runtime)
 
     def list_quotas_with_options(
         self,

@@ -37,6 +37,33 @@ class ACS(TeaModel):
         return self
 
 
+class Action(TeaModel):
+    def __init__(
+        self,
+        action_type: str = None,
+    ):
+        self.action_type = action_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        return self
+
+
 class AlgorithmSpecComputeResourcePolicy(TeaModel):
     def __init__(
         self,
@@ -1578,6 +1605,7 @@ class Node(TeaModel):
         cpu: str = None,
         creator_id: str = None,
         gpu: str = None,
+        gpumemory: str = None,
         gputype: str = None,
         gmt_create_time: str = None,
         gmt_expired_time: str = None,
@@ -1608,6 +1636,7 @@ class Node(TeaModel):
         self.cpu = cpu
         self.creator_id = creator_id
         self.gpu = gpu
+        self.gpumemory = gpumemory
         self.gputype = gputype
         self.gmt_create_time = gmt_create_time
         self.gmt_expired_time = gmt_expired_time
@@ -1661,6 +1690,8 @@ class Node(TeaModel):
             result['CreatorId'] = self.creator_id
         if self.gpu is not None:
             result['GPU'] = self.gpu
+        if self.gpumemory is not None:
+            result['GPUMemory'] = self.gpumemory
         if self.gputype is not None:
             result['GPUType'] = self.gputype
         if self.gmt_create_time is not None:
@@ -1728,6 +1759,8 @@ class Node(TeaModel):
             self.creator_id = m.get('CreatorId')
         if m.get('GPU') is not None:
             self.gpu = m.get('GPU')
+        if m.get('GPUMemory') is not None:
+            self.gpumemory = m.get('GPUMemory')
         if m.get('GPUType') is not None:
             self.gputype = m.get('GPUType')
         if m.get('GmtCreateTime') is not None:
@@ -2150,6 +2183,7 @@ class NodeType(TeaModel):
         accelerator_type: str = None,
         cpu: str = None,
         gpu: str = None,
+        gpumemory: str = None,
         gputype: str = None,
         memory: str = None,
         node_type: str = None,
@@ -2157,6 +2191,7 @@ class NodeType(TeaModel):
         self.accelerator_type = accelerator_type
         self.cpu = cpu
         self.gpu = gpu
+        self.gpumemory = gpumemory
         self.gputype = gputype
         self.memory = memory
         self.node_type = node_type
@@ -2176,6 +2211,8 @@ class NodeType(TeaModel):
             result['CPU'] = self.cpu
         if self.gpu is not None:
             result['GPU'] = self.gpu
+        if self.gpumemory is not None:
+            result['GPUMemory'] = self.gpumemory
         if self.gputype is not None:
             result['GPUType'] = self.gputype
         if self.memory is not None:
@@ -2192,6 +2229,8 @@ class NodeType(TeaModel):
             self.cpu = m.get('CPU')
         if m.get('GPU') is not None:
             self.gpu = m.get('GPU')
+        if m.get('GPUMemory') is not None:
+            self.gpumemory = m.get('GPUMemory')
         if m.get('GPUType') is not None:
             self.gputype = m.get('GPUType')
         if m.get('Memory') is not None:
@@ -2443,11 +2482,11 @@ class QueueInfo(TeaModel):
         reason: str = None,
         resource: ResourceAmount = None,
         status: str = None,
-        sub_status: str = None,
         user_id: str = None,
         user_name: str = None,
         workload_id: str = None,
         workload_name: str = None,
+        workload_status: str = None,
         workload_type: str = None,
         workspace_id: str = None,
     ):
@@ -2465,11 +2504,11 @@ class QueueInfo(TeaModel):
         self.reason = reason
         self.resource = resource
         self.status = status
-        self.sub_status = sub_status
         self.user_id = user_id
         self.user_name = user_name
         self.workload_id = workload_id
         self.workload_name = workload_name
+        self.workload_status = workload_status
         self.workload_type = workload_type
         self.workspace_id = workspace_id
 
@@ -2511,8 +2550,6 @@ class QueueInfo(TeaModel):
             result['Resource'] = self.resource.to_map()
         if self.status is not None:
             result['Status'] = self.status
-        if self.sub_status is not None:
-            result['SubStatus'] = self.sub_status
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.user_name is not None:
@@ -2521,6 +2558,8 @@ class QueueInfo(TeaModel):
             result['WorkloadId'] = self.workload_id
         if self.workload_name is not None:
             result['WorkloadName'] = self.workload_name
+        if self.workload_status is not None:
+            result['WorkloadStatus'] = self.workload_status
         if self.workload_type is not None:
             result['WorkloadType'] = self.workload_type
         if self.workspace_id is not None:
@@ -2558,8 +2597,6 @@ class QueueInfo(TeaModel):
             self.resource = temp_model.from_map(m['Resource'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('SubStatus') is not None:
-            self.sub_status = m.get('SubStatus')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('UserName') is not None:
@@ -2568,6 +2605,8 @@ class QueueInfo(TeaModel):
             self.workload_id = m.get('WorkloadId')
         if m.get('WorkloadName') is not None:
             self.workload_name = m.get('WorkloadName')
+        if m.get('WorkloadStatus') is not None:
+            self.workload_status = m.get('WorkloadStatus')
         if m.get('WorkloadType') is not None:
             self.workload_type = m.get('WorkloadType')
         if m.get('WorkspaceId') is not None:
@@ -2866,22 +2905,38 @@ class QuotaDetails(TeaModel):
     def __init__(
         self,
         actual_min_quota: ResourceAmount = None,
+        allocated_quota: ResourceAmount = None,
+        ancestors_allocated_quota: ResourceAmount = None,
+        descendants_allocated_quota: ResourceAmount = None,
         desired_min_quota: ResourceAmount = None,
         requested_quota: ResourceAmount = None,
+        self_allocated_quota: ResourceAmount = None,
         used_quota: ResourceAmount = None,
     ):
         self.actual_min_quota = actual_min_quota
+        self.allocated_quota = allocated_quota
+        self.ancestors_allocated_quota = ancestors_allocated_quota
+        self.descendants_allocated_quota = descendants_allocated_quota
         self.desired_min_quota = desired_min_quota
         self.requested_quota = requested_quota
+        self.self_allocated_quota = self_allocated_quota
         self.used_quota = used_quota
 
     def validate(self):
         if self.actual_min_quota:
             self.actual_min_quota.validate()
+        if self.allocated_quota:
+            self.allocated_quota.validate()
+        if self.ancestors_allocated_quota:
+            self.ancestors_allocated_quota.validate()
+        if self.descendants_allocated_quota:
+            self.descendants_allocated_quota.validate()
         if self.desired_min_quota:
             self.desired_min_quota.validate()
         if self.requested_quota:
             self.requested_quota.validate()
+        if self.self_allocated_quota:
+            self.self_allocated_quota.validate()
         if self.used_quota:
             self.used_quota.validate()
 
@@ -2893,10 +2948,18 @@ class QuotaDetails(TeaModel):
         result = dict()
         if self.actual_min_quota is not None:
             result['ActualMinQuota'] = self.actual_min_quota.to_map()
+        if self.allocated_quota is not None:
+            result['AllocatedQuota'] = self.allocated_quota.to_map()
+        if self.ancestors_allocated_quota is not None:
+            result['AncestorsAllocatedQuota'] = self.ancestors_allocated_quota.to_map()
+        if self.descendants_allocated_quota is not None:
+            result['DescendantsAllocatedQuota'] = self.descendants_allocated_quota.to_map()
         if self.desired_min_quota is not None:
             result['DesiredMinQuota'] = self.desired_min_quota.to_map()
         if self.requested_quota is not None:
             result['RequestedQuota'] = self.requested_quota.to_map()
+        if self.self_allocated_quota is not None:
+            result['SelfAllocatedQuota'] = self.self_allocated_quota.to_map()
         if self.used_quota is not None:
             result['UsedQuota'] = self.used_quota.to_map()
         return result
@@ -2906,12 +2969,24 @@ class QuotaDetails(TeaModel):
         if m.get('ActualMinQuota') is not None:
             temp_model = ResourceAmount()
             self.actual_min_quota = temp_model.from_map(m['ActualMinQuota'])
+        if m.get('AllocatedQuota') is not None:
+            temp_model = ResourceAmount()
+            self.allocated_quota = temp_model.from_map(m['AllocatedQuota'])
+        if m.get('AncestorsAllocatedQuota') is not None:
+            temp_model = ResourceAmount()
+            self.ancestors_allocated_quota = temp_model.from_map(m['AncestorsAllocatedQuota'])
+        if m.get('DescendantsAllocatedQuota') is not None:
+            temp_model = ResourceAmount()
+            self.descendants_allocated_quota = temp_model.from_map(m['DescendantsAllocatedQuota'])
         if m.get('DesiredMinQuota') is not None:
             temp_model = ResourceAmount()
             self.desired_min_quota = temp_model.from_map(m['DesiredMinQuota'])
         if m.get('RequestedQuota') is not None:
             temp_model = ResourceAmount()
             self.requested_quota = temp_model.from_map(m['RequestedQuota'])
+        if m.get('SelfAllocatedQuota') is not None:
+            temp_model = ResourceAmount()
+            self.self_allocated_quota = temp_model.from_map(m['SelfAllocatedQuota'])
         if m.get('UsedQuota') is not None:
             temp_model = ResourceAmount()
             self.used_quota = temp_model.from_map(m['UsedQuota'])
@@ -4124,6 +4199,80 @@ class ResourceOperation(TeaModel):
         return self
 
 
+class SchedulingRule(TeaModel):
+    def __init__(
+        self,
+        cron_tab: str = None,
+        end_at: str = None,
+        execute_once: bool = None,
+        start_at: str = None,
+    ):
+        self.cron_tab = cron_tab
+        self.end_at = end_at
+        self.execute_once = execute_once
+        self.start_at = start_at
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cron_tab is not None:
+            result['CronTab'] = self.cron_tab
+        if self.end_at is not None:
+            result['EndAt'] = self.end_at
+        if self.execute_once is not None:
+            result['ExecuteOnce'] = self.execute_once
+        if self.start_at is not None:
+            result['StartAt'] = self.start_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CronTab') is not None:
+            self.cron_tab = m.get('CronTab')
+        if m.get('EndAt') is not None:
+            self.end_at = m.get('EndAt')
+        if m.get('ExecuteOnce') is not None:
+            self.execute_once = m.get('ExecuteOnce')
+        if m.get('StartAt') is not None:
+            self.start_at = m.get('StartAt')
+        return self
+
+
+class Rules(TeaModel):
+    def __init__(
+        self,
+        scheduling_rule: SchedulingRule = None,
+    ):
+        self.scheduling_rule = scheduling_rule
+
+    def validate(self):
+        if self.scheduling_rule:
+            self.scheduling_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scheduling_rule is not None:
+            result['SchedulingRule'] = self.scheduling_rule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SchedulingRule') is not None:
+            temp_model = SchedulingRule()
+            self.scheduling_rule = temp_model.from_map(m['SchedulingRule'])
+        return self
+
+
 class SpotPriceItem(TeaModel):
     def __init__(
         self,
@@ -4205,6 +4354,236 @@ class SpotStockPreview(TeaModel):
             self.spot_discount = m.get('SpotDiscount')
         if m.get('StockStatus') is not None:
             self.stock_status = m.get('StockStatus')
+        return self
+
+
+class Task(TeaModel):
+    def __init__(
+        self,
+        actions: List[Action] = None,
+        description: str = None,
+        gmt_activated_time: str = None,
+        gmt_created_time: str = None,
+        gmt_modified_time: str = None,
+        gmt_stopped_time: str = None,
+        quota_id: str = None,
+        rules: Rules = None,
+        status: str = None,
+        task_id: str = None,
+        task_name: str = None,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        self.actions = actions
+        self.description = description
+        self.gmt_activated_time = gmt_activated_time
+        self.gmt_created_time = gmt_created_time
+        self.gmt_modified_time = gmt_modified_time
+        self.gmt_stopped_time = gmt_stopped_time
+        self.quota_id = quota_id
+        self.rules = rules
+        self.status = status
+        self.task_id = task_id
+        self.task_name = task_name
+        self.user_id = user_id
+        self.user_name = user_name
+
+    def validate(self):
+        if self.actions:
+            for k in self.actions:
+                if k:
+                    k.validate()
+        if self.rules:
+            self.rules.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Actions'] = []
+        if self.actions is not None:
+            for k in self.actions:
+                result['Actions'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_activated_time is not None:
+            result['GmtActivatedTime'] = self.gmt_activated_time
+        if self.gmt_created_time is not None:
+            result['GmtCreatedTime'] = self.gmt_created_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.gmt_stopped_time is not None:
+            result['GmtStoppedTime'] = self.gmt_stopped_time
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.rules is not None:
+            result['Rules'] = self.rules.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.actions = []
+        if m.get('Actions') is not None:
+            for k in m.get('Actions'):
+                temp_model = Action()
+                self.actions.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtActivatedTime') is not None:
+            self.gmt_activated_time = m.get('GmtActivatedTime')
+        if m.get('GmtCreatedTime') is not None:
+            self.gmt_created_time = m.get('GmtCreatedTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('GmtStoppedTime') is not None:
+            self.gmt_stopped_time = m.get('GmtStoppedTime')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('Rules') is not None:
+            temp_model = Rules()
+            self.rules = temp_model.from_map(m['Rules'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class TaskInstance(TeaModel):
+    def __init__(
+        self,
+        gmt_created_time: str = None,
+        gmt_end_time: str = None,
+        status: str = None,
+        task_id: str = None,
+        task_instance_id: str = None,
+        tenant_id: str = None,
+        user_id: str = None,
+    ):
+        self.gmt_created_time = gmt_created_time
+        self.gmt_end_time = gmt_end_time
+        self.status = status
+        self.task_id = task_id
+        self.task_instance_id = task_instance_id
+        self.tenant_id = tenant_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_created_time is not None:
+            result['GmtCreatedTime'] = self.gmt_created_time
+        if self.gmt_end_time is not None:
+            result['GmtEndTime'] = self.gmt_end_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_instance_id is not None:
+            result['TaskInstanceId'] = self.task_instance_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GmtCreatedTime') is not None:
+            self.gmt_created_time = m.get('GmtCreatedTime')
+        if m.get('GmtEndTime') is not None:
+            self.gmt_end_time = m.get('GmtEndTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskInstanceId') is not None:
+            self.task_instance_id = m.get('TaskInstanceId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class TaskInstanceEvent(TeaModel):
+    def __init__(
+        self,
+        gmt_end_time: str = None,
+        gmt_start_time: str = None,
+        message: str = None,
+        pod_name: str = None,
+        status: str = None,
+        workload_type: str = None,
+    ):
+        self.gmt_end_time = gmt_end_time
+        self.gmt_start_time = gmt_start_time
+        self.message = message
+        self.pod_name = pod_name
+        self.status = status
+        self.workload_type = workload_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_end_time is not None:
+            result['GmtEndTime'] = self.gmt_end_time
+        if self.gmt_start_time is not None:
+            result['GmtStartTime'] = self.gmt_start_time
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.pod_name is not None:
+            result['PodName'] = self.pod_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.workload_type is not None:
+            result['WorkloadType'] = self.workload_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GmtEndTime') is not None:
+            self.gmt_end_time = m.get('GmtEndTime')
+        if m.get('GmtStartTime') is not None:
+            self.gmt_start_time = m.get('GmtStartTime')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PodName') is not None:
+            self.pod_name = m.get('PodName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('WorkloadType') is not None:
+            self.workload_type = m.get('WorkloadType')
         return self
 
 
@@ -5449,11 +5828,13 @@ class CreateTrainingJobRequestInputChannels(TeaModel):
         input_uri: str = None,
         name: str = None,
         options: str = None,
+        version_name: str = None,
     ):
         self.dataset_id = dataset_id
         self.input_uri = input_uri
         self.name = name
         self.options = options
+        self.version_name = version_name
 
     def validate(self):
         pass
@@ -5472,6 +5853,8 @@ class CreateTrainingJobRequestInputChannels(TeaModel):
             result['Name'] = self.name
         if self.options is not None:
             result['Options'] = self.options
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
         return result
 
     def from_map(self, m: dict = None):
@@ -5484,6 +5867,8 @@ class CreateTrainingJobRequestInputChannels(TeaModel):
             self.name = m.get('Name')
         if m.get('Options') is not None:
             self.options = m.get('Options')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
         return self
 
 
@@ -5526,10 +5911,12 @@ class CreateTrainingJobRequestOutputChannels(TeaModel):
         dataset_id: str = None,
         name: str = None,
         output_uri: str = None,
+        version_name: str = None,
     ):
         self.dataset_id = dataset_id
         self.name = name
         self.output_uri = output_uri
+        self.version_name = version_name
 
     def validate(self):
         pass
@@ -5546,6 +5933,8 @@ class CreateTrainingJobRequestOutputChannels(TeaModel):
             result['Name'] = self.name
         if self.output_uri is not None:
             result['OutputUri'] = self.output_uri
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
         return result
 
     def from_map(self, m: dict = None):
@@ -5556,14 +5945,18 @@ class CreateTrainingJobRequestOutputChannels(TeaModel):
             self.name = m.get('Name')
         if m.get('OutputUri') is not None:
             self.output_uri = m.get('OutputUri')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
         return self
 
 
 class CreateTrainingJobRequestScheduler(TeaModel):
     def __init__(
         self,
+        max_running_time_in_minutes: int = None,
         max_running_time_in_seconds: int = None,
     ):
+        self.max_running_time_in_minutes = max_running_time_in_minutes
         self.max_running_time_in_seconds = max_running_time_in_seconds
 
     def validate(self):
@@ -5575,59 +5968,18 @@ class CreateTrainingJobRequestScheduler(TeaModel):
             return _map
 
         result = dict()
+        if self.max_running_time_in_minutes is not None:
+            result['MaxRunningTimeInMinutes'] = self.max_running_time_in_minutes
         if self.max_running_time_in_seconds is not None:
             result['MaxRunningTimeInSeconds'] = self.max_running_time_in_seconds
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MaxRunningTimeInMinutes') is not None:
+            self.max_running_time_in_minutes = m.get('MaxRunningTimeInMinutes')
         if m.get('MaxRunningTimeInSeconds') is not None:
             self.max_running_time_in_seconds = m.get('MaxRunningTimeInSeconds')
-        return self
-
-
-class CreateTrainingJobRequestSettings(TeaModel):
-    def __init__(
-        self,
-        aimaster_type: str = None,
-        enable_error_monitoring_in_aimaster: bool = None,
-        error_monitoring_args: str = None,
-        priority: int = None,
-    ):
-        self.aimaster_type = aimaster_type
-        self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
-        self.error_monitoring_args = error_monitoring_args
-        self.priority = priority
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.aimaster_type is not None:
-            result['AIMasterType'] = self.aimaster_type
-        if self.enable_error_monitoring_in_aimaster is not None:
-            result['EnableErrorMonitoringInAIMaster'] = self.enable_error_monitoring_in_aimaster
-        if self.error_monitoring_args is not None:
-            result['ErrorMonitoringArgs'] = self.error_monitoring_args
-        if self.priority is not None:
-            result['Priority'] = self.priority
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AIMasterType') is not None:
-            self.aimaster_type = m.get('AIMasterType')
-        if m.get('EnableErrorMonitoringInAIMaster') is not None:
-            self.enable_error_monitoring_in_aimaster = m.get('EnableErrorMonitoringInAIMaster')
-        if m.get('ErrorMonitoringArgs') is not None:
-            self.error_monitoring_args = m.get('ErrorMonitoringArgs')
-        if m.get('Priority') is not None:
-            self.priority = m.get('Priority')
         return self
 
 
@@ -5698,10 +6050,11 @@ class CreateTrainingJobRequest(TeaModel):
         input_channels: List[CreateTrainingJobRequestInputChannels] = None,
         labels: List[CreateTrainingJobRequestLabels] = None,
         output_channels: List[CreateTrainingJobRequestOutputChannels] = None,
+        priority: int = None,
         python_requirements: List[str] = None,
         role_arn: str = None,
         scheduler: CreateTrainingJobRequestScheduler = None,
-        settings: CreateTrainingJobRequestSettings = None,
+        settings: JobSettings = None,
         training_job_description: str = None,
         training_job_name: str = None,
         user_vpc: CreateTrainingJobRequestUserVpc = None,
@@ -5719,6 +6072,7 @@ class CreateTrainingJobRequest(TeaModel):
         self.input_channels = input_channels
         self.labels = labels
         self.output_channels = output_channels
+        self.priority = priority
         self.python_requirements = python_requirements
         self.role_arn = role_arn
         self.scheduler = scheduler
@@ -5800,6 +6154,8 @@ class CreateTrainingJobRequest(TeaModel):
         if self.output_channels is not None:
             for k in self.output_channels:
                 result['OutputChannels'].append(k.to_map() if k else None)
+        if self.priority is not None:
+            result['Priority'] = self.priority
         if self.python_requirements is not None:
             result['PythonRequirements'] = self.python_requirements
         if self.role_arn is not None:
@@ -5860,6 +6216,8 @@ class CreateTrainingJobRequest(TeaModel):
             for k in m.get('OutputChannels'):
                 temp_model = CreateTrainingJobRequestOutputChannels()
                 self.output_channels.append(temp_model.from_map(k))
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
         if m.get('PythonRequirements') is not None:
             self.python_requirements = m.get('PythonRequirements')
         if m.get('RoleArn') is not None:
@@ -5868,7 +6226,7 @@ class CreateTrainingJobRequest(TeaModel):
             temp_model = CreateTrainingJobRequestScheduler()
             self.scheduler = temp_model.from_map(m['Scheduler'])
         if m.get('Settings') is not None:
-            temp_model = CreateTrainingJobRequestSettings()
+            temp_model = JobSettings()
             self.settings = temp_model.from_map(m['Settings'])
         if m.get('TrainingJobDescription') is not None:
             self.training_job_description = m.get('TrainingJobDescription')
@@ -8574,11 +8932,13 @@ class GetTrainingJobResponseBodyInputChannels(TeaModel):
         input_uri: str = None,
         name: str = None,
         options: str = None,
+        version_name: str = None,
     ):
         self.dataset_id = dataset_id
         self.input_uri = input_uri
         self.name = name
         self.options = options
+        self.version_name = version_name
 
     def validate(self):
         pass
@@ -8597,6 +8957,8 @@ class GetTrainingJobResponseBodyInputChannels(TeaModel):
             result['Name'] = self.name
         if self.options is not None:
             result['Options'] = self.options
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
         return result
 
     def from_map(self, m: dict = None):
@@ -8609,6 +8971,8 @@ class GetTrainingJobResponseBodyInputChannels(TeaModel):
             self.name = m.get('Name')
         if m.get('Options') is not None:
             self.options = m.get('Options')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
         return self
 
 
@@ -8833,10 +9197,12 @@ class GetTrainingJobResponseBodyOutputChannels(TeaModel):
         dataset_id: str = None,
         name: str = None,
         output_uri: str = None,
+        version_name: str = None,
     ):
         self.dataset_id = dataset_id
         self.name = name
         self.output_uri = output_uri
+        self.version_name = version_name
 
     def validate(self):
         pass
@@ -8853,6 +9219,8 @@ class GetTrainingJobResponseBodyOutputChannels(TeaModel):
             result['Name'] = self.name
         if self.output_uri is not None:
             result['OutputUri'] = self.output_uri
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
         return result
 
     def from_map(self, m: dict = None):
@@ -8863,6 +9231,8 @@ class GetTrainingJobResponseBodyOutputChannels(TeaModel):
             self.name = m.get('Name')
         if m.get('OutputUri') is not None:
             self.output_uri = m.get('OutputUri')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
         return self
 
 
@@ -8902,8 +9272,10 @@ class GetTrainingJobResponseBodyOutputModel(TeaModel):
 class GetTrainingJobResponseBodyScheduler(TeaModel):
     def __init__(
         self,
-        max_running_time_in_seconds: int = None,
+        max_running_time_in_minutes: str = None,
+        max_running_time_in_seconds: str = None,
     ):
+        self.max_running_time_in_minutes = max_running_time_in_minutes
         self.max_running_time_in_seconds = max_running_time_in_seconds
 
     def validate(self):
@@ -8915,59 +9287,18 @@ class GetTrainingJobResponseBodyScheduler(TeaModel):
             return _map
 
         result = dict()
+        if self.max_running_time_in_minutes is not None:
+            result['MaxRunningTimeInMinutes'] = self.max_running_time_in_minutes
         if self.max_running_time_in_seconds is not None:
             result['MaxRunningTimeInSeconds'] = self.max_running_time_in_seconds
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MaxRunningTimeInMinutes') is not None:
+            self.max_running_time_in_minutes = m.get('MaxRunningTimeInMinutes')
         if m.get('MaxRunningTimeInSeconds') is not None:
             self.max_running_time_in_seconds = m.get('MaxRunningTimeInSeconds')
-        return self
-
-
-class GetTrainingJobResponseBodySettings(TeaModel):
-    def __init__(
-        self,
-        aimaster_type: str = None,
-        enable_error_monitoring_in_aimaster: bool = None,
-        error_monitoring_args: str = None,
-        priority: int = None,
-    ):
-        self.aimaster_type = aimaster_type
-        self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
-        self.error_monitoring_args = error_monitoring_args
-        self.priority = priority
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.aimaster_type is not None:
-            result['AIMasterType'] = self.aimaster_type
-        if self.enable_error_monitoring_in_aimaster is not None:
-            result['EnableErrorMonitoringInAIMaster'] = self.enable_error_monitoring_in_aimaster
-        if self.error_monitoring_args is not None:
-            result['ErrorMonitoringArgs'] = self.error_monitoring_args
-        if self.priority is not None:
-            result['Priority'] = self.priority
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AIMasterType') is not None:
-            self.aimaster_type = m.get('AIMasterType')
-        if m.get('EnableErrorMonitoringInAIMaster') is not None:
-            self.enable_error_monitoring_in_aimaster = m.get('EnableErrorMonitoringInAIMaster')
-        if m.get('ErrorMonitoringArgs') is not None:
-            self.error_monitoring_args = m.get('ErrorMonitoringArgs')
-        if m.get('Priority') is not None:
-            self.priority = m.get('Priority')
         return self
 
 
@@ -9091,13 +9422,14 @@ class GetTrainingJobResponseBody(TeaModel):
         latest_progress: GetTrainingJobResponseBodyLatestProgress = None,
         output_channels: List[GetTrainingJobResponseBodyOutputChannels] = None,
         output_model: GetTrainingJobResponseBodyOutputModel = None,
+        priority: int = None,
         python_requirements: List[str] = None,
         reason_code: str = None,
         reason_message: str = None,
         request_id: str = None,
         role_arn: str = None,
         scheduler: GetTrainingJobResponseBodyScheduler = None,
-        settings: GetTrainingJobResponseBodySettings = None,
+        settings: JobSettings = None,
         status: str = None,
         status_transitions: List[GetTrainingJobResponseBodyStatusTransitions] = None,
         training_job_description: str = None,
@@ -9128,6 +9460,7 @@ class GetTrainingJobResponseBody(TeaModel):
         self.latest_progress = latest_progress
         self.output_channels = output_channels
         self.output_model = output_model
+        self.priority = priority
         self.python_requirements = python_requirements
         self.reason_code = reason_code
         self.reason_message = reason_message
@@ -9249,6 +9582,8 @@ class GetTrainingJobResponseBody(TeaModel):
                 result['OutputChannels'].append(k.to_map() if k else None)
         if self.output_model is not None:
             result['OutputModel'] = self.output_model.to_map()
+        if self.priority is not None:
+            result['Priority'] = self.priority
         if self.python_requirements is not None:
             result['PythonRequirements'] = self.python_requirements
         if self.reason_code is not None:
@@ -9350,6 +9685,8 @@ class GetTrainingJobResponseBody(TeaModel):
         if m.get('OutputModel') is not None:
             temp_model = GetTrainingJobResponseBodyOutputModel()
             self.output_model = temp_model.from_map(m['OutputModel'])
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
         if m.get('PythonRequirements') is not None:
             self.python_requirements = m.get('PythonRequirements')
         if m.get('ReasonCode') is not None:
@@ -9364,7 +9701,7 @@ class GetTrainingJobResponseBody(TeaModel):
             temp_model = GetTrainingJobResponseBodyScheduler()
             self.scheduler = temp_model.from_map(m['Scheduler'])
         if m.get('Settings') is not None:
-            temp_model = GetTrainingJobResponseBodySettings()
+            temp_model = JobSettings()
             self.settings = temp_model.from_map(m['Settings'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
@@ -10463,6 +10800,235 @@ class ListNodesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListQuotaWorkloadsRequest(TeaModel):
+    def __init__(
+        self,
+        before_workload_id: str = None,
+        gmt_dequeued_time_range: TimeRangeFilter = None,
+        gmt_enqueued_time_range: TimeRangeFilter = None,
+        gmt_position_modified_time_range: TimeRangeFilter = None,
+        node_name: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        show_own: bool = None,
+        sort_by: str = None,
+        status: str = None,
+        sub_quota_ids: str = None,
+        user_ids: str = None,
+        workload_created_time_range: TimeRangeFilter = None,
+        workload_ids: str = None,
+        workload_statuses: str = None,
+        workload_type: str = None,
+        workspace_ids: str = None,
+    ):
+        self.before_workload_id = before_workload_id
+        self.gmt_dequeued_time_range = gmt_dequeued_time_range
+        self.gmt_enqueued_time_range = gmt_enqueued_time_range
+        self.gmt_position_modified_time_range = gmt_position_modified_time_range
+        self.node_name = node_name
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.show_own = show_own
+        self.sort_by = sort_by
+        self.status = status
+        self.sub_quota_ids = sub_quota_ids
+        self.user_ids = user_ids
+        self.workload_created_time_range = workload_created_time_range
+        self.workload_ids = workload_ids
+        self.workload_statuses = workload_statuses
+        self.workload_type = workload_type
+        self.workspace_ids = workspace_ids
+
+    def validate(self):
+        if self.gmt_dequeued_time_range:
+            self.gmt_dequeued_time_range.validate()
+        if self.gmt_enqueued_time_range:
+            self.gmt_enqueued_time_range.validate()
+        if self.gmt_position_modified_time_range:
+            self.gmt_position_modified_time_range.validate()
+        if self.workload_created_time_range:
+            self.workload_created_time_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.before_workload_id is not None:
+            result['BeforeWorkloadId'] = self.before_workload_id
+        if self.gmt_dequeued_time_range is not None:
+            result['GmtDequeuedTimeRange'] = self.gmt_dequeued_time_range.to_map()
+        if self.gmt_enqueued_time_range is not None:
+            result['GmtEnqueuedTimeRange'] = self.gmt_enqueued_time_range.to_map()
+        if self.gmt_position_modified_time_range is not None:
+            result['GmtPositionModifiedTimeRange'] = self.gmt_position_modified_time_range.to_map()
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.show_own is not None:
+            result['ShowOwn'] = self.show_own
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_quota_ids is not None:
+            result['SubQuotaIds'] = self.sub_quota_ids
+        if self.user_ids is not None:
+            result['UserIds'] = self.user_ids
+        if self.workload_created_time_range is not None:
+            result['WorkloadCreatedTimeRange'] = self.workload_created_time_range.to_map()
+        if self.workload_ids is not None:
+            result['WorkloadIds'] = self.workload_ids
+        if self.workload_statuses is not None:
+            result['WorkloadStatuses'] = self.workload_statuses
+        if self.workload_type is not None:
+            result['WorkloadType'] = self.workload_type
+        if self.workspace_ids is not None:
+            result['WorkspaceIds'] = self.workspace_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeforeWorkloadId') is not None:
+            self.before_workload_id = m.get('BeforeWorkloadId')
+        if m.get('GmtDequeuedTimeRange') is not None:
+            temp_model = TimeRangeFilter()
+            self.gmt_dequeued_time_range = temp_model.from_map(m['GmtDequeuedTimeRange'])
+        if m.get('GmtEnqueuedTimeRange') is not None:
+            temp_model = TimeRangeFilter()
+            self.gmt_enqueued_time_range = temp_model.from_map(m['GmtEnqueuedTimeRange'])
+        if m.get('GmtPositionModifiedTimeRange') is not None:
+            temp_model = TimeRangeFilter()
+            self.gmt_position_modified_time_range = temp_model.from_map(m['GmtPositionModifiedTimeRange'])
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ShowOwn') is not None:
+            self.show_own = m.get('ShowOwn')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubQuotaIds') is not None:
+            self.sub_quota_ids = m.get('SubQuotaIds')
+        if m.get('UserIds') is not None:
+            self.user_ids = m.get('UserIds')
+        if m.get('WorkloadCreatedTimeRange') is not None:
+            temp_model = TimeRangeFilter()
+            self.workload_created_time_range = temp_model.from_map(m['WorkloadCreatedTimeRange'])
+        if m.get('WorkloadIds') is not None:
+            self.workload_ids = m.get('WorkloadIds')
+        if m.get('WorkloadStatuses') is not None:
+            self.workload_statuses = m.get('WorkloadStatuses')
+        if m.get('WorkloadType') is not None:
+            self.workload_type = m.get('WorkloadType')
+        if m.get('WorkspaceIds') is not None:
+            self.workspace_ids = m.get('WorkspaceIds')
+        return self
+
+
+class ListQuotaWorkloadsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        total_count: int = None,
+        workloads: List[QueueInfo] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+        self.workloads = workloads
+
+    def validate(self):
+        if self.workloads:
+            for k in self.workloads:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['Workloads'] = []
+        if self.workloads is not None:
+            for k in self.workloads:
+                result['Workloads'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.workloads = []
+        if m.get('Workloads') is not None:
+            for k in m.get('Workloads'):
+                temp_model = QueueInfo()
+                self.workloads.append(temp_model.from_map(k))
+        return self
+
+
+class ListQuotaWorkloadsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListQuotaWorkloadsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListQuotaWorkloadsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11718,9 +12284,11 @@ class ListTrainingJobMetricsResponseBody(TeaModel):
         self,
         metrics: List[ListTrainingJobMetricsResponseBodyMetrics] = None,
         request_id: str = None,
+        total_count: int = None,
     ):
         self.metrics = metrics
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.metrics:
@@ -11740,6 +12308,8 @@ class ListTrainingJobMetricsResponseBody(TeaModel):
                 result['Metrics'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -11751,6 +12321,8 @@ class ListTrainingJobMetricsResponseBody(TeaModel):
                 self.metrics.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -12385,10 +12957,12 @@ class ListTrainingJobsResponseBodyTrainingJobsInputChannels(TeaModel):
         dataset_id: str = None,
         input_uri: str = None,
         name: str = None,
+        version_name: str = None,
     ):
         self.dataset_id = dataset_id
         self.input_uri = input_uri
         self.name = name
+        self.version_name = version_name
 
     def validate(self):
         pass
@@ -12405,6 +12979,8 @@ class ListTrainingJobsResponseBodyTrainingJobsInputChannels(TeaModel):
             result['InputUri'] = self.input_uri
         if self.name is not None:
             result['Name'] = self.name
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
         return result
 
     def from_map(self, m: dict = None):
@@ -12415,6 +12991,8 @@ class ListTrainingJobsResponseBodyTrainingJobsInputChannels(TeaModel):
             self.input_uri = m.get('InputUri')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
         return self
 
 
@@ -12457,10 +13035,12 @@ class ListTrainingJobsResponseBodyTrainingJobsOutputChannels(TeaModel):
         dataset_id: str = None,
         name: str = None,
         output_uri: str = None,
+        version_name: str = None,
     ):
         self.dataset_id = dataset_id
         self.name = name
         self.output_uri = output_uri
+        self.version_name = version_name
 
     def validate(self):
         pass
@@ -12477,6 +13057,8 @@ class ListTrainingJobsResponseBodyTrainingJobsOutputChannels(TeaModel):
             result['Name'] = self.name
         if self.output_uri is not None:
             result['OutputUri'] = self.output_uri
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
         return result
 
     def from_map(self, m: dict = None):
@@ -12487,6 +13069,8 @@ class ListTrainingJobsResponseBodyTrainingJobsOutputChannels(TeaModel):
             self.name = m.get('Name')
         if m.get('OutputUri') is not None:
             self.output_uri = m.get('OutputUri')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
         return self
 
 
