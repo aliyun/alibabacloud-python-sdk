@@ -1,3 +1,10 @@
+2024-12-10 Version: 4.4.0
+- Support API DescribeLogHubAttribute.
+- Support API DescribeLogStoreKeys.
+- Support API DescribeRdsAnalysisResourceQuotas.
+- Update API AllocateClusterPublicConnection: update param AccessKeyId.
+
+
 2024-12-09 Version: 4.3.0
 - Support API CancelActiveOperationTasks.
 - Support API CheckServiceLinkedRole.

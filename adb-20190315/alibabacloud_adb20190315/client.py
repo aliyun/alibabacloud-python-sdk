@@ -93,6 +93,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.AllocateClusterPublicConnectionResponse:
         """
+        @summary 申请公网链接
+        
         @param request: AllocateClusterPublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AllocateClusterPublicConnectionResponse
@@ -136,6 +138,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.AllocateClusterPublicConnectionResponse:
         """
+        @summary 申请公网链接
+        
         @param request: AllocateClusterPublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AllocateClusterPublicConnectionResponse
@@ -178,6 +182,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.AllocateClusterPublicConnectionRequest,
     ) -> adb_20190315_models.AllocateClusterPublicConnectionResponse:
         """
+        @summary 申请公网链接
+        
         @param request: AllocateClusterPublicConnectionRequest
         @return: AllocateClusterPublicConnectionResponse
         """
@@ -189,6 +195,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.AllocateClusterPublicConnectionRequest,
     ) -> adb_20190315_models.AllocateClusterPublicConnectionResponse:
         """
+        @summary 申请公网链接
+        
         @param request: AllocateClusterPublicConnectionRequest
         @return: AllocateClusterPublicConnectionResponse
         """
@@ -8247,6 +8255,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_tasks_records_with_options_async(request, runtime)
 
+    def describe_log_hub_attribute_with_options(
+        self,
+        request: adb_20190315_models.DescribeLogHubAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeLogHubAttributeResponse:
+        """
+        @param request: DescribeLogHubAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogHubAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.deliver_name):
+            query['DeliverName'] = request.deliver_name
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLogHubAttribute',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeLogHubAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_log_hub_attribute_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeLogHubAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeLogHubAttributeResponse:
+        """
+        @param request: DescribeLogHubAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogHubAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.deliver_name):
+            query['DeliverName'] = request.deliver_name
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLogHubAttribute',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeLogHubAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_log_hub_attribute(
+        self,
+        request: adb_20190315_models.DescribeLogHubAttributeRequest,
+    ) -> adb_20190315_models.DescribeLogHubAttributeResponse:
+        """
+        @param request: DescribeLogHubAttributeRequest
+        @return: DescribeLogHubAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_log_hub_attribute_with_options(request, runtime)
+
+    async def describe_log_hub_attribute_async(
+        self,
+        request: adb_20190315_models.DescribeLogHubAttributeRequest,
+    ) -> adb_20190315_models.DescribeLogHubAttributeResponse:
+        """
+        @param request: DescribeLogHubAttributeRequest
+        @return: DescribeLogHubAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_log_hub_attribute_with_options_async(request, runtime)
+
+    def describe_log_store_keys_with_options(
+        self,
+        request: adb_20190315_models.DescribeLogStoreKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeLogStoreKeysResponse:
+        """
+        @param request: DescribeLogStoreKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogStoreKeysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLogStoreKeys',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeLogStoreKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_log_store_keys_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeLogStoreKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeLogStoreKeysResponse:
+        """
+        @param request: DescribeLogStoreKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogStoreKeysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLogStoreKeys',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeLogStoreKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_log_store_keys(
+        self,
+        request: adb_20190315_models.DescribeLogStoreKeysRequest,
+    ) -> adb_20190315_models.DescribeLogStoreKeysResponse:
+        """
+        @param request: DescribeLogStoreKeysRequest
+        @return: DescribeLogStoreKeysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_log_store_keys_with_options(request, runtime)
+
+    async def describe_log_store_keys_async(
+        self,
+        request: adb_20190315_models.DescribeLogStoreKeysRequest,
+    ) -> adb_20190315_models.DescribeLogStoreKeysResponse:
+        """
+        @param request: DescribeLogStoreKeysRequest
+        @return: DescribeLogStoreKeysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_log_store_keys_with_options_async(request, runtime)
+
     def describe_loghub_detail_with_options(
         self,
         request: adb_20190315_models.DescribeLoghubDetailRequest,
@@ -8850,6 +9090,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_process_list_with_options_async(request, runtime)
+
+    def describe_rds_analysis_resource_quotas_with_options(
+        self,
+        request: adb_20190315_models.DescribeRdsAnalysisResourceQuotasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeRdsAnalysisResourceQuotasResponse:
+        """
+        @param request: DescribeRdsAnalysisResourceQuotasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRdsAnalysisResourceQuotasResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_category):
+            query['ClusterCategory'] = request.cluster_category
+        if not UtilClient.is_unset(request.cluster_mode):
+            query['ClusterMode'] = request.cluster_mode
+        if not UtilClient.is_unset(request.node_class):
+            query['NodeClass'] = request.node_class
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rds_instance_id):
+            query['RdsInstanceId'] = request.rds_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRdsAnalysisResourceQuotas',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeRdsAnalysisResourceQuotasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rds_analysis_resource_quotas_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeRdsAnalysisResourceQuotasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeRdsAnalysisResourceQuotasResponse:
+        """
+        @param request: DescribeRdsAnalysisResourceQuotasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRdsAnalysisResourceQuotasResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_category):
+            query['ClusterCategory'] = request.cluster_category
+        if not UtilClient.is_unset(request.cluster_mode):
+            query['ClusterMode'] = request.cluster_mode
+        if not UtilClient.is_unset(request.node_class):
+            query['NodeClass'] = request.node_class
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rds_instance_id):
+            query['RdsInstanceId'] = request.rds_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRdsAnalysisResourceQuotas',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeRdsAnalysisResourceQuotasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rds_analysis_resource_quotas(
+        self,
+        request: adb_20190315_models.DescribeRdsAnalysisResourceQuotasRequest,
+    ) -> adb_20190315_models.DescribeRdsAnalysisResourceQuotasResponse:
+        """
+        @param request: DescribeRdsAnalysisResourceQuotasRequest
+        @return: DescribeRdsAnalysisResourceQuotasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rds_analysis_resource_quotas_with_options(request, runtime)
+
+    async def describe_rds_analysis_resource_quotas_async(
+        self,
+        request: adb_20190315_models.DescribeRdsAnalysisResourceQuotasRequest,
+    ) -> adb_20190315_models.DescribeRdsAnalysisResourceQuotasResponse:
+        """
+        @param request: DescribeRdsAnalysisResourceQuotasRequest
+        @return: DescribeRdsAnalysisResourceQuotasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rds_analysis_resource_quotas_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
@@ -15293,6 +15665,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifySyncJobResponse:
         """
+        @summary Modifies the synchronization jobs for an AnalyticDB for MySQL cluster.
+        
         @param request: ModifySyncJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifySyncJobResponse
@@ -15340,6 +15714,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.ModifySyncJobResponse:
         """
+        @summary Modifies the synchronization jobs for an AnalyticDB for MySQL cluster.
+        
         @param request: ModifySyncJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifySyncJobResponse
@@ -15386,6 +15762,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifySyncJobRequest,
     ) -> adb_20190315_models.ModifySyncJobResponse:
         """
+        @summary Modifies the synchronization jobs for an AnalyticDB for MySQL cluster.
+        
         @param request: ModifySyncJobRequest
         @return: ModifySyncJobResponse
         """
@@ -15397,6 +15775,8 @@ class Client(OpenApiClient):
         request: adb_20190315_models.ModifySyncJobRequest,
     ) -> adb_20190315_models.ModifySyncJobResponse:
         """
+        @summary Modifies the synchronization jobs for an AnalyticDB for MySQL cluster.
+        
         @param request: ModifySyncJobRequest
         @return: ModifySyncJobResponse
         """
