@@ -9,6 +9,17 @@
 - Update API StartInstanceRefresh: add param SkipMatching.
 
 
+2024-12-10 Version: 1.10.3
+- Update API CreateEciScalingConfiguration: add param GpuDriverVersion.
+- Update API CreateScalingGroup: add param CapacityOptions.
+- Update API DescribeEciScalingConfigurations: update response param.
+- Update API DescribeInstanceRefreshes: update response param.
+- Update API DescribeScalingGroups: update response param.
+- Update API ModifyEciScalingConfiguration: add param GpuDriverVersion.
+- Update API ModifyScalingGroup: add param CapacityOptions.
+- Update API StartInstanceRefresh: add param SkipMatching.
+
+
 2024-12-02 Version: 1.10.2
 - Update API DescribeElasticStrength: add param DataDiskCategories.
 - Update API DescribeElasticStrength: add param ImageFamily.
