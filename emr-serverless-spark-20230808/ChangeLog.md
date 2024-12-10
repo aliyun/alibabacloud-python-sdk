@@ -1,3 +1,7 @@
+2024-12-10 Version: 1.8.1
+- Update API ListJobRuns: update response param.
+
+
 2024-11-27 Version: 1.8.0
 - Support API GetTemplate.
 

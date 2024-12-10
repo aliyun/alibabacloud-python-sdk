@@ -421,6 +421,87 @@ class JobDriver(TeaModel):
         return self
 
 
+class KerberosConf(TeaModel):
+    def __init__(
+        self,
+        creator: str = None,
+        enabled: bool = None,
+        gmt_created: str = None,
+        gmt_modified: str = None,
+        kerberos_conf_id: str = None,
+        keytabs: List[str] = None,
+        krb_5conf: str = None,
+        name: str = None,
+        network_service_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.creator = creator
+        self.enabled = enabled
+        self.gmt_created = gmt_created
+        self.gmt_modified = gmt_modified
+        self.kerberos_conf_id = kerberos_conf_id
+        self.keytabs = keytabs
+        self.krb_5conf = krb_5conf
+        self.name = name
+        self.network_service_id = network_service_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.gmt_created is not None:
+            result['gmtCreated'] = self.gmt_created
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.kerberos_conf_id is not None:
+            result['kerberosConfId'] = self.kerberos_conf_id
+        if self.keytabs is not None:
+            result['keytabs'] = self.keytabs
+        if self.krb_5conf is not None:
+            result['krb5Conf'] = self.krb_5conf
+        if self.name is not None:
+            result['name'] = self.name
+        if self.network_service_id is not None:
+            result['networkServiceId'] = self.network_service_id
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('gmtCreated') is not None:
+            self.gmt_created = m.get('gmtCreated')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('kerberosConfId') is not None:
+            self.kerberos_conf_id = m.get('kerberosConfId')
+        if m.get('keytabs') is not None:
+            self.keytabs = m.get('keytabs')
+        if m.get('krb5Conf') is not None:
+            self.krb_5conf = m.get('krb5Conf')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('networkServiceId') is not None:
+            self.network_service_id = m.get('networkServiceId')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
 class PrincipalAction(TeaModel):
     def __init__(
         self,
@@ -3441,6 +3522,7 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         code_type: str = None,
         configuration_overrides: ListJobRunsResponseBodyJobRunsConfigurationOverrides = None,
         creator: str = None,
+        cu_hours: int = None,
         display_release_version: str = None,
         end_time: int = None,
         execution_timeout_seconds: int = None,
@@ -3448,12 +3530,14 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         job_driver: JobDriver = None,
         job_run_id: str = None,
         log: RunLog = None,
+        mb_seconds: int = None,
         name: str = None,
         release_version: str = None,
         state: str = None,
         state_change_reason: ListJobRunsResponseBodyJobRunsStateChangeReason = None,
         submit_time: int = None,
         tags: List[Tag] = None,
+        vcore_seconds: int = None,
         web_ui: str = None,
         workspace_id: str = None,
     ):
@@ -3469,6 +3553,7 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         self.configuration_overrides = configuration_overrides
         # The ID of the user who created the job.
         self.creator = creator
+        self.cu_hours = cu_hours
         self.display_release_version = display_release_version
         # The end time of the job.
         self.end_time = end_time
@@ -3481,6 +3566,7 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         self.job_run_id = job_run_id
         # The path where the operational logs are stored.
         self.log = log
+        self.mb_seconds = mb_seconds
         # The job name.
         self.name = name
         # The version of Spark on which the jobs run.
@@ -3493,6 +3579,7 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         self.submit_time = submit_time
         # The tags of the job.
         self.tags = tags
+        self.vcore_seconds = vcore_seconds
         # The web UI of the job.
         self.web_ui = web_ui
         # The workspace ID.
@@ -3524,6 +3611,8 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
             result['configurationOverrides'] = self.configuration_overrides.to_map()
         if self.creator is not None:
             result['creator'] = self.creator
+        if self.cu_hours is not None:
+            result['cuHours'] = self.cu_hours
         if self.display_release_version is not None:
             result['displayReleaseVersion'] = self.display_release_version
         if self.end_time is not None:
@@ -3538,6 +3627,8 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
             result['jobRunId'] = self.job_run_id
         if self.log is not None:
             result['log'] = self.log.to_map()
+        if self.mb_seconds is not None:
+            result['mbSeconds'] = self.mb_seconds
         if self.name is not None:
             result['name'] = self.name
         if self.release_version is not None:
@@ -3552,6 +3643,8 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['tags'].append(k.to_map() if k else None)
+        if self.vcore_seconds is not None:
+            result['vcoreSeconds'] = self.vcore_seconds
         if self.web_ui is not None:
             result['webUI'] = self.web_ui
         if self.workspace_id is not None:
@@ -3567,6 +3660,8 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
             self.configuration_overrides = temp_model.from_map(m['configurationOverrides'])
         if m.get('creator') is not None:
             self.creator = m.get('creator')
+        if m.get('cuHours') is not None:
+            self.cu_hours = m.get('cuHours')
         if m.get('displayReleaseVersion') is not None:
             self.display_release_version = m.get('displayReleaseVersion')
         if m.get('endTime') is not None:
@@ -3583,6 +3678,8 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         if m.get('log') is not None:
             temp_model = RunLog()
             self.log = temp_model.from_map(m['log'])
+        if m.get('mbSeconds') is not None:
+            self.mb_seconds = m.get('mbSeconds')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('releaseVersion') is not None:
@@ -3599,6 +3696,8 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
             for k in m.get('tags'):
                 temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('vcoreSeconds') is not None:
+            self.vcore_seconds = m.get('vcoreSeconds')
         if m.get('webUI') is not None:
             self.web_ui = m.get('webUI')
         if m.get('workspaceId') is not None:
