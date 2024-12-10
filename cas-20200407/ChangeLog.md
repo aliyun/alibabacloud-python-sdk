@@ -1,3 +1,11 @@
+2024-12-10 Version: 2.0.3
+- Update API CreateCertificateForPackageRequest: add param Tags.
+- Update API CreateCertificateRequest: add param Tags.
+- Update API CreateCertificateWithCsrRequest: add param Tags.
+- Update API RenewCertificateOrderForPackageRequest: add param Tags.
+- Update API UploadUserCertificate: add param Tags.
+
+
 2024-11-22 Version: 2.0.2
 - Update API GetUserCertificateDetail: update response param.
 

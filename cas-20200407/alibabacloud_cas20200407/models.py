@@ -206,6 +206,39 @@ class CancelOrderRequestResponse(TeaModel):
         return self
 
 
+class CreateCertificateForPackageRequestRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateCertificateForPackageRequestRequest(TeaModel):
     def __init__(
         self,
@@ -215,6 +248,7 @@ class CreateCertificateForPackageRequestRequest(TeaModel):
         email: str = None,
         phone: str = None,
         product_code: str = None,
+        tags: List[CreateCertificateForPackageRequestRequestTags] = None,
         username: str = None,
         validate_type: str = None,
     ):
@@ -264,6 +298,7 @@ class CreateCertificateForPackageRequestRequest(TeaModel):
         # *   **cfca-ov-1-personal**: China Financial Certification Authority (CFCA) single-domain OV certificate, available only on the China site (aliyun.com).
         # *   **cfca-ev-w-advanced**: CFCA wildcard OV certificate, available only on the China site (aliyun.com).
         self.product_code = product_code
+        self.tags = tags
         # The name of the applicant.
         # 
         # If you do not specify this parameter, the information about the most recent contact that is added to the **Information Management** module is used. For more information about how to add a contact to the **Information Management** module, see [Manage contacts](https://help.aliyun.com/document_detail/198262.html).
@@ -277,7 +312,10 @@ class CreateCertificateForPackageRequestRequest(TeaModel):
         self.validate_type = validate_type
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -297,6 +335,10 @@ class CreateCertificateForPackageRequestRequest(TeaModel):
             result['Phone'] = self.phone
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.username is not None:
             result['Username'] = self.username
         if self.validate_type is not None:
@@ -317,6 +359,11 @@ class CreateCertificateForPackageRequestRequest(TeaModel):
             self.phone = m.get('Phone')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateCertificateForPackageRequestRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Username') is not None:
             self.username = m.get('Username')
         if m.get('ValidateType') is not None:
@@ -402,6 +449,39 @@ class CreateCertificateForPackageRequestResponse(TeaModel):
         return self
 
 
+class CreateCertificateRequestRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateCertificateRequestRequest(TeaModel):
     def __init__(
         self,
@@ -409,6 +489,7 @@ class CreateCertificateRequestRequest(TeaModel):
         email: str = None,
         phone: str = None,
         product_code: str = None,
+        tags: List[CreateCertificateRequestRequestTags] = None,
         username: str = None,
         validate_type: str = None,
     ):
@@ -436,6 +517,7 @@ class CreateCertificateRequestRequest(TeaModel):
         # *   **globalsign-dv-1-personal**: GlobalSign single-domain DV certificate.
         # *   **globalsign-dv-w-advanced**: GlobalSign wildcard DV certificate.
         self.product_code = product_code
+        self.tags = tags
         # The name of the applicant.
         # 
         # This parameter is required.
@@ -451,7 +533,10 @@ class CreateCertificateRequestRequest(TeaModel):
         self.validate_type = validate_type
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -467,6 +552,10 @@ class CreateCertificateRequestRequest(TeaModel):
             result['Phone'] = self.phone
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.username is not None:
             result['Username'] = self.username
         if self.validate_type is not None:
@@ -483,6 +572,11 @@ class CreateCertificateRequestRequest(TeaModel):
             self.phone = m.get('Phone')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateCertificateRequestRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Username') is not None:
             self.username = m.get('Username')
         if m.get('ValidateType') is not None:
@@ -568,6 +662,39 @@ class CreateCertificateRequestResponse(TeaModel):
         return self
 
 
+class CreateCertificateWithCsrRequestRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateCertificateWithCsrRequestRequest(TeaModel):
     def __init__(
         self,
@@ -575,6 +702,7 @@ class CreateCertificateWithCsrRequestRequest(TeaModel):
         email: str = None,
         phone: str = None,
         product_code: str = None,
+        tags: List[CreateCertificateWithCsrRequestRequestTags] = None,
         username: str = None,
         validate_type: str = None,
     ):
@@ -604,6 +732,7 @@ class CreateCertificateWithCsrRequestRequest(TeaModel):
         # *   **globalsign-dv-1-personal**: GlobalSign single-domain DV certificate.
         # *   **globalsign-dv-w-advanced**: GlobalSign wildcard DV certificate.
         self.product_code = product_code
+        self.tags = tags
         # The name of the applicant.
         # 
         # This parameter is required.
@@ -619,7 +748,10 @@ class CreateCertificateWithCsrRequestRequest(TeaModel):
         self.validate_type = validate_type
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -635,6 +767,10 @@ class CreateCertificateWithCsrRequestRequest(TeaModel):
             result['Phone'] = self.phone
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.username is not None:
             result['Username'] = self.username
         if self.validate_type is not None:
@@ -651,6 +787,11 @@ class CreateCertificateWithCsrRequestRequest(TeaModel):
             self.phone = m.get('Phone')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateCertificateWithCsrRequestRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Username') is not None:
             self.username = m.get('Username')
         if m.get('ValidateType') is not None:
@@ -7331,11 +7472,45 @@ class MoveResourceGroupResponse(TeaModel):
         return self
 
 
+class RenewCertificateOrderForPackageRequestRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class RenewCertificateOrderForPackageRequestRequest(TeaModel):
     def __init__(
         self,
         csr: str = None,
         order_id: int = None,
+        tags: List[RenewCertificateOrderForPackageRequestRequestTags] = None,
     ):
         # The content of the certificate signing request (CSR) file that is manually generated for the domain name by using OpenSSL or Keytool. The key algorithm in the CSR file must be Rivest-Shamir-Adleman (RSA) or elliptic-curve cryptography (ECC), and the key length of the RSA algorithm must be greater than or equal to 2,048 characters. For more information about how to create a CSR file, see [How do I create a CSR file?](https://help.aliyun.com/document_detail/42218.html)
         # 
@@ -7351,9 +7526,13 @@ class RenewCertificateOrderForPackageRequestRequest(TeaModel):
         # 
         # This parameter is required.
         self.order_id = order_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7365,6 +7544,10 @@ class RenewCertificateOrderForPackageRequestRequest(TeaModel):
             result['Csr'] = self.csr
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -7373,6 +7556,11 @@ class RenewCertificateOrderForPackageRequestRequest(TeaModel):
             self.csr = m.get('Csr')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = RenewCertificateOrderForPackageRequestRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -8213,6 +8401,39 @@ class UploadCsrResponse(TeaModel):
         return self
 
 
+class UploadUserCertificateRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class UploadUserCertificateRequest(TeaModel):
     def __init__(
         self,
@@ -8224,6 +8445,7 @@ class UploadUserCertificateRequest(TeaModel):
         resource_group_id: str = None,
         sign_cert: str = None,
         sign_private_key: str = None,
+        tags: List[UploadUserCertificateRequestTags] = None,
     ):
         # The content of the certificate in the PEM format.
         self.cert = cert
@@ -8243,9 +8465,13 @@ class UploadUserCertificateRequest(TeaModel):
         self.sign_cert = sign_cert
         # The private key of the signing certificate in the PEM format.
         self.sign_private_key = sign_private_key
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8269,6 +8495,10 @@ class UploadUserCertificateRequest(TeaModel):
             result['SignCert'] = self.sign_cert
         if self.sign_private_key is not None:
             result['SignPrivateKey'] = self.sign_private_key
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -8289,6 +8519,11 @@ class UploadUserCertificateRequest(TeaModel):
             self.sign_cert = m.get('SignCert')
         if m.get('SignPrivateKey') is not None:
             self.sign_private_key = m.get('SignPrivateKey')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = UploadUserCertificateRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 

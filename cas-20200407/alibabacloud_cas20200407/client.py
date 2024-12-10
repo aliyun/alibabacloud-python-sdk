@@ -332,6 +332,8 @@ class Client(OpenApiClient):
             query['Phone'] = request.phone
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.username):
             query['Username'] = request.username
         if not UtilClient.is_unset(request.validate_type):
@@ -385,6 +387,8 @@ class Client(OpenApiClient):
             query['Phone'] = request.phone
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.username):
             query['Username'] = request.username
         if not UtilClient.is_unset(request.validate_type):
@@ -469,6 +473,8 @@ class Client(OpenApiClient):
             query['Phone'] = request.phone
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.username):
             query['Username'] = request.username
         if not UtilClient.is_unset(request.validate_type):
@@ -519,6 +525,8 @@ class Client(OpenApiClient):
             query['Phone'] = request.phone
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.username):
             query['Username'] = request.username
         if not UtilClient.is_unset(request.validate_type):
@@ -605,6 +613,8 @@ class Client(OpenApiClient):
             query['Phone'] = request.phone
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.username):
             query['Username'] = request.username
         if not UtilClient.is_unset(request.validate_type):
@@ -655,6 +665,8 @@ class Client(OpenApiClient):
             query['Phone'] = request.phone
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.username):
             query['Username'] = request.username
         if not UtilClient.is_unset(request.validate_type):
@@ -3969,6 +3981,8 @@ class Client(OpenApiClient):
             query['Csr'] = request.csr
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4009,6 +4023,8 @@ class Client(OpenApiClient):
             query['Csr'] = request.csr
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4740,6 +4756,8 @@ class Client(OpenApiClient):
             query['SignCert'] = request.sign_cert
         if not UtilClient.is_unset(request.sign_private_key):
             query['SignPrivateKey'] = request.sign_private_key
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4791,6 +4809,8 @@ class Client(OpenApiClient):
             query['SignCert'] = request.sign_cert
         if not UtilClient.is_unset(request.sign_private_key):
             query['SignPrivateKey'] = request.sign_private_key
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
