@@ -1,3 +1,16 @@
+2024-12-10 Version: 2.0.3
+- Update API CreatePolicyBindings: update param PolicyBindingList.
+- Update API CreatePolicyV2: update param Rules.
+- Update API DescribeBackupPlans: update response param.
+- Update API DescribeClients: update param VaultId.
+- Update API DescribePoliciesV2: update response param.
+- Update API DescribePolicyBindings: update response param.
+- Update API SearchHistoricalSnapshots: update param Query.
+- Update API UninstallClient: update param VaultId.
+- Update API UpdatePolicyBinding: update param AdvancedOptions.
+- Update API UpdatePolicyV2: update param Rules.
+
+
 2024-11-13 Version: 2.0.2
 - Update API CreatePolicyBindings: update param PolicyBindingList.
 - Update API CreatePolicyV2: update param Rules.

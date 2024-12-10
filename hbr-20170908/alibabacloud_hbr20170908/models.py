@@ -8864,6 +8864,80 @@ class DescribeBackupPlansRequest(TeaModel):
         return self
 
 
+class DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags(TeaModel):
+    def __init__(
+        self,
+        hit_tag: List[DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag] = None,
+    ):
+        self.hit_tag = hit_tag
+
+    def validate(self):
+        if self.hit_tag:
+            for k in self.hit_tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HitTag'] = []
+        if self.hit_tag is not None:
+            for k in self.hit_tag:
+                result['HitTag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hit_tag = []
+        if m.get('HitTag') is not None:
+            for k in m.get('HitTag'):
+                temp_model = DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag()
+                self.hit_tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetailTableNames(TeaModel):
     def __init__(
         self,
@@ -9206,6 +9280,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         client_id: str = None,
         cluster_id: str = None,
         create_time: int = None,
+        created_by_tag: bool = None,
         created_time: int = None,
         cross_account_role_name: str = None,
         cross_account_type: str = None,
@@ -9218,6 +9293,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         disabled: bool = None,
         exclude: str = None,
         file_system_id: str = None,
+        hit_tags: DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags = None,
         include: str = None,
         instance_group_id: str = None,
         instance_id: str = None,
@@ -9254,6 +9330,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         self.cluster_id = cluster_id
         # This parameter is valid only when **SourceType** is set to **NAS**. This parameter indicates the time when the file system was created. This value is a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
+        self.created_by_tag = created_by_tag
         # The time when the backup plan was created. This value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
         # The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
@@ -9284,6 +9361,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         self.exclude = exclude
         # This parameter is valid only when **SourceType** is set to **NAS**. This parameter indicates the ID of the NAS file system.
         self.file_system_id = file_system_id
+        self.hit_tags = hit_tags
         # This parameter is valid only when **SourceType** is set to **ECS_FILE**. This parameter indicates the paths to the files that are backed up.
         self.include = include
         # The ID of the instance group.
@@ -9344,6 +9422,8 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         self.vault_id = vault_id
 
     def validate(self):
+        if self.hit_tags:
+            self.hit_tags.validate()
         if self.ots_detail:
             self.ots_detail.validate()
         if self.paths:
@@ -9375,6 +9455,8 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.created_by_tag is not None:
+            result['CreatedByTag'] = self.created_by_tag
         if self.created_time is not None:
             result['CreatedTime'] = self.created_time
         if self.cross_account_role_name is not None:
@@ -9399,6 +9481,8 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
             result['Exclude'] = self.exclude
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
+        if self.hit_tags is not None:
+            result['HitTags'] = self.hit_tags.to_map()
         if self.include is not None:
             result['Include'] = self.include
         if self.instance_group_id is not None:
@@ -9459,6 +9543,8 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('CreatedByTag') is not None:
+            self.created_by_tag = m.get('CreatedByTag')
         if m.get('CreatedTime') is not None:
             self.created_time = m.get('CreatedTime')
         if m.get('CrossAccountRoleName') is not None:
@@ -9483,6 +9569,9 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
             self.exclude = m.get('Exclude')
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
+        if m.get('HitTags') is not None:
+            temp_model = DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags()
+            self.hit_tags = temp_model.from_map(m['HitTags'])
         if m.get('Include') is not None:
             self.include = m.get('Include')
         if m.get('InstanceGroupId') is not None:
@@ -14159,6 +14248,7 @@ class DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetail(T
         inventory_cleanup_policy: str = None,
         inventory_id: str = None,
     ):
+        # 不在任务统计和失败文件列表中提示归档型对象
         self.ignore_archive_object = ignore_archive_object
         # Indicates whether the system deletes the inventory lists when a backup is completed. This parameter is valid only when OSS inventories are used. Valid values:
         # 
@@ -14380,8 +14470,14 @@ class DescribePolicyBindingsResponseBodyPolicyBindingsHitTags(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag-based matching rule.
+        # 
+        # *   **EQUAL**: Both the tag key and tag value are matched.
+        # *   **NOT**: The tag key is matched and the tag value is not matched.
         self.operator = operator
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -14436,6 +14532,7 @@ class DescribePolicyBindingsResponseBodyPolicyBindings(TeaModel):
     ):
         # The advanced options.
         self.advanced_options = advanced_options
+        # Indicates whether the resource is automatically associated with the related resource tag in the backup policy.
         self.created_by_tag = created_by_tag
         # The time when the backup policy was created. The value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
@@ -14457,6 +14554,7 @@ class DescribePolicyBindingsResponseBodyPolicyBindings(TeaModel):
         self.disabled = disabled
         # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
         self.exclude = exclude
+        # The matched tag rules.
         self.hit_tags = hit_tags
         # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
         self.include = include
