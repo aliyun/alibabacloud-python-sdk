@@ -1,3 +1,8 @@
+2024-12-10 Version: 1.0.8
+- Update API SmsConversion: add param To.
+- Update API SmsConversion: update param MessageId.
+
+
 2024-10-17 Version: 1.0.7
 - Update API BatchSendMessageToGlobe: add param ChannelId.
 

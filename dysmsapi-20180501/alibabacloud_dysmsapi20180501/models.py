@@ -1013,6 +1013,7 @@ class SmsConversionRequest(TeaModel):
         conversion_time: int = None,
         delivered: bool = None,
         message_id: str = None,
+        to: str = None,
     ):
         # The time when the OTP message was delivered. The value is a UNIX timestamp. Unit: milliseconds.
         # 
@@ -1024,9 +1025,8 @@ class SmsConversionRequest(TeaModel):
         # This parameter is required.
         self.delivered = delivered
         # The ID of the OTP message.
-        # 
-        # This parameter is required.
         self.message_id = message_id
+        self.to = to
 
     def validate(self):
         pass
@@ -1043,6 +1043,8 @@ class SmsConversionRequest(TeaModel):
             result['Delivered'] = self.delivered
         if self.message_id is not None:
             result['MessageId'] = self.message_id
+        if self.to is not None:
+            result['To'] = self.to
         return result
 
     def from_map(self, m: dict = None):
@@ -1053,6 +1055,8 @@ class SmsConversionRequest(TeaModel):
             self.delivered = m.get('Delivered')
         if m.get('MessageId') is not None:
             self.message_id = m.get('MessageId')
+        if m.get('To') is not None:
+            self.to = m.get('To')
         return self
 
 

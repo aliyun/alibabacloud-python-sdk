@@ -721,6 +721,8 @@ class Client(OpenApiClient):
             query['Delivered'] = request.delivered
         if not UtilClient.is_unset(request.message_id):
             query['MessageId'] = request.message_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -768,6 +770,8 @@ class Client(OpenApiClient):
             query['Delivered'] = request.delivered
         if not UtilClient.is_unset(request.message_id):
             query['MessageId'] = request.message_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
