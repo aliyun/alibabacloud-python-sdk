@@ -2311,7 +2311,9 @@ class CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs(TeaModel):
         region: str = None,
         vpc_id: str = None,
     ):
+        # The region where the VPC peer resides.
         self.region = region
+        # The ID of the VPC peer. To obtain the VPC ID, see [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -2344,7 +2346,9 @@ class CreateGatewayIntranetLinkedVpcPeerRequest(TeaModel):
         peer_vpcs: List[CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs] = None,
         vpc_id: str = None,
     ):
+        # The list of VPC peers.
         self.peer_vpcs = peer_vpcs
+        # The VPC ID. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -2385,7 +2389,9 @@ class CreateGatewayIntranetLinkedVpcPeerShrinkRequest(TeaModel):
         peer_vpcs_shrink: str = None,
         vpc_id: str = None,
     ):
+        # The list of VPC peers.
         self.peer_vpcs_shrink = peer_vpcs_shrink
+        # The VPC ID. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -2419,8 +2425,11 @@ class CreateGatewayIntranetLinkedVpcPeerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The ID of the private gateway.
         self.gateway_id = gateway_id
+        # The message that is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4625,7 +4634,9 @@ class DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs(TeaModel):
         region: str = None,
         vpc_id: str = None,
     ):
+        # The region where the VPC peer resides.
         self.region = region
+        # The ID of the VPC peer.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4658,7 +4669,9 @@ class DeleteGatewayIntranetLinkedVpcPeerRequest(TeaModel):
         peer_vpcs: List[DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs] = None,
         vpc_id: str = None,
     ):
+        # The VPC peer.
         self.peer_vpcs = peer_vpcs
+        # The ID of the associated VPC. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4699,7 +4712,9 @@ class DeleteGatewayIntranetLinkedVpcPeerShrinkRequest(TeaModel):
         peer_vpcs_shrink: str = None,
         vpc_id: str = None,
     ):
+        # The VPC peer.
         self.peer_vpcs_shrink = peer_vpcs_shrink
+        # The ID of the associated VPC. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4733,8 +4748,11 @@ class DeleteGatewayIntranetLinkedVpcPeerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The ID of the private gateway.
         self.gateway_id = gateway_id
+        # The message that is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6137,6 +6155,7 @@ class DescribeGatewayResponseBody(TeaModel):
         is_default: bool = None,
         replicas: int = None,
         request_id: str = None,
+        sslredirection_enabled: bool = None,
         status: str = None,
         update_time: str = None,
     ):
@@ -6179,6 +6198,7 @@ class DescribeGatewayResponseBody(TeaModel):
         self.replicas = replicas
         # The request ID.
         self.request_id = request_id
+        self.sslredirection_enabled = sslredirection_enabled
         # The status of the private gateway.
         # 
         # Valid values:
@@ -6227,6 +6247,8 @@ class DescribeGatewayResponseBody(TeaModel):
             result['Replicas'] = self.replicas
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.sslredirection_enabled is not None:
+            result['SSLRedirectionEnabled'] = self.sslredirection_enabled
         if self.status is not None:
             result['Status'] = self.status
         if self.update_time is not None:
@@ -6259,6 +6281,8 @@ class DescribeGatewayResponseBody(TeaModel):
             self.replicas = m.get('Replicas')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SSLRedirectionEnabled') is not None:
+            self.sslredirection_enabled = m.get('SSLRedirectionEnabled')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('UpdateTime') is not None:
@@ -6353,10 +6377,14 @@ class DescribeResourceResponseBody(TeaModel):
         self,
         cluster_id: str = None,
         cpu_count: int = None,
+        cpu_used: int = None,
         create_time: str = None,
         extra_data: str = None,
         gpu_count: int = None,
+        gpu_used: float = None,
         instance_count: int = None,
+        memory: int = None,
+        memory_used: int = None,
         message: str = None,
         owner_uid: str = None,
         post_paid_instance_count: int = None,
@@ -6372,14 +6400,18 @@ class DescribeResourceResponseBody(TeaModel):
         self.cluster_id = cluster_id
         # The total number of CPU cores.
         self.cpu_count = cpu_count
+        self.cpu_used = cpu_used
         # The time when the resource group was created.
         self.create_time = create_time
         # The additional information, such as the connection status of a virtual private cloud (VPC) and the log status of Log Service.
         self.extra_data = extra_data
         # The total number of GPUs.
         self.gpu_count = gpu_count
+        self.gpu_used = gpu_used
         # The total number of instances in the resource group.
         self.instance_count = instance_count
+        self.memory = memory
+        self.memory_used = memory_used
         # The returned message.
         self.message = message
         # The ID of the resource group owner.
@@ -6417,14 +6449,22 @@ class DescribeResourceResponseBody(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.cpu_count is not None:
             result['CpuCount'] = self.cpu_count
+        if self.cpu_used is not None:
+            result['CpuUsed'] = self.cpu_used
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.extra_data is not None:
             result['ExtraData'] = self.extra_data
         if self.gpu_count is not None:
             result['GpuCount'] = self.gpu_count
+        if self.gpu_used is not None:
+            result['GpuUsed'] = self.gpu_used
         if self.instance_count is not None:
             result['InstanceCount'] = self.instance_count
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.memory_used is not None:
+            result['MemoryUsed'] = self.memory_used
         if self.message is not None:
             result['Message'] = self.message
         if self.owner_uid is not None:
@@ -6453,14 +6493,22 @@ class DescribeResourceResponseBody(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('CpuCount') is not None:
             self.cpu_count = m.get('CpuCount')
+        if m.get('CpuUsed') is not None:
+            self.cpu_used = m.get('CpuUsed')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('ExtraData') is not None:
             self.extra_data = m.get('ExtraData')
         if m.get('GpuCount') is not None:
             self.gpu_count = m.get('GpuCount')
+        if m.get('GpuUsed') is not None:
+            self.gpu_used = m.get('GpuUsed')
         if m.get('InstanceCount') is not None:
             self.instance_count = m.get('InstanceCount')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('MemoryUsed') is not None:
+            self.memory_used = m.get('MemoryUsed')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('OwnerUid') is not None:
@@ -9220,6 +9268,7 @@ class ListGatewayResponseBodyGateways(TeaModel):
         intranet_domain: str = None,
         is_default: bool = None,
         replicas: int = None,
+        sslredirection_enabled: bool = None,
         status: str = None,
         update_time: str = None,
     ):
@@ -9246,6 +9295,7 @@ class ListGatewayResponseBodyGateways(TeaModel):
         self.is_default = is_default
         # The number of nodes in the private gateway.
         self.replicas = replicas
+        self.sslredirection_enabled = sslredirection_enabled
         # The state of the private gateway.
         # 
         # Valid values:
@@ -9290,6 +9340,8 @@ class ListGatewayResponseBodyGateways(TeaModel):
             result['IsDefault'] = self.is_default
         if self.replicas is not None:
             result['Replicas'] = self.replicas
+        if self.sslredirection_enabled is not None:
+            result['SSLRedirectionEnabled'] = self.sslredirection_enabled
         if self.status is not None:
             result['Status'] = self.status
         if self.update_time is not None:
@@ -9318,6 +9370,8 @@ class ListGatewayResponseBodyGateways(TeaModel):
             self.is_default = m.get('IsDefault')
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
+        if m.get('SSLRedirectionEnabled') is not None:
+            self.sslredirection_enabled = m.get('SSLRedirectionEnabled')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('UpdateTime') is not None:
@@ -9746,6 +9800,10 @@ class ListGatewayIntranetLinkedVpcPeerRequest(TeaModel):
         self,
         vpc_id: str = None,
     ):
+        # The ID of the associated VPC. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
+        # 
+        # *   If you specify a VPC ID, only VPC peers corresponding to the ID are queried.
+        # *   Otherwise, all VPC peers are queried.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -9774,7 +9832,9 @@ class ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs(TeaModel):
         region: str = None,
         vpc_id: str = None,
     ):
+        # The region where the VPC peer resides.
         self.region = region
+        # The ID of the VPC peer.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -9807,7 +9867,9 @@ class ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList(TeaModel):
         peer_vpcs: List[ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs] = None,
         vpc_id: str = None,
     ):
+        # The ID of the VPC peers.
         self.peer_vpcs = peer_vpcs
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -9849,8 +9911,11 @@ class ListGatewayIntranetLinkedVpcPeerResponseBody(TeaModel):
         peer_vpc_list: List[ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList] = None,
         request_id: str = None,
     ):
+        # The ID of the private gateway.
         self.gateway_id = gateway_id
+        # The list of VPC peers.
         self.peer_vpc_list = peer_vpc_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9926,6 +9991,80 @@ class ListGatewayIntranetLinkedVpcPeerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListGatewayIntranetLinkedVpcPeerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListGatewayIntranetSupportedZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        zones: List[str] = None,
+    ):
+        self.request_id = request_id
+        self.zones = zones
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.zones is not None:
+            result['Zones'] = self.zones
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Zones') is not None:
+            self.zones = m.get('Zones')
+        return self
+
+
+class ListGatewayIntranetSupportedZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListGatewayIntranetSupportedZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListGatewayIntranetSupportedZoneResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13487,6 +13626,7 @@ class UpdateGatewayRequest(TeaModel):
         self,
         enable_internet: bool = None,
         enable_intranet: bool = None,
+        enable_sslredirection: bool = None,
         instance_type: str = None,
         is_default: bool = None,
         name: str = None,
@@ -13514,6 +13654,7 @@ class UpdateGatewayRequest(TeaModel):
         self.enable_internet = enable_internet
         # Specifies whether to enable internal network access. Default value: true.
         self.enable_intranet = enable_intranet
+        self.enable_sslredirection = enable_sslredirection
         # The instance type used for the private gateway.
         self.instance_type = instance_type
         # Indicates whether it is the default private gateway.
@@ -13536,6 +13677,8 @@ class UpdateGatewayRequest(TeaModel):
             result['EnableInternet'] = self.enable_internet
         if self.enable_intranet is not None:
             result['EnableIntranet'] = self.enable_intranet
+        if self.enable_sslredirection is not None:
+            result['EnableSSLRedirection'] = self.enable_sslredirection
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
         if self.is_default is not None:
@@ -13552,6 +13695,8 @@ class UpdateGatewayRequest(TeaModel):
             self.enable_internet = m.get('EnableInternet')
         if m.get('EnableIntranet') is not None:
             self.enable_intranet = m.get('EnableIntranet')
+        if m.get('EnableSSLRedirection') is not None:
+            self.enable_sslredirection = m.get('EnableSSLRedirection')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
         if m.get('IsDefault') is not None:

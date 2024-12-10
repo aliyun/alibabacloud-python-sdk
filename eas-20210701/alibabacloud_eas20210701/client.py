@@ -1013,7 +1013,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse:
         """
-        @summary 创建网关内网访问端点跨VPC连接
+        @summary Creates a VPC peering connection on an internal endpoint of a gateway.
         
         @param tmp_req: CreateGatewayIntranetLinkedVpcPeerRequest
         @param headers: map
@@ -1059,7 +1059,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse:
         """
-        @summary 创建网关内网访问端点跨VPC连接
+        @summary Creates a VPC peering connection on an internal endpoint of a gateway.
         
         @param tmp_req: CreateGatewayIntranetLinkedVpcPeerRequest
         @param headers: map
@@ -1103,7 +1103,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerRequest,
     ) -> eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse:
         """
-        @summary 创建网关内网访问端点跨VPC连接
+        @summary Creates a VPC peering connection on an internal endpoint of a gateway.
         
         @param request: CreateGatewayIntranetLinkedVpcPeerRequest
         @return: CreateGatewayIntranetLinkedVpcPeerResponse
@@ -1119,7 +1119,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerRequest,
     ) -> eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse:
         """
-        @summary 创建网关内网访问端点跨VPC连接
+        @summary Creates a VPC peering connection on an internal endpoint of a gateway.
         
         @param request: CreateGatewayIntranetLinkedVpcPeerRequest
         @return: CreateGatewayIntranetLinkedVpcPeerResponse
@@ -2551,7 +2551,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse:
         """
-        @summary 删除网关内网访问端点跨VPC连接
+        @summary Deletes a VPC peering connection from an internal endpoint of a gateway.
         
         @param tmp_req: DeleteGatewayIntranetLinkedVpcPeerRequest
         @param headers: map
@@ -2597,7 +2597,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse:
         """
-        @summary 删除网关内网访问端点跨VPC连接
+        @summary Deletes a VPC peering connection from an internal endpoint of a gateway.
         
         @param tmp_req: DeleteGatewayIntranetLinkedVpcPeerRequest
         @param headers: map
@@ -2641,7 +2641,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerRequest,
     ) -> eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse:
         """
-        @summary 删除网关内网访问端点跨VPC连接
+        @summary Deletes a VPC peering connection from an internal endpoint of a gateway.
         
         @param request: DeleteGatewayIntranetLinkedVpcPeerRequest
         @return: DeleteGatewayIntranetLinkedVpcPeerResponse
@@ -2657,7 +2657,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerRequest,
     ) -> eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse:
         """
-        @summary 删除网关内网访问端点跨VPC连接
+        @summary Deletes a VPC peering connection from an internal endpoint of a gateway.
         
         @param request: DeleteGatewayIntranetLinkedVpcPeerRequest
         @return: DeleteGatewayIntranetLinkedVpcPeerResponse
@@ -6273,7 +6273,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse:
         """
-        @summary 获取网关内网访问端点跨VPC连接列表
+        @summary Obtains a list of all VPC peering connections on internal endpoint of a gateway.
         
         @param request: ListGatewayIntranetLinkedVpcPeerRequest
         @param headers: map
@@ -6313,7 +6313,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse:
         """
-        @summary 获取网关内网访问端点跨VPC连接列表
+        @summary Obtains a list of all VPC peering connections on internal endpoint of a gateway.
         
         @param request: ListGatewayIntranetLinkedVpcPeerRequest
         @param headers: map
@@ -6351,7 +6351,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.ListGatewayIntranetLinkedVpcPeerRequest,
     ) -> eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse:
         """
-        @summary 获取网关内网访问端点跨VPC连接列表
+        @summary Obtains a list of all VPC peering connections on internal endpoint of a gateway.
         
         @param request: ListGatewayIntranetLinkedVpcPeerRequest
         @return: ListGatewayIntranetLinkedVpcPeerResponse
@@ -6367,7 +6367,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.ListGatewayIntranetLinkedVpcPeerRequest,
     ) -> eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse:
         """
-        @summary 获取网关内网访问端点跨VPC连接列表
+        @summary Obtains a list of all VPC peering connections on internal endpoint of a gateway.
         
         @param request: ListGatewayIntranetLinkedVpcPeerRequest
         @return: ListGatewayIntranetLinkedVpcPeerResponse
@@ -6375,6 +6375,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_gateway_intranet_linked_vpc_peer_with_options_async(cluster_id, gateway_id, request, headers, runtime)
+
+    def list_gateway_intranet_supported_zone_with_options(
+        self,
+        gateway_id: str,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListGatewayIntranetSupportedZoneResponse:
+        """
+        @summary 获取网关内网支持的可用区
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayIntranetSupportedZoneResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListGatewayIntranetSupportedZone',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/intranet_supported_zone',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayIntranetSupportedZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_intranet_supported_zone_with_options_async(
+        self,
+        gateway_id: str,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListGatewayIntranetSupportedZoneResponse:
+        """
+        @summary 获取网关内网支持的可用区
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayIntranetSupportedZoneResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListGatewayIntranetSupportedZone',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/intranet_supported_zone',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayIntranetSupportedZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_intranet_supported_zone(
+        self,
+        gateway_id: str,
+        cluster_id: str,
+    ) -> eas_20210701_models.ListGatewayIntranetSupportedZoneResponse:
+        """
+        @summary 获取网关内网支持的可用区
+        
+        @return: ListGatewayIntranetSupportedZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_gateway_intranet_supported_zone_with_options(gateway_id, cluster_id, headers, runtime)
+
+    async def list_gateway_intranet_supported_zone_async(
+        self,
+        gateway_id: str,
+        cluster_id: str,
+    ) -> eas_20210701_models.ListGatewayIntranetSupportedZoneResponse:
+        """
+        @summary 获取网关内网支持的可用区
+        
+        @return: ListGatewayIntranetSupportedZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_gateway_intranet_supported_zone_with_options_async(gateway_id, cluster_id, headers, runtime)
 
     def list_groups_with_options(
         self,
@@ -8704,6 +8798,8 @@ class Client(OpenApiClient):
             body['EnableInternet'] = request.enable_internet
         if not UtilClient.is_unset(request.enable_intranet):
             body['EnableIntranet'] = request.enable_intranet
+        if not UtilClient.is_unset(request.enable_sslredirection):
+            body['EnableSSLRedirection'] = request.enable_sslredirection
         if not UtilClient.is_unset(request.instance_type):
             body['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.is_default):
@@ -8754,6 +8850,8 @@ class Client(OpenApiClient):
             body['EnableInternet'] = request.enable_internet
         if not UtilClient.is_unset(request.enable_intranet):
             body['EnableIntranet'] = request.enable_intranet
+        if not UtilClient.is_unset(request.enable_sslredirection):
+            body['EnableSSLRedirection'] = request.enable_sslredirection
         if not UtilClient.is_unset(request.instance_type):
             body['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.is_default):
