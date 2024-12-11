@@ -503,6 +503,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.alarm_config_shrink):
             query['AlarmConfig'] = request.alarm_config_shrink
+        if not UtilClient.is_unset(request.application_source):
+            query['ApplicationSource'] = request.application_source
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -558,6 +560,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.alarm_config_shrink):
             query['AlarmConfig'] = request.alarm_config_shrink
+        if not UtilClient.is_unset(request.application_source):
+            query['ApplicationSource'] = request.application_source
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -4449,6 +4453,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_template_with_options_async(request, runtime)
 
+    def get_template_parameter_constraints_with_options(
+        self,
+        request: oos_20190601_models.GetTemplateParameterConstraintsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetTemplateParameterConstraintsResponse:
+        """
+        @summary 获取参数可用值
+        
+        @param request: GetTemplateParameterConstraintsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateParameterConstraintsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_content):
+            query['TemplateContent'] = request.template_content
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTemplateParameterConstraints',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetTemplateParameterConstraintsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_template_parameter_constraints_with_options_async(
+        self,
+        request: oos_20190601_models.GetTemplateParameterConstraintsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetTemplateParameterConstraintsResponse:
+        """
+        @summary 获取参数可用值
+        
+        @param request: GetTemplateParameterConstraintsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateParameterConstraintsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_content):
+            query['TemplateContent'] = request.template_content
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTemplateParameterConstraints',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetTemplateParameterConstraintsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_template_parameter_constraints(
+        self,
+        request: oos_20190601_models.GetTemplateParameterConstraintsRequest,
+    ) -> oos_20190601_models.GetTemplateParameterConstraintsResponse:
+        """
+        @summary 获取参数可用值
+        
+        @param request: GetTemplateParameterConstraintsRequest
+        @return: GetTemplateParameterConstraintsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_template_parameter_constraints_with_options(request, runtime)
+
+    async def get_template_parameter_constraints_async(
+        self,
+        request: oos_20190601_models.GetTemplateParameterConstraintsRequest,
+    ) -> oos_20190601_models.GetTemplateParameterConstraintsResponse:
+        """
+        @summary 获取参数可用值
+        
+        @param request: GetTemplateParameterConstraintsRequest
+        @return: GetTemplateParameterConstraintsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_template_parameter_constraints_with_options_async(request, runtime)
+
     def list_actions_with_options(
         self,
         request: oos_20190601_models.ListActionsRequest,
@@ -5495,7 +5615,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListInstancePackageStatesResponse:
         """
-        @summary 列出实例软件包状态
+        @summary List Instance Package States
         
         @param request: ListInstancePackageStatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5538,7 +5658,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListInstancePackageStatesResponse:
         """
-        @summary 列出实例软件包状态
+        @summary List Instance Package States
         
         @param request: ListInstancePackageStatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5580,7 +5700,7 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListInstancePackageStatesRequest,
     ) -> oos_20190601_models.ListInstancePackageStatesResponse:
         """
-        @summary 列出实例软件包状态
+        @summary List Instance Package States
         
         @param request: ListInstancePackageStatesRequest
         @return: ListInstancePackageStatesResponse
@@ -5593,7 +5713,7 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListInstancePackageStatesRequest,
     ) -> oos_20190601_models.ListInstancePackageStatesResponse:
         """
-        @summary 列出实例软件包状态
+        @summary List Instance Package States
         
         @param request: ListInstancePackageStatesRequest
         @return: ListInstancePackageStatesResponse
@@ -9139,7 +9259,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateInstancePackageStateResponse:
         """
-        @summary 更新实例软件包状态
+        @summary Updates the installed extensions of an instance.
         
         @param tmp_req: UpdateInstancePackageStateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9188,7 +9308,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateInstancePackageStateResponse:
         """
-        @summary 更新实例软件包状态
+        @summary Updates the installed extensions of an instance.
         
         @param tmp_req: UpdateInstancePackageStateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9236,7 +9356,7 @@ class Client(OpenApiClient):
         request: oos_20190601_models.UpdateInstancePackageStateRequest,
     ) -> oos_20190601_models.UpdateInstancePackageStateResponse:
         """
-        @summary 更新实例软件包状态
+        @summary Updates the installed extensions of an instance.
         
         @param request: UpdateInstancePackageStateRequest
         @return: UpdateInstancePackageStateResponse
@@ -9249,7 +9369,7 @@ class Client(OpenApiClient):
         request: oos_20190601_models.UpdateInstancePackageStateRequest,
     ) -> oos_20190601_models.UpdateInstancePackageStateResponse:
         """
-        @summary 更新实例软件包状态
+        @summary Updates the installed extensions of an instance.
         
         @param request: UpdateInstancePackageStateRequest
         @return: UpdateInstancePackageStateResponse

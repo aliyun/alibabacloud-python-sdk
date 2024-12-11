@@ -649,6 +649,7 @@ class CreateApplicationRequest(TeaModel):
     def __init__(
         self,
         alarm_config: CreateApplicationRequestAlarmConfig = None,
+        application_source: str = None,
         client_token: str = None,
         description: str = None,
         name: str = None,
@@ -659,6 +660,7 @@ class CreateApplicationRequest(TeaModel):
     ):
         # The configurations of application alerts.
         self.alarm_config = alarm_config
+        self.application_source = application_source
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # The description of the application.
@@ -688,6 +690,8 @@ class CreateApplicationRequest(TeaModel):
         result = dict()
         if self.alarm_config is not None:
             result['AlarmConfig'] = self.alarm_config.to_map()
+        if self.application_source is not None:
+            result['ApplicationSource'] = self.application_source
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.description is not None:
@@ -709,6 +713,8 @@ class CreateApplicationRequest(TeaModel):
         if m.get('AlarmConfig') is not None:
             temp_model = CreateApplicationRequestAlarmConfig()
             self.alarm_config = temp_model.from_map(m['AlarmConfig'])
+        if m.get('ApplicationSource') is not None:
+            self.application_source = m.get('ApplicationSource')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
@@ -730,6 +736,7 @@ class CreateApplicationShrinkRequest(TeaModel):
     def __init__(
         self,
         alarm_config_shrink: str = None,
+        application_source: str = None,
         client_token: str = None,
         description: str = None,
         name: str = None,
@@ -740,6 +747,7 @@ class CreateApplicationShrinkRequest(TeaModel):
     ):
         # The configurations of application alerts.
         self.alarm_config_shrink = alarm_config_shrink
+        self.application_source = application_source
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # The description of the application.
@@ -768,6 +776,8 @@ class CreateApplicationShrinkRequest(TeaModel):
         result = dict()
         if self.alarm_config_shrink is not None:
             result['AlarmConfig'] = self.alarm_config_shrink
+        if self.application_source is not None:
+            result['ApplicationSource'] = self.application_source
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.description is not None:
@@ -788,6 +798,8 @@ class CreateApplicationShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AlarmConfig') is not None:
             self.alarm_config_shrink = m.get('AlarmConfig')
+        if m.get('ApplicationSource') is not None:
+            self.application_source = m.get('ApplicationSource')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
@@ -5945,6 +5957,7 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
     def __init__(
         self,
         application_name: str = None,
+        application_source: str = None,
         cms_group_id: str = None,
         create_date: str = None,
         deploy_outputs: str = None,
@@ -5962,6 +5975,7 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
     ):
         # The name of the application.
         self.application_name = application_name
+        self.application_source = application_source
         # The ID of the application group in CloudMonitor.
         self.cms_group_id = cms_group_id
         # The time when the application group was created.
@@ -5980,6 +5994,7 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
         self.import_tag_value = import_tag_value
         # The name of the application group.
         self.name = name
+        # The operation metadata.
         self.operation_metadata = operation_metadata
         # The creation progress of the application instance.
         self.progress = progress
@@ -6001,6 +6016,8 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
         result = dict()
         if self.application_name is not None:
             result['ApplicationName'] = self.application_name
+        if self.application_source is not None:
+            result['ApplicationSource'] = self.application_source
         if self.cms_group_id is not None:
             result['CmsGroupId'] = self.cms_group_id
         if self.create_date is not None:
@@ -6035,6 +6052,8 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
         m = m or dict()
         if m.get('ApplicationName') is not None:
             self.application_name = m.get('ApplicationName')
+        if m.get('ApplicationSource') is not None:
+            self.application_source = m.get('ApplicationSource')
         if m.get('CmsGroupId') is not None:
             self.cms_group_id = m.get('CmsGroupId')
         if m.get('CreateDate') is not None:
@@ -6072,7 +6091,7 @@ class GetApplicationGroupResponseBody(TeaModel):
         application_group: GetApplicationGroupResponseBodyApplicationGroup = None,
         request_id: str = None,
     ):
-        # The details of the application group.
+        # The information about the application group.
         self.application_group = application_group
         # The ID of the request.
         self.request_id = request_id
@@ -9206,6 +9225,137 @@ class GetTemplateResponse(TeaModel):
         return self
 
 
+class GetTemplateParameterConstraintsRequest(TeaModel):
+    def __init__(
+        self,
+        parameters: str = None,
+        region_id: str = None,
+        template_content: str = None,
+        template_name: str = None,
+        template_url: str = None,
+        template_version: str = None,
+    ):
+        self.parameters = parameters
+        self.region_id = region_id
+        self.template_content = template_content
+        self.template_name = template_name
+        self.template_url = template_url
+        self.template_version = template_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.template_content is not None:
+            result['TemplateContent'] = self.template_content
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.template_url is not None:
+            result['TemplateURL'] = self.template_url
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TemplateContent') is not None:
+            self.template_content = m.get('TemplateContent')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TemplateURL') is not None:
+            self.template_url = m.get('TemplateURL')
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
+        return self
+
+
+class GetTemplateParameterConstraintsResponseBody(TeaModel):
+    def __init__(
+        self,
+        parameter_constraints: Dict[str, Any] = None,
+        request_id: str = None,
+    ):
+        self.parameter_constraints = parameter_constraints
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_constraints is not None:
+            result['ParameterConstraints'] = self.parameter_constraints
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterConstraints') is not None:
+            self.parameter_constraints = m.get('ParameterConstraints')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetTemplateParameterConstraintsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTemplateParameterConstraintsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTemplateParameterConstraintsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListActionsRequest(TeaModel):
     def __init__(
         self,
@@ -10991,6 +11141,7 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
         self.last_trigger_time = last_trigger_time
         # The execution mode.
         self.mode = mode
+        # The next schedule time for timer trigger execution.
         self.next_schedule_time = next_schedule_time
         # The output of the execution.
         self.outputs = outputs
@@ -11722,11 +11873,17 @@ class ListInstancePackageStatesRequest(TeaModel):
         region_id: str = None,
         template_names: str = None,
     ):
+        # ECS instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page size.
         self.max_results = max_results
+        # Pagination token.
         self.next_token = next_token
+        # Region ID.
         self.region_id = region_id
+        # List of extension names
         self.template_names = template_names
 
     def validate(self):
@@ -11778,14 +11935,23 @@ class ListInstancePackageStatesResponseBodyPackageStates(TeaModel):
         template_version_name: str = None,
         update_time: str = None,
     ):
+        # Description
         self.description = description
+        # Parameters
         self.parameters = parameters
+        # Publisher
         self.publisher = publisher
+        # Template type
         self.template_category = template_category
+        # Template ID
         self.template_id = template_id
+        # Template name.
         self.template_name = template_name
+        # Template version number
         self.template_version = template_version
+        # Template version name
         self.template_version_name = template_version_name
+        # Update time.
         self.update_time = update_time
 
     def validate(self):
@@ -11848,10 +12014,13 @@ class ListInstancePackageStatesResponseBody(TeaModel):
         package_states: List[ListInstancePackageStatesResponseBodyPackageStates] = None,
         request_id: str = None,
     ):
+        # Page size.
         self.max_results = max_results
+        # Token string for pagination.
         self.next_token = next_token
+        # List of extensions
         self.package_states = package_states
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -16774,7 +16943,7 @@ class ListTemplatesRequest(TeaModel):
         self.created_date_before = created_date_before
         # Specifies whether to query the template that is configured with a trigger.
         self.has_trigger = has_trigger
-        # Specifies whether the template is an example template
+        # Specifies whether the template is an example template.
         self.is_example = is_example
         # Specifies whether the template is added to favorites.
         self.is_favorite = is_favorite
@@ -16947,7 +17116,7 @@ class ListTemplatesShrinkRequest(TeaModel):
         self.created_date_before = created_date_before
         # Specifies whether to query the template that is configured with a trigger.
         self.has_trigger = has_trigger
-        # Specifies whether the template is an example template
+        # Specifies whether the template is an example template.
         self.is_example = is_example
         # Specifies whether the template is added to favorites.
         self.is_favorite = is_favorite
@@ -17156,6 +17325,7 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         self.updated_by = updated_by
         # The time when the template was last updated.
         self.updated_date = updated_date
+        # The version name.
         self.version_name = version_name
 
     def validate(self):
@@ -19637,7 +19807,9 @@ class UpdateApplicationGroupRequest(TeaModel):
         self.name = name
         # The new name of the application group.
         self.new_name = new_name
+        # The name of the configuration update operation.
         self.operation_name = operation_name
+        # The JSON string that consists of a set of parameters. Default value: {}.
         self.parameters = parameters
         # The region ID. Set the value to cn-hangzhou.
         self.region_id = region_id
@@ -19702,7 +19874,9 @@ class UpdateApplicationGroupShrinkRequest(TeaModel):
         self.name = name
         # The new name of the application group.
         self.new_name = new_name
+        # The name of the configuration update operation.
         self.operation_name = operation_name
+        # The JSON string that consists of a set of parameters. Default value: {}.
         self.parameters_shrink = parameters_shrink
         # The region ID. Set the value to cn-hangzhou.
         self.region_id = region_id
@@ -20053,14 +20227,28 @@ class UpdateInstancePackageStateRequest(TeaModel):
         template_name: str = None,
         template_version: str = None,
     ):
+        # The operation type.
+        # 
+        # Valid values:
+        # 
+        # *   uninstall
+        # *   install
+        # 
         # This parameter is required.
         self.configure_action = configure_action
+        # The ID of the Elastic Compute Service (ECS) instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The parameters for installing or uninstalling the extensions.
         self.parameters = parameters
+        # The region ID.
         self.region_id = region_id
+        # The name of the template.
+        # 
         # This parameter is required.
         self.template_name = template_name
+        # The version of the template.
         self.template_version = template_version
 
     def validate(self):
@@ -20113,14 +20301,28 @@ class UpdateInstancePackageStateShrinkRequest(TeaModel):
         template_name: str = None,
         template_version: str = None,
     ):
+        # The operation type.
+        # 
+        # Valid values:
+        # 
+        # *   uninstall
+        # *   install
+        # 
         # This parameter is required.
         self.configure_action = configure_action
+        # The ID of the Elastic Compute Service (ECS) instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The parameters for installing or uninstalling the extensions.
         self.parameters_shrink = parameters_shrink
+        # The region ID.
         self.region_id = region_id
+        # The name of the template.
+        # 
         # This parameter is required.
         self.template_name = template_name
+        # The version of the template.
         self.template_version = template_version
 
     def validate(self):
@@ -20168,7 +20370,7 @@ class UpdateInstancePackageStateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
