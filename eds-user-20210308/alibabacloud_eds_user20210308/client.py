@@ -1188,6 +1188,8 @@ class Client(OpenApiClient):
             query['IncludeDesktopCount'] = request.include_desktop_count
         if not UtilClient.is_unset(request.include_desktop_group_count):
             query['IncludeDesktopGroupCount'] = request.include_desktop_group_count
+        if not UtilClient.is_unset(request.is_query_all_sub_orgs):
+            query['IsQueryAllSubOrgs'] = request.is_query_all_sub_orgs
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -1249,6 +1251,8 @@ class Client(OpenApiClient):
             query['IncludeDesktopCount'] = request.include_desktop_count
         if not UtilClient.is_unset(request.include_desktop_group_count):
             query['IncludeDesktopGroupCount'] = request.include_desktop_group_count
+        if not UtilClient.is_unset(request.is_query_all_sub_orgs):
+            query['IsQueryAllSubOrgs'] = request.is_query_all_sub_orgs
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):

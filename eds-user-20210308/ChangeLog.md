@@ -1,3 +1,8 @@
+2024-12-11 Version: 1.3.2
+- Update API CreateUsers: update param Users.
+- Update API FilterUsers: add param IsQueryAllSubOrgs.
+
+
 2024-11-07 Version: 1.3.1
 - Generated python 2021-03-08 for eds-user.
 

@@ -43,6 +43,253 @@ class GroupResources(TeaModel):
         return self
 
 
+class ThirdAppOidcSsoConfigEndpoints(TeaModel):
+    def __init__(
+        self,
+        authorization_endpoint: str = None,
+        discovery_endpoint: str = None,
+        guest_authorization_endpoint: str = None,
+        issuer: str = None,
+        jwks_endpoint: str = None,
+        logout_endpoint: str = None,
+        revoke_endpoint: str = None,
+        token_endpoint: str = None,
+        userinfo_endpoint: str = None,
+    ):
+        self.authorization_endpoint = authorization_endpoint
+        self.discovery_endpoint = discovery_endpoint
+        self.guest_authorization_endpoint = guest_authorization_endpoint
+        self.issuer = issuer
+        self.jwks_endpoint = jwks_endpoint
+        self.logout_endpoint = logout_endpoint
+        self.revoke_endpoint = revoke_endpoint
+        self.token_endpoint = token_endpoint
+        self.userinfo_endpoint = userinfo_endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_endpoint is not None:
+            result['AuthorizationEndpoint'] = self.authorization_endpoint
+        if self.discovery_endpoint is not None:
+            result['DiscoveryEndpoint'] = self.discovery_endpoint
+        if self.guest_authorization_endpoint is not None:
+            result['GuestAuthorizationEndpoint'] = self.guest_authorization_endpoint
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.jwks_endpoint is not None:
+            result['JwksEndpoint'] = self.jwks_endpoint
+        if self.logout_endpoint is not None:
+            result['LogoutEndpoint'] = self.logout_endpoint
+        if self.revoke_endpoint is not None:
+            result['RevokeEndpoint'] = self.revoke_endpoint
+        if self.token_endpoint is not None:
+            result['TokenEndpoint'] = self.token_endpoint
+        if self.userinfo_endpoint is not None:
+            result['UserinfoEndpoint'] = self.userinfo_endpoint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationEndpoint') is not None:
+            self.authorization_endpoint = m.get('AuthorizationEndpoint')
+        if m.get('DiscoveryEndpoint') is not None:
+            self.discovery_endpoint = m.get('DiscoveryEndpoint')
+        if m.get('GuestAuthorizationEndpoint') is not None:
+            self.guest_authorization_endpoint = m.get('GuestAuthorizationEndpoint')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('JwksEndpoint') is not None:
+            self.jwks_endpoint = m.get('JwksEndpoint')
+        if m.get('LogoutEndpoint') is not None:
+            self.logout_endpoint = m.get('LogoutEndpoint')
+        if m.get('RevokeEndpoint') is not None:
+            self.revoke_endpoint = m.get('RevokeEndpoint')
+        if m.get('TokenEndpoint') is not None:
+            self.token_endpoint = m.get('TokenEndpoint')
+        if m.get('UserinfoEndpoint') is not None:
+            self.userinfo_endpoint = m.get('UserinfoEndpoint')
+        return self
+
+
+class ThirdAppOidcSsoConfig(TeaModel):
+    def __init__(
+        self,
+        access_token_effective_time: int = None,
+        code_effective_time: int = None,
+        enable_auth_login: bool = None,
+        endpoints: ThirdAppOidcSsoConfigEndpoints = None,
+        grant_scopes: List[str] = None,
+        grant_types: List[str] = None,
+        id_token_algorithm_type: int = None,
+        id_token_effective_time: int = None,
+        redirect_uris: List[str] = None,
+        refresh_token_effective: int = None,
+    ):
+        self.access_token_effective_time = access_token_effective_time
+        self.code_effective_time = code_effective_time
+        self.enable_auth_login = enable_auth_login
+        self.endpoints = endpoints
+        self.grant_scopes = grant_scopes
+        self.grant_types = grant_types
+        self.id_token_algorithm_type = id_token_algorithm_type
+        self.id_token_effective_time = id_token_effective_time
+        self.redirect_uris = redirect_uris
+        self.refresh_token_effective = refresh_token_effective
+
+    def validate(self):
+        if self.endpoints:
+            self.endpoints.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token_effective_time is not None:
+            result['AccessTokenEffectiveTime'] = self.access_token_effective_time
+        if self.code_effective_time is not None:
+            result['CodeEffectiveTime'] = self.code_effective_time
+        if self.enable_auth_login is not None:
+            result['EnableAuthLogin'] = self.enable_auth_login
+        if self.endpoints is not None:
+            result['Endpoints'] = self.endpoints.to_map()
+        if self.grant_scopes is not None:
+            result['GrantScopes'] = self.grant_scopes
+        if self.grant_types is not None:
+            result['GrantTypes'] = self.grant_types
+        if self.id_token_algorithm_type is not None:
+            result['IdTokenAlgorithmType'] = self.id_token_algorithm_type
+        if self.id_token_effective_time is not None:
+            result['IdTokenEffectiveTime'] = self.id_token_effective_time
+        if self.redirect_uris is not None:
+            result['RedirectUris'] = self.redirect_uris
+        if self.refresh_token_effective is not None:
+            result['RefreshTokenEffective'] = self.refresh_token_effective
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessTokenEffectiveTime') is not None:
+            self.access_token_effective_time = m.get('AccessTokenEffectiveTime')
+        if m.get('CodeEffectiveTime') is not None:
+            self.code_effective_time = m.get('CodeEffectiveTime')
+        if m.get('EnableAuthLogin') is not None:
+            self.enable_auth_login = m.get('EnableAuthLogin')
+        if m.get('Endpoints') is not None:
+            temp_model = ThirdAppOidcSsoConfigEndpoints()
+            self.endpoints = temp_model.from_map(m['Endpoints'])
+        if m.get('GrantScopes') is not None:
+            self.grant_scopes = m.get('GrantScopes')
+        if m.get('GrantTypes') is not None:
+            self.grant_types = m.get('GrantTypes')
+        if m.get('IdTokenAlgorithmType') is not None:
+            self.id_token_algorithm_type = m.get('IdTokenAlgorithmType')
+        if m.get('IdTokenEffectiveTime') is not None:
+            self.id_token_effective_time = m.get('IdTokenEffectiveTime')
+        if m.get('RedirectUris') is not None:
+            self.redirect_uris = m.get('RedirectUris')
+        if m.get('RefreshTokenEffective') is not None:
+            self.refresh_token_effective = m.get('RefreshTokenEffective')
+        return self
+
+
+class ThirdAppSecrets(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        secret: str = None,
+    ):
+        self.enable = enable
+        self.secret = secret
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.secret is not None:
+            result['Secret'] = self.secret
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Secret') is not None:
+            self.secret = m.get('Secret')
+        return self
+
+
+class ThirdApp(TeaModel):
+    def __init__(
+        self,
+        app_key: str = None,
+        name: str = None,
+        oidc_sso_config: ThirdAppOidcSsoConfig = None,
+        secrets: List[ThirdAppSecrets] = None,
+    ):
+        self.app_key = app_key
+        self.name = name
+        self.oidc_sso_config = oidc_sso_config
+        self.secrets = secrets
+
+    def validate(self):
+        if self.oidc_sso_config:
+            self.oidc_sso_config.validate()
+        if self.secrets:
+            for k in self.secrets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oidc_sso_config is not None:
+            result['OidcSsoConfig'] = self.oidc_sso_config.to_map()
+        result['Secrets'] = []
+        if self.secrets is not None:
+            for k in self.secrets:
+                result['Secrets'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OidcSsoConfig') is not None:
+            temp_model = ThirdAppOidcSsoConfig()
+            self.oidc_sso_config = temp_model.from_map(m['OidcSsoConfig'])
+        self.secrets = []
+        if m.get('Secrets') is not None:
+            for k in m.get('Secrets'):
+                temp_model = ThirdAppSecrets()
+                self.secrets.append(temp_model.from_map(k))
+        return self
+
+
 class WaIdPermissions(TeaModel):
     def __init__(
         self,
@@ -2505,6 +2752,7 @@ class FilterUsersRequest(TeaModel):
         filter: str = None,
         include_desktop_count: bool = None,
         include_desktop_group_count: bool = None,
+        is_query_all_sub_orgs: bool = None,
         max_results: int = None,
         next_token: str = None,
         order_param: FilterUsersRequestOrderParam = None,
@@ -2558,6 +2806,7 @@ class FilterUsersRequest(TeaModel):
         # 
         #     <!-- -->
         self.include_desktop_group_count = include_desktop_group_count
+        self.is_query_all_sub_orgs = is_query_all_sub_orgs
         # The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
@@ -2600,6 +2849,8 @@ class FilterUsersRequest(TeaModel):
             result['IncludeDesktopCount'] = self.include_desktop_count
         if self.include_desktop_group_count is not None:
             result['IncludeDesktopGroupCount'] = self.include_desktop_group_count
+        if self.is_query_all_sub_orgs is not None:
+            result['IsQueryAllSubOrgs'] = self.is_query_all_sub_orgs
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -2632,6 +2883,8 @@ class FilterUsersRequest(TeaModel):
             self.include_desktop_count = m.get('IncludeDesktopCount')
         if m.get('IncludeDesktopGroupCount') is not None:
             self.include_desktop_group_count = m.get('IncludeDesktopGroupCount')
+        if m.get('IsQueryAllSubOrgs') is not None:
+            self.is_query_all_sub_orgs = m.get('IsQueryAllSubOrgs')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -2735,6 +2988,7 @@ class FilterUsersShrinkRequest(TeaModel):
         filter: str = None,
         include_desktop_count: bool = None,
         include_desktop_group_count: bool = None,
+        is_query_all_sub_orgs: bool = None,
         max_results: int = None,
         next_token: str = None,
         order_param_shrink: str = None,
@@ -2788,6 +3042,7 @@ class FilterUsersShrinkRequest(TeaModel):
         # 
         #     <!-- -->
         self.include_desktop_group_count = include_desktop_group_count
+        self.is_query_all_sub_orgs = is_query_all_sub_orgs
         # The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
@@ -2828,6 +3083,8 @@ class FilterUsersShrinkRequest(TeaModel):
             result['IncludeDesktopCount'] = self.include_desktop_count
         if self.include_desktop_group_count is not None:
             result['IncludeDesktopGroupCount'] = self.include_desktop_group_count
+        if self.is_query_all_sub_orgs is not None:
+            result['IsQueryAllSubOrgs'] = self.is_query_all_sub_orgs
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -2860,6 +3117,8 @@ class FilterUsersShrinkRequest(TeaModel):
             self.include_desktop_count = m.get('IncludeDesktopCount')
         if m.get('IncludeDesktopGroupCount') is not None:
             self.include_desktop_group_count = m.get('IncludeDesktopGroupCount')
+        if m.get('IsQueryAllSubOrgs') is not None:
+            self.is_query_all_sub_orgs = m.get('IsQueryAllSubOrgs')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
