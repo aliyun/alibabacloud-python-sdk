@@ -1,3 +1,15 @@
+2024-12-11 Version: 1.2.4
+- Update API CreateRules: update param Rules.
+- Update API CreateRules: update param Rules.
+- Update API CreateServerGroup: add param CrossZoneEnabled.
+- Update API DeleteRules: update param RuleIds.
+- Update API ListServerGroups: update response param.
+- Update API UpdateRulesAttribute: update param Rules.
+- Update API UpdateRulesAttribute: update param Rules.
+- Update API UpdateRulesAttribute: update response param.
+- Update API UpdateServerGroupAttribute: add param CrossZoneEnabled.
+
+
 2024-11-04 Version: 1.2.3
 - Update API GetLoadBalancerAttribute: update response param.
 

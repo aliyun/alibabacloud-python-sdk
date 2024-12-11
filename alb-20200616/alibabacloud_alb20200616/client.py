@@ -1887,10 +1887,15 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.listener_id):
             query['ListenerId'] = request.listener_id
+        body = {}
+        body_flat = {}
         if not UtilClient.is_unset(request.rules):
-            query['Rules'] = request.rules
+            body_flat['Rules'] = request.rules
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateRules',
@@ -1938,10 +1943,15 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.listener_id):
             query['ListenerId'] = request.listener_id
+        body = {}
+        body_flat = {}
         if not UtilClient.is_unset(request.rules):
-            query['Rules'] = request.rules
+            body_flat['Rules'] = request.rules
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateRules',
@@ -2147,6 +2157,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_drain_config):
             query['ConnectionDrainConfig'] = request.connection_drain_config
+        if not UtilClient.is_unset(request.cross_zone_enabled):
+            query['CrossZoneEnabled'] = request.cross_zone_enabled
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.health_check_config):
@@ -2216,6 +2228,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_drain_config):
             query['ConnectionDrainConfig'] = request.connection_drain_config
+        if not UtilClient.is_unset(request.cross_zone_enabled):
+            query['CrossZoneEnabled'] = request.cross_zone_enabled
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.health_check_config):
@@ -9772,10 +9786,15 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        body = {}
+        body_flat = {}
         if not UtilClient.is_unset(request.rules):
-            query['Rules'] = request.rules
+            body_flat['Rules'] = request.rules
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateRulesAttribute',
@@ -9818,10 +9837,15 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        body = {}
+        body_flat = {}
         if not UtilClient.is_unset(request.rules):
-            query['Rules'] = request.rules
+            body_flat['Rules'] = request.rules
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateRulesAttribute',
@@ -10038,6 +10062,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_drain_config):
             query['ConnectionDrainConfig'] = request.connection_drain_config
+        if not UtilClient.is_unset(request.cross_zone_enabled):
+            query['CrossZoneEnabled'] = request.cross_zone_enabled
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.health_check_config):
@@ -10100,6 +10126,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_drain_config):
             query['ConnectionDrainConfig'] = request.connection_drain_config
+        if not UtilClient.is_unset(request.cross_zone_enabled):
+            query['CrossZoneEnabled'] = request.cross_zone_enabled
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.health_check_config):
