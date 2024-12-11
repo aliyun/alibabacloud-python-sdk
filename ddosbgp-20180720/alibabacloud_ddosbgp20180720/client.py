@@ -4717,6 +4717,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_remark_with_options_async(request, runtime)
 
+    def move_resource_group_with_options(
+        self,
+        request: ddosbgp_20180720_models.MoveResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.MoveResourceGroupResponse:
+        """
+        @summary 移动资源组
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.MoveResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_resource_group_with_options_async(
+        self,
+        request: ddosbgp_20180720_models.MoveResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.MoveResourceGroupResponse:
+        """
+        @summary 移动资源组
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.MoveResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_resource_group(
+        self,
+        request: ddosbgp_20180720_models.MoveResourceGroupRequest,
+    ) -> ddosbgp_20180720_models.MoveResourceGroupResponse:
+        """
+        @summary 移动资源组
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.move_resource_group_with_options(request, runtime)
+
+    async def move_resource_group_async(
+        self,
+        request: ddosbgp_20180720_models.MoveResourceGroupRequest,
+    ) -> ddosbgp_20180720_models.MoveResourceGroupResponse:
+        """
+        @summary 移动资源组
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.move_resource_group_with_options_async(request, runtime)
+
     def query_schedrule_on_demand_with_options(
         self,
         request: ddosbgp_20180720_models.QuerySchedruleOnDemandRequest,

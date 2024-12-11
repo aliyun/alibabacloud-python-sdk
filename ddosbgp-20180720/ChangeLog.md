@@ -1,3 +1,7 @@
+2024-12-11 Version: 2.8.0
+- Support API MoveResourceGroup.
+
+
 2024-11-15 Version: 2.7.4
 - Update API DescribeInstanceList: update response param.
 - Update API DescribeOpEntities: add param OpAction.
