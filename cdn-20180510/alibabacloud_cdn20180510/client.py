@@ -17231,8 +17231,6 @@ class Client(OpenApiClient):
         """
         @summary Queries all real-time log delivery tasks within your Alibaba Cloud account.
         
-        @description \\\\* \\*\\*\
-        
         @param request: ListRealtimeLogDeliveryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListRealtimeLogDeliveryResponse
@@ -17261,8 +17259,6 @@ class Client(OpenApiClient):
         """
         @summary Queries all real-time log delivery tasks within your Alibaba Cloud account.
         
-        @description \\\\* \\*\\*\
-        
         @param request: ListRealtimeLogDeliveryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListRealtimeLogDeliveryResponse
@@ -17288,8 +17284,6 @@ class Client(OpenApiClient):
         """
         @summary Queries all real-time log delivery tasks within your Alibaba Cloud account.
         
-        @description \\\\* \\*\\*\
-        
         @return: ListRealtimeLogDeliveryResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -17298,8 +17292,6 @@ class Client(OpenApiClient):
     async def list_realtime_log_delivery_async(self) -> cdn_20180510_models.ListRealtimeLogDeliveryResponse:
         """
         @summary Queries all real-time log delivery tasks within your Alibaba Cloud account.
-        
-        @description \\\\* \\*\\*\
         
         @return: ListRealtimeLogDeliveryResponse
         """

@@ -1,3 +1,8 @@
+2024-12-11 Version: 4.2.1
+- Update API ListTagResources: update param Tag.
+- Update API TagResources: update param Tag.
+
+
 2024-11-19 Version: 4.2.0
 - Support API DescribeCustomDomainSampleRate.
 - Support API ListRealtimeLogDelivery.
