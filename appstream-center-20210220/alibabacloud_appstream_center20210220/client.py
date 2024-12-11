@@ -418,6 +418,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_login_token_with_options_async(request, runtime)
 
+    def get_sts_token_with_options(
+        self,
+        request: appstream_center_20210220_models.GetStsTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210220_models.GetStsTokenResponse:
+        """
+        @summary 获取无影StsToken
+        
+        @param request: GetStsTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStsTokenResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_code):
+            body['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.client_id):
+            body['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_ip):
+            body['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.client_os):
+            body['ClientOS'] = request.client_os
+        if not UtilClient.is_unset(request.client_version):
+            body['ClientVersion'] = request.client_version
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetStsToken',
+            version='2021-02-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210220_models.GetStsTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sts_token_with_options_async(
+        self,
+        request: appstream_center_20210220_models.GetStsTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210220_models.GetStsTokenResponse:
+        """
+        @summary 获取无影StsToken
+        
+        @param request: GetStsTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStsTokenResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_code):
+            body['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.client_id):
+            body['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_ip):
+            body['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.client_os):
+            body['ClientOS'] = request.client_os
+        if not UtilClient.is_unset(request.client_version):
+            body['ClientVersion'] = request.client_version
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetStsToken',
+            version='2021-02-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210220_models.GetStsTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sts_token(
+        self,
+        request: appstream_center_20210220_models.GetStsTokenRequest,
+    ) -> appstream_center_20210220_models.GetStsTokenResponse:
+        """
+        @summary 获取无影StsToken
+        
+        @param request: GetStsTokenRequest
+        @return: GetStsTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_sts_token_with_options(request, runtime)
+
+    async def get_sts_token_async(
+        self,
+        request: appstream_center_20210220_models.GetStsTokenRequest,
+    ) -> appstream_center_20210220_models.GetStsTokenResponse:
+        """
+        @summary 获取无影StsToken
+        
+        @param request: GetStsTokenRequest
+        @return: GetStsTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sts_token_with_options_async(request, runtime)
+
     def refresh_login_token_with_options(
         self,
         request: appstream_center_20210220_models.RefreshLoginTokenRequest,

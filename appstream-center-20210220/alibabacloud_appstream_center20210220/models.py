@@ -1276,6 +1276,179 @@ class GetLoginTokenResponse(TeaModel):
         return self
 
 
+class GetStsTokenRequest(TeaModel):
+    def __init__(
+        self,
+        auth_code: str = None,
+        client_id: str = None,
+        client_ip: str = None,
+        client_os: str = None,
+        client_version: str = None,
+        uuid: str = None,
+    ):
+        # This parameter is required.
+        self.auth_code = auth_code
+        self.client_id = client_id
+        self.client_ip = client_ip
+        self.client_os = client_os
+        self.client_version = client_version
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_code is not None:
+            result['AuthCode'] = self.auth_code
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.client_os is not None:
+            result['ClientOS'] = self.client_os
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthCode') is not None:
+            self.auth_code = m.get('AuthCode')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('ClientOS') is not None:
+            self.client_os = m.get('ClientOS')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class GetStsTokenResponseBodyStsTokenModel(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+        sts_token: str = None,
+        tenant_id: int = None,
+    ):
+        self.session_id = session_id
+        self.sts_token = sts_token
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.sts_token is not None:
+            result['StsToken'] = self.sts_token
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('StsToken') is not None:
+            self.sts_token = m.get('StsToken')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class GetStsTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        sts_token_model: GetStsTokenResponseBodyStsTokenModel = None,
+    ):
+        self.request_id = request_id
+        self.sts_token_model = sts_token_model
+
+    def validate(self):
+        if self.sts_token_model:
+            self.sts_token_model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sts_token_model is not None:
+            result['StsTokenModel'] = self.sts_token_model.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StsTokenModel') is not None:
+            temp_model = GetStsTokenResponseBodyStsTokenModel()
+            self.sts_token_model = temp_model.from_map(m['StsTokenModel'])
+        return self
+
+
+class GetStsTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetStsTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetStsTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RefreshLoginTokenRequest(TeaModel):
     def __init__(
         self,
