@@ -295,6 +295,8 @@ class Client(OpenApiClient):
             request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.hot_topics):
             request.hot_topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hot_topics, 'hotTopics', 'json')
+        if not UtilClient.is_unset(tmp_req.messages):
+            request.messages_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.messages, 'messages', 'json')
         if not UtilClient.is_unset(tmp_req.step_for_broadcast_content_config):
             request.step_for_broadcast_content_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.step_for_broadcast_content_config, 'stepForBroadcastContentConfig', 'json')
         body = {}
@@ -308,6 +310,8 @@ class Client(OpenApiClient):
             body['hotTopics'] = request.hot_topics_shrink
         if not UtilClient.is_unset(request.image_count):
             body['imageCount'] = request.image_count
+        if not UtilClient.is_unset(request.messages_shrink):
+            body['messages'] = request.messages_shrink
         if not UtilClient.is_unset(request.model_custom_prompt_template):
             body['modelCustomPromptTemplate'] = request.model_custom_prompt_template
         if not UtilClient.is_unset(request.model_id):
@@ -362,6 +366,8 @@ class Client(OpenApiClient):
             request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.hot_topics):
             request.hot_topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hot_topics, 'hotTopics', 'json')
+        if not UtilClient.is_unset(tmp_req.messages):
+            request.messages_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.messages, 'messages', 'json')
         if not UtilClient.is_unset(tmp_req.step_for_broadcast_content_config):
             request.step_for_broadcast_content_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.step_for_broadcast_content_config, 'stepForBroadcastContentConfig', 'json')
         body = {}
@@ -375,6 +381,8 @@ class Client(OpenApiClient):
             body['hotTopics'] = request.hot_topics_shrink
         if not UtilClient.is_unset(request.image_count):
             body['imageCount'] = request.image_count
+        if not UtilClient.is_unset(request.messages_shrink):
+            body['messages'] = request.messages_shrink
         if not UtilClient.is_unset(request.model_custom_prompt_template):
             body['modelCustomPromptTemplate'] = request.model_custom_prompt_template
         if not UtilClient.is_unset(request.model_id):

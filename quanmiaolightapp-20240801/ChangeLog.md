@@ -1,3 +1,7 @@
+2024-12-11 Version: 2.0.1
+- Update API RunHotTopicChat: add param messages.
+
+
 2024-12-05 Version: 2.0.0
 - Delete API RunCommentGeneration.
 - Update API RunHotTopicChat: update response param.

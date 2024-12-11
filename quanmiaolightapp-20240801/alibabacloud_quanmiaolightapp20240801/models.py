@@ -741,6 +741,45 @@ class ListHotTopicSummariesResponse(TeaModel):
         return self
 
 
+class RunHotTopicChatRequestMessages(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        create_time: str = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.create_time = create_time
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
 class RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights(TeaModel):
     def __init__(
         self,
@@ -829,6 +868,7 @@ class RunHotTopicChatRequest(TeaModel):
         hot_topic_version: str = None,
         hot_topics: List[str] = None,
         image_count: int = None,
+        messages: List[RunHotTopicChatRequestMessages] = None,
         model_custom_prompt_template: str = None,
         model_id: str = None,
         original_session_id: str = None,
@@ -841,6 +881,7 @@ class RunHotTopicChatRequest(TeaModel):
         self.hot_topic_version = hot_topic_version
         self.hot_topics = hot_topics
         self.image_count = image_count
+        self.messages = messages
         self.model_custom_prompt_template = model_custom_prompt_template
         self.model_id = model_id
         self.original_session_id = original_session_id
@@ -849,6 +890,10 @@ class RunHotTopicChatRequest(TeaModel):
         self.task_id = task_id
 
     def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
         if self.step_for_broadcast_content_config:
             self.step_for_broadcast_content_config.validate()
 
@@ -868,6 +913,10 @@ class RunHotTopicChatRequest(TeaModel):
             result['hotTopics'] = self.hot_topics
         if self.image_count is not None:
             result['imageCount'] = self.image_count
+        result['messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['messages'].append(k.to_map() if k else None)
         if self.model_custom_prompt_template is not None:
             result['modelCustomPromptTemplate'] = self.model_custom_prompt_template
         if self.model_id is not None:
@@ -894,6 +943,11 @@ class RunHotTopicChatRequest(TeaModel):
             self.hot_topics = m.get('hotTopics')
         if m.get('imageCount') is not None:
             self.image_count = m.get('imageCount')
+        self.messages = []
+        if m.get('messages') is not None:
+            for k in m.get('messages'):
+                temp_model = RunHotTopicChatRequestMessages()
+                self.messages.append(temp_model.from_map(k))
         if m.get('modelCustomPromptTemplate') is not None:
             self.model_custom_prompt_template = m.get('modelCustomPromptTemplate')
         if m.get('modelId') is not None:
@@ -918,6 +972,7 @@ class RunHotTopicChatShrinkRequest(TeaModel):
         hot_topic_version: str = None,
         hot_topics_shrink: str = None,
         image_count: int = None,
+        messages_shrink: str = None,
         model_custom_prompt_template: str = None,
         model_id: str = None,
         original_session_id: str = None,
@@ -930,6 +985,7 @@ class RunHotTopicChatShrinkRequest(TeaModel):
         self.hot_topic_version = hot_topic_version
         self.hot_topics_shrink = hot_topics_shrink
         self.image_count = image_count
+        self.messages_shrink = messages_shrink
         self.model_custom_prompt_template = model_custom_prompt_template
         self.model_id = model_id
         self.original_session_id = original_session_id
@@ -956,6 +1012,8 @@ class RunHotTopicChatShrinkRequest(TeaModel):
             result['hotTopics'] = self.hot_topics_shrink
         if self.image_count is not None:
             result['imageCount'] = self.image_count
+        if self.messages_shrink is not None:
+            result['messages'] = self.messages_shrink
         if self.model_custom_prompt_template is not None:
             result['modelCustomPromptTemplate'] = self.model_custom_prompt_template
         if self.model_id is not None:
@@ -982,6 +1040,8 @@ class RunHotTopicChatShrinkRequest(TeaModel):
             self.hot_topics_shrink = m.get('hotTopics')
         if m.get('imageCount') is not None:
             self.image_count = m.get('imageCount')
+        if m.get('messages') is not None:
+            self.messages_shrink = m.get('messages')
         if m.get('modelCustomPromptTemplate') is not None:
             self.model_custom_prompt_template = m.get('modelCustomPromptTemplate')
         if m.get('modelId') is not None:
