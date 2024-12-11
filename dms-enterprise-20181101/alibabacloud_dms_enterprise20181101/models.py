@@ -38663,6 +38663,8 @@ class ListDataLakeDatabaseRequest(TeaModel):
         self,
         catalog_name: str = None,
         data_region: str = None,
+        max_results: int = None,
+        next_token: str = None,
         search_key: str = None,
         tid: int = None,
     ):
@@ -38670,6 +38672,8 @@ class ListDataLakeDatabaseRequest(TeaModel):
         self.catalog_name = catalog_name
         # This parameter is required.
         self.data_region = data_region
+        self.max_results = max_results
+        self.next_token = next_token
         self.search_key = search_key
         self.tid = tid
 
@@ -38686,6 +38690,10 @@ class ListDataLakeDatabaseRequest(TeaModel):
             result['CatalogName'] = self.catalog_name
         if self.data_region is not None:
             result['DataRegion'] = self.data_region
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.search_key is not None:
             result['SearchKey'] = self.search_key
         if self.tid is not None:
@@ -38698,6 +38706,10 @@ class ListDataLakeDatabaseRequest(TeaModel):
             self.catalog_name = m.get('CatalogName')
         if m.get('DataRegion') is not None:
             self.data_region = m.get('DataRegion')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('SearchKey') is not None:
             self.search_key = m.get('SearchKey')
         if m.get('Tid') is not None:
@@ -38746,12 +38758,16 @@ class ListDataLakeDatabaseResponseBody(TeaModel):
         database_list: ListDataLakeDatabaseResponseBodyDatabaseList = None,
         error_code: str = None,
         error_message: str = None,
+        max_results: int = None,
+        next_token: str = None,
         request_id: str = None,
         success: bool = None,
     ):
         self.database_list = database_list
         self.error_code = error_code
         self.error_message = error_message
+        self.max_results = max_results
+        self.next_token = next_token
         self.request_id = request_id
         self.success = success
 
@@ -38771,6 +38787,10 @@ class ListDataLakeDatabaseResponseBody(TeaModel):
             result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.success is not None:
@@ -38786,6 +38806,10 @@ class ListDataLakeDatabaseResponseBody(TeaModel):
             self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:

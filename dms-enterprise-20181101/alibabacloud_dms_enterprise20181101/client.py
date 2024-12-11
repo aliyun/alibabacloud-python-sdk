@@ -16701,6 +16701,10 @@ class Client(OpenApiClient):
             query['CatalogName'] = request.catalog_name
         if not UtilClient.is_unset(request.data_region):
             query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.search_key):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.tid):
@@ -16742,6 +16746,10 @@ class Client(OpenApiClient):
             query['CatalogName'] = request.catalog_name
         if not UtilClient.is_unset(request.data_region):
             query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.search_key):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.tid):

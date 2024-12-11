@@ -1,3 +1,27 @@
+2024-12-11 Version: 1.64.0
+- Support API AddAuthorityTemplateItems.
+- Support API CreateAbacAuthorization.
+- Support API CreateAbacPolicy.
+- Support API DeleteAbacAuthorization.
+- Support API DeleteAbacPolicy.
+- Support API GetAbacPolicy.
+- Support API GetDataLakeCatalog.
+- Support API GetDataLakeDatabase.
+- Support API GetDataLakeTable.
+- Support API ListAbacAuthorizations.
+- Support API ListAbacPolicies.
+- Support API ListAuthorizedDatabasesForUser.
+- Support API ListAuthorizedInstancesForUser.
+- Support API ListAuthorizedUsersForDatabase.
+- Support API ListAuthorizedUsersForInstance.
+- Support API ListDataLakeCatalog.
+- Support API ListDataLakeDatabase.
+- Support API ListDataLakeTablebaseInfo.
+- Support API SetWorkflowExtraInfo.
+- Support API UpdateAbacPolicy.
+- Update API GetApprovalDetail: update response param.
+
+
 2024-11-27 Version: 1.63.0
 - Support API AddAuthorityTemplateItems.
 - Support API CreateAbacAuthorization.
