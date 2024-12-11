@@ -2279,12 +2279,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateKubernetesTriggerResponse:
         """
+        @deprecated OpenAPI CreateKubernetesTrigger is deprecated
+        
         @summary You can call the CreateKubernetesTrigger operation to create a trigger for an application.
         
         @param request: CreateKubernetesTriggerRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateKubernetesTriggerResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -2323,12 +2326,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateKubernetesTriggerResponse:
         """
+        @deprecated OpenAPI CreateKubernetesTrigger is deprecated
+        
         @summary You can call the CreateKubernetesTrigger operation to create a trigger for an application.
         
         @param request: CreateKubernetesTriggerRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateKubernetesTriggerResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -2365,10 +2371,13 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateKubernetesTriggerRequest,
     ) -> cs20151215_models.CreateKubernetesTriggerResponse:
         """
+        @deprecated OpenAPI CreateKubernetesTrigger is deprecated
+        
         @summary You can call the CreateKubernetesTrigger operation to create a trigger for an application.
         
         @param request: CreateKubernetesTriggerRequest
         @return: CreateKubernetesTriggerResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2379,10 +2388,13 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateKubernetesTriggerRequest,
     ) -> cs20151215_models.CreateKubernetesTriggerResponse:
         """
+        @deprecated OpenAPI CreateKubernetesTrigger is deprecated
+        
         @summary You can call the CreateKubernetesTrigger operation to create a trigger for an application.
         
         @param request: CreateKubernetesTriggerRequest
         @return: CreateKubernetesTriggerResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -3347,11 +3359,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
         """
+        @deprecated OpenAPI DeleteKubernetesTrigger is deprecated
+        
         @summary You can call the DeleteKubernetesTrigger operation to delete an application trigger by trigger ID
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteKubernetesTriggerResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -3379,11 +3394,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
         """
+        @deprecated OpenAPI DeleteKubernetesTrigger is deprecated
+        
         @summary You can call the DeleteKubernetesTrigger operation to delete an application trigger by trigger ID
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteKubernetesTriggerResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -3409,9 +3427,12 @@ class Client(OpenApiClient):
         id: str,
     ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
         """
+        @deprecated OpenAPI DeleteKubernetesTrigger is deprecated
+        
         @summary You can call the DeleteKubernetesTrigger operation to delete an application trigger by trigger ID
         
         @return: DeleteKubernetesTriggerResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -3422,9 +3443,12 @@ class Client(OpenApiClient):
         id: str,
     ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
         """
+        @deprecated OpenAPI DeleteKubernetesTrigger is deprecated
+        
         @summary You can call the DeleteKubernetesTrigger operation to delete an application trigger by trigger ID
         
         @return: DeleteKubernetesTriggerResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -5788,6 +5812,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.temporary_duration_minutes):
+            query['TemporaryDurationMinutes'] = request.temporary_duration_minutes
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -5830,6 +5856,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.temporary_duration_minutes):
+            query['TemporaryDurationMinutes'] = request.temporary_duration_minutes
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -6371,11 +6399,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
         """
+        @deprecated OpenAPI DescribeEdgeMachineActiveProcess is deprecated
+        
         @summary You can call the DescribeEdgeMachineActiveProcess operation to query the activation progress of a cloud-native box.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeEdgeMachineActiveProcessResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -6403,11 +6434,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
         """
+        @deprecated OpenAPI DescribeEdgeMachineActiveProcess is deprecated
+        
         @summary You can call the DescribeEdgeMachineActiveProcess operation to query the activation progress of a cloud-native box.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeEdgeMachineActiveProcessResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -6433,9 +6467,12 @@ class Client(OpenApiClient):
         edge_machineid: str,
     ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
         """
+        @deprecated OpenAPI DescribeEdgeMachineActiveProcess is deprecated
+        
         @summary You can call the DescribeEdgeMachineActiveProcess operation to query the activation progress of a cloud-native box.
         
         @return: DescribeEdgeMachineActiveProcessResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -6446,9 +6483,12 @@ class Client(OpenApiClient):
         edge_machineid: str,
     ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
         """
+        @deprecated OpenAPI DescribeEdgeMachineActiveProcess is deprecated
+        
         @summary You can call the DescribeEdgeMachineActiveProcess operation to query the activation progress of a cloud-native box.
         
         @return: DescribeEdgeMachineActiveProcessResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -6990,6 +7030,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         """
+        @deprecated OpenAPI DescribeExternalAgent is deprecated
+        
         @summary Queries the proxy configurations of a registered cluster based on the cluster ID.
         
         @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
@@ -6998,6 +7040,7 @@ class Client(OpenApiClient):
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExternalAgentResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -7033,6 +7076,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         """
+        @deprecated OpenAPI DescribeExternalAgent is deprecated
+        
         @summary Queries the proxy configurations of a registered cluster based on the cluster ID.
         
         @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
@@ -7041,6 +7086,7 @@ class Client(OpenApiClient):
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExternalAgentResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -7074,12 +7120,15 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeExternalAgentRequest,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         """
+        @deprecated OpenAPI DescribeExternalAgent is deprecated
+        
         @summary Queries the proxy configurations of a registered cluster based on the cluster ID.
         
         @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
         @param request: DescribeExternalAgentRequest
         @return: DescribeExternalAgentResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -7091,12 +7140,15 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeExternalAgentRequest,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         """
+        @deprecated OpenAPI DescribeExternalAgent is deprecated
+        
         @summary Queries the proxy configurations of a registered cluster based on the cluster ID.
         
         @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
         @param request: DescribeExternalAgentRequest
         @return: DescribeExternalAgentResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -8763,12 +8815,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
         """
+        @deprecated OpenAPI EdgeClusterAddEdgeMachine is deprecated
+        
         @summary You can call the EdgeClusterAddEdgeMachine operation to add a cloud-native box to a Container Service for Kubernetes (ACK) Edge cluster.
         
         @param request: EdgeClusterAddEdgeMachineRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: EdgeClusterAddEdgeMachineResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -8807,12 +8862,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
         """
+        @deprecated OpenAPI EdgeClusterAddEdgeMachine is deprecated
+        
         @summary You can call the EdgeClusterAddEdgeMachine operation to add a cloud-native box to a Container Service for Kubernetes (ACK) Edge cluster.
         
         @param request: EdgeClusterAddEdgeMachineRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: EdgeClusterAddEdgeMachineResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -8849,10 +8907,13 @@ class Client(OpenApiClient):
         request: cs20151215_models.EdgeClusterAddEdgeMachineRequest,
     ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
         """
+        @deprecated OpenAPI EdgeClusterAddEdgeMachine is deprecated
+        
         @summary You can call the EdgeClusterAddEdgeMachine operation to add a cloud-native box to a Container Service for Kubernetes (ACK) Edge cluster.
         
         @param request: EdgeClusterAddEdgeMachineRequest
         @return: EdgeClusterAddEdgeMachineResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -8865,10 +8926,13 @@ class Client(OpenApiClient):
         request: cs20151215_models.EdgeClusterAddEdgeMachineRequest,
     ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
         """
+        @deprecated OpenAPI EdgeClusterAddEdgeMachine is deprecated
+        
         @summary You can call the EdgeClusterAddEdgeMachine operation to add a cloud-native box to a Container Service for Kubernetes (ACK) Edge cluster.
         
         @param request: EdgeClusterAddEdgeMachineRequest
         @return: EdgeClusterAddEdgeMachineResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -9492,12 +9556,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetKubernetesTriggerResponse:
         """
+        @deprecated OpenAPI GetKubernetesTrigger is deprecated
+        
         @summary You can call the GetKubernetesTrigger operationto query the triggers of an application by application name.
         
         @param request: GetKubernetesTriggerRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetKubernetesTriggerResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -9537,12 +9604,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetKubernetesTriggerResponse:
         """
+        @deprecated OpenAPI GetKubernetesTrigger is deprecated
+        
         @summary You can call the GetKubernetesTrigger operationto query the triggers of an application by application name.
         
         @param request: GetKubernetesTriggerRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetKubernetesTriggerResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -9580,10 +9650,13 @@ class Client(OpenApiClient):
         request: cs20151215_models.GetKubernetesTriggerRequest,
     ) -> cs20151215_models.GetKubernetesTriggerResponse:
         """
+        @deprecated OpenAPI GetKubernetesTrigger is deprecated
+        
         @summary You can call the GetKubernetesTrigger operationto query the triggers of an application by application name.
         
         @param request: GetKubernetesTriggerRequest
         @return: GetKubernetesTriggerResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -9595,10 +9668,13 @@ class Client(OpenApiClient):
         request: cs20151215_models.GetKubernetesTriggerRequest,
     ) -> cs20151215_models.GetKubernetesTriggerResponse:
         """
+        @deprecated OpenAPI GetKubernetesTrigger is deprecated
+        
         @summary You can call the GetKubernetesTrigger operationto query the triggers of an application by application name.
         
         @param request: GetKubernetesTriggerRequest
         @return: GetKubernetesTriggerResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -11156,12 +11232,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterConfigurationResponse:
         """
+        @deprecated OpenAPI ModifyClusterConfiguration is deprecated
+        
         @summary This API operation applies only to Container Service for Kubernetes (ACK) managed clusters.
         
         @param request: ModifyClusterConfigurationRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyClusterConfigurationResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -11195,12 +11274,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterConfigurationResponse:
         """
+        @deprecated OpenAPI ModifyClusterConfiguration is deprecated
+        
         @summary This API operation applies only to Container Service for Kubernetes (ACK) managed clusters.
         
         @param request: ModifyClusterConfigurationRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyClusterConfigurationResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -11232,10 +11314,13 @@ class Client(OpenApiClient):
         request: cs20151215_models.ModifyClusterConfigurationRequest,
     ) -> cs20151215_models.ModifyClusterConfigurationResponse:
         """
+        @deprecated OpenAPI ModifyClusterConfiguration is deprecated
+        
         @summary This API operation applies only to Container Service for Kubernetes (ACK) managed clusters.
         
         @param request: ModifyClusterConfigurationRequest
         @return: ModifyClusterConfigurationResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -11247,10 +11332,13 @@ class Client(OpenApiClient):
         request: cs20151215_models.ModifyClusterConfigurationRequest,
     ) -> cs20151215_models.ModifyClusterConfigurationResponse:
         """
+        @deprecated OpenAPI ModifyClusterConfiguration is deprecated
+        
         @summary This API operation applies only to Container Service for Kubernetes (ACK) managed clusters.
         
         @param request: ModifyClusterConfigurationRequest
         @return: ModifyClusterConfigurationResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
