@@ -1,3 +1,6 @@
+2024-12-11 Version: 2.0.4
+- Generated python 2020-04-07 for cas.
+
 2024-12-10 Version: 2.0.3
 - Update API CreateCertificateForPackageRequest: add param Tags.
 - Update API CreateCertificateRequest: add param Tags.
