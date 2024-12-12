@@ -1,3 +1,8 @@
+2024-12-12 Version: 4.8.4
+- Update API InstallClusterAddons: update response param.
+- Update API UnInstallClusterAddons: update response param.
+
+
 2024-12-11 Version: 4.8.3
 - Update API DescribeClusterV2UserKubeconfig: add param TemporaryDurationMinutes.
 
