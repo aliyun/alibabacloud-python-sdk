@@ -1,3 +1,7 @@
+2024-12-12 Version: 2.0.1
+- Update API ModifyDBInstanceClass: add param DnStorageSpace.
+
+
 2024-12-04 Version: 2.0.0
 - Support API DescribeOpenBackupSet.
 - Update API AllocateInstancePublicConnection: delete param AccessKeyId.

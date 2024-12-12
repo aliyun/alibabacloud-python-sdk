@@ -11614,6 +11614,7 @@ class ModifyDBInstanceClassRequest(TeaModel):
         cn_class: str = None,
         dbinstance_name: str = None,
         dn_class: str = None,
+        dn_storage_space: str = None,
         region_id: str = None,
         specified_dnscale: bool = None,
         specified_dnspec_map_json: str = None,
@@ -11626,6 +11627,7 @@ class ModifyDBInstanceClassRequest(TeaModel):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.dn_class = dn_class
+        self.dn_storage_space = dn_storage_space
         # This parameter is required.
         self.region_id = region_id
         self.specified_dnscale = specified_dnscale
@@ -11651,6 +11653,8 @@ class ModifyDBInstanceClassRequest(TeaModel):
             result['DBInstanceName'] = self.dbinstance_name
         if self.dn_class is not None:
             result['DnClass'] = self.dn_class
+        if self.dn_storage_space is not None:
+            result['DnStorageSpace'] = self.dn_storage_space
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.specified_dnscale is not None:
@@ -11675,6 +11679,8 @@ class ModifyDBInstanceClassRequest(TeaModel):
             self.dbinstance_name = m.get('DBInstanceName')
         if m.get('DnClass') is not None:
             self.dn_class = m.get('DnClass')
+        if m.get('DnStorageSpace') is not None:
+            self.dn_storage_space = m.get('DnStorageSpace')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SpecifiedDNScale') is not None:

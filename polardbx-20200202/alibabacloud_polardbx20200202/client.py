@@ -5574,6 +5574,8 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.dn_class):
             query['DnClass'] = request.dn_class
+        if not UtilClient.is_unset(request.dn_storage_space):
+            query['DnStorageSpace'] = request.dn_storage_space
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.specified_dnscale):
@@ -5625,6 +5627,8 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.dn_class):
             query['DnClass'] = request.dn_class
+        if not UtilClient.is_unset(request.dn_storage_space):
+            query['DnStorageSpace'] = request.dn_storage_space
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.specified_dnscale):
