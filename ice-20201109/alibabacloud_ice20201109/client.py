@@ -516,8 +516,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a template.
         
-        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
         
         @param request: AddTemplateRequest
@@ -571,8 +571,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a template.
         
-        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
         
         @param request: AddTemplateRequest
@@ -625,8 +625,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a template.
         
-        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
         
         @param request: AddTemplateRequest
@@ -642,8 +642,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a template.
         
-        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
         
         @param request: AddTemplateRequest
@@ -1786,7 +1786,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLiveRecordTemplateResponse:
         """
-        @summary 创建直播录制模板
+        @summary Creates a live stream recording template to submit live stream recording jobs.
+        
+        @description You must specify a recording template for live stream recording. You can configure information such as the format and duration of a recording in a recording template. The recording format can be M3U8, MP4, or FLV.
         
         @param tmp_req: CreateLiveRecordTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1827,7 +1829,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLiveRecordTemplateResponse:
         """
-        @summary 创建直播录制模板
+        @summary Creates a live stream recording template to submit live stream recording jobs.
+        
+        @description You must specify a recording template for live stream recording. You can configure information such as the format and duration of a recording in a recording template. The recording format can be M3U8, MP4, or FLV.
         
         @param tmp_req: CreateLiveRecordTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1867,7 +1871,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLiveRecordTemplateRequest,
     ) -> ice20201109_models.CreateLiveRecordTemplateResponse:
         """
-        @summary 创建直播录制模板
+        @summary Creates a live stream recording template to submit live stream recording jobs.
+        
+        @description You must specify a recording template for live stream recording. You can configure information such as the format and duration of a recording in a recording template. The recording format can be M3U8, MP4, or FLV.
         
         @param request: CreateLiveRecordTemplateRequest
         @return: CreateLiveRecordTemplateResponse
@@ -1880,7 +1886,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLiveRecordTemplateRequest,
     ) -> ice20201109_models.CreateLiveRecordTemplateResponse:
         """
-        @summary 创建直播录制模板
+        @summary Creates a live stream recording template to submit live stream recording jobs.
+        
+        @description You must specify a recording template for live stream recording. You can configure information such as the format and duration of a recording in a recording template. The recording format can be M3U8, MP4, or FLV.
         
         @param request: CreateLiveRecordTemplateRequest
         @return: CreateLiveRecordTemplateResponse
@@ -1894,7 +1902,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLiveSnapshotTemplateResponse:
         """
-        @summary 创建直播截图模板
+        @summary Create a live stream snapshot template to facilitate the creation of snapshot jobs.
         
         @param request: CreateLiveSnapshotTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1935,7 +1943,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLiveSnapshotTemplateResponse:
         """
-        @summary 创建直播截图模板
+        @summary Create a live stream snapshot template to facilitate the creation of snapshot jobs.
         
         @param request: CreateLiveSnapshotTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1975,7 +1983,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.CreateLiveSnapshotTemplateResponse:
         """
-        @summary 创建直播截图模板
+        @summary Create a live stream snapshot template to facilitate the creation of snapshot jobs.
         
         @param request: CreateLiveSnapshotTemplateRequest
         @return: CreateLiveSnapshotTemplateResponse
@@ -1988,7 +1996,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.CreateLiveSnapshotTemplateResponse:
         """
-        @summary 创建直播截图模板
+        @summary Create a live stream snapshot template to facilitate the creation of snapshot jobs.
         
         @param request: CreateLiveSnapshotTemplateRequest
         @return: CreateLiveSnapshotTemplateResponse
@@ -2002,7 +2010,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLiveTranscodeTemplateResponse:
         """
-        @summary 创建转码模版
+        @summary Creates a live stream transcoding template to submit live stream transcoding jobs.
         
         @param tmp_req: CreateLiveTranscodeTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2045,7 +2053,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLiveTranscodeTemplateResponse:
         """
-        @summary 创建转码模版
+        @summary Creates a live stream transcoding template to submit live stream transcoding jobs.
         
         @param tmp_req: CreateLiveTranscodeTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2087,7 +2095,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.CreateLiveTranscodeTemplateResponse:
         """
-        @summary 创建转码模版
+        @summary Creates a live stream transcoding template to submit live stream transcoding jobs.
         
         @param request: CreateLiveTranscodeTemplateRequest
         @return: CreateLiveTranscodeTemplateResponse
@@ -2100,7 +2108,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.CreateLiveTranscodeTemplateResponse:
         """
-        @summary 创建转码模版
+        @summary Creates a live stream transcoding template to submit live stream transcoding jobs.
         
         @param request: CreateLiveTranscodeTemplateRequest
         @return: CreateLiveTranscodeTemplateResponse
@@ -3626,7 +3634,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveRecordFilesResponse:
         """
-        @summary 实时媒体服务-删除录制文件
+        @summary Deletes live stream recording files. You can choose to delete only the recording files or delete both the recording files and the original Object Storage Service (OSS) files.
         
         @param request: DeleteLiveRecordFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3663,7 +3671,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveRecordFilesResponse:
         """
-        @summary 实时媒体服务-删除录制文件
+        @summary Deletes live stream recording files. You can choose to delete only the recording files or delete both the recording files and the original Object Storage Service (OSS) files.
         
         @param request: DeleteLiveRecordFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3699,7 +3707,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveRecordFilesRequest,
     ) -> ice20201109_models.DeleteLiveRecordFilesResponse:
         """
-        @summary 实时媒体服务-删除录制文件
+        @summary Deletes live stream recording files. You can choose to delete only the recording files or delete both the recording files and the original Object Storage Service (OSS) files.
         
         @param request: DeleteLiveRecordFilesRequest
         @return: DeleteLiveRecordFilesResponse
@@ -3712,7 +3720,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveRecordFilesRequest,
     ) -> ice20201109_models.DeleteLiveRecordFilesResponse:
         """
-        @summary 实时媒体服务-删除录制文件
+        @summary Deletes live stream recording files. You can choose to delete only the recording files or delete both the recording files and the original Object Storage Service (OSS) files.
         
         @param request: DeleteLiveRecordFilesRequest
         @return: DeleteLiveRecordFilesResponse
@@ -3726,7 +3734,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveRecordTemplateResponse:
         """
-        @summary 删除直播录制模板
+        @summary Deletes a live stream recording template without affecting existing jobs.
         
         @param request: DeleteLiveRecordTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3761,7 +3769,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveRecordTemplateResponse:
         """
-        @summary 删除直播录制模板
+        @summary Deletes a live stream recording template without affecting existing jobs.
         
         @param request: DeleteLiveRecordTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3795,7 +3803,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveRecordTemplateRequest,
     ) -> ice20201109_models.DeleteLiveRecordTemplateResponse:
         """
-        @summary 删除直播录制模板
+        @summary Deletes a live stream recording template without affecting existing jobs.
         
         @param request: DeleteLiveRecordTemplateRequest
         @return: DeleteLiveRecordTemplateResponse
@@ -3808,7 +3816,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveRecordTemplateRequest,
     ) -> ice20201109_models.DeleteLiveRecordTemplateResponse:
         """
-        @summary 删除直播录制模板
+        @summary Deletes a live stream recording template without affecting existing jobs.
         
         @param request: DeleteLiveRecordTemplateRequest
         @return: DeleteLiveRecordTemplateResponse
@@ -3822,7 +3830,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveSnapshotFilesResponse:
         """
-        @summary 批量删除直播截图文件
+        @summary Deletes live stream snapshot files. You can choose to delete only the snapshot files or delete both the snapshot files and the original Object Storage Service (OSS) files.
         
         @param tmp_req: DeleteLiveSnapshotFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3865,7 +3873,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveSnapshotFilesResponse:
         """
-        @summary 批量删除直播截图文件
+        @summary Deletes live stream snapshot files. You can choose to delete only the snapshot files or delete both the snapshot files and the original Object Storage Service (OSS) files.
         
         @param tmp_req: DeleteLiveSnapshotFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3907,7 +3915,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveSnapshotFilesRequest,
     ) -> ice20201109_models.DeleteLiveSnapshotFilesResponse:
         """
-        @summary 批量删除直播截图文件
+        @summary Deletes live stream snapshot files. You can choose to delete only the snapshot files or delete both the snapshot files and the original Object Storage Service (OSS) files.
         
         @param request: DeleteLiveSnapshotFilesRequest
         @return: DeleteLiveSnapshotFilesResponse
@@ -3920,7 +3928,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveSnapshotFilesRequest,
     ) -> ice20201109_models.DeleteLiveSnapshotFilesResponse:
         """
-        @summary 批量删除直播截图文件
+        @summary Deletes live stream snapshot files. You can choose to delete only the snapshot files or delete both the snapshot files and the original Object Storage Service (OSS) files.
         
         @param request: DeleteLiveSnapshotFilesRequest
         @return: DeleteLiveSnapshotFilesResponse
@@ -3934,7 +3942,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveSnapshotTemplateResponse:
         """
-        @summary 删除直播截图模板
+        @summary Deletes a live stream snapshot template.
         
         @param request: DeleteLiveSnapshotTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3969,7 +3977,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveSnapshotTemplateResponse:
         """
-        @summary 删除直播截图模板
+        @summary Deletes a live stream snapshot template.
         
         @param request: DeleteLiveSnapshotTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4003,7 +4011,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.DeleteLiveSnapshotTemplateResponse:
         """
-        @summary 删除直播截图模板
+        @summary Deletes a live stream snapshot template.
         
         @param request: DeleteLiveSnapshotTemplateRequest
         @return: DeleteLiveSnapshotTemplateResponse
@@ -4016,7 +4024,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.DeleteLiveSnapshotTemplateResponse:
         """
-        @summary 删除直播截图模板
+        @summary Deletes a live stream snapshot template.
         
         @param request: DeleteLiveSnapshotTemplateRequest
         @return: DeleteLiveSnapshotTemplateResponse
@@ -4126,7 +4134,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveTranscodeTemplateResponse:
         """
-        @summary 删除指定转码模版
+        @summary Deletes a live stream transcoding template.
         
         @param request: DeleteLiveTranscodeTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4161,7 +4169,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveTranscodeTemplateResponse:
         """
-        @summary 删除指定转码模版
+        @summary Deletes a live stream transcoding template.
         
         @param request: DeleteLiveTranscodeTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4195,7 +4203,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.DeleteLiveTranscodeTemplateResponse:
         """
-        @summary 删除指定转码模版
+        @summary Deletes a live stream transcoding template.
         
         @param request: DeleteLiveTranscodeTemplateRequest
         @return: DeleteLiveTranscodeTemplateResponse
@@ -4208,7 +4216,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.DeleteLiveTranscodeTemplateResponse:
         """
-        @summary 删除指定转码模版
+        @summary Deletes a live stream transcoding template.
         
         @param request: DeleteLiveTranscodeTemplateRequest
         @return: DeleteLiveTranscodeTemplateResponse
@@ -7735,7 +7743,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEventCallbackResponse:
         """
-        @summary 获取事件回调地址
+        @summary Queries event callback configurations.
         
         @param request: GetEventCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7763,7 +7771,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEventCallbackResponse:
         """
-        @summary 获取事件回调地址
+        @summary Queries event callback configurations.
         
         @param request: GetEventCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7788,7 +7796,7 @@ class Client(OpenApiClient):
 
     def get_event_callback(self) -> ice20201109_models.GetEventCallbackResponse:
         """
-        @summary 获取事件回调地址
+        @summary Queries event callback configurations.
         
         @return: GetEventCallbackResponse
         """
@@ -7797,7 +7805,7 @@ class Client(OpenApiClient):
 
     async def get_event_callback_async(self) -> ice20201109_models.GetEventCallbackResponse:
         """
-        @summary 获取事件回调地址
+        @summary Queries event callback configurations.
         
         @return: GetEventCallbackResponse
         """
@@ -8014,7 +8022,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveRecordJobResponse:
         """
-        @summary 查询录制任务明细
+        @summary Queries the information about a live stream recording job.
         
         @param request: GetLiveRecordJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8047,7 +8055,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveRecordJobResponse:
         """
-        @summary 查询录制任务明细
+        @summary Queries the information about a live stream recording job.
         
         @param request: GetLiveRecordJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8079,7 +8087,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveRecordJobRequest,
     ) -> ice20201109_models.GetLiveRecordJobResponse:
         """
-        @summary 查询录制任务明细
+        @summary Queries the information about a live stream recording job.
         
         @param request: GetLiveRecordJobRequest
         @return: GetLiveRecordJobResponse
@@ -8092,7 +8100,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveRecordJobRequest,
     ) -> ice20201109_models.GetLiveRecordJobResponse:
         """
-        @summary 查询录制任务明细
+        @summary Queries the information about a live stream recording job.
         
         @param request: GetLiveRecordJobRequest
         @return: GetLiveRecordJobResponse
@@ -8106,7 +8114,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveRecordTemplateResponse:
         """
-        @summary 查询直播录制模板详情
+        @summary Queries the information about a live stream recording template or a snapshot of the template.
         
         @param request: GetLiveRecordTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8139,7 +8147,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveRecordTemplateResponse:
         """
-        @summary 查询直播录制模板详情
+        @summary Queries the information about a live stream recording template or a snapshot of the template.
         
         @param request: GetLiveRecordTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8171,7 +8179,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveRecordTemplateRequest,
     ) -> ice20201109_models.GetLiveRecordTemplateResponse:
         """
-        @summary 查询直播录制模板详情
+        @summary Queries the information about a live stream recording template or a snapshot of the template.
         
         @param request: GetLiveRecordTemplateRequest
         @return: GetLiveRecordTemplateResponse
@@ -8184,7 +8192,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveRecordTemplateRequest,
     ) -> ice20201109_models.GetLiveRecordTemplateResponse:
         """
-        @summary 查询直播录制模板详情
+        @summary Queries the information about a live stream recording template or a snapshot of the template.
         
         @param request: GetLiveRecordTemplateRequest
         @return: GetLiveRecordTemplateResponse
@@ -8198,7 +8206,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveSnapshotJobResponse:
         """
-        @summary 查询直播截图任务
+        @summary Queries the information a live stream snapshot job.
         
         @param request: GetLiveSnapshotJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8231,7 +8239,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveSnapshotJobResponse:
         """
-        @summary 查询直播截图任务
+        @summary Queries the information a live stream snapshot job.
         
         @param request: GetLiveSnapshotJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8263,7 +8271,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveSnapshotJobRequest,
     ) -> ice20201109_models.GetLiveSnapshotJobResponse:
         """
-        @summary 查询直播截图任务
+        @summary Queries the information a live stream snapshot job.
         
         @param request: GetLiveSnapshotJobRequest
         @return: GetLiveSnapshotJobResponse
@@ -8276,7 +8284,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveSnapshotJobRequest,
     ) -> ice20201109_models.GetLiveSnapshotJobResponse:
         """
-        @summary 查询直播截图任务
+        @summary Queries the information a live stream snapshot job.
         
         @param request: GetLiveSnapshotJobRequest
         @return: GetLiveSnapshotJobResponse
@@ -8290,7 +8298,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveSnapshotTemplateResponse:
         """
-        @summary 查询直播截图模板
+        @summary Queries the information about a live stream snapshot template.
         
         @param request: GetLiveSnapshotTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8323,7 +8331,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveSnapshotTemplateResponse:
         """
-        @summary 查询直播截图模板
+        @summary Queries the information about a live stream snapshot template.
         
         @param request: GetLiveSnapshotTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8355,7 +8363,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.GetLiveSnapshotTemplateResponse:
         """
-        @summary 查询直播截图模板
+        @summary Queries the information about a live stream snapshot template.
         
         @param request: GetLiveSnapshotTemplateRequest
         @return: GetLiveSnapshotTemplateResponse
@@ -8368,7 +8376,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.GetLiveSnapshotTemplateResponse:
         """
-        @summary 查询直播截图模板
+        @summary Queries the information about a live stream snapshot template.
         
         @param request: GetLiveSnapshotTemplateRequest
         @return: GetLiveSnapshotTemplateResponse
@@ -8382,7 +8390,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveTranscodeJobResponse:
         """
-        @summary 查询转码任务详情
+        @summary Queries the information about a live stream transcoding job.
         
         @param request: GetLiveTranscodeJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8417,7 +8425,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveTranscodeJobResponse:
         """
-        @summary 查询转码任务详情
+        @summary Queries the information about a live stream transcoding job.
         
         @param request: GetLiveTranscodeJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8451,7 +8459,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveTranscodeJobRequest,
     ) -> ice20201109_models.GetLiveTranscodeJobResponse:
         """
-        @summary 查询转码任务详情
+        @summary Queries the information about a live stream transcoding job.
         
         @param request: GetLiveTranscodeJobRequest
         @return: GetLiveTranscodeJobResponse
@@ -8464,7 +8472,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveTranscodeJobRequest,
     ) -> ice20201109_models.GetLiveTranscodeJobResponse:
         """
-        @summary 查询转码任务详情
+        @summary Queries the information about a live stream transcoding job.
         
         @param request: GetLiveTranscodeJobRequest
         @return: GetLiveTranscodeJobResponse
@@ -8478,7 +8486,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveTranscodeTemplateResponse:
         """
-        @summary 查询转码模版详情
+        @summary Queries the information a live stream transcoding template.
         
         @param request: GetLiveTranscodeTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8513,7 +8521,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveTranscodeTemplateResponse:
         """
-        @summary 查询转码模版详情
+        @summary Queries the information a live stream transcoding template.
         
         @param request: GetLiveTranscodeTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8547,7 +8555,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.GetLiveTranscodeTemplateResponse:
         """
-        @summary 查询转码模版详情
+        @summary Queries the information a live stream transcoding template.
         
         @param request: GetLiveTranscodeTemplateRequest
         @return: GetLiveTranscodeTemplateResponse
@@ -8560,7 +8568,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.GetLiveTranscodeTemplateResponse:
         """
-        @summary 查询转码模版详情
+        @summary Queries the information a live stream transcoding template.
         
         @param request: GetLiveTranscodeTemplateRequest
         @return: GetLiveTranscodeTemplateResponse
@@ -9881,8 +9889,8 @@ class Client(OpenApiClient):
         @summary Queries the information about a template based on the template ID. You can call this operation to query the information about an advanced template if the template is in the Available state.
         
         @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
-        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         
         @param request: GetTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9922,8 +9930,8 @@ class Client(OpenApiClient):
         @summary Queries the information about a template based on the template ID. You can call this operation to query the information about an advanced template if the template is in the Available state.
         
         @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
-        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         
         @param request: GetTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9962,8 +9970,8 @@ class Client(OpenApiClient):
         @summary Queries the information about a template based on the template ID. You can call this operation to query the information about an advanced template if the template is in the Available state.
         
         @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
-        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         
         @param request: GetTemplateRequest
         @return: GetTemplateResponse
@@ -9979,8 +9987,8 @@ class Client(OpenApiClient):
         @summary Queries the information about a template based on the template ID. You can call this operation to query the information about an advanced template if the template is in the Available state.
         
         @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
-        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         
         @param request: GetTemplateRequest
         @return: GetTemplateResponse
@@ -12094,7 +12102,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveRecordFilesResponse:
         """
-        @summary 查询录制文件
+        @summary Queries all recording index files in the specified period of time.
         
         @param request: ListLiveRecordFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12127,7 +12135,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveRecordFilesResponse:
         """
-        @summary 查询录制文件
+        @summary Queries all recording index files in the specified period of time.
         
         @param request: ListLiveRecordFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12159,7 +12167,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveRecordFilesRequest,
     ) -> ice20201109_models.ListLiveRecordFilesResponse:
         """
-        @summary 查询录制文件
+        @summary Queries all recording index files in the specified period of time.
         
         @param request: ListLiveRecordFilesRequest
         @return: ListLiveRecordFilesResponse
@@ -12172,7 +12180,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveRecordFilesRequest,
     ) -> ice20201109_models.ListLiveRecordFilesResponse:
         """
-        @summary 查询录制文件
+        @summary Queries all recording index files in the specified period of time.
         
         @param request: ListLiveRecordFilesRequest
         @return: ListLiveRecordFilesResponse
@@ -12186,7 +12194,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveRecordJobsResponse:
         """
-        @summary 查询录制任务
+        @summary Queries a list of live stream recording jobs by page.
         
         @param request: ListLiveRecordJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12219,7 +12227,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveRecordJobsResponse:
         """
-        @summary 查询录制任务
+        @summary Queries a list of live stream recording jobs by page.
         
         @param request: ListLiveRecordJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12251,7 +12259,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveRecordJobsRequest,
     ) -> ice20201109_models.ListLiveRecordJobsResponse:
         """
-        @summary 查询录制任务
+        @summary Queries a list of live stream recording jobs by page.
         
         @param request: ListLiveRecordJobsRequest
         @return: ListLiveRecordJobsResponse
@@ -12264,7 +12272,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveRecordJobsRequest,
     ) -> ice20201109_models.ListLiveRecordJobsResponse:
         """
-        @summary 查询录制任务
+        @summary Queries a list of live stream recording jobs by page.
         
         @param request: ListLiveRecordJobsRequest
         @return: ListLiveRecordJobsResponse
@@ -12278,7 +12286,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveRecordTemplatesResponse:
         """
-        @summary 查询直播录制模板
+        @summary Queries a list of live stream recording templates.
         
         @param request: ListLiveRecordTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12311,7 +12319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveRecordTemplatesResponse:
         """
-        @summary 查询直播录制模板
+        @summary Queries a list of live stream recording templates.
         
         @param request: ListLiveRecordTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12343,7 +12351,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveRecordTemplatesRequest,
     ) -> ice20201109_models.ListLiveRecordTemplatesResponse:
         """
-        @summary 查询直播录制模板
+        @summary Queries a list of live stream recording templates.
         
         @param request: ListLiveRecordTemplatesRequest
         @return: ListLiveRecordTemplatesResponse
@@ -12356,7 +12364,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveRecordTemplatesRequest,
     ) -> ice20201109_models.ListLiveRecordTemplatesResponse:
         """
-        @summary 查询直播录制模板
+        @summary Queries a list of live stream recording templates.
         
         @param request: ListLiveRecordTemplatesRequest
         @return: ListLiveRecordTemplatesResponse
@@ -12370,7 +12378,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveSnapshotFilesResponse:
         """
-        @summary 查询直播截图文件列表
+        @summary Queries a list of live stream snapshot files by page.
         
         @param request: ListLiveSnapshotFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12403,7 +12411,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveSnapshotFilesResponse:
         """
-        @summary 查询直播截图文件列表
+        @summary Queries a list of live stream snapshot files by page.
         
         @param request: ListLiveSnapshotFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12435,7 +12443,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveSnapshotFilesRequest,
     ) -> ice20201109_models.ListLiveSnapshotFilesResponse:
         """
-        @summary 查询直播截图文件列表
+        @summary Queries a list of live stream snapshot files by page.
         
         @param request: ListLiveSnapshotFilesRequest
         @return: ListLiveSnapshotFilesResponse
@@ -12448,7 +12456,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveSnapshotFilesRequest,
     ) -> ice20201109_models.ListLiveSnapshotFilesResponse:
         """
-        @summary 查询直播截图文件列表
+        @summary Queries a list of live stream snapshot files by page.
         
         @param request: ListLiveSnapshotFilesRequest
         @return: ListLiveSnapshotFilesResponse
@@ -12462,7 +12470,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveSnapshotJobsResponse:
         """
-        @summary 查询直播截图任务列表
+        @summary Queries a list of live stream snapshot jobs by page.
         
         @param request: ListLiveSnapshotJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12495,7 +12503,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveSnapshotJobsResponse:
         """
-        @summary 查询直播截图任务列表
+        @summary Queries a list of live stream snapshot jobs by page.
         
         @param request: ListLiveSnapshotJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12527,7 +12535,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveSnapshotJobsRequest,
     ) -> ice20201109_models.ListLiveSnapshotJobsResponse:
         """
-        @summary 查询直播截图任务列表
+        @summary Queries a list of live stream snapshot jobs by page.
         
         @param request: ListLiveSnapshotJobsRequest
         @return: ListLiveSnapshotJobsResponse
@@ -12540,7 +12548,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveSnapshotJobsRequest,
     ) -> ice20201109_models.ListLiveSnapshotJobsResponse:
         """
-        @summary 查询直播截图任务列表
+        @summary Queries a list of live stream snapshot jobs by page.
         
         @param request: ListLiveSnapshotJobsRequest
         @return: ListLiveSnapshotJobsResponse
@@ -12554,7 +12562,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveSnapshotTemplatesResponse:
         """
-        @summary 查询直播截图模板列表
+        @summary Queries a list of live stream snapshot templates by page.
         
         @param request: ListLiveSnapshotTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12587,7 +12595,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveSnapshotTemplatesResponse:
         """
-        @summary 查询直播截图模板列表
+        @summary Queries a list of live stream snapshot templates by page.
         
         @param request: ListLiveSnapshotTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12619,7 +12627,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveSnapshotTemplatesRequest,
     ) -> ice20201109_models.ListLiveSnapshotTemplatesResponse:
         """
-        @summary 查询直播截图模板列表
+        @summary Queries a list of live stream snapshot templates by page.
         
         @param request: ListLiveSnapshotTemplatesRequest
         @return: ListLiveSnapshotTemplatesResponse
@@ -12632,7 +12640,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveSnapshotTemplatesRequest,
     ) -> ice20201109_models.ListLiveSnapshotTemplatesResponse:
         """
-        @summary 查询直播截图模板列表
+        @summary Queries a list of live stream snapshot templates by page.
         
         @param request: ListLiveSnapshotTemplatesRequest
         @return: ListLiveSnapshotTemplatesResponse
@@ -12646,7 +12654,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveTranscodeJobsResponse:
         """
-        @summary 查询转码任务列表
+        @summary Queries a list of live stream transcoding jobs.
         
         @param request: ListLiveTranscodeJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12693,7 +12701,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveTranscodeJobsResponse:
         """
-        @summary 查询转码任务列表
+        @summary Queries a list of live stream transcoding jobs.
         
         @param request: ListLiveTranscodeJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12739,7 +12747,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveTranscodeJobsRequest,
     ) -> ice20201109_models.ListLiveTranscodeJobsResponse:
         """
-        @summary 查询转码任务列表
+        @summary Queries a list of live stream transcoding jobs.
         
         @param request: ListLiveTranscodeJobsRequest
         @return: ListLiveTranscodeJobsResponse
@@ -12752,7 +12760,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveTranscodeJobsRequest,
     ) -> ice20201109_models.ListLiveTranscodeJobsResponse:
         """
-        @summary 查询转码任务列表
+        @summary Queries a list of live stream transcoding jobs.
         
         @param request: ListLiveTranscodeJobsRequest
         @return: ListLiveTranscodeJobsResponse
@@ -12766,7 +12774,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveTranscodeTemplatesResponse:
         """
-        @summary 查询转码模版列表
+        @summary Queries a list of live stream transcoding templates.
         
         @param request: ListLiveTranscodeTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12813,7 +12821,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveTranscodeTemplatesResponse:
         """
-        @summary 查询转码模版列表
+        @summary Queries a list of live stream transcoding templates.
         
         @param request: ListLiveTranscodeTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12859,7 +12867,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveTranscodeTemplatesRequest,
     ) -> ice20201109_models.ListLiveTranscodeTemplatesResponse:
         """
-        @summary 查询转码模版列表
+        @summary Queries a list of live stream transcoding templates.
         
         @param request: ListLiveTranscodeTemplatesRequest
         @return: ListLiveTranscodeTemplatesResponse
@@ -12872,7 +12880,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveTranscodeTemplatesRequest,
     ) -> ice20201109_models.ListLiveTranscodeTemplatesResponse:
         """
-        @summary 查询转码模版列表
+        @summary Queries a list of live stream transcoding templates.
         
         @param request: ListLiveTranscodeTemplatesRequest
         @return: ListLiveTranscodeTemplatesResponse
@@ -13718,7 +13726,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSearchLibResponse:
         """
-        @summary 获取搜索库列表
+        @summary Queries the information about search libraries.
         
         @param request: ListSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13755,7 +13763,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSearchLibResponse:
         """
-        @summary 获取搜索库列表
+        @summary Queries the information about search libraries.
         
         @param request: ListSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13791,7 +13799,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSearchLibRequest,
     ) -> ice20201109_models.ListSearchLibResponse:
         """
-        @summary 获取搜索库列表
+        @summary Queries the information about search libraries.
         
         @param request: ListSearchLibRequest
         @return: ListSearchLibResponse
@@ -13804,7 +13812,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSearchLibRequest,
     ) -> ice20201109_models.ListSearchLibResponse:
         """
-        @summary 获取搜索库列表
+        @summary Queries the information about search libraries.
         
         @param request: ListSearchLibRequest
         @return: ListSearchLibResponse
@@ -14690,6 +14698,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_transcode_jobs_with_options_async(request, runtime)
 
+    def query_copyright_extract_job_with_options(
+        self,
+        request: ice20201109_models.QueryCopyrightExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryCopyrightExtractJobResponse:
+        """
+        @summary 查询版权水印提取任务
+        
+        @param request: QueryCopyrightExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCopyrightExtractJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCopyrightExtractJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryCopyrightExtractJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_copyright_extract_job_with_options_async(
+        self,
+        request: ice20201109_models.QueryCopyrightExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryCopyrightExtractJobResponse:
+        """
+        @summary 查询版权水印提取任务
+        
+        @param request: QueryCopyrightExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCopyrightExtractJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCopyrightExtractJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryCopyrightExtractJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_copyright_extract_job(
+        self,
+        request: ice20201109_models.QueryCopyrightExtractJobRequest,
+    ) -> ice20201109_models.QueryCopyrightExtractJobResponse:
+        """
+        @summary 查询版权水印提取任务
+        
+        @param request: QueryCopyrightExtractJobRequest
+        @return: QueryCopyrightExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_copyright_extract_job_with_options(request, runtime)
+
+    async def query_copyright_extract_job_async(
+        self,
+        request: ice20201109_models.QueryCopyrightExtractJobRequest,
+    ) -> ice20201109_models.QueryCopyrightExtractJobResponse:
+        """
+        @summary 查询版权水印提取任务
+        
+        @param request: QueryCopyrightExtractJobRequest
+        @return: QueryCopyrightExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_copyright_extract_job_with_options_async(request, runtime)
+
+    def query_copyright_job_list_with_options(
+        self,
+        request: ice20201109_models.QueryCopyrightJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryCopyrightJobListResponse:
+        """
+        @summary 查询视频版权水印任务列表
+        
+        @param request: QueryCopyrightJobListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCopyrightJobListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCopyrightJobList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryCopyrightJobListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_copyright_job_list_with_options_async(
+        self,
+        request: ice20201109_models.QueryCopyrightJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryCopyrightJobListResponse:
+        """
+        @summary 查询视频版权水印任务列表
+        
+        @param request: QueryCopyrightJobListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCopyrightJobListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCopyrightJobList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryCopyrightJobListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_copyright_job_list(
+        self,
+        request: ice20201109_models.QueryCopyrightJobListRequest,
+    ) -> ice20201109_models.QueryCopyrightJobListResponse:
+        """
+        @summary 查询视频版权水印任务列表
+        
+        @param request: QueryCopyrightJobListRequest
+        @return: QueryCopyrightJobListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_copyright_job_list_with_options(request, runtime)
+
+    async def query_copyright_job_list_async(
+        self,
+        request: ice20201109_models.QueryCopyrightJobListRequest,
+    ) -> ice20201109_models.QueryCopyrightJobListResponse:
+        """
+        @summary 查询视频版权水印任务列表
+        
+        @param request: QueryCopyrightJobListRequest
+        @return: QueryCopyrightJobListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_copyright_job_list_with_options_async(request, runtime)
+
     def query_dnajob_list_with_options(
         self,
         request: ice20201109_models.QueryDNAJobListRequest,
@@ -15570,6 +15790,330 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_smarttag_job_with_options_async(request, runtime)
 
+    def query_trace_ab_job_list_with_options(
+        self,
+        request: ice20201109_models.QueryTraceAbJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryTraceAbJobListResponse:
+        """
+        @summary 查询视频溯源水印ab流任务
+        
+        @param request: QueryTraceAbJobListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTraceAbJobListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.trace_media_id):
+            query['TraceMediaId'] = request.trace_media_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTraceAbJobList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryTraceAbJobListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_trace_ab_job_list_with_options_async(
+        self,
+        request: ice20201109_models.QueryTraceAbJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryTraceAbJobListResponse:
+        """
+        @summary 查询视频溯源水印ab流任务
+        
+        @param request: QueryTraceAbJobListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTraceAbJobListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.trace_media_id):
+            query['TraceMediaId'] = request.trace_media_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTraceAbJobList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryTraceAbJobListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_trace_ab_job_list(
+        self,
+        request: ice20201109_models.QueryTraceAbJobListRequest,
+    ) -> ice20201109_models.QueryTraceAbJobListResponse:
+        """
+        @summary 查询视频溯源水印ab流任务
+        
+        @param request: QueryTraceAbJobListRequest
+        @return: QueryTraceAbJobListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_trace_ab_job_list_with_options(request, runtime)
+
+    async def query_trace_ab_job_list_async(
+        self,
+        request: ice20201109_models.QueryTraceAbJobListRequest,
+    ) -> ice20201109_models.QueryTraceAbJobListResponse:
+        """
+        @summary 查询视频溯源水印ab流任务
+        
+        @param request: QueryTraceAbJobListRequest
+        @return: QueryTraceAbJobListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_trace_ab_job_list_with_options_async(request, runtime)
+
+    def query_trace_extract_job_with_options(
+        self,
+        request: ice20201109_models.QueryTraceExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryTraceExtractJobResponse:
+        """
+        @summary 查询溯源水印提取任务
+        
+        @param request: QueryTraceExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTraceExtractJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTraceExtractJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryTraceExtractJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_trace_extract_job_with_options_async(
+        self,
+        request: ice20201109_models.QueryTraceExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryTraceExtractJobResponse:
+        """
+        @summary 查询溯源水印提取任务
+        
+        @param request: QueryTraceExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTraceExtractJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTraceExtractJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryTraceExtractJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_trace_extract_job(
+        self,
+        request: ice20201109_models.QueryTraceExtractJobRequest,
+    ) -> ice20201109_models.QueryTraceExtractJobResponse:
+        """
+        @summary 查询溯源水印提取任务
+        
+        @param request: QueryTraceExtractJobRequest
+        @return: QueryTraceExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_trace_extract_job_with_options(request, runtime)
+
+    async def query_trace_extract_job_async(
+        self,
+        request: ice20201109_models.QueryTraceExtractJobRequest,
+    ) -> ice20201109_models.QueryTraceExtractJobResponse:
+        """
+        @summary 查询溯源水印提取任务
+        
+        @param request: QueryTraceExtractJobRequest
+        @return: QueryTraceExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_trace_extract_job_with_options_async(request, runtime)
+
+    def query_trace_m3u_8job_list_with_options(
+        self,
+        request: ice20201109_models.QueryTraceM3u8JobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryTraceM3u8JobListResponse:
+        """
+        @summary 查询视频溯源水印m3u8任务
+        
+        @param request: QueryTraceM3u8JobListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTraceM3u8JobListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTraceM3u8JobList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryTraceM3u8JobListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_trace_m3u_8job_list_with_options_async(
+        self,
+        request: ice20201109_models.QueryTraceM3u8JobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryTraceM3u8JobListResponse:
+        """
+        @summary 查询视频溯源水印m3u8任务
+        
+        @param request: QueryTraceM3u8JobListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTraceM3u8JobListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTraceM3u8JobList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryTraceM3u8JobListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_trace_m3u_8job_list(
+        self,
+        request: ice20201109_models.QueryTraceM3u8JobListRequest,
+    ) -> ice20201109_models.QueryTraceM3u8JobListResponse:
+        """
+        @summary 查询视频溯源水印m3u8任务
+        
+        @param request: QueryTraceM3u8JobListRequest
+        @return: QueryTraceM3u8JobListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_trace_m3u_8job_list_with_options(request, runtime)
+
+    async def query_trace_m3u_8job_list_async(
+        self,
+        request: ice20201109_models.QueryTraceM3u8JobListRequest,
+    ) -> ice20201109_models.QueryTraceM3u8JobListResponse:
+        """
+        @summary 查询视频溯源水印m3u8任务
+        
+        @param request: QueryTraceM3u8JobListRequest
+        @return: QueryTraceM3u8JobListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_trace_m3u_8job_list_with_options_async(request, runtime)
+
     def refresh_upload_media_with_options(
         self,
         request: ice20201109_models.RefreshUploadMediaRequest,
@@ -15952,7 +16496,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchEditingProjectResponse:
         """
-        @summary SearchEditingProject
+        @summary Queries online editing projects by creation time and status.
         
         @param request: SearchEditingProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16003,7 +16547,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchEditingProjectResponse:
         """
-        @summary SearchEditingProject
+        @summary Queries online editing projects by creation time and status.
         
         @param request: SearchEditingProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16053,7 +16597,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchEditingProjectRequest,
     ) -> ice20201109_models.SearchEditingProjectResponse:
         """
-        @summary SearchEditingProject
+        @summary Queries online editing projects by creation time and status.
         
         @param request: SearchEditingProjectRequest
         @return: SearchEditingProjectResponse
@@ -16066,7 +16610,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchEditingProjectRequest,
     ) -> ice20201109_models.SearchEditingProjectResponse:
         """
-        @summary SearchEditingProject
+        @summary Queries online editing projects by creation time and status.
         
         @param request: SearchEditingProjectRequest
         @return: SearchEditingProjectResponse
@@ -16080,7 +16624,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchIndexJobRerunResponse:
         """
-        @summary 搜索索引任务重新分析
+        @summary Re-analyzes the search index jobs of media assets. You can re-run the search index jobs of up to 20 media assets in each request.
         
         @param request: SearchIndexJobRerunRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16119,7 +16663,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchIndexJobRerunResponse:
         """
-        @summary 搜索索引任务重新分析
+        @summary Re-analyzes the search index jobs of media assets. You can re-run the search index jobs of up to 20 media assets in each request.
         
         @param request: SearchIndexJobRerunRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16157,7 +16701,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchIndexJobRerunRequest,
     ) -> ice20201109_models.SearchIndexJobRerunResponse:
         """
-        @summary 搜索索引任务重新分析
+        @summary Re-analyzes the search index jobs of media assets. You can re-run the search index jobs of up to 20 media assets in each request.
         
         @param request: SearchIndexJobRerunRequest
         @return: SearchIndexJobRerunResponse
@@ -16170,7 +16714,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchIndexJobRerunRequest,
     ) -> ice20201109_models.SearchIndexJobRerunResponse:
         """
-        @summary 搜索索引任务重新分析
+        @summary Re-analyzes the search index jobs of media assets. You can re-run the search index jobs of up to 20 media assets in each request.
         
         @param request: SearchIndexJobRerunRequest
         @return: SearchIndexJobRerunResponse
@@ -17168,7 +17712,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendLiveSnapshotJobCommandResponse:
         """
-        @summary 发送实时截图任务指令
+        @summary Sends a command to process a live stream snapshot job.
         
         @param request: SendLiveSnapshotJobCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17205,7 +17749,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendLiveSnapshotJobCommandResponse:
         """
-        @summary 发送实时截图任务指令
+        @summary Sends a command to process a live stream snapshot job.
         
         @param request: SendLiveSnapshotJobCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17241,7 +17785,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendLiveSnapshotJobCommandRequest,
     ) -> ice20201109_models.SendLiveSnapshotJobCommandResponse:
         """
-        @summary 发送实时截图任务指令
+        @summary Sends a command to process a live stream snapshot job.
         
         @param request: SendLiveSnapshotJobCommandRequest
         @return: SendLiveSnapshotJobCommandResponse
@@ -17254,7 +17798,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendLiveSnapshotJobCommandRequest,
     ) -> ice20201109_models.SendLiveSnapshotJobCommandResponse:
         """
-        @summary 发送实时截图任务指令
+        @summary Sends a command to process a live stream snapshot job.
         
         @param request: SendLiveSnapshotJobCommandRequest
         @return: SendLiveSnapshotJobCommandResponse
@@ -17268,7 +17812,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendLiveTranscodeJobCommandResponse:
         """
-        @summary 给指定转码任务发实时命令
+        @summary Sends a command to process a live stream transcoding job.
         
         @param request: SendLiveTranscodeJobCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17305,7 +17849,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendLiveTranscodeJobCommandResponse:
         """
-        @summary 给指定转码任务发实时命令
+        @summary Sends a command to process a live stream transcoding job.
         
         @param request: SendLiveTranscodeJobCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17341,7 +17885,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendLiveTranscodeJobCommandRequest,
     ) -> ice20201109_models.SendLiveTranscodeJobCommandResponse:
         """
-        @summary 给指定转码任务发实时命令
+        @summary Sends a command to process a live stream transcoding job.
         
         @param request: SendLiveTranscodeJobCommandRequest
         @return: SendLiveTranscodeJobCommandResponse
@@ -17354,7 +17898,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendLiveTranscodeJobCommandRequest,
     ) -> ice20201109_models.SendLiveTranscodeJobCommandResponse:
         """
-        @summary 给指定转码任务发实时命令
+        @summary Sends a command to process a live stream transcoding job.
         
         @param request: SendLiveTranscodeJobCommandRequest
         @return: SendLiveTranscodeJobCommandResponse
@@ -17672,7 +18216,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetEventCallbackResponse:
         """
-        @summary 配置事件回调地址
+        @summary Configures a callback method for one or more events.
         
         @param request: SetEventCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17717,7 +18261,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetEventCallbackResponse:
         """
-        @summary 配置事件回调地址
+        @summary Configures a callback method for one or more events.
         
         @param request: SetEventCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17761,7 +18305,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetEventCallbackRequest,
     ) -> ice20201109_models.SetEventCallbackResponse:
         """
-        @summary 配置事件回调地址
+        @summary Configures a callback method for one or more events.
         
         @param request: SetEventCallbackRequest
         @return: SetEventCallbackResponse
@@ -17774,7 +18318,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetEventCallbackRequest,
     ) -> ice20201109_models.SetEventCallbackResponse:
         """
-        @summary 配置事件回调地址
+        @summary Configures a callback method for one or more events.
         
         @param request: SetEventCallbackRequest
         @return: SetEventCallbackResponse
@@ -18784,7 +19328,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
         """
-        @summary 提交虚拟人视频合成任务
+        @summary Submits a video rendering job for a digitized virtual human based on text or an audio file of a human voice.
         
         @param request: SubmitAvatarVideoJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18829,7 +19373,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
         """
-        @summary 提交虚拟人视频合成任务
+        @summary Submits a video rendering job for a digitized virtual human based on text or an audio file of a human voice.
         
         @param request: SubmitAvatarVideoJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18873,7 +19417,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAvatarVideoJobRequest,
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
         """
-        @summary 提交虚拟人视频合成任务
+        @summary Submits a video rendering job for a digitized virtual human based on text or an audio file of a human voice.
         
         @param request: SubmitAvatarVideoJobRequest
         @return: SubmitAvatarVideoJobResponse
@@ -18886,7 +19430,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAvatarVideoJobRequest,
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
         """
-        @summary 提交虚拟人视频合成任务
+        @summary Submits a video rendering job for a digitized virtual human based on text or an audio file of a human voice.
         
         @param request: SubmitAvatarVideoJobRequest
         @return: SubmitAvatarVideoJobResponse
@@ -19009,6 +19553,258 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_batch_media_producing_job_with_options_async(request, runtime)
+
+    def submit_copyright_extract_job_with_options(
+        self,
+        tmp_req: ice20201109_models.SubmitCopyrightExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitCopyrightExtractJobResponse:
+        """
+        @summary 提交版权水印提取作业
+        
+        @param tmp_req: SubmitCopyrightExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCopyrightExtractJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitCopyrightExtractJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitCopyrightExtractJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitCopyrightExtractJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_copyright_extract_job_with_options_async(
+        self,
+        tmp_req: ice20201109_models.SubmitCopyrightExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitCopyrightExtractJobResponse:
+        """
+        @summary 提交版权水印提取作业
+        
+        @param tmp_req: SubmitCopyrightExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCopyrightExtractJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitCopyrightExtractJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitCopyrightExtractJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitCopyrightExtractJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_copyright_extract_job(
+        self,
+        request: ice20201109_models.SubmitCopyrightExtractJobRequest,
+    ) -> ice20201109_models.SubmitCopyrightExtractJobResponse:
+        """
+        @summary 提交版权水印提取作业
+        
+        @param request: SubmitCopyrightExtractJobRequest
+        @return: SubmitCopyrightExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_copyright_extract_job_with_options(request, runtime)
+
+    async def submit_copyright_extract_job_async(
+        self,
+        request: ice20201109_models.SubmitCopyrightExtractJobRequest,
+    ) -> ice20201109_models.SubmitCopyrightExtractJobResponse:
+        """
+        @summary 提交版权水印提取作业
+        
+        @param request: SubmitCopyrightExtractJobRequest
+        @return: SubmitCopyrightExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_copyright_extract_job_with_options_async(request, runtime)
+
+    def submit_copyright_job_with_options(
+        self,
+        tmp_req: ice20201109_models.SubmitCopyrightJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitCopyrightJobResponse:
+        """
+        @summary 提交版权水印任务
+        
+        @param tmp_req: SubmitCopyrightJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCopyrightJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitCopyrightJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not UtilClient.is_unset(tmp_req.output):
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.output_shrink):
+            query['Output'] = request.output_shrink
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total_time):
+            query['TotalTime'] = request.total_time
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitCopyrightJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitCopyrightJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_copyright_job_with_options_async(
+        self,
+        tmp_req: ice20201109_models.SubmitCopyrightJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitCopyrightJobResponse:
+        """
+        @summary 提交版权水印任务
+        
+        @param tmp_req: SubmitCopyrightJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCopyrightJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitCopyrightJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not UtilClient.is_unset(tmp_req.output):
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.output_shrink):
+            query['Output'] = request.output_shrink
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total_time):
+            query['TotalTime'] = request.total_time
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitCopyrightJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitCopyrightJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_copyright_job(
+        self,
+        request: ice20201109_models.SubmitCopyrightJobRequest,
+    ) -> ice20201109_models.SubmitCopyrightJobResponse:
+        """
+        @summary 提交版权水印任务
+        
+        @param request: SubmitCopyrightJobRequest
+        @return: SubmitCopyrightJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_copyright_job_with_options(request, runtime)
+
+    async def submit_copyright_job_async(
+        self,
+        request: ice20201109_models.SubmitCopyrightJobRequest,
+    ) -> ice20201109_models.SubmitCopyrightJobResponse:
+        """
+        @summary 提交版权水印任务
+        
+        @param request: SubmitCopyrightJobRequest
+        @return: SubmitCopyrightJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_copyright_job_with_options_async(request, runtime)
 
     def submit_customized_voice_job_with_options(
         self,
@@ -19828,7 +20624,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveRecordJobResponse:
         """
-        @summary 提交录制任务
+        @summary Submits a live stream recording job.
+        
+        @description You can call this operation to record live streams of ApsaraVideo Live or third-party Real-Time Messaging Protocol (RTMP) live streams. We recommend that you ingest a stream before you call this operation to submit a recording job. If no stream is pulled from the streaming URL, the job attempts to pull a stream for 3 minutes. If the attempt times out, the recording service stops.
+        Before you submit a recording job, you must prepare an Object Storage Service (OSS) or ApsaraVideo VOD bucket. We recommend that you use a storage address configured in Intelligent Media Services (IMS) to facilitate the management and processing of generated recording files.
+        If the preset recording template does not meet your requirements, you can create a custom recording template.
         
         @param tmp_req: SubmitLiveRecordJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19877,7 +20677,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveRecordJobResponse:
         """
-        @summary 提交录制任务
+        @summary Submits a live stream recording job.
+        
+        @description You can call this operation to record live streams of ApsaraVideo Live or third-party Real-Time Messaging Protocol (RTMP) live streams. We recommend that you ingest a stream before you call this operation to submit a recording job. If no stream is pulled from the streaming URL, the job attempts to pull a stream for 3 minutes. If the attempt times out, the recording service stops.
+        Before you submit a recording job, you must prepare an Object Storage Service (OSS) or ApsaraVideo VOD bucket. We recommend that you use a storage address configured in Intelligent Media Services (IMS) to facilitate the management and processing of generated recording files.
+        If the preset recording template does not meet your requirements, you can create a custom recording template.
         
         @param tmp_req: SubmitLiveRecordJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19925,7 +20729,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitLiveRecordJobRequest,
     ) -> ice20201109_models.SubmitLiveRecordJobResponse:
         """
-        @summary 提交录制任务
+        @summary Submits a live stream recording job.
+        
+        @description You can call this operation to record live streams of ApsaraVideo Live or third-party Real-Time Messaging Protocol (RTMP) live streams. We recommend that you ingest a stream before you call this operation to submit a recording job. If no stream is pulled from the streaming URL, the job attempts to pull a stream for 3 minutes. If the attempt times out, the recording service stops.
+        Before you submit a recording job, you must prepare an Object Storage Service (OSS) or ApsaraVideo VOD bucket. We recommend that you use a storage address configured in Intelligent Media Services (IMS) to facilitate the management and processing of generated recording files.
+        If the preset recording template does not meet your requirements, you can create a custom recording template.
         
         @param request: SubmitLiveRecordJobRequest
         @return: SubmitLiveRecordJobResponse
@@ -19938,7 +20746,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitLiveRecordJobRequest,
     ) -> ice20201109_models.SubmitLiveRecordJobResponse:
         """
-        @summary 提交录制任务
+        @summary Submits a live stream recording job.
+        
+        @description You can call this operation to record live streams of ApsaraVideo Live or third-party Real-Time Messaging Protocol (RTMP) live streams. We recommend that you ingest a stream before you call this operation to submit a recording job. If no stream is pulled from the streaming URL, the job attempts to pull a stream for 3 minutes. If the attempt times out, the recording service stops.
+        Before you submit a recording job, you must prepare an Object Storage Service (OSS) or ApsaraVideo VOD bucket. We recommend that you use a storage address configured in Intelligent Media Services (IMS) to facilitate the management and processing of generated recording files.
+        If the preset recording template does not meet your requirements, you can create a custom recording template.
         
         @param request: SubmitLiveRecordJobRequest
         @return: SubmitLiveRecordJobResponse
@@ -19952,7 +20764,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveSnapshotJobResponse:
         """
-        @summary 创建直播截图任务
+        @summary Submits a live stream snapshot job. If the job is submitted during stream ingest, it automatically starts in asynchronous mode. Otherwise, it does not start.
         
         @param tmp_req: SubmitLiveSnapshotJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20001,7 +20813,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveSnapshotJobResponse:
         """
-        @summary 创建直播截图任务
+        @summary Submits a live stream snapshot job. If the job is submitted during stream ingest, it automatically starts in asynchronous mode. Otherwise, it does not start.
         
         @param tmp_req: SubmitLiveSnapshotJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20049,7 +20861,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitLiveSnapshotJobRequest,
     ) -> ice20201109_models.SubmitLiveSnapshotJobResponse:
         """
-        @summary 创建直播截图任务
+        @summary Submits a live stream snapshot job. If the job is submitted during stream ingest, it automatically starts in asynchronous mode. Otherwise, it does not start.
         
         @param request: SubmitLiveSnapshotJobRequest
         @return: SubmitLiveSnapshotJobResponse
@@ -20062,7 +20874,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitLiveSnapshotJobRequest,
     ) -> ice20201109_models.SubmitLiveSnapshotJobResponse:
         """
-        @summary 创建直播截图任务
+        @summary Submits a live stream snapshot job. If the job is submitted during stream ingest, it automatically starts in asynchronous mode. Otherwise, it does not start.
         
         @param request: SubmitLiveSnapshotJobRequest
         @return: SubmitLiveSnapshotJobResponse
@@ -20076,7 +20888,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveTranscodeJobResponse:
         """
-        @summary 提交转码任务
+        @summary Submits a live stream transcoding job.
+        
+        @description    When you submit a transcoding job that immediately takes effect, make sure that the input stream can be streamed.
+        When you submit a timed transcoding job, make sure that the input stream can be streamed before the specified time.
         
         @param tmp_req: SubmitLiveTranscodeJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20129,7 +20944,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveTranscodeJobResponse:
         """
-        @summary 提交转码任务
+        @summary Submits a live stream transcoding job.
+        
+        @description    When you submit a transcoding job that immediately takes effect, make sure that the input stream can be streamed.
+        When you submit a timed transcoding job, make sure that the input stream can be streamed before the specified time.
         
         @param tmp_req: SubmitLiveTranscodeJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20181,7 +20999,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitLiveTranscodeJobRequest,
     ) -> ice20201109_models.SubmitLiveTranscodeJobResponse:
         """
-        @summary 提交转码任务
+        @summary Submits a live stream transcoding job.
+        
+        @description    When you submit a transcoding job that immediately takes effect, make sure that the input stream can be streamed.
+        When you submit a timed transcoding job, make sure that the input stream can be streamed before the specified time.
         
         @param request: SubmitLiveTranscodeJobRequest
         @return: SubmitLiveTranscodeJobResponse
@@ -20194,7 +21015,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitLiveTranscodeJobRequest,
     ) -> ice20201109_models.SubmitLiveTranscodeJobResponse:
         """
-        @summary 提交转码任务
+        @summary Submits a live stream transcoding job.
+        
+        @description    When you submit a transcoding job that immediately takes effect, make sure that the input stream can be streamed.
+        When you submit a timed transcoding job, make sure that the input stream can be streamed before the specified time.
         
         @param request: SubmitLiveTranscodeJobRequest
         @return: SubmitLiveTranscodeJobResponse
@@ -21666,6 +22490,370 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_text_generate_job_with_options_async(request, runtime)
 
+    def submit_trace_ab_job_with_options(
+        self,
+        tmp_req: ice20201109_models.SubmitTraceAbJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitTraceAbJobResponse:
+        """
+        @summary 提交视频溯源水印ab流任务
+        
+        @param tmp_req: SubmitTraceAbJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTraceAbJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitTraceAbJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not UtilClient.is_unset(tmp_req.output):
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cipher_base_64ed):
+            query['CipherBase64ed'] = request.cipher_base_64ed
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.output_shrink):
+            query['Output'] = request.output_shrink
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total_time):
+            query['TotalTime'] = request.total_time
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTraceAbJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitTraceAbJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_trace_ab_job_with_options_async(
+        self,
+        tmp_req: ice20201109_models.SubmitTraceAbJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitTraceAbJobResponse:
+        """
+        @summary 提交视频溯源水印ab流任务
+        
+        @param tmp_req: SubmitTraceAbJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTraceAbJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitTraceAbJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not UtilClient.is_unset(tmp_req.output):
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cipher_base_64ed):
+            query['CipherBase64ed'] = request.cipher_base_64ed
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.output_shrink):
+            query['Output'] = request.output_shrink
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total_time):
+            query['TotalTime'] = request.total_time
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTraceAbJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitTraceAbJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_trace_ab_job(
+        self,
+        request: ice20201109_models.SubmitTraceAbJobRequest,
+    ) -> ice20201109_models.SubmitTraceAbJobResponse:
+        """
+        @summary 提交视频溯源水印ab流任务
+        
+        @param request: SubmitTraceAbJobRequest
+        @return: SubmitTraceAbJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_trace_ab_job_with_options(request, runtime)
+
+    async def submit_trace_ab_job_async(
+        self,
+        request: ice20201109_models.SubmitTraceAbJobRequest,
+    ) -> ice20201109_models.SubmitTraceAbJobResponse:
+        """
+        @summary 提交视频溯源水印ab流任务
+        
+        @param request: SubmitTraceAbJobRequest
+        @return: SubmitTraceAbJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_trace_ab_job_with_options_async(request, runtime)
+
+    def submit_trace_extract_job_with_options(
+        self,
+        tmp_req: ice20201109_models.SubmitTraceExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitTraceExtractJobResponse:
+        """
+        @summary 提交溯源水印提取任务
+        
+        @param tmp_req: SubmitTraceExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTraceExtractJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitTraceExtractJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTraceExtractJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitTraceExtractJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_trace_extract_job_with_options_async(
+        self,
+        tmp_req: ice20201109_models.SubmitTraceExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitTraceExtractJobResponse:
+        """
+        @summary 提交溯源水印提取任务
+        
+        @param tmp_req: SubmitTraceExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTraceExtractJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitTraceExtractJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTraceExtractJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitTraceExtractJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_trace_extract_job(
+        self,
+        request: ice20201109_models.SubmitTraceExtractJobRequest,
+    ) -> ice20201109_models.SubmitTraceExtractJobResponse:
+        """
+        @summary 提交溯源水印提取任务
+        
+        @param request: SubmitTraceExtractJobRequest
+        @return: SubmitTraceExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_trace_extract_job_with_options(request, runtime)
+
+    async def submit_trace_extract_job_async(
+        self,
+        request: ice20201109_models.SubmitTraceExtractJobRequest,
+    ) -> ice20201109_models.SubmitTraceExtractJobResponse:
+        """
+        @summary 提交溯源水印提取任务
+        
+        @param request: SubmitTraceExtractJobRequest
+        @return: SubmitTraceExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_trace_extract_job_with_options_async(request, runtime)
+
+    def submit_trace_m3u_8job_with_options(
+        self,
+        tmp_req: ice20201109_models.SubmitTraceM3u8JobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitTraceM3u8JobResponse:
+        """
+        @summary 提交视频溯源水印m3u8文件任务
+        
+        @param tmp_req: SubmitTraceM3u8JobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTraceM3u8JobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitTraceM3u8JobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.output):
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.key_uri):
+            query['KeyUri'] = request.key_uri
+        if not UtilClient.is_unset(request.output_shrink):
+            query['Output'] = request.output_shrink
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.trace):
+            query['Trace'] = request.trace
+        if not UtilClient.is_unset(request.trace_media_id):
+            query['TraceMediaId'] = request.trace_media_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTraceM3u8Job',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitTraceM3u8JobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_trace_m3u_8job_with_options_async(
+        self,
+        tmp_req: ice20201109_models.SubmitTraceM3u8JobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitTraceM3u8JobResponse:
+        """
+        @summary 提交视频溯源水印m3u8文件任务
+        
+        @param tmp_req: SubmitTraceM3u8JobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTraceM3u8JobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitTraceM3u8JobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.output):
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.key_uri):
+            query['KeyUri'] = request.key_uri
+        if not UtilClient.is_unset(request.output_shrink):
+            query['Output'] = request.output_shrink
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.trace):
+            query['Trace'] = request.trace
+        if not UtilClient.is_unset(request.trace_media_id):
+            query['TraceMediaId'] = request.trace_media_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTraceM3u8Job',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitTraceM3u8JobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_trace_m3u_8job(
+        self,
+        request: ice20201109_models.SubmitTraceM3u8JobRequest,
+    ) -> ice20201109_models.SubmitTraceM3u8JobResponse:
+        """
+        @summary 提交视频溯源水印m3u8文件任务
+        
+        @param request: SubmitTraceM3u8JobRequest
+        @return: SubmitTraceM3u8JobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_trace_m3u_8job_with_options(request, runtime)
+
+    async def submit_trace_m3u_8job_async(
+        self,
+        request: ice20201109_models.SubmitTraceM3u8JobRequest,
+    ) -> ice20201109_models.SubmitTraceM3u8JobResponse:
+        """
+        @summary 提交视频溯源水印m3u8文件任务
+        
+        @param request: SubmitTraceM3u8JobRequest
+        @return: SubmitTraceM3u8JobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_trace_m3u_8job_with_options_async(request, runtime)
+
     def submit_transcode_job_with_options(
         self,
         tmp_req: ice20201109_models.SubmitTranscodeJobRequest,
@@ -22604,7 +23792,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveRecordTemplateResponse:
         """
-        @summary 修改直播录制模板
+        @summary Updates the information about a live stream recording template.
+        
+        @description Only user-created templates can be updated. The preset template cannot be updated.
         
         @param tmp_req: UpdateLiveRecordTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22647,7 +23837,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveRecordTemplateResponse:
         """
-        @summary 修改直播录制模板
+        @summary Updates the information about a live stream recording template.
+        
+        @description Only user-created templates can be updated. The preset template cannot be updated.
         
         @param tmp_req: UpdateLiveRecordTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22689,7 +23881,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLiveRecordTemplateRequest,
     ) -> ice20201109_models.UpdateLiveRecordTemplateResponse:
         """
-        @summary 修改直播录制模板
+        @summary Updates the information about a live stream recording template.
+        
+        @description Only user-created templates can be updated. The preset template cannot be updated.
         
         @param request: UpdateLiveRecordTemplateRequest
         @return: UpdateLiveRecordTemplateResponse
@@ -22702,7 +23896,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLiveRecordTemplateRequest,
     ) -> ice20201109_models.UpdateLiveRecordTemplateResponse:
         """
-        @summary 修改直播录制模板
+        @summary Updates the information about a live stream recording template.
+        
+        @description Only user-created templates can be updated. The preset template cannot be updated.
         
         @param request: UpdateLiveRecordTemplateRequest
         @return: UpdateLiveRecordTemplateResponse
@@ -22716,7 +23912,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveSnapshotTemplateResponse:
         """
-        @summary 更新直播截图模板
+        @summary Updates the information about a live stream snapshot template.
         
         @param request: UpdateLiveSnapshotTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22759,7 +23955,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveSnapshotTemplateResponse:
         """
-        @summary 更新直播截图模板
+        @summary Updates the information about a live stream snapshot template.
         
         @param request: UpdateLiveSnapshotTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22801,7 +23997,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.UpdateLiveSnapshotTemplateResponse:
         """
-        @summary 更新直播截图模板
+        @summary Updates the information about a live stream snapshot template.
         
         @param request: UpdateLiveSnapshotTemplateRequest
         @return: UpdateLiveSnapshotTemplateResponse
@@ -22814,7 +24010,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.UpdateLiveSnapshotTemplateResponse:
         """
-        @summary 更新直播截图模板
+        @summary Updates the information about a live stream snapshot template.
         
         @param request: UpdateLiveSnapshotTemplateRequest
         @return: UpdateLiveSnapshotTemplateResponse
@@ -22828,7 +24024,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveTranscodeJobResponse:
         """
-        @summary 更新转码任务配置
+        @summary Updates the information about a live stream transcoding job.
+        
+        @description    For a non-timed transcoding job, you can modify the Name parameter of the job, regardless of the job state.
+        For a timed job, you can modify the Name, StreamInput, TranscodeOutput, and TimedConfig parameters. However, the StreamInput, TranscodeOutput, and TimedConfig parameters can be modified only when the job is not started.
         
         @param tmp_req: UpdateLiveTranscodeJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22879,7 +24078,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveTranscodeJobResponse:
         """
-        @summary 更新转码任务配置
+        @summary Updates the information about a live stream transcoding job.
+        
+        @description    For a non-timed transcoding job, you can modify the Name parameter of the job, regardless of the job state.
+        For a timed job, you can modify the Name, StreamInput, TranscodeOutput, and TimedConfig parameters. However, the StreamInput, TranscodeOutput, and TimedConfig parameters can be modified only when the job is not started.
         
         @param tmp_req: UpdateLiveTranscodeJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22929,7 +24131,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLiveTranscodeJobRequest,
     ) -> ice20201109_models.UpdateLiveTranscodeJobResponse:
         """
-        @summary 更新转码任务配置
+        @summary Updates the information about a live stream transcoding job.
+        
+        @description    For a non-timed transcoding job, you can modify the Name parameter of the job, regardless of the job state.
+        For a timed job, you can modify the Name, StreamInput, TranscodeOutput, and TimedConfig parameters. However, the StreamInput, TranscodeOutput, and TimedConfig parameters can be modified only when the job is not started.
         
         @param request: UpdateLiveTranscodeJobRequest
         @return: UpdateLiveTranscodeJobResponse
@@ -22942,7 +24147,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLiveTranscodeJobRequest,
     ) -> ice20201109_models.UpdateLiveTranscodeJobResponse:
         """
-        @summary 更新转码任务配置
+        @summary Updates the information about a live stream transcoding job.
+        
+        @description    For a non-timed transcoding job, you can modify the Name parameter of the job, regardless of the job state.
+        For a timed job, you can modify the Name, StreamInput, TranscodeOutput, and TimedConfig parameters. However, the StreamInput, TranscodeOutput, and TimedConfig parameters can be modified only when the job is not started.
         
         @param request: UpdateLiveTranscodeJobRequest
         @return: UpdateLiveTranscodeJobResponse
@@ -22956,7 +24164,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveTranscodeTemplateResponse:
         """
-        @summary 更新转码模版
+        @summary Updates the information about a live stream transcoding template.
         
         @param tmp_req: UpdateLiveTranscodeTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22999,7 +24207,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveTranscodeTemplateResponse:
         """
-        @summary 更新转码模版
+        @summary Updates the information about a live stream transcoding template.
         
         @param tmp_req: UpdateLiveTranscodeTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23041,7 +24249,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.UpdateLiveTranscodeTemplateResponse:
         """
-        @summary 更新转码模版
+        @summary Updates the information about a live stream transcoding template.
         
         @param request: UpdateLiveTranscodeTemplateRequest
         @return: UpdateLiveTranscodeTemplateResponse
@@ -23054,7 +24262,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.UpdateLiveTranscodeTemplateResponse:
         """
-        @summary 更新转码模版
+        @summary Updates the information about a live stream transcoding template.
         
         @param request: UpdateLiveTranscodeTemplateRequest
         @return: UpdateLiveTranscodeTemplateResponse

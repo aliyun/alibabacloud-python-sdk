@@ -1,3 +1,19 @@
+2024-12-12 Version: 3.7.0
+- Support API QueryCopyrightExtractJob.
+- Support API QueryCopyrightJobList.
+- Support API QueryTraceAbJobList.
+- Support API QueryTraceExtractJob.
+- Support API QueryTraceM3u8JobList.
+- Support API SubmitCopyrightExtractJob.
+- Support API SubmitCopyrightJob.
+- Support API SubmitTraceAbJob.
+- Support API SubmitTraceExtractJob.
+- Support API SubmitTraceM3u8Job.
+- Update API GetMediaProducingJob: update response param.
+- Update API ListSearchLib: update response param.
+- Update API SearchMediaClipByFace: update response param.
+
+
 2024-11-20 Version: 3.6.4
 - Update API GenerateAIAgentCall: add param UserData.
 - Update API StartRtcRobotInstance: update param Config.
