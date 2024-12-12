@@ -3686,22 +3686,40 @@ class Client(OpenApiClient):
     def list_instances_with_options(
         self,
         function_name: str,
-        request: fc20230330_models.ListInstancesRequest,
+        tmp_req: fc20230330_models.ListInstancesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListInstancesResponse:
         """
         @summary Queries a list of function instances.
         
-        @param request: ListInstancesRequest
+        @param tmp_req: ListInstancesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListInstancesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = fc20230330_models.ListInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'instanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.instance_status):
+            request.instance_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_status, 'instanceStatus', 'json')
         query = {}
+        if not UtilClient.is_unset(request.end_time_ms):
+            query['endTimeMs'] = request.end_time_ms
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['instanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.instance_status_shrink):
+            query['instanceStatus'] = request.instance_status_shrink
+        if not UtilClient.is_unset(request.limit):
+            query['limit'] = request.limit
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
+        if not UtilClient.is_unset(request.start_key):
+            query['startKey'] = request.start_key
+        if not UtilClient.is_unset(request.start_time_ms):
+            query['startTimeMs'] = request.start_time_ms
         if not UtilClient.is_unset(request.with_all_active):
             query['withAllActive'] = request.with_all_active
         req = open_api_models.OpenApiRequest(
@@ -3727,22 +3745,40 @@ class Client(OpenApiClient):
     async def list_instances_with_options_async(
         self,
         function_name: str,
-        request: fc20230330_models.ListInstancesRequest,
+        tmp_req: fc20230330_models.ListInstancesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListInstancesResponse:
         """
         @summary Queries a list of function instances.
         
-        @param request: ListInstancesRequest
+        @param tmp_req: ListInstancesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListInstancesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = fc20230330_models.ListInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'instanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.instance_status):
+            request.instance_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_status, 'instanceStatus', 'json')
         query = {}
+        if not UtilClient.is_unset(request.end_time_ms):
+            query['endTimeMs'] = request.end_time_ms
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['instanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.instance_status_shrink):
+            query['instanceStatus'] = request.instance_status_shrink
+        if not UtilClient.is_unset(request.limit):
+            query['limit'] = request.limit
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
+        if not UtilClient.is_unset(request.start_key):
+            query['startKey'] = request.start_key
+        if not UtilClient.is_unset(request.start_time_ms):
+            query['startTimeMs'] = request.start_time_ms
         if not UtilClient.is_unset(request.with_all_active):
             query['withAllActive'] = request.with_all_active
         req = open_api_models.OpenApiRequest(

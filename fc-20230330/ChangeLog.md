@@ -1,3 +1,13 @@
+2024-12-12 Version: 4.1.6
+- Update API ListInstances: add param endTimeMs.
+- Update API ListInstances: add param instanceIds.
+- Update API ListInstances: add param instanceStatus.
+- Update API ListInstances: add param limit.
+- Update API ListInstances: add param startKey.
+- Update API ListInstances: add param startTimeMs.
+- Update API ListInstances: update param withAllActive.
+
+
 2024-12-12 Version: 4.1.5
 - Generated python 2023-03-30 for FC.
 

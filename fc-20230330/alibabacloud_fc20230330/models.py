@@ -3549,6 +3549,106 @@ class Function(TeaModel):
         return self
 
 
+class InstanceEventItem(TeaModel):
+    def __init__(
+        self,
+        children: List['InstanceEventItem'] = None,
+        level: str = None,
+        message: str = None,
+        time: str = None,
+        type: str = None,
+    ):
+        self.children = children
+        self.level = level
+        self.message = message
+        self.time = time
+        self.type = type
+
+    def validate(self):
+        if self.children:
+            for k in self.children:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['children'] = []
+        if self.children is not None:
+            for k in self.children:
+                result['children'].append(k.to_map() if k else None)
+        if self.level is not None:
+            result['level'] = self.level
+        if self.message is not None:
+            result['message'] = self.message
+        if self.time is not None:
+            result['time'] = self.time
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.children = []
+        if m.get('children') is not None:
+            for k in m.get('children'):
+                temp_model = InstanceEventItem()
+                self.children.append(temp_model.from_map(k))
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetInstanceLifecycleEventsOutput(TeaModel):
+    def __init__(
+        self,
+        events: List[InstanceEventItem] = None,
+        request_id: str = None,
+    ):
+        self.events = events
+        self.request_id = request_id
+
+    def validate(self):
+        if self.events:
+            for k in self.events:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['events'] = []
+        if self.events is not None:
+            for k in self.events:
+                result['events'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.events = []
+        if m.get('events') is not None:
+            for k in m.get('events'):
+                temp_model = InstanceEventItem()
+                self.events.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
 class GetResourceTagsOutput(TeaModel):
     def __init__(
         self,
@@ -3669,10 +3769,18 @@ class HTTPTriggerConfig(TeaModel):
 class InstanceInfo(TeaModel):
     def __init__(
         self,
+        created_time_ms: int = None,
+        destroyed_time_ms: int = None,
         instance_id: str = None,
+        qualifier: str = None,
+        status: str = None,
         version_id: str = None,
     ):
+        self.created_time_ms = created_time_ms
+        self.destroyed_time_ms = destroyed_time_ms
         self.instance_id = instance_id
+        self.qualifier = qualifier
+        self.status = status
         self.version_id = version_id
 
     def validate(self):
@@ -3684,16 +3792,32 @@ class InstanceInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.created_time_ms is not None:
+            result['createdTimeMs'] = self.created_time_ms
+        if self.destroyed_time_ms is not None:
+            result['destroyedTimeMs'] = self.destroyed_time_ms
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        if self.status is not None:
+            result['status'] = self.status
         if self.version_id is not None:
             result['versionId'] = self.version_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('createdTimeMs') is not None:
+            self.created_time_ms = m.get('createdTimeMs')
+        if m.get('destroyedTimeMs') is not None:
+            self.destroyed_time_ms = m.get('destroyedTimeMs')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        if m.get('status') is not None:
+            self.status = m.get('status')
         if m.get('versionId') is not None:
             self.version_id = m.get('versionId')
         return self
@@ -4105,8 +4229,10 @@ class ListInstancesOutput(TeaModel):
     def __init__(
         self,
         instances: List[InstanceInfo] = None,
+        request_id: str = None,
     ):
         self.instances = instances
+        self.request_id = request_id
 
     def validate(self):
         if self.instances:
@@ -4124,6 +4250,8 @@ class ListInstancesOutput(TeaModel):
         if self.instances is not None:
             for k in self.instances:
                 result['instances'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4133,6 +4261,8 @@ class ListInstancesOutput(TeaModel):
             for k in m.get('instances'):
                 temp_model = InstanceInfo()
                 self.instances.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -7978,11 +8108,23 @@ class ListFunctionsResponse(TeaModel):
 class ListInstancesRequest(TeaModel):
     def __init__(
         self,
+        end_time_ms: int = None,
+        instance_ids: List[str] = None,
+        instance_status: List[str] = None,
+        limit: str = None,
         qualifier: str = None,
+        start_key: str = None,
+        start_time_ms: int = None,
         with_all_active: bool = None,
     ):
+        self.end_time_ms = end_time_ms
+        self.instance_ids = instance_ids
+        self.instance_status = instance_status
+        self.limit = limit
         # The function version or alias.
         self.qualifier = qualifier
+        self.start_key = start_key
+        self.start_time_ms = start_time_ms
         # Specifies whether to list all instances. Valid values: true and false.
         self.with_all_active = with_all_active
 
@@ -7995,16 +8137,111 @@ class ListInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time_ms is not None:
+            result['endTimeMs'] = self.end_time_ms
+        if self.instance_ids is not None:
+            result['instanceIds'] = self.instance_ids
+        if self.instance_status is not None:
+            result['instanceStatus'] = self.instance_status
+        if self.limit is not None:
+            result['limit'] = self.limit
         if self.qualifier is not None:
             result['qualifier'] = self.qualifier
+        if self.start_key is not None:
+            result['startKey'] = self.start_key
+        if self.start_time_ms is not None:
+            result['startTimeMs'] = self.start_time_ms
         if self.with_all_active is not None:
             result['withAllActive'] = self.with_all_active
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('endTimeMs') is not None:
+            self.end_time_ms = m.get('endTimeMs')
+        if m.get('instanceIds') is not None:
+            self.instance_ids = m.get('instanceIds')
+        if m.get('instanceStatus') is not None:
+            self.instance_status = m.get('instanceStatus')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
         if m.get('qualifier') is not None:
             self.qualifier = m.get('qualifier')
+        if m.get('startKey') is not None:
+            self.start_key = m.get('startKey')
+        if m.get('startTimeMs') is not None:
+            self.start_time_ms = m.get('startTimeMs')
+        if m.get('withAllActive') is not None:
+            self.with_all_active = m.get('withAllActive')
+        return self
+
+
+class ListInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        end_time_ms: int = None,
+        instance_ids_shrink: str = None,
+        instance_status_shrink: str = None,
+        limit: str = None,
+        qualifier: str = None,
+        start_key: str = None,
+        start_time_ms: int = None,
+        with_all_active: bool = None,
+    ):
+        self.end_time_ms = end_time_ms
+        self.instance_ids_shrink = instance_ids_shrink
+        self.instance_status_shrink = instance_status_shrink
+        self.limit = limit
+        # The function version or alias.
+        self.qualifier = qualifier
+        self.start_key = start_key
+        self.start_time_ms = start_time_ms
+        # Specifies whether to list all instances. Valid values: true and false.
+        self.with_all_active = with_all_active
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time_ms is not None:
+            result['endTimeMs'] = self.end_time_ms
+        if self.instance_ids_shrink is not None:
+            result['instanceIds'] = self.instance_ids_shrink
+        if self.instance_status_shrink is not None:
+            result['instanceStatus'] = self.instance_status_shrink
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        if self.start_key is not None:
+            result['startKey'] = self.start_key
+        if self.start_time_ms is not None:
+            result['startTimeMs'] = self.start_time_ms
+        if self.with_all_active is not None:
+            result['withAllActive'] = self.with_all_active
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTimeMs') is not None:
+            self.end_time_ms = m.get('endTimeMs')
+        if m.get('instanceIds') is not None:
+            self.instance_ids_shrink = m.get('instanceIds')
+        if m.get('instanceStatus') is not None:
+            self.instance_status_shrink = m.get('instanceStatus')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        if m.get('startKey') is not None:
+            self.start_key = m.get('startKey')
+        if m.get('startTimeMs') is not None:
+            self.start_time_ms = m.get('startTimeMs')
         if m.get('withAllActive') is not None:
             self.with_all_active = m.get('withAllActive')
         return self
