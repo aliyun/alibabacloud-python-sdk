@@ -1972,7 +1972,7 @@ class AssociateProjectToResourceGroupResponseBody(TeaModel):
     ):
         # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -8564,6 +8564,7 @@ class CreateRouteResponseBody(TeaModel):
     ):
         self.request_id = request_id
         self.route_id = route_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -9766,6 +9767,7 @@ class DeleteNetworkResponseBody(TeaModel):
         success: bool = None,
     ):
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -10318,7 +10320,7 @@ class DeleteResourceGroupResponseBody(TeaModel):
     ):
         # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -10421,6 +10423,7 @@ class DeleteRouteResponseBody(TeaModel):
         success: bool = None,
     ):
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -10930,7 +10933,7 @@ class DissociateProjectFromResourceGroupResponseBody(TeaModel):
     ):
         # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -15145,12 +15148,12 @@ class GetDeploymentResponseBodyPipelineStages(TeaModel):
         # 
         # Valid values:
         # 
-        # *   INIT
-        # *   RUNNING
-        # *   SUCCESS
-        # *   FAIL
-        # *   TERMINATION
-        # *   CANCEL
+        # *   Init
+        # *   Running
+        # *   Success
+        # *   Fail
+        # *   Termination
+        # *   Cancel
         self.status = status
         # The step number of the stage.
         self.step = step
@@ -15158,11 +15161,11 @@ class GetDeploymentResponseBodyPipelineStages(TeaModel):
         # 
         # Valid values:
         # 
-        # *   DELETE
-        # *   BUILD
-        # *   CHECK
-        # *   DEPLOY
-        # *   OFFLINE
+        # *   Deploy
+        # *   Check
+        # *   Offline
+        # *   Build
+        # *   Delete
         self.type = type
 
     def validate(self):
@@ -15243,12 +15246,12 @@ class GetDeploymentResponseBodyPipeline(TeaModel):
         # 
         # Valid values:
         # 
-        # *   INIT
-        # *   RUNNING
-        # *   SUCCESS
-        # *   FAIL
-        # *   TERMINATION
-        # *   CANCEL
+        # *   Init
+        # *   Running
+        # *   Success
+        # *   Fail
+        # *   Termination
+        # *   Cancel
         self.status = status
 
     def validate(self):
@@ -15797,6 +15800,13 @@ class GetNetworkResponseBodyNetwork(TeaModel):
         self.id = id
         self.resource_group_id = resource_group_id
         self.security_group_id = security_group_id
+        # The status of the network resource. Valid values:
+        # 
+        # *   Pending: The network resource is waiting to be created.
+        # *   Creating: The network resource is being created.
+        # *   Running: The network resource is running as expected.
+        # *   Deleting: The network resource is being deleted.
+        # *   Deleted: The network resource is deleted.
         self.status = status
         self.vpc_id = vpc_id
         self.vswitch_id = vswitch_id
@@ -15856,8 +15866,10 @@ class GetNetworkResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The information about the network resource.
         self.network = network
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -16412,7 +16424,7 @@ class GetProjectMemberRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.39e9281f3mhq4J), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
+        # The ID of the account used by the member. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -17374,6 +17386,7 @@ class GetRouteResponseBody(TeaModel):
         self.request_id = request_id
         # The information about the route.
         self.route = route
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -19839,7 +19852,7 @@ class GrantMemberProjectRolesRequest(TeaModel):
         # 
         # This parameter is required.
         self.role_codes = role_codes
-        # The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.51d7281fjgBRmo), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -19889,7 +19902,7 @@ class GrantMemberProjectRolesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.role_codes_shrink = role_codes_shrink
-        # The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.51d7281fjgBRmo), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -21005,9 +21018,9 @@ class ListDIAlarmRulesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The ID of the alert rule.
+        # The ID of the alert rule. If you leave this parameter empty, all alert rules of the task are queried.
         self.dialarm_rule_id = dialarm_rule_id
-        # The ID of the synchronization task for which alert rules are configured.
+        # The ID of the task for which alert rules are configured.
         self.job_id = job_id
         # The page number.
         self.page_number = page_number
@@ -21052,12 +21065,7 @@ class ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsN
         channels: List[str] = None,
         severity: str = None,
     ):
-        # The alert notification method. Valid values:
-        # 
-        # *   Mail
-        # *   Phone
-        # *   Sms
-        # *   Ding
+        # The alert notification methods.
         self.channels = channels
         # The severity level. Valid values:
         # 
@@ -21194,7 +21202,7 @@ class ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions(Tea
         severity: str = None,
         threshold: int = None,
     ):
-        # The types of DDL operations for which the alert rule takes effect.
+        # The types of DDL operations for which the alert rule takes effect. This parameter is returned only if the MetricType parameter is set to DdlReport.
         self.ddl_report_tags = ddl_report_tags
         # The time interval for alert calculation. Unit: minutes.
         self.duration = duration
@@ -21272,7 +21280,7 @@ class ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules(TeaModel):
         self.metric_type = metric_type
         # The name of the alert rule.
         self.name = name
-        # The alert notification settings.
+        # The alert notification method and recipient settings.
         self.notification_settings = notification_settings
         # The conditions that are used to trigger the alert rule.
         self.trigger_conditions = trigger_conditions
@@ -24112,7 +24120,9 @@ class ListDataQualityResultsRequest(TeaModel):
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
         self.data_quality_evaluation_task_instance_id = data_quality_evaluation_task_instance_id
         self.data_quality_rule_id = data_quality_rule_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
         self.project_id = project_id
 
@@ -26279,6 +26289,10 @@ class ListDataSourcesRequest(TeaModel):
         # 
         # Default value: Id
         self.sort_by = sort_by
+        # The tag of the data source. This parameter specifies a filter condition.
+        # 
+        # *   You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
+        # *   If you do not configure this parameter, tag-based filtering is not performed.
         self.tags = tags
         # The data source types. This parameter specifies a filter condition. You can specify multiple data source types.
         self.types = types
@@ -26380,6 +26394,10 @@ class ListDataSourcesShrinkRequest(TeaModel):
         # 
         # Default value: Id
         self.sort_by = sort_by
+        # The tag of the data source. This parameter specifies a filter condition.
+        # 
+        # *   You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
+        # *   If you do not configure this parameter, tag-based filtering is not performed.
         self.tags = tags
         # The data source types. This parameter specifies a filter condition. You can specify multiple data source types.
         self.types_shrink = types_shrink
@@ -26449,7 +26467,12 @@ class ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource(TeaModel):
         modify_user: str = None,
         qualified_name: str = None,
     ):
-        # The connection properties of the data source.
+        # The connection configurations of the data source, including the connection address, access identity, and environment information. The envType parameter specifies the environment in which the data source is used. Valid values of the envType parameter:
+        # 
+        # *   Dev: development environment
+        # *   Prod: production environment
+        # 
+        # The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/zh/dataworks/developer-reference/data-source-connection-information-connectionproperties/?spm=a2c4g.11186623.0.0.3fbb6fe7fo5AMK).
         self.connection_properties = connection_properties
         # The mode in which the data source is added. The mode varies based on the data source type. Valid values: InstanceMode, UrlMode, and CdhMode. The value InstanceMode indicates the instance mode. The value UrlMode indicates the connection string mode. The value CdhMode indicates the CDH cluster mode.
         self.connection_properties_mode = connection_properties_mode
@@ -26465,7 +26488,7 @@ class ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource(TeaModel):
         self.modify_time = modify_time
         # The ID of the user who modifies the data source.
         self.modify_user = modify_user
-        # The unique business key of the data source. For example, the unique business key of a Hologres data source is in the ${tenantOwnerId}:${regionId}:${type}:${instanceId}:${database} format.
+        # The unique business key of the data source. For example, the unique business key of a Hologres data source is in the `${tenantOwnerId}:${regionId}:${type}:${instanceId}:${database}` format.
         self.qualified_name = qualified_name
 
     def validate(self):
@@ -26527,6 +26550,7 @@ class ListDataSourcesResponseBodyPagingInfoDataSources(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # The data sources. Each element is the information of a single data source with a unique data source ID.
         self.data_source = data_source
         # The name of the data source.
         self.name = name
@@ -26577,6 +26601,7 @@ class ListDataSourcesResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The data source groups. Each element in the array indicates a data source group. Each data source group contains data sources in the development environment (if any) and the production environment.
         self.data_sources = data_sources
         # The page number.
         self.page_number = page_number
@@ -26798,12 +26823,12 @@ class ListDeploymentsResponseBodyPagingInfoDeploymentsStages(TeaModel):
         # 
         # Valid values:
         # 
-        # *   INIT
-        # *   RUNNING
-        # *   SUCCESS
-        # *   FAIL
-        # *   TERMINATION
-        # *   CANCEL
+        # *   Init
+        # *   Running
+        # *   Success
+        # *   Fail
+        # *   Termination
+        # *   Cancel
         self.status = status
         # The step number of the stage.
         self.step = step
@@ -26811,11 +26836,11 @@ class ListDeploymentsResponseBodyPagingInfoDeploymentsStages(TeaModel):
         # 
         # Valid values:
         # 
-        # *   DEPLOY
-        # *   CHECK
-        # *   OFFLINE.
-        # *   BUILD
-        # *   DELETE
+        # *   Deploy
+        # *   Check
+        # *   Offline
+        # *   Build
+        # *   Delete
         self.type = type
 
     def validate(self):
@@ -26896,12 +26921,12 @@ class ListDeploymentsResponseBodyPagingInfoDeployments(TeaModel):
         # 
         # Valid values:
         # 
-        # *   INIT
-        # *   RUNNING
-        # *   FAIL
-        # *   SUCCESS
-        # *   TERMINATION
-        # *   CANCEL
+        # *   Init
+        # *   Running
+        # *   Success
+        # *   Fail
+        # *   Termination
+        # *   Cancel
         self.status = status
 
     def validate(self):
@@ -26968,7 +26993,7 @@ class ListDeploymentsResponseBodyPagingInfo(TeaModel):
         page_size: str = None,
         total_count: str = None,
     ):
-        # The processes.
+        # The deployment processes.
         self.deployments = deployments
         # The page number.
         self.page_number = page_number
@@ -28510,12 +28535,12 @@ class ListFunctionsResponseBodyPagingInfoFunctions(TeaModel):
         # 
         # Valid values:
         # 
-        # *   MATH: mathematical operation function
-        # *   AGGREGATE: aggregate function
-        # *   STRING: string processing function
-        # *   DATE: date function
-        # *   ANALYTIC: window function
-        # *   OTHER: others
+        # *   Math: mathematical operation function
+        # *   Aggregate: aggregate function
+        # *   String: string processing function
+        # *   Date: date function
+        # *   Analytic: window function
+        # *   Other: other functions
         self.type = type
 
     def validate(self):
@@ -31279,7 +31304,7 @@ class ListProjectMembersRequest(TeaModel):
         self.project_id = project_id
         # The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
         self.role_codes = role_codes
-        # The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=a2c4g.11186623.0.0.7f96340a3HFgqS), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+        # The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
         self.user_ids = user_ids
 
     def validate(self):
@@ -31339,7 +31364,7 @@ class ListProjectMembersShrinkRequest(TeaModel):
         self.project_id = project_id
         # The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
         self.role_codes_shrink = role_codes_shrink
-        # The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=a2c4g.11186623.0.0.7f96340a3HFgqS), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+        # The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
         self.user_ids_shrink = user_ids_shrink
 
     def validate(self):
@@ -33429,6 +33454,7 @@ class ListRoutesResponseBody(TeaModel):
         self.request_id = request_id
         # The routes.
         self.route_list = route_list
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -41051,7 +41077,7 @@ class UpdateDIJobRequestJobSettings(TeaModel):
 class UpdateDIJobRequestResourceSettingsOfflineResourceSettings(TeaModel):
     def __init__(
         self,
-        requested_cu: int = None,
+        requested_cu: float = None,
         resource_group_identifier: str = None,
     ):
         # The number of compute units (CUs) in the resource group for Data Integration that are used for batch synchronization.
@@ -41086,7 +41112,7 @@ class UpdateDIJobRequestResourceSettingsOfflineResourceSettings(TeaModel):
 class UpdateDIJobRequestResourceSettingsRealtimeResourceSettings(TeaModel):
     def __init__(
         self,
-        requested_cu: int = None,
+        requested_cu: float = None,
         resource_group_identifier: str = None,
     ):
         # The number of CUs in the resource group for Data Integration that are used for real-time synchronization.
@@ -41121,7 +41147,7 @@ class UpdateDIJobRequestResourceSettingsRealtimeResourceSettings(TeaModel):
 class UpdateDIJobRequestResourceSettingsScheduleResourceSettings(TeaModel):
     def __init__(
         self,
-        requested_cu: int = None,
+        requested_cu: float = None,
         resource_group_identifier: str = None,
     ):
         # The number of CUs in the resource group for scheduling that are used for batch synchronization.
@@ -44070,6 +44096,10 @@ class UpdateProjectRequest(TeaModel):
         # *   true: enables scheduling of PAI tasks. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
         # *   false: disables scheduling of PAI tasks.
         self.pai_task_enabled = pai_task_enabled
+        # Specifies whether to disable or enable the workspace. Valid values:
+        # 
+        # *   Available: enables the workspace.
+        # *   Forbidden: disables the workspace.
         self.status = status
 
     def validate(self):
@@ -44437,6 +44467,8 @@ class UpdateRouteRequest(TeaModel):
         destination_cidr: str = None,
         id: int = None,
     ):
+        # The destination CIDR block of the route that you want to update.
+        # 
         # This parameter is required.
         self.destination_cidr = destination_cidr
         # This parameter is required.
@@ -44473,6 +44505,7 @@ class UpdateRouteResponseBody(TeaModel):
         success: bool = None,
     ):
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

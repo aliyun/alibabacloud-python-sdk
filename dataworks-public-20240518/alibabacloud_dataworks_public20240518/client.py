@@ -5609,7 +5609,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse:
         """
-        @summary 获取质量规则模版详情
+        @summary Queries the information about a data quality monitoring rule template.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -5644,7 +5644,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse:
         """
-        @summary 获取质量规则模版详情
+        @summary Queries the information about a data quality monitoring rule template.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -5678,7 +5678,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityRuleTemplateRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse:
         """
-        @summary 获取质量规则模版详情
+        @summary Queries the information about a data quality monitoring rule template.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -5693,7 +5693,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityRuleTemplateRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityRuleTemplateResponse:
         """
-        @summary 获取质量规则模版详情
+        @summary Queries the information about a data quality monitoring rule template.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -6379,6 +6379,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the details about a member in a workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetProjectMemberResponse
@@ -6416,6 +6418,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the details about a member in a workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetProjectMemberResponse
@@ -6452,6 +6456,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the details about a member in a workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetProjectMemberRequest
         @return: GetProjectMemberResponse
         """
@@ -6464,6 +6470,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.GetProjectMemberResponse:
         """
         @summary Queries the details about a member in a workspace.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetProjectMemberRequest
         @return: GetProjectMemberResponse
@@ -6478,6 +6486,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.GetProjectRoleResponse:
         """
         @summary Queries the information about a role in a DataWorks workspace.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetProjectRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6516,6 +6526,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about a role in a DataWorks workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetProjectRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetProjectRoleResponse
@@ -6552,6 +6564,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about a role in a DataWorks workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetProjectRoleRequest
         @return: GetProjectRoleResponse
         """
@@ -6564,6 +6578,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.GetProjectRoleResponse:
         """
         @summary Queries the information about a role in a DataWorks workspace.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetProjectRoleRequest
         @return: GetProjectRoleResponse
@@ -7153,7 +7169,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetWorkflowDefinitionResponse:
         """
-        @summary Queries the infomation about a workflow.
+        @summary Queries the information about a workflow.
         
         @param request: GetWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7186,7 +7202,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetWorkflowDefinitionResponse:
         """
-        @summary Queries the infomation about a workflow.
+        @summary Queries the information about a workflow.
         
         @param request: GetWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7218,7 +7234,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.GetWorkflowDefinitionResponse:
         """
-        @summary Queries the infomation about a workflow.
+        @summary Queries the information about a workflow.
         
         @param request: GetWorkflowDefinitionRequest
         @return: GetWorkflowDefinitionResponse
@@ -7231,7 +7247,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.GetWorkflowDefinitionResponse:
         """
-        @summary Queries the infomation about a workflow.
+        @summary Queries the information about a workflow.
         
         @param request: GetWorkflowDefinitionRequest
         @return: GetWorkflowDefinitionResponse
@@ -7246,6 +7262,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.GrantMemberProjectRolesResponse:
         """
         @summary Assigns roles to members in a workspace.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: GrantMemberProjectRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7290,6 +7308,8 @@ class Client(OpenApiClient):
         """
         @summary Assigns roles to members in a workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: GrantMemberProjectRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GrantMemberProjectRolesResponse
@@ -7332,6 +7352,8 @@ class Client(OpenApiClient):
         """
         @summary Assigns roles to members in a workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GrantMemberProjectRolesRequest
         @return: GrantMemberProjectRolesResponse
         """
@@ -7344,6 +7366,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.GrantMemberProjectRolesResponse:
         """
         @summary Assigns roles to members in a workspace.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GrantMemberProjectRolesRequest
         @return: GrantMemberProjectRolesResponse
@@ -8663,7 +8687,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of data sources based on the business information of data sources.
         
-        @description You can call this operation only if you are assigned one of the following roles in DataWorks:
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
         Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
         
         @param tmp_req: ListDataSourcesRequest
@@ -8703,7 +8728,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of data sources based on the business information of data sources.
         
-        @description You can call this operation only if you are assigned one of the following roles in DataWorks:
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
         Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
         
         @param tmp_req: ListDataSourcesRequest
@@ -8742,7 +8768,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of data sources based on the business information of data sources.
         
-        @description You can call this operation only if you are assigned one of the following roles in DataWorks:
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
         Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
         
         @param request: ListDataSourcesRequest
@@ -8758,7 +8785,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of data sources based on the business information of data sources.
         
-        @description You can call this operation only if you are assigned one of the following roles in DataWorks:
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
         Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
         
         @param request: ListDataSourcesRequest
@@ -9427,6 +9455,8 @@ class Client(OpenApiClient):
         """
         @summary Queries details about members in a workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ListProjectMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListProjectMembersResponse
@@ -9476,6 +9506,8 @@ class Client(OpenApiClient):
         """
         @summary Queries details about members in a workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ListProjectMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListProjectMembersResponse
@@ -9524,6 +9556,8 @@ class Client(OpenApiClient):
         """
         @summary Queries details about members in a workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListProjectMembersRequest
         @return: ListProjectMembersResponse
         """
@@ -9536,6 +9570,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListProjectMembersResponse:
         """
         @summary Queries details about members in a workspace.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListProjectMembersRequest
         @return: ListProjectMembersResponse
@@ -9550,6 +9586,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListProjectRolesResponse:
         """
         @summary Queries the information about roles in a DataWorks workspace by page.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: ListProjectRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9602,6 +9640,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about roles in a DataWorks workspace by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ListProjectRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListProjectRolesResponse
@@ -9652,6 +9692,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about roles in a DataWorks workspace by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListProjectRolesRequest
         @return: ListProjectRolesResponse
         """
@@ -9664,6 +9706,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListProjectRolesResponse:
         """
         @summary Queries the information about roles in a DataWorks workspace by page.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListProjectRolesRequest
         @return: ListProjectRolesResponse

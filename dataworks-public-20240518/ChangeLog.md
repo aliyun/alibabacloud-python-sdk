@@ -1,3 +1,7 @@
+2024-12-12 Version: 4.0.0
+- Update API UpdateDIJob: update param ResourceSettings.
+
+
 2024-12-04 Version: 3.1.0
 - Support API AttachDataQualityRulesToEvaluationTask.
 - Support API CreateDataQualityEvaluationTask.
