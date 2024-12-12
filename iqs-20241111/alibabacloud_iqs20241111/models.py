@@ -117,6 +117,8 @@ class ScorePageItem(TeaModel):
         self,
         card_type: str = None,
         display_link: str = None,
+        host_logo: str = None,
+        hostname: str = None,
         html_snippet: str = None,
         html_title: str = None,
         images: List[IncludeImage] = None,
@@ -126,12 +128,15 @@ class ScorePageItem(TeaModel):
         page_map: Dict[str, str] = None,
         publish_time: int = None,
         score: float = None,
+        site_label: str = None,
         title: str = None,
     ):
         # This parameter is required.
         self.card_type = card_type
         # This parameter is required.
         self.display_link = display_link
+        self.host_logo = host_logo
+        self.hostname = hostname
         # This parameter is required.
         self.html_snippet = html_snippet
         # This parameter is required.
@@ -145,6 +150,7 @@ class ScorePageItem(TeaModel):
         # This parameter is required.
         self.publish_time = publish_time
         self.score = score
+        self.site_label = site_label
         # This parameter is required.
         self.title = title
 
@@ -164,6 +170,10 @@ class ScorePageItem(TeaModel):
             result['cardType'] = self.card_type
         if self.display_link is not None:
             result['displayLink'] = self.display_link
+        if self.host_logo is not None:
+            result['hostLogo'] = self.host_logo
+        if self.hostname is not None:
+            result['hostname'] = self.hostname
         if self.html_snippet is not None:
             result['htmlSnippet'] = self.html_snippet
         if self.html_title is not None:
@@ -184,6 +194,8 @@ class ScorePageItem(TeaModel):
             result['publishTime'] = self.publish_time
         if self.score is not None:
             result['score'] = self.score
+        if self.site_label is not None:
+            result['siteLabel'] = self.site_label
         if self.title is not None:
             result['title'] = self.title
         return result
@@ -194,6 +206,10 @@ class ScorePageItem(TeaModel):
             self.card_type = m.get('cardType')
         if m.get('displayLink') is not None:
             self.display_link = m.get('displayLink')
+        if m.get('hostLogo') is not None:
+            self.host_logo = m.get('hostLogo')
+        if m.get('hostname') is not None:
+            self.hostname = m.get('hostname')
         if m.get('htmlSnippet') is not None:
             self.html_snippet = m.get('htmlSnippet')
         if m.get('htmlTitle') is not None:
@@ -215,8 +231,43 @@ class ScorePageItem(TeaModel):
             self.publish_time = m.get('publishTime')
         if m.get('score') is not None:
             self.score = m.get('score')
+        if m.get('siteLabel') is not None:
+            self.site_label = m.get('siteLabel')
         if m.get('title') is not None:
             self.title = m.get('title')
+        return self
+
+
+class SceneItem(TeaModel):
+    def __init__(
+        self,
+        detail: str = None,
+        type: str = None,
+    ):
+        self.detail = detail
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detail is not None:
+            result['detail'] = self.detail
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('detail') is not None:
+            self.detail = m.get('detail')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         return self
 
 
@@ -325,17 +376,23 @@ class GenericSearchResult(TeaModel):
         self,
         page_items: List[ScorePageItem] = None,
         request_id: str = None,
+        scene_items: List[SceneItem] = None,
         search_information: SearchInformation = None,
         weibo_items: List[WeiboItem] = None,
     ):
         self.page_items = page_items
         self.request_id = request_id
+        self.scene_items = scene_items
         self.search_information = search_information
         self.weibo_items = weibo_items
 
     def validate(self):
         if self.page_items:
             for k in self.page_items:
+                if k:
+                    k.validate()
+        if self.scene_items:
+            for k in self.scene_items:
                 if k:
                     k.validate()
         if self.search_information:
@@ -357,6 +414,10 @@ class GenericSearchResult(TeaModel):
                 result['pageItems'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        result['sceneItems'] = []
+        if self.scene_items is not None:
+            for k in self.scene_items:
+                result['sceneItems'].append(k.to_map() if k else None)
         if self.search_information is not None:
             result['searchInformation'] = self.search_information.to_map()
         result['weiboItems'] = []
@@ -374,6 +435,11 @@ class GenericSearchResult(TeaModel):
                 self.page_items.append(temp_model.from_map(k))
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        self.scene_items = []
+        if m.get('sceneItems') is not None:
+            for k in m.get('sceneItems'):
+                temp_model = SceneItem()
+                self.scene_items.append(temp_model.from_map(k))
         if m.get('searchInformation') is not None:
             temp_model = SearchInformation()
             self.search_information = temp_model.from_map(m['searchInformation'])

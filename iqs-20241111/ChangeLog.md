@@ -1,3 +1,6 @@
+2024-12-12 Version: 1.1.1
+- Generated python 2024-11-11 for IQS.
+
 2024-11-15 Version: 1.1.0
 - Support API AiSearch.
 - Support API GenericAdvancedSearch.
