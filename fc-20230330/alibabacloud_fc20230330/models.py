@@ -1818,6 +1818,39 @@ class OSSMountConfig(TeaModel):
         return self
 
 
+class Tag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class TracingConfig(TeaModel):
     def __init__(
         self,
@@ -1920,6 +1953,7 @@ class CreateFunctionInput(TeaModel):
         oss_mount_config: OSSMountConfig = None,
         role: str = None,
         runtime: str = None,
+        tags: List[Tag] = None,
         timeout: int = None,
         tracing_config: TracingConfig = None,
         vpc_config: VPCConfig = None,
@@ -1948,6 +1982,7 @@ class CreateFunctionInput(TeaModel):
         self.role = role
         # This parameter is required.
         self.runtime = runtime
+        self.tags = tags
         self.timeout = timeout
         self.tracing_config = tracing_config
         self.vpc_config = vpc_config
@@ -1971,6 +2006,10 @@ class CreateFunctionInput(TeaModel):
             self.nas_config.validate()
         if self.oss_mount_config:
             self.oss_mount_config.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
         if self.tracing_config:
             self.tracing_config.validate()
         if self.vpc_config:
@@ -2024,6 +2063,10 @@ class CreateFunctionInput(TeaModel):
             result['role'] = self.role
         if self.runtime is not None:
             result['runtime'] = self.runtime
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
         if self.timeout is not None:
             result['timeout'] = self.timeout
         if self.tracing_config is not None:
@@ -2085,6 +2128,11 @@ class CreateFunctionInput(TeaModel):
             self.role = m.get('role')
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = Tag()
+                self.tags.append(temp_model.from_map(k))
         if m.get('timeout') is not None:
             self.timeout = m.get('timeout')
         if m.get('tracingConfig') is not None:
@@ -3252,6 +3300,7 @@ class Function(TeaModel):
         state: str = None,
         state_reason: str = None,
         state_reason_code: str = None,
+        tags: List[Tag] = None,
         timeout: int = None,
         tracing_config: TracingConfig = None,
         vpc_config: VPCConfig = None,
@@ -3288,6 +3337,7 @@ class Function(TeaModel):
         self.state = state
         self.state_reason = state_reason
         self.state_reason_code = state_reason_code
+        self.tags = tags
         self.timeout = timeout
         self.tracing_config = tracing_config
         self.vpc_config = vpc_config
@@ -3313,6 +3363,10 @@ class Function(TeaModel):
             self.nas_config.validate()
         if self.oss_mount_config:
             self.oss_mount_config.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
         if self.tracing_config:
             self.tracing_config.validate()
         if self.vpc_config:
@@ -3390,6 +3444,10 @@ class Function(TeaModel):
             result['stateReason'] = self.state_reason
         if self.state_reason_code is not None:
             result['stateReasonCode'] = self.state_reason_code
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
         if self.timeout is not None:
             result['timeout'] = self.timeout
         if self.tracing_config is not None:
@@ -3475,6 +3533,11 @@ class Function(TeaModel):
             self.state_reason = m.get('stateReason')
         if m.get('stateReasonCode') is not None:
             self.state_reason_code = m.get('stateReasonCode')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = Tag()
+                self.tags.append(temp_model.from_map(k))
         if m.get('timeout') is not None:
             self.timeout = m.get('timeout')
         if m.get('tracingConfig') is not None:
@@ -4296,6 +4359,7 @@ class ProvisionConfig(TeaModel):
         always_allocate_gpu: bool = None,
         current: int = None,
         current_error: str = None,
+        default_target: int = None,
         function_arn: str = None,
         scheduled_actions: List[ScheduledAction] = None,
         target: int = None,
@@ -4305,6 +4369,7 @@ class ProvisionConfig(TeaModel):
         self.always_allocate_gpu = always_allocate_gpu
         self.current = current
         self.current_error = current_error
+        self.default_target = default_target
         self.function_arn = function_arn
         self.scheduled_actions = scheduled_actions
         self.target = target
@@ -4334,6 +4399,8 @@ class ProvisionConfig(TeaModel):
             result['current'] = self.current
         if self.current_error is not None:
             result['currentError'] = self.current_error
+        if self.default_target is not None:
+            result['defaultTarget'] = self.default_target
         if self.function_arn is not None:
             result['functionArn'] = self.function_arn
         result['scheduledActions'] = []
@@ -4358,6 +4425,8 @@ class ProvisionConfig(TeaModel):
             self.current = m.get('current')
         if m.get('currentError') is not None:
             self.current_error = m.get('currentError')
+        if m.get('defaultTarget') is not None:
+            self.default_target = m.get('defaultTarget')
         if m.get('functionArn') is not None:
             self.function_arn = m.get('functionArn')
         self.scheduled_actions = []
@@ -5063,12 +5132,14 @@ class PutProvisionConfigInput(TeaModel):
         self,
         always_allocate_cpu: bool = None,
         always_allocate_gpu: bool = None,
+        default_target: int = None,
         scheduled_actions: List[ScheduledAction] = None,
         target: int = None,
         target_tracking_policies: List[TargetTrackingPolicy] = None,
     ):
         self.always_allocate_cpu = always_allocate_cpu
         self.always_allocate_gpu = always_allocate_gpu
+        self.default_target = default_target
         self.scheduled_actions = scheduled_actions
         # This parameter is required.
         self.target = target
@@ -5094,6 +5165,8 @@ class PutProvisionConfigInput(TeaModel):
             result['alwaysAllocateCPU'] = self.always_allocate_cpu
         if self.always_allocate_gpu is not None:
             result['alwaysAllocateGPU'] = self.always_allocate_gpu
+        if self.default_target is not None:
+            result['defaultTarget'] = self.default_target
         result['scheduledActions'] = []
         if self.scheduled_actions is not None:
             for k in self.scheduled_actions:
@@ -5112,6 +5185,8 @@ class PutProvisionConfigInput(TeaModel):
             self.always_allocate_cpu = m.get('alwaysAllocateCPU')
         if m.get('alwaysAllocateGPU') is not None:
             self.always_allocate_gpu = m.get('alwaysAllocateGPU')
+        if m.get('defaultTarget') is not None:
+            self.default_target = m.get('defaultTarget')
         self.scheduled_actions = []
         if m.get('scheduledActions') is not None:
             for k in m.get('scheduledActions'):
@@ -5249,39 +5324,6 @@ class SLSTriggerConfig(TeaModel):
         if m.get('sourceConfig') is not None:
             temp_model = SourceConfig()
             self.source_config = temp_model.from_map(m['sourceConfig'])
-        return self
-
-
-class Tag(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
         return self
 
 
@@ -7471,7 +7513,7 @@ class ListAsyncTasksRequest(TeaModel):
         # 
         # >  The `invocationPayload` parameter indicates the input parameters of an asynchronous task.
         self.include_payload = include_payload
-        # The number of asynchronous tasks to return. Valid values: [1,100]. Default value: 20.
+        # The number of asynchronous tasks to return. The default value is 20. Valid values: [1,100].
         self.limit = limit
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
@@ -8897,7 +8939,7 @@ class PutProvisionConfigRequest(TeaModel):
         body: PutProvisionConfigInput = None,
         qualifier: str = None,
     ):
-        # The information about the provisioned configuration.
+        # The provisioned instance configurations.
         # 
         # This parameter is required.
         self.body = body
