@@ -1,3 +1,6 @@
+2024-12-12 Version: 3.4.1
+- Generated python 2019-06-01 for oos.
+
 2024-12-11 Version: 3.4.0
 - Support API GetTemplateParameterConstraints.
 - Update API CreateApplication: add param ApplicationSource.
