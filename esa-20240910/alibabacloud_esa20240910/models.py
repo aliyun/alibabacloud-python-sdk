@@ -1252,11 +1252,13 @@ class WafRuleConfig(TeaModel):
         managed_rulesets: List[WafRuleConfigManagedRulesets] = None,
         match: WafRuleMatch = None,
         name: str = None,
+        notes: str = None,
         rate_limit: WafRuleConfigRateLimit = None,
         sigchl: List[str] = None,
         status: str = None,
         timer: WafTimer = None,
         type: str = None,
+        value: str = None,
     ):
         self.action = action
         self.actions = actions
@@ -1269,11 +1271,13 @@ class WafRuleConfig(TeaModel):
         self.managed_rulesets = managed_rulesets
         self.match = match
         self.name = name
+        self.notes = notes
         self.rate_limit = rate_limit
         self.sigchl = sigchl
         self.status = status
         self.timer = timer
         self.type = type
+        self.value = value
 
     def validate(self):
         if self.actions:
@@ -1323,6 +1327,8 @@ class WafRuleConfig(TeaModel):
             result['Match'] = self.match.to_map()
         if self.name is not None:
             result['Name'] = self.name
+        if self.notes is not None:
+            result['Notes'] = self.notes
         if self.rate_limit is not None:
             result['RateLimit'] = self.rate_limit.to_map()
         if self.sigchl is not None:
@@ -1333,6 +1339,8 @@ class WafRuleConfig(TeaModel):
             result['Timer'] = self.timer.to_map()
         if self.type is not None:
             result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
@@ -1366,6 +1374,8 @@ class WafRuleConfig(TeaModel):
             self.match = temp_model.from_map(m['Match'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Notes') is not None:
+            self.notes = m.get('Notes')
         if m.get('RateLimit') is not None:
             temp_model = WafRuleConfigRateLimit()
             self.rate_limit = temp_model.from_map(m['RateLimit'])
@@ -1378,6 +1388,8 @@ class WafRuleConfig(TeaModel):
             self.timer = temp_model.from_map(m['Timer'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -1432,6 +1444,224 @@ class WafSiteSettingsAddSecurityHeaders(TeaModel):
         m = m or dict()
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        return self
+
+
+class WafSiteSettingsBotManagementDefiniteBots(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        id: int = None,
+    ):
+        self.action = action
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class WafSiteSettingsBotManagementEffectOnStatic(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class WafSiteSettingsBotManagementJSDetection(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class WafSiteSettingsBotManagementLikelyBots(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        id: int = None,
+    ):
+        self.action = action
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class WafSiteSettingsBotManagementVerifiedBots(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        id: int = None,
+    ):
+        self.action = action
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class WafSiteSettingsBotManagement(TeaModel):
+    def __init__(
+        self,
+        definite_bots: WafSiteSettingsBotManagementDefiniteBots = None,
+        effect_on_static: WafSiteSettingsBotManagementEffectOnStatic = None,
+        jsdetection: WafSiteSettingsBotManagementJSDetection = None,
+        likely_bots: WafSiteSettingsBotManagementLikelyBots = None,
+        verified_bots: WafSiteSettingsBotManagementVerifiedBots = None,
+    ):
+        self.definite_bots = definite_bots
+        self.effect_on_static = effect_on_static
+        self.jsdetection = jsdetection
+        self.likely_bots = likely_bots
+        self.verified_bots = verified_bots
+
+    def validate(self):
+        if self.definite_bots:
+            self.definite_bots.validate()
+        if self.effect_on_static:
+            self.effect_on_static.validate()
+        if self.jsdetection:
+            self.jsdetection.validate()
+        if self.likely_bots:
+            self.likely_bots.validate()
+        if self.verified_bots:
+            self.verified_bots.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.definite_bots is not None:
+            result['DefiniteBots'] = self.definite_bots.to_map()
+        if self.effect_on_static is not None:
+            result['EffectOnStatic'] = self.effect_on_static.to_map()
+        if self.jsdetection is not None:
+            result['JSDetection'] = self.jsdetection.to_map()
+        if self.likely_bots is not None:
+            result['LikelyBots'] = self.likely_bots.to_map()
+        if self.verified_bots is not None:
+            result['VerifiedBots'] = self.verified_bots.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefiniteBots') is not None:
+            temp_model = WafSiteSettingsBotManagementDefiniteBots()
+            self.definite_bots = temp_model.from_map(m['DefiniteBots'])
+        if m.get('EffectOnStatic') is not None:
+            temp_model = WafSiteSettingsBotManagementEffectOnStatic()
+            self.effect_on_static = temp_model.from_map(m['EffectOnStatic'])
+        if m.get('JSDetection') is not None:
+            temp_model = WafSiteSettingsBotManagementJSDetection()
+            self.jsdetection = temp_model.from_map(m['JSDetection'])
+        if m.get('LikelyBots') is not None:
+            temp_model = WafSiteSettingsBotManagementLikelyBots()
+            self.likely_bots = temp_model.from_map(m['LikelyBots'])
+        if m.get('VerifiedBots') is not None:
+            temp_model = WafSiteSettingsBotManagementVerifiedBots()
+            self.verified_bots = temp_model.from_map(m['VerifiedBots'])
         return self
 
 
@@ -1500,11 +1730,13 @@ class WafSiteSettings(TeaModel):
         self,
         add_bot_protection_headers: WafSiteSettingsAddBotProtectionHeaders = None,
         add_security_headers: WafSiteSettingsAddSecurityHeaders = None,
+        bot_management: WafSiteSettingsBotManagement = None,
         client_ip_identifier: WafSiteSettingsClientIpIdentifier = None,
         security_level: WafSiteSettingsSecurityLevel = None,
     ):
         self.add_bot_protection_headers = add_bot_protection_headers
         self.add_security_headers = add_security_headers
+        self.bot_management = bot_management
         self.client_ip_identifier = client_ip_identifier
         self.security_level = security_level
 
@@ -1513,6 +1745,8 @@ class WafSiteSettings(TeaModel):
             self.add_bot_protection_headers.validate()
         if self.add_security_headers:
             self.add_security_headers.validate()
+        if self.bot_management:
+            self.bot_management.validate()
         if self.client_ip_identifier:
             self.client_ip_identifier.validate()
         if self.security_level:
@@ -1528,6 +1762,8 @@ class WafSiteSettings(TeaModel):
             result['AddBotProtectionHeaders'] = self.add_bot_protection_headers.to_map()
         if self.add_security_headers is not None:
             result['AddSecurityHeaders'] = self.add_security_headers.to_map()
+        if self.bot_management is not None:
+            result['BotManagement'] = self.bot_management.to_map()
         if self.client_ip_identifier is not None:
             result['ClientIpIdentifier'] = self.client_ip_identifier.to_map()
         if self.security_level is not None:
@@ -1542,6 +1778,9 @@ class WafSiteSettings(TeaModel):
         if m.get('AddSecurityHeaders') is not None:
             temp_model = WafSiteSettingsAddSecurityHeaders()
             self.add_security_headers = temp_model.from_map(m['AddSecurityHeaders'])
+        if m.get('BotManagement') is not None:
+            temp_model = WafSiteSettingsBotManagement()
+            self.bot_management = temp_model.from_map(m['BotManagement'])
         if m.get('ClientIpIdentifier') is not None:
             temp_model = WafSiteSettingsClientIpIdentifier()
             self.client_ip_identifier = temp_model.from_map(m['ClientIpIdentifier'])
@@ -11460,8 +11699,12 @@ class DeleteCertificateRequest(TeaModel):
         id: str = None,
         site_id: int = None,
     ):
+        # The certificate ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -11497,9 +11740,13 @@ class DeleteCertificateResponseBody(TeaModel):
         site_id: int = None,
         site_name: str = None,
     ):
+        # The certificate ID.
         self.id = id
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
 
     def validate(self):
@@ -11581,8 +11828,12 @@ class DeleteClientCaCertificateRequest(TeaModel):
         id: str = None,
         site_id: int = None,
     ):
+        # The certificate ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The website ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -11618,9 +11869,13 @@ class DeleteClientCaCertificateResponseBody(TeaModel):
         site_id: int = None,
         site_name: str = None,
     ):
+        # The certificate ID.
         self.id = id
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
 
     def validate(self):
@@ -16780,8 +17035,12 @@ class GetClientCertificateRequest(TeaModel):
         id: str = None,
         site_id: int = None,
     ):
+        # The certificate ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The website ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -16827,19 +17086,33 @@ class GetClientCertificateResponseBodyResult(TeaModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The ID of the CA certificate.
         self.cacertificate_id = cacertificate_id
+        # The Common Name of the certificate.
         self.common_name = common_name
+        # The time when the certificate was created.
         self.create_time = create_time
+        # The certificate ID.
         self.id = id
+        # The certificate authority (CA) that issued the certificate.
         self.issuer = issuer
+        # The certificate name.
         self.name = name
+        # The time when the certificate expires.
         self.not_after = not_after
+        # The time when the certificate takes effect.
         self.not_before = not_before
+        # The public-key algorithm of the certificate.
         self.pubkey_algorithm = pubkey_algorithm
+        # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
+        # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
+        # The certificate status.
         self.status = status
+        # The certificate type.
         self.type = type
+        # The time when the certificate was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -16924,11 +17197,17 @@ class GetClientCertificateResponseBody(TeaModel):
         site_name: str = None,
         status: str = None,
     ):
+        # The certificate content.
         self.certificate = certificate
+        # The request ID.
         self.request_id = request_id
+        # The certificate information.
         self.result = result
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The certificate status.
         self.status = status
 
     def validate(self):
@@ -22633,9 +22912,11 @@ class GetSiteLogDeliveryQuotaResponse(TeaModel):
 class GetSiteWafSettingsRequest(TeaModel):
     def __init__(
         self,
+        path: str = None,
         site_id: int = None,
         site_version: int = None,
     ):
+        self.path = path
         # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
         # The version of the website.
@@ -22650,6 +22931,8 @@ class GetSiteWafSettingsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.path is not None:
+            result['Path'] = self.path
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.site_version is not None:
@@ -22658,6 +22941,8 @@ class GetSiteWafSettingsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:
@@ -24814,8 +25099,12 @@ class ListClientCaCertificatesRequest(TeaModel):
         page_size: int = None,
         site_id: int = None,
     ):
+        # The page number. Valid values: 1 to 500.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
+        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -24864,18 +25153,31 @@ class ListClientCaCertificatesResponseBodyResult(TeaModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The Common Name of the certificate.
         self.common_name = common_name
+        # The time when the certificate was created.
         self.create_time = create_time
+        # The certificate ID.
         self.id = id
+        # The CA that issued the certificate.
         self.issuer = issuer
+        # The certificate name.
         self.name = name
+        # The time when the certificate expires.
         self.not_after = not_after
+        # The time when the certificate takes effect.
         self.not_before = not_before
+        # The public-key algorithm of the certificate.
         self.pubkey_algorithm = pubkey_algorithm
+        # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
+        # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
+        # The certificate status.
         self.status = status
+        # The certificate type.
         self.type = type
+        # The time when the certificate was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -24957,12 +25259,19 @@ class ListClientCaCertificatesResponseBody(TeaModel):
         site_name: str = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The queried client CA certificates.
         self.result = result
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -32605,6 +32914,7 @@ class ListWafPhasesResponse(TeaModel):
 class ListWafRulesRequestQueryArgs(TeaModel):
     def __init__(
         self,
+        config_value_like: str = None,
         desc: bool = None,
         id: int = None,
         id_name_like: str = None,
@@ -32613,6 +32923,7 @@ class ListWafRulesRequestQueryArgs(TeaModel):
         ruleset_id: int = None,
         status: str = None,
     ):
+        self.config_value_like = config_value_like
         # Specifies whether to sort the returned data in descending order.
         self.desc = desc
         # The ID of a WAF rule for exact search.
@@ -32637,6 +32948,8 @@ class ListWafRulesRequestQueryArgs(TeaModel):
             return _map
 
         result = dict()
+        if self.config_value_like is not None:
+            result['ConfigValueLike'] = self.config_value_like
         if self.desc is not None:
             result['Desc'] = self.desc
         if self.id is not None:
@@ -32655,6 +32968,8 @@ class ListWafRulesRequestQueryArgs(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConfigValueLike') is not None:
+            self.config_value_like = m.get('ConfigValueLike')
         if m.get('Desc') is not None:
             self.desc = m.get('Desc')
         if m.get('Id') is not None:
@@ -36233,8 +36548,12 @@ class RevokeClientCertificateRequest(TeaModel):
         id: str = None,
         site_id: int = None,
     ):
+        # The certificate ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The website ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -36270,9 +36589,13 @@ class RevokeClientCertificateResponseBody(TeaModel):
         site_id: int = None,
         site_name: str = None,
     ):
+        # The certificate ID.
         self.id = id
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
 
     def validate(self):

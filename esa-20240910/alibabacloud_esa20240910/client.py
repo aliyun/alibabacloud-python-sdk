@@ -5181,7 +5181,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteCertificateResponse:
         """
-        @summary 删除证书
+        @summary Deletes a certificate for a website.
         
         @param request: DeleteCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5214,7 +5214,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteCertificateResponse:
         """
-        @summary 删除证书
+        @summary Deletes a certificate for a website.
         
         @param request: DeleteCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5246,7 +5246,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteCertificateRequest,
     ) -> esa20240910_models.DeleteCertificateResponse:
         """
-        @summary 删除证书
+        @summary Deletes a certificate for a website.
         
         @param request: DeleteCertificateRequest
         @return: DeleteCertificateResponse
@@ -5259,7 +5259,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteCertificateRequest,
     ) -> esa20240910_models.DeleteCertificateResponse:
         """
-        @summary 删除证书
+        @summary Deletes a certificate for a website.
         
         @param request: DeleteCertificateRequest
         @return: DeleteCertificateResponse
@@ -5273,7 +5273,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteClientCaCertificateResponse:
         """
-        @summary 删除客户端CA证书
+        @summary Deletes a client CA certificate.
         
         @param request: DeleteClientCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5306,7 +5306,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteClientCaCertificateResponse:
         """
-        @summary 删除客户端CA证书
+        @summary Deletes a client CA certificate.
         
         @param request: DeleteClientCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5338,7 +5338,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteClientCaCertificateRequest,
     ) -> esa20240910_models.DeleteClientCaCertificateResponse:
         """
-        @summary 删除客户端CA证书
+        @summary Deletes a client CA certificate.
         
         @param request: DeleteClientCaCertificateRequest
         @return: DeleteClientCaCertificateResponse
@@ -5351,7 +5351,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteClientCaCertificateRequest,
     ) -> esa20240910_models.DeleteClientCaCertificateResponse:
         """
-        @summary 删除客户端CA证书
+        @summary Deletes a client CA certificate.
         
         @param request: DeleteClientCaCertificateRequest
         @return: DeleteClientCaCertificateResponse
@@ -9197,7 +9197,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetClientCertificateResponse:
         """
-        @summary 获取客户端证书以及证书信息
+        @summary Queries information about a client certificate.
         
         @param request: GetClientCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9230,7 +9230,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetClientCertificateResponse:
         """
-        @summary 获取客户端证书以及证书信息
+        @summary Queries information about a client certificate.
         
         @param request: GetClientCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9262,7 +9262,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetClientCertificateRequest,
     ) -> esa20240910_models.GetClientCertificateResponse:
         """
-        @summary 获取客户端证书以及证书信息
+        @summary Queries information about a client certificate.
         
         @param request: GetClientCertificateRequest
         @return: GetClientCertificateResponse
@@ -9275,7 +9275,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetClientCertificateRequest,
     ) -> esa20240910_models.GetClientCertificateResponse:
         """
-        @summary 获取客户端证书以及证书信息
+        @summary Queries information about a client certificate.
         
         @param request: GetClientCertificateRequest
         @return: GetClientCertificateResponse
@@ -11915,6 +11915,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.path):
+            query['Path'] = request.path
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -11952,6 +11954,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.path):
+            query['Path'] = request.path
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
@@ -12973,7 +12977,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListClientCaCertificatesResponse:
         """
-        @summary 查询站点下客户端CA证书列表
+        @summary Queries a list of client certificate authority (CA) certificates for a website.
         
         @param request: ListClientCaCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13006,7 +13010,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListClientCaCertificatesResponse:
         """
-        @summary 查询站点下客户端CA证书列表
+        @summary Queries a list of client certificate authority (CA) certificates for a website.
         
         @param request: ListClientCaCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13038,7 +13042,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListClientCaCertificatesRequest,
     ) -> esa20240910_models.ListClientCaCertificatesResponse:
         """
-        @summary 查询站点下客户端CA证书列表
+        @summary Queries a list of client certificate authority (CA) certificates for a website.
         
         @param request: ListClientCaCertificatesRequest
         @return: ListClientCaCertificatesResponse
@@ -13051,7 +13055,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListClientCaCertificatesRequest,
     ) -> esa20240910_models.ListClientCaCertificatesResponse:
         """
-        @summary 查询站点下客户端CA证书列表
+        @summary Queries a list of client certificate authority (CA) certificates for a website.
         
         @param request: ListClientCaCertificatesRequest
         @return: ListClientCaCertificatesResponse
@@ -17639,7 +17643,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.RevokeClientCertificateResponse:
         """
-        @summary 吊销客户端证书
+        @summary Revokes an activated client certificate.
         
         @param request: RevokeClientCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17672,7 +17676,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.RevokeClientCertificateResponse:
         """
-        @summary 吊销客户端证书
+        @summary Revokes an activated client certificate.
         
         @param request: RevokeClientCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17704,7 +17708,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.RevokeClientCertificateRequest,
     ) -> esa20240910_models.RevokeClientCertificateResponse:
         """
-        @summary 吊销客户端证书
+        @summary Revokes an activated client certificate.
         
         @param request: RevokeClientCertificateRequest
         @return: RevokeClientCertificateResponse
@@ -17717,7 +17721,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.RevokeClientCertificateRequest,
     ) -> esa20240910_models.RevokeClientCertificateResponse:
         """
-        @summary 吊销客户端证书
+        @summary Revokes an activated client certificate.
         
         @param request: RevokeClientCertificateRequest
         @return: RevokeClientCertificateResponse
