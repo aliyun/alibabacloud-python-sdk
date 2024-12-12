@@ -1,3 +1,13 @@
+2024-12-12 Version: 5.0.2
+- Update API CreateCloudResource: add param Tag.
+- Update API CreateDomain: add param Tag.
+- Update API CreateDomain: update param Redirect.
+- Update API CreateDomain: update response param.
+- Update API DescribeApisecProtectionGroups: update param ResourceGroup.
+- Update API DescribeDomainDetail: update response param.
+- Update API ModifyDomain: update param Redirect.
+
+
 2024-11-27 Version: 5.0.1
 - Update API DescribeSensitiveRequestLog: update response param.
 

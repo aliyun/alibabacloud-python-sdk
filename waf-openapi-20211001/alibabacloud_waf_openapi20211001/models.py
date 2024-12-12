@@ -886,6 +886,39 @@ class CreateCloudResourceRequestRedirect(TeaModel):
         return self
 
 
+class CreateCloudResourceRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateCloudResourceRequest(TeaModel):
     def __init__(
         self,
@@ -895,6 +928,7 @@ class CreateCloudResourceRequest(TeaModel):
         redirect: CreateCloudResourceRequestRedirect = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
+        tag: List[CreateCloudResourceRequestTag] = None,
     ):
         # The ID of the WAF instance.
         # 
@@ -919,12 +953,17 @@ class CreateCloudResourceRequest(TeaModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.tag = tag
 
     def validate(self):
         if self.listen:
             self.listen.validate()
         if self.redirect:
             self.redirect.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -944,6 +983,10 @@ class CreateCloudResourceRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_manager_resource_group_id is not None:
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -962,6 +1005,44 @@ class CreateCloudResourceRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceManagerResourceGroupId') is not None:
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateCloudResourceRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class CreateCloudResourceShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -974,6 +1055,7 @@ class CreateCloudResourceShrinkRequest(TeaModel):
         redirect_shrink: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
+        tag: List[CreateCloudResourceShrinkRequestTag] = None,
     ):
         # The ID of the WAF instance.
         # 
@@ -998,9 +1080,13 @@ class CreateCloudResourceShrinkRequest(TeaModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1020,6 +1106,10 @@ class CreateCloudResourceShrinkRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_manager_resource_group_id is not None:
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1036,6 +1126,11 @@ class CreateCloudResourceShrinkRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceManagerResourceGroupId') is not None:
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateCloudResourceShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -1812,6 +1907,7 @@ class CreateDomainRequestRedirect(TeaModel):
     def __init__(
         self,
         backends: List[str] = None,
+        backup_backends: List[str] = None,
         cname_enabled: bool = None,
         connect_timeout: int = None,
         focus_http_backend: bool = None,
@@ -1830,6 +1926,7 @@ class CreateDomainRequestRedirect(TeaModel):
     ):
         # The IP addresses or domain names of the origin server.
         self.backends = backends
+        self.backup_backends = backup_backends
         # Specifies whether to enable the public cloud disaster recovery feature. Valid values:
         # 
         # *   **true**\
@@ -1911,6 +2008,8 @@ class CreateDomainRequestRedirect(TeaModel):
         result = dict()
         if self.backends is not None:
             result['Backends'] = self.backends
+        if self.backup_backends is not None:
+            result['BackupBackends'] = self.backup_backends
         if self.cname_enabled is not None:
             result['CnameEnabled'] = self.cname_enabled
         if self.connect_timeout is not None:
@@ -1949,6 +2048,8 @@ class CreateDomainRequestRedirect(TeaModel):
         m = m or dict()
         if m.get('Backends') is not None:
             self.backends = m.get('Backends')
+        if m.get('BackupBackends') is not None:
+            self.backup_backends = m.get('BackupBackends')
         if m.get('CnameEnabled') is not None:
             self.cname_enabled = m.get('CnameEnabled')
         if m.get('ConnectTimeout') is not None:
@@ -1985,6 +2086,39 @@ class CreateDomainRequestRedirect(TeaModel):
         return self
 
 
+class CreateDomainRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateDomainRequest(TeaModel):
     def __init__(
         self,
@@ -1995,6 +2129,7 @@ class CreateDomainRequest(TeaModel):
         redirect: CreateDomainRequestRedirect = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
+        tag: List[CreateDomainRequestTag] = None,
     ):
         # The mode in which you want to add the domain name to WAF. Valid values:
         # 
@@ -2028,12 +2163,17 @@ class CreateDomainRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.tag = tag
 
     def validate(self):
         if self.listen:
             self.listen.validate()
         if self.redirect:
             self.redirect.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2055,6 +2195,10 @@ class CreateDomainRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_manager_resource_group_id is not None:
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2075,6 +2219,44 @@ class CreateDomainRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceManagerResourceGroupId') is not None:
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateDomainRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDomainShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -2088,6 +2270,7 @@ class CreateDomainShrinkRequest(TeaModel):
         redirect_shrink: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
+        tag: List[CreateDomainShrinkRequestTag] = None,
     ):
         # The mode in which you want to add the domain name to WAF. Valid values:
         # 
@@ -2121,9 +2304,13 @@ class CreateDomainShrinkRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2145,6 +2332,10 @@ class CreateDomainShrinkRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_manager_resource_group_id is not None:
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2163,6 +2354,11 @@ class CreateDomainShrinkRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceManagerResourceGroupId') is not None:
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateDomainShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -2171,11 +2367,13 @@ class CreateDomainResponseBodyDomainInfo(TeaModel):
         self,
         cname: str = None,
         domain: str = None,
+        domain_id: str = None,
     ):
         # The CNAME that is assigned by WAF to the domain name.
         self.cname = cname
         # The domain name that you added to WAF.
         self.domain = domain
+        self.domain_id = domain_id
 
     def validate(self):
         pass
@@ -2190,6 +2388,8 @@ class CreateDomainResponseBodyDomainInfo(TeaModel):
             result['Cname'] = self.cname
         if self.domain is not None:
             result['Domain'] = self.domain
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2198,6 +2398,8 @@ class CreateDomainResponseBodyDomainInfo(TeaModel):
             self.cname = m.get('Cname')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
         return self
 
 
@@ -14537,6 +14739,33 @@ class DescribeDomainDetailResponseBodyRedirectBackends(TeaModel):
         return self
 
 
+class DescribeDomainDetailResponseBodyRedirectBackupBackends(TeaModel):
+    def __init__(
+        self,
+        backend: str = None,
+    ):
+        self.backend = backend
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend is not None:
+            result['Backend'] = self.backend
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Backend') is not None:
+            self.backend = m.get('Backend')
+        return self
+
+
 class DescribeDomainDetailResponseBodyRedirectRequestHeaders(TeaModel):
     def __init__(
         self,
@@ -14576,6 +14805,7 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
     def __init__(
         self,
         backends: List[DescribeDomainDetailResponseBodyRedirectBackends] = None,
+        backup_backends: List[DescribeDomainDetailResponseBodyRedirectBackupBackends] = None,
         connect_timeout: int = None,
         focus_http_backend: bool = None,
         keepalive: bool = None,
@@ -14592,6 +14822,7 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
     ):
         # An array of addresses of origin servers.
         self.backends = backends
+        self.backup_backends = backup_backends
         # The timeout period of the connection. Unit: seconds. Valid values: 5 to 120.
         self.connect_timeout = connect_timeout
         # Indicates whether HTTPS to HTTP redirection is enabled for back-to-origin requests of the domain name. Valid values:
@@ -14647,6 +14878,10 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             for k in self.backends:
                 if k:
                     k.validate()
+        if self.backup_backends:
+            for k in self.backup_backends:
+                if k:
+                    k.validate()
         if self.request_headers:
             for k in self.request_headers:
                 if k:
@@ -14662,6 +14897,10 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         if self.backends is not None:
             for k in self.backends:
                 result['Backends'].append(k.to_map() if k else None)
+        result['BackupBackends'] = []
+        if self.backup_backends is not None:
+            for k in self.backup_backends:
+                result['BackupBackends'].append(k.to_map() if k else None)
         if self.connect_timeout is not None:
             result['ConnectTimeout'] = self.connect_timeout
         if self.focus_http_backend is not None:
@@ -14699,6 +14938,11 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             for k in m.get('Backends'):
                 temp_model = DescribeDomainDetailResponseBodyRedirectBackends()
                 self.backends.append(temp_model.from_map(k))
+        self.backup_backends = []
+        if m.get('BackupBackends') is not None:
+            for k in m.get('BackupBackends'):
+                temp_model = DescribeDomainDetailResponseBodyRedirectBackupBackends()
+                self.backup_backends.append(temp_model.from_map(k))
         if m.get('ConnectTimeout') is not None:
             self.connect_timeout = m.get('ConnectTimeout')
         if m.get('FocusHttpBackend') is not None:
@@ -24783,6 +25027,7 @@ class DescribeSensitiveRequestLogResponseBodyData(TeaModel):
         self.count = count
         # The domain name of the API.
         self.matched_host = matched_host
+        # IP region, formatted as a region code.
         self.remote_country_id = remote_country_id
         # The time when the request was initiated. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.request_time = request_time
@@ -27674,7 +27919,6 @@ class DescribeUserWafLogStatusResponseBody(TeaModel):
         # *   **us-west-1**: US (Silicon Valley).
         # *   **ap-northeast-1**: Japan (Tokyo).
         # *   **ap-northeast-2**: South Korea (Seoul).
-        # *   **ap-south-1**: India (Mumbai) Closing Down.
         # *   **eu-west-1**: UK (London).
         # *   **cn-hangzhou-finance**: China East 1 Finance.
         # *   **cn-shanghai-finance-1**: China East 2 Finance.
@@ -31925,6 +32169,7 @@ class ModifyDomainRequestRedirect(TeaModel):
     def __init__(
         self,
         backends: List[str] = None,
+        backup_backends: List[str] = None,
         cname_enabled: bool = None,
         connect_timeout: int = None,
         focus_http_backend: bool = None,
@@ -31946,6 +32191,7 @@ class ModifyDomainRequestRedirect(TeaModel):
         # *   If you use the IP address type, specify the value in the ["ip1","ip2",...] format. You can enter up to 20 IP addresses.
         # *   If you use the domain name type, specify the value in the ["domain"] format. You can enter up to 20 domain names.
         self.backends = backends
+        self.backup_backends = backup_backends
         # Specifies whether to enable the public cloud disaster recovery feature. Valid values:
         # 
         # *   **true**\
@@ -32027,6 +32273,8 @@ class ModifyDomainRequestRedirect(TeaModel):
         result = dict()
         if self.backends is not None:
             result['Backends'] = self.backends
+        if self.backup_backends is not None:
+            result['BackupBackends'] = self.backup_backends
         if self.cname_enabled is not None:
             result['CnameEnabled'] = self.cname_enabled
         if self.connect_timeout is not None:
@@ -32065,6 +32313,8 @@ class ModifyDomainRequestRedirect(TeaModel):
         m = m or dict()
         if m.get('Backends') is not None:
             self.backends = m.get('Backends')
+        if m.get('BackupBackends') is not None:
+            self.backup_backends = m.get('BackupBackends')
         if m.get('CnameEnabled') is not None:
             self.cname_enabled = m.get('CnameEnabled')
         if m.get('ConnectTimeout') is not None:
