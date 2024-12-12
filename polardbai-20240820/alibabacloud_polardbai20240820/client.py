@@ -41,6 +41,126 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def predict_with_options(
+        self,
+        request: polardb_ai20240820_models.PredictRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_ai20240820_models.PredictResponse:
+        """
+        @summary 模型预测
+        
+        @param request: PredictRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PredictResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['dbName'] = request.db_name
+        if not UtilClient.is_unset(request.input):
+            body['input'] = request.input
+        if not UtilClient.is_unset(request.instance_name):
+            body['instanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.model_class):
+            body['modelClass'] = request.model_class
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Predict',
+            version='2024-08-20',
+            protocol='HTTPS',
+            pathname=f'/v1/openapi/models/predict',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_ai20240820_models.PredictResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def predict_with_options_async(
+        self,
+        request: polardb_ai20240820_models.PredictRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_ai20240820_models.PredictResponse:
+        """
+        @summary 模型预测
+        
+        @param request: PredictRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PredictResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['dbName'] = request.db_name
+        if not UtilClient.is_unset(request.input):
+            body['input'] = request.input
+        if not UtilClient.is_unset(request.instance_name):
+            body['instanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.model_class):
+            body['modelClass'] = request.model_class
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Predict',
+            version='2024-08-20',
+            protocol='HTTPS',
+            pathname=f'/v1/openapi/models/predict',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_ai20240820_models.PredictResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def predict(
+        self,
+        request: polardb_ai20240820_models.PredictRequest,
+    ) -> polardb_ai20240820_models.PredictResponse:
+        """
+        @summary 模型预测
+        
+        @param request: PredictRequest
+        @return: PredictResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.predict_with_options(request, headers, runtime)
+
+    async def predict_async(
+        self,
+        request: polardb_ai20240820_models.PredictRequest,
+    ) -> polardb_ai20240820_models.PredictResponse:
+        """
+        @summary 模型预测
+        
+        @param request: PredictRequest
+        @return: PredictResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.predict_with_options_async(request, headers, runtime)
+
     def predict_sse_with_options(
         self,
         request: polardb_ai20240820_models.PredictSseRequest,
