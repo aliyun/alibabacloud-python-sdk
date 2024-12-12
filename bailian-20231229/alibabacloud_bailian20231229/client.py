@@ -2725,6 +2725,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.fields):
             body['Fields'] = request.fields
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
         if not UtilClient.is_unset(request.filed):
             body['Filed'] = request.filed
         if not UtilClient.is_unset(request.index_id):
@@ -2775,6 +2777,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.fields):
             body['Fields'] = request.fields
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
         if not UtilClient.is_unset(request.filed):
             body['Filed'] = request.filed
         if not UtilClient.is_unset(request.index_id):

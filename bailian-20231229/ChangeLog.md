@@ -1,3 +1,7 @@
+2024-12-12 Version: 1.10.2
+- Update API ListChunks: update param body.
+
+
 2024-11-07 Version: 1.10.1
 - Update API CreateIndex: add param metaExtractColumns.
 

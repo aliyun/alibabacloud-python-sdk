@@ -4700,6 +4700,7 @@ class ListChunksRequest(TeaModel):
     def __init__(
         self,
         fields: List[str] = None,
+        file_id: str = None,
         filed: str = None,
         index_id: str = None,
         page_num: int = None,
@@ -4707,6 +4708,7 @@ class ListChunksRequest(TeaModel):
     ):
         # An array of field names. This parameter is used to filter non-private fields (prefixed with_underscores) in the Metadata parameter returned by this operation. By default, this parameter is left empty, which means all non-private fields in the Metadata parameter are returned. If you only want specified non-private fields, such as title, set this parameter to title.
         self.fields = fields
+        self.file_id = file_id
         # The primary key ID of the document. This parameter is not required for structured knowledge base, but is required for unstructured knowledge base. To view the ID, you can click the ID icon next to the file name on the [Data Management](https://bailian.console.aliyun.com/#/data-center) page. You can filter returned chunks by the document ID. This parameter is left empty by default.
         self.filed = filed
         # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
@@ -4729,6 +4731,8 @@ class ListChunksRequest(TeaModel):
         result = dict()
         if self.fields is not None:
             result['Fields'] = self.fields
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
         if self.filed is not None:
             result['Filed'] = self.filed
         if self.index_id is not None:
@@ -4743,6 +4747,8 @@ class ListChunksRequest(TeaModel):
         m = m or dict()
         if m.get('Fields') is not None:
             self.fields = m.get('Fields')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
         if m.get('Filed') is not None:
             self.filed = m.get('Filed')
         if m.get('IndexId') is not None:
