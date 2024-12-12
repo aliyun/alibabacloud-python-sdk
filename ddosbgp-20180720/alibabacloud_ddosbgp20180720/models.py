@@ -3755,6 +3755,7 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
         ip_type: str = None,
         product: str = None,
         remark: str = None,
+        resource_group_id: str = None,
         status: str = None,
     ):
         # The condition that triggers automatic association of the instance with an object.
@@ -3806,6 +3807,7 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
         self.product = product
         # The description of the instance.
         self.remark = remark
+        self.resource_group_id = resource_group_id
         # The status of the instance. Valid values:
         # 
         # *   **1**: normal
@@ -3849,6 +3851,8 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
             result['Product'] = self.product
         if self.remark is not None:
             result['Remark'] = self.remark
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -3882,6 +3886,8 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
             self.product = m.get('Product')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
