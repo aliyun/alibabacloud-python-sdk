@@ -1,3 +1,6 @@
+2024-12-12 Version: 1.10.4
+- Generated python 2022-02-22 for Ess.
+
 2024-12-10 Version: 1.10.3
 - Update API CreateEciScalingConfiguration: add param GpuDriverVersion.
 - Update API CreateScalingGroup: add param CapacityOptions.
