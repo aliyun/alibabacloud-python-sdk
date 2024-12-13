@@ -1,3 +1,10 @@
+2024-12-13 Version: 6.2.1
+- Update API CreateFile: add param Timeout.
+- Update API GetFile: update response param.
+- Update API GetInstance: update response param.
+- Update API UpdateFile: add param Timeout.
+
+
 2024-11-21 Version: 6.2.0
 - Support API ListCheckProcesses.
 

@@ -6298,6 +6298,7 @@ class CreateFileRequest(TeaModel):
         start_effect_date: int = None,
         start_immediately: bool = None,
         stop: bool = None,
+        timeout: int = None,
     ):
         # The advanced configurations of the node.
         # 
@@ -6448,6 +6449,7 @@ class CreateFileRequest(TeaModel):
         # 
         # This parameter corresponds to the Recurrence parameter in the Schedule section of the Properties tab on the DataStudio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.stop = stop
+        self.timeout = timeout
 
     def validate(self):
         pass
@@ -6522,6 +6524,8 @@ class CreateFileRequest(TeaModel):
             result['StartImmediately'] = self.start_immediately
         if self.stop is not None:
             result['Stop'] = self.stop
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
         return result
 
     def from_map(self, m: dict = None):
@@ -6590,6 +6594,8 @@ class CreateFileRequest(TeaModel):
             self.start_immediately = m.get('StartImmediately')
         if m.get('Stop') is not None:
             self.stop = m.get('Stop')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
         return self
 
 
@@ -12422,14 +12428,15 @@ class DeleteLineageRelationRequest(TeaModel):
         relationship_type: str = None,
         src_entity_qualified_name: str = None,
     ):
-        # The unique identifier of the destination entity.
+        # Destination entity unique identifier
         # 
         # This parameter is required.
         self.dest_entity_qualified_name = dest_entity_qualified_name
-        # The unique identifier of the lineage.
+        # Lineage relationship unique identifier
         self.relationship_guid = relationship_guid
+        # Relationship type
         self.relationship_type = relationship_type
-        # The unique identifier of the source entity.
+        # Source entity unique identifier
         # 
         # This parameter is required.
         self.src_entity_qualified_name = src_entity_qualified_name
@@ -12476,25 +12483,25 @@ class DeleteLineageRelationResponseBody(TeaModel):
         status: bool = None,
         success: bool = None,
     ):
-        # The error code.
+        # Error code
         self.error_code = error_code
-        # The error message.
+        # Error message
         self.error_message = error_message
-        # The HTTP status code.
+        # HTTP status code
         self.http_status_code = http_status_code
-        # The request ID.
+        # Request ID: used for locating logs and troubleshooting
         self.request_id = request_id
-        # The result of the operation. Valid values:
+        # Operation result:
         # 
-        # true: successful
+        # true: Success
+        # 
+        # false: Failure
+        self.status = status
+        # Whether the call was successful. Values are as follows:
+        # 
+        # true: success
         # 
         # false: failed
-        self.status = status
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # true
-        # 
-        # false
         self.success = success
 
     def validate(self):
@@ -30275,6 +30282,7 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         dependent_node_id_list: str = None,
         dependent_type: str = None,
         end_effect_date: int = None,
+        ignore_parent_skip_running_property: str = None,
         input_list: List[GetFileResponseBodyDataNodeConfigurationInputList] = None,
         input_parameters: List[GetFileResponseBodyDataNodeConfigurationInputParameters] = None,
         output_list: List[GetFileResponseBodyDataNodeConfigurationOutputList] = None,
@@ -30286,6 +30294,7 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         start_effect_date: int = None,
         start_immediately: bool = None,
         stop: bool = None,
+        timeout: int = None,
     ):
         # Indicates whether scheduling configurations immediately take effect after the deployment.
         self.apply_schedule_immediately = apply_schedule_immediately
@@ -30318,6 +30327,7 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         # 
         # This parameter corresponds to the Validity Period parameter in the Schedule section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.end_effect_date = end_effect_date
+        self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
         # The output names of the parent files on which the current file depends.
         self.input_list = input_list
         # Input parameters of the node.
@@ -30368,6 +30378,7 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         # 
         # This parameter corresponds to the Recurrence parameter in the Schedule section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.stop = stop
+        self.timeout = timeout
 
     def validate(self):
         if self.input_list:
@@ -30409,6 +30420,8 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
             result['DependentType'] = self.dependent_type
         if self.end_effect_date is not None:
             result['EndEffectDate'] = self.end_effect_date
+        if self.ignore_parent_skip_running_property is not None:
+            result['IgnoreParentSkipRunningProperty'] = self.ignore_parent_skip_running_property
         result['InputList'] = []
         if self.input_list is not None:
             for k in self.input_list:
@@ -30439,6 +30452,8 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
             result['StartImmediately'] = self.start_immediately
         if self.stop is not None:
             result['Stop'] = self.stop
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
         return result
 
     def from_map(self, m: dict = None):
@@ -30459,6 +30474,8 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
             self.dependent_type = m.get('DependentType')
         if m.get('EndEffectDate') is not None:
             self.end_effect_date = m.get('EndEffectDate')
+        if m.get('IgnoreParentSkipRunningProperty') is not None:
+            self.ignore_parent_skip_running_property = m.get('IgnoreParentSkipRunningProperty')
         self.input_list = []
         if m.get('InputList') is not None:
             for k in m.get('InputList'):
@@ -30493,6 +30510,8 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
             self.start_immediately = m.get('StartImmediately')
         if m.get('Stop') is not None:
             self.stop = m.get('Stop')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
         return self
 
 
@@ -32244,7 +32263,9 @@ class GetInstanceResponseBodyData(TeaModel):
         modify_time: int = None,
         node_id: int = None,
         node_name: str = None,
+        owner: str = None,
         param_values: str = None,
+        period_number: int = None,
         priority: int = None,
         related_flow_id: int = None,
         repeat_interval: int = None,
@@ -32299,8 +32320,10 @@ class GetInstanceResponseBodyData(TeaModel):
         self.node_id = node_id
         # The name of the node.
         self.node_name = node_name
+        self.owner = owner
         # The parameters related to the node.
         self.param_values = param_values
+        self.period_number = period_number
         # The priority of the instance. Valid values: 1, 3, 5, 7, and 8. A greater value indicates a higher priority. Default value: 1.
         self.priority = priority
         # The ID of the workflow to which the node belongs.
@@ -32385,8 +32408,12 @@ class GetInstanceResponseBodyData(TeaModel):
             result['NodeId'] = self.node_id
         if self.node_name is not None:
             result['NodeName'] = self.node_name
+        if self.owner is not None:
+            result['Owner'] = self.owner
         if self.param_values is not None:
             result['ParamValues'] = self.param_values
+        if self.period_number is not None:
+            result['PeriodNumber'] = self.period_number
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.related_flow_id is not None:
@@ -32443,8 +32470,12 @@ class GetInstanceResponseBodyData(TeaModel):
             self.node_id = m.get('NodeId')
         if m.get('NodeName') is not None:
             self.node_name = m.get('NodeName')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
         if m.get('ParamValues') is not None:
             self.param_values = m.get('ParamValues')
+        if m.get('PeriodNumber') is not None:
+            self.period_number = m.get('PeriodNumber')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('RelatedFlowId') is not None:
@@ -36341,19 +36372,19 @@ class GetMetaTableFullInfoRequest(TeaModel):
         table_guid: str = None,
         table_name: str = None,
     ):
-        # The ID of the E-MapReduce (EMR) cluster. You can log on to the EMR console to obtain the ID of the cluster.
+        # The ID of the EMR cluster. You can log in to the EMR management console to obtain the cluster ID.
         self.cluster_id = cluster_id
-        # The type of the data source. Only emr is supported.
+        # Data type, currently only supports the value `emr`.
         self.data_source_type = data_source_type
-        # The name of the metadatabase of the EMR cluster. You can call the [ListMetaDB](https://help.aliyun.com/document_detail/185662.html) operation to query the name of the metadatabase.
+        # The name of the EMR database. You can obtain the database name by calling the [ListMetaDB](https://help.aliyun.com/document_detail/185662.html) interface.
         self.database_name = database_name
-        # The number of the page to return.
+        # The page number requested for pagination.
         self.page_num = page_num
-        # The number of entries to return on each page. Default value: 10. Maximum value: 100.
+        # The number of items per page, with a default of 10 and a maximum of 100.
         self.page_size = page_size
-        # The GUID of the metatable. You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the GUID of the metatable.
+        # The unique identifier of the table. You can obtain the unique identifier by calling the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) interface.
         self.table_guid = table_guid
-        # The name of the metatable in the EMR cluster. You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the name of the metatable.
+        # The name of the EMR table. You can obtain the table name by calling the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) interface.
         self.table_name = table_name
 
     def validate(self):
@@ -36413,32 +36444,29 @@ class GetMetaTableFullInfoResponseBodyDataColumnList(TeaModel):
         is_primary_key: bool = None,
         position: int = None,
     ):
-        # The description of the field.
+        # The description of the column.
         self.caption = caption
-        # The GUID of the field.
+        # The unique identifier of the column.
         self.column_guid = column_guid
-        # The name of the field.
+        # The name of the column.
         self.column_name = column_name
-        # The data type of the field.
+        # The type of the column.
         self.column_type = column_type
-        # The remarks of the field.
+        # The comment for the column.
         self.comment = comment
-        # Indicates whether the field is a foreign key. Valid values:
-        # 
-        # *   true: The field is a foreign key.
-        # *   false: The field is not a foreign key.
+        # Whether the field is a foreign key, with values as follows: 
+        # - true, it is a foreign key. 
+        # - false, it is not a foreign key.
         self.is_foreign_key = is_foreign_key
-        # Indicates whether the field is a partition field. Valid values:
-        # 
-        # *   true: The field is a partition field.
-        # *   false: The field is not a partition field.
+        # Indicates whether the column is a partition column, with the following values:
+        # - true: It is a partition column.
+        # - false: It is not a partition column.
         self.is_partition_column = is_partition_column
-        # Indicates whether the field is the primary key. Valid values:
-        # 
-        # *   true: The field is the primary key.
-        # *   false: The field is not the primary key.
+        # Indicates whether the column is a primary key, with the following values:
+        # - true: It is a primary key.
+        # - false: It is not a primary key.
         self.is_primary_key = is_primary_key
-        # The ordinal number of the field.
+        # The position of the column in the order.
         self.position = position
 
     def validate(self):
@@ -36521,54 +36549,52 @@ class GetMetaTableFullInfoResponseBodyData(TeaModel):
     ):
         # The ID of the EMR cluster.
         self.cluster_id = cluster_id
-        # The fields in the metatable.
+        # A list of columns.
         self.column_list = column_list
-        # The remarks of the metatable.
+        # The comment of the table.
         self.comment = comment
-        # The time when the metatable was created. You can convert the timestamp to the related date based on the time zone that you use.
+        # The time when the table was created. The result is displayed as a timestamp, which you can convert to the corresponding date based on your timezone.
         self.create_time = create_time
-        # The amount of storage resources that are consumed by the metatable. Unit: bytes.
+        # The storage space occupied by the table, in bytes (B).
         self.data_size = data_size
         # The name of the database.
         self.database_name = database_name
-        # The type of the environment in which the metatable resides. Valid values:
-        # 
-        # *   0: indicates that the metatable resides in the development environment.
-        # *   1: indicates that the metatable resides in the production environment.
+        # Environment type, with the following values:
+        # - 0 indicates a table in the development environment.
+        # - 1 indicates a table in the production environment.
         self.env_type = env_type
-        # The scope in which the metatable is visible. Valid values:
-        # 
-        # *   0: indicates that the metatable is visible to workspace members.
-        # *   1: indicates that the metatable is visible to users within a tenant.
-        # *   2: indicates that the metatable is visible to all tenants.
-        # *   3: indicates that the metatable is visible only to the metatable owner.
+        # Indicates whether the table is visible, with the following values:
+        # - 0: The table is visible to workspace members.
+        # - 1: The table is visible within the tenant.
+        # - 2: The table is visible across tenants.
+        # - 3: The table is only visible to the responsible person.
         self.is_visible = is_visible
-        # The time when the metatable was last accessed. You can convert the timestamp to the related date based on the time zone that you use.
+        # The last time the table was accessed. The result is displayed as a timestamp, which you can convert to the corresponding date based on your timezone.
         self.last_access_time = last_access_time
-        # The time when the schema of the metatable was last changed. You can convert the timestamp to the related date based on the time zone that you use.
+        # The last time the table structure was changed. The result is displayed as a timestamp, which you can convert to the corresponding date based on your timezone.
         self.last_ddl_time = last_ddl_time
-        # The time when the metatable was last updated. You can convert the timestamp to the related date based on the time zone that you use.
+        # The last time the table was updated. The result is displayed as a timestamp, which you can convert to the corresponding date based on your timezone.
         self.last_modify_time = last_modify_time
-        # The lifecycle of the metatable. Unit: days.
+        # The lifecycle of the table, in days.
         self.life_cycle = life_cycle
-        # The storage path of the Hive metatable.
+        # The storage location of the Hive table.
         self.location = location
-        # The ID of the metatable owner.
+        # The ID of the table owner.
         self.owner_id = owner_id
-        # The partition key.
+        # Partition keys.
         self.partition_keys = partition_keys
-        # The ID of the workspace to which the metatable belongs.
+        # The ID of the workspace where the table is located.
         self.project_id = project_id
-        # The name of the workspace to which the metatable belongs.
+        # The name of the workspace where the table is located.
         self.project_name = project_name
         self.schema = schema
-        # The GUID of the metatable.
+        # The unique identifier of the table.
         self.table_guid = table_guid
-        # The name of the metatable.
+        # The name of the table.
         self.table_name = table_name
-        # The ID of the tenant.
+        # The tenant ID.
         self.tenant_id = tenant_id
-        # The total number of fields.
+        # The total number of columns.
         self.total_column_count = total_column_count
 
     def validate(self):
@@ -36693,17 +36719,17 @@ class GetMetaTableFullInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business data returned.
+        # Business data.
         self.data = data
-        # The error code returned.
+        # Error code.
         self.error_code = error_code
-        # The error message returned.
+        # Error message.
         self.error_message = error_message
-        # The HTTP status code returned.
+        # HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
+        # Request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -38254,12 +38280,19 @@ class GetMetaTableProducingTasksRequest(TeaModel):
         table_guid: str = None,
         table_name: str = None,
     ):
+        # The ID of the EMR cluster. This parameter takes effect only if the DataSourceType parameter is set to emr.
         self.cluster_id = cluster_id
+        # The type of the metatable. Valid values: odps and emr. The value odps indicates that the metatable is a MaxCompute metatable. The value emr indicates that the metatable is an E-MapReduce (EMR) metatable.
         self.data_source_type = data_source_type
+        # The name of the database.
         self.db_name = db_name
+        # The name of the schema.
         self.schema_name = schema_name
+        # The GUID of the MaxCompute metatable.
+        # 
         # This parameter is required.
         self.table_guid = table_guid
+        # The name of the metatable.
         self.table_name = table_name
 
     def validate(self):
@@ -38308,7 +38341,9 @@ class GetMetaTableProducingTasksResponseBodyData(TeaModel):
         task_id: str = None,
         task_name: str = None,
     ):
+        # The ID of the output task.
         self.task_id = task_id
+        # The name of the output task.
         self.task_name = task_name
 
     def validate(self):
@@ -38345,11 +38380,17 @@ class GetMetaTableProducingTasksResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The output tasks of the metatable.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false. The value true indicates that the request was successful. The value false indicates that the request failed.
         self.success = success
 
     def validate(self):
@@ -79366,6 +79407,7 @@ class UpdateFileRequest(TeaModel):
         start_effect_date: int = None,
         start_immediately: bool = None,
         stop: bool = None,
+        timeout: int = None,
     ):
         # The advanced configurations of the node.
         # 
@@ -79507,6 +79549,7 @@ class UpdateFileRequest(TeaModel):
         # 
         # This parameter corresponds to the Recurrence parameter in the Schedule section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.stop = stop
+        self.timeout = timeout
 
     def validate(self):
         pass
@@ -79579,6 +79622,8 @@ class UpdateFileRequest(TeaModel):
             result['StartImmediately'] = self.start_immediately
         if self.stop is not None:
             result['Stop'] = self.stop
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
         return result
 
     def from_map(self, m: dict = None):
@@ -79645,6 +79690,8 @@ class UpdateFileRequest(TeaModel):
             self.start_immediately = m.get('StartImmediately')
         if m.get('Stop') is not None:
             self.stop = m.get('Stop')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
         return self
 
 

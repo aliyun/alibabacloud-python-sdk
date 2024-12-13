@@ -289,7 +289,8 @@ class Client(OpenApiClient):
         """
         @summary Assigns a role to a member of a DataWorks workspace. Before you call this operation, you must add your account to a DataWorks workspace as a member.
         
-        @description For information about how to add an account to a DataWorks workspace as a member, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
+        @description    For information about how to add an account to a DataWorks workspace as a member, see [Add workspace members and assign roles to them](https://help.aliyun.com/document_detail/136941.html).
+        If you assign a built-in workspace-level role to a member of a DataWorks workspace, the member is automatically granted the permissions of the mapped role of the MaxCompute compute engine in the development environment. For more information, see [Appendix: Mappings between the built-in workspace-level roles of DataWorks and the roles of MaxCompute](https://help.aliyun.com/document_detail/449397.html).
         
         @param request: AddProjectMemberToRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -332,7 +333,8 @@ class Client(OpenApiClient):
         """
         @summary Assigns a role to a member of a DataWorks workspace. Before you call this operation, you must add your account to a DataWorks workspace as a member.
         
-        @description For information about how to add an account to a DataWorks workspace as a member, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
+        @description    For information about how to add an account to a DataWorks workspace as a member, see [Add workspace members and assign roles to them](https://help.aliyun.com/document_detail/136941.html).
+        If you assign a built-in workspace-level role to a member of a DataWorks workspace, the member is automatically granted the permissions of the mapped role of the MaxCompute compute engine in the development environment. For more information, see [Appendix: Mappings between the built-in workspace-level roles of DataWorks and the roles of MaxCompute](https://help.aliyun.com/document_detail/449397.html).
         
         @param request: AddProjectMemberToRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -374,7 +376,8 @@ class Client(OpenApiClient):
         """
         @summary Assigns a role to a member of a DataWorks workspace. Before you call this operation, you must add your account to a DataWorks workspace as a member.
         
-        @description For information about how to add an account to a DataWorks workspace as a member, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
+        @description    For information about how to add an account to a DataWorks workspace as a member, see [Add workspace members and assign roles to them](https://help.aliyun.com/document_detail/136941.html).
+        If you assign a built-in workspace-level role to a member of a DataWorks workspace, the member is automatically granted the permissions of the mapped role of the MaxCompute compute engine in the development environment. For more information, see [Appendix: Mappings between the built-in workspace-level roles of DataWorks and the roles of MaxCompute](https://help.aliyun.com/document_detail/449397.html).
         
         @param request: AddProjectMemberToRoleRequest
         @return: AddProjectMemberToRoleResponse
@@ -389,7 +392,8 @@ class Client(OpenApiClient):
         """
         @summary Assigns a role to a member of a DataWorks workspace. Before you call this operation, you must add your account to a DataWorks workspace as a member.
         
-        @description For information about how to add an account to a DataWorks workspace as a member, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
+        @description    For information about how to add an account to a DataWorks workspace as a member, see [Add workspace members and assign roles to them](https://help.aliyun.com/document_detail/136941.html).
+        If you assign a built-in workspace-level role to a member of a DataWorks workspace, the member is automatically granted the permissions of the mapped role of the MaxCompute compute engine in the development environment. For more information, see [Appendix: Mappings between the built-in workspace-level roles of DataWorks and the roles of MaxCompute](https://help.aliyun.com/document_detail/449397.html).
         
         @param request: AddProjectMemberToRoleRequest
         @return: AddProjectMemberToRoleResponse
@@ -3179,6 +3183,8 @@ class Client(OpenApiClient):
             body['StartImmediately'] = request.start_immediately
         if not UtilClient.is_unset(request.stop):
             body['Stop'] = request.stop
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3276,6 +3282,8 @@ class Client(OpenApiClient):
             body['StartImmediately'] = request.start_immediately
         if not UtilClient.is_unset(request.stop):
             body['Stop'] = request.stop
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7211,9 +7219,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
         """
-        @summary Deletes the lineage between entities. You can call this operation to delete only custom lineages that are registered by users.
+        @summary Delete lineage, supports deleting user-defined lineage relationships
         
-        @description This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
+        @description This API is currently in the trial phase. Users who wish to experience it can apply, and after the administrator adds them to the trial list, they can call this API.
         
         @param request: DeleteLineageRelationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7254,9 +7262,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
         """
-        @summary Deletes the lineage between entities. You can call this operation to delete only custom lineages that are registered by users.
+        @summary Delete lineage, supports deleting user-defined lineage relationships
         
-        @description This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
+        @description This API is currently in the trial phase. Users who wish to experience it can apply, and after the administrator adds them to the trial list, they can call this API.
         
         @param request: DeleteLineageRelationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7296,9 +7304,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteLineageRelationRequest,
     ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
         """
-        @summary Deletes the lineage between entities. You can call this operation to delete only custom lineages that are registered by users.
+        @summary Delete lineage, supports deleting user-defined lineage relationships
         
-        @description This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
+        @description This API is currently in the trial phase. Users who wish to experience it can apply, and after the administrator adds them to the trial list, they can call this API.
         
         @param request: DeleteLineageRelationRequest
         @return: DeleteLineageRelationResponse
@@ -7311,9 +7319,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteLineageRelationRequest,
     ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
         """
-        @summary Deletes the lineage between entities. You can call this operation to delete only custom lineages that are registered by users.
+        @summary Delete lineage, supports deleting user-defined lineage relationships
         
-        @description This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
+        @description This API is currently in the trial phase. Users who wish to experience it can apply, and after the administrator adds them to the trial list, they can call this API.
         
         @param request: DeleteLineageRelationRequest
         @return: DeleteLineageRelationResponse
@@ -16049,7 +16057,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableFullInfoResponse:
         """
-        @summary Queries the complete information about a metatable, including information about fields in the metatable.
+        @summary Invoke the GetMetaTableFullInfo interface to obtain the complete information of a table (including field information).
         
         @param request: GetMetaTableFullInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16082,7 +16090,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableFullInfoResponse:
         """
-        @summary Queries the complete information about a metatable, including information about fields in the metatable.
+        @summary Invoke the GetMetaTableFullInfo interface to obtain the complete information of a table (including field information).
         
         @param request: GetMetaTableFullInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16114,7 +16122,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableFullInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableFullInfoResponse:
         """
-        @summary Queries the complete information about a metatable, including information about fields in the metatable.
+        @summary Invoke the GetMetaTableFullInfo interface to obtain the complete information of a table (including field information).
         
         @param request: GetMetaTableFullInfoRequest
         @return: GetMetaTableFullInfoResponse
@@ -16127,7 +16135,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableFullInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableFullInfoResponse:
         """
-        @summary Queries the complete information about a metatable, including information about fields in the metatable.
+        @summary Invoke the GetMetaTableFullInfo interface to obtain the complete information of a table (including field information).
         
         @param request: GetMetaTableFullInfoRequest
         @return: GetMetaTableFullInfoResponse
@@ -16713,7 +16721,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableProducingTasksResponse:
         """
-        @summary 获取Table的产出任务列表
+        @summary Queries the output tasks of a metatable.
         
         @param request: GetMetaTableProducingTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16758,7 +16766,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableProducingTasksResponse:
         """
-        @summary 获取Table的产出任务列表
+        @summary Queries the output tasks of a metatable.
         
         @param request: GetMetaTableProducingTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16802,7 +16810,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableProducingTasksRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableProducingTasksResponse:
         """
-        @summary 获取Table的产出任务列表
+        @summary Queries the output tasks of a metatable.
         
         @param request: GetMetaTableProducingTasksRequest
         @return: GetMetaTableProducingTasksResponse
@@ -16815,7 +16823,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableProducingTasksRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableProducingTasksResponse:
         """
-        @summary 获取Table的产出任务列表
+        @summary Queries the output tasks of a metatable.
         
         @param request: GetMetaTableProducingTasksRequest
         @return: GetMetaTableProducingTasksResponse
@@ -33019,6 +33027,8 @@ class Client(OpenApiClient):
             body['StartImmediately'] = request.start_immediately
         if not UtilClient.is_unset(request.stop):
             body['Stop'] = request.stop
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -33116,6 +33126,8 @@ class Client(OpenApiClient):
             body['StartImmediately'] = request.start_immediately
         if not UtilClient.is_unset(request.stop):
             body['Stop'] = request.stop
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
