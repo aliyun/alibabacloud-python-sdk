@@ -1,3 +1,8 @@
+2024-12-13 Version: 1.2.1
+- Update API FindIdpListByLoginIdentifier: update param ClientIp.
+- Update API FindIdpListByLoginIdentifier: update param ClientIp.
+
+
 2024-12-11 Version: 1.2.0
 - Support API GetStsToken.
 - Update API GetLoginToken: update param AvailableFeatures.

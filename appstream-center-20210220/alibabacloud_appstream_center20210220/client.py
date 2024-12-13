@@ -62,13 +62,13 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.available_features_shrink):
             query['AvailableFeatures'] = request.available_features_shrink
+        if not UtilClient.is_unset(request.client_ip):
+            query['ClientIp'] = request.client_ip
         body = {}
         if not UtilClient.is_unset(request.client_channel):
             body['ClientChannel'] = request.client_channel
         if not UtilClient.is_unset(request.client_id):
             body['ClientId'] = request.client_id
-        if not UtilClient.is_unset(request.client_ip):
-            body['ClientIp'] = request.client_ip
         if not UtilClient.is_unset(request.client_os):
             body['ClientOS'] = request.client_os
         if not UtilClient.is_unset(request.client_version):
@@ -119,13 +119,13 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.available_features_shrink):
             query['AvailableFeatures'] = request.available_features_shrink
+        if not UtilClient.is_unset(request.client_ip):
+            query['ClientIp'] = request.client_ip
         body = {}
         if not UtilClient.is_unset(request.client_channel):
             body['ClientChannel'] = request.client_channel
         if not UtilClient.is_unset(request.client_id):
             body['ClientId'] = request.client_id
-        if not UtilClient.is_unset(request.client_ip):
-            body['ClientIp'] = request.client_ip
         if not UtilClient.is_unset(request.client_os):
             body['ClientOS'] = request.client_os
         if not UtilClient.is_unset(request.client_version):
