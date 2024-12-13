@@ -1,3 +1,12 @@
+2024-12-13 Version: 4.2.2
+- Update API DisableRealtimeLogDelivery: add param Logstore.
+- Update API DisableRealtimeLogDelivery: add param Project.
+- Update API DisableRealtimeLogDelivery: add param Region.
+- Update API EnableRealtimeLogDelivery: add param Logstore.
+- Update API EnableRealtimeLogDelivery: add param Project.
+- Update API EnableRealtimeLogDelivery: add param Region.
+
+
 2024-12-11 Version: 4.2.1
 - Update API ListTagResources: update param Tag.
 - Update API TagResources: update param Tag.
