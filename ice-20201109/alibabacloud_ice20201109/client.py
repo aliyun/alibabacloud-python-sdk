@@ -14451,8 +14451,8 @@ class Client(OpenApiClient):
         @summary Queries a list of templates that meet the specified conditions. You can query templates based on information such as the template status and creation source.
         
         @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
-        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         
         @param request: ListTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14502,8 +14502,8 @@ class Client(OpenApiClient):
         @summary Queries a list of templates that meet the specified conditions. You can query templates based on information such as the template status and creation source.
         
         @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
-        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         
         @param request: ListTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14552,8 +14552,8 @@ class Client(OpenApiClient):
         @summary Queries a list of templates that meet the specified conditions. You can query templates based on information such as the template status and creation source.
         
         @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
-        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         
         @param request: ListTemplatesRequest
         @return: ListTemplatesResponse
@@ -14569,8 +14569,8 @@ class Client(OpenApiClient):
         @summary Queries a list of templates that meet the specified conditions. You can query templates based on information such as the template status and creation source.
         
         @description A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
-        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         
         @param request: ListTemplatesRequest
         @return: ListTemplatesResponse
@@ -17601,6 +17601,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.search_public_media_info_with_options_async(request, runtime)
+
+    def send_aiagent_data_channel_message_with_options(
+        self,
+        request: ice20201109_models.SendAIAgentDataChannelMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SendAIAgentDataChannelMessageResponse:
+        """
+        @summary 向智能体通话发送datachannel消息
+        
+        @param request: SendAIAgentDataChannelMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendAIAgentDataChannelMessageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendAIAgentDataChannelMessage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SendAIAgentDataChannelMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_aiagent_data_channel_message_with_options_async(
+        self,
+        request: ice20201109_models.SendAIAgentDataChannelMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SendAIAgentDataChannelMessageResponse:
+        """
+        @summary 向智能体通话发送datachannel消息
+        
+        @param request: SendAIAgentDataChannelMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendAIAgentDataChannelMessageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendAIAgentDataChannelMessage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SendAIAgentDataChannelMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_aiagent_data_channel_message(
+        self,
+        request: ice20201109_models.SendAIAgentDataChannelMessageRequest,
+    ) -> ice20201109_models.SendAIAgentDataChannelMessageResponse:
+        """
+        @summary 向智能体通话发送datachannel消息
+        
+        @param request: SendAIAgentDataChannelMessageRequest
+        @return: SendAIAgentDataChannelMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.send_aiagent_data_channel_message_with_options(request, runtime)
+
+    async def send_aiagent_data_channel_message_async(
+        self,
+        request: ice20201109_models.SendAIAgentDataChannelMessageRequest,
+    ) -> ice20201109_models.SendAIAgentDataChannelMessageResponse:
+        """
+        @summary 向智能体通话发送datachannel消息
+        
+        @param request: SendAIAgentDataChannelMessageRequest
+        @return: SendAIAgentDataChannelMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.send_aiagent_data_channel_message_with_options_async(request, runtime)
 
     def send_aiagent_speech_with_options(
         self,
@@ -23114,6 +23214,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_video_translation_job_with_options_async(request, runtime)
 
+    def takeover_aiagent_call_with_options(
+        self,
+        request: ice20201109_models.TakeoverAIAgentCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.TakeoverAIAgentCallResponse:
+        """
+        @summary 切换真人客服接管模式
+        
+        @param request: TakeoverAIAgentCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TakeoverAIAgentCallResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.human_agent_user_id):
+            query['HumanAgentUserId'] = request.human_agent_user_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.require_token):
+            query['RequireToken'] = request.require_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TakeoverAIAgentCall',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.TakeoverAIAgentCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def takeover_aiagent_call_with_options_async(
+        self,
+        request: ice20201109_models.TakeoverAIAgentCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.TakeoverAIAgentCallResponse:
+        """
+        @summary 切换真人客服接管模式
+        
+        @param request: TakeoverAIAgentCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TakeoverAIAgentCallResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.human_agent_user_id):
+            query['HumanAgentUserId'] = request.human_agent_user_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.require_token):
+            query['RequireToken'] = request.require_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TakeoverAIAgentCall',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.TakeoverAIAgentCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def takeover_aiagent_call(
+        self,
+        request: ice20201109_models.TakeoverAIAgentCallRequest,
+    ) -> ice20201109_models.TakeoverAIAgentCallResponse:
+        """
+        @summary 切换真人客服接管模式
+        
+        @param request: TakeoverAIAgentCallRequest
+        @return: TakeoverAIAgentCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.takeover_aiagent_call_with_options(request, runtime)
+
+    async def takeover_aiagent_call_async(
+        self,
+        request: ice20201109_models.TakeoverAIAgentCallRequest,
+    ) -> ice20201109_models.TakeoverAIAgentCallResponse:
+        """
+        @summary 切换真人客服接管模式
+        
+        @param request: TakeoverAIAgentCallRequest
+        @return: TakeoverAIAgentCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.takeover_aiagent_call_with_options_async(request, runtime)
+
     def update_aiagent_instance_with_options(
         self,
         tmp_req: ice20201109_models.UpdateAIAgentInstanceRequest,
@@ -24846,8 +25050,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies an online editing template. You can modify the template title and template configurations.
         
-        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         
         @param request: UpdateTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24900,8 +25104,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies an online editing template. You can modify the template title and template configurations.
         
-        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         
         @param request: UpdateTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24953,8 +25157,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies an online editing template. You can modify the template title and template configurations.
         
-        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         
         @param request: UpdateTemplateRequest
         @return: UpdateTemplateResponse
@@ -24969,8 +25173,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies an online editing template. You can modify the template title and template configurations.
         
-        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
-        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        @description    For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+        For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         
         @param request: UpdateTemplateRequest
         @return: UpdateTemplateResponse

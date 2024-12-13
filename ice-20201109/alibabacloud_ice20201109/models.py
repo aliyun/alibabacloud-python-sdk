@@ -50062,6 +50062,109 @@ class SearchPublicMediaInfoResponse(TeaModel):
         return self
 
 
+class SendAIAgentDataChannelMessageRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        message: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class SendAIAgentDataChannelMessageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SendAIAgentDataChannelMessageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SendAIAgentDataChannelMessageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SendAIAgentDataChannelMessageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SendAIAgentSpeechRequest(TeaModel):
     def __init__(
         self,
@@ -57266,9 +57369,9 @@ class SubmitMediaProducingJobRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # The material parameters of the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+        # The material parameters of the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html) and [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         self.clips_param = clips_param
-        # The parameters for editing and production. For more information, see [EditingProduceConfig](https://help.aliyun.com/document_detail/357745.html#title-10z-t9u-n69).
+        # The parameters for editing and production. For more information, see [EditingProduceConfig](https://help.aliyun.com/document_detail/357745.html).
         # 
         # >  If no thumbnail is specified in EditingProduceConfig, the first frame of the video is used as the thumbnail.
         # 
@@ -57277,13 +57380,13 @@ class SubmitMediaProducingJobRequest(TeaModel):
         # *   CoverConfig: the custom thumbnail parameters.
         # *\
         self.editing_produce_config = editing_produce_config
-        # The metadata of the produced video, in the JSON format. For more information about the parameters, see [MediaMetadata](https://help.aliyun.com/document_detail/357745.html?spm=a2c4g.445712.0.0.49a716dbA8hgdz#97ff26d0e3c28).
+        # The metadata of the produced video, in the JSON format. For more information about the parameters, see [MediaMetadata](https://help.aliyun.com/document_detail/357745.html).
         self.media_metadata = media_metadata
         # The configurations of the output file, in the JSON format. You can specify an OSS URL or a storage location in a storage bucket of ApsaraVideo VOD.
         # 
         # To store the output file in OSS, you must specify MediaURL. To store the output file in ApsaraVideo VOD, you must specify StorageLocation and FileName.
         # 
-        # For more information, see [OutputMediaConfig](https://help.aliyun.com/document_detail/357745.html#title-4j6-ve7-g31).
+        # For more information, see [OutputMediaConfig](https://help.aliyun.com/document_detail/357745.html).
         # 
         # This parameter is required.
         self.output_media_config = output_media_config
@@ -57297,7 +57400,7 @@ class SubmitMediaProducingJobRequest(TeaModel):
         # 
         # > : You must specify one of ProgectId, Timeline, and TempalteId and leave the other two parameters empty.
         self.project_id = project_id
-        # The metadata of the editing project, in the JSON format. For more information about the parameters, see [ProjectMetadata](https://help.aliyun.com/document_detail/357745.html#title-yvp-81k-wff).
+        # The metadata of the editing project, in the JSON format. For more information about the parameters, see [ProjectMetadata](https://help.aliyun.com/document_detail/357745.html).
         self.project_metadata = project_metadata
         # The source of the editing and production request. Valid values:
         # 
@@ -66700,6 +66803,131 @@ class SubmitVideoTranslationJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitVideoTranslationJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TakeoverAIAgentCallRequest(TeaModel):
+    def __init__(
+        self,
+        human_agent_user_id: str = None,
+        instance_id: str = None,
+        require_token: bool = None,
+    ):
+        self.human_agent_user_id = human_agent_user_id
+        self.instance_id = instance_id
+        self.require_token = require_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.human_agent_user_id is not None:
+            result['HumanAgentUserId'] = self.human_agent_user_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.require_token is not None:
+            result['RequireToken'] = self.require_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HumanAgentUserId') is not None:
+            self.human_agent_user_id = m.get('HumanAgentUserId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequireToken') is not None:
+            self.require_token = m.get('RequireToken')
+        return self
+
+
+class TakeoverAIAgentCallResponseBody(TeaModel):
+    def __init__(
+        self,
+        channel_id: str = None,
+        human_agent_user_id: str = None,
+        request_id: str = None,
+        token: str = None,
+    ):
+        self.channel_id = channel_id
+        self.human_agent_user_id = human_agent_user_id
+        self.request_id = request_id
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.human_agent_user_id is not None:
+            result['HumanAgentUserId'] = self.human_agent_user_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('HumanAgentUserId') is not None:
+            self.human_agent_user_id = m.get('HumanAgentUserId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class TakeoverAIAgentCallResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TakeoverAIAgentCallResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TakeoverAIAgentCallResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
