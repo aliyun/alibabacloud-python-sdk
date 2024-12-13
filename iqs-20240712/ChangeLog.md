@@ -1,3 +1,7 @@
+2024-12-13 Version: 2.0.3
+- Update API TransitIntegratedDirection: update response param.
+
+
 2024-12-05 Version: 2.0.2
 - Update API PlaceSearchNova: update response param.
 

@@ -4126,8 +4126,10 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus(TeaModel):
     def __init__(
         self,
         buslines: List[TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines] = None,
+        index: str = None,
     ):
         self.buslines = buslines
+        self.index = index
 
     def validate(self):
         if self.buslines:
@@ -4145,6 +4147,8 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus(TeaModel):
         if self.buslines is not None:
             for k in self.buslines:
                 result['buslines'].append(k.to_map() if k else None)
+        if self.index is not None:
+            result['index'] = self.index
         return result
 
     def from_map(self, m: dict = None):
@@ -4154,6 +4158,8 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus(TeaModel):
             for k in m.get('buslines'):
                 temp_model = TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines()
                 self.buslines.append(temp_model.from_map(k))
+        if m.get('index') is not None:
+            self.index = m.get('index')
         return self
 
 
@@ -4312,6 +4318,7 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway(TeaModel):
         departure_stop: TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop = None,
         distance_meter: str = None,
         id: str = None,
+        index: str = None,
         name: str = None,
         spaces: List[TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwaySpaces] = None,
         time: str = None,
@@ -4322,6 +4329,7 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway(TeaModel):
         self.departure_stop = departure_stop
         self.distance_meter = distance_meter
         self.id = id
+        self.index = index
         self.name = name
         self.spaces = spaces
         self.time = time
@@ -4352,6 +4360,8 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway(TeaModel):
             result['distanceMeter'] = self.distance_meter
         if self.id is not None:
             result['id'] = self.id
+        if self.index is not None:
+            result['index'] = self.index
         if self.name is not None:
             result['name'] = self.name
         result['spaces'] = []
@@ -4378,6 +4388,8 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway(TeaModel):
             self.distance_meter = m.get('distanceMeter')
         if m.get('id') is not None:
             self.id = m.get('id')
+        if m.get('index') is not None:
+            self.index = m.get('index')
         if m.get('name') is not None:
             self.name = m.get('name')
         self.spaces = []
@@ -4401,6 +4413,7 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi(TeaModel):
         destination_point: str = None,
         distance_meter: str = None,
         drive_time_second: str = None,
+        index: str = None,
         origin_name: str = None,
         origin_point: str = None,
         price: str = None,
@@ -4409,6 +4422,7 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi(TeaModel):
         self.destination_point = destination_point
         self.distance_meter = distance_meter
         self.drive_time_second = drive_time_second
+        self.index = index
         self.origin_name = origin_name
         self.origin_point = origin_point
         self.price = price
@@ -4430,6 +4444,8 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi(TeaModel):
             result['distanceMeter'] = self.distance_meter
         if self.drive_time_second is not None:
             result['driveTimeSecond'] = self.drive_time_second
+        if self.index is not None:
+            result['index'] = self.index
         if self.origin_name is not None:
             result['originName'] = self.origin_name
         if self.origin_point is not None:
@@ -4448,6 +4464,8 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi(TeaModel):
             self.distance_meter = m.get('distanceMeter')
         if m.get('driveTimeSecond') is not None:
             self.drive_time_second = m.get('driveTimeSecond')
+        if m.get('index') is not None:
+            self.index = m.get('index')
         if m.get('originName') is not None:
             self.origin_name = m.get('originName')
         if m.get('originPoint') is not None:
@@ -4678,12 +4696,14 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking(TeaModel):
         cost: TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost = None,
         destination: str = None,
         distance_meter: str = None,
+        index: str = None,
         origin: str = None,
         steps: List[TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps] = None,
     ):
         self.cost = cost
         self.destination = destination
         self.distance_meter = distance_meter
+        self.index = index
         self.origin = origin
         self.steps = steps
 
@@ -4707,6 +4727,8 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking(TeaModel):
             result['destination'] = self.destination
         if self.distance_meter is not None:
             result['distanceMeter'] = self.distance_meter
+        if self.index is not None:
+            result['index'] = self.index
         if self.origin is not None:
             result['origin'] = self.origin
         result['steps'] = []
@@ -4724,6 +4746,8 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking(TeaModel):
             self.destination = m.get('destination')
         if m.get('distanceMeter') is not None:
             self.distance_meter = m.get('distanceMeter')
+        if m.get('index') is not None:
+            self.index = m.get('index')
         if m.get('origin') is not None:
             self.origin = m.get('origin')
         self.steps = []
