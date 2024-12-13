@@ -3205,7 +3205,7 @@ class DescribeOrderForIsvResponseBody(TeaModel):
         self,
         account_quantity: int = None,
         ali_uid: int = None,
-        components: Dict[str, Any] = None,
+        components: Any = None,
         coupon_price: float = None,
         created_on: int = None,
         instance_ids: List[str] = None,
