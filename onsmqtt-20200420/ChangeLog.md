@@ -1,3 +1,7 @@
+2024-12-13 Version: 1.4.0
+- Support API SetSniConfig.
+
+
 2024-08-27 Version: 1.3.0
 - Support API CloseConnection.
 - Update API AddCustomAuthIdentity: update param Secret.

@@ -10,8 +10,14 @@ class ActiveCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         sn: str = None,
     ):
+        # CA证书所绑定的实例ID，即云消息队列 MQTT 版的实例ID。
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # 待激活CA证书的SN序列号，用于唯一标识一个CA证书。
+        # 
+        # 取值范围：不超过128 Byte。
+        # 
         # This parameter is required.
         self.sn = sn
 
@@ -45,7 +51,9 @@ class ActiveCaCertificateResponseBody(TeaModel):
         request_id: str = None,
         sn: str = None,
     ):
+        # Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
         self.request_id = request_id
+        # The SN serial number of the activated CA certificate, used to uniquely identify a CA certificate.
         self.sn = sn
 
     def validate(self):
@@ -120,10 +128,18 @@ class ActiveDeviceCertificateRequest(TeaModel):
         device_sn: str = None,
         mqtt_instance_id: str = None,
     ):
+        # The serial number of the CA certificate to which the device certificate belongs. The serial number is the unique identifier of a CA certificate.
+        # 
+        # The serial number of a CA certificate cannot exceed 128 bytes in size.
+        # 
         # This parameter is required.
         self.ca_sn = ca_sn
+        # The serial number of the device certificate that you want to reactivate. The serial number is the unique identifier of a device.
+        # 
         # This parameter is required.
         self.device_sn = device_sn
+        # The ID of the ApsaraMQ for MQTT instance to which the device certificate is bound.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
 
@@ -161,7 +177,9 @@ class ActiveDeviceCertificateResponseBody(TeaModel):
         device_sn: str = None,
         request_id: str = None,
     ):
+        # The serial number of the device certificate that you reactivated. The serial number is the unique identifier of a device certificate.
         self.device_sn = device_sn
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -996,8 +1014,12 @@ class CloseConnectionRequest(TeaModel):
         client_id: str = None,
         instance_id: str = None,
     ):
+        # Client ID of the device
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # ID of the Micro Message Queue MQTT version instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -1033,10 +1055,13 @@ class CloseConnectionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Return code of the interface: 200 indicates success. Other values indicate error codes. For details about the error codes, see Error Codes.
         self.code = code
+        # Call result information
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the operation was successful. true means success, false means failure.
         self.success = success
 
     def validate(self):
@@ -1229,8 +1254,14 @@ class DeleteCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         sn: str = None,
     ):
+        # The ID of the ApsaraMQ for MQTT instance to which the CA certificate is bound.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # The serial number of the CA certificate that you want to delete. The serial number is the unique identifier of a CA certificate.
+        # 
+        # The serial number of a CA certificate cannot exceed 128 bytes in size.
+        # 
         # This parameter is required.
         self.sn = sn
 
@@ -1264,7 +1295,9 @@ class DeleteCaCertificateResponseBody(TeaModel):
         request_id: str = None,
         sn: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The serial number of the CA certificate that you deleted. The serial number is the unique identifier of a CA certificate.
         self.sn = sn
 
     def validate(self):
@@ -1338,8 +1371,12 @@ class DeleteCustomAuthConnectBlackRequest(TeaModel):
         client_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the ApsaraMQ for MQTT client.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # The ID of the ApsaraMQ for MQTT instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -1375,10 +1412,13 @@ class DeleteCustomAuthConnectBlackResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -1759,10 +1799,20 @@ class DeleteDeviceCertificateRequest(TeaModel):
         device_sn: str = None,
         mqtt_instance_id: str = None,
     ):
+        # The serial number of the CA certificate to which the device certificate belongs. The serial number is the unique identifier of a CA certificate. CA certificates are used to validate device certificates.
+        # 
+        # The serial number of a CA certificate cannot exceed 128 bytes in size.
+        # 
         # This parameter is required.
         self.ca_sn = ca_sn
+        # The serial number of the device certificate whose registration information you want to delete. The serial number is the unique identifier of a device.
+        # 
+        # The serial number of a device certificate cannot exceed 128 bytes in size.
+        # 
         # This parameter is required.
         self.device_sn = device_sn
+        # The ID of the ApsaraMQ for MQTT instance to which the device certificate is bound.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
 
@@ -1800,7 +1850,9 @@ class DeleteDeviceCertificateResponseBody(TeaModel):
         device_sn: str = None,
         request_id: str = None,
     ):
+        # The serial number of the device certificate whose registration information is deleted. The serial number is the unique identifier of a device certificate.
         self.device_sn = device_sn
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1982,8 +2034,12 @@ class GetCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         sn: str = None,
     ):
+        # The instance ID bound to the CA certificate, which is the instance ID of the MQTT version of the cloud message queue.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # The SN serial number of the CA certificate to be queried, used to uniquely identify a CA certificate.
+        # 
         # This parameter is required.
         self.sn = sn
 
@@ -2023,13 +2079,25 @@ class GetCaCertificateResponseBodyData(TeaModel):
         valid_end: str = None,
         verification_content: str = None,
     ):
+        # Content of the CA certificate.
+        # > \\n represents a new line.
         self.ca_content = ca_content
+        # Name of the CA certificate
         self.ca_name = ca_name
+        # Registration code of the CA certificate
         self.registration_code = registration_code
+        # The SN serial number of the CA certificate, used to uniquely identify a CA certificate. Value range: no more than 128 bytes.
         self.sn = sn
+        # The status of the CA certificate. The values are as follows:
+        # - **0**: Indicates that the certificate is in an inactive state. - **1**: Indicates that the certificate is in an active state.
+        # > After the CA certificate is registered, it is in an active state by default.
         self.status = status
+        # The start time when the CA certificate becomes effective. The format is a Unix timestamp in milliseconds.
         self.valid_begin = valid_begin
+        # The end time when the CA certificate becomes effective. The format is a Unix timestamp in milliseconds.
         self.valid_end = valid_end
+        # Content of the Verification certificate.
+        # > \\n represents a new line.
         self.verification_content = verification_content
 
     def validate(self):
@@ -2086,7 +2154,9 @@ class GetCaCertificateResponseBody(TeaModel):
         data: GetCaCertificateResponseBodyData = None,
         request_id: str = None,
     ):
+        # Certificate details.
         self.data = data
+        # Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
         self.request_id = request_id
 
     def validate(self):
@@ -2163,10 +2233,16 @@ class GetDeviceCertificateRequest(TeaModel):
         device_sn: str = None,
         mqtt_instance_id: str = None,
     ):
+        # The SN serial number of the CA certificate to which the device certificate to be queried belongs, used to uniquely identify a CA certificate. Value range: no more than 128 bytes.
+        # 
         # This parameter is required.
         self.ca_sn = ca_sn
+        # The SN serial number of the device certificate to be queried, used to uniquely identify a device certificate. Value range: no more than 128 bytes.
+        # 
         # This parameter is required.
         self.device_sn = device_sn
+        # The instance ID to which the device certificate is bound, i.e., the instance ID of the Cloud Message Queue MQTT version.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
 
@@ -2209,12 +2285,23 @@ class GetDeviceCertificateResponseBodyData(TeaModel):
         valid_begin: str = None,
         valid_end: str = None,
     ):
+        # The SN serial number of the CA certificate to which the device certificate belongs, used to uniquely identify a CA certificate.
         self.ca_sn = ca_sn
+        # Content of the device certificate.
+        # 
+        #  represents a new line.
         self.device_content = device_content
+        # Name of the device certificate.
         self.device_name = device_name
+        # The SN serial number of the device certificate, used to uniquely identify a device certificate.
         self.device_sn = device_sn
+        # The status of the device certificate. The values are as follows:
+        # - **0**: Indicates that the certificate is in an inactive state. - **1**: Indicates that the certificate is in an active state.
+        # > After the device certificate is registered, it is in an active state by default.
         self.status = status
+        # The start time when the device certificate becomes effective. The format is a Unix timestamp in milliseconds.
         self.valid_begin = valid_begin
+        # The end time when the device certificate becomes effective. The format is a Unix timestamp in milliseconds.
         self.valid_end = valid_end
 
     def validate(self):
@@ -2267,7 +2354,9 @@ class GetDeviceCertificateResponseBody(TeaModel):
         data: GetDeviceCertificateResponseBodyData = None,
         request_id: str = None,
     ):
+        # Certificate details.
         self.data = data
+        # Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
         self.request_id = request_id
 
     def validate(self):
@@ -2522,6 +2611,8 @@ class GetRegisterCodeRequest(TeaModel):
         self,
         mqtt_instance_id: str = None,
     ):
+        # The ID of the ApsaraMQ for MQTT instance.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
 
@@ -2551,7 +2642,9 @@ class GetRegisterCodeResponseBody(TeaModel):
         register_code: str = None,
         request_id: str = None,
     ):
+        # The registration code of the CA certificate.
         self.register_code = register_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2625,8 +2718,14 @@ class InactivateCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         sn: str = None,
     ):
+        # The ID of the ApsaraMQ for MQTT instance to which the CA certificate is bound.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # The serial number of the CA certificate that you want to deregister. The serial number is the unique identifier of a CA certificate.
+        # 
+        # The serial number of a CA certificate cannot exceed 128 bytes in size.
+        # 
         # This parameter is required.
         self.sn = sn
 
@@ -2660,7 +2759,9 @@ class InactivateCaCertificateResponseBody(TeaModel):
         request_id: str = None,
         sn: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The serial number of the CA certificate that is deregistered. The serial number is the unique identifier of a CA certificate.
         self.sn = sn
 
     def validate(self):
@@ -2735,10 +2836,18 @@ class InactivateDeviceCertificateRequest(TeaModel):
         device_sn: str = None,
         mqtt_instance_id: str = None,
     ):
+        # The serial number of the CA certificate to which the device certificate that you want to deregister belongs. The serial number is the unique identifier of a CA certificate.
+        # 
+        # The serial number of a CA certificate cannot exceed 128 bytes in size.
+        # 
         # This parameter is required.
         self.ca_sn = ca_sn
+        # The serial number of the device certificate that you want to deregister. The serial number is the unique identifier of a device.
+        # 
         # This parameter is required.
         self.device_sn = device_sn
+        # The ID of the ApsaraMQ for MQTT instance to which the device certificate that you want to deregister is bound.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
 
@@ -2776,7 +2885,9 @@ class InactivateDeviceCertificateResponseBody(TeaModel):
         device_sn: str = None,
         request_id: str = None,
     ):
+        # The serial number of the device certificate that is deregistered. The serial number is the unique identifier of a device certificate.
         self.device_sn = device_sn
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2851,10 +2962,16 @@ class ListCaCertificateRequest(TeaModel):
         page_no: str = None,
         page_size: str = None,
     ):
+        # The instance ID of the Cloud Message Queue MQTT version, indicating which instance\\"s CA certificates need to be viewed.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # Indicates the page number of the returned results. The starting page is counted from 1.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The maximum number of query records to display per page. Value range: 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
 
@@ -2898,13 +3015,25 @@ class ListCaCertificateResponseBodyDataCaCertificateVOS(TeaModel):
         valid_end: str = None,
         verification_content: str = None,
     ):
+        # Content of the CA certificate. 
+        # > \\n represents a new line.
         self.ca_content = ca_content
+        # Name of the CA certificate
         self.ca_name = ca_name
+        # Registration code of the CA certificate
         self.registration_code = registration_code
+        # SN serial number of the CA certificate
         self.sn = sn
+        # The status of the CA certificate. The values are as follows:
+        # - **0**: Indicates that the certificate is in an inactive state. - **1**: Indicates that the certificate is in an active state.
+        # > After the CA certificate is registered, it is in an active state by default.
         self.status = status
+        # The start time when the CA certificate becomes effective. The format is a Unix timestamp in milliseconds.
         self.valid_begin = valid_begin
+        # The end time when the CA certificate becomes effective. The format is a Unix timestamp in milliseconds.
         self.valid_end = valid_end
+        # Verify the content of the certificate. 
+        # > \\n represents a new line.
         self.verification_content = verification_content
 
     def validate(self):
@@ -2963,9 +3092,13 @@ class ListCaCertificateResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # Details of the CA certificate
         self.ca_certificate_vos = ca_certificate_vos
+        # The current page number of the returned query records.
         self.page_no = page_no
+        # The maximum number of results to display per page.
         self.page_size = page_size
+        # Maximum number of pages in the query result.
         self.total = total
 
     def validate(self):
@@ -3014,7 +3147,9 @@ class ListCaCertificateResponseBody(TeaModel):
         data: ListCaCertificateResponseBodyData = None,
         request_id: str = None,
     ):
+        # Query result.
         self.data = data
+        # Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
         self.request_id = request_id
 
     def validate(self):
@@ -3091,10 +3226,16 @@ class ListDeviceCertificateRequest(TeaModel):
         page_no: str = None,
         page_size: str = None,
     ):
+        # The instance ID of the Cloud Message Queue MQTT version, indicating which instance\\"s device certificates need to be viewed.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # Indicates which page of the results to return. The starting page is counted from 1.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The maximum number of query records to display per page. Value range: 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
 
@@ -3137,12 +3278,23 @@ class ListDeviceCertificateResponseBodyDataDeviceCertificateVOS(TeaModel):
         valid_begin: str = None,
         valid_end: str = None,
     ):
+        # The SN serial number of the CA certificate to which the device certificate belongs, used to uniquely identify a CA certificate.
         self.ca_sn = ca_sn
+        # Content of the device certificate.
+        # 
+        #  represents a new line.
         self.device_content = device_content
+        # Name of the device certificate.
         self.device_name = device_name
+        # The SN serial number of the device certificate, used to uniquely identify a device certificate.
         self.device_sn = device_sn
+        # The status of the device certificate. The values are as follows:
+        # - 0: indicates that the certificate is in an inactive state. - 1: indicates that the certificate is in an active state.
+        # After the device certificate is registered, it defaults to the active state.
         self.status = status
+        # The start time when the device certificate becomes effective. The format is a Unix timestamp in milliseconds.
         self.valid_begin = valid_begin
+        # The end time when the device certificate becomes effective. Formatted as a Unix timestamp in milliseconds.
         self.valid_end = valid_end
 
     def validate(self):
@@ -3197,9 +3349,13 @@ class ListDeviceCertificateResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # Details of the device certificate.
         self.device_certificate_vos = device_certificate_vos
+        # The current page number of the returned query records.
         self.page_no = page_no
+        # The maximum number of results to display per page.
         self.page_size = page_size
+        # Maximum number of pages in the query result.
         self.total = total
 
     def validate(self):
@@ -3248,7 +3404,9 @@ class ListDeviceCertificateResponseBody(TeaModel):
         data: ListDeviceCertificateResponseBodyData = None,
         request_id: str = None,
     ):
+        # Query result.
         self.data = data
+        # Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
         self.request_id = request_id
 
     def validate(self):
@@ -3326,12 +3484,20 @@ class ListDeviceCertificateByCaSnRequest(TeaModel):
         page_no: str = None,
         page_size: str = None,
     ):
+        # The SN serial number of the CA certificate to be queried, indicating which CA certificate\\"s registered device certificates are to be retrieved.
+        # 
         # This parameter is required.
         self.ca_sn = ca_sn
+        # The instance ID bound to the CA certificate, which is the instance ID of the MQTT version of the cloud message queue.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # Indicates the page number of the returned results. The starting page is counted from 1.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The maximum number of query records to display per page. Value range: 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
 
@@ -3378,12 +3544,25 @@ class ListDeviceCertificateByCaSnResponseBodyDataDeviceCertificateVOS(TeaModel):
         valid_begin: str = None,
         valid_end: str = None,
     ):
+        # The SN serial number of the CA certificate to which the device certificate belongs, used to uniquely identify a CA certificate.
         self.ca_sn = ca_sn
+        # Content of the device certificate.
+        # 
+        #  represents a new line.
         self.device_content = device_content
+        # Name of the device certificate.
         self.device_name = device_name
+        # The SN serial number of the device certificate, used to uniquely identify a device certificate.
         self.device_sn = device_sn
+        # The status of the device certificate. The values are as follows:
+        # - 0: indicates that the certificate is in an inactive state. 
+        # - 1: indicates that the certificate is in an active state.
+        # 
+        # After the device certificate is registered, it is in an active state by default.
         self.status = status
+        # The start time when the device certificate becomes effective. The format is a Unix timestamp in milliseconds.
         self.valid_begin = valid_begin
+        # The end time when the device certificate becomes effective. The format is a Unix timestamp in milliseconds.
         self.valid_end = valid_end
 
     def validate(self):
@@ -3438,9 +3617,13 @@ class ListDeviceCertificateByCaSnResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # Details of the device certificate.
         self.device_certificate_vos = device_certificate_vos
+        # The current page number of the returned query records.
         self.page_no = page_no
+        # The maximum number of results to display per page.
         self.page_size = page_size
+        # Total number of query results.
         self.total = total
 
     def validate(self):
@@ -3489,7 +3672,9 @@ class ListDeviceCertificateByCaSnResponseBody(TeaModel):
         data: ListDeviceCertificateByCaSnResponseBodyData = None,
         request_id: str = None,
     ):
+        # Query result.
         self.data = data
+        # Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
         self.request_id = request_id
 
     def validate(self):
@@ -3568,12 +3753,21 @@ class ListDeviceCredentialClientIdRequest(TeaModel):
         page_no: str = None,
         page_size: str = None,
     ):
+        # Group ID of the MQTT version of the micro message queue.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The ID of the Cloud Message Queue MQTT version instance, which must match the actual instance ID used by the client. You can obtain this ID from the **Instance Details** page in the console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Token for starting the next page query.
         self.next_token = next_token
+        # Indicates the page number of the returned results. The starting page is counted from 1.
         self.page_no = page_no
+        # The maximum number of query records to display per page. 
+        # Value range: 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
 
@@ -3622,10 +3816,17 @@ class ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList(TeaMo
         page_size: str = None,
         total: str = None,
     ):
+        # Client list.
         self.client_id_list = client_id_list
+        # Indicates whether there is a token (Token) for the next query. Values: 
+        # - For the first query and when there is no next query, this field does not need to be filled. 
+        # - If there is a next query, the value should be the NextToken returned from the previous API call.
         self.next_token = next_token
+        # The current page number of the returned query records.
         self.page_no = page_no
+        # The maximum number of results to display per page.
         self.page_size = page_size
+        # Total number of query results.
         self.total = total
 
     def validate(self):
@@ -3670,7 +3871,9 @@ class ListDeviceCredentialClientIdResponseBody(TeaModel):
         device_credential_client_id_list: ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList = None,
         request_id: str = None,
     ):
+        # Returns the information list.
         self.device_credential_client_id_list = device_credential_client_id_list
+        # Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
         self.request_id = request_id
 
     def validate(self):
@@ -6173,12 +6376,22 @@ class RegisterCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         verification_content: str = None,
     ):
+        # Content of the CA certificate to be registered.
+        # > Note that \\n in the example represents a new line.
+        # 
         # This parameter is required.
         self.ca_content = ca_content
+        # Name of the CA certificate to be registered
+        # 
         # This parameter is required.
         self.ca_name = ca_name
+        # The instance ID of the Cloud Message Queue MQTT version. When registering a CA certificate, you need to specify an instance to bind with.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # Content of the verification certificate for the CA certificate to be registered. It is used together with the registration code of the CA certificate to verify that the user possesses the private key of this CA certificate. 
+        # >  in the example represents a line break.
+        # 
         # This parameter is required.
         self.verification_content = verification_content
 
@@ -6220,7 +6433,9 @@ class RegisterCaCertificateResponseBody(TeaModel):
         request_id: str = None,
         sn: str = None,
     ):
+        # Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
         self.request_id = request_id
+        # The SN serial number of the registered CA certificate, used to uniquely identify a CA certificate.
         self.sn = sn
 
     def validate(self):
@@ -6700,6 +6915,193 @@ class SendMessageResponse(TeaModel):
         return self
 
 
+class SetSniConfigRequest(TeaModel):
+    def __init__(
+        self,
+        default_certificate: str = None,
+        mqtt_instance_id: str = None,
+        sni_config: str = None,
+    ):
+        # This parameter is required.
+        self.default_certificate = default_certificate
+        # This parameter is required.
+        self.mqtt_instance_id = mqtt_instance_id
+        self.sni_config = sni_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_certificate is not None:
+            result['DefaultCertificate'] = self.default_certificate
+        if self.mqtt_instance_id is not None:
+            result['MqttInstanceId'] = self.mqtt_instance_id
+        if self.sni_config is not None:
+            result['SniConfig'] = self.sni_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultCertificate') is not None:
+            self.default_certificate = m.get('DefaultCertificate')
+        if m.get('MqttInstanceId') is not None:
+            self.mqtt_instance_id = m.get('MqttInstanceId')
+        if m.get('SniConfig') is not None:
+            self.sni_config = m.get('SniConfig')
+        return self
+
+
+class SetSniConfigResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        self.auth_action = auth_action
+        self.auth_principal_display_name = auth_principal_display_name
+        self.auth_principal_owner_id = auth_principal_owner_id
+        self.auth_principal_type = auth_principal_type
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        self.no_permission_type = no_permission_type
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class SetSniConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: SetSniConfigResponseBodyAccessDeniedDetail = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = SetSniConfigResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SetSniConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetSniConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetSniConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UnRegisterDeviceCredentialRequest(TeaModel):
     def __init__(
         self,
@@ -6984,16 +7386,31 @@ class UpdateCustomAuthPermissionRequest(TeaModel):
         permit_action: str = None,
         topic: str = None,
     ):
+        # Specifies whether to allow or deny access.
+        # 
         # This parameter is required.
         self.effect = effect
+        # Username or Client ID.
+        # 
         # This parameter is required.
         self.identity = identity
+        # The identity type. Valid values:
+        # 
+        # *   USER
+        # *   CLIENT
+        # 
         # This parameter is required.
         self.identity_type = identity_type
+        # ID of the Cloud Message Queue MQTT version instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The permissions that you want to grant.
+        # 
         # This parameter is required.
         self.permit_action = permit_action
+        # Authorized Topic, supporting multi-level MQTT topics and wildcards.
+        # 
         # This parameter is required.
         self.topic = topic
 
@@ -7045,10 +7462,13 @@ class UpdateCustomAuthPermissionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code returned upon failed invocation. For more information, see Error Codes.
         self.code = code
+        # Information
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the call was successful. true: Call succeeded. false: Call failed.
         self.success = success
 
     def validate(self):
