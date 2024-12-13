@@ -1,3 +1,12 @@
+2024-12-13 Version: 1.6.1
+- Update API GetDirectorySAMLServiceProviderInfo: update response param.
+- Update API GetExternalSAMLIdentityProvider: update response param.
+- Update API GetLoginPreference: update response param.
+- Update API SetExternalSAMLIdentityProvider: add param BindingType.
+- Update API SetExternalSAMLIdentityProvider: update response param.
+- Update API SetLoginPreference: add param AllowUserToGetCredentials.
+
+
 2024-06-03 Version: 1.6.0
 - Support API DisableDelegateAccount.
 - Support API EnableDelegateAccount.

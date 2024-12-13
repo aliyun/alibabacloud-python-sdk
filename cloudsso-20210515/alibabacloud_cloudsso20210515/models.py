@@ -1873,7 +1873,7 @@ class CreateUserProvisioningResponseBodyUserProvisioning(TeaModel):
         update_time: str = None,
         user_provisioning_id: str = None,
     ):
-        # The creation time.
+        # The creation time. The time is displayed in UTC.
         self.create_time = create_time
         # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
         # 
@@ -1919,7 +1919,7 @@ class CreateUserProvisioningResponseBodyUserProvisioning(TeaModel):
         self.target_path = target_path
         # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
         self.target_type = target_type
-        # The modification time.
+        # The modification time. The time is displayed in UTC.
         self.update_time = update_time
         # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
@@ -3120,6 +3120,8 @@ class DeleteUserProvisioningEventRequest(TeaModel):
         # The ID of the resource directory.
         self.directory_id = directory_id
         # The ID of the RAM user provisioning event.
+        # 
+        # You can call the [ListUserProvisioningEvents](https://help.aliyun.com/document_detail/2636305.html) operation to query the value of `EventId`.
         self.event_id = event_id
         # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
@@ -3454,6 +3456,7 @@ class DisableDelegateAccountRequest(TeaModel):
         self,
         account_id: str = None,
     ):
+        # The ID of the delegated administrator account of CloudSSO.
         self.account_id = account_id
 
     def validate(self):
@@ -3481,6 +3484,7 @@ class DisableDelegateAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3618,6 +3622,7 @@ class EnableDelegateAccountRequest(TeaModel):
         self,
         account_id: str = None,
     ):
+        # The ID of the delegated administrator account of CloudSSO.
         self.account_id = account_id
 
     def validate(self):
@@ -3645,6 +3650,7 @@ class EnableDelegateAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4368,6 +4374,7 @@ class GetDirectoryStatisticsResponseBodyDirectoryStatistics(TeaModel):
         self.group_quota = group_quota
         # The number of tasks that are being performed.
         self.in_progress_task_count = in_progress_task_count
+        # The number of inline policies that can be configured for an access configuration.
         self.inline_policy_per_access_configuration_quota = inline_policy_per_access_configuration_quota
         # The region ID of the directory.
         self.region = region
@@ -4579,6 +4586,7 @@ class GetExternalSAMLIdentityProviderRequest(TeaModel):
 class GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration(TeaModel):
     def __init__(
         self,
+        binding_type: str = None,
         certificate_ids: List[str] = None,
         create_time: str = None,
         directory_id: str = None,
@@ -4589,6 +4597,11 @@ class GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigurati
         update_time: str = None,
         want_request_signed: bool = None,
     ):
+        # The Binding method for initiating a SAML request. Values:
+        # 
+        # - Post: Initiate the SAML request using the Post method. 
+        # - Redirect: Initiate the SAML request using the Redirect method.
+        self.binding_type = binding_type
         # The ID of the SAML signing certificate.
         self.certificate_ids = certificate_ids
         # The time when the IdP was configured for the first time.
@@ -4623,6 +4636,8 @@ class GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigurati
             return _map
 
         result = dict()
+        if self.binding_type is not None:
+            result['BindingType'] = self.binding_type
         if self.certificate_ids is not None:
             result['CertificateIds'] = self.certificate_ids
         if self.create_time is not None:
@@ -4645,6 +4660,8 @@ class GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigurati
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BindingType') is not None:
+            self.binding_type = m.get('BindingType')
         if m.get('CertificateIds') is not None:
             self.certificate_ids = m.get('CertificateIds')
         if m.get('CreateTime') is not None:
@@ -4954,8 +4971,13 @@ class GetLoginPreferenceRequest(TeaModel):
 class GetLoginPreferenceResponseBodyLoginPreference(TeaModel):
     def __init__(
         self,
+        allow_user_to_get_credentials: bool = None,
         login_network_masks: str = None,
     ):
+        # Whether the user can obtain program access credentials on the portal after logging in. Values: 
+        # - True: Yes. 
+        # - False (default): No.
+        self.allow_user_to_get_credentials = allow_user_to_get_credentials
         # The IP address whitelist. CloudSSO users can log on to the CloudSSO user portal only by using the IP addresses in the whitelist.
         # 
         # The IP address whitelist takes effect only on CloudSSO users who want to log on to the CloudSSO user portal by using the username-password logon or single sign-on (SSO) method. The IP address whitelist does not take effect on CloudSSO users who access accounts in a resource directory from the CloudSSO user portal.
@@ -4972,12 +4994,16 @@ class GetLoginPreferenceResponseBodyLoginPreference(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_user_to_get_credentials is not None:
+            result['AllowUserToGetCredentials'] = self.allow_user_to_get_credentials
         if self.login_network_masks is not None:
             result['LoginNetworkMasks'] = self.login_network_masks
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowUserToGetCredentials') is not None:
+            self.allow_user_to_get_credentials = m.get('AllowUserToGetCredentials')
         if m.get('LoginNetworkMasks') is not None:
             self.login_network_masks = m.get('LoginNetworkMasks')
         return self
@@ -7360,6 +7386,8 @@ class GetUserProvisioningEventRequest(TeaModel):
         # The ID of the resource directory.
         self.directory_id = directory_id
         # The ID of the RAM user provisioning event.
+        # 
+        # You can call the [ListUserProvisioningEvents](https://help.aliyun.com/document_detail/2636305.html) operation to query the value of `EventId`.
         self.event_id = event_id
 
     def validate(self):
@@ -7408,7 +7436,7 @@ class GetUserProvisioningEventResponseBodyUserProvisioningEvent(TeaModel):
         update_time: str = None,
         user_provisioning_id: str = None,
     ):
-        # The creation time.
+        # The creation time. The time is displayed in UTC.
         self.create_time = create_time
         # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
         # 
@@ -7428,7 +7456,7 @@ class GetUserProvisioningEventResponseBodyUserProvisioningEvent(TeaModel):
         self.error_info = error_info
         # The ID of the RAM user provisioning event.
         self.event_id = event_id
-        # The time at which the RAM user provisioning event was last executed.
+        # The time at which the RAM user provisioning event was last executed. The time is displayed in UTC.
         self.latest_async_time = latest_async_time
         # The identity ID of the RAM user provisioning. Valid values:
         # 
@@ -7465,7 +7493,7 @@ class GetUserProvisioningEventResponseBodyUserProvisioningEvent(TeaModel):
         self.target_path = target_path
         # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
         self.target_type = target_type
-        # The modification time.
+        # The modification time. The time is displayed in UTC.
         self.update_time = update_time
         # The ID of the RAM user provisioning event.
         self.user_provisioning_id = user_provisioning_id
@@ -11037,7 +11065,7 @@ class ListUserProvisioningEventsResponseBodyUserProvisioningEvents(TeaModel):
         update_time: str = None,
         user_provisioning_id: str = None,
     ):
-        # The creation time.
+        # The creation time. The time is displayed in UTC.
         self.create_time = create_time
         # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
         # 
@@ -11057,12 +11085,12 @@ class ListUserProvisioningEventsResponseBodyUserProvisioningEvents(TeaModel):
         self.error_info = error_info
         # The ID of the RAM user provisioning event.
         self.event_id = event_id
-        # The time at which the RAM user provisioning event was last executed.
+        # The time at which the RAM user provisioning event was last executed. The time is displayed in UTC.
         self.latest_async_time = latest_async_time
         # The identity ID of the RAM user provisioning. Valid values:
         # 
-        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
-        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
+        # *   If you set the `PrincipalType` parameter to `Group`, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+        # *   If you set the `PrincipalType` parameter to `User`, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
         self.principal_id = principal_id
         # The identity name of the RAM user provisioning. Valid values:
         # 
@@ -11090,11 +11118,11 @@ class ListUserProvisioningEventsResponseBodyUserProvisioningEvents(TeaModel):
         # 
         # If `RD-Account` is returned, the value of this parameter is the name of the account that is used to access the instance.``
         self.target_name = target_name
-        # The path of the resource directory in which you create the RAM user provisioning for the object.
+        # The path of the resource directory in which you create the RAM user provisioning for the member.
         self.target_path = target_path
         # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
         self.target_type = target_type
-        # The modification time.
+        # The modification time. The time is displayed in UTC.
         self.update_time = update_time
         # The ID of the RAM user provisioning.
         self.user_provisioning_id = user_provisioning_id
@@ -12733,6 +12761,8 @@ class RetryUserProvisioningEventRequest(TeaModel):
         # *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
         self.duplication_strategy = duplication_strategy
         # The ID of the RAM user provisioning event.
+        # 
+        # You can call the [ListUserProvisioningEvents](https://help.aliyun.com/document_detail/2636305.html) operation to query the value of `EventId`.
         self.event_id = event_id
 
     def validate(self):
@@ -12835,6 +12865,7 @@ class RetryUserProvisioningEventResponse(TeaModel):
 class SetExternalSAMLIdentityProviderRequest(TeaModel):
     def __init__(
         self,
+        binding_type: str = None,
         directory_id: str = None,
         encoded_metadata_document: str = None,
         entity_id: str = None,
@@ -12843,6 +12874,11 @@ class SetExternalSAMLIdentityProviderRequest(TeaModel):
         want_request_signed: bool = None,
         x_509certificate: str = None,
     ):
+        # The Binding method for initiating a SAML request. Values:
+        # 
+        # - Post: Initiate the SAML request using the Post method. 
+        # - Redirect: Initiate the SAML request using the Redirect method.
+        self.binding_type = binding_type
         # The ID of the directory.
         self.directory_id = directory_id
         # The metadata file of the IdP. The value of this parameter is Base64-encoded.
@@ -12875,6 +12911,8 @@ class SetExternalSAMLIdentityProviderRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.binding_type is not None:
+            result['BindingType'] = self.binding_type
         if self.directory_id is not None:
             result['DirectoryId'] = self.directory_id
         if self.encoded_metadata_document is not None:
@@ -12893,6 +12931,8 @@ class SetExternalSAMLIdentityProviderRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BindingType') is not None:
+            self.binding_type = m.get('BindingType')
         if m.get('DirectoryId') is not None:
             self.directory_id = m.get('DirectoryId')
         if m.get('EncodedMetadataDocument') is not None:
@@ -12913,6 +12953,7 @@ class SetExternalSAMLIdentityProviderRequest(TeaModel):
 class SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration(TeaModel):
     def __init__(
         self,
+        binding_type: str = None,
         certificate_ids: List[str] = None,
         create_time: str = None,
         directory_id: str = None,
@@ -12923,6 +12964,11 @@ class SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigurati
         update_time: str = None,
         want_request_signed: bool = None,
     ):
+        # The Binding method for initiating a SAML request. Values:
+        # 
+        # - Post: Initiate the SAML request using the Post method. 
+        # - Redirect: Initiate the SAML request using the Redirect method.
+        self.binding_type = binding_type
         # The ID of the SAML signing certificate.
         self.certificate_ids = certificate_ids
         # The time when the IdP was configured for the first time.
@@ -12957,6 +13003,8 @@ class SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigurati
             return _map
 
         result = dict()
+        if self.binding_type is not None:
+            result['BindingType'] = self.binding_type
         if self.certificate_ids is not None:
             result['CertificateIds'] = self.certificate_ids
         if self.create_time is not None:
@@ -12979,6 +13027,8 @@ class SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigurati
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BindingType') is not None:
+            self.binding_type = m.get('BindingType')
         if m.get('CertificateIds') is not None:
             self.certificate_ids = m.get('CertificateIds')
         if m.get('CreateTime') is not None:
@@ -13081,9 +13131,11 @@ class SetExternalSAMLIdentityProviderResponse(TeaModel):
 class SetLoginPreferenceRequest(TeaModel):
     def __init__(
         self,
+        allow_user_to_get_credentials: bool = None,
         directory_id: str = None,
         login_network_masks: str = None,
     ):
+        self.allow_user_to_get_credentials = allow_user_to_get_credentials
         # The ID of the directory.
         self.directory_id = directory_id
         # The IP address whitelist. CloudSSO users can log on to the CloudSSO user portal only by using the IP addresses in the whitelist. Limits:
@@ -13104,6 +13156,8 @@ class SetLoginPreferenceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_user_to_get_credentials is not None:
+            result['AllowUserToGetCredentials'] = self.allow_user_to_get_credentials
         if self.directory_id is not None:
             result['DirectoryId'] = self.directory_id
         if self.login_network_masks is not None:
@@ -13112,6 +13166,8 @@ class SetLoginPreferenceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowUserToGetCredentials') is not None:
+            self.allow_user_to_get_credentials = m.get('AllowUserToGetCredentials')
         if m.get('DirectoryId') is not None:
             self.directory_id = m.get('DirectoryId')
         if m.get('LoginNetworkMasks') is not None:

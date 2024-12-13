@@ -1237,6 +1237,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a Resource Access Management (RAM) user provisioning.
         
+        @description You can create a RAM user provisioning for a member in your resource directory to create a RAM user that has the same username as a CloudSSO user. This way, the CloudSSO user can access the resources of the member as the RAM user.
+        
         @param request: CreateUserProvisioningRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateUserProvisioningResponse
@@ -1286,6 +1288,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a Resource Access Management (RAM) user provisioning.
         
+        @description You can create a RAM user provisioning for a member in your resource directory to create a RAM user that has the same username as a CloudSSO user. This way, the CloudSSO user can access the resources of the member as the RAM user.
+        
         @param request: CreateUserProvisioningRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateUserProvisioningResponse
@@ -1334,6 +1338,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a Resource Access Management (RAM) user provisioning.
         
+        @description You can create a RAM user provisioning for a member in your resource directory to create a RAM user that has the same username as a CloudSSO user. This way, the CloudSSO user can access the resources of the member as the RAM user.
+        
         @param request: CreateUserProvisioningRequest
         @return: CreateUserProvisioningResponse
         """
@@ -1346,6 +1352,8 @@ class Client(OpenApiClient):
     ) -> cloudsso_20210515_models.CreateUserProvisioningResponse:
         """
         @summary Creates a Resource Access Management (RAM) user provisioning.
+        
+        @description You can create a RAM user provisioning for a member in your resource directory to create a RAM user that has the same username as a CloudSSO user. This way, the CloudSSO user can access the resources of the member as the RAM user.
         
         @param request: CreateUserProvisioningRequest
         @return: CreateUserProvisioningResponse
@@ -2551,7 +2559,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.DisableDelegateAccountResponse:
         """
-        @summary DisableDelegateAccount
+        @summary Disables the delegated administrator account of CloudSSO.
         
         @param request: DisableDelegateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2586,7 +2594,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.DisableDelegateAccountResponse:
         """
-        @summary DisableDelegateAccount
+        @summary Disables the delegated administrator account of CloudSSO.
         
         @param request: DisableDelegateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2620,7 +2628,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.DisableDelegateAccountRequest,
     ) -> cloudsso_20210515_models.DisableDelegateAccountResponse:
         """
-        @summary DisableDelegateAccount
+        @summary Disables the delegated administrator account of CloudSSO.
         
         @param request: DisableDelegateAccountRequest
         @return: DisableDelegateAccountResponse
@@ -2633,7 +2641,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.DisableDelegateAccountRequest,
     ) -> cloudsso_20210515_models.DisableDelegateAccountResponse:
         """
-        @summary DisableDelegateAccount
+        @summary Disables the delegated administrator account of CloudSSO.
         
         @param request: DisableDelegateAccountRequest
         @return: DisableDelegateAccountResponse
@@ -2729,7 +2737,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.EnableDelegateAccountResponse:
         """
-        @summary EnableDelegateAccount
+        @summary Enables the delegated administrator account of CloudSSO.
+        
+        @description You can use the management account of a resource directory to specify a member of the resource directory as the delegated administrator account of CloudSSO. For more information, see [Add a delegated administrator account](https://help.aliyun.com/document_detail/208117.html).
+        After the delegated administrator account of CloudSSO is specified, you can call this operation to enable the delegated administrator account of CloudSSO to manage CloudSSO resources.
         
         @param request: EnableDelegateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2764,7 +2775,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.EnableDelegateAccountResponse:
         """
-        @summary EnableDelegateAccount
+        @summary Enables the delegated administrator account of CloudSSO.
+        
+        @description You can use the management account of a resource directory to specify a member of the resource directory as the delegated administrator account of CloudSSO. For more information, see [Add a delegated administrator account](https://help.aliyun.com/document_detail/208117.html).
+        After the delegated administrator account of CloudSSO is specified, you can call this operation to enable the delegated administrator account of CloudSSO to manage CloudSSO resources.
         
         @param request: EnableDelegateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2798,7 +2812,10 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.EnableDelegateAccountRequest,
     ) -> cloudsso_20210515_models.EnableDelegateAccountResponse:
         """
-        @summary EnableDelegateAccount
+        @summary Enables the delegated administrator account of CloudSSO.
+        
+        @description You can use the management account of a resource directory to specify a member of the resource directory as the delegated administrator account of CloudSSO. For more information, see [Add a delegated administrator account](https://help.aliyun.com/document_detail/208117.html).
+        After the delegated administrator account of CloudSSO is specified, you can call this operation to enable the delegated administrator account of CloudSSO to manage CloudSSO resources.
         
         @param request: EnableDelegateAccountRequest
         @return: EnableDelegateAccountResponse
@@ -2811,7 +2828,10 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.EnableDelegateAccountRequest,
     ) -> cloudsso_20210515_models.EnableDelegateAccountResponse:
         """
-        @summary EnableDelegateAccount
+        @summary Enables the delegated administrator account of CloudSSO.
+        
+        @description You can use the management account of a resource directory to specify a member of the resource directory as the delegated administrator account of CloudSSO. For more information, see [Add a delegated administrator account](https://help.aliyun.com/document_detail/208117.html).
+        After the delegated administrator account of CloudSSO is specified, you can call this operation to enable the delegated administrator account of CloudSSO to manage CloudSSO resources.
         
         @param request: EnableDelegateAccountRequest
         @return: EnableDelegateAccountResponse
@@ -3233,10 +3253,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the statistics of a directory.
         
-        @description ### [](#)
-        This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61***`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, quota for system policies that can be configured for an access configuration, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO), and status of SCIM synchronization.
-        ### [](#qps)Limit
-        You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        @description This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61***`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, number of access permissions that are assigned, number of system policies that can be configured for an access configuration, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO) logon, and status of SCIM synchronization.
         
         @param request: GetDirectoryStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3273,10 +3290,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the statistics of a directory.
         
-        @description ### [](#)
-        This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61***`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, quota for system policies that can be configured for an access configuration, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO), and status of SCIM synchronization.
-        ### [](#qps)Limit
-        You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        @description This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61***`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, number of access permissions that are assigned, number of system policies that can be configured for an access configuration, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO) logon, and status of SCIM synchronization.
         
         @param request: GetDirectoryStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3312,10 +3326,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the statistics of a directory.
         
-        @description ### [](#)
-        This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61***`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, quota for system policies that can be configured for an access configuration, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO), and status of SCIM synchronization.
-        ### [](#qps)Limit
-        You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        @description This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61***`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, number of access permissions that are assigned, number of system policies that can be configured for an access configuration, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO) logon, and status of SCIM synchronization.
         
         @param request: GetDirectoryStatisticsRequest
         @return: GetDirectoryStatisticsResponse
@@ -3330,10 +3341,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the statistics of a directory.
         
-        @description ### [](#)
-        This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61***`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, quota for system policies that can be configured for an access configuration, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO), and status of SCIM synchronization.
-        ### [](#qps)Limit
-        You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        @description This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61***`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, number of access permissions that are assigned, number of system policies that can be configured for an access configuration, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO) logon, and status of SCIM synchronization.
         
         @param request: GetDirectoryStatisticsRequest
         @return: GetDirectoryStatisticsResponse
@@ -4989,7 +4997,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.GetUserProvisioningEventResponse:
         """
-        @summary Queries a Resource Access Management (RAM) user provisioning event.
+        @summary Queries the information about a Resource Access Management (RAM) user provisioning.
         
         @param request: GetUserProvisioningEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5026,7 +5034,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.GetUserProvisioningEventResponse:
         """
-        @summary Queries a Resource Access Management (RAM) user provisioning event.
+        @summary Queries the information about a Resource Access Management (RAM) user provisioning.
         
         @param request: GetUserProvisioningEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5062,7 +5070,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.GetUserProvisioningEventRequest,
     ) -> cloudsso_20210515_models.GetUserProvisioningEventResponse:
         """
-        @summary Queries a Resource Access Management (RAM) user provisioning event.
+        @summary Queries the information about a Resource Access Management (RAM) user provisioning.
         
         @param request: GetUserProvisioningEventRequest
         @return: GetUserProvisioningEventResponse
@@ -5075,7 +5083,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.GetUserProvisioningEventRequest,
     ) -> cloudsso_20210515_models.GetUserProvisioningEventResponse:
         """
-        @summary Queries a Resource Access Management (RAM) user provisioning event.
+        @summary Queries the information about a Resource Access Management (RAM) user provisioning.
         
         @param request: GetUserProvisioningEventRequest
         @return: GetUserProvisioningEventResponse
@@ -7745,6 +7753,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.binding_type):
+            query['BindingType'] = request.binding_type
         if not UtilClient.is_unset(request.directory_id):
             query['DirectoryId'] = request.directory_id
         if not UtilClient.is_unset(request.encoded_metadata_document):
@@ -7802,6 +7812,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.binding_type):
+            query['BindingType'] = request.binding_type
         if not UtilClient.is_unset(request.directory_id):
             query['DirectoryId'] = request.directory_id
         if not UtilClient.is_unset(request.encoded_metadata_document):
@@ -7895,6 +7907,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.allow_user_to_get_credentials):
+            query['AllowUserToGetCredentials'] = request.allow_user_to_get_credentials
         if not UtilClient.is_unset(request.directory_id):
             query['DirectoryId'] = request.directory_id
         if not UtilClient.is_unset(request.login_network_masks):
@@ -7932,6 +7946,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.allow_user_to_get_credentials):
+            query['AllowUserToGetCredentials'] = request.allow_user_to_get_credentials
         if not UtilClient.is_unset(request.directory_id):
             query['DirectoryId'] = request.directory_id
         if not UtilClient.is_unset(request.login_network_masks):
