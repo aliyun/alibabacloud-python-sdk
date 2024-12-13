@@ -4974,6 +4974,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         network: str = None,
         pay_type: str = None,
         port: str = None,
+        primary_instance_id: str = None,
         primary_zone: str = None,
         read_dbinstances: List[str] = None,
         region_id: str = None,
@@ -5030,6 +5031,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         self.network = network
         self.pay_type = pay_type
         self.port = port
+        self.primary_instance_id = primary_instance_id
         # 主可用区。
         # 
         # This parameter is required.
@@ -5163,6 +5165,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
             result['PayType'] = self.pay_type
         if self.port is not None:
             result['Port'] = self.port
+        if self.primary_instance_id is not None:
+            result['PrimaryInstanceId'] = self.primary_instance_id
         if self.primary_zone is not None:
             result['PrimaryZone'] = self.primary_zone
         if self.read_dbinstances is not None:
@@ -5286,6 +5290,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('PrimaryInstanceId') is not None:
+            self.primary_instance_id = m.get('PrimaryInstanceId')
         if m.get('PrimaryZone') is not None:
             self.primary_zone = m.get('PrimaryZone')
         if m.get('ReadDBInstances') is not None:
@@ -7402,6 +7408,7 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
         node_count: int = None,
         nodes: List[DescribeDBInstancesResponseBodyDBInstancesNodes] = None,
         pay_type: str = None,
+        primary_instance_id: str = None,
         primary_zone: str = None,
         read_dbinstances: List[str] = None,
         region_id: str = None,
@@ -7447,6 +7454,7 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
         self.node_count = node_count
         self.nodes = nodes
         self.pay_type = pay_type
+        self.primary_instance_id = primary_instance_id
         # 主可用区。
         # 
         # This parameter is required.
@@ -7549,6 +7557,8 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
                 result['Nodes'].append(k.to_map() if k else None)
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.primary_instance_id is not None:
+            result['PrimaryInstanceId'] = self.primary_instance_id
         if self.primary_zone is not None:
             result['PrimaryZone'] = self.primary_zone
         if self.read_dbinstances is not None:
@@ -7646,6 +7656,8 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
                 self.nodes.append(temp_model.from_map(k))
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('PrimaryInstanceId') is not None:
+            self.primary_instance_id = m.get('PrimaryInstanceId')
         if m.get('PrimaryZone') is not None:
             self.primary_zone = m.get('PrimaryZone')
         if m.get('ReadDBInstances') is not None:

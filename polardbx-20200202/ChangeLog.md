@@ -1,3 +1,8 @@
+2024-12-13 Version: 2.0.2
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API DescribeDBInstances: update response param.
+
+
 2024-12-12 Version: 2.0.1
 - Update API ModifyDBInstanceClass: add param DnStorageSpace.
 
