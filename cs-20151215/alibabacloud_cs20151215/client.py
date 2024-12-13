@@ -945,7 +945,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CleanClusterUserPermissionsResponse:
         """
-        @summary You can call the CleanClusterUserPermissions operation to delete kubeconfig files that may pose potential risks from a user and revoke Role-Based Access Control (RBAC) permissions on a cluster.
+        @summary Deletes kubeconfig files that may pose potential risks from a user and revokes Role-Based Access Control (RBAC) permissions on a cluster.
         
         @description >
         To call this operation, make sure that you have the AliyunCSFullAccess permission.
@@ -990,7 +990,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CleanClusterUserPermissionsResponse:
         """
-        @summary You can call the CleanClusterUserPermissions operation to delete kubeconfig files that may pose potential risks from a user and revoke Role-Based Access Control (RBAC) permissions on a cluster.
+        @summary Deletes kubeconfig files that may pose potential risks from a user and revokes Role-Based Access Control (RBAC) permissions on a cluster.
         
         @description >
         To call this operation, make sure that you have the AliyunCSFullAccess permission.
@@ -1033,7 +1033,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CleanClusterUserPermissionsRequest,
     ) -> cs20151215_models.CleanClusterUserPermissionsResponse:
         """
-        @summary You can call the CleanClusterUserPermissions operation to delete kubeconfig files that may pose potential risks from a user and revoke Role-Based Access Control (RBAC) permissions on a cluster.
+        @summary Deletes kubeconfig files that may pose potential risks from a user and revokes Role-Based Access Control (RBAC) permissions on a cluster.
         
         @description >
         To call this operation, make sure that you have the AliyunCSFullAccess permission.
@@ -1054,7 +1054,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CleanClusterUserPermissionsRequest,
     ) -> cs20151215_models.CleanClusterUserPermissionsResponse:
         """
-        @summary You can call the CleanClusterUserPermissions operation to delete kubeconfig files that may pose potential risks from a user and revoke Role-Based Access Control (RBAC) permissions on a cluster.
+        @summary Deletes kubeconfig files that may pose potential risks from a user and revokes Role-Based Access Control (RBAC) permissions on a cluster.
         
         @description >
         To call this operation, make sure that you have the AliyunCSFullAccess permission.
@@ -1900,7 +1900,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterDiagnosisResponse:
         """
-        @summary 发起集群诊断
+        @summary Starts a cluster diagnostic.
         
         @param request: CreateClusterDiagnosisRequest
         @param headers: map
@@ -1941,7 +1941,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterDiagnosisResponse:
         """
-        @summary 发起集群诊断
+        @summary Starts a cluster diagnostic.
         
         @param request: CreateClusterDiagnosisRequest
         @param headers: map
@@ -1980,7 +1980,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateClusterDiagnosisRequest,
     ) -> cs20151215_models.CreateClusterDiagnosisResponse:
         """
-        @summary 发起集群诊断
+        @summary Starts a cluster diagnostic.
         
         @param request: CreateClusterDiagnosisRequest
         @return: CreateClusterDiagnosisResponse
@@ -1995,7 +1995,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateClusterDiagnosisRequest,
     ) -> cs20151215_models.CreateClusterDiagnosisResponse:
         """
-        @summary 发起集群诊断
+        @summary Starts a cluster diagnostic.
         
         @param request: CreateClusterDiagnosisRequest
         @return: CreateClusterDiagnosisResponse
@@ -2647,7 +2647,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactResponse:
         """
-        @summary 删除ACK报警联系人
+        @summary Deletes one or more ACK alert contacts.
         
         @param tmp_req: DeleteAlertContactRequest
         @param headers: map
@@ -2689,7 +2689,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactResponse:
         """
-        @summary 删除ACK报警联系人
+        @summary Deletes one or more ACK alert contacts.
         
         @param tmp_req: DeleteAlertContactRequest
         @param headers: map
@@ -2729,7 +2729,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteAlertContactRequest,
     ) -> cs20151215_models.DeleteAlertContactResponse:
         """
-        @summary 删除ACK报警联系人
+        @summary Deletes one or more ACK alert contacts.
         
         @param request: DeleteAlertContactRequest
         @return: DeleteAlertContactResponse
@@ -2743,7 +2743,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteAlertContactRequest,
     ) -> cs20151215_models.DeleteAlertContactResponse:
         """
-        @summary 删除ACK报警联系人
+        @summary Deletes one or more ACK alert contacts.
         
         @param request: DeleteAlertContactRequest
         @return: DeleteAlertContactResponse
@@ -2759,7 +2759,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
         """
-        @summary 删除ACK报警联系人分组
+        @summary Deletes an ACK alert contact group.
         
         @param tmp_req: DeleteAlertContactGroupRequest
         @param headers: map
@@ -2801,7 +2801,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
         """
-        @summary 删除ACK报警联系人分组
+        @summary Deletes an ACK alert contact group.
         
         @param tmp_req: DeleteAlertContactGroupRequest
         @param headers: map
@@ -2841,7 +2841,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteAlertContactGroupRequest,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
         """
-        @summary 删除ACK报警联系人分组
+        @summary Deletes an ACK alert contact group.
         
         @param request: DeleteAlertContactGroupRequest
         @return: DeleteAlertContactGroupResponse
@@ -2855,7 +2855,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteAlertContactGroupRequest,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
         """
-        @summary 删除ACK报警联系人分组
+        @summary Deletes an ACK alert contact group.
         
         @param request: DeleteAlertContactGroupRequest
         @return: DeleteAlertContactGroupResponse
@@ -9364,18 +9364,25 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         diagnosis_id: str,
+        request: cs20151215_models.GetClusterDiagnosisCheckItemsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetClusterDiagnosisCheckItemsResponse:
         """
-        @summary 获取集群诊断检查项
+        @summary Queries cluster diagnostic items.
         
+        @param request: GetClusterDiagnosisCheckItemsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetClusterDiagnosisCheckItemsResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.language):
+            query['language'] = request.language
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetClusterDiagnosisCheckItems',
@@ -9397,18 +9404,25 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         diagnosis_id: str,
+        request: cs20151215_models.GetClusterDiagnosisCheckItemsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetClusterDiagnosisCheckItemsResponse:
         """
-        @summary 获取集群诊断检查项
+        @summary Queries cluster diagnostic items.
         
+        @param request: GetClusterDiagnosisCheckItemsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetClusterDiagnosisCheckItemsResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.language):
+            query['language'] = request.language
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetClusterDiagnosisCheckItems',
@@ -9430,46 +9444,57 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         diagnosis_id: str,
+        request: cs20151215_models.GetClusterDiagnosisCheckItemsRequest,
     ) -> cs20151215_models.GetClusterDiagnosisCheckItemsResponse:
         """
-        @summary 获取集群诊断检查项
+        @summary Queries cluster diagnostic items.
         
+        @param request: GetClusterDiagnosisCheckItemsRequest
         @return: GetClusterDiagnosisCheckItemsResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_cluster_diagnosis_check_items_with_options(cluster_id, diagnosis_id, headers, runtime)
+        return self.get_cluster_diagnosis_check_items_with_options(cluster_id, diagnosis_id, request, headers, runtime)
 
     async def get_cluster_diagnosis_check_items_async(
         self,
         cluster_id: str,
         diagnosis_id: str,
+        request: cs20151215_models.GetClusterDiagnosisCheckItemsRequest,
     ) -> cs20151215_models.GetClusterDiagnosisCheckItemsResponse:
         """
-        @summary 获取集群诊断检查项
+        @summary Queries cluster diagnostic items.
         
+        @param request: GetClusterDiagnosisCheckItemsRequest
         @return: GetClusterDiagnosisCheckItemsResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_cluster_diagnosis_check_items_with_options_async(cluster_id, diagnosis_id, headers, runtime)
+        return await self.get_cluster_diagnosis_check_items_with_options_async(cluster_id, diagnosis_id, request, headers, runtime)
 
     def get_cluster_diagnosis_result_with_options(
         self,
         cluster_id: str,
         diagnosis_id: str,
+        request: cs20151215_models.GetClusterDiagnosisResultRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetClusterDiagnosisResultResponse:
         """
-        @summary 获取集群诊断结果
+        @summary Queries cluster diagnostic results.
         
+        @param request: GetClusterDiagnosisResultRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetClusterDiagnosisResultResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.language):
+            query['language'] = request.language
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetClusterDiagnosisResult',
@@ -9491,18 +9516,25 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         diagnosis_id: str,
+        request: cs20151215_models.GetClusterDiagnosisResultRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetClusterDiagnosisResultResponse:
         """
-        @summary 获取集群诊断结果
+        @summary Queries cluster diagnostic results.
         
+        @param request: GetClusterDiagnosisResultRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetClusterDiagnosisResultResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.language):
+            query['language'] = request.language
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetClusterDiagnosisResult',
@@ -9524,29 +9556,33 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         diagnosis_id: str,
+        request: cs20151215_models.GetClusterDiagnosisResultRequest,
     ) -> cs20151215_models.GetClusterDiagnosisResultResponse:
         """
-        @summary 获取集群诊断结果
+        @summary Queries cluster diagnostic results.
         
+        @param request: GetClusterDiagnosisResultRequest
         @return: GetClusterDiagnosisResultResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_cluster_diagnosis_result_with_options(cluster_id, diagnosis_id, headers, runtime)
+        return self.get_cluster_diagnosis_result_with_options(cluster_id, diagnosis_id, request, headers, runtime)
 
     async def get_cluster_diagnosis_result_async(
         self,
         cluster_id: str,
         diagnosis_id: str,
+        request: cs20151215_models.GetClusterDiagnosisResultRequest,
     ) -> cs20151215_models.GetClusterDiagnosisResultResponse:
         """
-        @summary 获取集群诊断结果
+        @summary Queries cluster diagnostic results.
         
+        @param request: GetClusterDiagnosisResultRequest
         @return: GetClusterDiagnosisResultResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_cluster_diagnosis_result_with_options_async(cluster_id, diagnosis_id, headers, runtime)
+        return await self.get_cluster_diagnosis_result_with_options_async(cluster_id, diagnosis_id, request, headers, runtime)
 
     def get_kubernetes_trigger_with_options(
         self,
@@ -10336,7 +10372,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListClusterKubeconfigStatesResponse:
         """
-        @summary You can call the ListClusterKubeconfigStates operation to query the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
+        @summary Queries the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
         
         @description > - To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
         > - To call this operation, make sure that you have the AliyunCSFullAccess permissions.
@@ -10380,7 +10416,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListClusterKubeconfigStatesResponse:
         """
-        @summary You can call the ListClusterKubeconfigStates operation to query the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
+        @summary Queries the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
         
         @description > - To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
         > - To call this operation, make sure that you have the AliyunCSFullAccess permissions.
@@ -10422,7 +10458,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ListClusterKubeconfigStatesRequest,
     ) -> cs20151215_models.ListClusterKubeconfigStatesResponse:
         """
-        @summary You can call the ListClusterKubeconfigStates operation to query the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
+        @summary Queries the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
         
         @description > - To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
         > - To call this operation, make sure that you have the AliyunCSFullAccess permissions.
@@ -10440,7 +10476,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ListClusterKubeconfigStatesRequest,
     ) -> cs20151215_models.ListClusterKubeconfigStatesResponse:
         """
-        @summary You can call the ListClusterKubeconfigStates operation to query the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
+        @summary Queries the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
         
         @description > - To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
         > - To call this operation, make sure that you have the AliyunCSFullAccess permissions.
@@ -12415,10 +12451,11 @@ class Client(OpenApiClient):
         """
         @summary Removes nodes from a node pool.
         
-        @description - When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
-        - The operation may have unexpected risks. Back up the data before you perform this operation.
-        - When the system removes a node, it sets the status of the node to Unschedulable.
-        - The system removes only worker nodes. It does not remove master nodes.
+        @description    When you remove a node, the pods on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        The operation may have unexpected risks. Back up the data before you perform this operation.
+        Nodes remain in the Unschedulable state when they are being removed.
+        The system removes only worker nodes. It does not remove master nodes.
+        Even if you set the `release_node` parameter to `true`, subscription nodes are not released. You must release the subscription nodes in the [ECS console](https://ecs.console.aliyun.com/) after you remove the nodes.
         
         @param tmp_req: RemoveNodePoolNodesRequest
         @param headers: map
@@ -12474,10 +12511,11 @@ class Client(OpenApiClient):
         """
         @summary Removes nodes from a node pool.
         
-        @description - When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
-        - The operation may have unexpected risks. Back up the data before you perform this operation.
-        - When the system removes a node, it sets the status of the node to Unschedulable.
-        - The system removes only worker nodes. It does not remove master nodes.
+        @description    When you remove a node, the pods on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        The operation may have unexpected risks. Back up the data before you perform this operation.
+        Nodes remain in the Unschedulable state when they are being removed.
+        The system removes only worker nodes. It does not remove master nodes.
+        Even if you set the `release_node` parameter to `true`, subscription nodes are not released. You must release the subscription nodes in the [ECS console](https://ecs.console.aliyun.com/) after you remove the nodes.
         
         @param tmp_req: RemoveNodePoolNodesRequest
         @param headers: map
@@ -12531,10 +12569,11 @@ class Client(OpenApiClient):
         """
         @summary Removes nodes from a node pool.
         
-        @description - When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
-        - The operation may have unexpected risks. Back up the data before you perform this operation.
-        - When the system removes a node, it sets the status of the node to Unschedulable.
-        - The system removes only worker nodes. It does not remove master nodes.
+        @description    When you remove a node, the pods on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        The operation may have unexpected risks. Back up the data before you perform this operation.
+        Nodes remain in the Unschedulable state when they are being removed.
+        The system removes only worker nodes. It does not remove master nodes.
+        Even if you set the `release_node` parameter to `true`, subscription nodes are not released. You must release the subscription nodes in the [ECS console](https://ecs.console.aliyun.com/) after you remove the nodes.
         
         @param request: RemoveNodePoolNodesRequest
         @return: RemoveNodePoolNodesResponse
@@ -12552,10 +12591,11 @@ class Client(OpenApiClient):
         """
         @summary Removes nodes from a node pool.
         
-        @description - When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
-        - The operation may have unexpected risks. Back up the data before you perform this operation.
-        - When the system removes a node, it sets the status of the node to Unschedulable.
-        - The system removes only worker nodes. It does not remove master nodes.
+        @description    When you remove a node, the pods on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        The operation may have unexpected risks. Back up the data before you perform this operation.
+        Nodes remain in the Unschedulable state when they are being removed.
+        The system removes only worker nodes. It does not remove master nodes.
+        Even if you set the `release_node` parameter to `true`, subscription nodes are not released. You must release the subscription nodes in the [ECS console](https://ecs.console.aliyun.com/) after you remove the nodes.
         
         @param request: RemoveNodePoolNodesRequest
         @return: RemoveNodePoolNodesResponse
