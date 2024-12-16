@@ -1300,6 +1300,1055 @@ class CreateGroupResponse(TeaModel):
         return self
 
 
+class CreateIdentityProviderRequestAuthnConfig(TeaModel):
+    def __init__(
+        self,
+        authn_status: str = None,
+        auto_update_password_status: str = None,
+    ):
+        # 对应IdP是否支持认证
+        # 
+        # This parameter is required.
+        self.authn_status = authn_status
+        # 是否支持自动更新密码
+        self.auto_update_password_status = auto_update_password_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authn_status is not None:
+            result['AuthnStatus'] = self.authn_status
+        if self.auto_update_password_status is not None:
+            result['AutoUpdatePasswordStatus'] = self.auto_update_password_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthnStatus') is not None:
+            self.authn_status = m.get('AuthnStatus')
+        if m.get('AutoUpdatePasswordStatus') is not None:
+            self.auto_update_password_status = m.get('AutoUpdatePasswordStatus')
+        return self
+
+
+class CreateIdentityProviderRequestAutoCreateUserConfig(TeaModel):
+    def __init__(
+        self,
+        auto_create_user_status: str = None,
+        target_organizational_unit_ids: List[str] = None,
+    ):
+        # 自动创建账户是否开启
+        self.auto_create_user_status = auto_create_user_status
+        self.target_organizational_unit_ids = target_organizational_unit_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_create_user_status is not None:
+            result['AutoCreateUserStatus'] = self.auto_create_user_status
+        if self.target_organizational_unit_ids is not None:
+            result['TargetOrganizationalUnitIds'] = self.target_organizational_unit_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoCreateUserStatus') is not None:
+            self.auto_create_user_status = m.get('AutoCreateUserStatus')
+        if m.get('TargetOrganizationalUnitIds') is not None:
+            self.target_organizational_unit_ids = m.get('TargetOrganizationalUnitIds')
+        return self
+
+
+class CreateIdentityProviderRequestAutoUpdateUserConfig(TeaModel):
+    def __init__(
+        self,
+        auto_update_user_status: str = None,
+    ):
+        # 自动更新账户是否开启
+        self.auto_update_user_status = auto_update_user_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_update_user_status is not None:
+            result['AutoUpdateUserStatus'] = self.auto_update_user_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoUpdateUserStatus') is not None:
+            self.auto_update_user_status = m.get('AutoUpdateUserStatus')
+        return self
+
+
+class CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions(TeaModel):
+    def __init__(
+        self,
+        expression_mapping_type: str = None,
+        source_value_expression: str = None,
+        target_field: str = None,
+        target_field_description: str = None,
+    ):
+        # 表达式的类型
+        # 
+        # This parameter is required.
+        self.expression_mapping_type = expression_mapping_type
+        # 映射属性取值表达式
+        # 
+        # This parameter is required.
+        self.source_value_expression = source_value_expression
+        # 映射目标属性名称
+        # 
+        # This parameter is required.
+        self.target_field = target_field
+        # 映射目标属性名称
+        self.target_field_description = target_field_description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expression_mapping_type is not None:
+            result['ExpressionMappingType'] = self.expression_mapping_type
+        if self.source_value_expression is not None:
+            result['SourceValueExpression'] = self.source_value_expression
+        if self.target_field is not None:
+            result['TargetField'] = self.target_field
+        if self.target_field_description is not None:
+            result['TargetFieldDescription'] = self.target_field_description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpressionMappingType') is not None:
+            self.expression_mapping_type = m.get('ExpressionMappingType')
+        if m.get('SourceValueExpression') is not None:
+            self.source_value_expression = m.get('SourceValueExpression')
+        if m.get('TargetField') is not None:
+            self.target_field = m.get('TargetField')
+        if m.get('TargetFieldDescription') is not None:
+            self.target_field_description = m.get('TargetFieldDescription')
+        return self
+
+
+class CreateIdentityProviderRequestBindingConfig(TeaModel):
+    def __init__(
+        self,
+        auto_match_user_profile_expressions: List[CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions] = None,
+        auto_match_user_status: str = None,
+        mapping_binding_status: str = None,
+    ):
+        # 自动匹配账户的规则
+        self.auto_match_user_profile_expressions = auto_match_user_profile_expressions
+        # 自动匹配账户是否开启
+        self.auto_match_user_status = auto_match_user_status
+        # 用户手动绑定账户功能是否开启
+        self.mapping_binding_status = mapping_binding_status
+
+    def validate(self):
+        if self.auto_match_user_profile_expressions:
+            for k in self.auto_match_user_profile_expressions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AutoMatchUserProfileExpressions'] = []
+        if self.auto_match_user_profile_expressions is not None:
+            for k in self.auto_match_user_profile_expressions:
+                result['AutoMatchUserProfileExpressions'].append(k.to_map() if k else None)
+        if self.auto_match_user_status is not None:
+            result['AutoMatchUserStatus'] = self.auto_match_user_status
+        if self.mapping_binding_status is not None:
+            result['MappingBindingStatus'] = self.mapping_binding_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.auto_match_user_profile_expressions = []
+        if m.get('AutoMatchUserProfileExpressions') is not None:
+            for k in m.get('AutoMatchUserProfileExpressions'):
+                temp_model = CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions()
+                self.auto_match_user_profile_expressions.append(temp_model.from_map(k))
+        if m.get('AutoMatchUserStatus') is not None:
+            self.auto_match_user_status = m.get('AutoMatchUserStatus')
+        if m.get('MappingBindingStatus') is not None:
+            self.mapping_binding_status = m.get('MappingBindingStatus')
+        return self
+
+
+class CreateIdentityProviderRequestDingtalkAppConfig(TeaModel):
+    def __init__(
+        self,
+        app_key: str = None,
+        app_secret: str = None,
+        corp_id: str = None,
+        dingtalk_version: str = None,
+    ):
+        # 钉钉一方应用的AppKey
+        self.app_key = app_key
+        # 钉钉一方应用的AppSecret
+        self.app_secret = app_secret
+        # 钉钉一方应用的corpId
+        self.corp_id = corp_id
+        # 钉钉版本
+        self.dingtalk_version = dingtalk_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.app_secret is not None:
+            result['AppSecret'] = self.app_secret
+        if self.corp_id is not None:
+            result['CorpId'] = self.corp_id
+        if self.dingtalk_version is not None:
+            result['DingtalkVersion'] = self.dingtalk_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('AppSecret') is not None:
+            self.app_secret = m.get('AppSecret')
+        if m.get('CorpId') is not None:
+            self.corp_id = m.get('CorpId')
+        if m.get('DingtalkVersion') is not None:
+            self.dingtalk_version = m.get('DingtalkVersion')
+        return self
+
+
+class CreateIdentityProviderRequestLarkConfig(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_secret: str = None,
+        enterprise_number: str = None,
+    ):
+        self.app_id = app_id
+        self.app_secret = app_secret
+        self.enterprise_number = enterprise_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_secret is not None:
+            result['AppSecret'] = self.app_secret
+        if self.enterprise_number is not None:
+            result['EnterpriseNumber'] = self.enterprise_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppSecret') is not None:
+            self.app_secret = m.get('AppSecret')
+        if m.get('EnterpriseNumber') is not None:
+            self.enterprise_number = m.get('EnterpriseNumber')
+        return self
+
+
+class CreateIdentityProviderRequestLdapConfig(TeaModel):
+    def __init__(
+        self,
+        administrator_password: str = None,
+        administrator_username: str = None,
+        certificate_fingerprint_status: str = None,
+        certificate_fingerprints: List[str] = None,
+        group_member_attribute_name: str = None,
+        group_object_class: str = None,
+        group_object_class_custom_filter: str = None,
+        ldap_protocol: str = None,
+        ldap_server_host: str = None,
+        ldap_server_port: int = None,
+        organization_unit_object_class: str = None,
+        start_tls_status: str = None,
+        user_login_identifier: str = None,
+        user_object_class: str = None,
+        user_object_class_custom_filter: str = None,
+    ):
+        # 管理员密码
+        self.administrator_password = administrator_password
+        # 管理员账号
+        self.administrator_username = administrator_username
+        # 是否验证指纹证书
+        self.certificate_fingerprint_status = certificate_fingerprint_status
+        # 证书指纹列表
+        self.certificate_fingerprints = certificate_fingerprints
+        # 组成员标识
+        self.group_member_attribute_name = group_member_attribute_name
+        # 组objectClass
+        self.group_object_class = group_object_class
+        # 组自定义Filter
+        self.group_object_class_custom_filter = group_object_class_custom_filter
+        # 通信协议
+        self.ldap_protocol = ldap_protocol
+        # ad/ldap 服务器地址
+        self.ldap_server_host = ldap_server_host
+        # 端口号
+        self.ldap_server_port = ldap_server_port
+        # 组织objectClass
+        self.organization_unit_object_class = organization_unit_object_class
+        # startTls是否开启
+        self.start_tls_status = start_tls_status
+        # 用户登录标识
+        self.user_login_identifier = user_login_identifier
+        # 用户objectClass
+        self.user_object_class = user_object_class
+        # 用户自定义Filter
+        self.user_object_class_custom_filter = user_object_class_custom_filter
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.administrator_password is not None:
+            result['AdministratorPassword'] = self.administrator_password
+        if self.administrator_username is not None:
+            result['AdministratorUsername'] = self.administrator_username
+        if self.certificate_fingerprint_status is not None:
+            result['CertificateFingerprintStatus'] = self.certificate_fingerprint_status
+        if self.certificate_fingerprints is not None:
+            result['CertificateFingerprints'] = self.certificate_fingerprints
+        if self.group_member_attribute_name is not None:
+            result['GroupMemberAttributeName'] = self.group_member_attribute_name
+        if self.group_object_class is not None:
+            result['GroupObjectClass'] = self.group_object_class
+        if self.group_object_class_custom_filter is not None:
+            result['GroupObjectClassCustomFilter'] = self.group_object_class_custom_filter
+        if self.ldap_protocol is not None:
+            result['LdapProtocol'] = self.ldap_protocol
+        if self.ldap_server_host is not None:
+            result['LdapServerHost'] = self.ldap_server_host
+        if self.ldap_server_port is not None:
+            result['LdapServerPort'] = self.ldap_server_port
+        if self.organization_unit_object_class is not None:
+            result['OrganizationUnitObjectClass'] = self.organization_unit_object_class
+        if self.start_tls_status is not None:
+            result['StartTlsStatus'] = self.start_tls_status
+        if self.user_login_identifier is not None:
+            result['UserLoginIdentifier'] = self.user_login_identifier
+        if self.user_object_class is not None:
+            result['UserObjectClass'] = self.user_object_class
+        if self.user_object_class_custom_filter is not None:
+            result['UserObjectClassCustomFilter'] = self.user_object_class_custom_filter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdministratorPassword') is not None:
+            self.administrator_password = m.get('AdministratorPassword')
+        if m.get('AdministratorUsername') is not None:
+            self.administrator_username = m.get('AdministratorUsername')
+        if m.get('CertificateFingerprintStatus') is not None:
+            self.certificate_fingerprint_status = m.get('CertificateFingerprintStatus')
+        if m.get('CertificateFingerprints') is not None:
+            self.certificate_fingerprints = m.get('CertificateFingerprints')
+        if m.get('GroupMemberAttributeName') is not None:
+            self.group_member_attribute_name = m.get('GroupMemberAttributeName')
+        if m.get('GroupObjectClass') is not None:
+            self.group_object_class = m.get('GroupObjectClass')
+        if m.get('GroupObjectClassCustomFilter') is not None:
+            self.group_object_class_custom_filter = m.get('GroupObjectClassCustomFilter')
+        if m.get('LdapProtocol') is not None:
+            self.ldap_protocol = m.get('LdapProtocol')
+        if m.get('LdapServerHost') is not None:
+            self.ldap_server_host = m.get('LdapServerHost')
+        if m.get('LdapServerPort') is not None:
+            self.ldap_server_port = m.get('LdapServerPort')
+        if m.get('OrganizationUnitObjectClass') is not None:
+            self.organization_unit_object_class = m.get('OrganizationUnitObjectClass')
+        if m.get('StartTlsStatus') is not None:
+            self.start_tls_status = m.get('StartTlsStatus')
+        if m.get('UserLoginIdentifier') is not None:
+            self.user_login_identifier = m.get('UserLoginIdentifier')
+        if m.get('UserObjectClass') is not None:
+            self.user_object_class = m.get('UserObjectClass')
+        if m.get('UserObjectClassCustomFilter') is not None:
+            self.user_object_class_custom_filter = m.get('UserObjectClassCustomFilter')
+        return self
+
+
+class CreateIdentityProviderRequestOidcConfigAuthnParam(TeaModel):
+    def __init__(
+        self,
+        authn_method: str = None,
+        client_id: str = None,
+        client_secret: str = None,
+    ):
+        # OIDC/oAuth2 认证方法。
+        self.authn_method = authn_method
+        # OIDC/oAuth2 客户端ID。
+        self.client_id = client_id
+        # OIDC/oAuth2 客户端密钥。
+        self.client_secret = client_secret
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authn_method is not None:
+            result['AuthnMethod'] = self.authn_method
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_secret is not None:
+            result['ClientSecret'] = self.client_secret
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthnMethod') is not None:
+            self.authn_method = m.get('AuthnMethod')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientSecret') is not None:
+            self.client_secret = m.get('ClientSecret')
+        return self
+
+
+class CreateIdentityProviderRequestOidcConfigEndpointConfig(TeaModel):
+    def __init__(
+        self,
+        authorization_endpoint: str = None,
+        issuer: str = None,
+        jwks_uri: str = None,
+        token_endpoint: str = None,
+        userinfo_endpoint: str = None,
+    ):
+        # oAuth2 授权端点。
+        self.authorization_endpoint = authorization_endpoint
+        # OIDC issuer信息。
+        self.issuer = issuer
+        # OIDC jwks地址。
+        self.jwks_uri = jwks_uri
+        # oAuth2 Token端点。
+        self.token_endpoint = token_endpoint
+        # OIDC 用户信息端点。
+        self.userinfo_endpoint = userinfo_endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_endpoint is not None:
+            result['AuthorizationEndpoint'] = self.authorization_endpoint
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.jwks_uri is not None:
+            result['JwksUri'] = self.jwks_uri
+        if self.token_endpoint is not None:
+            result['TokenEndpoint'] = self.token_endpoint
+        if self.userinfo_endpoint is not None:
+            result['UserinfoEndpoint'] = self.userinfo_endpoint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationEndpoint') is not None:
+            self.authorization_endpoint = m.get('AuthorizationEndpoint')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('JwksUri') is not None:
+            self.jwks_uri = m.get('JwksUri')
+        if m.get('TokenEndpoint') is not None:
+            self.token_endpoint = m.get('TokenEndpoint')
+        if m.get('UserinfoEndpoint') is not None:
+            self.userinfo_endpoint = m.get('UserinfoEndpoint')
+        return self
+
+
+class CreateIdentityProviderRequestOidcConfig(TeaModel):
+    def __init__(
+        self,
+        authn_param: CreateIdentityProviderRequestOidcConfigAuthnParam = None,
+        endpoint_config: CreateIdentityProviderRequestOidcConfigEndpointConfig = None,
+        grant_scopes: List[str] = None,
+        grant_type: str = None,
+        pkce_challenge_method: str = None,
+        pkce_required: bool = None,
+    ):
+        # OIDC客户端认证配置。
+        self.authn_param = authn_param
+        # OIDC 端点配置。
+        self.endpoint_config = endpoint_config
+        # OIDC标准参数，如profile、email等
+        self.grant_scopes = grant_scopes
+        # OIDC授权类型。
+        self.grant_type = grant_type
+        # 支持的PKCE算法类型。
+        self.pkce_challenge_method = pkce_challenge_method
+        # AuthorizationCode授权模式下是否使用PKCE。
+        self.pkce_required = pkce_required
+
+    def validate(self):
+        if self.authn_param:
+            self.authn_param.validate()
+        if self.endpoint_config:
+            self.endpoint_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authn_param is not None:
+            result['AuthnParam'] = self.authn_param.to_map()
+        if self.endpoint_config is not None:
+            result['EndpointConfig'] = self.endpoint_config.to_map()
+        if self.grant_scopes is not None:
+            result['GrantScopes'] = self.grant_scopes
+        if self.grant_type is not None:
+            result['GrantType'] = self.grant_type
+        if self.pkce_challenge_method is not None:
+            result['PkceChallengeMethod'] = self.pkce_challenge_method
+        if self.pkce_required is not None:
+            result['PkceRequired'] = self.pkce_required
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthnParam') is not None:
+            temp_model = CreateIdentityProviderRequestOidcConfigAuthnParam()
+            self.authn_param = temp_model.from_map(m['AuthnParam'])
+        if m.get('EndpointConfig') is not None:
+            temp_model = CreateIdentityProviderRequestOidcConfigEndpointConfig()
+            self.endpoint_config = temp_model.from_map(m['EndpointConfig'])
+        if m.get('GrantScopes') is not None:
+            self.grant_scopes = m.get('GrantScopes')
+        if m.get('GrantType') is not None:
+            self.grant_type = m.get('GrantType')
+        if m.get('PkceChallengeMethod') is not None:
+            self.pkce_challenge_method = m.get('PkceChallengeMethod')
+        if m.get('PkceRequired') is not None:
+            self.pkce_required = m.get('PkceRequired')
+        return self
+
+
+class CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig(TeaModel):
+    def __init__(
+        self,
+        source_scopes: List[str] = None,
+        target_scope: str = None,
+    ):
+        # 同步来源节点
+        self.source_scopes = source_scopes
+        # 同步目标节点
+        self.target_scope = target_scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_scopes is not None:
+            result['SourceScopes'] = self.source_scopes
+        if self.target_scope is not None:
+            result['TargetScope'] = self.target_scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceScopes') is not None:
+            self.source_scopes = m.get('SourceScopes')
+        if m.get('TargetScope') is not None:
+            self.target_scope = m.get('TargetScope')
+        return self
+
+
+class CreateIdentityProviderRequestUdPullConfig(TeaModel):
+    def __init__(
+        self,
+        group_sync_status: str = None,
+        incremental_callback_status: str = None,
+        periodic_sync_status: str = None,
+        ud_sync_scope_config: CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig = None,
+    ):
+        # 是否支持组同步，默认为disabled
+        self.group_sync_status = group_sync_status
+        # 增量回调状态，是否处理来自IdP的增量回调数据
+        self.incremental_callback_status = incremental_callback_status
+        self.periodic_sync_status = periodic_sync_status
+        # 同步入配置信息
+        # 
+        # This parameter is required.
+        self.ud_sync_scope_config = ud_sync_scope_config
+
+    def validate(self):
+        if self.ud_sync_scope_config:
+            self.ud_sync_scope_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_sync_status is not None:
+            result['GroupSyncStatus'] = self.group_sync_status
+        if self.incremental_callback_status is not None:
+            result['IncrementalCallbackStatus'] = self.incremental_callback_status
+        if self.periodic_sync_status is not None:
+            result['PeriodicSyncStatus'] = self.periodic_sync_status
+        if self.ud_sync_scope_config is not None:
+            result['UdSyncScopeConfig'] = self.ud_sync_scope_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupSyncStatus') is not None:
+            self.group_sync_status = m.get('GroupSyncStatus')
+        if m.get('IncrementalCallbackStatus') is not None:
+            self.incremental_callback_status = m.get('IncrementalCallbackStatus')
+        if m.get('PeriodicSyncStatus') is not None:
+            self.periodic_sync_status = m.get('PeriodicSyncStatus')
+        if m.get('UdSyncScopeConfig') is not None:
+            temp_model = CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig()
+            self.ud_sync_scope_config = temp_model.from_map(m['UdSyncScopeConfig'])
+        return self
+
+
+class CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs(TeaModel):
+    def __init__(
+        self,
+        source_scopes: List[str] = None,
+        target_scope: str = None,
+    ):
+        # 同步来源节点
+        self.source_scopes = source_scopes
+        # 同步目标节点
+        self.target_scope = target_scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_scopes is not None:
+            result['SourceScopes'] = self.source_scopes
+        if self.target_scope is not None:
+            result['TargetScope'] = self.target_scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceScopes') is not None:
+            self.source_scopes = m.get('SourceScopes')
+        if m.get('TargetScope') is not None:
+            self.target_scope = m.get('TargetScope')
+        return self
+
+
+class CreateIdentityProviderRequestUdPushConfig(TeaModel):
+    def __init__(
+        self,
+        incremental_callback_status: str = None,
+        periodic_sync_status: str = None,
+        ud_sync_scope_configs: List[CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs] = None,
+    ):
+        # 增量回调状态，是否处理来自IdP的增量回调数据
+        self.incremental_callback_status = incremental_callback_status
+        self.periodic_sync_status = periodic_sync_status
+        # 同步出配置信息
+        self.ud_sync_scope_configs = ud_sync_scope_configs
+
+    def validate(self):
+        if self.ud_sync_scope_configs:
+            for k in self.ud_sync_scope_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.incremental_callback_status is not None:
+            result['IncrementalCallbackStatus'] = self.incremental_callback_status
+        if self.periodic_sync_status is not None:
+            result['PeriodicSyncStatus'] = self.periodic_sync_status
+        result['UdSyncScopeConfigs'] = []
+        if self.ud_sync_scope_configs is not None:
+            for k in self.ud_sync_scope_configs:
+                result['UdSyncScopeConfigs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IncrementalCallbackStatus') is not None:
+            self.incremental_callback_status = m.get('IncrementalCallbackStatus')
+        if m.get('PeriodicSyncStatus') is not None:
+            self.periodic_sync_status = m.get('PeriodicSyncStatus')
+        self.ud_sync_scope_configs = []
+        if m.get('UdSyncScopeConfigs') is not None:
+            for k in m.get('UdSyncScopeConfigs'):
+                temp_model = CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs()
+                self.ud_sync_scope_configs.append(temp_model.from_map(k))
+        return self
+
+
+class CreateIdentityProviderRequestWeComConfig(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        authorize_callback_domain: str = None,
+        corp_id: str = None,
+        corp_secret: str = None,
+        trustable_domain: str = None,
+    ):
+        # 企业微信自建应用的Id
+        self.agent_id = agent_id
+        # 授权回调域
+        self.authorize_callback_domain = authorize_callback_domain
+        # 企业微信自建应用的corpId
+        self.corp_id = corp_id
+        # 企业微信自建应用的corpSecret
+        self.corp_secret = corp_secret
+        # 可信域名
+        self.trustable_domain = trustable_domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.authorize_callback_domain is not None:
+            result['AuthorizeCallbackDomain'] = self.authorize_callback_domain
+        if self.corp_id is not None:
+            result['CorpId'] = self.corp_id
+        if self.corp_secret is not None:
+            result['CorpSecret'] = self.corp_secret
+        if self.trustable_domain is not None:
+            result['TrustableDomain'] = self.trustable_domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AuthorizeCallbackDomain') is not None:
+            self.authorize_callback_domain = m.get('AuthorizeCallbackDomain')
+        if m.get('CorpId') is not None:
+            self.corp_id = m.get('CorpId')
+        if m.get('CorpSecret') is not None:
+            self.corp_secret = m.get('CorpSecret')
+        if m.get('TrustableDomain') is not None:
+            self.trustable_domain = m.get('TrustableDomain')
+        return self
+
+
+class CreateIdentityProviderRequest(TeaModel):
+    def __init__(
+        self,
+        authn_config: CreateIdentityProviderRequestAuthnConfig = None,
+        auto_create_user_config: CreateIdentityProviderRequestAutoCreateUserConfig = None,
+        auto_update_user_config: CreateIdentityProviderRequestAutoUpdateUserConfig = None,
+        binding_config: CreateIdentityProviderRequestBindingConfig = None,
+        dingtalk_app_config: CreateIdentityProviderRequestDingtalkAppConfig = None,
+        identity_provider_name: str = None,
+        identity_provider_type: str = None,
+        instance_id: str = None,
+        lark_config: CreateIdentityProviderRequestLarkConfig = None,
+        ldap_config: CreateIdentityProviderRequestLdapConfig = None,
+        network_access_endpoint_id: str = None,
+        oidc_config: CreateIdentityProviderRequestOidcConfig = None,
+        ud_pull_config: CreateIdentityProviderRequestUdPullConfig = None,
+        ud_push_config: CreateIdentityProviderRequestUdPushConfig = None,
+        we_com_config: CreateIdentityProviderRequestWeComConfig = None,
+    ):
+        # 认证配置
+        self.authn_config = authn_config
+        # 自动创建账户账户规则配置。
+        self.auto_create_user_config = auto_create_user_config
+        # 自动更新账户规则配置。
+        self.auto_update_user_config = auto_update_user_config
+        # 账户绑定规则配置。
+        self.binding_config = binding_config
+        # 钉钉配置
+        self.dingtalk_app_config = dingtalk_app_config
+        # 身份提供方名称
+        # 
+        # This parameter is required.
+        self.identity_provider_name = identity_provider_name
+        # 身份提供发类型
+        # 
+        # This parameter is required.
+        self.identity_provider_type = identity_provider_type
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 飞书配置
+        self.lark_config = lark_config
+        # AD/LDAP配置
+        self.ldap_config = ldap_config
+        # 网络端点ID
+        self.network_access_endpoint_id = network_access_endpoint_id
+        # OIDC IdP配置。
+        self.oidc_config = oidc_config
+        # 同步入配置
+        self.ud_pull_config = ud_pull_config
+        # 同步出配置
+        self.ud_push_config = ud_push_config
+        # WeCom配置
+        self.we_com_config = we_com_config
+
+    def validate(self):
+        if self.authn_config:
+            self.authn_config.validate()
+        if self.auto_create_user_config:
+            self.auto_create_user_config.validate()
+        if self.auto_update_user_config:
+            self.auto_update_user_config.validate()
+        if self.binding_config:
+            self.binding_config.validate()
+        if self.dingtalk_app_config:
+            self.dingtalk_app_config.validate()
+        if self.lark_config:
+            self.lark_config.validate()
+        if self.ldap_config:
+            self.ldap_config.validate()
+        if self.oidc_config:
+            self.oidc_config.validate()
+        if self.ud_pull_config:
+            self.ud_pull_config.validate()
+        if self.ud_push_config:
+            self.ud_push_config.validate()
+        if self.we_com_config:
+            self.we_com_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authn_config is not None:
+            result['AuthnConfig'] = self.authn_config.to_map()
+        if self.auto_create_user_config is not None:
+            result['AutoCreateUserConfig'] = self.auto_create_user_config.to_map()
+        if self.auto_update_user_config is not None:
+            result['AutoUpdateUserConfig'] = self.auto_update_user_config.to_map()
+        if self.binding_config is not None:
+            result['BindingConfig'] = self.binding_config.to_map()
+        if self.dingtalk_app_config is not None:
+            result['DingtalkAppConfig'] = self.dingtalk_app_config.to_map()
+        if self.identity_provider_name is not None:
+            result['IdentityProviderName'] = self.identity_provider_name
+        if self.identity_provider_type is not None:
+            result['IdentityProviderType'] = self.identity_provider_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lark_config is not None:
+            result['LarkConfig'] = self.lark_config.to_map()
+        if self.ldap_config is not None:
+            result['LdapConfig'] = self.ldap_config.to_map()
+        if self.network_access_endpoint_id is not None:
+            result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
+        if self.oidc_config is not None:
+            result['OidcConfig'] = self.oidc_config.to_map()
+        if self.ud_pull_config is not None:
+            result['UdPullConfig'] = self.ud_pull_config.to_map()
+        if self.ud_push_config is not None:
+            result['UdPushConfig'] = self.ud_push_config.to_map()
+        if self.we_com_config is not None:
+            result['WeComConfig'] = self.we_com_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthnConfig') is not None:
+            temp_model = CreateIdentityProviderRequestAuthnConfig()
+            self.authn_config = temp_model.from_map(m['AuthnConfig'])
+        if m.get('AutoCreateUserConfig') is not None:
+            temp_model = CreateIdentityProviderRequestAutoCreateUserConfig()
+            self.auto_create_user_config = temp_model.from_map(m['AutoCreateUserConfig'])
+        if m.get('AutoUpdateUserConfig') is not None:
+            temp_model = CreateIdentityProviderRequestAutoUpdateUserConfig()
+            self.auto_update_user_config = temp_model.from_map(m['AutoUpdateUserConfig'])
+        if m.get('BindingConfig') is not None:
+            temp_model = CreateIdentityProviderRequestBindingConfig()
+            self.binding_config = temp_model.from_map(m['BindingConfig'])
+        if m.get('DingtalkAppConfig') is not None:
+            temp_model = CreateIdentityProviderRequestDingtalkAppConfig()
+            self.dingtalk_app_config = temp_model.from_map(m['DingtalkAppConfig'])
+        if m.get('IdentityProviderName') is not None:
+            self.identity_provider_name = m.get('IdentityProviderName')
+        if m.get('IdentityProviderType') is not None:
+            self.identity_provider_type = m.get('IdentityProviderType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LarkConfig') is not None:
+            temp_model = CreateIdentityProviderRequestLarkConfig()
+            self.lark_config = temp_model.from_map(m['LarkConfig'])
+        if m.get('LdapConfig') is not None:
+            temp_model = CreateIdentityProviderRequestLdapConfig()
+            self.ldap_config = temp_model.from_map(m['LdapConfig'])
+        if m.get('NetworkAccessEndpointId') is not None:
+            self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
+        if m.get('OidcConfig') is not None:
+            temp_model = CreateIdentityProviderRequestOidcConfig()
+            self.oidc_config = temp_model.from_map(m['OidcConfig'])
+        if m.get('UdPullConfig') is not None:
+            temp_model = CreateIdentityProviderRequestUdPullConfig()
+            self.ud_pull_config = temp_model.from_map(m['UdPullConfig'])
+        if m.get('UdPushConfig') is not None:
+            temp_model = CreateIdentityProviderRequestUdPushConfig()
+            self.ud_push_config = temp_model.from_map(m['UdPushConfig'])
+        if m.get('WeComConfig') is not None:
+            temp_model = CreateIdentityProviderRequestWeComConfig()
+            self.we_com_config = temp_model.from_map(m['WeComConfig'])
+        return self
+
+
+class CreateIdentityProviderResponseBody(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        request_id: str = None,
+    ):
+        self.identity_provider_id = identity_provider_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateIdentityProviderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateIdentityProviderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateIdentityProviderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -2554,6 +3603,113 @@ class DeleteGroupResponse(TeaModel):
         return self
 
 
+class DeleteIdentityProviderRequest(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的身份提供方主键id
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteIdentityProviderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteIdentityProviderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteIdentityProviderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteIdentityProviderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -3748,6 +4904,113 @@ class DisableDomainProxyTokenResponse(TeaModel):
         return self
 
 
+class DisableIdentityProviderUdPullRequest(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的身份提供方主键id
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableIdentityProviderUdPullResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableIdentityProviderUdPullResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableIdentityProviderUdPullResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableIdentityProviderUdPullResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableInitDomainAutoRedirectRequest(TeaModel):
     def __init__(
         self,
@@ -4614,6 +5877,113 @@ class EnableDomainProxyTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableDomainProxyTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableIdentityProviderUdPullRequest(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的身份提供方主键id
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class EnableIdentityProviderUdPullResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableIdentityProviderUdPullResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableIdentityProviderUdPullResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableIdentityProviderUdPullResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6189,6 +7559,41 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigAttrib
         return self
 
 
+class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        relay_state: str = None,
+    ):
+        # The display name of the RelayState
+        self.display_name = display_name
+        # RelayState.The user will see the display names of multiple optional redirect addresses in the application card of the application portal. After the user clicks and completes SSO, they will automatically jump to the corresponding address. This field can only be filled in after the default redirect address is filled in.
+        self.relay_state = relay_state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.relay_state is not None:
+            result['RelayState'] = self.relay_state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('RelayState') is not None:
+            self.relay_state = m.get('RelayState')
+        return self
+
+
 class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig(TeaModel):
     def __init__(
         self,
@@ -6198,17 +7603,22 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig(TeaMo
         id_pentity_id: str = None,
         name_id_format: str = None,
         name_id_value_expression: str = None,
+        optional_relay_states: List[GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates] = None,
         response_signed: bool = None,
         signature_algorithm: str = None,
         sp_entity_id: str = None,
         sp_sso_acs_url: str = None,
     ):
-        # assertion是否签名
+        # Whether the Assertion needs a signature. ResponseSigned and AssertionSigned cannot be false at the same time.
+        # 
+        # true: signature is required.
+        # false: signature is not required.
         self.assertion_signed = assertion_signed
         # The additional user attributes in the SAML assertion.
         self.attribute_statements = attribute_statements
         # The default value of the RelayState attribute. If the SSO request is initiated in EIAM, the RelayState attribute in the SAML response is set to this default value.
         self.default_relay_state = default_relay_state
+        # The custom issuer ID.
         self.id_pentity_id = id_pentity_id
         # The Format attribute of the NameID element in the SAML assertion. Valid values:
         # 
@@ -6219,7 +7629,12 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig(TeaMo
         self.name_id_format = name_id_format
         # The expression that is used to generate the value of NameID in the SAML assertion.
         self.name_id_value_expression = name_id_value_expression
-        # response是否签名
+        # Optional RelayState. The user will see the display names of multiple optional redirect addresses in the application card of the application portal. After the user clicks and completes SSO, they will automatically jump to the corresponding address. This field can only be filled in after the default redirect address is filled in.
+        self.optional_relay_states = optional_relay_states
+        # Whether the response needs to be signed. ResponseSigned and AssertionSigned cannot be false at the same time.
+        # 
+        # true: signature is required.
+        # false: signature is not required.
         self.response_signed = response_signed
         # The algorithm that is used to calculate the signature for the SAML assertion.
         self.signature_algorithm = signature_algorithm
@@ -6231,6 +7646,10 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig(TeaMo
     def validate(self):
         if self.attribute_statements:
             for k in self.attribute_statements:
+                if k:
+                    k.validate()
+        if self.optional_relay_states:
+            for k in self.optional_relay_states:
                 if k:
                     k.validate()
 
@@ -6254,6 +7673,10 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig(TeaMo
             result['NameIdFormat'] = self.name_id_format
         if self.name_id_value_expression is not None:
             result['NameIdValueExpression'] = self.name_id_value_expression
+        result['OptionalRelayStates'] = []
+        if self.optional_relay_states is not None:
+            for k in self.optional_relay_states:
+                result['OptionalRelayStates'].append(k.to_map() if k else None)
         if self.response_signed is not None:
             result['ResponseSigned'] = self.response_signed
         if self.signature_algorithm is not None:
@@ -6281,6 +7704,11 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig(TeaMo
             self.name_id_format = m.get('NameIdFormat')
         if m.get('NameIdValueExpression') is not None:
             self.name_id_value_expression = m.get('NameIdValueExpression')
+        self.optional_relay_states = []
+        if m.get('OptionalRelayStates') is not None:
+            for k in m.get('OptionalRelayStates'):
+                temp_model = GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates()
+                self.optional_relay_states.append(temp_model.from_map(k))
         if m.get('ResponseSigned') is not None:
             self.response_signed = m.get('ResponseSigned')
         if m.get('SignatureAlgorithm') is not None:
@@ -6313,7 +7741,7 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfig(TeaModel):
         self.oidc_sso_config = oidc_sso_config
         # The configuration of the metadata endpoint provided by the application.
         self.protocol_endpoint_domain = protocol_endpoint_domain
-        # The Security Assertion Markup Language (SAML)-based SSO configuration attributes of the application. This parameter is returned only when the SSO protocol of the application is SAML 2.0.
+        # The Security Assertion Markup Language (SAML)-based SSO configuration attributes of the application. This parameter is returned only if the SSO protocol of the application is SAML 2.0.
         self.saml_sso_config = saml_sso_config
         # The SSO feature status of the application. Valid values:
         # 
@@ -6375,7 +7803,7 @@ class GetApplicationSsoConfigResponseBody(TeaModel):
         application_sso_config: GetApplicationSsoConfigResponseBodyApplicationSsoConfig = None,
         request_id: str = None,
     ):
-        # The SSO configuration information of the application.
+        # The single sign-on (SSO) configuration information of the application.
         self.application_sso_config = application_sso_config
         # The ID of the request.
         self.request_id = request_id
@@ -7196,6 +8624,1361 @@ class GetGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIdentityProviderRequest(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的身份提供方主键id
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig(TeaModel):
+    def __init__(
+        self,
+        app_key: str = None,
+        app_secret: str = None,
+        corp_id: str = None,
+        dingtalk_version: str = None,
+    ):
+        # IDaaS EIAM 钉钉一方应用的AppKey
+        self.app_key = app_key
+        # IDaaS EIAM 钉钉一方应用的AppSecret
+        self.app_secret = app_secret
+        # IDaaS EIAM 钉钉一方应用的corpId
+        self.corp_id = corp_id
+        # IDaaS EIAM 钉钉版本
+        self.dingtalk_version = dingtalk_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.app_secret is not None:
+            result['AppSecret'] = self.app_secret
+        if self.corp_id is not None:
+            result['CorpId'] = self.corp_id
+        if self.dingtalk_version is not None:
+            result['DingtalkVersion'] = self.dingtalk_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('AppSecret') is not None:
+            self.app_secret = m.get('AppSecret')
+        if m.get('CorpId') is not None:
+            self.corp_id = m.get('CorpId')
+        if m.get('DingtalkVersion') is not None:
+            self.dingtalk_version = m.get('DingtalkVersion')
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds(TeaModel):
+    def __init__(
+        self,
+        dept_id: str = None,
+        dept_name: str = None,
+    ):
+        # 钉钉部门Id
+        self.dept_id = dept_id
+        # 钉钉部门名称
+        self.dept_name = dept_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dept_id is not None:
+            result['DeptId'] = self.dept_id
+        if self.dept_name is not None:
+            result['DeptName'] = self.dept_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeptId') is not None:
+            self.dept_id = m.get('DeptId')
+        if m.get('DeptName') is not None:
+            self.dept_name = m.get('DeptName')
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        user_id: str = None,
+    ):
+        # 钉钉用户名称
+        self.name = name
+        # 钉钉用户userId
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig(TeaModel):
+    def __init__(
+        self,
+        authed_department_ids: List[GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds] = None,
+        authed_users: List[GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers] = None,
+        corp_id: str = None,
+        corp_name: str = None,
+    ):
+        # 授权的钉钉部门
+        self.authed_department_ids = authed_department_ids
+        # 授权的钉钉账户列表
+        self.authed_users = authed_users
+        # 钉钉企业corpId
+        self.corp_id = corp_id
+        # 钉钉企业名称
+        self.corp_name = corp_name
+
+    def validate(self):
+        if self.authed_department_ids:
+            for k in self.authed_department_ids:
+                if k:
+                    k.validate()
+        if self.authed_users:
+            for k in self.authed_users:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AuthedDepartmentIds'] = []
+        if self.authed_department_ids is not None:
+            for k in self.authed_department_ids:
+                result['AuthedDepartmentIds'].append(k.to_map() if k else None)
+        result['AuthedUsers'] = []
+        if self.authed_users is not None:
+            for k in self.authed_users:
+                result['AuthedUsers'].append(k.to_map() if k else None)
+        if self.corp_id is not None:
+            result['CorpId'] = self.corp_id
+        if self.corp_name is not None:
+            result['CorpName'] = self.corp_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.authed_department_ids = []
+        if m.get('AuthedDepartmentIds') is not None:
+            for k in m.get('AuthedDepartmentIds'):
+                temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds()
+                self.authed_department_ids.append(temp_model.from_map(k))
+        self.authed_users = []
+        if m.get('AuthedUsers') is not None:
+            for k in m.get('AuthedUsers'):
+                temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers()
+                self.authed_users.append(temp_model.from_map(k))
+        if m.get('CorpId') is not None:
+            self.corp_id = m.get('CorpId')
+        if m.get('CorpName') is not None:
+            self.corp_name = m.get('CorpName')
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_secret: str = None,
+        enterprise_number: str = None,
+    ):
+        # IDaaS EIAM 飞书自建应用的corpId
+        self.app_id = app_id
+        # IDaaS EIAM 飞书自建应用的AppSecret
+        self.app_secret = app_secret
+        # IDaaS EIAM 飞书企业编码
+        self.enterprise_number = enterprise_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_secret is not None:
+            result['AppSecret'] = self.app_secret
+        if self.enterprise_number is not None:
+            result['EnterpriseNumber'] = self.enterprise_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppSecret') is not None:
+            self.app_secret = m.get('AppSecret')
+        if m.get('EnterpriseNumber') is not None:
+            self.enterprise_number = m.get('EnterpriseNumber')
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig(TeaModel):
+    def __init__(
+        self,
+        administrator_password: str = None,
+        administrator_username: str = None,
+        certificate_fingerprint_status: str = None,
+        certificate_fingerprints: List[str] = None,
+        ldap_protocol: str = None,
+        ldap_server_host: str = None,
+        ldap_server_port: int = None,
+        start_tls_status: str = None,
+    ):
+        # 管理员密码
+        self.administrator_password = administrator_password
+        # 管理员账号
+        self.administrator_username = administrator_username
+        # 是否验证指纹证书
+        self.certificate_fingerprint_status = certificate_fingerprint_status
+        # 证书指纹列表
+        self.certificate_fingerprints = certificate_fingerprints
+        # 通信协议
+        self.ldap_protocol = ldap_protocol
+        # ad/ldap 服务器地址
+        self.ldap_server_host = ldap_server_host
+        # ad/ldap 服务器地址
+        self.ldap_server_port = ldap_server_port
+        # startTls是否开启
+        self.start_tls_status = start_tls_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.administrator_password is not None:
+            result['AdministratorPassword'] = self.administrator_password
+        if self.administrator_username is not None:
+            result['AdministratorUsername'] = self.administrator_username
+        if self.certificate_fingerprint_status is not None:
+            result['CertificateFingerprintStatus'] = self.certificate_fingerprint_status
+        if self.certificate_fingerprints is not None:
+            result['CertificateFingerprints'] = self.certificate_fingerprints
+        if self.ldap_protocol is not None:
+            result['LdapProtocol'] = self.ldap_protocol
+        if self.ldap_server_host is not None:
+            result['LdapServerHost'] = self.ldap_server_host
+        if self.ldap_server_port is not None:
+            result['LdapServerPort'] = self.ldap_server_port
+        if self.start_tls_status is not None:
+            result['StartTlsStatus'] = self.start_tls_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdministratorPassword') is not None:
+            self.administrator_password = m.get('AdministratorPassword')
+        if m.get('AdministratorUsername') is not None:
+            self.administrator_username = m.get('AdministratorUsername')
+        if m.get('CertificateFingerprintStatus') is not None:
+            self.certificate_fingerprint_status = m.get('CertificateFingerprintStatus')
+        if m.get('CertificateFingerprints') is not None:
+            self.certificate_fingerprints = m.get('CertificateFingerprints')
+        if m.get('LdapProtocol') is not None:
+            self.ldap_protocol = m.get('LdapProtocol')
+        if m.get('LdapServerHost') is not None:
+            self.ldap_server_host = m.get('LdapServerHost')
+        if m.get('LdapServerPort') is not None:
+            self.ldap_server_port = m.get('LdapServerPort')
+        if m.get('StartTlsStatus') is not None:
+            self.start_tls_status = m.get('StartTlsStatus')
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam(TeaModel):
+    def __init__(
+        self,
+        authn_method: str = None,
+        client_id: str = None,
+        client_secret: str = None,
+    ):
+        # OIDC/oAuth2 认证方法。
+        self.authn_method = authn_method
+        # OIDC/oAuth2 客户端ID。
+        self.client_id = client_id
+        # OIDC/oAuth2 客户端密钥。
+        self.client_secret = client_secret
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authn_method is not None:
+            result['AuthnMethod'] = self.authn_method
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_secret is not None:
+            result['ClientSecret'] = self.client_secret
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthnMethod') is not None:
+            self.authn_method = m.get('AuthnMethod')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientSecret') is not None:
+            self.client_secret = m.get('ClientSecret')
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig(TeaModel):
+    def __init__(
+        self,
+        authorization_endpoint: str = None,
+        issuer: str = None,
+        jwks_uri: str = None,
+        token_endpoint: str = None,
+        userinfo_endpoint: str = None,
+    ):
+        # oAuth2 授权端点。
+        self.authorization_endpoint = authorization_endpoint
+        # OIDC issuer信息。
+        self.issuer = issuer
+        # OIDC jwks地址。
+        self.jwks_uri = jwks_uri
+        # oAuth2 Token端点。
+        self.token_endpoint = token_endpoint
+        # OIDC 用户信息端点。
+        self.userinfo_endpoint = userinfo_endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_endpoint is not None:
+            result['AuthorizationEndpoint'] = self.authorization_endpoint
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.jwks_uri is not None:
+            result['JwksUri'] = self.jwks_uri
+        if self.token_endpoint is not None:
+            result['TokenEndpoint'] = self.token_endpoint
+        if self.userinfo_endpoint is not None:
+            result['UserinfoEndpoint'] = self.userinfo_endpoint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationEndpoint') is not None:
+            self.authorization_endpoint = m.get('AuthorizationEndpoint')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('JwksUri') is not None:
+            self.jwks_uri = m.get('JwksUri')
+        if m.get('TokenEndpoint') is not None:
+            self.token_endpoint = m.get('TokenEndpoint')
+        if m.get('UserinfoEndpoint') is not None:
+            self.userinfo_endpoint = m.get('UserinfoEndpoint')
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig(TeaModel):
+    def __init__(
+        self,
+        authn_param: GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam = None,
+        endpoint_config: GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig = None,
+        grant_scopes: List[str] = None,
+        grant_type: str = None,
+        pkce_challenge_method: str = None,
+        pkce_required: bool = None,
+    ):
+        # OIDC客户端认证配置。
+        self.authn_param = authn_param
+        # OIDC 端点配置。
+        self.endpoint_config = endpoint_config
+        # OIDC标准参数，如profile、email等
+        self.grant_scopes = grant_scopes
+        # OIDC授权类型。
+        self.grant_type = grant_type
+        # 支持的PKCE算法类型。
+        self.pkce_challenge_method = pkce_challenge_method
+        # AuthorizationCode授权模式下是否使用PKCE。
+        self.pkce_required = pkce_required
+
+    def validate(self):
+        if self.authn_param:
+            self.authn_param.validate()
+        if self.endpoint_config:
+            self.endpoint_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authn_param is not None:
+            result['AuthnParam'] = self.authn_param.to_map()
+        if self.endpoint_config is not None:
+            result['EndpointConfig'] = self.endpoint_config.to_map()
+        if self.grant_scopes is not None:
+            result['GrantScopes'] = self.grant_scopes
+        if self.grant_type is not None:
+            result['GrantType'] = self.grant_type
+        if self.pkce_challenge_method is not None:
+            result['PkceChallengeMethod'] = self.pkce_challenge_method
+        if self.pkce_required is not None:
+            result['PkceRequired'] = self.pkce_required
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthnParam') is not None:
+            temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam()
+            self.authn_param = temp_model.from_map(m['AuthnParam'])
+        if m.get('EndpointConfig') is not None:
+            temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig()
+            self.endpoint_config = temp_model.from_map(m['EndpointConfig'])
+        if m.get('GrantScopes') is not None:
+            self.grant_scopes = m.get('GrantScopes')
+        if m.get('GrantType') is not None:
+            self.grant_type = m.get('GrantType')
+        if m.get('PkceChallengeMethod') is not None:
+            self.pkce_challenge_method = m.get('PkceChallengeMethod')
+        if m.get('PkceRequired') is not None:
+            self.pkce_required = m.get('PkceRequired')
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig(TeaModel):
+    def __init__(
+        self,
+        source_scopes: List[str] = None,
+        target_scope: str = None,
+    ):
+        # 同步来源节点
+        self.source_scopes = source_scopes
+        # 同步目标节点
+        self.target_scope = target_scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_scopes is not None:
+            result['SourceScopes'] = self.source_scopes
+        if self.target_scope is not None:
+            result['TargetScope'] = self.target_scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceScopes') is not None:
+            self.source_scopes = m.get('SourceScopes')
+        if m.get('TargetScope') is not None:
+            self.target_scope = m.get('TargetScope')
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig(TeaModel):
+    def __init__(
+        self,
+        group_sync_status: str = None,
+        incremental_callback_status: str = None,
+        ud_sync_scope_config: GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig = None,
+    ):
+        self.group_sync_status = group_sync_status
+        # 增量回调状态，是否处理来自IdP的增量回调数据
+        self.incremental_callback_status = incremental_callback_status
+        # 同步入配置信息
+        self.ud_sync_scope_config = ud_sync_scope_config
+
+    def validate(self):
+        if self.ud_sync_scope_config:
+            self.ud_sync_scope_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_sync_status is not None:
+            result['GroupSyncStatus'] = self.group_sync_status
+        if self.incremental_callback_status is not None:
+            result['IncrementalCallbackStatus'] = self.incremental_callback_status
+        if self.ud_sync_scope_config is not None:
+            result['UdSyncScopeConfig'] = self.ud_sync_scope_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupSyncStatus') is not None:
+            self.group_sync_status = m.get('GroupSyncStatus')
+        if m.get('IncrementalCallbackStatus') is not None:
+            self.incremental_callback_status = m.get('IncrementalCallbackStatus')
+        if m.get('UdSyncScopeConfig') is not None:
+            temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig()
+            self.ud_sync_scope_config = temp_model.from_map(m['UdSyncScopeConfig'])
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs(TeaModel):
+    def __init__(
+        self,
+        source_scopes: List[str] = None,
+        target_scope: str = None,
+    ):
+        # 同步来源节点
+        self.source_scopes = source_scopes
+        # 同步目标节点
+        self.target_scope = target_scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_scopes is not None:
+            result['SourceScopes'] = self.source_scopes
+        if self.target_scope is not None:
+            result['TargetScope'] = self.target_scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceScopes') is not None:
+            self.source_scopes = m.get('SourceScopes')
+        if m.get('TargetScope') is not None:
+            self.target_scope = m.get('TargetScope')
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig(TeaModel):
+    def __init__(
+        self,
+        incremental_callback_status: str = None,
+        ud_sync_scope_configs: List[GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs] = None,
+    ):
+        # 增量回调状态，是否处理来自IdP的增量回调数据
+        self.incremental_callback_status = incremental_callback_status
+        # 同步出配置信息
+        self.ud_sync_scope_configs = ud_sync_scope_configs
+
+    def validate(self):
+        if self.ud_sync_scope_configs:
+            for k in self.ud_sync_scope_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.incremental_callback_status is not None:
+            result['IncrementalCallbackStatus'] = self.incremental_callback_status
+        result['UdSyncScopeConfigs'] = []
+        if self.ud_sync_scope_configs is not None:
+            for k in self.ud_sync_scope_configs:
+                result['UdSyncScopeConfigs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IncrementalCallbackStatus') is not None:
+            self.incremental_callback_status = m.get('IncrementalCallbackStatus')
+        self.ud_sync_scope_configs = []
+        if m.get('UdSyncScopeConfigs') is not None:
+            for k in m.get('UdSyncScopeConfigs'):
+                temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs()
+                self.ud_sync_scope_configs.append(temp_model.from_map(k))
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        authorize_callback_domain: str = None,
+        corp_id: str = None,
+        corp_secret: str = None,
+        trustable_domain: str = None,
+    ):
+        # IDaaS EIAM 企业微信自建应用的Id
+        self.agent_id = agent_id
+        # 授权回调域
+        self.authorize_callback_domain = authorize_callback_domain
+        # IDaaS EIAM 企业微信自建应用的corpId
+        self.corp_id = corp_id
+        # IDaaS EIAM 企业微信自建应用的corpSecret
+        self.corp_secret = corp_secret
+        # 可信域名
+        self.trustable_domain = trustable_domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.authorize_callback_domain is not None:
+            result['AuthorizeCallbackDomain'] = self.authorize_callback_domain
+        if self.corp_id is not None:
+            result['CorpId'] = self.corp_id
+        if self.corp_secret is not None:
+            result['CorpSecret'] = self.corp_secret
+        if self.trustable_domain is not None:
+            result['TrustableDomain'] = self.trustable_domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AuthorizeCallbackDomain') is not None:
+            self.authorize_callback_domain = m.get('AuthorizeCallbackDomain')
+        if m.get('CorpId') is not None:
+            self.corp_id = m.get('CorpId')
+        if m.get('CorpSecret') is not None:
+            self.corp_secret = m.get('CorpSecret')
+        if m.get('TrustableDomain') is not None:
+            self.trustable_domain = m.get('TrustableDomain')
+        return self
+
+
+class GetIdentityProviderResponseBodyIdentityProviderDetail(TeaModel):
+    def __init__(
+        self,
+        advanced_status: str = None,
+        authn_source_supplier: str = None,
+        authn_source_type: str = None,
+        authn_status: str = None,
+        create_time: int = None,
+        description: str = None,
+        dingtalk_app_config: GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig = None,
+        dingtalk_provisioning_config: GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig = None,
+        identity_provider_external_id: str = None,
+        identity_provider_id: str = None,
+        identity_provider_name: str = None,
+        identity_provider_type: str = None,
+        instance_id: str = None,
+        lark_config: GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig = None,
+        last_status_check_job_result: str = None,
+        ldap_config: GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig = None,
+        lock_reason: str = None,
+        network_access_endpoint_id: str = None,
+        oidc_config: GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig = None,
+        ud_pull_config: GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig = None,
+        ud_pull_status: str = None,
+        ud_push_config: GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig = None,
+        ud_push_status: str = None,
+        update_time: int = None,
+        we_com_config: GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig = None,
+    ):
+        # 高阶配置能力
+        self.advanced_status = advanced_status
+        # IDaaS EIAM 对应的认证来源产品，okta or google or azure ad
+        self.authn_source_supplier = authn_source_supplier
+        # IDaaS EIAM 认证方式类型 oidc or saml
+        self.authn_source_type = authn_source_type
+        # IDaaS EIAM 对应IdP是否支持认证
+        self.authn_status = authn_status
+        # 创建时间
+        self.create_time = create_time
+        # IDaaS EIAM 身份提供方描述
+        self.description = description
+        # 钉钉基础配置
+        self.dingtalk_app_config = dingtalk_app_config
+        # 钉钉同步配置
+        self.dingtalk_provisioning_config = dingtalk_provisioning_config
+        # IDaaS EIAM 身份提供方外部ID
+        self.identity_provider_external_id = identity_provider_external_id
+        # IDaaS EIAM 身份提供方ID
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM 身份提供方名称
+        self.identity_provider_name = identity_provider_name
+        # 身份提供方同步类型
+        self.identity_provider_type = identity_provider_type
+        # IDaaS EIAM 实例Id
+        self.instance_id = instance_id
+        # 飞书配置
+        self.lark_config = lark_config
+        # 最后一次状态检查结果
+        self.last_status_check_job_result = last_status_check_job_result
+        # AD/LDAP身份提供方相关信息
+        self.ldap_config = ldap_config
+        # 锁定原因
+        self.lock_reason = lock_reason
+        # 网络端点ID
+        self.network_access_endpoint_id = network_access_endpoint_id
+        # OIDC IdP配置。
+        self.oidc_config = oidc_config
+        # 同步入配置
+        self.ud_pull_config = ud_pull_config
+        # IDaaS EIAM 是否支持UD同步
+        self.ud_pull_status = ud_pull_status
+        # 同步出配置
+        self.ud_push_config = ud_push_config
+        # 同步出能力
+        self.ud_push_status = ud_push_status
+        # 更新时间
+        self.update_time = update_time
+        # 企业微信
+        self.we_com_config = we_com_config
+
+    def validate(self):
+        if self.dingtalk_app_config:
+            self.dingtalk_app_config.validate()
+        if self.dingtalk_provisioning_config:
+            self.dingtalk_provisioning_config.validate()
+        if self.lark_config:
+            self.lark_config.validate()
+        if self.ldap_config:
+            self.ldap_config.validate()
+        if self.oidc_config:
+            self.oidc_config.validate()
+        if self.ud_pull_config:
+            self.ud_pull_config.validate()
+        if self.ud_push_config:
+            self.ud_push_config.validate()
+        if self.we_com_config:
+            self.we_com_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_status is not None:
+            result['AdvancedStatus'] = self.advanced_status
+        if self.authn_source_supplier is not None:
+            result['AuthnSourceSupplier'] = self.authn_source_supplier
+        if self.authn_source_type is not None:
+            result['AuthnSourceType'] = self.authn_source_type
+        if self.authn_status is not None:
+            result['AuthnStatus'] = self.authn_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dingtalk_app_config is not None:
+            result['DingtalkAppConfig'] = self.dingtalk_app_config.to_map()
+        if self.dingtalk_provisioning_config is not None:
+            result['DingtalkProvisioningConfig'] = self.dingtalk_provisioning_config.to_map()
+        if self.identity_provider_external_id is not None:
+            result['IdentityProviderExternalId'] = self.identity_provider_external_id
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.identity_provider_name is not None:
+            result['IdentityProviderName'] = self.identity_provider_name
+        if self.identity_provider_type is not None:
+            result['IdentityProviderType'] = self.identity_provider_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lark_config is not None:
+            result['LarkConfig'] = self.lark_config.to_map()
+        if self.last_status_check_job_result is not None:
+            result['LastStatusCheckJobResult'] = self.last_status_check_job_result
+        if self.ldap_config is not None:
+            result['LdapConfig'] = self.ldap_config.to_map()
+        if self.lock_reason is not None:
+            result['LockReason'] = self.lock_reason
+        if self.network_access_endpoint_id is not None:
+            result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
+        if self.oidc_config is not None:
+            result['OidcConfig'] = self.oidc_config.to_map()
+        if self.ud_pull_config is not None:
+            result['UdPullConfig'] = self.ud_pull_config.to_map()
+        if self.ud_pull_status is not None:
+            result['UdPullStatus'] = self.ud_pull_status
+        if self.ud_push_config is not None:
+            result['UdPushConfig'] = self.ud_push_config.to_map()
+        if self.ud_push_status is not None:
+            result['UdPushStatus'] = self.ud_push_status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.we_com_config is not None:
+            result['WeComConfig'] = self.we_com_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdvancedStatus') is not None:
+            self.advanced_status = m.get('AdvancedStatus')
+        if m.get('AuthnSourceSupplier') is not None:
+            self.authn_source_supplier = m.get('AuthnSourceSupplier')
+        if m.get('AuthnSourceType') is not None:
+            self.authn_source_type = m.get('AuthnSourceType')
+        if m.get('AuthnStatus') is not None:
+            self.authn_status = m.get('AuthnStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DingtalkAppConfig') is not None:
+            temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig()
+            self.dingtalk_app_config = temp_model.from_map(m['DingtalkAppConfig'])
+        if m.get('DingtalkProvisioningConfig') is not None:
+            temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig()
+            self.dingtalk_provisioning_config = temp_model.from_map(m['DingtalkProvisioningConfig'])
+        if m.get('IdentityProviderExternalId') is not None:
+            self.identity_provider_external_id = m.get('IdentityProviderExternalId')
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('IdentityProviderName') is not None:
+            self.identity_provider_name = m.get('IdentityProviderName')
+        if m.get('IdentityProviderType') is not None:
+            self.identity_provider_type = m.get('IdentityProviderType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LarkConfig') is not None:
+            temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig()
+            self.lark_config = temp_model.from_map(m['LarkConfig'])
+        if m.get('LastStatusCheckJobResult') is not None:
+            self.last_status_check_job_result = m.get('LastStatusCheckJobResult')
+        if m.get('LdapConfig') is not None:
+            temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig()
+            self.ldap_config = temp_model.from_map(m['LdapConfig'])
+        if m.get('LockReason') is not None:
+            self.lock_reason = m.get('LockReason')
+        if m.get('NetworkAccessEndpointId') is not None:
+            self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
+        if m.get('OidcConfig') is not None:
+            temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig()
+            self.oidc_config = temp_model.from_map(m['OidcConfig'])
+        if m.get('UdPullConfig') is not None:
+            temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig()
+            self.ud_pull_config = temp_model.from_map(m['UdPullConfig'])
+        if m.get('UdPullStatus') is not None:
+            self.ud_pull_status = m.get('UdPullStatus')
+        if m.get('UdPushConfig') is not None:
+            temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig()
+            self.ud_push_config = temp_model.from_map(m['UdPushConfig'])
+        if m.get('UdPushStatus') is not None:
+            self.ud_push_status = m.get('UdPushStatus')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('WeComConfig') is not None:
+            temp_model = GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig()
+            self.we_com_config = temp_model.from_map(m['WeComConfig'])
+        return self
+
+
+class GetIdentityProviderResponseBody(TeaModel):
+    def __init__(
+        self,
+        identity_provider_detail: GetIdentityProviderResponseBodyIdentityProviderDetail = None,
+        request_id: str = None,
+    ):
+        self.identity_provider_detail = identity_provider_detail
+        self.request_id = request_id
+
+    def validate(self):
+        if self.identity_provider_detail:
+            self.identity_provider_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_detail is not None:
+            result['IdentityProviderDetail'] = self.identity_provider_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderDetail') is not None:
+            temp_model = GetIdentityProviderResponseBodyIdentityProviderDetail()
+            self.identity_provider_detail = temp_model.from_map(m['IdentityProviderDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetIdentityProviderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetIdentityProviderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetIdentityProviderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIdentityProviderUdPullConfigurationRequest(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的身份提供方主键id
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig(TeaModel):
+    def __init__(
+        self,
+        group_member_attribute_name: str = None,
+        group_object_class: str = None,
+        group_object_class_custom_filter: str = None,
+        organization_unit_object_class: str = None,
+        user_object_class: str = None,
+        user_object_class_custom_filter: str = None,
+    ):
+        # 组成员标识
+        self.group_member_attribute_name = group_member_attribute_name
+        # 组objectClass
+        self.group_object_class = group_object_class
+        # 组自定义Filter
+        self.group_object_class_custom_filter = group_object_class_custom_filter
+        # 组织objectClass
+        self.organization_unit_object_class = organization_unit_object_class
+        # 用户objectClass
+        self.user_object_class = user_object_class
+        # 用户自定义Filter
+        self.user_object_class_custom_filter = user_object_class_custom_filter
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_member_attribute_name is not None:
+            result['GroupMemberAttributeName'] = self.group_member_attribute_name
+        if self.group_object_class is not None:
+            result['GroupObjectClass'] = self.group_object_class
+        if self.group_object_class_custom_filter is not None:
+            result['GroupObjectClassCustomFilter'] = self.group_object_class_custom_filter
+        if self.organization_unit_object_class is not None:
+            result['OrganizationUnitObjectClass'] = self.organization_unit_object_class
+        if self.user_object_class is not None:
+            result['UserObjectClass'] = self.user_object_class
+        if self.user_object_class_custom_filter is not None:
+            result['UserObjectClassCustomFilter'] = self.user_object_class_custom_filter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupMemberAttributeName') is not None:
+            self.group_member_attribute_name = m.get('GroupMemberAttributeName')
+        if m.get('GroupObjectClass') is not None:
+            self.group_object_class = m.get('GroupObjectClass')
+        if m.get('GroupObjectClassCustomFilter') is not None:
+            self.group_object_class_custom_filter = m.get('GroupObjectClassCustomFilter')
+        if m.get('OrganizationUnitObjectClass') is not None:
+            self.organization_unit_object_class = m.get('OrganizationUnitObjectClass')
+        if m.get('UserObjectClass') is not None:
+            self.user_object_class = m.get('UserObjectClass')
+        if m.get('UserObjectClassCustomFilter') is not None:
+            self.user_object_class_custom_filter = m.get('UserObjectClassCustomFilter')
+        return self
+
+
+class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule(TeaModel):
+    def __init__(
+        self,
+        group_deleted_threshold: int = None,
+        organizational_unit_deleted_threshold: int = None,
+        user_deleted_threshold: int = None,
+    ):
+        # 同步保护规则-删除组数量
+        self.group_deleted_threshold = group_deleted_threshold
+        # IDaaS EIAM 钉钉一方应用同步保护规则-删除组织数量
+        self.organizational_unit_deleted_threshold = organizational_unit_deleted_threshold
+        # IDaaS EIAM 钉钉一方应用同步保护规则-删除账户数量
+        self.user_deleted_threshold = user_deleted_threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_deleted_threshold is not None:
+            result['GroupDeletedThreshold'] = self.group_deleted_threshold
+        if self.organizational_unit_deleted_threshold is not None:
+            result['OrganizationalUnitDeletedThreshold'] = self.organizational_unit_deleted_threshold
+        if self.user_deleted_threshold is not None:
+            result['UserDeletedThreshold'] = self.user_deleted_threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupDeletedThreshold') is not None:
+            self.group_deleted_threshold = m.get('GroupDeletedThreshold')
+        if m.get('OrganizationalUnitDeletedThreshold') is not None:
+            self.organizational_unit_deleted_threshold = m.get('OrganizationalUnitDeletedThreshold')
+        if m.get('UserDeletedThreshold') is not None:
+            self.user_deleted_threshold = m.get('UserDeletedThreshold')
+        return self
+
+
+class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig(TeaModel):
+    def __init__(
+        self,
+        source_scopes: List[str] = None,
+        target_scope: str = None,
+    ):
+        # 同步来源节点
+        self.source_scopes = source_scopes
+        # 同步目标节点
+        self.target_scope = target_scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_scopes is not None:
+            result['SourceScopes'] = self.source_scopes
+        if self.target_scope is not None:
+            result['TargetScope'] = self.target_scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceScopes') is not None:
+            self.source_scopes = m.get('SourceScopes')
+        if m.get('TargetScope') is not None:
+            self.target_scope = m.get('TargetScope')
+        return self
+
+
+class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration(TeaModel):
+    def __init__(
+        self,
+        group_sync_status: str = None,
+        identity_provider_id: str = None,
+        incremental_callback_status: str = None,
+        instance_id: str = None,
+        ldap_ud_pull_config: GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig = None,
+        periodic_sync_status: str = None,
+        pull_protected_rule: GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule = None,
+        ud_sync_scope_config: GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig = None,
+    ):
+        # 组同步状态
+        self.group_sync_status = group_sync_status
+        # IDaaS EIAM 身份提供方ID
+        self.identity_provider_id = identity_provider_id
+        # 增量回调状态，是否处理来自IdP的增量回调数据
+        self.incremental_callback_status = incremental_callback_status
+        # IDaaS EIAM 实例Id
+        self.instance_id = instance_id
+        # ldap同步侧相关配置信息
+        self.ldap_ud_pull_config = ldap_ud_pull_config
+        self.periodic_sync_status = periodic_sync_status
+        # 同步入用户映射字段配置列表
+        self.pull_protected_rule = pull_protected_rule
+        # 同步入配置信息
+        self.ud_sync_scope_config = ud_sync_scope_config
+
+    def validate(self):
+        if self.ldap_ud_pull_config:
+            self.ldap_ud_pull_config.validate()
+        if self.pull_protected_rule:
+            self.pull_protected_rule.validate()
+        if self.ud_sync_scope_config:
+            self.ud_sync_scope_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_sync_status is not None:
+            result['GroupSyncStatus'] = self.group_sync_status
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.incremental_callback_status is not None:
+            result['IncrementalCallbackStatus'] = self.incremental_callback_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ldap_ud_pull_config is not None:
+            result['LdapUdPullConfig'] = self.ldap_ud_pull_config.to_map()
+        if self.periodic_sync_status is not None:
+            result['PeriodicSyncStatus'] = self.periodic_sync_status
+        if self.pull_protected_rule is not None:
+            result['PullProtectedRule'] = self.pull_protected_rule.to_map()
+        if self.ud_sync_scope_config is not None:
+            result['UdSyncScopeConfig'] = self.ud_sync_scope_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupSyncStatus') is not None:
+            self.group_sync_status = m.get('GroupSyncStatus')
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('IncrementalCallbackStatus') is not None:
+            self.incremental_callback_status = m.get('IncrementalCallbackStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LdapUdPullConfig') is not None:
+            temp_model = GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig()
+            self.ldap_ud_pull_config = temp_model.from_map(m['LdapUdPullConfig'])
+        if m.get('PeriodicSyncStatus') is not None:
+            self.periodic_sync_status = m.get('PeriodicSyncStatus')
+        if m.get('PullProtectedRule') is not None:
+            temp_model = GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule()
+            self.pull_protected_rule = temp_model.from_map(m['PullProtectedRule'])
+        if m.get('UdSyncScopeConfig') is not None:
+            temp_model = GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig()
+            self.ud_sync_scope_config = temp_model.from_map(m['UdSyncScopeConfig'])
+        return self
+
+
+class GetIdentityProviderUdPullConfigurationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        ud_pull_configuration: GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration = None,
+    ):
+        self.request_id = request_id
+        self.ud_pull_configuration = ud_pull_configuration
+
+    def validate(self):
+        if self.ud_pull_configuration:
+            self.ud_pull_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ud_pull_configuration is not None:
+            result['UdPullConfiguration'] = self.ud_pull_configuration.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('UdPullConfiguration') is not None:
+            temp_model = GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration()
+            self.ud_pull_configuration = temp_model.from_map(m['UdPullConfiguration'])
+        return self
+
+
+class GetIdentityProviderUdPullConfigurationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetIdentityProviderUdPullConfigurationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetIdentityProviderUdPullConfigurationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8150,6 +10933,17 @@ class GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfigurat
         password_forced_update_duration: int = None,
         password_valid_max_day: int = None,
     ):
+        # The list of valid authentication IDs. The default is all ["ia_all"]
+        # 
+        # ia_all: All. If you fill in this value, you cannot fill in other values
+        # 
+        # ia_password: Account password login
+        # 
+        # ia_otp_sms: SMS verification code login method
+        # 
+        # ia_webauthn: WebAuthn authenticator login method
+        # 
+        # idp_xxx: Specific identity provider authentication method
         self.effective_authentication_source_ids = effective_authentication_source_ids
         # The action to take when a password expires. Valid values:
         # 
@@ -13292,6 +16086,282 @@ class ListGroupsForUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListGroupsForUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListIdentityProvidersRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 当前查询的列表页码，默认为1。
+        self.page_number = page_number
+        # 当前查询的列表页码，默认为20。
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListIdentityProvidersResponseBodyIdentityProviders(TeaModel):
+    def __init__(
+        self,
+        advanced_status: str = None,
+        authn_source_supplier: str = None,
+        authn_source_type: str = None,
+        authn_status: str = None,
+        create_time: int = None,
+        description: str = None,
+        identity_provider_external_id: str = None,
+        identity_provider_id: str = None,
+        identity_provider_name: str = None,
+        identity_provider_type: str = None,
+        incremental_callback_status: str = None,
+        instance_id: str = None,
+        last_status_check_job_result: str = None,
+        lock_reason: str = None,
+        ud_pull_status: str = None,
+        ud_pull_target_scope: str = None,
+        ud_push_status: str = None,
+        update_time: int = None,
+    ):
+        # 高阶配置能力
+        self.advanced_status = advanced_status
+        # IDaaS EIAM 对应的认证来源产品，okta or google or azure ad
+        self.authn_source_supplier = authn_source_supplier
+        # IDaaS EIAM 认证方式类型 oidc or saml
+        self.authn_source_type = authn_source_type
+        # IDaaS EIAM 对应IdP是否支持认证
+        self.authn_status = authn_status
+        self.create_time = create_time
+        # IDaaS EIAM 身份提供方描述
+        self.description = description
+        # IDaaS EIAM 身份提供方外部ID
+        self.identity_provider_external_id = identity_provider_external_id
+        # IDaaS EIAM 身份提供方ID
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM 身份提供方名称
+        self.identity_provider_name = identity_provider_name
+        # 身份提供方同步类型
+        self.identity_provider_type = identity_provider_type
+        # 增量回调状态，是否处理来自IdP的增量回调数据
+        self.incremental_callback_status = incremental_callback_status
+        # IDaaS EIAM 实例Id
+        self.instance_id = instance_id
+        self.last_status_check_job_result = last_status_check_job_result
+        # 锁定原因
+        self.lock_reason = lock_reason
+        # IDaaS EIAM 是否支持UD同步
+        self.ud_pull_status = ud_pull_status
+        # 当支持ud_pullIDaaS侧UD中的范围
+        self.ud_pull_target_scope = ud_pull_target_scope
+        # 同步出能力
+        self.ud_push_status = ud_push_status
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_status is not None:
+            result['AdvancedStatus'] = self.advanced_status
+        if self.authn_source_supplier is not None:
+            result['AuthnSourceSupplier'] = self.authn_source_supplier
+        if self.authn_source_type is not None:
+            result['AuthnSourceType'] = self.authn_source_type
+        if self.authn_status is not None:
+            result['AuthnStatus'] = self.authn_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.identity_provider_external_id is not None:
+            result['IdentityProviderExternalId'] = self.identity_provider_external_id
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.identity_provider_name is not None:
+            result['IdentityProviderName'] = self.identity_provider_name
+        if self.identity_provider_type is not None:
+            result['IdentityProviderType'] = self.identity_provider_type
+        if self.incremental_callback_status is not None:
+            result['IncrementalCallbackStatus'] = self.incremental_callback_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_status_check_job_result is not None:
+            result['LastStatusCheckJobResult'] = self.last_status_check_job_result
+        if self.lock_reason is not None:
+            result['LockReason'] = self.lock_reason
+        if self.ud_pull_status is not None:
+            result['UdPullStatus'] = self.ud_pull_status
+        if self.ud_pull_target_scope is not None:
+            result['UdPullTargetScope'] = self.ud_pull_target_scope
+        if self.ud_push_status is not None:
+            result['UdPushStatus'] = self.ud_push_status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdvancedStatus') is not None:
+            self.advanced_status = m.get('AdvancedStatus')
+        if m.get('AuthnSourceSupplier') is not None:
+            self.authn_source_supplier = m.get('AuthnSourceSupplier')
+        if m.get('AuthnSourceType') is not None:
+            self.authn_source_type = m.get('AuthnSourceType')
+        if m.get('AuthnStatus') is not None:
+            self.authn_status = m.get('AuthnStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('IdentityProviderExternalId') is not None:
+            self.identity_provider_external_id = m.get('IdentityProviderExternalId')
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('IdentityProviderName') is not None:
+            self.identity_provider_name = m.get('IdentityProviderName')
+        if m.get('IdentityProviderType') is not None:
+            self.identity_provider_type = m.get('IdentityProviderType')
+        if m.get('IncrementalCallbackStatus') is not None:
+            self.incremental_callback_status = m.get('IncrementalCallbackStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastStatusCheckJobResult') is not None:
+            self.last_status_check_job_result = m.get('LastStatusCheckJobResult')
+        if m.get('LockReason') is not None:
+            self.lock_reason = m.get('LockReason')
+        if m.get('UdPullStatus') is not None:
+            self.ud_pull_status = m.get('UdPullStatus')
+        if m.get('UdPullTargetScope') is not None:
+            self.ud_pull_target_scope = m.get('UdPullTargetScope')
+        if m.get('UdPushStatus') is not None:
+            self.ud_push_status = m.get('UdPushStatus')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListIdentityProvidersResponseBody(TeaModel):
+    def __init__(
+        self,
+        identity_providers: List[ListIdentityProvidersResponseBodyIdentityProviders] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.identity_providers = identity_providers
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.identity_providers:
+            for k in self.identity_providers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IdentityProviders'] = []
+        if self.identity_providers is not None:
+            for k in self.identity_providers:
+                result['IdentityProviders'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.identity_providers = []
+        if m.get('IdentityProviders') is not None:
+            for k in m.get('IdentityProviders'):
+                temp_model = ListIdentityProvidersResponseBodyIdentityProviders()
+                self.identity_providers.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListIdentityProvidersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIdentityProvidersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIdentityProvidersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19545,6 +22615,39 @@ class SetApplicationSsoConfigRequestSamlSsoConfigAttributeStatements(TeaModel):
         return self
 
 
+class SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        relay_state: str = None,
+    ):
+        self.display_name = display_name
+        self.relay_state = relay_state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.relay_state is not None:
+            result['RelayState'] = self.relay_state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('RelayState') is not None:
+            self.relay_state = m.get('RelayState')
+        return self
+
+
 class SetApplicationSsoConfigRequestSamlSsoConfig(TeaModel):
     def __init__(
         self,
@@ -19554,6 +22657,7 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(TeaModel):
         id_pentity_id: str = None,
         name_id_format: str = None,
         name_id_value_expression: str = None,
+        optional_relay_states: List[SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates] = None,
         response_signed: bool = None,
         signature_algorithm: str = None,
         sp_entity_id: str = None,
@@ -19578,6 +22682,7 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(TeaModel):
         self.name_id_format = name_id_format
         # The expression that is used to generate the value of NameID in the SAML assertion.
         self.name_id_value_expression = name_id_value_expression
+        self.optional_relay_states = optional_relay_states
         # Specifies whether to calculate the signature for the response. You cannot set ResponseSigned and AssertionSigned to false at the same time.
         # 
         # *   true
@@ -19611,6 +22716,10 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(TeaModel):
             for k in self.attribute_statements:
                 if k:
                     k.validate()
+        if self.optional_relay_states:
+            for k in self.optional_relay_states:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -19632,6 +22741,10 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(TeaModel):
             result['NameIdFormat'] = self.name_id_format
         if self.name_id_value_expression is not None:
             result['NameIdValueExpression'] = self.name_id_value_expression
+        result['OptionalRelayStates'] = []
+        if self.optional_relay_states is not None:
+            for k in self.optional_relay_states:
+                result['OptionalRelayStates'].append(k.to_map() if k else None)
         if self.response_signed is not None:
             result['ResponseSigned'] = self.response_signed
         if self.signature_algorithm is not None:
@@ -19659,6 +22772,11 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(TeaModel):
             self.name_id_format = m.get('NameIdFormat')
         if m.get('NameIdValueExpression') is not None:
             self.name_id_value_expression = m.get('NameIdValueExpression')
+        self.optional_relay_states = []
+        if m.get('OptionalRelayStates') is not None:
+            for k in m.get('OptionalRelayStates'):
+                temp_model = SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates()
+                self.optional_relay_states.append(temp_model.from_map(k))
         if m.get('ResponseSigned') is not None:
             self.response_signed = m.get('ResponseSigned')
         if m.get('SignatureAlgorithm') is not None:
@@ -19674,6 +22792,7 @@ class SetApplicationSsoConfigRequest(TeaModel):
     def __init__(
         self,
         application_id: str = None,
+        client_token: str = None,
         init_login_type: str = None,
         init_login_url: str = None,
         instance_id: str = None,
@@ -19684,6 +22803,7 @@ class SetApplicationSsoConfigRequest(TeaModel):
         # 
         # This parameter is required.
         self.application_id = application_id
+        self.client_token = client_token
         # The initial SSO method. Valid values:
         # 
         # *   only_app_init_sso: Only application-initiated SSO is allowed. This method is selected by default when the SSO protocol of the application is an OIDC protocol. If this method is selected when the SSO protocol of the application is SAML, the InitLoginUrl parameter is required.
@@ -19714,6 +22834,8 @@ class SetApplicationSsoConfigRequest(TeaModel):
         result = dict()
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.init_login_type is not None:
             result['InitLoginType'] = self.init_login_type
         if self.init_login_url is not None:
@@ -19730,6 +22852,8 @@ class SetApplicationSsoConfigRequest(TeaModel):
         m = m or dict()
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('InitLoginType') is not None:
             self.init_login_type = m.get('InitLoginType')
         if m.get('InitLoginUrl') is not None:
@@ -20032,6 +23156,304 @@ class SetForgetPasswordConfigurationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetForgetPasswordConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig(TeaModel):
+    def __init__(
+        self,
+        group_member_attribute_name: str = None,
+        group_object_class: str = None,
+        group_object_class_custom_filter: str = None,
+        organization_unit_object_class: str = None,
+        user_object_class: str = None,
+        user_object_class_custom_filter: str = None,
+    ):
+        # 组成员标识
+        self.group_member_attribute_name = group_member_attribute_name
+        # 组objectClass
+        self.group_object_class = group_object_class
+        # 组自定义Filter
+        self.group_object_class_custom_filter = group_object_class_custom_filter
+        # 组织ObjectClass
+        self.organization_unit_object_class = organization_unit_object_class
+        # 用户ObjectClass
+        self.user_object_class = user_object_class
+        # 用户自定义Filter
+        self.user_object_class_custom_filter = user_object_class_custom_filter
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_member_attribute_name is not None:
+            result['GroupMemberAttributeName'] = self.group_member_attribute_name
+        if self.group_object_class is not None:
+            result['GroupObjectClass'] = self.group_object_class
+        if self.group_object_class_custom_filter is not None:
+            result['GroupObjectClassCustomFilter'] = self.group_object_class_custom_filter
+        if self.organization_unit_object_class is not None:
+            result['OrganizationUnitObjectClass'] = self.organization_unit_object_class
+        if self.user_object_class is not None:
+            result['UserObjectClass'] = self.user_object_class
+        if self.user_object_class_custom_filter is not None:
+            result['UserObjectClassCustomFilter'] = self.user_object_class_custom_filter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupMemberAttributeName') is not None:
+            self.group_member_attribute_name = m.get('GroupMemberAttributeName')
+        if m.get('GroupObjectClass') is not None:
+            self.group_object_class = m.get('GroupObjectClass')
+        if m.get('GroupObjectClassCustomFilter') is not None:
+            self.group_object_class_custom_filter = m.get('GroupObjectClassCustomFilter')
+        if m.get('OrganizationUnitObjectClass') is not None:
+            self.organization_unit_object_class = m.get('OrganizationUnitObjectClass')
+        if m.get('UserObjectClass') is not None:
+            self.user_object_class = m.get('UserObjectClass')
+        if m.get('UserObjectClassCustomFilter') is not None:
+            self.user_object_class_custom_filter = m.get('UserObjectClassCustomFilter')
+        return self
+
+
+class SetIdentityProviderUdPullConfigurationRequestPullProtectedRule(TeaModel):
+    def __init__(
+        self,
+        group_deleted_threshold: int = None,
+        organizational_unit_deleted_threshold: int = None,
+        user_deleted_threshold: int = None,
+    ):
+        # 同步保护规则-删除组数量
+        self.group_deleted_threshold = group_deleted_threshold
+        # 钉钉一方应用同步保护规则-删除组织数量
+        self.organizational_unit_deleted_threshold = organizational_unit_deleted_threshold
+        # 钉钉一方应用同步保护规则-删除账户数量
+        self.user_deleted_threshold = user_deleted_threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_deleted_threshold is not None:
+            result['GroupDeletedThreshold'] = self.group_deleted_threshold
+        if self.organizational_unit_deleted_threshold is not None:
+            result['OrganizationalUnitDeletedThreshold'] = self.organizational_unit_deleted_threshold
+        if self.user_deleted_threshold is not None:
+            result['UserDeletedThreshold'] = self.user_deleted_threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupDeletedThreshold') is not None:
+            self.group_deleted_threshold = m.get('GroupDeletedThreshold')
+        if m.get('OrganizationalUnitDeletedThreshold') is not None:
+            self.organizational_unit_deleted_threshold = m.get('OrganizationalUnitDeletedThreshold')
+        if m.get('UserDeletedThreshold') is not None:
+            self.user_deleted_threshold = m.get('UserDeletedThreshold')
+        return self
+
+
+class SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig(TeaModel):
+    def __init__(
+        self,
+        source_scopes: List[str] = None,
+        target_scope: str = None,
+    ):
+        # 同步来源节点
+        self.source_scopes = source_scopes
+        # 同步目标节点
+        self.target_scope = target_scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_scopes is not None:
+            result['SourceScopes'] = self.source_scopes
+        if self.target_scope is not None:
+            result['TargetScope'] = self.target_scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceScopes') is not None:
+            self.source_scopes = m.get('SourceScopes')
+        if m.get('TargetScope') is not None:
+            self.target_scope = m.get('TargetScope')
+        return self
+
+
+class SetIdentityProviderUdPullConfigurationRequest(TeaModel):
+    def __init__(
+        self,
+        group_sync_status: str = None,
+        identity_provider_id: str = None,
+        incremental_callback_status: str = None,
+        instance_id: str = None,
+        ldap_ud_pull_config: SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig = None,
+        periodic_sync_status: str = None,
+        pull_protected_rule: SetIdentityProviderUdPullConfigurationRequestPullProtectedRule = None,
+        ud_sync_scope_config: SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig = None,
+    ):
+        # 组同步状态
+        self.group_sync_status = group_sync_status
+        # IDaaS的身份提供方主键id
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # 增量回调状态，是否处理来自IdP的增量回调数据
+        # 
+        # This parameter is required.
+        self.incremental_callback_status = incremental_callback_status
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # ldap同步侧相关配置信息
+        self.ldap_ud_pull_config = ldap_ud_pull_config
+        self.periodic_sync_status = periodic_sync_status
+        # 同步入保护规则,根据IdP的type做解析
+        self.pull_protected_rule = pull_protected_rule
+        # 同步入配置信息
+        self.ud_sync_scope_config = ud_sync_scope_config
+
+    def validate(self):
+        if self.ldap_ud_pull_config:
+            self.ldap_ud_pull_config.validate()
+        if self.pull_protected_rule:
+            self.pull_protected_rule.validate()
+        if self.ud_sync_scope_config:
+            self.ud_sync_scope_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_sync_status is not None:
+            result['GroupSyncStatus'] = self.group_sync_status
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.incremental_callback_status is not None:
+            result['IncrementalCallbackStatus'] = self.incremental_callback_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ldap_ud_pull_config is not None:
+            result['LdapUdPullConfig'] = self.ldap_ud_pull_config.to_map()
+        if self.periodic_sync_status is not None:
+            result['PeriodicSyncStatus'] = self.periodic_sync_status
+        if self.pull_protected_rule is not None:
+            result['PullProtectedRule'] = self.pull_protected_rule.to_map()
+        if self.ud_sync_scope_config is not None:
+            result['UdSyncScopeConfig'] = self.ud_sync_scope_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupSyncStatus') is not None:
+            self.group_sync_status = m.get('GroupSyncStatus')
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('IncrementalCallbackStatus') is not None:
+            self.incremental_callback_status = m.get('IncrementalCallbackStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LdapUdPullConfig') is not None:
+            temp_model = SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig()
+            self.ldap_ud_pull_config = temp_model.from_map(m['LdapUdPullConfig'])
+        if m.get('PeriodicSyncStatus') is not None:
+            self.periodic_sync_status = m.get('PeriodicSyncStatus')
+        if m.get('PullProtectedRule') is not None:
+            temp_model = SetIdentityProviderUdPullConfigurationRequestPullProtectedRule()
+            self.pull_protected_rule = temp_model.from_map(m['PullProtectedRule'])
+        if m.get('UdSyncScopeConfig') is not None:
+            temp_model = SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig()
+            self.ud_sync_scope_config = temp_model.from_map(m['UdSyncScopeConfig'])
+        return self
+
+
+class SetIdentityProviderUdPullConfigurationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetIdentityProviderUdPullConfigurationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetIdentityProviderUdPullConfigurationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetIdentityProviderUdPullConfigurationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21310,6 +24732,533 @@ class UpdateGroupDescriptionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateGroupDescriptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateIdentityProviderRequestDingtalkAppConfig(TeaModel):
+    def __init__(
+        self,
+        app_key: str = None,
+        app_secret: str = None,
+    ):
+        # 钉钉一方应用的AppKey
+        # 
+        # This parameter is required.
+        self.app_key = app_key
+        # 钉钉一方应用的AppSecret
+        # 
+        # This parameter is required.
+        self.app_secret = app_secret
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.app_secret is not None:
+            result['AppSecret'] = self.app_secret
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('AppSecret') is not None:
+            self.app_secret = m.get('AppSecret')
+        return self
+
+
+class UpdateIdentityProviderRequestLarkConfig(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_secret: str = None,
+    ):
+        self.app_id = app_id
+        self.app_secret = app_secret
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_secret is not None:
+            result['AppSecret'] = self.app_secret
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppSecret') is not None:
+            self.app_secret = m.get('AppSecret')
+        return self
+
+
+class UpdateIdentityProviderRequestLdapConfig(TeaModel):
+    def __init__(
+        self,
+        administrator_password: str = None,
+        administrator_username: str = None,
+        certificate_fingerprint_status: str = None,
+        certificate_fingerprints: List[str] = None,
+        ldap_protocol: str = None,
+        ldap_server_host: str = None,
+        ldap_server_port: int = None,
+        start_tls_status: str = None,
+    ):
+        # 管理员密码
+        self.administrator_password = administrator_password
+        # 管理员账号
+        self.administrator_username = administrator_username
+        # 是否验证指纹证书
+        self.certificate_fingerprint_status = certificate_fingerprint_status
+        # 证书指纹列表
+        self.certificate_fingerprints = certificate_fingerprints
+        # 通信协议
+        self.ldap_protocol = ldap_protocol
+        # ad/ldap 服务器地址
+        self.ldap_server_host = ldap_server_host
+        # 端口号
+        self.ldap_server_port = ldap_server_port
+        # startTls是否开启
+        self.start_tls_status = start_tls_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.administrator_password is not None:
+            result['AdministratorPassword'] = self.administrator_password
+        if self.administrator_username is not None:
+            result['AdministratorUsername'] = self.administrator_username
+        if self.certificate_fingerprint_status is not None:
+            result['CertificateFingerprintStatus'] = self.certificate_fingerprint_status
+        if self.certificate_fingerprints is not None:
+            result['CertificateFingerprints'] = self.certificate_fingerprints
+        if self.ldap_protocol is not None:
+            result['LdapProtocol'] = self.ldap_protocol
+        if self.ldap_server_host is not None:
+            result['LdapServerHost'] = self.ldap_server_host
+        if self.ldap_server_port is not None:
+            result['LdapServerPort'] = self.ldap_server_port
+        if self.start_tls_status is not None:
+            result['StartTlsStatus'] = self.start_tls_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdministratorPassword') is not None:
+            self.administrator_password = m.get('AdministratorPassword')
+        if m.get('AdministratorUsername') is not None:
+            self.administrator_username = m.get('AdministratorUsername')
+        if m.get('CertificateFingerprintStatus') is not None:
+            self.certificate_fingerprint_status = m.get('CertificateFingerprintStatus')
+        if m.get('CertificateFingerprints') is not None:
+            self.certificate_fingerprints = m.get('CertificateFingerprints')
+        if m.get('LdapProtocol') is not None:
+            self.ldap_protocol = m.get('LdapProtocol')
+        if m.get('LdapServerHost') is not None:
+            self.ldap_server_host = m.get('LdapServerHost')
+        if m.get('LdapServerPort') is not None:
+            self.ldap_server_port = m.get('LdapServerPort')
+        if m.get('StartTlsStatus') is not None:
+            self.start_tls_status = m.get('StartTlsStatus')
+        return self
+
+
+class UpdateIdentityProviderRequestOidcConfigAuthnParam(TeaModel):
+    def __init__(
+        self,
+        authn_method: str = None,
+        client_secret: str = None,
+    ):
+        # OIDC/oAuth2 认证方法。
+        self.authn_method = authn_method
+        # OIDC/oAuth2 客户端密钥。
+        self.client_secret = client_secret
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authn_method is not None:
+            result['AuthnMethod'] = self.authn_method
+        if self.client_secret is not None:
+            result['ClientSecret'] = self.client_secret
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthnMethod') is not None:
+            self.authn_method = m.get('AuthnMethod')
+        if m.get('ClientSecret') is not None:
+            self.client_secret = m.get('ClientSecret')
+        return self
+
+
+class UpdateIdentityProviderRequestOidcConfigEndpointConfig(TeaModel):
+    def __init__(
+        self,
+        authorization_endpoint: str = None,
+        issuer: str = None,
+        jwks_uri: str = None,
+        token_endpoint: str = None,
+        userinfo_endpoint: str = None,
+    ):
+        # oAuth2 授权端点。
+        self.authorization_endpoint = authorization_endpoint
+        # OIDC issuer信息。
+        self.issuer = issuer
+        # OIDC jwks地址。
+        self.jwks_uri = jwks_uri
+        # oAuth2 Token端点。
+        self.token_endpoint = token_endpoint
+        # OIDC 用户信息端点。
+        self.userinfo_endpoint = userinfo_endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_endpoint is not None:
+            result['AuthorizationEndpoint'] = self.authorization_endpoint
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.jwks_uri is not None:
+            result['JwksUri'] = self.jwks_uri
+        if self.token_endpoint is not None:
+            result['TokenEndpoint'] = self.token_endpoint
+        if self.userinfo_endpoint is not None:
+            result['UserinfoEndpoint'] = self.userinfo_endpoint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationEndpoint') is not None:
+            self.authorization_endpoint = m.get('AuthorizationEndpoint')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('JwksUri') is not None:
+            self.jwks_uri = m.get('JwksUri')
+        if m.get('TokenEndpoint') is not None:
+            self.token_endpoint = m.get('TokenEndpoint')
+        if m.get('UserinfoEndpoint') is not None:
+            self.userinfo_endpoint = m.get('UserinfoEndpoint')
+        return self
+
+
+class UpdateIdentityProviderRequestOidcConfig(TeaModel):
+    def __init__(
+        self,
+        authn_param: UpdateIdentityProviderRequestOidcConfigAuthnParam = None,
+        endpoint_config: UpdateIdentityProviderRequestOidcConfigEndpointConfig = None,
+        grant_scopes: List[str] = None,
+        grant_type: str = None,
+        pkce_challenge_method: str = None,
+        pkce_required: bool = None,
+    ):
+        # OIDC客户端认证配置。
+        self.authn_param = authn_param
+        # OIDC 端点配置。
+        self.endpoint_config = endpoint_config
+        # OIDC标准参数，如profile、email等
+        self.grant_scopes = grant_scopes
+        # OIDC授权类型。
+        self.grant_type = grant_type
+        # 支持的PKCE算法类型。
+        self.pkce_challenge_method = pkce_challenge_method
+        # AuthorizationCode授权模式下是否使用PKCE。
+        self.pkce_required = pkce_required
+
+    def validate(self):
+        if self.authn_param:
+            self.authn_param.validate()
+        if self.endpoint_config:
+            self.endpoint_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authn_param is not None:
+            result['AuthnParam'] = self.authn_param.to_map()
+        if self.endpoint_config is not None:
+            result['EndpointConfig'] = self.endpoint_config.to_map()
+        if self.grant_scopes is not None:
+            result['GrantScopes'] = self.grant_scopes
+        if self.grant_type is not None:
+            result['GrantType'] = self.grant_type
+        if self.pkce_challenge_method is not None:
+            result['PkceChallengeMethod'] = self.pkce_challenge_method
+        if self.pkce_required is not None:
+            result['PkceRequired'] = self.pkce_required
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthnParam') is not None:
+            temp_model = UpdateIdentityProviderRequestOidcConfigAuthnParam()
+            self.authn_param = temp_model.from_map(m['AuthnParam'])
+        if m.get('EndpointConfig') is not None:
+            temp_model = UpdateIdentityProviderRequestOidcConfigEndpointConfig()
+            self.endpoint_config = temp_model.from_map(m['EndpointConfig'])
+        if m.get('GrantScopes') is not None:
+            self.grant_scopes = m.get('GrantScopes')
+        if m.get('GrantType') is not None:
+            self.grant_type = m.get('GrantType')
+        if m.get('PkceChallengeMethod') is not None:
+            self.pkce_challenge_method = m.get('PkceChallengeMethod')
+        if m.get('PkceRequired') is not None:
+            self.pkce_required = m.get('PkceRequired')
+        return self
+
+
+class UpdateIdentityProviderRequestWeComConfig(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        authorize_callback_domain: str = None,
+        corp_secret: str = None,
+        trustable_domain: str = None,
+    ):
+        # 企业微信自建应用的Id
+        self.agent_id = agent_id
+        # 授权回调域
+        self.authorize_callback_domain = authorize_callback_domain
+        # 企业微信自建应用的corpSecret
+        self.corp_secret = corp_secret
+        # 可信域名
+        self.trustable_domain = trustable_domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.authorize_callback_domain is not None:
+            result['AuthorizeCallbackDomain'] = self.authorize_callback_domain
+        if self.corp_secret is not None:
+            result['CorpSecret'] = self.corp_secret
+        if self.trustable_domain is not None:
+            result['TrustableDomain'] = self.trustable_domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AuthorizeCallbackDomain') is not None:
+            self.authorize_callback_domain = m.get('AuthorizeCallbackDomain')
+        if m.get('CorpSecret') is not None:
+            self.corp_secret = m.get('CorpSecret')
+        if m.get('TrustableDomain') is not None:
+            self.trustable_domain = m.get('TrustableDomain')
+        return self
+
+
+class UpdateIdentityProviderRequest(TeaModel):
+    def __init__(
+        self,
+        dingtalk_app_config: UpdateIdentityProviderRequestDingtalkAppConfig = None,
+        identity_provider_id: str = None,
+        identity_provider_name: str = None,
+        instance_id: str = None,
+        lark_config: UpdateIdentityProviderRequestLarkConfig = None,
+        ldap_config: UpdateIdentityProviderRequestLdapConfig = None,
+        network_access_endpoint_id: str = None,
+        oidc_config: UpdateIdentityProviderRequestOidcConfig = None,
+        we_com_config: UpdateIdentityProviderRequestWeComConfig = None,
+    ):
+        # 钉钉出基本信息
+        self.dingtalk_app_config = dingtalk_app_config
+        # IDaaS的身份提供方主键id
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # 身份提供方名称
+        self.identity_provider_name = identity_provider_name
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 飞书配置
+        self.lark_config = lark_config
+        # AD/LDAP基本信息
+        self.ldap_config = ldap_config
+        # 网络端点ID
+        self.network_access_endpoint_id = network_access_endpoint_id
+        # OIDC IdP配置。
+        self.oidc_config = oidc_config
+        # 企业微信基本信息
+        self.we_com_config = we_com_config
+
+    def validate(self):
+        if self.dingtalk_app_config:
+            self.dingtalk_app_config.validate()
+        if self.lark_config:
+            self.lark_config.validate()
+        if self.ldap_config:
+            self.ldap_config.validate()
+        if self.oidc_config:
+            self.oidc_config.validate()
+        if self.we_com_config:
+            self.we_com_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dingtalk_app_config is not None:
+            result['DingtalkAppConfig'] = self.dingtalk_app_config.to_map()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.identity_provider_name is not None:
+            result['IdentityProviderName'] = self.identity_provider_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lark_config is not None:
+            result['LarkConfig'] = self.lark_config.to_map()
+        if self.ldap_config is not None:
+            result['LdapConfig'] = self.ldap_config.to_map()
+        if self.network_access_endpoint_id is not None:
+            result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
+        if self.oidc_config is not None:
+            result['OidcConfig'] = self.oidc_config.to_map()
+        if self.we_com_config is not None:
+            result['WeComConfig'] = self.we_com_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DingtalkAppConfig') is not None:
+            temp_model = UpdateIdentityProviderRequestDingtalkAppConfig()
+            self.dingtalk_app_config = temp_model.from_map(m['DingtalkAppConfig'])
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('IdentityProviderName') is not None:
+            self.identity_provider_name = m.get('IdentityProviderName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LarkConfig') is not None:
+            temp_model = UpdateIdentityProviderRequestLarkConfig()
+            self.lark_config = temp_model.from_map(m['LarkConfig'])
+        if m.get('LdapConfig') is not None:
+            temp_model = UpdateIdentityProviderRequestLdapConfig()
+            self.ldap_config = temp_model.from_map(m['LdapConfig'])
+        if m.get('NetworkAccessEndpointId') is not None:
+            self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
+        if m.get('OidcConfig') is not None:
+            temp_model = UpdateIdentityProviderRequestOidcConfig()
+            self.oidc_config = temp_model.from_map(m['OidcConfig'])
+        if m.get('WeComConfig') is not None:
+            temp_model = UpdateIdentityProviderRequestWeComConfig()
+            self.we_com_config = temp_model.from_map(m['WeComConfig'])
+        return self
+
+
+class UpdateIdentityProviderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateIdentityProviderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateIdentityProviderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateIdentityProviderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

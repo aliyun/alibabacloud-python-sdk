@@ -1101,6 +1101,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_group_with_options_async(request, runtime)
 
+    def create_identity_provider_with_options(
+        self,
+        request: eiam_20211201_models.CreateIdentityProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateIdentityProviderResponse:
+        """
+        @summary 创建身份提供方
+        
+        @param request: CreateIdentityProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIdentityProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authn_config):
+            query['AuthnConfig'] = request.authn_config
+        if not UtilClient.is_unset(request.auto_create_user_config):
+            query['AutoCreateUserConfig'] = request.auto_create_user_config
+        if not UtilClient.is_unset(request.auto_update_user_config):
+            query['AutoUpdateUserConfig'] = request.auto_update_user_config
+        if not UtilClient.is_unset(request.binding_config):
+            query['BindingConfig'] = request.binding_config
+        if not UtilClient.is_unset(request.dingtalk_app_config):
+            query['DingtalkAppConfig'] = request.dingtalk_app_config
+        if not UtilClient.is_unset(request.identity_provider_name):
+            query['IdentityProviderName'] = request.identity_provider_name
+        if not UtilClient.is_unset(request.identity_provider_type):
+            query['IdentityProviderType'] = request.identity_provider_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lark_config):
+            query['LarkConfig'] = request.lark_config
+        if not UtilClient.is_unset(request.ldap_config):
+            query['LdapConfig'] = request.ldap_config
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
+        if not UtilClient.is_unset(request.oidc_config):
+            query['OidcConfig'] = request.oidc_config
+        if not UtilClient.is_unset(request.ud_pull_config):
+            query['UdPullConfig'] = request.ud_pull_config
+        if not UtilClient.is_unset(request.ud_push_config):
+            query['UdPushConfig'] = request.ud_push_config
+        if not UtilClient.is_unset(request.we_com_config):
+            query['WeComConfig'] = request.we_com_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIdentityProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateIdentityProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_identity_provider_with_options_async(
+        self,
+        request: eiam_20211201_models.CreateIdentityProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateIdentityProviderResponse:
+        """
+        @summary 创建身份提供方
+        
+        @param request: CreateIdentityProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIdentityProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authn_config):
+            query['AuthnConfig'] = request.authn_config
+        if not UtilClient.is_unset(request.auto_create_user_config):
+            query['AutoCreateUserConfig'] = request.auto_create_user_config
+        if not UtilClient.is_unset(request.auto_update_user_config):
+            query['AutoUpdateUserConfig'] = request.auto_update_user_config
+        if not UtilClient.is_unset(request.binding_config):
+            query['BindingConfig'] = request.binding_config
+        if not UtilClient.is_unset(request.dingtalk_app_config):
+            query['DingtalkAppConfig'] = request.dingtalk_app_config
+        if not UtilClient.is_unset(request.identity_provider_name):
+            query['IdentityProviderName'] = request.identity_provider_name
+        if not UtilClient.is_unset(request.identity_provider_type):
+            query['IdentityProviderType'] = request.identity_provider_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lark_config):
+            query['LarkConfig'] = request.lark_config
+        if not UtilClient.is_unset(request.ldap_config):
+            query['LdapConfig'] = request.ldap_config
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
+        if not UtilClient.is_unset(request.oidc_config):
+            query['OidcConfig'] = request.oidc_config
+        if not UtilClient.is_unset(request.ud_pull_config):
+            query['UdPullConfig'] = request.ud_pull_config
+        if not UtilClient.is_unset(request.ud_push_config):
+            query['UdPushConfig'] = request.ud_push_config
+        if not UtilClient.is_unset(request.we_com_config):
+            query['WeComConfig'] = request.we_com_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIdentityProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateIdentityProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_identity_provider(
+        self,
+        request: eiam_20211201_models.CreateIdentityProviderRequest,
+    ) -> eiam_20211201_models.CreateIdentityProviderResponse:
+        """
+        @summary 创建身份提供方
+        
+        @param request: CreateIdentityProviderRequest
+        @return: CreateIdentityProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_identity_provider_with_options(request, runtime)
+
+    async def create_identity_provider_async(
+        self,
+        request: eiam_20211201_models.CreateIdentityProviderRequest,
+    ) -> eiam_20211201_models.CreateIdentityProviderResponse:
+        """
+        @summary 创建身份提供方
+        
+        @param request: CreateIdentityProviderRequest
+        @return: CreateIdentityProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_identity_provider_with_options_async(request, runtime)
+
     def create_instance_with_options(
         self,
         request: eiam_20211201_models.CreateInstanceRequest,
@@ -2092,6 +2244,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_group_with_options_async(request, runtime)
+
+    def delete_identity_provider_with_options(
+        self,
+        request: eiam_20211201_models.DeleteIdentityProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteIdentityProviderResponse:
+        """
+        @summary 删除身份提供方
+        
+        @param request: DeleteIdentityProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIdentityProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIdentityProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteIdentityProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_identity_provider_with_options_async(
+        self,
+        request: eiam_20211201_models.DeleteIdentityProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteIdentityProviderResponse:
+        """
+        @summary 删除身份提供方
+        
+        @param request: DeleteIdentityProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIdentityProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIdentityProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteIdentityProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_identity_provider(
+        self,
+        request: eiam_20211201_models.DeleteIdentityProviderRequest,
+    ) -> eiam_20211201_models.DeleteIdentityProviderResponse:
+        """
+        @summary 删除身份提供方
+        
+        @param request: DeleteIdentityProviderRequest
+        @return: DeleteIdentityProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_identity_provider_with_options(request, runtime)
+
+    async def delete_identity_provider_async(
+        self,
+        request: eiam_20211201_models.DeleteIdentityProviderRequest,
+    ) -> eiam_20211201_models.DeleteIdentityProviderResponse:
+        """
+        @summary 删除身份提供方
+        
+        @param request: DeleteIdentityProviderRequest
+        @return: DeleteIdentityProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_identity_provider_with_options_async(request, runtime)
 
     def delete_instance_with_options(
         self,
@@ -3213,6 +3465,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_domain_proxy_token_with_options_async(request, runtime)
 
+    def disable_identity_provider_ud_pull_with_options(
+        self,
+        request: eiam_20211201_models.DisableIdentityProviderUdPullRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableIdentityProviderUdPullResponse:
+        """
+        @summary 禁用同步入
+        
+        @param request: DisableIdentityProviderUdPullRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableIdentityProviderUdPullResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableIdentityProviderUdPull',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableIdentityProviderUdPullResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_identity_provider_ud_pull_with_options_async(
+        self,
+        request: eiam_20211201_models.DisableIdentityProviderUdPullRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableIdentityProviderUdPullResponse:
+        """
+        @summary 禁用同步入
+        
+        @param request: DisableIdentityProviderUdPullRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableIdentityProviderUdPullResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableIdentityProviderUdPull',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableIdentityProviderUdPullResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_identity_provider_ud_pull(
+        self,
+        request: eiam_20211201_models.DisableIdentityProviderUdPullRequest,
+    ) -> eiam_20211201_models.DisableIdentityProviderUdPullResponse:
+        """
+        @summary 禁用同步入
+        
+        @param request: DisableIdentityProviderUdPullRequest
+        @return: DisableIdentityProviderUdPullResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_identity_provider_ud_pull_with_options(request, runtime)
+
+    async def disable_identity_provider_ud_pull_async(
+        self,
+        request: eiam_20211201_models.DisableIdentityProviderUdPullRequest,
+    ) -> eiam_20211201_models.DisableIdentityProviderUdPullResponse:
+        """
+        @summary 禁用同步入
+        
+        @param request: DisableIdentityProviderUdPullRequest
+        @return: DisableIdentityProviderUdPullResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_identity_provider_ud_pull_with_options_async(request, runtime)
+
     def disable_init_domain_auto_redirect_with_options(
         self,
         request: eiam_20211201_models.DisableInitDomainAutoRedirectRequest,
@@ -4016,6 +4368,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.enable_domain_proxy_token_with_options_async(request, runtime)
+
+    def enable_identity_provider_ud_pull_with_options(
+        self,
+        request: eiam_20211201_models.EnableIdentityProviderUdPullRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableIdentityProviderUdPullResponse:
+        """
+        @summary 启用同步入
+        
+        @param request: EnableIdentityProviderUdPullRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableIdentityProviderUdPullResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableIdentityProviderUdPull',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableIdentityProviderUdPullResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_identity_provider_ud_pull_with_options_async(
+        self,
+        request: eiam_20211201_models.EnableIdentityProviderUdPullRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableIdentityProviderUdPullResponse:
+        """
+        @summary 启用同步入
+        
+        @param request: EnableIdentityProviderUdPullRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableIdentityProviderUdPullResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableIdentityProviderUdPull',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableIdentityProviderUdPullResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_identity_provider_ud_pull(
+        self,
+        request: eiam_20211201_models.EnableIdentityProviderUdPullRequest,
+    ) -> eiam_20211201_models.EnableIdentityProviderUdPullResponse:
+        """
+        @summary 启用同步入
+        
+        @param request: EnableIdentityProviderUdPullRequest
+        @return: EnableIdentityProviderUdPullResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_identity_provider_ud_pull_with_options(request, runtime)
+
+    async def enable_identity_provider_ud_pull_async(
+        self,
+        request: eiam_20211201_models.EnableIdentityProviderUdPullRequest,
+    ) -> eiam_20211201_models.EnableIdentityProviderUdPullResponse:
+        """
+        @summary 启用同步入
+        
+        @param request: EnableIdentityProviderUdPullRequest
+        @return: EnableIdentityProviderUdPullResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_identity_provider_ud_pull_with_options_async(request, runtime)
 
     def enable_init_domain_auto_redirect_with_options(
         self,
@@ -5108,6 +5560,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_group_with_options_async(request, runtime)
+
+    def get_identity_provider_with_options(
+        self,
+        request: eiam_20211201_models.GetIdentityProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetIdentityProviderResponse:
+        """
+        @summary 获取身份提供方
+        
+        @param request: GetIdentityProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIdentityProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIdentityProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetIdentityProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_identity_provider_with_options_async(
+        self,
+        request: eiam_20211201_models.GetIdentityProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetIdentityProviderResponse:
+        """
+        @summary 获取身份提供方
+        
+        @param request: GetIdentityProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIdentityProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIdentityProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetIdentityProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_identity_provider(
+        self,
+        request: eiam_20211201_models.GetIdentityProviderRequest,
+    ) -> eiam_20211201_models.GetIdentityProviderResponse:
+        """
+        @summary 获取身份提供方
+        
+        @param request: GetIdentityProviderRequest
+        @return: GetIdentityProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_identity_provider_with_options(request, runtime)
+
+    async def get_identity_provider_async(
+        self,
+        request: eiam_20211201_models.GetIdentityProviderRequest,
+    ) -> eiam_20211201_models.GetIdentityProviderResponse:
+        """
+        @summary 获取身份提供方
+        
+        @param request: GetIdentityProviderRequest
+        @return: GetIdentityProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_identity_provider_with_options_async(request, runtime)
+
+    def get_identity_provider_ud_pull_configuration_with_options(
+        self,
+        request: eiam_20211201_models.GetIdentityProviderUdPullConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse:
+        """
+        @summary 获取IdP同步入配置
+        
+        @param request: GetIdentityProviderUdPullConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIdentityProviderUdPullConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIdentityProviderUdPullConfiguration',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_identity_provider_ud_pull_configuration_with_options_async(
+        self,
+        request: eiam_20211201_models.GetIdentityProviderUdPullConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse:
+        """
+        @summary 获取IdP同步入配置
+        
+        @param request: GetIdentityProviderUdPullConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIdentityProviderUdPullConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIdentityProviderUdPullConfiguration',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_identity_provider_ud_pull_configuration(
+        self,
+        request: eiam_20211201_models.GetIdentityProviderUdPullConfigurationRequest,
+    ) -> eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse:
+        """
+        @summary 获取IdP同步入配置
+        
+        @param request: GetIdentityProviderUdPullConfigurationRequest
+        @return: GetIdentityProviderUdPullConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_identity_provider_ud_pull_configuration_with_options(request, runtime)
+
+    async def get_identity_provider_ud_pull_configuration_async(
+        self,
+        request: eiam_20211201_models.GetIdentityProviderUdPullConfigurationRequest,
+    ) -> eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse:
+        """
+        @summary 获取IdP同步入配置
+        
+        @param request: GetIdentityProviderUdPullConfigurationRequest
+        @return: GetIdentityProviderUdPullConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_identity_provider_ud_pull_configuration_with_options_async(request, runtime)
 
     def get_instance_with_options(
         self,
@@ -7250,6 +7902,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_groups_for_user_with_options_async(request, runtime)
+
+    def list_identity_providers_with_options(
+        self,
+        request: eiam_20211201_models.ListIdentityProvidersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListIdentityProvidersResponse:
+        """
+        @summary 查询身份提供方
+        
+        @param request: ListIdentityProvidersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIdentityProvidersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIdentityProviders',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListIdentityProvidersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_identity_providers_with_options_async(
+        self,
+        request: eiam_20211201_models.ListIdentityProvidersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListIdentityProvidersResponse:
+        """
+        @summary 查询身份提供方
+        
+        @param request: ListIdentityProvidersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIdentityProvidersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIdentityProviders',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListIdentityProvidersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_identity_providers(
+        self,
+        request: eiam_20211201_models.ListIdentityProvidersRequest,
+    ) -> eiam_20211201_models.ListIdentityProvidersResponse:
+        """
+        @summary 查询身份提供方
+        
+        @param request: ListIdentityProvidersRequest
+        @return: ListIdentityProvidersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_identity_providers_with_options(request, runtime)
+
+    async def list_identity_providers_async(
+        self,
+        request: eiam_20211201_models.ListIdentityProvidersRequest,
+    ) -> eiam_20211201_models.ListIdentityProvidersResponse:
+        """
+        @summary 查询身份提供方
+        
+        @param request: ListIdentityProvidersRequest
+        @return: ListIdentityProvidersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_identity_providers_with_options_async(request, runtime)
 
     def list_instances_with_options(
         self,
@@ -9841,6 +10597,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.init_login_type):
             query['InitLoginType'] = request.init_login_type
         if not UtilClient.is_unset(request.init_login_url):
@@ -9888,6 +10646,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.init_login_type):
             query['InitLoginType'] = request.init_login_type
         if not UtilClient.is_unset(request.init_login_url):
@@ -10150,6 +10910,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_forget_password_configuration_with_options_async(request, runtime)
+
+    def set_identity_provider_ud_pull_configuration_with_options(
+        self,
+        request: eiam_20211201_models.SetIdentityProviderUdPullConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse:
+        """
+        @summary 修改IdP同步入配置
+        
+        @param request: SetIdentityProviderUdPullConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetIdentityProviderUdPullConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_sync_status):
+            query['GroupSyncStatus'] = request.group_sync_status
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.incremental_callback_status):
+            query['IncrementalCallbackStatus'] = request.incremental_callback_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ldap_ud_pull_config):
+            query['LdapUdPullConfig'] = request.ldap_ud_pull_config
+        if not UtilClient.is_unset(request.periodic_sync_status):
+            query['PeriodicSyncStatus'] = request.periodic_sync_status
+        if not UtilClient.is_unset(request.pull_protected_rule):
+            query['PullProtectedRule'] = request.pull_protected_rule
+        if not UtilClient.is_unset(request.ud_sync_scope_config):
+            query['UdSyncScopeConfig'] = request.ud_sync_scope_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetIdentityProviderUdPullConfiguration',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_identity_provider_ud_pull_configuration_with_options_async(
+        self,
+        request: eiam_20211201_models.SetIdentityProviderUdPullConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse:
+        """
+        @summary 修改IdP同步入配置
+        
+        @param request: SetIdentityProviderUdPullConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetIdentityProviderUdPullConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_sync_status):
+            query['GroupSyncStatus'] = request.group_sync_status
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.incremental_callback_status):
+            query['IncrementalCallbackStatus'] = request.incremental_callback_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ldap_ud_pull_config):
+            query['LdapUdPullConfig'] = request.ldap_ud_pull_config
+        if not UtilClient.is_unset(request.periodic_sync_status):
+            query['PeriodicSyncStatus'] = request.periodic_sync_status
+        if not UtilClient.is_unset(request.pull_protected_rule):
+            query['PullProtectedRule'] = request.pull_protected_rule
+        if not UtilClient.is_unset(request.ud_sync_scope_config):
+            query['UdSyncScopeConfig'] = request.ud_sync_scope_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetIdentityProviderUdPullConfiguration',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_identity_provider_ud_pull_configuration(
+        self,
+        request: eiam_20211201_models.SetIdentityProviderUdPullConfigurationRequest,
+    ) -> eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse:
+        """
+        @summary 修改IdP同步入配置
+        
+        @param request: SetIdentityProviderUdPullConfigurationRequest
+        @return: SetIdentityProviderUdPullConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_identity_provider_ud_pull_configuration_with_options(request, runtime)
+
+    async def set_identity_provider_ud_pull_configuration_async(
+        self,
+        request: eiam_20211201_models.SetIdentityProviderUdPullConfigurationRequest,
+    ) -> eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse:
+        """
+        @summary 修改IdP同步入配置
+        
+        @param request: SetIdentityProviderUdPullConfigurationRequest
+        @return: SetIdentityProviderUdPullConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_identity_provider_ud_pull_configuration_with_options_async(request, runtime)
 
     def set_password_complexity_configuration_with_options(
         self,
@@ -11222,6 +12106,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_group_description_with_options_async(request, runtime)
+
+    def update_identity_provider_with_options(
+        self,
+        request: eiam_20211201_models.UpdateIdentityProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateIdentityProviderResponse:
+        """
+        @summary 更新idp基础配置
+        
+        @param request: UpdateIdentityProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIdentityProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dingtalk_app_config):
+            query['DingtalkAppConfig'] = request.dingtalk_app_config
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.identity_provider_name):
+            query['IdentityProviderName'] = request.identity_provider_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lark_config):
+            query['LarkConfig'] = request.lark_config
+        if not UtilClient.is_unset(request.ldap_config):
+            query['LdapConfig'] = request.ldap_config
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
+        if not UtilClient.is_unset(request.oidc_config):
+            query['OidcConfig'] = request.oidc_config
+        if not UtilClient.is_unset(request.we_com_config):
+            query['WeComConfig'] = request.we_com_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIdentityProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateIdentityProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_identity_provider_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateIdentityProviderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateIdentityProviderResponse:
+        """
+        @summary 更新idp基础配置
+        
+        @param request: UpdateIdentityProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIdentityProviderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dingtalk_app_config):
+            query['DingtalkAppConfig'] = request.dingtalk_app_config
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.identity_provider_name):
+            query['IdentityProviderName'] = request.identity_provider_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lark_config):
+            query['LarkConfig'] = request.lark_config
+        if not UtilClient.is_unset(request.ldap_config):
+            query['LdapConfig'] = request.ldap_config
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
+        if not UtilClient.is_unset(request.oidc_config):
+            query['OidcConfig'] = request.oidc_config
+        if not UtilClient.is_unset(request.we_com_config):
+            query['WeComConfig'] = request.we_com_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIdentityProvider',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateIdentityProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_identity_provider(
+        self,
+        request: eiam_20211201_models.UpdateIdentityProviderRequest,
+    ) -> eiam_20211201_models.UpdateIdentityProviderResponse:
+        """
+        @summary 更新idp基础配置
+        
+        @param request: UpdateIdentityProviderRequest
+        @return: UpdateIdentityProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_identity_provider_with_options(request, runtime)
+
+    async def update_identity_provider_async(
+        self,
+        request: eiam_20211201_models.UpdateIdentityProviderRequest,
+    ) -> eiam_20211201_models.UpdateIdentityProviderResponse:
+        """
+        @summary 更新idp基础配置
+        
+        @param request: UpdateIdentityProviderRequest
+        @return: UpdateIdentityProviderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_identity_provider_with_options_async(request, runtime)
 
     def update_instance_description_with_options(
         self,

@@ -1,3 +1,18 @@
+2024-12-16 Version: 1.6.0
+- Support API CreateIdentityProvider.
+- Support API DeleteIdentityProvider.
+- Support API DisableIdentityProviderUdPull.
+- Support API EnableIdentityProviderUdPull.
+- Support API GetIdentityProvider.
+- Support API GetIdentityProviderUdPullConfiguration.
+- Support API ListIdentityProviders.
+- Support API SetIdentityProviderUdPullConfiguration.
+- Support API UpdateIdentityProvider.
+- Update API GetApplicationSsoConfig: update response param.
+- Update API SetApplicationSsoConfig: add param ClientToken.
+- Update API SetApplicationSsoConfig: update param SamlSsoConfig.
+
+
 2024-11-06 Version: 1.5.2
 - Update API GetPasswordExpirationConfiguration: update response param.
 - Update API SetPasswordExpirationConfiguration: add param EffectiveAuthenticationSourceIds.
