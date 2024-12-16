@@ -1,3 +1,7 @@
+2024-12-16 Version: 1.11.1
+- Update API RunWriting: update response param.
+
+
 2024-12-05 Version: 1.11.0
 - Support API GetSmartClipTask.
 - Support API SubmitSmartClipTask.

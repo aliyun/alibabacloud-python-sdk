@@ -24276,10 +24276,12 @@ class RunWritingResponseBodyPayload(TeaModel):
 class RunWritingResponseBody(TeaModel):
     def __init__(
         self,
+        end: bool = None,
         header: RunWritingResponseBodyHeader = None,
         payload: RunWritingResponseBodyPayload = None,
         request_id: str = None,
     ):
+        self.end = end
         self.header = header
         self.payload = payload
         self.request_id = request_id
@@ -24296,6 +24298,8 @@ class RunWritingResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.end is not None:
+            result['End'] = self.end
         if self.header is not None:
             result['Header'] = self.header.to_map()
         if self.payload is not None:
@@ -24306,6 +24310,8 @@ class RunWritingResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('End') is not None:
+            self.end = m.get('End')
         if m.get('Header') is not None:
             temp_model = RunWritingResponseBodyHeader()
             self.header = temp_model.from_map(m['Header'])
