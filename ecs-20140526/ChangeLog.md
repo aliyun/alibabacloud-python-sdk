@@ -1,3 +1,11 @@
+2024-12-16 Version: 4.4.10
+- Update API CreateImage: add param Features.
+- Update API DescribeImages: update response param.
+- Update API DescribeInstances: update response param.
+- Update API ImportImage: update param Features.
+- Update API ModifyImageAttribute: update param Features.
+
+
 2024-11-29 Version: 4.4.9
 - Update API CreateAutoProvisioningGroup: update param LaunchTemplateConfig.
 - Update API CreateSavingsPlan: add param InstanceTypeFamilyGroup.
