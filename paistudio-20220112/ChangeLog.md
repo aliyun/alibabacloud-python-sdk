@@ -1,3 +1,7 @@
+2024-12-16 Version: 2.0.1
+- Update API ListTrainingJobs: update response param.
+
+
 2024-12-10 Version: 2.0.0
 - Support API ListQuotaWorkloads.
 - Update API CreateTrainingJob: update param body.

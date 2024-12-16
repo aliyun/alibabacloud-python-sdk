@@ -13211,6 +13211,7 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
         algorithm_provider: str = None,
         algorithm_version: str = None,
         compute_resource: ListTrainingJobsResponseBodyTrainingJobsComputeResource = None,
+        dlc_job_id: str = None,
         environments: Dict[str, str] = None,
         experiment_config: ListTrainingJobsResponseBodyTrainingJobsExperimentConfig = None,
         gmt_create_time: str = None,
@@ -13238,6 +13239,7 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
         self.algorithm_provider = algorithm_provider
         self.algorithm_version = algorithm_version
         self.compute_resource = compute_resource
+        self.dlc_job_id = dlc_job_id
         self.environments = environments
         self.experiment_config = experiment_config
         self.gmt_create_time = gmt_create_time
@@ -13305,6 +13307,8 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
             result['AlgorithmVersion'] = self.algorithm_version
         if self.compute_resource is not None:
             result['ComputeResource'] = self.compute_resource.to_map()
+        if self.dlc_job_id is not None:
+            result['DlcJobId'] = self.dlc_job_id
         if self.environments is not None:
             result['Environments'] = self.environments
         if self.experiment_config is not None:
@@ -13372,6 +13376,8 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
         if m.get('ComputeResource') is not None:
             temp_model = ListTrainingJobsResponseBodyTrainingJobsComputeResource()
             self.compute_resource = temp_model.from_map(m['ComputeResource'])
+        if m.get('DlcJobId') is not None:
+            self.dlc_job_id = m.get('DlcJobId')
         if m.get('Environments') is not None:
             self.environments = m.get('Environments')
         if m.get('ExperimentConfig') is not None:
