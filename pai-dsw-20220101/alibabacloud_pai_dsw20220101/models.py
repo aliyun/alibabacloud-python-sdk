@@ -2969,6 +2969,7 @@ class GetInstanceResponseBody(TeaModel):
         node_error_recovery: GetInstanceResponseBodyNodeErrorRecovery = None,
         payment_type: str = None,
         priority: int = None,
+        proxy_path: str = None,
         reason_code: str = None,
         reason_message: str = None,
         request_id: str = None,
@@ -3019,6 +3020,7 @@ class GetInstanceResponseBody(TeaModel):
         self.node_error_recovery = node_error_recovery
         self.payment_type = payment_type
         self.priority = priority
+        self.proxy_path = proxy_path
         self.reason_code = reason_code
         self.reason_message = reason_message
         self.request_id = request_id
@@ -3152,6 +3154,8 @@ class GetInstanceResponseBody(TeaModel):
             result['PaymentType'] = self.payment_type
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.proxy_path is not None:
+            result['ProxyPath'] = self.proxy_path
         if self.reason_code is not None:
             result['ReasonCode'] = self.reason_code
         if self.reason_message is not None:
@@ -3272,6 +3276,8 @@ class GetInstanceResponseBody(TeaModel):
             self.payment_type = m.get('PaymentType')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('ProxyPath') is not None:
+            self.proxy_path = m.get('ProxyPath')
         if m.get('ReasonCode') is not None:
             self.reason_code = m.get('ReasonCode')
         if m.get('ReasonMessage') is not None:
