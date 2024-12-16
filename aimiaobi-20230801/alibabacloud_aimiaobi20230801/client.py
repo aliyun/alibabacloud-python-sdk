@@ -793,6 +793,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_custom_topic_view_point_by_id_with_options_async(request, runtime)
 
+    def delete_docs_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.DeleteDocsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteDocsResponse:
+        """
+        @summary 妙读删除多个文档
+        
+        @param tmp_req: DeleteDocsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.DeleteDocsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.doc_ids):
+            request.doc_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.doc_ids, 'DocIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.doc_ids_shrink):
+            body['DocIds'] = request.doc_ids_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDocs',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteDocsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_docs_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.DeleteDocsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteDocsResponse:
+        """
+        @summary 妙读删除多个文档
+        
+        @param tmp_req: DeleteDocsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.DeleteDocsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.doc_ids):
+            request.doc_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.doc_ids, 'DocIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.doc_ids_shrink):
+            body['DocIds'] = request.doc_ids_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDocs',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteDocsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_docs(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteDocsRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteDocsResponse:
+        """
+        @summary 妙读删除多个文档
+        
+        @param request: DeleteDocsRequest
+        @return: DeleteDocsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_docs_with_options(request, runtime)
+
+    async def delete_docs_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteDocsRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteDocsResponse:
+        """
+        @summary 妙读删除多个文档
+        
+        @param request: DeleteDocsRequest
+        @return: DeleteDocsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_docs_with_options_async(request, runtime)
+
     def delete_generated_content_with_options(
         self,
         request: ai_miao_bi_20230801_models.DeleteGeneratedContentRequest,
@@ -2880,6 +2988,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_doc_cluster_task_with_options_async(request, runtime)
+
+    def get_doc_info_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetDocInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetDocInfoResponse:
+        """
+        @summary 妙读获取文档信息
+        
+        @param request: GetDocInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocInfo',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetDocInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_doc_info_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetDocInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetDocInfoResponse:
+        """
+        @summary 妙读获取文档信息
+        
+        @param request: GetDocInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocInfo',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetDocInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_doc_info(
+        self,
+        request: ai_miao_bi_20230801_models.GetDocInfoRequest,
+    ) -> ai_miao_bi_20230801_models.GetDocInfoResponse:
+        """
+        @summary 妙读获取文档信息
+        
+        @param request: GetDocInfoRequest
+        @return: GetDocInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_doc_info_with_options(request, runtime)
+
+    async def get_doc_info_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetDocInfoRequest,
+    ) -> ai_miao_bi_20230801_models.GetDocInfoResponse:
+        """
+        @summary 妙读获取文档信息
+        
+        @param request: GetDocInfoRequest
+        @return: GetDocInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_doc_info_with_options_async(request, runtime)
 
     def get_enterprise_voc_analysis_task_with_options(
         self,
@@ -5344,6 +5556,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_dialogues_with_options_async(request, runtime)
+
+    def list_docs_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListDocsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListDocsResponse:
+        """
+        @summary 妙读获取文档列表
+        
+        @param tmp_req: ListDocsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDocsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListDocsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.statuses):
+            request.statuses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.doc_name):
+            body['DocName'] = request.doc_name
+        if not UtilClient.is_unset(request.doc_type):
+            body['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.skip):
+            body['Skip'] = request.skip
+        if not UtilClient.is_unset(request.statuses_shrink):
+            body['Statuses'] = request.statuses_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDocs',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListDocsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_docs_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListDocsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListDocsResponse:
+        """
+        @summary 妙读获取文档列表
+        
+        @param tmp_req: ListDocsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDocsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListDocsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.statuses):
+            request.statuses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.doc_name):
+            body['DocName'] = request.doc_name
+        if not UtilClient.is_unset(request.doc_type):
+            body['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.skip):
+            body['Skip'] = request.skip
+        if not UtilClient.is_unset(request.statuses_shrink):
+            body['Statuses'] = request.statuses_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDocs',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListDocsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_docs(
+        self,
+        request: ai_miao_bi_20230801_models.ListDocsRequest,
+    ) -> ai_miao_bi_20230801_models.ListDocsResponse:
+        """
+        @summary 妙读获取文档列表
+        
+        @param request: ListDocsRequest
+        @return: ListDocsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_docs_with_options(request, runtime)
+
+    async def list_docs_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListDocsRequest,
+    ) -> ai_miao_bi_20230801_models.ListDocsResponse:
+        """
+        @summary 妙读获取文档列表
+        
+        @param request: ListDocsRequest
+        @return: ListDocsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_docs_with_options_async(request, runtime)
 
     def list_fresh_view_points_with_options(
         self,
@@ -7952,6 +8296,578 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.run_custom_hot_topic_view_point_analysis_with_options_async(request, runtime)
+
+    def run_doc_brainmap_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocBrainmapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocBrainmapResponse:
+        """
+        @summary 妙读脑图生成接口
+        
+        @param request: RunDocBrainmapRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocBrainmapResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocBrainmap',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDocBrainmapResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_doc_brainmap_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocBrainmapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocBrainmapResponse:
+        """
+        @summary 妙读脑图生成接口
+        
+        @param request: RunDocBrainmapRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocBrainmapResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocBrainmap',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDocBrainmapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_doc_brainmap(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocBrainmapRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocBrainmapResponse:
+        """
+        @summary 妙读脑图生成接口
+        
+        @param request: RunDocBrainmapRequest
+        @return: RunDocBrainmapResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_doc_brainmap_with_options(request, runtime)
+
+    async def run_doc_brainmap_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocBrainmapRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocBrainmapResponse:
+        """
+        @summary 妙读脑图生成接口
+        
+        @param request: RunDocBrainmapRequest
+        @return: RunDocBrainmapResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_doc_brainmap_with_options_async(request, runtime)
+
+    def run_doc_introduction_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocIntroductionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocIntroductionResponse:
+        """
+        @summary 妙读文档导读接口
+        
+        @param request: RunDocIntroductionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocIntroductionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocIntroduction',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDocIntroductionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_doc_introduction_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocIntroductionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocIntroductionResponse:
+        """
+        @summary 妙读文档导读接口
+        
+        @param request: RunDocIntroductionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocIntroductionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocIntroduction',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDocIntroductionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_doc_introduction(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocIntroductionRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocIntroductionResponse:
+        """
+        @summary 妙读文档导读接口
+        
+        @param request: RunDocIntroductionRequest
+        @return: RunDocIntroductionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_doc_introduction_with_options(request, runtime)
+
+    async def run_doc_introduction_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocIntroductionRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocIntroductionResponse:
+        """
+        @summary 妙读文档导读接口
+        
+        @param request: RunDocIntroductionRequest
+        @return: RunDocIntroductionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_doc_introduction_with_options_async(request, runtime)
+
+    def run_doc_qa_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunDocQaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocQaResponse:
+        """
+        @summary 妙读问答接口
+        
+        @param tmp_req: RunDocQaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocQaResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunDocQaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.category_ids):
+            request.category_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.category_ids, 'CategoryIds', 'json')
+        if not UtilClient.is_unset(tmp_req.conversation_contexts):
+            request.conversation_contexts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.conversation_contexts, 'ConversationContexts', 'json')
+        if not UtilClient.is_unset(tmp_req.doc_ids):
+            request.doc_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.doc_ids, 'DocIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category_ids_shrink):
+            body['CategoryIds'] = request.category_ids_shrink
+        if not UtilClient.is_unset(request.conversation_contexts_shrink):
+            body['ConversationContexts'] = request.conversation_contexts_shrink
+        if not UtilClient.is_unset(request.doc_ids_shrink):
+            body['DocIds'] = request.doc_ids_shrink
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.reference_content):
+            body['ReferenceContent'] = request.reference_content
+        if not UtilClient.is_unset(request.search_source):
+            body['SearchSource'] = request.search_source
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocQa',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDocQaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_doc_qa_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunDocQaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocQaResponse:
+        """
+        @summary 妙读问答接口
+        
+        @param tmp_req: RunDocQaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocQaResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunDocQaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.category_ids):
+            request.category_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.category_ids, 'CategoryIds', 'json')
+        if not UtilClient.is_unset(tmp_req.conversation_contexts):
+            request.conversation_contexts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.conversation_contexts, 'ConversationContexts', 'json')
+        if not UtilClient.is_unset(tmp_req.doc_ids):
+            request.doc_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.doc_ids, 'DocIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category_ids_shrink):
+            body['CategoryIds'] = request.category_ids_shrink
+        if not UtilClient.is_unset(request.conversation_contexts_shrink):
+            body['ConversationContexts'] = request.conversation_contexts_shrink
+        if not UtilClient.is_unset(request.doc_ids_shrink):
+            body['DocIds'] = request.doc_ids_shrink
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.reference_content):
+            body['ReferenceContent'] = request.reference_content
+        if not UtilClient.is_unset(request.search_source):
+            body['SearchSource'] = request.search_source
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocQa',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDocQaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_doc_qa(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocQaRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocQaResponse:
+        """
+        @summary 妙读问答接口
+        
+        @param request: RunDocQaRequest
+        @return: RunDocQaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_doc_qa_with_options(request, runtime)
+
+    async def run_doc_qa_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocQaRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocQaResponse:
+        """
+        @summary 妙读问答接口
+        
+        @param request: RunDocQaRequest
+        @return: RunDocQaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_doc_qa_with_options_async(request, runtime)
+
+    def run_doc_summary_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocSummaryResponse:
+        """
+        @summary 妙读文档总结摘要接口
+        
+        @param request: RunDocSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.recommend_content):
+            body['RecommendContent'] = request.recommend_content
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocSummary',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDocSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_doc_summary_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocSummaryResponse:
+        """
+        @summary 妙读文档总结摘要接口
+        
+        @param request: RunDocSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.recommend_content):
+            body['RecommendContent'] = request.recommend_content
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocSummary',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDocSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_doc_summary(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocSummaryRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocSummaryResponse:
+        """
+        @summary 妙读文档总结摘要接口
+        
+        @param request: RunDocSummaryRequest
+        @return: RunDocSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_doc_summary_with_options(request, runtime)
+
+    async def run_doc_summary_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocSummaryRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocSummaryResponse:
+        """
+        @summary 妙读文档总结摘要接口
+        
+        @param request: RunDocSummaryRequest
+        @return: RunDocSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_doc_summary_with_options_async(request, runtime)
+
+    def run_doc_translation_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocTranslationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocTranslationResponse:
+        """
+        @summary 妙读文档翻译接口
+        
+        @param request: RunDocTranslationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocTranslationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.recommend_content):
+            body['RecommendContent'] = request.recommend_content
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.trans_type):
+            body['TransType'] = request.trans_type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocTranslation',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDocTranslationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_doc_translation_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocTranslationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocTranslationResponse:
+        """
+        @summary 妙读文档翻译接口
+        
+        @param request: RunDocTranslationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocTranslationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.recommend_content):
+            body['RecommendContent'] = request.recommend_content
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.trans_type):
+            body['TransType'] = request.trans_type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocTranslation',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDocTranslationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_doc_translation(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocTranslationRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocTranslationResponse:
+        """
+        @summary 妙读文档翻译接口
+        
+        @param request: RunDocTranslationRequest
+        @return: RunDocTranslationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_doc_translation_with_options(request, runtime)
+
+    async def run_doc_translation_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocTranslationRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocTranslationResponse:
+        """
+        @summary 妙读文档翻译接口
+        
+        @param request: RunDocTranslationRequest
+        @return: RunDocTranslationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_doc_translation_with_options_async(request, runtime)
 
     def run_expand_content_with_options(
         self,
@@ -10900,6 +11816,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_material_document_with_options_async(request, runtime)
+
+    def upload_doc_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.UploadDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UploadDocResponse:
+        """
+        @summary 妙读上传文档接口
+        
+        @param tmp_req: UploadDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadDocResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.UploadDocShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.docs):
+            request.docs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.docs, 'Docs', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.docs_shrink):
+            body['Docs'] = request.docs_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadDoc',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UploadDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_doc_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.UploadDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UploadDocResponse:
+        """
+        @summary 妙读上传文档接口
+        
+        @param tmp_req: UploadDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadDocResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.UploadDocShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.docs):
+            request.docs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.docs, 'Docs', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.docs_shrink):
+            body['Docs'] = request.docs_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadDoc',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UploadDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_doc(
+        self,
+        request: ai_miao_bi_20230801_models.UploadDocRequest,
+    ) -> ai_miao_bi_20230801_models.UploadDocResponse:
+        """
+        @summary 妙读上传文档接口
+        
+        @param request: UploadDocRequest
+        @return: UploadDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upload_doc_with_options(request, runtime)
+
+    async def upload_doc_async(
+        self,
+        request: ai_miao_bi_20230801_models.UploadDocRequest,
+    ) -> ai_miao_bi_20230801_models.UploadDocResponse:
+        """
+        @summary 妙读上传文档接口
+        
+        @param request: UploadDocRequest
+        @return: UploadDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_doc_with_options_async(request, runtime)
 
     def validate_upload_template_with_options(
         self,

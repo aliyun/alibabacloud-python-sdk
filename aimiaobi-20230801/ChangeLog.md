@@ -1,3 +1,15 @@
+2024-12-16 Version: 1.12.0
+- Support API DeleteDocs.
+- Support API GetDocInfo.
+- Support API ListDocs.
+- Support API RunDocBrainmap.
+- Support API RunDocIntroduction.
+- Support API RunDocQa.
+- Support API RunDocSummary.
+- Support API RunDocTranslation.
+- Support API UploadDoc.
+
+
 2024-12-16 Version: 1.11.1
 - Update API RunWriting: update response param.
 
