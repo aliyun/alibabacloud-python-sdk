@@ -4355,6 +4355,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_channels_with_options_async(request, runtime)
 
+    def describe_cloud_notes_with_options(
+        self,
+        tmp_req: rtc_20180111_models.DescribeCloudNotesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeCloudNotesResponse:
+        """
+        @summary 纪要列表
+        
+        @param tmp_req: DescribeCloudNotesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudNotesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DescribeCloudNotesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_ids):
+            request.task_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_ids, 'TaskIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudNotes',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeCloudNotesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_notes_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.DescribeCloudNotesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeCloudNotesResponse:
+        """
+        @summary 纪要列表
+        
+        @param tmp_req: DescribeCloudNotesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudNotesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DescribeCloudNotesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_ids):
+            request.task_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_ids, 'TaskIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudNotes',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeCloudNotesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_notes(
+        self,
+        request: rtc_20180111_models.DescribeCloudNotesRequest,
+    ) -> rtc_20180111_models.DescribeCloudNotesResponse:
+        """
+        @summary 纪要列表
+        
+        @param request: DescribeCloudNotesRequest
+        @return: DescribeCloudNotesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_notes_with_options(request, runtime)
+
+    async def describe_cloud_notes_async(
+        self,
+        request: rtc_20180111_models.DescribeCloudNotesRequest,
+    ) -> rtc_20180111_models.DescribeCloudNotesResponse:
+        """
+        @summary 纪要列表
+        
+        @param request: DescribeCloudNotesRequest
+        @return: DescribeCloudNotesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_notes_with_options_async(request, runtime)
+
     def describe_end_point_event_list_with_options(
         self,
         request: rtc_20180111_models.DescribeEndPointEventListRequest,
@@ -8855,19 +8955,191 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_category_callback_with_options_async(request, runtime)
 
+    def start_cloud_note_with_options(
+        self,
+        tmp_req: rtc_20180111_models.StartCloudNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.StartCloudNoteResponse:
+        """
+        @summary 开启智能纪要
+        
+        @param tmp_req: StartCloudNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartCloudNoteResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.StartCloudNoteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.auto_chapters):
+            request.auto_chapters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.auto_chapters, 'AutoChapters', 'json')
+        if not UtilClient.is_unset(tmp_req.custom_prompt):
+            request.custom_prompt_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_prompt, 'CustomPrompt', 'json')
+        if not UtilClient.is_unset(tmp_req.meeting_assistance):
+            request.meeting_assistance_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.meeting_assistance, 'MeetingAssistance', 'json')
+        if not UtilClient.is_unset(tmp_req.service_inspection):
+            request.service_inspection_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.service_inspection, 'ServiceInspection', 'json')
+        if not UtilClient.is_unset(tmp_req.summarization):
+            request.summarization_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.summarization, 'Summarization', 'json')
+        if not UtilClient.is_unset(tmp_req.text_polish):
+            request.text_polish_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_polish, 'TextPolish', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.auto_chapters_shrink):
+            query['AutoChapters'] = request.auto_chapters_shrink
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.custom_prompt_shrink):
+            query['CustomPrompt'] = request.custom_prompt_shrink
+        if not UtilClient.is_unset(request.language_hints):
+            query['LanguageHints'] = request.language_hints
+        if not UtilClient.is_unset(request.meeting_assistance_shrink):
+            query['MeetingAssistance'] = request.meeting_assistance_shrink
+        if not UtilClient.is_unset(request.service_inspection_shrink):
+            query['ServiceInspection'] = request.service_inspection_shrink
+        if not UtilClient.is_unset(request.source_language):
+            query['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.storage_config):
+            query['StorageConfig'] = request.storage_config
+        if not UtilClient.is_unset(request.summarization_shrink):
+            query['Summarization'] = request.summarization_shrink
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.text_polish_shrink):
+            query['TextPolish'] = request.text_polish_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartCloudNote',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.StartCloudNoteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_cloud_note_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.StartCloudNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.StartCloudNoteResponse:
+        """
+        @summary 开启智能纪要
+        
+        @param tmp_req: StartCloudNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartCloudNoteResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.StartCloudNoteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.auto_chapters):
+            request.auto_chapters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.auto_chapters, 'AutoChapters', 'json')
+        if not UtilClient.is_unset(tmp_req.custom_prompt):
+            request.custom_prompt_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_prompt, 'CustomPrompt', 'json')
+        if not UtilClient.is_unset(tmp_req.meeting_assistance):
+            request.meeting_assistance_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.meeting_assistance, 'MeetingAssistance', 'json')
+        if not UtilClient.is_unset(tmp_req.service_inspection):
+            request.service_inspection_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.service_inspection, 'ServiceInspection', 'json')
+        if not UtilClient.is_unset(tmp_req.summarization):
+            request.summarization_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.summarization, 'Summarization', 'json')
+        if not UtilClient.is_unset(tmp_req.text_polish):
+            request.text_polish_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_polish, 'TextPolish', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.auto_chapters_shrink):
+            query['AutoChapters'] = request.auto_chapters_shrink
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.custom_prompt_shrink):
+            query['CustomPrompt'] = request.custom_prompt_shrink
+        if not UtilClient.is_unset(request.language_hints):
+            query['LanguageHints'] = request.language_hints
+        if not UtilClient.is_unset(request.meeting_assistance_shrink):
+            query['MeetingAssistance'] = request.meeting_assistance_shrink
+        if not UtilClient.is_unset(request.service_inspection_shrink):
+            query['ServiceInspection'] = request.service_inspection_shrink
+        if not UtilClient.is_unset(request.source_language):
+            query['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.storage_config):
+            query['StorageConfig'] = request.storage_config
+        if not UtilClient.is_unset(request.summarization_shrink):
+            query['Summarization'] = request.summarization_shrink
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.text_polish_shrink):
+            query['TextPolish'] = request.text_polish_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartCloudNote',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.StartCloudNoteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_cloud_note(
+        self,
+        request: rtc_20180111_models.StartCloudNoteRequest,
+    ) -> rtc_20180111_models.StartCloudNoteResponse:
+        """
+        @summary 开启智能纪要
+        
+        @param request: StartCloudNoteRequest
+        @return: StartCloudNoteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_cloud_note_with_options(request, runtime)
+
+    async def start_cloud_note_async(
+        self,
+        request: rtc_20180111_models.StartCloudNoteRequest,
+    ) -> rtc_20180111_models.StartCloudNoteResponse:
+        """
+        @summary 开启智能纪要
+        
+        @param request: StartCloudNoteRequest
+        @return: StartCloudNoteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_cloud_note_with_options_async(request, runtime)
+
     def start_cloud_record_with_options(
         self,
-        request: rtc_20180111_models.StartCloudRecordRequest,
+        tmp_req: rtc_20180111_models.StartCloudRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartCloudRecordResponse:
         """
         @summary StartCloudRecord
         
-        @param request: StartCloudRecordRequest
+        @param tmp_req: StartCloudRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartCloudRecordResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.StartCloudRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout_specified_users):
+            request.layout_specified_users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout_specified_users, 'LayoutSpecifiedUsers', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
@@ -8881,6 +9153,8 @@ class Client(OpenApiClient):
             query['CropMode'] = request.crop_mode
         if not UtilClient.is_unset(request.images):
             query['Images'] = request.images
+        if not UtilClient.is_unset(request.layout_specified_users_shrink):
+            query['LayoutSpecifiedUsers'] = request.layout_specified_users_shrink
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.region_color):
@@ -8914,17 +9188,21 @@ class Client(OpenApiClient):
 
     async def start_cloud_record_with_options_async(
         self,
-        request: rtc_20180111_models.StartCloudRecordRequest,
+        tmp_req: rtc_20180111_models.StartCloudRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartCloudRecordResponse:
         """
         @summary StartCloudRecord
         
-        @param request: StartCloudRecordRequest
+        @param tmp_req: StartCloudRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartCloudRecordResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.StartCloudRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout_specified_users):
+            request.layout_specified_users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout_specified_users, 'LayoutSpecifiedUsers', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
@@ -8938,6 +9216,8 @@ class Client(OpenApiClient):
             query['CropMode'] = request.crop_mode
         if not UtilClient.is_unset(request.images):
             query['Images'] = request.images
+        if not UtilClient.is_unset(request.layout_specified_users_shrink):
+            query['LayoutSpecifiedUsers'] = request.layout_specified_users_shrink
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.region_color):
@@ -9375,17 +9655,21 @@ class Client(OpenApiClient):
 
     def start_streaming_out_with_options(
         self,
-        request: rtc_20180111_models.StartStreamingOutRequest,
+        tmp_req: rtc_20180111_models.StartStreamingOutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartStreamingOutResponse:
         """
         @summary StartStreamingOut
         
-        @param request: StartStreamingOutRequest
+        @param tmp_req: StartStreamingOutRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartStreamingOutResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.StartStreamingOutShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout_specified_users):
+            request.layout_specified_users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout_specified_users, 'LayoutSpecifiedUsers', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
@@ -9399,6 +9683,8 @@ class Client(OpenApiClient):
             query['CropMode'] = request.crop_mode
         if not UtilClient.is_unset(request.images):
             query['Images'] = request.images
+        if not UtilClient.is_unset(request.layout_specified_users_shrink):
+            query['LayoutSpecifiedUsers'] = request.layout_specified_users_shrink
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.region_color):
@@ -9432,17 +9718,21 @@ class Client(OpenApiClient):
 
     async def start_streaming_out_with_options_async(
         self,
-        request: rtc_20180111_models.StartStreamingOutRequest,
+        tmp_req: rtc_20180111_models.StartStreamingOutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartStreamingOutResponse:
         """
         @summary StartStreamingOut
         
-        @param request: StartStreamingOutRequest
+        @param tmp_req: StartStreamingOutRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartStreamingOutResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.StartStreamingOutShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout_specified_users):
+            request.layout_specified_users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout_specified_users, 'LayoutSpecifiedUsers', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
@@ -9456,6 +9746,8 @@ class Client(OpenApiClient):
             query['CropMode'] = request.crop_mode
         if not UtilClient.is_unset(request.images):
             query['Images'] = request.images
+        if not UtilClient.is_unset(request.layout_specified_users_shrink):
+            query['LayoutSpecifiedUsers'] = request.layout_specified_users_shrink
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.region_color):
@@ -9720,6 +10012,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_channel_with_options_async(request, runtime)
+
+    def stop_cloud_note_with_options(
+        self,
+        request: rtc_20180111_models.StopCloudNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.StopCloudNoteResponse:
+        """
+        @summary 停止智能纪要
+        
+        @param request: StopCloudNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopCloudNoteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopCloudNote',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.StopCloudNoteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_cloud_note_with_options_async(
+        self,
+        request: rtc_20180111_models.StopCloudNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.StopCloudNoteResponse:
+        """
+        @summary 停止智能纪要
+        
+        @param request: StopCloudNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopCloudNoteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopCloudNote',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.StopCloudNoteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_cloud_note(
+        self,
+        request: rtc_20180111_models.StopCloudNoteRequest,
+    ) -> rtc_20180111_models.StopCloudNoteResponse:
+        """
+        @summary 停止智能纪要
+        
+        @param request: StopCloudNoteRequest
+        @return: StopCloudNoteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_cloud_note_with_options(request, runtime)
+
+    async def stop_cloud_note_async(
+        self,
+        request: rtc_20180111_models.StopCloudNoteRequest,
+    ) -> rtc_20180111_models.StopCloudNoteResponse:
+        """
+        @summary 停止智能纪要
+        
+        @param request: StopCloudNoteRequest
+        @return: StopCloudNoteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_cloud_note_with_options_async(request, runtime)
 
     def stop_cloud_record_with_options(
         self,
@@ -10243,17 +10643,21 @@ class Client(OpenApiClient):
 
     def update_cloud_record_with_options(
         self,
-        request: rtc_20180111_models.UpdateCloudRecordRequest,
+        tmp_req: rtc_20180111_models.UpdateCloudRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateCloudRecordResponse:
         """
         @summary 更新云端录制任务
         
-        @param request: UpdateCloudRecordRequest
+        @param tmp_req: UpdateCloudRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudRecordResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.UpdateCloudRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout_specified_users):
+            request.layout_specified_users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout_specified_users, 'LayoutSpecifiedUsers', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
@@ -10265,6 +10669,8 @@ class Client(OpenApiClient):
             query['ClockWidgets'] = request.clock_widgets
         if not UtilClient.is_unset(request.images):
             query['Images'] = request.images
+        if not UtilClient.is_unset(request.layout_specified_users_shrink):
+            query['LayoutSpecifiedUsers'] = request.layout_specified_users_shrink
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.task_id):
@@ -10294,17 +10700,21 @@ class Client(OpenApiClient):
 
     async def update_cloud_record_with_options_async(
         self,
-        request: rtc_20180111_models.UpdateCloudRecordRequest,
+        tmp_req: rtc_20180111_models.UpdateCloudRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateCloudRecordResponse:
         """
         @summary 更新云端录制任务
         
-        @param request: UpdateCloudRecordRequest
+        @param tmp_req: UpdateCloudRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudRecordResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.UpdateCloudRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout_specified_users):
+            request.layout_specified_users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout_specified_users, 'LayoutSpecifiedUsers', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
@@ -10316,6 +10726,8 @@ class Client(OpenApiClient):
             query['ClockWidgets'] = request.clock_widgets
         if not UtilClient.is_unset(request.images):
             query['Images'] = request.images
+        if not UtilClient.is_unset(request.layout_specified_users_shrink):
+            query['LayoutSpecifiedUsers'] = request.layout_specified_users_shrink
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.task_id):
@@ -10855,17 +11267,21 @@ class Client(OpenApiClient):
 
     def update_streaming_out_with_options(
         self,
-        request: rtc_20180111_models.UpdateStreamingOutRequest,
+        tmp_req: rtc_20180111_models.UpdateStreamingOutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateStreamingOutResponse:
         """
         @summary 更新旁路推流任务
         
-        @param request: UpdateStreamingOutRequest
+        @param tmp_req: UpdateStreamingOutRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateStreamingOutResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.UpdateStreamingOutShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout_specified_users):
+            request.layout_specified_users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout_specified_users, 'LayoutSpecifiedUsers', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
@@ -10877,6 +11293,8 @@ class Client(OpenApiClient):
             query['ClockWidgets'] = request.clock_widgets
         if not UtilClient.is_unset(request.images):
             query['Images'] = request.images
+        if not UtilClient.is_unset(request.layout_specified_users_shrink):
+            query['LayoutSpecifiedUsers'] = request.layout_specified_users_shrink
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.task_id):
@@ -10906,17 +11324,21 @@ class Client(OpenApiClient):
 
     async def update_streaming_out_with_options_async(
         self,
-        request: rtc_20180111_models.UpdateStreamingOutRequest,
+        tmp_req: rtc_20180111_models.UpdateStreamingOutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateStreamingOutResponse:
         """
         @summary 更新旁路推流任务
         
-        @param request: UpdateStreamingOutRequest
+        @param tmp_req: UpdateStreamingOutRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateStreamingOutResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.UpdateStreamingOutShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout_specified_users):
+            request.layout_specified_users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout_specified_users, 'LayoutSpecifiedUsers', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
@@ -10928,6 +11350,8 @@ class Client(OpenApiClient):
             query['ClockWidgets'] = request.clock_widgets
         if not UtilClient.is_unset(request.images):
             query['Images'] = request.images
+        if not UtilClient.is_unset(request.layout_specified_users_shrink):
+            query['LayoutSpecifiedUsers'] = request.layout_specified_users_shrink
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.task_id):

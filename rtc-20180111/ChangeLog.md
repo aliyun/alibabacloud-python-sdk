@@ -1,3 +1,13 @@
+2024-12-16 Version: 4.1.0
+- Support API DescribeCloudNotes.
+- Support API StartCloudNote.
+- Support API StopCloudNote.
+- Update API StartCloudRecord: add param LayoutSpecifiedUsers.
+- Update API StartStreamingOut: add param LayoutSpecifiedUsers.
+- Update API UpdateCloudRecord: add param LayoutSpecifiedUsers.
+- Update API UpdateStreamingOut: add param LayoutSpecifiedUsers.
+
+
 2024-11-07 Version: 4.0.0
 - Update API DescribeAppRecordingFiles: update response param.
 
