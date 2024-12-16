@@ -7239,8 +7239,6 @@ class EnrichRequestJourneyParamListSegmentParamList(TeaModel):
         marketing_flight_no: str = None,
     ):
         # arrival airport code (capitalized)
-        # 
-        # This parameter is required.
         self.arrival_airport = arrival_airport
         # arrival city code (capitalized)
         self.arrival_city = arrival_city
@@ -7249,14 +7247,10 @@ class EnrichRequestJourneyParamListSegmentParamList(TeaModel):
         # child RBD
         self.child_cabin = child_cabin
         # departure airport code (capitalized)
-        # 
-        # This parameter is required.
         self.departure_airport = departure_airport
         # departure city code (capitalized)
         self.departure_city = departure_city
         # departure time in string format (yyyy-MM-dd HH:mm:ss)
-        # 
-        # This parameter is required.
         self.departure_time = departure_time
         # marketing flight no. (eg: KA5809)
         # 
