@@ -4280,6 +4280,7 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         specification: int = None,
         sub_domain_dns_address: List[str] = None,
         sub_domain_name: str = None,
+        v_switch_id: List[str] = None,
         verify_code: str = None,
     ):
         # The hostname of the domain controller. The hostname must comply with the naming conventions for Windows hosts.
@@ -4290,8 +4291,6 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         # If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
         self.bandwidth = bandwidth
         # The ID of the CEN instance.
-        # 
-        # This parameter is required.
         self.cen_id = cen_id
         # The Alibaba Cloud account that creates the Cloud Enterprise Network (CEN) instance.
         # 
@@ -4303,8 +4302,6 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         # *   `10.0.0.0/12` (subnet mask range: 12 to 24 bits)
         # *   `172.16.0.0/12` (subnet mask range: 12 to 24 bits)
         # *   `192.168.0.0/16` (subnet mask range: 16 to 24 bits)
-        # 
-        # This parameter is required.
         self.cidr_block = cidr_block
         # The method to connect to cloud computers from Alibaba Cloud Workspace clients.
         # 
@@ -4399,6 +4396,7 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         self.sub_domain_dns_address = sub_domain_dns_address
         # The domain name of the enterprise AD subdomain.
         self.sub_domain_name = sub_domain_name
+        self.v_switch_id = v_switch_id
         # The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) operation to obtain the verification code.
         self.verify_code = verify_code
 
@@ -4453,6 +4451,8 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
             result['SubDomainDnsAddress'] = self.sub_domain_dns_address
         if self.sub_domain_name is not None:
             result['SubDomainName'] = self.sub_domain_name
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
         if self.verify_code is not None:
             result['VerifyCode'] = self.verify_code
         return result
@@ -4501,6 +4501,8 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
             self.sub_domain_dns_address = m.get('SubDomainDnsAddress')
         if m.get('SubDomainName') is not None:
             self.sub_domain_name = m.get('SubDomainName')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
         if m.get('VerifyCode') is not None:
             self.verify_code = m.get('VerifyCode')
         return self
@@ -6333,6 +6335,7 @@ class CreateDesktopGroupRequest(TeaModel):
         period_unit: str = None,
         policy_group_id: str = None,
         profile_follow_switch: bool = None,
+        promotion_id: str = None,
         ratio_threshold: float = None,
         region_id: str = None,
         reset_type: int = None,
@@ -6399,7 +6402,7 @@ class CreateDesktopGroupRequest(TeaModel):
         self.directory_id = directory_id
         # The end users that can use the desktop group.
         self.end_user_ids = end_user_ids
-        # The Apsara File Storage NAS (NAS) file system that is used after data roaming is enabled.
+        # The File Storage NAS (NAS) file system that is used after data roaming is enabled.
         self.file_system_id = file_system_id
         # The desktop group version.
         self.group_version = group_version
@@ -6444,6 +6447,7 @@ class CreateDesktopGroupRequest(TeaModel):
         self.policy_group_id = policy_group_id
         # Specifies whether to enable data roaming.
         self.profile_follow_switch = profile_follow_switch
+        self.promotion_id = promotion_id
         # The threshold for the ratio of connected sessions. This parameter is the condition that triggers auto scaling in a multi-session desktop group. `Ratio of connected sessions = Number of connected sessions/(Total number of cloud desktops × Maximum number of sessions allowed for each cloud desktop) × 100%`. When the specified threshold is reached, new cloud desktops are automatically created. When the specified threshold is not reached, idle cloud desktops are released.
         self.ratio_threshold = ratio_threshold
         # The ID of the region.
@@ -6539,6 +6543,8 @@ class CreateDesktopGroupRequest(TeaModel):
             result['PolicyGroupId'] = self.policy_group_id
         if self.profile_follow_switch is not None:
             result['ProfileFollowSwitch'] = self.profile_follow_switch
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
         if self.ratio_threshold is not None:
             result['RatioThreshold'] = self.ratio_threshold
         if self.region_id is not None:
@@ -6623,6 +6629,8 @@ class CreateDesktopGroupRequest(TeaModel):
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('ProfileFollowSwitch') is not None:
             self.profile_follow_switch = m.get('ProfileFollowSwitch')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
         if m.get('RatioThreshold') is not None:
             self.ratio_threshold = m.get('RatioThreshold')
         if m.get('RegionId') is not None:
@@ -7041,6 +7049,81 @@ class CreateDesktopsRequestBundleModels(TeaModel):
         return self
 
 
+class CreateDesktopsRequestDesktopAttachment(TeaModel):
+    def __init__(
+        self,
+        data_disk_category: str = None,
+        data_disk_per_level: str = None,
+        data_disk_size: int = None,
+        default_language: str = None,
+        desktop_type: str = None,
+        image_id: str = None,
+        system_disk_category: str = None,
+        system_disk_per_level: str = None,
+        system_disk_size: int = None,
+    ):
+        self.data_disk_category = data_disk_category
+        self.data_disk_per_level = data_disk_per_level
+        self.data_disk_size = data_disk_size
+        self.default_language = default_language
+        self.desktop_type = desktop_type
+        self.image_id = image_id
+        self.system_disk_category = system_disk_category
+        self.system_disk_per_level = system_disk_per_level
+        self.system_disk_size = system_disk_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_disk_category is not None:
+            result['DataDiskCategory'] = self.data_disk_category
+        if self.data_disk_per_level is not None:
+            result['DataDiskPerLevel'] = self.data_disk_per_level
+        if self.data_disk_size is not None:
+            result['DataDiskSize'] = self.data_disk_size
+        if self.default_language is not None:
+            result['DefaultLanguage'] = self.default_language
+        if self.desktop_type is not None:
+            result['DesktopType'] = self.desktop_type
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.system_disk_category is not None:
+            result['SystemDiskCategory'] = self.system_disk_category
+        if self.system_disk_per_level is not None:
+            result['SystemDiskPerLevel'] = self.system_disk_per_level
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataDiskCategory') is not None:
+            self.data_disk_category = m.get('DataDiskCategory')
+        if m.get('DataDiskPerLevel') is not None:
+            self.data_disk_per_level = m.get('DataDiskPerLevel')
+        if m.get('DataDiskSize') is not None:
+            self.data_disk_size = m.get('DataDiskSize')
+        if m.get('DefaultLanguage') is not None:
+            self.default_language = m.get('DefaultLanguage')
+        if m.get('DesktopType') is not None:
+            self.desktop_type = m.get('DesktopType')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('SystemDiskCategory') is not None:
+            self.system_disk_category = m.get('SystemDiskCategory')
+        if m.get('SystemDiskPerLevel') is not None:
+            self.system_disk_per_level = m.get('SystemDiskPerLevel')
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
+        return self
+
+
 class CreateDesktopsRequestDesktopTimers(TeaModel):
     def __init__(
         self,
@@ -7339,6 +7422,7 @@ class CreateDesktopsRequest(TeaModel):
         bundle_id: str = None,
         bundle_models: List[CreateDesktopsRequestBundleModels] = None,
         charge_type: str = None,
+        desktop_attachment: CreateDesktopsRequestDesktopAttachment = None,
         desktop_member_ip: str = None,
         desktop_name: str = None,
         desktop_name_suffix: bool = None,
@@ -7354,8 +7438,10 @@ class CreateDesktopsRequest(TeaModel):
         policy_group_id: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         snapshot_policy_id: str = None,
         tag: List[CreateDesktopsRequestTag] = None,
+        timer_group_id: str = None,
         user_assign_mode: str = None,
         user_commands: List[CreateDesktopsRequestUserCommands] = None,
         user_name: str = None,
@@ -7393,6 +7479,7 @@ class CreateDesktopsRequest(TeaModel):
         # 
         #     <!-- -->
         self.charge_type = charge_type
+        self.desktop_attachment = desktop_attachment
         # The private IP address of the cloud computer.
         self.desktop_member_ip = desktop_member_ip
         # The name of the cloud computer. The name must meet the following requirements:
@@ -7475,9 +7562,759 @@ class CreateDesktopsRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.snapshot_policy_id = snapshot_policy_id
         # The tags that you want to add to the cloud desktop.
         self.tag = tag
+        self.timer_group_id = timer_group_id
+        # How the cloud computers are assigned.
+        # 
+        # >  If you do not specify the `EndUserId` parameter, the cloud computers are not assigned to end users after the cloud computers are created.
+        # 
+        # Default value: ALL. Valid values:
+        # 
+        # *   ALL: If you specify the EndUserId parameter, the cloud computers are assigned to all specified end users after the cloud computers are created.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   PER_USER: If you specify the EndUserId parameter, the cloud computers are evenly assigned to the specified end users after the cloud computers are created.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     In this case, you must make sure that the value of the Amount parameter can be divided by the N value of the EndUserId.N parameter that you specify.
+        # 
+        #     <!-- -->
+        self.user_assign_mode = user_assign_mode
+        # Details about the custom command scripts.
+        self.user_commands = user_commands
+        # >  This parameter is not publicly available.
+        self.user_name = user_name
+        # Specifies whether to enable disk encryption.
+        self.volume_encryption_enabled = volume_encryption_enabled
+        # The ID of the Key Management Service (KMS) key that you want to use when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to obtain a list of KMS keys.
+        self.volume_encryption_key = volume_encryption_key
+        # >  This parameter is not publicly available.
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.bundle_models:
+            for k in self.bundle_models:
+                if k:
+                    k.validate()
+        if self.desktop_attachment:
+            self.desktop_attachment.validate()
+        if self.desktop_timers:
+            for k in self.desktop_timers:
+                if k:
+                    k.validate()
+        if self.month_desktop_setting:
+            self.month_desktop_setting.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+        if self.user_commands:
+            for k in self.user_commands:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.bundle_id is not None:
+            result['BundleId'] = self.bundle_id
+        result['BundleModels'] = []
+        if self.bundle_models is not None:
+            for k in self.bundle_models:
+                result['BundleModels'].append(k.to_map() if k else None)
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.desktop_attachment is not None:
+            result['DesktopAttachment'] = self.desktop_attachment.to_map()
+        if self.desktop_member_ip is not None:
+            result['DesktopMemberIp'] = self.desktop_member_ip
+        if self.desktop_name is not None:
+            result['DesktopName'] = self.desktop_name
+        if self.desktop_name_suffix is not None:
+            result['DesktopNameSuffix'] = self.desktop_name_suffix
+        result['DesktopTimers'] = []
+        if self.desktop_timers is not None:
+            for k in self.desktop_timers:
+                result['DesktopTimers'].append(k.to_map() if k else None)
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.month_desktop_setting is not None:
+            result['MonthDesktopSetting'] = self.month_desktop_setting.to_map()
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.policy_group_id is not None:
+            result['PolicyGroupId'] = self.policy_group_id
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.snapshot_policy_id is not None:
+            result['SnapshotPolicyId'] = self.snapshot_policy_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.timer_group_id is not None:
+            result['TimerGroupId'] = self.timer_group_id
+        if self.user_assign_mode is not None:
+            result['UserAssignMode'] = self.user_assign_mode
+        result['UserCommands'] = []
+        if self.user_commands is not None:
+            for k in self.user_commands:
+                result['UserCommands'].append(k.to_map() if k else None)
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.volume_encryption_enabled is not None:
+            result['VolumeEncryptionEnabled'] = self.volume_encryption_enabled
+        if self.volume_encryption_key is not None:
+            result['VolumeEncryptionKey'] = self.volume_encryption_key
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('BundleId') is not None:
+            self.bundle_id = m.get('BundleId')
+        self.bundle_models = []
+        if m.get('BundleModels') is not None:
+            for k in m.get('BundleModels'):
+                temp_model = CreateDesktopsRequestBundleModels()
+                self.bundle_models.append(temp_model.from_map(k))
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('DesktopAttachment') is not None:
+            temp_model = CreateDesktopsRequestDesktopAttachment()
+            self.desktop_attachment = temp_model.from_map(m['DesktopAttachment'])
+        if m.get('DesktopMemberIp') is not None:
+            self.desktop_member_ip = m.get('DesktopMemberIp')
+        if m.get('DesktopName') is not None:
+            self.desktop_name = m.get('DesktopName')
+        if m.get('DesktopNameSuffix') is not None:
+            self.desktop_name_suffix = m.get('DesktopNameSuffix')
+        self.desktop_timers = []
+        if m.get('DesktopTimers') is not None:
+            for k in m.get('DesktopTimers'):
+                temp_model = CreateDesktopsRequestDesktopTimers()
+                self.desktop_timers.append(temp_model.from_map(k))
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('MonthDesktopSetting') is not None:
+            temp_model = CreateDesktopsRequestMonthDesktopSetting()
+            self.month_desktop_setting = temp_model.from_map(m['MonthDesktopSetting'])
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('PolicyGroupId') is not None:
+            self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SnapshotPolicyId') is not None:
+            self.snapshot_policy_id = m.get('SnapshotPolicyId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateDesktopsRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('TimerGroupId') is not None:
+            self.timer_group_id = m.get('TimerGroupId')
+        if m.get('UserAssignMode') is not None:
+            self.user_assign_mode = m.get('UserAssignMode')
+        self.user_commands = []
+        if m.get('UserCommands') is not None:
+            for k in m.get('UserCommands'):
+                temp_model = CreateDesktopsRequestUserCommands()
+                self.user_commands.append(temp_model.from_map(k))
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('VolumeEncryptionEnabled') is not None:
+            self.volume_encryption_enabled = m.get('VolumeEncryptionEnabled')
+        if m.get('VolumeEncryptionKey') is not None:
+            self.volume_encryption_key = m.get('VolumeEncryptionKey')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateDesktopsShrinkRequestBundleModels(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        bundle_id: str = None,
+        desktop_name: str = None,
+        end_user_ids: List[str] = None,
+        hostname: str = None,
+        volume_encryption_enabled: bool = None,
+        volume_encryption_key: str = None,
+    ):
+        # The number of cloud computers that you want to create. Valid values: 1 to 300. Default value: null.
+        self.amount = amount
+        # The ID of a cloud computer template.
+        self.bundle_id = bundle_id
+        # The name of the cloud computer. The name must meet the following requirements:
+        # 
+        # *   The name must be 1 to 64 characters in length.
+        # *   The name must start with a letter but cannot start with `http://` or `https://`.
+        # *   The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        self.desktop_name = desktop_name
+        # The IDs of the end users to whom the cloud computer are assigned.
+        self.end_user_ids = end_user_ids
+        # The custom hostnames of the cloud computers. This parameter is valid only if the office network is an AD office network and the operating system type of the cloud computers is Windows.
+        # 
+        # The hostnames must meet the following requirements:
+        # 
+        # *   The hostnames must be 2 to 15 characters in length.
+        # *   The hostnames can contain only letters, digits, and hyphens (-). The hostnames cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
+        # 
+        # When you create multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the cloud computers. For example, if you set the value of the Hostname parameter to ecd-[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
+        # 
+        # *   `name_prefix`: the prefix of the hostname.
+        # *   `[begin_number,bits]`: the sequential number in the hostname. The `begin_number` value is the starting digit. Valid values of begin_number: 0 to 999999. Default value: 0. The `bits` value is the number of digits. Valid values: 1 to 6. Default value: 6.
+        # *   `name_suffix`: the suffix of the hostname.
+        self.hostname = hostname
+        # Specifies whether to enable disk encryption.
+        self.volume_encryption_enabled = volume_encryption_enabled
+        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query the list of KMS keys.
+        self.volume_encryption_key = volume_encryption_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.bundle_id is not None:
+            result['BundleId'] = self.bundle_id
+        if self.desktop_name is not None:
+            result['DesktopName'] = self.desktop_name
+        if self.end_user_ids is not None:
+            result['EndUserIds'] = self.end_user_ids
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.volume_encryption_enabled is not None:
+            result['VolumeEncryptionEnabled'] = self.volume_encryption_enabled
+        if self.volume_encryption_key is not None:
+            result['VolumeEncryptionKey'] = self.volume_encryption_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('BundleId') is not None:
+            self.bundle_id = m.get('BundleId')
+        if m.get('DesktopName') is not None:
+            self.desktop_name = m.get('DesktopName')
+        if m.get('EndUserIds') is not None:
+            self.end_user_ids = m.get('EndUserIds')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('VolumeEncryptionEnabled') is not None:
+            self.volume_encryption_enabled = m.get('VolumeEncryptionEnabled')
+        if m.get('VolumeEncryptionKey') is not None:
+            self.volume_encryption_key = m.get('VolumeEncryptionKey')
+        return self
+
+
+class CreateDesktopsShrinkRequestDesktopTimers(TeaModel):
+    def __init__(
+        self,
+        allow_client_setting: bool = None,
+        cron_expression: str = None,
+        enforce: bool = None,
+        interval: int = None,
+        operation_type: str = None,
+        reset_type: str = None,
+        timer_type: str = None,
+    ):
+        # Specifies whether to allow the end user to configure the scheduled task.
+        self.allow_client_setting = allow_client_setting
+        # The cron expression for the scheduled task.
+        # 
+        # >  The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \\* 1,2,3,4,5,6,7
+        self.cron_expression = cron_expression
+        # Specifies whether to forcibly execute the scheduled task.
+        # 
+        # Valid values:
+        # 
+        # *   true: forcibly executes the scheduled task regardless of the status and connection of the cloud computers.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false: does not forcibly execute the scheduled task.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.enforce = enforce
+        # The interval at which cloud computers are created. Unit: minutes.
+        self.interval = interval
+        # The operations that scheduled tasks support. This parameter is valid only when TimerType is set to NoConnect.
+        # 
+        # Valid values:
+        # 
+        # *   Hibernate: hibernates the cloud computers.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Shutdown: stops the cloud computers.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.operation_type = operation_type
+        # The reset type of the cloud computers.
+        # 
+        # Valid values:
+        # 
+        # *   RESET_TYPE_SYSTEM: resets the system disks.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   RESET_TYPE_BOTH: resets the system disks and data disks.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.reset_type = reset_type
+        # The type of the scheduled task.
+        self.timer_type = timer_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_client_setting is not None:
+            result['AllowClientSetting'] = self.allow_client_setting
+        if self.cron_expression is not None:
+            result['CronExpression'] = self.cron_expression
+        if self.enforce is not None:
+            result['Enforce'] = self.enforce
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.reset_type is not None:
+            result['ResetType'] = self.reset_type
+        if self.timer_type is not None:
+            result['TimerType'] = self.timer_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowClientSetting') is not None:
+            self.allow_client_setting = m.get('AllowClientSetting')
+        if m.get('CronExpression') is not None:
+            self.cron_expression = m.get('CronExpression')
+        if m.get('Enforce') is not None:
+            self.enforce = m.get('Enforce')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('ResetType') is not None:
+            self.reset_type = m.get('ResetType')
+        if m.get('TimerType') is not None:
+            self.timer_type = m.get('TimerType')
+        return self
+
+
+class CreateDesktopsShrinkRequestMonthDesktopSetting(TeaModel):
+    def __init__(
+        self,
+        buyer_id: int = None,
+        desktop_id: str = None,
+        use_duration: int = None,
+    ):
+        # > This parameter is not publicly available.
+        self.buyer_id = buyer_id
+        # > This parameter is not publicly available.
+        self.desktop_id = desktop_id
+        # > This parameter is not publicly available.
+        self.use_duration = use_duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.buyer_id is not None:
+            result['BuyerId'] = self.buyer_id
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.use_duration is not None:
+            result['UseDuration'] = self.use_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuyerId') is not None:
+            self.buyer_id = m.get('BuyerId')
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('UseDuration') is not None:
+            self.use_duration = m.get('UseDuration')
+        return self
+
+
+class CreateDesktopsShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of the tag. You can specify 1 to 20 keys for a tag.
+        self.key = key
+        # The value of the tag. You can specify 1 to 20 values for a tag.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateDesktopsShrinkRequestUserCommands(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        content_encoding: str = None,
+        content_type: str = None,
+    ):
+        # The command content.
+        self.content = content
+        # The encoding mode of the command content.
+        # 
+        # Valid values:
+        # 
+        # *   Base64: encodes the command content in Base64.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   PlainText: does not encode the command content.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.content_encoding = content_encoding
+        # The language type of the command.
+        # 
+        # Valid values:
+        # 
+        # *   RunPowerShellScript: PowerShell commands (applicable to Windows cloud computers).
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   RunShellScript: shell commands (applicable to Linux cloud computers).
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   RunBatScript: batch commands (applicable to Windows cloud computers).
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.content_type = content_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.content_encoding is not None:
+            result['ContentEncoding'] = self.content_encoding
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('ContentEncoding') is not None:
+            self.content_encoding = m.get('ContentEncoding')
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        return self
+
+
+class CreateDesktopsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        bundle_id: str = None,
+        bundle_models: List[CreateDesktopsShrinkRequestBundleModels] = None,
+        charge_type: str = None,
+        desktop_attachment_shrink: str = None,
+        desktop_member_ip: str = None,
+        desktop_name: str = None,
+        desktop_name_suffix: bool = None,
+        desktop_timers: List[CreateDesktopsShrinkRequestDesktopTimers] = None,
+        directory_id: str = None,
+        end_user_id: List[str] = None,
+        group_id: str = None,
+        hostname: str = None,
+        month_desktop_setting: CreateDesktopsShrinkRequestMonthDesktopSetting = None,
+        office_site_id: str = None,
+        period: int = None,
+        period_unit: str = None,
+        policy_group_id: str = None,
+        promotion_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        snapshot_policy_id: str = None,
+        tag: List[CreateDesktopsShrinkRequestTag] = None,
+        timer_group_id: str = None,
+        user_assign_mode: str = None,
+        user_commands: List[CreateDesktopsShrinkRequestUserCommands] = None,
+        user_name: str = None,
+        volume_encryption_enabled: bool = None,
+        volume_encryption_key: str = None,
+        vpc_id: str = None,
+    ):
+        # The number of cloud computers that you want to create. Valid values: 1 to 300. Default value: 1.
+        self.amount = amount
+        # Specifies whether to enable automatic payment.
+        self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal. This parameter takes effect only when the ChargeType parameter is set to PrePaid.
+        self.auto_renew = auto_renew
+        # The ID of the cloud computer template.
+        self.bundle_id = bundle_id
+        # The cloud computer templates.
+        self.bundle_models = bundle_models
+        # The billing method of the cloud computers.
+        # 
+        # Default value: PostPaid. Valid values:
+        # 
+        # *   Postpaid: pay-as-you-go
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   PrePaid: subscription
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.charge_type = charge_type
+        self.desktop_attachment_shrink = desktop_attachment_shrink
+        # The private IP address of the cloud computer.
+        self.desktop_member_ip = desktop_member_ip
+        # The name of the cloud computer. The name must meet the following requirements:
+        # 
+        # *   The name must be 1 to 64 characters in length.
+        # *   The name must start with a letter but cannot start with `http://` or `https://`.
+        # *   The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        self.desktop_name = desktop_name
+        # Specifies whether to automatically add suffixes to the names of cloud computers when you create multiple cloud computers at the same time.
+        # 
+        # Default value: true. Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   False
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.desktop_name_suffix = desktop_name_suffix
+        # The details of the scheduled task on cloud computers.
+        self.desktop_timers = desktop_timers
+        # >  This parameter is not publicly available.
+        self.directory_id = directory_id
+        # The IDs of the end users to which you want to assign the cloud computers. You can specify 1 to 100 IDs.
+        self.end_user_id = end_user_id
+        # The ID of the cloud computer pool.
+        self.group_id = group_id
+        # The custom hostnames of the cloud computers. This parameter is valid only if the office network is an AD office network and the operating system type of the cloud computers is Windows.
+        # 
+        # The hostnames must meet the following requirements:
+        # 
+        # *   The hostnames must be 2 to 15 characters in length.
+        # *   The hostnames can contain only letters, digits, and hyphens (-). The hostnames cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
+        # 
+        # When you create multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the cloud computers. For example, if you set the value of the Hostname parameter to ecd-[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
+        # 
+        # *   `name_prefix`: the prefix of the hostname.
+        # *   `[begin_number,bits]`: the sequential number in the hostname. The `begin_number` value is the starting digit. Valid values of begin_number: 0 to 999999. Default value: 0. The `bits` value is the number of digits. Valid values: 1 to 6. Default value: 6.
+        # *   `name_suffix`: the suffix of the hostname.
+        self.hostname = hostname
+        # > This parameter is not publicly available.
+        self.month_desktop_setting = month_desktop_setting
+        # The office network ID.
+        self.office_site_id = office_site_id
+        # The subscription duration of the cloud desktop that you want to create. The unit is specified by the `PeriodUnit` parameter. This parameter takes effect and is required only when the `ChargeType` parameter is set to `PrePaid`.
+        # 
+        # *   Valid values if the `PeriodUnit` parameter is set to `Month`:
+        # 
+        #     *   1
+        #     *   2
+        #     *   3
+        #     *   6
+        # 
+        # *   Valid values if the `PeriodUnit` parameter is set to `Year`:
+        # 
+        #     *   1
+        #     *   2
+        #     *   3
+        #     *   4
+        #     *   5
+        self.period = period
+        # The unit of the subscription duration.
+        self.period_unit = period_unit
+        # The ID of the policy.
+        # 
+        # This parameter is required.
+        self.policy_group_id = policy_group_id
+        # The ID of the sales promotion.
+        self.promotion_id = promotion_id
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.snapshot_policy_id = snapshot_policy_id
+        # The tags that you want to add to the cloud desktop.
+        self.tag = tag
+        self.timer_group_id = timer_group_id
         # How the cloud computers are assigned.
         # 
         # >  If you do not specify the `EndUserId` parameter, the cloud computers are not assigned to end users after the cloud computers are created.
@@ -7553,6 +8390,8 @@ class CreateDesktopsRequest(TeaModel):
                 result['BundleModels'].append(k.to_map() if k else None)
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.desktop_attachment_shrink is not None:
+            result['DesktopAttachment'] = self.desktop_attachment_shrink
         if self.desktop_member_ip is not None:
             result['DesktopMemberIp'] = self.desktop_member_ip
         if self.desktop_name is not None:
@@ -7585,12 +8424,16 @@ class CreateDesktopsRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.snapshot_policy_id is not None:
             result['SnapshotPolicyId'] = self.snapshot_policy_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.timer_group_id is not None:
+            result['TimerGroupId'] = self.timer_group_id
         if self.user_assign_mode is not None:
             result['UserAssignMode'] = self.user_assign_mode
         result['UserCommands'] = []
@@ -7620,10 +8463,12 @@ class CreateDesktopsRequest(TeaModel):
         self.bundle_models = []
         if m.get('BundleModels') is not None:
             for k in m.get('BundleModels'):
-                temp_model = CreateDesktopsRequestBundleModels()
+                temp_model = CreateDesktopsShrinkRequestBundleModels()
                 self.bundle_models.append(temp_model.from_map(k))
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('DesktopAttachment') is not None:
+            self.desktop_attachment_shrink = m.get('DesktopAttachment')
         if m.get('DesktopMemberIp') is not None:
             self.desktop_member_ip = m.get('DesktopMemberIp')
         if m.get('DesktopName') is not None:
@@ -7633,7 +8478,7 @@ class CreateDesktopsRequest(TeaModel):
         self.desktop_timers = []
         if m.get('DesktopTimers') is not None:
             for k in m.get('DesktopTimers'):
-                temp_model = CreateDesktopsRequestDesktopTimers()
+                temp_model = CreateDesktopsShrinkRequestDesktopTimers()
                 self.desktop_timers.append(temp_model.from_map(k))
         if m.get('DirectoryId') is not None:
             self.directory_id = m.get('DirectoryId')
@@ -7644,7 +8489,7 @@ class CreateDesktopsRequest(TeaModel):
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')
         if m.get('MonthDesktopSetting') is not None:
-            temp_model = CreateDesktopsRequestMonthDesktopSetting()
+            temp_model = CreateDesktopsShrinkRequestMonthDesktopSetting()
             self.month_desktop_setting = temp_model.from_map(m['MonthDesktopSetting'])
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
@@ -7658,19 +8503,23 @@ class CreateDesktopsRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SnapshotPolicyId') is not None:
             self.snapshot_policy_id = m.get('SnapshotPolicyId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
-                temp_model = CreateDesktopsRequestTag()
+                temp_model = CreateDesktopsShrinkRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('TimerGroupId') is not None:
+            self.timer_group_id = m.get('TimerGroupId')
         if m.get('UserAssignMode') is not None:
             self.user_assign_mode = m.get('UserAssignMode')
         self.user_commands = []
         if m.get('UserCommands') is not None:
             for k in m.get('UserCommands'):
-                temp_model = CreateDesktopsRequestUserCommands()
+                temp_model = CreateDesktopsShrinkRequestUserCommands()
                 self.user_commands.append(temp_model.from_map(k))
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
@@ -8058,13 +8907,35 @@ class CreateNASFileSystemRequest(TeaModel):
         region_id: str = None,
         storage_type: str = None,
     ):
+        # Description of the NAS file system.
         self.description = description
+        # Whether the file system is encrypted. Uses KMS service-managed keys to encrypt the file system\\"s on-disk data. No decryption is required when reading and writing encrypted data. Possible values and their meanings:
+        # 
+        # - 0: Not encrypted.
+        # - 1: Encrypted using NAS-managed keys.
+        # 
+        # Default value: 0
         self.encrypt_type = encrypt_type
+        # Name of the NAS file system.
+        # The file name must follow these rules:
+        # - Length: 2 to 128 English or Chinese characters.
+        # - Must start with an uppercase or lowercase letter or a Chinese character, cannot start with http:// or https://.
+        # - Can include numbers, underscores (_), or hyphens (-).
         self.name = name
+        # Workspace ID.
+        # 
         # This parameter is required.
         self.office_site_id = office_site_id
+        # Region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Storage specification type of the NAS file system. Allowed values:
+        # 
+        # - Capacity: Capacity type.
+        # - Performance: Performance type.
+        # 
+        # Default value: Capacity
         self.storage_type = storage_type
 
     def validate(self):
@@ -8116,10 +8987,15 @@ class CreateNASFileSystemResponseBody(TeaModel):
         office_site_id: str = None,
         request_id: str = None,
     ):
+        # ID of the NAS file system.
         self.file_system_id = file_system_id
+        # Name of the NAS file system.
         self.file_system_name = file_system_name
+        # Mount point domain.
         self.mount_target_domain = mount_target_domain
+        # Workspace ID.
         self.office_site_id = office_site_id
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9087,6 +9963,7 @@ class CreatePolicyGroupRequest(TeaModel):
         watermark_transparency: str = None,
         watermark_transparency_value: int = None,
         watermark_type: str = None,
+        wy_assistant: str = None,
     ):
         # Specifies whether users have the administrator permissions after they connect to cloud desktops.
         # 
@@ -9636,6 +10513,7 @@ class CreatePolicyGroupRequest(TeaModel):
         # 
         #     <!-- -->
         self.watermark_type = watermark_type
+        self.wy_assistant = wy_assistant
 
     def validate(self):
         if self.authorize_access_policy_rule:
@@ -9799,6 +10677,8 @@ class CreatePolicyGroupRequest(TeaModel):
             result['WatermarkTransparencyValue'] = self.watermark_transparency_value
         if self.watermark_type is not None:
             result['WatermarkType'] = self.watermark_type
+        if self.wy_assistant is not None:
+            result['WyAssistant'] = self.wy_assistant
         return result
 
     def from_map(self, m: dict = None):
@@ -9936,6 +10816,8 @@ class CreatePolicyGroupRequest(TeaModel):
             self.watermark_transparency_value = m.get('WatermarkTransparencyValue')
         if m.get('WatermarkType') is not None:
             self.watermark_type = m.get('WatermarkType')
+        if m.get('WyAssistant') is not None:
+            self.wy_assistant = m.get('WyAssistant')
         return self
 
 
@@ -15060,6 +15942,7 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(TeaModel):
         group_id: str = None,
         group_name: str = None,
         org_id: str = None,
+        recycle_bin_size: str = None,
         status: str = None,
         total_size: int = None,
         used_size: str = None,
@@ -15077,6 +15960,7 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(TeaModel):
         # The name of the team space.
         self.group_name = group_name
         self.org_id = org_id
+        self.recycle_bin_size = recycle_bin_size
         # The team space status. Valid values:
         # 
         # *   enabled
@@ -15119,6 +16003,8 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(TeaModel):
             result['GroupName'] = self.group_name
         if self.org_id is not None:
             result['OrgId'] = self.org_id
+        if self.recycle_bin_size is not None:
+            result['RecycleBinSize'] = self.recycle_bin_size
         if self.status is not None:
             result['Status'] = self.status
         if self.total_size is not None:
@@ -15148,6 +16034,8 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(TeaModel):
             self.group_name = m.get('GroupName')
         if m.get('OrgId') is not None:
             self.org_id = m.get('OrgId')
+        if m.get('RecycleBinSize') is not None:
+            self.recycle_bin_size = m.get('RecycleBinSize')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TotalSize') is not None:
@@ -17973,6 +18861,7 @@ class DescribeDesktopSessionsRequest(TeaModel):
         desktop_name: str = None,
         end_time: str = None,
         end_user_id: str = None,
+        end_user_id_filter: str = None,
         office_site_id: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -17990,6 +18879,7 @@ class DescribeDesktopSessionsRequest(TeaModel):
         self.end_time = end_time
         # The ID of the end user.
         self.end_user_id = end_user_id
+        self.end_user_id_filter = end_user_id_filter
         # The ID of the office network.
         self.office_site_id = office_site_id
         # The page number.
@@ -18030,6 +18920,8 @@ class DescribeDesktopSessionsRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        if self.end_user_id_filter is not None:
+            result['EndUserIdFilter'] = self.end_user_id_filter
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
         if self.page_number is not None:
@@ -18058,6 +18950,8 @@ class DescribeDesktopSessionsRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        if m.get('EndUserIdFilter') is not None:
+            self.end_user_id_filter = m.get('EndUserIdFilter')
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
         if m.get('PageNumber') is not None:
@@ -18341,12 +19235,16 @@ class DescribeDesktopTypesRequest(TeaModel):
         desktop_group_id_for_modify: str = None,
         desktop_id_for_modify: str = None,
         desktop_type_id: str = None,
+        desktop_type_id_list: List[str] = None,
         gpu_count: float = None,
         gpu_driver_type: str = None,
         instance_type_family: str = None,
         memory_size: int = None,
+        order_by: str = None,
         order_type: str = None,
         region_id: str = None,
+        scope: str = None,
+        sort_type: str = None,
     ):
         # Applicable Scope of specifications. Default value: `Public`
         self.applied_scope = applied_scope
@@ -18522,6 +19420,7 @@ class DescribeDesktopTypesRequest(TeaModel):
         # 
         #     <!-- -->
         self.desktop_type_id = desktop_type_id
+        self.desktop_type_id_list = desktop_type_id_list
         # The number of GPUs.
         self.gpu_count = gpu_count
         self.gpu_driver_type = gpu_driver_type
@@ -18589,12 +19488,15 @@ class DescribeDesktopTypesRequest(TeaModel):
         self.instance_type_family = instance_type_family
         # The memory size. Unit: MiB.
         self.memory_size = memory_size
+        self.order_by = order_by
         # The order type.
         self.order_type = order_type
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.scope = scope
+        self.sort_type = sort_type
 
     def validate(self):
         pass
@@ -18615,6 +19517,8 @@ class DescribeDesktopTypesRequest(TeaModel):
             result['DesktopIdForModify'] = self.desktop_id_for_modify
         if self.desktop_type_id is not None:
             result['DesktopTypeId'] = self.desktop_type_id
+        if self.desktop_type_id_list is not None:
+            result['DesktopTypeIdList'] = self.desktop_type_id_list
         if self.gpu_count is not None:
             result['GpuCount'] = self.gpu_count
         if self.gpu_driver_type is not None:
@@ -18623,10 +19527,16 @@ class DescribeDesktopTypesRequest(TeaModel):
             result['InstanceTypeFamily'] = self.instance_type_family
         if self.memory_size is not None:
             result['MemorySize'] = self.memory_size
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
         if self.order_type is not None:
             result['OrderType'] = self.order_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        if self.sort_type is not None:
+            result['SortType'] = self.sort_type
         return result
 
     def from_map(self, m: dict = None):
@@ -18641,6 +19551,8 @@ class DescribeDesktopTypesRequest(TeaModel):
             self.desktop_id_for_modify = m.get('DesktopIdForModify')
         if m.get('DesktopTypeId') is not None:
             self.desktop_type_id = m.get('DesktopTypeId')
+        if m.get('DesktopTypeIdList') is not None:
+            self.desktop_type_id_list = m.get('DesktopTypeIdList')
         if m.get('GpuCount') is not None:
             self.gpu_count = m.get('GpuCount')
         if m.get('GpuDriverType') is not None:
@@ -18649,10 +19561,16 @@ class DescribeDesktopTypesRequest(TeaModel):
             self.instance_type_family = m.get('InstanceTypeFamily')
         if m.get('MemorySize') is not None:
             self.memory_size = m.get('MemorySize')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
         if m.get('OrderType') is not None:
             self.order_type = m.get('OrderType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        if m.get('SortType') is not None:
+            self.sort_type = m.get('SortType')
         return self
 
 
@@ -18664,9 +19582,12 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(TeaModel):
         desktop_type_id: str = None,
         desktop_type_status: str = None,
         gpu_count: float = None,
+        gpu_memory: int = None,
         gpu_spec: str = None,
         instance_type_family: str = None,
         memory_size: str = None,
+        scopes: List[str] = None,
+        stock_state: str = None,
         system_disk_size: str = None,
     ):
         # The number of vCPUs.
@@ -18679,12 +19600,15 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(TeaModel):
         self.desktop_type_status = desktop_type_status
         # The number of GPUs.
         self.gpu_count = gpu_count
+        self.gpu_memory = gpu_memory
         # The GPU memory.
         self.gpu_spec = gpu_spec
         # The family of the cloud desktop type.
         self.instance_type_family = instance_type_family
         # The memory size. Unit: MiB.
         self.memory_size = memory_size
+        self.scopes = scopes
+        self.stock_state = stock_state
         # The size of the system disk. Unit: GiB.
         self.system_disk_size = system_disk_size
 
@@ -18707,12 +19631,18 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(TeaModel):
             result['DesktopTypeStatus'] = self.desktop_type_status
         if self.gpu_count is not None:
             result['GpuCount'] = self.gpu_count
+        if self.gpu_memory is not None:
+            result['GpuMemory'] = self.gpu_memory
         if self.gpu_spec is not None:
             result['GpuSpec'] = self.gpu_spec
         if self.instance_type_family is not None:
             result['InstanceTypeFamily'] = self.instance_type_family
         if self.memory_size is not None:
             result['MemorySize'] = self.memory_size
+        if self.scopes is not None:
+            result['Scopes'] = self.scopes
+        if self.stock_state is not None:
+            result['StockState'] = self.stock_state
         if self.system_disk_size is not None:
             result['SystemDiskSize'] = self.system_disk_size
         return result
@@ -18729,12 +19659,18 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(TeaModel):
             self.desktop_type_status = m.get('DesktopTypeStatus')
         if m.get('GpuCount') is not None:
             self.gpu_count = m.get('GpuCount')
+        if m.get('GpuMemory') is not None:
+            self.gpu_memory = m.get('GpuMemory')
         if m.get('GpuSpec') is not None:
             self.gpu_spec = m.get('GpuSpec')
         if m.get('InstanceTypeFamily') is not None:
             self.instance_type_family = m.get('InstanceTypeFamily')
         if m.get('MemorySize') is not None:
             self.memory_size = m.get('MemorySize')
+        if m.get('Scopes') is not None:
+            self.scopes = m.get('Scopes')
+        if m.get('StockState') is not None:
+            self.stock_state = m.get('StockState')
         if m.get('SystemDiskSize') is not None:
             self.system_disk_size = m.get('SystemDiskSize')
         return self
@@ -18885,6 +19821,8 @@ class DescribeDesktopsRequest(TeaModel):
         office_site_name: str = None,
         only_desktop_group: bool = None,
         os_types: List[str] = None,
+        page_number: int = None,
+        page_size: int = None,
         policy_group_id: str = None,
         protocol_type: str = None,
         qos_rule_id: str = None,
@@ -18947,6 +19885,8 @@ class DescribeDesktopsRequest(TeaModel):
         self.only_desktop_group = only_desktop_group
         # The types of the OSs.
         self.os_types = os_types
+        self.page_number = page_number
+        self.page_size = page_size
         # The ID of the policy.
         self.policy_group_id = policy_group_id
         # The type of the protocol.
@@ -19025,6 +19965,10 @@ class DescribeDesktopsRequest(TeaModel):
             result['OnlyDesktopGroup'] = self.only_desktop_group
         if self.os_types is not None:
             result['OsTypes'] = self.os_types
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
         if self.protocol_type is not None:
@@ -19097,6 +20041,10 @@ class DescribeDesktopsRequest(TeaModel):
             self.only_desktop_group = m.get('OnlyDesktopGroup')
         if m.get('OsTypes') is not None:
             self.os_types = m.get('OsTypes')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('ProtocolType') is not None:
@@ -19126,11 +20074,13 @@ class DescribeDesktopsRequest(TeaModel):
 class DescribeDesktopsResponseBodyDesktopsDisks(TeaModel):
     def __init__(
         self,
+        disk_category: str = None,
         disk_id: str = None,
         disk_size: int = None,
         disk_type: str = None,
         performance_level: str = None,
     ):
+        self.disk_category = disk_category
         # The disk ID.
         self.disk_id = disk_id
         # The disk size. Unit: GiB.
@@ -19174,6 +20124,8 @@ class DescribeDesktopsResponseBodyDesktopsDisks(TeaModel):
             return _map
 
         result = dict()
+        if self.disk_category is not None:
+            result['DiskCategory'] = self.disk_category
         if self.disk_id is not None:
             result['DiskId'] = self.disk_id
         if self.disk_size is not None:
@@ -19186,6 +20138,8 @@ class DescribeDesktopsResponseBodyDesktopsDisks(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DiskCategory') is not None:
+            self.disk_category = m.get('DiskCategory')
         if m.get('DiskId') is not None:
             self.disk_id = m.get('DiskId')
         if m.get('DiskSize') is not None:
@@ -20001,6 +20955,8 @@ class DescribeDesktopsResponseBody(TeaModel):
         self,
         desktops: List[DescribeDesktopsResponseBodyDesktops] = None,
         next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
         request_id: str = None,
         total_count: int = None,
     ):
@@ -20008,6 +20964,8 @@ class DescribeDesktopsResponseBody(TeaModel):
         self.desktops = desktops
         # The token that is used for the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
         # The total number of cloud desktops.
@@ -20031,6 +20989,10 @@ class DescribeDesktopsResponseBody(TeaModel):
                 result['Desktops'].append(k.to_map() if k else None)
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.total_count is not None:
@@ -20046,6 +21008,10 @@ class DescribeDesktopsResponseBody(TeaModel):
                 self.desktops.append(temp_model.from_map(k))
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
@@ -21716,7 +22682,7 @@ class DescribeDirectoriesResponseBodyDirectories(TeaModel):
         # 
         # >  This parameter is unavailable.
         self.enable_internet_access = enable_internet_access
-        # The IDs of Apsara File Storage NAS (NAS) file systems.
+        # The IDs of File Storage NAS (NAS) file systems.
         self.file_system_ids = file_system_ids
         # The registration logs. This parameter is returned only when the directory type is AD office network.
         self.logs = logs
@@ -24160,6 +25126,7 @@ class DescribeInvocationsRequest(TeaModel):
         desktop_id: str = None,
         desktop_ids: List[str] = None,
         end_user_id: str = None,
+        include_invoke_desktops: bool = None,
         include_output: bool = None,
         invoke_id: str = None,
         invoke_status: str = None,
@@ -24185,6 +25152,7 @@ class DescribeInvocationsRequest(TeaModel):
         self.desktop_ids = desktop_ids
         # The ID of the end user.
         self.end_user_id = end_user_id
+        self.include_invoke_desktops = include_invoke_desktops
         # Specifies whether to return command outputs in the response. Valid values:
         # 
         # *   true: returns command outputs.
@@ -24235,6 +25203,8 @@ class DescribeInvocationsRequest(TeaModel):
             result['DesktopIds'] = self.desktop_ids
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        if self.include_invoke_desktops is not None:
+            result['IncludeInvokeDesktops'] = self.include_invoke_desktops
         if self.include_output is not None:
             result['IncludeOutput'] = self.include_output
         if self.invoke_id is not None:
@@ -24261,6 +25231,8 @@ class DescribeInvocationsRequest(TeaModel):
             self.desktop_ids = m.get('DesktopIds')
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        if m.get('IncludeInvokeDesktops') is not None:
+            self.include_invoke_desktops = m.get('IncludeInvokeDesktops')
         if m.get('IncludeOutput') is not None:
             self.include_output = m.get('IncludeOutput')
         if m.get('InvokeId') is not None:
@@ -24436,6 +25408,8 @@ class DescribeInvocationsResponseBodyInvocations(TeaModel):
         creation_time: str = None,
         end_user_id: str = None,
         invocation_status: str = None,
+        invoke_desktop_count: int = None,
+        invoke_desktop_succeed_count: int = None,
         invoke_desktops: List[DescribeInvocationsResponseBodyInvocationsInvokeDesktops] = None,
         invoke_id: str = None,
     ):
@@ -24472,6 +25446,8 @@ class DescribeInvocationsResponseBodyInvocations(TeaModel):
         # 
         # *   PartialFailed: The execution succeeded on some cloud desktops and failed on others. If the execution status on different cloud desktops is Success, Failed, or Stopped, the overall execution state is PartialFailed.
         self.invocation_status = invocation_status
+        self.invoke_desktop_count = invoke_desktop_count
+        self.invoke_desktop_succeed_count = invoke_desktop_succeed_count
         # The cloud desktops on which the command is executed.
         self.invoke_desktops = invoke_desktops
         # The ID of the execution.
@@ -24499,6 +25475,10 @@ class DescribeInvocationsResponseBodyInvocations(TeaModel):
             result['EndUserId'] = self.end_user_id
         if self.invocation_status is not None:
             result['InvocationStatus'] = self.invocation_status
+        if self.invoke_desktop_count is not None:
+            result['InvokeDesktopCount'] = self.invoke_desktop_count
+        if self.invoke_desktop_succeed_count is not None:
+            result['InvokeDesktopSucceedCount'] = self.invoke_desktop_succeed_count
         result['InvokeDesktops'] = []
         if self.invoke_desktops is not None:
             for k in self.invoke_desktops:
@@ -24519,6 +25499,10 @@ class DescribeInvocationsResponseBodyInvocations(TeaModel):
             self.end_user_id = m.get('EndUserId')
         if m.get('InvocationStatus') is not None:
             self.invocation_status = m.get('InvocationStatus')
+        if m.get('InvokeDesktopCount') is not None:
+            self.invoke_desktop_count = m.get('InvokeDesktopCount')
+        if m.get('InvokeDesktopSucceedCount') is not None:
+            self.invoke_desktop_succeed_count = m.get('InvokeDesktopSucceedCount')
         self.invoke_desktops = []
         if m.get('InvokeDesktops') is not None:
             for k in m.get('InvokeDesktops'):
@@ -24791,6 +25775,339 @@ class DescribeKmsKeysResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeKmsKeysResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeModificationPriceRequest(TeaModel):
+    def __init__(
+        self,
+        bandwidth: int = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        region_id: str = None,
+        resource_type: str = None,
+        root_disk_size_gib: int = None,
+        user_disk_size_gib: int = None,
+    ):
+        self.bandwidth = bandwidth
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_type = resource_type
+        self.root_disk_size_gib = root_disk_size_gib
+        self.user_disk_size_gib = user_disk_size_gib
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.root_disk_size_gib is not None:
+            result['RootDiskSizeGib'] = self.root_disk_size_gib
+        if self.user_disk_size_gib is not None:
+            result['UserDiskSizeGib'] = self.user_disk_size_gib
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('RootDiskSizeGib') is not None:
+            self.root_disk_size_gib = m.get('RootDiskSizeGib')
+        if m.get('UserDiskSizeGib') is not None:
+            self.user_disk_size_gib = m.get('UserDiskSizeGib')
+        return self
+
+
+class DescribeModificationPriceResponseBodyPriceInfoPricePromotions(TeaModel):
+    def __init__(
+        self,
+        option_code: str = None,
+        promotion_desc: str = None,
+        promotion_id: str = None,
+        promotion_name: str = None,
+        selected: bool = None,
+    ):
+        self.option_code = option_code
+        self.promotion_desc = promotion_desc
+        self.promotion_id = promotion_id
+        self.promotion_name = promotion_name
+        self.selected = selected
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.option_code is not None:
+            result['OptionCode'] = self.option_code
+        if self.promotion_desc is not None:
+            result['PromotionDesc'] = self.promotion_desc
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.promotion_name is not None:
+            result['PromotionName'] = self.promotion_name
+        if self.selected is not None:
+            result['Selected'] = self.selected
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OptionCode') is not None:
+            self.option_code = m.get('OptionCode')
+        if m.get('PromotionDesc') is not None:
+            self.promotion_desc = m.get('PromotionDesc')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('PromotionName') is not None:
+            self.promotion_name = m.get('PromotionName')
+        if m.get('Selected') is not None:
+            self.selected = m.get('Selected')
+        return self
+
+
+class DescribeModificationPriceResponseBodyPriceInfoPrice(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        discount_price: float = None,
+        order_lines: Dict[str, str] = None,
+        original_price: float = None,
+        promotions: List[DescribeModificationPriceResponseBodyPriceInfoPricePromotions] = None,
+        trade_price: float = None,
+    ):
+        self.currency = currency
+        self.discount_price = discount_price
+        self.order_lines = order_lines
+        self.original_price = original_price
+        self.promotions = promotions
+        self.trade_price = trade_price
+
+    def validate(self):
+        if self.promotions:
+            for k in self.promotions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.discount_price is not None:
+            result['DiscountPrice'] = self.discount_price
+        if self.order_lines is not None:
+            result['OrderLines'] = self.order_lines
+        if self.original_price is not None:
+            result['OriginalPrice'] = self.original_price
+        result['Promotions'] = []
+        if self.promotions is not None:
+            for k in self.promotions:
+                result['Promotions'].append(k.to_map() if k else None)
+        if self.trade_price is not None:
+            result['TradePrice'] = self.trade_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('DiscountPrice') is not None:
+            self.discount_price = m.get('DiscountPrice')
+        if m.get('OrderLines') is not None:
+            self.order_lines = m.get('OrderLines')
+        if m.get('OriginalPrice') is not None:
+            self.original_price = m.get('OriginalPrice')
+        self.promotions = []
+        if m.get('Promotions') is not None:
+            for k in m.get('Promotions'):
+                temp_model = DescribeModificationPriceResponseBodyPriceInfoPricePromotions()
+                self.promotions.append(temp_model.from_map(k))
+        if m.get('TradePrice') is not None:
+            self.trade_price = m.get('TradePrice')
+        return self
+
+
+class DescribeModificationPriceResponseBodyPriceInfoRules(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        rule_id: int = None,
+    ):
+        self.description = description
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class DescribeModificationPriceResponseBodyPriceInfo(TeaModel):
+    def __init__(
+        self,
+        price: DescribeModificationPriceResponseBodyPriceInfoPrice = None,
+        rules: List[DescribeModificationPriceResponseBodyPriceInfoRules] = None,
+    ):
+        self.price = price
+        self.rules = rules
+
+    def validate(self):
+        if self.price:
+            self.price.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.price is not None:
+            result['Price'] = self.price.to_map()
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Price') is not None:
+            temp_model = DescribeModificationPriceResponseBodyPriceInfoPrice()
+            self.price = temp_model.from_map(m['Price'])
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = DescribeModificationPriceResponseBodyPriceInfoRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeModificationPriceResponseBody(TeaModel):
+    def __init__(
+        self,
+        price_info: DescribeModificationPriceResponseBodyPriceInfo = None,
+        request_id: str = None,
+    ):
+        self.price_info = price_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.price_info:
+            self.price_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.price_info is not None:
+            result['PriceInfo'] = self.price_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PriceInfo') is not None:
+            temp_model = DescribeModificationPriceResponseBodyPriceInfo()
+            self.price_info = temp_model.from_map(m['PriceInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeModificationPriceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeModificationPriceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeModificationPriceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25580,6 +26897,12 @@ class DescribeOfficeSitesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The security protection setting of the office network.
+        # 
+        # Valid values:
+        # 
+        # *   SASE: SASE is configured.
+        # *   OFF: No security protection setting is configured.
         self.security_protection = security_protection
         # The office network status.
         # 
@@ -25833,6 +27156,39 @@ class DescribeOfficeSitesResponseBodyOfficeSitesLogs(TeaModel):
         return self
 
 
+class DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        resource_type: str = None,
+    ):
+        self.amount = amount
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['amount'] = self.amount
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('amount') is not None:
+            self.amount = m.get('amount')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        return self
+
+
 class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
     def __init__(
         self,
@@ -25846,6 +27202,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         cidr_block: str = None,
         cloud_box_office_site: bool = None,
         creation_time: str = None,
+        custom_access_point: str = None,
+        custom_dns_address: List[str] = None,
         custom_security_group_id: str = None,
         desktop_access_type: str = None,
         desktop_count: int = None,
@@ -25866,6 +27224,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         need_verify_login_risk: bool = None,
         need_verify_zero_device: bool = None,
         network_package_id: str = None,
+        nm_version: str = None,
         office_site_id: str = None,
         office_site_type: str = None,
         ou_name: str = None,
@@ -25873,6 +27232,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         rds_license_address: str = None,
         rds_license_domain_name: str = None,
         rds_license_status: str = None,
+        resource_amounts: List[DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts] = None,
         security_protection: str = None,
         sso_enabled: bool = None,
         sso_type: str = None,
@@ -25882,6 +27242,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         subnet_mode: str = None,
         total_eds_count: int = None,
         total_eds_count_for_group: int = None,
+        total_resource_amount: int = None,
         trust_password: str = None,
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
@@ -25913,6 +27274,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.cloud_box_office_site = cloud_box_office_site
         # The time when the office network was created.
         self.creation_time = creation_time
+        self.custom_access_point = custom_access_point
+        self.custom_dns_address = custom_dns_address
         # The ID of the security group.
         self.custom_security_group_id = custom_security_group_id
         # The method that is used to connect cloud computers that reside in the office network from Alibaba Cloud Workspace clients.
@@ -25952,7 +27315,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.enable_internet_access = enable_internet_access
         # Indicates whether route access control is enabled for cloud services.
         self.enable_service_route = enable_service_route
-        # An array of Apsara File Storage NAS (NAS) file system IDs.
+        # An array of File Storage NAS (NAS) file system IDs.
         self.file_system_ids = file_system_ids
         # Details about registration logs.
         self.logs = logs
@@ -25971,6 +27334,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.need_verify_zero_device = need_verify_zero_device
         # The premium bandwidth plan ID.
         self.network_package_id = network_package_id
+        self.nm_version = nm_version
         # The IDs of the office networks.
         self.office_site_id = office_site_id
         # The account type of the office network.
@@ -25995,6 +27359,13 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.rds_license_domain_name = rds_license_domain_name
         # The remote desktop service (RDS) license status.
         self.rds_license_status = rds_license_status
+        self.resource_amounts = resource_amounts
+        # The security protection setting of the office network.
+        # 
+        # Valid values:
+        # 
+        # *   SASE: SASE is configured.
+        # *   OFF: No security protection setting is configured.
         self.security_protection = security_protection
         # Indicates whether single sign-on (SSO) is enabled.
         self.sso_enabled = sso_enabled
@@ -26022,11 +27393,18 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.sub_dns_address = sub_dns_address
         # The username of enterprise AD subdomain.
         self.sub_domain_name = sub_domain_name
+        # The subnet mode of the office network.
+        # 
+        # Valid values:
+        # 
+        # *   0: disabled.
+        # *   1: enabled.
         self.subnet_mode = subnet_mode
         # The total number of cloud computers.
         self.total_eds_count = total_eds_count
         # The number of pooled cloud computers in the cloud computer pool.
         self.total_eds_count_for_group = total_eds_count_for_group
+        self.total_resource_amount = total_resource_amount
         # >  This parameter is unavailable.
         self.trust_password = trust_password
         # An array of VSwitch IDs.
@@ -26049,6 +27427,10 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
                     k.validate()
         if self.logs:
             for k in self.logs:
+                if k:
+                    k.validate()
+        if self.resource_amounts:
+            for k in self.resource_amounts:
                 if k:
                     k.validate()
 
@@ -26080,6 +27462,10 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             result['CloudBoxOfficeSite'] = self.cloud_box_office_site
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.custom_access_point is not None:
+            result['CustomAccessPoint'] = self.custom_access_point
+        if self.custom_dns_address is not None:
+            result['CustomDnsAddress'] = self.custom_dns_address
         if self.custom_security_group_id is not None:
             result['CustomSecurityGroupId'] = self.custom_security_group_id
         if self.desktop_access_type is not None:
@@ -26122,6 +27508,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             result['NeedVerifyZeroDevice'] = self.need_verify_zero_device
         if self.network_package_id is not None:
             result['NetworkPackageId'] = self.network_package_id
+        if self.nm_version is not None:
+            result['NmVersion'] = self.nm_version
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
         if self.office_site_type is not None:
@@ -26136,6 +27524,10 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             result['RdsLicenseDomainName'] = self.rds_license_domain_name
         if self.rds_license_status is not None:
             result['RdsLicenseStatus'] = self.rds_license_status
+        result['ResourceAmounts'] = []
+        if self.resource_amounts is not None:
+            for k in self.resource_amounts:
+                result['ResourceAmounts'].append(k.to_map() if k else None)
         if self.security_protection is not None:
             result['SecurityProtection'] = self.security_protection
         if self.sso_enabled is not None:
@@ -26154,6 +27546,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             result['TotalEdsCount'] = self.total_eds_count
         if self.total_eds_count_for_group is not None:
             result['TotalEdsCountForGroup'] = self.total_eds_count_for_group
+        if self.total_resource_amount is not None:
+            result['TotalResourceAmount'] = self.total_resource_amount
         if self.trust_password is not None:
             result['TrustPassword'] = self.trust_password
         if self.v_switch_ids is not None:
@@ -26189,6 +27583,10 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             self.cloud_box_office_site = m.get('CloudBoxOfficeSite')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('CustomAccessPoint') is not None:
+            self.custom_access_point = m.get('CustomAccessPoint')
+        if m.get('CustomDnsAddress') is not None:
+            self.custom_dns_address = m.get('CustomDnsAddress')
         if m.get('CustomSecurityGroupId') is not None:
             self.custom_security_group_id = m.get('CustomSecurityGroupId')
         if m.get('DesktopAccessType') is not None:
@@ -26232,6 +27630,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             self.need_verify_zero_device = m.get('NeedVerifyZeroDevice')
         if m.get('NetworkPackageId') is not None:
             self.network_package_id = m.get('NetworkPackageId')
+        if m.get('NmVersion') is not None:
+            self.nm_version = m.get('NmVersion')
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
         if m.get('OfficeSiteType') is not None:
@@ -26246,6 +27646,11 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             self.rds_license_domain_name = m.get('RdsLicenseDomainName')
         if m.get('RdsLicenseStatus') is not None:
             self.rds_license_status = m.get('RdsLicenseStatus')
+        self.resource_amounts = []
+        if m.get('ResourceAmounts') is not None:
+            for k in m.get('ResourceAmounts'):
+                temp_model = DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts()
+                self.resource_amounts.append(temp_model.from_map(k))
         if m.get('SecurityProtection') is not None:
             self.security_protection = m.get('SecurityProtection')
         if m.get('SsoEnabled') is not None:
@@ -26264,6 +27669,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             self.total_eds_count = m.get('TotalEdsCount')
         if m.get('TotalEdsCountForGroup') is not None:
             self.total_eds_count_for_group = m.get('TotalEdsCountForGroup')
+        if m.get('TotalResourceAmount') is not None:
+            self.total_resource_amount = m.get('TotalResourceAmount')
         if m.get('TrustPassword') is not None:
             self.trust_password = m.get('TrustPassword')
         if m.get('VSwitchIds') is not None:
@@ -26289,6 +27696,7 @@ class DescribeOfficeSitesResponseBody(TeaModel):
         self.office_sites = office_sites
         # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -26938,6 +28346,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         recording_user_notify: str = None,
         recording_user_notify_message: str = None,
         remote_coordinate: str = None,
+        resource_region_id: str = None,
         scope: str = None,
         scope_value: List[str] = None,
         smooth_enhancement: str = None,
@@ -26965,6 +28374,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         watermark_transparency: str = None,
         watermark_transparency_value: int = None,
         watermark_type: str = None,
+        wy_assistant: str = None,
     ):
         # Indicates whether users have the administrator permissions after they connect to cloud desktops.
         # 
@@ -27176,6 +28586,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   optionalControl: By default, you do not have the permissions on the keyboard or mouse to control the cloud desktop during remote assistance. You can apply for the permissions.
         # *   disableControl: The keyboard and mouse are not controlled.
         self.remote_coordinate = remote_coordinate
+        self.resource_region_id = resource_region_id
         # The effective scope of the policy. Valid values:
         # 
         # *   GLOBAL: The policy takes effect globally.
@@ -27258,6 +28669,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   EndUserId,HostName: The watermark is displayed in the following format: Username,Rightmost 15 characters of the cloud desktop ID.
         # *   HostName: The rightmost 15 characters of the cloud desktop ID are displayed.
         self.watermark_type = watermark_type
+        self.wy_assistant = wy_assistant
 
     def validate(self):
         if self.authorize_access_policy_rules:
@@ -27427,6 +28839,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['RecordingUserNotifyMessage'] = self.recording_user_notify_message
         if self.remote_coordinate is not None:
             result['RemoteCoordinate'] = self.remote_coordinate
+        if self.resource_region_id is not None:
+            result['ResourceRegionId'] = self.resource_region_id
         if self.scope is not None:
             result['Scope'] = self.scope
         if self.scope_value is not None:
@@ -27483,6 +28897,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['WatermarkTransparencyValue'] = self.watermark_transparency_value
         if self.watermark_type is not None:
             result['WatermarkType'] = self.watermark_type
+        if self.wy_assistant is not None:
+            result['WyAssistant'] = self.wy_assistant
         return result
 
     def from_map(self, m: dict = None):
@@ -27622,6 +29038,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.recording_user_notify_message = m.get('RecordingUserNotifyMessage')
         if m.get('RemoteCoordinate') is not None:
             self.remote_coordinate = m.get('RemoteCoordinate')
+        if m.get('ResourceRegionId') is not None:
+            self.resource_region_id = m.get('ResourceRegionId')
         if m.get('Scope') is not None:
             self.scope = m.get('Scope')
         if m.get('ScopeValue') is not None:
@@ -27679,6 +29097,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.watermark_transparency_value = m.get('WatermarkTransparencyValue')
         if m.get('WatermarkType') is not None:
             self.watermark_type = m.get('WatermarkType')
+        if m.get('WyAssistant') is not None:
+            self.wy_assistant = m.get('WyAssistant')
         return self
 
 
@@ -27773,103 +29193,24 @@ class DescribePolicyGroupsResponse(TeaModel):
         return self
 
 
-class DescribePriceRequestBundleModels(TeaModel):
-    def __init__(
-        self,
-        amount: int = None,
-        bundle_id: str = None,
-        duration: int = None,
-        instance_type: str = None,
-        os_type: str = None,
-        root_disk_id: str = None,
-        user_disk_id: str = None,
-    ):
-        self.amount = amount
-        self.bundle_id = bundle_id
-        self.duration = duration
-        self.instance_type = instance_type
-        self.os_type = os_type
-        self.root_disk_id = root_disk_id
-        self.user_disk_id = user_disk_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.amount is not None:
-            result['Amount'] = self.amount
-        if self.bundle_id is not None:
-            result['BundleId'] = self.bundle_id
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.instance_type is not None:
-            result['InstanceType'] = self.instance_type
-        if self.os_type is not None:
-            result['OsType'] = self.os_type
-        if self.root_disk_id is not None:
-            result['RootDiskId'] = self.root_disk_id
-        if self.user_disk_id is not None:
-            result['UserDiskId'] = self.user_disk_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Amount') is not None:
-            self.amount = m.get('Amount')
-        if m.get('BundleId') is not None:
-            self.bundle_id = m.get('BundleId')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('InstanceType') is not None:
-            self.instance_type = m.get('InstanceType')
-        if m.get('OsType') is not None:
-            self.os_type = m.get('OsType')
-        if m.get('RootDiskId') is not None:
-            self.root_disk_id = m.get('RootDiskId')
-        if m.get('UserDiskId') is not None:
-            self.user_disk_id = m.get('UserDiskId')
-        return self
-
-
 class DescribePriceRequest(TeaModel):
     def __init__(
         self,
         amount: int = None,
         bandwidth: int = None,
-        bundle_models: List[DescribePriceRequestBundleModels] = None,
-        edu_cds_enable: str = None,
-        edu_cds_size: int = None,
-        edu_committed_time: int = None,
-        edu_desktop_bundle_id: str = None,
-        edu_desktop_num: int = None,
-        edu_room_classify: str = None,
-        edu_student_bundle_id: str = None,
-        edu_student_num: int = None,
-        edu_teacher_bundle_id: str = None,
-        edu_teacher_num: int = None,
+        duration: int = None,
         group_desktop_count: int = None,
-        hardware_version: str = None,
         instance_type: str = None,
         internet_charge_type: str = None,
-        network_type: str = None,
         os_type: str = None,
-        package_size: int = None,
         period: int = None,
         period_unit: str = None,
         promotion_id: str = None,
         region_id: str = None,
         resource_type: str = None,
-        root_disk_performance_level: str = None,
+        root_disk_category: str = None,
         root_disk_size_gib: int = None,
-        sp_period_info: str = None,
-        sp_price: bool = None,
-        sp_type: str = None,
-        user_disk_performance_level: str = None,
+        user_disk_category: str = None,
         user_disk_size_gib: int = None,
     ):
         # The number of the resources. Default value: 1.
@@ -27879,20 +29220,8 @@ class DescribePriceRequest(TeaModel):
         # *   Valid values if the PayByTraffic parameter is set to PayByBandwidth: 10 to 1000
         # *   Valid values if the PayByTraffic parameter is set to PayByTraffic: 10 to 200
         self.bandwidth = bandwidth
-        self.bundle_models = bundle_models
-        self.edu_cds_enable = edu_cds_enable
-        self.edu_cds_size = edu_cds_size
-        self.edu_committed_time = edu_committed_time
-        self.edu_desktop_bundle_id = edu_desktop_bundle_id
-        self.edu_desktop_num = edu_desktop_num
-        self.edu_room_classify = edu_room_classify
-        self.edu_student_bundle_id = edu_student_bundle_id
-        self.edu_student_num = edu_student_num
-        self.edu_teacher_bundle_id = edu_teacher_bundle_id
-        self.edu_teacher_num = edu_teacher_num
+        self.duration = duration
         self.group_desktop_count = group_desktop_count
-        # The model of the WUYING hardware client.
-        self.hardware_version = hardware_version
         # The resource specifications.
         # 
         # *   If you set ResourceType to Desktop, set this parameter to one of the following values:
@@ -27925,7 +29254,6 @@ class DescribePriceRequest(TeaModel):
         # *   PayByBandwidth: pay-by-bandwidth
         # *   PayByTraffic: pay-by-data-transfer
         self.internet_charge_type = internet_charge_type
-        self.network_type = network_type
         # The OS. Valid values:
         # 
         # *   Windows
@@ -27933,7 +29261,6 @@ class DescribePriceRequest(TeaModel):
         # 
         # Default value: Windows.
         self.os_type = os_type
-        self.package_size = package_size
         # The subscription duration. Default value: 1.
         self.period = period
         # The unit of the billing cycle. Valid values:
@@ -27958,33 +29285,15 @@ class DescribePriceRequest(TeaModel):
         # 
         # Default value: Desktop.
         self.resource_type = resource_type
-        # The performance level (PL) of the system disk. Valid values:
-        # 
-        # *   PL0
-        # *   PL1
-        # *   PL2
-        # *   PL3
-        self.root_disk_performance_level = root_disk_performance_level
+        self.root_disk_category = root_disk_category
         # The system disk size. Unit: GiB.
         self.root_disk_size_gib = root_disk_size_gib
-        self.sp_period_info = sp_period_info
-        self.sp_price = sp_price
-        self.sp_type = sp_type
-        # The PL of the data disk. Valid values:
-        # 
-        # *   PL0
-        # *   PL1
-        # *   PL2
-        # *   PL3
-        self.user_disk_performance_level = user_disk_performance_level
+        self.user_disk_category = user_disk_category
         # The data disk size. Unit: GiB.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):
-        if self.bundle_models:
-            for k in self.bundle_models:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -27996,44 +29305,16 @@ class DescribePriceRequest(TeaModel):
             result['Amount'] = self.amount
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
-        result['BundleModels'] = []
-        if self.bundle_models is not None:
-            for k in self.bundle_models:
-                result['BundleModels'].append(k.to_map() if k else None)
-        if self.edu_cds_enable is not None:
-            result['EduCdsEnable'] = self.edu_cds_enable
-        if self.edu_cds_size is not None:
-            result['EduCdsSize'] = self.edu_cds_size
-        if self.edu_committed_time is not None:
-            result['EduCommittedTime'] = self.edu_committed_time
-        if self.edu_desktop_bundle_id is not None:
-            result['EduDesktopBundleId'] = self.edu_desktop_bundle_id
-        if self.edu_desktop_num is not None:
-            result['EduDesktopNum'] = self.edu_desktop_num
-        if self.edu_room_classify is not None:
-            result['EduRoomClassify'] = self.edu_room_classify
-        if self.edu_student_bundle_id is not None:
-            result['EduStudentBundleId'] = self.edu_student_bundle_id
-        if self.edu_student_num is not None:
-            result['EduStudentNum'] = self.edu_student_num
-        if self.edu_teacher_bundle_id is not None:
-            result['EduTeacherBundleId'] = self.edu_teacher_bundle_id
-        if self.edu_teacher_num is not None:
-            result['EduTeacherNum'] = self.edu_teacher_num
+        if self.duration is not None:
+            result['Duration'] = self.duration
         if self.group_desktop_count is not None:
             result['GroupDesktopCount'] = self.group_desktop_count
-        if self.hardware_version is not None:
-            result['HardwareVersion'] = self.hardware_version
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
         if self.internet_charge_type is not None:
             result['InternetChargeType'] = self.internet_charge_type
-        if self.network_type is not None:
-            result['NetworkType'] = self.network_type
         if self.os_type is not None:
             result['OsType'] = self.os_type
-        if self.package_size is not None:
-            result['PackageSize'] = self.package_size
         if self.period is not None:
             result['Period'] = self.period
         if self.period_unit is not None:
@@ -28044,18 +29325,12 @@ class DescribePriceRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
-        if self.root_disk_performance_level is not None:
-            result['RootDiskPerformanceLevel'] = self.root_disk_performance_level
+        if self.root_disk_category is not None:
+            result['RootDiskCategory'] = self.root_disk_category
         if self.root_disk_size_gib is not None:
             result['RootDiskSizeGib'] = self.root_disk_size_gib
-        if self.sp_period_info is not None:
-            result['SpPeriodInfo'] = self.sp_period_info
-        if self.sp_price is not None:
-            result['SpPrice'] = self.sp_price
-        if self.sp_type is not None:
-            result['SpType'] = self.sp_type
-        if self.user_disk_performance_level is not None:
-            result['UserDiskPerformanceLevel'] = self.user_disk_performance_level
+        if self.user_disk_category is not None:
+            result['UserDiskCategory'] = self.user_disk_category
         if self.user_disk_size_gib is not None:
             result['UserDiskSizeGib'] = self.user_disk_size_gib
         return result
@@ -28066,45 +29341,16 @@ class DescribePriceRequest(TeaModel):
             self.amount = m.get('Amount')
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
-        self.bundle_models = []
-        if m.get('BundleModels') is not None:
-            for k in m.get('BundleModels'):
-                temp_model = DescribePriceRequestBundleModels()
-                self.bundle_models.append(temp_model.from_map(k))
-        if m.get('EduCdsEnable') is not None:
-            self.edu_cds_enable = m.get('EduCdsEnable')
-        if m.get('EduCdsSize') is not None:
-            self.edu_cds_size = m.get('EduCdsSize')
-        if m.get('EduCommittedTime') is not None:
-            self.edu_committed_time = m.get('EduCommittedTime')
-        if m.get('EduDesktopBundleId') is not None:
-            self.edu_desktop_bundle_id = m.get('EduDesktopBundleId')
-        if m.get('EduDesktopNum') is not None:
-            self.edu_desktop_num = m.get('EduDesktopNum')
-        if m.get('EduRoomClassify') is not None:
-            self.edu_room_classify = m.get('EduRoomClassify')
-        if m.get('EduStudentBundleId') is not None:
-            self.edu_student_bundle_id = m.get('EduStudentBundleId')
-        if m.get('EduStudentNum') is not None:
-            self.edu_student_num = m.get('EduStudentNum')
-        if m.get('EduTeacherBundleId') is not None:
-            self.edu_teacher_bundle_id = m.get('EduTeacherBundleId')
-        if m.get('EduTeacherNum') is not None:
-            self.edu_teacher_num = m.get('EduTeacherNum')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         if m.get('GroupDesktopCount') is not None:
             self.group_desktop_count = m.get('GroupDesktopCount')
-        if m.get('HardwareVersion') is not None:
-            self.hardware_version = m.get('HardwareVersion')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
         if m.get('InternetChargeType') is not None:
             self.internet_charge_type = m.get('InternetChargeType')
-        if m.get('NetworkType') is not None:
-            self.network_type = m.get('NetworkType')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
-        if m.get('PackageSize') is not None:
-            self.package_size = m.get('PackageSize')
         if m.get('Period') is not None:
             self.period = m.get('Period')
         if m.get('PeriodUnit') is not None:
@@ -28115,18 +29361,12 @@ class DescribePriceRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
-        if m.get('RootDiskPerformanceLevel') is not None:
-            self.root_disk_performance_level = m.get('RootDiskPerformanceLevel')
+        if m.get('RootDiskCategory') is not None:
+            self.root_disk_category = m.get('RootDiskCategory')
         if m.get('RootDiskSizeGib') is not None:
             self.root_disk_size_gib = m.get('RootDiskSizeGib')
-        if m.get('SpPeriodInfo') is not None:
-            self.sp_period_info = m.get('SpPeriodInfo')
-        if m.get('SpPrice') is not None:
-            self.sp_price = m.get('SpPrice')
-        if m.get('SpType') is not None:
-            self.sp_type = m.get('SpType')
-        if m.get('UserDiskPerformanceLevel') is not None:
-            self.user_disk_performance_level = m.get('UserDiskPerformanceLevel')
+        if m.get('UserDiskCategory') is not None:
+            self.user_disk_category = m.get('UserDiskCategory')
         if m.get('UserDiskSizeGib') is not None:
             self.user_disk_size_gib = m.get('UserDiskSizeGib')
         return self
@@ -29130,6 +30370,156 @@ class DescribeRecordingsResponse(TeaModel):
         return self
 
 
+class DescribeRefundPriceRequest(TeaModel):
+    def __init__(
+        self,
+        desktop_id: List[str] = None,
+        refund_type: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.desktop_id = desktop_id
+        self.refund_type = refund_type
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.refund_type is not None:
+            result['RefundType'] = self.refund_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('RefundType') is not None:
+            self.refund_type = m.get('RefundType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeRefundPriceResponseBodyPriceInfo(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        refund_fee: float = None,
+    ):
+        self.currency = currency
+        self.refund_fee = refund_fee
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.refund_fee is not None:
+            result['RefundFee'] = self.refund_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('RefundFee') is not None:
+            self.refund_fee = m.get('RefundFee')
+        return self
+
+
+class DescribeRefundPriceResponseBody(TeaModel):
+    def __init__(
+        self,
+        price_info: DescribeRefundPriceResponseBodyPriceInfo = None,
+        request_id: str = None,
+    ):
+        self.price_info = price_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.price_info:
+            self.price_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.price_info is not None:
+            result['PriceInfo'] = self.price_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PriceInfo') is not None:
+            temp_model = DescribeRefundPriceResponseBodyPriceInfo()
+            self.price_info = temp_model.from_map(m['PriceInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeRefundPriceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRefundPriceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRefundPriceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeRegionsRequest(TeaModel):
     def __init__(
         self,
@@ -29289,6 +30679,333 @@ class DescribeRegionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRenewalPriceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_ids: List[str] = None,
+        period: int = None,
+        period_unit: str = None,
+        region_id: str = None,
+        resource_type: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_ids = instance_ids
+        self.period = period
+        self.period_unit = period_unit
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class DescribeRenewalPriceResponseBodyPriceInfoPricePromotions(TeaModel):
+    def __init__(
+        self,
+        option_code: str = None,
+        promotion_desc: str = None,
+        promotion_id: str = None,
+        promotion_name: str = None,
+        selected: bool = None,
+    ):
+        self.option_code = option_code
+        self.promotion_desc = promotion_desc
+        self.promotion_id = promotion_id
+        self.promotion_name = promotion_name
+        self.selected = selected
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.option_code is not None:
+            result['OptionCode'] = self.option_code
+        if self.promotion_desc is not None:
+            result['PromotionDesc'] = self.promotion_desc
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.promotion_name is not None:
+            result['PromotionName'] = self.promotion_name
+        if self.selected is not None:
+            result['Selected'] = self.selected
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OptionCode') is not None:
+            self.option_code = m.get('OptionCode')
+        if m.get('PromotionDesc') is not None:
+            self.promotion_desc = m.get('PromotionDesc')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('PromotionName') is not None:
+            self.promotion_name = m.get('PromotionName')
+        if m.get('Selected') is not None:
+            self.selected = m.get('Selected')
+        return self
+
+
+class DescribeRenewalPriceResponseBodyPriceInfoPrice(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        discount_price: float = None,
+        order_lines: Dict[str, str] = None,
+        original_price: float = None,
+        promotions: List[DescribeRenewalPriceResponseBodyPriceInfoPricePromotions] = None,
+        trade_price: float = None,
+    ):
+        self.currency = currency
+        self.discount_price = discount_price
+        self.order_lines = order_lines
+        self.original_price = original_price
+        self.promotions = promotions
+        self.trade_price = trade_price
+
+    def validate(self):
+        if self.promotions:
+            for k in self.promotions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.discount_price is not None:
+            result['DiscountPrice'] = self.discount_price
+        if self.order_lines is not None:
+            result['OrderLines'] = self.order_lines
+        if self.original_price is not None:
+            result['OriginalPrice'] = self.original_price
+        result['Promotions'] = []
+        if self.promotions is not None:
+            for k in self.promotions:
+                result['Promotions'].append(k.to_map() if k else None)
+        if self.trade_price is not None:
+            result['TradePrice'] = self.trade_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('DiscountPrice') is not None:
+            self.discount_price = m.get('DiscountPrice')
+        if m.get('OrderLines') is not None:
+            self.order_lines = m.get('OrderLines')
+        if m.get('OriginalPrice') is not None:
+            self.original_price = m.get('OriginalPrice')
+        self.promotions = []
+        if m.get('Promotions') is not None:
+            for k in m.get('Promotions'):
+                temp_model = DescribeRenewalPriceResponseBodyPriceInfoPricePromotions()
+                self.promotions.append(temp_model.from_map(k))
+        if m.get('TradePrice') is not None:
+            self.trade_price = m.get('TradePrice')
+        return self
+
+
+class DescribeRenewalPriceResponseBodyPriceInfoRules(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        rule_id: int = None,
+    ):
+        self.description = description
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class DescribeRenewalPriceResponseBodyPriceInfo(TeaModel):
+    def __init__(
+        self,
+        price: DescribeRenewalPriceResponseBodyPriceInfoPrice = None,
+        rules: List[DescribeRenewalPriceResponseBodyPriceInfoRules] = None,
+    ):
+        self.price = price
+        self.rules = rules
+
+    def validate(self):
+        if self.price:
+            self.price.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.price is not None:
+            result['Price'] = self.price.to_map()
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Price') is not None:
+            temp_model = DescribeRenewalPriceResponseBodyPriceInfoPrice()
+            self.price = temp_model.from_map(m['Price'])
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = DescribeRenewalPriceResponseBodyPriceInfoRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRenewalPriceResponseBody(TeaModel):
+    def __init__(
+        self,
+        price_info: DescribeRenewalPriceResponseBodyPriceInfo = None,
+        request_id: str = None,
+    ):
+        self.price_info = price_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.price_info:
+            self.price_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.price_info is not None:
+            result['PriceInfo'] = self.price_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PriceInfo') is not None:
+            temp_model = DescribeRenewalPriceResponseBodyPriceInfo()
+            self.price_info = temp_model.from_map(m['PriceInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeRenewalPriceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRenewalPriceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRenewalPriceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -33937,15 +35654,21 @@ class GetConnectionTicketRequest(TeaModel):
 class GetConnectionTicketResponseBody(TeaModel):
     def __init__(
         self,
+        desktop_id: str = None,
         request_id: str = None,
+        task_code: str = None,
         task_id: str = None,
+        task_message: str = None,
         task_status: str = None,
         ticket: str = None,
     ):
+        self.desktop_id = desktop_id
         # The ID of the request.
         self.request_id = request_id
+        self.task_code = task_code
         # The ID of the cloud computer connection task.
         self.task_id = task_id
+        self.task_message = task_message
         # The task status.
         # 
         # Valid values:
@@ -33996,10 +35719,16 @@ class GetConnectionTicketResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.task_code is not None:
+            result['TaskCode'] = self.task_code
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.task_message is not None:
+            result['TaskMessage'] = self.task_message
         if self.task_status is not None:
             result['TaskStatus'] = self.task_status
         if self.ticket is not None:
@@ -34008,10 +35737,16 @@ class GetConnectionTicketResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TaskCode') is not None:
+            self.task_code = m.get('TaskCode')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('TaskMessage') is not None:
+            self.task_message = m.get('TaskMessage')
         if m.get('TaskStatus') is not None:
             self.task_status = m.get('TaskStatus')
         if m.get('Ticket') is not None:
@@ -34575,7 +36310,7 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         self.memory = memory
         # The maximum number of cloud computers that can be automatically created in the subscription cloud computer pool.
         self.min_desktops_count = min_desktops_count
-        # The ID of the Apsara File Storage NAS (NAS) file system for the user data roaming feature.
+        # The ID of the File Storage NAS (NAS) file system for the user data roaming feature.
         self.nas_file_system_id = nas_file_system_id
         # The name of the NAS file system for the user data roaming feature.
         self.nas_file_system_name = nas_file_system_name
@@ -36059,19 +37794,24 @@ class ListCdsFilesResponse(TeaModel):
 class ListDirectoryUsersRequest(TeaModel):
     def __init__(
         self,
+        assigned_info: str = None,
         directory_id: str = None,
         filter: str = None,
+        include_assigned_user: bool = None,
         max_results: int = None,
         next_token: str = None,
         oupath: str = None,
         region_id: str = None,
+        sort_type: str = None,
     ):
+        self.assigned_info = assigned_info
         # The ID of the AD directory.
         # 
         # This parameter is required.
         self.directory_id = directory_id
         # The query string for fuzzy match. If you specify this parameter, the system returns all results that contain the string.
         self.filter = filter
+        self.include_assigned_user = include_assigned_user
         # The number of entries to return on each page.
         # 
         # Valid values: 1 to 100.
@@ -36086,6 +37826,7 @@ class ListDirectoryUsersRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.sort_type = sort_type
 
     def validate(self):
         pass
@@ -36096,10 +37837,14 @@ class ListDirectoryUsersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.assigned_info is not None:
+            result['AssignedInfo'] = self.assigned_info
         if self.directory_id is not None:
             result['DirectoryId'] = self.directory_id
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.include_assigned_user is not None:
+            result['IncludeAssignedUser'] = self.include_assigned_user
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -36108,14 +37853,20 @@ class ListDirectoryUsersRequest(TeaModel):
             result['OUPath'] = self.oupath
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.sort_type is not None:
+            result['SortType'] = self.sort_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AssignedInfo') is not None:
+            self.assigned_info = m.get('AssignedInfo')
         if m.get('DirectoryId') is not None:
             self.directory_id = m.get('DirectoryId')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('IncludeAssignedUser') is not None:
+            self.include_assigned_user = m.get('IncludeAssignedUser')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -36124,19 +37875,27 @@ class ListDirectoryUsersRequest(TeaModel):
             self.oupath = m.get('OUPath')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SortType') is not None:
+            self.sort_type = m.get('SortType')
         return self
 
 
 class ListDirectoryUsersResponseBodyUsers(TeaModel):
     def __init__(
         self,
+        assigned_desktop_number: int = None,
         display_name: str = None,
+        email: str = None,
         end_user: str = None,
+        phone: str = None,
     ):
+        self.assigned_desktop_number = assigned_desktop_number
         # The display name of the user.
         self.display_name = display_name
+        self.email = email
         # The name of the user.
         self.end_user = end_user
+        self.phone = phone
 
     def validate(self):
         pass
@@ -36147,18 +37906,30 @@ class ListDirectoryUsersResponseBodyUsers(TeaModel):
             return _map
 
         result = dict()
+        if self.assigned_desktop_number is not None:
+            result['AssignedDesktopNumber'] = self.assigned_desktop_number
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
+        if self.email is not None:
+            result['Email'] = self.email
         if self.end_user is not None:
             result['EndUser'] = self.end_user
+        if self.phone is not None:
+            result['Phone'] = self.phone
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AssignedDesktopNumber') is not None:
+            self.assigned_desktop_number = m.get('AssignedDesktopNumber')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
         if m.get('EndUser') is not None:
             self.end_user = m.get('EndUser')
+        if m.get('Phone') is not None:
+            self.phone = m.get('Phone')
         return self
 
 
@@ -36759,15 +38530,20 @@ class ListOfficeSiteOverviewResponse(TeaModel):
 class ListOfficeSiteUsersRequest(TeaModel):
     def __init__(
         self,
+        assigned_info: str = None,
         filter: str = None,
+        include_assigned_user: bool = None,
         max_results: int = None,
         next_token: str = None,
         oupath: str = None,
         office_site_id: str = None,
         region_id: str = None,
+        sort_type: str = None,
     ):
+        self.assigned_info = assigned_info
         # The query string for fuzzy query.
         self.filter = filter
+        self.include_assigned_user = include_assigned_user
         # The number of entries per page.
         # 
         # *   Valid values: 1 to 100.
@@ -36785,6 +38561,7 @@ class ListOfficeSiteUsersRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.sort_type = sort_type
 
     def validate(self):
         pass
@@ -36795,8 +38572,12 @@ class ListOfficeSiteUsersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.assigned_info is not None:
+            result['AssignedInfo'] = self.assigned_info
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.include_assigned_user is not None:
+            result['IncludeAssignedUser'] = self.include_assigned_user
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -36807,12 +38588,18 @@ class ListOfficeSiteUsersRequest(TeaModel):
             result['OfficeSiteId'] = self.office_site_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.sort_type is not None:
+            result['SortType'] = self.sort_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AssignedInfo') is not None:
+            self.assigned_info = m.get('AssignedInfo')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('IncludeAssignedUser') is not None:
+            self.include_assigned_user = m.get('IncludeAssignedUser')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -36823,19 +38610,27 @@ class ListOfficeSiteUsersRequest(TeaModel):
             self.office_site_id = m.get('OfficeSiteId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SortType') is not None:
+            self.sort_type = m.get('SortType')
         return self
 
 
 class ListOfficeSiteUsersResponseBodyUsers(TeaModel):
     def __init__(
         self,
+        assigned_desktop_number: int = None,
         display_name: str = None,
+        email: str = None,
         end_user: str = None,
+        phone: str = None,
     ):
+        self.assigned_desktop_number = assigned_desktop_number
         # The display name of the user.
         self.display_name = display_name
+        self.email = email
         # The name of the AD user.
         self.end_user = end_user
+        self.phone = phone
 
     def validate(self):
         pass
@@ -36846,18 +38641,30 @@ class ListOfficeSiteUsersResponseBodyUsers(TeaModel):
             return _map
 
         result = dict()
+        if self.assigned_desktop_number is not None:
+            result['AssignedDesktopNumber'] = self.assigned_desktop_number
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
+        if self.email is not None:
+            result['Email'] = self.email
         if self.end_user is not None:
             result['EndUser'] = self.end_user
+        if self.phone is not None:
+            result['Phone'] = self.phone
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AssignedDesktopNumber') is not None:
+            self.assigned_desktop_number = m.get('AssignedDesktopNumber')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
         if m.get('EndUser') is not None:
             self.end_user = m.get('EndUser')
+        if m.get('Phone') is not None:
+            self.phone = m.get('Phone')
         return self
 
 
@@ -39339,6 +41146,7 @@ class ModifyCloudDrivePermissionRequest(TeaModel):
         cds_id: str = None,
         download_end_user_ids: List[str] = None,
         download_upload_end_user_ids: List[str] = None,
+        no_download_no_upload_end_user_ids: List[str] = None,
         region_id: str = None,
     ):
         # The ID of the cloud disk in Cloud Drive Service.
@@ -39349,6 +41157,7 @@ class ModifyCloudDrivePermissionRequest(TeaModel):
         self.download_end_user_ids = download_end_user_ids
         # The IDs of the users who have the upload and download permissions.
         self.download_upload_end_user_ids = download_upload_end_user_ids
+        self.no_download_no_upload_end_user_ids = no_download_no_upload_end_user_ids
         # The region ID.
         # 
         # This parameter is required.
@@ -39369,6 +41178,8 @@ class ModifyCloudDrivePermissionRequest(TeaModel):
             result['DownloadEndUserIds'] = self.download_end_user_ids
         if self.download_upload_end_user_ids is not None:
             result['DownloadUploadEndUserIds'] = self.download_upload_end_user_ids
+        if self.no_download_no_upload_end_user_ids is not None:
+            result['NoDownloadNoUploadEndUserIds'] = self.no_download_no_upload_end_user_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -39381,6 +41192,8 @@ class ModifyCloudDrivePermissionRequest(TeaModel):
             self.download_end_user_ids = m.get('DownloadEndUserIds')
         if m.get('DownloadUploadEndUserIds') is not None:
             self.download_upload_end_user_ids = m.get('DownloadUploadEndUserIds')
+        if m.get('NoDownloadNoUploadEndUserIds') is not None:
+            self.no_download_no_upload_end_user_ids = m.get('NoDownloadNoUploadEndUserIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -40168,7 +41981,7 @@ class ModifyDesktopGroupRequest(TeaModel):
         self.desktop_group_name = desktop_group_name
         # Specifies whether to disable session management.
         self.disable_session_config = disable_session_config
-        # The ID of the Apsara File Storage NAS (NAS) file system for the user data roaming feature.
+        # The ID of the File Storage NAS (NAS) file system for the user data roaming feature.
         # 
         # >  This parameter is unavailable.
         self.file_system_id = file_system_id
@@ -43902,6 +45715,7 @@ class ModifyPolicyGroupRequest(TeaModel):
         watermark_transparency: str = None,
         watermark_transparency_value: int = None,
         watermark_type: str = None,
+        wy_assistant: str = None,
     ):
         # Specifies whether the end user has administrator permissions after the end user connects to the cloud desktop.
         # 
@@ -44126,6 +45940,7 @@ class ModifyPolicyGroupRequest(TeaModel):
         # *   EndUserId: the username
         # *   HostName: the last 15 characters of the cloud desktop ID
         self.watermark_type = watermark_type
+        self.wy_assistant = wy_assistant
 
     def validate(self):
         if self.authorize_access_policy_rule:
@@ -44307,6 +46122,8 @@ class ModifyPolicyGroupRequest(TeaModel):
             result['WatermarkTransparencyValue'] = self.watermark_transparency_value
         if self.watermark_type is not None:
             result['WatermarkType'] = self.watermark_type
+        if self.wy_assistant is not None:
+            result['WyAssistant'] = self.wy_assistant
         return result
 
     def from_map(self, m: dict = None):
@@ -44456,6 +46273,8 @@ class ModifyPolicyGroupRequest(TeaModel):
             self.watermark_transparency_value = m.get('WatermarkTransparencyValue')
         if m.get('WatermarkType') is not None:
             self.watermark_type = m.get('WatermarkType')
+        if m.get('WyAssistant') is not None:
+            self.wy_assistant = m.get('WyAssistant')
         return self
 
 
@@ -45182,12 +47001,20 @@ class RebuildDesktopsRequest(TeaModel):
         operate_type: str = None,
         region_id: str = None,
     ):
-        # The IDs of the cloud computers. You can specify 1 to 20 IDs.
+        # The cloud computer IDs. You can specify the IDs of 1 to 20 cloud computers.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
         # The ID of the new image.
         self.image_id = image_id
+        # The OS language. Only system images are supported, and Linux cloud computers support only English.
+        # 
+        # Valid values:
+        # 
+        # *   en-US: English
+        # *   zh-HK: Traditional Chinese (Hong Kong, China)
+        # *   zh-CN: Simplified Chinese
+        # *   ja-JP: Japanese
         self.language = language
         # The operation type on the data disk.
         # 
@@ -45208,7 +47035,7 @@ class RebuildDesktopsRequest(TeaModel):
         #         *   If you set the OperateType parameter to `replace`, the data in the data disks of the cloud computer is replaced.
         #         *   If you leave the OperateType parameter empty, the data in the data disks of the cloud computer is cleared.
         self.operate_type = operate_type
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -46089,6 +47916,139 @@ class RemoveUserFromDesktopOversoldUserGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveUserFromDesktopOversoldUserGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RenewDesktopGroupRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        desktop_group_id: str = None,
+        period: int = None,
+        period_unit: str = None,
+        region_id: str = None,
+    ):
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        # This parameter is required.
+        self.desktop_group_id = desktop_group_id
+        self.period = period
+        self.period_unit = period_unit
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.desktop_group_id is not None:
+            result['DesktopGroupId'] = self.desktop_group_id
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('DesktopGroupId') is not None:
+            self.desktop_group_id = m.get('DesktopGroupId')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class RenewDesktopGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: List[str] = None,
+        request_id: str = None,
+    ):
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RenewDesktopGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RenewDesktopGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RenewDesktopGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -49864,6 +51824,7 @@ class UploadImageRequest(TeaModel):
         oss_object_path: str = None,
         protocol_type: str = None,
         region_id: str = None,
+        system_disk_size: str = None,
     ):
         # The size of the data disk. Valid values: 80 to 500. Unit: GiB.
         self.data_disk_size = data_disk_size
@@ -49929,6 +51890,7 @@ class UploadImageRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.system_disk_size = system_disk_size
 
     def validate(self):
         pass
@@ -49961,6 +51923,8 @@ class UploadImageRequest(TeaModel):
             result['ProtocolType'] = self.protocol_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
         return result
 
     def from_map(self, m: dict = None):
@@ -49987,6 +51951,8 @@ class UploadImageRequest(TeaModel):
             self.protocol_type = m.get('ProtocolType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
         return self
 
 

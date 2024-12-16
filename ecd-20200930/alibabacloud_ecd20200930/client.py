@@ -2838,6 +2838,8 @@ class Client(OpenApiClient):
             query['SubDomainDnsAddress'] = request.sub_domain_dns_address
         if not UtilClient.is_unset(request.sub_domain_name):
             query['SubDomainName'] = request.sub_domain_name
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.verify_code):
             query['VerifyCode'] = request.verify_code
         req = open_api_models.OpenApiRequest(
@@ -2923,6 +2925,8 @@ class Client(OpenApiClient):
             query['SubDomainDnsAddress'] = request.sub_domain_dns_address
         if not UtilClient.is_unset(request.sub_domain_name):
             query['SubDomainName'] = request.sub_domain_name
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.verify_code):
             query['VerifyCode'] = request.verify_code
         req = open_api_models.OpenApiRequest(
@@ -2992,7 +2996,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateAndBindNasFileSystemResponse:
         """
-        @summary Creates an Apsara File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
+        @summary Creates a File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
         
         @param request: CreateAndBindNasFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3041,7 +3045,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateAndBindNasFileSystemResponse:
         """
-        @summary Creates an Apsara File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
+        @summary Creates a File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
         
         @param request: CreateAndBindNasFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3089,7 +3093,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateAndBindNasFileSystemRequest,
     ) -> ecd_20200930_models.CreateAndBindNasFileSystemResponse:
         """
-        @summary Creates an Apsara File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
+        @summary Creates a File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
         
         @param request: CreateAndBindNasFileSystemRequest
         @return: CreateAndBindNasFileSystemResponse
@@ -3102,7 +3106,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateAndBindNasFileSystemRequest,
     ) -> ecd_20200930_models.CreateAndBindNasFileSystemResponse:
         """
-        @summary Creates an Apsara File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
+        @summary Creates a File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
         
         @param request: CreateAndBindNasFileSystemRequest
         @return: CreateAndBindNasFileSystemResponse
@@ -4000,6 +4004,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.profile_follow_switch):
             query['ProfileFollowSwitch'] = request.profile_follow_switch
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.ratio_threshold):
             query['RatioThreshold'] = request.ratio_threshold
         if not UtilClient.is_unset(request.region_id):
@@ -4115,6 +4121,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.profile_follow_switch):
             query['ProfileFollowSwitch'] = request.profile_follow_switch
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.ratio_threshold):
             query['RatioThreshold'] = request.ratio_threshold
         if not UtilClient.is_unset(request.region_id):
@@ -4344,7 +4352,7 @@ class Client(OpenApiClient):
 
     def create_desktops_with_options(
         self,
-        request: ecd_20200930_models.CreateDesktopsRequest,
+        tmp_req: ecd_20200930_models.CreateDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDesktopsResponse:
         """
@@ -4358,11 +4366,15 @@ class Client(OpenApiClient):
         Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) operation to create a policy.
         If you want the cloud computers to automatically execute a custom command script, you can use the `UserCommands` field to configure a custom command.
         
-        @param request: CreateDesktopsRequest
+        @param tmp_req: CreateDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDesktopsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ecd_20200930_models.CreateDesktopsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.desktop_attachment):
+            request.desktop_attachment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.desktop_attachment, 'DesktopAttachment', 'json')
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
@@ -4376,6 +4388,8 @@ class Client(OpenApiClient):
             query['BundleModels'] = request.bundle_models
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.desktop_attachment_shrink):
+            query['DesktopAttachment'] = request.desktop_attachment_shrink
         if not UtilClient.is_unset(request.desktop_member_ip):
             query['DesktopMemberIp'] = request.desktop_member_ip
         if not UtilClient.is_unset(request.desktop_name):
@@ -4406,10 +4420,14 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.timer_group_id):
+            query['TimerGroupId'] = request.timer_group_id
         if not UtilClient.is_unset(request.user_assign_mode):
             query['UserAssignMode'] = request.user_assign_mode
         if not UtilClient.is_unset(request.user_commands):
@@ -4443,7 +4461,7 @@ class Client(OpenApiClient):
 
     async def create_desktops_with_options_async(
         self,
-        request: ecd_20200930_models.CreateDesktopsRequest,
+        tmp_req: ecd_20200930_models.CreateDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDesktopsResponse:
         """
@@ -4457,11 +4475,15 @@ class Client(OpenApiClient):
         Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) operation to create a policy.
         If you want the cloud computers to automatically execute a custom command script, you can use the `UserCommands` field to configure a custom command.
         
-        @param request: CreateDesktopsRequest
+        @param tmp_req: CreateDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDesktopsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ecd_20200930_models.CreateDesktopsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.desktop_attachment):
+            request.desktop_attachment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.desktop_attachment, 'DesktopAttachment', 'json')
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
@@ -4475,6 +4497,8 @@ class Client(OpenApiClient):
             query['BundleModels'] = request.bundle_models
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.desktop_attachment_shrink):
+            query['DesktopAttachment'] = request.desktop_attachment_shrink
         if not UtilClient.is_unset(request.desktop_member_ip):
             query['DesktopMemberIp'] = request.desktop_member_ip
         if not UtilClient.is_unset(request.desktop_name):
@@ -4505,10 +4529,14 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.timer_group_id):
+            query['TimerGroupId'] = request.timer_group_id
         if not UtilClient.is_unset(request.user_assign_mode):
             query['UserAssignMode'] = request.user_assign_mode
         if not UtilClient.is_unset(request.user_commands):
@@ -4812,6 +4840,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateNASFileSystemResponse:
         """
+        @summary Create a NAS file system.
+        
+        @description <props="china">
+        - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+        - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+        - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase resource packages to offset the storage usage.
+        For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+        <props="intl">
+        - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+        - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+        - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase storage packages to offset the storage usage.
+        For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+        
         @param request: CreateNASFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateNASFileSystemResponse
@@ -4855,6 +4896,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateNASFileSystemResponse:
         """
+        @summary Create a NAS file system.
+        
+        @description <props="china">
+        - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+        - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+        - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase resource packages to offset the storage usage.
+        For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+        <props="intl">
+        - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+        - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+        - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase storage packages to offset the storage usage.
+        For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+        
         @param request: CreateNASFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateNASFileSystemResponse
@@ -4897,6 +4951,19 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateNASFileSystemRequest,
     ) -> ecd_20200930_models.CreateNASFileSystemResponse:
         """
+        @summary Create a NAS file system.
+        
+        @description <props="china">
+        - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+        - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+        - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase resource packages to offset the storage usage.
+        For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+        <props="intl">
+        - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+        - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+        - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase storage packages to offset the storage usage.
+        For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+        
         @param request: CreateNASFileSystemRequest
         @return: CreateNASFileSystemResponse
         """
@@ -4908,6 +4975,19 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateNASFileSystemRequest,
     ) -> ecd_20200930_models.CreateNASFileSystemResponse:
         """
+        @summary Create a NAS file system.
+        
+        @description <props="china">
+        - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+        - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+        - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase resource packages to offset the storage usage.
+        For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+        <props="intl">
+        - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+        - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+        - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase storage packages to offset the storage usage.
+        For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+        
         @param request: CreateNASFileSystemRequest
         @return: CreateNASFileSystemResponse
         """
@@ -5174,6 +5254,8 @@ class Client(OpenApiClient):
             query['WatermarkTransparencyValue'] = request.watermark_transparency_value
         if not UtilClient.is_unset(request.watermark_type):
             query['WatermarkType'] = request.watermark_type
+        if not UtilClient.is_unset(request.wy_assistant):
+            query['WyAssistant'] = request.wy_assistant
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5321,6 +5403,8 @@ class Client(OpenApiClient):
             query['WatermarkTransparencyValue'] = request.watermark_transparency_value
         if not UtilClient.is_unset(request.watermark_type):
             query['WatermarkType'] = request.watermark_type
+        if not UtilClient.is_unset(request.wy_assistant):
+            query['WyAssistant'] = request.wy_assistant
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6946,7 +7030,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes NAS file systems.
         
-        @description Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
+        @description Before you delete a File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
         >Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
         
         @param request: DeleteNASFileSystemsRequest
@@ -6986,7 +7070,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes NAS file systems.
         
-        @description Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
+        @description Before you delete a File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
         >Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
         
         @param request: DeleteNASFileSystemsRequest
@@ -7025,7 +7109,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes NAS file systems.
         
-        @description Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
+        @description Before you delete a File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
         >Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
         
         @param request: DeleteNASFileSystemsRequest
@@ -7041,7 +7125,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes NAS file systems.
         
-        @description Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
+        @description Before you delete a File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
         >Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
         
         @param request: DeleteNASFileSystemsRequest
@@ -9564,6 +9648,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.end_user_id_filter):
+            query['EndUserIdFilter'] = request.end_user_id_filter
         if not UtilClient.is_unset(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.page_number):
@@ -9623,6 +9709,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.end_user_id_filter):
+            query['EndUserIdFilter'] = request.end_user_id_filter
         if not UtilClient.is_unset(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.page_number):
@@ -9712,6 +9800,8 @@ class Client(OpenApiClient):
             query['DesktopIdForModify'] = request.desktop_id_for_modify
         if not UtilClient.is_unset(request.desktop_type_id):
             query['DesktopTypeId'] = request.desktop_type_id
+        if not UtilClient.is_unset(request.desktop_type_id_list):
+            query['DesktopTypeIdList'] = request.desktop_type_id_list
         if not UtilClient.is_unset(request.gpu_count):
             query['GpuCount'] = request.gpu_count
         if not UtilClient.is_unset(request.gpu_driver_type):
@@ -9720,10 +9810,16 @@ class Client(OpenApiClient):
             query['InstanceTypeFamily'] = request.instance_type_family
         if not UtilClient.is_unset(request.memory_size):
             query['MemorySize'] = request.memory_size
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9769,6 +9865,8 @@ class Client(OpenApiClient):
             query['DesktopIdForModify'] = request.desktop_id_for_modify
         if not UtilClient.is_unset(request.desktop_type_id):
             query['DesktopTypeId'] = request.desktop_type_id
+        if not UtilClient.is_unset(request.desktop_type_id_list):
+            query['DesktopTypeIdList'] = request.desktop_type_id_list
         if not UtilClient.is_unset(request.gpu_count):
             query['GpuCount'] = request.gpu_count
         if not UtilClient.is_unset(request.gpu_driver_type):
@@ -9777,10 +9875,16 @@ class Client(OpenApiClient):
             query['InstanceTypeFamily'] = request.instance_type_family
         if not UtilClient.is_unset(request.memory_size):
             query['MemorySize'] = request.memory_size
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9890,6 +9994,10 @@ class Client(OpenApiClient):
             query['OnlyDesktopGroup'] = request.only_desktop_group
         if not UtilClient.is_unset(request.os_types):
             query['OsTypes'] = request.os_types
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.protocol_type):
@@ -9989,6 +10097,10 @@ class Client(OpenApiClient):
             query['OnlyDesktopGroup'] = request.only_desktop_group
         if not UtilClient.is_unset(request.os_types):
             query['OsTypes'] = request.os_types
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.protocol_type):
@@ -10667,7 +10779,21 @@ class Client(OpenApiClient):
         @return: DescribeFotaPendingDesktopsResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.desktop_name):
+            query['DesktopName'] = request.desktop_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_uid):
+            query['TaskUid'] = request.task_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10676,7 +10802,7 @@ class Client(OpenApiClient):
             version='2020-09-30',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -10700,7 +10826,21 @@ class Client(OpenApiClient):
         @return: DescribeFotaPendingDesktopsResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.desktop_name):
+            query['DesktopName'] = request.desktop_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_uid):
+            query['TaskUid'] = request.task_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10709,7 +10849,7 @@ class Client(OpenApiClient):
             version='2020-09-30',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -11363,6 +11503,8 @@ class Client(OpenApiClient):
             query['DesktopIds'] = request.desktop_ids
         if not UtilClient.is_unset(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.include_invoke_desktops):
+            query['IncludeInvokeDesktops'] = request.include_invoke_desktops
         if not UtilClient.is_unset(request.include_output):
             query['IncludeOutput'] = request.include_output
         if not UtilClient.is_unset(request.invoke_id):
@@ -11419,6 +11561,8 @@ class Client(OpenApiClient):
             query['DesktopIds'] = request.desktop_ids
         if not UtilClient.is_unset(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.include_invoke_desktops):
+            query['IncludeInvokeDesktops'] = request.include_invoke_desktops
         if not UtilClient.is_unset(request.include_output):
             query['IncludeOutput'] = request.include_output
         if not UtilClient.is_unset(request.invoke_id):
@@ -11574,13 +11718,125 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_kms_keys_with_options_async(request, runtime)
 
+    def describe_modification_price_with_options(
+        self,
+        request: ecd_20200930_models.DescribeModificationPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeModificationPriceResponse:
+        """
+        @param request: DescribeModificationPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeModificationPriceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.root_disk_size_gib):
+            query['RootDiskSizeGib'] = request.root_disk_size_gib
+        if not UtilClient.is_unset(request.user_disk_size_gib):
+            query['UserDiskSizeGib'] = request.user_disk_size_gib
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeModificationPrice',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeModificationPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_modification_price_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeModificationPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeModificationPriceResponse:
+        """
+        @param request: DescribeModificationPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeModificationPriceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.root_disk_size_gib):
+            query['RootDiskSizeGib'] = request.root_disk_size_gib
+        if not UtilClient.is_unset(request.user_disk_size_gib):
+            query['UserDiskSizeGib'] = request.user_disk_size_gib
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeModificationPrice',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeModificationPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_modification_price(
+        self,
+        request: ecd_20200930_models.DescribeModificationPriceRequest,
+    ) -> ecd_20200930_models.DescribeModificationPriceResponse:
+        """
+        @param request: DescribeModificationPriceRequest
+        @return: DescribeModificationPriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_modification_price_with_options(request, runtime)
+
+    async def describe_modification_price_async(
+        self,
+        request: ecd_20200930_models.DescribeModificationPriceRequest,
+    ) -> ecd_20200930_models.DescribeModificationPriceResponse:
+        """
+        @param request: DescribeModificationPriceRequest
+        @return: DescribeModificationPriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_modification_price_with_options_async(request, runtime)
+
     def describe_nasfile_systems_with_options(
         self,
         request: ecd_20200930_models.DescribeNASFileSystemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeNASFileSystemsResponse:
         """
-        @summary Queries the information about Apsara File Storage NAS (NAS) file systems.
+        @summary Queries the information about File Storage NAS (NAS) file systems.
         
         @param request: DescribeNASFileSystemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11625,7 +11881,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeNASFileSystemsResponse:
         """
-        @summary Queries the information about Apsara File Storage NAS (NAS) file systems.
+        @summary Queries the information about File Storage NAS (NAS) file systems.
         
         @param request: DescribeNASFileSystemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11669,7 +11925,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeNASFileSystemsRequest,
     ) -> ecd_20200930_models.DescribeNASFileSystemsResponse:
         """
-        @summary Queries the information about Apsara File Storage NAS (NAS) file systems.
+        @summary Queries the information about File Storage NAS (NAS) file systems.
         
         @param request: DescribeNASFileSystemsRequest
         @return: DescribeNASFileSystemsResponse
@@ -11682,7 +11938,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeNASFileSystemsRequest,
     ) -> ecd_20200930_models.DescribeNASFileSystemsResponse:
         """
-        @summary Queries the information about Apsara File Storage NAS (NAS) file systems.
+        @summary Queries the information about File Storage NAS (NAS) file systems.
         
         @param request: DescribeNASFileSystemsRequest
         @return: DescribeNASFileSystemsResponse
@@ -12059,42 +12315,16 @@ class Client(OpenApiClient):
             query['Amount'] = request.amount
         if not UtilClient.is_unset(request.bandwidth):
             query['Bandwidth'] = request.bandwidth
-        if not UtilClient.is_unset(request.bundle_models):
-            query['BundleModels'] = request.bundle_models
-        if not UtilClient.is_unset(request.edu_cds_enable):
-            query['EduCdsEnable'] = request.edu_cds_enable
-        if not UtilClient.is_unset(request.edu_cds_size):
-            query['EduCdsSize'] = request.edu_cds_size
-        if not UtilClient.is_unset(request.edu_committed_time):
-            query['EduCommittedTime'] = request.edu_committed_time
-        if not UtilClient.is_unset(request.edu_desktop_bundle_id):
-            query['EduDesktopBundleId'] = request.edu_desktop_bundle_id
-        if not UtilClient.is_unset(request.edu_desktop_num):
-            query['EduDesktopNum'] = request.edu_desktop_num
-        if not UtilClient.is_unset(request.edu_room_classify):
-            query['EduRoomClassify'] = request.edu_room_classify
-        if not UtilClient.is_unset(request.edu_student_bundle_id):
-            query['EduStudentBundleId'] = request.edu_student_bundle_id
-        if not UtilClient.is_unset(request.edu_student_num):
-            query['EduStudentNum'] = request.edu_student_num
-        if not UtilClient.is_unset(request.edu_teacher_bundle_id):
-            query['EduTeacherBundleId'] = request.edu_teacher_bundle_id
-        if not UtilClient.is_unset(request.edu_teacher_num):
-            query['EduTeacherNum'] = request.edu_teacher_num
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
         if not UtilClient.is_unset(request.group_desktop_count):
             query['GroupDesktopCount'] = request.group_desktop_count
-        if not UtilClient.is_unset(request.hardware_version):
-            query['HardwareVersion'] = request.hardware_version
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
-        if not UtilClient.is_unset(request.network_type):
-            query['NetworkType'] = request.network_type
         if not UtilClient.is_unset(request.os_type):
             query['OsType'] = request.os_type
-        if not UtilClient.is_unset(request.package_size):
-            query['PackageSize'] = request.package_size
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
@@ -12105,18 +12335,12 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.root_disk_performance_level):
-            query['RootDiskPerformanceLevel'] = request.root_disk_performance_level
+        if not UtilClient.is_unset(request.root_disk_category):
+            query['RootDiskCategory'] = request.root_disk_category
         if not UtilClient.is_unset(request.root_disk_size_gib):
             query['RootDiskSizeGib'] = request.root_disk_size_gib
-        if not UtilClient.is_unset(request.sp_period_info):
-            query['SpPeriodInfo'] = request.sp_period_info
-        if not UtilClient.is_unset(request.sp_price):
-            query['SpPrice'] = request.sp_price
-        if not UtilClient.is_unset(request.sp_type):
-            query['SpType'] = request.sp_type
-        if not UtilClient.is_unset(request.user_disk_performance_level):
-            query['UserDiskPerformanceLevel'] = request.user_disk_performance_level
+        if not UtilClient.is_unset(request.user_disk_category):
+            query['UserDiskCategory'] = request.user_disk_category
         if not UtilClient.is_unset(request.user_disk_size_gib):
             query['UserDiskSizeGib'] = request.user_disk_size_gib
         req = open_api_models.OpenApiRequest(
@@ -12163,42 +12387,16 @@ class Client(OpenApiClient):
             query['Amount'] = request.amount
         if not UtilClient.is_unset(request.bandwidth):
             query['Bandwidth'] = request.bandwidth
-        if not UtilClient.is_unset(request.bundle_models):
-            query['BundleModels'] = request.bundle_models
-        if not UtilClient.is_unset(request.edu_cds_enable):
-            query['EduCdsEnable'] = request.edu_cds_enable
-        if not UtilClient.is_unset(request.edu_cds_size):
-            query['EduCdsSize'] = request.edu_cds_size
-        if not UtilClient.is_unset(request.edu_committed_time):
-            query['EduCommittedTime'] = request.edu_committed_time
-        if not UtilClient.is_unset(request.edu_desktop_bundle_id):
-            query['EduDesktopBundleId'] = request.edu_desktop_bundle_id
-        if not UtilClient.is_unset(request.edu_desktop_num):
-            query['EduDesktopNum'] = request.edu_desktop_num
-        if not UtilClient.is_unset(request.edu_room_classify):
-            query['EduRoomClassify'] = request.edu_room_classify
-        if not UtilClient.is_unset(request.edu_student_bundle_id):
-            query['EduStudentBundleId'] = request.edu_student_bundle_id
-        if not UtilClient.is_unset(request.edu_student_num):
-            query['EduStudentNum'] = request.edu_student_num
-        if not UtilClient.is_unset(request.edu_teacher_bundle_id):
-            query['EduTeacherBundleId'] = request.edu_teacher_bundle_id
-        if not UtilClient.is_unset(request.edu_teacher_num):
-            query['EduTeacherNum'] = request.edu_teacher_num
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
         if not UtilClient.is_unset(request.group_desktop_count):
             query['GroupDesktopCount'] = request.group_desktop_count
-        if not UtilClient.is_unset(request.hardware_version):
-            query['HardwareVersion'] = request.hardware_version
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
-        if not UtilClient.is_unset(request.network_type):
-            query['NetworkType'] = request.network_type
         if not UtilClient.is_unset(request.os_type):
             query['OsType'] = request.os_type
-        if not UtilClient.is_unset(request.package_size):
-            query['PackageSize'] = request.package_size
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
@@ -12209,18 +12407,12 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.root_disk_performance_level):
-            query['RootDiskPerformanceLevel'] = request.root_disk_performance_level
+        if not UtilClient.is_unset(request.root_disk_category):
+            query['RootDiskCategory'] = request.root_disk_category
         if not UtilClient.is_unset(request.root_disk_size_gib):
             query['RootDiskSizeGib'] = request.root_disk_size_gib
-        if not UtilClient.is_unset(request.sp_period_info):
-            query['SpPeriodInfo'] = request.sp_period_info
-        if not UtilClient.is_unset(request.sp_price):
-            query['SpPrice'] = request.sp_price
-        if not UtilClient.is_unset(request.sp_type):
-            query['SpType'] = request.sp_type
-        if not UtilClient.is_unset(request.user_disk_performance_level):
-            query['UserDiskPerformanceLevel'] = request.user_disk_performance_level
+        if not UtilClient.is_unset(request.user_disk_category):
+            query['UserDiskCategory'] = request.user_disk_category
         if not UtilClient.is_unset(request.user_disk_size_gib):
             query['UserDiskSizeGib'] = request.user_disk_size_gib
         req = open_api_models.OpenApiRequest(
@@ -12730,6 +12922,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_recordings_with_options_async(request, runtime)
 
+    def describe_refund_price_with_options(
+        self,
+        request: ecd_20200930_models.DescribeRefundPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeRefundPriceResponse:
+        """
+        @param request: DescribeRefundPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRefundPriceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.refund_type):
+            query['RefundType'] = request.refund_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRefundPrice',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeRefundPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_refund_price_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeRefundPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeRefundPriceResponse:
+        """
+        @param request: DescribeRefundPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRefundPriceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.refund_type):
+            query['RefundType'] = request.refund_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRefundPrice',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeRefundPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_refund_price(
+        self,
+        request: ecd_20200930_models.DescribeRefundPriceRequest,
+    ) -> ecd_20200930_models.DescribeRefundPriceResponse:
+        """
+        @param request: DescribeRefundPriceRequest
+        @return: DescribeRefundPriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_refund_price_with_options(request, runtime)
+
+    async def describe_refund_price_async(
+        self,
+        request: ecd_20200930_models.DescribeRefundPriceRequest,
+    ) -> ecd_20200930_models.DescribeRefundPriceResponse:
+        """
+        @param request: DescribeRefundPriceRequest
+        @return: DescribeRefundPriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_refund_price_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: ecd_20200930_models.DescribeRegionsRequest,
@@ -12829,6 +13117,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
+
+    def describe_renewal_price_with_options(
+        self,
+        request: ecd_20200930_models.DescribeRenewalPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeRenewalPriceResponse:
+        """
+        @param request: DescribeRenewalPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRenewalPriceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRenewalPrice',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeRenewalPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_renewal_price_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeRenewalPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeRenewalPriceResponse:
+        """
+        @param request: DescribeRenewalPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRenewalPriceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRenewalPrice',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeRenewalPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_renewal_price(
+        self,
+        request: ecd_20200930_models.DescribeRenewalPriceRequest,
+    ) -> ecd_20200930_models.DescribeRenewalPriceResponse:
+        """
+        @param request: DescribeRenewalPriceRequest
+        @return: DescribeRenewalPriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_renewal_price_with_options(request, runtime)
+
+    async def describe_renewal_price_async(
+        self,
+        request: ecd_20200930_models.DescribeRenewalPriceRequest,
+    ) -> ecd_20200930_models.DescribeRenewalPriceResponse:
+        """
+        @param request: DescribeRenewalPriceRequest
+        @return: DescribeRenewalPriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_renewal_price_with_options_async(request, runtime)
 
     def describe_session_statistic_with_options(
         self,
@@ -15978,10 +16374,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.assigned_info):
+            query['AssignedInfo'] = request.assigned_info
         if not UtilClient.is_unset(request.directory_id):
             query['DirectoryId'] = request.directory_id
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.include_assigned_user):
+            query['IncludeAssignedUser'] = request.include_assigned_user
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -15990,6 +16390,8 @@ class Client(OpenApiClient):
             query['OUPath'] = request.oupath
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16025,10 +16427,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.assigned_info):
+            query['AssignedInfo'] = request.assigned_info
         if not UtilClient.is_unset(request.directory_id):
             query['DirectoryId'] = request.directory_id
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.include_assigned_user):
+            query['IncludeAssignedUser'] = request.include_assigned_user
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -16037,6 +16443,8 @@ class Client(OpenApiClient):
             query['OUPath'] = request.oupath
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16328,8 +16736,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.assigned_info):
+            query['AssignedInfo'] = request.assigned_info
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.include_assigned_user):
+            query['IncludeAssignedUser'] = request.include_assigned_user
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -16340,6 +16752,8 @@ class Client(OpenApiClient):
             query['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16373,8 +16787,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.assigned_info):
+            query['AssignedInfo'] = request.assigned_info
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.include_assigned_user):
+            query['IncludeAssignedUser'] = request.include_assigned_user
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -16385,6 +16803,8 @@ class Client(OpenApiClient):
             query['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18054,6 +18474,8 @@ class Client(OpenApiClient):
             query['DownloadEndUserIds'] = request.download_end_user_ids
         if not UtilClient.is_unset(request.download_upload_end_user_ids):
             query['DownloadUploadEndUserIds'] = request.download_upload_end_user_ids
+        if not UtilClient.is_unset(request.no_download_no_upload_end_user_ids):
+            query['NoDownloadNoUploadEndUserIds'] = request.no_download_no_upload_end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -18095,6 +18517,8 @@ class Client(OpenApiClient):
             query['DownloadEndUserIds'] = request.download_end_user_ids
         if not UtilClient.is_unset(request.download_upload_end_user_ids):
             query['DownloadUploadEndUserIds'] = request.download_upload_end_user_ids
+        if not UtilClient.is_unset(request.no_download_no_upload_end_user_ids):
+            query['NoDownloadNoUploadEndUserIds'] = request.no_download_no_upload_end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -20236,7 +20660,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyNASDefaultMountTargetResponse:
         """
-        @summary Modifies the mount target of an Apsara File Storage NAS (NAS) file system.
+        @summary Modifies the mount target of a File Storage NAS (NAS) file system.
         
         @description When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](https://help.aliyun.com/document_detail/62621.html) operation to create a mount target.
         
@@ -20277,7 +20701,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyNASDefaultMountTargetResponse:
         """
-        @summary Modifies the mount target of an Apsara File Storage NAS (NAS) file system.
+        @summary Modifies the mount target of a File Storage NAS (NAS) file system.
         
         @description When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](https://help.aliyun.com/document_detail/62621.html) operation to create a mount target.
         
@@ -20317,7 +20741,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyNASDefaultMountTargetRequest,
     ) -> ecd_20200930_models.ModifyNASDefaultMountTargetResponse:
         """
-        @summary Modifies the mount target of an Apsara File Storage NAS (NAS) file system.
+        @summary Modifies the mount target of a File Storage NAS (NAS) file system.
         
         @description When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](https://help.aliyun.com/document_detail/62621.html) operation to create a mount target.
         
@@ -20332,7 +20756,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyNASDefaultMountTargetRequest,
     ) -> ecd_20200930_models.ModifyNASDefaultMountTargetResponse:
         """
-        @summary Modifies the mount target of an Apsara File Storage NAS (NAS) file system.
+        @summary Modifies the mount target of a File Storage NAS (NAS) file system.
         
         @description When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](https://help.aliyun.com/document_detail/62621.html) operation to create a mount target.
         
@@ -21026,6 +21450,8 @@ class Client(OpenApiClient):
             query['WatermarkTransparencyValue'] = request.watermark_transparency_value
         if not UtilClient.is_unset(request.watermark_type):
             query['WatermarkType'] = request.watermark_type
+        if not UtilClient.is_unset(request.wy_assistant):
+            query['WyAssistant'] = request.wy_assistant
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21177,6 +21603,8 @@ class Client(OpenApiClient):
             query['WatermarkTransparencyValue'] = request.watermark_transparency_value
         if not UtilClient.is_unset(request.watermark_type):
             query['WatermarkType'] = request.watermark_type
+        if not UtilClient.is_unset(request.wy_assistant):
+            query['WyAssistant'] = request.wy_assistant
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21682,12 +22110,12 @@ class Client(OpenApiClient):
         """
         @summary Recreates cloud computers.
         
-        @description Before you change the image of a cloud computer, take note of the following limits:
-        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
-        GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
-        After the image is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
-        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
-        If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
+        @description Take note of the following limits when you change an image:
+        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
+        GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
+        After the image of a cloud computer is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
+        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
+        If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
         
         @param request: RebuildDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21732,12 +22160,12 @@ class Client(OpenApiClient):
         """
         @summary Recreates cloud computers.
         
-        @description Before you change the image of a cloud computer, take note of the following limits:
-        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
-        GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
-        After the image is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
-        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
-        If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
+        @description Take note of the following limits when you change an image:
+        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
+        GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
+        After the image of a cloud computer is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
+        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
+        If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
         
         @param request: RebuildDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21781,12 +22209,12 @@ class Client(OpenApiClient):
         """
         @summary Recreates cloud computers.
         
-        @description Before you change the image of a cloud computer, take note of the following limits:
-        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
-        GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
-        After the image is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
-        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
-        If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
+        @description Take note of the following limits when you change an image:
+        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
+        GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
+        After the image of a cloud computer is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
+        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
+        If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
         
         @param request: RebuildDesktopsRequest
         @return: RebuildDesktopsResponse
@@ -21801,12 +22229,12 @@ class Client(OpenApiClient):
         """
         @summary Recreates cloud computers.
         
-        @description Before you change the image of a cloud computer, take note of the following limits:
-        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
-        GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
-        After the image is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
-        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
-        If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
+        @description Take note of the following limits when you change an image:
+        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
+        GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
+        After the image of a cloud computer is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
+        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
+        If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
         
         @param request: RebuildDesktopsRequest
         @return: RebuildDesktopsResponse
@@ -22153,6 +22581,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.remove_user_from_desktop_oversold_user_group_with_options_async(request, runtime)
+
+    def renew_desktop_group_with_options(
+        self,
+        request: ecd_20200930_models.RenewDesktopGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.RenewDesktopGroupResponse:
+        """
+        @param request: RenewDesktopGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewDesktopGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.desktop_group_id):
+            query['DesktopGroupId'] = request.desktop_group_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewDesktopGroup',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.RenewDesktopGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_desktop_group_with_options_async(
+        self,
+        request: ecd_20200930_models.RenewDesktopGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.RenewDesktopGroupResponse:
+        """
+        @param request: RenewDesktopGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewDesktopGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.desktop_group_id):
+            query['DesktopGroupId'] = request.desktop_group_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewDesktopGroup',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.RenewDesktopGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_desktop_group(
+        self,
+        request: ecd_20200930_models.RenewDesktopGroupRequest,
+    ) -> ecd_20200930_models.RenewDesktopGroupResponse:
+        """
+        @param request: RenewDesktopGroupRequest
+        @return: RenewDesktopGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.renew_desktop_group_with_options(request, runtime)
+
+    async def renew_desktop_group_async(
+        self,
+        request: ecd_20200930_models.RenewDesktopGroupRequest,
+    ) -> ecd_20200930_models.RenewDesktopGroupResponse:
+        """
+        @param request: RenewDesktopGroupRequest
+        @return: RenewDesktopGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.renew_desktop_group_with_options_async(request, runtime)
 
     def renew_desktop_oversold_group_with_options(
         self,
@@ -22636,7 +23172,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ResetNASDefaultMountTargetResponse:
         """
-        @summary Resets the mount target of an Apsara File Storage NAS (NAS) file system.
+        @summary Resets the mount target of a File Storage NAS (NAS) file system.
         
         @description When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
         
@@ -22675,7 +23211,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ResetNASDefaultMountTargetResponse:
         """
-        @summary Resets the mount target of an Apsara File Storage NAS (NAS) file system.
+        @summary Resets the mount target of a File Storage NAS (NAS) file system.
         
         @description When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
         
@@ -22713,7 +23249,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ResetNASDefaultMountTargetRequest,
     ) -> ecd_20200930_models.ResetNASDefaultMountTargetResponse:
         """
-        @summary Resets the mount target of an Apsara File Storage NAS (NAS) file system.
+        @summary Resets the mount target of a File Storage NAS (NAS) file system.
         
         @description When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
         
@@ -22728,7 +23264,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ResetNASDefaultMountTargetRequest,
     ) -> ecd_20200930_models.ResetNASDefaultMountTargetResponse:
         """
-        @summary Resets the mount target of an Apsara File Storage NAS (NAS) file system.
+        @summary Resets the mount target of a File Storage NAS (NAS) file system.
         
         @description When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
         
@@ -25016,6 +25552,8 @@ class Client(OpenApiClient):
             query['ProtocolType'] = request.protocol_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.system_disk_size):
+            query['SystemDiskSize'] = request.system_disk_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -25073,6 +25611,8 @@ class Client(OpenApiClient):
             query['ProtocolType'] = request.protocol_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.system_disk_size):
+            query['SystemDiskSize'] = request.system_disk_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

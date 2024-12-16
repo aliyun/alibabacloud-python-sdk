@@ -1,3 +1,78 @@
+2024-12-16 Version: 4.2.0
+- Support API DescribeModificationPrice.
+- Support API DescribeRefundPrice.
+- Support API DescribeRenewalPrice.
+- Support API RenewDesktopGroup.
+- Update API CreateADConnectorOfficeSite: add param VSwitchId.
+- Update API CreateADConnectorOfficeSite: update param CenId.
+- Update API CreateADConnectorOfficeSite: update param CidrBlock.
+- Update API CreateAutoSnapshotPolicy: update param PolicyName.
+- Update API CreateDesktopGroup: add param PromotionId.
+- Update API CreateDesktops: add param DesktopAttachment.
+- Update API CreateDesktops: add param ResourceGroupId.
+- Update API CreateDesktops: add param TimerGroupId.
+- Update API CreateDesktops: update param Tag.
+- Update API CreatePolicyGroup: add param WyAssistant.
+- Update API CreatePolicyGroup: update param AuthorizeAccessPolicyRule.
+- Update API DescribeCloudDriveGroups: update response param.
+- Update API DescribeDesktopSessions: add param EndUserIdFilter.
+- Update API DescribeDesktopSessions: update param OfficeSiteId.
+- Update API DescribeDesktopTypes: add param DesktopTypeIdList.
+- Update API DescribeDesktopTypes: add param OrderBy.
+- Update API DescribeDesktopTypes: add param Scope.
+- Update API DescribeDesktopTypes: add param SortType.
+- Update API DescribeDesktopTypes: update response param.
+- Update API DescribeDesktops: add param PageNumber.
+- Update API DescribeDesktops: add param PageSize.
+- Update API DescribeDesktops: update response param.
+- Update API DescribeInvocations: add param IncludeInvokeDesktops.
+- Update API DescribeInvocations: update response param.
+- Update API DescribeKmsKeys: update response param.
+- Update API DescribeOfficeSites: update response param.
+- Update API DescribePolicyGroups: update response param.
+- Update API DescribePrice: add param Duration.
+- Update API DescribePrice: add param RootDiskCategory.
+- Update API DescribePrice: add param UserDiskCategory.
+- Update API DescribePrice: delete param BundleModels.
+- Update API DescribePrice: delete param EduCdsEnable.
+- Update API DescribePrice: delete param EduCdsSize.
+- Update API DescribePrice: delete param EduCommittedTime.
+- Update API DescribePrice: delete param EduDesktopBundleId.
+- Update API DescribePrice: delete param EduDesktopNum.
+- Update API DescribePrice: delete param EduRoomClassify.
+- Update API DescribePrice: delete param EduStudentBundleId.
+- Update API DescribePrice: delete param EduStudentNum.
+- Update API DescribePrice: delete param EduTeacherBundleId.
+- Update API DescribePrice: delete param EduTeacherNum.
+- Update API DescribePrice: delete param HardwareVersion.
+- Update API DescribePrice: delete param NetworkType.
+- Update API DescribePrice: delete param PackageSize.
+- Update API DescribePrice: delete param RootDiskPerformanceLevel.
+- Update API DescribePrice: delete param SpPeriodInfo.
+- Update API DescribePrice: delete param SpPrice.
+- Update API DescribePrice: delete param SpType.
+- Update API DescribePrice: delete param UserDiskPerformanceLevel.
+- Update API DescribePrice: update param GroupDesktopCount.
+- Update API DescribePrice: update param RootDiskSizeGib.
+- Update API DescribePrice: update param UserDiskSizeGib.
+- Update API GetConnectionTicket: update response param.
+- Update API ListDirectoryUsers: add param AssignedInfo.
+- Update API ListDirectoryUsers: add param IncludeAssignedUser.
+- Update API ListDirectoryUsers: add param SortType.
+- Update API ListDirectoryUsers: update response param.
+- Update API ListOfficeSiteUsers: add param AssignedInfo.
+- Update API ListOfficeSiteUsers: add param IncludeAssignedUser.
+- Update API ListOfficeSiteUsers: add param SortType.
+- Update API ListOfficeSiteUsers: update response param.
+- Update API ModifyCloudDrivePermission: add param NoDownloadNoUploadEndUserIds.
+- Update API ModifyDesktopSpec: update param UserDiskSizeGib.
+- Update API ModifyPolicyGroup: add param WyAssistant.
+- Update API ModifyPolicyGroup: update param AuthorizeAccessPolicyRule.
+- Update API ModifyPolicyGroup: update param RevokeAccessPolicyRule.
+- Update API RunCommand: update param DesktopId.
+- Update API UploadImage: add param SystemDiskSize.
+
+
 2024-07-23 Version: 4.1.2
 - Update API DescribeCloudDriveGroups: update response param.
 
