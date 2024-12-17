@@ -1,3 +1,8 @@
+2024-12-17 Version: 1.4.1
+- Update API DescribeRules: add param CooperationChannel.
+- Update API DescribeRules: add param Simplify.
+
+
 2024-10-17 Version: 1.4.0
 - Support API DescribeIdentifyTaskStatus.
 - Update API DescribeInstances: update response param.

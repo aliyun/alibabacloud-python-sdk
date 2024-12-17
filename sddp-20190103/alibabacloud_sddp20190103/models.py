@@ -10995,6 +10995,7 @@ class DescribeRulesRequest(TeaModel):
         self,
         category: int = None,
         content_category: int = None,
+        cooperation_channel: str = None,
         current_page: int = None,
         custom_type: int = None,
         feature_type: int = None,
@@ -11008,6 +11009,7 @@ class DescribeRulesRequest(TeaModel):
         product_id: int = None,
         risk_level_id: int = None,
         rule_type: int = None,
+        simplify: bool = None,
         status: int = None,
         support_form: int = None,
         warn_level: int = None,
@@ -11019,6 +11021,7 @@ class DescribeRulesRequest(TeaModel):
         self.category = category
         # The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
         self.content_category = content_category
+        self.cooperation_channel = cooperation_channel
         # The page number of the page to return.
         self.current_page = current_page
         # The type of the sensitive data detection rule. Valid values:
@@ -11070,6 +11073,7 @@ class DescribeRulesRequest(TeaModel):
         # *   **3**: anomalous event detection rule
         # *   **99**: custom rule
         self.rule_type = rule_type
+        self.simplify = simplify
         # The status of the sensitive data detection rule. Valid values:
         # 
         # *   **1**: enabled
@@ -11103,6 +11107,8 @@ class DescribeRulesRequest(TeaModel):
             result['Category'] = self.category
         if self.content_category is not None:
             result['ContentCategory'] = self.content_category
+        if self.cooperation_channel is not None:
+            result['CooperationChannel'] = self.cooperation_channel
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.custom_type is not None:
@@ -11129,6 +11135,8 @@ class DescribeRulesRequest(TeaModel):
             result['RiskLevelId'] = self.risk_level_id
         if self.rule_type is not None:
             result['RuleType'] = self.rule_type
+        if self.simplify is not None:
+            result['Simplify'] = self.simplify
         if self.status is not None:
             result['Status'] = self.status
         if self.support_form is not None:
@@ -11143,6 +11151,8 @@ class DescribeRulesRequest(TeaModel):
             self.category = m.get('Category')
         if m.get('ContentCategory') is not None:
             self.content_category = m.get('ContentCategory')
+        if m.get('CooperationChannel') is not None:
+            self.cooperation_channel = m.get('CooperationChannel')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('CustomType') is not None:
@@ -11169,6 +11179,8 @@ class DescribeRulesRequest(TeaModel):
             self.risk_level_id = m.get('RiskLevelId')
         if m.get('RuleType') is not None:
             self.rule_type = m.get('RuleType')
+        if m.get('Simplify') is not None:
+            self.simplify = m.get('Simplify')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('SupportForm') is not None:
