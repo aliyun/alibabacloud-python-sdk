@@ -1012,6 +1012,39 @@ class Features(TeaModel):
         return self
 
 
+class ForwardInfo(TeaModel):
+    def __init__(
+        self,
+        eip_allocation_id: str = None,
+        nat_gateway_id: str = None,
+    ):
+        self.eip_allocation_id = eip_allocation_id
+        self.nat_gateway_id = nat_gateway_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eip_allocation_id is not None:
+            result['EipAllocationId'] = self.eip_allocation_id
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EipAllocationId') is not None:
+            self.eip_allocation_id = m.get('EipAllocationId')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        return self
+
+
 class GPUInfo(TeaModel):
     def __init__(
         self,
@@ -2764,6 +2797,7 @@ class WorkspaceSpecs(TeaModel):
 class UserVpc(TeaModel):
     def __init__(
         self,
+        default_forward_info: ForwardInfo = None,
         default_route: str = None,
         extended_cidrs: List[str] = None,
         role_arn: str = None,
@@ -2771,6 +2805,7 @@ class UserVpc(TeaModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.default_forward_info = default_forward_info
         self.default_route = default_route
         self.extended_cidrs = extended_cidrs
         self.role_arn = role_arn
@@ -2779,7 +2814,8 @@ class UserVpc(TeaModel):
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.default_forward_info:
+            self.default_forward_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2787,6 +2823,8 @@ class UserVpc(TeaModel):
             return _map
 
         result = dict()
+        if self.default_forward_info is not None:
+            result['DefaultForwardInfo'] = self.default_forward_info.to_map()
         if self.default_route is not None:
             result['DefaultRoute'] = self.default_route
         if self.extended_cidrs is not None:
@@ -2803,6 +2841,9 @@ class UserVpc(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DefaultForwardInfo') is not None:
+            temp_model = ForwardInfo()
+            self.default_forward_info = temp_model.from_map(m['DefaultForwardInfo'])
         if m.get('DefaultRoute') is not None:
             self.default_route = m.get('DefaultRoute')
         if m.get('ExtendedCIDRs') is not None:

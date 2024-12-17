@@ -1,3 +1,6 @@
+2024-12-17 Version: 2.0.2
+- Generated python 2022-01-12 for PaiStudio.
+
 2024-12-16 Version: 2.0.1
 - Update API ListTrainingJobs: update response param.
 
