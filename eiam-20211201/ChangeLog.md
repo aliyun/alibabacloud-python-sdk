@@ -13,6 +13,21 @@
 - Update API UpdateIdentityProvider: add param LogoUrl.
 
 
+2024-12-17 Version: 1.6.1
+- Update API CreateIdentityProvider: add param LogoUrl.
+- Update API GetIdentityProvider: update response param.
+- Update API ListIdentityProviders: update response param.
+- Update API ListSynchronizationJobs: add param Filters.
+- Update API ListSynchronizationJobs: update response param.
+- Update API RunSynchronizationJob: add param Description.
+- Update API RunSynchronizationJob: add param PasswordInitialization.
+- Update API RunSynchronizationJob: add param SynchronizationScopeConfig.
+- Update API RunSynchronizationJob: add param UserIdentityTypes.
+- Update API RunSynchronizationJob: update param TargetId.
+- Update API RunSynchronizationJob: update response param.
+- Update API UpdateIdentityProvider: add param LogoUrl.
+
+
 2024-12-16 Version: 1.6.0
 - Support API CreateIdentityProvider.
 - Support API DeleteIdentityProvider.
