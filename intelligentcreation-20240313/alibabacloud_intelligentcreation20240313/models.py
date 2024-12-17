@@ -7,6 +7,7 @@ from typing import List, Dict
 class AnchorResponse(TeaModel):
     def __init__(
         self,
+        anchor_category: str = None,
         anchor_id: str = None,
         anchor_material_name: str = None,
         anchor_type: str = None,
@@ -22,6 +23,7 @@ class AnchorResponse(TeaModel):
         support_bg_change: int = None,
         use_scene: str = None,
     ):
+        self.anchor_category = anchor_category
         self.anchor_id = anchor_id
         self.anchor_material_name = anchor_material_name
         self.anchor_type = anchor_type
@@ -46,6 +48,8 @@ class AnchorResponse(TeaModel):
             return _map
 
         result = dict()
+        if self.anchor_category is not None:
+            result['anchorCategory'] = self.anchor_category
         if self.anchor_id is not None:
             result['anchorId'] = self.anchor_id
         if self.anchor_material_name is not None:
@@ -78,6 +82,8 @@ class AnchorResponse(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('anchorCategory') is not None:
+            self.anchor_category = m.get('anchorCategory')
         if m.get('anchorId') is not None:
             self.anchor_id = m.get('anchorId')
         if m.get('anchorMaterialName') is not None:
@@ -2435,9 +2441,13 @@ class FinishAICoachTaskSessionResponse(TeaModel):
 class GetAICoachTaskSessionHistoryRequest(TeaModel):
     def __init__(
         self,
+        page_number: int = None,
+        page_size: int = None,
         session_id: str = None,
         uid: str = None,
     ):
+        self.page_number = page_number
+        self.page_size = page_size
         self.session_id = session_id
         self.uid = uid
 
@@ -2450,6 +2460,10 @@ class GetAICoachTaskSessionHistoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
         if self.session_id is not None:
             result['sessionId'] = self.session_id
         if self.uid is not None:
@@ -2458,6 +2472,10 @@ class GetAICoachTaskSessionHistoryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
         if m.get('uid') is not None:
@@ -2468,12 +2486,16 @@ class GetAICoachTaskSessionHistoryRequest(TeaModel):
 class GetAICoachTaskSessionHistoryResponseBodyConversationList(TeaModel):
     def __init__(
         self,
+        audio_url: str = None,
         evaluation_result: str = None,
         message: str = None,
+        record_id: str = None,
         role: str = None,
     ):
+        self.audio_url = audio_url
         self.evaluation_result = evaluation_result
         self.message = message
+        self.record_id = record_id
         self.role = role
 
     def validate(self):
@@ -2485,20 +2507,28 @@ class GetAICoachTaskSessionHistoryResponseBodyConversationList(TeaModel):
             return _map
 
         result = dict()
+        if self.audio_url is not None:
+            result['audioUrl'] = self.audio_url
         if self.evaluation_result is not None:
             result['evaluationResult'] = self.evaluation_result
         if self.message is not None:
             result['message'] = self.message
+        if self.record_id is not None:
+            result['recordId'] = self.record_id
         if self.role is not None:
             result['role'] = self.role
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('audioUrl') is not None:
+            self.audio_url = m.get('audioUrl')
         if m.get('evaluationResult') is not None:
             self.evaluation_result = m.get('evaluationResult')
         if m.get('message') is not None:
             self.message = m.get('message')
+        if m.get('recordId') is not None:
+            self.record_id = m.get('recordId')
         if m.get('role') is not None:
             self.role = m.get('role')
         return self
@@ -2514,6 +2544,7 @@ class GetAICoachTaskSessionHistoryResponseBody(TeaModel):
         script_name: str = None,
         start_time: str = None,
         status: str = None,
+        total: int = None,
         uid: str = None,
     ):
         self.conversation_list = conversation_list
@@ -2523,6 +2554,7 @@ class GetAICoachTaskSessionHistoryResponseBody(TeaModel):
         self.script_name = script_name
         self.start_time = start_time
         self.status = status
+        self.total = total
         self.uid = uid
 
     def validate(self):
@@ -2553,6 +2585,8 @@ class GetAICoachTaskSessionHistoryResponseBody(TeaModel):
             result['startTime'] = self.start_time
         if self.status is not None:
             result['status'] = self.status
+        if self.total is not None:
+            result['total'] = self.total
         if self.uid is not None:
             result['uid'] = self.uid
         return result
@@ -2576,6 +2610,8 @@ class GetAICoachTaskSessionHistoryResponseBody(TeaModel):
             self.start_time = m.get('startTime')
         if m.get('status') is not None:
             self.status = m.get('status')
+        if m.get('total') is not None:
+            self.total = m.get('total')
         if m.get('uid') is not None:
             self.uid = m.get('uid')
         return self
@@ -2661,6 +2697,7 @@ class GetAICoachTaskSessionReportResponseBody(TeaModel):
         duration: int = None,
         end_time: str = None,
         evaluation_result: str = None,
+        feedback: bool = None,
         request_id: str = None,
         script_name: str = None,
         start_time: str = None,
@@ -2670,6 +2707,7 @@ class GetAICoachTaskSessionReportResponseBody(TeaModel):
         self.duration = duration
         self.end_time = end_time
         self.evaluation_result = evaluation_result
+        self.feedback = feedback
         self.request_id = request_id
         self.script_name = script_name
         self.start_time = start_time
@@ -2691,6 +2729,8 @@ class GetAICoachTaskSessionReportResponseBody(TeaModel):
             result['endTime'] = self.end_time
         if self.evaluation_result is not None:
             result['evaluationResult'] = self.evaluation_result
+        if self.feedback is not None:
+            result['feedback'] = self.feedback
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.script_name is not None:
@@ -2711,6 +2751,8 @@ class GetAICoachTaskSessionReportResponseBody(TeaModel):
             self.end_time = m.get('endTime')
         if m.get('evaluationResult') is not None:
             self.evaluation_result = m.get('evaluationResult')
+        if m.get('feedback') is not None:
+            self.feedback = m.get('feedback')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('scriptName') is not None:
@@ -3691,6 +3733,7 @@ class ListAICoachTaskPageResponse(TeaModel):
 class ListAnchorRequest(TeaModel):
     def __init__(
         self,
+        anchor_category: str = None,
         anchor_type: str = None,
         cover_rate: str = None,
         digital_human_type: str = None,
@@ -3699,6 +3742,7 @@ class ListAnchorRequest(TeaModel):
         res_spec_type: str = None,
         use_scene: str = None,
     ):
+        self.anchor_category = anchor_category
         self.anchor_type = anchor_type
         self.cover_rate = cover_rate
         self.digital_human_type = digital_human_type
@@ -3716,6 +3760,8 @@ class ListAnchorRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.anchor_category is not None:
+            result['anchorCategory'] = self.anchor_category
         if self.anchor_type is not None:
             result['anchorType'] = self.anchor_type
         if self.cover_rate is not None:
@@ -3734,6 +3780,8 @@ class ListAnchorRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('anchorCategory') is not None:
+            self.anchor_category = m.get('anchorCategory')
         if m.get('anchorType') is not None:
             self.anchor_type = m.get('anchorType')
         if m.get('coverRate') is not None:
@@ -6451,12 +6499,14 @@ class StopProjectTaskResponse(TeaModel):
 class SubmitProjectTaskRequestFramesLayersMaterial(TeaModel):
     def __init__(
         self,
+        anchor_style_level: str = None,
         format: str = None,
         id: str = None,
         speed: str = None,
         url: str = None,
         volume: int = None,
     ):
+        self.anchor_style_level = anchor_style_level
         self.format = format
         self.id = id
         self.speed = speed
@@ -6472,6 +6522,8 @@ class SubmitProjectTaskRequestFramesLayersMaterial(TeaModel):
             return _map
 
         result = dict()
+        if self.anchor_style_level is not None:
+            result['anchorStyleLevel'] = self.anchor_style_level
         if self.format is not None:
             result['format'] = self.format
         if self.id is not None:
@@ -6486,6 +6538,8 @@ class SubmitProjectTaskRequestFramesLayersMaterial(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('anchorStyleLevel') is not None:
+            self.anchor_style_level = m.get('anchorStyleLevel')
         if m.get('format') is not None:
             self.format = m.get('format')
         if m.get('id') is not None:

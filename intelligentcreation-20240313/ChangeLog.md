@@ -1,3 +1,12 @@
+2024-12-17 Version: 2.7.1
+- Update API GetAICoachTaskSessionHistory: add param pageNumber.
+- Update API GetAICoachTaskSessionHistory: add param pageSize.
+- Update API GetAICoachTaskSessionHistory: update response param.
+- Update API GetAICoachTaskSessionReport: update response param.
+- Update API ListAnchor: add param anchorCategory.
+- Update API SubmitProjectTask: update param body.
+
+
 2024-11-14 Version: 2.7.0
 - Support API CloseAICoachTaskSession.
 - Support API CreateAICoachTaskSession.
