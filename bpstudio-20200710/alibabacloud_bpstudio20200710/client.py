@@ -5,6 +5,7 @@ from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_bpstudio20200710 import models as bpstudio_20200710_models
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'BPStudio'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('bpstudio', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -75,10 +79,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20200710_models.BillingApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20200710_models.BillingApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20200710_models.BillingApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def billing_application_with_options_async(
         self,
@@ -114,10 +124,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20200710_models.BillingApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20200710_models.BillingApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20200710_models.BillingApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def billing_application(
         self,
@@ -189,10 +205,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20200710_models.GetDeployDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20200710_models.GetDeployDetailResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20200710_models.GetDeployDetailResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_deploy_detail_with_options_async(
         self,
@@ -238,10 +260,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20200710_models.GetDeployDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20200710_models.GetDeployDetailResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20200710_models.GetDeployDetailResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_deploy_detail(
         self,

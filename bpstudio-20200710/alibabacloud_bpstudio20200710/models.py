@@ -285,6 +285,7 @@ class GetDeployDetailResponseBodyDataResourceList(TeaModel):
         buy_duration: str = None,
         charge_type: str = None,
         execution_strategy: str = None,
+        expired_time: int = None,
         modified_time: int = None,
         monitor_url: str = None,
         node_name: str = None,
@@ -300,6 +301,7 @@ class GetDeployDetailResponseBodyDataResourceList(TeaModel):
         self.buy_duration = buy_duration
         self.charge_type = charge_type
         self.execution_strategy = execution_strategy
+        self.expired_time = expired_time
         self.modified_time = modified_time
         self.monitor_url = monitor_url
         self.node_name = node_name
@@ -332,6 +334,8 @@ class GetDeployDetailResponseBodyDataResourceList(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.execution_strategy is not None:
             result['ExecutionStrategy'] = self.execution_strategy
+        if self.expired_time is not None:
+            result['ExpiredTime'] = self.expired_time
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
         if self.monitor_url is not None:
@@ -366,6 +370,8 @@ class GetDeployDetailResponseBodyDataResourceList(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('ExecutionStrategy') is not None:
             self.execution_strategy = m.get('ExecutionStrategy')
+        if m.get('ExpiredTime') is not None:
+            self.expired_time = m.get('ExpiredTime')
         if m.get('ModifiedTime') is not None:
             self.modified_time = m.get('ModifiedTime')
         if m.get('MonitorURL') is not None:
