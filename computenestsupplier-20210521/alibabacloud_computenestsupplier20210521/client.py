@@ -5,6 +5,7 @@ from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_computenestsupplier20210521 import models as compute_nest_supplier_20210521_models
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'ComputeNestSupplier'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('computenestsupplier', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -79,10 +83,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.AddServiceSharedAccountsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.AddServiceSharedAccountsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.AddServiceSharedAccountsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_service_shared_accounts_with_options_async(
         self,
@@ -122,10 +132,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.AddServiceSharedAccountsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.AddServiceSharedAccountsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.AddServiceSharedAccountsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_service_shared_accounts(
         self,
@@ -193,10 +209,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ApproveServiceUsageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ApproveServiceUsageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ApproveServiceUsageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def approve_service_usage_with_options_async(
         self,
@@ -238,10 +260,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ApproveServiceUsageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ApproveServiceUsageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ApproveServiceUsageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def approve_service_usage(
         self,
@@ -307,10 +335,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ContinueDeployServiceInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ContinueDeployServiceInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ContinueDeployServiceInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def continue_deploy_service_instance_with_options_async(
         self,
@@ -350,10 +384,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ContinueDeployServiceInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ContinueDeployServiceInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ContinueDeployServiceInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def continue_deploy_service_instance(
         self,
@@ -411,6 +451,8 @@ class Client(OpenApiClient):
             query['ArtifactProperty'] = request.artifact_property_shrink
         if not UtilClient.is_unset(request.artifact_type):
             query['ArtifactType'] = request.artifact_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
@@ -437,10 +479,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.CreateArtifactResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateArtifactResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateArtifactResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_artifact_with_options_async(
         self,
@@ -472,6 +520,8 @@ class Client(OpenApiClient):
             query['ArtifactProperty'] = request.artifact_property_shrink
         if not UtilClient.is_unset(request.artifact_type):
             query['ArtifactType'] = request.artifact_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
@@ -498,10 +548,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.CreateArtifactResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateArtifactResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateArtifactResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_artifact(
         self,
@@ -617,10 +673,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.CreateServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_service_with_options_async(
         self,
@@ -710,10 +772,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.CreateServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_service(
         self,
@@ -799,10 +867,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.CreateServiceInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateServiceInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateServiceInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_service_instance_with_options_async(
         self,
@@ -862,10 +936,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.CreateServiceInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateServiceInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateServiceInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_service_instance(
         self,
@@ -927,10 +1007,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.CreateServiceUsageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateServiceUsageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateServiceUsageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_service_usage_with_options_async(
         self,
@@ -966,10 +1052,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.CreateServiceUsageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateServiceUsageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.CreateServiceUsageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_service_usage(
         self,
@@ -1015,6 +1107,8 @@ class Client(OpenApiClient):
             query['ArtifactId'] = request.artifact_id
         if not UtilClient.is_unset(request.artifact_version):
             query['ArtifactVersion'] = request.artifact_version
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1029,10 +1123,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.DeleteArtifactResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeleteArtifactResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeleteArtifactResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_artifact_with_options_async(
         self,
@@ -1052,6 +1152,8 @@ class Client(OpenApiClient):
             query['ArtifactId'] = request.artifact_id
         if not UtilClient.is_unset(request.artifact_version):
             query['ArtifactVersion'] = request.artifact_version
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1066,10 +1168,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.DeleteArtifactResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeleteArtifactResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeleteArtifactResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_artifact(
         self,
@@ -1133,10 +1241,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.DeleteServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeleteServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeleteServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_service_with_options_async(
         self,
@@ -1174,10 +1288,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.DeleteServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeleteServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeleteServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_service(
         self,
@@ -1239,10 +1359,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.DeleteServiceInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeleteServiceInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeleteServiceInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_service_instances_with_options_async(
         self,
@@ -1278,10 +1404,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.DeleteServiceInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeleteServiceInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeleteServiceInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_service_instances(
         self,
@@ -1343,10 +1475,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.DeployServiceInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeployServiceInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeployServiceInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def deploy_service_instance_with_options_async(
         self,
@@ -1382,10 +1520,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.DeployServiceInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeployServiceInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.DeployServiceInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def deploy_service_instance(
         self,
@@ -1447,10 +1591,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetArtifactResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetArtifactResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetArtifactResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_artifact_with_options_async(
         self,
@@ -1486,10 +1636,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetArtifactResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetArtifactResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetArtifactResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_artifact(
         self,
@@ -1549,10 +1705,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetArtifactRepositoryCredentialsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetArtifactRepositoryCredentialsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetArtifactRepositoryCredentialsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_artifact_repository_credentials_with_options_async(
         self,
@@ -1586,10 +1748,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetArtifactRepositoryCredentialsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetArtifactRepositoryCredentialsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetArtifactRepositoryCredentialsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_artifact_repository_credentials(
         self,
@@ -1661,10 +1829,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_service_with_options_async(
         self,
@@ -1710,10 +1884,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_service(
         self,
@@ -1793,10 +1973,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetServiceEstimateCostResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceEstimateCostResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceEstimateCostResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_service_estimate_cost_with_options_async(
         self,
@@ -1850,10 +2036,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetServiceEstimateCostResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceEstimateCostResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceEstimateCostResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_service_estimate_cost(
         self,
@@ -1913,10 +2105,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetServiceInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_service_instance_with_options_async(
         self,
@@ -1950,10 +2148,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetServiceInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_service_instance(
         self,
@@ -2027,10 +2231,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetServiceTemplateParameterConstraintsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceTemplateParameterConstraintsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceTemplateParameterConstraintsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_service_template_parameter_constraints_with_options_async(
         self,
@@ -2078,10 +2288,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetServiceTemplateParameterConstraintsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceTemplateParameterConstraintsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetServiceTemplateParameterConstraintsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_service_template_parameter_constraints(
         self,
@@ -2141,10 +2357,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetUploadCredentialsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetUploadCredentialsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetUploadCredentialsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_upload_credentials_with_options_async(
         self,
@@ -2178,10 +2400,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.GetUploadCredentialsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetUploadCredentialsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.GetUploadCredentialsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_upload_credentials(
         self,
@@ -2247,10 +2475,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.LaunchServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.LaunchServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.LaunchServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def launch_service_with_options_async(
         self,
@@ -2290,10 +2524,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.LaunchServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.LaunchServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.LaunchServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def launch_service(
         self,
@@ -2353,10 +2593,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListAcrImageRepositoriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListAcrImageRepositoriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListAcrImageRepositoriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_acr_image_repositories_with_options_async(
         self,
@@ -2394,10 +2640,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListAcrImageRepositoriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListAcrImageRepositoriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListAcrImageRepositoriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_acr_image_repositories(
         self,
@@ -2461,10 +2713,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListAcrImageTagsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListAcrImageTagsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListAcrImageTagsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_acr_image_tags_with_options_async(
         self,
@@ -2502,10 +2760,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListAcrImageTagsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListAcrImageTagsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListAcrImageTagsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_acr_image_tags(
         self,
@@ -2573,10 +2837,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListArtifactVersionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListArtifactVersionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListArtifactVersionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_artifact_versions_with_options_async(
         self,
@@ -2618,10 +2888,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListArtifactVersionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListArtifactVersionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListArtifactVersionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_artifact_versions(
         self,
@@ -2687,10 +2963,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListArtifactsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListArtifactsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListArtifactsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_artifacts_with_options_async(
         self,
@@ -2730,10 +3012,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListArtifactsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListArtifactsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListArtifactsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_artifacts(
         self,
@@ -2803,10 +3091,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListServiceInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServiceInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServiceInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_service_instances_with_options_async(
         self,
@@ -2850,10 +3144,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListServiceInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServiceInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServiceInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_service_instances(
         self,
@@ -2887,6 +3187,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse:
         """
+        @summary 调用ListServiceSharedAccounts查看服务共享账号列表。
+        
         @param request: ListServiceSharedAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListServiceSharedAccountsResponse
@@ -2919,10 +3221,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_service_shared_accounts_with_options_async(
         self,
@@ -2930,6 +3238,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse:
         """
+        @summary 调用ListServiceSharedAccounts查看服务共享账号列表。
+        
         @param request: ListServiceSharedAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListServiceSharedAccountsResponse
@@ -2962,16 +3272,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_service_shared_accounts(
         self,
         request: compute_nest_supplier_20210521_models.ListServiceSharedAccountsRequest,
     ) -> compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse:
         """
+        @summary 调用ListServiceSharedAccounts查看服务共享账号列表。
+        
         @param request: ListServiceSharedAccountsRequest
         @return: ListServiceSharedAccountsResponse
         """
@@ -2983,6 +3301,8 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListServiceSharedAccountsRequest,
     ) -> compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse:
         """
+        @summary 调用ListServiceSharedAccounts查看服务共享账号列表。
+        
         @param request: ListServiceSharedAccountsRequest
         @return: ListServiceSharedAccountsResponse
         """
@@ -3025,10 +3345,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListServiceUsagesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServiceUsagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServiceUsagesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_service_usages_with_options_async(
         self,
@@ -3066,10 +3392,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListServiceUsagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServiceUsagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServiceUsagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_service_usages(
         self,
@@ -3139,10 +3471,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListServicesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServicesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServicesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_services_with_options_async(
         self,
@@ -3186,10 +3524,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListServicesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServicesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ListServicesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_services(
         self,
@@ -3251,10 +3595,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ModifyServiceInstanceResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ModifyServiceInstanceResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ModifyServiceInstanceResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_service_instance_resources_with_options_async(
         self,
@@ -3290,10 +3640,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ModifyServiceInstanceResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ModifyServiceInstanceResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ModifyServiceInstanceResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_service_instance_resources(
         self,
@@ -3355,10 +3711,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.PreLaunchServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.PreLaunchServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.PreLaunchServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def pre_launch_service_with_options_async(
         self,
@@ -3394,10 +3756,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.PreLaunchServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.PreLaunchServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.PreLaunchServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def pre_launch_service(
         self,
@@ -3457,10 +3825,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.PushMeteringDataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.PushMeteringDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.PushMeteringDataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def push_metering_data_with_options_async(
         self,
@@ -3494,10 +3868,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.PushMeteringDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.PushMeteringDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.PushMeteringDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def push_metering_data(
         self,
@@ -3559,10 +3939,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.RegisterServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RegisterServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RegisterServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def register_service_with_options_async(
         self,
@@ -3598,10 +3984,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.RegisterServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RegisterServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RegisterServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def register_service(
         self,
@@ -3667,10 +4059,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.RejectServiceUsageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RejectServiceUsageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RejectServiceUsageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reject_service_usage_with_options_async(
         self,
@@ -3710,10 +4108,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.RejectServiceUsageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RejectServiceUsageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RejectServiceUsageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reject_service_usage(
         self,
@@ -3757,6 +4161,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.artifact_id):
             query['ArtifactId'] = request.artifact_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3771,10 +4177,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ReleaseArtifactResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ReleaseArtifactResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ReleaseArtifactResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def release_artifact_with_options_async(
         self,
@@ -3792,6 +4204,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.artifact_id):
             query['ArtifactId'] = request.artifact_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3806,10 +4220,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ReleaseArtifactResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ReleaseArtifactResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.ReleaseArtifactResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def release_artifact(
         self,
@@ -3875,10 +4295,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_service_shared_accounts_with_options_async(
         self,
@@ -3918,10 +4344,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_service_shared_accounts(
         self,
@@ -3983,10 +4415,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.RestartServiceInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RestartServiceInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RestartServiceInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def restart_service_instance_with_options_async(
         self,
@@ -4022,10 +4460,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.RestartServiceInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RestartServiceInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RestartServiceInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def restart_service_instance(
         self,
@@ -4087,10 +4531,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.RollbackServiceInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RollbackServiceInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RollbackServiceInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def rollback_service_instance_with_options_async(
         self,
@@ -4126,10 +4576,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.RollbackServiceInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RollbackServiceInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.RollbackServiceInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def rollback_service_instance(
         self,
@@ -4191,10 +4647,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.StartServiceInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.StartServiceInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.StartServiceInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_service_instance_with_options_async(
         self,
@@ -4230,10 +4692,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.StartServiceInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.StartServiceInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.StartServiceInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_service_instance(
         self,
@@ -4295,10 +4763,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.StopServiceInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.StopServiceInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.StopServiceInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_service_instance_with_options_async(
         self,
@@ -4334,10 +4808,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.StopServiceInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.StopServiceInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.StopServiceInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_service_instance(
         self,
@@ -4391,6 +4871,8 @@ class Client(OpenApiClient):
             query['ArtifactId'] = request.artifact_id
         if not UtilClient.is_unset(request.artifact_property_shrink):
             query['ArtifactProperty'] = request.artifact_property_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.support_region_ids):
@@ -4411,10 +4893,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.UpdateArtifactResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateArtifactResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateArtifactResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_artifact_with_options_async(
         self,
@@ -4442,6 +4930,8 @@ class Client(OpenApiClient):
             query['ArtifactId'] = request.artifact_id
         if not UtilClient.is_unset(request.artifact_property_shrink):
             query['ArtifactProperty'] = request.artifact_property_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.support_region_ids):
@@ -4462,10 +4952,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.UpdateArtifactResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateArtifactResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateArtifactResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_artifact(
         self,
@@ -4581,10 +5077,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.UpdateServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_service_with_options_async(
         self,
@@ -4674,10 +5176,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.UpdateServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_service(
         self,
@@ -4747,10 +5255,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.UpdateServiceInstanceAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateServiceInstanceAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateServiceInstanceAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_service_instance_attribute_with_options_async(
         self,
@@ -4794,10 +5308,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.UpdateServiceInstanceAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateServiceInstanceAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateServiceInstanceAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_service_instance_attribute(
         self,
@@ -4869,10 +5389,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.UpdateServiceInstanceSpecResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateServiceInstanceSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateServiceInstanceSpecResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_service_instance_spec_with_options_async(
         self,
@@ -4918,10 +5444,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.UpdateServiceInstanceSpecResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateServiceInstanceSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpdateServiceInstanceSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_service_instance_spec(
         self,
@@ -4993,10 +5525,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.UpgradeServiceInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpgradeServiceInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpgradeServiceInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upgrade_service_instance_with_options_async(
         self,
@@ -5042,10 +5580,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.UpgradeServiceInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpgradeServiceInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_supplier_20210521_models.UpgradeServiceInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upgrade_service_instance(
         self,

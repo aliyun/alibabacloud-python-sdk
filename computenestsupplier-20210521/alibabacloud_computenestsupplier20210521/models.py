@@ -526,7 +526,9 @@ class CreateArtifactRequestArtifactBuildPropertyBuildArgs(TeaModel):
         argument_name: str = None,
         argument_value: str = None,
     ):
+        # The name of a specific build argument.
         self.argument_name = argument_name
+        # The value of a specific build argument.
         self.argument_value = argument_value
 
     def validate(self):
@@ -561,9 +563,19 @@ class CreateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
         platform: str = None,
         repo_name: str = None,
     ):
+        # The name of the branch in the code repository.
         self.branch = branch
+        # The owner of the code repository.
+        # 
+        # >  This parameter is available only if the git repository is private.
         self.owner = owner
+        # The platform type. Valid values: 
+        # 
+        # - github
+        # 
+        # - gitee
         self.platform = platform
+        # The name of the repository.
         self.repo_name = repo_name
 
     def validate(self):
@@ -610,7 +622,13 @@ class CreateArtifactRequestArtifactBuildProperty(TeaModel):
         source_container_image: str = None,
         source_image_id: str = None,
     ):
+        # The build arguments used during the image build process.
+        # 
+        # >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
         self.build_args = build_args
+        # The address of the code repository.
+        # 
+        # >  This parameter is available only if the ArtifactBuildType is Dockerfile or Buildpacks type.
         self.code_repo = code_repo
         # The command content.
         # 
@@ -624,11 +642,17 @@ class CreateArtifactRequestArtifactBuildProperty(TeaModel):
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
         self.command_type = command_type
+        # The relative path to the Dockerfile within the code repository.
+        # 
+        # >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
         self.dockerfile_path = dockerfile_path
         # The region ID where the source mirror image is located.
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
         self.region_id = region_id
+        # The pull location of the source container image. This is used for the command docker pull ${SourceContainerImage}.
+        # 
+        # >  This parameter is available only if the ArtifactBuildType is ContainerImage type.
         self.source_container_image = source_container_image
         # The source image id. Supported Types:
         # 
@@ -703,13 +727,11 @@ class CreateArtifactRequestArtifactProperty(TeaModel):
         self,
         commodity_code: str = None,
         commodity_version: str = None,
-        file_script_metadata: str = None,
         image_id: str = None,
         region_id: str = None,
         repo_id: str = None,
         repo_name: str = None,
         repo_type: str = None,
-        script_metadata: str = None,
         tag: str = None,
         url: str = None,
     ):
@@ -721,8 +743,6 @@ class CreateArtifactRequestArtifactProperty(TeaModel):
         # 
         # >  This parameter is available only if the deployment package is an image.
         self.commodity_version = commodity_version
-        # The script metadata.
-        self.file_script_metadata = file_script_metadata
         # The image ID.
         # 
         # >  This parameter is available only if the deployment package is an image.
@@ -739,11 +759,13 @@ class CreateArtifactRequestArtifactProperty(TeaModel):
         # 
         # >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
         self.repo_name = repo_name
-        self.repo_type = repo_type
-        # The script content.
+        # The default repository type. Valid values:
         # 
-        # >  This parameter is available only if the deployment package is a script.
-        self.script_metadata = script_metadata
+        # *   `Public`: a public repository.
+        # *   `Private`: a private repository.
+        # 
+        # You can specify the RepoType or Summary parameter. The RepoType parameter is optional.
+        self.repo_type = repo_type
         # The version tag of the image repository.
         # 
         # >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
@@ -764,8 +786,6 @@ class CreateArtifactRequestArtifactProperty(TeaModel):
             result['CommodityCode'] = self.commodity_code
         if self.commodity_version is not None:
             result['CommodityVersion'] = self.commodity_version
-        if self.file_script_metadata is not None:
-            result['FileScriptMetadata'] = self.file_script_metadata
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.region_id is not None:
@@ -776,8 +796,6 @@ class CreateArtifactRequestArtifactProperty(TeaModel):
             result['RepoName'] = self.repo_name
         if self.repo_type is not None:
             result['RepoType'] = self.repo_type
-        if self.script_metadata is not None:
-            result['ScriptMetadata'] = self.script_metadata
         if self.tag is not None:
             result['Tag'] = self.tag
         if self.url is not None:
@@ -790,8 +808,6 @@ class CreateArtifactRequestArtifactProperty(TeaModel):
             self.commodity_code = m.get('CommodityCode')
         if m.get('CommodityVersion') is not None:
             self.commodity_version = m.get('CommodityVersion')
-        if m.get('FileScriptMetadata') is not None:
-            self.file_script_metadata = m.get('FileScriptMetadata')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('RegionId') is not None:
@@ -802,8 +818,6 @@ class CreateArtifactRequestArtifactProperty(TeaModel):
             self.repo_name = m.get('RepoName')
         if m.get('RepoType') is not None:
             self.repo_type = m.get('RepoType')
-        if m.get('ScriptMetadata') is not None:
-            self.script_metadata = m.get('ScriptMetadata')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
         if m.get('Url') is not None:
@@ -854,6 +868,7 @@ class CreateArtifactRequest(TeaModel):
         artifact_id: str = None,
         artifact_property: CreateArtifactRequestArtifactProperty = None,
         artifact_type: str = None,
+        client_token: str = None,
         description: str = None,
         name: str = None,
         resource_group_id: str = None,
@@ -863,6 +878,15 @@ class CreateArtifactRequest(TeaModel):
     ):
         # The build properties of the artifact, utilized for hosting and building the deployment package.
         self.artifact_build_property = artifact_build_property
+        # The type of the artifact build task. Valid values:
+        # 
+        # - EcsImage: Build ECS (Elastic Container Service) image.
+        # 
+        # - Dockerfile: Build container image based on Dockerfile.
+        # 
+        # - Buildpacks: Build container image based on Buildpacks.
+        # 
+        # - ContainerImage: Rebuild container image by renaming an existing container image.
         self.artifact_build_type = artifact_build_type
         # The ID of the deployment package.
         self.artifact_id = artifact_id
@@ -877,6 +901,8 @@ class CreateArtifactRequest(TeaModel):
         # 
         # This parameter is required.
         self.artifact_type = artifact_type
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
         # The description of the deployment package.
         self.description = description
         # The name of the deployment package.
@@ -920,6 +946,8 @@ class CreateArtifactRequest(TeaModel):
             result['ArtifactProperty'] = self.artifact_property.to_map()
         if self.artifact_type is not None:
             result['ArtifactType'] = self.artifact_type
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
         if self.name is not None:
@@ -950,6 +978,8 @@ class CreateArtifactRequest(TeaModel):
             self.artifact_property = temp_model.from_map(m['ArtifactProperty'])
         if m.get('ArtifactType') is not None:
             self.artifact_type = m.get('ArtifactType')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Name') is not None:
@@ -1011,6 +1041,7 @@ class CreateArtifactShrinkRequest(TeaModel):
         artifact_id: str = None,
         artifact_property_shrink: str = None,
         artifact_type: str = None,
+        client_token: str = None,
         description: str = None,
         name: str = None,
         resource_group_id: str = None,
@@ -1020,6 +1051,15 @@ class CreateArtifactShrinkRequest(TeaModel):
     ):
         # The build properties of the artifact, utilized for hosting and building the deployment package.
         self.artifact_build_property_shrink = artifact_build_property_shrink
+        # The type of the artifact build task. Valid values:
+        # 
+        # - EcsImage: Build ECS (Elastic Container Service) image.
+        # 
+        # - Dockerfile: Build container image based on Dockerfile.
+        # 
+        # - Buildpacks: Build container image based on Buildpacks.
+        # 
+        # - ContainerImage: Rebuild container image by renaming an existing container image.
         self.artifact_build_type = artifact_build_type
         # The ID of the deployment package.
         self.artifact_id = artifact_id
@@ -1034,6 +1074,8 @@ class CreateArtifactShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.artifact_type = artifact_type
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
         # The description of the deployment package.
         self.description = description
         # The name of the deployment package.
@@ -1073,6 +1115,8 @@ class CreateArtifactShrinkRequest(TeaModel):
             result['ArtifactProperty'] = self.artifact_property_shrink
         if self.artifact_type is not None:
             result['ArtifactType'] = self.artifact_type
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
         if self.name is not None:
@@ -1101,6 +1145,8 @@ class CreateArtifactShrinkRequest(TeaModel):
             self.artifact_property_shrink = m.get('ArtifactProperty')
         if m.get('ArtifactType') is not None:
             self.artifact_type = m.get('ArtifactType')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Name') is not None:
@@ -1140,6 +1186,7 @@ class CreateArtifactResponseBody(TeaModel):
     ):
         # The build properties of the artifact, utilized for hosting and building the deployment package.
         self.artifact_build_property = artifact_build_property
+        # The type of the deployment package to be built.
         self.artifact_build_type = artifact_build_type
         # The ID of the deployment package.
         self.artifact_id = artifact_id
@@ -3004,6 +3051,7 @@ class DeleteArtifactRequest(TeaModel):
         self,
         artifact_id: str = None,
         artifact_version: str = None,
+        client_token: str = None,
     ):
         # The ID of the artifact.
         # 
@@ -3011,6 +3059,10 @@ class DeleteArtifactRequest(TeaModel):
         self.artifact_id = artifact_id
         # The version of the artifact.
         self.artifact_version = artifact_version
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
 
     def validate(self):
         pass
@@ -3025,6 +3077,8 @@ class DeleteArtifactRequest(TeaModel):
             result['ArtifactId'] = self.artifact_id
         if self.artifact_version is not None:
             result['ArtifactVersion'] = self.artifact_version
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
@@ -3033,6 +3087,8 @@ class DeleteArtifactRequest(TeaModel):
             self.artifact_id = m.get('ArtifactId')
         if m.get('ArtifactVersion') is not None:
             self.artifact_version = m.get('ArtifactVersion')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         return self
 
 
@@ -3560,6 +3616,7 @@ class GetArtifactResponseBody(TeaModel):
     ):
         # The build properties of the artifact, utilized for hosting and building the deployment package.
         self.artifact_build_property = artifact_build_property
+        # The type of the deployment package to be built.
         self.artifact_build_type = artifact_build_type
         # The ID of the deployment package.
         self.artifact_id = artifact_id
@@ -3988,7 +4045,9 @@ class GetServiceRequest(TeaModel):
         self.region_id = region_id
         # The service ID.
         self.service_id = service_id
+        # The Service Instance Id.
         self.service_instance_id = service_instance_id
+        # The Service Name.
         self.service_name = service_name
         # The service version.
         self.service_version = service_version
@@ -4648,6 +4707,7 @@ class GetServiceResponseBodyComplianceMetadata(TeaModel):
         self,
         compliance_packs: List[str] = None,
     ):
+        # The compliance package is selected.
         self.compliance_packs = compliance_packs
 
     def validate(self):
@@ -4677,8 +4737,11 @@ class GetServiceResponseBodyServiceDocumentInfos(TeaModel):
         locale: str = None,
         template_name: str = None,
     ):
+        # The URL that is used to access the document.
         self.document_url = document_url
+        # The language of the return data. Valid values: zh-CN and en-US.
         self.locale = locale
+        # The template name.
         self.template_name = template_name
 
     def validate(self):
@@ -4750,7 +4813,9 @@ class GetServiceResponseBodyServiceInfosSoftwares(TeaModel):
         name: str = None,
         version: str = None,
     ):
+        # The name of the software
         self.name = name
+        # The version of the software.
         self.version = version
 
     def validate(self):
@@ -4803,6 +4868,7 @@ class GetServiceResponseBodyServiceInfos(TeaModel):
         self.name = name
         # The description of the service.
         self.short_description = short_description
+        # The list of the information about the software in the service.
         self.softwares = softwares
 
     def validate(self):
@@ -5057,6 +5123,7 @@ class GetServiceResponseBody(TeaModel):
         self.categories = categories
         # The commodity details.
         self.commodity = commodity
+        # Compliance check metadata.
         self.compliance_metadata = compliance_metadata
         # The time when the service was created.
         self.create_time = create_time
@@ -5125,6 +5192,7 @@ class GetServiceResponseBody(TeaModel):
         # *   INVISIBLE
         # *   DISCOVERABLE
         self.service_discoverable = service_discoverable
+        # Service document information.
         self.service_document_infos = service_document_infos
         # The service ID.
         self.service_id = service_id
@@ -6154,7 +6222,9 @@ class GetServiceInstanceResponseBodyServiceUpgradableServiceInfos(TeaModel):
         version: str = None,
         version_name: str = None,
     ):
+        # The upgradable service version.
         self.version = version
+        # The version name of an upgradable service version.
         self.version_name = version_name
 
     def validate(self):
@@ -6246,6 +6316,7 @@ class GetServiceInstanceResponseBodyService(TeaModel):
         self.supplier_name = supplier_name
         # The URL of the service provider.
         self.supplier_url = supplier_url
+        # The upgradable service Info.
         self.upgradable_service_infos = upgradable_service_infos
         # The service versions that can be updated.
         self.upgradable_service_versions = upgradable_service_versions
@@ -6457,6 +6528,7 @@ class GetServiceInstanceResponseBody(TeaModel):
         self.operated_service_instance_id = operated_service_instance_id
         # The end of the time range during which hosted O\\&M is implemented.
         self.operation_end_time = operation_end_time
+        # Operate extra info
         self.operation_extra_info = operation_extra_info
         # The beginning of the time range during which hosted O\\&M is implemented.
         self.operation_start_time = operation_start_time
@@ -7319,13 +7391,22 @@ class LaunchServiceRequest(TeaModel):
         service_id: str = None,
         service_version: str = None,
     ):
+        # The categories of the service.
         self.categories = categories
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Whether to set the recommended service publishing to the service directory.
         self.recommend = recommend
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The service version.
+        # 
         # This parameter is required.
         self.service_version = service_version
 
@@ -7376,8 +7457,15 @@ class LaunchServiceResponseBody(TeaModel):
         service_launch_result_type: str = None,
         version: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The mode of the service online. Valid Type
+        # 
+        # - PublishNewVersion: Launch new version
+        # - PublishOfflineVersion:  The offline version is online again.
+        # - UpdateLatestVersion: Update the latest version online
         self.service_launch_result_type = service_launch_result_type
+        # The service version.
         self.version = version
 
     def validate(self):
@@ -8036,6 +8124,7 @@ class ListArtifactVersionsResponseBodyArtifacts(TeaModel):
     ):
         # The build properties of the artifact, utilized for hosting and building the deployment package.
         self.artifact_build_property = artifact_build_property
+        # The type of the deployment package to be built.
         self.artifact_build_type = artifact_build_type
         # The ID of the deployment package.
         self.artifact_id = artifact_id
@@ -9511,6 +9600,7 @@ class ListServiceSharedAccountsResponseBodyShareAccount(TeaModel):
         self.service_id = service_id
         # The time when the service was updated.
         self.update_time = update_time
+        # The user aliUid.
         self.user_ali_uid = user_ali_uid
 
     def validate(self):
@@ -9572,6 +9662,7 @@ class ListServiceSharedAccountsResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
+        # Service shared account information.
         self.share_account = share_account
         # The total number of entries returned.
         self.total_count = total_count
@@ -10832,9 +10923,16 @@ class PreLaunchServiceRequest(TeaModel):
         region_id: str = None,
         service_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
 
@@ -10871,6 +10969,7 @@ class PreLaunchServiceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11330,11 +11429,16 @@ class ReleaseArtifactRequest(TeaModel):
     def __init__(
         self,
         artifact_id: str = None,
+        client_token: str = None,
     ):
         # The ID of the artifact.
         # 
         # This parameter is required.
         self.artifact_id = artifact_id
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        self.client_token = client_token
 
     def validate(self):
         pass
@@ -11347,12 +11451,16 @@ class ReleaseArtifactRequest(TeaModel):
         result = dict()
         if self.artifact_id is not None:
             result['ArtifactId'] = self.artifact_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ArtifactId') is not None:
             self.artifact_id = m.get('ArtifactId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         return self
 
 
@@ -12098,7 +12206,9 @@ class UpdateArtifactRequestArtifactBuildPropertyBuildArgs(TeaModel):
         argument_name: str = None,
         argument_value: str = None,
     ):
+        # The name of a specific build argument.
         self.argument_name = argument_name
+        # The value of a specific build argument.
         self.argument_value = argument_value
 
     def validate(self):
@@ -12133,9 +12243,15 @@ class UpdateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
         platform: str = None,
         repo_name: str = None,
     ):
+        # The name of the branch in the code repository.
         self.branch = branch
+        # The owner of the code repository.
+        # 
+        # >  This parameter is available only if the git repository is private.
         self.owner = owner
+        # The platform where the code repository is hosted.
         self.platform = platform
+        # The name of the repository.
         self.repo_name = repo_name
 
     def validate(self):
@@ -12182,7 +12298,13 @@ class UpdateArtifactRequestArtifactBuildProperty(TeaModel):
         source_container_image: str = None,
         source_image_id: str = None,
     ):
+        # The build arguments used during the image build process.
+        # 
+        # >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
         self.build_args = build_args
+        # The address of the code repository.
+        # 
+        # >  This parameter is available only if the ArtifactBuildType is Dockerfile or Buildpacks type.
         self.code_repo = code_repo
         # The command content.
         # 
@@ -12196,11 +12318,17 @@ class UpdateArtifactRequestArtifactBuildProperty(TeaModel):
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
         self.command_type = command_type
+        # The relative path to the Dockerfile within the code repository.
+        # 
+        # >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
         self.dockerfile_path = dockerfile_path
         # The region ID where the source mirror image is located.
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
         self.region_id = region_id
+        # The pull location of the source container image. This is used for the command docker pull ${SourceContainerImage}.
+        # 
+        # >  This parameter is available only if the ArtifactBuildType is ContainerImage type.
         self.source_container_image = source_container_image
         # The source image id. Supported Types:
         # 
@@ -12275,13 +12403,11 @@ class UpdateArtifactRequestArtifactProperty(TeaModel):
         self,
         commodity_code: str = None,
         commodity_version: str = None,
-        file_script_metadata: str = None,
         image_id: str = None,
         region_id: str = None,
         repo_id: str = None,
         repo_name: str = None,
         repo_type: str = None,
-        script_metadata: str = None,
         tag: str = None,
         url: str = None,
     ):
@@ -12293,10 +12419,6 @@ class UpdateArtifactRequestArtifactProperty(TeaModel):
         # 
         # >  This parameter is available only if the deployment package is an image.
         self.commodity_version = commodity_version
-        # The metadata of the Object Storage Service (OSS) object.
-        # 
-        # >  This parameter is available only if the deployment package is an OSS object.
-        self.file_script_metadata = file_script_metadata
         # The image ID.
         # 
         # >  This parameter is available only if the deployment package is an image.
@@ -12308,10 +12430,6 @@ class UpdateArtifactRequestArtifactProperty(TeaModel):
         self.repo_id = repo_id
         self.repo_name = repo_name
         self.repo_type = repo_type
-        # The script content of the deployment package.
-        # 
-        # >  This parameter is available only if the deployment package is a script.
-        self.script_metadata = script_metadata
         self.tag = tag
         # The URL of the deployment package object.
         # 
@@ -12332,8 +12450,6 @@ class UpdateArtifactRequestArtifactProperty(TeaModel):
             result['CommodityCode'] = self.commodity_code
         if self.commodity_version is not None:
             result['CommodityVersion'] = self.commodity_version
-        if self.file_script_metadata is not None:
-            result['FileScriptMetadata'] = self.file_script_metadata
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.region_id is not None:
@@ -12344,8 +12460,6 @@ class UpdateArtifactRequestArtifactProperty(TeaModel):
             result['RepoName'] = self.repo_name
         if self.repo_type is not None:
             result['RepoType'] = self.repo_type
-        if self.script_metadata is not None:
-            result['ScriptMetadata'] = self.script_metadata
         if self.tag is not None:
             result['Tag'] = self.tag
         if self.url is not None:
@@ -12358,8 +12472,6 @@ class UpdateArtifactRequestArtifactProperty(TeaModel):
             self.commodity_code = m.get('CommodityCode')
         if m.get('CommodityVersion') is not None:
             self.commodity_version = m.get('CommodityVersion')
-        if m.get('FileScriptMetadata') is not None:
-            self.file_script_metadata = m.get('FileScriptMetadata')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('RegionId') is not None:
@@ -12370,8 +12482,6 @@ class UpdateArtifactRequestArtifactProperty(TeaModel):
             self.repo_name = m.get('RepoName')
         if m.get('RepoType') is not None:
             self.repo_type = m.get('RepoType')
-        if m.get('ScriptMetadata') is not None:
-            self.script_metadata = m.get('ScriptMetadata')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
         if m.get('Url') is not None:
@@ -12385,6 +12495,7 @@ class UpdateArtifactRequest(TeaModel):
         artifact_build_property: UpdateArtifactRequestArtifactBuildProperty = None,
         artifact_id: str = None,
         artifact_property: UpdateArtifactRequestArtifactProperty = None,
+        client_token: str = None,
         description: str = None,
         support_region_ids: List[str] = None,
         version_name: str = None,
@@ -12399,6 +12510,7 @@ class UpdateArtifactRequest(TeaModel):
         # 
         # This parameter is required.
         self.artifact_property = artifact_property
+        self.client_token = client_token
         # The description of the deployment package.
         self.description = description
         # The IDs of the regions that support the deployment package.
@@ -12426,6 +12538,8 @@ class UpdateArtifactRequest(TeaModel):
             result['ArtifactId'] = self.artifact_id
         if self.artifact_property is not None:
             result['ArtifactProperty'] = self.artifact_property.to_map()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
         if self.support_region_ids is not None:
@@ -12444,6 +12558,8 @@ class UpdateArtifactRequest(TeaModel):
         if m.get('ArtifactProperty') is not None:
             temp_model = UpdateArtifactRequestArtifactProperty()
             self.artifact_property = temp_model.from_map(m['ArtifactProperty'])
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('SupportRegionIds') is not None:
@@ -12459,6 +12575,7 @@ class UpdateArtifactShrinkRequest(TeaModel):
         artifact_build_property_shrink: str = None,
         artifact_id: str = None,
         artifact_property_shrink: str = None,
+        client_token: str = None,
         description: str = None,
         support_region_ids: List[str] = None,
         version_name: str = None,
@@ -12473,6 +12590,7 @@ class UpdateArtifactShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.artifact_property_shrink = artifact_property_shrink
+        self.client_token = client_token
         # The description of the deployment package.
         self.description = description
         # The IDs of the regions that support the deployment package.
@@ -12497,6 +12615,8 @@ class UpdateArtifactShrinkRequest(TeaModel):
             result['ArtifactId'] = self.artifact_id
         if self.artifact_property_shrink is not None:
             result['ArtifactProperty'] = self.artifact_property_shrink
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
         if self.support_region_ids is not None:
@@ -12513,6 +12633,8 @@ class UpdateArtifactShrinkRequest(TeaModel):
             self.artifact_id = m.get('ArtifactId')
         if m.get('ArtifactProperty') is not None:
             self.artifact_property_shrink = m.get('ArtifactProperty')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('SupportRegionIds') is not None:
@@ -12541,6 +12663,7 @@ class UpdateArtifactResponseBody(TeaModel):
     ):
         # The build properties of the artifact, utilized for hosting and building the deployment package.
         self.artifact_build_property = artifact_build_property
+        # The type of the deployment package to be built.
         self.artifact_build_type = artifact_build_type
         # The ID of the deployment package.
         self.artifact_id = artifact_id
@@ -12565,6 +12688,7 @@ class UpdateArtifactResponseBody(TeaModel):
         # *   Available: The deployment package is available.
         # *   Deleted: The deployment package is deleted.
         self.status = status
+        # The status of the deployment package.
         self.status_detail = status_detail
         # The ID of the region that supports the deployment package.
         self.support_region_ids = support_region_ids
@@ -12947,6 +13071,7 @@ class UpdateServiceRequestComplianceMetadata(TeaModel):
         self,
         compliance_packs: List[str] = None,
     ):
+        # The compliance package is selected.
         self.compliance_packs = compliance_packs
 
     def validate(self):
@@ -13191,11 +13316,16 @@ class UpdateServiceRequest(TeaModel):
         self.client_token = client_token
         # This parameter is not publicly accessible.
         self.commodity = commodity
+        # Compliance check metadata.
         self.compliance_metadata = compliance_metadata
         # The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
         self.deploy_metadata = deploy_metadata
         # WB01286039
         self.deploy_type = deploy_type
+        # Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+        # 
+        # *   true: performs a dry run for the request, but does not update a service.
+        # *   false: performs a dry run for the request, and update a service if the request passes the dry run.
         self.dry_run = dry_run
         # The deployment type of the service. Valid values:
         # 
@@ -13557,11 +13687,16 @@ class UpdateServiceShrinkRequest(TeaModel):
         self.client_token = client_token
         # This parameter is not publicly accessible.
         self.commodity_shrink = commodity_shrink
+        # Compliance check metadata.
         self.compliance_metadata_shrink = compliance_metadata_shrink
         # The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
         self.deploy_metadata = deploy_metadata
         # WB01286039
         self.deploy_type = deploy_type
+        # Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+        # 
+        # *   true: performs a dry run for the request, but does not update a service.
+        # *   false: performs a dry run for the request, and update a service if the request passes the dry run.
         self.dry_run = dry_run
         # The deployment type of the service. Valid values:
         # 
@@ -13953,6 +14088,7 @@ class UpdateServiceInstanceAttributeRequest(TeaModel):
         self.end_time = end_time
         # The License Data
         self.license_data = license_data
+        # Application reason, currently used for trial application extension.
         self.reason = reason
         # The region ID.
         # 
@@ -14016,6 +14152,7 @@ class UpdateServiceInstanceAttributeShrinkRequest(TeaModel):
         self.end_time = end_time
         # The License Data
         self.license_data_shrink = license_data_shrink
+        # Application reason, currently used for trial application extension.
         self.reason = reason
         # The region ID.
         # 
