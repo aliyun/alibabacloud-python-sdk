@@ -421,10 +421,12 @@ class BackupFileResponseBody(TeaModel):
         count: int = None,
         data: List[BackupFileResponseBodyData] = None,
         request_id: str = None,
+        task_id: str = None,
     ):
         self.count = count
         self.data = data
         self.request_id = request_id
+        self.task_id = task_id
 
     def validate(self):
         if self.data:
@@ -446,6 +448,8 @@ class BackupFileResponseBody(TeaModel):
                 result['Data'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
@@ -459,6 +463,8 @@ class BackupFileResponseBody(TeaModel):
                 self.data.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
@@ -2989,6 +2995,7 @@ class DescribeAppsRequest(TeaModel):
         app_name: str = None,
         biz_region_id: str = None,
         installation_status: str = None,
+        md5: str = None,
         max_results: int = None,
         next_token: str = None,
         status: str = None,
@@ -2997,6 +3004,7 @@ class DescribeAppsRequest(TeaModel):
         self.app_name = app_name
         self.biz_region_id = biz_region_id
         self.installation_status = installation_status
+        self.md5 = md5
         self.max_results = max_results
         self.next_token = next_token
         self.status = status
@@ -3018,6 +3026,8 @@ class DescribeAppsRequest(TeaModel):
             result['BizRegionId'] = self.biz_region_id
         if self.installation_status is not None:
             result['InstallationStatus'] = self.installation_status
+        if self.md5 is not None:
+            result['MD5'] = self.md5
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -3036,6 +3046,8 @@ class DescribeAppsRequest(TeaModel):
             self.biz_region_id = m.get('BizRegionId')
         if m.get('InstallationStatus') is not None:
             self.installation_status = m.get('InstallationStatus')
+        if m.get('MD5') is not None:
+            self.md5 = m.get('MD5')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -3049,6 +3061,7 @@ class DescribeAppsResponseBodyData(TeaModel):
     def __init__(
         self,
         android_app_version: str = None,
+        apk_size: str = None,
         app_id: int = None,
         app_name: str = None,
         biz_region_id: str = None,
@@ -3058,10 +3071,12 @@ class DescribeAppsResponseBodyData(TeaModel):
         icon_url: str = None,
         installation_status: str = None,
         instance_group_list: List[str] = None,
+        md5: str = None,
         package_name: str = None,
         status: str = None,
     ):
         self.android_app_version = android_app_version
+        self.apk_size = apk_size
         self.app_id = app_id
         self.app_name = app_name
         self.biz_region_id = biz_region_id
@@ -3071,6 +3086,7 @@ class DescribeAppsResponseBodyData(TeaModel):
         self.icon_url = icon_url
         self.installation_status = installation_status
         self.instance_group_list = instance_group_list
+        self.md5 = md5
         self.package_name = package_name
         self.status = status
 
@@ -3085,6 +3101,8 @@ class DescribeAppsResponseBodyData(TeaModel):
         result = dict()
         if self.android_app_version is not None:
             result['AndroidAppVersion'] = self.android_app_version
+        if self.apk_size is not None:
+            result['ApkSize'] = self.apk_size
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.app_name is not None:
@@ -3103,6 +3121,8 @@ class DescribeAppsResponseBodyData(TeaModel):
             result['InstallationStatus'] = self.installation_status
         if self.instance_group_list is not None:
             result['InstanceGroupList'] = self.instance_group_list
+        if self.md5 is not None:
+            result['MD5'] = self.md5
         if self.package_name is not None:
             result['PackageName'] = self.package_name
         if self.status is not None:
@@ -3113,6 +3133,8 @@ class DescribeAppsResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('AndroidAppVersion') is not None:
             self.android_app_version = m.get('AndroidAppVersion')
+        if m.get('ApkSize') is not None:
+            self.apk_size = m.get('ApkSize')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AppName') is not None:
@@ -3131,6 +3153,8 @@ class DescribeAppsResponseBodyData(TeaModel):
             self.installation_status = m.get('InstallationStatus')
         if m.get('InstanceGroupList') is not None:
             self.instance_group_list = m.get('InstanceGroupList')
+        if m.get('MD5') is not None:
+            self.md5 = m.get('MD5')
         if m.get('PackageName') is not None:
             self.package_name = m.get('PackageName')
         if m.get('Status') is not None:
@@ -4530,21 +4554,35 @@ class DescribeSpecResponse(TeaModel):
 class DescribeTasksRequest(TeaModel):
     def __init__(
         self,
+        instance_id: str = None,
+        instance_name: str = None,
         invoke_id: str = None,
+        level: int = None,
         max_results: int = None,
         next_token: str = None,
+        param: str = None,
+        parent_task_id: str = None,
         resource_ids: List[str] = None,
         task_ids: List[str] = None,
         task_status: str = None,
+        task_statuses: List[str] = None,
         task_type: str = None,
+        task_types: List[str] = None,
     ):
+        self.instance_id = instance_id
+        self.instance_name = instance_name
         self.invoke_id = invoke_id
+        self.level = level
         self.max_results = max_results
         self.next_token = next_token
+        self.param = param
+        self.parent_task_id = parent_task_id
         self.resource_ids = resource_ids
         self.task_ids = task_ids
         self.task_status = task_status
+        self.task_statuses = task_statuses
         self.task_type = task_type
+        self.task_types = task_types
 
     def validate(self):
         pass
@@ -4555,38 +4593,66 @@ class DescribeTasksRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
         if self.invoke_id is not None:
             result['InvokeId'] = self.invoke_id
+        if self.level is not None:
+            result['Level'] = self.level
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.param is not None:
+            result['Param'] = self.param
+        if self.parent_task_id is not None:
+            result['ParentTaskId'] = self.parent_task_id
         if self.resource_ids is not None:
             result['ResourceIds'] = self.resource_ids
         if self.task_ids is not None:
             result['TaskIds'] = self.task_ids
         if self.task_status is not None:
             result['TaskStatus'] = self.task_status
+        if self.task_statuses is not None:
+            result['TaskStatuses'] = self.task_statuses
         if self.task_type is not None:
             result['TaskType'] = self.task_type
+        if self.task_types is not None:
+            result['TaskTypes'] = self.task_types
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
         if m.get('InvokeId') is not None:
             self.invoke_id = m.get('InvokeId')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('Param') is not None:
+            self.param = m.get('Param')
+        if m.get('ParentTaskId') is not None:
+            self.parent_task_id = m.get('ParentTaskId')
         if m.get('ResourceIds') is not None:
             self.resource_ids = m.get('ResourceIds')
         if m.get('TaskIds') is not None:
             self.task_ids = m.get('TaskIds')
         if m.get('TaskStatus') is not None:
             self.task_status = m.get('TaskStatus')
+        if m.get('TaskStatuses') is not None:
+            self.task_statuses = m.get('TaskStatuses')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
+        if m.get('TaskTypes') is not None:
+            self.task_types = m.get('TaskTypes')
         return self
 
 
@@ -4595,27 +4661,47 @@ class DescribeTasksResponseBodyData(TeaModel):
         self,
         error_code: str = None,
         error_msg: str = None,
+        failed_child_count: int = None,
         finish_time: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
         invoke_id: str = None,
+        level: int = None,
+        operator: str = None,
+        param: str = None,
+        parent_task_id: str = None,
         region_id: str = None,
         resource_id: str = None,
         result: str = None,
+        running_child_count: int = None,
         start_time: str = None,
+        success_child_count: int = None,
         task_id: str = None,
         task_status: str = None,
         task_type: str = None,
+        total_child_count: int = None,
     ):
         self.error_code = error_code
         self.error_msg = error_msg
+        self.failed_child_count = failed_child_count
         self.finish_time = finish_time
+        self.instance_id = instance_id
+        self.instance_name = instance_name
         self.invoke_id = invoke_id
+        self.level = level
+        self.operator = operator
+        self.param = param
+        self.parent_task_id = parent_task_id
         self.region_id = region_id
         self.resource_id = resource_id
         self.result = result
+        self.running_child_count = running_child_count
         self.start_time = start_time
+        self.success_child_count = success_child_count
         self.task_id = task_id
         self.task_status = task_status
         self.task_type = task_type
+        self.total_child_count = total_child_count
 
     def validate(self):
         pass
@@ -4630,24 +4716,44 @@ class DescribeTasksResponseBodyData(TeaModel):
             result['ErrorCode'] = self.error_code
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.failed_child_count is not None:
+            result['FailedChildCount'] = self.failed_child_count
         if self.finish_time is not None:
             result['FinishTime'] = self.finish_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
         if self.invoke_id is not None:
             result['InvokeId'] = self.invoke_id
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.param is not None:
+            result['Param'] = self.param
+        if self.parent_task_id is not None:
+            result['ParentTaskId'] = self.parent_task_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.result is not None:
             result['Result'] = self.result
+        if self.running_child_count is not None:
+            result['RunningChildCount'] = self.running_child_count
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.success_child_count is not None:
+            result['SuccessChildCount'] = self.success_child_count
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.task_status is not None:
             result['TaskStatus'] = self.task_status
         if self.task_type is not None:
             result['TaskType'] = self.task_type
+        if self.total_child_count is not None:
+            result['TotalChildCount'] = self.total_child_count
         return result
 
     def from_map(self, m: dict = None):
@@ -4656,24 +4762,44 @@ class DescribeTasksResponseBodyData(TeaModel):
             self.error_code = m.get('ErrorCode')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('FailedChildCount') is not None:
+            self.failed_child_count = m.get('FailedChildCount')
         if m.get('FinishTime') is not None:
             self.finish_time = m.get('FinishTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
         if m.get('InvokeId') is not None:
             self.invoke_id = m.get('InvokeId')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Param') is not None:
+            self.param = m.get('Param')
+        if m.get('ParentTaskId') is not None:
+            self.parent_task_id = m.get('ParentTaskId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('Result') is not None:
             self.result = m.get('Result')
+        if m.get('RunningChildCount') is not None:
+            self.running_child_count = m.get('RunningChildCount')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('SuccessChildCount') is not None:
+            self.success_child_count = m.get('SuccessChildCount')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TaskStatus') is not None:
             self.task_status = m.get('TaskStatus')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
+        if m.get('TotalChildCount') is not None:
+            self.total_child_count = m.get('TotalChildCount')
         return self
 
 
@@ -5237,9 +5363,11 @@ class FetchFileResponseBody(TeaModel):
         self,
         data: List[FetchFileResponseBodyData] = None,
         request_id: str = None,
+        task_id: str = None,
     ):
         self.data = data
         self.request_id = request_id
+        self.task_id = task_id
 
     def validate(self):
         if self.data:
@@ -5259,6 +5387,8 @@ class FetchFileResponseBody(TeaModel):
                 result['Data'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5270,6 +5400,8 @@ class FetchFileResponseBody(TeaModel):
                 self.data.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
@@ -5507,8 +5639,10 @@ class InstallAppResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        task_id: str = None,
     ):
         self.request_id = request_id
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -5521,12 +5655,16 @@ class InstallAppResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
@@ -6773,10 +6911,12 @@ class RecoveryFileResponseBody(TeaModel):
         count: int = None,
         data: List[RecoveryFileResponseBodyData] = None,
         request_id: str = None,
+        task_id: str = None,
     ):
         self.count = count
         self.data = data
         self.request_id = request_id
+        self.task_id = task_id
 
     def validate(self):
         if self.data:
@@ -6798,6 +6938,8 @@ class RecoveryFileResponseBody(TeaModel):
                 result['Data'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6811,6 +6953,8 @@ class RecoveryFileResponseBody(TeaModel):
                 self.data.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
@@ -7282,9 +7426,11 @@ class SendFileResponseBody(TeaModel):
         self,
         data: List[SendFileResponseBodyData] = None,
         request_id: str = None,
+        task_id: str = None,
     ):
         self.data = data
         self.request_id = request_id
+        self.task_id = task_id
 
     def validate(self):
         if self.data:
@@ -7304,6 +7450,8 @@ class SendFileResponseBody(TeaModel):
                 result['Data'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7315,6 +7463,8 @@ class SendFileResponseBody(TeaModel):
                 self.data.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
@@ -7560,9 +7710,11 @@ class UninstallAppRequest(TeaModel):
         self,
         app_id_list: List[str] = None,
         instance_group_id_list: List[str] = None,
+        instance_id_list: List[str] = None,
     ):
         self.app_id_list = app_id_list
         self.instance_group_id_list = instance_group_id_list
+        self.instance_id_list = instance_id_list
 
     def validate(self):
         pass
@@ -7577,6 +7729,8 @@ class UninstallAppRequest(TeaModel):
             result['AppIdList'] = self.app_id_list
         if self.instance_group_id_list is not None:
             result['InstanceGroupIdList'] = self.instance_group_id_list
+        if self.instance_id_list is not None:
+            result['InstanceIdList'] = self.instance_id_list
         return result
 
     def from_map(self, m: dict = None):
@@ -7585,6 +7739,8 @@ class UninstallAppRequest(TeaModel):
             self.app_id_list = m.get('AppIdList')
         if m.get('InstanceGroupIdList') is not None:
             self.instance_group_id_list = m.get('InstanceGroupIdList')
+        if m.get('InstanceIdList') is not None:
+            self.instance_id_list = m.get('InstanceIdList')
         return self
 
 
@@ -7592,8 +7748,10 @@ class UninstallAppResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        task_id: str = None,
     ):
         self.request_id = request_id
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -7606,12 +7764,16 @@ class UninstallAppResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 

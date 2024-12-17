@@ -1868,6 +1868,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.installation_status):
             query['InstallationStatus'] = request.installation_status
+        if not UtilClient.is_unset(request.md5):
+            query['MD5'] = request.md5
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -1915,6 +1917,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.installation_status):
             query['InstallationStatus'] = request.installation_status
+        if not UtilClient.is_unset(request.md5):
+            query['MD5'] = request.md5
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -2640,20 +2644,34 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.invoke_id):
             query['InvokeId'] = request.invoke_id
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.param):
+            query['Param'] = request.param
+        if not UtilClient.is_unset(request.parent_task_id):
+            query['ParentTaskId'] = request.parent_task_id
         if not UtilClient.is_unset(request.resource_ids):
             query['ResourceIds'] = request.resource_ids
         if not UtilClient.is_unset(request.task_ids):
             query['TaskIds'] = request.task_ids
         if not UtilClient.is_unset(request.task_status):
             query['TaskStatus'] = request.task_status
+        if not UtilClient.is_unset(request.task_statuses):
+            query['TaskStatuses'] = request.task_statuses
         if not UtilClient.is_unset(request.task_type):
             query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.task_types):
+            query['TaskTypes'] = request.task_types
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2687,20 +2705,34 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.invoke_id):
             query['InvokeId'] = request.invoke_id
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.param):
+            query['Param'] = request.param
+        if not UtilClient.is_unset(request.parent_task_id):
+            query['ParentTaskId'] = request.parent_task_id
         if not UtilClient.is_unset(request.resource_ids):
             query['ResourceIds'] = request.resource_ids
         if not UtilClient.is_unset(request.task_ids):
             query['TaskIds'] = request.task_ids
         if not UtilClient.is_unset(request.task_status):
             query['TaskStatus'] = request.task_status
+        if not UtilClient.is_unset(request.task_statuses):
+            query['TaskStatuses'] = request.task_statuses
         if not UtilClient.is_unset(request.task_type):
             query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.task_types):
+            query['TaskTypes'] = request.task_types
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4868,6 +4900,8 @@ class Client(OpenApiClient):
             query['AppIdList'] = request.app_id_list
         if not UtilClient.is_unset(request.instance_group_id_list):
             query['InstanceGroupIdList'] = request.instance_group_id_list
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4905,6 +4939,8 @@ class Client(OpenApiClient):
             query['AppIdList'] = request.app_id_list
         if not UtilClient.is_unset(request.instance_group_id_list):
             query['InstanceGroupIdList'] = request.instance_group_id_list
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

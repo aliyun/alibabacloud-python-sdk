@@ -1,3 +1,24 @@
+2024-12-17 Version: 3.0.4
+- Update API BackupFile: update response param.
+- Update API DescribeApps: add param MD5.
+- Update API DescribeApps: update response param.
+- Update API DescribeTasks: add param InstanceId.
+- Update API DescribeTasks: add param InstanceName.
+- Update API DescribeTasks: add param Level.
+- Update API DescribeTasks: add param Param.
+- Update API DescribeTasks: add param ParentTaskId.
+- Update API DescribeTasks: add param TaskStatuses.
+- Update API DescribeTasks: add param TaskTypes.
+- Update API DescribeTasks: update response param.
+- Update API FetchFile: update response param.
+- Update API InstallApp: update response param.
+- Update API RecoveryFile: update response param.
+- Update API SendFile: update response param.
+- Update API UninstallApp: add param InstanceIdList.
+- Update API UninstallApp: update param InstanceGroupIdList.
+- Update API UninstallApp: update response param.
+
+
 2024-12-06 Version: 3.0.3
 - Generated python 2023-09-30 for eds-aic.
 
