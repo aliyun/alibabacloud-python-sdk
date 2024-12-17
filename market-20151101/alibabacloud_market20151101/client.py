@@ -5,6 +5,7 @@ from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_market20151101 import models as market_20151101_models
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Market'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'market.aliyuncs.com',
@@ -98,10 +102,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.ActivateLicenseResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.ActivateLicenseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.ActivateLicenseResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def activate_license_with_options_async(
         self,
@@ -135,10 +145,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.ActivateLicenseResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.ActivateLicenseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.ActivateLicenseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def activate_license(
         self,
@@ -202,10 +218,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.AutoRenewInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.AutoRenewInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.AutoRenewInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def auto_renew_instance_with_options_async(
         self,
@@ -243,10 +265,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.AutoRenewInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.AutoRenewInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.AutoRenewInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def auto_renew_instance(
         self,
@@ -308,10 +336,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.CreateOrderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.CreateOrderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.CreateOrderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_order_with_options_async(
         self,
@@ -351,10 +385,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.CreateOrderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.CreateOrderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.CreateOrderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_order(
         self,
@@ -406,10 +446,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.CrossAccountVerifyTokenResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.CrossAccountVerifyTokenResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.CrossAccountVerifyTokenResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cross_account_verify_token_with_options_async(
         self,
@@ -439,10 +485,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.CrossAccountVerifyTokenResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.CrossAccountVerifyTokenResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.CrossAccountVerifyTokenResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cross_account_verify_token(
         self,
@@ -494,10 +546,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeApiMeteringResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeApiMeteringResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeApiMeteringResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_api_metering_with_options_async(
         self,
@@ -527,10 +585,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeApiMeteringResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeApiMeteringResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeApiMeteringResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_api_metering(
         self,
@@ -586,10 +650,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeCurrentNodeInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeCurrentNodeInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeCurrentNodeInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_current_node_info_with_options_async(
         self,
@@ -619,10 +689,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeCurrentNodeInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeCurrentNodeInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeCurrentNodeInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_current_node_info(
         self,
@@ -674,10 +750,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeDistributionProductsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeDistributionProductsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeDistributionProductsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_distribution_products_with_options_async(
         self,
@@ -707,10 +789,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeDistributionProductsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeDistributionProductsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeDistributionProductsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_distribution_products(
         self,
@@ -772,10 +860,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeDistributionProductsLinkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeDistributionProductsLinkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeDistributionProductsLinkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_distribution_products_link_with_options_async(
         self,
@@ -811,10 +905,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeDistributionProductsLinkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeDistributionProductsLinkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeDistributionProductsLinkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_distribution_products_link(
         self,
@@ -874,10 +974,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instance_with_options_async(
         self,
@@ -911,10 +1017,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instance(
         self,
@@ -968,10 +1080,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeInstanceForIsvResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeInstanceForIsvResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeInstanceForIsvResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instance_for_isv_with_options_async(
         self,
@@ -1003,10 +1121,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeInstanceForIsvResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeInstanceForIsvResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeInstanceForIsvResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instance_for_isv(
         self,
@@ -1070,10 +1194,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instances_with_options_async(
         self,
@@ -1111,10 +1241,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instances(
         self,
@@ -1168,10 +1304,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeLicenseResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeLicenseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeLicenseResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_license_with_options_async(
         self,
@@ -1203,10 +1345,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeLicenseResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeLicenseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeLicenseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_license(
         self,
@@ -1262,10 +1410,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeOrderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeOrderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeOrderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_order_with_options_async(
         self,
@@ -1295,10 +1449,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeOrderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeOrderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeOrderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_order(
         self,
@@ -1352,10 +1512,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeOrderForIsvResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeOrderForIsvResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeOrderForIsvResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_order_for_isv_with_options_async(
         self,
@@ -1387,10 +1553,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeOrderForIsvResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeOrderForIsvResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeOrderForIsvResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_order_for_isv(
         self,
@@ -1448,10 +1620,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribePriceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribePriceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribePriceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_price_with_options_async(
         self,
@@ -1483,10 +1661,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribePriceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribePriceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribePriceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_price(
         self,
@@ -1542,10 +1726,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProductResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProductResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProductResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_product_with_options_async(
         self,
@@ -1579,10 +1769,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProductResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProductResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProductResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_product(
         self,
@@ -1640,10 +1836,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProductsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProductsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProductsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_products_with_options_async(
         self,
@@ -1679,10 +1881,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProductsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProductsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProductsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_products(
         self,
@@ -1734,10 +1942,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProjectAttachmentsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectAttachmentsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectAttachmentsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_project_attachments_with_options_async(
         self,
@@ -1767,10 +1981,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProjectAttachmentsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectAttachmentsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectAttachmentsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_project_attachments(
         self,
@@ -1822,10 +2042,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProjectInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_project_info_with_options_async(
         self,
@@ -1855,10 +2081,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProjectInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_project_info(
         self,
@@ -1912,10 +2144,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProjectMessagesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectMessagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectMessagesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_project_messages_with_options_async(
         self,
@@ -1947,10 +2185,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProjectMessagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectMessagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectMessagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_project_messages(
         self,
@@ -2005,10 +2249,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProjectNodesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectNodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectNodesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_project_nodes_with_options_async(
         self,
@@ -2041,10 +2291,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProjectNodesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectNodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectNodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_project_nodes(
         self,
@@ -2102,10 +2358,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProjectOperateLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectOperateLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectOperateLogsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_project_operate_logs_with_options_async(
         self,
@@ -2135,10 +2397,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.DescribeProjectOperateLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectOperateLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeProjectOperateLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_project_operate_logs(
         self,
@@ -2196,10 +2464,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.FinishCurrentProjectNodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.FinishCurrentProjectNodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.FinishCurrentProjectNodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def finish_current_project_node_with_options_async(
         self,
@@ -2235,10 +2509,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.FinishCurrentProjectNodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.FinishCurrentProjectNodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.FinishCurrentProjectNodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def finish_current_project_node(
         self,
@@ -2294,10 +2574,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.PauseProjectResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.PauseProjectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.PauseProjectResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def pause_project_with_options_async(
         self,
@@ -2331,10 +2617,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.PauseProjectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.PauseProjectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.PauseProjectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def pause_project(
         self,
@@ -2386,10 +2678,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.PushMeteringDataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.PushMeteringDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.PushMeteringDataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def push_metering_data_with_options_async(
         self,
@@ -2419,10 +2717,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.PushMeteringDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.PushMeteringDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.PushMeteringDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def push_metering_data(
         self,
@@ -2478,10 +2782,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.ResumeProjectResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.ResumeProjectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.ResumeProjectResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def resume_project_with_options_async(
         self,
@@ -2515,10 +2825,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.ResumeProjectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.ResumeProjectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.ResumeProjectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def resume_project(
         self,
@@ -2574,10 +2890,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.RollbackCurrentProjectNodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.RollbackCurrentProjectNodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.RollbackCurrentProjectNodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def rollback_current_project_node_with_options_async(
         self,
@@ -2611,10 +2933,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            market_20151101_models.RollbackCurrentProjectNodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.RollbackCurrentProjectNodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.RollbackCurrentProjectNodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def rollback_current_project_node(
         self,

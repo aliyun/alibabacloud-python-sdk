@@ -2114,13 +2114,19 @@ class DescribeInstanceForIsvResponseBodyRelationalData(TeaModel):
 class DescribeInstanceForIsvResponseBody(TeaModel):
     def __init__(
         self,
+        active_address: str = None,
+        app_json: str = None,
+        auto_renewal: str = None,
         began_on: int = None,
         component_json: str = None,
         created_on: int = None,
         end_on: int = None,
         extend_json: str = None,
+        host_json: str = None,
+        image_json: str = None,
         instance_id: int = None,
         is_trial: bool = None,
+        license_code: str = None,
         order_id: int = None,
         product_code: str = None,
         product_name: str = None,
@@ -2131,13 +2137,19 @@ class DescribeInstanceForIsvResponseBody(TeaModel):
         status: str = None,
         supplier_name: str = None,
     ):
+        self.active_address = active_address
+        self.app_json = app_json
+        self.auto_renewal = auto_renewal
         self.began_on = began_on
         self.component_json = component_json
         self.created_on = created_on
         self.end_on = end_on
         self.extend_json = extend_json
+        self.host_json = host_json
+        self.image_json = image_json
         self.instance_id = instance_id
         self.is_trial = is_trial
+        self.license_code = license_code
         self.order_id = order_id
         self.product_code = product_code
         self.product_name = product_name
@@ -2158,6 +2170,12 @@ class DescribeInstanceForIsvResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.active_address is not None:
+            result['ActiveAddress'] = self.active_address
+        if self.app_json is not None:
+            result['AppJson'] = self.app_json
+        if self.auto_renewal is not None:
+            result['AutoRenewal'] = self.auto_renewal
         if self.began_on is not None:
             result['BeganOn'] = self.began_on
         if self.component_json is not None:
@@ -2168,10 +2186,16 @@ class DescribeInstanceForIsvResponseBody(TeaModel):
             result['EndOn'] = self.end_on
         if self.extend_json is not None:
             result['ExtendJson'] = self.extend_json
+        if self.host_json is not None:
+            result['HostJson'] = self.host_json
+        if self.image_json is not None:
+            result['ImageJson'] = self.image_json
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.is_trial is not None:
             result['IsTrial'] = self.is_trial
+        if self.license_code is not None:
+            result['LicenseCode'] = self.license_code
         if self.order_id is not None:
             result['OrderId'] = self.order_id
         if self.product_code is not None:
@@ -2194,6 +2218,12 @@ class DescribeInstanceForIsvResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActiveAddress') is not None:
+            self.active_address = m.get('ActiveAddress')
+        if m.get('AppJson') is not None:
+            self.app_json = m.get('AppJson')
+        if m.get('AutoRenewal') is not None:
+            self.auto_renewal = m.get('AutoRenewal')
         if m.get('BeganOn') is not None:
             self.began_on = m.get('BeganOn')
         if m.get('ComponentJson') is not None:
@@ -2204,10 +2234,16 @@ class DescribeInstanceForIsvResponseBody(TeaModel):
             self.end_on = m.get('EndOn')
         if m.get('ExtendJson') is not None:
             self.extend_json = m.get('ExtendJson')
+        if m.get('HostJson') is not None:
+            self.host_json = m.get('HostJson')
+        if m.get('ImageJson') is not None:
+            self.image_json = m.get('ImageJson')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('IsTrial') is not None:
             self.is_trial = m.get('IsTrial')
+        if m.get('LicenseCode') is not None:
+            self.license_code = m.get('LicenseCode')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
         if m.get('ProductCode') is not None:
