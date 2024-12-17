@@ -5760,6 +5760,7 @@ class GetQualityCheckTaskResultResponseBodyDataQualityCheckList(TeaModel):
         rule_description: str = None,
         rule_id: str = None,
         rule_type: str = None,
+        sub_node_col: List[Any] = None,
     ):
         self.biz_type = biz_type
         self.check_explanation = check_explanation
@@ -5774,6 +5775,7 @@ class GetQualityCheckTaskResultResponseBodyDataQualityCheckList(TeaModel):
         self.rule_description = rule_description
         self.rule_id = rule_id
         self.rule_type = rule_type
+        self.sub_node_col = sub_node_col
 
     def validate(self):
         if self.origin_dialogue:
@@ -5815,6 +5817,8 @@ class GetQualityCheckTaskResultResponseBodyDataQualityCheckList(TeaModel):
             result['ruleId'] = self.rule_id
         if self.rule_type is not None:
             result['ruleType'] = self.rule_type
+        if self.sub_node_col is not None:
+            result['subNodeCol'] = self.sub_node_col
         return result
 
     def from_map(self, m: dict = None):
@@ -5848,6 +5852,8 @@ class GetQualityCheckTaskResultResponseBodyDataQualityCheckList(TeaModel):
             self.rule_id = m.get('ruleId')
         if m.get('ruleType') is not None:
             self.rule_type = m.get('ruleType')
+        if m.get('subNodeCol') is not None:
+            self.sub_node_col = m.get('subNodeCol')
         return self
 
 
