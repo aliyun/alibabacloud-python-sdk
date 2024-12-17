@@ -526,6 +526,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.allocate_instance_public_connection_with_options_async(request, runtime)
 
+    def cancel_active_operation_tasks_with_options(
+        self,
+        request: r_kvstore_20150101_models.CancelActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.CancelActiveOperationTasksResponse:
+        """
+        @summary Cancels O\\\\\\&M events at a time.
+        
+        @description O\\&M events cannot be canceled in the following scenarios:
+        The allowCancel parameter is set to 0.
+        The current time is later than the start time of the O\\&M event.
+        The state value of the O\\&M event is not 3.
+        
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelActiveOperationTasks',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_active_operation_tasks_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.CancelActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.CancelActiveOperationTasksResponse:
+        """
+        @summary Cancels O\\\\\\&M events at a time.
+        
+        @description O\\&M events cannot be canceled in the following scenarios:
+        The allowCancel parameter is set to 0.
+        The current time is later than the start time of the O\\&M event.
+        The state value of the O\\&M event is not 3.
+        
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelActiveOperationTasks',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_active_operation_tasks(
+        self,
+        request: r_kvstore_20150101_models.CancelActiveOperationTasksRequest,
+    ) -> r_kvstore_20150101_models.CancelActiveOperationTasksResponse:
+        """
+        @summary Cancels O\\\\\\&M events at a time.
+        
+        @description O\\&M events cannot be canceled in the following scenarios:
+        The allowCancel parameter is set to 0.
+        The current time is later than the start time of the O\\&M event.
+        The state value of the O\\&M event is not 3.
+        
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_active_operation_tasks_with_options(request, runtime)
+
+    async def cancel_active_operation_tasks_async(
+        self,
+        request: r_kvstore_20150101_models.CancelActiveOperationTasksRequest,
+    ) -> r_kvstore_20150101_models.CancelActiveOperationTasksResponse:
+        """
+        @summary Cancels O\\\\\\&M events at a time.
+        
+        @description O\\&M events cannot be canceled in the following scenarios:
+        The allowCancel parameter is set to 0.
+        The current time is later than the start time of the O\\&M event.
+        The state value of the O\\&M event is not 3.
+        
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_active_operation_tasks_with_options_async(request, runtime)
+
     def check_cloud_resource_authorized_with_options(
         self,
         request: r_kvstore_20150101_models.CheckCloudResourceAuthorizedRequest,
@@ -1424,6 +1560,8 @@ class Client(OpenApiClient):
             query['RecoverConfigMode'] = request.recover_config_mode
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replica_count):
+            query['ReplicaCount'] = request.replica_count
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -1440,6 +1578,8 @@ class Client(OpenApiClient):
             query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.slave_read_only_count):
             query['SlaveReadOnlyCount'] = request.slave_read_only_count
+        if not UtilClient.is_unset(request.slave_replica_count):
+            query['SlaveReplicaCount'] = request.slave_replica_count
         if not UtilClient.is_unset(request.src_dbinstance_id):
             query['SrcDBInstanceId'] = request.src_dbinstance_id
         if not UtilClient.is_unset(request.tag):
@@ -1553,6 +1693,8 @@ class Client(OpenApiClient):
             query['RecoverConfigMode'] = request.recover_config_mode
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replica_count):
+            query['ReplicaCount'] = request.replica_count
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -1569,6 +1711,8 @@ class Client(OpenApiClient):
             query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.slave_read_only_count):
             query['SlaveReadOnlyCount'] = request.slave_read_only_count
+        if not UtilClient.is_unset(request.slave_replica_count):
+            query['SlaveReplicaCount'] = request.slave_replica_count
         if not UtilClient.is_unset(request.src_dbinstance_id):
             query['SrcDBInstanceId'] = request.src_dbinstance_id
         if not UtilClient.is_unset(request.tag):
@@ -1800,7 +1944,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateParameterGroupResponse:
         """
-        @summary 创建实例参数模板。
+        @summary Creates a parameter template.
         
         @param request: CreateParameterGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1857,7 +2001,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateParameterGroupResponse:
         """
-        @summary 创建实例参数模板。
+        @summary Creates a parameter template.
         
         @param request: CreateParameterGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1913,7 +2057,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateParameterGroupRequest,
     ) -> r_kvstore_20150101_models.CreateParameterGroupResponse:
         """
-        @summary 创建实例参数模板。
+        @summary Creates a parameter template.
         
         @param request: CreateParameterGroupRequest
         @return: CreateParameterGroupResponse
@@ -1926,13 +2070,213 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateParameterGroupRequest,
     ) -> r_kvstore_20150101_models.CreateParameterGroupResponse:
         """
-        @summary 创建实例参数模板。
+        @summary Creates a parameter template.
         
         @param request: CreateParameterGroupRequest
         @return: CreateParameterGroupResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_parameter_group_with_options_async(request, runtime)
+
+    def create_tcinstance_with_options(
+        self,
+        request: r_kvstore_20150101_models.CreateTCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.CreateTCInstanceResponse:
+        """
+        @summary 创建TairCustom实例
+        
+        @param request: CreateTCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not UtilClient.is_unset(request.business_info):
+            query['BusinessInfo'] = request.business_info
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.coupon_no):
+            query['CouponNo'] = request.coupon_no
+        if not UtilClient.is_unset(request.data_disk):
+            query['DataDisk'] = request.data_disk
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.need_eni):
+            query['NeedEni'] = request.need_eni
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTCInstance',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateTCInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tcinstance_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.CreateTCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.CreateTCInstanceResponse:
+        """
+        @summary 创建TairCustom实例
+        
+        @param request: CreateTCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not UtilClient.is_unset(request.business_info):
+            query['BusinessInfo'] = request.business_info
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.coupon_no):
+            query['CouponNo'] = request.coupon_no
+        if not UtilClient.is_unset(request.data_disk):
+            query['DataDisk'] = request.data_disk
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.need_eni):
+            query['NeedEni'] = request.need_eni
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTCInstance',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateTCInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tcinstance(
+        self,
+        request: r_kvstore_20150101_models.CreateTCInstanceRequest,
+    ) -> r_kvstore_20150101_models.CreateTCInstanceResponse:
+        """
+        @summary 创建TairCustom实例
+        
+        @param request: CreateTCInstanceRequest
+        @return: CreateTCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_tcinstance_with_options(request, runtime)
+
+    async def create_tcinstance_async(
+        self,
+        request: r_kvstore_20150101_models.CreateTCInstanceRequest,
+    ) -> r_kvstore_20150101_models.CreateTCInstanceResponse:
+        """
+        @summary 创建TairCustom实例
+        
+        @param request: CreateTCInstanceRequest
+        @return: CreateTCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_tcinstance_with_options_async(request, runtime)
 
     def create_tair_instance_with_options(
         self,
@@ -1971,6 +2315,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.cluster_backup_id):
             query['ClusterBackupId'] = request.cluster_backup_id
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.coupon_no):
             query['CouponNo'] = request.coupon_no
         if not UtilClient.is_unset(request.dry_run):
@@ -2007,6 +2353,8 @@ class Client(OpenApiClient):
             query['RecoverConfigMode'] = request.recover_config_mode
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replica_count):
+            query['ReplicaCount'] = request.replica_count
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -2025,6 +2373,8 @@ class Client(OpenApiClient):
             query['ShardType'] = request.shard_type
         if not UtilClient.is_unset(request.slave_read_only_count):
             query['SlaveReadOnlyCount'] = request.slave_read_only_count
+        if not UtilClient.is_unset(request.slave_replica_count):
+            query['SlaveReplicaCount'] = request.slave_replica_count
         if not UtilClient.is_unset(request.src_dbinstance_id):
             query['SrcDBInstanceId'] = request.src_dbinstance_id
         if not UtilClient.is_unset(request.storage):
@@ -2095,6 +2445,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.cluster_backup_id):
             query['ClusterBackupId'] = request.cluster_backup_id
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.coupon_no):
             query['CouponNo'] = request.coupon_no
         if not UtilClient.is_unset(request.dry_run):
@@ -2131,6 +2483,8 @@ class Client(OpenApiClient):
             query['RecoverConfigMode'] = request.recover_config_mode
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replica_count):
+            query['ReplicaCount'] = request.replica_count
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -2149,6 +2503,8 @@ class Client(OpenApiClient):
             query['ShardType'] = request.shard_type
         if not UtilClient.is_unset(request.slave_read_only_count):
             query['SlaveReadOnlyCount'] = request.slave_read_only_count
+        if not UtilClient.is_unset(request.slave_replica_count):
+            query['SlaveReplicaCount'] = request.slave_replica_count
         if not UtilClient.is_unset(request.src_dbinstance_id):
             query['SrcDBInstanceId'] = request.src_dbinstance_id
         if not UtilClient.is_unset(request.storage):
@@ -3172,6 +3528,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTasksResponse:
         """
+        @summary Queries the details about the O\\\\\\&M tasks of an ApsaraDB for Redis instance.
+        
         @param request: DescribeActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeActiveOperationTasksResponse
@@ -3235,6 +3593,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTasksResponse:
         """
+        @summary Queries the details about the O\\\\\\&M tasks of an ApsaraDB for Redis instance.
+        
         @param request: DescribeActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeActiveOperationTasksResponse
@@ -3297,6 +3657,8 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeActiveOperationTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTasksResponse:
         """
+        @summary Queries the details about the O\\\\\\&M tasks of an ApsaraDB for Redis instance.
+        
         @param request: DescribeActiveOperationTasksRequest
         @return: DescribeActiveOperationTasksResponse
         """
@@ -3308,6 +3670,8 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeActiveOperationTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTasksResponse:
         """
+        @summary Queries the details about the O\\\\\\&M tasks of an ApsaraDB for Redis instance.
+        
         @param request: DescribeActiveOperationTasksRequest
         @return: DescribeActiveOperationTasksResponse
         """
@@ -9370,6 +9734,282 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_log_records_with_options_async(request, runtime)
 
+    def describe_tair_kvcache_custom_instance_attribute_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse:
+        """
+        @summary 查看TairCustom实例
+        
+        @param request: DescribeTairKVCacheCustomInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTairKVCacheCustomInstanceAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTairKVCacheCustomInstanceAttribute',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tair_kvcache_custom_instance_attribute_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse:
+        """
+        @summary 查看TairCustom实例
+        
+        @param request: DescribeTairKVCacheCustomInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTairKVCacheCustomInstanceAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTairKVCacheCustomInstanceAttribute',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tair_kvcache_custom_instance_attribute(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeRequest,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse:
+        """
+        @summary 查看TairCustom实例
+        
+        @param request: DescribeTairKVCacheCustomInstanceAttributeRequest
+        @return: DescribeTairKVCacheCustomInstanceAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tair_kvcache_custom_instance_attribute_with_options(request, runtime)
+
+    async def describe_tair_kvcache_custom_instance_attribute_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeRequest,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse:
+        """
+        @summary 查看TairCustom实例
+        
+        @param request: DescribeTairKVCacheCustomInstanceAttributeRequest
+        @return: DescribeTairKVCacheCustomInstanceAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tair_kvcache_custom_instance_attribute_with_options_async(request, runtime)
+
+    def describe_tair_kvcache_custom_instance_history_monitor_values_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse:
+        """
+        @summary 查询TairCustom主机监控
+        
+        @param request: DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTairKVCacheCustomInstanceHistoryMonitorValues',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tair_kvcache_custom_instance_history_monitor_values_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse:
+        """
+        @summary 查询TairCustom主机监控
+        
+        @param request: DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTairKVCacheCustomInstanceHistoryMonitorValues',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tair_kvcache_custom_instance_history_monitor_values(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse:
+        """
+        @summary 查询TairCustom主机监控
+        
+        @param request: DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest
+        @return: DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tair_kvcache_custom_instance_history_monitor_values_with_options(request, runtime)
+
+    async def describe_tair_kvcache_custom_instance_history_monitor_values_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse:
+        """
+        @summary 查询TairCustom主机监控
+        
+        @param request: DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest
+        @return: DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tair_kvcache_custom_instance_history_monitor_values_with_options_async(request, runtime)
+
+    def describe_tair_kvcache_custom_instances_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse:
+        """
+        @summary 查看TairCustom实例
+        
+        @param request: DescribeTairKVCacheCustomInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTairKVCacheCustomInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTairKVCacheCustomInstances',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tair_kvcache_custom_instances_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse:
+        """
+        @summary 查看TairCustom实例
+        
+        @param request: DescribeTairKVCacheCustomInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTairKVCacheCustomInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTairKVCacheCustomInstances',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tair_kvcache_custom_instances(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesRequest,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse:
+        """
+        @summary 查看TairCustom实例
+        
+        @param request: DescribeTairKVCacheCustomInstancesRequest
+        @return: DescribeTairKVCacheCustomInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tair_kvcache_custom_instances_with_options(request, runtime)
+
+    async def describe_tair_kvcache_custom_instances_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesRequest,
+    ) -> r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse:
+        """
+        @summary 查看TairCustom实例
+        
+        @param request: DescribeTairKVCacheCustomInstancesRequest
+        @return: DescribeTairKVCacheCustomInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tair_kvcache_custom_instances_with_options_async(request, runtime)
+
     def describe_tasks_with_options(
         self,
         request: r_kvstore_20150101_models.DescribeTasksRequest,
@@ -10698,6 +11338,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.lock_dbinstance_write_with_options_async(request, runtime)
 
+    def master_node_shut_down_fail_over_with_options(
+        self,
+        request: r_kvstore_20150101_models.MasterNodeShutDownFailOverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse:
+        """
+        @summary Simulates database node failures.
+        
+        @param request: MasterNodeShutDownFailOverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MasterNodeShutDownFailOverResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.dbfault_mode):
+            query['DBFaultMode'] = request.dbfault_mode
+        if not UtilClient.is_unset(request.dbnodes):
+            query['DBNodes'] = request.dbnodes
+        if not UtilClient.is_unset(request.fail_mode):
+            query['FailMode'] = request.fail_mode
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.proxy_fault_mode):
+            query['ProxyFaultMode'] = request.proxy_fault_mode
+        if not UtilClient.is_unset(request.proxy_instance_ids):
+            query['ProxyInstanceIds'] = request.proxy_instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MasterNodeShutDownFailOver',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def master_node_shut_down_fail_over_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.MasterNodeShutDownFailOverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse:
+        """
+        @summary Simulates database node failures.
+        
+        @param request: MasterNodeShutDownFailOverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MasterNodeShutDownFailOverResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.dbfault_mode):
+            query['DBFaultMode'] = request.dbfault_mode
+        if not UtilClient.is_unset(request.dbnodes):
+            query['DBNodes'] = request.dbnodes
+        if not UtilClient.is_unset(request.fail_mode):
+            query['FailMode'] = request.fail_mode
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.proxy_fault_mode):
+            query['ProxyFaultMode'] = request.proxy_fault_mode
+        if not UtilClient.is_unset(request.proxy_instance_ids):
+            query['ProxyInstanceIds'] = request.proxy_instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MasterNodeShutDownFailOver',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def master_node_shut_down_fail_over(
+        self,
+        request: r_kvstore_20150101_models.MasterNodeShutDownFailOverRequest,
+    ) -> r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse:
+        """
+        @summary Simulates database node failures.
+        
+        @param request: MasterNodeShutDownFailOverRequest
+        @return: MasterNodeShutDownFailOverResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.master_node_shut_down_fail_over_with_options(request, runtime)
+
+    async def master_node_shut_down_fail_over_async(
+        self,
+        request: r_kvstore_20150101_models.MasterNodeShutDownFailOverRequest,
+    ) -> r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse:
+        """
+        @summary Simulates database node failures.
+        
+        @param request: MasterNodeShutDownFailOverRequest
+        @return: MasterNodeShutDownFailOverResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.master_node_shut_down_fail_over_with_options_async(request, runtime)
+
     def migrate_to_other_zone_with_options(
         self,
         request: r_kvstore_20150101_models.MigrateToOtherZoneRequest,
@@ -11124,7 +11884,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         """
-        @summary Changes the scheduled switchover time of an O&M task.
+        @summary Changes the scheduled switchover time of an O\\&amp;M task.
         
         @description You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
         
@@ -11173,7 +11933,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         """
-        @summary Changes the scheduled switchover time of an O&M task.
+        @summary Changes the scheduled switchover time of an O\\&amp;M task.
         
         @description You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
         
@@ -11221,7 +11981,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyActiveOperationTaskRequest,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         """
-        @summary Changes the scheduled switchover time of an O&M task.
+        @summary Changes the scheduled switchover time of an O\\&amp;M task.
         
         @description You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
         
@@ -11236,7 +11996,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyActiveOperationTaskRequest,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         """
-        @summary Changes the scheduled switchover time of an O&M task.
+        @summary Changes the scheduled switchover time of an O\\&amp;M task.
         
         @description You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
         
@@ -11252,6 +12012,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTasksResponse:
         """
+        @summary Modifies the switching time of scheduled O\\\\\\&M events for an instance.
+        
         @param request: ModifyActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyActiveOperationTasksResponse
@@ -11299,6 +12061,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTasksResponse:
         """
+        @summary Modifies the switching time of scheduled O\\\\\\&M events for an instance.
+        
         @param request: ModifyActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyActiveOperationTasksResponse
@@ -11345,6 +12109,8 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyActiveOperationTasksRequest,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTasksResponse:
         """
+        @summary Modifies the switching time of scheduled O\\\\\\&M events for an instance.
+        
         @param request: ModifyActiveOperationTasksRequest
         @return: ModifyActiveOperationTasksResponse
         """
@@ -11356,6 +12122,8 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyActiveOperationTasksRequest,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTasksResponse:
         """
+        @summary Modifies the switching time of scheduled O\\\\\\&M events for an instance.
+        
         @param request: ModifyActiveOperationTasksRequest
         @return: ModifyActiveOperationTasksResponse
         """
@@ -12554,6 +13322,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_auto_renewal_attribute_with_options_async(request, runtime)
 
+    def modify_instance_bandwidth_with_options(
+        self,
+        request: r_kvstore_20150101_models.ModifyInstanceBandwidthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyInstanceBandwidthResponse:
+        """
+        @summary Modifies the bandwidth of an instance.
+        
+        @param request: ModifyInstanceBandwidthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceBandwidthResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.target_intranet_bandwidth):
+            query['TargetIntranetBandwidth'] = request.target_intranet_bandwidth
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceBandwidth',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_bandwidth_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyInstanceBandwidthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyInstanceBandwidthResponse:
+        """
+        @summary Modifies the bandwidth of an instance.
+        
+        @param request: ModifyInstanceBandwidthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceBandwidthResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.target_intranet_bandwidth):
+            query['TargetIntranetBandwidth'] = request.target_intranet_bandwidth
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceBandwidth',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_bandwidth(
+        self,
+        request: r_kvstore_20150101_models.ModifyInstanceBandwidthRequest,
+    ) -> r_kvstore_20150101_models.ModifyInstanceBandwidthResponse:
+        """
+        @summary Modifies the bandwidth of an instance.
+        
+        @param request: ModifyInstanceBandwidthRequest
+        @return: ModifyInstanceBandwidthResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_bandwidth_with_options(request, runtime)
+
+    async def modify_instance_bandwidth_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyInstanceBandwidthRequest,
+    ) -> r_kvstore_20150101_models.ModifyInstanceBandwidthResponse:
+        """
+        @summary Modifies the bandwidth of an instance.
+        
+        @param request: ModifyInstanceBandwidthRequest
+        @return: ModifyInstanceBandwidthResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_bandwidth_with_options_async(request, runtime)
+
     def modify_instance_config_with_options(
         self,
         request: r_kvstore_20150101_models.ModifyInstanceConfigRequest,
@@ -12576,6 +13464,18 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.param_no_loose_sentinel_enabled):
+            query['ParamNoLooseSentinelEnabled'] = request.param_no_loose_sentinel_enabled
+        if not UtilClient.is_unset(request.param_no_loose_sentinel_password_free_access):
+            query['ParamNoLooseSentinelPasswordFreeAccess'] = request.param_no_loose_sentinel_password_free_access
+        if not UtilClient.is_unset(request.param_no_loose_sentinel_password_free_commands):
+            query['ParamNoLooseSentinelPasswordFreeCommands'] = request.param_no_loose_sentinel_password_free_commands
+        if not UtilClient.is_unset(request.param_repl_mode):
+            query['ParamReplMode'] = request.param_repl_mode
+        if not UtilClient.is_unset(request.param_semisync_repl_timeout):
+            query['ParamSemisyncReplTimeout'] = request.param_semisync_repl_timeout
+        if not UtilClient.is_unset(request.param_sentinel_compat_enable):
+            query['ParamSentinelCompatEnable'] = request.param_sentinel_compat_enable
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -12623,6 +13523,18 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.param_no_loose_sentinel_enabled):
+            query['ParamNoLooseSentinelEnabled'] = request.param_no_loose_sentinel_enabled
+        if not UtilClient.is_unset(request.param_no_loose_sentinel_password_free_access):
+            query['ParamNoLooseSentinelPasswordFreeAccess'] = request.param_no_loose_sentinel_password_free_access
+        if not UtilClient.is_unset(request.param_no_loose_sentinel_password_free_commands):
+            query['ParamNoLooseSentinelPasswordFreeCommands'] = request.param_no_loose_sentinel_password_free_commands
+        if not UtilClient.is_unset(request.param_repl_mode):
+            query['ParamReplMode'] = request.param_repl_mode
+        if not UtilClient.is_unset(request.param_semisync_repl_timeout):
+            query['ParamSemisyncReplTimeout'] = request.param_semisync_repl_timeout
+        if not UtilClient.is_unset(request.param_sentinel_compat_enable):
+            query['ParamSentinelCompatEnable'] = request.param_sentinel_compat_enable
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -13224,7 +14136,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceParameterResponse:
         """
-        @summary 修改实例参数
+        @summary Applies a parameter template to specific instances. This indicates that the parameter values in the template take effect on the instances. After you modify a parameter template, you must reapply it to specific instances for the new parameter values to take effect on the instances.
         
         @param request: ModifyInstanceParameterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13275,7 +14187,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceParameterResponse:
         """
-        @summary 修改实例参数
+        @summary Applies a parameter template to specific instances. This indicates that the parameter values in the template take effect on the instances. After you modify a parameter template, you must reapply it to specific instances for the new parameter values to take effect on the instances.
         
         @param request: ModifyInstanceParameterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13325,7 +14237,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceParameterRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceParameterResponse:
         """
-        @summary 修改实例参数
+        @summary Applies a parameter template to specific instances. This indicates that the parameter values in the template take effect on the instances. After you modify a parameter template, you must reapply it to specific instances for the new parameter values to take effect on the instances.
         
         @param request: ModifyInstanceParameterRequest
         @return: ModifyInstanceParameterResponse
@@ -13338,7 +14250,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceParameterRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceParameterResponse:
         """
-        @summary 修改实例参数
+        @summary Applies a parameter template to specific instances. This indicates that the parameter values in the template take effect on the instances. After you modify a parameter template, you must reapply it to specific instances for the new parameter values to take effect on the instances.
         
         @param request: ModifyInstanceParameterRequest
         @return: ModifyInstanceParameterResponse
@@ -13526,6 +14438,8 @@ class Client(OpenApiClient):
             query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replica_count):
+            query['ReplicaCount'] = request.replica_count
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -13536,8 +14450,14 @@ class Client(OpenApiClient):
             query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.slave_read_only_count):
             query['SlaveReadOnlyCount'] = request.slave_read_only_count
+        if not UtilClient.is_unset(request.slave_replica_count):
+            query['SlaveReplicaCount'] = request.slave_replica_count
         if not UtilClient.is_unset(request.source_biz):
             query['SourceBiz'] = request.source_biz
+        if not UtilClient.is_unset(request.storage):
+            query['Storage'] = request.storage
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13605,6 +14525,8 @@ class Client(OpenApiClient):
             query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replica_count):
+            query['ReplicaCount'] = request.replica_count
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -13615,8 +14537,14 @@ class Client(OpenApiClient):
             query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.slave_read_only_count):
             query['SlaveReadOnlyCount'] = request.slave_read_only_count
+        if not UtilClient.is_unset(request.slave_replica_count):
+            query['SlaveReplicaCount'] = request.slave_replica_count
         if not UtilClient.is_unset(request.source_biz):
             query['SourceBiz'] = request.source_biz
+        if not UtilClient.is_unset(request.storage):
+            query['Storage'] = request.storage
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14614,6 +15542,254 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_ips_with_options_async(request, runtime)
 
+    def modify_tair_kvcache_custom_instance_attribute_with_options(
+        self,
+        request: r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse:
+        """
+        @summary 修改TairCustom实例基本参数
+        
+        @param request: ModifyTairKVCacheCustomInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTairKVCacheCustomInstanceAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.source_biz):
+            query['SourceBiz'] = request.source_biz
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTairKVCacheCustomInstanceAttribute',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_tair_kvcache_custom_instance_attribute_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse:
+        """
+        @summary 修改TairCustom实例基本参数
+        
+        @param request: ModifyTairKVCacheCustomInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTairKVCacheCustomInstanceAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.source_biz):
+            query['SourceBiz'] = request.source_biz
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTairKVCacheCustomInstanceAttribute',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_tair_kvcache_custom_instance_attribute(
+        self,
+        request: r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeRequest,
+    ) -> r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse:
+        """
+        @summary 修改TairCustom实例基本参数
+        
+        @param request: ModifyTairKVCacheCustomInstanceAttributeRequest
+        @return: ModifyTairKVCacheCustomInstanceAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_tair_kvcache_custom_instance_attribute_with_options(request, runtime)
+
+    async def modify_tair_kvcache_custom_instance_attribute_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeRequest,
+    ) -> r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse:
+        """
+        @summary 修改TairCustom实例基本参数
+        
+        @param request: ModifyTairKVCacheCustomInstanceAttributeRequest
+        @return: ModifyTairKVCacheCustomInstanceAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_tair_kvcache_custom_instance_attribute_with_options_async(request, runtime)
+
+    def modify_task_info_with_options(
+        self,
+        request: r_kvstore_20150101_models.ModifyTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyTaskInfoResponse:
+        """
+        @summary 任务中心修改任务信息
+        
+        @param request: ModifyTaskInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTaskInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_params):
+            query['ActionParams'] = request.action_params
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.step_name):
+            query['StepName'] = request.step_name
+        if not UtilClient.is_unset(request.task_action):
+            query['TaskAction'] = request.task_action
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTaskInfo',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyTaskInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_task_info_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyTaskInfoResponse:
+        """
+        @summary 任务中心修改任务信息
+        
+        @param request: ModifyTaskInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTaskInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_params):
+            query['ActionParams'] = request.action_params
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.step_name):
+            query['StepName'] = request.step_name
+        if not UtilClient.is_unset(request.task_action):
+            query['TaskAction'] = request.task_action
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTaskInfo',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyTaskInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_task_info(
+        self,
+        request: r_kvstore_20150101_models.ModifyTaskInfoRequest,
+    ) -> r_kvstore_20150101_models.ModifyTaskInfoResponse:
+        """
+        @summary 任务中心修改任务信息
+        
+        @param request: ModifyTaskInfoRequest
+        @return: ModifyTaskInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_task_info_with_options(request, runtime)
+
+    async def modify_task_info_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyTaskInfoRequest,
+    ) -> r_kvstore_20150101_models.ModifyTaskInfoResponse:
+        """
+        @summary 任务中心修改任务信息
+        
+        @param request: ModifyTaskInfoRequest
+        @return: ModifyTaskInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_task_info_with_options_async(request, runtime)
+
     def release_direct_connection_with_options(
         self,
         request: r_kvstore_20150101_models.ReleaseDirectConnectionRequest,
@@ -15434,6 +16610,258 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reset_account_password_with_options_async(request, runtime)
 
+    def reset_tair_kvcache_custom_instance_password_with_options(
+        self,
+        request: r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse:
+        """
+        @summary 重置TairCustom上主机密码
+        
+        @param request: ResetTairKVCacheCustomInstancePasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetTairKVCacheCustomInstancePasswordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.source_biz):
+            query['SourceBiz'] = request.source_biz
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetTairKVCacheCustomInstancePassword',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_tair_kvcache_custom_instance_password_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse:
+        """
+        @summary 重置TairCustom上主机密码
+        
+        @param request: ResetTairKVCacheCustomInstancePasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetTairKVCacheCustomInstancePasswordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.source_biz):
+            query['SourceBiz'] = request.source_biz
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetTairKVCacheCustomInstancePassword',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_tair_kvcache_custom_instance_password(
+        self,
+        request: r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordRequest,
+    ) -> r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse:
+        """
+        @summary 重置TairCustom上主机密码
+        
+        @param request: ResetTairKVCacheCustomInstancePasswordRequest
+        @return: ResetTairKVCacheCustomInstancePasswordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reset_tair_kvcache_custom_instance_password_with_options(request, runtime)
+
+    async def reset_tair_kvcache_custom_instance_password_async(
+        self,
+        request: r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordRequest,
+    ) -> r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse:
+        """
+        @summary 重置TairCustom上主机密码
+        
+        @param request: ResetTairKVCacheCustomInstancePasswordRequest
+        @return: ResetTairKVCacheCustomInstancePasswordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reset_tair_kvcache_custom_instance_password_with_options_async(request, runtime)
+
+    def resize_tair_kvcache_custom_instance_disk_with_options(
+        self,
+        request: r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse:
+        """
+        @summary 变配TairCustom的主机的磁盘
+        
+        @param request: ResizeTairKVCacheCustomInstanceDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeTairKVCacheCustomInstanceDiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResizeTairKVCacheCustomInstanceDisk',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resize_tair_kvcache_custom_instance_disk_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse:
+        """
+        @summary 变配TairCustom的主机的磁盘
+        
+        @param request: ResizeTairKVCacheCustomInstanceDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeTairKVCacheCustomInstanceDiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResizeTairKVCacheCustomInstanceDisk',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resize_tair_kvcache_custom_instance_disk(
+        self,
+        request: r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskRequest,
+    ) -> r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse:
+        """
+        @summary 变配TairCustom的主机的磁盘
+        
+        @param request: ResizeTairKVCacheCustomInstanceDiskRequest
+        @return: ResizeTairKVCacheCustomInstanceDiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.resize_tair_kvcache_custom_instance_disk_with_options(request, runtime)
+
+    async def resize_tair_kvcache_custom_instance_disk_async(
+        self,
+        request: r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskRequest,
+    ) -> r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse:
+        """
+        @summary 变配TairCustom的主机的磁盘
+        
+        @param request: ResizeTairKVCacheCustomInstanceDiskRequest
+        @return: ResizeTairKVCacheCustomInstanceDiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.resize_tair_kvcache_custom_instance_disk_with_options_async(request, runtime)
+
     def restart_instance_with_options(
         self,
         request: r_kvstore_20150101_models.RestartInstanceRequest,
@@ -15557,6 +16985,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.restart_instance_with_options_async(request, runtime)
+
+    def restart_tair_kvcache_custom_instance_with_options(
+        self,
+        request: r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse:
+        """
+        @summary 重启TairCustom的主机
+        
+        @param request: RestartTairKVCacheCustomInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartTairKVCacheCustomInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartTairKVCacheCustomInstance',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_tair_kvcache_custom_instance_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse:
+        """
+        @summary 重启TairCustom的主机
+        
+        @param request: RestartTairKVCacheCustomInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartTairKVCacheCustomInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartTairKVCacheCustomInstance',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_tair_kvcache_custom_instance(
+        self,
+        request: r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceRequest,
+    ) -> r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse:
+        """
+        @summary 重启TairCustom的主机
+        
+        @param request: RestartTairKVCacheCustomInstanceRequest
+        @return: RestartTairKVCacheCustomInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.restart_tair_kvcache_custom_instance_with_options(request, runtime)
+
+    async def restart_tair_kvcache_custom_instance_async(
+        self,
+        request: r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceRequest,
+    ) -> r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse:
+        """
+        @summary 重启TairCustom的主机
+        
+        @param request: RestartTairKVCacheCustomInstanceRequest
+        @return: RestartTairKVCacheCustomInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.restart_tair_kvcache_custom_instance_with_options_async(request, runtime)
 
     def restore_instance_with_options(
         self,
@@ -15705,6 +17249,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.restore_instance_with_options_async(request, runtime)
+
+    def start_tair_kvcache_custom_instance_with_options(
+        self,
+        request: r_kvstore_20150101_models.StartTairKVCacheCustomInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse:
+        """
+        @summary 启动TairCustom的主机
+        
+        @param request: StartTairKVCacheCustomInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartTairKVCacheCustomInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartTairKVCacheCustomInstance',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_tair_kvcache_custom_instance_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.StartTairKVCacheCustomInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse:
+        """
+        @summary 启动TairCustom的主机
+        
+        @param request: StartTairKVCacheCustomInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartTairKVCacheCustomInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartTairKVCacheCustomInstance',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_tair_kvcache_custom_instance(
+        self,
+        request: r_kvstore_20150101_models.StartTairKVCacheCustomInstanceRequest,
+    ) -> r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse:
+        """
+        @summary 启动TairCustom的主机
+        
+        @param request: StartTairKVCacheCustomInstanceRequest
+        @return: StartTairKVCacheCustomInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_tair_kvcache_custom_instance_with_options(request, runtime)
+
+    async def start_tair_kvcache_custom_instance_async(
+        self,
+        request: r_kvstore_20150101_models.StartTairKVCacheCustomInstanceRequest,
+    ) -> r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse:
+        """
+        @summary 启动TairCustom的主机
+        
+        @param request: StartTairKVCacheCustomInstanceRequest
+        @return: StartTairKVCacheCustomInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_tair_kvcache_custom_instance_with_options_async(request, runtime)
+
+    def stop_tair_kvcache_custom_instance_with_options(
+        self,
+        request: r_kvstore_20150101_models.StopTairKVCacheCustomInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse:
+        """
+        @summary 停止TairCustom的主机
+        
+        @param request: StopTairKVCacheCustomInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopTairKVCacheCustomInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopTairKVCacheCustomInstance',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_tair_kvcache_custom_instance_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.StopTairKVCacheCustomInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse:
+        """
+        @summary 停止TairCustom的主机
+        
+        @param request: StopTairKVCacheCustomInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopTairKVCacheCustomInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopTairKVCacheCustomInstance',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_tair_kvcache_custom_instance(
+        self,
+        request: r_kvstore_20150101_models.StopTairKVCacheCustomInstanceRequest,
+    ) -> r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse:
+        """
+        @summary 停止TairCustom的主机
+        
+        @param request: StopTairKVCacheCustomInstanceRequest
+        @return: StopTairKVCacheCustomInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_tair_kvcache_custom_instance_with_options(request, runtime)
+
+    async def stop_tair_kvcache_custom_instance_async(
+        self,
+        request: r_kvstore_20150101_models.StopTairKVCacheCustomInstanceRequest,
+    ) -> r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse:
+        """
+        @summary 停止TairCustom的主机
+        
+        @param request: StopTairKVCacheCustomInstanceRequest
+        @return: StopTairKVCacheCustomInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_tair_kvcache_custom_instance_with_options_async(request, runtime)
 
     def switch_instance_hawith_options(
         self,
@@ -15993,6 +17769,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.switch_instance_proxy_with_options_async(request, runtime)
+
+    def switch_instance_zone_fail_over_with_options(
+        self,
+        request: r_kvstore_20150101_models.SwitchInstanceZoneFailOverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse:
+        """
+        @summary Switches an instance from the current zone to the specified zone in the event of a fault.
+        
+        @param request: SwitchInstanceZoneFailOverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchInstanceZoneFailOverResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.site_fault_time):
+            query['SiteFaultTime'] = request.site_fault_time
+        if not UtilClient.is_unset(request.target_zone_id):
+            query['TargetZoneId'] = request.target_zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchInstanceZoneFailOver',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_instance_zone_fail_over_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.SwitchInstanceZoneFailOverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse:
+        """
+        @summary Switches an instance from the current zone to the specified zone in the event of a fault.
+        
+        @param request: SwitchInstanceZoneFailOverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchInstanceZoneFailOverResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.site_fault_time):
+            query['SiteFaultTime'] = request.site_fault_time
+        if not UtilClient.is_unset(request.target_zone_id):
+            query['TargetZoneId'] = request.target_zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchInstanceZoneFailOver',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_instance_zone_fail_over(
+        self,
+        request: r_kvstore_20150101_models.SwitchInstanceZoneFailOverRequest,
+    ) -> r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse:
+        """
+        @summary Switches an instance from the current zone to the specified zone in the event of a fault.
+        
+        @param request: SwitchInstanceZoneFailOverRequest
+        @return: SwitchInstanceZoneFailOverResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.switch_instance_zone_fail_over_with_options(request, runtime)
+
+    async def switch_instance_zone_fail_over_async(
+        self,
+        request: r_kvstore_20150101_models.SwitchInstanceZoneFailOverRequest,
+    ) -> r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse:
+        """
+        @summary Switches an instance from the current zone to the specified zone in the event of a fault.
+        
+        @param request: SwitchInstanceZoneFailOverRequest
+        @return: SwitchInstanceZoneFailOverResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.switch_instance_zone_fail_over_with_options_async(request, runtime)
 
     def switch_network_with_options(
         self,
@@ -16585,6 +18465,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -16637,6 +18521,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):

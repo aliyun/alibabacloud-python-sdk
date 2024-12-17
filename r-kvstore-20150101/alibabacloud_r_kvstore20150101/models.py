@@ -498,6 +498,142 @@ class AllocateInstancePublicConnectionResponse(TeaModel):
         return self
 
 
+class CancelActiveOperationTasksRequest(TeaModel):
+    def __init__(
+        self,
+        ids: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # The IDs of O\\&M events that you want to cancel at a time. Separate multiple IDs with commas (,).
+        # 
+        # This parameter is required.
+        self.ids = ids
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class CancelActiveOperationTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        ids: str = None,
+        request_id: str = None,
+    ):
+        # The IDs of O\\&M events that are canceled at a time. Separate multiple IDs with commas (,).
+        self.ids = ids
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelActiveOperationTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelActiveOperationTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelActiveOperationTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckCloudResourceAuthorizedRequest(TeaModel):
     def __init__(
         self,
@@ -1567,6 +1703,7 @@ class CreateInstanceRequest(TeaModel):
         read_only_count: int = None,
         recover_config_mode: str = None,
         region_id: str = None,
+        replica_count: int = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -1575,6 +1712,7 @@ class CreateInstanceRequest(TeaModel):
         security_token: str = None,
         shard_count: int = None,
         slave_read_only_count: int = None,
+        slave_replica_count: int = None,
         src_dbinstance_id: str = None,
         tag: List[CreateInstanceRequestTag] = None,
         token: str = None,
@@ -1713,6 +1851,7 @@ class CreateInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.replica_count = replica_count
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
@@ -1731,6 +1870,7 @@ class CreateInstanceRequest(TeaModel):
         # 
         # > When you create a multi-zone read/write splitting instance, you must specify both SlaveReadOnlyCount and SecondaryZoneId.
         self.slave_read_only_count = slave_read_only_count
+        self.slave_replica_count = slave_replica_count
         # If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance.
         # 
         # >  After you specify the SrcDBInstanceId parameter, use the **BackupId**, **ClusterBackupId** (recommended for cloud-native cluster instances), or **RestoreTime** parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
@@ -1822,6 +1962,8 @@ class CreateInstanceRequest(TeaModel):
             result['RecoverConfigMode'] = self.recover_config_mode
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.replica_count is not None:
+            result['ReplicaCount'] = self.replica_count
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
@@ -1838,6 +1980,8 @@ class CreateInstanceRequest(TeaModel):
             result['ShardCount'] = self.shard_count
         if self.slave_read_only_count is not None:
             result['SlaveReadOnlyCount'] = self.slave_read_only_count
+        if self.slave_replica_count is not None:
+            result['SlaveReplicaCount'] = self.slave_replica_count
         if self.src_dbinstance_id is not None:
             result['SrcDBInstanceId'] = self.src_dbinstance_id
         result['Tag'] = []
@@ -1920,6 +2064,8 @@ class CreateInstanceRequest(TeaModel):
             self.recover_config_mode = m.get('RecoverConfigMode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ReplicaCount') is not None:
+            self.replica_count = m.get('ReplicaCount')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -1936,6 +2082,8 @@ class CreateInstanceRequest(TeaModel):
             self.shard_count = m.get('ShardCount')
         if m.get('SlaveReadOnlyCount') is not None:
             self.slave_read_only_count = m.get('SlaveReadOnlyCount')
+        if m.get('SlaveReplicaCount') is not None:
+            self.slave_replica_count = m.get('SlaveReplicaCount')
         if m.get('SrcDBInstanceId') is not None:
             self.src_dbinstance_id = m.get('SrcDBInstanceId')
         self.tag = []
@@ -2448,19 +2596,49 @@ class CreateParameterGroupRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The service category. Valid values:
+        # 
+        # *   **standard**: Community Edition
+        # *   **enterprise**: Enhanced Edition (Tair)
+        # 
         # This parameter is required.
         self.category = category
+        # The engine type. Valid values:
+        # 
+        # *   **redis**: ApsaraDB for Redis Community Edition instance or Tair DRAM-based instance
+        # *   **tair_pena**: Tair persistent memory-optimized instance
+        # *   **tair_pdb**: Tair ESSD/SSD-based instance
+        # 
         # This parameter is required.
         self.engine_type = engine_type
+        # The compatible engine version. Valid values:
+        # 
+        # *   For ApsaraDB for Redis Community Edition instances, set the parameter to **5.0**, **6.0**, or **7.0**.
+        # *   For Tair DRAM-based instances that are compatible with Redis 5.0, 6.0, or 7.0, set the parameter to **5.0**, **6.0**, or **7.0**.
+        # *   For Tair persistent memory-optimized instances that are compatible with Redis 6.0, set the parameter to **1.0**.
+        # *   For Tair ESSD-based instances that are compatible with Redis 6.0, set the parameter to **1.0**. For Tair SSD-based instances that are compatible with Redis 6.0, set the parameter to **2.0**.
+        # 
         # This parameter is required.
         self.engine_version = engine_version
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The description of the parameter template. The description must be 0 to 200 characters in length.
         self.parameter_group_desc = parameter_group_desc
+        # The new name of the parameter template. The name must meet the following requirements:
+        # 
+        # *   The name can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+        # *   The name can be 8 to 64 characters in length.
+        # 
         # This parameter is required.
         self.parameter_group_name = parameter_group_name
+        # A JSON-formatted object that specifies the parameter-value pairs. Format: {"Parameter 1":"Value 1","Parameter 2":"Value 2"...}. The specified value overwrites the original content.
+        # 
+        # >  The parameters that can be added for different editions are displayed in the console.
+        # 
         # This parameter is required.
         self.parameters = parameters
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -2537,7 +2715,9 @@ class CreateParameterGroupResponseBody(TeaModel):
         param_group_id: str = None,
         request_id: str = None,
     ):
+        # The parameter template ID.
         self.param_group_id = param_group_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2605,6 +2785,365 @@ class CreateParameterGroupResponse(TeaModel):
         return self
 
 
+class CreateTCInstanceRequestDataDisk(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        performance_level: str = None,
+        size: int = None,
+    ):
+        # This parameter is required.
+        self.category = category
+        # This parameter is required.
+        self.performance_level = performance_level
+        # This parameter is required.
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class CreateTCInstanceRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateTCInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        auto_renew: str = None,
+        auto_renew_period: str = None,
+        auto_use_coupon: str = None,
+        business_info: str = None,
+        client_token: str = None,
+        coupon_no: str = None,
+        data_disk: List[CreateTCInstanceRequestDataDisk] = None,
+        dry_run: bool = None,
+        image_id: str = None,
+        instance_charge_type: str = None,
+        instance_class: str = None,
+        instance_name: str = None,
+        need_eni: bool = None,
+        network_type: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        period: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_group_id: str = None,
+        security_token: str = None,
+        tag: List[CreateTCInstanceRequestTag] = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.auto_renew = auto_renew
+        self.auto_renew_period = auto_renew_period
+        self.auto_use_coupon = auto_use_coupon
+        self.business_info = business_info
+        self.client_token = client_token
+        self.coupon_no = coupon_no
+        # This parameter is required.
+        self.data_disk = data_disk
+        self.dry_run = dry_run
+        # This parameter is required.
+        self.image_id = image_id
+        self.instance_charge_type = instance_charge_type
+        self.instance_class = instance_class
+        self.instance_name = instance_name
+        self.need_eni = need_eni
+        self.network_type = network_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.period = period
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_group_id = security_group_id
+        self.security_token = security_token
+        self.tag = tag
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.data_disk:
+            for k in self.data_disk:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.auto_renew_period is not None:
+            result['AutoRenewPeriod'] = self.auto_renew_period
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
+        if self.business_info is not None:
+            result['BusinessInfo'] = self.business_info
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.coupon_no is not None:
+            result['CouponNo'] = self.coupon_no
+        result['DataDisk'] = []
+        if self.data_disk is not None:
+            for k in self.data_disk:
+                result['DataDisk'].append(k.to_map() if k else None)
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.instance_charge_type is not None:
+            result['InstanceChargeType'] = self.instance_charge_type
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.need_eni is not None:
+            result['NeedEni'] = self.need_eni
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('AutoRenewPeriod') is not None:
+            self.auto_renew_period = m.get('AutoRenewPeriod')
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
+        if m.get('BusinessInfo') is not None:
+            self.business_info = m.get('BusinessInfo')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('CouponNo') is not None:
+            self.coupon_no = m.get('CouponNo')
+        self.data_disk = []
+        if m.get('DataDisk') is not None:
+            for k in m.get('DataDisk'):
+                temp_model = CreateTCInstanceRequestDataDisk()
+                self.data_disk.append(temp_model.from_map(k))
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('InstanceChargeType') is not None:
+            self.instance_charge_type = m.get('InstanceChargeType')
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('NeedEni') is not None:
+            self.need_eni = m.get('NeedEni')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateTCInstanceRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class CreateTCInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        order_id: int = None,
+        request_id: str = None,
+    ):
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateTCInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTCInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTCInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateTairInstanceRequestTag(TeaModel):
     def __init__(
         self,
@@ -2656,6 +3195,7 @@ class CreateTairInstanceRequest(TeaModel):
         charge_type: str = None,
         client_token: str = None,
         cluster_backup_id: str = None,
+        connection_string_prefix: str = None,
         coupon_no: str = None,
         dry_run: bool = None,
         engine_version: str = None,
@@ -2674,6 +3214,7 @@ class CreateTairInstanceRequest(TeaModel):
         read_only_count: int = None,
         recover_config_mode: str = None,
         region_id: str = None,
+        replica_count: int = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -2683,6 +3224,7 @@ class CreateTairInstanceRequest(TeaModel):
         shard_count: int = None,
         shard_type: str = None,
         slave_read_only_count: int = None,
+        slave_replica_count: int = None,
         src_dbinstance_id: str = None,
         storage: int = None,
         storage_type: str = None,
@@ -2725,6 +3267,7 @@ class CreateTairInstanceRequest(TeaModel):
         # *   If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the **BackupId** parameter.
         # *   If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,). Example: "2158\\*\\*\\*\\*20,2158\\*\\*\\*\\*22".
         self.cluster_backup_id = cluster_backup_id
+        self.connection_string_prefix = connection_string_prefix
         # The coupon code.
         self.coupon_no = coupon_no
         # Specifies whether to perform a dry run. Valid values:
@@ -2797,6 +3340,7 @@ class CreateTairInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.replica_count = replica_count
         # The ID of the resource group to which you want to assign the instance.
         # 
         # > 
@@ -2830,6 +3374,7 @@ class CreateTairInstanceRequest(TeaModel):
         # 
         # > When you create a multi-zone read/write splitting instance, you must specify both SlaveReadOnlyCount and SecondaryZoneId.
         self.slave_read_only_count = slave_read_only_count
+        self.slave_replica_count = slave_replica_count
         # If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance.
         # 
         # >  After you specify the SrcDBInstanceId parameter, use the **BackupId**, **ClusterBackupId** (recommended for cloud-native cluster instances), or **RestoreTime** parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
@@ -2894,6 +3439,8 @@ class CreateTairInstanceRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.cluster_backup_id is not None:
             result['ClusterBackupId'] = self.cluster_backup_id
+        if self.connection_string_prefix is not None:
+            result['ConnectionStringPrefix'] = self.connection_string_prefix
         if self.coupon_no is not None:
             result['CouponNo'] = self.coupon_no
         if self.dry_run is not None:
@@ -2930,6 +3477,8 @@ class CreateTairInstanceRequest(TeaModel):
             result['RecoverConfigMode'] = self.recover_config_mode
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.replica_count is not None:
+            result['ReplicaCount'] = self.replica_count
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
@@ -2948,6 +3497,8 @@ class CreateTairInstanceRequest(TeaModel):
             result['ShardType'] = self.shard_type
         if self.slave_read_only_count is not None:
             result['SlaveReadOnlyCount'] = self.slave_read_only_count
+        if self.slave_replica_count is not None:
+            result['SlaveReplicaCount'] = self.slave_replica_count
         if self.src_dbinstance_id is not None:
             result['SrcDBInstanceId'] = self.src_dbinstance_id
         if self.storage is not None:
@@ -2986,6 +3537,8 @@ class CreateTairInstanceRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('ClusterBackupId') is not None:
             self.cluster_backup_id = m.get('ClusterBackupId')
+        if m.get('ConnectionStringPrefix') is not None:
+            self.connection_string_prefix = m.get('ConnectionStringPrefix')
         if m.get('CouponNo') is not None:
             self.coupon_no = m.get('CouponNo')
         if m.get('DryRun') is not None:
@@ -3022,6 +3575,8 @@ class CreateTairInstanceRequest(TeaModel):
             self.recover_config_mode = m.get('RecoverConfigMode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ReplicaCount') is not None:
+            self.replica_count = m.get('ReplicaCount')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -3040,6 +3595,8 @@ class CreateTairInstanceRequest(TeaModel):
             self.shard_type = m.get('ShardType')
         if m.get('SlaveReadOnlyCount') is not None:
             self.slave_read_only_count = m.get('SlaveReadOnlyCount')
+        if m.get('SlaveReplicaCount') is not None:
+            self.slave_replica_count = m.get('SlaveReplicaCount')
         if m.get('SrcDBInstanceId') is not None:
             self.src_dbinstance_id = m.get('SrcDBInstanceId')
         if m.get('Storage') is not None:
@@ -4628,21 +5185,53 @@ class DescribeActiveOperationTasksRequest(TeaModel):
         status: int = None,
         task_type: str = None,
     ):
+        # The filter condition that is used to return tasks based on the settings of task cancellation. Default value: -1. Valid values:
+        # 
+        # *   **-1**: returns all tasks.
+        # *   **0**: returns only tasks that cannot be canceled.
+        # *   **1**: returns only tasks that can be canceled.
         self.allow_cancel = allow_cancel
+        # The filter condition that is used to return tasks based on the settings of the switching time. Default value: -1. Valid values:
+        # 
+        # *   **-1**: returns all tasks.
+        # *   **0**: returns only tasks for which the switching time cannot be changed.
+        # *   **1**: returns only tasks for which the switching time can be changed.
         self.allow_change = allow_change
+        # The type of task configuration change. Valid values:
+        # 
+        # *   **all** (default): The configurations of all O\\&M tasks are changed.
+        # *   **S0**: The configurations of tasks initiated to fix exceptions are changed.
+        # *   **S1**: The configurations of system O\\&M tasks are changed.
         self.change_level = change_level
+        # The database type. Valid values: **redis**\
         self.db_type = db_type
+        # The name of the instance. You can leave this parameter empty. If you configure this parameter, you can specify the name only of one instance.
         self.ins_name = ins_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 25. Maximum value: 100.
         self.page_size = page_size
+        # The name of the service. Valid values: RDS, POLARDB, MongoDB, and Redis. For Redis instances, set the value to Redis.
         self.product_id = product_id
+        # The region ID of the O&M task. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+        # 
+        # > A value of **all** indicates all region IDs.
         self.region = region
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The status of operation and maintenance events. It is used to filter and return tasks. The values are as follows:. Valid values:
+        # 
+        # *   **-1**: All events.
+        # *   **3**: Events awaiting processing.
+        # *   **4**: Events being processed.
+        # *   **5**: Events that have successfully ended.
+        # *   **6**: Events that have ended in failure.
+        # *   **7**: Events that have been canceled.
         self.status = status
+        # The type of the O\\&M task. If left blank, all types will be queried.
         self.task_type = task_type
 
     def validate(self):
@@ -4757,33 +5346,67 @@ class DescribeActiveOperationTasksResponseBodyItems(TeaModel):
         task_type_en: str = None,
         task_type_zh: str = None,
     ):
+        # Indicates whether the task can be canceled. The value 1 indicates that the task can be canceled. The value 0 indicates that the task cannot be canceled.
         self.allow_cancel = allow_cancel
+        # Indicates whether the switching time can be changed. The value 1 indicates that the switching time can be changed. The value 0 indicates that the switching time cannot be changed.
         self.allow_change = allow_change
+        # The code of the task level. The value S1 indicates the system O\\&M level. The value S0 indicates the exception fixing level.
         self.change_level = change_level
+        # The level of the task in English.
         self.change_level_en = change_level_en
+        # The level of the task in Chinese.
         self.change_level_zh = change_level_zh
+        # The time when the O\\&M task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.created_time = created_time
+        # The current zone.
         self.current_avz = current_avz
+        # The database type of the instance. The return value is **Redis**.
         self.db_type = db_type
+        # The version of the database engine.
         self.db_version = db_version
+        # The deadline before which the time to preform the O&M task can be modified. The time in UTC is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format.
         self.deadline = deadline
+        # The ID of the O\\&M event.
         self.id = id
+        # The impact of the task.
         self.impact = impact
+        # The impact of the task in English.
         self.impact_en = impact_en
+        # The impact of the task in Chinese.
         self.impact_zh = impact_zh
+        # The alias and description of the instance.
         self.ins_comment = ins_comment
+        # The ID of the instance.
         self.ins_name = ins_name
+        # The time when the O\\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.modified_time = modified_time
+        # The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss* format.
         self.prepare_interval = prepare_interval
+        # The region ID of the instance.
         self.region = region
+        # The information about the execution result.
         self.result_info = result_info
+        # The time when the O\\&M task was preformed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.start_time = start_time
+        # The status of operation and maintenance events. Return values
+        # 
+        # *   **3**: Events awaiting processing.
+        # *   **4**: Events being processed.
+        # *   **5**: Events that have successfully ended.
+        # *   **6**: Events that have ended in failure.
+        # *   **7**: Events that have been canceled.
         self.status = status
+        # The list of the subinstances.
         self.sub_ins_names = sub_ins_names
+        # The time when the system performs the switchover operation. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.switch_time = switch_time
+        # The parameters of the task.
         self.task_params = task_params
+        # The type of the O\\&M event.
         self.task_type = task_type
+        # The reason for the task in English.
         self.task_type_en = task_type_en
+        # The reason for the task in Chinese.
         self.task_type_zh = task_type_zh
 
     def validate(self):
@@ -4923,10 +5546,15 @@ class DescribeActiveOperationTasksResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The list of details of O\\&M tasks.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page. Default 25.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -7089,6 +7717,7 @@ class DescribeBackupsRequest(TeaModel):
     ):
         # The ID of the backup file.
         self.backup_id = backup_id
+        # The backup task ID, returned by CreateBackup. If CreateBackup returns multiple BackupJobIds, you need to use this interface to query each of them separately.
         self.backup_job_id = backup_job_id
         # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
         # 
@@ -7107,9 +7736,9 @@ class DescribeBackupsRequest(TeaModel):
         self.need_aof = need_aof
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
+        # The page number. The value must be an integer that is greater than **0**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 30, 50, 100, 200, and 300.
+        # The maximum number of entries per page. Valid values: 30, 50, 100, 200, and 300.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7320,6 +7949,7 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         # 
         # >  If the instance uses the standard architecture, this parameter returns the instance ID.
         self.node_instance_id = node_instance_id
+        # If the backup includes account information, kernel parameters and whitelist details.
         self.recover_config_mode = recover_config_mode
 
     def validate(self):
@@ -11782,18 +12412,20 @@ class DescribeHistoryMonitorValuesRequest(TeaModel):
         self.interval_for_history = interval_for_history
         # The monitoring metrics. Separate the metrics with commas (,). Take CpuUsage as an example:
         # 
-        # *   To query the overall CPU utilization of all data nodes, specify **CpuUsage$db**.
-        # *   To query the CPU utilization of a single data node, specify **CpuUsage** and NodeId.
+        # *   Cluster or read/write splitting instances
         # 
-        # For more information about the monitoring metrics, see **Additional description of MonitorKeys**.
+        #     *   To query the overall CPU utilization of all data nodes, specify **CpuUsage$db**.
+        #     *   To query the CPU utilization of a single data node, specify **CpuUsage** and NodeId.
+        # 
+        # *   Standard master-replica instances: Specify only **CpuUsage**.
+        # 
+        # For more information about monitoring metrics and their descriptions, see [Additional description of MonitorKeys](https://www.alibabacloud.com/help/zh/redis/developer-reference/api-r-kvstore-2015-01-01-describehistorymonitorvalues-redis#monitorKeys-note).
         # 
         # > 
         # 
         # *   This parameter is empty by default, which indicates that the UsedMemory and quotaMemory metrics are returned.
         # 
         # *   To ensure query efficiency, we recommend that you specify no more than five metrics for a single node at a time, and specify only a single metric when you query aggregate metrics.
-        # 
-        # [Additional description of MonitorKeys](https://help.aliyun.com/zh/redis/developer-reference/api-r-kvstore-2015-01-01-describehistorymonitorvalues-redis)
         self.monitor_keys = monitor_keys
         # The ID of the node in the instance. You can set this parameter to query the data of a specified node.
         # 
@@ -12588,6 +13220,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         read_only_count: int = None,
         real_instance_class: str = None,
         region_id: str = None,
+        replica_count: int = None,
         replica_id: str = None,
         replication_mode: str = None,
         resource_group_id: str = None,
@@ -12595,6 +13228,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         security_iplist: str = None,
         shard_count: int = None,
         slave_read_only_count: int = None,
+        slave_replica_count: int = None,
         storage: str = None,
         storage_type: str = None,
         tags: DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags = None,
@@ -12744,6 +13378,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         self.real_instance_class = real_instance_class
         # The region ID.
         self.region_id = region_id
+        self.replica_count = replica_count
         # The ID of the replica node.
         self.replica_id = replica_id
         # The architecture of the replica node. Valid values:
@@ -12763,6 +13398,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         self.shard_count = shard_count
         # The number of read replicas in the secondary zone. This parameter is returned only after read/write splitting is enabled for the instance across multiple zones.
         self.slave_read_only_count = slave_read_only_count
+        self.slave_replica_count = slave_replica_count
         # The storage capacity of the cloud disk.
         self.storage = storage
         # The storage type.
@@ -12872,6 +13508,8 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
             result['RealInstanceClass'] = self.real_instance_class
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.replica_count is not None:
+            result['ReplicaCount'] = self.replica_count
         if self.replica_id is not None:
             result['ReplicaId'] = self.replica_id
         if self.replication_mode is not None:
@@ -12886,6 +13524,8 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
             result['ShardCount'] = self.shard_count
         if self.slave_read_only_count is not None:
             result['SlaveReadOnlyCount'] = self.slave_read_only_count
+        if self.slave_replica_count is not None:
+            result['SlaveReplicaCount'] = self.slave_replica_count
         if self.storage is not None:
             result['Storage'] = self.storage
         if self.storage_type is not None:
@@ -12982,6 +13622,8 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
             self.real_instance_class = m.get('RealInstanceClass')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ReplicaCount') is not None:
+            self.replica_count = m.get('ReplicaCount')
         if m.get('ReplicaId') is not None:
             self.replica_id = m.get('ReplicaId')
         if m.get('ReplicationMode') is not None:
@@ -12996,6 +13638,8 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
             self.shard_count = m.get('ShardCount')
         if m.get('SlaveReadOnlyCount') is not None:
             self.slave_read_only_count = m.get('SlaveReadOnlyCount')
+        if m.get('SlaveReplicaCount') is not None:
+            self.slave_replica_count = m.get('SlaveReplicaCount')
         if m.get('Storage') is not None:
             self.storage = m.get('Storage')
         if m.get('StorageType') is not None:
@@ -13467,10 +14111,22 @@ class DescribeInstanceConfigResponseBody(TeaModel):
     def __init__(
         self,
         config: str = None,
+        param_no_loose_sentinel_enabled: str = None,
+        param_no_loose_sentinel_password_free_access: str = None,
+        param_no_loose_sentinel_password_free_commands: str = None,
+        param_repl_mode: str = None,
+        param_repl_timeout: str = None,
+        param_sentinel_compat_enable: str = None,
         request_id: str = None,
     ):
         # The parameter settings of the instance. For more information, see [Parameter overview and configuration guide](https://help.aliyun.com/document_detail/43885.html).
         self.config = config
+        self.param_no_loose_sentinel_enabled = param_no_loose_sentinel_enabled
+        self.param_no_loose_sentinel_password_free_access = param_no_loose_sentinel_password_free_access
+        self.param_no_loose_sentinel_password_free_commands = param_no_loose_sentinel_password_free_commands
+        self.param_repl_mode = param_repl_mode
+        self.param_repl_timeout = param_repl_timeout
+        self.param_sentinel_compat_enable = param_sentinel_compat_enable
         # The request ID.
         self.request_id = request_id
 
@@ -13485,6 +14141,18 @@ class DescribeInstanceConfigResponseBody(TeaModel):
         result = dict()
         if self.config is not None:
             result['Config'] = self.config
+        if self.param_no_loose_sentinel_enabled is not None:
+            result['ParamNoLooseSentinelEnabled'] = self.param_no_loose_sentinel_enabled
+        if self.param_no_loose_sentinel_password_free_access is not None:
+            result['ParamNoLooseSentinelPasswordFreeAccess'] = self.param_no_loose_sentinel_password_free_access
+        if self.param_no_loose_sentinel_password_free_commands is not None:
+            result['ParamNoLooseSentinelPasswordFreeCommands'] = self.param_no_loose_sentinel_password_free_commands
+        if self.param_repl_mode is not None:
+            result['ParamReplMode'] = self.param_repl_mode
+        if self.param_repl_timeout is not None:
+            result['ParamReplTimeout'] = self.param_repl_timeout
+        if self.param_sentinel_compat_enable is not None:
+            result['ParamSentinelCompatEnable'] = self.param_sentinel_compat_enable
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -13493,6 +14161,18 @@ class DescribeInstanceConfigResponseBody(TeaModel):
         m = m or dict()
         if m.get('Config') is not None:
             self.config = m.get('Config')
+        if m.get('ParamNoLooseSentinelEnabled') is not None:
+            self.param_no_loose_sentinel_enabled = m.get('ParamNoLooseSentinelEnabled')
+        if m.get('ParamNoLooseSentinelPasswordFreeAccess') is not None:
+            self.param_no_loose_sentinel_password_free_access = m.get('ParamNoLooseSentinelPasswordFreeAccess')
+        if m.get('ParamNoLooseSentinelPasswordFreeCommands') is not None:
+            self.param_no_loose_sentinel_password_free_commands = m.get('ParamNoLooseSentinelPasswordFreeCommands')
+        if m.get('ParamReplMode') is not None:
+            self.param_repl_mode = m.get('ParamReplMode')
+        if m.get('ParamReplTimeout') is not None:
+            self.param_repl_timeout = m.get('ParamReplTimeout')
+        if m.get('ParamSentinelCompatEnable') is not None:
+            self.param_sentinel_compat_enable = m.get('ParamSentinelCompatEnable')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -14246,12 +14926,16 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
         port: int = None,
         private_ip: str = None,
         qps: int = None,
+        read_only_count: str = None,
         region_id: str = None,
         replacate_id: str = None,
+        replica_count: int = None,
         resource_group_id: str = None,
         secondary_zone_id: str = None,
         shard_class: str = None,
         shard_count: int = None,
+        slave_read_only_count: int = None,
+        slave_replica_count: int = None,
         tags: DescribeInstancesResponseBodyInstancesKVStoreInstanceTags = None,
         user_name: str = None,
         v_switch_id: str = None,
@@ -14368,10 +15052,12 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
         self.private_ip = private_ip
         # The number of queries per second (QPS).
         self.qps = qps
+        self.read_only_count = read_only_count
         # The region ID.
         self.region_id = region_id
         # The logical ID of the distributed instance.
         self.replacate_id = replacate_id
+        self.replica_count = replica_count
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The ID of the secondary zone.
@@ -14386,6 +15072,8 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
         # 
         # >  This parameter is returned only for cloud-native cluster instances or read/write splitting instances.
         self.shard_count = shard_count
+        self.slave_read_only_count = slave_read_only_count
+        self.slave_replica_count = slave_replica_count
         # Details about the tags.
         self.tags = tags
         # The username used to connect to the instance. By default, a username named after the instance ID is included.
@@ -14465,10 +15153,14 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
             result['PrivateIp'] = self.private_ip
         if self.qps is not None:
             result['QPS'] = self.qps
+        if self.read_only_count is not None:
+            result['ReadOnlyCount'] = self.read_only_count
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.replacate_id is not None:
             result['ReplacateId'] = self.replacate_id
+        if self.replica_count is not None:
+            result['ReplicaCount'] = self.replica_count
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.secondary_zone_id is not None:
@@ -14477,6 +15169,10 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
             result['ShardClass'] = self.shard_class
         if self.shard_count is not None:
             result['ShardCount'] = self.shard_count
+        if self.slave_read_only_count is not None:
+            result['SlaveReadOnlyCount'] = self.slave_read_only_count
+        if self.slave_replica_count is not None:
+            result['SlaveReplicaCount'] = self.slave_replica_count
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
         if self.user_name is not None:
@@ -14549,10 +15245,14 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
             self.private_ip = m.get('PrivateIp')
         if m.get('QPS') is not None:
             self.qps = m.get('QPS')
+        if m.get('ReadOnlyCount') is not None:
+            self.read_only_count = m.get('ReadOnlyCount')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ReplacateId') is not None:
             self.replacate_id = m.get('ReplacateId')
+        if m.get('ReplicaCount') is not None:
+            self.replica_count = m.get('ReplicaCount')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecondaryZoneId') is not None:
@@ -14561,6 +15261,10 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
             self.shard_class = m.get('ShardClass')
         if m.get('ShardCount') is not None:
             self.shard_count = m.get('ShardCount')
+        if m.get('SlaveReadOnlyCount') is not None:
+            self.slave_read_only_count = m.get('SlaveReadOnlyCount')
+        if m.get('SlaveReplicaCount') is not None:
+            self.slave_replica_count = m.get('SlaveReplicaCount')
         if m.get('Tags') is not None:
             temp_model = DescribeInstancesResponseBodyInstancesKVStoreInstanceTags()
             self.tags = temp_model.from_map(m['Tags'])
@@ -21348,6 +22052,1133 @@ class DescribeSlowLogRecordsResponse(TeaModel):
         return self
 
 
+class DescribeTairKVCacheCustomInstanceAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk(TeaModel):
+    def __init__(
+        self,
+        disk_id: str = None,
+        size: str = None,
+        type: str = None,
+    ):
+        self.disk_id = disk_id
+        self.size = size
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks(TeaModel):
+    def __init__(
+        self,
+        disk: List[DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk] = None,
+    ):
+        self.disk = disk
+
+    def validate(self):
+        if self.disk:
+            for k in self.disk:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Disk'] = []
+        if self.disk is not None:
+            for k in self.disk:
+                result['Disk'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.disk = []
+        if m.get('Disk') is not None:
+            for k in m.get('Disk'):
+                temp_model = DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk()
+                self.disk.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeTairKVCacheCustomInstanceAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        architecture_type: str = None,
+        charge_type: str = None,
+        cpu: int = None,
+        create_time: str = None,
+        disks: DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks = None,
+        end_time: str = None,
+        image_id: str = None,
+        instance_class: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_status: str = None,
+        instance_type: str = None,
+        is_order_completed: bool = None,
+        memory: int = None,
+        network_type: str = None,
+        private_ip: str = None,
+        region_id: str = None,
+        request_id: str = None,
+        resource_group_id: str = None,
+        security_group_id: str = None,
+        storage: int = None,
+        storage_type: str = None,
+        tags: DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+        zone_type: str = None,
+    ):
+        self.architecture_type = architecture_type
+        self.charge_type = charge_type
+        self.cpu = cpu
+        self.create_time = create_time
+        self.disks = disks
+        self.end_time = end_time
+        self.image_id = image_id
+        self.instance_class = instance_class
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_status = instance_status
+        self.instance_type = instance_type
+        self.is_order_completed = is_order_completed
+        self.memory = memory
+        self.network_type = network_type
+        self.private_ip = private_ip
+        self.region_id = region_id
+        self.request_id = request_id
+        self.resource_group_id = resource_group_id
+        self.security_group_id = security_group_id
+        self.storage = storage
+        self.storage_type = storage_type
+        self.tags = tags
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+        self.zone_type = zone_type
+
+    def validate(self):
+        if self.disks:
+            self.disks.validate()
+        if self.tags:
+            self.tags.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.architecture_type is not None:
+            result['ArchitectureType'] = self.architecture_type
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.disks is not None:
+            result['Disks'] = self.disks.to_map()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_status is not None:
+            result['InstanceStatus'] = self.instance_status
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.is_order_completed is not None:
+            result['IsOrderCompleted'] = self.is_order_completed
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.private_ip is not None:
+            result['PrivateIp'] = self.private_ip
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.storage is not None:
+            result['Storage'] = self.storage
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        if self.zone_type is not None:
+            result['ZoneType'] = self.zone_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArchitectureType') is not None:
+            self.architecture_type = m.get('ArchitectureType')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Disks') is not None:
+            temp_model = DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks()
+            self.disks = temp_model.from_map(m['Disks'])
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceStatus') is not None:
+            self.instance_status = m.get('InstanceStatus')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('IsOrderCompleted') is not None:
+            self.is_order_completed = m.get('IsOrderCompleted')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('PrivateIp') is not None:
+            self.private_ip = m.get('PrivateIp')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Storage') is not None:
+            self.storage = m.get('Storage')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        if m.get('Tags') is not None:
+            temp_model = DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags()
+            self.tags = temp_model.from_map(m['Tags'])
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        if m.get('ZoneType') is not None:
+            self.zone_type = m.get('ZoneType')
+        return self
+
+
+class DescribeTairKVCacheCustomInstanceAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTairKVCacheCustomInstanceAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTairKVCacheCustomInstanceAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        express: str = None,
+        instance_id: str = None,
+        length: str = None,
+        metric_name: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        period: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.express = express
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.length = length
+        self.metric_name = metric_name
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.period = period
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.express is not None:
+            result['Express'] = self.express
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.length is not None:
+            result['Length'] = self.length
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Express') is not None:
+            self.express = m.get('Express')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Length') is not None:
+            self.length = m.get('Length')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody(TeaModel):
+    def __init__(
+        self,
+        datapoints: str = None,
+        next_token: str = None,
+        period: str = None,
+        request_id: str = None,
+    ):
+        self.datapoints = datapoints
+        self.next_token = next_token
+        self.period = period
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.datapoints is not None:
+            result['Datapoints'] = self.datapoints
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Datapoints') is not None:
+            self.datapoints = m.get('Datapoints')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeTairKVCacheCustomInstancesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeTairKVCacheCustomInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        charge_type: str = None,
+        expired: str = None,
+        instance_class: str = None,
+        instance_ids: str = None,
+        instance_status: str = None,
+        instance_type: str = None,
+        network_type: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        search_key: str = None,
+        security_token: str = None,
+        tag: List[DescribeTairKVCacheCustomInstancesRequestTag] = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.charge_type = charge_type
+        self.expired = expired
+        self.instance_class = instance_class
+        self.instance_ids = instance_ids
+        self.instance_status = instance_status
+        self.instance_type = instance_type
+        self.network_type = network_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.search_key = search_key
+        self.security_token = security_token
+        self.tag = tag
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.expired is not None:
+            result['Expired'] = self.expired
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.instance_status is not None:
+            result['InstanceStatus'] = self.instance_status
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.search_key is not None:
+            result['SearchKey'] = self.search_key
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('Expired') is not None:
+            self.expired = m.get('Expired')
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('InstanceStatus') is not None:
+            self.instance_status = m.get('InstanceStatus')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SearchKey') is not None:
+            self.search_key = m.get('SearchKey')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeTairKVCacheCustomInstancesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
+    def __init__(
+        self,
+        charge_type: str = None,
+        create_time: str = None,
+        destroy_time: str = None,
+        end_time: str = None,
+        instance_class: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_status: str = None,
+        instance_type: str = None,
+        network_type: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        storage: int = None,
+        storage_type: str = None,
+        tags: DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.charge_type = charge_type
+        self.create_time = create_time
+        self.destroy_time = destroy_time
+        self.end_time = end_time
+        self.instance_class = instance_class
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_status = instance_status
+        self.instance_type = instance_type
+        self.network_type = network_type
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.storage = storage
+        self.storage_type = storage_type
+        self.tags = tags
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.tags:
+            self.tags.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.destroy_time is not None:
+            result['DestroyTime'] = self.destroy_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_status is not None:
+            result['InstanceStatus'] = self.instance_status
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.storage is not None:
+            result['Storage'] = self.storage
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DestroyTime') is not None:
+            self.destroy_time = m.get('DestroyTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceStatus') is not None:
+            self.instance_status = m.get('InstanceStatus')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Storage') is not None:
+            self.storage = m.get('Storage')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        if m.get('Tags') is not None:
+            temp_model = DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags()
+            self.tags = temp_model.from_map(m['Tags'])
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeTairKVCacheCustomInstancesResponseBodyInstances(TeaModel):
+    def __init__(
+        self,
+        kvstore_instance: List[DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance] = None,
+    ):
+        self.kvstore_instance = kvstore_instance
+
+    def validate(self):
+        if self.kvstore_instance:
+            for k in self.kvstore_instance:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KVStoreInstance'] = []
+        if self.kvstore_instance is not None:
+            for k in self.kvstore_instance:
+                result['KVStoreInstance'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.kvstore_instance = []
+        if m.get('KVStoreInstance') is not None:
+            for k in m.get('KVStoreInstance'):
+                temp_model = DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance()
+                self.kvstore_instance.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeTairKVCacheCustomInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instances: DescribeTairKVCacheCustomInstancesResponseBodyInstances = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.instances = instances
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.instances:
+            self.instances.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instances is not None:
+            result['Instances'] = self.instances.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Instances') is not None:
+            temp_model = DescribeTairKVCacheCustomInstancesResponseBodyInstances()
+            self.instances = temp_model.from_map(m['Instances'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeTairKVCacheCustomInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTairKVCacheCustomInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTairKVCacheCustomInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeTasksRequest(TeaModel):
     def __init__(
         self,
@@ -23293,6 +25124,164 @@ class LockDBInstanceWriteResponse(TeaModel):
         return self
 
 
+class MasterNodeShutDownFailOverRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        dbfault_mode: str = None,
+        dbnodes: str = None,
+        fail_mode: str = None,
+        instance_id: str = None,
+        proxy_fault_mode: str = None,
+        proxy_instance_ids: str = None,
+    ):
+        # The resource category. Set the value to instance.
+        self.category = category
+        # *   Specify: This mode allows you to specify a database node to use.
+        # *   Random: In this mode, a random database node is selected when no database node is specified.
+        self.dbfault_mode = dbfault_mode
+        # The IDs of the database nodes.
+        self.dbnodes = dbnodes
+        # *   Safe: safe shutdown. This mode involves using redis_safe to shut down the Redis process.
+        # *   UnSafe: non-secure shutdown. This mode involves using the shutdown command to shut down the Redis process.
+        self.fail_mode = fail_mode
+        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # *   Specify: This mode allows you to specify a proxy node to use.
+        # *   Random: In this mode, a random proxy node is selected when no proxy node is specified.
+        self.proxy_fault_mode = proxy_fault_mode
+        # The IDs of the proxy nodes.
+        self.proxy_instance_ids = proxy_instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.dbfault_mode is not None:
+            result['DBFaultMode'] = self.dbfault_mode
+        if self.dbnodes is not None:
+            result['DBNodes'] = self.dbnodes
+        if self.fail_mode is not None:
+            result['FailMode'] = self.fail_mode
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.proxy_fault_mode is not None:
+            result['ProxyFaultMode'] = self.proxy_fault_mode
+        if self.proxy_instance_ids is not None:
+            result['ProxyInstanceIds'] = self.proxy_instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DBFaultMode') is not None:
+            self.dbfault_mode = m.get('DBFaultMode')
+        if m.get('DBNodes') is not None:
+            self.dbnodes = m.get('DBNodes')
+        if m.get('FailMode') is not None:
+            self.fail_mode = m.get('FailMode')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ProxyFaultMode') is not None:
+            self.proxy_fault_mode = m.get('ProxyFaultMode')
+        if m.get('ProxyInstanceIds') is not None:
+            self.proxy_instance_ids = m.get('ProxyInstanceIds')
+        return self
+
+
+class MasterNodeShutDownFailOverResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # The instance ID.
+        self.dbinstance_id = dbinstance_id
+        # The request ID.
+        self.request_id = request_id
+        # The task ID. For information about how to obtain the ID of a task, see [ListTasks](https://help.aliyun.com/document_detail/454662.html).
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskID'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskID') is not None:
+            self.task_id = m.get('TaskID')
+        return self
+
+
+class MasterNodeShutDownFailOverResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MasterNodeShutDownFailOverResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MasterNodeShutDownFailOverResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class MigrateToOtherZoneRequest(TeaModel):
     def __init__(
         self,
@@ -23798,7 +25787,7 @@ class ModifyActiveOperationTaskRequest(TeaModel):
     ):
         # The ID of the O\\&M task. Separate multiple IDs with commas (,).
         # 
-        # > You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/197387.html) operation to query the ID of an O\\&M task.
+        # > You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/473865.html) operation to query the ID of an O\\&M task.
         # 
         # This parameter is required.
         self.ids = ids
@@ -23809,7 +25798,7 @@ class ModifyActiveOperationTaskRequest(TeaModel):
         self.security_token = security_token
         # The scheduled switchover time to be specified. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
-        # > The time cannot be later than the latest operation time. You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/197387.html) operation to obtain the latest operation time, which is the value of the **Deadline** parameter in the response.
+        # > The time cannot be later than the latest operation time. You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/473865.html) operation to obtain the latest operation time, which is the value of the **Deadline** parameter in the response.
         # 
         # This parameter is required.
         self.switch_time = switch_time
@@ -23946,14 +25935,26 @@ class ModifyActiveOperationTasksRequest(TeaModel):
         security_token: str = None,
         switch_time: str = None,
     ):
+        # The IDs of the O\\&M events. Separate multiple event IDs with commas (,).
+        # 
         # This parameter is required.
         self.ids = ids
+        # Specifies whether to immediately start scheduling. Valid values:
+        # 
+        # *   0 (default): Scheduling is not started immediately.
+        # *   1: Scheduling is started immediately.
+        # 
+        # >  If you set this parameter to 0, the SwitchTime parameter takes effect. If you set this parameter to 1, the SwitchTime parameter does not take effect. In this case, the start time of the event is set to the current time, and the system determines the switching time based on the start time. Scheduling is started immediately, which is a prerequisite for the switchover. Then, the switchover is performed. You can call the DescribeActiveOperationTasks operation to query the preparation time that is returned for the PrepareInterval parameter.
         self.immediate_start = immediate_start
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The scheduled switching time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # >  The time that is specified by the SwitchTime parameter cannot be later than the time that is specified by the Deadline parameter. You can call the DescribeActiveOperationTasks operation to query the latest switching time that is returned for the Deadline parameter.
+        # 
         # This parameter is required.
         self.switch_time = switch_time
 
@@ -24011,7 +26012,9 @@ class ModifyActiveOperationTasksResponseBody(TeaModel):
         ids: str = None,
         request_id: str = None,
     ):
+        # The IDs of the O\\&M events. Separate multiple event IDs with commas (,).
         self.ids = ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25503,6 +27506,153 @@ class ModifyInstanceAutoRenewalAttributeResponse(TeaModel):
         return self
 
 
+class ModifyInstanceBandwidthRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        target_intranet_bandwidth: str = None,
+    ):
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        # The total expected bandwidth of the instance.
+        # 
+        # > If the instance is a cluster instance, the TargetIntranetBandwidth must be divisible by the number of shards in the instance. This operation is not supported for read/write splitting instances.
+        # 
+        # This parameter is required.
+        self.target_intranet_bandwidth = target_intranet_bandwidth
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.target_intranet_bandwidth is not None:
+            result['TargetIntranetBandwidth'] = self.target_intranet_bandwidth
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('TargetIntranetBandwidth') is not None:
+            self.target_intranet_bandwidth = m.get('TargetIntranetBandwidth')
+        return self
+
+
+class ModifyInstanceBandwidthResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        # The ID of the order.
+        self.order_id = order_id
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstanceBandwidthResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstanceBandwidthResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceBandwidthResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyInstanceConfigRequest(TeaModel):
     def __init__(
         self,
@@ -25510,6 +27660,12 @@ class ModifyInstanceConfigRequest(TeaModel):
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        param_no_loose_sentinel_enabled: str = None,
+        param_no_loose_sentinel_password_free_access: str = None,
+        param_no_loose_sentinel_password_free_commands: str = None,
+        param_repl_mode: str = None,
+        param_semisync_repl_timeout: str = None,
+        param_sentinel_compat_enable: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
@@ -25519,8 +27675,6 @@ class ModifyInstanceConfigRequest(TeaModel):
         # **\
         # 
         # **Description** For more information, see [Supported parameters](https://help.aliyun.com/document_detail/259681.html).
-        # 
-        # This parameter is required.
         self.config = config
         # The ID of the instance.
         # 
@@ -25528,6 +27682,12 @@ class ModifyInstanceConfigRequest(TeaModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.param_no_loose_sentinel_enabled = param_no_loose_sentinel_enabled
+        self.param_no_loose_sentinel_password_free_access = param_no_loose_sentinel_password_free_access
+        self.param_no_loose_sentinel_password_free_commands = param_no_loose_sentinel_password_free_commands
+        self.param_repl_mode = param_repl_mode
+        self.param_semisync_repl_timeout = param_semisync_repl_timeout
+        self.param_sentinel_compat_enable = param_sentinel_compat_enable
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -25549,6 +27709,18 @@ class ModifyInstanceConfigRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.param_no_loose_sentinel_enabled is not None:
+            result['ParamNoLooseSentinelEnabled'] = self.param_no_loose_sentinel_enabled
+        if self.param_no_loose_sentinel_password_free_access is not None:
+            result['ParamNoLooseSentinelPasswordFreeAccess'] = self.param_no_loose_sentinel_password_free_access
+        if self.param_no_loose_sentinel_password_free_commands is not None:
+            result['ParamNoLooseSentinelPasswordFreeCommands'] = self.param_no_loose_sentinel_password_free_commands
+        if self.param_repl_mode is not None:
+            result['ParamReplMode'] = self.param_repl_mode
+        if self.param_semisync_repl_timeout is not None:
+            result['ParamSemisyncReplTimeout'] = self.param_semisync_repl_timeout
+        if self.param_sentinel_compat_enable is not None:
+            result['ParamSentinelCompatEnable'] = self.param_sentinel_compat_enable
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -25567,6 +27739,18 @@ class ModifyInstanceConfigRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ParamNoLooseSentinelEnabled') is not None:
+            self.param_no_loose_sentinel_enabled = m.get('ParamNoLooseSentinelEnabled')
+        if m.get('ParamNoLooseSentinelPasswordFreeAccess') is not None:
+            self.param_no_loose_sentinel_password_free_access = m.get('ParamNoLooseSentinelPasswordFreeAccess')
+        if m.get('ParamNoLooseSentinelPasswordFreeCommands') is not None:
+            self.param_no_loose_sentinel_password_free_commands = m.get('ParamNoLooseSentinelPasswordFreeCommands')
+        if m.get('ParamReplMode') is not None:
+            self.param_repl_mode = m.get('ParamReplMode')
+        if m.get('ParamSemisyncReplTimeout') is not None:
+            self.param_semisync_repl_timeout = m.get('ParamSemisyncReplTimeout')
+        if m.get('ParamSentinelCompatEnable') is not None:
+            self.param_sentinel_compat_enable = m.get('ParamSentinelCompatEnable')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -26359,12 +28543,20 @@ class ModifyInstanceParameterRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The parameter template ID.
+        # 
+        # > You can view the list of parameter templates in the target region, including the parameter template ID, through the DescribeParameterGroups interface.
         self.parameter_group_id = parameter_group_id
+        # The information about parameters.
         self.parameters = parameters
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -26430,9 +28622,11 @@ class ModifyInstanceParameterResponseBody(TeaModel):
         request_id: str = None,
         task_id: int = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
         # Id of the request
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -26679,12 +28873,16 @@ class ModifyInstanceSpecRequest(TeaModel):
         owner_id: int = None,
         read_only_count: int = None,
         region_id: str = None,
+        replica_count: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
         shard_count: int = None,
         slave_read_only_count: int = None,
+        slave_replica_count: int = None,
         source_biz: str = None,
+        storage: int = None,
+        storage_type: str = None,
     ):
         # Specifies whether to enable auto-renewal. Default value: true. Valid values:
         # 
@@ -26751,6 +28949,7 @@ class ModifyInstanceSpecRequest(TeaModel):
         self.read_only_count = read_only_count
         # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
         self.region_id = region_id
+        self.replica_count = replica_count
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -26758,8 +28957,11 @@ class ModifyInstanceSpecRequest(TeaModel):
         self.shard_count = shard_count
         # The number of read replicas in the secondary zone. This parameter is used to create a read/write splitting instance that is deployed in multiple zones. Valid values: 1 to 9. The sum of the SlaveReadOnlyCount and ReadOnlyCount values cannot be greater than 9.
         self.slave_read_only_count = slave_read_only_count
+        self.slave_replica_count = slave_replica_count
         # The source of the operation. This parameter is used only for internal maintenance. You do not need to specify this parameter.
         self.source_biz = source_biz
+        self.storage = storage
+        self.storage_type = storage_type
 
     def validate(self):
         pass
@@ -26802,6 +29004,8 @@ class ModifyInstanceSpecRequest(TeaModel):
             result['ReadOnlyCount'] = self.read_only_count
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.replica_count is not None:
+            result['ReplicaCount'] = self.replica_count
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -26812,8 +29016,14 @@ class ModifyInstanceSpecRequest(TeaModel):
             result['ShardCount'] = self.shard_count
         if self.slave_read_only_count is not None:
             result['SlaveReadOnlyCount'] = self.slave_read_only_count
+        if self.slave_replica_count is not None:
+            result['SlaveReplicaCount'] = self.slave_replica_count
         if self.source_biz is not None:
             result['SourceBiz'] = self.source_biz
+        if self.storage is not None:
+            result['Storage'] = self.storage
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         return result
 
     def from_map(self, m: dict = None):
@@ -26850,6 +29060,8 @@ class ModifyInstanceSpecRequest(TeaModel):
             self.read_only_count = m.get('ReadOnlyCount')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ReplicaCount') is not None:
+            self.replica_count = m.get('ReplicaCount')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -26860,8 +29072,14 @@ class ModifyInstanceSpecRequest(TeaModel):
             self.shard_count = m.get('ShardCount')
         if m.get('SlaveReadOnlyCount') is not None:
             self.slave_read_only_count = m.get('SlaveReadOnlyCount')
+        if m.get('SlaveReplicaCount') is not None:
+            self.slave_replica_count = m.get('SlaveReplicaCount')
         if m.get('SourceBiz') is not None:
             self.source_biz = m.get('SourceBiz')
+        if m.get('Storage') is not None:
+            self.storage = m.get('Storage')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         return self
 
 
@@ -28051,6 +30269,302 @@ class ModifySecurityIpsResponse(TeaModel):
         return self
 
 
+class ModifyTairKVCacheCustomInstanceAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_name: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        source_biz: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.instance_name = instance_name
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.source_biz = source_biz
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.source_biz is not None:
+            result['SourceBiz'] = self.source_biz
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('SourceBiz') is not None:
+            self.source_biz = m.get('SourceBiz')
+        return self
+
+
+class ModifyTairKVCacheCustomInstanceAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyTairKVCacheCustomInstanceAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyTairKVCacheCustomInstanceAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyTairKVCacheCustomInstanceAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyTaskInfoRequest(TeaModel):
+    def __init__(
+        self,
+        action_params: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        step_name: str = None,
+        task_action: str = None,
+        task_id: str = None,
+    ):
+        self.action_params = action_params
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.step_name = step_name
+        self.task_action = task_action
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_params is not None:
+            result['ActionParams'] = self.action_params
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.task_action is not None:
+            result['TaskAction'] = self.task_action
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionParams') is not None:
+            self.action_params = m.get('ActionParams')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('TaskAction') is not None:
+            self.task_action = m.get('TaskAction')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ModifyTaskInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_task_id: str = None,
+        request_id: str = None,
+        success_count: str = None,
+    ):
+        self.error_code = error_code
+        self.error_task_id = error_task_id
+        self.request_id = request_id
+        self.success_count = success_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_task_id is not None:
+            result['ErrorTaskId'] = self.error_task_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorTaskId') is not None:
+            self.error_task_id = m.get('ErrorTaskId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        return self
+
+
+class ModifyTaskInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyTaskInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyTaskInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReleaseDirectConnectionRequest(TeaModel):
     def __init__(
         self,
@@ -28989,6 +31503,296 @@ class ResetAccountPasswordResponse(TeaModel):
         return self
 
 
+class ResetTairKVCacheCustomInstancePasswordRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        password: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        source_biz: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.password = password
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.source_biz = source_biz
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.source_biz is not None:
+            result['SourceBiz'] = self.source_biz
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('SourceBiz') is not None:
+            self.source_biz = m.get('SourceBiz')
+        return self
+
+
+class ResetTairKVCacheCustomInstancePasswordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ResetTairKVCacheCustomInstancePasswordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResetTairKVCacheCustomInstancePasswordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResetTairKVCacheCustomInstancePasswordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ResizeTairKVCacheCustomInstanceDiskRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        disk_id: str = None,
+        disk_size: str = None,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.auto_pay = auto_pay
+        # This parameter is required.
+        self.disk_id = disk_id
+        self.disk_size = disk_size
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class ResizeTairKVCacheCustomInstanceDiskResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ResizeTairKVCacheCustomInstanceDiskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResizeTairKVCacheCustomInstanceDiskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResizeTairKVCacheCustomInstanceDiskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RestartInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -29150,6 +31954,144 @@ class RestartInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RestartInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RestartTairKVCacheCustomInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class RestartTairKVCacheCustomInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class RestartTairKVCacheCustomInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RestartTairKVCacheCustomInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RestartTairKVCacheCustomInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29331,6 +32273,282 @@ class RestoreInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RestoreInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartTairKVCacheCustomInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class StartTairKVCacheCustomInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class StartTairKVCacheCustomInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartTairKVCacheCustomInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartTairKVCacheCustomInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopTairKVCacheCustomInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class StopTairKVCacheCustomInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class StopTairKVCacheCustomInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopTairKVCacheCustomInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopTairKVCacheCustomInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29622,6 +32840,124 @@ class SwitchInstanceProxyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SwitchInstanceProxyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SwitchInstanceZoneFailOverRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        site_fault_time: str = None,
+        target_zone_id: str = None,
+    ):
+        # The instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The duration for which the fault lasts. Unit: minutes.
+        # 
+        # Valid values:
+        # 
+        # *   5
+        # *   10
+        self.site_fault_time = site_fault_time
+        # The ID of the destination zone.
+        self.target_zone_id = target_zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.site_fault_time is not None:
+            result['SiteFaultTime'] = self.site_fault_time
+        if self.target_zone_id is not None:
+            result['TargetZoneId'] = self.target_zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SiteFaultTime') is not None:
+            self.site_fault_time = m.get('SiteFaultTime')
+        if m.get('TargetZoneId') is not None:
+            self.target_zone_id = m.get('TargetZoneId')
+        return self
+
+
+class SwitchInstanceZoneFailOverResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SwitchInstanceZoneFailOverResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SwitchInstanceZoneFailOverResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SwitchInstanceZoneFailOverResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -30372,6 +33708,8 @@ class TransformToPrePaidRequest(TeaModel):
     def __init__(
         self,
         auto_pay: bool = None,
+        auto_renew: str = None,
+        auto_renew_period: int = None,
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -30385,6 +33723,8 @@ class TransformToPrePaidRequest(TeaModel):
         # *   **true**: yes
         # *   **false**: no. In this case, you can renew your instance in the ApsaraDB for Redis console. For more information, see [Manually renew an instance](https://help.aliyun.com/document_detail/26352.html).
         self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        self.auto_renew_period = auto_renew_period
         # The ID of the instance. You can call the [DescribeInstances](~~DescribeInstances~~) operation to query the ID of the instance.
         # 
         # This parameter is required.
@@ -30410,6 +33750,10 @@ class TransformToPrePaidRequest(TeaModel):
         result = dict()
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.auto_renew_period is not None:
+            result['AutoRenewPeriod'] = self.auto_renew_period
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.owner_account is not None:
@@ -30430,6 +33774,10 @@ class TransformToPrePaidRequest(TeaModel):
         m = m or dict()
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('AutoRenewPeriod') is not None:
+            self.auto_renew_period = m.get('AutoRenewPeriod')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('OwnerAccount') is not None:

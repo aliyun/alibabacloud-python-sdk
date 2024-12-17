@@ -1,3 +1,46 @@
+2024-12-17 Version: 4.3.0
+- Support API CancelActiveOperationTasks.
+- Support API CreateTCInstance.
+- Support API DescribeTairKVCacheCustomInstanceAttribute.
+- Support API DescribeTairKVCacheCustomInstanceHistoryMonitorValues.
+- Support API DescribeTairKVCacheCustomInstances.
+- Support API MasterNodeShutDownFailOver.
+- Support API ModifyInstanceBandwidth.
+- Support API ModifyTairKVCacheCustomInstanceAttribute.
+- Support API ModifyTaskInfo.
+- Support API ResetTairKVCacheCustomInstancePassword.
+- Support API ResizeTairKVCacheCustomInstanceDisk.
+- Support API RestartTairKVCacheCustomInstance.
+- Support API StartTairKVCacheCustomInstance.
+- Support API StopTairKVCacheCustomInstance.
+- Support API SwitchInstanceZoneFailOver.
+- Update API CreateInstance: add param ReplicaCount.
+- Update API CreateInstance: add param SlaveReplicaCount.
+- Update API CreateInstance: update param SlaveReadOnlyCount.
+- Update API CreateTairInstance: add param ConnectionStringPrefix.
+- Update API CreateTairInstance: add param ReplicaCount.
+- Update API CreateTairInstance: add param SlaveReplicaCount.
+- Update API DescribeAvailableResource: update response param.
+- Update API DescribeBackups: update param PageSize.
+- Update API DescribeInstanceAttribute: update response param.
+- Update API DescribeInstanceConfig: update response param.
+- Update API DescribeInstances: update response param.
+- Update API DescribeRoleZoneInfo: update param PageSize.
+- Update API ModifyInstanceConfig: add param ParamNoLooseSentinelEnabled.
+- Update API ModifyInstanceConfig: add param ParamNoLooseSentinelPasswordFreeAccess.
+- Update API ModifyInstanceConfig: add param ParamNoLooseSentinelPasswordFreeCommands.
+- Update API ModifyInstanceConfig: add param ParamReplMode.
+- Update API ModifyInstanceConfig: add param ParamSemisyncReplTimeout.
+- Update API ModifyInstanceConfig: add param ParamSentinelCompatEnable.
+- Update API ModifyInstanceConfig: update param Config.
+- Update API ModifyInstanceSpec: add param ReplicaCount.
+- Update API ModifyInstanceSpec: add param SlaveReplicaCount.
+- Update API ModifyInstanceSpec: add param Storage.
+- Update API ModifyInstanceSpec: add param StorageType.
+- Update API TransformToPrePaid: add param AutoRenew.
+- Update API TransformToPrePaid: add param AutoRenewPeriod.
+
+
 2024-08-28 Version: 4.2.1
 - Update API CreateTairInstance: update param EngineVersion.
 - Update API DescribePrice: add param ShardCount.
