@@ -1,3 +1,7 @@
+2024-12-17 Version: 1.64.1
+- Update API SetWorkflowExtraInfo: update param WorkflowInstanceId.
+
+
 2024-12-11 Version: 1.64.0
 - Support API AddAuthorityTemplateItems.
 - Support API CreateAbacAuthorization.

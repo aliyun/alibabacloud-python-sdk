@@ -58016,6 +58016,7 @@ class SetWorkflowExtraInfoRequest(TeaModel):
         self.thirdparty_workflow_comment = thirdparty_workflow_comment
         self.thirdparty_workflow_url = thirdparty_workflow_url
         self.tid = tid
+        # This parameter is required.
         self.workflow_instance_id = workflow_instance_id
 
     def validate(self):
