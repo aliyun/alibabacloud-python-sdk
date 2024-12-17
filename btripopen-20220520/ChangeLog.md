@@ -1,3 +1,51 @@
+2024-12-17 Version: 4.5.0
+- Support API ElectronicItineraryBatchApply.
+- Support API ElectronicItineraryGetApplyResult.
+- Support API FlightOrderListQueryV2.
+- Support API IFlightOrderDetailQuery.
+- Support API IFlightOrderListQuery.
+- Support API QueryEmployeeDetail.
+- Update API AddEmployee: add param attribute.
+- Update API ApplyAdd: add param intl_flight_budget.
+- Update API ApplyAdd: add param intl_hotel_budget.
+- Update API ApplyModify: add param intl_flight_budget.
+- Update API ApplyModify: add param intl_hotel_budget.
+- Update API ApplyQuery: update response param.
+- Update API CarBillSettlementQuery: update response param.
+- Update API CarOrderListQuery: update response param.
+- Update API CooperatorFlightBillSettlementQuery: update response param.
+- Update API CooperatorHotelBillSettlementQuery: update response param.
+- Update API FlightBillSettlementQuery: update response param.
+- Update API FlightItineraryScanQuery: update param bill_date.
+- Update API FlightOrderQuery: add param RegionId.
+- Update API FlightOrderQuery: update param app_key.
+- Update API FlightOrderQuery: update param pop.
+- Update API FlightOrderQuery: update param corp_id.
+- Update API FlightOrderQuery: update param order_id.
+- Update API FlightOrderQuery: update param user_id.
+- Update API FlightOrderQuery: update param x-acs-btrip-so-corp-token.
+- Update API FlightOrderQuery: update response param.
+- Update API FlightRefundDetailV2: update response param.
+- Update API HotelBillSettlementQuery: update response param.
+- Update API HotelOrderChangeDetail: update param change_order_id.
+- Update API HotelOrderChangeDetail: update param dis_order_id.
+- Update API HotelOrderChangeDetail: update param sale_order_id.
+- Update API HotelOrderCreate: update response param.
+- Update API HotelOrderListQuery: add param category.
+- Update API HotelOrderListQuery: update response param.
+- Update API HotelOrderPreValidate: update param daily_list.
+- Update API HotelOrderPreValidate: update response param.
+- Update API HotelOrderQuery: update response param.
+- Update API IeFlightBillSettlementQuery: update response param.
+- Update API IeHotelBillSettlementQuery: update response param.
+- Update API MealBillSettlementQuery: update response param.
+- Update API QueryReimbursementOrder: update response param.
+- Update API TrainBillSettlementQuery: update response param.
+- Update API TrainOrderQueryV2: update response param.
+- Update API UpdateDepartment: update param out_dept_pid.
+- Update API UpdateEmployee: add param attribute.
+
+
 2024-10-15 Version: 4.4.1
 - Update API HotelGoodsQuery: update response param.
 

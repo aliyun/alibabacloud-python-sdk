@@ -305,6 +305,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.out_dept_id_list):
             request.out_dept_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_dept_id_list, 'out_dept_id_list', 'json')
         body = {}
+        if not UtilClient.is_unset(request.attribute):
+            body['attribute'] = request.attribute
         if not UtilClient.is_unset(request.avatar):
             body['avatar'] = request.avatar
         if not UtilClient.is_unset(request.base_city_code_list_shrink):
@@ -396,6 +398,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.out_dept_id_list):
             request.out_dept_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_dept_id_list, 'out_dept_id_list', 'json')
         body = {}
+        if not UtilClient.is_unset(request.attribute):
+            body['attribute'] = request.attribute
         if not UtilClient.is_unset(request.avatar):
             body['avatar'] = request.avatar
         if not UtilClient.is_unset(request.base_city_code_list_shrink):
@@ -1197,6 +1201,10 @@ class Client(OpenApiClient):
             body['hotel_share'] = request.hotel_share_shrink
         if not UtilClient.is_unset(request.international_flight_cabins):
             body['international_flight_cabins'] = request.international_flight_cabins
+        if not UtilClient.is_unset(request.intl_flight_budget):
+            body['intl_flight_budget'] = request.intl_flight_budget
+        if not UtilClient.is_unset(request.intl_hotel_budget):
+            body['intl_hotel_budget'] = request.intl_hotel_budget
         if not UtilClient.is_unset(request.itinerary_list_shrink):
             body['itinerary_list'] = request.itinerary_list_shrink
         if not UtilClient.is_unset(request.itinerary_rule):
@@ -1332,6 +1340,10 @@ class Client(OpenApiClient):
             body['hotel_share'] = request.hotel_share_shrink
         if not UtilClient.is_unset(request.international_flight_cabins):
             body['international_flight_cabins'] = request.international_flight_cabins
+        if not UtilClient.is_unset(request.intl_flight_budget):
+            body['intl_flight_budget'] = request.intl_flight_budget
+        if not UtilClient.is_unset(request.intl_hotel_budget):
+            body['intl_hotel_budget'] = request.intl_hotel_budget
         if not UtilClient.is_unset(request.itinerary_list_shrink):
             body['itinerary_list'] = request.itinerary_list_shrink
         if not UtilClient.is_unset(request.itinerary_rule):
@@ -2045,6 +2057,10 @@ class Client(OpenApiClient):
             body['hotel_budget'] = request.hotel_budget
         if not UtilClient.is_unset(request.hotel_share_shrink):
             body['hotel_share'] = request.hotel_share_shrink
+        if not UtilClient.is_unset(request.intl_flight_budget):
+            body['intl_flight_budget'] = request.intl_flight_budget
+        if not UtilClient.is_unset(request.intl_hotel_budget):
+            body['intl_hotel_budget'] = request.intl_hotel_budget
         if not UtilClient.is_unset(request.itinerary_list_shrink):
             body['itinerary_list'] = request.itinerary_list_shrink
         if not UtilClient.is_unset(request.itinerary_rule):
@@ -2176,6 +2192,10 @@ class Client(OpenApiClient):
             body['hotel_budget'] = request.hotel_budget
         if not UtilClient.is_unset(request.hotel_share_shrink):
             body['hotel_share'] = request.hotel_share_shrink
+        if not UtilClient.is_unset(request.intl_flight_budget):
+            body['intl_flight_budget'] = request.intl_flight_budget
+        if not UtilClient.is_unset(request.intl_hotel_budget):
+            body['intl_hotel_budget'] = request.intl_hotel_budget
         if not UtilClient.is_unset(request.itinerary_list_shrink):
             body['itinerary_list'] = request.itinerary_list_shrink
         if not UtilClient.is_unset(request.itinerary_rule):
@@ -6335,6 +6355,246 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.DepartmentSaveHeaders()
         return await self.department_save_with_options_async(request, headers, runtime)
 
+    def electronic_itinerary_batch_apply_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.ElectronicItineraryBatchApplyRequest,
+        headers: btrip_open_20220520_models.ElectronicItineraryBatchApplyHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ElectronicItineraryBatchApplyResponse:
+        """
+        @summary 批量申请电子行程单
+        
+        @param tmp_req: ElectronicItineraryBatchApplyRequest
+        @param headers: ElectronicItineraryBatchApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ElectronicItineraryBatchApplyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.ElectronicItineraryBatchApplyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.apply_itinerary_list):
+            request.apply_itinerary_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.apply_itinerary_list, 'apply_itinerary_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.apply_itinerary_list_shrink):
+            body['apply_itinerary_list'] = request.apply_itinerary_list_shrink
+        if not UtilClient.is_unset(request.can_reprint):
+            body['can_reprint'] = request.can_reprint
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ElectronicItineraryBatchApply',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/invoice/v1/apply-itinerary-batch-task',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ElectronicItineraryBatchApplyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def electronic_itinerary_batch_apply_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.ElectronicItineraryBatchApplyRequest,
+        headers: btrip_open_20220520_models.ElectronicItineraryBatchApplyHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ElectronicItineraryBatchApplyResponse:
+        """
+        @summary 批量申请电子行程单
+        
+        @param tmp_req: ElectronicItineraryBatchApplyRequest
+        @param headers: ElectronicItineraryBatchApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ElectronicItineraryBatchApplyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.ElectronicItineraryBatchApplyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.apply_itinerary_list):
+            request.apply_itinerary_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.apply_itinerary_list, 'apply_itinerary_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.apply_itinerary_list_shrink):
+            body['apply_itinerary_list'] = request.apply_itinerary_list_shrink
+        if not UtilClient.is_unset(request.can_reprint):
+            body['can_reprint'] = request.can_reprint
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ElectronicItineraryBatchApply',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/invoice/v1/apply-itinerary-batch-task',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ElectronicItineraryBatchApplyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def electronic_itinerary_batch_apply(
+        self,
+        request: btrip_open_20220520_models.ElectronicItineraryBatchApplyRequest,
+    ) -> btrip_open_20220520_models.ElectronicItineraryBatchApplyResponse:
+        """
+        @summary 批量申请电子行程单
+        
+        @param request: ElectronicItineraryBatchApplyRequest
+        @return: ElectronicItineraryBatchApplyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ElectronicItineraryBatchApplyHeaders()
+        return self.electronic_itinerary_batch_apply_with_options(request, headers, runtime)
+
+    async def electronic_itinerary_batch_apply_async(
+        self,
+        request: btrip_open_20220520_models.ElectronicItineraryBatchApplyRequest,
+    ) -> btrip_open_20220520_models.ElectronicItineraryBatchApplyResponse:
+        """
+        @summary 批量申请电子行程单
+        
+        @param request: ElectronicItineraryBatchApplyRequest
+        @return: ElectronicItineraryBatchApplyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ElectronicItineraryBatchApplyHeaders()
+        return await self.electronic_itinerary_batch_apply_with_options_async(request, headers, runtime)
+
+    def electronic_itinerary_get_apply_result_with_options(
+        self,
+        request: btrip_open_20220520_models.ElectronicItineraryGetApplyResultRequest,
+        headers: btrip_open_20220520_models.ElectronicItineraryGetApplyResultHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ElectronicItineraryGetApplyResultResponse:
+        """
+        @summary 获取电子行程单申请结果
+        
+        @param request: ElectronicItineraryGetApplyResultRequest
+        @param headers: ElectronicItineraryGetApplyResultHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ElectronicItineraryGetApplyResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_apply_no):
+            query['batch_apply_no'] = request.batch_apply_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ElectronicItineraryGetApplyResult',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/invoice/v1/get-itinerary-batch-task',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ElectronicItineraryGetApplyResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def electronic_itinerary_get_apply_result_with_options_async(
+        self,
+        request: btrip_open_20220520_models.ElectronicItineraryGetApplyResultRequest,
+        headers: btrip_open_20220520_models.ElectronicItineraryGetApplyResultHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ElectronicItineraryGetApplyResultResponse:
+        """
+        @summary 获取电子行程单申请结果
+        
+        @param request: ElectronicItineraryGetApplyResultRequest
+        @param headers: ElectronicItineraryGetApplyResultHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ElectronicItineraryGetApplyResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_apply_no):
+            query['batch_apply_no'] = request.batch_apply_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ElectronicItineraryGetApplyResult',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/invoice/v1/get-itinerary-batch-task',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ElectronicItineraryGetApplyResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def electronic_itinerary_get_apply_result(
+        self,
+        request: btrip_open_20220520_models.ElectronicItineraryGetApplyResultRequest,
+    ) -> btrip_open_20220520_models.ElectronicItineraryGetApplyResultResponse:
+        """
+        @summary 获取电子行程单申请结果
+        
+        @param request: ElectronicItineraryGetApplyResultRequest
+        @return: ElectronicItineraryGetApplyResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ElectronicItineraryGetApplyResultHeaders()
+        return self.electronic_itinerary_get_apply_result_with_options(request, headers, runtime)
+
+    async def electronic_itinerary_get_apply_result_async(
+        self,
+        request: btrip_open_20220520_models.ElectronicItineraryGetApplyResultRequest,
+    ) -> btrip_open_20220520_models.ElectronicItineraryGetApplyResultResponse:
+        """
+        @summary 获取电子行程单申请结果
+        
+        @param request: ElectronicItineraryGetApplyResultRequest
+        @return: ElectronicItineraryGetApplyResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ElectronicItineraryGetApplyResultHeaders()
+        return await self.electronic_itinerary_get_apply_result_with_options_async(request, headers, runtime)
+
     def entity_add_with_options(
         self,
         tmp_req: btrip_open_20220520_models.EntityAddRequest,
@@ -10076,6 +10336,184 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOrderListQueryHeaders()
         return await self.flight_order_list_query_with_options_async(request, headers, runtime)
+
+    def flight_order_list_query_v2with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightOrderListQueryV2Request,
+        headers: btrip_open_20220520_models.FlightOrderListQueryV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightOrderListQueryV2Response:
+        """
+        @summary 机票订单列表查询
+        
+        @param tmp_req: FlightOrderListQueryV2Request
+        @param headers: FlightOrderListQueryV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOrderListQueryV2Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightOrderListQueryV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.approve_id):
+            request.approve_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.approve_id, 'approve_id', 'json')
+        if not UtilClient.is_unset(tmp_req.booker_id):
+            request.booker_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.booker_id, 'booker_id', 'json')
+        if not UtilClient.is_unset(tmp_req.depart_id):
+            request.depart_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.depart_id, 'depart_id', 'json')
+        if not UtilClient.is_unset(tmp_req.supplier):
+            request.supplier_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.supplier, 'supplier', 'json')
+        if not UtilClient.is_unset(tmp_req.thirdpart_approve_id):
+            request.thirdpart_approve_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.thirdpart_approve_id, 'thirdpart_approve_id', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.approve_id_shrink):
+            query['approve_id'] = request.approve_id_shrink
+        if not UtilClient.is_unset(request.booker_id_shrink):
+            query['booker_id'] = request.booker_id_shrink
+        if not UtilClient.is_unset(request.depart_id_shrink):
+            query['depart_id'] = request.depart_id_shrink
+        if not UtilClient.is_unset(request.end_date):
+            query['end_date'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['page_Size'] = request.page_size
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.start_date):
+            query['start_date'] = request.start_date
+        if not UtilClient.is_unset(request.supplier_shrink):
+            query['supplier'] = request.supplier_shrink
+        if not UtilClient.is_unset(request.thirdpart_approve_id_shrink):
+            query['thirdpart_approve_id'] = request.thirdpart_approve_id_shrink
+        if not UtilClient.is_unset(request.update_end_date):
+            query['update_end_date'] = request.update_end_date
+        if not UtilClient.is_unset(request.update_start_date):
+            query['update_start_date'] = request.update_start_date
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightOrderListQueryV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/open/v2/Flight-order-list-query',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightOrderListQueryV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flight_order_list_query_v2with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.FlightOrderListQueryV2Request,
+        headers: btrip_open_20220520_models.FlightOrderListQueryV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightOrderListQueryV2Response:
+        """
+        @summary 机票订单列表查询
+        
+        @param tmp_req: FlightOrderListQueryV2Request
+        @param headers: FlightOrderListQueryV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOrderListQueryV2Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.FlightOrderListQueryV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.approve_id):
+            request.approve_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.approve_id, 'approve_id', 'json')
+        if not UtilClient.is_unset(tmp_req.booker_id):
+            request.booker_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.booker_id, 'booker_id', 'json')
+        if not UtilClient.is_unset(tmp_req.depart_id):
+            request.depart_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.depart_id, 'depart_id', 'json')
+        if not UtilClient.is_unset(tmp_req.supplier):
+            request.supplier_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.supplier, 'supplier', 'json')
+        if not UtilClient.is_unset(tmp_req.thirdpart_approve_id):
+            request.thirdpart_approve_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.thirdpart_approve_id, 'thirdpart_approve_id', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.approve_id_shrink):
+            query['approve_id'] = request.approve_id_shrink
+        if not UtilClient.is_unset(request.booker_id_shrink):
+            query['booker_id'] = request.booker_id_shrink
+        if not UtilClient.is_unset(request.depart_id_shrink):
+            query['depart_id'] = request.depart_id_shrink
+        if not UtilClient.is_unset(request.end_date):
+            query['end_date'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['page_Size'] = request.page_size
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.start_date):
+            query['start_date'] = request.start_date
+        if not UtilClient.is_unset(request.supplier_shrink):
+            query['supplier'] = request.supplier_shrink
+        if not UtilClient.is_unset(request.thirdpart_approve_id_shrink):
+            query['thirdpart_approve_id'] = request.thirdpart_approve_id_shrink
+        if not UtilClient.is_unset(request.update_end_date):
+            query['update_end_date'] = request.update_end_date
+        if not UtilClient.is_unset(request.update_start_date):
+            query['update_start_date'] = request.update_start_date
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightOrderListQueryV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/open/v2/Flight-order-list-query',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightOrderListQueryV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flight_order_list_query_v2(
+        self,
+        request: btrip_open_20220520_models.FlightOrderListQueryV2Request,
+    ) -> btrip_open_20220520_models.FlightOrderListQueryV2Response:
+        """
+        @summary 机票订单列表查询
+        
+        @param request: FlightOrderListQueryV2Request
+        @return: FlightOrderListQueryV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightOrderListQueryV2Headers()
+        return self.flight_order_list_query_v2with_options(request, headers, runtime)
+
+    async def flight_order_list_query_v2_async(
+        self,
+        request: btrip_open_20220520_models.FlightOrderListQueryV2Request,
+    ) -> btrip_open_20220520_models.FlightOrderListQueryV2Response:
+        """
+        @summary 机票订单列表查询
+        
+        @param request: FlightOrderListQueryV2Request
+        @return: FlightOrderListQueryV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightOrderListQueryV2Headers()
+        return await self.flight_order_list_query_v2with_options_async(request, headers, runtime)
 
     def flight_order_query_with_options(
         self,
@@ -13987,6 +14425,8 @@ class Client(OpenApiClient):
             query['all_apply'] = request.all_apply
         if not UtilClient.is_unset(request.apply_id):
             query['apply_id'] = request.apply_id
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
         if not UtilClient.is_unset(request.depart_id):
             query['depart_id'] = request.depart_id
         if not UtilClient.is_unset(request.end_time):
@@ -14050,6 +14490,8 @@ class Client(OpenApiClient):
             query['all_apply'] = request.all_apply
         if not UtilClient.is_unset(request.apply_id):
             query['apply_id'] = request.apply_id
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
         if not UtilClient.is_unset(request.depart_id):
             query['depart_id'] = request.depart_id
         if not UtilClient.is_unset(request.end_time):
@@ -15276,6 +15718,282 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelSuggestV2Headers()
         return await self.hotel_suggest_v2with_options_async(request, headers, runtime)
+
+    def i_flight_order_detail_query_with_options(
+        self,
+        request: btrip_open_20220520_models.IFlightOrderDetailQueryRequest,
+        headers: btrip_open_20220520_models.IFlightOrderDetailQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IFlightOrderDetailQueryResponse:
+        """
+        @summary 国际机票订单详情
+        
+        @param request: IFlightOrderDetailQueryRequest
+        @param headers: IFlightOrderDetailQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IFlightOrderDetailQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IFlightOrderDetailQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/open/v1/intlFlight-order-detail-query',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IFlightOrderDetailQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def i_flight_order_detail_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.IFlightOrderDetailQueryRequest,
+        headers: btrip_open_20220520_models.IFlightOrderDetailQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IFlightOrderDetailQueryResponse:
+        """
+        @summary 国际机票订单详情
+        
+        @param request: IFlightOrderDetailQueryRequest
+        @param headers: IFlightOrderDetailQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IFlightOrderDetailQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IFlightOrderDetailQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/open/v1/intlFlight-order-detail-query',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IFlightOrderDetailQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def i_flight_order_detail_query(
+        self,
+        request: btrip_open_20220520_models.IFlightOrderDetailQueryRequest,
+    ) -> btrip_open_20220520_models.IFlightOrderDetailQueryResponse:
+        """
+        @summary 国际机票订单详情
+        
+        @param request: IFlightOrderDetailQueryRequest
+        @return: IFlightOrderDetailQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IFlightOrderDetailQueryHeaders()
+        return self.i_flight_order_detail_query_with_options(request, headers, runtime)
+
+    async def i_flight_order_detail_query_async(
+        self,
+        request: btrip_open_20220520_models.IFlightOrderDetailQueryRequest,
+    ) -> btrip_open_20220520_models.IFlightOrderDetailQueryResponse:
+        """
+        @summary 国际机票订单详情
+        
+        @param request: IFlightOrderDetailQueryRequest
+        @return: IFlightOrderDetailQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IFlightOrderDetailQueryHeaders()
+        return await self.i_flight_order_detail_query_with_options_async(request, headers, runtime)
+
+    def i_flight_order_list_query_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.IFlightOrderListQueryRequest,
+        headers: btrip_open_20220520_models.IFlightOrderListQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IFlightOrderListQueryResponse:
+        """
+        @summary 国际机票订单列表
+        
+        @param tmp_req: IFlightOrderListQueryRequest
+        @param headers: IFlightOrderListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IFlightOrderListQueryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.IFlightOrderListQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.apply_id_list):
+            request.apply_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.apply_id_list, 'apply_id_list', 'json')
+        if not UtilClient.is_unset(tmp_req.book_type_list):
+            request.book_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.book_type_list, 'book_type_list', 'json')
+        if not UtilClient.is_unset(tmp_req.booker_id):
+            request.booker_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.booker_id, 'booker_id', 'json')
+        if not UtilClient.is_unset(tmp_req.third_part_apply_id_list):
+            request.third_part_apply_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_part_apply_id_list, 'third_part_apply_id_list', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.apply_id_list_shrink):
+            query['apply_id_list'] = request.apply_id_list_shrink
+        if not UtilClient.is_unset(request.book_type_list_shrink):
+            query['book_type_list'] = request.book_type_list_shrink
+        if not UtilClient.is_unset(request.booker_id_shrink):
+            query['booker_id'] = request.booker_id_shrink
+        if not UtilClient.is_unset(request.end_date):
+            query['end_date'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.start_date):
+            query['start_date'] = request.start_date
+        if not UtilClient.is_unset(request.third_part_apply_id_list_shrink):
+            query['third_part_apply_id_list'] = request.third_part_apply_id_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IFlightOrderListQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/open/v1/intlFlight-order-list-query',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IFlightOrderListQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def i_flight_order_list_query_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.IFlightOrderListQueryRequest,
+        headers: btrip_open_20220520_models.IFlightOrderListQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IFlightOrderListQueryResponse:
+        """
+        @summary 国际机票订单列表
+        
+        @param tmp_req: IFlightOrderListQueryRequest
+        @param headers: IFlightOrderListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IFlightOrderListQueryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.IFlightOrderListQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.apply_id_list):
+            request.apply_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.apply_id_list, 'apply_id_list', 'json')
+        if not UtilClient.is_unset(tmp_req.book_type_list):
+            request.book_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.book_type_list, 'book_type_list', 'json')
+        if not UtilClient.is_unset(tmp_req.booker_id):
+            request.booker_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.booker_id, 'booker_id', 'json')
+        if not UtilClient.is_unset(tmp_req.third_part_apply_id_list):
+            request.third_part_apply_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_part_apply_id_list, 'third_part_apply_id_list', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.apply_id_list_shrink):
+            query['apply_id_list'] = request.apply_id_list_shrink
+        if not UtilClient.is_unset(request.book_type_list_shrink):
+            query['book_type_list'] = request.book_type_list_shrink
+        if not UtilClient.is_unset(request.booker_id_shrink):
+            query['booker_id'] = request.booker_id_shrink
+        if not UtilClient.is_unset(request.end_date):
+            query['end_date'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.start_date):
+            query['start_date'] = request.start_date
+        if not UtilClient.is_unset(request.third_part_apply_id_list_shrink):
+            query['third_part_apply_id_list'] = request.third_part_apply_id_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IFlightOrderListQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/open/v1/intlFlight-order-list-query',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IFlightOrderListQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def i_flight_order_list_query(
+        self,
+        request: btrip_open_20220520_models.IFlightOrderListQueryRequest,
+    ) -> btrip_open_20220520_models.IFlightOrderListQueryResponse:
+        """
+        @summary 国际机票订单列表
+        
+        @param request: IFlightOrderListQueryRequest
+        @return: IFlightOrderListQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IFlightOrderListQueryHeaders()
+        return self.i_flight_order_list_query_with_options(request, headers, runtime)
+
+    async def i_flight_order_list_query_async(
+        self,
+        request: btrip_open_20220520_models.IFlightOrderListQueryRequest,
+    ) -> btrip_open_20220520_models.IFlightOrderListQueryResponse:
+        """
+        @summary 国际机票订单列表
+        
+        @param request: IFlightOrderListQueryRequest
+        @return: IFlightOrderListQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IFlightOrderListQueryHeaders()
+        return await self.i_flight_order_list_query_with_options_async(request, headers, runtime)
 
     def ie_flight_bill_settlement_query_with_options(
         self,
@@ -20351,6 +21069,120 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.ProjectModifyHeaders()
         return await self.project_modify_with_options_async(request, headers, runtime)
 
+    def query_employee_detail_with_options(
+        self,
+        request: btrip_open_20220520_models.QueryEmployeeDetailRequest,
+        headers: btrip_open_20220520_models.QueryEmployeeDetailHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.QueryEmployeeDetailResponse:
+        """
+        @summary 获取单个员工信息
+        
+        @param request: QueryEmployeeDetailRequest
+        @param headers: QueryEmployeeDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEmployeeDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.out_employee_id):
+            query['out_employee_id'] = request.out_employee_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEmployeeDetail',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/employeeDetail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.QueryEmployeeDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_employee_detail_with_options_async(
+        self,
+        request: btrip_open_20220520_models.QueryEmployeeDetailRequest,
+        headers: btrip_open_20220520_models.QueryEmployeeDetailHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.QueryEmployeeDetailResponse:
+        """
+        @summary 获取单个员工信息
+        
+        @param request: QueryEmployeeDetailRequest
+        @param headers: QueryEmployeeDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEmployeeDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.out_employee_id):
+            query['out_employee_id'] = request.out_employee_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEmployeeDetail',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/employeeDetail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.QueryEmployeeDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_employee_detail(
+        self,
+        request: btrip_open_20220520_models.QueryEmployeeDetailRequest,
+    ) -> btrip_open_20220520_models.QueryEmployeeDetailResponse:
+        """
+        @summary 获取单个员工信息
+        
+        @param request: QueryEmployeeDetailRequest
+        @return: QueryEmployeeDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.QueryEmployeeDetailHeaders()
+        return self.query_employee_detail_with_options(request, headers, runtime)
+
+    async def query_employee_detail_async(
+        self,
+        request: btrip_open_20220520_models.QueryEmployeeDetailRequest,
+    ) -> btrip_open_20220520_models.QueryEmployeeDetailResponse:
+        """
+        @summary 获取单个员工信息
+        
+        @param request: QueryEmployeeDetailRequest
+        @return: QueryEmployeeDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.QueryEmployeeDetailHeaders()
+        return await self.query_employee_detail_with_options_async(request, headers, runtime)
+
     def query_group_corp_list_with_options(
         self,
         request: btrip_open_20220520_models.QueryGroupCorpListRequest,
@@ -25289,6 +26121,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.out_dept_id_list):
             request.out_dept_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_dept_id_list, 'out_dept_id_list', 'json')
         body = {}
+        if not UtilClient.is_unset(request.attribute):
+            body['attribute'] = request.attribute
         if not UtilClient.is_unset(request.avatar):
             body['avatar'] = request.avatar
         if not UtilClient.is_unset(request.base_city_code_list_shrink):
@@ -25378,6 +26212,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.out_dept_id_list):
             request.out_dept_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_dept_id_list, 'out_dept_id_list', 'json')
         body = {}
+        if not UtilClient.is_unset(request.attribute):
+            body['attribute'] = request.attribute
         if not UtilClient.is_unset(request.avatar):
             body['avatar'] = request.avatar
         if not UtilClient.is_unset(request.base_city_code_list_shrink):
