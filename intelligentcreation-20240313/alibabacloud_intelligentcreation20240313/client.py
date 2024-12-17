@@ -293,6 +293,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.batch_get_project_task_with_options_async(request, headers, runtime)
 
+    def batch_query_individuation_text_with_options(
+        self,
+        tmp_req: intelligent_creation_20240313_models.BatchQueryIndividuationTextRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse:
+        """
+        @summary 批量查询文案
+        
+        @param tmp_req: BatchQueryIndividuationTextRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchQueryIndividuationTextResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = intelligent_creation_20240313_models.BatchQueryIndividuationTextShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.text_id_list):
+            request.text_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_id_list, 'textIdList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.text_id_list_shrink):
+            query['textIdList'] = request.text_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchQueryIndividuationText',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/individuationText/batchQueryText',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def batch_query_individuation_text_with_options_async(
+        self,
+        tmp_req: intelligent_creation_20240313_models.BatchQueryIndividuationTextRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse:
+        """
+        @summary 批量查询文案
+        
+        @param tmp_req: BatchQueryIndividuationTextRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchQueryIndividuationTextResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = intelligent_creation_20240313_models.BatchQueryIndividuationTextShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.text_id_list):
+            request.text_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_id_list, 'textIdList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.text_id_list_shrink):
+            query['textIdList'] = request.text_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchQueryIndividuationText',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/individuationText/batchQueryText',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def batch_query_individuation_text(
+        self,
+        request: intelligent_creation_20240313_models.BatchQueryIndividuationTextRequest,
+    ) -> intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse:
+        """
+        @summary 批量查询文案
+        
+        @param request: BatchQueryIndividuationTextRequest
+        @return: BatchQueryIndividuationTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.batch_query_individuation_text_with_options(request, headers, runtime)
+
+    async def batch_query_individuation_text_async(
+        self,
+        request: intelligent_creation_20240313_models.BatchQueryIndividuationTextRequest,
+    ) -> intelligent_creation_20240313_models.BatchQueryIndividuationTextResponse:
+        """
+        @summary 批量查询文案
+        
+        @param request: BatchQueryIndividuationTextRequest
+        @return: BatchQueryIndividuationTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.batch_query_individuation_text_with_options_async(request, headers, runtime)
+
     def check_session_with_options(
         self,
         request: intelligent_creation_20240313_models.CheckSessionRequest,
@@ -781,6 +905,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_aicoach_task_session_with_options_async(request, headers, runtime)
 
+    def create_anchor_with_options(
+        self,
+        request: intelligent_creation_20240313_models.CreateAnchorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateAnchorResponse:
+        """
+        @summary 创建照片数字人
+        
+        @param request: CreateAnchorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAnchorResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.anchor_material_name):
+            body['anchorMaterialName'] = request.anchor_material_name
+        if not UtilClient.is_unset(request.cover_url):
+            body['coverUrl'] = request.cover_url
+        if not UtilClient.is_unset(request.digital_human_type):
+            body['digitalHumanType'] = request.digital_human_type
+        if not UtilClient.is_unset(request.gender):
+            body['gender'] = request.gender
+        if not UtilClient.is_unset(request.use_scene):
+            body['useScene'] = request.use_scene
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAnchor',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/anchorOpen/createAnchor',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateAnchorResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateAnchorResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_anchor_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateAnchorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateAnchorResponse:
+        """
+        @summary 创建照片数字人
+        
+        @param request: CreateAnchorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAnchorResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.anchor_material_name):
+            body['anchorMaterialName'] = request.anchor_material_name
+        if not UtilClient.is_unset(request.cover_url):
+            body['coverUrl'] = request.cover_url
+        if not UtilClient.is_unset(request.digital_human_type):
+            body['digitalHumanType'] = request.digital_human_type
+        if not UtilClient.is_unset(request.gender):
+            body['gender'] = request.gender
+        if not UtilClient.is_unset(request.use_scene):
+            body['useScene'] = request.use_scene
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAnchor',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/anchorOpen/createAnchor',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateAnchorResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateAnchorResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_anchor(
+        self,
+        request: intelligent_creation_20240313_models.CreateAnchorRequest,
+    ) -> intelligent_creation_20240313_models.CreateAnchorResponse:
+        """
+        @summary 创建照片数字人
+        
+        @param request: CreateAnchorRequest
+        @return: CreateAnchorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_anchor_with_options(request, headers, runtime)
+
+    async def create_anchor_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateAnchorRequest,
+    ) -> intelligent_creation_20240313_models.CreateAnchorResponse:
+        """
+        @summary 创建照片数字人
+        
+        @param request: CreateAnchorRequest
+        @return: CreateAnchorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_anchor_with_options_async(request, headers, runtime)
+
     def create_illustration_task_with_options(
         self,
         text_id: str,
@@ -894,6 +1150,258 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_illustration_task_with_options_async(text_id, request, headers, runtime)
+
+    def create_individuation_project_with_options(
+        self,
+        request: intelligent_creation_20240313_models.CreateIndividuationProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateIndividuationProjectResponse:
+        """
+        @summary 创建个性化文案项目
+        
+        @param request: CreateIndividuationProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIndividuationProjectResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_info):
+            body['projectInfo'] = request.project_info
+        if not UtilClient.is_unset(request.project_name):
+            body['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.purpose):
+            body['purpose'] = request.purpose
+        if not UtilClient.is_unset(request.scene_id):
+            body['sceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateIndividuationProject',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/individuationText/createProject',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateIndividuationProjectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateIndividuationProjectResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_individuation_project_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateIndividuationProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateIndividuationProjectResponse:
+        """
+        @summary 创建个性化文案项目
+        
+        @param request: CreateIndividuationProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIndividuationProjectResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_info):
+            body['projectInfo'] = request.project_info
+        if not UtilClient.is_unset(request.project_name):
+            body['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.purpose):
+            body['purpose'] = request.purpose
+        if not UtilClient.is_unset(request.scene_id):
+            body['sceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateIndividuationProject',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/individuationText/createProject',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateIndividuationProjectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateIndividuationProjectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_individuation_project(
+        self,
+        request: intelligent_creation_20240313_models.CreateIndividuationProjectRequest,
+    ) -> intelligent_creation_20240313_models.CreateIndividuationProjectResponse:
+        """
+        @summary 创建个性化文案项目
+        
+        @param request: CreateIndividuationProjectRequest
+        @return: CreateIndividuationProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_individuation_project_with_options(request, headers, runtime)
+
+    async def create_individuation_project_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateIndividuationProjectRequest,
+    ) -> intelligent_creation_20240313_models.CreateIndividuationProjectResponse:
+        """
+        @summary 创建个性化文案项目
+        
+        @param request: CreateIndividuationProjectRequest
+        @return: CreateIndividuationProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_individuation_project_with_options_async(request, headers, runtime)
+
+    def create_individuation_text_task_with_options(
+        self,
+        request: intelligent_creation_20240313_models.CreateIndividuationTextTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse:
+        """
+        @summary 创建个性化文案任务
+        
+        @param request: CreateIndividuationTextTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIndividuationTextTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.crowd_pack):
+            body['crowdPack'] = request.crowd_pack
+        if not UtilClient.is_unset(request.project_id):
+            body['projectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_name):
+            body['taskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateIndividuationTextTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/individuationText/createTextTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_individuation_text_task_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateIndividuationTextTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse:
+        """
+        @summary 创建个性化文案任务
+        
+        @param request: CreateIndividuationTextTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIndividuationTextTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.crowd_pack):
+            body['crowdPack'] = request.crowd_pack
+        if not UtilClient.is_unset(request.project_id):
+            body['projectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_name):
+            body['taskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateIndividuationTextTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/individuationText/createTextTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_individuation_text_task(
+        self,
+        request: intelligent_creation_20240313_models.CreateIndividuationTextTaskRequest,
+    ) -> intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse:
+        """
+        @summary 创建个性化文案任务
+        
+        @param request: CreateIndividuationTextTaskRequest
+        @return: CreateIndividuationTextTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_individuation_text_task_with_options(request, headers, runtime)
+
+    async def create_individuation_text_task_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateIndividuationTextTaskRequest,
+    ) -> intelligent_creation_20240313_models.CreateIndividuationTextTaskResponse:
+        """
+        @summary 创建个性化文案任务
+        
+        @param request: CreateIndividuationTextTaskRequest
+        @return: CreateIndividuationTextTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_individuation_text_task_with_options_async(request, headers, runtime)
 
     def create_realistic_portrait_with_options(
         self,
@@ -1172,6 +1680,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_text_task_with_options_async(request, headers, runtime)
+
+    def delete_individuation_project_with_options(
+        self,
+        request: intelligent_creation_20240313_models.DeleteIndividuationProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.DeleteIndividuationProjectResponse:
+        """
+        @summary 删除个性化文案项目
+        
+        @param request: DeleteIndividuationProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndividuationProjectResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['projectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteIndividuationProject',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/individuationText/deleteProject',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.DeleteIndividuationProjectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.DeleteIndividuationProjectResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_individuation_project_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.DeleteIndividuationProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.DeleteIndividuationProjectResponse:
+        """
+        @summary 删除个性化文案项目
+        
+        @param request: DeleteIndividuationProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndividuationProjectResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['projectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteIndividuationProject',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/individuationText/deleteProject',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.DeleteIndividuationProjectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.DeleteIndividuationProjectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_individuation_project(
+        self,
+        request: intelligent_creation_20240313_models.DeleteIndividuationProjectRequest,
+    ) -> intelligent_creation_20240313_models.DeleteIndividuationProjectResponse:
+        """
+        @summary 删除个性化文案项目
+        
+        @param request: DeleteIndividuationProjectRequest
+        @return: DeleteIndividuationProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_individuation_project_with_options(request, headers, runtime)
+
+    async def delete_individuation_project_async(
+        self,
+        request: intelligent_creation_20240313_models.DeleteIndividuationProjectRequest,
+    ) -> intelligent_creation_20240313_models.DeleteIndividuationProjectResponse:
+        """
+        @summary 删除个性化文案项目
+        
+        @param request: DeleteIndividuationProjectRequest
+        @return: DeleteIndividuationProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_individuation_project_with_options_async(request, headers, runtime)
+
+    def delete_individuation_text_with_options(
+        self,
+        request: intelligent_creation_20240313_models.DeleteIndividuationTextRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.DeleteIndividuationTextResponse:
+        """
+        @summary 删除个性化文案
+        
+        @param request: DeleteIndividuationTextRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndividuationTextResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.text_id_list):
+            body['textIdList'] = request.text_id_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteIndividuationText',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/individuationText/deleteText',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.DeleteIndividuationTextResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.DeleteIndividuationTextResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_individuation_text_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.DeleteIndividuationTextRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.DeleteIndividuationTextResponse:
+        """
+        @summary 删除个性化文案
+        
+        @param request: DeleteIndividuationTextRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndividuationTextResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.text_id_list):
+            body['textIdList'] = request.text_id_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteIndividuationText',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/individuationText/deleteText',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.DeleteIndividuationTextResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.DeleteIndividuationTextResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_individuation_text(
+        self,
+        request: intelligent_creation_20240313_models.DeleteIndividuationTextRequest,
+    ) -> intelligent_creation_20240313_models.DeleteIndividuationTextResponse:
+        """
+        @summary 删除个性化文案
+        
+        @param request: DeleteIndividuationTextRequest
+        @return: DeleteIndividuationTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_individuation_text_with_options(request, headers, runtime)
+
+    async def delete_individuation_text_async(
+        self,
+        request: intelligent_creation_20240313_models.DeleteIndividuationTextRequest,
+    ) -> intelligent_creation_20240313_models.DeleteIndividuationTextResponse:
+        """
+        @summary 删除个性化文案
+        
+        @param request: DeleteIndividuationTextRequest
+        @return: DeleteIndividuationTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_individuation_text_with_options_async(request, headers, runtime)
 
     def finish_aicoach_task_session_with_options(
         self,
@@ -3589,6 +4329,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.query_avatar_resource_with_options_async(request, headers, runtime)
 
+    def query_individuation_text_task_with_options(
+        self,
+        request: intelligent_creation_20240313_models.QueryIndividuationTextTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse:
+        """
+        @summary 查询个性化文案任务
+        
+        @param request: QueryIndividuationTextTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryIndividuationTextTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryIndividuationTextTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/individuationText/queryTextTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_individuation_text_task_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.QueryIndividuationTextTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse:
+        """
+        @summary 查询个性化文案任务
+        
+        @param request: QueryIndividuationTextTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryIndividuationTextTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryIndividuationTextTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/individuationText/queryTextTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_individuation_text_task(
+        self,
+        request: intelligent_creation_20240313_models.QueryIndividuationTextTaskRequest,
+    ) -> intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse:
+        """
+        @summary 查询个性化文案任务
+        
+        @param request: QueryIndividuationTextTaskRequest
+        @return: QueryIndividuationTextTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_individuation_text_task_with_options(request, headers, runtime)
+
+    async def query_individuation_text_task_async(
+        self,
+        request: intelligent_creation_20240313_models.QueryIndividuationTextTaskRequest,
+    ) -> intelligent_creation_20240313_models.QueryIndividuationTextTaskResponse:
+        """
+        @summary 查询个性化文案任务
+        
+        @param request: QueryIndividuationTextTaskRequest
+        @return: QueryIndividuationTextTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_individuation_text_task_with_options_async(request, headers, runtime)
+
     def query_session_info_with_options(
         self,
         tmp_req: intelligent_creation_20240313_models.QuerySessionInfoRequest,
@@ -4184,6 +5040,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.select_resource_with_options_async(request, headers, runtime)
+
+    def send_sdk_message_with_options(
+        self,
+        request: intelligent_creation_20240313_models.SendSdkMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.SendSdkMessageResponse:
+        """
+        @summary 发送sdk消息
+        
+        @param request: SendSdkMessageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendSdkMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data):
+            body['data'] = request.data
+        if not UtilClient.is_unset(request.module_name):
+            body['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.operation_name):
+            body['operationName'] = request.operation_name
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendSdkMessage',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/sdk/sendMessage',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.SendSdkMessageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.SendSdkMessageResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def send_sdk_message_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.SendSdkMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.SendSdkMessageResponse:
+        """
+        @summary 发送sdk消息
+        
+        @param request: SendSdkMessageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendSdkMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data):
+            body['data'] = request.data
+        if not UtilClient.is_unset(request.module_name):
+            body['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.operation_name):
+            body['operationName'] = request.operation_name
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendSdkMessage',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/sdk/sendMessage',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.SendSdkMessageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.SendSdkMessageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def send_sdk_message(
+        self,
+        request: intelligent_creation_20240313_models.SendSdkMessageRequest,
+    ) -> intelligent_creation_20240313_models.SendSdkMessageResponse:
+        """
+        @summary 发送sdk消息
+        
+        @param request: SendSdkMessageRequest
+        @return: SendSdkMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.send_sdk_message_with_options(request, headers, runtime)
+
+    async def send_sdk_message_async(
+        self,
+        request: intelligent_creation_20240313_models.SendSdkMessageRequest,
+    ) -> intelligent_creation_20240313_models.SendSdkMessageResponse:
+        """
+        @summary 发送sdk消息
+        
+        @param request: SendSdkMessageRequest
+        @return: SendSdkMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.send_sdk_message_with_options_async(request, headers, runtime)
 
     def send_text_msg_with_options(
         self,

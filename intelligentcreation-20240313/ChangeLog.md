@@ -1,3 +1,14 @@
+2024-12-17 Version: 2.8.0
+- Support API BatchQueryIndividuationText.
+- Support API CreateAnchor.
+- Support API CreateIndividuationProject.
+- Support API CreateIndividuationTextTask.
+- Support API DeleteIndividuationProject.
+- Support API DeleteIndividuationText.
+- Support API QueryIndividuationTextTask.
+- Support API SendSdkMessage.
+
+
 2024-12-17 Version: 2.7.1
 - Update API GetAICoachTaskSessionHistory: add param pageNumber.
 - Update API GetAICoachTaskSessionHistory: add param pageSize.
