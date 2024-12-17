@@ -2124,6 +2124,7 @@ class CreateIdentityProviderRequest(TeaModel):
         instance_id: str = None,
         lark_config: CreateIdentityProviderRequestLarkConfig = None,
         ldap_config: CreateIdentityProviderRequestLdapConfig = None,
+        logo_url: str = None,
         network_access_endpoint_id: str = None,
         oidc_config: CreateIdentityProviderRequestOidcConfig = None,
         ud_pull_config: CreateIdentityProviderRequestUdPullConfig = None,
@@ -2156,6 +2157,7 @@ class CreateIdentityProviderRequest(TeaModel):
         self.lark_config = lark_config
         # AD/LDAP配置
         self.ldap_config = ldap_config
+        self.logo_url = logo_url
         # 网络端点ID
         self.network_access_endpoint_id = network_access_endpoint_id
         # OIDC IdP配置。
@@ -2217,6 +2219,8 @@ class CreateIdentityProviderRequest(TeaModel):
             result['LarkConfig'] = self.lark_config.to_map()
         if self.ldap_config is not None:
             result['LdapConfig'] = self.ldap_config.to_map()
+        if self.logo_url is not None:
+            result['LogoUrl'] = self.logo_url
         if self.network_access_endpoint_id is not None:
             result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
         if self.oidc_config is not None:
@@ -2258,6 +2262,8 @@ class CreateIdentityProviderRequest(TeaModel):
         if m.get('LdapConfig') is not None:
             temp_model = CreateIdentityProviderRequestLdapConfig()
             self.ldap_config = temp_model.from_map(m['LdapConfig'])
+        if m.get('LogoUrl') is not None:
+            self.logo_url = m.get('LogoUrl')
         if m.get('NetworkAccessEndpointId') is not None:
             self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
         if m.get('OidcConfig') is not None:
@@ -9369,6 +9375,7 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(TeaModel):
         last_status_check_job_result: str = None,
         ldap_config: GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig = None,
         lock_reason: str = None,
+        logo_url: str = None,
         network_access_endpoint_id: str = None,
         oidc_config: GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig = None,
         ud_pull_config: GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig = None,
@@ -9412,6 +9419,7 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(TeaModel):
         self.ldap_config = ldap_config
         # 锁定原因
         self.lock_reason = lock_reason
+        self.logo_url = logo_url
         # 网络端点ID
         self.network_access_endpoint_id = network_access_endpoint_id
         # OIDC IdP配置。
@@ -9487,6 +9495,8 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(TeaModel):
             result['LdapConfig'] = self.ldap_config.to_map()
         if self.lock_reason is not None:
             result['LockReason'] = self.lock_reason
+        if self.logo_url is not None:
+            result['LogoUrl'] = self.logo_url
         if self.network_access_endpoint_id is not None:
             result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
         if self.oidc_config is not None:
@@ -9545,6 +9555,8 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(TeaModel):
             self.ldap_config = temp_model.from_map(m['LdapConfig'])
         if m.get('LockReason') is not None:
             self.lock_reason = m.get('LockReason')
+        if m.get('LogoUrl') is not None:
+            self.logo_url = m.get('LogoUrl')
         if m.get('NetworkAccessEndpointId') is not None:
             self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
         if m.get('OidcConfig') is not None:
@@ -16151,6 +16163,7 @@ class ListIdentityProvidersResponseBodyIdentityProviders(TeaModel):
         instance_id: str = None,
         last_status_check_job_result: str = None,
         lock_reason: str = None,
+        logo_url: str = None,
         ud_pull_status: str = None,
         ud_pull_target_scope: str = None,
         ud_push_status: str = None,
@@ -16182,6 +16195,7 @@ class ListIdentityProvidersResponseBodyIdentityProviders(TeaModel):
         self.last_status_check_job_result = last_status_check_job_result
         # 锁定原因
         self.lock_reason = lock_reason
+        self.logo_url = logo_url
         # IDaaS EIAM 是否支持UD同步
         self.ud_pull_status = ud_pull_status
         # 当支持ud_pullIDaaS侧UD中的范围
@@ -16227,6 +16241,8 @@ class ListIdentityProvidersResponseBodyIdentityProviders(TeaModel):
             result['LastStatusCheckJobResult'] = self.last_status_check_job_result
         if self.lock_reason is not None:
             result['LockReason'] = self.lock_reason
+        if self.logo_url is not None:
+            result['LogoUrl'] = self.logo_url
         if self.ud_pull_status is not None:
             result['UdPullStatus'] = self.ud_pull_status
         if self.ud_pull_target_scope is not None:
@@ -16267,6 +16283,8 @@ class ListIdentityProvidersResponseBodyIdentityProviders(TeaModel):
             self.last_status_check_job_result = m.get('LastStatusCheckJobResult')
         if m.get('LockReason') is not None:
             self.lock_reason = m.get('LockReason')
+        if m.get('LogoUrl') is not None:
+            self.logo_url = m.get('LogoUrl')
         if m.get('UdPullStatus') is not None:
             self.ud_pull_status = m.get('UdPullStatus')
         if m.get('UdPullTargetScope') is not None:
@@ -18071,11 +18089,45 @@ class ListRegionsResponse(TeaModel):
         return self
 
 
+class ListSynchronizationJobsRequestFilters(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        values: List[str] = None,
+    ):
+        self.key = key
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
 class ListSynchronizationJobsRequest(TeaModel):
     def __init__(
         self,
         direction: str = None,
         end_time: int = None,
+        filters: List[ListSynchronizationJobsRequestFilters] = None,
         instance_id: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -18090,6 +18142,7 @@ class ListSynchronizationJobsRequest(TeaModel):
         self.direction = direction
         # 同步结束时间
         self.end_time = end_time
+        self.filters = filters
         # IDaaS EIAM实例的ID。
         # 
         # This parameter is required.
@@ -18112,7 +18165,10 @@ class ListSynchronizationJobsRequest(TeaModel):
         self.target_type = target_type
 
     def validate(self):
-        pass
+        if self.filters:
+            for k in self.filters:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -18124,6 +18180,10 @@ class ListSynchronizationJobsRequest(TeaModel):
             result['Direction'] = self.direction
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        result['Filters'] = []
+        if self.filters is not None:
+            for k in self.filters:
+                result['Filters'].append(k.to_map() if k else None)
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.max_results is not None:
@@ -18150,6 +18210,11 @@ class ListSynchronizationJobsRequest(TeaModel):
             self.direction = m.get('Direction')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        self.filters = []
+        if m.get('Filters') is not None:
+            for k in m.get('Filters'):
+                temp_model = ListSynchronizationJobsRequestFilters()
+                self.filters.append(temp_model.from_map(k))
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('MaxResults') is not None:
@@ -19440,6 +19505,51 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         return self
 
 
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsExported(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        self.failed = failed
+        self.skipped = skipped
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
 class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed(TeaModel):
     def __init__(
         self,
@@ -19593,6 +19703,7 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         binded: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded = None,
         created: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated = None,
         deleted: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted = None,
+        exported: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsExported = None,
         pushed: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed = None,
         same: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame = None,
         updated: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated = None,
@@ -19603,6 +19714,7 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         self.created = created
         # 删除结果统计
         self.deleted = deleted
+        self.exported = exported
         # 推送结果统计
         self.pushed = pushed
         # 相同结果统计
@@ -19617,6 +19729,8 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
             self.created.validate()
         if self.deleted:
             self.deleted.validate()
+        if self.exported:
+            self.exported.validate()
         if self.pushed:
             self.pushed.validate()
         if self.same:
@@ -19636,6 +19750,8 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
             result['Created'] = self.created.to_map()
         if self.deleted is not None:
             result['Deleted'] = self.deleted.to_map()
+        if self.exported is not None:
+            result['Exported'] = self.exported.to_map()
         if self.pushed is not None:
             result['Pushed'] = self.pushed.to_map()
         if self.same is not None:
@@ -19655,6 +19771,9 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         if m.get('Deleted') is not None:
             temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted()
             self.deleted = temp_model.from_map(m['Deleted'])
+        if m.get('Exported') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsExported()
+            self.exported = temp_model.from_map(m['Exported'])
         if m.get('Pushed') is not None:
             temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed()
             self.pushed = temp_model.from_map(m['Pushed'])
@@ -19744,6 +19863,7 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResult(TeaModel):
 class ListSynchronizationJobsResponseBodySynchronizationJobs(TeaModel):
     def __init__(
         self,
+        description: str = None,
         direction: str = None,
         end_time: int = None,
         result: ListSynchronizationJobsResponseBodySynchronizationJobsResult = None,
@@ -19754,6 +19874,7 @@ class ListSynchronizationJobsResponseBodySynchronizationJobs(TeaModel):
         target_type: str = None,
         trigger_type: str = None,
     ):
+        self.description = description
         # 同步任务方向
         self.direction = direction
         # 同步结束时间
@@ -19783,6 +19904,8 @@ class ListSynchronizationJobsResponseBodySynchronizationJobs(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
         if self.direction is not None:
             result['Direction'] = self.direction
         if self.end_time is not None:
@@ -19805,6 +19928,8 @@ class ListSynchronizationJobsResponseBodySynchronizationJobs(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Direction') is not None:
             self.direction = m.get('Direction')
         if m.get('EndTime') is not None:
@@ -21683,25 +21808,16 @@ class RevokeApplicationFromUsersResponse(TeaModel):
         return self
 
 
-class RunSynchronizationJobRequest(TeaModel):
+class RunSynchronizationJobRequestSynchronizationScopeConfig(TeaModel):
     def __init__(
         self,
-        instance_id: str = None,
-        target_id: str = None,
-        target_type: str = None,
+        group_ids: List[str] = None,
+        organizational_unit_ids: List[str] = None,
+        user_ids: List[str] = None,
     ):
-        # IDaaS EIAM实例的ID。
-        # 
-        # This parameter is required.
-        self.instance_id = instance_id
-        # 同步目标ID
-        # 
-        # This parameter is required.
-        self.target_id = target_id
-        # 同步目标类型
-        # 
-        # This parameter is required.
-        self.target_type = target_type
+        self.group_ids = group_ids
+        self.organizational_unit_ids = organizational_unit_ids
+        self.user_ids = user_ids
 
     def validate(self):
         pass
@@ -21712,22 +21828,96 @@ class RunSynchronizationJobRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.target_id is not None:
-            result['TargetId'] = self.target_id
-        if self.target_type is not None:
-            result['TargetType'] = self.target_type
+        if self.group_ids is not None:
+            result['GroupIds'] = self.group_ids
+        if self.organizational_unit_ids is not None:
+            result['OrganizationalUnitIds'] = self.organizational_unit_ids
+        if self.user_ids is not None:
+            result['UserIds'] = self.user_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GroupIds') is not None:
+            self.group_ids = m.get('GroupIds')
+        if m.get('OrganizationalUnitIds') is not None:
+            self.organizational_unit_ids = m.get('OrganizationalUnitIds')
+        if m.get('UserIds') is not None:
+            self.user_ids = m.get('UserIds')
+        return self
+
+
+class RunSynchronizationJobRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        instance_id: str = None,
+        password_initialization: bool = None,
+        synchronization_scope_config: RunSynchronizationJobRequestSynchronizationScopeConfig = None,
+        target_id: str = None,
+        target_type: str = None,
+        user_identity_types: List[str] = None,
+    ):
+        self.description = description
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.password_initialization = password_initialization
+        self.synchronization_scope_config = synchronization_scope_config
+        # 同步目标ID
+        # 
+        # This parameter is required.
+        self.target_id = target_id
+        # 同步目标类型
+        # 
+        # This parameter is required.
+        self.target_type = target_type
+        self.user_identity_types = user_identity_types
+
+    def validate(self):
+        if self.synchronization_scope_config:
+            self.synchronization_scope_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.password_initialization is not None:
+            result['PasswordInitialization'] = self.password_initialization
+        if self.synchronization_scope_config is not None:
+            result['SynchronizationScopeConfig'] = self.synchronization_scope_config.to_map()
+        if self.target_id is not None:
+            result['TargetId'] = self.target_id
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        if self.user_identity_types is not None:
+            result['UserIdentityTypes'] = self.user_identity_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('PasswordInitialization') is not None:
+            self.password_initialization = m.get('PasswordInitialization')
+        if m.get('SynchronizationScopeConfig') is not None:
+            temp_model = RunSynchronizationJobRequestSynchronizationScopeConfig()
+            self.synchronization_scope_config = temp_model.from_map(m['SynchronizationScopeConfig'])
         if m.get('TargetId') is not None:
             self.target_id = m.get('TargetId')
         if m.get('TargetType') is not None:
             self.target_type = m.get('TargetType')
+        if m.get('UserIdentityTypes') is not None:
+            self.user_identity_types = m.get('UserIdentityTypes')
         return self
 
 
@@ -25102,6 +25292,7 @@ class UpdateIdentityProviderRequest(TeaModel):
         instance_id: str = None,
         lark_config: UpdateIdentityProviderRequestLarkConfig = None,
         ldap_config: UpdateIdentityProviderRequestLdapConfig = None,
+        logo_url: str = None,
         network_access_endpoint_id: str = None,
         oidc_config: UpdateIdentityProviderRequestOidcConfig = None,
         we_com_config: UpdateIdentityProviderRequestWeComConfig = None,
@@ -25122,6 +25313,7 @@ class UpdateIdentityProviderRequest(TeaModel):
         self.lark_config = lark_config
         # AD/LDAP基本信息
         self.ldap_config = ldap_config
+        self.logo_url = logo_url
         # 网络端点ID
         self.network_access_endpoint_id = network_access_endpoint_id
         # OIDC IdP配置。
@@ -25159,6 +25351,8 @@ class UpdateIdentityProviderRequest(TeaModel):
             result['LarkConfig'] = self.lark_config.to_map()
         if self.ldap_config is not None:
             result['LdapConfig'] = self.ldap_config.to_map()
+        if self.logo_url is not None:
+            result['LogoUrl'] = self.logo_url
         if self.network_access_endpoint_id is not None:
             result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
         if self.oidc_config is not None:
@@ -25184,6 +25378,8 @@ class UpdateIdentityProviderRequest(TeaModel):
         if m.get('LdapConfig') is not None:
             temp_model = UpdateIdentityProviderRequestLdapConfig()
             self.ldap_config = temp_model.from_map(m['LdapConfig'])
+        if m.get('LogoUrl') is not None:
+            self.logo_url = m.get('LogoUrl')
         if m.get('NetworkAccessEndpointId') is not None:
             self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
         if m.get('OidcConfig') is not None:
