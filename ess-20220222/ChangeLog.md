@@ -1,3 +1,7 @@
+2024-12-17 Version: 1.10.5
+- Update API ModifyScheduledTask: add param RegionId.
+
+
 2024-12-12 Version: 1.10.4
 - Generated python 2022-02-22 for Ess.
 

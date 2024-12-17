@@ -335,10 +335,10 @@ class AttachAlbServerGroupsRequest(TeaModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
-        # Specifies whether to add the existing Elastic Compute Service (ECS) instances or elastic container instances in the scaling group to the ALB server group. Valid values:
+        # Specifies whether to add the existing Elastic Compute Service (ECS) instances or elastic container instances in the scaling group to the new ALB server group. Valid values:
         # 
-        # *   true: adds the existing ECS instances or elastic container instances in the scaling group to the ALB server group. In this case, the system returns the value of `ScalingActivityId`.
-        # *   false: does not add the existing ECS instances or elastic container instances in the scaling group to the ALB server group.
+        # *   true: adds the existing ECS instances or elastic container instances in the scaling group to the new ALB server group. In this case, the system returns the value of `ScalingActivityId`.
+        # *   false: does not add the existing ECS instances or elastic container instances in the scaling group to the new ALB server group.
         # 
         # Default value: false.
         self.force_attach = force_attach
@@ -912,7 +912,7 @@ class AttachLoadBalancersRequest(TeaModel):
         # 
         #     **\
         # 
-        #     **Note** If a load balancer is currently attached to your scaling group, and you want to add the instances in your scaling group to the backend server groups of the load balancer, you can call this operation again and set the ForceAttach request parameter to true.
+        #     **Note** If a load balancer is currently attached to your scaling group, and you want to add the instances in your scaling group to the backend server groups of the load balancer, you can call this operation again and set ForceAttach request to true.
         # 
         # *   false: If you set this parameter to false, the attachment of the load balancer does not entail the addition of the existing instances in the scaling group to the backend server groups of the load balancer.
         # 
@@ -1833,7 +1833,7 @@ class CompleteLifecycleActionRequest(TeaModel):
         # *   For scale-in activities, when lifecycle hooks whose LifecycleActionResult parameter is set to ABANDON or ROLLBACK time out, other lifecycle hooks time out ahead of schedule.
         # *   For scale-in and scale-out activities, if you set the LifecycleActionResult parameter for all lifecycle hooks to CONTINUE, Auto Scaling performs the next action only after the last lifecycle hook times out. The action that Auto Scaling performs varies based on the value that you specify for the LifecycleActionResult parameter of the lifecycle hook that last times out.
         self.lifecycle_action_result = lifecycle_action_result
-        # The token of the lifecycle hook. You can obtain this token by using a Message Service (MNS) queue or an MNS topic that is specified for the lifecycle hook.
+        # The token of the lifecycle action. You can obtain the token from the Simple Message Queue (SMQ, formerly MNS) queue or topic that is specified for the lifecycle hook.
         # 
         # This parameter is required.
         self.lifecycle_action_token = lifecycle_action_token
@@ -2162,12 +2162,12 @@ class CreateAlarmRequest(TeaModel):
     ):
         # The list of unique identifiers of the scaling rules that are associated with the event-triggered task.
         self.alarm_actions = alarm_actions
-        # The operator that is used to compare the metric value and the threshold. Valid values:
+        # The operator that you want to use to compare the metric value and the threshold. Valid values:
         # 
-        # *   If the metric value is greater than or equal to the threshold, set the value to: >=.
-        # *   If the metric value is less than or equal to the threshold, set the value to: <=.
-        # *   If the metric value is greater than the threshold, set the value to: >.
-        # *   If the metric value is less than the threshold, set the value to: <.
+        # *   If the metric value is greater than or equal to the threshold, set the value to >=.
+        # *   If the metric value is less than or equal to the metric threshold, set the value to <=.
+        # *   If the metric value is greater than the metric threshold, set the value to >.
+        # *   If the metric value is less than the metric threshold, set the value to <.
         # 
         # Default value: >=.
         self.comparison_operator = comparison_operator
@@ -2190,7 +2190,7 @@ class CreateAlarmRequest(TeaModel):
         # *   ` * * 17-18 * * ?  `: The event-triggered task is in effect between 17:00 and 18:59 (UTC+8) every day.
         # *   `TZ=+00 * * 1-2 * * ?`: The event-triggered task is in effect between 01:00 and 02:59 (UTC+0) every day.
         self.effective = effective
-        # The number of times that the threshold must be reached before a scaling rule can be executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before a scaling rule is triggered.
+        # The number of consecutive times that the threshold must be reached before a scaling rule is executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before the scaling rule is executed.
         # 
         # Default value: 3.
         self.evaluation_count = evaluation_count
@@ -2239,10 +2239,10 @@ class CreateAlarmRequest(TeaModel):
         # 
         # For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
-        # The type of the metric. Valid values:
+        # The metric type. Valid values:
         # 
-        # *   system: system metrics of CloudMonitor
-        # *   custom: custom metrics that are reported to CloudMonitor
+        # *   system: system metrics of CloudMonitor.
+        # *   custom: custom metrics that are reported to CloudMonitor.
         self.metric_type = metric_type
         # The name of the event-triggered task.
         self.name = name
@@ -2268,11 +2268,11 @@ class CreateAlarmRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # The method that is used to aggregate statistics for the metric. Valid values:
+        # The method that you want to use to aggregate the metric data. Valid values:
         # 
-        # *   Average
-        # *   Minimum
-        # *   Maximum
+        # *   Average: the average value.
+        # *   Minimum: the minimum value.
+        # *   Maximum: the maximum value.
         # 
         # Default value: Average.
         self.statistics = statistics
@@ -2470,8 +2470,12 @@ class CreateDiagnoseReportRequest(TeaModel):
         region_id: str = None,
         scaling_group_id: str = None,
     ):
+        # The region ID of the scaling group.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the scaling group.
+        # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
 
@@ -2505,8 +2509,9 @@ class CreateDiagnoseReportResponseBody(TeaModel):
         report_id: str = None,
         request_id: str = None,
     ):
+        # The unique ID of the diagnostic report.
         self.report_id = report_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4472,6 +4477,12 @@ class CreateEciScalingConfigurationRequest(TeaModel):
         self.enable_sls = enable_sls
         # The size of the temporary storage space. By default, an Enterprise SSD (ESSD) of performance level 1 (PL1) is used. Unit: GiB.
         self.ephemeral_storage = ephemeral_storage
+        # The version of the GPU driver. Valid values:
+        # 
+        # *   tesla=470.82.01 (default)
+        # *   tesla=525.85.12
+        # 
+        # >  You can switch the GPU driver version only for a few Elastic Compute Service (ECS) instance types. For more information, see [Specify GPU-accelerated ECS instance types to create an elastic container instance](https://help.aliyun.com/document_detail/2579486.html).
         self.gpu_driver_version = gpu_driver_version
         # The custom hostnames of the containers.
         self.host_aliases = host_aliases
@@ -4965,18 +4976,19 @@ class CreateLifecycleHookRequest(TeaModel):
         # 
         # This parameter is required.
         self.lifecycle_transition = lifecycle_transition
-        # The Alibaba Cloud Resource Name (ARN) of the notification method that is used by Auto Scaling to send notifications when the lifecycle hook takes effect. If you do not specify this parameter, no notification is sent when the lifecycle hook takes effect. If you specify this parameter, the following rules apply:
+        # The Alibaba Cloud Resource Name (ARN) of the notification recipient. If you do not specify this parameter, no notification is sent when the lifecycle hook takes effect. If you specify this parameter, the value must be in one of the following formats:
         # 
-        # *   If you use a Message Service (MNS) queue as the notification method, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
-        # *   If you use an MNS topic as the notification method, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
-        # *   If you use an OOS template as the notification method, specify the value in the acs:oos:{region-id}:{account-id}:template/{templatename} format.
+        # *   If you specify a Simple Message Queue (SMQ, formerly MNS) as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
+        # *   If you specify an SMQ topic as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
+        # *   If you specify a CloudOps Orchestration Service (OOS) template as the notification recipient, specify the value in the acs:oos:{region-id}:{account-id}:template/{templatename} format.
+        # *   If you specify an event bus as the notification recipient, specify the value in the acs:eventbridge:{region-id}:{account-id}:eventbus/default format.
         # 
-        # The variables in the preceding parameter formats have the following meanings:
+        # The variables in the preceding value formats have the following meanings:
         # 
-        # *   region-id: the region ID of the scaling group.
-        # *   account-id: the ID of the Alibaba Cloud account. The ID of the RAM user is not supported.
-        # *   queuename: the name of the MNS queue.
-        # *   topicname: the name of the MNS topic.
+        # *   region-id: the region ID of your scaling group.
+        # *   account-id: the ID of the Alibaba Cloud account. IDs of Resource Access Management (RAM) users are not supported.
+        # *   queuename: the name of the SMQ queue.
+        # *   topicname: the name of the SMQ topic.
         # *   templatename: the name of the OOS template.
         self.notification_arn = notification_arn
         # The notification metadata that is sent when the lifecycle hook takes effect. This helps you manage and categorize notifications in an efficient manner. If you specify this parameter, you must specify the NotificationArn parameter. The parameter value cannot exceed 4,096 characters in length.
@@ -5145,15 +5157,15 @@ class CreateNotificationConfigurationRequest(TeaModel):
         # The Alibaba Cloud Resource Name (ARN) of the notification recipient. The following list describes the value formats of this parameter:
         # 
         # *   If you specify CloudMonitor as the notification recipient, specify the value in the `acs:ess:{region-id}:{account-id}:cloudmonitor` format.
-        # *   If you specify an MNS queue as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
-        # *   If you specify an MNS topic as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
+        # *   If you specify an SMQ queue as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
+        # *   If you specify an SMQ topic as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
         # 
         # The variables in the preceding formats have the following meanings:
         # 
         # *   `region-id`: the region ID of the scaling group.
         # *   `account-id`: the ID of the Alibaba Cloud account.
-        # *   `queuename`: the name of the MNS queue.
-        # *   `topicname`: the name of the MNS topic.
+        # *   `queuename`: the name of the SMQ queue.
+        # *   `topicname`: the name of the SMQ topic.
         # 
         # This parameter is required.
         self.notification_arn = notification_arn
@@ -5742,72 +5754,70 @@ class CreateScalingConfigurationRequestInstancePatternInfos(TeaModel):
         minimum_memory_size: float = None,
         physical_processor_models: List[str] = None,
     ):
-        # The architecture types of instance types. Valid values:
+        # The architecture types of the instance types. Valid values:
         # 
-        # *   X86: x86.
+        # *   X86: x86 architecture.
         # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated.
         # *   BareMetal: ECS Bare Metal Instance.
         # *   Arm: Arm.
-        # *   SuperComputeCluster: Super Computing Cluster.
         # 
-        # By default, all values are included.
+        # By default, all values are selected.
         self.architectures = architectures
         # Specifies whether to include burstable instance types. Valid values:
         # 
-        # *   Exclude: does not include burstable instance types.
+        # *   Exclude: excludes burstable instance types.
         # *   Include: includes burstable instance types.
         # *   Required: includes only burstable instance types.
         # 
         # Default value: Include.
         self.burstable_performance = burstable_performance
-        # The number of vCPUs per instance type in intelligent configuration mode. You can use this parameter to match the available instance types. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The number of vCPUs per instance type in intelligent configuration mode. You can specify this parameter to filter the available instance types. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         # 
         # Take note of the following items:
         # 
-        # *   InstancePatternInfos applies only to the scaling groups that reside in virtual private clouds (VPCs).
+        # *   InstancePatternInfos applies only to scaling groups that reside in virtual private clouds (VPCs).
         # *   If you specify InstancePatternInfos, you must also specify InstancePatternInfos.Cores and InstancePatternInfos.Memory.
         # *   If you specify InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type specified by InstanceType or InstanceTypes to create instances during scale-out events. If the specified instance type has insufficient inventory, Auto Scaling uses the lowest-priced instance type specified by InstancePatternInfos to create instances during scale-out events.
         self.cores = cores
-        # The CPU architectures of instance types. Valid values:
+        # The CPU architectures of the instance types. Valid values:
         # 
-        # >  You can specify 1 to 2 CPU architectures.
+        # >  You can specify up to two CPU architectures.
         # 
         # *   x86
         # *   Arm
         self.cpu_architectures = cpu_architectures
-        # The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
+        # The instance types that you want to exclude. You can use an asterisk (\\*) as a wildcard character to exclude an instance type or an instance family. Examples:
         # 
         # *   ecs.c6.large: excludes the ecs.c6.large instance type.
         # *   ecs.c6.\\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
         # The GPU models.
         self.gpu_specs = gpu_specs
-        # The categories of instance types. Valid values:
+        # The categories of the instance types. Valid values:
         # 
         # >  You can specify up to 10 categories.
         # 
-        # *   General-purpose
-        # *   Compute-optimized
-        # *   Memory-optimized
-        # *   Big data
-        # *   Local SSDs
-        # *   High Clock Speed
-        # *   Enhanced
-        # *   Shared
-        # *   Compute-optimized with GPU
-        # *   Visual Compute-optimized
-        # *   Heterogeneous Service
-        # *   Compute-optimized with FPGA
-        # *   Compute-optimized with NPU
-        # *   ECS Bare Metal
-        # *   Super Computing Cluster
-        # *   High Performance Compute
+        # *   General-purpose: general-purpose instance type.
+        # *   Compute-optimized: compute-optimized instance type.
+        # *   Memory-optimized: memory-optimized instance type.
+        # *   Big data: big data instance type.
+        # *   Local SSDs: instance type that uses local SSDs.
+        # *   High Clock Speed: instance type that has high clock speeds.
+        # *   Enhanced: enhanced instance type.
+        # *   Shared: shared instance type.
+        # *   Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
+        # *   Visual Compute-optimized: visual compute-optimized instance type.
+        # *   Heterogeneous Service: heterogeneous service instance type.
+        # *   Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
+        # *   Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
+        # *   ECS Bare Metal: ECS Bare Metal Instance type.
+        # *   High Performance Compute: HPC-optimized instance type.
         self.instance_categories = instance_categories
-        # The level of the instance family. You can use this parameter to match the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+        # The level of the instance family. You can specify this parameter to match the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
         # 
-        # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
-        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
-        # *   CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+        # *   EntryLevel: entry-level (shared instance types). Instance types of this level are the most cost-effective but may not ensure stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+        # *   EnterpriseLevel: enterprise-level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # *   CreditEntryLevel: credit entry-level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
         self.instance_family_level = instance_family_level
         # The instance families that you want to specify. You can specify up to 10 instance families in each call.
         self.instance_type_families = instance_type_families
@@ -5823,7 +5833,7 @@ class CreateScalingConfigurationRequestInstancePatternInfos(TeaModel):
         self.maximum_gpu_amount = maximum_gpu_amount
         # The maximum memory size per instance. Unit: GiB.
         self.maximum_memory_size = maximum_memory_size
-        # The memory size per instance type in intelligent configuration mode. Unit: GiB. You can use this parameter to match the available instance types.
+        # The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
         self.memory = memory
         # The baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
         self.minimum_baseline_credit = minimum_baseline_credit
@@ -5841,7 +5851,7 @@ class CreateScalingConfigurationRequestInstancePatternInfos(TeaModel):
         self.minimum_initial_credit = minimum_initial_credit
         # The minimum memory size per instance. Unit: GiB.
         self.minimum_memory_size = minimum_memory_size
-        # The processor models of instance types. You can specify up to 10 processor models.
+        # The processor models of the instance types. You can specify up to 10 processor models.
         self.physical_processor_models = physical_processor_models
 
     def validate(self):
@@ -6237,7 +6247,23 @@ class CreateScalingConfigurationRequest(TeaModel):
         self.host_name = host_name
         # The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instances that are created by using the scaling configuration belong.
         self.hpc_cluster_id = hpc_cluster_id
+        # Specifies whether to enable the access channel for instance metadata. Valid values:
+        # 
+        # *   enabled
+        # *   disabled
+        # 
+        # Default value: enabled.
+        # 
+        # >  For information about instance metadata, see [Obtain instance metadata](https://help.aliyun.com/document_detail/108460.html).
         self.http_endpoint = http_endpoint
+        # Specifies whether to forcibly use the security hardening mode (IMDSv2) to access instance metadata. Valid values:
+        # 
+        # *   optional: does not forcibly use the security hardening mode (IMDSv2).
+        # *   required: forcibly uses the security hardening mode (IMDSv2). If you set this parameter to required, you cannot access instance metadata in normal mode.
+        # 
+        # Default value: optional.
+        # 
+        # >  For more information about instance metadata access modes, see [Access modes of instance metadata](https://help.aliyun.com/document_detail/108460.html).
         self.http_tokens = http_tokens
         # The name of the image family. If you specify this parameter, the most recent custom images that are available in the specified image family are returned. You can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
         self.image_family = image_family
@@ -6251,7 +6277,7 @@ class CreateScalingConfigurationRequest(TeaModel):
         self.instance_description = instance_description
         # The name of the ECS instance that Auto Scaling creates based on the scaling configuration.
         self.instance_name = instance_name
-        # The information about the intelligent configuration settings, which determine the available instance types.
+        # The intelligent configuration settings, which determine the available instance types.
         self.instance_pattern_infos = instance_pattern_infos
         # The instance type of the ECS instance. For more information, see the [Instance families](https://help.aliyun.com/document_detail/25378.html) topic.
         self.instance_type = instance_type
@@ -6268,14 +6294,14 @@ class CreateScalingConfigurationRequest(TeaModel):
         # 
         # For the classic network, the default value is PayByBandwidth. For VPCs, the default value is PayByTraffic.
         self.internet_charge_type = internet_charge_type
-        # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values: 1 to 200.
+        # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
-        # Default value: 200 This parameter is not used for billing because inbound traffic to instances is free of charge.
+        # *   If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values of this parameter are 1 to 10, and the default value is 10.
+        # *   If the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the value of `InternetMaxBandwidthOut`, and the default value is the value of `InternetMaxBandwidthOut`.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
+        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
         # 
-        # *   Valid values if you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
-        # *   Valid values if you set InternetChargeType to PayByTraffic: 0 to 100. If you leave this parameter empty, an error is returned.
+        # Default value: 0.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # Specifies whether to create an I/O optimized instance. Valid values:
         # 
@@ -7166,72 +7192,70 @@ class CreateScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         minimum_memory_size: float = None,
         physical_processor_models: List[str] = None,
     ):
-        # The architecture types of instance types. Valid values:
+        # The architecture types of the instance types. Valid values:
         # 
-        # *   X86: x86.
+        # *   X86: x86 architecture.
         # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated.
         # *   BareMetal: ECS Bare Metal Instance.
         # *   Arm: Arm.
-        # *   SuperComputeCluster: Super Computing Cluster.
         # 
-        # By default, all values are included.
+        # By default, all values are selected.
         self.architectures = architectures
         # Specifies whether to include burstable instance types. Valid values:
         # 
-        # *   Exclude: does not include burstable instance types.
+        # *   Exclude: excludes burstable instance types.
         # *   Include: includes burstable instance types.
         # *   Required: includes only burstable instance types.
         # 
         # Default value: Include.
         self.burstable_performance = burstable_performance
-        # The number of vCPUs per instance type in intelligent configuration mode. You can use this parameter to match the available instance types. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The number of vCPUs per instance type in intelligent configuration mode. You can specify this parameter to filter the available instance types. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         # 
         # Take note of the following items:
         # 
-        # *   InstancePatternInfos applies only to the scaling groups that reside in virtual private clouds (VPCs).
+        # *   InstancePatternInfos applies only to scaling groups that reside in virtual private clouds (VPCs).
         # *   If you specify InstancePatternInfos, you must also specify InstancePatternInfos.Cores and InstancePatternInfos.Memory.
         # *   If you specify InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type specified by InstanceType or InstanceTypes to create instances during scale-out events. If the specified instance type has insufficient inventory, Auto Scaling uses the lowest-priced instance type specified by InstancePatternInfos to create instances during scale-out events.
         self.cores = cores
-        # The CPU architectures of instance types. Valid values:
+        # The CPU architectures of the instance types. Valid values:
         # 
-        # >  You can specify 1 to 2 CPU architectures.
+        # >  You can specify up to two CPU architectures.
         # 
         # *   x86
         # *   Arm
         self.cpu_architectures = cpu_architectures
-        # The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
+        # The instance types that you want to exclude. You can use an asterisk (\\*) as a wildcard character to exclude an instance type or an instance family. Examples:
         # 
         # *   ecs.c6.large: excludes the ecs.c6.large instance type.
         # *   ecs.c6.\\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
         # The GPU models.
         self.gpu_specs = gpu_specs
-        # The categories of instance types. Valid values:
+        # The categories of the instance types. Valid values:
         # 
         # >  You can specify up to 10 categories.
         # 
-        # *   General-purpose
-        # *   Compute-optimized
-        # *   Memory-optimized
-        # *   Big data
-        # *   Local SSDs
-        # *   High Clock Speed
-        # *   Enhanced
-        # *   Shared
-        # *   Compute-optimized with GPU
-        # *   Visual Compute-optimized
-        # *   Heterogeneous Service
-        # *   Compute-optimized with FPGA
-        # *   Compute-optimized with NPU
-        # *   ECS Bare Metal
-        # *   Super Computing Cluster
-        # *   High Performance Compute
+        # *   General-purpose: general-purpose instance type.
+        # *   Compute-optimized: compute-optimized instance type.
+        # *   Memory-optimized: memory-optimized instance type.
+        # *   Big data: big data instance type.
+        # *   Local SSDs: instance type that uses local SSDs.
+        # *   High Clock Speed: instance type that has high clock speeds.
+        # *   Enhanced: enhanced instance type.
+        # *   Shared: shared instance type.
+        # *   Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
+        # *   Visual Compute-optimized: visual compute-optimized instance type.
+        # *   Heterogeneous Service: heterogeneous service instance type.
+        # *   Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
+        # *   Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
+        # *   ECS Bare Metal: ECS Bare Metal Instance type.
+        # *   High Performance Compute: HPC-optimized instance type.
         self.instance_categories = instance_categories
-        # The level of the instance family. You can use this parameter to match the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+        # The level of the instance family. You can specify this parameter to match the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
         # 
-        # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
-        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
-        # *   CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+        # *   EntryLevel: entry-level (shared instance types). Instance types of this level are the most cost-effective but may not ensure stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+        # *   EnterpriseLevel: enterprise-level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # *   CreditEntryLevel: credit entry-level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
         self.instance_family_level = instance_family_level
         # The instance families that you want to specify. You can specify up to 10 instance families in each call.
         self.instance_type_families = instance_type_families
@@ -7247,7 +7271,7 @@ class CreateScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         self.maximum_gpu_amount = maximum_gpu_amount
         # The maximum memory size per instance. Unit: GiB.
         self.maximum_memory_size = maximum_memory_size
-        # The memory size per instance type in intelligent configuration mode. Unit: GiB. You can use this parameter to match the available instance types.
+        # The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
         self.memory = memory
         # The baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
         self.minimum_baseline_credit = minimum_baseline_credit
@@ -7265,7 +7289,7 @@ class CreateScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         self.minimum_initial_credit = minimum_initial_credit
         # The minimum memory size per instance. Unit: GiB.
         self.minimum_memory_size = minimum_memory_size
-        # The processor models of instance types. You can specify up to 10 processor models.
+        # The processor models of the instance types. You can specify up to 10 processor models.
         self.physical_processor_models = physical_processor_models
 
     def validate(self):
@@ -7661,7 +7685,23 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         self.host_name = host_name
         # The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instances that are created by using the scaling configuration belong.
         self.hpc_cluster_id = hpc_cluster_id
+        # Specifies whether to enable the access channel for instance metadata. Valid values:
+        # 
+        # *   enabled
+        # *   disabled
+        # 
+        # Default value: enabled.
+        # 
+        # >  For information about instance metadata, see [Obtain instance metadata](https://help.aliyun.com/document_detail/108460.html).
         self.http_endpoint = http_endpoint
+        # Specifies whether to forcibly use the security hardening mode (IMDSv2) to access instance metadata. Valid values:
+        # 
+        # *   optional: does not forcibly use the security hardening mode (IMDSv2).
+        # *   required: forcibly uses the security hardening mode (IMDSv2). If you set this parameter to required, you cannot access instance metadata in normal mode.
+        # 
+        # Default value: optional.
+        # 
+        # >  For more information about instance metadata access modes, see [Access modes of instance metadata](https://help.aliyun.com/document_detail/108460.html).
         self.http_tokens = http_tokens
         # The name of the image family. If you specify this parameter, the most recent custom images that are available in the specified image family are returned. You can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
         self.image_family = image_family
@@ -7675,7 +7715,7 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         self.instance_description = instance_description
         # The name of the ECS instance that Auto Scaling creates based on the scaling configuration.
         self.instance_name = instance_name
-        # The information about the intelligent configuration settings, which determine the available instance types.
+        # The intelligent configuration settings, which determine the available instance types.
         self.instance_pattern_infos = instance_pattern_infos
         # The instance type of the ECS instance. For more information, see the [Instance families](https://help.aliyun.com/document_detail/25378.html) topic.
         self.instance_type = instance_type
@@ -7692,14 +7732,14 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         # 
         # For the classic network, the default value is PayByBandwidth. For VPCs, the default value is PayByTraffic.
         self.internet_charge_type = internet_charge_type
-        # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values: 1 to 200.
+        # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
-        # Default value: 200 This parameter is not used for billing because inbound traffic to instances is free of charge.
+        # *   If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values of this parameter are 1 to 10, and the default value is 10.
+        # *   If the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the value of `InternetMaxBandwidthOut`, and the default value is the value of `InternetMaxBandwidthOut`.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
+        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
         # 
-        # *   Valid values if you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
-        # *   Valid values if you set InternetChargeType to PayByTraffic: 0 to 100. If you leave this parameter empty, an error is returned.
+        # Default value: 0.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # Specifies whether to create an I/O optimized instance. Valid values:
         # 
@@ -8263,9 +8303,27 @@ class CreateScalingGroupRequestCapacityOptions(TeaModel):
         on_demand_percentage_above_base_capacity: int = None,
         spot_auto_replace_on_demand: bool = None,
     ):
+        # Specifies whether to automatically create pay-as-you-go ECS instances to reach the required number of ECS instances when preemptible ECS instances cannot be created due to high prices or insufficient inventory of resources. This parameter takes effect when you set `MultiAZPolicy` to `COST_OPTIMIZED`. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: true.
         self.compensate_with_on_demand = compensate_with_on_demand
+        # The minimum number of pay-as-you-go instances required in the scaling group. When the number of pay-as-you-go instances drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+        # 
+        # If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 0.
         self.on_demand_base_capacity = on_demand_base_capacity
+        # The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. `OnDemandBaseCapacity` specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100.
+        # 
+        # If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        # Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible instances to replace the surplus pay-as-you-go instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go instances if there are not enough preemptible instance types. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.spot_auto_replace_on_demand = spot_auto_replace_on_demand
 
     def validate(self):
@@ -8600,16 +8658,16 @@ class CreateScalingGroupRequestTags(TeaModel):
         propagate: bool = None,
         value: str = None,
     ):
-        # The tag key that you want to add to the scaling group.
+        # The tag key.
         self.key = key
-        # Specifies whether to propagate the tag that you want to add to the scaling group. Valid values:
+        # Specifies whether to propagate the tag that you want to add. Valid values:
         # 
-        # *   true: propagates the tag to only instances that are newly created.
-        # *   false: does not propagate the tag to any instances.
+        # *   true: propagates the tag to new instances.
+        # *   false: does not propagate the tag to any instance.
         # 
         # Default value: false.
         self.propagate = propagate
-        # The tag value that you want to add to the scaling group.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -8796,6 +8854,7 @@ class CreateScalingGroupRequest(TeaModel):
         # 
         # Default value: false.
         self.az_balance = az_balance
+        # The capacity options.
         self.capacity_options = capacity_options
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -9677,9 +9736,9 @@ class CreateScalingRuleRequest(TeaModel):
         # *   SimpleScalingRule: a simple scaling rule. After you execute a simple scaling rule, Auto Scaling adjusts the number of ECS instances or elastic container instances in the scaling group based on the values of AdjustmentType and AdjustmentValue.
         # *   TargetTrackingScalingRule: a target tracking scaling rule. After you execute a target tracking scaling rule, Auto Scaling dynamically calculates the number of ECS instances or elastic container instances to scale based on the predefined metric (MetricName) and attempts to maintain the metric value close to the expected value (TargetValue).
         # *   StepScalingRule: a step scaling rule. After you execute a step scaling rule, Auto Scaling scales instances step by step based on the predefined thresholds and metric values.
-        # *   PredictiveScalingRule: uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to specify the value range for the scaling group.
+        # *   PredictiveScalingRule: a predictive scaling rule. After you execute a predictive scaling rule, Auto Scaling uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to specify the value range for the scaling group.
         # 
-        # Default value: SimpleScalingRule
+        # Default value: SimpleScalingRule.
         self.scaling_rule_type = scaling_rule_type
         # Details of the step adjustments.
         self.step_adjustments = step_adjustments
@@ -10683,18 +10742,18 @@ class DeleteNotificationConfigurationRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
+        # The Alibaba Cloud Resource Name (ARN) of the notification recipient. Specify the value in one of the following formats:
         # 
-        # *   If you use CloudMonitor as the notification party, the value format of this parameter is acs:ess:{region-id}:{account-id}:cloudmonitor.
-        # *   If you use an MNS queue as the notification party, the value format of this parameter is acs:mns:{region-id}:{account-id}:queue/{queuename}.
-        # *   If you use an MNS topic as the notification party, the value format of this parameter is acs:mns:{region-id}:{account-id}:topic/{topicname}.
+        # *   If you specify CloudMonitor as the notification recipient, specify the value in the acs:ess:{region-id}:{account-id}:cloudmonitor format.
+        # *   If you specify a Simple Message Queue (SMQ, formerly MNS) queue as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
+        # *   If you specify an SMQ queue as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
         # 
-        # The variables in the preceding formats have the following meanings:
+        # The variables in the preceding value formats have the following meanings:
         # 
         # *   region-id: the region ID of the scaling group.
-        # *   account-id: the ID of the Alibaba Cloud account.
-        # *   queuename: the name of the MNS queue.
-        # *   topicname: the name of the MNS topic.
+        # *   account-id: the ID of your Alibaba Cloud cloud.
+        # *   queuename: the name of the SMQ queue.
+        # *   topicname: the name of the SMQ topic.
         # 
         # This parameter is required.
         self.notification_arn = notification_arn
@@ -12166,11 +12225,18 @@ class DescribeDiagnoseReportsRequest(TeaModel):
         report_ids: List[str] = None,
         scaling_group_id: str = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region ID of the scaling group.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The IDs of the diagnostic reports. You can specify at most 20 IDs.
         self.report_ids = report_ids
+        # The ID of the scaling group.
+        # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
 
@@ -12218,9 +12284,37 @@ class DescribeDiagnoseReportsResponseBodyReportsDetails(TeaModel):
         resource_id: str = None,
         status: str = None,
     ):
+        # The type of the diagnostic item. Valid values:
+        # 
+        # *   AccountArrearage: Checks whether your Alibaba Cloud account has overdue payments.
+        # *   AccountNotEnoughBalance: Checks whether the balance of your Alibaba Cloud account at the China site (aliyun.com) is greater than or equal to CNY 100.
+        # *   ElasticStrength: Checks whether the instance types that are specified in the scaling configuration are sufficient.
+        # *   VSwitch: Checks whether a specific vSwitch can work as expected. For example, if a vSwitch is deleted, the vSwitch cannot provide services and an exception occurs.
+        # *   SecurityGroup: Checks whether a specific security group can work as expected. For example, if a security group is deleted, the security group cannot provide services and an exception occurs.
+        # *   KeyPair: Checks whether the key pair is available. If the specified key pair is deleted, specify another key pair for the scaling group.
+        # *   SlbBackendServerQuota: Checks whether the number of ECS instances that are added to the default server group and the vServer groups of the SLB instances associated with the scaling group has reached the upper limit.
+        # *   AlbBackendServerQuota: Checks whether the number of ECS instances that are added to the backend server groups of the ALB instances associated with the scaling group has reached the upper limit.
+        # *   NlbBackendServerQuota: Checks whether the number of ECS instances that are added to the backend server groups of the NLB instances associated with the scaling group has reached the upper limit.
         self.diagnose_type = diagnose_type
+        # The error code of the diagnostic item. Valid values:
+        # 
+        # *   VSwitchIdNotFound: The vSwitch does not exist.
+        # *   SecurityGroupNotFound: The security group does not exist.
+        # *   KeyPairNotFound: The key pair does not exist.
+        # *   SlbBackendServerQuotaExceeded: The number of ECS instances that are added to the default server group and the vServer groups of the SLB instances associated with the scaling group has reached the upper limit.
+        # *   AlbBackendServerQuotaExceeded: The number of ECS instances that are attached to the ALB instances of the scaling group has reached the upper limit.
+        # *   NlbBackendServerQuotaExceeded: The number of ECS instances that are attached to the NLB instances of the scaling group has reached the upper limit.
+        # *   AccountArrearage: Your account has overdue payments.
+        # *   AccountNotEnoughBalance: The balance of your Alibaba Cloud account is less than CNY 100.
+        # *   ElasticStrengthAlert: The inventory levels are lower than expected.
         self.error_code = error_code
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The status of the diagnostic item. Valid values:
+        # 
+        # *   Normal: The diagnostic result is normal.
+        # *   Warn: The diagnostic result is warning.
+        # *   Critical: The diagnostic result is critical.
         self.status = status
 
     def validate(self):
@@ -12267,13 +12361,28 @@ class DescribeDiagnoseReportsResponseBodyReports(TeaModel):
         scaling_group_id: str = None,
         user_id: str = None,
     ):
+        # The time when the diagnostic report was created.
         self.creation_time = creation_time
+        # The details of the diagnostic report.
         self.details = details
+        # The status of the diagnostic item. Only the severe status is displayed in the diagnostic report. Valid values:
+        # 
+        # *   Normal: The diagnostic result is normal.
+        # *   Warn: The diagnostic result is warning.
+        # *   Critical: The diagnostic result is critical.
         self.diagnose_status = diagnose_status
+        # The status of the diagnostic report. Valid values:
+        # 
+        # *   processing: The diagnosis is in progress.
+        # *   Finished: The diagnosis is complete.
         self.process_status = process_status
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the diagnostic report.
         self.report_id = report_id
+        # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
+        # The user ID of the scaling group.
         self.user_id = user_id
 
     def validate(self):
@@ -12341,11 +12450,15 @@ class DescribeDiagnoseReportsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The diagnostic reports.
         self.reports = reports
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of diagnostic reports.
         self.total_count = total_count
 
     def validate(self):
@@ -15930,6 +16043,7 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
         self.eip_bandwidth = eip_bandwidth
         # The capacity of the ephemeral storage. Unit: GiB.
         self.ephemeral_storage = ephemeral_storage
+        # The version of the GPU driver.
         self.gpu_driver_version = gpu_driver_version
         # The hostnames and IP addresses for a container that are added to the hosts file of the elastic container instance.
         self.host_aliases = host_aliases
@@ -16720,7 +16834,7 @@ class DescribeElasticStrengthResponseBody(TeaModel):
         resource_pools: List[DescribeElasticStrengthResponseBodyResourcePools] = None,
         total_strength: float = None,
     ):
-        # The scaling strength models.
+        # The scaling strengths of scaling configurations that are queried at the same time.
         self.elastic_strength_models = elastic_strength_models
         # The request ID.
         self.request_id = request_id
@@ -17522,20 +17636,20 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(TeaModel):
         self.lifecycle_hook_status = lifecycle_hook_status
         # The type of the scaling activity to which the lifecycle hook applies.
         self.lifecycle_transition = lifecycle_transition
-        # The ARN of the notification recipient when the lifecycle hook takes effect. The value of this parameter is in one of the following formats:
+        # The ARN of the notification recipient when the lifecycle hook takes effect. The value of this parameter must be in one of the following formats:
         # 
-        # *   If you did not specify this parameter, the return value is in the `acs:ess:{region-id}:{account-id}:null/null` format.
-        # *   If you specified a Message Service (MNS) queue as the notification recipient, the return value is in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
-        # *   If you specified an MNS topic as the notification recipient, the return value is in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
-        # *   If you specified a CloudOps Orchestration Service (OOS) template as the notification recipient, the return value is in the `acs:oos:{region-id}:{account-id}:template/{templatename}` format.
-        # *   If you specified an event bus as the notification recipient, the return value is in the `acs:eventbridge:{region-id}:{account-id}:eventbus/default` format.
+        # *   If you do not create a notification rule, specify the value in the `acs:ess:{region-id}:{account-id}:null/null` format.
+        # *   If you specify a Simple Message Queue (SMQ, formerly MNS) queue as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
+        # *   If you specify an SMQ as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
+        # *   If you specify a CloudOps Orchestration Service (OOS) template as the notification recipient, specify the value in the `acs:oos:{region-id}:{account-id}:template/{templatename}` format.
+        # *   If you specify an event bus as the notification recipient, specify the value in the `acs:eventbridge:{region-id}:{account-id}:eventbus/default` format.
         # 
-        # The variables in the preceding formats have the following meanings:
+        # The variables in the preceding value formats have the following meanings:
         # 
         # *   region-id: the region ID of your scaling group.
-        # *   account-id: the ID of your Alibaba Cloud.
-        # *   queuename: the name of the MNS queue.
-        # *   topicname: the name of the MNS topic.
+        # *   account-id: the ID of your Alibaba Cloud account.
+        # *   queuename: the name of the SMQ queue.
+        # *   topicname: the name of the SMQ topic.
         # *   templatename: the name of the OOS template.
         self.notification_arn = notification_arn
         # The fixed string that is included in a notification that Auto Scaling sends when the lifecycle hook takes effect.
@@ -17604,7 +17718,7 @@ class DescribeLifecycleHooksResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the lifecycle hooks.
+        # Details about the lifecycle hooks.
         self.lifecycle_hooks = lifecycle_hooks
         # The page number of the returned page.
         self.page_number = page_number
@@ -17977,18 +18091,18 @@ class DescribeNotificationConfigurationsResponseBodyNotificationConfigurationMod
         scaling_group_id: str = None,
         time_zone: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
+        # The Alibaba Cloud Resource Name (ARN) of the notification recipient. The value is in one of the following formats:
         # 
-        # *   If you use CloudMonitor as the notification method, the value format of this parameter is acs:ess:{region-id}:{account-id}:cloudmonitor.
-        # *   If you use a Message Service (MNS) queue as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:queue/{queuename}.
-        # *   If you use an MNS topic as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:topic/{topicname}.
+        # *   If you specify CloudMonitor as the notification recipient, the value is in the acs:ess:{region-id}:{account-id}:cloudmonitor format.
+        # *   If you specify a Simple Message Queue (SMQ, formerly MNS) as the notification recipient, the value is in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
+        # *   If you specify an SMQ topic as the notification recipient, the value is in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
         # 
-        # The variables in the preceding formats have the following meanings:
+        # The variables in the preceding value formats have the following meanings:
         # 
-        # *   region-id: the region ID of the scaling group.
-        # *   account-id: the ID of the Alibaba Cloud account.
-        # *   queuename: the name of the MNS queue.
-        # *   topicname: the name of the MNS topic.
+        # *   region-id: the region ID of your scaling group.
+        # *   account-id: the ID of your Alibaba Cloud account.
+        # *   queuename: the name of the SMQ queue.
+        # *   topicname: the name of the SMQ topic.
         self.notification_arn = notification_arn
         # The types of the notifications.
         self.notification_types = notification_types
@@ -18265,13 +18379,12 @@ class DescribePatternTypesRequest(TeaModel):
         v_switch_id: List[str] = None,
         zone_id: List[str] = None,
     ):
-        # The architectures of instance types. Valid values:
+        # The architecture types of the instance types. Valid values:
         # 
-        # *   X86: x86
-        # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated
-        # *   BareMetal: ECS Bare Metal Instance
-        # *   Arm: Arm
-        # *   SuperComputeCluster: Super Computing Cluster
+        # *   X86: x86 architecture.
+        # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated.
+        # *   BareMetal: ECS Bare Metal Instance.
+        # *   Arm: Arm.
         # 
         # By default, all values are selected.
         self.architecture = architecture
@@ -18299,24 +18412,23 @@ class DescribePatternTypesRequest(TeaModel):
         self.excluded_instance_type = excluded_instance_type
         # The GPU models.
         self.gpu_specs = gpu_specs
-        # The categories of the instance types. Valid values:
+        # The classifications of the instance types. Valid values:
         # 
-        # *   General-purpose
-        # *   Compute-optimized
-        # *   Memory-optimized
-        # *   Big data
-        # *   Local SSDs
-        # *   High Clock Speed
-        # *   Enhanced
-        # *   Shared
-        # *   Compute-optimized with GPU
-        # *   Visual Compute-optimized
-        # *   Heterogeneous Service
-        # *   Compute-optimized with FPGA
-        # *   Compute-optimized with NPU
-        # *   ECS Bare Metal
-        # *   Super Computing Cluster
-        # *   High Performance Compute
+        # *   General-purpose: general-purpose instance type.
+        # *   Compute-optimized: compute-optimized instance type.
+        # *   Memory-optimized: memory-optimized instance type.
+        # *   Big data: big data instance type.
+        # *   Local SSDs: instance type with local SSDs.
+        # *   High Clock Speed: instance type with high clock speeds.
+        # *   Enhanced: enhanced instance type.
+        # *   Shared: shared instance type.
+        # *   Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
+        # *   Visual Compute-optimized: visual compute-optimized instance type.
+        # *   Heterogeneous Service: heterogeneous service instance type.
+        # *   Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
+        # *   Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
+        # *   ECS Bare Metal: ECS Bare Metal Instance type.
+        # *   High Performance Compute: HPC-optimized instance type.
         self.instance_categories = instance_categories
         # The level of the instance family. Valid values:
         # 
@@ -18370,6 +18482,7 @@ class DescribePatternTypesRequest(TeaModel):
         self.spot_strategy = spot_strategy
         # The IDs of the vSwitches.
         self.v_switch_id = v_switch_id
+        # The zone IDs. If you pass vSwitch IDs to the system, this parameter does not take effect.
         self.zone_id = zone_id
 
     def validate(self):
@@ -18865,6 +18978,7 @@ class DescribeScalingActivitiesRequest(TeaModel):
         scaling_group_id: str = None,
         status_code: str = None,
     ):
+        # The ID of the instance refresh task. If you specify this parameter, this operation returns the list of scaling activities associated with the instance refresh task.
         self.instance_refresh_task_id = instance_refresh_task_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -19056,6 +19170,7 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         self.error_code = error_code
         # The error message that is returned when the scaling activity failed.
         self.error_message = error_message
+        # The ID of the instance refresh task.
         self.instance_refresh_task_id = instance_refresh_task_id
         # The context of the lifecycle hook.
         self.lifecycle_hook_context = lifecycle_hook_context
@@ -19397,7 +19512,7 @@ class DescribeScalingActivityDetailResponseBody(TeaModel):
         request_id: str = None,
         scaling_activity_id: str = None,
     ):
-        # The details of the scaling activity. If the status of the scaling activity is Rejected, no result is displayed.
+        # The details of the scaling activity. The result of a scaling activity is either successful or failed. If the scaling activity is rejected, no scaling activity details are returned.
         self.detail = detail
         # The ID of the request.
         self.request_id = request_id
@@ -19784,13 +19899,12 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatt
         minimum_memory_size: float = None,
         physical_processor_models: List[str] = None,
     ):
-        # The architecture types of the instance types. Valid values:
+        # The architectures of instance types. Valid values:
         # 
-        # *   X86: x86
-        # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated
-        # *   BareMetal: ECS Bare Metal Instance
-        # *   Arm: Arm
-        # *   SuperComputeCluster: Super Computing Cluster
+        # *   X86: x86.
+        # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated.
+        # *   BareMetal: ECS Bare Metal Instance.
+        # *   Arm: Arm.
         self.architectures = architectures
         # Indicates whether burstable instance types are included. Valid values:
         # 
@@ -19814,26 +19928,25 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatt
         self.excluded_instance_types = excluded_instance_types
         # The GPU models.
         self.gpu_specs = gpu_specs
-        # The categories of the instance.families. Valid values:
+        # The categories of ECS instances. Valid values:
         # 
-        # >  You can specify 1 to 10 categories.
+        # >  Up to 10 categories of ECS instances are supported.
         # 
-        # *   General-purpose
-        # *   Compute-optimized
-        # *   Memory-optimized
-        # *   Big data
-        # *   Local SSDs
-        # *   High Clock Speed
-        # *   Enhanced
-        # *   Shared
-        # *   Compute-optimized with GPU
-        # *   Visual Compute-optimized
-        # *   Heterogeneous Service
-        # *   Compute-optimized with FPGA
-        # *   Compute-optimized with NPU
-        # *   ECS Bare Metal
-        # *   Super Computing Cluster
-        # *   High Performance Compute
+        # *   General-purpose: general-purpose instance type.
+        # *   Compute-optimized: compute-optimized instance type.
+        # *   Memory-optimized: memory-optimized instance type.
+        # *   Big data: big data instance type.
+        # *   Local SSDs: instance type with local SSDs.
+        # *   High Clock Speed: instance type with high clock speeds.
+        # *   Enhanced: enhanced instance type.
+        # *   Shared: shared instance type.
+        # *   Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
+        # *   Visual Compute-optimized: visual compute-optimized instance type.
+        # *   Heterogeneous Service: heterogeneous service instance type.
+        # *   Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
+        # *   Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
+        # *   ECS Bare Metal: ECS Bare Metal Instance type.
+        # *   High Performance Compute: HPC-optimized instance type.
         self.instance_categories = instance_categories
         # The level of the instance family.
         # 
@@ -20070,9 +20183,6 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOpti
         self,
         confidential_computing_mode: str = None,
     ):
-        # 机密计算模式。可能值：
-        # -  Enclave：表示ECS实例使用Enclave构建机密计算环境。更多信息，请参见[使用Enclave构建机密计算环境](https://help.aliyun.com/document_detail/203433.html)。
-        # - TDX：表示构建TDX机密计算环境。更多信息，请参见[构建TDX机密计算环境](https://help.aliyun.com/document_detail/479090.html)。
         self.confidential_computing_mode = confidential_computing_mode
 
     def validate(self):
@@ -20294,7 +20404,15 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.host_name = host_name
         # The ID of the High Performance Computing (HPC) cluster to which the ECS instances belong.
         self.hpc_cluster_id = hpc_cluster_id
+        # Indicates whether the access channel is enabled for instance metadata. Valid values:
+        # 
+        # *   enabled
+        # *   disabled
         self.http_endpoint = http_endpoint
+        # Indicates whether the security hardening mode (IMDSv2) is forcefully used to access instance metadata. Valid values:
+        # 
+        # *   optional: The security hardening mode IMDSv2 is not forcibly used.
+        # *   required: The security hardening mode (IMDSv2) is forcibly used. After you set this parameter to required, you cannot access instance metadata in normal mode.
         self.http_tokens = http_tokens
         # The name of the image family. You can specify this parameter to obtain the latest available images in the current image family for instance creation. If you specify ImageId, you cannot specify `ImageFamily`.
         self.image_family = image_family
@@ -20331,12 +20449,9 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         # *   PayByBandwidth: pay-by-bandwidth. You are charged for the bandwidth that you specified by using InternetMaxBandwidthOut.
         # *   PayByTraffic: pay-by-traffic. You are charged for the actual traffic that you used. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
         self.internet_charge_type = internet_charge_type
-        # The maximum inbound bandwidth. Unit: Mbit/s. Valid values: 1 to 200.
+        # The maximum inbound public bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The maximum outbound bandwidth. Unit: Mbit/s. Valid values:
-        # 
-        # *   0 to 1024 if you set InternetChargeType to PayByBandwidth. If you leave this parameter empty, this parameter is automatically set to 0.
-        # *   0 to 1024 if you set InternetChargeType to PayByTraffic. If you leave this parameter empty, an error is returned.
+        # The maximum outbound public bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # Indicates whether the ECS instances are I/O optimized. Valid values:
         # 
@@ -20389,7 +20504,6 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.security_group_id = security_group_id
         # The IDs of the security groups to which the ECS instances belong. ECS instances that belong to the same security group can communicate with each other.
         self.security_group_ids = security_group_ids
-        # 安全选项。
         self.security_options = security_options
         # The protection period of the preemptible instances. Unit: hours.
         self.spot_duration = spot_duration
@@ -22319,9 +22433,19 @@ class DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions(TeaModel):
         on_demand_percentage_above_base_capacity: int = None,
         spot_auto_replace_on_demand: bool = None,
     ):
+        # Indicates whether pay-as-you-go ECS instances can be automatically created to reach the required number of ECS instances when preemptible ECS instances cannot be created due to high prices or insufficient inventory of resources. This parameter takes effect when you set `MultiAZPolicy` to `COST_OPTIMIZED`. Valid values:
+        # 
+        # *   true
+        # *   false
         self.compensate_with_on_demand = compensate_with_on_demand
+        # The minimum number of pay-as-you-go instances required in the scaling group. When the actual number of pay-as-you-go instances drops below the minimum threshold, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
         self.on_demand_base_capacity = on_demand_base_capacity
+        # The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. `OnDemandBaseCapacity` specifies the minimum number of pay-as-you-go instances required in the scaling group. Valid values: 0 to 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        # Specifies whether to replace pay-as-you-go ECS instances with preemptible ECS instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible ECS instances to replace the surplus pay-as-you-go ECS instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go ECS instances if there are not enough preemptible instance types available. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
+        # 
+        # *   true
+        # *   false
         self.spot_auto_replace_on_demand = spot_auto_replace_on_demand
 
     def validate(self):
@@ -22748,6 +22872,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         # *   true
         # *   false
         self.az_balance = az_balance
+        # The capacity options.
         self.capacity_options = capacity_options
         # Indicates whether Auto Scaling can create pay-as-you-go instances to supplement preemptible instances if preemptible instances cannot be created due to price-related factors or insufficient inventory when MultiAZPolicy is set to COST_OPTIMIZED. Valid values:
         # 
@@ -24660,7 +24785,16 @@ class DescribeScheduledTasksRequest(TeaModel):
         # 
         # Default value: 10.
         self.page_size = page_size
+        # The interval at which scheduled task N is repeatedly executed. Valid values:
+        # 
+        # *   Daily: Scheduled task N is executed once every specified number of days.
+        # *   Weekly: Scheduled task N is executed on each specified day of a week.
+        # *   Monthly: Scheduled task N is executed on each specified day of a month.
+        # *   Cron: Scheduled task N is executed based on the specified Cron expression.
         self.recurrence_type = recurrence_type
+        # The number of times scheduled task N is repeatedly executed.
+        # 
+        # You can specify this parameter only if you set RecurrenceType to Weekly. Separate multiple values with commas (,). The values that correspond to Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6.
         self.recurrence_value = recurrence_value
         # The region ID of the scaling group to which the scheduled task belongs.
         # 
@@ -24676,7 +24810,12 @@ class DescribeScheduledTasksRequest(TeaModel):
         self.scheduled_task_ids = scheduled_task_ids
         # The names of the scheduled tasks that you want to query.
         self.scheduled_task_names = scheduled_task_names
+        # Specifies whether scheduled task N is enabled.
+        # 
+        # *   true
+        # *   false
         self.task_enabled = task_enabled
+        # The name of scheduled task N. Fuzzy search based on keywords is supported.
         self.task_name = task_name
 
     def validate(self):
@@ -25042,7 +25181,7 @@ class DetachAlbServerGroupsRequest(TeaModel):
         # 
         # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
-        # Specifies whether to remove the existing ECS instances from the ALB server group. Valid values:
+        # Specifies whether to remove the existing Elastic Compute Service (ECS) instances from the Application Load Balancer (ALB) server group marked for detachment. Valid values:
         # 
         # *   true: removes the existing ECS instances from the ALB server group and returns the value of `ScalingActivityId`. You can query the value of ScalingActivityId to check whether the existing ECS instances are removed from the ALB server group.
         # *   false: does not remove the existing ECS instances from the ALB server group.
@@ -25200,9 +25339,9 @@ class DetachDBInstancesRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
         # The IDs of the ApsaraDB RDS instances. You can specify up to five ApsaraDB RDS instances.
         # 
@@ -25218,7 +25357,10 @@ class DetachDBInstancesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the scaling group.
         self.region_id = region_id
-        # This parameter takes effect only for databases whose AttachMode is set to SecurityGroup. If you set this parameter to true, Auto Scaling removes the security group ID of the active scaling configuration from the security group whitelist of the database that you want to detach from the scaling group.
+        # Specifies whether to remove the security group. This parameter takes effect only if you set `AttachMode` to `SecurityGroup`. Valid values:
+        # 
+        # *   true
+        # *   false
         # 
         # Default value: false.
         self.remove_security_group = remove_security_group
@@ -25565,7 +25707,7 @@ class DetachLoadBalancersRequest(TeaModel):
         self.async_ = async_
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
-        # Specifies whether to remove Elastic Compute Service (ECS) instances in the scaling group from the backend server groups of the CLB instance. Valid values:
+        # Specifies whether to remove Elastic Compute Service (ECS) instances in the scaling group from the backend server groups of the Server Load Balancer (SLB) instance. Valid values:
         # 
         # *   true
         # *   false
@@ -28101,10 +28243,10 @@ class ModifyAlarmRequest(TeaModel):
         # 
         # For more information, see [Event-triggered task for system monitoring](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
-        # The type of the metric. Valid values:
+        # The metric type. Valid values:
         # 
         # *   system: system metrics of CloudMonitor
-        # *   custom: custom metrics that are reported to CloudMonitor
+        # *   custom: custom metrics that are reported to CloudMonitor.
         self.metric_type = metric_type
         # The name of the event-triggered task.
         self.name = name
@@ -30403,6 +30545,12 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
         self.enable_sls = enable_sls
         # The size of the temporary storage space. By default, an Enterprise SSD (ESSD) of the PL1 type is used. Unit: GiB.
         self.ephemeral_storage = ephemeral_storage
+        # The version of the GPU driver. Valid values:
+        # 
+        # *   tesla=470.82.01 (default)
+        # *   tesla=525.85.12
+        # 
+        # >  You can switch the GPU driver version only for a few Elastic Compute Service (ECS) instance types. For more information, see [Specify GPU-accelerated ECS instance types to create an elastic container instance](https://help.aliyun.com/document_detail/2579486.html).
         self.gpu_driver_version = gpu_driver_version
         # The hosts.
         self.host_aliases = host_aliases
@@ -31035,18 +31183,19 @@ class ModifyLifecycleHookRequest(TeaModel):
         # *   SCALE_OUT
         # *   SCALE_IN
         self.lifecycle_transition = lifecycle_transition
-        # The Alibaba Cloud Resource Name (ARN) of the notification method. Specify the value in one of the following formats:
+        # The Alibaba Cloud Resource Name (ARN) of the notification recipient. Specify the value in one of the following formats:
         # 
-        # *   If the notification method is a Message Service (MNS) queue, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
-        # *   If the notification method is an MNS topic, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
-        # *   If the notification method is an Operation Orchestration Service (OOS) template, specify the value in the acs:oos:{region-id}:{account-id}:template/{templatename} format.
+        # *   If you specify a Simple Message Queue (SMQ, formerly MNS) as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
+        # *   If you specify an SMQ topic as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
+        # *   If you specify a CloudOps Orchestration Service (OOS) template as the notification recipient, specify the value in the acs:oos:{region-id}:{account-id}:template/{templatename} format.
+        # *   If you specify an event bus as the notification recipient, specify the value in the acs:eventbridge:{region-id}:{account-id}:eventbus/default format.
         # 
-        # The variables in the preceding parameter formats have the following meanings:
+        # The variables in the preceding value formats have the following meanings:
         # 
-        # *   region-id: the region ID of the scaling group.
-        # *   account-id: the ID of the Alibaba Cloud account.
-        # *   queuename: the name of the MNS queue.
-        # *   topicname: the name of the MNS topic.
+        # *   region-id: the region ID of your scaling group.
+        # *   account-id: the ID of your Alibaba Cloud account.
+        # *   queuename: the name of the SMQ queue.
+        # *   topicname: the name of the SMQ topic.
         # *   templatename: the name of the OOS template.
         self.notification_arn = notification_arn
         # The fixed string that is included in a notification. Auto Scaling sends the notification when the lifecycle hook takes effect. The value of this parameter cannot exceed 4,096 characters in length.
@@ -31209,18 +31358,18 @@ class ModifyNotificationConfigurationRequest(TeaModel):
         scaling_group_id: str = None,
         time_zone: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
+        # The Alibaba Cloud Resource Name (ARN) of the notification recipient. The following list describes the value formats of this parameter:
         # 
-        # *   If you use CloudMonitor as the notification method, specify the value in the `acs:ess:{region-id}:{account-id}:cloudmonitor` format.
-        # *   If you use an MNS queue as the notification method, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
-        # *   If you use an MNS topic as the notification method, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
+        # *   If you specify CloudMonitor as the notification recipient, specify the value in the `acs:ess:{region-id}:{account-id}:cloudmonitor` format.
+        # *   If you specify a Simple Message Queue (SMQ) queue as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
+        # *   If you specify an SMQ topic as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
         # 
-        # The variables in the preceding formats have the following meanings:
+        # The variables in the preceding value formats have the following meanings:
         # 
         # *   region-id: the region ID of your scaling group.
-        # *   account-id: the ID of your Alibaba Cloud.
-        # *   queuename: the name of the MNS queue.
-        # *   topicname: the name of the MNS topic.
+        # *   account-id: the ID of your Alibaba Cloud account.
+        # *   queuename: the name of the SMQ queue.
+        # *   topicname: the name of the SMQ topic.
         # 
         # This parameter is required.
         self.notification_arn = notification_arn
@@ -31798,19 +31947,18 @@ class ModifyScalingConfigurationRequestInstancePatternInfos(TeaModel):
         minimum_memory_size: float = None,
         physical_processor_models: List[str] = None,
     ):
-        # The architectures of instance types. Valid values:
+        # The architecture types of the instance types. Valid values:
         # 
         # *   X86: x86.
         # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated.
         # *   BareMetal: ECS Bare Metal Instance.
         # *   Arm: Arm.
-        # *   SuperComputeCluster: Super Computing Cluster.
         # 
-        # By default, all values are included.
+        # By default, all values are selected.
         self.architectures = architectures
         # Specifies whether to include burstable instance types. Valid values:
         # 
-        # *   Exclude: does not include burstable instance types.
+        # *   Exclude: excludes burstable instance types.
         # *   Include: includes burstable instance types.
         # *   Required: includes only burstable instance types.
         # 
@@ -31824,48 +31972,47 @@ class ModifyScalingConfigurationRequestInstancePatternInfos(TeaModel):
         # *   If you specify InstancePatternInfo, you must also specify InstancePatternInfo.Cores and InstancePatternInfo.Memory.
         # *   Auto Scaling preferentially uses the instance type specified by InstanceType or InstanceTypes to create instances. If the specified instance type does not have sufficient inventory, Auto Scaling selects the lowest-priced instance type specified by InstancePatternInfo to create instances.
         self.cores = cores
-        # The CPU architectures of instance types. Valid values:
+        # The CPU architectures of the instance types. Valid values:
         # 
         # >  You can specify up to two CPU architectures.
         # 
         # *   x86
         # *   Arm
         self.cpu_architectures = cpu_architectures
-        # The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
+        # The instance types that you want to exclude. You can use an asterisk (\\*) as a wildcard character to exclude an instance type or an instance family. Examples:
         # 
         # *   ecs.c6.large: excludes the ecs.c6.large instance type.
         # *   ecs.c6.\\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
         # The GPU models.
         self.gpu_specs = gpu_specs
-        # The categories of instance types. Valid values:
+        # The categories of the instance types. Valid values:
         # 
-        # *   General-purpose
-        # *   Compute-optimized
-        # *   Memory-optimized
-        # *   Big data
-        # *   Local SSDs
-        # *   High Clock Speed
-        # *   Enhanced
-        # *   Shared
-        # *   Compute-optimized with GPU
-        # *   Visual Compute-optimized
-        # *   Heterogeneous Service
-        # *   Compute-optimized with FPGA
-        # *   Compute-optimized with NPU
-        # *   ECS Bare Metal
-        # *   Super Computing Cluster
-        # *   High Performance Compute
+        # *   General-purpose: general-purpose instance type.
+        # *   Compute-optimized: compute-optimized instance type.
+        # *   Memory-optimized: memory-optimized instance type.
+        # *   Big data: big data instance type.
+        # *   Local SSDs: instance type that uses local SSDs.
+        # *   High Clock Speed: instance type that has a high clock speed.
+        # *   Enhanced: enhanced instance type.
+        # *   Shared: shared instance type.
+        # *   Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
+        # *   Visual Compute-optimized: visual compute-optimized instance type.
+        # *   Heterogeneous Service: heterogeneous service instance type.
+        # *   Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
+        # *   Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
+        # *   ECS Bare Metal: ECS Bare Metal Instance type.
+        # *   High Performance Compute: HPC-optimized instance type.
         self.instance_categories = instance_categories
-        # The level of the instance family. You can specify this parameter to filter the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+        # The level of the instance family. You can specify this parameter to obtain the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
         # 
-        # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
-        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios in which high stability is required. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
-        # *   CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+        # *   EntryLevel: entry-level (shared instance types). Instance types of this level are the most cost-effective but may not ensure stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+        # *   EnterpriseLevel: enterprise-level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # *   CreditEntryLevel: credit entry-level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
         self.instance_family_level = instance_family_level
         # The instance families that you want to specify. You can specify up to 10 instance families in each call.
         self.instance_type_families = instance_type_families
-        # The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to filter the available instance types.
+        # The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to obtain the available instance types.
         # 
         # >  If you set SpotStrategy to SpotWithPriceLimit, you must specify this parameter. In other cases, this parameter is optional.
         self.max_price = max_price
@@ -31879,7 +32026,7 @@ class ModifyScalingConfigurationRequestInstancePatternInfos(TeaModel):
         self.maximum_memory_size = maximum_memory_size
         # The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
         self.memory = memory
-        # The baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+        # The baseline vCPU computing performance (overall baseline performance of all vCPUs) of each t5 or t6 burstable instance.
         self.minimum_baseline_credit = minimum_baseline_credit
         # The minimum number of vCPUs per instance type.
         self.minimum_cpu_core_count = minimum_cpu_core_count
@@ -31891,11 +32038,11 @@ class ModifyScalingConfigurationRequestInstancePatternInfos(TeaModel):
         self.minimum_eni_quantity = minimum_eni_quantity
         # The minimum number of GPUs per instance. The value must be a positive integer.
         self.minimum_gpu_amount = minimum_gpu_amount
-        # The initial vCPU credits per t5 or t6 burstable instance.
+        # The initial vCPU credits of each t5 or t6 burstable instance.
         self.minimum_initial_credit = minimum_initial_credit
         # The minimum memory size per instance. Unit: GiB.
         self.minimum_memory_size = minimum_memory_size
-        # The processor models of instance types. You can specify up to 10 processor models.
+        # The processor models of the instance types. You can specify up to 10 processor models.
         self.physical_processor_models = physical_processor_models
 
     def validate(self):
@@ -32309,7 +32456,23 @@ class ModifyScalingConfigurationRequest(TeaModel):
         self.host_name = host_name
         # The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instances belong.
         self.hpc_cluster_id = hpc_cluster_id
+        # Specifies whether to enable the access channel for instance metadata. Valid values:
+        # 
+        # *   enabled
+        # *   disabled
+        # 
+        # Default value: enabled.
+        # 
+        # >  For information about instance metadata, see [Obtain instance metadata](https://help.aliyun.com/document_detail/108460.html).
         self.http_endpoint = http_endpoint
+        # Specifies whether to forcibly use the security hardening mode (IMDSv2) to access instance metadata. Valid values:
+        # 
+        # *   optional: does not forcibly use the security hardening mode (IMDSv2).
+        # *   required: forcibly uses the security hardening mode (IMDSv2). If you set this parameter to required, you cannot access instance metadata in normal mode.
+        # 
+        # Default value: optional.
+        # 
+        # >  For more information about instance metadata access modes, see [Access modes of instance metadata](https://help.aliyun.com/document_detail/108460.html).
         self.http_tokens = http_tokens
         # The name of the image family. If you specify this parameter, the latest custom images that are available in the specified image family are returned. Then, you can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
         self.image_family = image_family
@@ -32325,7 +32488,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         self.instance_description = instance_description
         # The name of the Elastic Compute Service (ECS) instance that is automatically created by using the scaling configuration.
         self.instance_name = instance_name
-        # The information about the intelligent configuration settings, which determine the available instance types.
+        # The intelligent configuration settings, which determine the available instance types.
         self.instance_pattern_infos = instance_pattern_infos
         # The instance types.
         self.instance_type_overrides = instance_type_overrides
@@ -32338,11 +32501,14 @@ class ModifyScalingConfigurationRequest(TeaModel):
         # *   PayByBandwidth: pay-by-bandwidth. You are charged for the bandwidth specified by InternetMaxBandwidthOut.
         # *   PayByTraffic: pay-by-traffic. You are charged for the actual traffic generated. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
         self.internet_charge_type = internet_charge_type
-        self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
+        # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
-        # *   If you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
-        # *   If you set InternetChargeType to PayByTraffic: 0 to 100. If you leave this parameter empty, an error is returned.
+        # *   If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values of this parameter are 1 to 10. The default value is 10.
+        # *   If the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the value of `InternetMaxBandwidthOut`. The default value is the value of `InternetMaxBandwidthOut`.
+        self.internet_max_bandwidth_in = internet_max_bandwidth_in
+        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
+        # 
+        # Default value: 0.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # Specifies whether to create I/O optimized instances from the scaling configuration. Valid values:
         # 
@@ -32366,7 +32532,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         self.memory = memory
         # The ENIs.
         self.network_interfaces = network_interfaces
-        # Specifies whether to override existing data. Valid values:
+        # Specifies whether to overwrite existing data. Valid values:
         # 
         # *   true
         # *   false
@@ -33207,19 +33373,18 @@ class ModifyScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         minimum_memory_size: float = None,
         physical_processor_models: List[str] = None,
     ):
-        # The architectures of instance types. Valid values:
+        # The architecture types of the instance types. Valid values:
         # 
         # *   X86: x86.
         # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated.
         # *   BareMetal: ECS Bare Metal Instance.
         # *   Arm: Arm.
-        # *   SuperComputeCluster: Super Computing Cluster.
         # 
-        # By default, all values are included.
+        # By default, all values are selected.
         self.architectures = architectures
         # Specifies whether to include burstable instance types. Valid values:
         # 
-        # *   Exclude: does not include burstable instance types.
+        # *   Exclude: excludes burstable instance types.
         # *   Include: includes burstable instance types.
         # *   Required: includes only burstable instance types.
         # 
@@ -33233,48 +33398,47 @@ class ModifyScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         # *   If you specify InstancePatternInfo, you must also specify InstancePatternInfo.Cores and InstancePatternInfo.Memory.
         # *   Auto Scaling preferentially uses the instance type specified by InstanceType or InstanceTypes to create instances. If the specified instance type does not have sufficient inventory, Auto Scaling selects the lowest-priced instance type specified by InstancePatternInfo to create instances.
         self.cores = cores
-        # The CPU architectures of instance types. Valid values:
+        # The CPU architectures of the instance types. Valid values:
         # 
         # >  You can specify up to two CPU architectures.
         # 
         # *   x86
         # *   Arm
         self.cpu_architectures = cpu_architectures
-        # The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
+        # The instance types that you want to exclude. You can use an asterisk (\\*) as a wildcard character to exclude an instance type or an instance family. Examples:
         # 
         # *   ecs.c6.large: excludes the ecs.c6.large instance type.
         # *   ecs.c6.\\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
         # The GPU models.
         self.gpu_specs = gpu_specs
-        # The categories of instance types. Valid values:
+        # The categories of the instance types. Valid values:
         # 
-        # *   General-purpose
-        # *   Compute-optimized
-        # *   Memory-optimized
-        # *   Big data
-        # *   Local SSDs
-        # *   High Clock Speed
-        # *   Enhanced
-        # *   Shared
-        # *   Compute-optimized with GPU
-        # *   Visual Compute-optimized
-        # *   Heterogeneous Service
-        # *   Compute-optimized with FPGA
-        # *   Compute-optimized with NPU
-        # *   ECS Bare Metal
-        # *   Super Computing Cluster
-        # *   High Performance Compute
+        # *   General-purpose: general-purpose instance type.
+        # *   Compute-optimized: compute-optimized instance type.
+        # *   Memory-optimized: memory-optimized instance type.
+        # *   Big data: big data instance type.
+        # *   Local SSDs: instance type that uses local SSDs.
+        # *   High Clock Speed: instance type that has a high clock speed.
+        # *   Enhanced: enhanced instance type.
+        # *   Shared: shared instance type.
+        # *   Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
+        # *   Visual Compute-optimized: visual compute-optimized instance type.
+        # *   Heterogeneous Service: heterogeneous service instance type.
+        # *   Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
+        # *   Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
+        # *   ECS Bare Metal: ECS Bare Metal Instance type.
+        # *   High Performance Compute: HPC-optimized instance type.
         self.instance_categories = instance_categories
-        # The level of the instance family. You can specify this parameter to filter the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+        # The level of the instance family. You can specify this parameter to obtain the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
         # 
-        # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
-        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios in which high stability is required. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
-        # *   CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+        # *   EntryLevel: entry-level (shared instance types). Instance types of this level are the most cost-effective but may not ensure stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+        # *   EnterpriseLevel: enterprise-level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # *   CreditEntryLevel: credit entry-level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
         self.instance_family_level = instance_family_level
         # The instance families that you want to specify. You can specify up to 10 instance families in each call.
         self.instance_type_families = instance_type_families
-        # The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to filter the available instance types.
+        # The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to obtain the available instance types.
         # 
         # >  If you set SpotStrategy to SpotWithPriceLimit, you must specify this parameter. In other cases, this parameter is optional.
         self.max_price = max_price
@@ -33288,7 +33452,7 @@ class ModifyScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         self.maximum_memory_size = maximum_memory_size
         # The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
         self.memory = memory
-        # The baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+        # The baseline vCPU computing performance (overall baseline performance of all vCPUs) of each t5 or t6 burstable instance.
         self.minimum_baseline_credit = minimum_baseline_credit
         # The minimum number of vCPUs per instance type.
         self.minimum_cpu_core_count = minimum_cpu_core_count
@@ -33300,11 +33464,11 @@ class ModifyScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         self.minimum_eni_quantity = minimum_eni_quantity
         # The minimum number of GPUs per instance. The value must be a positive integer.
         self.minimum_gpu_amount = minimum_gpu_amount
-        # The initial vCPU credits per t5 or t6 burstable instance.
+        # The initial vCPU credits of each t5 or t6 burstable instance.
         self.minimum_initial_credit = minimum_initial_credit
         # The minimum memory size per instance. Unit: GiB.
         self.minimum_memory_size = minimum_memory_size
-        # The processor models of instance types. You can specify up to 10 processor models.
+        # The processor models of the instance types. You can specify up to 10 processor models.
         self.physical_processor_models = physical_processor_models
 
     def validate(self):
@@ -33718,7 +33882,23 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         self.host_name = host_name
         # The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instances belong.
         self.hpc_cluster_id = hpc_cluster_id
+        # Specifies whether to enable the access channel for instance metadata. Valid values:
+        # 
+        # *   enabled
+        # *   disabled
+        # 
+        # Default value: enabled.
+        # 
+        # >  For information about instance metadata, see [Obtain instance metadata](https://help.aliyun.com/document_detail/108460.html).
         self.http_endpoint = http_endpoint
+        # Specifies whether to forcibly use the security hardening mode (IMDSv2) to access instance metadata. Valid values:
+        # 
+        # *   optional: does not forcibly use the security hardening mode (IMDSv2).
+        # *   required: forcibly uses the security hardening mode (IMDSv2). If you set this parameter to required, you cannot access instance metadata in normal mode.
+        # 
+        # Default value: optional.
+        # 
+        # >  For more information about instance metadata access modes, see [Access modes of instance metadata](https://help.aliyun.com/document_detail/108460.html).
         self.http_tokens = http_tokens
         # The name of the image family. If you specify this parameter, the latest custom images that are available in the specified image family are returned. Then, you can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
         self.image_family = image_family
@@ -33734,7 +33914,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         self.instance_description = instance_description
         # The name of the Elastic Compute Service (ECS) instance that is automatically created by using the scaling configuration.
         self.instance_name = instance_name
-        # The information about the intelligent configuration settings, which determine the available instance types.
+        # The intelligent configuration settings, which determine the available instance types.
         self.instance_pattern_infos = instance_pattern_infos
         # The instance types.
         self.instance_type_overrides = instance_type_overrides
@@ -33747,11 +33927,14 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         # *   PayByBandwidth: pay-by-bandwidth. You are charged for the bandwidth specified by InternetMaxBandwidthOut.
         # *   PayByTraffic: pay-by-traffic. You are charged for the actual traffic generated. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
         self.internet_charge_type = internet_charge_type
-        self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
+        # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
-        # *   If you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
-        # *   If you set InternetChargeType to PayByTraffic: 0 to 100. If you leave this parameter empty, an error is returned.
+        # *   If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values of this parameter are 1 to 10. The default value is 10.
+        # *   If the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the value of `InternetMaxBandwidthOut`. The default value is the value of `InternetMaxBandwidthOut`.
+        self.internet_max_bandwidth_in = internet_max_bandwidth_in
+        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
+        # 
+        # Default value: 0.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # Specifies whether to create I/O optimized instances from the scaling configuration. Valid values:
         # 
@@ -33775,7 +33958,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         self.memory = memory
         # The ENIs.
         self.network_interfaces = network_interfaces
-        # Specifies whether to override existing data. Valid values:
+        # Specifies whether to overwrite existing data. Valid values:
         # 
         # *   true
         # *   false
@@ -34247,9 +34430,25 @@ class ModifyScalingGroupRequestCapacityOptions(TeaModel):
         on_demand_percentage_above_base_capacity: int = None,
         spot_auto_replace_on_demand: bool = None,
     ):
+        # Specifies whether to automatically create pay-as-you-go instances to meet the requirements on the number of ECS instances in the scaling group when the number of preemptible instances cannot be reached due to reasons such as cost-related issues and insufficient resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
+        # 
+        # *   true
+        # *   false
         self.compensate_with_on_demand = compensate_with_on_demand
+        # The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+        # 
+        # If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 0.
         self.on_demand_base_capacity = on_demand_base_capacity
+        # The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. `OnDemandBaseCapacity` specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100
+        # 
+        # If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        # Specifies whether to replace pay-as-you-go ECS instances with preemptible ECS instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible ECS instances to replace the surplus pay-as-you-go ECS instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go ECS instances if there are not enough preemptible instance types. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.spot_auto_replace_on_demand = spot_auto_replace_on_demand
 
     def validate(self):
@@ -34401,6 +34600,7 @@ class ModifyScalingGroupRequest(TeaModel):
         # 
         # Default value: false.
         self.az_balance = az_balance
+        # The capacity options.
         self.capacity_options = capacity_options
         # Specifies whether to automatically create pay-as-you-go instances to meet the requirements on the number of ECS instances in the scaling group when the number of preemptible instances cannot be reached due to reasons such as cost-related issues and insufficient resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
         # 
@@ -35297,6 +35497,7 @@ class ModifyScheduledTaskRequest(TeaModel):
         recurrence_end_time: str = None,
         recurrence_type: str = None,
         recurrence_value: str = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         scaling_group_id: str = None,
@@ -35346,6 +35547,7 @@ class ModifyScheduledTaskRequest(TeaModel):
         # 
         # After you modify the scheduled task, the values that you specify for the `RecurrenceType` and `RecurrenceValue` parameters must be valid at the same time.
         self.recurrence_value = recurrence_value
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the scaling group whose number of instances must be modified when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter for a scheduled task, you must specify the minimum, maximum, or expected numbers of instances for a scaling group in the scheduled task. That is, you must specify at least one of the `MinValue`, `MaxValue`, and `DesiredCapacity` parameters.
@@ -35401,6 +35603,8 @@ class ModifyScheduledTaskRequest(TeaModel):
             result['RecurrenceType'] = self.recurrence_type
         if self.recurrence_value is not None:
             result['RecurrenceValue'] = self.recurrence_value
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -35441,6 +35645,8 @@ class ModifyScheduledTaskRequest(TeaModel):
             self.recurrence_type = m.get('RecurrenceType')
         if m.get('RecurrenceValue') is not None:
             self.recurrence_value = m.get('RecurrenceValue')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -35680,15 +35886,17 @@ class RecordLifecycleActionHeartbeatRequest(TeaModel):
         # The region ID of the scaling group.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The time window during which the desired ECS instance stays in a Pending state. When the time window ends, Auto Scaling executes the default action. Valid values: 30 to 21600. Unit: seconds.
+        # The time window during which the ECS instance stays in a Pending state. When the time window ends, Auto Scaling executes the default action. Valid values: 30 to 21600. Unit: seconds.
         # 
-        # After you create a lifecycle hook, you can call this operation to extend the time window during which the desired ECS instance stays in a Pending state. You can also call the [CompleteLifecycleAction](https://help.aliyun.com/document_detail/459335.html) operation to remove the desired ECS instance from a Pending state ahead of schedule.
+        # After you create a lifecycle hook, you can call this operation to extend the time window during which the ECS instance stays in a Pending state. You can also call the [CompleteLifecycleAction](https://help.aliyun.com/document_detail/459335.html) operation to remove the ECS instance from the Pending state ahead of schedule.
         # 
         # Default value: 600.
         self.heartbeat_timeout = heartbeat_timeout
-        # The action token of the lifecycle hook. You can obtain the token from the details page of the Message Service (MNS) queue specified for the lifecycle hook when the desired ECS instance enters a Pending state.\\
-        # You can also call the [DescribeLifecycleActions](https://help.aliyun.com/document_detail/459333.html) operation to obtain the action token of the lifecycle hook.\\
-        # If you specified an MNS topic for the lifecycle hook, you can obtain the token from the MNS topic.
+        # The action token of the lifecycle hook. You can obtain the token from the details page of the Simple Message Queue (SMQ, formerly MNS) queue specified for the lifecycle hook.
+        # 
+        # You can also call the [DescribeLifecycleActions](https://help.aliyun.com/document_detail/459333.html) operation to obtain the action token of the lifecycle hook.
+        # 
+        # If you specified an SMQ topic for the lifecycle hook, you can obtain the token from the MNS topic.
         # 
         # This parameter is required.
         self.lifecycle_action_token = lifecycle_action_token
@@ -35875,15 +36083,17 @@ class RemoveInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # The period of time that is required by the Elastic Compute Service (ECS) instance to enter the Stopped state during the scale-in process. Unit: seconds. Valid values: 30 to 240.
+        # The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
         # 
         # > 
         # 
         # *   By default, this parameter inherits the value of StopInstanceTimeout specified in the CreateScalingGroup or ModifyScalingGroup operation. You can also specify a different value for this parameter in the RemoveInstances operation.
         # 
-        # *   This parameter takes effect only if you set RemovePolicy to release.\\
-        #     If you specify this parameter, the system proceeds with the scale-in process only after the period of time specified by StopInstanceTimeout ends. In this case, the scale-in operation continues regardless of whether the ECS instance enters the Stopped state or not.\\
-        #     If you do not specify this parameter, the system proceeds with the scale-in process only after the ECS instance enters the Stopped state. If the ECS instance fails to enter the Stopped state, the scale-in process rolls back, and the scale-in operation is considered as failed.
+        # *   This parameter takes effect only if you set RemovePolicy to release.
+        # 
+        # *   If you specify this parameter, the system waits for the ECS instance to enter the Stopped state only for up to the specified period of time before continuing with the scale-in operation, regardless of the status of the ECS instance.
+        # 
+        # *   If you do not specify this parameter, the system continues with the scale-in operation until the ECS instance enters the Stopped state. If the ECS instance is not successfully stopped, the scale-in process is rolled back and considered failed.
         self.stop_instance_timeout = stop_instance_timeout
 
     def validate(self):
@@ -36663,10 +36873,10 @@ class ScaleWithAdjustmentRequest(TeaModel):
         self.scaling_group_id = scaling_group_id
         # Specifies whether to trigger the scaling activity in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid values:
         # 
-        # *   true: triggers the scaling activity in a synchronous manner. The scaling activity is triggered at the time when the scaling rule is executed.
-        # *   false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number of instances and determines whether to trigger the scaling activity based on the check result.
+        # *   true: triggers the scaling activity in a synchronous manner. A scaling activity is triggered at the time when the scaling rule is executed.
+        # *   false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number and determines whether to trigger the scaling activity based on the check result.
         # 
-        # > For more information about the Expected Number of Instances feature, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
+        # >  For more information about the expected number of instances feature, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
         # 
         # Default value: false.
         self.sync_activity = sync_activity
@@ -36785,10 +36995,10 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
         self.scaling_group_id = scaling_group_id
         # Specifies whether to trigger the scaling activity in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid values:
         # 
-        # *   true: triggers the scaling activity in a synchronous manner. The scaling activity is triggered at the time when the scaling rule is executed.
-        # *   false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number of instances and determines whether to trigger the scaling activity based on the check result.
+        # *   true: triggers the scaling activity in a synchronous manner. A scaling activity is triggered at the time when the scaling rule is executed.
+        # *   false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number and determines whether to trigger the scaling activity based on the check result.
         # 
-        # > For more information about the Expected Number of Instances feature, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
+        # >  For more information about the expected number of instances feature, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
         # 
         # Default value: false.
         self.sync_activity = sync_activity
@@ -37383,7 +37593,7 @@ class StartInstanceRefreshRequest(TeaModel):
         scaling_group_id: str = None,
         skip_matching: bool = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see "How to ensure idempotence".
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
         # The desired configurations of the instance refresh task.
         # 
@@ -37683,13 +37893,13 @@ class SuspendProcessesRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
         self.owner_id = owner_id
-        # The types of the processes that you want to suspend. Valid values:
+        # The types of processes that you want to suspend. Valid values:
         # 
-        # *   scalein: the scale-in process.
-        # *   scaleout: the scale-out process.
-        # *   healthcheck: the health check process.
-        # *   alarmnotification: the process of executing an event-triggered task.
-        # *   scheduledaction: the process of executing a scheduled task.
+        # *   ScaleIn: the scale-in process.
+        # *   ScaleOut: the scale-out process.
+        # *   HealthCheck: the health check process.
+        # *   AlarmNotification: the process of executing an event-triggered task.
+        # *   ScheduledAction: the process of executing a scheduled task.
         # 
         # Presently, Auto Scaling supports suspending the five mentioned process types. In cases where more than five types are specified, Auto Scaling will automatically disregard duplicates and proceed with suspending the unique process types.
         # 
@@ -37819,20 +38029,20 @@ class TagResourcesRequestTags(TeaModel):
         propagate: bool = None,
         value: str = None,
     ):
-        # The key of the tag that you want to add to the Auto Scaling resource.
+        # The tag key.
         # 
-        # You cannot specify empty strings as tag keys. The tag key must be 1 to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # You cannot specify an empty string as a tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
         # Specifies whether to propagate the tag that you want to add. Valid values:
         # 
-        # *   true: propagates the tag only to instances that are newly created and does not propagate the tag to instances that are already running in the scaling group.
-        # *   false: does not propagate the tag to any instances.
+        # *   true: propagates the tag to new instances.
+        # *   false: does not propagate the tag to any instance.
         # 
         # Default value: false.
         self.propagate = propagate
-        # The value of the tag that you want to add to the Auto Scaling resource.
+        # The tag value.
         # 
-        # You can specify empty strings as tag values. The tag value must be 0 to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:`.
+        # You can specify empty strings as tag values. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -37887,7 +38097,7 @@ class TagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # Details of the tags.
+        # The tags that you want to add to the Auto Scaling resources.
         # 
         # This parameter is required.
         self.tags = tags
