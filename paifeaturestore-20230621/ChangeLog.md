@@ -1,3 +1,10 @@
+2024-12-18 Version: 5.0.0
+- Delete API CreateModelFeatureTrainingSetFGTable.
+- Delete API ExportModelFeatureTrainingSetFGTable.
+- Delete API UpdateModelFeatureFGInfo.
+- Update API UpdateModelFeature: update param body.
+
+
 2024-11-25 Version: 4.0.2
 - Update API ListFeatureEntities: update param ProjectId.
 - Update API ListFeatureViews: update param ProjectId.

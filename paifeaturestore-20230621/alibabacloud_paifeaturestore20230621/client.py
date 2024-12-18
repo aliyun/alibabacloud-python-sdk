@@ -905,100 +905,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_model_feature_with_options_async(instance_id, request, headers, runtime)
 
-    def create_model_feature_training_set_fgtable_with_options(
-        self,
-        instance_id: str,
-        model_feature_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse:
-        """
-        @summary 创建训练样本FG表。
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateModelFeatureTrainingSetFGTableResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CreateModelFeatureTrainingSetFGTable',
-            version='2023-06-21',
-            protocol='HTTPS',
-            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/trainingsetfgtable',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_model_feature_training_set_fgtable_with_options_async(
-        self,
-        instance_id: str,
-        model_feature_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse:
-        """
-        @summary 创建训练样本FG表。
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateModelFeatureTrainingSetFGTableResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CreateModelFeatureTrainingSetFGTable',
-            version='2023-06-21',
-            protocol='HTTPS',
-            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/trainingsetfgtable',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_model_feature_training_set_fgtable(
-        self,
-        instance_id: str,
-        model_feature_id: str,
-    ) -> pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse:
-        """
-        @summary 创建训练样本FG表。
-        
-        @return: CreateModelFeatureTrainingSetFGTableResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_model_feature_training_set_fgtable_with_options(instance_id, model_feature_id, headers, runtime)
-
-    async def create_model_feature_training_set_fgtable_async(
-        self,
-        instance_id: str,
-        model_feature_id: str,
-    ) -> pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse:
-        """
-        @summary 创建训练样本FG表。
-        
-        @return: CreateModelFeatureTrainingSetFGTableResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_model_feature_training_set_fgtable_with_options_async(instance_id, model_feature_id, headers, runtime)
-
     def create_project_with_options(
         self,
         instance_id: str,
@@ -1794,118 +1700,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_project_with_options_async(instance_id, project_id, headers, runtime)
-
-    def export_model_feature_training_set_fgtable_with_options(
-        self,
-        instance_id: str,
-        model_feature_id: str,
-        request: pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse:
-        """
-        @summary 导出训练样本FG表。
-        
-        @param request: ExportModelFeatureTrainingSetFGTableRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ExportModelFeatureTrainingSetFGTableResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.training_set_fg_config):
-            body['TrainingSetFgConfig'] = request.training_set_fg_config
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ExportModelFeatureTrainingSetFGTable',
-            version='2023-06-21',
-            protocol='HTTPS',
-            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/action/exporttrainingsetfgtable',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def export_model_feature_training_set_fgtable_with_options_async(
-        self,
-        instance_id: str,
-        model_feature_id: str,
-        request: pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse:
-        """
-        @summary 导出训练样本FG表。
-        
-        @param request: ExportModelFeatureTrainingSetFGTableRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ExportModelFeatureTrainingSetFGTableResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.training_set_fg_config):
-            body['TrainingSetFgConfig'] = request.training_set_fg_config
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ExportModelFeatureTrainingSetFGTable',
-            version='2023-06-21',
-            protocol='HTTPS',
-            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/action/exporttrainingsetfgtable',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def export_model_feature_training_set_fgtable(
-        self,
-        instance_id: str,
-        model_feature_id: str,
-        request: pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableRequest,
-    ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse:
-        """
-        @summary 导出训练样本FG表。
-        
-        @param request: ExportModelFeatureTrainingSetFGTableRequest
-        @return: ExportModelFeatureTrainingSetFGTableResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.export_model_feature_training_set_fgtable_with_options(instance_id, model_feature_id, request, headers, runtime)
-
-    async def export_model_feature_training_set_fgtable_async(
-        self,
-        instance_id: str,
-        model_feature_id: str,
-        request: pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableRequest,
-    ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse:
-        """
-        @summary 导出训练样本FG表。
-        
-        @param request: ExportModelFeatureTrainingSetFGTableRequest
-        @return: ExportModelFeatureTrainingSetFGTableResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.export_model_feature_training_set_fgtable_with_options_async(instance_id, model_feature_id, request, headers, runtime)
 
     def export_model_feature_training_set_table_with_options(
         self,
@@ -5519,6 +5313,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.features):
             body['Features'] = request.features
+        if not UtilClient.is_unset(request.label_priority_level):
+            body['LabelPriorityLevel'] = request.label_priority_level
         if not UtilClient.is_unset(request.label_table_id):
             body['LabelTableId'] = request.label_table_id
         if not UtilClient.is_unset(request.sequence_feature_view_ids):
@@ -5563,6 +5359,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.features):
             body['Features'] = request.features
+        if not UtilClient.is_unset(request.label_priority_level):
+            body['LabelPriorityLevel'] = request.label_priority_level
         if not UtilClient.is_unset(request.label_table_id):
             body['LabelTableId'] = request.label_table_id
         if not UtilClient.is_unset(request.sequence_feature_view_ids):
@@ -5742,118 +5540,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_model_feature_fgfeature_with_options_async(instance_id, model_feature_id, request, headers, runtime)
-
-    def update_model_feature_fginfo_with_options(
-        self,
-        instance_id: str,
-        model_feature_id: str,
-        request: pai_feature_store_20230621_models.UpdateModelFeatureFGInfoRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse:
-        """
-        @summary 更新模型特征的fg.json文件配置信息。
-        
-        @param request: UpdateModelFeatureFGInfoRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateModelFeatureFGInfoResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.content):
-            body['Content'] = request.content
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateModelFeatureFGInfo',
-            version='2023-06-21',
-            protocol='HTTPS',
-            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/fginfo',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_model_feature_fginfo_with_options_async(
-        self,
-        instance_id: str,
-        model_feature_id: str,
-        request: pai_feature_store_20230621_models.UpdateModelFeatureFGInfoRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse:
-        """
-        @summary 更新模型特征的fg.json文件配置信息。
-        
-        @param request: UpdateModelFeatureFGInfoRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateModelFeatureFGInfoResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.content):
-            body['Content'] = request.content
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateModelFeatureFGInfo',
-            version='2023-06-21',
-            protocol='HTTPS',
-            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/modelfeatures/{OpenApiUtilClient.get_encode_param(model_feature_id)}/fginfo',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_model_feature_fginfo(
-        self,
-        instance_id: str,
-        model_feature_id: str,
-        request: pai_feature_store_20230621_models.UpdateModelFeatureFGInfoRequest,
-    ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse:
-        """
-        @summary 更新模型特征的fg.json文件配置信息。
-        
-        @param request: UpdateModelFeatureFGInfoRequest
-        @return: UpdateModelFeatureFGInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_model_feature_fginfo_with_options(instance_id, model_feature_id, request, headers, runtime)
-
-    async def update_model_feature_fginfo_async(
-        self,
-        instance_id: str,
-        model_feature_id: str,
-        request: pai_feature_store_20230621_models.UpdateModelFeatureFGInfoRequest,
-    ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse:
-        """
-        @summary 更新模型特征的fg.json文件配置信息。
-        
-        @param request: UpdateModelFeatureFGInfoRequest
-        @return: UpdateModelFeatureFGInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_model_feature_fginfo_with_options_async(instance_id, model_feature_id, request, headers, runtime)
 
     def update_project_with_options(
         self,
