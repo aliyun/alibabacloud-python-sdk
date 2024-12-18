@@ -1,3 +1,8 @@
+2024-12-18 Version: 4.8.6
+- Update API ModifyClusterTags: add param body.
+- Update API ModifyClusterTags: update param body.
+
+
 2024-12-13 Version: 4.8.5
 - Update API GetClusterDiagnosisCheckItems: add param language.
 - Update API GetClusterDiagnosisResult: add param language.
