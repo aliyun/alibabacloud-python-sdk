@@ -741,6 +741,113 @@ class AllocateReadWriteSplittingConnectionResponse(TeaModel):
         return self
 
 
+class AssociateEipAddressWithRCInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        allocation_id: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.allocation_id = allocation_id
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocation_id is not None:
+            result['AllocationId'] = self.allocation_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocationId') is not None:
+            self.allocation_id = m.get('AllocationId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class AssociateEipAddressWithRCInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssociateEipAddressWithRCInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateEipAddressWithRCInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateEipAddressWithRCInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AttachRCDiskRequest(TeaModel):
     def __init__(
         self,
@@ -4940,6 +5047,7 @@ class CreateDBInstanceRequest(TeaModel):
         engine_version: str = None,
         instance_network_type: str = None,
         io_acceleration_enabled: str = None,
+        optimized_writes: str = None,
         pay_type: str = None,
         period: str = None,
         port: str = None,
@@ -5209,6 +5317,13 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # >  For more information about the I/O acceleration feature of general ESSDs, see [Introduction](https://help.aliyun.com/document_detail/2527067.html).
         self.io_acceleration_enabled = io_acceleration_enabled
+        # Specifies whether to enable the write optimization feature.
+        # 
+        # *   **optimized**: enables the feature.
+        # *   **none**: disables the feature.
+        # 
+        # >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
+        self.optimized_writes = optimized_writes
         # The billing method of the instance. Valid values:
         # 
         # *   **Postpaid**: pay-as-you-go.
@@ -5439,6 +5554,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['InstanceNetworkType'] = self.instance_network_type
         if self.io_acceleration_enabled is not None:
             result['IoAccelerationEnabled'] = self.io_acceleration_enabled
+        if self.optimized_writes is not None:
+            result['OptimizedWrites'] = self.optimized_writes
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.period is not None:
@@ -5563,6 +5680,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.instance_network_type = m.get('InstanceNetworkType')
         if m.get('IoAccelerationEnabled') is not None:
             self.io_acceleration_enabled = m.get('IoAccelerationEnabled')
+        if m.get('OptimizedWrites') is not None:
+            self.optimized_writes = m.get('OptimizedWrites')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('Period') is not None:
@@ -5704,6 +5823,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         engine_version: str = None,
         instance_network_type: str = None,
         io_acceleration_enabled: str = None,
+        optimized_writes: str = None,
         pay_type: str = None,
         period: str = None,
         port: str = None,
@@ -5973,6 +6093,13 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # 
         # >  For more information about the I/O acceleration feature of general ESSDs, see [Introduction](https://help.aliyun.com/document_detail/2527067.html).
         self.io_acceleration_enabled = io_acceleration_enabled
+        # Specifies whether to enable the write optimization feature.
+        # 
+        # *   **optimized**: enables the feature.
+        # *   **none**: disables the feature.
+        # 
+        # >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
+        self.optimized_writes = optimized_writes
         # The billing method of the instance. Valid values:
         # 
         # *   **Postpaid**: pay-as-you-go.
@@ -6201,6 +6328,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             result['InstanceNetworkType'] = self.instance_network_type
         if self.io_acceleration_enabled is not None:
             result['IoAccelerationEnabled'] = self.io_acceleration_enabled
+        if self.optimized_writes is not None:
+            result['OptimizedWrites'] = self.optimized_writes
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.period is not None:
@@ -6325,6 +6454,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             self.instance_network_type = m.get('InstanceNetworkType')
         if m.get('IoAccelerationEnabled') is not None:
             self.io_acceleration_enabled = m.get('IoAccelerationEnabled')
+        if m.get('OptimizedWrites') is not None:
+            self.optimized_writes = m.get('OptimizedWrites')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('Period') is not None:
@@ -11714,6 +11845,10 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
         # > * If you set the Period parameter to Month, the auto-renewal cycle is one month.
         # > * If you set the Period parameter to Year, the auto-renewal cycle is one year.
         self.auto_renew = auto_renew
+        # Specifies whether to use a coupon. Valid values:
+        # 
+        # *   **true**: uses a coupon.
+        # *   **false** (default): does not use a coupon.
         self.auto_use_coupon = auto_use_coupon
         # A reserved parameter. You do not need to specify this parameter.
         self.bpe_enabled = bpe_enabled
@@ -11808,6 +11943,7 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
         self.port = port
         # The private IP address of the read-only instance. The private IP address must be within the CIDR block that is supported by the specified vSwitch. The system assigns a private IP address to the read-only instance based on the values of the **VPCId** and **VSwitchId** parameters.
         self.private_ip_address = private_ip_address
+        # The coupon code.
         self.promotion_code = promotion_code
         # The region ID. The read-only instance and the primary instance must reside in the same region. You can call the DescribeRegions operation to query the most recent region list.
         # 
@@ -25928,6 +26064,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         max_iombps: int = None,
         max_iops: int = None,
         multiple_temp_upgrade: bool = None,
+        optimized_writes_info: str = None,
         pgbouncer_enabled: str = None,
         pay_type: str = None,
         port: str = None,
@@ -26131,6 +26268,12 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.max_iops = max_iops
         # Indicates whether auto scaling is being performed on the instance. If the value **true** is returned, auto scaling is being performed on the instance. If no value is returned, auto scaling is not being performed on the instance.
         self.multiple_temp_upgrade = multiple_temp_upgrade
+        # OptimizedWritesInfo contains two fields:
+        # 
+        # - optimized_writes: Whether write optimization is enabled for the current instance.
+        # 
+        # - init_optimized_writes: Whether write optimization can be enabled for the instance. Some instances do not display the write optimization switch in the console because init_optimized_writes is false.
+        self.optimized_writes_info = optimized_writes_info
         # Indicates whether PgBouncer is enabled.
         # 
         # >  This parameter is returned only for RDS instances that run PostgreSQL. If PgBouncer is enabled, the return value is **true**.
@@ -26333,6 +26476,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['MaxIOPS'] = self.max_iops
         if self.multiple_temp_upgrade is not None:
             result['MultipleTempUpgrade'] = self.multiple_temp_upgrade
+        if self.optimized_writes_info is not None:
+            result['OptimizedWritesInfo'] = self.optimized_writes_info
         if self.pgbouncer_enabled is not None:
             result['PGBouncerEnabled'] = self.pgbouncer_enabled
         if self.pay_type is not None:
@@ -26498,6 +26643,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.max_iops = m.get('MaxIOPS')
         if m.get('MultipleTempUpgrade') is not None:
             self.multiple_temp_upgrade = m.get('MultipleTempUpgrade')
+        if m.get('OptimizedWritesInfo') is not None:
+            self.optimized_writes_info = m.get('OptimizedWritesInfo')
         if m.get('PGBouncerEnabled') is not None:
             self.pgbouncer_enabled = m.get('PGBouncerEnabled')
         if m.get('PayType') is not None:
@@ -35874,6 +36021,7 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         # *   common: the general-purpose database proxy
         # *   exclusive: the dedicated database proxy
         self.dbproxy_instance_type = dbproxy_instance_type
+        # Dimension.
         self.dimension = dimension
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
@@ -36049,6 +36197,7 @@ class DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey(TeaMod
     ):
         # The performance parameter.
         self.key = key
+        # The service dimension.
         self.service = service
         # The format in which the value of the performance metric is returned.
         self.value_format = value_format
@@ -49972,7 +50121,7 @@ class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds
         return self
 
 
-class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources(TeaModel):
+class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag(TeaModel):
     def __init__(
         self,
         resource_id: str = None,
@@ -50017,16 +50166,16 @@ class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResource
         return self
 
 
-class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResources(TeaModel):
+class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags(TeaModel):
     def __init__(
         self,
-        tag_resources: List[DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources] = None,
+        tag: List[DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag] = None,
     ):
-        self.tag_resources = tag_resources
+        self.tag = tag
 
     def validate(self):
-        if self.tag_resources:
-            for k in self.tag_resources:
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
 
@@ -50036,19 +50185,19 @@ class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResource
             return _map
 
         result = dict()
-        result['TagResources'] = []
-        if self.tag_resources is not None:
-            for k in self.tag_resources:
-                result['TagResources'].append(k.to_map() if k else None)
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.tag_resources = []
-        if m.get('TagResources') is not None:
-            for k in m.get('TagResources'):
-                temp_model = DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources()
-                self.tag_resources.append(temp_model.from_map(k))
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -50067,7 +50216,7 @@ class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(TeaModel):
         instance_amount: int = None,
         instance_ids: DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstanceIds = None,
         strategy: str = None,
-        tag_resources: DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResources = None,
+        tags: DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags = None,
     ):
         # The details of the capacities of the deployment set. This parameter is valid only when the deployment set contains existing RDS Custom instances. The value contains the details of the capacities of the deployment set in different zones.
         self.capacities = capacities
@@ -50095,15 +50244,15 @@ class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(TeaModel):
         self.instance_ids = instance_ids
         # The deployment strategy.
         self.strategy = strategy
-        self.tag_resources = tag_resources
+        self.tags = tags
 
     def validate(self):
         if self.capacities:
             self.capacities.validate()
         if self.instance_ids:
             self.instance_ids.validate()
-        if self.tag_resources:
-            self.tag_resources.validate()
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -50135,8 +50284,8 @@ class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(TeaModel):
             result['InstanceIds'] = self.instance_ids.to_map()
         if self.strategy is not None:
             result['Strategy'] = self.strategy
-        if self.tag_resources is not None:
-            result['TagResources'] = self.tag_resources.to_map()
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -50167,9 +50316,9 @@ class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(TeaModel):
             self.instance_ids = temp_model.from_map(m['InstanceIds'])
         if m.get('Strategy') is not None:
             self.strategy = m.get('Strategy')
-        if m.get('TagResources') is not None:
-            temp_model = DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResources()
-            self.tag_resources = temp_model.from_map(m['TagResources'])
+        if m.get('Tags') is not None:
+            temp_model = DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags()
+            self.tags = temp_model.from_map(m['Tags'])
         return self
 
 
@@ -51040,12 +51189,12 @@ class DescribeRCInstanceAttributeRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        private_ip_address: str = None,
         region_id: str = None,
     ):
         # The instance ID.
-        # 
-        # This parameter is required.
         self.instance_id = instance_id
+        self.private_ip_address = private_ip_address
         # The region ID.
         self.region_id = region_id
 
@@ -51060,6 +51209,8 @@ class DescribeRCInstanceAttributeRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.private_ip_address is not None:
+            result['PrivateIpAddress'] = self.private_ip_address
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -51068,6 +51219,8 @@ class DescribeRCInstanceAttributeRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -51409,6 +51562,86 @@ class DescribeRCInstanceAttributeResponseBodySecurityGroupIds(TeaModel):
         return self
 
 
+class DescribeRCInstanceAttributeResponseBodyTagsTag(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class DescribeRCInstanceAttributeResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeRCInstanceAttributeResponseBodyTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeRCInstanceAttributeResponseBodyTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeRCInstanceAttributeResponseBodyVpcAttributesPrivateIpAddress(TeaModel):
     def __init__(
         self,
@@ -51529,6 +51762,7 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         spot_strategy: str = None,
         status: str = None,
         stopped_mode: str = None,
+        tags: DescribeRCInstanceAttributeResponseBodyTags = None,
         vlan_id: str = None,
         vpc_attributes: DescribeRCInstanceAttributeResponseBodyVpcAttributes = None,
         zone_id: str = None,
@@ -51636,6 +51870,7 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         # *   **StopCharging**: The billing of the instance stops after the instance is stopped. After the instance is stopped, resources such as CPU cores, memory resources, and public IP address are released. The instance may be unable to restart if some required resources are out of stock in the current region.
         # *   **Not-applicable**: The No Fees for Stopped Instances feature is not supported for the instance.
         self.stopped_mode = stopped_mode
+        self.tags = tags
         # The virtual LAN (VLAN) ID of the instance.
         # 
         # >  This parameter will be deprecated. We recommend that you use other parameters to ensure compatibility.
@@ -51660,6 +51895,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             self.public_ip_address.validate()
         if self.security_group_ids:
             self.security_group_ids.validate()
+        if self.tags:
+            self.tags.validate()
         if self.vpc_attributes:
             self.vpc_attributes.validate()
 
@@ -51747,6 +51984,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             result['Status'] = self.status
         if self.stopped_mode is not None:
             result['StoppedMode'] = self.stopped_mode
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.vlan_id is not None:
             result['VlanId'] = self.vlan_id
         if self.vpc_attributes is not None:
@@ -51842,6 +52081,9 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             self.status = m.get('Status')
         if m.get('StoppedMode') is not None:
             self.stopped_mode = m.get('StoppedMode')
+        if m.get('Tags') is not None:
+            temp_model = DescribeRCInstanceAttributeResponseBodyTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('VlanId') is not None:
             self.vlan_id = m.get('VlanId')
         if m.get('VpcAttributes') is not None:
@@ -52131,6 +52373,51 @@ class DescribeRCInstancesResponseBodyRCInstancesTagResources(TeaModel):
         return self
 
 
+class DescribeRCInstancesResponseBodyRCInstancesTags(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
     def __init__(
         self,
@@ -52147,6 +52434,7 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
         spot_strategy: str = None,
         status: str = None,
         tag_resources: List[DescribeRCInstancesResponseBodyRCInstancesTagResources] = None,
+        tags: List[DescribeRCInstancesResponseBodyRCInstancesTags] = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
@@ -52180,6 +52468,7 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
         # >  If the value returned for the DescribeRCInstances operation is different from the value that is returned for the **DescribeRCInstanceAttribute** operation, the value returned for the **DescribeRCInstanceAttribute** operation shall prevail.
         self.status = status
         self.tag_resources = tag_resources
+        self.tags = tags
         # The VPC ID.
         self.vpc_id = vpc_id
         self.zone_id = zone_id
@@ -52187,6 +52476,10 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
     def validate(self):
         if self.tag_resources:
             for k in self.tag_resources:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -52224,6 +52517,10 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
         if self.tag_resources is not None:
             for k in self.tag_resources:
                 result['TagResources'].append(k.to_map() if k else None)
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.zone_id is not None:
@@ -52261,6 +52558,11 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
             for k in m.get('TagResources'):
                 temp_model = DescribeRCInstancesResponseBodyRCInstancesTagResources()
                 self.tag_resources.append(temp_model.from_map(k))
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeRCInstancesResponseBodyRCInstancesTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('ZoneId') is not None:
@@ -66510,6 +66812,8 @@ class ModifyDBInstanceConfigRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        switch_time: str = None,
+        switch_time_mode: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -66537,6 +66841,14 @@ class ModifyDBInstanceConfigRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The update time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        self.switch_time = switch_time
+        # The time at which the modification takes effect. Valid values:
+        # 
+        # - **Immediate**: immediately modifies the parameter. This is the default value.
+        # - **MaintainTime**: modifies the parameter during the maintenance window of the instance. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window.
+        # - **ScheduleTime**: modifies the parameter at the point in time that you specify. If you specify this value, you must also specify **SwitchTime**.
+        self.switch_time_mode = switch_time_mode
 
     def validate(self):
         pass
@@ -66565,6 +66877,10 @@ class ModifyDBInstanceConfigRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.switch_time is not None:
+            result['SwitchTime'] = self.switch_time
+        if self.switch_time_mode is not None:
+            result['SwitchTimeMode'] = self.switch_time_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -66587,6 +66903,10 @@ class ModifyDBInstanceConfigRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SwitchTime') is not None:
+            self.switch_time = m.get('SwitchTime')
+        if m.get('SwitchTimeMode') is not None:
+            self.switch_time_mode = m.get('SwitchTimeMode')
         return self
 
 
@@ -69374,6 +69694,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         effective_time: str = None,
         engine_version: str = None,
         io_acceleration_enabled: str = None,
+        optimized_writes: str = None,
         owner_account: str = None,
         owner_id: int = None,
         pay_type: str = None,
@@ -69488,6 +69809,13 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.engine_version = engine_version
         # A reserved parameter.
         self.io_acceleration_enabled = io_acceleration_enabled
+        # Specifies whether to enable the write optimization feature.
+        # 
+        # *   **optimized**: enables the feature.
+        # *   **none**: disables the feature.
+        # 
+        # >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
+        self.optimized_writes = optimized_writes
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The billing method of the instance. Valid values:
@@ -69496,6 +69824,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # *   **Prepaid**: subscription.
         # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. If you set the value to Serverless, you must specify the scaling range of computing resources, configure the automatic start and stop feature, and configure auto scaling policies for your serverless instance. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
         self.pay_type = pay_type
+        # The coupon code.
         self.promotion_code = promotion_code
         # Target specifications for read-only instances when changing a MySQL high-availability local disk instance to a cloud disk.
         self.read_only_dbinstance_class = read_only_dbinstance_class
@@ -69578,6 +69907,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             result['EngineVersion'] = self.engine_version
         if self.io_acceleration_enabled is not None:
             result['IoAccelerationEnabled'] = self.io_acceleration_enabled
+        if self.optimized_writes is not None:
+            result['OptimizedWrites'] = self.optimized_writes
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -69642,6 +69973,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             self.engine_version = m.get('EngineVersion')
         if m.get('IoAccelerationEnabled') is not None:
             self.io_acceleration_enabled = m.get('IoAccelerationEnabled')
+        if m.get('OptimizedWrites') is not None:
+            self.optimized_writes = m.get('OptimizedWrites')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -69695,6 +70028,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         effective_time: str = None,
         engine_version: str = None,
         io_acceleration_enabled: str = None,
+        optimized_writes: str = None,
         owner_account: str = None,
         owner_id: int = None,
         pay_type: str = None,
@@ -69809,6 +70143,13 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         self.engine_version = engine_version
         # A reserved parameter.
         self.io_acceleration_enabled = io_acceleration_enabled
+        # Specifies whether to enable the write optimization feature.
+        # 
+        # *   **optimized**: enables the feature.
+        # *   **none**: disables the feature.
+        # 
+        # >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
+        self.optimized_writes = optimized_writes
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The billing method of the instance. Valid values:
@@ -69817,6 +70158,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         # *   **Prepaid**: subscription.
         # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. If you set the value to Serverless, you must specify the scaling range of computing resources, configure the automatic start and stop feature, and configure auto scaling policies for your serverless instance. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
         self.pay_type = pay_type
+        # The coupon code.
         self.promotion_code = promotion_code
         # Target specifications for read-only instances when changing a MySQL high-availability local disk instance to a cloud disk.
         self.read_only_dbinstance_class = read_only_dbinstance_class
@@ -69898,6 +70240,8 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
             result['EngineVersion'] = self.engine_version
         if self.io_acceleration_enabled is not None:
             result['IoAccelerationEnabled'] = self.io_acceleration_enabled
+        if self.optimized_writes is not None:
+            result['OptimizedWrites'] = self.optimized_writes
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -69962,6 +70306,8 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
             self.engine_version = m.get('EngineVersion')
         if m.get('IoAccelerationEnabled') is not None:
             self.io_acceleration_enabled = m.get('IoAccelerationEnabled')
+        if m.get('OptimizedWrites') is not None:
+            self.optimized_writes = m.get('OptimizedWrites')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -71174,6 +71520,7 @@ class ModifyDBProxyEndpointRequest(TeaModel):
         self.dbproxy_engine_type = dbproxy_engine_type
         # The description of the proxy terminal.
         self.db_endpoint_aliases = db_endpoint_aliases
+        # The minimum number of reserved instances.
         self.db_endpoint_min_slave_count = db_endpoint_min_slave_count
         # The type of operation that you want to perform. Valid values:
         # 
@@ -71211,9 +71558,13 @@ class ModifyDBProxyEndpointRequest(TeaModel):
         # 
         # >  You must specify this parameter when read/write splitting is enabled. For more information about the permission allocation policy, see [Modify the latency threshold and read weights of ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/96076.html) and [Enable and configure the database proxy feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/418272.html).
         self.read_only_instance_distribution_type = read_only_instance_distribution_type
-        # The latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, the system no longer forwards read requests to the read-only instance. Unit: seconds If you do not specify this parameter, the original value of this parameter is retained. Valid values: **0** to **3600**. Default value: **30**.
+        # The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, the system no longer forwards read requests to the read-only instance. If you do not specify this parameter, the original value of this parameter is retained. Valid values: **0** to **3600**.
         # 
-        # > You must specify this parameter only when the read/write splitting feature is enabled.
+        # > 
+        # 
+        # *   You must specify this parameter only when read/write splitting is enabled.
+        # 
+        # *   If the database proxy endpoint has the read and write attributes, the default value of this parameter is **30** and read/write splitting is supported. If the database proxy endpoint has the read-only attribute, the default value of this parameter is **-1** and read/write splitting is not supported. Unit: seconds.
         self.read_only_instance_max_delay_time = read_only_instance_max_delay_time
         # The read weights of the instance and its read-only instances. A read weight must be a multiple of 100 and cannot exceed 10000. Formats:
         # 
@@ -75516,6 +75867,7 @@ class ModifyResourceGroupRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        resource_type: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -75531,6 +75883,8 @@ class ModifyResourceGroupRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The resource type.
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -75555,6 +75909,8 @@ class ModifyResourceGroupRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
@@ -75573,6 +75929,8 @@ class ModifyResourceGroupRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
@@ -79274,6 +79632,10 @@ class RenewInstanceRequest(TeaModel):
         # *   **true**.
         # *   **false** (default)
         self.auto_renew = auto_renew
+        # Specifies whether to use a coupon. Valid values:
+        # 
+        # *   **true**: uses a coupon.
+        # *   **false** (default): does not use a coupon.
         self.auto_use_coupon = auto_use_coupon
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -79293,6 +79655,7 @@ class RenewInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.period = period
+        # The coupon code.
         self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -82793,6 +83156,113 @@ class SyncRCKeyPairResponse(TeaModel):
         return self
 
 
+class SyncRCSecurityGroupRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        return self
+
+
+class SyncRCSecurityGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SyncRCSecurityGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SyncRCSecurityGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SyncRCSecurityGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class TagResourcesRequestTag(TeaModel):
     def __init__(
         self,
@@ -83131,6 +83601,10 @@ class TransformDBInstancePayTypeRequest(TeaModel):
         # > - This parameter is valid only when you change the billing method from pay-as-you-go to subscription.
         # > - All strings except **true** are considered **false**.
         self.auto_renew = auto_renew
+        # Specifies whether to use vouchers to offset fees. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.auto_use_coupon = auto_use_coupon
         # The additional business information about the instance.
         self.business_info = business_info
@@ -83156,6 +83630,7 @@ class TransformDBInstancePayTypeRequest(TeaModel):
         # 
         # > This parameter must be specified if you set **PayType** to **Prepaid**.
         self.period = period
+        # The coupon code.
         self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -83333,6 +83808,113 @@ class TransformDBInstancePayTypeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TransformDBInstancePayTypeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnassociateEipAddressWithRCInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        allocation_id: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.allocation_id = allocation_id
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocation_id is not None:
+            result['AllocationId'] = self.allocation_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocationId') is not None:
+            self.allocation_id = m.get('AllocationId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UnassociateEipAddressWithRCInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UnassociateEipAddressWithRCInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnassociateEipAddressWithRCInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnassociateEipAddressWithRCInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

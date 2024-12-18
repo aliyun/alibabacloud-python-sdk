@@ -788,6 +788,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.allocate_read_write_splitting_connection_with_options_async(request, runtime)
 
+    def associate_eip_address_with_rcinstance_with_options(
+        self,
+        request: rds_20140815_models.AssociateEipAddressWithRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.AssociateEipAddressWithRCInstanceResponse:
+        """
+        @summary 绑定弹性网卡到RDS Custom实例
+        
+        @param request: AssociateEipAddressWithRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateEipAddressWithRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allocation_id):
+            query['AllocationId'] = request.allocation_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateEipAddressWithRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.AssociateEipAddressWithRCInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_eip_address_with_rcinstance_with_options_async(
+        self,
+        request: rds_20140815_models.AssociateEipAddressWithRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.AssociateEipAddressWithRCInstanceResponse:
+        """
+        @summary 绑定弹性网卡到RDS Custom实例
+        
+        @param request: AssociateEipAddressWithRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateEipAddressWithRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allocation_id):
+            query['AllocationId'] = request.allocation_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateEipAddressWithRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.AssociateEipAddressWithRCInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_eip_address_with_rcinstance(
+        self,
+        request: rds_20140815_models.AssociateEipAddressWithRCInstanceRequest,
+    ) -> rds_20140815_models.AssociateEipAddressWithRCInstanceResponse:
+        """
+        @summary 绑定弹性网卡到RDS Custom实例
+        
+        @param request: AssociateEipAddressWithRCInstanceRequest
+        @return: AssociateEipAddressWithRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.associate_eip_address_with_rcinstance_with_options(request, runtime)
+
+    async def associate_eip_address_with_rcinstance_async(
+        self,
+        request: rds_20140815_models.AssociateEipAddressWithRCInstanceRequest,
+    ) -> rds_20140815_models.AssociateEipAddressWithRCInstanceResponse:
+        """
+        @summary 绑定弹性网卡到RDS Custom实例
+        
+        @param request: AssociateEipAddressWithRCInstanceRequest
+        @return: AssociateEipAddressWithRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.associate_eip_address_with_rcinstance_with_options_async(request, runtime)
+
     def attach_rcdisk_with_options(
         self,
         request: rds_20140815_models.AttachRCDiskRequest,
@@ -3964,6 +4068,8 @@ class Client(OpenApiClient):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.io_acceleration_enabled):
             query['IoAccelerationEnabled'] = request.io_acceleration_enabled
+        if not UtilClient.is_unset(request.optimized_writes):
+            query['OptimizedWrites'] = request.optimized_writes
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
@@ -4135,6 +4241,8 @@ class Client(OpenApiClient):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.io_acceleration_enabled):
             query['IoAccelerationEnabled'] = request.io_acceleration_enabled
+        if not UtilClient.is_unset(request.optimized_writes):
+            query['OptimizedWrites'] = request.optimized_writes
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
@@ -26584,6 +26692,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -26621,6 +26731,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -35361,6 +35473,10 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -35417,6 +35533,10 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -37862,6 +37982,8 @@ class Client(OpenApiClient):
             query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.io_acceleration_enabled):
             query['IoAccelerationEnabled'] = request.io_acceleration_enabled
+        if not UtilClient.is_unset(request.optimized_writes):
+            query['OptimizedWrites'] = request.optimized_writes
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -37971,6 +38093,8 @@ class Client(OpenApiClient):
             query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.io_acceleration_enabled):
             query['IoAccelerationEnabled'] = request.io_acceleration_enabled
+        if not UtilClient.is_unset(request.optimized_writes):
+            query['OptimizedWrites'] = request.optimized_writes
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -42149,6 +42273,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -42205,6 +42331,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -48008,6 +48136,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.sync_rckey_pair_with_options_async(request, runtime)
 
+    def sync_rcsecurity_group_with_options(
+        self,
+        request: rds_20140815_models.SyncRCSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.SyncRCSecurityGroupResponse:
+        """
+        @summary 同步RDS Custom的安全组
+        
+        @param request: SyncRCSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncRCSecurityGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SyncRCSecurityGroup',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.SyncRCSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_rcsecurity_group_with_options_async(
+        self,
+        request: rds_20140815_models.SyncRCSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.SyncRCSecurityGroupResponse:
+        """
+        @summary 同步RDS Custom的安全组
+        
+        @param request: SyncRCSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncRCSecurityGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SyncRCSecurityGroup',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.SyncRCSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_rcsecurity_group(
+        self,
+        request: rds_20140815_models.SyncRCSecurityGroupRequest,
+    ) -> rds_20140815_models.SyncRCSecurityGroupResponse:
+        """
+        @summary 同步RDS Custom的安全组
+        
+        @param request: SyncRCSecurityGroupRequest
+        @return: SyncRCSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.sync_rcsecurity_group_with_options(request, runtime)
+
+    async def sync_rcsecurity_group_async(
+        self,
+        request: rds_20140815_models.SyncRCSecurityGroupRequest,
+    ) -> rds_20140815_models.SyncRCSecurityGroupResponse:
+        """
+        @summary 同步RDS Custom的安全组
+        
+        @param request: SyncRCSecurityGroupRequest
+        @return: SyncRCSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.sync_rcsecurity_group_with_options_async(request, runtime)
+
     def tag_resources_with_options(
         self,
         request: rds_20140815_models.TagResourcesRequest,
@@ -48491,6 +48723,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.transform_dbinstance_pay_type_with_options_async(request, runtime)
+
+    def unassociate_eip_address_with_rcinstance_with_options(
+        self,
+        request: rds_20140815_models.UnassociateEipAddressWithRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.UnassociateEipAddressWithRCInstanceResponse:
+        """
+        @summary 解绑RDS Custom实例的弹性公网
+        
+        @param request: UnassociateEipAddressWithRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnassociateEipAddressWithRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allocation_id):
+            query['AllocationId'] = request.allocation_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnassociateEipAddressWithRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.UnassociateEipAddressWithRCInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unassociate_eip_address_with_rcinstance_with_options_async(
+        self,
+        request: rds_20140815_models.UnassociateEipAddressWithRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.UnassociateEipAddressWithRCInstanceResponse:
+        """
+        @summary 解绑RDS Custom实例的弹性公网
+        
+        @param request: UnassociateEipAddressWithRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnassociateEipAddressWithRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allocation_id):
+            query['AllocationId'] = request.allocation_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnassociateEipAddressWithRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.UnassociateEipAddressWithRCInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unassociate_eip_address_with_rcinstance(
+        self,
+        request: rds_20140815_models.UnassociateEipAddressWithRCInstanceRequest,
+    ) -> rds_20140815_models.UnassociateEipAddressWithRCInstanceResponse:
+        """
+        @summary 解绑RDS Custom实例的弹性公网
+        
+        @param request: UnassociateEipAddressWithRCInstanceRequest
+        @return: UnassociateEipAddressWithRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.unassociate_eip_address_with_rcinstance_with_options(request, runtime)
+
+    async def unassociate_eip_address_with_rcinstance_async(
+        self,
+        request: rds_20140815_models.UnassociateEipAddressWithRCInstanceRequest,
+    ) -> rds_20140815_models.UnassociateEipAddressWithRCInstanceResponse:
+        """
+        @summary 解绑RDS Custom实例的弹性公网
+        
+        @param request: UnassociateEipAddressWithRCInstanceRequest
+        @return: UnassociateEipAddressWithRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.unassociate_eip_address_with_rcinstance_with_options_async(request, runtime)
 
     def unlock_account_with_options(
         self,
