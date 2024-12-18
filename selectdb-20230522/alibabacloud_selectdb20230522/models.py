@@ -190,6 +190,7 @@ class CheckCreateDBInstanceRequest(TeaModel):
         # This parameter is required.
         self.dbinstance_class = dbinstance_class
         self.dbinstance_description = dbinstance_description
+        # The database engine of the instance.
         self.engine = engine
         # The version of the database engine.
         # 
@@ -506,6 +507,7 @@ class CreateDBClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The database engine of the instance.
         self.engine = engine
         # This parameter is required.
         self.engine_version = engine_version
@@ -516,7 +518,7 @@ class CreateDBClusterRequest(TeaModel):
         self.used_time = used_time
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # VPC ID.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
@@ -1142,6 +1144,208 @@ class CreateDBInstanceResponse(TeaModel):
         return self
 
 
+class CreateElasticRuleRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_class: str = None,
+        cluster_id: str = None,
+        db_instance_id: str = None,
+        elastic_rule_start_time: str = None,
+        execution_period: str = None,
+        region_id: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.cluster_class = cluster_class
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.db_instance_id = db_instance_id
+        # This parameter is required.
+        self.elastic_rule_start_time = elastic_rule_start_time
+        # This parameter is required.
+        self.execution_period = execution_period
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_class is not None:
+            result['ClusterClass'] = self.cluster_class
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.db_instance_id is not None:
+            result['DbInstanceId'] = self.db_instance_id
+        if self.elastic_rule_start_time is not None:
+            result['ElasticRuleStartTime'] = self.elastic_rule_start_time
+        if self.execution_period is not None:
+            result['ExecutionPeriod'] = self.execution_period
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterClass') is not None:
+            self.cluster_class = m.get('ClusterClass')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DbInstanceId') is not None:
+            self.db_instance_id = m.get('DbInstanceId')
+        if m.get('ElasticRuleStartTime') is not None:
+            self.elastic_rule_start_time = m.get('ElasticRuleStartTime')
+        if m.get('ExecutionPeriod') is not None:
+            self.execution_period = m.get('ExecutionPeriod')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CreateElasticRuleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cluster_class: str = None,
+        cluster_id: str = None,
+        db_instance_id: str = None,
+        elastic_rule_start_time: str = None,
+        execution_period: str = None,
+        rule_id: int = None,
+    ):
+        self.cluster_class = cluster_class
+        self.cluster_id = cluster_id
+        self.db_instance_id = db_instance_id
+        self.elastic_rule_start_time = elastic_rule_start_time
+        self.execution_period = execution_period
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_class is not None:
+            result['ClusterClass'] = self.cluster_class
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.db_instance_id is not None:
+            result['DbInstanceId'] = self.db_instance_id
+        if self.elastic_rule_start_time is not None:
+            result['ElasticRuleStartTime'] = self.elastic_rule_start_time
+        if self.execution_period is not None:
+            result['ExecutionPeriod'] = self.execution_period
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterClass') is not None:
+            self.cluster_class = m.get('ClusterClass')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DbInstanceId') is not None:
+            self.db_instance_id = m.get('DbInstanceId')
+        if m.get('ElasticRuleStartTime') is not None:
+            self.elastic_rule_start_time = m.get('ElasticRuleStartTime')
+        if m.get('ExecutionPeriod') is not None:
+            self.execution_period = m.get('ExecutionPeriod')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class CreateElasticRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateElasticRuleResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateElasticRuleResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateElasticRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateElasticRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateElasticRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateServiceLinkedRoleForSelectDBRequest(TeaModel):
     def __init__(
         self,
@@ -1514,6 +1718,141 @@ class DeleteDBInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDBInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteElasticRuleRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        db_instance_id: str = None,
+        product: str = None,
+        region_id: str = None,
+        resource_owner_id: int = None,
+        rule_id: int = None,
+    ):
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.db_instance_id = db_instance_id
+        self.product = product
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.db_instance_id is not None:
+            result['DbInstanceId'] = self.db_instance_id
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DbInstanceId') is not None:
+            self.db_instance_id = m.get('DbInstanceId')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class DeleteElasticRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteElasticRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteElasticRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteElasticRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3872,6 +4211,228 @@ class DescribeDBInstancesResponse(TeaModel):
         return self
 
 
+class DescribeElasticRulesRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        db_instance_id: str = None,
+        product: str = None,
+        region_id: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.db_instance_id = db_instance_id
+        self.product = product
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.db_instance_id is not None:
+            result['DbInstanceId'] = self.db_instance_id
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DbInstanceId') is not None:
+            self.db_instance_id = m.get('DbInstanceId')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeElasticRulesResponseBodyDataRules(TeaModel):
+    def __init__(
+        self,
+        cluster_class: str = None,
+        elastic_rule_start_time: str = None,
+        execution_period: str = None,
+        rule_id: int = None,
+    ):
+        self.cluster_class = cluster_class
+        self.elastic_rule_start_time = elastic_rule_start_time
+        self.execution_period = execution_period
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_class is not None:
+            result['ClusterClass'] = self.cluster_class
+        if self.elastic_rule_start_time is not None:
+            result['ElasticRuleStartTime'] = self.elastic_rule_start_time
+        if self.execution_period is not None:
+            result['ExecutionPeriod'] = self.execution_period
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterClass') is not None:
+            self.cluster_class = m.get('ClusterClass')
+        if m.get('ElasticRuleStartTime') is not None:
+            self.elastic_rule_start_time = m.get('ElasticRuleStartTime')
+        if m.get('ExecutionPeriod') is not None:
+            self.execution_period = m.get('ExecutionPeriod')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class DescribeElasticRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        db_instance_id: str = None,
+        rules: List[DescribeElasticRulesResponseBodyDataRules] = None,
+    ):
+        self.cluster_id = cluster_id
+        self.db_instance_id = db_instance_id
+        self.rules = rules
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.db_instance_id is not None:
+            result['DbInstanceId'] = self.db_instance_id
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DbInstanceId') is not None:
+            self.db_instance_id = m.get('DbInstanceId')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = DescribeElasticRulesResponseBodyDataRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeElasticRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeElasticRulesResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeElasticRulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeElasticRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeElasticRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeElasticRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSecurityIPListRequest(TeaModel):
     def __init__(
         self,
@@ -4063,6 +4624,182 @@ class DescribeSecurityIPListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSecurityIPListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnDisableScalingRulesRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        db_instance_id: str = None,
+        product: str = None,
+        region_id: str = None,
+        resource_owner_id: int = None,
+        scaling_rules_enable: bool = None,
+    ):
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.db_instance_id = db_instance_id
+        self.product = product
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.scaling_rules_enable = scaling_rules_enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.db_instance_id is not None:
+            result['DbInstanceId'] = self.db_instance_id
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scaling_rules_enable is not None:
+            result['ScalingRulesEnable'] = self.scaling_rules_enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DbInstanceId') is not None:
+            self.db_instance_id = m.get('DbInstanceId')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScalingRulesEnable') is not None:
+            self.scaling_rules_enable = m.get('ScalingRulesEnable')
+        return self
+
+
+class EnDisableScalingRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        db_instance_id: str = None,
+        scaling_rules_enable: bool = None,
+    ):
+        self.cluster_id = cluster_id
+        self.db_instance_id = db_instance_id
+        self.scaling_rules_enable = scaling_rules_enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.db_instance_id is not None:
+            result['DbInstanceId'] = self.db_instance_id
+        if self.scaling_rules_enable is not None:
+            result['ScalingRulesEnable'] = self.scaling_rules_enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DbInstanceId') is not None:
+            self.db_instance_id = m.get('DbInstanceId')
+        if m.get('ScalingRulesEnable') is not None:
+            self.scaling_rules_enable = m.get('ScalingRulesEnable')
+        return self
+
+
+class EnDisableScalingRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: EnDisableScalingRulesResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = EnDisableScalingRulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnDisableScalingRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnDisableScalingRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnDisableScalingRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4570,21 +5307,14 @@ class ModifyBEClusterAttributeRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The cluster parameter to be modified.
-        # 
-        # *   Valid values:****\
-        # 
-        # <!---->
-        # 
-        # *   MaintainTime
-        # *   DBInstanceDescription
+        # The attribute type of the instance. Set this parameter to DBInstanceDescription.
         # 
         # This parameter is required.
         self.instance_attribute_type = instance_attribute_type
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
-        # The modfied cluster name.
+        # The new name of the cluster.
         # 
         # This parameter is required.
         self.value = value
@@ -4708,6 +5438,7 @@ class ModifyDBClusterRequest(TeaModel):
         region_id: str = None,
         resource_owner_id: int = None,
     ):
+        # The size of the reserved cache.
         self.cache_size = cache_size
         # This parameter is required.
         self.dbcluster_class = dbcluster_class
@@ -5227,6 +5958,218 @@ class ModifyDBInstanceAttributeResponse(TeaModel):
         return self
 
 
+class ModifyElasticRuleRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_class: str = None,
+        cluster_id: str = None,
+        db_instance_id: str = None,
+        elastic_rule_start_time: str = None,
+        execution_period: str = None,
+        product: str = None,
+        region_id: str = None,
+        resource_owner_id: int = None,
+        rule_id: int = None,
+    ):
+        self.cluster_class = cluster_class
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.db_instance_id = db_instance_id
+        self.elastic_rule_start_time = elastic_rule_start_time
+        self.execution_period = execution_period
+        self.product = product
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_class is not None:
+            result['ClusterClass'] = self.cluster_class
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.db_instance_id is not None:
+            result['DbInstanceId'] = self.db_instance_id
+        if self.elastic_rule_start_time is not None:
+            result['ElasticRuleStartTime'] = self.elastic_rule_start_time
+        if self.execution_period is not None:
+            result['ExecutionPeriod'] = self.execution_period
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterClass') is not None:
+            self.cluster_class = m.get('ClusterClass')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DbInstanceId') is not None:
+            self.db_instance_id = m.get('DbInstanceId')
+        if m.get('ElasticRuleStartTime') is not None:
+            self.elastic_rule_start_time = m.get('ElasticRuleStartTime')
+        if m.get('ExecutionPeriod') is not None:
+            self.execution_period = m.get('ExecutionPeriod')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class ModifyElasticRuleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cluster_class: str = None,
+        cluster_id: str = None,
+        db_instance_id: str = None,
+        elastic_rule_start_time: str = None,
+        execution_period: str = None,
+        rule_id: int = None,
+    ):
+        self.cluster_class = cluster_class
+        self.cluster_id = cluster_id
+        self.db_instance_id = db_instance_id
+        self.elastic_rule_start_time = elastic_rule_start_time
+        self.execution_period = execution_period
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_class is not None:
+            result['ClusterClass'] = self.cluster_class
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.db_instance_id is not None:
+            result['DbInstanceId'] = self.db_instance_id
+        if self.elastic_rule_start_time is not None:
+            result['ElasticRuleStartTime'] = self.elastic_rule_start_time
+        if self.execution_period is not None:
+            result['ExecutionPeriod'] = self.execution_period
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterClass') is not None:
+            self.cluster_class = m.get('ClusterClass')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DbInstanceId') is not None:
+            self.db_instance_id = m.get('DbInstanceId')
+        if m.get('ElasticRuleStartTime') is not None:
+            self.elastic_rule_start_time = m.get('ElasticRuleStartTime')
+        if m.get('ExecutionPeriod') is not None:
+            self.execution_period = m.get('ExecutionPeriod')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class ModifyElasticRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ModifyElasticRuleResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ModifyElasticRuleResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyElasticRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyElasticRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyElasticRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifySecurityIPListRequest(TeaModel):
     def __init__(
         self,
@@ -5697,7 +6640,7 @@ class RestartDBClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The region ID.
+        # The ID of the region in which the ApsaraDB for SelectDB instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id

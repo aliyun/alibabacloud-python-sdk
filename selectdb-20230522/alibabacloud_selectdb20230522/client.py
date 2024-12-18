@@ -419,7 +419,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.CreateDBClusterResponse:
         """
-        @summary Creates a cluster in an ApsaraDB for SelectDB instance. Note: You can create only pay-as-you-go clusters in a pay-as-you-go instance.
+        @summary Creates a cluster in an ApsaraDB for SelectDB instance.
+        
+        @description > : For an instance that uses the pay-as-you-go billing method, you can create only pay-as-you-go clusters. For an instance that uses the subscription billing method, you can create pay-as-you-go or subscription clusters.
         
         @param request: CreateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -482,7 +484,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.CreateDBClusterResponse:
         """
-        @summary Creates a cluster in an ApsaraDB for SelectDB instance. Note: You can create only pay-as-you-go clusters in a pay-as-you-go instance.
+        @summary Creates a cluster in an ApsaraDB for SelectDB instance.
+        
+        @description > : For an instance that uses the pay-as-you-go billing method, you can create only pay-as-you-go clusters. For an instance that uses the subscription billing method, you can create pay-as-you-go or subscription clusters.
         
         @param request: CreateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -544,7 +548,9 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.CreateDBClusterRequest,
     ) -> selectdb_20230522_models.CreateDBClusterResponse:
         """
-        @summary Creates a cluster in an ApsaraDB for SelectDB instance. Note: You can create only pay-as-you-go clusters in a pay-as-you-go instance.
+        @summary Creates a cluster in an ApsaraDB for SelectDB instance.
+        
+        @description > : For an instance that uses the pay-as-you-go billing method, you can create only pay-as-you-go clusters. For an instance that uses the subscription billing method, you can create pay-as-you-go or subscription clusters.
         
         @param request: CreateDBClusterRequest
         @return: CreateDBClusterResponse
@@ -557,7 +563,9 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.CreateDBClusterRequest,
     ) -> selectdb_20230522_models.CreateDBClusterResponse:
         """
-        @summary Creates a cluster in an ApsaraDB for SelectDB instance. Note: You can create only pay-as-you-go clusters in a pay-as-you-go instance.
+        @summary Creates a cluster in an ApsaraDB for SelectDB instance.
+        
+        @description > : For an instance that uses the pay-as-you-go billing method, you can create only pay-as-you-go clusters. For an instance that uses the subscription billing method, you can create pay-as-you-go or subscription clusters.
         
         @param request: CreateDBClusterRequest
         @return: CreateDBClusterResponse
@@ -740,6 +748,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_dbinstance_with_options_async(request, runtime)
+
+    def create_elastic_rule_with_options(
+        self,
+        request: selectdb_20230522_models.CreateElasticRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.CreateElasticRuleResponse:
+        """
+        @summary 创建分时弹性规则
+        
+        @param request: CreateElasticRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateElasticRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_class):
+            query['ClusterClass'] = request.cluster_class
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.elastic_rule_start_time):
+            query['ElasticRuleStartTime'] = request.elastic_rule_start_time
+        if not UtilClient.is_unset(request.execution_period):
+            query['ExecutionPeriod'] = request.execution_period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateElasticRule',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.CreateElasticRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_elastic_rule_with_options_async(
+        self,
+        request: selectdb_20230522_models.CreateElasticRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.CreateElasticRuleResponse:
+        """
+        @summary 创建分时弹性规则
+        
+        @param request: CreateElasticRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateElasticRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_class):
+            query['ClusterClass'] = request.cluster_class
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.elastic_rule_start_time):
+            query['ElasticRuleStartTime'] = request.elastic_rule_start_time
+        if not UtilClient.is_unset(request.execution_period):
+            query['ExecutionPeriod'] = request.execution_period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateElasticRule',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.CreateElasticRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_elastic_rule(
+        self,
+        request: selectdb_20230522_models.CreateElasticRuleRequest,
+    ) -> selectdb_20230522_models.CreateElasticRuleResponse:
+        """
+        @summary 创建分时弹性规则
+        
+        @param request: CreateElasticRuleRequest
+        @return: CreateElasticRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_elastic_rule_with_options(request, runtime)
+
+    async def create_elastic_rule_async(
+        self,
+        request: selectdb_20230522_models.CreateElasticRuleRequest,
+    ) -> selectdb_20230522_models.CreateElasticRuleResponse:
+        """
+        @summary 创建分时弹性规则
+        
+        @param request: CreateElasticRuleRequest
+        @return: CreateElasticRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_elastic_rule_with_options_async(request, runtime)
 
     def create_service_linked_role_for_select_dbwith_options(
         self,
@@ -1065,13 +1193,129 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbinstance_with_options_async(request, runtime)
 
+    def delete_elastic_rule_with_options(
+        self,
+        request: selectdb_20230522_models.DeleteElasticRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DeleteElasticRuleResponse:
+        """
+        @summary 删除分时弹性规则
+        
+        @param request: DeleteElasticRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteElasticRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteElasticRule',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DeleteElasticRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_elastic_rule_with_options_async(
+        self,
+        request: selectdb_20230522_models.DeleteElasticRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DeleteElasticRuleResponse:
+        """
+        @summary 删除分时弹性规则
+        
+        @param request: DeleteElasticRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteElasticRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteElasticRule',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DeleteElasticRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_elastic_rule(
+        self,
+        request: selectdb_20230522_models.DeleteElasticRuleRequest,
+    ) -> selectdb_20230522_models.DeleteElasticRuleResponse:
+        """
+        @summary 删除分时弹性规则
+        
+        @param request: DeleteElasticRuleRequest
+        @return: DeleteElasticRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_elastic_rule_with_options(request, runtime)
+
+    async def delete_elastic_rule_async(
+        self,
+        request: selectdb_20230522_models.DeleteElasticRuleRequest,
+    ) -> selectdb_20230522_models.DeleteElasticRuleResponse:
+        """
+        @summary 删除分时弹性规则
+        
+        @param request: DeleteElasticRuleRequest
+        @return: DeleteElasticRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_elastic_rule_with_options_async(request, runtime)
+
     def describe_all_dbinstance_class_with_options(
         self,
         request: selectdb_20230522_models.DescribeAllDBInstanceClassRequest,
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeAllDBInstanceClassResponse:
         """
-        @summary 获取所有实例规格信息
+        @summary Queries the information about all instance specifications.
         
         @param request: DescribeAllDBInstanceClassRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1108,7 +1352,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeAllDBInstanceClassResponse:
         """
-        @summary 获取所有实例规格信息
+        @summary Queries the information about all instance specifications.
         
         @param request: DescribeAllDBInstanceClassRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1144,7 +1388,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeAllDBInstanceClassRequest,
     ) -> selectdb_20230522_models.DescribeAllDBInstanceClassResponse:
         """
-        @summary 获取所有实例规格信息
+        @summary Queries the information about all instance specifications.
         
         @param request: DescribeAllDBInstanceClassRequest
         @return: DescribeAllDBInstanceClassResponse
@@ -1157,7 +1401,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeAllDBInstanceClassRequest,
     ) -> selectdb_20230522_models.DescribeAllDBInstanceClassResponse:
         """
-        @summary 获取所有实例规格信息
+        @summary Queries the information about all instance specifications.
         
         @param request: DescribeAllDBInstanceClassRequest
         @return: DescribeAllDBInstanceClassResponse
@@ -1733,6 +1977,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstances_with_options_async(request, runtime)
 
+    def describe_elastic_rules_with_options(
+        self,
+        request: selectdb_20230522_models.DescribeElasticRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DescribeElasticRulesResponse:
+        """
+        @summary 查询分时弹性规则
+        
+        @param request: DescribeElasticRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeElasticRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticRules',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DescribeElasticRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_elastic_rules_with_options_async(
+        self,
+        request: selectdb_20230522_models.DescribeElasticRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DescribeElasticRulesResponse:
+        """
+        @summary 查询分时弹性规则
+        
+        @param request: DescribeElasticRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeElasticRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticRules',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DescribeElasticRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_elastic_rules(
+        self,
+        request: selectdb_20230522_models.DescribeElasticRulesRequest,
+    ) -> selectdb_20230522_models.DescribeElasticRulesResponse:
+        """
+        @summary 查询分时弹性规则
+        
+        @param request: DescribeElasticRulesRequest
+        @return: DescribeElasticRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_elastic_rules_with_options(request, runtime)
+
+    async def describe_elastic_rules_async(
+        self,
+        request: selectdb_20230522_models.DescribeElasticRulesRequest,
+    ) -> selectdb_20230522_models.DescribeElasticRulesResponse:
+        """
+        @summary 查询分时弹性规则
+        
+        @param request: DescribeElasticRulesRequest
+        @return: DescribeElasticRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_elastic_rules_with_options_async(request, runtime)
+
     def describe_security_iplist_with_options(
         self,
         request: selectdb_20230522_models.DescribeSecurityIPListRequest,
@@ -1836,6 +2172,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_iplist_with_options_async(request, runtime)
+
+    def en_disable_scaling_rules_with_options(
+        self,
+        request: selectdb_20230522_models.EnDisableScalingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.EnDisableScalingRulesResponse:
+        """
+        @summary 开关分时弹性策略
+        
+        @param request: EnDisableScalingRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnDisableScalingRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scaling_rules_enable):
+            query['ScalingRulesEnable'] = request.scaling_rules_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnDisableScalingRules',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.EnDisableScalingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def en_disable_scaling_rules_with_options_async(
+        self,
+        request: selectdb_20230522_models.EnDisableScalingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.EnDisableScalingRulesResponse:
+        """
+        @summary 开关分时弹性策略
+        
+        @param request: EnDisableScalingRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnDisableScalingRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scaling_rules_enable):
+            query['ScalingRulesEnable'] = request.scaling_rules_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnDisableScalingRules',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.EnDisableScalingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def en_disable_scaling_rules(
+        self,
+        request: selectdb_20230522_models.EnDisableScalingRulesRequest,
+    ) -> selectdb_20230522_models.EnDisableScalingRulesResponse:
+        """
+        @summary 开关分时弹性策略
+        
+        @param request: EnDisableScalingRulesRequest
+        @return: EnDisableScalingRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.en_disable_scaling_rules_with_options(request, runtime)
+
+    async def en_disable_scaling_rules_async(
+        self,
+        request: selectdb_20230522_models.EnDisableScalingRulesRequest,
+    ) -> selectdb_20230522_models.EnDisableScalingRulesResponse:
+        """
+        @summary 开关分时弹性策略
+        
+        @param request: EnDisableScalingRulesRequest
+        @return: EnDisableScalingRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.en_disable_scaling_rules_with_options_async(request, runtime)
 
     def get_create_becluster_inquiry_with_options(
         self,
@@ -2027,7 +2479,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ModifyBEClusterAttributeResponse:
         """
-        @summary 修改BE集群名称、属性、设置
+        @summary Modifies the name of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: ModifyBEClusterAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2072,7 +2524,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ModifyBEClusterAttributeResponse:
         """
-        @summary 修改BE集群名称、属性、设置
+        @summary Modifies the name of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: ModifyBEClusterAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2116,7 +2568,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.ModifyBEClusterAttributeRequest,
     ) -> selectdb_20230522_models.ModifyBEClusterAttributeResponse:
         """
-        @summary 修改BE集群名称、属性、设置
+        @summary Modifies the name of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: ModifyBEClusterAttributeRequest
         @return: ModifyBEClusterAttributeResponse
@@ -2129,7 +2581,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.ModifyBEClusterAttributeRequest,
     ) -> selectdb_20230522_models.ModifyBEClusterAttributeResponse:
         """
-        @summary 修改BE集群名称、属性、设置
+        @summary Modifies the name of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: ModifyBEClusterAttributeRequest
         @return: ModifyBEClusterAttributeResponse
@@ -2484,6 +2936,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_attribute_with_options_async(request, runtime)
+
+    def modify_elastic_rule_with_options(
+        self,
+        request: selectdb_20230522_models.ModifyElasticRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.ModifyElasticRuleResponse:
+        """
+        @summary 修改分时弹性规则
+        
+        @param request: ModifyElasticRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyElasticRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_class):
+            query['ClusterClass'] = request.cluster_class
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.elastic_rule_start_time):
+            query['ElasticRuleStartTime'] = request.elastic_rule_start_time
+        if not UtilClient.is_unset(request.execution_period):
+            query['ExecutionPeriod'] = request.execution_period
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyElasticRule',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.ModifyElasticRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_elastic_rule_with_options_async(
+        self,
+        request: selectdb_20230522_models.ModifyElasticRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.ModifyElasticRuleResponse:
+        """
+        @summary 修改分时弹性规则
+        
+        @param request: ModifyElasticRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyElasticRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_class):
+            query['ClusterClass'] = request.cluster_class
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.elastic_rule_start_time):
+            query['ElasticRuleStartTime'] = request.elastic_rule_start_time
+        if not UtilClient.is_unset(request.execution_period):
+            query['ExecutionPeriod'] = request.execution_period
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyElasticRule',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.ModifyElasticRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_elastic_rule(
+        self,
+        request: selectdb_20230522_models.ModifyElasticRuleRequest,
+    ) -> selectdb_20230522_models.ModifyElasticRuleResponse:
+        """
+        @summary 修改分时弹性规则
+        
+        @param request: ModifyElasticRuleRequest
+        @return: ModifyElasticRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_elastic_rule_with_options(request, runtime)
+
+    async def modify_elastic_rule_async(
+        self,
+        request: selectdb_20230522_models.ModifyElasticRuleRequest,
+    ) -> selectdb_20230522_models.ModifyElasticRuleResponse:
+        """
+        @summary 修改分时弹性规则
+        
+        @param request: ModifyElasticRuleRequest
+        @return: ModifyElasticRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_elastic_rule_with_options_async(request, runtime)
 
     def modify_security_iplist_with_options(
         self,

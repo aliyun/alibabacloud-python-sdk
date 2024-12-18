@@ -1,3 +1,11 @@
+2024-12-18 Version: 4.1.0
+- Support API CreateElasticRule.
+- Support API DeleteElasticRule.
+- Support API DescribeElasticRules.
+- Support API EnDisableScalingRules.
+- Support API ModifyElasticRule.
+
+
 2024-12-02 Version: 4.0.1
 - Update API DescribeDBInstanceAttribute: update response param.
 
