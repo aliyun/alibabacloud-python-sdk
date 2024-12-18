@@ -1880,6 +1880,57 @@ class JobItemDataSources(TeaModel):
         return self
 
 
+class JobItemUserVpc(TeaModel):
+    def __init__(
+        self,
+        default_route: str = None,
+        extended_cidrs: List[str] = None,
+        security_group_id: str = None,
+        switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.default_route = default_route
+        self.extended_cidrs = extended_cidrs
+        self.security_group_id = security_group_id
+        self.switch_id = switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_route is not None:
+            result['DefaultRoute'] = self.default_route
+        if self.extended_cidrs is not None:
+            result['ExtendedCidrs'] = self.extended_cidrs
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.switch_id is not None:
+            result['SwitchId'] = self.switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultRoute') is not None:
+            self.default_route = m.get('DefaultRoute')
+        if m.get('ExtendedCidrs') is not None:
+            self.extended_cidrs = m.get('ExtendedCidrs')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SwitchId') is not None:
+            self.switch_id = m.get('SwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class ResourceConfig(TeaModel):
     def __init__(
         self,
@@ -2376,7 +2427,7 @@ class JobItem(TeaModel):
         user_command: str = None,
         user_id: str = None,
         user_script: str = None,
-        user_vpc: str = None,
+        user_vpc: JobItemUserVpc = None,
         username: str = None,
         working_dir: str = None,
         workspace_id: str = None,
@@ -2464,6 +2515,8 @@ class JobItem(TeaModel):
             for k in self.status_history:
                 if k:
                     k.validate()
+        if self.user_vpc:
+            self.user_vpc.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2582,7 +2635,7 @@ class JobItem(TeaModel):
         if self.user_script is not None:
             result['UserScript'] = self.user_script
         if self.user_vpc is not None:
-            result['UserVpc'] = self.user_vpc
+            result['UserVpc'] = self.user_vpc.to_map()
         if self.username is not None:
             result['Username'] = self.username
         if self.working_dir is not None:
@@ -2714,7 +2767,8 @@ class JobItem(TeaModel):
         if m.get('UserScript') is not None:
             self.user_script = m.get('UserScript')
         if m.get('UserVpc') is not None:
-            self.user_vpc = m.get('UserVpc')
+            temp_model = JobItemUserVpc()
+            self.user_vpc = temp_model.from_map(m['UserVpc'])
         if m.get('Username') is not None:
             self.username = m.get('Username')
         if m.get('WorkingDir') is not None:
@@ -3834,11 +3888,13 @@ class CreateJobRequestDataSources(TeaModel):
     def __init__(
         self,
         data_source_id: str = None,
+        data_source_version: str = None,
         mount_path: str = None,
         options: str = None,
         uri: str = None,
     ):
         self.data_source_id = data_source_id
+        self.data_source_version = data_source_version
         self.mount_path = mount_path
         self.options = options
         self.uri = uri
@@ -3854,6 +3910,8 @@ class CreateJobRequestDataSources(TeaModel):
         result = dict()
         if self.data_source_id is not None:
             result['DataSourceId'] = self.data_source_id
+        if self.data_source_version is not None:
+            result['DataSourceVersion'] = self.data_source_version
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
         if self.options is not None:
@@ -3866,6 +3924,8 @@ class CreateJobRequestDataSources(TeaModel):
         m = m or dict()
         if m.get('DataSourceId') is not None:
             self.data_source_id = m.get('DataSourceId')
+        if m.get('DataSourceVersion') is not None:
+            self.data_source_version = m.get('DataSourceVersion')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
         if m.get('Options') is not None:
@@ -4892,6 +4952,57 @@ class GetJobResponseBodyPods(TeaModel):
         return self
 
 
+class GetJobResponseBodyUserVpc(TeaModel):
+    def __init__(
+        self,
+        default_route: str = None,
+        extended_cidrs: List[str] = None,
+        security_group_id: str = None,
+        switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.default_route = default_route
+        self.extended_cidrs = extended_cidrs
+        self.security_group_id = security_group_id
+        self.switch_id = switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_route is not None:
+            result['DefaultRoute'] = self.default_route
+        if self.extended_cidrs is not None:
+            result['ExtendedCidrs'] = self.extended_cidrs
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.switch_id is not None:
+            result['SwitchId'] = self.switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultRoute') is not None:
+            self.default_route = m.get('DefaultRoute')
+        if m.get('ExtendedCidrs') is not None:
+            self.extended_cidrs = m.get('ExtendedCidrs')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SwitchId') is not None:
+            self.switch_id = m.get('SwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class GetJobResponseBody(TeaModel):
     def __init__(
         self,
@@ -4933,6 +5044,7 @@ class GetJobResponseBody(TeaModel):
         thirdparty_libs: List[str] = None,
         user_command: str = None,
         user_id: str = None,
+        user_vpc: GetJobResponseBodyUserVpc = None,
         workspace_id: str = None,
         workspace_name: str = None,
     ):
@@ -4974,6 +5086,7 @@ class GetJobResponseBody(TeaModel):
         self.thirdparty_libs = thirdparty_libs
         self.user_command = user_command
         self.user_id = user_id
+        self.user_vpc = user_vpc
         self.workspace_id = workspace_id
         self.workspace_name = workspace_name
 
@@ -5002,6 +5115,8 @@ class GetJobResponseBody(TeaModel):
             for k in self.status_history:
                 if k:
                     k.validate()
+        if self.user_vpc:
+            self.user_vpc.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5093,6 +5208,8 @@ class GetJobResponseBody(TeaModel):
             result['UserCommand'] = self.user_command
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.user_vpc is not None:
+            result['UserVpc'] = self.user_vpc.to_map()
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         if self.workspace_name is not None:
@@ -5193,6 +5310,9 @@ class GetJobResponseBody(TeaModel):
             self.user_command = m.get('UserCommand')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('UserVpc') is not None:
+            temp_model = GetJobResponseBodyUserVpc()
+            self.user_vpc = temp_model.from_map(m['UserVpc'])
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         if m.get('WorkspaceName') is not None:
