@@ -1,3 +1,7 @@
+2024-12-18 Version: 1.6.5
+- Update API GetQualityCheckTaskResult: update response param.
+
+
 2024-12-17 Version: 1.6.4
 - Update API GetQualityCheckTaskResult: update response param.
 
