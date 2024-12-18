@@ -1,3 +1,6 @@
+2024-12-18 Version: 4.1.1
+- Generated python 2023-05-22 for selectdb.
+
 2024-12-18 Version: 4.1.0
 - Support API CreateElasticRule.
 - Support API DeleteElasticRule.
