@@ -16650,12 +16650,59 @@ class DescribeElasticStrengthRequest(TeaModel):
         return self
 
 
+class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePoolsInventoryHealth(TeaModel):
+    def __init__(
+        self,
+        adequacy_score: int = None,
+        health_score: int = None,
+        hot_score: int = None,
+        supply_score: int = None,
+    ):
+        self.adequacy_score = adequacy_score
+        self.health_score = health_score
+        self.hot_score = hot_score
+        self.supply_score = supply_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adequacy_score is not None:
+            result['AdequacyScore'] = self.adequacy_score
+        if self.health_score is not None:
+            result['HealthScore'] = self.health_score
+        if self.hot_score is not None:
+            result['HotScore'] = self.hot_score
+        if self.supply_score is not None:
+            result['SupplyScore'] = self.supply_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdequacyScore') is not None:
+            self.adequacy_score = m.get('AdequacyScore')
+        if m.get('HealthScore') is not None:
+            self.health_score = m.get('HealthScore')
+        if m.get('HotScore') is not None:
+            self.hot_score = m.get('HotScore')
+        if m.get('SupplyScore') is not None:
+            self.supply_score = m.get('SupplyScore')
+        return self
+
+
 class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools(TeaModel):
     def __init__(
         self,
         code: str = None,
         instance_type: str = None,
+        inventory_health: DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePoolsInventoryHealth = None,
         msg: str = None,
+        status: str = None,
         strength: float = None,
         v_switch_ids: List[str] = None,
         zone_id: str = None,
@@ -16664,8 +16711,10 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools(TeaM
         self.code = code
         # The instance type of the resource pool.
         self.instance_type = instance_type
+        self.inventory_health = inventory_health
         # The error message returned when the scaling strength is the weakest.
         self.msg = msg
+        self.status = status
         # The scaling strength of the resource pool.
         self.strength = strength
         # The IDs of the vSwitches in the zones of the resource pool.
@@ -16674,7 +16723,8 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools(TeaM
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.inventory_health:
+            self.inventory_health.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16686,8 +16736,12 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools(TeaM
             result['Code'] = self.code
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.inventory_health is not None:
+            result['InventoryHealth'] = self.inventory_health.to_map()
         if self.msg is not None:
             result['Msg'] = self.msg
+        if self.status is not None:
+            result['Status'] = self.status
         if self.strength is not None:
             result['Strength'] = self.strength
         if self.v_switch_ids is not None:
@@ -16702,8 +16756,13 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools(TeaM
             self.code = m.get('Code')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('InventoryHealth') is not None:
+            temp_model = DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePoolsInventoryHealth()
+            self.inventory_health = temp_model.from_map(m['InventoryHealth'])
         if m.get('Msg') is not None:
             self.msg = m.get('Msg')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('Strength') is not None:
             self.strength = m.get('Strength')
         if m.get('VSwitchIds') is not None:
@@ -16716,10 +16775,12 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools(TeaM
 class DescribeElasticStrengthResponseBodyElasticStrengthModels(TeaModel):
     def __init__(
         self,
+        elastic_strength: str = None,
         resource_pools: List[DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools] = None,
         scaling_group_id: str = None,
         total_strength: float = None,
     ):
+        self.elastic_strength = elastic_strength
         # The resource pools.
         self.resource_pools = resource_pools
         # The ID of the scaling group.
@@ -16739,6 +16800,8 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModels(TeaModel):
             return _map
 
         result = dict()
+        if self.elastic_strength is not None:
+            result['ElasticStrength'] = self.elastic_strength
         result['ResourcePools'] = []
         if self.resource_pools is not None:
             for k in self.resource_pools:
@@ -16751,6 +16814,8 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModels(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ElasticStrength') is not None:
+            self.elastic_strength = m.get('ElasticStrength')
         self.resource_pools = []
         if m.get('ResourcePools') is not None:
             for k in m.get('ResourcePools'):
