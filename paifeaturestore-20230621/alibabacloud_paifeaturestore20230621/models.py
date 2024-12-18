@@ -55,10 +55,12 @@ class FeatureViewConfigValue(TeaModel):
         partitions: Dict[str, FeatureViewConfigValuePartitionsValue] = None,
         event_time: str = None,
         equal: bool = None,
+        use_mock: bool = None,
     ):
         self.partitions = partitions
         self.event_time = event_time
         self.equal = equal
+        self.use_mock = use_mock
 
     def validate(self):
         if self.partitions:
@@ -80,6 +82,8 @@ class FeatureViewConfigValue(TeaModel):
             result['EventTime'] = self.event_time
         if self.equal is not None:
             result['Equal'] = self.equal
+        if self.use_mock is not None:
+            result['UseMock'] = self.use_mock
         return result
 
     def from_map(self, m: dict = None):
@@ -93,6 +97,8 @@ class FeatureViewConfigValue(TeaModel):
             self.event_time = m.get('EventTime')
         if m.get('Equal') is not None:
             self.equal = m.get('Equal')
+        if m.get('UseMock') is not None:
+            self.use_mock = m.get('UseMock')
         return self
 
 
@@ -2400,6 +2406,7 @@ class GetFeatureViewResponseBody(TeaModel):
         gmt_sync_time: str = None,
         join_id: str = None,
         last_sync_config: str = None,
+        mock_table_name: str = None,
         name: str = None,
         owner: str = None,
         project_id: str = None,
@@ -2425,6 +2432,7 @@ class GetFeatureViewResponseBody(TeaModel):
         self.gmt_sync_time = gmt_sync_time
         self.join_id = join_id
         self.last_sync_config = last_sync_config
+        self.mock_table_name = mock_table_name
         self.name = name
         self.owner = owner
         self.project_id = project_id
@@ -2473,6 +2481,8 @@ class GetFeatureViewResponseBody(TeaModel):
             result['JoinId'] = self.join_id
         if self.last_sync_config is not None:
             result['LastSyncConfig'] = self.last_sync_config
+        if self.mock_table_name is not None:
+            result['MockTableName'] = self.mock_table_name
         if self.name is not None:
             result['Name'] = self.name
         if self.owner is not None:
@@ -2528,6 +2538,8 @@ class GetFeatureViewResponseBody(TeaModel):
             self.join_id = m.get('JoinId')
         if m.get('LastSyncConfig') is not None:
             self.last_sync_config = m.get('LastSyncConfig')
+        if m.get('MockTableName') is not None:
+            self.mock_table_name = m.get('MockTableName')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Owner') is not None:
@@ -8374,7 +8386,6 @@ class UpdateModelFeatureFGFeatureRequest(TeaModel):
     ):
         self.lookup_features = lookup_features
         self.raw_features = raw_features
-        # This parameter is required.
         self.reserves = reserves
         self.sequence_features = sequence_features
 
