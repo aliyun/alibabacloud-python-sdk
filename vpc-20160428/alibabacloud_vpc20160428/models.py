@@ -8642,6 +8642,39 @@ class CreateExpressCloudConnectionResponse(TeaModel):
         return self
 
 
+class CreateExpressConnectTrafficQosRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateExpressConnectTrafficQosRequest(TeaModel):
     def __init__(
         self,
@@ -8651,7 +8684,9 @@ class CreateExpressConnectTrafficQosRequest(TeaModel):
         qos_description: str = None,
         qos_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
+        tags: List[CreateExpressConnectTrafficQosRequestTags] = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -8675,10 +8710,15 @@ class CreateExpressConnectTrafficQosRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8698,8 +8738,14 @@ class CreateExpressConnectTrafficQosRequest(TeaModel):
             result['QosName'] = self.qos_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -8716,8 +8762,15 @@ class CreateExpressConnectTrafficQosRequest(TeaModel):
             self.qos_name = m.get('QosName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateExpressConnectTrafficQosRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -9809,6 +9862,7 @@ class CreateForwardEntryRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        dry_run: bool = None,
         external_ip: str = None,
         external_port: str = None,
         forward_entry_name: str = None,
@@ -9829,6 +9883,7 @@ class CreateForwardEntryRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        self.dry_run = dry_run
         # *   The EIP that can be accessed over the Internet when you configure a DNAT entry for an Internet NAT gateway.
         # *   The NAT IP address that can be accessed by external networks when you configure a DNAT entry for a VPC NAT gateway.
         # 
@@ -9903,6 +9958,8 @@ class CreateForwardEntryRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.external_ip is not None:
             result['ExternalIp'] = self.external_ip
         if self.external_port is not None:
@@ -9935,6 +9992,8 @@ class CreateForwardEntryRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('ExternalIp') is not None:
             self.external_ip = m.get('ExternalIp')
         if m.get('ExternalPort') is not None:
@@ -16861,6 +16920,7 @@ class CreateSnatEntryRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        dry_run: bool = None,
         eip_affinity: int = None,
         network_interface_id: str = None,
         owner_account: str = None,
@@ -16882,6 +16942,7 @@ class CreateSnatEntryRequest(TeaModel):
         # 
         # **Description** If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        self.dry_run = dry_run
         # Specifies whether to enable EIP affinity. Valid values:
         # 
         # *   **0**: no
@@ -16964,6 +17025,8 @@ class CreateSnatEntryRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.eip_affinity is not None:
             result['EipAffinity'] = self.eip_affinity
         if self.network_interface_id is not None:
@@ -16994,6 +17057,8 @@ class CreateSnatEntryRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EipAffinity') is not None:
             self.eip_affinity = m.get('EipAffinity')
         if m.get('NetworkInterfaceId') is not None:
@@ -37658,6 +37723,39 @@ class DescribeEipSegmentResponse(TeaModel):
         return self
 
 
+class DescribeExpressConnectTrafficQosRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeExpressConnectTrafficQosRequest(TeaModel):
     def __init__(
         self,
@@ -37669,7 +37767,9 @@ class DescribeExpressConnectTrafficQosRequest(TeaModel):
         qos_id_list: List[str] = None,
         qos_name_list: List[str] = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
+        tags: List[DescribeExpressConnectTrafficQosRequestTags] = None,
     ):
         self.client_token = client_token
         self.max_results = max_results
@@ -37680,10 +37780,15 @@ class DescribeExpressConnectTrafficQosRequest(TeaModel):
         self.qos_name_list = qos_name_list
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -37707,8 +37812,14 @@ class DescribeExpressConnectTrafficQosRequest(TeaModel):
             result['QosNameList'] = self.qos_name_list
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -37729,8 +37840,15 @@ class DescribeExpressConnectTrafficQosRequest(TeaModel):
             self.qos_name_list = m.get('QosNameList')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeExpressConnectTrafficQosRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -37842,6 +37960,39 @@ class DescribeExpressConnectTrafficQosResponseBodyQosListQueueList(TeaModel):
         return self
 
 
+class DescribeExpressConnectTrafficQosResponseBodyQosListTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeExpressConnectTrafficQosResponseBodyQosList(TeaModel):
     def __init__(
         self,
@@ -37851,7 +38002,9 @@ class DescribeExpressConnectTrafficQosResponseBodyQosList(TeaModel):
         qos_id: str = None,
         qos_name: str = None,
         queue_list: List[DescribeExpressConnectTrafficQosResponseBodyQosListQueueList] = None,
+        resource_group_id: str = None,
         status: str = None,
+        tags: List[DescribeExpressConnectTrafficQosResponseBodyQosListTags] = None,
     ):
         self.associated_instance_list = associated_instance_list
         self.progressing = progressing
@@ -37859,7 +38012,9 @@ class DescribeExpressConnectTrafficQosResponseBodyQosList(TeaModel):
         self.qos_id = qos_id
         self.qos_name = qos_name
         self.queue_list = queue_list
+        self.resource_group_id = resource_group_id
         self.status = status
+        self.tags = tags
 
     def validate(self):
         if self.associated_instance_list:
@@ -37868,6 +38023,10 @@ class DescribeExpressConnectTrafficQosResponseBodyQosList(TeaModel):
                     k.validate()
         if self.queue_list:
             for k in self.queue_list:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -37893,8 +38052,14 @@ class DescribeExpressConnectTrafficQosResponseBodyQosList(TeaModel):
         if self.queue_list is not None:
             for k in self.queue_list:
                 result['QueueList'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -37917,8 +38082,15 @@ class DescribeExpressConnectTrafficQosResponseBodyQosList(TeaModel):
             for k in m.get('QueueList'):
                 temp_model = DescribeExpressConnectTrafficQosResponseBodyQosListQueueList()
                 self.queue_list.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeExpressConnectTrafficQosResponseBodyQosListTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -84370,6 +84542,7 @@ class ModifyForwardEntryRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        dry_run: bool = None,
         external_ip: str = None,
         external_port: str = None,
         forward_entry_id: str = None,
@@ -84391,6 +84564,7 @@ class ModifyForwardEntryRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        self.dry_run = dry_run
         # *   When you modify DNAT entries of Internet NAT gateways, this parameter specifies the elastic IP addresses (EIPs) that are used to access the Internet.
         # *   When you modify DNAT entries of Virtual Private Cloud (VPC) NAT gateways, this parameter specifies the NAT IP addresses that are accessed by external networks.
         self.external_ip = external_ip
@@ -84453,6 +84627,8 @@ class ModifyForwardEntryRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.external_ip is not None:
             result['ExternalIp'] = self.external_ip
         if self.external_port is not None:
@@ -84487,6 +84663,8 @@ class ModifyForwardEntryRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('ExternalIp') is not None:
             self.external_ip = m.get('ExternalIp')
         if m.get('ExternalPort') is not None:
@@ -88614,6 +88792,7 @@ class ModifySnatEntryRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        dry_run: bool = None,
         eip_affinity: int = None,
         network_interface_id: str = None,
         owner_account: str = None,
@@ -88632,6 +88811,7 @@ class ModifySnatEntryRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        self.dry_run = dry_run
         self.eip_affinity = eip_affinity
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
@@ -88674,6 +88854,8 @@ class ModifySnatEntryRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.eip_affinity is not None:
             result['EipAffinity'] = self.eip_affinity
         if self.network_interface_id is not None:
@@ -88702,6 +88884,8 @@ class ModifySnatEntryRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EipAffinity') is not None:
             self.eip_affinity = m.get('EipAffinity')
         if m.get('NetworkInterfaceId') is not None:

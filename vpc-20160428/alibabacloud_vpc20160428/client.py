@@ -6971,8 +6971,12 @@ class Client(OpenApiClient):
             query['QosName'] = request.qos_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7020,8 +7024,12 @@ class Client(OpenApiClient):
             query['QosName'] = request.qos_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7760,6 +7768,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.external_ip):
             query['ExternalIp'] = request.external_ip
         if not UtilClient.is_unset(request.external_port):
@@ -7834,6 +7844,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.external_ip):
             query['ExternalIp'] = request.external_ip
         if not UtilClient.is_unset(request.external_port):
@@ -11865,6 +11877,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.eip_affinity):
             query['EipAffinity'] = request.eip_affinity
         if not UtilClient.is_unset(request.network_interface_id):
@@ -11934,6 +11948,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.eip_affinity):
             query['EipAffinity'] = request.eip_affinity
         if not UtilClient.is_unset(request.network_interface_id):
@@ -25127,8 +25143,12 @@ class Client(OpenApiClient):
             query['QosNameList'] = request.qos_name_list
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -25180,8 +25200,12 @@ class Client(OpenApiClient):
             query['QosNameList'] = request.qos_name_list
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -42266,6 +42290,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.external_ip):
             query['ExternalIp'] = request.external_ip
         if not UtilClient.is_unset(request.external_port):
@@ -42334,6 +42360,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.external_ip):
             query['ExternalIp'] = request.external_ip
         if not UtilClient.is_unset(request.external_port):
@@ -45624,6 +45652,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.eip_affinity):
             query['EipAffinity'] = request.eip_affinity
         if not UtilClient.is_unset(request.network_interface_id):
@@ -45688,6 +45718,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.eip_affinity):
             query['EipAffinity'] = request.eip_affinity
         if not UtilClient.is_unset(request.network_interface_id):
