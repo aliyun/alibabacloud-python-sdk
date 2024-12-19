@@ -1,3 +1,6 @@
+2024-12-19 Version: 5.0.2
+- Generated python 2023-06-21 for PaiFeatureStore.
+
 2024-12-18 Version: 5.0.1
 - Update API ExportModelFeatureTrainingSetTable: update param body.
 - Update API GetFeatureView: update response param.
