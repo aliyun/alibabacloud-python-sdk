@@ -1,3 +1,8 @@
+2024-12-19 Version: 2.5.1
+- Update API DescribeMountTargets: update response param.
+- Update API DescribeSnapshots: update response param.
+
+
 2024-10-28 Version: 2.5.0
 - Support API CancelFilesetQuota.
 - Support API SetFilesetQuota.
