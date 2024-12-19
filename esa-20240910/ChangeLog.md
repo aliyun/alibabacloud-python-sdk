@@ -1,3 +1,7 @@
+2024-12-19 Version: 2.7.4
+- Update API GetSiteWafSettings: add param Path.
+
+
 2024-12-12 Version: 2.7.3
 - Update API GetSiteWafSettings: add param Path.
 - Update API ListWafRules: update param QueryArgs.

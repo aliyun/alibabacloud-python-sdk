@@ -998,77 +998,6 @@ class WafRuleConfigRateLimit(TeaModel):
         return self
 
 
-class WafRuleMatch(TeaModel):
-    def __init__(
-        self,
-        convert_to_lower: bool = None,
-        criteria: List['WafRuleMatch'] = None,
-        logic: str = None,
-        match_operator: str = None,
-        match_type: str = None,
-        match_value: Any = None,
-        negate: bool = None,
-    ):
-        self.convert_to_lower = convert_to_lower
-        self.criteria = criteria
-        self.logic = logic
-        self.match_operator = match_operator
-        self.match_type = match_type
-        self.match_value = match_value
-        self.negate = negate
-
-    def validate(self):
-        if self.criteria:
-            for k in self.criteria:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.convert_to_lower is not None:
-            result['ConvertToLower'] = self.convert_to_lower
-        result['Criteria'] = []
-        if self.criteria is not None:
-            for k in self.criteria:
-                result['Criteria'].append(k.to_map() if k else None)
-        if self.logic is not None:
-            result['Logic'] = self.logic
-        if self.match_operator is not None:
-            result['MatchOperator'] = self.match_operator
-        if self.match_type is not None:
-            result['MatchType'] = self.match_type
-        if self.match_value is not None:
-            result['MatchValue'] = self.match_value
-        if self.negate is not None:
-            result['Negate'] = self.negate
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ConvertToLower') is not None:
-            self.convert_to_lower = m.get('ConvertToLower')
-        self.criteria = []
-        if m.get('Criteria') is not None:
-            for k in m.get('Criteria'):
-                temp_model = WafRuleMatch()
-                self.criteria.append(temp_model.from_map(k))
-        if m.get('Logic') is not None:
-            self.logic = m.get('Logic')
-        if m.get('MatchOperator') is not None:
-            self.match_operator = m.get('MatchOperator')
-        if m.get('MatchType') is not None:
-            self.match_type = m.get('MatchType')
-        if m.get('MatchValue') is not None:
-            self.match_value = m.get('MatchValue')
-        if m.get('Negate') is not None:
-            self.negate = m.get('Negate')
-        return self
-
-
 class WafTimerPeriods(TeaModel):
     def __init__(
         self,
@@ -1250,7 +1179,6 @@ class WafRuleConfig(TeaModel):
         managed_group_id: int = None,
         managed_list: str = None,
         managed_rulesets: List[WafRuleConfigManagedRulesets] = None,
-        match: WafRuleMatch = None,
         name: str = None,
         notes: str = None,
         rate_limit: WafRuleConfigRateLimit = None,
@@ -1269,7 +1197,6 @@ class WafRuleConfig(TeaModel):
         self.managed_group_id = managed_group_id
         self.managed_list = managed_list
         self.managed_rulesets = managed_rulesets
-        self.match = match
         self.name = name
         self.notes = notes
         self.rate_limit = rate_limit
@@ -1290,8 +1217,6 @@ class WafRuleConfig(TeaModel):
             for k in self.managed_rulesets:
                 if k:
                     k.validate()
-        if self.match:
-            self.match.validate()
         if self.rate_limit:
             self.rate_limit.validate()
         if self.timer:
@@ -1323,8 +1248,6 @@ class WafRuleConfig(TeaModel):
         if self.managed_rulesets is not None:
             for k in self.managed_rulesets:
                 result['ManagedRulesets'].append(k.to_map() if k else None)
-        if self.match is not None:
-            result['Match'] = self.match.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.notes is not None:
@@ -1369,9 +1292,6 @@ class WafRuleConfig(TeaModel):
             for k in m.get('ManagedRulesets'):
                 temp_model = WafRuleConfigManagedRulesets()
                 self.managed_rulesets.append(temp_model.from_map(k))
-        if m.get('Match') is not None:
-            temp_model = WafRuleMatch()
-            self.match = temp_model.from_map(m['Match'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Notes') is not None:
@@ -1390,6 +1310,77 @@ class WafRuleConfig(TeaModel):
             self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
+        return self
+
+
+class WafRuleMatch(TeaModel):
+    def __init__(
+        self,
+        convert_to_lower: bool = None,
+        criteria: List['WafRuleMatch'] = None,
+        logic: str = None,
+        match_operator: str = None,
+        match_type: str = None,
+        match_value: Any = None,
+        negate: bool = None,
+    ):
+        self.convert_to_lower = convert_to_lower
+        self.criteria = criteria
+        self.logic = logic
+        self.match_operator = match_operator
+        self.match_type = match_type
+        self.match_value = match_value
+        self.negate = negate
+
+    def validate(self):
+        if self.criteria:
+            for k in self.criteria:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.convert_to_lower is not None:
+            result['ConvertToLower'] = self.convert_to_lower
+        result['Criteria'] = []
+        if self.criteria is not None:
+            for k in self.criteria:
+                result['Criteria'].append(k.to_map() if k else None)
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        if self.match_operator is not None:
+            result['MatchOperator'] = self.match_operator
+        if self.match_type is not None:
+            result['MatchType'] = self.match_type
+        if self.match_value is not None:
+            result['MatchValue'] = self.match_value
+        if self.negate is not None:
+            result['Negate'] = self.negate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConvertToLower') is not None:
+            self.convert_to_lower = m.get('ConvertToLower')
+        self.criteria = []
+        if m.get('Criteria') is not None:
+            for k in m.get('Criteria'):
+                temp_model = WafRuleMatch()
+                self.criteria.append(temp_model.from_map(k))
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        if m.get('MatchOperator') is not None:
+            self.match_operator = m.get('MatchOperator')
+        if m.get('MatchType') is not None:
+            self.match_type = m.get('MatchType')
+        if m.get('MatchValue') is not None:
+            self.match_value = m.get('MatchValue')
+        if m.get('Negate') is not None:
+            self.negate = m.get('Negate')
         return self
 
 
@@ -3115,212 +3106,6 @@ class BatchCreateRecordsResponse(TeaModel):
         return self
 
 
-class BatchCreateWafRulesRequest(TeaModel):
-    def __init__(
-        self,
-        configs: List[WafRuleConfig] = None,
-        phase: str = None,
-        shared: WafBatchRuleShared = None,
-        site_id: int = None,
-        site_version: int = None,
-    ):
-        # The configurations of the rules.
-        self.configs = configs
-        # The WAF rule category.
-        self.phase = phase
-        # The configurations shared by multiple rules.
-        self.shared = shared
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-
-    def validate(self):
-        if self.configs:
-            for k in self.configs:
-                if k:
-                    k.validate()
-        if self.shared:
-            self.shared.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Configs'] = []
-        if self.configs is not None:
-            for k in self.configs:
-                result['Configs'].append(k.to_map() if k else None)
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.shared is not None:
-            result['Shared'] = self.shared.to_map()
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.configs = []
-        if m.get('Configs') is not None:
-            for k in m.get('Configs'):
-                temp_model = WafRuleConfig()
-                self.configs.append(temp_model.from_map(k))
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('Shared') is not None:
-            temp_model = WafBatchRuleShared()
-            self.shared = temp_model.from_map(m['Shared'])
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        return self
-
-
-class BatchCreateWafRulesShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        configs_shrink: str = None,
-        phase: str = None,
-        shared_shrink: str = None,
-        site_id: int = None,
-        site_version: int = None,
-    ):
-        # The configurations of the rules.
-        self.configs_shrink = configs_shrink
-        # The WAF rule category.
-        self.phase = phase
-        # The configurations shared by multiple rules.
-        self.shared_shrink = shared_shrink
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.configs_shrink is not None:
-            result['Configs'] = self.configs_shrink
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.shared_shrink is not None:
-            result['Shared'] = self.shared_shrink
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Configs') is not None:
-            self.configs_shrink = m.get('Configs')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('Shared') is not None:
-            self.shared_shrink = m.get('Shared')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        return self
-
-
-class BatchCreateWafRulesResponseBody(TeaModel):
-    def __init__(
-        self,
-        ids: List[int] = None,
-        request_id: str = None,
-        ruleset_id: int = None,
-    ):
-        # The IDs of the WAF rules.[](~~2850237~~)
-        self.ids = ids
-        # The request ID.
-        self.request_id = request_id
-        # The ID of the WAF ruleset.[](~~2850233~~)
-        self.ruleset_id = ruleset_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ids is not None:
-            result['Ids'] = self.ids
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.ruleset_id is not None:
-            result['RulesetId'] = self.ruleset_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Ids') is not None:
-            self.ids = m.get('Ids')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('RulesetId') is not None:
-            self.ruleset_id = m.get('RulesetId')
-        return self
-
-
-class BatchCreateWafRulesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: BatchCreateWafRulesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = BatchCreateWafRulesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class BatchDeleteKvRequest(TeaModel):
     def __init__(
         self,
@@ -4268,212 +4053,6 @@ class BatchPutKvWithHighCapacityResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchPutKvWithHighCapacityResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class BatchUpdateWafRulesRequest(TeaModel):
-    def __init__(
-        self,
-        configs: List[WafRuleConfig] = None,
-        phase: str = None,
-        ruleset_id: int = None,
-        shared: WafBatchRuleShared = None,
-        site_id: int = None,
-        site_version: int = None,
-    ):
-        # The configurations of rules.
-        self.configs = configs
-        # The WAF rule category.
-        self.phase = phase
-        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
-        self.ruleset_id = ruleset_id
-        # The configurations shared by multiple rules.
-        self.shared = shared
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-
-    def validate(self):
-        if self.configs:
-            for k in self.configs:
-                if k:
-                    k.validate()
-        if self.shared:
-            self.shared.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Configs'] = []
-        if self.configs is not None:
-            for k in self.configs:
-                result['Configs'].append(k.to_map() if k else None)
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.ruleset_id is not None:
-            result['RulesetId'] = self.ruleset_id
-        if self.shared is not None:
-            result['Shared'] = self.shared.to_map()
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.configs = []
-        if m.get('Configs') is not None:
-            for k in m.get('Configs'):
-                temp_model = WafRuleConfig()
-                self.configs.append(temp_model.from_map(k))
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('RulesetId') is not None:
-            self.ruleset_id = m.get('RulesetId')
-        if m.get('Shared') is not None:
-            temp_model = WafBatchRuleShared()
-            self.shared = temp_model.from_map(m['Shared'])
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        return self
-
-
-class BatchUpdateWafRulesShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        configs_shrink: str = None,
-        phase: str = None,
-        ruleset_id: int = None,
-        shared_shrink: str = None,
-        site_id: int = None,
-        site_version: int = None,
-    ):
-        # The configurations of rules.
-        self.configs_shrink = configs_shrink
-        # The WAF rule category.
-        self.phase = phase
-        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
-        self.ruleset_id = ruleset_id
-        # The configurations shared by multiple rules.
-        self.shared_shrink = shared_shrink
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.configs_shrink is not None:
-            result['Configs'] = self.configs_shrink
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.ruleset_id is not None:
-            result['RulesetId'] = self.ruleset_id
-        if self.shared_shrink is not None:
-            result['Shared'] = self.shared_shrink
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Configs') is not None:
-            self.configs_shrink = m.get('Configs')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('RulesetId') is not None:
-            self.ruleset_id = m.get('RulesetId')
-        if m.get('Shared') is not None:
-            self.shared_shrink = m.get('Shared')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        return self
-
-
-class BatchUpdateWafRulesResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class BatchUpdateWafRulesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: BatchUpdateWafRulesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = BatchUpdateWafRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10576,197 +10155,6 @@ class CreateUserDeliveryTaskResponse(TeaModel):
         return self
 
 
-class CreateWafRuleRequest(TeaModel):
-    def __init__(
-        self,
-        config: WafRuleConfig = None,
-        phase: str = None,
-        site_id: int = None,
-        site_version: int = None,
-    ):
-        # The configuration of the rule that you want to create.
-        self.config = config
-        # The WAF rule category.
-        # 
-        # This parameter is required.
-        self.phase = phase
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
-        # This parameter is required.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-
-    def validate(self):
-        if self.config:
-            self.config.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config is not None:
-            result['Config'] = self.config.to_map()
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Config') is not None:
-            temp_model = WafRuleConfig()
-            self.config = temp_model.from_map(m['Config'])
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        return self
-
-
-class CreateWafRuleShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        config_shrink: str = None,
-        phase: str = None,
-        site_id: int = None,
-        site_version: int = None,
-    ):
-        # The configuration of the rule that you want to create.
-        self.config_shrink = config_shrink
-        # The WAF rule category.
-        # 
-        # This parameter is required.
-        self.phase = phase
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
-        # This parameter is required.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config_shrink is not None:
-            result['Config'] = self.config_shrink
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Config') is not None:
-            self.config_shrink = m.get('Config')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        return self
-
-
-class CreateWafRuleResponseBody(TeaModel):
-    def __init__(
-        self,
-        id: int = None,
-        request_id: str = None,
-        ruleset_id: int = None,
-    ):
-        # The ID of the WAF rule.[](~~2850237~~)
-        self.id = id
-        # The request ID.
-        self.request_id = request_id
-        # The ID of the WAF ruleset.[](~~2850233~~)
-        self.ruleset_id = ruleset_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.ruleset_id is not None:
-            result['RulesetId'] = self.ruleset_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('RulesetId') is not None:
-            self.ruleset_id = m.get('RulesetId')
-        return self
-
-
-class CreateWafRuleResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateWafRuleResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateWafRuleResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateWaitingRoomRequestHostNameAndPath(TeaModel):
     def __init__(
         self,
@@ -14119,234 +13507,6 @@ class DeleteUserDeliveryTaskResponse(TeaModel):
         return self
 
 
-class DeleteWafRuleRequest(TeaModel):
-    def __init__(
-        self,
-        id: int = None,
-        site_id: int = None,
-        site_version: int = None,
-    ):
-        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
-        # 
-        # This parameter is required.
-        self.id = id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
-        # This parameter is required.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        return self
-
-
-class DeleteWafRuleResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DeleteWafRuleResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteWafRuleResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteWafRuleResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DeleteWafRulesetRequest(TeaModel):
-    def __init__(
-        self,
-        id: int = None,
-        site_id: int = None,
-        site_version: int = None,
-    ):
-        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
-        # 
-        # This parameter is required.
-        self.id = id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        return self
-
-
-class DeleteWafRulesetResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DeleteWafRulesetResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteWafRulesetResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteWafRulesetResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeleteWaitingRoomRequest(TeaModel):
     def __init__(
         self,
@@ -17299,7 +16459,10 @@ class GetClientCertificateHostnamesRequest(TeaModel):
         id: str = None,
         site_id: int = None,
     ):
+        # The certificate ID.
         self.id = id
+        # The website ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -17336,10 +16499,15 @@ class GetClientCertificateHostnamesResponseBody(TeaModel):
         site_id: int = None,
         site_name: str = None,
     ):
+        # The domain names with which the certificate is associated.
         self.hostnames = hostnames
+        # The ID of the client CA certificate.
         self.id = id
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
 
     def validate(self):
@@ -24375,344 +23543,6 @@ class GetWafQuotaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWafQuotaResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetWafRuleRequest(TeaModel):
-    def __init__(
-        self,
-        id: int = None,
-        site_id: int = None,
-    ):
-        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
-        # 
-        # This parameter is required.
-        self.id = id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
-        # This parameter is required.
-        self.site_id = site_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        return self
-
-
-class GetWafRuleResponseBody(TeaModel):
-    def __init__(
-        self,
-        config: WafRuleConfig = None,
-        id: int = None,
-        name: str = None,
-        phase: str = None,
-        position: int = None,
-        request_id: str = None,
-        status: str = None,
-        update_time: str = None,
-    ):
-        # The configuration of the rule.
-        self.config = config
-        # The ID of the WAF rule.[](~~2850237~~)
-        self.id = id
-        # The rule name.
-        # 
-        # This parameter is required.
-        self.name = name
-        # The WAF rule category.
-        # 
-        # This parameter is required.
-        self.phase = phase
-        # The order of the rule in the ruleset.
-        self.position = position
-        # The request ID.
-        self.request_id = request_id
-        # Indicates whether the rule is enabled.
-        self.status = status
-        # The time when the rule was last modified.
-        self.update_time = update_time
-
-    def validate(self):
-        if self.config:
-            self.config.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config is not None:
-            result['Config'] = self.config.to_map()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.position is not None:
-            result['Position'] = self.position
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.update_time is not None:
-            result['UpdateTime'] = self.update_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Config') is not None:
-            temp_model = WafRuleConfig()
-            self.config = temp_model.from_map(m['Config'])
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('Position') is not None:
-            self.position = m.get('Position')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('UpdateTime') is not None:
-            self.update_time = m.get('UpdateTime')
-        return self
-
-
-class GetWafRuleResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetWafRuleResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetWafRuleResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetWafRulesetRequest(TeaModel):
-    def __init__(
-        self,
-        id: int = None,
-        phase: str = None,
-        site_id: int = None,
-    ):
-        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
-        self.id = id
-        # The WAF rule category of rulesets to query.
-        self.phase = phase
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        self.site_id = site_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        return self
-
-
-class GetWafRulesetResponseBody(TeaModel):
-    def __init__(
-        self,
-        id: int = None,
-        name: str = None,
-        phase: str = None,
-        request_id: str = None,
-        rules: List[WafRuleConfig] = None,
-        shared: WafBatchRuleShared = None,
-        status: str = None,
-        update_time: str = None,
-    ):
-        # The ruleset ID.
-        self.id = id
-        # The ruleset name.
-        # 
-        # This parameter is required.
-        self.name = name
-        # The WAF rule category of the ruleset.
-        # 
-        # This parameter is required.
-        self.phase = phase
-        # The request ID.
-        self.request_id = request_id
-        # The rule configurations in the ruleset.
-        self.rules = rules
-        # The configurations shared by the rules in the ruleset.
-        self.shared = shared
-        # The ruleset status.
-        self.status = status
-        # The time when the ruleset was last modified.
-        self.update_time = update_time
-
-    def validate(self):
-        if self.rules:
-            for k in self.rules:
-                if k:
-                    k.validate()
-        if self.shared:
-            self.shared.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        result['Rules'] = []
-        if self.rules is not None:
-            for k in self.rules:
-                result['Rules'].append(k.to_map() if k else None)
-        if self.shared is not None:
-            result['Shared'] = self.shared.to_map()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.update_time is not None:
-            result['UpdateTime'] = self.update_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        self.rules = []
-        if m.get('Rules') is not None:
-            for k in m.get('Rules'):
-                temp_model = WafRuleConfig()
-                self.rules.append(temp_model.from_map(k))
-        if m.get('Shared') is not None:
-            temp_model = WafBatchRuleShared()
-            self.shared = temp_model.from_map(m['Shared'])
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('UpdateTime') is not None:
-            self.update_time = m.get('UpdateTime')
-        return self
-
-
-class GetWafRulesetResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetWafRulesetResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetWafRulesetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -32297,7 +31127,7 @@ class ListWafManagedRulesRequestQueryArgs(TeaModel):
         self.id_name_like = id_name_like
         # The protection levels of the rules.
         self.protection_levels = protection_levels
-        # The status.
+        # The status of the rule.
         self.status = status
 
     def validate(self):
@@ -32359,7 +31189,7 @@ class ListWafManagedRulesRequest(TeaModel):
         # 
         # This parameter is required.
         self.attack_type = attack_type
-        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](~~ListWafRules~~) operation.
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
         # 
         # This parameter is required.
         self.id = id
@@ -32375,7 +31205,7 @@ class ListWafManagedRulesRequest(TeaModel):
         self.protection_level = protection_level
         # The query conditions.
         self.query_args = query_args
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -32457,7 +31287,7 @@ class ListWafManagedRulesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.attack_type = attack_type
-        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](~~ListWafRules~~) operation.
+        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
         # 
         # This parameter is required.
         self.id = id
@@ -32473,7 +31303,7 @@ class ListWafManagedRulesShrinkRequest(TeaModel):
         self.protection_level = protection_level
         # The query conditions.
         self.query_args_shrink = query_args_shrink
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -32907,837 +31737,6 @@ class ListWafPhasesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListWafPhasesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListWafRulesRequestQueryArgs(TeaModel):
-    def __init__(
-        self,
-        config_value_like: str = None,
-        desc: bool = None,
-        id: int = None,
-        id_name_like: str = None,
-        name_like: str = None,
-        order_by: str = None,
-        ruleset_id: int = None,
-        status: str = None,
-    ):
-        self.config_value_like = config_value_like
-        # Specifies whether to sort the returned data in descending order.
-        self.desc = desc
-        # The ID of a WAF rule for exact search.
-        self.id = id
-        # The ID or name of a WAF rule for fuzzy search.
-        self.id_name_like = id_name_like
-        # The name of a WAF rule for fuzzy search.
-        self.name_like = name_like
-        # The column by which you want to sort the returned data.
-        self.order_by = order_by
-        # The ID of a WAF ruleset for exact search.
-        self.ruleset_id = ruleset_id
-        # The status of a WAF rule for exact search.
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config_value_like is not None:
-            result['ConfigValueLike'] = self.config_value_like
-        if self.desc is not None:
-            result['Desc'] = self.desc
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.id_name_like is not None:
-            result['IdNameLike'] = self.id_name_like
-        if self.name_like is not None:
-            result['NameLike'] = self.name_like
-        if self.order_by is not None:
-            result['OrderBy'] = self.order_by
-        if self.ruleset_id is not None:
-            result['RulesetId'] = self.ruleset_id
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ConfigValueLike') is not None:
-            self.config_value_like = m.get('ConfigValueLike')
-        if m.get('Desc') is not None:
-            self.desc = m.get('Desc')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('IdNameLike') is not None:
-            self.id_name_like = m.get('IdNameLike')
-        if m.get('NameLike') is not None:
-            self.name_like = m.get('NameLike')
-        if m.get('OrderBy') is not None:
-            self.order_by = m.get('OrderBy')
-        if m.get('RulesetId') is not None:
-            self.ruleset_id = m.get('RulesetId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class ListWafRulesRequest(TeaModel):
-    def __init__(
-        self,
-        page_number: int = None,
-        page_size: int = None,
-        phase: str = None,
-        query_args: ListWafRulesRequestQueryArgs = None,
-        site_id: int = None,
-        site_version: int = None,
-    ):
-        # The page number.
-        self.page_number = page_number
-        # The number of entries per page.
-        self.page_size = page_size
-        # The WAF rule category. You can filter rules of a specific category.
-        self.phase = phase
-        # The filter conditions.
-        self.query_args = query_args
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
-        # This parameter is required.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-
-    def validate(self):
-        if self.query_args:
-            self.query_args.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.query_args is not None:
-            result['QueryArgs'] = self.query_args.to_map()
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('QueryArgs') is not None:
-            temp_model = ListWafRulesRequestQueryArgs()
-            self.query_args = temp_model.from_map(m['QueryArgs'])
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        return self
-
-
-class ListWafRulesShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        page_number: int = None,
-        page_size: int = None,
-        phase: str = None,
-        query_args_shrink: str = None,
-        site_id: int = None,
-        site_version: int = None,
-    ):
-        # The page number.
-        self.page_number = page_number
-        # The number of entries per page.
-        self.page_size = page_size
-        # The WAF rule category. You can filter rules of a specific category.
-        self.phase = phase
-        # The filter conditions.
-        self.query_args_shrink = query_args_shrink
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
-        # This parameter is required.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.query_args_shrink is not None:
-            result['QueryArgs'] = self.query_args_shrink
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('QueryArgs') is not None:
-            self.query_args_shrink = m.get('QueryArgs')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        return self
-
-
-class ListWafRulesResponseBodyRules(TeaModel):
-    def __init__(
-        self,
-        action: str = None,
-        characteristics_fields: List[str] = None,
-        config: WafRuleConfig = None,
-        fields: List[str] = None,
-        id: int = None,
-        name: str = None,
-        phase: str = None,
-        position: int = None,
-        ruleset_id: int = None,
-        skip: str = None,
-        status: str = None,
-        tags: List[str] = None,
-        timer: WafTimer = None,
-        type: str = None,
-        update_time: str = None,
-    ):
-        # The action triggered when requests match conditions defined in the rule.
-        self.action = action
-        # The fields in rate limiting rules.
-        self.characteristics_fields = characteristics_fields
-        # The configuration of the rule.
-        self.config = config
-        # The fields in the rule.
-        self.fields = fields
-        # The rule ID.
-        self.id = id
-        # The rule name.
-        self.name = name
-        # The WAF rule category.
-        self.phase = phase
-        # The position of the rule in the ruleset.
-        self.position = position
-        # The ruleset ID.
-        self.ruleset_id = ruleset_id
-        # The skip scope applied when requests match conditions defined in the whitelist rule.
-        self.skip = skip
-        # Indicates whether the rule is enabled.
-        self.status = status
-        # The skipped WAF rule categories when requests match conditions defined in the whitelist rule.
-        self.tags = tags
-        # The time when the rule takes effect.
-        self.timer = timer
-        # The WAF rule type.
-        self.type = type
-        # The time when the rule was modified.
-        self.update_time = update_time
-
-    def validate(self):
-        if self.config:
-            self.config.validate()
-        if self.timer:
-            self.timer.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.action is not None:
-            result['Action'] = self.action
-        if self.characteristics_fields is not None:
-            result['CharacteristicsFields'] = self.characteristics_fields
-        if self.config is not None:
-            result['Config'] = self.config.to_map()
-        if self.fields is not None:
-            result['Fields'] = self.fields
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.position is not None:
-            result['Position'] = self.position
-        if self.ruleset_id is not None:
-            result['RulesetId'] = self.ruleset_id
-        if self.skip is not None:
-            result['Skip'] = self.skip
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.tags is not None:
-            result['Tags'] = self.tags
-        if self.timer is not None:
-            result['Timer'] = self.timer.to_map()
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.update_time is not None:
-            result['UpdateTime'] = self.update_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Action') is not None:
-            self.action = m.get('Action')
-        if m.get('CharacteristicsFields') is not None:
-            self.characteristics_fields = m.get('CharacteristicsFields')
-        if m.get('Config') is not None:
-            temp_model = WafRuleConfig()
-            self.config = temp_model.from_map(m['Config'])
-        if m.get('Fields') is not None:
-            self.fields = m.get('Fields')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('Position') is not None:
-            self.position = m.get('Position')
-        if m.get('RulesetId') is not None:
-            self.ruleset_id = m.get('RulesetId')
-        if m.get('Skip') is not None:
-            self.skip = m.get('Skip')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
-        if m.get('Timer') is not None:
-            temp_model = WafTimer()
-            self.timer = temp_model.from_map(m['Timer'])
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('UpdateTime') is not None:
-            self.update_time = m.get('UpdateTime')
-        return self
-
-
-class ListWafRulesResponseBody(TeaModel):
-    def __init__(
-        self,
-        instance_usage: int = None,
-        page_number: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        rules: List[ListWafRulesResponseBodyRules] = None,
-        site_usage: int = None,
-        total_count: int = None,
-    ):
-        # The rule usage of the instance that corresponds to the website in the WAF rule category.
-        self.instance_usage = instance_usage
-        # The page number.
-        self.page_number = page_number
-        # The number of entries per page.
-        self.page_size = page_size
-        # The request ID.
-        self.request_id = request_id
-        # The rules returned.
-        self.rules = rules
-        # The rule usage of the website.
-        self.site_usage = site_usage
-        # The total number of filtered rules.
-        self.total_count = total_count
-
-    def validate(self):
-        if self.rules:
-            for k in self.rules:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.instance_usage is not None:
-            result['InstanceUsage'] = self.instance_usage
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        result['Rules'] = []
-        if self.rules is not None:
-            for k in self.rules:
-                result['Rules'].append(k.to_map() if k else None)
-        if self.site_usage is not None:
-            result['SiteUsage'] = self.site_usage
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InstanceUsage') is not None:
-            self.instance_usage = m.get('InstanceUsage')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        self.rules = []
-        if m.get('Rules') is not None:
-            for k in m.get('Rules'):
-                temp_model = ListWafRulesResponseBodyRules()
-                self.rules.append(temp_model.from_map(k))
-        if m.get('SiteUsage') is not None:
-            self.site_usage = m.get('SiteUsage')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListWafRulesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListWafRulesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListWafRulesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListWafRulesetsRequestQueryArgs(TeaModel):
-    def __init__(
-        self,
-        any_like: str = None,
-        desc: bool = None,
-        name_like: str = None,
-        order_by: str = None,
-    ):
-        # The ruleset ID, ruleset name, rule ID, or rule name for fuzzy search.
-        self.any_like = any_like
-        # Specifies whether to sort the returned data in descending order.
-        self.desc = desc
-        # The ruleset name for fuzzy search.
-        self.name_like = name_like
-        # The column by which you want to sort the returned data.
-        self.order_by = order_by
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.any_like is not None:
-            result['AnyLike'] = self.any_like
-        if self.desc is not None:
-            result['Desc'] = self.desc
-        if self.name_like is not None:
-            result['NameLike'] = self.name_like
-        if self.order_by is not None:
-            result['OrderBy'] = self.order_by
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AnyLike') is not None:
-            self.any_like = m.get('AnyLike')
-        if m.get('Desc') is not None:
-            self.desc = m.get('Desc')
-        if m.get('NameLike') is not None:
-            self.name_like = m.get('NameLike')
-        if m.get('OrderBy') is not None:
-            self.order_by = m.get('OrderBy')
-        return self
-
-
-class ListWafRulesetsRequest(TeaModel):
-    def __init__(
-        self,
-        page_number: int = None,
-        page_size: int = None,
-        phase: str = None,
-        query_args: ListWafRulesetsRequestQueryArgs = None,
-        site_id: int = None,
-        site_version: int = None,
-    ):
-        # The page number.
-        self.page_number = page_number
-        # The number of entries per page.
-        self.page_size = page_size
-        # The WAF rule category of rulesets to query.
-        self.phase = phase
-        # The query arguments in the JSON format, which contain filter conditions.
-        self.query_args = query_args
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-
-    def validate(self):
-        if self.query_args:
-            self.query_args.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.query_args is not None:
-            result['QueryArgs'] = self.query_args.to_map()
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('QueryArgs') is not None:
-            temp_model = ListWafRulesetsRequestQueryArgs()
-            self.query_args = temp_model.from_map(m['QueryArgs'])
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        return self
-
-
-class ListWafRulesetsShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        page_number: int = None,
-        page_size: int = None,
-        phase: str = None,
-        query_args_shrink: str = None,
-        site_id: int = None,
-        site_version: int = None,
-    ):
-        # The page number.
-        self.page_number = page_number
-        # The number of entries per page.
-        self.page_size = page_size
-        # The WAF rule category of rulesets to query.
-        self.phase = phase
-        # The query arguments in the JSON format, which contain filter conditions.
-        self.query_args_shrink = query_args_shrink
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.query_args_shrink is not None:
-            result['QueryArgs'] = self.query_args_shrink
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('QueryArgs') is not None:
-            self.query_args_shrink = m.get('QueryArgs')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        return self
-
-
-class ListWafRulesetsResponseBodyRulesets(TeaModel):
-    def __init__(
-        self,
-        fields: List[str] = None,
-        id: int = None,
-        name: str = None,
-        phase: str = None,
-        status: str = None,
-        target: str = None,
-        types: List[str] = None,
-        update_time: str = None,
-    ):
-        # The matched objects.
-        self.fields = fields
-        # The ID of the WAF ruleset.[](~~2850233~~)
-        self.id = id
-        # The ruleset name.
-        self.name = name
-        # The WAF rule category.
-        self.phase = phase
-        # The ruleset status.
-        self.status = status
-        # The type of the protection target in the http_bot rule category.
-        self.target = target
-        # The types of rules.
-        self.types = types
-        # The time when the ruleset was last modified.
-        self.update_time = update_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.fields is not None:
-            result['Fields'] = self.fields
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.target is not None:
-            result['Target'] = self.target
-        if self.types is not None:
-            result['Types'] = self.types
-        if self.update_time is not None:
-            result['UpdateTime'] = self.update_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Fields') is not None:
-            self.fields = m.get('Fields')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Target') is not None:
-            self.target = m.get('Target')
-        if m.get('Types') is not None:
-            self.types = m.get('Types')
-        if m.get('UpdateTime') is not None:
-            self.update_time = m.get('UpdateTime')
-        return self
-
-
-class ListWafRulesetsResponseBody(TeaModel):
-    def __init__(
-        self,
-        instance_usage: int = None,
-        page_number: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        rulesets: List[ListWafRulesetsResponseBodyRulesets] = None,
-        site_usage: int = None,
-        total_count: int = None,
-    ):
-        # The number of WAF rulesets that are used by the instance in the WAF rule category.
-        self.instance_usage = instance_usage
-        # The page number returned.
-        self.page_number = page_number
-        # The number of entries per page.
-        self.page_size = page_size
-        # The request ID.
-        self.request_id = request_id
-        # The details of the rulesets.
-        self.rulesets = rulesets
-        # The number of WAF rulesets that are used by the website in the WAF rule category.
-        self.site_usage = site_usage
-        # The total number of filtered rulesets.
-        self.total_count = total_count
-
-    def validate(self):
-        if self.rulesets:
-            for k in self.rulesets:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.instance_usage is not None:
-            result['InstanceUsage'] = self.instance_usage
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        result['Rulesets'] = []
-        if self.rulesets is not None:
-            for k in self.rulesets:
-                result['Rulesets'].append(k.to_map() if k else None)
-        if self.site_usage is not None:
-            result['SiteUsage'] = self.site_usage
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InstanceUsage') is not None:
-            self.instance_usage = m.get('InstanceUsage')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        self.rulesets = []
-        if m.get('Rulesets') is not None:
-            for k in m.get('Rulesets'):
-                temp_model = ListWafRulesetsResponseBodyRulesets()
-                self.rulesets.append(temp_model.from_map(k))
-        if m.get('SiteUsage') is not None:
-            self.site_usage = m.get('SiteUsage')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListWafRulesetsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListWafRulesetsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListWafRulesetsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -36965,9 +34964,14 @@ class SetClientCertificateHostnamesRequest(TeaModel):
         id: str = None,
         site_id: int = None,
     ):
+        # The domain names to associate.
+        # 
         # This parameter is required.
         self.hostnames = hostnames
+        # The ID of the client CA certificate.
         self.id = id
+        # The website ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -37006,9 +35010,14 @@ class SetClientCertificateHostnamesShrinkRequest(TeaModel):
         id: str = None,
         site_id: int = None,
     ):
+        # The domain names to associate.
+        # 
         # This parameter is required.
         self.hostnames_shrink = hostnames_shrink
+        # The ID of the client CA certificate.
         self.id = id
+        # The website ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -37048,9 +35057,13 @@ class SetClientCertificateHostnamesResponseBody(TeaModel):
         site_id: int = None,
         site_name: str = None,
     ):
+        # The ID of the client CA certificate.
         self.id = id
+        # The request ID.
         self.request_id = request_id
+        # The website ID.
         self.site_id = site_id
+        # The website name.
         self.site_name = site_name
 
     def validate(self):
@@ -40406,338 +38419,6 @@ class UpdateUserDeliveryTaskStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateUserDeliveryTaskStatusResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateWafRuleRequest(TeaModel):
-    def __init__(
-        self,
-        config: WafRuleConfig = None,
-        id: int = None,
-        position: int = None,
-        site_id: int = None,
-        site_version: int = None,
-        status: str = None,
-    ):
-        # The configuration of the rule.
-        self.config = config
-        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
-        # 
-        # This parameter is required.
-        self.id = id
-        # The order of the rule in the ruleset.
-        self.position = position
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
-        # This parameter is required.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-        # The status of the rule.
-        self.status = status
-
-    def validate(self):
-        if self.config:
-            self.config.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config is not None:
-            result['Config'] = self.config.to_map()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.position is not None:
-            result['Position'] = self.position
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Config') is not None:
-            temp_model = WafRuleConfig()
-            self.config = temp_model.from_map(m['Config'])
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Position') is not None:
-            self.position = m.get('Position')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class UpdateWafRuleShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        config_shrink: str = None,
-        id: int = None,
-        position: int = None,
-        site_id: int = None,
-        site_version: int = None,
-        status: str = None,
-    ):
-        # The configuration of the rule.
-        self.config_shrink = config_shrink
-        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
-        # 
-        # This parameter is required.
-        self.id = id
-        # The order of the rule in the ruleset.
-        self.position = position
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        # 
-        # This parameter is required.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-        # The status of the rule.
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config_shrink is not None:
-            result['Config'] = self.config_shrink
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.position is not None:
-            result['Position'] = self.position
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Config') is not None:
-            self.config_shrink = m.get('Config')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Position') is not None:
-            self.position = m.get('Position')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class UpdateWafRuleResponseBody(TeaModel):
-    def __init__(
-        self,
-        id: int = None,
-        request_id: str = None,
-    ):
-        # The ID of the WAF rule.[](~~2850237~~)
-        self.id = id
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UpdateWafRuleResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: UpdateWafRuleResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UpdateWafRuleResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateWafRulesetRequest(TeaModel):
-    def __init__(
-        self,
-        id: int = None,
-        site_id: int = None,
-        site_version: int = None,
-        status: str = None,
-    ):
-        # The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
-        # 
-        # This parameter is required.
-        self.id = id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-        self.site_id = site_id
-        # The version of the website.
-        self.site_version = site_version
-        # The status to which you want to change the ruleset.
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_version is not None:
-            result['SiteVersion'] = self.site_version
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteVersion') is not None:
-            self.site_version = m.get('SiteVersion')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class UpdateWafRulesetResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UpdateWafRulesetResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: UpdateWafRulesetResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UpdateWafRulesetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
