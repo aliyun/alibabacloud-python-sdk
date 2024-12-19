@@ -2065,6 +2065,705 @@ class AttachAppPolicyToIdentityResponse(TeaModel):
         return self
 
 
+class BatchGetMediaInfosRequest(TeaModel):
+    def __init__(
+        self,
+        media_ids: str = None,
+    ):
+        # This parameter is required.
+        self.media_ids = media_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_ids is not None:
+            result['MediaIds'] = self.media_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaIds') is not None:
+            self.media_ids = m.get('MediaIds')
+        return self
+
+
+class BatchGetMediaInfosResponseBodyMediaInfosMediaInfo(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        cate_id: int = None,
+        cate_name: str = None,
+        cover_url: str = None,
+        creation_time: str = None,
+        description: str = None,
+        download_switch: str = None,
+        media_id: str = None,
+        modification_time: str = None,
+        restore_expiration: str = None,
+        restore_status: str = None,
+        snapshots: List[str] = None,
+        status: str = None,
+        storage_class: str = None,
+        storage_location: str = None,
+        tags: str = None,
+        template_group_id: str = None,
+        title: str = None,
+        user_data: str = None,
+    ):
+        self.app_id = app_id
+        self.cate_id = cate_id
+        self.cate_name = cate_name
+        self.cover_url = cover_url
+        self.creation_time = creation_time
+        self.description = description
+        self.download_switch = download_switch
+        self.media_id = media_id
+        self.modification_time = modification_time
+        self.restore_expiration = restore_expiration
+        self.restore_status = restore_status
+        self.snapshots = snapshots
+        self.status = status
+        self.storage_class = storage_class
+        self.storage_location = storage_location
+        self.tags = tags
+        self.template_group_id = template_group_id
+        self.title = title
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.cate_id is not None:
+            result['CateId'] = self.cate_id
+        if self.cate_name is not None:
+            result['CateName'] = self.cate_name
+        if self.cover_url is not None:
+            result['CoverURL'] = self.cover_url
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.download_switch is not None:
+            result['DownloadSwitch'] = self.download_switch
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.modification_time is not None:
+            result['ModificationTime'] = self.modification_time
+        if self.restore_expiration is not None:
+            result['RestoreExpiration'] = self.restore_expiration
+        if self.restore_status is not None:
+            result['RestoreStatus'] = self.restore_status
+        if self.snapshots is not None:
+            result['Snapshots'] = self.snapshots
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.storage_class is not None:
+            result['StorageClass'] = self.storage_class
+        if self.storage_location is not None:
+            result['StorageLocation'] = self.storage_location
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.template_group_id is not None:
+            result['TemplateGroupId'] = self.template_group_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('CateId') is not None:
+            self.cate_id = m.get('CateId')
+        if m.get('CateName') is not None:
+            self.cate_name = m.get('CateName')
+        if m.get('CoverURL') is not None:
+            self.cover_url = m.get('CoverURL')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DownloadSwitch') is not None:
+            self.download_switch = m.get('DownloadSwitch')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('ModificationTime') is not None:
+            self.modification_time = m.get('ModificationTime')
+        if m.get('RestoreExpiration') is not None:
+            self.restore_expiration = m.get('RestoreExpiration')
+        if m.get('RestoreStatus') is not None:
+            self.restore_status = m.get('RestoreStatus')
+        if m.get('Snapshots') is not None:
+            self.snapshots = m.get('Snapshots')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StorageClass') is not None:
+            self.storage_class = m.get('StorageClass')
+        if m.get('StorageLocation') is not None:
+            self.storage_location = m.get('StorageLocation')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('TemplateGroupId') is not None:
+            self.template_group_id = m.get('TemplateGroupId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList(TeaModel):
+    def __init__(
+        self,
+        bitrate: str = None,
+        channel_layout: str = None,
+        channels: str = None,
+        codec_long_name: str = None,
+        codec_name: str = None,
+        codec_tag: str = None,
+        codec_tag_string: str = None,
+        codec_time_base: str = None,
+        duration: str = None,
+        index: str = None,
+        lang: str = None,
+        num_frames: str = None,
+        sample_fmt: str = None,
+        sample_rate: str = None,
+        start_time: str = None,
+        timebase: str = None,
+    ):
+        self.bitrate = bitrate
+        self.channel_layout = channel_layout
+        self.channels = channels
+        self.codec_long_name = codec_long_name
+        self.codec_name = codec_name
+        self.codec_tag = codec_tag
+        self.codec_tag_string = codec_tag_string
+        self.codec_time_base = codec_time_base
+        self.duration = duration
+        self.index = index
+        self.lang = lang
+        self.num_frames = num_frames
+        self.sample_fmt = sample_fmt
+        self.sample_rate = sample_rate
+        self.start_time = start_time
+        self.timebase = timebase
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.channel_layout is not None:
+            result['ChannelLayout'] = self.channel_layout
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        if self.codec_long_name is not None:
+            result['CodecLongName'] = self.codec_long_name
+        if self.codec_name is not None:
+            result['CodecName'] = self.codec_name
+        if self.codec_tag is not None:
+            result['CodecTag'] = self.codec_tag
+        if self.codec_tag_string is not None:
+            result['CodecTagString'] = self.codec_tag_string
+        if self.codec_time_base is not None:
+            result['CodecTimeBase'] = self.codec_time_base
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.num_frames is not None:
+            result['NumFrames'] = self.num_frames
+        if self.sample_fmt is not None:
+            result['SampleFmt'] = self.sample_fmt
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.timebase is not None:
+            result['Timebase'] = self.timebase
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('ChannelLayout') is not None:
+            self.channel_layout = m.get('ChannelLayout')
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        if m.get('CodecLongName') is not None:
+            self.codec_long_name = m.get('CodecLongName')
+        if m.get('CodecName') is not None:
+            self.codec_name = m.get('CodecName')
+        if m.get('CodecTag') is not None:
+            self.codec_tag = m.get('CodecTag')
+        if m.get('CodecTagString') is not None:
+            self.codec_tag_string = m.get('CodecTagString')
+        if m.get('CodecTimeBase') is not None:
+            self.codec_time_base = m.get('CodecTimeBase')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('NumFrames') is not None:
+            self.num_frames = m.get('NumFrames')
+        if m.get('SampleFmt') is not None:
+            self.sample_fmt = m.get('SampleFmt')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Timebase') is not None:
+            self.timebase = m.get('Timebase')
+        return self
+
+
+class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList(TeaModel):
+    def __init__(
+        self,
+        avg_fps: str = None,
+        bitrate: str = None,
+        codec_long_name: str = None,
+        codec_name: str = None,
+        codec_tag: str = None,
+        codec_tag_string: str = None,
+        codec_time_base: str = None,
+        dar: str = None,
+        duration: str = None,
+        fps: str = None,
+        hdrtype: str = None,
+        has_bframes: str = None,
+        height: str = None,
+        index: str = None,
+        lang: str = None,
+        level: str = None,
+        num_frames: str = None,
+        pix_fmt: str = None,
+        profile: str = None,
+        rotate: str = None,
+        sar: str = None,
+        start_time: str = None,
+        timebase: str = None,
+        width: str = None,
+    ):
+        self.avg_fps = avg_fps
+        self.bitrate = bitrate
+        self.codec_long_name = codec_long_name
+        self.codec_name = codec_name
+        self.codec_tag = codec_tag
+        self.codec_tag_string = codec_tag_string
+        self.codec_time_base = codec_time_base
+        self.dar = dar
+        self.duration = duration
+        self.fps = fps
+        self.hdrtype = hdrtype
+        self.has_bframes = has_bframes
+        self.height = height
+        self.index = index
+        self.lang = lang
+        self.level = level
+        self.num_frames = num_frames
+        self.pix_fmt = pix_fmt
+        self.profile = profile
+        self.rotate = rotate
+        self.sar = sar
+        self.start_time = start_time
+        self.timebase = timebase
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_fps is not None:
+            result['AvgFPS'] = self.avg_fps
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.codec_long_name is not None:
+            result['CodecLongName'] = self.codec_long_name
+        if self.codec_name is not None:
+            result['CodecName'] = self.codec_name
+        if self.codec_tag is not None:
+            result['CodecTag'] = self.codec_tag
+        if self.codec_tag_string is not None:
+            result['CodecTagString'] = self.codec_tag_string
+        if self.codec_time_base is not None:
+            result['CodecTimeBase'] = self.codec_time_base
+        if self.dar is not None:
+            result['Dar'] = self.dar
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.fps is not None:
+            result['Fps'] = self.fps
+        if self.hdrtype is not None:
+            result['HDRType'] = self.hdrtype
+        if self.has_bframes is not None:
+            result['HasBFrames'] = self.has_bframes
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.num_frames is not None:
+            result['NumFrames'] = self.num_frames
+        if self.pix_fmt is not None:
+            result['PixFmt'] = self.pix_fmt
+        if self.profile is not None:
+            result['Profile'] = self.profile
+        if self.rotate is not None:
+            result['Rotate'] = self.rotate
+        if self.sar is not None:
+            result['Sar'] = self.sar
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.timebase is not None:
+            result['Timebase'] = self.timebase
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgFPS') is not None:
+            self.avg_fps = m.get('AvgFPS')
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('CodecLongName') is not None:
+            self.codec_long_name = m.get('CodecLongName')
+        if m.get('CodecName') is not None:
+            self.codec_name = m.get('CodecName')
+        if m.get('CodecTag') is not None:
+            self.codec_tag = m.get('CodecTag')
+        if m.get('CodecTagString') is not None:
+            self.codec_tag_string = m.get('CodecTagString')
+        if m.get('CodecTimeBase') is not None:
+            self.codec_time_base = m.get('CodecTimeBase')
+        if m.get('Dar') is not None:
+            self.dar = m.get('Dar')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Fps') is not None:
+            self.fps = m.get('Fps')
+        if m.get('HDRType') is not None:
+            self.hdrtype = m.get('HDRType')
+        if m.get('HasBFrames') is not None:
+            self.has_bframes = m.get('HasBFrames')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('NumFrames') is not None:
+            self.num_frames = m.get('NumFrames')
+        if m.get('PixFmt') is not None:
+            self.pix_fmt = m.get('PixFmt')
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
+        if m.get('Rotate') is not None:
+            self.rotate = m.get('Rotate')
+        if m.get('Sar') is not None:
+            self.sar = m.get('Sar')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Timebase') is not None:
+            self.timebase = m.get('Timebase')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo(TeaModel):
+    def __init__(
+        self,
+        audio_stream_list: List[BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList] = None,
+        bitrate: str = None,
+        creation_time: str = None,
+        duration: str = None,
+        file_name: str = None,
+        file_url: str = None,
+        fps: str = None,
+        height: int = None,
+        media_id: str = None,
+        size: int = None,
+        status: str = None,
+        video_stream_list: List[BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList] = None,
+        width: int = None,
+    ):
+        self.audio_stream_list = audio_stream_list
+        self.bitrate = bitrate
+        self.creation_time = creation_time
+        self.duration = duration
+        self.file_name = file_name
+        self.file_url = file_url
+        self.fps = fps
+        self.height = height
+        self.media_id = media_id
+        self.size = size
+        self.status = status
+        self.video_stream_list = video_stream_list
+        self.width = width
+
+    def validate(self):
+        if self.audio_stream_list:
+            for k in self.audio_stream_list:
+                if k:
+                    k.validate()
+        if self.video_stream_list:
+            for k in self.video_stream_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AudioStreamList'] = []
+        if self.audio_stream_list is not None:
+            for k in self.audio_stream_list:
+                result['AudioStreamList'].append(k.to_map() if k else None)
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_url is not None:
+            result['FileURL'] = self.file_url
+        if self.fps is not None:
+            result['Fps'] = self.fps
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
+        result['VideoStreamList'] = []
+        if self.video_stream_list is not None:
+            for k in self.video_stream_list:
+                result['VideoStreamList'].append(k.to_map() if k else None)
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.audio_stream_list = []
+        if m.get('AudioStreamList') is not None:
+            for k in m.get('AudioStreamList'):
+                temp_model = BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList()
+                self.audio_stream_list.append(temp_model.from_map(k))
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileURL') is not None:
+            self.file_url = m.get('FileURL')
+        if m.get('Fps') is not None:
+            self.fps = m.get('Fps')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.video_stream_list = []
+        if m.get('VideoStreamList') is not None:
+            for k in m.get('VideoStreamList'):
+                temp_model = BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList()
+                self.video_stream_list.append(temp_model.from_map(k))
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class BatchGetMediaInfosResponseBodyMediaInfos(TeaModel):
+    def __init__(
+        self,
+        media_id: str = None,
+        media_info: BatchGetMediaInfosResponseBodyMediaInfosMediaInfo = None,
+        mezzanine_info: BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo = None,
+    ):
+        self.media_id = media_id
+        self.media_info = media_info
+        self.mezzanine_info = mezzanine_info
+
+    def validate(self):
+        if self.media_info:
+            self.media_info.validate()
+        if self.mezzanine_info:
+            self.mezzanine_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.media_info is not None:
+            result['MediaInfo'] = self.media_info.to_map()
+        if self.mezzanine_info is not None:
+            result['MezzanineInfo'] = self.mezzanine_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('MediaInfo') is not None:
+            temp_model = BatchGetMediaInfosResponseBodyMediaInfosMediaInfo()
+            self.media_info = temp_model.from_map(m['MediaInfo'])
+        if m.get('MezzanineInfo') is not None:
+            temp_model = BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo()
+            self.mezzanine_info = temp_model.from_map(m['MezzanineInfo'])
+        return self
+
+
+class BatchGetMediaInfosResponseBody(TeaModel):
+    def __init__(
+        self,
+        forbidden_media_ids: List[str] = None,
+        media_infos: List[BatchGetMediaInfosResponseBodyMediaInfos] = None,
+        non_exist_media_ids: List[str] = None,
+        request_id: str = None,
+    ):
+        self.forbidden_media_ids = forbidden_media_ids
+        self.media_infos = media_infos
+        self.non_exist_media_ids = non_exist_media_ids
+        self.request_id = request_id
+
+    def validate(self):
+        if self.media_infos:
+            for k in self.media_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.forbidden_media_ids is not None:
+            result['ForbiddenMediaIds'] = self.forbidden_media_ids
+        result['MediaInfos'] = []
+        if self.media_infos is not None:
+            for k in self.media_infos:
+                result['MediaInfos'].append(k.to_map() if k else None)
+        if self.non_exist_media_ids is not None:
+            result['NonExistMediaIds'] = self.non_exist_media_ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ForbiddenMediaIds') is not None:
+            self.forbidden_media_ids = m.get('ForbiddenMediaIds')
+        self.media_infos = []
+        if m.get('MediaInfos') is not None:
+            for k in m.get('MediaInfos'):
+                temp_model = BatchGetMediaInfosResponseBodyMediaInfos()
+                self.media_infos.append(temp_model.from_map(k))
+        if m.get('NonExistMediaIds') is not None:
+            self.non_exist_media_ids = m.get('NonExistMediaIds')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BatchGetMediaInfosResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchGetMediaInfosResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchGetMediaInfosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BatchSetVodDomainConfigsRequest(TeaModel):
     def __init__(
         self,
@@ -5954,6 +6653,178 @@ class DeleteWatermarkResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteWatermarkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeMediaDistributionRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        interval: str = None,
+        start_time: str = None,
+        storage_class: str = None,
+    ):
+        self.end_time = end_time
+        self.interval = interval
+        self.start_time = start_time
+        self.storage_class = storage_class
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.storage_class is not None:
+            result['StorageClass'] = self.storage_class
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StorageClass') is not None:
+            self.storage_class = m.get('StorageClass')
+        return self
+
+
+class DescribeMediaDistributionResponseBodyMediaDistributionList(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        end_time: str = None,
+        start_time: str = None,
+    ):
+        self.count = count
+        self.end_time = end_time
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeMediaDistributionResponseBody(TeaModel):
+    def __init__(
+        self,
+        media_distribution_list: List[DescribeMediaDistributionResponseBodyMediaDistributionList] = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.media_distribution_list = media_distribution_list
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.media_distribution_list:
+            for k in self.media_distribution_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MediaDistributionList'] = []
+        if self.media_distribution_list is not None:
+            for k in self.media_distribution_list:
+                result['MediaDistributionList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.media_distribution_list = []
+        if m.get('MediaDistributionList') is not None:
+            for k in m.get('MediaDistributionList'):
+                temp_model = DescribeMediaDistributionResponseBodyMediaDistributionList()
+                self.media_distribution_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeMediaDistributionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMediaDistributionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMediaDistributionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -41630,6 +42501,7 @@ class UploadStreamByURLRequest(TeaModel):
         hdrtype: str = None,
         media_id: str = None,
         stream_url: str = None,
+        upload_metadata: str = None,
         user_data: str = None,
     ):
         # The quality of the video stream.
@@ -41671,6 +42543,7 @@ class UploadStreamByURLRequest(TeaModel):
         # 
         # This parameter is required.
         self.stream_url = stream_url
+        self.upload_metadata = upload_metadata
         # The user-defined parameter. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](https://help.aliyun.com/document_detail/86952.html) topic.
         # 
         # >  The callback configurations you specify for this parameter take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](https://help.aliyun.com/document_detail/86071.html).
@@ -41695,6 +42568,8 @@ class UploadStreamByURLRequest(TeaModel):
             result['MediaId'] = self.media_id
         if self.stream_url is not None:
             result['StreamURL'] = self.stream_url
+        if self.upload_metadata is not None:
+            result['UploadMetadata'] = self.upload_metadata
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -41711,6 +42586,8 @@ class UploadStreamByURLRequest(TeaModel):
             self.media_id = m.get('MediaId')
         if m.get('StreamURL') is not None:
             self.stream_url = m.get('StreamURL')
+        if m.get('UploadMetadata') is not None:
+            self.upload_metadata = m.get('UploadMetadata')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self

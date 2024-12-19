@@ -1,3 +1,10 @@
+2024-12-19 Version: 3.5.0
+- Support API BatchGetMediaInfos.
+- Support API DescribeMediaDistribution.
+- Update API DescribeVodDomainUsageData: update param DomainName.
+- Update API UploadStreamByURL: add param UploadMetadata.
+
+
 2024-12-09 Version: 3.4.1
 - Update API GetPlayInfo: update response param.
 

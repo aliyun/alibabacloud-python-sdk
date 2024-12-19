@@ -1344,6 +1344,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_app_policy_to_identity_with_options_async(request, runtime)
 
+    def batch_get_media_infos_with_options(
+        self,
+        request: vod_20170321_models.BatchGetMediaInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.BatchGetMediaInfosResponse:
+        """
+        @summary 批量获取媒资信息
+        
+        @param request: BatchGetMediaInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetMediaInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetMediaInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.BatchGetMediaInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_get_media_infos_with_options_async(
+        self,
+        request: vod_20170321_models.BatchGetMediaInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.BatchGetMediaInfosResponse:
+        """
+        @summary 批量获取媒资信息
+        
+        @param request: BatchGetMediaInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetMediaInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetMediaInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.BatchGetMediaInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_get_media_infos(
+        self,
+        request: vod_20170321_models.BatchGetMediaInfosRequest,
+    ) -> vod_20170321_models.BatchGetMediaInfosResponse:
+        """
+        @summary 批量获取媒资信息
+        
+        @param request: BatchGetMediaInfosRequest
+        @return: BatchGetMediaInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_get_media_infos_with_options(request, runtime)
+
+    async def batch_get_media_infos_async(
+        self,
+        request: vod_20170321_models.BatchGetMediaInfosRequest,
+    ) -> vod_20170321_models.BatchGetMediaInfosResponse:
+        """
+        @summary 批量获取媒资信息
+        
+        @param request: BatchGetMediaInfosRequest
+        @return: BatchGetMediaInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_get_media_infos_with_options_async(request, runtime)
+
     def batch_set_vod_domain_configs_with_options(
         self,
         request: vod_20170321_models.BatchSetVodDomainConfigsRequest,
@@ -4863,6 +4959,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_watermark_with_options_async(request, runtime)
+
+    def describe_media_distribution_with_options(
+        self,
+        request: vod_20170321_models.DescribeMediaDistributionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeMediaDistributionResponse:
+        """
+        @summary 查询媒资数据分布
+        
+        @param request: DescribeMediaDistributionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMediaDistributionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.storage_class):
+            query['StorageClass'] = request.storage_class
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMediaDistribution',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeMediaDistributionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_media_distribution_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeMediaDistributionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeMediaDistributionResponse:
+        """
+        @summary 查询媒资数据分布
+        
+        @param request: DescribeMediaDistributionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMediaDistributionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.storage_class):
+            query['StorageClass'] = request.storage_class
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMediaDistribution',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeMediaDistributionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_media_distribution(
+        self,
+        request: vod_20170321_models.DescribeMediaDistributionRequest,
+    ) -> vod_20170321_models.DescribeMediaDistributionResponse:
+        """
+        @summary 查询媒资数据分布
+        
+        @param request: DescribeMediaDistributionRequest
+        @return: DescribeMediaDistributionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_media_distribution_with_options(request, runtime)
+
+    async def describe_media_distribution_async(
+        self,
+        request: vod_20170321_models.DescribeMediaDistributionRequest,
+    ) -> vod_20170321_models.DescribeMediaDistributionResponse:
+        """
+        @summary 查询媒资数据分布
+        
+        @param request: DescribeMediaDistributionRequest
+        @return: DescribeMediaDistributionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_media_distribution_with_options_async(request, runtime)
 
     def describe_play_top_videos_with_options(
         self,
@@ -21421,6 +21625,8 @@ class Client(OpenApiClient):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.stream_url):
             query['StreamURL'] = request.stream_url
+        if not UtilClient.is_unset(request.upload_metadata):
+            query['UploadMetadata'] = request.upload_metadata
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
@@ -21471,6 +21677,8 @@ class Client(OpenApiClient):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.stream_url):
             query['StreamURL'] = request.stream_url
+        if not UtilClient.is_unset(request.upload_metadata):
+            query['UploadMetadata'] = request.upload_metadata
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
