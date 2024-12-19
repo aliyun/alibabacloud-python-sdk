@@ -41,6 +41,202 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def confirm_djbh_report_with_options(
+        self,
+        request: mssp_20161228_models.ConfirmDjbhReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mssp_20161228_models.ConfirmDjbhReportResponse:
+        """
+        @summary Confirm Receipt of Security Assessment Report
+        
+        @param request: ConfirmDjbhReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmDjbhReportResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfirmDjbhReport',
+            version='2016-12-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mssp_20161228_models.ConfirmDjbhReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def confirm_djbh_report_with_options_async(
+        self,
+        request: mssp_20161228_models.ConfirmDjbhReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mssp_20161228_models.ConfirmDjbhReportResponse:
+        """
+        @summary Confirm Receipt of Security Assessment Report
+        
+        @param request: ConfirmDjbhReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmDjbhReportResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfirmDjbhReport',
+            version='2016-12-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mssp_20161228_models.ConfirmDjbhReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def confirm_djbh_report(
+        self,
+        request: mssp_20161228_models.ConfirmDjbhReportRequest,
+    ) -> mssp_20161228_models.ConfirmDjbhReportResponse:
+        """
+        @summary Confirm Receipt of Security Assessment Report
+        
+        @param request: ConfirmDjbhReportRequest
+        @return: ConfirmDjbhReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.confirm_djbh_report_with_options(request, runtime)
+
+    async def confirm_djbh_report_async(
+        self,
+        request: mssp_20161228_models.ConfirmDjbhReportRequest,
+    ) -> mssp_20161228_models.ConfirmDjbhReportResponse:
+        """
+        @summary Confirm Receipt of Security Assessment Report
+        
+        @param request: ConfirmDjbhReportRequest
+        @return: ConfirmDjbhReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.confirm_djbh_report_with_options_async(request, runtime)
+
+    def create_service_linked_role_with_options(
+        self,
+        request: mssp_20161228_models.CreateServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mssp_20161228_models.CreateServiceLinkedRoleResponse:
+        """
+        @summary Create Service-Linked Role
+        
+        @param request: CreateServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceLinkedRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRole',
+            version='2016-12-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mssp_20161228_models.CreateServiceLinkedRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_linked_role_with_options_async(
+        self,
+        request: mssp_20161228_models.CreateServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mssp_20161228_models.CreateServiceLinkedRoleResponse:
+        """
+        @summary Create Service-Linked Role
+        
+        @param request: CreateServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceLinkedRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRole',
+            version='2016-12-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mssp_20161228_models.CreateServiceLinkedRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_linked_role(
+        self,
+        request: mssp_20161228_models.CreateServiceLinkedRoleRequest,
+    ) -> mssp_20161228_models.CreateServiceLinkedRoleResponse:
+        """
+        @summary Create Service-Linked Role
+        
+        @param request: CreateServiceLinkedRoleRequest
+        @return: CreateServiceLinkedRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_service_linked_role_with_options(request, runtime)
+
+    async def create_service_linked_role_async(
+        self,
+        request: mssp_20161228_models.CreateServiceLinkedRoleRequest,
+    ) -> mssp_20161228_models.CreateServiceLinkedRoleResponse:
+        """
+        @summary Create Service-Linked Role
+        
+        @param request: CreateServiceLinkedRoleRequest
+        @return: CreateServiceLinkedRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_service_linked_role_with_options_async(request, runtime)
+
     def create_service_work_order_with_options(
         self,
         request: mssp_20161228_models.CreateServiceWorkOrderRequest,
@@ -200,6 +396,202 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_service_work_order_with_options_async(request, runtime)
+
+    def delete_djbh_report_with_options(
+        self,
+        request: mssp_20161228_models.DeleteDjbhReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mssp_20161228_models.DeleteDjbhReportResponse:
+        """
+        @summary Delete Security Assessment Report
+        
+        @param request: DeleteDjbhReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDjbhReportResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDjbhReport',
+            version='2016-12-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mssp_20161228_models.DeleteDjbhReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_djbh_report_with_options_async(
+        self,
+        request: mssp_20161228_models.DeleteDjbhReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mssp_20161228_models.DeleteDjbhReportResponse:
+        """
+        @summary Delete Security Assessment Report
+        
+        @param request: DeleteDjbhReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDjbhReportResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDjbhReport',
+            version='2016-12-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mssp_20161228_models.DeleteDjbhReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_djbh_report(
+        self,
+        request: mssp_20161228_models.DeleteDjbhReportRequest,
+    ) -> mssp_20161228_models.DeleteDjbhReportResponse:
+        """
+        @summary Delete Security Assessment Report
+        
+        @param request: DeleteDjbhReportRequest
+        @return: DeleteDjbhReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_djbh_report_with_options(request, runtime)
+
+    async def delete_djbh_report_async(
+        self,
+        request: mssp_20161228_models.DeleteDjbhReportRequest,
+    ) -> mssp_20161228_models.DeleteDjbhReportResponse:
+        """
+        @summary Delete Security Assessment Report
+        
+        @param request: DeleteDjbhReportRequest
+        @return: DeleteDjbhReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_djbh_report_with_options_async(request, runtime)
+
+    def describe_service_linked_role_with_options(
+        self,
+        request: mssp_20161228_models.DescribeServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mssp_20161228_models.DescribeServiceLinkedRoleResponse:
+        """
+        @summary Query Service-Linked Role
+        
+        @param request: DescribeServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceLinkedRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServiceLinkedRole',
+            version='2016-12-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mssp_20161228_models.DescribeServiceLinkedRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_service_linked_role_with_options_async(
+        self,
+        request: mssp_20161228_models.DescribeServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mssp_20161228_models.DescribeServiceLinkedRoleResponse:
+        """
+        @summary Query Service-Linked Role
+        
+        @param request: DescribeServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceLinkedRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServiceLinkedRole',
+            version='2016-12-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mssp_20161228_models.DescribeServiceLinkedRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_service_linked_role(
+        self,
+        request: mssp_20161228_models.DescribeServiceLinkedRoleRequest,
+    ) -> mssp_20161228_models.DescribeServiceLinkedRoleResponse:
+        """
+        @summary Query Service-Linked Role
+        
+        @param request: DescribeServiceLinkedRoleRequest
+        @return: DescribeServiceLinkedRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_service_linked_role_with_options(request, runtime)
+
+    async def describe_service_linked_role_async(
+        self,
+        request: mssp_20161228_models.DescribeServiceLinkedRoleRequest,
+    ) -> mssp_20161228_models.DescribeServiceLinkedRoleResponse:
+        """
+        @summary Query Service-Linked Role
+        
+        @param request: DescribeServiceLinkedRoleRequest
+        @return: DescribeServiceLinkedRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_service_linked_role_with_options_async(request, runtime)
 
     def dispose_service_work_order_with_options(
         self,
@@ -993,6 +1385,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
+        if not UtilClient.is_unset(request.report_type):
+            body['ReportType'] = request.report_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1028,6 +1422,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
+        if not UtilClient.is_unset(request.report_type):
+            body['ReportType'] = request.report_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )

@@ -4,6 +4,235 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class ConfirmDjbhReportRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        # Primary key ID of the report.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class ConfirmDjbhReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        # API response code.
+        self.code = code
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Return message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Whether the call was successful. - **true**: The call was successful. - **false**: The call failed.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ConfirmDjbhReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConfirmDjbhReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConfirmDjbhReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateServiceLinkedRoleRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        region_id: str = None,
+    ):
+        # Language.
+        self.lang = lang
+        # Region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateServiceLinkedRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateServiceLinkedRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateServiceLinkedRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateServiceLinkedRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateServiceWorkOrderRequest(TeaModel):
     def __init__(
         self,
@@ -389,6 +618,246 @@ class CreateServiceWorkOrderResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateServiceWorkOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDjbhReportRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        # Primary key ID of the report.
+        # 
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteDjbhReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        # API response code.
+        self.code = code
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Prompt message for the returned result.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Whether the call was successful. - **true**: The call was successful. - **false**: The call failed.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteDjbhReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDjbhReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDjbhReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeServiceLinkedRoleRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        region_id: str = None,
+    ):
+        # Language.
+        self.lang = lang
+        # Region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeServiceLinkedRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        entity_role_grant: bool = None,
+        request_id: str = None,
+    ):
+        # Whether the service-linked role permission is granted:
+        # - true: Granted.
+        # - false: Not granted.
+        self.entity_role_grant = entity_role_grant
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_role_grant is not None:
+            result['EntityRoleGrant'] = self.entity_role_grant
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EntityRoleGrant') is not None:
+            self.entity_role_grant = m.get('EntityRoleGrant')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeServiceLinkedRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeServiceLinkedRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeServiceLinkedRoleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2020,11 +2489,13 @@ class GetDocumentDownloadUrlRequest(TeaModel):
     def __init__(
         self,
         id: int = None,
+        report_type: str = None,
     ):
         # Document management ID.
         # 
         # This parameter is required.
         self.id = id
+        self.report_type = report_type
 
     def validate(self):
         pass
@@ -2037,12 +2508,16 @@ class GetDocumentDownloadUrlRequest(TeaModel):
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
+        if self.report_type is not None:
+            result['ReportType'] = self.report_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('ReportType') is not None:
+            self.report_type = m.get('ReportType')
         return self
 
 
@@ -2228,6 +2703,7 @@ class GetDocumentPageResponseBodyData(TeaModel):
         document_name: str = None,
         document_type: str = None,
         id: int = None,
+        report_status: str = None,
         upload_time: str = None,
     ):
         # Delivered by.
@@ -2238,6 +2714,7 @@ class GetDocumentPageResponseBodyData(TeaModel):
         self.document_type = document_type
         # Document primary key ID.
         self.id = id
+        self.report_status = report_status
         # Report generation time.
         self.upload_time = upload_time
 
@@ -2258,6 +2735,8 @@ class GetDocumentPageResponseBodyData(TeaModel):
             result['DocumentType'] = self.document_type
         if self.id is not None:
             result['Id'] = self.id
+        if self.report_status is not None:
+            result['ReportStatus'] = self.report_status
         if self.upload_time is not None:
             result['UploadTime'] = self.upload_time
         return result
@@ -2272,6 +2751,8 @@ class GetDocumentPageResponseBodyData(TeaModel):
             self.document_type = m.get('DocumentType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('ReportStatus') is not None:
+            self.report_status = m.get('ReportStatus')
         if m.get('UploadTime') is not None:
             self.upload_time = m.get('UploadTime')
         return self
