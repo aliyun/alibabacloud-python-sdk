@@ -1,3 +1,8 @@
+2024-12-19 Version: 4.2.1
+- Update API DescribeNASFileSystems: update response param.
+- Update API DescribePolicyGroups: update response param.
+
+
 2024-12-16 Version: 4.2.0
 - Support API DescribeModificationPrice.
 - Support API DescribeRefundPrice.

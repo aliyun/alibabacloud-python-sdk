@@ -26181,6 +26181,39 @@ class DescribeNASFileSystemsRequest(TeaModel):
         return self
 
 
+class DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups(TeaModel):
+    def __init__(
+        self,
+        app_instance_group_id: str = None,
+        app_instance_group_name: str = None,
+    ):
+        self.app_instance_group_id = app_instance_group_id
+        self.app_instance_group_name = app_instance_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_group_id is not None:
+            result['AppInstanceGroupId'] = self.app_instance_group_id
+        if self.app_instance_group_name is not None:
+            result['AppInstanceGroupName'] = self.app_instance_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceGroupId') is not None:
+            self.app_instance_group_id = m.get('AppInstanceGroupId')
+        if m.get('AppInstanceGroupName') is not None:
+            self.app_instance_group_name = m.get('AppInstanceGroupName')
+        return self
+
+
 class DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups(TeaModel):
     def __init__(
         self,
@@ -26216,9 +26249,44 @@ class DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups(TeaModel):
         return self
 
 
+class DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites(TeaModel):
+    def __init__(
+        self,
+        office_site_id: str = None,
+        office_site_name: str = None,
+    ):
+        self.office_site_id = office_site_id
+        self.office_site_name = office_site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.office_site_name is not None:
+            result['OfficeSiteName'] = self.office_site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('OfficeSiteName') is not None:
+            self.office_site_name = m.get('OfficeSiteName')
+        return self
+
+
 class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
     def __init__(
         self,
+        allow_operate_user_drive: bool = None,
+        app_instance_groups: List[DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups] = None,
         capacity: int = None,
         create_time: str = None,
         description: str = None,
@@ -26233,12 +26301,16 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
         mount_target_status: str = None,
         office_site_id: str = None,
         office_site_name: str = None,
+        office_sites: List[DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites] = None,
         profile_compatible: bool = None,
         region_id: str = None,
+        scene: str = None,
         storage_type: str = None,
         support_acl: bool = None,
         zone_id: str = None,
     ):
+        self.allow_operate_user_drive = allow_operate_user_drive
+        self.app_instance_groups = app_instance_groups
         # The total capacity of the NAS file system. Unit: GiB.
         # 
         # *   The Capacity type has 10 PiB of storage, which is equal to 10,485,760 GiB.
@@ -26283,10 +26355,12 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
         self.office_site_id = office_site_id
         # The name of the workspace.
         self.office_site_name = office_site_name
+        self.office_sites = office_sites
         # Indicates whether the User Profile Management (UPM) feature is supported.
         self.profile_compatible = profile_compatible
         # The ID of the region.
         self.region_id = region_id
+        self.scene = scene
         # The storage type of the NAS file system. Valid values:
         # 
         # *   Capacity
@@ -26298,8 +26372,16 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.app_instance_groups:
+            for k in self.app_instance_groups:
+                if k:
+                    k.validate()
         if self.desktop_groups:
             for k in self.desktop_groups:
+                if k:
+                    k.validate()
+        if self.office_sites:
+            for k in self.office_sites:
                 if k:
                     k.validate()
 
@@ -26309,6 +26391,12 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_operate_user_drive is not None:
+            result['AllowOperateUserDrive'] = self.allow_operate_user_drive
+        result['AppInstanceGroups'] = []
+        if self.app_instance_groups is not None:
+            for k in self.app_instance_groups:
+                result['AppInstanceGroups'].append(k.to_map() if k else None)
         if self.capacity is not None:
             result['Capacity'] = self.capacity
         if self.create_time is not None:
@@ -26339,10 +26427,16 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
             result['OfficeSiteId'] = self.office_site_id
         if self.office_site_name is not None:
             result['OfficeSiteName'] = self.office_site_name
+        result['OfficeSites'] = []
+        if self.office_sites is not None:
+            for k in self.office_sites:
+                result['OfficeSites'].append(k.to_map() if k else None)
         if self.profile_compatible is not None:
             result['ProfileCompatible'] = self.profile_compatible
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.scene is not None:
+            result['Scene'] = self.scene
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
         if self.support_acl is not None:
@@ -26353,6 +26447,13 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowOperateUserDrive') is not None:
+            self.allow_operate_user_drive = m.get('AllowOperateUserDrive')
+        self.app_instance_groups = []
+        if m.get('AppInstanceGroups') is not None:
+            for k in m.get('AppInstanceGroups'):
+                temp_model = DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups()
+                self.app_instance_groups.append(temp_model.from_map(k))
         if m.get('Capacity') is not None:
             self.capacity = m.get('Capacity')
         if m.get('CreateTime') is not None:
@@ -26384,10 +26485,17 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
             self.office_site_id = m.get('OfficeSiteId')
         if m.get('OfficeSiteName') is not None:
             self.office_site_name = m.get('OfficeSiteName')
+        self.office_sites = []
+        if m.get('OfficeSites') is not None:
+            for k in m.get('OfficeSites'):
+                temp_model = DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites()
+                self.office_sites.append(temp_model.from_map(k))
         if m.get('ProfileCompatible') is not None:
             self.profile_compatible = m.get('ProfileCompatible')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
         if m.get('SupportAcl') is not None:
@@ -28303,6 +28411,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         cpu_rate_limit: int = None,
         cpu_sample_duration: int = None,
         cpu_single_rate_limit: int = None,
+        desktop_count: int = None,
+        desktop_group_count: int = None,
         device_redirects: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects] = None,
         device_rules: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules] = None,
         display_mode: str = None,
@@ -28324,6 +28434,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         memory_rate_limit: int = None,
         memory_sample_duration: int = None,
         memory_single_rate_limit: int = None,
+        mobile_restart: str = None,
+        mobile_shutdown: str = None,
         name: str = None,
         net_redirect: str = None,
         net_redirect_rule: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule] = None,
@@ -28346,10 +28458,12 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         recording_user_notify: str = None,
         recording_user_notify_message: str = None,
         remote_coordinate: str = None,
+        resource_group_count: int = None,
         resource_region_id: str = None,
         scope: str = None,
         scope_value: List[str] = None,
         smooth_enhancement: str = None,
+        status_monitor: str = None,
         streaming_mode: str = None,
         target_fps: int = None,
         usb_redirect: str = None,
@@ -28421,6 +28535,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.cpu_sample_duration = cpu_sample_duration
         # The usage of a single CPU. Valid values: 70 to 100.
         self.cpu_single_rate_limit = cpu_single_rate_limit
+        self.desktop_count = desktop_count
+        self.desktop_group_count = desktop_group_count
         self.device_redirects = device_redirects
         self.device_rules = device_rules
         self.display_mode = display_mode
@@ -28496,6 +28612,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.memory_sample_duration = memory_sample_duration
         # The memory usage of a single process. Valid values: 30 to 60.
         self.memory_single_rate_limit = memory_single_rate_limit
+        self.mobile_restart = mobile_restart
+        self.mobile_shutdown = mobile_shutdown
         # The policy name.
         self.name = name
         # Indicates whether the network redirection feature is enabled. Valid values:
@@ -28586,6 +28704,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   optionalControl: By default, you do not have the permissions on the keyboard or mouse to control the cloud desktop during remote assistance. You can apply for the permissions.
         # *   disableControl: The keyboard and mouse are not controlled.
         self.remote_coordinate = remote_coordinate
+        self.resource_group_count = resource_group_count
         self.resource_region_id = resource_region_id
         # The effective scope of the policy. Valid values:
         # 
@@ -28595,6 +28714,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # This parameter is required when Scope is set to IP. This parameter takes effect when Scope is set to IP.
         self.scope_value = scope_value
         self.smooth_enhancement = smooth_enhancement
+        self.status_monitor = status_monitor
         self.streaming_mode = streaming_mode
         self.target_fps = target_fps
         # Indicates whether the USB redirection feature is enabled.
@@ -28745,6 +28865,10 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['CpuSampleDuration'] = self.cpu_sample_duration
         if self.cpu_single_rate_limit is not None:
             result['CpuSingleRateLimit'] = self.cpu_single_rate_limit
+        if self.desktop_count is not None:
+            result['DesktopCount'] = self.desktop_count
+        if self.desktop_group_count is not None:
+            result['DesktopGroupCount'] = self.desktop_group_count
         result['DeviceRedirects'] = []
         if self.device_redirects is not None:
             for k in self.device_redirects:
@@ -28793,6 +28917,10 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['MemorySampleDuration'] = self.memory_sample_duration
         if self.memory_single_rate_limit is not None:
             result['MemorySingleRateLimit'] = self.memory_single_rate_limit
+        if self.mobile_restart is not None:
+            result['MobileRestart'] = self.mobile_restart
+        if self.mobile_shutdown is not None:
+            result['MobileShutdown'] = self.mobile_shutdown
         if self.name is not None:
             result['Name'] = self.name
         if self.net_redirect is not None:
@@ -28839,6 +28967,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['RecordingUserNotifyMessage'] = self.recording_user_notify_message
         if self.remote_coordinate is not None:
             result['RemoteCoordinate'] = self.remote_coordinate
+        if self.resource_group_count is not None:
+            result['ResourceGroupCount'] = self.resource_group_count
         if self.resource_region_id is not None:
             result['ResourceRegionId'] = self.resource_region_id
         if self.scope is not None:
@@ -28847,6 +28977,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['ScopeValue'] = self.scope_value
         if self.smooth_enhancement is not None:
             result['SmoothEnhancement'] = self.smooth_enhancement
+        if self.status_monitor is not None:
+            result['StatusMonitor'] = self.status_monitor
         if self.streaming_mode is not None:
             result['StreamingMode'] = self.streaming_mode
         if self.target_fps is not None:
@@ -28940,6 +29072,10 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.cpu_sample_duration = m.get('CpuSampleDuration')
         if m.get('CpuSingleRateLimit') is not None:
             self.cpu_single_rate_limit = m.get('CpuSingleRateLimit')
+        if m.get('DesktopCount') is not None:
+            self.desktop_count = m.get('DesktopCount')
+        if m.get('DesktopGroupCount') is not None:
+            self.desktop_group_count = m.get('DesktopGroupCount')
         self.device_redirects = []
         if m.get('DeviceRedirects') is not None:
             for k in m.get('DeviceRedirects'):
@@ -28991,6 +29127,10 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.memory_sample_duration = m.get('MemorySampleDuration')
         if m.get('MemorySingleRateLimit') is not None:
             self.memory_single_rate_limit = m.get('MemorySingleRateLimit')
+        if m.get('MobileRestart') is not None:
+            self.mobile_restart = m.get('MobileRestart')
+        if m.get('MobileShutdown') is not None:
+            self.mobile_shutdown = m.get('MobileShutdown')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NetRedirect') is not None:
@@ -29038,6 +29178,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.recording_user_notify_message = m.get('RecordingUserNotifyMessage')
         if m.get('RemoteCoordinate') is not None:
             self.remote_coordinate = m.get('RemoteCoordinate')
+        if m.get('ResourceGroupCount') is not None:
+            self.resource_group_count = m.get('ResourceGroupCount')
         if m.get('ResourceRegionId') is not None:
             self.resource_region_id = m.get('ResourceRegionId')
         if m.get('Scope') is not None:
@@ -29046,6 +29188,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.scope_value = m.get('ScopeValue')
         if m.get('SmoothEnhancement') is not None:
             self.smooth_enhancement = m.get('SmoothEnhancement')
+        if m.get('StatusMonitor') is not None:
+            self.status_monitor = m.get('StatusMonitor')
         if m.get('StreamingMode') is not None:
             self.streaming_mode = m.get('StreamingMode')
         if m.get('TargetFps') is not None:
