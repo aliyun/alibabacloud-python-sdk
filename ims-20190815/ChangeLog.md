@@ -1,3 +1,11 @@
+2024-12-19 Version: 3.1.4
+- Update API GetAccountSummary: update response param.
+- Update API GetLoginProfile: update response param.
+- Update API GetSecurityPreference: update response param.
+- Update API SetSecurityPreference: update response param.
+- Update API UpdateLoginProfile: update response param.
+
+
 2024-12-10 Version: 3.1.3
 - Generated python 2019-08-15 for Ims.
 

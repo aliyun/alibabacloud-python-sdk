@@ -4471,9 +4471,11 @@ class GetAccountSummaryResponseBodySummaryMap(TeaModel):
         attached_system_policies_per_group_quota: int = None,
         attached_system_policies_per_role_quota: int = None,
         attached_system_policies_per_user_quota: int = None,
+        conditions_per_akpolicy_quota: int = None,
         groups: int = None,
         groups_per_user_quota: int = None,
         groups_quota: int = None,
+        ipitems_per_akpolicy_quota: int = None,
         mfadevices: int = None,
         mfadevices_in_use: int = None,
         policies: int = None,
@@ -4500,12 +4502,14 @@ class GetAccountSummaryResponseBodySummaryMap(TeaModel):
         self.attached_system_policies_per_role_quota = attached_system_policies_per_role_quota
         # The maximum number of system policies that can be added to a RAM user.
         self.attached_system_policies_per_user_quota = attached_system_policies_per_user_quota
+        self.conditions_per_akpolicy_quota = conditions_per_akpolicy_quota
         # The number of RAM user groups.
         self.groups = groups
         # The maximum number of RAM user groups to which a RAM user can be added.
         self.groups_per_user_quota = groups_per_user_quota
         # The maximum number of RAM user groups that can be created.
         self.groups_quota = groups_quota
+        self.ipitems_per_akpolicy_quota = ipitems_per_akpolicy_quota
         # The number of virtual multi-factor authentication (MFA) devices.
         self.mfadevices = mfadevices
         # The number of virtual MFA devices in use.
@@ -4552,12 +4556,16 @@ class GetAccountSummaryResponseBodySummaryMap(TeaModel):
             result['AttachedSystemPoliciesPerRoleQuota'] = self.attached_system_policies_per_role_quota
         if self.attached_system_policies_per_user_quota is not None:
             result['AttachedSystemPoliciesPerUserQuota'] = self.attached_system_policies_per_user_quota
+        if self.conditions_per_akpolicy_quota is not None:
+            result['ConditionsPerAKPolicyQuota'] = self.conditions_per_akpolicy_quota
         if self.groups is not None:
             result['Groups'] = self.groups
         if self.groups_per_user_quota is not None:
             result['GroupsPerUserQuota'] = self.groups_per_user_quota
         if self.groups_quota is not None:
             result['GroupsQuota'] = self.groups_quota
+        if self.ipitems_per_akpolicy_quota is not None:
+            result['IPItemsPerAKPolicyQuota'] = self.ipitems_per_akpolicy_quota
         if self.mfadevices is not None:
             result['MFADevices'] = self.mfadevices
         if self.mfadevices_in_use is not None:
@@ -4598,12 +4606,16 @@ class GetAccountSummaryResponseBodySummaryMap(TeaModel):
             self.attached_system_policies_per_role_quota = m.get('AttachedSystemPoliciesPerRoleQuota')
         if m.get('AttachedSystemPoliciesPerUserQuota') is not None:
             self.attached_system_policies_per_user_quota = m.get('AttachedSystemPoliciesPerUserQuota')
+        if m.get('ConditionsPerAKPolicyQuota') is not None:
+            self.conditions_per_akpolicy_quota = m.get('ConditionsPerAKPolicyQuota')
         if m.get('Groups') is not None:
             self.groups = m.get('Groups')
         if m.get('GroupsPerUserQuota') is not None:
             self.groups_per_user_quota = m.get('GroupsPerUserQuota')
         if m.get('GroupsQuota') is not None:
             self.groups_quota = m.get('GroupsQuota')
+        if m.get('IPItemsPerAKPolicyQuota') is not None:
+            self.ipitems_per_akpolicy_quota = m.get('IPItemsPerAKPolicyQuota')
         if m.get('MFADevices') is not None:
             self.mfadevices = m.get('MFADevices')
         if m.get('MFADevicesInUse') is not None:
@@ -5658,6 +5670,7 @@ class GetLoginProfileRequest(TeaModel):
 class GetLoginProfileResponseBodyLoginProfile(TeaModel):
     def __init__(
         self,
+        auto_disable_login_status: str = None,
         last_login_time: str = None,
         mfabind_required: bool = None,
         password_reset_required: bool = None,
@@ -5665,6 +5678,7 @@ class GetLoginProfileResponseBodyLoginProfile(TeaModel):
         update_date: str = None,
         user_principal_name: str = None,
     ):
+        self.auto_disable_login_status = auto_disable_login_status
         # The time of the most recent logon. The time is displayed in UTC.
         self.last_login_time = last_login_time
         # Indicates whether multi-factor authentication (MFA) must be enabled. Valid values:
@@ -5696,6 +5710,8 @@ class GetLoginProfileResponseBodyLoginProfile(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_disable_login_status is not None:
+            result['AutoDisableLoginStatus'] = self.auto_disable_login_status
         if self.last_login_time is not None:
             result['LastLoginTime'] = self.last_login_time
         if self.mfabind_required is not None:
@@ -5712,6 +5728,8 @@ class GetLoginProfileResponseBodyLoginProfile(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoDisableLoginStatus') is not None:
+            self.auto_disable_login_status = m.get('AutoDisableLoginStatus')
         if m.get('LastLoginTime') is not None:
             self.last_login_time = m.get('LastLoginTime')
         if m.get('MFABindRequired') is not None:
@@ -6494,6 +6512,39 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference(TeaModel)
         return self
 
 
+class GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays(TeaModel):
+    def __init__(
+        self,
+        max_idle_days_for_access_keys: int = None,
+        max_idle_days_for_users: int = None,
+    ):
+        self.max_idle_days_for_access_keys = max_idle_days_for_access_keys
+        self.max_idle_days_for_users = max_idle_days_for_users
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_idle_days_for_access_keys is not None:
+            result['MaxIdleDaysForAccessKeys'] = self.max_idle_days_for_access_keys
+        if self.max_idle_days_for_users is not None:
+            result['MaxIdleDaysForUsers'] = self.max_idle_days_for_users
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxIdleDaysForAccessKeys') is not None:
+            self.max_idle_days_for_access_keys = m.get('MaxIdleDaysForAccessKeys')
+        if m.get('MaxIdleDaysForUsers') is not None:
+            self.max_idle_days_for_users = m.get('MaxIdleDaysForUsers')
+        return self
+
+
 class GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference(TeaModel):
     def __init__(
         self,
@@ -6559,6 +6610,7 @@ class GetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         access_key_preference: GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference = None,
         login_profile_preference: GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference = None,
         mfapreference: GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference = None,
+        max_idle_days: GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays = None,
         personal_info_preference: GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference = None,
         verification_preference: GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference = None,
     ):
@@ -6568,6 +6620,7 @@ class GetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         self.login_profile_preference = login_profile_preference
         # The MFA preference.
         self.mfapreference = mfapreference
+        self.max_idle_days = max_idle_days
         # The personal information preference.
         self.personal_info_preference = personal_info_preference
         # The MFA method preference.
@@ -6580,6 +6633,8 @@ class GetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
             self.login_profile_preference.validate()
         if self.mfapreference:
             self.mfapreference.validate()
+        if self.max_idle_days:
+            self.max_idle_days.validate()
         if self.personal_info_preference:
             self.personal_info_preference.validate()
         if self.verification_preference:
@@ -6597,6 +6652,8 @@ class GetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
             result['LoginProfilePreference'] = self.login_profile_preference.to_map()
         if self.mfapreference is not None:
             result['MFAPreference'] = self.mfapreference.to_map()
+        if self.max_idle_days is not None:
+            result['MaxIdleDays'] = self.max_idle_days.to_map()
         if self.personal_info_preference is not None:
             result['PersonalInfoPreference'] = self.personal_info_preference.to_map()
         if self.verification_preference is not None:
@@ -6614,6 +6671,9 @@ class GetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         if m.get('MFAPreference') is not None:
             temp_model = GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference()
             self.mfapreference = temp_model.from_map(m['MFAPreference'])
+        if m.get('MaxIdleDays') is not None:
+            temp_model = GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays()
+            self.max_idle_days = temp_model.from_map(m['MaxIdleDays'])
         if m.get('PersonalInfoPreference') is not None:
             temp_model = GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference()
             self.personal_info_preference = temp_model.from_map(m['PersonalInfoPreference'])
@@ -12126,6 +12186,39 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference(TeaModel)
         return self
 
 
+class SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays(TeaModel):
+    def __init__(
+        self,
+        max_idle_days_for_access_keys: int = None,
+        max_idle_days_for_users: int = None,
+    ):
+        self.max_idle_days_for_access_keys = max_idle_days_for_access_keys
+        self.max_idle_days_for_users = max_idle_days_for_users
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_idle_days_for_access_keys is not None:
+            result['MaxIdleDaysForAccessKeys'] = self.max_idle_days_for_access_keys
+        if self.max_idle_days_for_users is not None:
+            result['MaxIdleDaysForUsers'] = self.max_idle_days_for_users
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxIdleDaysForAccessKeys') is not None:
+            self.max_idle_days_for_access_keys = m.get('MaxIdleDaysForAccessKeys')
+        if m.get('MaxIdleDaysForUsers') is not None:
+            self.max_idle_days_for_users = m.get('MaxIdleDaysForUsers')
+        return self
+
+
 class SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference(TeaModel):
     def __init__(
         self,
@@ -12188,6 +12281,7 @@ class SetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         access_key_preference: SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference = None,
         login_profile_preference: SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference = None,
         mfapreference: SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference = None,
+        max_idle_days: SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays = None,
         personal_info_preference: SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference = None,
         verification_preference: SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference = None,
     ):
@@ -12197,6 +12291,7 @@ class SetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         self.login_profile_preference = login_profile_preference
         # The MFA preference.
         self.mfapreference = mfapreference
+        self.max_idle_days = max_idle_days
         # The personal information preference.
         self.personal_info_preference = personal_info_preference
         # The MFA method preference.
@@ -12209,6 +12304,8 @@ class SetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
             self.login_profile_preference.validate()
         if self.mfapreference:
             self.mfapreference.validate()
+        if self.max_idle_days:
+            self.max_idle_days.validate()
         if self.personal_info_preference:
             self.personal_info_preference.validate()
         if self.verification_preference:
@@ -12226,6 +12323,8 @@ class SetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
             result['LoginProfilePreference'] = self.login_profile_preference.to_map()
         if self.mfapreference is not None:
             result['MFAPreference'] = self.mfapreference.to_map()
+        if self.max_idle_days is not None:
+            result['MaxIdleDays'] = self.max_idle_days.to_map()
         if self.personal_info_preference is not None:
             result['PersonalInfoPreference'] = self.personal_info_preference.to_map()
         if self.verification_preference is not None:
@@ -12243,6 +12342,9 @@ class SetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         if m.get('MFAPreference') is not None:
             temp_model = SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference()
             self.mfapreference = temp_model.from_map(m['MFAPreference'])
+        if m.get('MaxIdleDays') is not None:
+            temp_model = SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays()
+            self.max_idle_days = temp_model.from_map(m['MaxIdleDays'])
         if m.get('PersonalInfoPreference') is not None:
             temp_model = SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference()
             self.personal_info_preference = temp_model.from_map(m['PersonalInfoPreference'])
@@ -13803,12 +13905,14 @@ class UpdateLoginProfileRequest(TeaModel):
 class UpdateLoginProfileResponseBodyLoginProfile(TeaModel):
     def __init__(
         self,
+        auto_disable_login_status: str = None,
         mfabind_required: bool = None,
         password_reset_required: bool = None,
         status: str = None,
         update_date: str = None,
         user_principal_name: str = None,
     ):
+        self.auto_disable_login_status = auto_disable_login_status
         # Indicates whether MFA must be enabled.
         self.mfabind_required = mfabind_required
         # Indicates whether the RAM user must reset the password at the next logon.
@@ -13829,6 +13933,8 @@ class UpdateLoginProfileResponseBodyLoginProfile(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_disable_login_status is not None:
+            result['AutoDisableLoginStatus'] = self.auto_disable_login_status
         if self.mfabind_required is not None:
             result['MFABindRequired'] = self.mfabind_required
         if self.password_reset_required is not None:
@@ -13843,6 +13949,8 @@ class UpdateLoginProfileResponseBodyLoginProfile(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoDisableLoginStatus') is not None:
+            self.auto_disable_login_status = m.get('AutoDisableLoginStatus')
         if m.get('MFABindRequired') is not None:
             self.mfabind_required = m.get('MFABindRequired')
         if m.get('PasswordResetRequired') is not None:
