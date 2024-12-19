@@ -87,6 +87,126 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def cancel_active_operation_tasks_with_options(
+        self,
+        request: polardb_20170801_models.CancelActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CancelActiveOperationTasksResponse:
+        """
+        @summary 用户侧取消任务
+        
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelActiveOperationTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CancelActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_active_operation_tasks_with_options_async(
+        self,
+        request: polardb_20170801_models.CancelActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CancelActiveOperationTasksResponse:
+        """
+        @summary 用户侧取消任务
+        
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelActiveOperationTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CancelActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_active_operation_tasks(
+        self,
+        request: polardb_20170801_models.CancelActiveOperationTasksRequest,
+    ) -> polardb_20170801_models.CancelActiveOperationTasksResponse:
+        """
+        @summary 用户侧取消任务
+        
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_active_operation_tasks_with_options(request, runtime)
+
+    async def cancel_active_operation_tasks_async(
+        self,
+        request: polardb_20170801_models.CancelActiveOperationTasksRequest,
+    ) -> polardb_20170801_models.CancelActiveOperationTasksResponse:
+        """
+        @summary 用户侧取消任务
+        
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_active_operation_tasks_with_options_async(request, runtime)
+
     def cancel_schedule_tasks_with_options(
         self,
         request: polardb_20170801_models.CancelScheduleTasksRequest,
@@ -5235,6 +5355,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_activation_codes_with_options_async(request, runtime)
 
+    def describe_active_operation_tasks_with_options(
+        self,
+        request: polardb_20170801_models.DescribeActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeActiveOperationTasksResponse:
+        """
+        @summary 用户侧查询运维任务
+        
+        @param request: DescribeActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_cancel):
+            query['AllowCancel'] = request.allow_cancel
+        if not UtilClient.is_unset(request.allow_change):
+            query['AllowChange'] = request.allow_change
+        if not UtilClient.is_unset(request.change_level):
+            query['ChangeLevel'] = request.change_level
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_active_operation_tasks_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeActiveOperationTasksResponse:
+        """
+        @summary 用户侧查询运维任务
+        
+        @param request: DescribeActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_cancel):
+            query['AllowCancel'] = request.allow_cancel
+        if not UtilClient.is_unset(request.allow_change):
+            query['AllowChange'] = request.allow_change
+        if not UtilClient.is_unset(request.change_level):
+            query['ChangeLevel'] = request.change_level
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_active_operation_tasks(
+        self,
+        request: polardb_20170801_models.DescribeActiveOperationTasksRequest,
+    ) -> polardb_20170801_models.DescribeActiveOperationTasksResponse:
+        """
+        @summary 用户侧查询运维任务
+        
+        @param request: DescribeActiveOperationTasksRequest
+        @return: DescribeActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_active_operation_tasks_with_options(request, runtime)
+
+    async def describe_active_operation_tasks_async(
+        self,
+        request: polardb_20170801_models.DescribeActiveOperationTasksRequest,
+    ) -> polardb_20170801_models.DescribeActiveOperationTasksResponse:
+        """
+        @summary 用户侧查询运维任务
+        
+        @param request: DescribeActiveOperationTasksRequest
+        @return: DescribeActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_active_operation_tasks_with_options_async(request, runtime)
+
     def describe_auto_renew_attribute_with_options(
         self,
         request: polardb_20170801_models.DescribeAutoRenewAttributeRequest,
@@ -7465,7 +7737,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterServerlessConfResponse:
         """
-        @summary Queries the configurations of a serverless cluster.
+        @summary Query serverless configuration.
         
         @param request: DescribeDBClusterServerlessConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7508,7 +7780,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterServerlessConfResponse:
         """
-        @summary Queries the configurations of a serverless cluster.
+        @summary Query serverless configuration.
         
         @param request: DescribeDBClusterServerlessConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7550,7 +7822,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterServerlessConfRequest,
     ) -> polardb_20170801_models.DescribeDBClusterServerlessConfResponse:
         """
-        @summary Queries the configurations of a serverless cluster.
+        @summary Query serverless configuration.
         
         @param request: DescribeDBClusterServerlessConfRequest
         @return: DescribeDBClusterServerlessConfResponse
@@ -7563,7 +7835,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterServerlessConfRequest,
     ) -> polardb_20170801_models.DescribeDBClusterServerlessConfResponse:
         """
-        @summary Queries the configurations of a serverless cluster.
+        @summary Query serverless configuration.
         
         @param request: DescribeDBClusterServerlessConfRequest
         @return: DescribeDBClusterServerlessConfResponse
@@ -13263,6 +13535,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_password_with_options_async(request, runtime)
 
+    def modify_active_operation_tasks_with_options(
+        self,
+        request: polardb_20170801_models.ModifyActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyActiveOperationTasksResponse:
+        """
+        @summary 用户侧修改任务
+        
+        @param request: ModifyActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.immediate_start):
+            query['ImmediateStart'] = request.immediate_start
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_active_operation_tasks_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyActiveOperationTasksResponse:
+        """
+        @summary 用户侧修改任务
+        
+        @param request: ModifyActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.immediate_start):
+            query['ImmediateStart'] = request.immediate_start
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_active_operation_tasks(
+        self,
+        request: polardb_20170801_models.ModifyActiveOperationTasksRequest,
+    ) -> polardb_20170801_models.ModifyActiveOperationTasksResponse:
+        """
+        @summary 用户侧修改任务
+        
+        @param request: ModifyActiveOperationTasksRequest
+        @return: ModifyActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_active_operation_tasks_with_options(request, runtime)
+
+    async def modify_active_operation_tasks_async(
+        self,
+        request: polardb_20170801_models.ModifyActiveOperationTasksRequest,
+    ) -> polardb_20170801_models.ModifyActiveOperationTasksResponse:
+        """
+        @summary 用户侧修改任务
+        
+        @param request: ModifyActiveOperationTasksRequest
+        @return: ModifyActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_active_operation_tasks_with_options_async(request, runtime)
+
     def modify_auto_renew_attribute_with_options(
         self,
         request: polardb_20170801_models.ModifyAutoRenewAttributeRequest,
@@ -13883,6 +14283,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.standby_cluster_id_list_need_to_sync):
+            query['StandbyClusterIdListNeedToSync'] = request.standby_cluster_id_list_need_to_sync
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13938,6 +14340,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.standby_cluster_id_list_need_to_sync):
+            query['StandbyClusterIdListNeedToSync'] = request.standby_cluster_id_list_need_to_sync
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

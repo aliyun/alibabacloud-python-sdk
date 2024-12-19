@@ -4,6 +4,145 @@ from Tea.model import TeaModel
 from typing import Dict, List
 
 
+class CancelActiveOperationTasksRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        task_ids: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        # This parameter is required.
+        self.task_ids = task_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        return self
+
+
+class CancelActiveOperationTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_ids: str = None,
+    ):
+        self.request_id = request_id
+        self.task_ids = task_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        return self
+
+
+class CancelActiveOperationTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelActiveOperationTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelActiveOperationTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelScheduleTasksRequest(TeaModel):
     def __init__(
         self,
@@ -1025,8 +1164,8 @@ class CreateAccountRequest(TeaModel):
         self.account_name = account_name
         # The password of the account. The password must meet the following requirements:
         # 
-        # *   It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # *   It must be 8 to 32 characters in length.
+        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # *   The password must be 8 to 32 characters in length.
         # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
         # 
         # This parameter is required.
@@ -1050,14 +1189,15 @@ class CreateAccountRequest(TeaModel):
         # The type of the account. Valid values:
         # 
         # *   **Normal**: standard account
-        # *   **Super**: privileged account
+        # *   **Super**: privileged account.
         # 
         # > 
         # 
         # *   If you leave this parameter empty, the default value **Super** is used.
         # 
-        # *   You can create multiple privileged accounts for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
-        # *   You can create only one privileged account for a PolarDB for MySQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
+        # *   You can create multiple privileged accounts for a PolarDB for PostgreSQL (Compatible with Oracle) cluster or a PolarDB for PostgreSQL cluster. A privileged account has more permissions than a standard account. For more information, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
+        # 
+        # *   You can create only one privileged account for a PolarDB for MySQL cluster. A privileged account has more permissions than a standard account. For more information, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
         self.account_type = account_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
@@ -1071,16 +1211,6 @@ class CreateAccountRequest(TeaModel):
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Specifies whether to grant the specified account required permissions on all existing databases in the current cluster and databases that will be further created for the current cluster. Valid values:
-        # 
-        # *   **0 or unspecified**: does not grant required permissions.
-        # *   **1**: grants required permissions.
-        # 
-        # > 
-        # 
-        # *   The parameter is valid only after you configure the `AccountPrivilege` parameter.
-        # 
-        # *   If you set the parameter to `1`, the current account is granted to the required permissions on all databases in the current cluster that are specified by the `AccountPrivilege` parameter.
         self.priv_for_all_db = priv_for_all_db
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7466,6 +7596,407 @@ class DescribeActivationCodesResponse(TeaModel):
         return self
 
 
+class DescribeActiveOperationTasksRequest(TeaModel):
+    def __init__(
+        self,
+        allow_cancel: int = None,
+        allow_change: int = None,
+        change_level: str = None,
+        dbcluster_id: str = None,
+        dbtype: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        status: int = None,
+        task_type: str = None,
+    ):
+        self.allow_cancel = allow_cancel
+        self.allow_change = allow_change
+        self.change_level = change_level
+        self.dbcluster_id = dbcluster_id
+        self.dbtype = dbtype
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.status = status
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_cancel is not None:
+            result['AllowCancel'] = self.allow_cancel
+        if self.allow_change is not None:
+            result['AllowChange'] = self.allow_change
+        if self.change_level is not None:
+            result['ChangeLevel'] = self.change_level
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbtype is not None:
+            result['DBType'] = self.dbtype
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCancel') is not None:
+            self.allow_cancel = m.get('AllowCancel')
+        if m.get('AllowChange') is not None:
+            self.allow_change = m.get('AllowChange')
+        if m.get('ChangeLevel') is not None:
+            self.change_level = m.get('ChangeLevel')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBType') is not None:
+            self.dbtype = m.get('DBType')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeActiveOperationTasksResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        allow_cancel: int = None,
+        allow_change: int = None,
+        change_level: str = None,
+        change_level_en: str = None,
+        change_level_zh: str = None,
+        created_time: str = None,
+        current_avz: str = None,
+        dbcluster_id: str = None,
+        dbnode_ids: List[str] = None,
+        dbtype: str = None,
+        dbversion: str = None,
+        deadline: str = None,
+        impact: str = None,
+        impact_en: str = None,
+        impact_zh: str = None,
+        ins_comment: str = None,
+        modified_time: str = None,
+        prepare_interval: str = None,
+        region: str = None,
+        result_info: str = None,
+        start_time: str = None,
+        status: int = None,
+        switch_time: str = None,
+        task_id: int = None,
+        task_params: str = None,
+        task_type: str = None,
+        task_type_en: str = None,
+        task_type_zh: str = None,
+    ):
+        self.allow_cancel = allow_cancel
+        self.allow_change = allow_change
+        self.change_level = change_level
+        self.change_level_en = change_level_en
+        self.change_level_zh = change_level_zh
+        self.created_time = created_time
+        self.current_avz = current_avz
+        self.dbcluster_id = dbcluster_id
+        self.dbnode_ids = dbnode_ids
+        self.dbtype = dbtype
+        self.dbversion = dbversion
+        self.deadline = deadline
+        self.impact = impact
+        self.impact_en = impact_en
+        self.impact_zh = impact_zh
+        self.ins_comment = ins_comment
+        self.modified_time = modified_time
+        self.prepare_interval = prepare_interval
+        self.region = region
+        self.result_info = result_info
+        self.start_time = start_time
+        self.status = status
+        self.switch_time = switch_time
+        self.task_id = task_id
+        self.task_params = task_params
+        self.task_type = task_type
+        self.task_type_en = task_type_en
+        self.task_type_zh = task_type_zh
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_cancel is not None:
+            result['AllowCancel'] = self.allow_cancel
+        if self.allow_change is not None:
+            result['AllowChange'] = self.allow_change
+        if self.change_level is not None:
+            result['ChangeLevel'] = self.change_level
+        if self.change_level_en is not None:
+            result['ChangeLevelEn'] = self.change_level_en
+        if self.change_level_zh is not None:
+            result['ChangeLevelZh'] = self.change_level_zh
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.current_avz is not None:
+            result['CurrentAVZ'] = self.current_avz
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbnode_ids is not None:
+            result['DBNodeIds'] = self.dbnode_ids
+        if self.dbtype is not None:
+            result['DBType'] = self.dbtype
+        if self.dbversion is not None:
+            result['DBVersion'] = self.dbversion
+        if self.deadline is not None:
+            result['Deadline'] = self.deadline
+        if self.impact is not None:
+            result['Impact'] = self.impact
+        if self.impact_en is not None:
+            result['ImpactEn'] = self.impact_en
+        if self.impact_zh is not None:
+            result['ImpactZh'] = self.impact_zh
+        if self.ins_comment is not None:
+            result['InsComment'] = self.ins_comment
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.prepare_interval is not None:
+            result['PrepareInterval'] = self.prepare_interval
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.result_info is not None:
+            result['ResultInfo'] = self.result_info
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.switch_time is not None:
+            result['SwitchTime'] = self.switch_time
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_params is not None:
+            result['TaskParams'] = self.task_params
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.task_type_en is not None:
+            result['TaskTypeEn'] = self.task_type_en
+        if self.task_type_zh is not None:
+            result['TaskTypeZh'] = self.task_type_zh
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCancel') is not None:
+            self.allow_cancel = m.get('AllowCancel')
+        if m.get('AllowChange') is not None:
+            self.allow_change = m.get('AllowChange')
+        if m.get('ChangeLevel') is not None:
+            self.change_level = m.get('ChangeLevel')
+        if m.get('ChangeLevelEn') is not None:
+            self.change_level_en = m.get('ChangeLevelEn')
+        if m.get('ChangeLevelZh') is not None:
+            self.change_level_zh = m.get('ChangeLevelZh')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('CurrentAVZ') is not None:
+            self.current_avz = m.get('CurrentAVZ')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBNodeIds') is not None:
+            self.dbnode_ids = m.get('DBNodeIds')
+        if m.get('DBType') is not None:
+            self.dbtype = m.get('DBType')
+        if m.get('DBVersion') is not None:
+            self.dbversion = m.get('DBVersion')
+        if m.get('Deadline') is not None:
+            self.deadline = m.get('Deadline')
+        if m.get('Impact') is not None:
+            self.impact = m.get('Impact')
+        if m.get('ImpactEn') is not None:
+            self.impact_en = m.get('ImpactEn')
+        if m.get('ImpactZh') is not None:
+            self.impact_zh = m.get('ImpactZh')
+        if m.get('InsComment') is not None:
+            self.ins_comment = m.get('InsComment')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('PrepareInterval') is not None:
+            self.prepare_interval = m.get('PrepareInterval')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResultInfo') is not None:
+            self.result_info = m.get('ResultInfo')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SwitchTime') is not None:
+            self.switch_time = m.get('SwitchTime')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskParams') is not None:
+            self.task_params = m.get('TaskParams')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('TaskTypeEn') is not None:
+            self.task_type_en = m.get('TaskTypeEn')
+        if m.get('TaskTypeZh') is not None:
+            self.task_type_zh = m.get('TaskTypeZh')
+        return self
+
+
+class DescribeActiveOperationTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeActiveOperationTasksResponseBodyItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_record_count: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeActiveOperationTasksResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        return self
+
+
+class DescribeActiveOperationTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeActiveOperationTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeActiveOperationTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAutoRenewAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -12058,6 +12589,10 @@ class DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems(TeaModel
         # *   **Normal**: the standard endpoint
         # *   **ReadWriteSplitting**: the read/write splitting endpoint
         self.port = port
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # - **Enabled**\
+        # - **Disabled**\
         self.sslenabled = sslenabled
         # The instance type.
         self.vpcid = vpcid
@@ -12118,8 +12653,14 @@ class DescribeDBClusterMigrationResponseBodyRdsEndpointList(TeaModel):
     ):
         # The VPC ID.
         self.address_items = address_items
+        # The instance type.
         self.custins_type = custins_type
+        # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
+        # The type of the endpoint. Valid values:
+        # 
+        # - **Normal**: the standard endpoint
+        # - **ReadWriteSplitting**: the read/write splitting endpoint
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -12206,7 +12747,7 @@ class DescribeDBClusterMigrationResponseBody(TeaModel):
         self.expired_time = expired_time
         # The endpoint.
         self.migration_status = migration_status
-        # The port number.
+        # The endpoints of the ApsaraDB RDS instance.
         self.rds_endpoint_list = rds_endpoint_list
         # The ID of the synchronous task.
         self.rds_read_write_mode = rds_read_write_mode
@@ -12214,6 +12755,10 @@ class DescribeDBClusterMigrationResponseBody(TeaModel):
         self.request_id = request_id
         # The endpoints of the ApsaraDB RDS instance.
         self.source_rdsdbinstance_id = source_rdsdbinstance_id
+        # The type of the source database. Valid values:
+        # 
+        # - **PolarDBMySQL**: The source database is a PolarDB for MySQL database when the major version of your PolarDB cluster is upgraded.
+        # - **RDS**: The source database is an ApsaraDB RDS database when data is migrated from ApsaraDB RDS to PolarDB for MySQL.
         self.src_db_type = src_db_type
         # The migration state of the PolarDB cluster. Valid values:
         # 
@@ -13405,12 +13950,14 @@ class DescribeDBClusterSSLResponseBodyItems(TeaModel):
     def __init__(
         self,
         dbendpoint_id: str = None,
+        sslauto_rotate: str = None,
         sslconnection_string: str = None,
         sslenabled: str = None,
         sslexpire_time: str = None,
     ):
         # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
+        self.sslauto_rotate = sslauto_rotate
         # The SSL connection string.
         self.sslconnection_string = sslconnection_string
         # Indicates whether SSL encryption is enabled. Valid values:
@@ -13432,6 +13979,8 @@ class DescribeDBClusterSSLResponseBodyItems(TeaModel):
         result = dict()
         if self.dbendpoint_id is not None:
             result['DBEndpointId'] = self.dbendpoint_id
+        if self.sslauto_rotate is not None:
+            result['SSLAutoRotate'] = self.sslauto_rotate
         if self.sslconnection_string is not None:
             result['SSLConnectionString'] = self.sslconnection_string
         if self.sslenabled is not None:
@@ -13444,6 +13993,8 @@ class DescribeDBClusterSSLResponseBodyItems(TeaModel):
         m = m or dict()
         if m.get('DBEndpointId') is not None:
             self.dbendpoint_id = m.get('DBEndpointId')
+        if m.get('SSLAutoRotate') is not None:
+            self.sslauto_rotate = m.get('SSLAutoRotate')
         if m.get('SSLConnectionString') is not None:
             self.sslconnection_string = m.get('SSLConnectionString')
         if m.get('SSLEnabled') is not None:
@@ -13558,7 +14109,7 @@ class DescribeDBClusterServerlessConfRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the serverless cluster.
+        # Serverless cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -13624,30 +14175,45 @@ class DescribeDBClusterServerlessConfResponseBody(TeaModel):
         traditional_scale_max_threshold: str = None,
     ):
         self.agile_scale_max = agile_scale_max
-        # Indicates whether the no-activity suspension feature is enabled. Default value: false. Valid values:
+        # Whether to enable idle shutdown. Values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # - **true**: Enable
+        # 
+        # - **false**: Disable (default)
         self.allow_shut_down = allow_shut_down
-        # The ID of the serverless cluster.
+        # Serverless cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
+        # Maximum limit for the number of read-only column storage nodes. Range: 0~7.
         self.scale_ap_ro_num_max = scale_ap_ro_num_max
+        # Minimum limit for the number of read-only column storage nodes. Range: 0~7.
         self.scale_ap_ro_num_min = scale_ap_ro_num_min
-        # The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+        # Maximum scaling limit for a single node. Range: 1 PCU~32 PCU.
         self.scale_max = scale_max
-        # The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+        # Minimum scaling limit for a single node. Range: 1 PCU~31 PCU.
         self.scale_min = scale_min
-        # The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+        # Maximum scaling limit for the number of read-only nodes. Range: 0~15.
         self.scale_ro_num_max = scale_ro_num_max
-        # The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+        # Minimum scaling limit for the number of read-only nodes. Range: 0~15.
         self.scale_ro_num_min = scale_ro_num_min
-        # The detection period for no-activity suspension. Valid values: 300 to 86400. Unit: seconds. The value must be a multiple of 300.
+        # Detection duration for idle shutdown. Range: 300~86,400. Unit: seconds. The detection duration must be a multiple of 300 seconds.
         self.seconds_until_auto_pause = seconds_until_auto_pause
+        # CPU upscale threshold.
         self.serverless_rule_cpu_enlarge_threshold = serverless_rule_cpu_enlarge_threshold
+        # CPU downscale threshold.
         self.serverless_rule_cpu_shrink_threshold = serverless_rule_cpu_shrink_threshold
+        # Elasticity sensitivity. Values:
+        # 
+        # - normal: Standard
+        # 
+        # - flexible: Sensitive
         self.serverless_rule_mode = serverless_rule_mode
+        # Whether steady state is enabled. Values:
+        # 
+        # 1: Enabled
+        # 
+        # 0: Disabled
         self.switchs = switchs
         self.traditional_scale_max_threshold = traditional_scale_max_threshold
 
@@ -26270,6 +26836,157 @@ class ModifyAccountPasswordResponse(TeaModel):
         return self
 
 
+class ModifyActiveOperationTasksRequest(TeaModel):
+    def __init__(
+        self,
+        immediate_start: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        switch_time: str = None,
+        task_ids: str = None,
+    ):
+        self.immediate_start = immediate_start
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.switch_time = switch_time
+        # This parameter is required.
+        self.task_ids = task_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.immediate_start is not None:
+            result['ImmediateStart'] = self.immediate_start
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.switch_time is not None:
+            result['SwitchTime'] = self.switch_time
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImmediateStart') is not None:
+            self.immediate_start = m.get('ImmediateStart')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('SwitchTime') is not None:
+            self.switch_time = m.get('SwitchTime')
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        return self
+
+
+class ModifyActiveOperationTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_ids: str = None,
+    ):
+        self.request_id = request_id
+        self.task_ids = task_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        return self
+
+
+class ModifyActiveOperationTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyActiveOperationTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyActiveOperationTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyAutoRenewAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -27178,6 +27895,7 @@ class ModifyDBClusterAndNodesParametersRequest(TeaModel):
         planned_start_time: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        standby_cluster_id_list_need_to_sync: str = None,
     ):
         # The cluster ID.
         # 
@@ -27216,6 +27934,7 @@ class ModifyDBClusterAndNodesParametersRequest(TeaModel):
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.standby_cluster_id_list_need_to_sync = standby_cluster_id_list_need_to_sync
 
     def validate(self):
         pass
@@ -27248,6 +27967,8 @@ class ModifyDBClusterAndNodesParametersRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.standby_cluster_id_list_need_to_sync is not None:
+            result['StandbyClusterIdListNeedToSync'] = self.standby_cluster_id_list_need_to_sync
         return result
 
     def from_map(self, m: dict = None):
@@ -27274,6 +27995,8 @@ class ModifyDBClusterAndNodesParametersRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StandbyClusterIdListNeedToSync') is not None:
+            self.standby_cluster_id_list_need_to_sync = m.get('StandbyClusterIdListNeedToSync')
         return self
 
 

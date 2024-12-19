@@ -1,3 +1,20 @@
+2024-12-19 Version: 5.3.0
+- Support API CancelActiveOperationTasks.
+- Support API DescribeActiveOperationTasks.
+- Support API ModifyActiveOperationTasks.
+- Update API CreateAccount: update param AccessKeyId.
+- Update API CreateAccount: update param AccountPassword.
+- Update API CreateBackup: update param AccessKeyId.
+- Update API CreateDBCluster: update param HotStandbyCluster.
+- Update API DescribeDBClusterAttribute: update response param.
+- Update API DescribeDBClusterSSL: update param AccessKeyId.
+- Update API DescribeDBClusterSSL: update response param.
+- Update API ModifyDBClusterAndNodesParameters: add param StandbyClusterIdListNeedToSync.
+- Update API ModifyDBClusterAndNodesParameters: update param AccessKeyId.
+- Update API RestoreTable: update param AccessKeyId.
+- Update API RestoreTable: update param SecurityToken.
+
+
 2024-12-02 Version: 5.2.3
 - Update API CreateDBCluster: add param TargetMinorVersion.
 
