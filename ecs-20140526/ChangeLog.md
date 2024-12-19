@@ -1,3 +1,11 @@
+2024-12-19 Version: 4.4.11
+- Update API DescribeInstanceModificationPrice: update response param.
+- Update API DescribePrice: update param DataDisk.
+- Update API StartImagePipelineExecution: add param Tag.
+- Update API StartImagePipelineExecution: update param TemplateTag.
+- Update API StartImagePipelineExecution: update response param.
+
+
 2024-12-16 Version: 4.4.10
 - Update API CreateImage: add param Features.
 - Update API DescribeImages: update response param.
