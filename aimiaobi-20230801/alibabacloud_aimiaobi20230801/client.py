@@ -41,6 +41,122 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_dataset_document_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.AddDatasetDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AddDatasetDocumentResponse:
+        """
+        @summary 添加文档到数据集
+        
+        @param tmp_req: AddDatasetDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDatasetDocumentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.AddDatasetDocumentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.document):
+            request.document_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document, 'Document', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.document_shrink):
+            body['Document'] = request.document_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDatasetDocument',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AddDatasetDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_dataset_document_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.AddDatasetDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AddDatasetDocumentResponse:
+        """
+        @summary 添加文档到数据集
+        
+        @param tmp_req: AddDatasetDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDatasetDocumentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.AddDatasetDocumentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.document):
+            request.document_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document, 'Document', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.document_shrink):
+            body['Document'] = request.document_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDatasetDocument',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AddDatasetDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_dataset_document(
+        self,
+        request: ai_miao_bi_20230801_models.AddDatasetDocumentRequest,
+    ) -> ai_miao_bi_20230801_models.AddDatasetDocumentResponse:
+        """
+        @summary 添加文档到数据集
+        
+        @param request: AddDatasetDocumentRequest
+        @return: AddDatasetDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_dataset_document_with_options(request, runtime)
+
+    async def add_dataset_document_async(
+        self,
+        request: ai_miao_bi_20230801_models.AddDatasetDocumentRequest,
+    ) -> ai_miao_bi_20230801_models.AddDatasetDocumentResponse:
+        """
+        @summary 添加文档到数据集
+        
+        @param request: AddDatasetDocumentRequest
+        @return: AddDatasetDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_dataset_document_with_options_async(request, runtime)
+
     def cancel_async_task_with_options(
         self,
         request: ai_miao_bi_20230801_models.CancelAsyncTaskRequest,
@@ -240,6 +356,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.clear_intervenes_with_options_async(request, runtime)
+
+    def create_dataset_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.CreateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.CreateDatasetResponse:
+        """
+        @summary 数据集管理-创建
+        
+        @param tmp_req: CreateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.CreateDatasetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dataset_config):
+            request.dataset_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.document_handle_config):
+            request.document_handle_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_handle_config, 'DocumentHandleConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dataset_config_shrink):
+            body['DatasetConfig'] = request.dataset_config_shrink
+        if not UtilClient.is_unset(request.dataset_description):
+            body['DatasetDescription'] = request.dataset_description
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.dataset_type):
+            body['DatasetType'] = request.dataset_type
+        if not UtilClient.is_unset(request.document_handle_config_shrink):
+            body['DocumentHandleConfig'] = request.document_handle_config_shrink
+        if not UtilClient.is_unset(request.search_dataset_enable):
+            body['SearchDatasetEnable'] = request.search_dataset_enable
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataset',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.CreateDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dataset_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.CreateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.CreateDatasetResponse:
+        """
+        @summary 数据集管理-创建
+        
+        @param tmp_req: CreateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.CreateDatasetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dataset_config):
+            request.dataset_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.document_handle_config):
+            request.document_handle_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_handle_config, 'DocumentHandleConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dataset_config_shrink):
+            body['DatasetConfig'] = request.dataset_config_shrink
+        if not UtilClient.is_unset(request.dataset_description):
+            body['DatasetDescription'] = request.dataset_description
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.dataset_type):
+            body['DatasetType'] = request.dataset_type
+        if not UtilClient.is_unset(request.document_handle_config_shrink):
+            body['DocumentHandleConfig'] = request.document_handle_config_shrink
+        if not UtilClient.is_unset(request.search_dataset_enable):
+            body['SearchDatasetEnable'] = request.search_dataset_enable
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataset',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.CreateDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dataset(
+        self,
+        request: ai_miao_bi_20230801_models.CreateDatasetRequest,
+    ) -> ai_miao_bi_20230801_models.CreateDatasetResponse:
+        """
+        @summary 数据集管理-创建
+        
+        @param request: CreateDatasetRequest
+        @return: CreateDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_dataset_with_options(request, runtime)
+
+    async def create_dataset_async(
+        self,
+        request: ai_miao_bi_20230801_models.CreateDatasetRequest,
+    ) -> ai_miao_bi_20230801_models.CreateDatasetResponse:
+        """
+        @summary 数据集管理-创建
+        
+        @param request: CreateDatasetRequest
+        @return: CreateDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dataset_with_options_async(request, runtime)
 
     def create_generated_content_with_options(
         self,
@@ -793,6 +1041,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_custom_topic_view_point_by_id_with_options_async(request, runtime)
 
+    def delete_dataset_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteDatasetResponse:
+        """
+        @summary 数据集管理-删除
+        
+        @param request: DeleteDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataset',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dataset_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteDatasetResponse:
+        """
+        @summary 数据集管理-删除
+        
+        @param request: DeleteDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataset',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dataset(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteDatasetRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteDatasetResponse:
+        """
+        @summary 数据集管理-删除
+        
+        @param request: DeleteDatasetRequest
+        @return: DeleteDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dataset_with_options(request, runtime)
+
+    async def delete_dataset_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteDatasetRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteDatasetResponse:
+        """
+        @summary 数据集管理-删除
+        
+        @param request: DeleteDatasetRequest
+        @return: DeleteDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dataset_with_options_async(request, runtime)
+
+    def delete_dataset_document_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteDatasetDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteDatasetDocumentResponse:
+        """
+        @summary 删除数据集文档
+        
+        @param request: DeleteDatasetDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.doc_uuid):
+            body['DocUuid'] = request.doc_uuid
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetDocument',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteDatasetDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dataset_document_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteDatasetDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteDatasetDocumentResponse:
+        """
+        @summary 删除数据集文档
+        
+        @param request: DeleteDatasetDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.doc_uuid):
+            body['DocUuid'] = request.doc_uuid
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetDocument',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteDatasetDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dataset_document(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteDatasetDocumentRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteDatasetDocumentResponse:
+        """
+        @summary 删除数据集文档
+        
+        @param request: DeleteDatasetDocumentRequest
+        @return: DeleteDatasetDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dataset_document_with_options(request, runtime)
+
+    async def delete_dataset_document_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteDatasetDocumentRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteDatasetDocumentResponse:
+        """
+        @summary 删除数据集文档
+        
+        @param request: DeleteDatasetDocumentRequest
+        @return: DeleteDatasetDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dataset_document_with_options_async(request, runtime)
+
     def delete_docs_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.DeleteDocsRequest,
@@ -1328,6 +1788,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.document_extraction_with_options_async(request, runtime)
+
+    def export_analysis_tag_detail_by_task_id_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ExportAnalysisTagDetailByTaskIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ExportAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 导出企业VOC分析任务明细列表
+        
+        @param tmp_req: ExportAnalysisTagDetailByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportAnalysisTagDetailByTaskIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ExportAnalysisTagDetailByTaskIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.categories):
+            request.categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.categories, 'Categories', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.categories_shrink):
+            body['Categories'] = request.categories_shrink
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportAnalysisTagDetailByTaskId',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ExportAnalysisTagDetailByTaskIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_analysis_tag_detail_by_task_id_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ExportAnalysisTagDetailByTaskIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ExportAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 导出企业VOC分析任务明细列表
+        
+        @param tmp_req: ExportAnalysisTagDetailByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportAnalysisTagDetailByTaskIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ExportAnalysisTagDetailByTaskIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.categories):
+            request.categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.categories, 'Categories', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.categories_shrink):
+            body['Categories'] = request.categories_shrink
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportAnalysisTagDetailByTaskId',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ExportAnalysisTagDetailByTaskIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_analysis_tag_detail_by_task_id(
+        self,
+        request: ai_miao_bi_20230801_models.ExportAnalysisTagDetailByTaskIdRequest,
+    ) -> ai_miao_bi_20230801_models.ExportAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 导出企业VOC分析任务明细列表
+        
+        @param request: ExportAnalysisTagDetailByTaskIdRequest
+        @return: ExportAnalysisTagDetailByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.export_analysis_tag_detail_by_task_id_with_options(request, runtime)
+
+    async def export_analysis_tag_detail_by_task_id_async(
+        self,
+        request: ai_miao_bi_20230801_models.ExportAnalysisTagDetailByTaskIdRequest,
+    ) -> ai_miao_bi_20230801_models.ExportAnalysisTagDetailByTaskIdResponse:
+        """
+        @summary 导出企业VOC分析任务明细列表
+        
+        @param request: ExportAnalysisTagDetailByTaskIdRequest
+        @return: ExportAnalysisTagDetailByTaskIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.export_analysis_tag_detail_by_task_id_with_options_async(request, runtime)
 
     def export_generated_content_with_options(
         self,
@@ -2884,6 +3456,222 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_source_order_config_with_options_async(request, runtime)
+
+    def get_dataset_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetDatasetResponse:
+        """
+        @summary 数据集管理-详情
+        
+        @param request: GetDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDataset',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dataset_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetDatasetResponse:
+        """
+        @summary 数据集管理-详情
+        
+        @param request: GetDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDataset',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dataset(
+        self,
+        request: ai_miao_bi_20230801_models.GetDatasetRequest,
+    ) -> ai_miao_bi_20230801_models.GetDatasetResponse:
+        """
+        @summary 数据集管理-详情
+        
+        @param request: GetDatasetRequest
+        @return: GetDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_dataset_with_options(request, runtime)
+
+    async def get_dataset_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetDatasetRequest,
+    ) -> ai_miao_bi_20230801_models.GetDatasetResponse:
+        """
+        @summary 数据集管理-详情
+        
+        @param request: GetDatasetRequest
+        @return: GetDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dataset_with_options_async(request, runtime)
+
+    def get_dataset_document_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetDatasetDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetDatasetDocumentResponse:
+        """
+        @summary 获取数据集文档
+        
+        @param request: GetDatasetDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.doc_uuid):
+            body['DocUuid'] = request.doc_uuid
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDatasetDocument',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetDatasetDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dataset_document_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetDatasetDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetDatasetDocumentResponse:
+        """
+        @summary 获取数据集文档
+        
+        @param request: GetDatasetDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.doc_uuid):
+            body['DocUuid'] = request.doc_uuid
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDatasetDocument',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetDatasetDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dataset_document(
+        self,
+        request: ai_miao_bi_20230801_models.GetDatasetDocumentRequest,
+    ) -> ai_miao_bi_20230801_models.GetDatasetDocumentResponse:
+        """
+        @summary 获取数据集文档
+        
+        @param request: GetDatasetDocumentRequest
+        @return: GetDatasetDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_dataset_document_with_options(request, runtime)
+
+    async def get_dataset_document_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetDatasetDocumentRequest,
+    ) -> ai_miao_bi_20230801_models.GetDatasetDocumentResponse:
+        """
+        @summary 获取数据集文档
+        
+        @param request: GetDatasetDocumentRequest
+        @return: GetDatasetDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dataset_document_with_options_async(request, runtime)
 
     def get_doc_cluster_task_with_options(
         self,
@@ -5433,6 +6221,282 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_custom_view_points_with_options_async(request, runtime)
 
+    def list_dataset_documents_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListDatasetDocumentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListDatasetDocumentsResponse:
+        """
+        @summary 查询数据集文档列表
+        
+        @param tmp_req: ListDatasetDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetDocumentsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListDatasetDocumentsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.exclude_fields):
+            request.exclude_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_fields, 'ExcludeFields', 'json')
+        if not UtilClient.is_unset(tmp_req.include_fields):
+            request.include_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.include_fields, 'IncludeFields', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dataset_description):
+            body['DatasetDescription'] = request.dataset_description
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.doc_type):
+            body['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.exclude_fields_shrink):
+            body['ExcludeFields'] = request.exclude_fields_shrink
+        if not UtilClient.is_unset(request.include_fields_shrink):
+            body['IncludeFields'] = request.include_fields_shrink
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetDocuments',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListDatasetDocumentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dataset_documents_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListDatasetDocumentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListDatasetDocumentsResponse:
+        """
+        @summary 查询数据集文档列表
+        
+        @param tmp_req: ListDatasetDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetDocumentsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListDatasetDocumentsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.exclude_fields):
+            request.exclude_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_fields, 'ExcludeFields', 'json')
+        if not UtilClient.is_unset(tmp_req.include_fields):
+            request.include_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.include_fields, 'IncludeFields', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dataset_description):
+            body['DatasetDescription'] = request.dataset_description
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.doc_type):
+            body['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.exclude_fields_shrink):
+            body['ExcludeFields'] = request.exclude_fields_shrink
+        if not UtilClient.is_unset(request.include_fields_shrink):
+            body['IncludeFields'] = request.include_fields_shrink
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetDocuments',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListDatasetDocumentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dataset_documents(
+        self,
+        request: ai_miao_bi_20230801_models.ListDatasetDocumentsRequest,
+    ) -> ai_miao_bi_20230801_models.ListDatasetDocumentsResponse:
+        """
+        @summary 查询数据集文档列表
+        
+        @param request: ListDatasetDocumentsRequest
+        @return: ListDatasetDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_dataset_documents_with_options(request, runtime)
+
+    async def list_dataset_documents_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListDatasetDocumentsRequest,
+    ) -> ai_miao_bi_20230801_models.ListDatasetDocumentsResponse:
+        """
+        @summary 查询数据集文档列表
+        
+        @param request: ListDatasetDocumentsRequest
+        @return: ListDatasetDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dataset_documents_with_options_async(request, runtime)
+
+    def list_datasets_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListDatasetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListDatasetsResponse:
+        """
+        @summary 数据集管理-查询
+        
+        @param request: ListDatasetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.dataset_type):
+            body['DatasetType'] = request.dataset_type
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_dataset_enable):
+            body['SearchDatasetEnable'] = request.search_dataset_enable
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDatasets',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListDatasetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_datasets_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListDatasetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListDatasetsResponse:
+        """
+        @summary 数据集管理-查询
+        
+        @param request: ListDatasetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.dataset_type):
+            body['DatasetType'] = request.dataset_type
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_dataset_enable):
+            body['SearchDatasetEnable'] = request.search_dataset_enable
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDatasets',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListDatasetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_datasets(
+        self,
+        request: ai_miao_bi_20230801_models.ListDatasetsRequest,
+    ) -> ai_miao_bi_20230801_models.ListDatasetsResponse:
+        """
+        @summary 数据集管理-查询
+        
+        @param request: ListDatasetsRequest
+        @return: ListDatasetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_datasets_with_options(request, runtime)
+
+    async def list_datasets_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListDatasetsRequest,
+    ) -> ai_miao_bi_20230801_models.ListDatasetsResponse:
+        """
+        @summary 数据集管理-查询
+        
+        @param request: ListDatasetsRequest
+        @return: ListDatasetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_datasets_with_options_async(request, runtime)
+
     def list_dialogues_with_options(
         self,
         request: ai_miao_bi_20230801_models.ListDialoguesRequest,
@@ -7192,6 +8256,366 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_planning_proposal_with_options_async(request, runtime)
+
+    def list_search_task_dialogue_datas_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListSearchTaskDialogueDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListSearchTaskDialogueDatasResponse:
+        """
+        @summary 查询搜索生成任务对话详情中数据列表
+        
+        @param request: ListSearchTaskDialogueDatasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchTaskDialogueDatasResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.include_content):
+            body['IncludeContent'] = request.include_content
+        if not UtilClient.is_unset(request.multimodal_search_type):
+            body['MultimodalSearchType'] = request.multimodal_search_type
+        if not UtilClient.is_unset(request.original_session_id):
+            body['OriginalSessionId'] = request.original_session_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.search_model):
+            body['SearchModel'] = request.search_model
+        if not UtilClient.is_unset(request.search_model_data_value):
+            body['SearchModelDataValue'] = request.search_model_data_value
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSearchTaskDialogueDatas',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListSearchTaskDialogueDatasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_search_task_dialogue_datas_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListSearchTaskDialogueDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListSearchTaskDialogueDatasResponse:
+        """
+        @summary 查询搜索生成任务对话详情中数据列表
+        
+        @param request: ListSearchTaskDialogueDatasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchTaskDialogueDatasResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.include_content):
+            body['IncludeContent'] = request.include_content
+        if not UtilClient.is_unset(request.multimodal_search_type):
+            body['MultimodalSearchType'] = request.multimodal_search_type
+        if not UtilClient.is_unset(request.original_session_id):
+            body['OriginalSessionId'] = request.original_session_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.search_model):
+            body['SearchModel'] = request.search_model
+        if not UtilClient.is_unset(request.search_model_data_value):
+            body['SearchModelDataValue'] = request.search_model_data_value
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSearchTaskDialogueDatas',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListSearchTaskDialogueDatasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_search_task_dialogue_datas(
+        self,
+        request: ai_miao_bi_20230801_models.ListSearchTaskDialogueDatasRequest,
+    ) -> ai_miao_bi_20230801_models.ListSearchTaskDialogueDatasResponse:
+        """
+        @summary 查询搜索生成任务对话详情中数据列表
+        
+        @param request: ListSearchTaskDialogueDatasRequest
+        @return: ListSearchTaskDialogueDatasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_search_task_dialogue_datas_with_options(request, runtime)
+
+    async def list_search_task_dialogue_datas_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListSearchTaskDialogueDatasRequest,
+    ) -> ai_miao_bi_20230801_models.ListSearchTaskDialogueDatasResponse:
+        """
+        @summary 查询搜索生成任务对话详情中数据列表
+        
+        @param request: ListSearchTaskDialogueDatasRequest
+        @return: ListSearchTaskDialogueDatasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_search_task_dialogue_datas_with_options_async(request, runtime)
+
+    def list_search_task_dialogues_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListSearchTaskDialoguesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListSearchTaskDialoguesResponse:
+        """
+        @summary 查询妙搜搜索生成任务详情列表
+        
+        @param request: ListSearchTaskDialoguesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchTaskDialoguesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSearchTaskDialogues',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListSearchTaskDialoguesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_search_task_dialogues_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListSearchTaskDialoguesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListSearchTaskDialoguesResponse:
+        """
+        @summary 查询妙搜搜索生成任务详情列表
+        
+        @param request: ListSearchTaskDialoguesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchTaskDialoguesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSearchTaskDialogues',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListSearchTaskDialoguesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_search_task_dialogues(
+        self,
+        request: ai_miao_bi_20230801_models.ListSearchTaskDialoguesRequest,
+    ) -> ai_miao_bi_20230801_models.ListSearchTaskDialoguesResponse:
+        """
+        @summary 查询妙搜搜索生成任务详情列表
+        
+        @param request: ListSearchTaskDialoguesRequest
+        @return: ListSearchTaskDialoguesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_search_task_dialogues_with_options(request, runtime)
+
+    async def list_search_task_dialogues_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListSearchTaskDialoguesRequest,
+    ) -> ai_miao_bi_20230801_models.ListSearchTaskDialoguesResponse:
+        """
+        @summary 查询妙搜搜索生成任务详情列表
+        
+        @param request: ListSearchTaskDialoguesRequest
+        @return: ListSearchTaskDialoguesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_search_task_dialogues_with_options_async(request, runtime)
+
+    def list_search_tasks_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListSearchTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListSearchTasksResponse:
+        """
+        @summary 查询妙搜搜索生成历史任务列表
+        
+        @param tmp_req: ListSearchTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchTasksResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListSearchTasksShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dialogue_types):
+            request.dialogue_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dialogue_types, 'DialogueTypes', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dialogue_types_shrink):
+            body['DialogueTypes'] = request.dialogue_types_shrink
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSearchTasks',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListSearchTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_search_tasks_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListSearchTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListSearchTasksResponse:
+        """
+        @summary 查询妙搜搜索生成历史任务列表
+        
+        @param tmp_req: ListSearchTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchTasksResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListSearchTasksShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dialogue_types):
+            request.dialogue_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dialogue_types, 'DialogueTypes', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dialogue_types_shrink):
+            body['DialogueTypes'] = request.dialogue_types_shrink
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSearchTasks',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListSearchTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_search_tasks(
+        self,
+        request: ai_miao_bi_20230801_models.ListSearchTasksRequest,
+    ) -> ai_miao_bi_20230801_models.ListSearchTasksResponse:
+        """
+        @summary 查询妙搜搜索生成历史任务列表
+        
+        @param request: ListSearchTasksRequest
+        @return: ListSearchTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_search_tasks_with_options(request, runtime)
+
+    async def list_search_tasks_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListSearchTasksRequest,
+    ) -> ai_miao_bi_20230801_models.ListSearchTasksResponse:
+        """
+        @summary 查询妙搜搜索生成历史任务列表
+        
+        @param request: ListSearchTasksRequest
+        @return: ListSearchTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_search_tasks_with_options_async(request, runtime)
 
     def list_timed_view_attitude_with_options(
         self,
@@ -9081,6 +10505,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.run_keywords_extraction_generation_with_options_async(request, runtime)
 
+    def run_search_generation_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunSearchGenerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunSearchGenerationResponse:
+        """
+        @summary AI妙搜-智能搜索生成
+        
+        @param tmp_req: RunSearchGenerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunSearchGenerationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunSearchGenerationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_context):
+            request.agent_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_context, 'AgentContext', 'json')
+        if not UtilClient.is_unset(tmp_req.chat_config):
+            request.chat_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.chat_config, 'ChatConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.agent_context_shrink):
+            body['AgentContext'] = request.agent_context_shrink
+        if not UtilClient.is_unset(request.chat_config_shrink):
+            body['ChatConfig'] = request.chat_config_shrink
+        if not UtilClient.is_unset(request.original_session_id):
+            body['OriginalSessionId'] = request.original_session_id
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunSearchGeneration',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunSearchGenerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_search_generation_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunSearchGenerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunSearchGenerationResponse:
+        """
+        @summary AI妙搜-智能搜索生成
+        
+        @param tmp_req: RunSearchGenerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunSearchGenerationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunSearchGenerationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_context):
+            request.agent_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_context, 'AgentContext', 'json')
+        if not UtilClient.is_unset(tmp_req.chat_config):
+            request.chat_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.chat_config, 'ChatConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.agent_context_shrink):
+            body['AgentContext'] = request.agent_context_shrink
+        if not UtilClient.is_unset(request.chat_config_shrink):
+            body['ChatConfig'] = request.chat_config_shrink
+        if not UtilClient.is_unset(request.original_session_id):
+            body['OriginalSessionId'] = request.original_session_id
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunSearchGeneration',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunSearchGenerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_search_generation(
+        self,
+        request: ai_miao_bi_20230801_models.RunSearchGenerationRequest,
+    ) -> ai_miao_bi_20230801_models.RunSearchGenerationResponse:
+        """
+        @summary AI妙搜-智能搜索生成
+        
+        @param request: RunSearchGenerationRequest
+        @return: RunSearchGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_search_generation_with_options(request, runtime)
+
+    async def run_search_generation_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunSearchGenerationRequest,
+    ) -> ai_miao_bi_20230801_models.RunSearchGenerationResponse:
+        """
+        @summary AI妙搜-智能搜索生成
+        
+        @param request: RunSearchGenerationRequest
+        @return: RunSearchGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_search_generation_with_options_async(request, runtime)
+
     def run_step_by_step_writing_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.RunStepByStepWritingRequest,
@@ -10397,6 +11949,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.save_material_document_with_options_async(request, runtime)
 
+    def search_dataset_documents_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.SearchDatasetDocumentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SearchDatasetDocumentsResponse:
+        """
+        @summary 搜索数据集文档
+        
+        @param request: SearchDatasetDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchDatasetDocumentsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.extend_1):
+            body['Extend1'] = request.extend_1
+        if not UtilClient.is_unset(request.include_content):
+            body['IncludeContent'] = request.include_content
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchDatasetDocuments',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SearchDatasetDocumentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_dataset_documents_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.SearchDatasetDocumentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SearchDatasetDocumentsResponse:
+        """
+        @summary 搜索数据集文档
+        
+        @param request: SearchDatasetDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchDatasetDocumentsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.extend_1):
+            body['Extend1'] = request.extend_1
+        if not UtilClient.is_unset(request.include_content):
+            body['IncludeContent'] = request.include_content
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchDatasetDocuments',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SearchDatasetDocumentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_dataset_documents(
+        self,
+        request: ai_miao_bi_20230801_models.SearchDatasetDocumentsRequest,
+    ) -> ai_miao_bi_20230801_models.SearchDatasetDocumentsResponse:
+        """
+        @summary 搜索数据集文档
+        
+        @param request: SearchDatasetDocumentsRequest
+        @return: SearchDatasetDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_dataset_documents_with_options(request, runtime)
+
+    async def search_dataset_documents_async(
+        self,
+        request: ai_miao_bi_20230801_models.SearchDatasetDocumentsRequest,
+    ) -> ai_miao_bi_20230801_models.SearchDatasetDocumentsResponse:
+        """
+        @summary 搜索数据集文档
+        
+        @param request: SearchDatasetDocumentsRequest
+        @return: SearchDatasetDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_dataset_documents_with_options_async(request, runtime)
+
     def search_news_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.SearchNewsRequest,
@@ -11520,6 +13192,242 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_custom_text_with_options_async(request, runtime)
+
+    def update_dataset_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.UpdateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UpdateDatasetResponse:
+        """
+        @summary 数据集管理-更新
+        
+        @param tmp_req: UpdateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.UpdateDatasetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dataset_config):
+            request.dataset_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dataset_config_shrink):
+            body['DatasetConfig'] = request.dataset_config_shrink
+        if not UtilClient.is_unset(request.dataset_description):
+            body['DatasetDescription'] = request.dataset_description
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.search_dataset_enable):
+            body['SearchDatasetEnable'] = request.search_dataset_enable
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataset',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UpdateDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dataset_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.UpdateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UpdateDatasetResponse:
+        """
+        @summary 数据集管理-更新
+        
+        @param tmp_req: UpdateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.UpdateDatasetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dataset_config):
+            request.dataset_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dataset_config_shrink):
+            body['DatasetConfig'] = request.dataset_config_shrink
+        if not UtilClient.is_unset(request.dataset_description):
+            body['DatasetDescription'] = request.dataset_description
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.search_dataset_enable):
+            body['SearchDatasetEnable'] = request.search_dataset_enable
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataset',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UpdateDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dataset(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateDatasetRequest,
+    ) -> ai_miao_bi_20230801_models.UpdateDatasetResponse:
+        """
+        @summary 数据集管理-更新
+        
+        @param request: UpdateDatasetRequest
+        @return: UpdateDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_dataset_with_options(request, runtime)
+
+    async def update_dataset_async(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateDatasetRequest,
+    ) -> ai_miao_bi_20230801_models.UpdateDatasetResponse:
+        """
+        @summary 数据集管理-更新
+        
+        @param request: UpdateDatasetRequest
+        @return: UpdateDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dataset_with_options_async(request, runtime)
+
+    def update_dataset_document_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.UpdateDatasetDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UpdateDatasetDocumentResponse:
+        """
+        @summary 修改数据集文档
+        
+        @param tmp_req: UpdateDatasetDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetDocumentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.UpdateDatasetDocumentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.document):
+            request.document_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document, 'Document', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.document_shrink):
+            body['Document'] = request.document_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDatasetDocument',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UpdateDatasetDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dataset_document_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.UpdateDatasetDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UpdateDatasetDocumentResponse:
+        """
+        @summary 修改数据集文档
+        
+        @param tmp_req: UpdateDatasetDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetDocumentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.UpdateDatasetDocumentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.document):
+            request.document_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document, 'Document', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.document_shrink):
+            body['Document'] = request.document_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDatasetDocument',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UpdateDatasetDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dataset_document(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateDatasetDocumentRequest,
+    ) -> ai_miao_bi_20230801_models.UpdateDatasetDocumentResponse:
+        """
+        @summary 修改数据集文档
+        
+        @param request: UpdateDatasetDocumentRequest
+        @return: UpdateDatasetDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_dataset_document_with_options(request, runtime)
+
+    async def update_dataset_document_async(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateDatasetDocumentRequest,
+    ) -> ai_miao_bi_20230801_models.UpdateDatasetDocumentResponse:
+        """
+        @summary 修改数据集文档
+        
+        @param request: UpdateDatasetDocumentRequest
+        @return: UpdateDatasetDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dataset_document_with_options_async(request, runtime)
 
     def update_generated_content_with_options(
         self,

@@ -1,3 +1,22 @@
+2024-12-19 Version: 1.13.0
+- Support API AddDatasetDocument.
+- Support API CreateDataset.
+- Support API DeleteDataset.
+- Support API DeleteDatasetDocument.
+- Support API ExportAnalysisTagDetailByTaskId.
+- Support API GetDataset.
+- Support API GetDatasetDocument.
+- Support API ListDatasetDocuments.
+- Support API ListDatasets.
+- Support API ListSearchTaskDialogueDatas.
+- Support API ListSearchTaskDialogues.
+- Support API ListSearchTasks.
+- Support API RunSearchGeneration.
+- Support API SearchDatasetDocuments.
+- Support API UpdateDataset.
+- Support API UpdateDatasetDocument.
+
+
 2024-12-16 Version: 1.12.0
 - Support API DeleteDocs.
 - Support API GetDocInfo.
