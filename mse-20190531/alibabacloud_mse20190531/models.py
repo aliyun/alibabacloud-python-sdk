@@ -8914,25 +8914,12 @@ class CreateClusterRequest(TeaModel):
         self.connection_type = connection_type
         # This parameter is obsolete.
         self.disk_type = disk_type
-        # Specifies whether to enable Internet access (Elastic IP Address) if ConnectionType is set to `single_eni`.
+        # Specifies whether to enable elastic IP addresses. This parameter is valid only if the ConnectionType parameter is set to `single_eni`.
         # 
         # Valid values:
         # 
         # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.eip_enabled = eip_enabled
         # The number of nodes in the instance. Valid values: 1 to 9.
         # 
@@ -8986,11 +8973,6 @@ class CreateClusterRequest(TeaModel):
         # The ID of the resource group. For the details of resource groups, see [View basic information of a resource group](https://help.aliyun.com/document_detail/457230.html).
         self.resource_group_id = resource_group_id
         # The type of the security group to which the instance belongs. This parameter is valid only if the ConnectionType parameter is set to `single_eni`.
-        # 
-        # Valid values:
-        # 
-        # *   enterprise
-        # *   normal
         self.security_group_type = security_group_type
         # The tags to add to the resource. You can specify up to 20 tags.
         self.tag = tag
@@ -32154,6 +32136,7 @@ class ImportServicesRequest(TeaModel):
         fc_version: str = None,
         gateway_unique_id: str = None,
         service_list: List[ImportServicesRequestServiceList] = None,
+        source_id: int = None,
         source_type: str = None,
         tls_setting: str = None,
     ):
@@ -32169,6 +32152,7 @@ class ImportServicesRequest(TeaModel):
         self.gateway_unique_id = gateway_unique_id
         # The information about services.
         self.service_list = service_list
+        self.source_id = source_id
         # The service source. Valid values:
         # 
         # *   MSE: MSE Nacos instance
@@ -32211,6 +32195,8 @@ class ImportServicesRequest(TeaModel):
         if self.service_list is not None:
             for k in self.service_list:
                 result['ServiceList'].append(k.to_map() if k else None)
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         if self.tls_setting is not None:
@@ -32234,6 +32220,8 @@ class ImportServicesRequest(TeaModel):
             for k in m.get('ServiceList'):
                 temp_model = ImportServicesRequestServiceList()
                 self.service_list.append(temp_model.from_map(k))
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         if m.get('TlsSetting') is not None:
@@ -32250,6 +32238,7 @@ class ImportServicesShrinkRequest(TeaModel):
         fc_version: str = None,
         gateway_unique_id: str = None,
         service_list_shrink: str = None,
+        source_id: int = None,
         source_type: str = None,
         tls_setting: str = None,
     ):
@@ -32265,6 +32254,7 @@ class ImportServicesShrinkRequest(TeaModel):
         self.gateway_unique_id = gateway_unique_id
         # The information about services.
         self.service_list_shrink = service_list_shrink
+        self.source_id = source_id
         # The service source. Valid values:
         # 
         # *   MSE: MSE Nacos instance
@@ -32302,6 +32292,8 @@ class ImportServicesShrinkRequest(TeaModel):
             result['GatewayUniqueId'] = self.gateway_unique_id
         if self.service_list_shrink is not None:
             result['ServiceList'] = self.service_list_shrink
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         if self.tls_setting is not None:
@@ -32322,6 +32314,8 @@ class ImportServicesShrinkRequest(TeaModel):
             self.gateway_unique_id = m.get('GatewayUniqueId')
         if m.get('ServiceList') is not None:
             self.service_list_shrink = m.get('ServiceList')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         if m.get('TlsSetting') is not None:
@@ -52210,6 +52204,7 @@ class PullServicesRequest(TeaModel):
         accept_language: str = None,
         gateway_unique_id: str = None,
         namespace: str = None,
+        source_id: int = None,
         source_type: str = None,
     ):
         # The language of the response. Valid values:
@@ -52221,6 +52216,7 @@ class PullServicesRequest(TeaModel):
         self.gateway_unique_id = gateway_unique_id
         # The namespace.
         self.namespace = namespace
+        self.source_id = source_id
         # The type of the service source.
         self.source_type = source_type
 
@@ -52239,6 +52235,8 @@ class PullServicesRequest(TeaModel):
             result['GatewayUniqueId'] = self.gateway_unique_id
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         return result
@@ -52251,6 +52249,8 @@ class PullServicesRequest(TeaModel):
             self.gateway_unique_id = m.get('GatewayUniqueId')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         return self
@@ -52263,6 +52263,7 @@ class PullServicesResponseBodyDataServices(TeaModel):
         name: str = None,
         namespace: str = None,
         source_id: str = None,
+        source_id_list: List[int] = None,
         source_type: str = None,
     ):
         # The name of the group.
@@ -52273,6 +52274,7 @@ class PullServicesResponseBodyDataServices(TeaModel):
         self.namespace = namespace
         # The ID of the service source.
         self.source_id = source_id
+        self.source_id_list = source_id_list
         # The type of the service source.
         self.source_type = source_type
 
@@ -52293,6 +52295,8 @@ class PullServicesResponseBodyDataServices(TeaModel):
             result['Namespace'] = self.namespace
         if self.source_id is not None:
             result['SourceId'] = self.source_id
+        if self.source_id_list is not None:
+            result['SourceIdList'] = self.source_id_list
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         return result
@@ -52307,6 +52311,8 @@ class PullServicesResponseBodyDataServices(TeaModel):
             self.namespace = m.get('Namespace')
         if m.get('SourceId') is not None:
             self.source_id = m.get('SourceId')
+        if m.get('SourceIdList') is not None:
+            self.source_id_list = m.get('SourceIdList')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         return self

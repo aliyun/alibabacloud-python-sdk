@@ -12964,6 +12964,8 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.service_list_shrink):
             query['ServiceList'] = request.service_list_shrink
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.tls_setting):
@@ -13017,6 +13019,8 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.service_list_shrink):
             query['ServiceList'] = request.service_list_shrink
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.tls_setting):
@@ -19402,6 +19406,8 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
@@ -19443,6 +19449,8 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
