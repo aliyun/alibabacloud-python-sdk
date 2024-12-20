@@ -704,7 +704,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CheckHadoopNetConnectionResponse:
         """
-        @summary 检查hadoop集群网络连通性
+        @summary Check Hadoop Cluster Network Connectivity
         
         @param request: CheckHadoopNetConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -745,7 +745,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CheckHadoopNetConnectionResponse:
         """
-        @summary 检查hadoop集群网络连通性
+        @summary Check Hadoop Cluster Network Connectivity
         
         @param request: CheckHadoopNetConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -785,7 +785,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CheckHadoopNetConnectionRequest,
     ) -> gpdb_20160503_models.CheckHadoopNetConnectionResponse:
         """
-        @summary 检查hadoop集群网络连通性
+        @summary Check Hadoop Cluster Network Connectivity
         
         @param request: CheckHadoopNetConnectionRequest
         @return: CheckHadoopNetConnectionResponse
@@ -798,7 +798,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CheckHadoopNetConnectionRequest,
     ) -> gpdb_20160503_models.CheckHadoopNetConnectionResponse:
         """
-        @summary 检查hadoop集群网络连通性
+        @summary Check Hadoop Cluster Network Connectivity
         
         @param request: CheckHadoopNetConnectionRequest
         @return: CheckHadoopNetConnectionResponse
@@ -812,7 +812,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse:
         """
-        @summary Checks the network connectivity of a connection specified by a Java Database Connectivity (JDBC) connection string.
+        @summary Check the network connectivity of the JDBC connection string
         
         @param request: CheckJDBCSourceNetConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -853,7 +853,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse:
         """
-        @summary Checks the network connectivity of a connection specified by a Java Database Connectivity (JDBC) connection string.
+        @summary Check the network connectivity of the JDBC connection string
         
         @param request: CheckJDBCSourceNetConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -893,7 +893,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CheckJDBCSourceNetConnectionRequest,
     ) -> gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse:
         """
-        @summary Checks the network connectivity of a connection specified by a Java Database Connectivity (JDBC) connection string.
+        @summary Check the network connectivity of the JDBC connection string
         
         @param request: CheckJDBCSourceNetConnectionRequest
         @return: CheckJDBCSourceNetConnectionResponse
@@ -906,7 +906,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CheckJDBCSourceNetConnectionRequest,
     ) -> gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse:
         """
-        @summary Checks the network connectivity of a connection specified by a Java Database Connectivity (JDBC) connection string.
+        @summary Check the network connectivity of the JDBC connection string
         
         @param request: CheckJDBCSourceNetConnectionRequest
         @return: CheckJDBCSourceNetConnectionResponse
@@ -1043,8 +1043,6 @@ class Client(OpenApiClient):
             query['DatabaseName'] = request.database_name
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1097,8 +1095,6 @@ class Client(OpenApiClient):
             query['DatabaseName'] = request.database_name
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1186,6 +1182,8 @@ class Client(OpenApiClient):
             query['ManagerAccountPassword'] = request.manager_account_password
         if not UtilClient.is_unset(request.metadata):
             query['Metadata'] = request.metadata
+        if not UtilClient.is_unset(request.metadata_indices):
+            query['MetadataIndices'] = request.metadata_indices
         if not UtilClient.is_unset(request.metrics):
             query['Metrics'] = request.metrics
         if not UtilClient.is_unset(request.namespace):
@@ -1251,6 +1249,8 @@ class Client(OpenApiClient):
             query['ManagerAccountPassword'] = request.manager_account_password
         if not UtilClient.is_unset(request.metadata):
             query['Metadata'] = request.metadata
+        if not UtilClient.is_unset(request.metadata_indices):
+            query['MetadataIndices'] = request.metadata_indices
         if not UtilClient.is_unset(request.metrics):
             query['Metrics'] = request.metrics
         if not UtilClient.is_unset(request.namespace):
@@ -1316,12 +1316,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDBInstanceResponse:
         """
-        @summary Creates an AnalyticDB for PostgreSQL instance.
+        @summary Create Instance
         
-        @description You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
-        ## Limits
-        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        @description Before using this interface, please make sure you have fully understood the [billing method](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of the AnalyticDB for PostgreSQL product.
         
         @param request: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1345,6 +1342,8 @@ class Client(OpenApiClient):
             query['DBInstanceGroupCount'] = request.dbinstance_group_count
         if not UtilClient.is_unset(request.dbinstance_mode):
             query['DBInstanceMode'] = request.dbinstance_mode
+        if not UtilClient.is_unset(request.deploy_mode):
+            query['DeployMode'] = request.deploy_mode
         if not UtilClient.is_unset(request.enable_ssl):
             query['EnableSSL'] = request.enable_ssl
         if not UtilClient.is_unset(request.encryption_key):
@@ -1393,6 +1392,10 @@ class Client(OpenApiClient):
             query['ServerlessResource'] = request.serverless_resource
         if not UtilClient.is_unset(request.src_db_instance_name):
             query['SrcDbInstanceName'] = request.src_db_instance_name
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
+        if not UtilClient.is_unset(request.standby_zone_id):
+            query['StandbyZoneId'] = request.standby_zone_id
         if not UtilClient.is_unset(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.storage_type):
@@ -1434,12 +1437,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDBInstanceResponse:
         """
-        @summary Creates an AnalyticDB for PostgreSQL instance.
+        @summary Create Instance
         
-        @description You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
-        ## Limits
-        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        @description Before using this interface, please make sure you have fully understood the [billing method](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of the AnalyticDB for PostgreSQL product.
         
         @param request: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1463,6 +1463,8 @@ class Client(OpenApiClient):
             query['DBInstanceGroupCount'] = request.dbinstance_group_count
         if not UtilClient.is_unset(request.dbinstance_mode):
             query['DBInstanceMode'] = request.dbinstance_mode
+        if not UtilClient.is_unset(request.deploy_mode):
+            query['DeployMode'] = request.deploy_mode
         if not UtilClient.is_unset(request.enable_ssl):
             query['EnableSSL'] = request.enable_ssl
         if not UtilClient.is_unset(request.encryption_key):
@@ -1511,6 +1513,10 @@ class Client(OpenApiClient):
             query['ServerlessResource'] = request.serverless_resource
         if not UtilClient.is_unset(request.src_db_instance_name):
             query['SrcDbInstanceName'] = request.src_db_instance_name
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
+        if not UtilClient.is_unset(request.standby_zone_id):
+            query['StandbyZoneId'] = request.standby_zone_id
         if not UtilClient.is_unset(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.storage_type):
@@ -1551,12 +1557,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateDBInstanceRequest,
     ) -> gpdb_20160503_models.CreateDBInstanceResponse:
         """
-        @summary Creates an AnalyticDB for PostgreSQL instance.
+        @summary Create Instance
         
-        @description You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
-        ## Limits
-        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        @description Before using this interface, please make sure you have fully understood the [billing method](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of the AnalyticDB for PostgreSQL product.
         
         @param request: CreateDBInstanceRequest
         @return: CreateDBInstanceResponse
@@ -1569,12 +1572,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateDBInstanceRequest,
     ) -> gpdb_20160503_models.CreateDBInstanceResponse:
         """
-        @summary Creates an AnalyticDB for PostgreSQL instance.
+        @summary Create Instance
         
-        @description You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
-        ## Limits
-        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        @description Before using this interface, please make sure you have fully understood the [billing method](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of the AnalyticDB for PostgreSQL product.
         
         @param request: CreateDBInstanceRequest
         @return: CreateDBInstanceResponse
@@ -1840,7 +1840,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
         """
-        @summary Creates a document collection.
+        @summary Create Knowledge Base
         
         @param request: CreateDocumentCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1866,6 +1866,8 @@ class Client(OpenApiClient):
             query['ManagerAccountPassword'] = request.manager_account_password
         if not UtilClient.is_unset(request.metadata):
             query['Metadata'] = request.metadata
+        if not UtilClient.is_unset(request.metadata_indices):
+            query['MetadataIndices'] = request.metadata_indices
         if not UtilClient.is_unset(request.metrics):
             query['Metrics'] = request.metrics
         if not UtilClient.is_unset(request.namespace):
@@ -1903,7 +1905,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
         """
-        @summary Creates a document collection.
+        @summary Create Knowledge Base
         
         @param request: CreateDocumentCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1929,6 +1931,8 @@ class Client(OpenApiClient):
             query['ManagerAccountPassword'] = request.manager_account_password
         if not UtilClient.is_unset(request.metadata):
             query['Metadata'] = request.metadata
+        if not UtilClient.is_unset(request.metadata_indices):
+            query['MetadataIndices'] = request.metadata_indices
         if not UtilClient.is_unset(request.metrics):
             query['Metrics'] = request.metrics
         if not UtilClient.is_unset(request.namespace):
@@ -1965,7 +1969,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateDocumentCollectionRequest,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
         """
-        @summary Creates a document collection.
+        @summary Create Knowledge Base
         
         @param request: CreateDocumentCollectionRequest
         @return: CreateDocumentCollectionResponse
@@ -1978,7 +1982,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateDocumentCollectionRequest,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
         """
-        @summary Creates a document collection.
+        @summary Create Knowledge Base
         
         @param request: CreateDocumentCollectionRequest
         @return: CreateDocumentCollectionResponse
@@ -2100,7 +2104,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateExternalDataServiceResponse:
         """
-        @summary Creates an external data service.
+        @summary Create External Data Service
         
         @param request: CreateExternalDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2143,7 +2147,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateExternalDataServiceResponse:
         """
-        @summary Creates an external data service.
+        @summary Create External Data Service
         
         @param request: CreateExternalDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2185,7 +2189,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateExternalDataServiceRequest,
     ) -> gpdb_20160503_models.CreateExternalDataServiceResponse:
         """
-        @summary Creates an external data service.
+        @summary Create External Data Service
         
         @param request: CreateExternalDataServiceRequest
         @return: CreateExternalDataServiceResponse
@@ -2198,7 +2202,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateExternalDataServiceRequest,
     ) -> gpdb_20160503_models.CreateExternalDataServiceResponse:
         """
-        @summary Creates an external data service.
+        @summary Create External Data Service
         
         @param request: CreateExternalDataServiceRequest
         @return: CreateExternalDataServiceResponse
@@ -2212,7 +2216,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateHadoopDataSourceResponse:
         """
-        @summary Creates the configurations for a Hadoop data source.
+        @summary Create Hadoop data source configuration
         
         @param request: CreateHadoopDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2271,7 +2275,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateHadoopDataSourceResponse:
         """
-        @summary Creates the configurations for a Hadoop data source.
+        @summary Create Hadoop data source configuration
         
         @param request: CreateHadoopDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2329,7 +2333,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateHadoopDataSourceRequest,
     ) -> gpdb_20160503_models.CreateHadoopDataSourceResponse:
         """
-        @summary Creates the configurations for a Hadoop data source.
+        @summary Create Hadoop data source configuration
         
         @param request: CreateHadoopDataSourceRequest
         @return: CreateHadoopDataSourceResponse
@@ -2342,7 +2346,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateHadoopDataSourceRequest,
     ) -> gpdb_20160503_models.CreateHadoopDataSourceResponse:
         """
-        @summary Creates the configurations for a Hadoop data source.
+        @summary Create Hadoop data source configuration
         
         @param request: CreateHadoopDataSourceRequest
         @return: CreateHadoopDataSourceResponse
@@ -2356,7 +2360,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateJDBCDataSourceResponse:
         """
-        @summary Creates a Java Database Connectivity (JDBC) data source.
+        @summary Creates a JDBC data source.
         
         @param request: CreateJDBCDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2405,7 +2409,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateJDBCDataSourceResponse:
         """
-        @summary Creates a Java Database Connectivity (JDBC) data source.
+        @summary Creates a JDBC data source.
         
         @param request: CreateJDBCDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2453,7 +2457,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateJDBCDataSourceRequest,
     ) -> gpdb_20160503_models.CreateJDBCDataSourceResponse:
         """
-        @summary Creates a Java Database Connectivity (JDBC) data source.
+        @summary Creates a JDBC data source.
         
         @param request: CreateJDBCDataSourceRequest
         @return: CreateJDBCDataSourceResponse
@@ -2466,7 +2470,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateJDBCDataSourceRequest,
     ) -> gpdb_20160503_models.CreateJDBCDataSourceResponse:
         """
-        @summary Creates a Java Database Connectivity (JDBC) data source.
+        @summary Creates a JDBC data source.
         
         @param request: CreateJDBCDataSourceRequest
         @return: CreateJDBCDataSourceResponse
@@ -2597,6 +2601,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_namespace_with_options_async(request, runtime)
+
+    def create_remote_adbdata_source_with_options(
+        self,
+        request: gpdb_20160503_models.CreateRemoteADBDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateRemoteADBDataSourceResponse:
+        """
+        @summary Create Homogeneous Data Source
+        
+        @param request: CreateRemoteADBDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRemoteADBDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_name):
+            query['DataSourceName'] = request.data_source_name
+        if not UtilClient.is_unset(request.local_dbinstance_id):
+            query['LocalDBInstanceId'] = request.local_dbinstance_id
+        if not UtilClient.is_unset(request.local_database):
+            query['LocalDatabase'] = request.local_database
+        if not UtilClient.is_unset(request.manager_user_name):
+            query['ManagerUserName'] = request.manager_user_name
+        if not UtilClient.is_unset(request.manager_user_password):
+            query['ManagerUserPassword'] = request.manager_user_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remote_dbinstance_id):
+            query['RemoteDBInstanceId'] = request.remote_dbinstance_id
+        if not UtilClient.is_unset(request.remote_database):
+            query['RemoteDatabase'] = request.remote_database
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_password):
+            query['UserPassword'] = request.user_password
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRemoteADBDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateRemoteADBDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_remote_adbdata_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.CreateRemoteADBDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateRemoteADBDataSourceResponse:
+        """
+        @summary Create Homogeneous Data Source
+        
+        @param request: CreateRemoteADBDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRemoteADBDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_name):
+            query['DataSourceName'] = request.data_source_name
+        if not UtilClient.is_unset(request.local_dbinstance_id):
+            query['LocalDBInstanceId'] = request.local_dbinstance_id
+        if not UtilClient.is_unset(request.local_database):
+            query['LocalDatabase'] = request.local_database
+        if not UtilClient.is_unset(request.manager_user_name):
+            query['ManagerUserName'] = request.manager_user_name
+        if not UtilClient.is_unset(request.manager_user_password):
+            query['ManagerUserPassword'] = request.manager_user_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remote_dbinstance_id):
+            query['RemoteDBInstanceId'] = request.remote_dbinstance_id
+        if not UtilClient.is_unset(request.remote_database):
+            query['RemoteDatabase'] = request.remote_database
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_password):
+            query['UserPassword'] = request.user_password
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRemoteADBDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateRemoteADBDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_remote_adbdata_source(
+        self,
+        request: gpdb_20160503_models.CreateRemoteADBDataSourceRequest,
+    ) -> gpdb_20160503_models.CreateRemoteADBDataSourceResponse:
+        """
+        @summary Create Homogeneous Data Source
+        
+        @param request: CreateRemoteADBDataSourceRequest
+        @return: CreateRemoteADBDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_remote_adbdata_source_with_options(request, runtime)
+
+    async def create_remote_adbdata_source_async(
+        self,
+        request: gpdb_20160503_models.CreateRemoteADBDataSourceRequest,
+    ) -> gpdb_20160503_models.CreateRemoteADBDataSourceResponse:
+        """
+        @summary Create Homogeneous Data Source
+        
+        @param request: CreateRemoteADBDataSourceRequest
+        @return: CreateRemoteADBDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_remote_adbdata_source_with_options_async(request, runtime)
 
     def create_sample_data_with_options(
         self,
@@ -2940,7 +3076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateStreamingDataServiceResponse:
         """
-        @summary Creates a real-time data service.
+        @summary Create External Data Source Configuration
         
         @param request: CreateStreamingDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2983,7 +3119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateStreamingDataServiceResponse:
         """
-        @summary Creates a real-time data service.
+        @summary Create External Data Source Configuration
         
         @param request: CreateStreamingDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3025,7 +3161,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateStreamingDataServiceRequest,
     ) -> gpdb_20160503_models.CreateStreamingDataServiceResponse:
         """
-        @summary Creates a real-time data service.
+        @summary Create External Data Source Configuration
         
         @param request: CreateStreamingDataServiceRequest
         @return: CreateStreamingDataServiceResponse
@@ -3038,7 +3174,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateStreamingDataServiceRequest,
     ) -> gpdb_20160503_models.CreateStreamingDataServiceResponse:
         """
-        @summary Creates a real-time data service.
+        @summary Create External Data Source Configuration
         
         @param request: CreateStreamingDataServiceRequest
         @return: CreateStreamingDataServiceResponse
@@ -3052,7 +3188,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateStreamingDataSourceResponse:
         """
-        @summary Creates a real-time data source.
+        @summary Create External Data Source Configuration
         
         @param request: CreateStreamingDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3099,7 +3235,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateStreamingDataSourceResponse:
         """
-        @summary Creates a real-time data source.
+        @summary Create External Data Source Configuration
         
         @param request: CreateStreamingDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3145,7 +3281,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateStreamingDataSourceRequest,
     ) -> gpdb_20160503_models.CreateStreamingDataSourceResponse:
         """
-        @summary Creates a real-time data source.
+        @summary Create External Data Source Configuration
         
         @param request: CreateStreamingDataSourceRequest
         @return: CreateStreamingDataSourceResponse
@@ -3158,7 +3294,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateStreamingDataSourceRequest,
     ) -> gpdb_20160503_models.CreateStreamingDataSourceResponse:
         """
-        @summary Creates a real-time data source.
+        @summary Create External Data Source Configuration
         
         @param request: CreateStreamingDataSourceRequest
         @return: CreateStreamingDataSourceResponse
@@ -3172,7 +3308,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateStreamingJobResponse:
         """
-        @summary Creates the configurations for an external data source.
+        @summary Create External Data Source Configuration
         
         @param tmp_req: CreateStreamingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3259,7 +3395,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateStreamingJobResponse:
         """
-        @summary Creates the configurations for an external data source.
+        @summary Create External Data Source Configuration
         
         @param tmp_req: CreateStreamingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3345,7 +3481,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateStreamingJobRequest,
     ) -> gpdb_20160503_models.CreateStreamingJobResponse:
         """
-        @summary Creates the configurations for an external data source.
+        @summary Create External Data Source Configuration
         
         @param request: CreateStreamingJobRequest
         @return: CreateStreamingJobResponse
@@ -3358,7 +3494,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateStreamingJobRequest,
     ) -> gpdb_20160503_models.CreateStreamingJobResponse:
         """
-        @summary Creates the configurations for an external data source.
+        @summary Create External Data Source Configuration
         
         @param request: CreateStreamingJobRequest
         @return: CreateStreamingJobResponse
@@ -3372,7 +3508,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateVectorIndexResponse:
         """
-        @summary Creates a vector index.
+        @summary Create Vector Index
         
         @param request: CreateVectorIndexRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3429,7 +3565,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateVectorIndexResponse:
         """
-        @summary Creates a vector index.
+        @summary Create Vector Index
         
         @param request: CreateVectorIndexRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3485,7 +3621,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateVectorIndexRequest,
     ) -> gpdb_20160503_models.CreateVectorIndexResponse:
         """
-        @summary Creates a vector index.
+        @summary Create Vector Index
         
         @param request: CreateVectorIndexRequest
         @return: CreateVectorIndexResponse
@@ -3498,13 +3634,113 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateVectorIndexRequest,
     ) -> gpdb_20160503_models.CreateVectorIndexResponse:
         """
-        @summary Creates a vector index.
+        @summary Create Vector Index
         
         @param request: CreateVectorIndexRequest
         @return: CreateVectorIndexResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_vector_index_with_options_async(request, runtime)
+
+    def delete_account_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteAccountResponse:
+        """
+        @summary 删除数据库账号
+        
+        @param request: DeleteAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccount',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_account_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteAccountResponse:
+        """
+        @summary 删除数据库账号
+        
+        @param request: DeleteAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccount',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_account(
+        self,
+        request: gpdb_20160503_models.DeleteAccountRequest,
+    ) -> gpdb_20160503_models.DeleteAccountResponse:
+        """
+        @summary 删除数据库账号
+        
+        @param request: DeleteAccountRequest
+        @return: DeleteAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_account_with_options(request, runtime)
+
+    async def delete_account_async(
+        self,
+        request: gpdb_20160503_models.DeleteAccountRequest,
+    ) -> gpdb_20160503_models.DeleteAccountResponse:
+        """
+        @summary 删除数据库账号
+        
+        @param request: DeleteAccountRequest
+        @return: DeleteAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_account_with_options_async(request, runtime)
 
     def delete_collection_with_options(
         self,
@@ -4112,7 +4348,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDocumentResponse:
         """
-        @summary Deletes a document from a document collection.
+        @summary Delete Document
         
         @param request: DeleteDocumentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4159,7 +4395,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDocumentResponse:
         """
-        @summary Deletes a document from a document collection.
+        @summary Delete Document
         
         @param request: DeleteDocumentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4205,7 +4441,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDocumentRequest,
     ) -> gpdb_20160503_models.DeleteDocumentResponse:
         """
-        @summary Deletes a document from a document collection.
+        @summary Delete Document
         
         @param request: DeleteDocumentRequest
         @return: DeleteDocumentResponse
@@ -4218,7 +4454,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDocumentRequest,
     ) -> gpdb_20160503_models.DeleteDocumentResponse:
         """
-        @summary Deletes a document from a document collection.
+        @summary Delete Document
         
         @param request: DeleteDocumentRequest
         @return: DeleteDocumentResponse
@@ -4232,7 +4468,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDocumentCollectionResponse:
         """
-        @summary Deletes a document collection.
+        @summary Delete Knowledge Base
         
         @param request: DeleteDocumentCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4277,7 +4513,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDocumentCollectionResponse:
         """
-        @summary Deletes a document collection.
+        @summary Delete Knowledge Base
         
         @param request: DeleteDocumentCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4321,7 +4557,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDocumentCollectionRequest,
     ) -> gpdb_20160503_models.DeleteDocumentCollectionResponse:
         """
-        @summary Deletes a document collection.
+        @summary Delete Knowledge Base
         
         @param request: DeleteDocumentCollectionRequest
         @return: DeleteDocumentCollectionResponse
@@ -4334,7 +4570,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDocumentCollectionRequest,
     ) -> gpdb_20160503_models.DeleteDocumentCollectionResponse:
         """
-        @summary Deletes a document collection.
+        @summary Delete Knowledge Base
         
         @param request: DeleteDocumentCollectionRequest
         @return: DeleteDocumentCollectionResponse
@@ -4456,7 +4692,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteExternalDataServiceResponse:
         """
-        @summary Deletes an external data service.
+        @summary Delete External Data Service
         
         @param request: DeleteExternalDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4495,7 +4731,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteExternalDataServiceResponse:
         """
-        @summary Deletes an external data service.
+        @summary Delete External Data Service
         
         @param request: DeleteExternalDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4533,7 +4769,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteExternalDataServiceRequest,
     ) -> gpdb_20160503_models.DeleteExternalDataServiceResponse:
         """
-        @summary Deletes an external data service.
+        @summary Delete External Data Service
         
         @param request: DeleteExternalDataServiceRequest
         @return: DeleteExternalDataServiceResponse
@@ -4546,7 +4782,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteExternalDataServiceRequest,
     ) -> gpdb_20160503_models.DeleteExternalDataServiceResponse:
         """
-        @summary Deletes an external data service.
+        @summary Delete External Data Service
         
         @param request: DeleteExternalDataServiceRequest
         @return: DeleteExternalDataServiceResponse
@@ -4664,7 +4900,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteJDBCDataSourceResponse:
         """
-        @summary Deletes a Java Database Connectivity (JDBC) data source.
+        @summary Delete JDBC data source
         
         @param request: DeleteJDBCDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4703,7 +4939,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteJDBCDataSourceResponse:
         """
-        @summary Deletes a Java Database Connectivity (JDBC) data source.
+        @summary Delete JDBC data source
         
         @param request: DeleteJDBCDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4741,7 +4977,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteJDBCDataSourceRequest,
     ) -> gpdb_20160503_models.DeleteJDBCDataSourceResponse:
         """
-        @summary Deletes a Java Database Connectivity (JDBC) data source.
+        @summary Delete JDBC data source
         
         @param request: DeleteJDBCDataSourceRequest
         @return: DeleteJDBCDataSourceResponse
@@ -4754,7 +4990,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteJDBCDataSourceRequest,
     ) -> gpdb_20160503_models.DeleteJDBCDataSourceResponse:
         """
-        @summary Deletes a Java Database Connectivity (JDBC) data source.
+        @summary Delete JDBC data source
         
         @param request: DeleteJDBCDataSourceRequest
         @return: DeleteJDBCDataSourceResponse
@@ -4881,6 +5117,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_namespace_with_options_async(request, runtime)
+
+    def delete_remote_adbdata_source_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteRemoteADBDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteRemoteADBDataSourceResponse:
+        """
+        @summary Deletes a remote AnalyticDB data source.
+        
+        @param request: DeleteRemoteADBDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRemoteADBDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.local_dbinstance_id):
+            query['LocalDBInstanceId'] = request.local_dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRemoteADBDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteRemoteADBDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_remote_adbdata_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteRemoteADBDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteRemoteADBDataSourceResponse:
+        """
+        @summary Deletes a remote AnalyticDB data source.
+        
+        @param request: DeleteRemoteADBDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRemoteADBDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.local_dbinstance_id):
+            query['LocalDBInstanceId'] = request.local_dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRemoteADBDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteRemoteADBDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_remote_adbdata_source(
+        self,
+        request: gpdb_20160503_models.DeleteRemoteADBDataSourceRequest,
+    ) -> gpdb_20160503_models.DeleteRemoteADBDataSourceResponse:
+        """
+        @summary Deletes a remote AnalyticDB data source.
+        
+        @param request: DeleteRemoteADBDataSourceRequest
+        @return: DeleteRemoteADBDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_remote_adbdata_source_with_options(request, runtime)
+
+    async def delete_remote_adbdata_source_async(
+        self,
+        request: gpdb_20160503_models.DeleteRemoteADBDataSourceRequest,
+    ) -> gpdb_20160503_models.DeleteRemoteADBDataSourceResponse:
+        """
+        @summary Deletes a remote AnalyticDB data source.
+        
+        @param request: DeleteRemoteADBDataSourceRequest
+        @return: DeleteRemoteADBDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_remote_adbdata_source_with_options_async(request, runtime)
 
     def delete_secret_with_options(
         self,
@@ -6272,12 +6612,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary Queries the information about an AnalyticDB for PostgreSQL instance.
+        @summary Query detailed information about the instance
         
-        @description ##
-        You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
-        ## Limits
-        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description ## Usage Instructions
+        This interface is generally used to view information such as the specifications, network type, and instance status of AnalyticDB for PostgreSQL instances.
+        ## QPS Limitation
+        The default single-user QPS limit for this interface is 1000 times/second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please use it reasonably.
+        <props="china">The QPS in this document is only a default reference value. For accurate information, please refer to the [API Rate Quota List](https://quotas.console.aliyun.com/flow-control-products/gpdb/quotas).
         
         @param request: DescribeDBInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6316,12 +6657,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary Queries the information about an AnalyticDB for PostgreSQL instance.
+        @summary Query detailed information about the instance
         
-        @description ##
-        You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
-        ## Limits
-        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description ## Usage Instructions
+        This interface is generally used to view information such as the specifications, network type, and instance status of AnalyticDB for PostgreSQL instances.
+        ## QPS Limitation
+        The default single-user QPS limit for this interface is 1000 times/second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please use it reasonably.
+        <props="china">The QPS in this document is only a default reference value. For accurate information, please refer to the [API Rate Quota List](https://quotas.console.aliyun.com/flow-control-products/gpdb/quotas).
         
         @param request: DescribeDBInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6359,12 +6701,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceAttributeRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary Queries the information about an AnalyticDB for PostgreSQL instance.
+        @summary Query detailed information about the instance
         
-        @description ##
-        You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
-        ## Limits
-        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description ## Usage Instructions
+        This interface is generally used to view information such as the specifications, network type, and instance status of AnalyticDB for PostgreSQL instances.
+        ## QPS Limitation
+        The default single-user QPS limit for this interface is 1000 times/second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please use it reasonably.
+        <props="china">The QPS in this document is only a default reference value. For accurate information, please refer to the [API Rate Quota List](https://quotas.console.aliyun.com/flow-control-products/gpdb/quotas).
         
         @param request: DescribeDBInstanceAttributeRequest
         @return: DescribeDBInstanceAttributeResponse
@@ -6377,12 +6720,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceAttributeRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary Queries the information about an AnalyticDB for PostgreSQL instance.
+        @summary Query detailed information about the instance
         
-        @description ##
-        You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
-        ## Limits
-        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description ## Usage Instructions
+        This interface is generally used to view information such as the specifications, network type, and instance status of AnalyticDB for PostgreSQL instances.
+        ## QPS Limitation
+        The default single-user QPS limit for this interface is 1000 times/second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please use it reasonably.
+        <props="china">The QPS in this document is only a default reference value. For accurate information, please refer to the [API Rate Quota List](https://quotas.console.aliyun.com/flow-control-products/gpdb/quotas).
         
         @param request: DescribeDBInstanceAttributeRequest
         @return: DescribeDBInstanceAttributeResponse
@@ -9212,7 +9556,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDocumentResponse:
         """
-        @summary Queries the information about a document.
+        @summary Get Document Details
         
         @param request: DescribeDocumentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9259,7 +9603,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDocumentResponse:
         """
-        @summary Queries the information about a document.
+        @summary Get Document Details
         
         @param request: DescribeDocumentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9305,7 +9649,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDocumentRequest,
     ) -> gpdb_20160503_models.DescribeDocumentResponse:
         """
-        @summary Queries the information about a document.
+        @summary Get Document Details
         
         @param request: DescribeDocumentRequest
         @return: DescribeDocumentResponse
@@ -9318,7 +9662,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDocumentRequest,
     ) -> gpdb_20160503_models.DescribeDocumentResponse:
         """
-        @summary Queries the information about a document.
+        @summary Get Document Details
         
         @param request: DescribeDocumentRequest
         @return: DescribeDocumentResponse
@@ -9440,7 +9784,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDownloadSQLLogsResponse:
         """
-        @summary Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+        @summary Get download records
         
         @param request: DescribeDownloadSQLLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9475,7 +9819,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDownloadSQLLogsResponse:
         """
-        @summary Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+        @summary Get download records
         
         @param request: DescribeDownloadSQLLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9509,7 +9853,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDownloadSQLLogsRequest,
     ) -> gpdb_20160503_models.DescribeDownloadSQLLogsResponse:
         """
-        @summary Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+        @summary Get download records
         
         @param request: DescribeDownloadSQLLogsRequest
         @return: DescribeDownloadSQLLogsResponse
@@ -9522,7 +9866,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDownloadSQLLogsRequest,
     ) -> gpdb_20160503_models.DescribeDownloadSQLLogsResponse:
         """
-        @summary Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+        @summary Get download records
         
         @param request: DescribeDownloadSQLLogsRequest
         @return: DescribeDownloadSQLLogsResponse
@@ -9740,7 +10084,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeHadoopConfigsResponse:
         """
-        @summary 获取hadoop配置信息
+        @summary Queries the configuration information about a Hadoop cluster.
         
         @param request: DescribeHadoopConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9781,7 +10125,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeHadoopConfigsResponse:
         """
-        @summary 获取hadoop配置信息
+        @summary Queries the configuration information about a Hadoop cluster.
         
         @param request: DescribeHadoopConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9821,7 +10165,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeHadoopConfigsRequest,
     ) -> gpdb_20160503_models.DescribeHadoopConfigsResponse:
         """
-        @summary 获取hadoop配置信息
+        @summary Queries the configuration information about a Hadoop cluster.
         
         @param request: DescribeHadoopConfigsRequest
         @return: DescribeHadoopConfigsResponse
@@ -9834,7 +10178,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeHadoopConfigsRequest,
     ) -> gpdb_20160503_models.DescribeHadoopConfigsResponse:
         """
-        @summary 获取hadoop配置信息
+        @summary Queries the configuration information about a Hadoop cluster.
         
         @param request: DescribeHadoopConfigsRequest
         @return: DescribeHadoopConfigsResponse
@@ -11916,7 +12260,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeStreamingDataSourceResponse:
         """
-        @summary Queries a real-time data source.
+        @summary Get external data source configuration information
         
         @param request: DescribeStreamingDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11955,7 +12299,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeStreamingDataSourceResponse:
         """
-        @summary Queries a real-time data source.
+        @summary Get external data source configuration information
         
         @param request: DescribeStreamingDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11993,7 +12337,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeStreamingDataSourceRequest,
     ) -> gpdb_20160503_models.DescribeStreamingDataSourceResponse:
         """
-        @summary Queries a real-time data source.
+        @summary Get external data source configuration information
         
         @param request: DescribeStreamingDataSourceRequest
         @return: DescribeStreamingDataSourceResponse
@@ -12006,7 +12350,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeStreamingDataSourceRequest,
     ) -> gpdb_20160503_models.DescribeStreamingDataSourceResponse:
         """
-        @summary Queries a real-time data source.
+        @summary Get external data source configuration information
         
         @param request: DescribeStreamingDataSourceRequest
         @return: DescribeStreamingDataSourceResponse
@@ -12020,7 +12364,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeStreamingJobResponse:
         """
-        @summary Queries a real-time data service.
+        @summary Delete External Data Source Configuration
         
         @param request: DescribeStreamingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12059,7 +12403,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeStreamingJobResponse:
         """
-        @summary Queries a real-time data service.
+        @summary Delete External Data Source Configuration
         
         @param request: DescribeStreamingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12097,7 +12441,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeStreamingJobRequest,
     ) -> gpdb_20160503_models.DescribeStreamingJobResponse:
         """
-        @summary Queries a real-time data service.
+        @summary Delete External Data Source Configuration
         
         @param request: DescribeStreamingJobRequest
         @return: DescribeStreamingJobResponse
@@ -12110,7 +12454,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeStreamingJobRequest,
     ) -> gpdb_20160503_models.DescribeStreamingJobResponse:
         """
-        @summary Queries a real-time data service.
+        @summary Delete External Data Source Configuration
         
         @param request: DescribeStreamingJobRequest
         @return: DescribeStreamingJobResponse
@@ -13510,6 +13854,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.execute_statement_with_options_async(request, runtime)
 
+    def get_account_with_options(
+        self,
+        request: gpdb_20160503_models.GetAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.GetAccountResponse:
+        """
+        @summary 获取特定的账号信息
+        
+        @param request: GetAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccount',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.GetAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_account_with_options_async(
+        self,
+        request: gpdb_20160503_models.GetAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.GetAccountResponse:
+        """
+        @summary 获取特定的账号信息
+        
+        @param request: GetAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccount',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.GetAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_account(
+        self,
+        request: gpdb_20160503_models.GetAccountRequest,
+    ) -> gpdb_20160503_models.GetAccountResponse:
+        """
+        @summary 获取特定的账号信息
+        
+        @param request: GetAccountRequest
+        @return: GetAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_account_with_options(request, runtime)
+
+    async def get_account_async(
+        self,
+        request: gpdb_20160503_models.GetAccountRequest,
+    ) -> gpdb_20160503_models.GetAccountResponse:
+        """
+        @summary 获取特定的账号信息
+        
+        @param request: GetAccountRequest
+        @return: GetAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_account_with_options_async(request, runtime)
+
     def get_secret_value_with_options(
         self,
         request: gpdb_20160503_models.GetSecretValueRequest,
@@ -14728,7 +15172,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListExternalDataServicesResponse:
         """
-        @summary Queries a list of external data sources.
+        @summary Queries a list of external data services.
         
         @param request: ListExternalDataServicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14769,7 +15213,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListExternalDataServicesResponse:
         """
-        @summary Queries a list of external data sources.
+        @summary Queries a list of external data services.
         
         @param request: ListExternalDataServicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14809,7 +15253,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListExternalDataServicesRequest,
     ) -> gpdb_20160503_models.ListExternalDataServicesResponse:
         """
-        @summary Queries a list of external data sources.
+        @summary Queries a list of external data services.
         
         @param request: ListExternalDataServicesRequest
         @return: ListExternalDataServicesResponse
@@ -14822,7 +15266,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListExternalDataServicesRequest,
     ) -> gpdb_20160503_models.ListExternalDataServicesResponse:
         """
-        @summary Queries a list of external data sources.
+        @summary Queries a list of external data services.
         
         @param request: ListExternalDataServicesRequest
         @return: ListExternalDataServicesResponse
@@ -15170,6 +15614,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_namespaces_with_options_async(request, runtime)
 
+    def list_remote_adbdata_sources_with_options(
+        self,
+        request: gpdb_20160503_models.ListRemoteADBDataSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListRemoteADBDataSourcesResponse:
+        """
+        @summary Get Homogeneous Data Source
+        
+        @param request: ListRemoteADBDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRemoteADBDataSourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRemoteADBDataSources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListRemoteADBDataSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_remote_adbdata_sources_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListRemoteADBDataSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListRemoteADBDataSourcesResponse:
+        """
+        @summary Get Homogeneous Data Source
+        
+        @param request: ListRemoteADBDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRemoteADBDataSourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRemoteADBDataSources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListRemoteADBDataSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_remote_adbdata_sources(
+        self,
+        request: gpdb_20160503_models.ListRemoteADBDataSourcesRequest,
+    ) -> gpdb_20160503_models.ListRemoteADBDataSourcesResponse:
+        """
+        @summary Get Homogeneous Data Source
+        
+        @param request: ListRemoteADBDataSourcesRequest
+        @return: ListRemoteADBDataSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_remote_adbdata_sources_with_options(request, runtime)
+
+    async def list_remote_adbdata_sources_async(
+        self,
+        request: gpdb_20160503_models.ListRemoteADBDataSourcesRequest,
+    ) -> gpdb_20160503_models.ListRemoteADBDataSourcesResponse:
+        """
+        @summary Get Homogeneous Data Source
+        
+        @param request: ListRemoteADBDataSourcesRequest
+        @return: ListRemoteADBDataSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_remote_adbdata_sources_with_options_async(request, runtime)
+
     def list_schemas_with_options(
         self,
         request: gpdb_20160503_models.ListSchemasRequest,
@@ -15404,7 +15952,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListStreamingDataServicesResponse:
         """
-        @summary Queries the information about real-time data services.
+        @summary Create External Data Source Configuration
         
         @param request: ListStreamingDataServicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15445,7 +15993,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListStreamingDataServicesResponse:
         """
-        @summary Queries the information about real-time data services.
+        @summary Create External Data Source Configuration
         
         @param request: ListStreamingDataServicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15485,7 +16033,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListStreamingDataServicesRequest,
     ) -> gpdb_20160503_models.ListStreamingDataServicesResponse:
         """
-        @summary Queries the information about real-time data services.
+        @summary Create External Data Source Configuration
         
         @param request: ListStreamingDataServicesRequest
         @return: ListStreamingDataServicesResponse
@@ -15498,7 +16046,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListStreamingDataServicesRequest,
     ) -> gpdb_20160503_models.ListStreamingDataServicesResponse:
         """
-        @summary Queries the information about real-time data services.
+        @summary Create External Data Source Configuration
         
         @param request: ListStreamingDataServicesRequest
         @return: ListStreamingDataServicesResponse
@@ -15620,7 +16168,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListStreamingJobsResponse:
         """
-        @summary Queries real-time data service jobs.
+        @summary Queries real-time data synchronization jobs.
         
         @param request: ListStreamingJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15661,7 +16209,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListStreamingJobsResponse:
         """
-        @summary Queries real-time data service jobs.
+        @summary Queries real-time data synchronization jobs.
         
         @param request: ListStreamingJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15701,7 +16249,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListStreamingJobsRequest,
     ) -> gpdb_20160503_models.ListStreamingJobsResponse:
         """
-        @summary Queries real-time data service jobs.
+        @summary Queries real-time data synchronization jobs.
         
         @param request: ListStreamingJobsRequest
         @return: ListStreamingJobsResponse
@@ -15714,7 +16262,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListStreamingJobsRequest,
     ) -> gpdb_20160503_models.ListStreamingJobsResponse:
         """
-        @summary Queries real-time data service jobs.
+        @summary Queries real-time data synchronization jobs.
         
         @param request: ListStreamingJobsRequest
         @return: ListStreamingJobsResponse
@@ -15996,6 +16544,8 @@ class Client(OpenApiClient):
             query['AccountDescription'] = request.account_description
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
@@ -16035,6 +16585,8 @@ class Client(OpenApiClient):
             query['AccountDescription'] = request.account_description
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
@@ -16324,6 +16876,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_string_prefix):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.current_connection_string):
@@ -16365,6 +16919,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_string_prefix):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.current_connection_string):
@@ -16661,6 +17217,246 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_maintain_time_with_options_async(request, runtime)
+
+    def modify_dbinstance_network_type_with_options(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstanceNetworkTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse:
+        """
+        @summary Changes the network type of an AnalyticDB for PostgreSQL instance.
+        
+        @description ##
+        This operation is available only for AnalyticDB for PostgreSQL instances in reserved storage mode.
+        ## QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ModifyDBInstanceNetworkTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceNetworkTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceNetworkType',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_network_type_with_options_async(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstanceNetworkTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse:
+        """
+        @summary Changes the network type of an AnalyticDB for PostgreSQL instance.
+        
+        @description ##
+        This operation is available only for AnalyticDB for PostgreSQL instances in reserved storage mode.
+        ## QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ModifyDBInstanceNetworkTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceNetworkTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceNetworkType',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_network_type(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstanceNetworkTypeRequest,
+    ) -> gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse:
+        """
+        @summary Changes the network type of an AnalyticDB for PostgreSQL instance.
+        
+        @description ##
+        This operation is available only for AnalyticDB for PostgreSQL instances in reserved storage mode.
+        ## QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ModifyDBInstanceNetworkTypeRequest
+        @return: ModifyDBInstanceNetworkTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_network_type_with_options(request, runtime)
+
+    async def modify_dbinstance_network_type_async(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstanceNetworkTypeRequest,
+    ) -> gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse:
+        """
+        @summary Changes the network type of an AnalyticDB for PostgreSQL instance.
+        
+        @description ##
+        This operation is available only for AnalyticDB for PostgreSQL instances in reserved storage mode.
+        ## QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ModifyDBInstanceNetworkTypeRequest
+        @return: ModifyDBInstanceNetworkTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_network_type_with_options_async(request, runtime)
+
+    def modify_dbinstance_pay_type_with_options(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstancePayTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyDBInstancePayTypeResponse:
+        """
+        @summary 包年包月/按量付费转换改造
+        
+        @param request: ModifyDBInstancePayTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstancePayTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstancePayType',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyDBInstancePayTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_pay_type_with_options_async(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstancePayTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyDBInstancePayTypeResponse:
+        """
+        @summary 包年包月/按量付费转换改造
+        
+        @param request: ModifyDBInstancePayTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstancePayTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstancePayType',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyDBInstancePayTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_pay_type(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstancePayTypeRequest,
+    ) -> gpdb_20160503_models.ModifyDBInstancePayTypeResponse:
+        """
+        @summary 包年包月/按量付费转换改造
+        
+        @param request: ModifyDBInstancePayTypeRequest
+        @return: ModifyDBInstancePayTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_pay_type_with_options(request, runtime)
+
+    async def modify_dbinstance_pay_type_async(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstancePayTypeRequest,
+    ) -> gpdb_20160503_models.ModifyDBInstancePayTypeResponse:
+        """
+        @summary 包年包月/按量付费转换改造
+        
+        @param request: ModifyDBInstancePayTypeRequest
+        @return: ModifyDBInstancePayTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_pay_type_with_options_async(request, runtime)
 
     def modify_dbinstance_resource_group_with_options(
         self,
@@ -17012,7 +17808,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyExternalDataServiceResponse:
         """
-        @summary Modifies an external data service.
+        @summary Modify External Data Service
         
         @param request: ModifyExternalDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17055,7 +17851,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyExternalDataServiceResponse:
         """
-        @summary Modifies an external data service.
+        @summary Modify External Data Service
         
         @param request: ModifyExternalDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17097,7 +17893,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyExternalDataServiceRequest,
     ) -> gpdb_20160503_models.ModifyExternalDataServiceResponse:
         """
-        @summary Modifies an external data service.
+        @summary Modify External Data Service
         
         @param request: ModifyExternalDataServiceRequest
         @return: ModifyExternalDataServiceResponse
@@ -17110,7 +17906,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyExternalDataServiceRequest,
     ) -> gpdb_20160503_models.ModifyExternalDataServiceResponse:
         """
-        @summary Modifies an external data service.
+        @summary Modify External Data Service
         
         @param request: ModifyExternalDataServiceRequest
         @return: ModifyExternalDataServiceResponse
@@ -17626,6 +18422,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_parameters_with_options_async(request, runtime)
 
+    def modify_remote_adbdata_source_with_options(
+        self,
+        request: gpdb_20160503_models.ModifyRemoteADBDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyRemoteADBDataSourceResponse:
+        """
+        @summary Modify Homogeneous Data Source
+        
+        @param request: ModifyRemoteADBDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRemoteADBDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.data_source_name):
+            query['DataSourceName'] = request.data_source_name
+        if not UtilClient.is_unset(request.local_dbinstance_id):
+            query['LocalDBInstanceId'] = request.local_dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_password):
+            query['UserPassword'] = request.user_password
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRemoteADBDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyRemoteADBDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_remote_adbdata_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.ModifyRemoteADBDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyRemoteADBDataSourceResponse:
+        """
+        @summary Modify Homogeneous Data Source
+        
+        @param request: ModifyRemoteADBDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRemoteADBDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.data_source_name):
+            query['DataSourceName'] = request.data_source_name
+        if not UtilClient.is_unset(request.local_dbinstance_id):
+            query['LocalDBInstanceId'] = request.local_dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_password):
+            query['UserPassword'] = request.user_password
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRemoteADBDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyRemoteADBDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_remote_adbdata_source(
+        self,
+        request: gpdb_20160503_models.ModifyRemoteADBDataSourceRequest,
+    ) -> gpdb_20160503_models.ModifyRemoteADBDataSourceResponse:
+        """
+        @summary Modify Homogeneous Data Source
+        
+        @param request: ModifyRemoteADBDataSourceRequest
+        @return: ModifyRemoteADBDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_remote_adbdata_source_with_options(request, runtime)
+
+    async def modify_remote_adbdata_source_async(
+        self,
+        request: gpdb_20160503_models.ModifyRemoteADBDataSourceRequest,
+    ) -> gpdb_20160503_models.ModifyRemoteADBDataSourceResponse:
+        """
+        @summary Modify Homogeneous Data Source
+        
+        @param request: ModifyRemoteADBDataSourceRequest
+        @return: ModifyRemoteADBDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_remote_adbdata_source_with_options_async(request, runtime)
+
     def modify_sqlcollector_policy_with_options(
         self,
         request: gpdb_20160503_models.ModifySQLCollectorPolicyRequest,
@@ -17633,6 +18545,9 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.ModifySQLCollectorPolicyResponse:
         """
         @summary Enables or disables the SQL Explorer feature for an AnalyticDB for PostgreSQL instance.
+        
+        @description    You can call this operation only for AnalyticDB for PostgreSQL instances in reserved storage mode.
+        You can call this operation only for AnalyticDB for PostgreSQL instances in Serverless automatic scheduling mode.
         
         @param request: ModifySQLCollectorPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17671,6 +18586,9 @@ class Client(OpenApiClient):
         """
         @summary Enables or disables the SQL Explorer feature for an AnalyticDB for PostgreSQL instance.
         
+        @description    You can call this operation only for AnalyticDB for PostgreSQL instances in reserved storage mode.
+        You can call this operation only for AnalyticDB for PostgreSQL instances in Serverless automatic scheduling mode.
+        
         @param request: ModifySQLCollectorPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifySQLCollectorPolicyResponse
@@ -17707,6 +18625,9 @@ class Client(OpenApiClient):
         """
         @summary Enables or disables the SQL Explorer feature for an AnalyticDB for PostgreSQL instance.
         
+        @description    You can call this operation only for AnalyticDB for PostgreSQL instances in reserved storage mode.
+        You can call this operation only for AnalyticDB for PostgreSQL instances in Serverless automatic scheduling mode.
+        
         @param request: ModifySQLCollectorPolicyRequest
         @return: ModifySQLCollectorPolicyResponse
         """
@@ -17719,6 +18640,9 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.ModifySQLCollectorPolicyResponse:
         """
         @summary Enables or disables the SQL Explorer feature for an AnalyticDB for PostgreSQL instance.
+        
+        @description    You can call this operation only for AnalyticDB for PostgreSQL instances in reserved storage mode.
+        You can call this operation only for AnalyticDB for PostgreSQL instances in Serverless automatic scheduling mode.
         
         @param request: ModifySQLCollectorPolicyRequest
         @return: ModifySQLCollectorPolicyResponse
@@ -18088,7 +19012,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyStreamingJobResponse:
         """
-        @summary 创建外部数据源配置
+        @summary Create External Data Source Configuration
         
         @param tmp_req: ModifyStreamingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18171,7 +19095,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyStreamingJobResponse:
         """
-        @summary 创建外部数据源配置
+        @summary Create External Data Source Configuration
         
         @param tmp_req: ModifyStreamingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18253,7 +19177,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyStreamingJobRequest,
     ) -> gpdb_20160503_models.ModifyStreamingJobResponse:
         """
-        @summary 创建外部数据源配置
+        @summary Create External Data Source Configuration
         
         @param request: ModifyStreamingJobRequest
         @return: ModifyStreamingJobResponse
@@ -18266,7 +19190,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyStreamingJobRequest,
     ) -> gpdb_20160503_models.ModifyStreamingJobResponse:
         """
-        @summary 创建外部数据源配置
+        @summary Create External Data Source Configuration
         
         @param request: ModifyStreamingJobRequest
         @return: ModifyStreamingJobResponse
@@ -18608,7 +19532,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.QueryCollectionDataResponse:
         """
-        @summary Retrieves vector data.
+        @summary Query Vector Data
         
         @param tmp_req: QueryCollectionDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18687,7 +19611,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.QueryCollectionDataResponse:
         """
-        @summary Retrieves vector data.
+        @summary Query Vector Data
         
         @param tmp_req: QueryCollectionDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18765,7 +19689,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.QueryCollectionDataRequest,
     ) -> gpdb_20160503_models.QueryCollectionDataResponse:
         """
-        @summary Retrieves vector data.
+        @summary Query Vector Data
         
         @param request: QueryCollectionDataRequest
         @return: QueryCollectionDataResponse
@@ -18778,7 +19702,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.QueryCollectionDataRequest,
     ) -> gpdb_20160503_models.QueryCollectionDataResponse:
         """
-        @summary Retrieves vector data.
+        @summary Query Vector Data
         
         @param request: QueryCollectionDataRequest
         @return: QueryCollectionDataResponse
@@ -18792,7 +19716,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.QueryContentResponse:
         """
-        @summary Retrieves vector data and metadata from a document collection by using natural statements.
+        @summary Query
         
         @param tmp_req: QueryContentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18871,7 +19795,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.QueryContentResponse:
         """
-        @summary Retrieves vector data and metadata from a document collection by using natural statements.
+        @summary Query
         
         @param tmp_req: QueryContentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18949,7 +19873,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.QueryContentRequest,
     ) -> gpdb_20160503_models.QueryContentResponse:
         """
-        @summary Retrieves vector data and metadata from a document collection by using natural statements.
+        @summary Query
         
         @param request: QueryContentRequest
         @return: QueryContentResponse
@@ -18962,7 +19886,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.QueryContentRequest,
     ) -> gpdb_20160503_models.QueryContentResponse:
         """
-        @summary Retrieves vector data and metadata from a document collection by using natural statements.
+        @summary Query
         
         @param request: QueryContentRequest
         @return: QueryContentResponse
@@ -19324,7 +20248,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.RerankResponse:
         """
-        @summary 通过模型对文档进行打分和重排序
+        @summary Score and re-order documents using a model
         
         @param tmp_req: RerankRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19381,7 +20305,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.RerankResponse:
         """
-        @summary 通过模型对文档进行打分和重排序
+        @summary Score and re-order documents using a model
         
         @param tmp_req: RerankRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19437,7 +20361,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.RerankRequest,
     ) -> gpdb_20160503_models.RerankResponse:
         """
-        @summary 通过模型对文档进行打分和重排序
+        @summary Score and re-order documents using a model
         
         @param request: RerankRequest
         @return: RerankResponse
@@ -19450,7 +20374,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.RerankRequest,
     ) -> gpdb_20160503_models.RerankResponse:
         """
-        @summary 通过模型对文档进行打分和重排序
+        @summary Score and re-order documents using a model
         
         @param request: RerankRequest
         @return: RerankResponse
@@ -20494,6 +21418,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
+    def text_embedding_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.TextEmbeddingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.TextEmbeddingResponse:
+        """
+        @summary 通过模型对文本文档进行向量化
+        
+        @param tmp_req: TextEmbeddingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextEmbeddingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.TextEmbeddingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.input_shrink):
+            body['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.model):
+            body['Model'] = request.model
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TextEmbedding',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.TextEmbeddingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def text_embedding_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.TextEmbeddingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.TextEmbeddingResponse:
+        """
+        @summary 通过模型对文本文档进行向量化
+        
+        @param tmp_req: TextEmbeddingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextEmbeddingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.TextEmbeddingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.input_shrink):
+            body['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.model):
+            body['Model'] = request.model
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TextEmbedding',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.TextEmbeddingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def text_embedding(
+        self,
+        request: gpdb_20160503_models.TextEmbeddingRequest,
+    ) -> gpdb_20160503_models.TextEmbeddingResponse:
+        """
+        @summary 通过模型对文本文档进行向量化
+        
+        @param request: TextEmbeddingRequest
+        @return: TextEmbeddingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.text_embedding_with_options(request, runtime)
+
+    async def text_embedding_async(
+        self,
+        request: gpdb_20160503_models.TextEmbeddingRequest,
+    ) -> gpdb_20160503_models.TextEmbeddingResponse:
+        """
+        @summary 通过模型对文本文档进行向量化
+        
+        @param request: TextEmbeddingRequest
+        @return: TextEmbeddingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.text_embedding_with_options_async(request, runtime)
+
     def unbind_dbresource_group_with_role_with_options(
         self,
         tmp_req: gpdb_20160503_models.UnbindDBResourceGroupWithRoleRequest,
@@ -20732,7 +21780,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UntagResourcesResponse:
         """
-        @summary Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
+        @summary Remove resource tags
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20783,7 +21831,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UntagResourcesResponse:
         """
-        @summary Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
+        @summary Remove resource tags
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20833,7 +21881,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UntagResourcesRequest,
     ) -> gpdb_20160503_models.UntagResourcesResponse:
         """
-        @summary Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
+        @summary Remove resource tags
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -20846,7 +21894,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UntagResourcesRequest,
     ) -> gpdb_20160503_models.UntagResourcesResponse:
         """
-        @summary Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
+        @summary Remove resource tags
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -20860,7 +21908,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpdateCollectionDataMetadataResponse:
         """
-        @summary Updates metadata in the vector data.
+        @summary Update Metadata of Collection Data
         
         @param tmp_req: UpdateCollectionDataMetadataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20919,7 +21967,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpdateCollectionDataMetadataResponse:
         """
-        @summary Updates metadata in the vector data.
+        @summary Update Metadata of Collection Data
         
         @param tmp_req: UpdateCollectionDataMetadataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20977,7 +22025,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UpdateCollectionDataMetadataRequest,
     ) -> gpdb_20160503_models.UpdateCollectionDataMetadataResponse:
         """
-        @summary Updates metadata in the vector data.
+        @summary Update Metadata of Collection Data
         
         @param request: UpdateCollectionDataMetadataRequest
         @return: UpdateCollectionDataMetadataResponse
@@ -20990,7 +22038,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UpdateCollectionDataMetadataRequest,
     ) -> gpdb_20160503_models.UpdateCollectionDataMetadataResponse:
         """
-        @summary Updates metadata in the vector data.
+        @summary Update Metadata of Collection Data
         
         @param request: UpdateCollectionDataMetadataRequest
         @return: UpdateCollectionDataMetadataResponse
@@ -21434,6 +22482,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
         if not UtilClient.is_unset(request.extensions):
             query['Extensions'] = request.extensions
         if not UtilClient.is_unset(request.region_id):
@@ -21473,6 +22523,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
         if not UtilClient.is_unset(request.extensions):
             query['Extensions'] = request.extensions
         if not UtilClient.is_unset(request.region_id):
@@ -21528,7 +22580,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UploadDocumentAsyncResponse:
         """
-        @summary Uploads a document in an asynchronous manner by using an on-premises file or an Internet-accessible file URL. After a document is uploaded, the server loads, chunks, embeds, and stores the document. A document can be up to 200 MB in size.
+        @summary Asynchronous Document Upload
         
         @description The server loads and chunks a document based on the file extension, performs vectorization by using the embedding model that is specified when you call the CreateDocumentCollection operation, and then writes the document to the specified document collection. This operation supports multi-modal embedding for various formats of text and images.
         Related operations:
@@ -21610,7 +22662,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UploadDocumentAsyncResponse:
         """
-        @summary Uploads a document in an asynchronous manner by using an on-premises file or an Internet-accessible file URL. After a document is uploaded, the server loads, chunks, embeds, and stores the document. A document can be up to 200 MB in size.
+        @summary Asynchronous Document Upload
         
         @description The server loads and chunks a document based on the file extension, performs vectorization by using the embedding model that is specified when you call the CreateDocumentCollection operation, and then writes the document to the specified document collection. This operation supports multi-modal embedding for various formats of text and images.
         Related operations:
@@ -21691,7 +22743,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UploadDocumentAsyncRequest,
     ) -> gpdb_20160503_models.UploadDocumentAsyncResponse:
         """
-        @summary Uploads a document in an asynchronous manner by using an on-premises file or an Internet-accessible file URL. After a document is uploaded, the server loads, chunks, embeds, and stores the document. A document can be up to 200 MB in size.
+        @summary Asynchronous Document Upload
         
         @description The server loads and chunks a document based on the file extension, performs vectorization by using the embedding model that is specified when you call the CreateDocumentCollection operation, and then writes the document to the specified document collection. This operation supports multi-modal embedding for various formats of text and images.
         Related operations:
@@ -21713,7 +22765,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UploadDocumentAsyncRequest,
     ) -> gpdb_20160503_models.UploadDocumentAsyncResponse:
         """
-        @summary Uploads a document in an asynchronous manner by using an on-premises file or an Internet-accessible file URL. After a document is uploaded, the server loads, chunks, embeds, and stores the document. A document can be up to 200 MB in size.
+        @summary Asynchronous Document Upload
         
         @description The server loads and chunks a document based on the file extension, performs vectorization by using the embedding model that is specified when you call the CreateDocumentCollection operation, and then writes the document to the specified document collection. This operation supports multi-modal embedding for various formats of text and images.
         Related operations:
@@ -21880,7 +22932,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpsertChunksResponse:
         """
-        @summary Splits a document into chunks and uploads the vectorized chunks to a document collection.
+        @summary Upload split text
+        
+        @description The vectorization algorithm for the document is specified by the CreateDocumentCollection API.
         
         @param tmp_req: UpsertChunksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21935,7 +22989,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpsertChunksResponse:
         """
-        @summary Splits a document into chunks and uploads the vectorized chunks to a document collection.
+        @summary Upload split text
+        
+        @description The vectorization algorithm for the document is specified by the CreateDocumentCollection API.
         
         @param tmp_req: UpsertChunksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21989,7 +23045,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UpsertChunksRequest,
     ) -> gpdb_20160503_models.UpsertChunksResponse:
         """
-        @summary Splits a document into chunks and uploads the vectorized chunks to a document collection.
+        @summary Upload split text
+        
+        @description The vectorization algorithm for the document is specified by the CreateDocumentCollection API.
         
         @param request: UpsertChunksRequest
         @return: UpsertChunksResponse
@@ -22002,7 +23060,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UpsertChunksRequest,
     ) -> gpdb_20160503_models.UpsertChunksResponse:
         """
-        @summary Splits a document into chunks and uploads the vectorized chunks to a document collection.
+        @summary Upload split text
+        
+        @description The vectorization algorithm for the document is specified by the CreateDocumentCollection API.
         
         @param request: UpsertChunksRequest
         @return: UpsertChunksResponse

@@ -1,3 +1,92 @@
+2024-12-20 Version: 4.2.0
+- Support API CreateRemoteADBDataSource.
+- Support API DeleteAccount.
+- Support API DeleteRemoteADBDataSource.
+- Support API GetAccount.
+- Support API ListRemoteADBDataSources.
+- Support API ModifyDBInstanceNetworkType.
+- Support API ModifyDBInstancePayType.
+- Support API ModifyRemoteADBDataSource.
+- Support API TextEmbedding.
+- Update API AllocateInstancePublicConnection: update param AccessKeyId.
+- Update API BindDBResourceGroupWithRole: update param AccessKeyId.
+- Update API CreateAccount: delete param ResourceGroupId.
+- Update API CreateAccount: update param AccessKeyId.
+- Update API CreateAccount: update param AccountPassword.
+- Update API CreateCollection: add param MetadataIndices.
+- Update API CreateCollection: update param AccessKeyId.
+- Update API CreateDBInstance: add param DeployMode.
+- Update API CreateDBInstance: add param StandbyVSwitchId.
+- Update API CreateDBInstance: add param StandbyZoneId.
+- Update API CreateDBInstance: update param AccessKeyId.
+- Update API CreateDBInstancePlan: update param AccessKeyId.
+- Update API CreateDBResourceGroup: update param AccessKeyId.
+- Update API CreateDocumentCollection: add param MetadataIndices.
+- Update API CreateDocumentCollection: update param AccessKeyId.
+- Update API CreateJDBCDataSource: update param JDBCPassword.
+- Update API CreateSampleData: update param AccessKeyId.
+- Update API CreateStreamingJob: update param Password.
+- Update API DescribeActiveSQLRecords: update param AccessKeyId.
+- Update API DescribeAvailableResources: update param AccessKeyId.
+- Update API DescribeDBClusterNode: update param AccessKeyId.
+- Update API DescribeDBClusterPerformance: update param AccessKeyId.
+- Update API DescribeDBInstanceAttribute: update param AccessKeyId.
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API DescribeDBInstanceDataBloat: update param AccessKeyId.
+- Update API DescribeDBInstanceDataSkew: update param AccessKeyId.
+- Update API DescribeDBInstanceDiagnosisSummary: update param AccessKeyId.
+- Update API DescribeDBInstanceErrorLog: update param AccessKeyId.
+- Update API DescribeDBInstanceIPArrayList: update param AccessKeyId.
+- Update API DescribeDBInstanceIndexUsage: update param AccessKeyId.
+- Update API DescribeDBInstanceNetInfo: update param AccessKeyId.
+- Update API DescribeDBInstancePerformance: update param AccessKeyId.
+- Update API DescribeDBInstancePlans: update param AccessKeyId.
+- Update API DescribeDBInstanceSSL: update param AccessKeyId.
+- Update API DescribeDBInstanceSupportMaxPerformance: update param AccessKeyId.
+- Update API DescribeDBInstances: update param AccessKeyId.
+- Update API DescribeDBResourceGroup: update param AccessKeyId.
+- Update API DescribeDBResourceManagementMode: update param AccessKeyId.
+- Update API DescribeDBVersionInfos: update param AccessKeyId.
+- Update API DescribeDataReDistributeInfo: update param AccessKeyId.
+- Update API DescribeDataShareInstances: update param AccessKeyId.
+- Update API DescribeDiagnosisDimensions: update param AccessKeyId.
+- Update API DescribeDiagnosisMonitorPerformance: update param AccessKeyId.
+- Update API DescribeDiagnosisRecords: update param AccessKeyId.
+- Update API DescribeDiagnosisSQLInfo: update param AccessKeyId.
+- Update API DescribeDownloadRecords: update param AccessKeyId.
+- Update API DescribeDownloadSQLLogs: update param AccessKeyId.
+- Update API DescribeHealthStatus: update param AccessKeyId.
+- Update API DescribeIMVInfos: update param AccessKeyId.
+- Update API DescribeJDBCDataSource: update response param.
+- Update API DescribeLogBackups: update param AccessKeyId.
+- Update API DescribeModifyParameterLog: update param AccessKeyId.
+- Update API DescribeParameters: update param AccessKeyId.
+- Update API DescribeRoles: update param AccessKeyId.
+- Update API DescribeSQLLogCount: update param AccessKeyId.
+- Update API DescribeSQLLogs: update param AccessKeyId.
+- Update API DescribeSQLLogsV2: update param AccessKeyId.
+- Update API DescribeSQLLogsV2: update response param.
+- Update API DescribeSampleData: update param AccessKeyId.
+- Update API DescribeSupportFeatures: update param AccessKeyId.
+- Update API DescribeTags: update param AccessKeyId.
+- Update API DescribeWaitingSQLInfo: update param AccessKeyId.
+- Update API DescribeWaitingSQLRecords: update param AccessKeyId.
+- Update API DisableDBResourceGroup: update param AccessKeyId.
+- Update API DownloadDiagnosisRecords: update param AccessKeyId.
+- Update API DownloadSQLLogsRecords: update param AccessKeyId.
+- Update API EnableDBResourceGroup: update param AccessKeyId.
+- Update API GetUploadDocumentJob: update response param.
+- Update API HandleActiveSQLRecord: update param AccessKeyId.
+- Update API ListTagResources: update param AccessKeyId.
+- Update API ModifyAccountDescription: add param ClientToken.
+- Update API ModifyAccountDescription: update param AccessKeyId.
+- Update API ModifyAccountDescription: update param AccountDescription.
+- Update API ModifyDBInstanceConnectionString: add param ClientToken.
+- Update API ModifyDBInstanceConnectionString: update param AccessKeyId.
+- Update API SetDataShareInstance: update param AccessKeyId.
+- Update API UpgradeExtensions: add param DatabaseName.
+
+
 2024-09-06 Version: 4.1.0
 - Support API Rerank.
 
