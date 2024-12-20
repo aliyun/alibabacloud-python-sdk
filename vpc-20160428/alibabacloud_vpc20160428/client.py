@@ -52553,6 +52553,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.terminate_virtual_border_router_with_options_async(request, runtime)
 
+    def transform_eip_segment_to_public_ip_address_pool_with_options(
+        self,
+        request: vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse:
+        """
+        @summary 连续EIP组转换为公网IP地址池
+        
+        @param request: TransformEipSegmentToPublicIpAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransformEipSegmentToPublicIpAddressPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransformEipSegmentToPublicIpAddressPool',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transform_eip_segment_to_public_ip_address_pool_with_options_async(
+        self,
+        request: vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse:
+        """
+        @summary 连续EIP组转换为公网IP地址池
+        
+        @param request: TransformEipSegmentToPublicIpAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransformEipSegmentToPublicIpAddressPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransformEipSegmentToPublicIpAddressPool',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transform_eip_segment_to_public_ip_address_pool(
+        self,
+        request: vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolRequest,
+    ) -> vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse:
+        """
+        @summary 连续EIP组转换为公网IP地址池
+        
+        @param request: TransformEipSegmentToPublicIpAddressPoolRequest
+        @return: TransformEipSegmentToPublicIpAddressPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.transform_eip_segment_to_public_ip_address_pool_with_options(request, runtime)
+
+    async def transform_eip_segment_to_public_ip_address_pool_async(
+        self,
+        request: vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolRequest,
+    ) -> vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse:
+        """
+        @summary 连续EIP组转换为公网IP地址池
+        
+        @param request: TransformEipSegmentToPublicIpAddressPoolRequest
+        @return: TransformEipSegmentToPublicIpAddressPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.transform_eip_segment_to_public_ip_address_pool_with_options_async(request, runtime)
+
     def un_tag_resources_with_options(
         self,
         request: vpc_20160428_models.UnTagResourcesRequest,

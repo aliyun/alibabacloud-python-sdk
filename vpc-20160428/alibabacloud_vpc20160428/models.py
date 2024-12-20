@@ -60130,6 +60130,11 @@ class DescribeVpcsRequest(TeaModel):
         # *   **true**: performs only a dry run. The system prechecks whether your AccessKey pair is valid, whether the RAM user is authorized, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and VPCs are queried.
         self.dry_run = dry_run
+        # Query for VPCs in the specified region that have enabled IPv6 CIDR blocks. The value is empty by default, which means no filtering based on IPv6 availability is conducted. Valid values:
+        # 
+        # - false: disabled
+        # 
+        # - true: enabled
         self.enable_ipv_6 = enable_ipv_6
         # Specifies whether to query the default VPC in the specified region. Valid values:
         # 
@@ -60138,7 +60143,7 @@ class DescribeVpcsRequest(TeaModel):
         self.is_default = is_default
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
@@ -60578,7 +60583,15 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
         # *   **Deleted**\
         # *   **Pending**\
         self.dhcp_options_set_status = dhcp_options_set_status
+        # Indicates whether the Domain Name System (DNS) feature is enabled.
         self.dns_hostname_status = dns_hostname_status
+        # Indicates whether the IPv6 is enabled.
+        # 
+        # Valid values:
+        # 
+        # - false: false
+        # 
+        # - true: true
         self.enabled_ipv_6 = enabled_ipv_6
         # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
@@ -60805,7 +60818,7 @@ class DescribeVpcsResponseBody(TeaModel):
         self.request_id = request_id
         # The number of entries returned.
         self.total_count = total_count
-        # The details about the VPC.
+        # The details of the VPC.
         self.vpcs = vpcs
 
     def validate(self):
@@ -100465,6 +100478,145 @@ class TerminateVirtualBorderRouterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TerminateVirtualBorderRouterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TransformEipSegmentToPublicIpAddressPoolRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        instance_id: str = None,
+        name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+    ):
+        self.client_token = client_token
+        self.description = description
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.name = name
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class TransformEipSegmentToPublicIpAddressPoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        public_ip_address_pool_id: str = None,
+        request_id: str = None,
+        resource_group_id: str = None,
+    ):
+        self.public_ip_address_pool_id = public_ip_address_pool_id
+        self.request_id = request_id
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.public_ip_address_pool_id is not None:
+            result['PublicIpAddressPoolId'] = self.public_ip_address_pool_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PublicIpAddressPoolId') is not None:
+            self.public_ip_address_pool_id = m.get('PublicIpAddressPoolId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class TransformEipSegmentToPublicIpAddressPoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TransformEipSegmentToPublicIpAddressPoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TransformEipSegmentToPublicIpAddressPoolResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
