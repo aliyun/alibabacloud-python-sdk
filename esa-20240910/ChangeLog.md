@@ -1,3 +1,6 @@
+2024-12-20 Version: 2.7.5
+- Generated python 2024-09-10 for ESA.
+
 2024-12-19 Version: 2.7.4
 - Update API GetSiteWafSettings: add param Path.
 
