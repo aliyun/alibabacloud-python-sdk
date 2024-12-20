@@ -1,3 +1,10 @@
+2024-12-20 Version: 1.2.5
+- Update API CreateListener: update param XForwardedForConfig.
+- Update API GetListenerAttribute: update response param.
+- Update API ListListeners: update response param.
+- Update API UpdateListenerAttribute: update param XForwardedForConfig.
+
+
 2024-12-11 Version: 1.2.4
 - Update API CreateRules: update param Rules.
 - Update API CreateRules: update param Rules.

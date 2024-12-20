@@ -2259,6 +2259,8 @@ class CreateListenerRequestXForwardedForConfig(TeaModel):
         xforwarded_for_client_source_ips_trusted: str = None,
         xforwarded_for_client_src_port_enabled: bool = None,
         xforwarded_for_enabled: bool = None,
+        xforwarded_for_host_enabled: bool = None,
+        xforwarded_for_processing_mode: str = None,
         xforwarded_for_proto_enabled: bool = None,
         xforwarded_for_slbid_enabled: bool = None,
         xforwarded_for_slbport_enabled: bool = None,
@@ -2340,6 +2342,8 @@ class CreateListenerRequestXForwardedForConfig(TeaModel):
         # 
         # >  HTTP and HTTPS listeners support this parameter.
         self.xforwarded_for_enabled = xforwarded_for_enabled
+        self.xforwarded_for_host_enabled = xforwarded_for_host_enabled
+        self.xforwarded_for_processing_mode = xforwarded_for_processing_mode
         # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
         # 
         # *   **true**\
@@ -2395,6 +2399,10 @@ class CreateListenerRequestXForwardedForConfig(TeaModel):
             result['XForwardedForClientSrcPortEnabled'] = self.xforwarded_for_client_src_port_enabled
         if self.xforwarded_for_enabled is not None:
             result['XForwardedForEnabled'] = self.xforwarded_for_enabled
+        if self.xforwarded_for_host_enabled is not None:
+            result['XForwardedForHostEnabled'] = self.xforwarded_for_host_enabled
+        if self.xforwarded_for_processing_mode is not None:
+            result['XForwardedForProcessingMode'] = self.xforwarded_for_processing_mode
         if self.xforwarded_for_proto_enabled is not None:
             result['XForwardedForProtoEnabled'] = self.xforwarded_for_proto_enabled
         if self.xforwarded_for_slbid_enabled is not None:
@@ -2429,6 +2437,10 @@ class CreateListenerRequestXForwardedForConfig(TeaModel):
             self.xforwarded_for_client_src_port_enabled = m.get('XForwardedForClientSrcPortEnabled')
         if m.get('XForwardedForEnabled') is not None:
             self.xforwarded_for_enabled = m.get('XForwardedForEnabled')
+        if m.get('XForwardedForHostEnabled') is not None:
+            self.xforwarded_for_host_enabled = m.get('XForwardedForHostEnabled')
+        if m.get('XForwardedForProcessingMode') is not None:
+            self.xforwarded_for_processing_mode = m.get('XForwardedForProcessingMode')
         if m.get('XForwardedForProtoEnabled') is not None:
             self.xforwarded_for_proto_enabled = m.get('XForwardedForProtoEnabled')
         if m.get('XForwardedForSLBIdEnabled') is not None:
@@ -6727,6 +6739,18 @@ class CreateServerGroupRequest(TeaModel):
         # >*   Basic ALB instances do not support connection draining. Standard and WAF-enabled ALB instances support connection draining.
         # >*   Server groups of the instance and IP types support connection draining. Server groups of the Function Compute type do not support connection draining.
         self.connection_drain_config = connection_drain_config
+        # Specifies whether to enable cross-zone load balancing. Valid values:
+        # 
+        # *   **true** (default)
+        # *   **false**\
+        # 
+        # > 
+        # 
+        # *   Basic ALB instances do not support server groups that have cross-zone load balancing disabled. Only Standard and WAF-enabled ALB instances support server groups that have cross-zone load balancing.
+        # 
+        # *   Cross-zone load balancing can be disabled for server groups of the server and IP type, but not for server groups of the Function Compute type.
+        # 
+        # *   When cross-zone load balancing is disabled, session persistence cannot be enabled.
         self.cross_zone_enabled = cross_zone_enabled
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
@@ -7744,7 +7768,7 @@ class DeleteRulesRequest(TeaModel):
         # *   **true**: checks the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the forwarding rule. Valid values of N: **1** to **5**.
+        # The forwarding rules.
         # 
         # This parameter is required.
         self.rule_ids = rule_ids
@@ -8103,7 +8127,7 @@ class DescribeRegionsRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
-        # The language of the response. Valid values:
+        # The supported language. Valid values:
         # 
         # *   **zh-CN** (default): Chinese
         # *   **en-US**: English
@@ -8261,7 +8285,7 @@ class DescribeZonesRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
-        # The language of the response. Valid values:
+        # The supported language. Valid values:
         # 
         # *   **zh-CN** (default): Chinese
         # *   **en-US**: English
@@ -10363,6 +10387,8 @@ class GetListenerAttributeResponseBodyXForwardedForConfig(TeaModel):
         xforwarded_for_client_source_ips_trusted: str = None,
         xforwarded_for_client_src_port_enabled: bool = None,
         xforwarded_for_enabled: bool = None,
+        xforwarded_for_host_enabled: bool = None,
+        xforwarded_for_processing_mode: str = None,
         xforwarded_for_proto_enabled: bool = None,
         xforwarded_for_slbid_enabled: bool = None,
         xforwarded_for_slbport_enabled: bool = None,
@@ -10444,6 +10470,8 @@ class GetListenerAttributeResponseBodyXForwardedForConfig(TeaModel):
         # 
         # > This parameter is available only when you create an HTTP or HTTPS listener.
         self.xforwarded_for_enabled = xforwarded_for_enabled
+        self.xforwarded_for_host_enabled = xforwarded_for_host_enabled
+        self.xforwarded_for_processing_mode = xforwarded_for_processing_mode
         # Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listening protocol. Valid values:
         # 
         # *   **true**\
@@ -10499,6 +10527,10 @@ class GetListenerAttributeResponseBodyXForwardedForConfig(TeaModel):
             result['XForwardedForClientSrcPortEnabled'] = self.xforwarded_for_client_src_port_enabled
         if self.xforwarded_for_enabled is not None:
             result['XForwardedForEnabled'] = self.xforwarded_for_enabled
+        if self.xforwarded_for_host_enabled is not None:
+            result['XForwardedForHostEnabled'] = self.xforwarded_for_host_enabled
+        if self.xforwarded_for_processing_mode is not None:
+            result['XForwardedForProcessingMode'] = self.xforwarded_for_processing_mode
         if self.xforwarded_for_proto_enabled is not None:
             result['XForwardedForProtoEnabled'] = self.xforwarded_for_proto_enabled
         if self.xforwarded_for_slbid_enabled is not None:
@@ -10533,6 +10565,10 @@ class GetListenerAttributeResponseBodyXForwardedForConfig(TeaModel):
             self.xforwarded_for_client_src_port_enabled = m.get('XForwardedForClientSrcPortEnabled')
         if m.get('XForwardedForEnabled') is not None:
             self.xforwarded_for_enabled = m.get('XForwardedForEnabled')
+        if m.get('XForwardedForHostEnabled') is not None:
+            self.xforwarded_for_host_enabled = m.get('XForwardedForHostEnabled')
+        if m.get('XForwardedForProcessingMode') is not None:
+            self.xforwarded_for_processing_mode = m.get('XForwardedForProcessingMode')
         if m.get('XForwardedForProtoEnabled') is not None:
             self.xforwarded_for_proto_enabled = m.get('XForwardedForProtoEnabled')
         if m.get('XForwardedForSLBIdEnabled') is not None:
@@ -14532,6 +14568,8 @@ class ListListenersResponseBodyListenersXForwardedForConfig(TeaModel):
         xforwarded_for_client_source_ips_trusted: str = None,
         xforwarded_for_client_src_port_enabled: bool = None,
         xforwarded_for_enabled: bool = None,
+        xforwarded_for_host_enabled: bool = None,
+        xforwarded_for_processing_mode: str = None,
         xforwarded_for_proto_enabled: bool = None,
         xforwarded_for_slbid_enabled: bool = None,
         xforwarded_for_slbport_enabled: bool = None,
@@ -14613,6 +14651,8 @@ class ListListenersResponseBodyListenersXForwardedForConfig(TeaModel):
         # 
         # >  This parameter is returned only for HTTP and HTTPS listeners.
         self.xforwarded_for_enabled = xforwarded_for_enabled
+        self.xforwarded_for_host_enabled = xforwarded_for_host_enabled
+        self.xforwarded_for_processing_mode = xforwarded_for_processing_mode
         # Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listener protocol. Valid values:
         # 
         # *   **true**\
@@ -14668,6 +14708,10 @@ class ListListenersResponseBodyListenersXForwardedForConfig(TeaModel):
             result['XForwardedForClientSrcPortEnabled'] = self.xforwarded_for_client_src_port_enabled
         if self.xforwarded_for_enabled is not None:
             result['XForwardedForEnabled'] = self.xforwarded_for_enabled
+        if self.xforwarded_for_host_enabled is not None:
+            result['XForwardedForHostEnabled'] = self.xforwarded_for_host_enabled
+        if self.xforwarded_for_processing_mode is not None:
+            result['XForwardedForProcessingMode'] = self.xforwarded_for_processing_mode
         if self.xforwarded_for_proto_enabled is not None:
             result['XForwardedForProtoEnabled'] = self.xforwarded_for_proto_enabled
         if self.xforwarded_for_slbid_enabled is not None:
@@ -14702,6 +14746,10 @@ class ListListenersResponseBodyListenersXForwardedForConfig(TeaModel):
             self.xforwarded_for_client_src_port_enabled = m.get('XForwardedForClientSrcPortEnabled')
         if m.get('XForwardedForEnabled') is not None:
             self.xforwarded_for_enabled = m.get('XForwardedForEnabled')
+        if m.get('XForwardedForHostEnabled') is not None:
+            self.xforwarded_for_host_enabled = m.get('XForwardedForHostEnabled')
+        if m.get('XForwardedForProcessingMode') is not None:
+            self.xforwarded_for_processing_mode = m.get('XForwardedForProcessingMode')
         if m.get('XForwardedForProtoEnabled') is not None:
             self.xforwarded_for_proto_enabled = m.get('XForwardedForProtoEnabled')
         if m.get('XForwardedForSLBIdEnabled') is not None:
@@ -18723,7 +18771,10 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         self.connection_drain_config = connection_drain_config
         # The time when the resource was created.
         self.create_time = create_time
-        # 是否开启跨可用区转发。（默认开启）
+        # Indicates whether cross-zone load balancing is enabled. Valid values:
+        # 
+        # *   **true** (default)
+        # *   **false**\
         self.cross_zone_enabled = cross_zone_enabled
         # The health check configurations.
         self.health_check_config = health_check_config
@@ -22465,6 +22516,8 @@ class UpdateListenerAttributeRequestXForwardedForConfig(TeaModel):
         xforwarded_for_client_source_ips_trusted: str = None,
         xforwarded_for_client_src_port_enabled: bool = None,
         xforwarded_for_enabled: bool = None,
+        xforwarded_for_host_enabled: bool = None,
+        xforwarded_for_processing_mode: str = None,
         xforwarded_for_proto_enabled: bool = None,
         xforwarded_for_slbid_enabled: bool = None,
         xforwarded_for_slbport_enabled: bool = None,
@@ -22546,6 +22599,8 @@ class UpdateListenerAttributeRequestXForwardedForConfig(TeaModel):
         # 
         # >  HTTP and HTTPS listeners support this parameter.
         self.xforwarded_for_enabled = xforwarded_for_enabled
+        self.xforwarded_for_host_enabled = xforwarded_for_host_enabled
+        self.xforwarded_for_processing_mode = xforwarded_for_processing_mode
         # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
         # 
         # *   **true**\
@@ -22601,6 +22656,10 @@ class UpdateListenerAttributeRequestXForwardedForConfig(TeaModel):
             result['XForwardedForClientSrcPortEnabled'] = self.xforwarded_for_client_src_port_enabled
         if self.xforwarded_for_enabled is not None:
             result['XForwardedForEnabled'] = self.xforwarded_for_enabled
+        if self.xforwarded_for_host_enabled is not None:
+            result['XForwardedForHostEnabled'] = self.xforwarded_for_host_enabled
+        if self.xforwarded_for_processing_mode is not None:
+            result['XForwardedForProcessingMode'] = self.xforwarded_for_processing_mode
         if self.xforwarded_for_proto_enabled is not None:
             result['XForwardedForProtoEnabled'] = self.xforwarded_for_proto_enabled
         if self.xforwarded_for_slbid_enabled is not None:
@@ -22635,6 +22694,10 @@ class UpdateListenerAttributeRequestXForwardedForConfig(TeaModel):
             self.xforwarded_for_client_src_port_enabled = m.get('XForwardedForClientSrcPortEnabled')
         if m.get('XForwardedForEnabled') is not None:
             self.xforwarded_for_enabled = m.get('XForwardedForEnabled')
+        if m.get('XForwardedForHostEnabled') is not None:
+            self.xforwarded_for_host_enabled = m.get('XForwardedForHostEnabled')
+        if m.get('XForwardedForProcessingMode') is not None:
+            self.xforwarded_for_processing_mode = m.get('XForwardedForProcessingMode')
         if m.get('XForwardedForProtoEnabled') is not None:
             self.xforwarded_for_proto_enabled = m.get('XForwardedForProtoEnabled')
         if m.get('XForwardedForSLBIdEnabled') is not None:
@@ -27070,6 +27133,18 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         # 
         # *   Server groups of the server and IP types support connection draining. Server groups of the Function Compute type do not support connection draining.
         self.connection_drain_config = connection_drain_config
+        # Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+        # 
+        # *   **true** (default)
+        # *   **false**\
+        # 
+        # > 
+        # 
+        # *   Basic ALB instances do not support server groups that have cross-zone load balancing disabled. Only Standard and WAF-enabled ALB instances support server groups that have cross-zone load balancing.
+        # 
+        # *   Cross-zone load balancing can be disabled for server groups of the server and IP type, but not for server groups of the Function Compute type.
+        # 
+        # *   When cross-zone load balancing is disabled, session persistence cannot be enabled.
         self.cross_zone_enabled = cross_zone_enabled
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
