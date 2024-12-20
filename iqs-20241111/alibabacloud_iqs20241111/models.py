@@ -238,6 +238,122 @@ class ScorePageItem(TeaModel):
         return self
 
 
+class QueryContextOriginalQuery(TeaModel):
+    def __init__(
+        self,
+        industry: str = None,
+        page: str = None,
+        query: str = None,
+        time_range: str = None,
+    ):
+        self.industry = industry
+        self.page = page
+        self.query = query
+        self.time_range = time_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.industry is not None:
+            result['industry'] = self.industry
+        if self.page is not None:
+            result['page'] = self.page
+        if self.query is not None:
+            result['query'] = self.query
+        if self.time_range is not None:
+            result['timeRange'] = self.time_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('industry') is not None:
+            self.industry = m.get('industry')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('timeRange') is not None:
+            self.time_range = m.get('timeRange')
+        return self
+
+
+class QueryContextRewrite(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        time_range: str = None,
+    ):
+        self.enabled = enabled
+        self.time_range = time_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.time_range is not None:
+            result['timeRange'] = self.time_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('timeRange') is not None:
+            self.time_range = m.get('timeRange')
+        return self
+
+
+class QueryContext(TeaModel):
+    def __init__(
+        self,
+        original_query: QueryContextOriginalQuery = None,
+        rewrite: QueryContextRewrite = None,
+    ):
+        self.original_query = original_query
+        self.rewrite = rewrite
+
+    def validate(self):
+        if self.original_query:
+            self.original_query.validate()
+        if self.rewrite:
+            self.rewrite.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.original_query is not None:
+            result['originalQuery'] = self.original_query.to_map()
+        if self.rewrite is not None:
+            result['rewrite'] = self.rewrite.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('originalQuery') is not None:
+            temp_model = QueryContextOriginalQuery()
+            self.original_query = temp_model.from_map(m['originalQuery'])
+        if m.get('rewrite') is not None:
+            temp_model = QueryContextRewrite()
+            self.rewrite = temp_model.from_map(m['rewrite'])
+        return self
+
+
 class SceneItem(TeaModel):
     def __init__(
         self,
@@ -375,12 +491,14 @@ class GenericSearchResult(TeaModel):
     def __init__(
         self,
         page_items: List[ScorePageItem] = None,
+        query_context: QueryContext = None,
         request_id: str = None,
         scene_items: List[SceneItem] = None,
         search_information: SearchInformation = None,
         weibo_items: List[WeiboItem] = None,
     ):
         self.page_items = page_items
+        self.query_context = query_context
         self.request_id = request_id
         self.scene_items = scene_items
         self.search_information = search_information
@@ -391,6 +509,8 @@ class GenericSearchResult(TeaModel):
             for k in self.page_items:
                 if k:
                     k.validate()
+        if self.query_context:
+            self.query_context.validate()
         if self.scene_items:
             for k in self.scene_items:
                 if k:
@@ -412,6 +532,8 @@ class GenericSearchResult(TeaModel):
         if self.page_items is not None:
             for k in self.page_items:
                 result['pageItems'].append(k.to_map() if k else None)
+        if self.query_context is not None:
+            result['queryContext'] = self.query_context.to_map()
         if self.request_id is not None:
             result['requestId'] = self.request_id
         result['sceneItems'] = []
@@ -433,6 +555,9 @@ class GenericSearchResult(TeaModel):
             for k in m.get('pageItems'):
                 temp_model = ScorePageItem()
                 self.page_items.append(temp_model.from_map(k))
+        if m.get('queryContext') is not None:
+            temp_model = QueryContext()
+            self.query_context = temp_model.from_map(m['queryContext'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         self.scene_items = []
@@ -503,19 +628,138 @@ class AiSearchRequest(TeaModel):
         return self
 
 
+class AiSearchResponseBodyHeaderQueryContextOriginalQuery(TeaModel):
+    def __init__(
+        self,
+        industry: str = None,
+        page: int = None,
+        query: str = None,
+        time_range: str = None,
+    ):
+        self.industry = industry
+        self.page = page
+        self.query = query
+        self.time_range = time_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.industry is not None:
+            result['industry'] = self.industry
+        if self.page is not None:
+            result['page'] = self.page
+        if self.query is not None:
+            result['query'] = self.query
+        if self.time_range is not None:
+            result['timeRange'] = self.time_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('industry') is not None:
+            self.industry = m.get('industry')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('timeRange') is not None:
+            self.time_range = m.get('timeRange')
+        return self
+
+
+class AiSearchResponseBodyHeaderQueryContextRewrite(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        time_range: str = None,
+    ):
+        self.enabled = enabled
+        self.time_range = time_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.time_range is not None:
+            result['timeRange'] = self.time_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('timeRange') is not None:
+            self.time_range = m.get('timeRange')
+        return self
+
+
+class AiSearchResponseBodyHeaderQueryContext(TeaModel):
+    def __init__(
+        self,
+        original_query: AiSearchResponseBodyHeaderQueryContextOriginalQuery = None,
+        rewrite: AiSearchResponseBodyHeaderQueryContextRewrite = None,
+    ):
+        self.original_query = original_query
+        self.rewrite = rewrite
+
+    def validate(self):
+        if self.original_query:
+            self.original_query.validate()
+        if self.rewrite:
+            self.rewrite.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.original_query is not None:
+            result['originalQuery'] = self.original_query.to_map()
+        if self.rewrite is not None:
+            result['rewrite'] = self.rewrite.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('originalQuery') is not None:
+            temp_model = AiSearchResponseBodyHeaderQueryContextOriginalQuery()
+            self.original_query = temp_model.from_map(m['originalQuery'])
+        if m.get('rewrite') is not None:
+            temp_model = AiSearchResponseBodyHeaderQueryContextRewrite()
+            self.rewrite = temp_model.from_map(m['rewrite'])
+        return self
+
+
 class AiSearchResponseBodyHeader(TeaModel):
     def __init__(
         self,
         event: str = None,
         event_id: str = None,
+        query_context: AiSearchResponseBodyHeaderQueryContext = None,
         response_time: int = None,
     ):
         self.event = event
         self.event_id = event_id
+        self.query_context = query_context
         self.response_time = response_time
 
     def validate(self):
-        pass
+        if self.query_context:
+            self.query_context.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -527,6 +771,8 @@ class AiSearchResponseBodyHeader(TeaModel):
             result['event'] = self.event
         if self.event_id is not None:
             result['eventId'] = self.event_id
+        if self.query_context is not None:
+            result['queryContext'] = self.query_context.to_map()
         if self.response_time is not None:
             result['responseTime'] = self.response_time
         return result
@@ -537,6 +783,9 @@ class AiSearchResponseBodyHeader(TeaModel):
             self.event = m.get('event')
         if m.get('eventId') is not None:
             self.event_id = m.get('eventId')
+        if m.get('queryContext') is not None:
+            temp_model = AiSearchResponseBodyHeaderQueryContext()
+            self.query_context = temp_model.from_map(m['queryContext'])
         if m.get('responseTime') is not None:
             self.response_time = m.get('responseTime')
         return self
