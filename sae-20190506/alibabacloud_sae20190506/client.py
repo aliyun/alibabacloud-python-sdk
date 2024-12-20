@@ -687,17 +687,21 @@ class Client(OpenApiClient):
 
     def create_application_with_options(
         self,
-        request: sae_20190506_models.CreateApplicationRequest,
+        tmp_req: sae_20190506_models.CreateApplicationRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateApplicationResponse:
         """
-        @param request: CreateApplicationRequest
+        @param tmp_req: CreateApplicationRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateApplicationResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.CreateApplicationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sidecar_containers_config):
+            request.sidecar_containers_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
             query['AcrAssumeRoleArn'] = request.acr_assume_role_arn
@@ -789,6 +793,8 @@ class Client(OpenApiClient):
             query['Replicas'] = request.replicas
         if not UtilClient.is_unset(request.sae_version):
             query['SaeVersion'] = request.sae_version
+        if not UtilClient.is_unset(request.secret_mount_desc):
+            query['SecretMountDesc'] = request.secret_mount_desc
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.sls_configs):
@@ -816,6 +822,8 @@ class Client(OpenApiClient):
             body['BaseAppId'] = request.base_app_id
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.enable_sidecar_resource_isolated):
+            body['EnableSidecarResourceIsolated'] = request.enable_sidecar_resource_isolated
         if not UtilClient.is_unset(request.micro_registration_config):
             body['MicroRegistrationConfig'] = request.micro_registration_config
         if not UtilClient.is_unset(request.oss_ak_id):
@@ -830,6 +838,8 @@ class Client(OpenApiClient):
             body['PhpConfig'] = request.php_config
         if not UtilClient.is_unset(request.service_tags):
             body['ServiceTags'] = request.service_tags
+        if not UtilClient.is_unset(request.sidecar_containers_config_shrink):
+            body['SidecarContainersConfig'] = request.sidecar_containers_config_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -853,17 +863,21 @@ class Client(OpenApiClient):
 
     async def create_application_with_options_async(
         self,
-        request: sae_20190506_models.CreateApplicationRequest,
+        tmp_req: sae_20190506_models.CreateApplicationRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateApplicationResponse:
         """
-        @param request: CreateApplicationRequest
+        @param tmp_req: CreateApplicationRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateApplicationResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.CreateApplicationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sidecar_containers_config):
+            request.sidecar_containers_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
             query['AcrAssumeRoleArn'] = request.acr_assume_role_arn
@@ -955,6 +969,8 @@ class Client(OpenApiClient):
             query['Replicas'] = request.replicas
         if not UtilClient.is_unset(request.sae_version):
             query['SaeVersion'] = request.sae_version
+        if not UtilClient.is_unset(request.secret_mount_desc):
+            query['SecretMountDesc'] = request.secret_mount_desc
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.sls_configs):
@@ -982,6 +998,8 @@ class Client(OpenApiClient):
             body['BaseAppId'] = request.base_app_id
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.enable_sidecar_resource_isolated):
+            body['EnableSidecarResourceIsolated'] = request.enable_sidecar_resource_isolated
         if not UtilClient.is_unset(request.micro_registration_config):
             body['MicroRegistrationConfig'] = request.micro_registration_config
         if not UtilClient.is_unset(request.oss_ak_id):
@@ -996,6 +1014,8 @@ class Client(OpenApiClient):
             body['PhpConfig'] = request.php_config
         if not UtilClient.is_unset(request.service_tags):
             body['ServiceTags'] = request.service_tags
+        if not UtilClient.is_unset(request.sidecar_containers_config_shrink):
+            body['SidecarContainersConfig'] = request.sidecar_containers_config_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -3655,19 +3675,23 @@ class Client(OpenApiClient):
 
     def deploy_application_with_options(
         self,
-        request: sae_20190506_models.DeployApplicationRequest,
+        tmp_req: sae_20190506_models.DeployApplicationRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeployApplicationResponse:
         """
         @summary Deploys an application.
         
-        @param request: DeployApplicationRequest
+        @param tmp_req: DeployApplicationRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeployApplicationResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.DeployApplicationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sidecar_containers_config):
+            request.sidecar_containers_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
             query['AcrAssumeRoleArn'] = request.acr_assume_role_arn
@@ -3759,6 +3783,8 @@ class Client(OpenApiClient):
             query['Readiness'] = request.readiness
         if not UtilClient.is_unset(request.replicas):
             query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.secret_mount_desc):
+            query['SecretMountDesc'] = request.secret_mount_desc
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.sls_configs):
@@ -3784,6 +3810,8 @@ class Client(OpenApiClient):
             body['AssociateEip'] = request.associate_eip
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.enable_sidecar_resource_isolated):
+            body['EnableSidecarResourceIsolated'] = request.enable_sidecar_resource_isolated
         if not UtilClient.is_unset(request.micro_registration_config):
             body['MicroRegistrationConfig'] = request.micro_registration_config
         if not UtilClient.is_unset(request.oss_ak_id):
@@ -3798,6 +3826,8 @@ class Client(OpenApiClient):
             body['PhpConfig'] = request.php_config
         if not UtilClient.is_unset(request.service_tags):
             body['ServiceTags'] = request.service_tags
+        if not UtilClient.is_unset(request.sidecar_containers_config_shrink):
+            body['SidecarContainersConfig'] = request.sidecar_containers_config_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -3821,19 +3851,23 @@ class Client(OpenApiClient):
 
     async def deploy_application_with_options_async(
         self,
-        request: sae_20190506_models.DeployApplicationRequest,
+        tmp_req: sae_20190506_models.DeployApplicationRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeployApplicationResponse:
         """
         @summary Deploys an application.
         
-        @param request: DeployApplicationRequest
+        @param tmp_req: DeployApplicationRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeployApplicationResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.DeployApplicationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sidecar_containers_config):
+            request.sidecar_containers_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
             query['AcrAssumeRoleArn'] = request.acr_assume_role_arn
@@ -3925,6 +3959,8 @@ class Client(OpenApiClient):
             query['Readiness'] = request.readiness
         if not UtilClient.is_unset(request.replicas):
             query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.secret_mount_desc):
+            query['SecretMountDesc'] = request.secret_mount_desc
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.sls_configs):
@@ -3950,6 +3986,8 @@ class Client(OpenApiClient):
             body['AssociateEip'] = request.associate_eip
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.enable_sidecar_resource_isolated):
+            body['EnableSidecarResourceIsolated'] = request.enable_sidecar_resource_isolated
         if not UtilClient.is_unset(request.micro_registration_config):
             body['MicroRegistrationConfig'] = request.micro_registration_config
         if not UtilClient.is_unset(request.oss_ak_id):
@@ -3964,6 +4002,8 @@ class Client(OpenApiClient):
             body['PhpConfig'] = request.php_config
         if not UtilClient.is_unset(request.service_tags):
             body['ServiceTags'] = request.service_tags
+        if not UtilClient.is_unset(request.sidecar_containers_config_shrink):
+            body['SidecarContainersConfig'] = request.sidecar_containers_config_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -5677,6 +5717,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.container_id):
+            query['ContainerId'] = request.container_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
@@ -5713,6 +5755,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.container_id):
+            query['ContainerId'] = request.container_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
@@ -8814,6 +8858,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_warning_event_metric_with_options_async(request, headers, runtime)
+
+    def get_webshell_token_with_options(
+        self,
+        request: sae_20190506_models.GetWebshellTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetWebshellTokenResponse:
+        """
+        @param request: GetWebshellTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWebshellTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.pod_name):
+            query['PodName'] = request.pod_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWebshellToken',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/instance/webshellToken',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetWebshellTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_webshell_token_with_options_async(
+        self,
+        request: sae_20190506_models.GetWebshellTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetWebshellTokenResponse:
+        """
+        @param request: GetWebshellTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWebshellTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.pod_name):
+            query['PodName'] = request.pod_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWebshellToken',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/instance/webshellToken',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetWebshellTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_webshell_token(
+        self,
+        request: sae_20190506_models.GetWebshellTokenRequest,
+    ) -> sae_20190506_models.GetWebshellTokenResponse:
+        """
+        @param request: GetWebshellTokenRequest
+        @return: GetWebshellTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_webshell_token_with_options(request, headers, runtime)
+
+    async def get_webshell_token_async(
+        self,
+        request: sae_20190506_models.GetWebshellTokenRequest,
+    ) -> sae_20190506_models.GetWebshellTokenResponse:
+        """
+        @param request: GetWebshellTokenRequest
+        @return: GetWebshellTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_webshell_token_with_options_async(request, headers, runtime)
 
     def list_app_events_with_options(
         self,

@@ -1,3 +1,16 @@
+2024-12-20 Version: 1.25.0
+- Support API GetWebshellToken.
+- Update API CreateApplication: add param EnableSidecarResourceIsolated.
+- Update API CreateApplication: add param SecretMountDesc.
+- Update API CreateApplication: add param SidecarContainersConfig.
+- Update API DeployApplication: add param EnableSidecarResourceIsolated.
+- Update API DeployApplication: add param SecretMountDesc.
+- Update API DeployApplication: add param SidecarContainersConfig.
+- Update API DescribeApplicationConfig: update response param.
+- Update API DescribeApplicationInstances: update response param.
+- Update API DescribeInstanceLog: add param ContainerId.
+
+
 2024-11-08 Version: 1.24.6
 - Update API CreateApplication: add param OidcRoleName.
 - Update API DeployApplication: add param OidcRoleName.
