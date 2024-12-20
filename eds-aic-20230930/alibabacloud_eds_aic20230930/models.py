@@ -2589,11 +2589,45 @@ class DescribeAndroidInstanceGroupsResponse(TeaModel):
         return self
 
 
+class DescribeAndroidInstancesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeAndroidInstancesRequest(TeaModel):
     def __init__(
         self,
         android_instance_ids: List[str] = None,
         android_instance_name: str = None,
+        biz_region_id: str = None,
         charge_type: str = None,
         instance_group_id: str = None,
         instance_group_ids: List[str] = None,
@@ -2603,9 +2637,11 @@ class DescribeAndroidInstancesRequest(TeaModel):
         next_token: str = None,
         sale_mode: str = None,
         status: str = None,
+        tag: List[DescribeAndroidInstancesRequestTag] = None,
     ):
         self.android_instance_ids = android_instance_ids
         self.android_instance_name = android_instance_name
+        self.biz_region_id = biz_region_id
         self.charge_type = charge_type
         self.instance_group_id = instance_group_id
         self.instance_group_ids = instance_group_ids
@@ -2615,9 +2651,13 @@ class DescribeAndroidInstancesRequest(TeaModel):
         self.next_token = next_token
         self.sale_mode = sale_mode
         self.status = status
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2629,6 +2669,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             result['AndroidInstanceIds'] = self.android_instance_ids
         if self.android_instance_name is not None:
             result['AndroidInstanceName'] = self.android_instance_name
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.instance_group_id is not None:
@@ -2647,6 +2689,10 @@ class DescribeAndroidInstancesRequest(TeaModel):
             result['SaleMode'] = self.sale_mode
         if self.status is not None:
             result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2655,6 +2701,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             self.android_instance_ids = m.get('AndroidInstanceIds')
         if m.get('AndroidInstanceName') is not None:
             self.android_instance_name = m.get('AndroidInstanceName')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('InstanceGroupId') is not None:
@@ -2673,6 +2721,11 @@ class DescribeAndroidInstancesRequest(TeaModel):
             self.sale_mode = m.get('SaleMode')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeAndroidInstancesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -2709,6 +2762,39 @@ class DescribeAndroidInstancesResponseBodyInstanceModelDisks(TeaModel):
         return self
 
 
+class DescribeAndroidInstancesResponseBodyInstanceModelTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
     def __init__(
         self,
@@ -2738,6 +2824,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         rate: int = None,
         region_id: str = None,
         rendering_type: str = None,
+        tags: List[DescribeAndroidInstancesResponseBodyInstanceModelTags] = None,
     ):
         self.android_instance_group_id = android_instance_group_id
         self.android_instance_group_name = android_instance_group_name
@@ -2765,10 +2852,15 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.rate = rate
         self.region_id = region_id
         self.rendering_type = rendering_type
+        self.tags = tags
 
     def validate(self):
         if self.disks:
             for k in self.disks:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -2832,6 +2924,10 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['RegionId'] = self.region_id
         if self.rendering_type is not None:
             result['RenderingType'] = self.rendering_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2891,6 +2987,11 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RenderingType') is not None:
             self.rendering_type = m.get('RenderingType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeAndroidInstancesResponseBodyInstanceModelTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 

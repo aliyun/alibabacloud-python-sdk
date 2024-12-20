@@ -1,3 +1,9 @@
+2024-12-20 Version: 3.0.5
+- Update API DescribeAndroidInstances: add param BizRegionId.
+- Update API DescribeAndroidInstances: add param Tag.
+- Update API DescribeAndroidInstances: update response param.
+
+
 2024-12-17 Version: 3.0.4
 - Update API BackupFile: update response param.
 - Update API DescribeApps: add param MD5.

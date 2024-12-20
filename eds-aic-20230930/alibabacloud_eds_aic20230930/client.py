@@ -1728,6 +1728,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIds'] = request.android_instance_ids
         if not UtilClient.is_unset(request.android_instance_name):
             query['AndroidInstanceName'] = request.android_instance_name
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.instance_group_id):
@@ -1746,6 +1748,8 @@ class Client(OpenApiClient):
             query['SaleMode'] = request.sale_mode
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1783,6 +1787,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIds'] = request.android_instance_ids
         if not UtilClient.is_unset(request.android_instance_name):
             query['AndroidInstanceName'] = request.android_instance_name
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.instance_group_id):
@@ -1801,6 +1807,8 @@ class Client(OpenApiClient):
             query['SaleMode'] = request.sale_mode
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
