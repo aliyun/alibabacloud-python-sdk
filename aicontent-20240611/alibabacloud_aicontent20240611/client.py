@@ -7,8 +7,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_tea_util import models as util_models
 from alibabacloud_aicontent20240611 import models as ai_content_20240611_models
+from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
@@ -40,6 +40,270 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def a_iteacher_expansion_practice_task_generate_with_options(
+        self,
+        request: ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateResponse:
+        """
+        @summary 拓展练问答对生成
+        
+        @param request: AITeacherExpansionPracticeTaskGenerateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AITeacherExpansionPracticeTaskGenerateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.key_sentences):
+            body['keySentences'] = request.key_sentences
+        if not UtilClient.is_unset(request.key_words):
+            body['keyWords'] = request.key_words
+        if not UtilClient.is_unset(request.learning_object):
+            body['learningObject'] = request.learning_object
+        if not UtilClient.is_unset(request.text_content):
+            body['textContent'] = request.text_content
+        if not UtilClient.is_unset(request.textbook):
+            body['textbook'] = request.textbook
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AITeacherExpansionPracticeTaskGenerate',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/expansionPractice/generateTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def a_iteacher_expansion_practice_task_generate_with_options_async(
+        self,
+        request: ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateResponse:
+        """
+        @summary 拓展练问答对生成
+        
+        @param request: AITeacherExpansionPracticeTaskGenerateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AITeacherExpansionPracticeTaskGenerateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.key_sentences):
+            body['keySentences'] = request.key_sentences
+        if not UtilClient.is_unset(request.key_words):
+            body['keyWords'] = request.key_words
+        if not UtilClient.is_unset(request.learning_object):
+            body['learningObject'] = request.learning_object
+        if not UtilClient.is_unset(request.text_content):
+            body['textContent'] = request.text_content
+        if not UtilClient.is_unset(request.textbook):
+            body['textbook'] = request.textbook
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AITeacherExpansionPracticeTaskGenerate',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/expansionPractice/generateTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def a_iteacher_expansion_practice_task_generate(
+        self,
+        request: ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateRequest,
+    ) -> ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateResponse:
+        """
+        @summary 拓展练问答对生成
+        
+        @param request: AITeacherExpansionPracticeTaskGenerateRequest
+        @return: AITeacherExpansionPracticeTaskGenerateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.a_iteacher_expansion_practice_task_generate_with_options(request, headers, runtime)
+
+    async def a_iteacher_expansion_practice_task_generate_async(
+        self,
+        request: ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateRequest,
+    ) -> ai_content_20240611_models.AITeacherExpansionPracticeTaskGenerateResponse:
+        """
+        @summary 拓展练问答对生成
+        
+        @param request: AITeacherExpansionPracticeTaskGenerateRequest
+        @return: AITeacherExpansionPracticeTaskGenerateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.a_iteacher_expansion_practice_task_generate_with_options_async(request, headers, runtime)
+
+    def a_iteacher_sync_practice_task_generate_with_options(
+        self,
+        request: ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateResponse:
+        """
+        @summary 同步基础练问答对生成
+        
+        @param request: AITeacherSyncPracticeTaskGenerateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AITeacherSyncPracticeTaskGenerateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.key_sentences):
+            body['keySentences'] = request.key_sentences
+        if not UtilClient.is_unset(request.key_words):
+            body['keyWords'] = request.key_words
+        if not UtilClient.is_unset(request.learning_object):
+            body['learningObject'] = request.learning_object
+        if not UtilClient.is_unset(request.text_content):
+            body['textContent'] = request.text_content
+        if not UtilClient.is_unset(request.textbook):
+            body['textbook'] = request.textbook
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AITeacherSyncPracticeTaskGenerate',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/syncPractice/generateTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def a_iteacher_sync_practice_task_generate_with_options_async(
+        self,
+        request: ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateResponse:
+        """
+        @summary 同步基础练问答对生成
+        
+        @param request: AITeacherSyncPracticeTaskGenerateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AITeacherSyncPracticeTaskGenerateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.key_sentences):
+            body['keySentences'] = request.key_sentences
+        if not UtilClient.is_unset(request.key_words):
+            body['keyWords'] = request.key_words
+        if not UtilClient.is_unset(request.learning_object):
+            body['learningObject'] = request.learning_object
+        if not UtilClient.is_unset(request.text_content):
+            body['textContent'] = request.text_content
+        if not UtilClient.is_unset(request.textbook):
+            body['textbook'] = request.textbook
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AITeacherSyncPracticeTaskGenerate',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/syncPractice/generateTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def a_iteacher_sync_practice_task_generate(
+        self,
+        request: ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateRequest,
+    ) -> ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateResponse:
+        """
+        @summary 同步基础练问答对生成
+        
+        @param request: AITeacherSyncPracticeTaskGenerateRequest
+        @return: AITeacherSyncPracticeTaskGenerateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.a_iteacher_sync_practice_task_generate_with_options(request, headers, runtime)
+
+    async def a_iteacher_sync_practice_task_generate_async(
+        self,
+        request: ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateRequest,
+    ) -> ai_content_20240611_models.AITeacherSyncPracticeTaskGenerateResponse:
+        """
+        @summary 同步基础练问答对生成
+        
+        @param request: AITeacherSyncPracticeTaskGenerateRequest
+        @return: AITeacherSyncPracticeTaskGenerateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.a_iteacher_sync_practice_task_generate_with_options_async(request, headers, runtime)
 
     def aliyun_console_open_api_query_aliyun_console_servcie_list_with_options(
         self,

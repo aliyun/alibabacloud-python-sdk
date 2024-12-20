@@ -1,3 +1,8 @@
+2024-12-20 Version: 1.2.0
+- Support API AITeacherExpansionPracticeTaskGenerate.
+- Support API AITeacherSyncPracticeTaskGenerate.
+
+
 2024-10-12 Version: 1.1.0
 - Support API AliyunConsoleOpenApiQueryAliyunConsoleServiceList.
 - Support API PersonalizedTextToImageAddInferenceJob.

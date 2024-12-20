@@ -524,6 +524,554 @@ class Personalizedtxt2imgModelTrainJobInfoDTO(TeaModel):
         return self
 
 
+class AITeacherExpansionPracticeTaskGenerateRequest(TeaModel):
+    def __init__(
+        self,
+        grade: str = None,
+        key_sentences: List[str] = None,
+        key_words: List[str] = None,
+        learning_object: str = None,
+        text_content: str = None,
+        textbook: str = None,
+        topic: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.grade = grade
+        self.key_sentences = key_sentences
+        self.key_words = key_words
+        self.learning_object = learning_object
+        # This parameter is required.
+        self.text_content = text_content
+        self.textbook = textbook
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.grade is not None:
+            result['grade'] = self.grade
+        if self.key_sentences is not None:
+            result['keySentences'] = self.key_sentences
+        if self.key_words is not None:
+            result['keyWords'] = self.key_words
+        if self.learning_object is not None:
+            result['learningObject'] = self.learning_object
+        if self.text_content is not None:
+            result['textContent'] = self.text_content
+        if self.textbook is not None:
+            result['textbook'] = self.textbook
+        if self.topic is not None:
+            result['topic'] = self.topic
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('grade') is not None:
+            self.grade = m.get('grade')
+        if m.get('keySentences') is not None:
+            self.key_sentences = m.get('keySentences')
+        if m.get('keyWords') is not None:
+            self.key_words = m.get('keyWords')
+        if m.get('learningObject') is not None:
+            self.learning_object = m.get('learningObject')
+        if m.get('textContent') is not None:
+            self.text_content = m.get('textContent')
+        if m.get('textbook') is not None:
+            self.textbook = m.get('textbook')
+        if m.get('topic') is not None:
+            self.topic = m.get('topic')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        user: str = None,
+    ):
+        self.assistant = assistant
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        user: str = None,
+    ):
+        self.assistant = assistant
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class AITeacherExpansionPracticeTaskGenerateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        background_description: str = None,
+        role_set: AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet = None,
+        start_sentence: str = None,
+        task_content: List[AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent] = None,
+        task_type: str = None,
+    ):
+        self.background_description = background_description
+        self.role_set = role_set
+        self.start_sentence = start_sentence
+        self.task_content = task_content
+        self.task_type = task_type
+
+    def validate(self):
+        if self.role_set:
+            self.role_set.validate()
+        if self.task_content:
+            for k in self.task_content:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.background_description is not None:
+            result['backgroundDescription'] = self.background_description
+        if self.role_set is not None:
+            result['roleSet'] = self.role_set.to_map()
+        if self.start_sentence is not None:
+            result['startSentence'] = self.start_sentence
+        result['taskContent'] = []
+        if self.task_content is not None:
+            for k in self.task_content:
+                result['taskContent'].append(k.to_map() if k else None)
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('backgroundDescription') is not None:
+            self.background_description = m.get('backgroundDescription')
+        if m.get('roleSet') is not None:
+            temp_model = AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet()
+            self.role_set = temp_model.from_map(m['roleSet'])
+        if m.get('startSentence') is not None:
+            self.start_sentence = m.get('startSentence')
+        self.task_content = []
+        if m.get('taskContent') is not None:
+            for k in m.get('taskContent'):
+                temp_model = AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent()
+                self.task_content.append(temp_model.from_map(k))
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
+        return self
+
+
+class AITeacherExpansionPracticeTaskGenerateResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: AITeacherExpansionPracticeTaskGenerateResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = AITeacherExpansionPracticeTaskGenerateResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class AITeacherExpansionPracticeTaskGenerateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AITeacherExpansionPracticeTaskGenerateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AITeacherExpansionPracticeTaskGenerateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AITeacherSyncPracticeTaskGenerateRequest(TeaModel):
+    def __init__(
+        self,
+        grade: str = None,
+        key_sentences: List[str] = None,
+        key_words: List[str] = None,
+        learning_object: str = None,
+        text_content: str = None,
+        textbook: str = None,
+        topic: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.grade = grade
+        self.key_sentences = key_sentences
+        self.key_words = key_words
+        self.learning_object = learning_object
+        # This parameter is required.
+        self.text_content = text_content
+        self.textbook = textbook
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.grade is not None:
+            result['grade'] = self.grade
+        if self.key_sentences is not None:
+            result['keySentences'] = self.key_sentences
+        if self.key_words is not None:
+            result['keyWords'] = self.key_words
+        if self.learning_object is not None:
+            result['learningObject'] = self.learning_object
+        if self.text_content is not None:
+            result['textContent'] = self.text_content
+        if self.textbook is not None:
+            result['textbook'] = self.textbook
+        if self.topic is not None:
+            result['topic'] = self.topic
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('grade') is not None:
+            self.grade = m.get('grade')
+        if m.get('keySentences') is not None:
+            self.key_sentences = m.get('keySentences')
+        if m.get('keyWords') is not None:
+            self.key_words = m.get('keyWords')
+        if m.get('learningObject') is not None:
+            self.learning_object = m.get('learningObject')
+        if m.get('textContent') is not None:
+            self.text_content = m.get('textContent')
+        if m.get('textbook') is not None:
+            self.textbook = m.get('textbook')
+        if m.get('topic') is not None:
+            self.topic = m.get('topic')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        user: str = None,
+    ):
+        self.assistant = assistant
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class AITeacherSyncPracticeTaskGenerateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_content: List[AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent] = None,
+        task_type: str = None,
+    ):
+        self.task_content = task_content
+        self.task_type = task_type
+
+    def validate(self):
+        if self.task_content:
+            for k in self.task_content:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['taskContent'] = []
+        if self.task_content is not None:
+            for k in self.task_content:
+                result['taskContent'].append(k.to_map() if k else None)
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.task_content = []
+        if m.get('taskContent') is not None:
+            for k in m.get('taskContent'):
+                temp_model = AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent()
+                self.task_content.append(temp_model.from_map(k))
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
+        return self
+
+
+class AITeacherSyncPracticeTaskGenerateResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: AITeacherSyncPracticeTaskGenerateResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = AITeacherSyncPracticeTaskGenerateResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class AITeacherSyncPracticeTaskGenerateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AITeacherSyncPracticeTaskGenerateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AITeacherSyncPracticeTaskGenerateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponseBodyData(TeaModel):
     def __init__(
         self,
