@@ -47,6 +47,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.AddDomainResponse:
         """
+        @summary 添加域名
+        
         @param request: AddDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddDomainResponse
@@ -82,6 +84,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.AddDomainResponse:
         """
+        @summary 添加域名
+        
         @param request: AddDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddDomainResponse
@@ -116,6 +120,8 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.AddDomainRequest,
     ) -> httpdns_20160201_models.AddDomainResponse:
         """
+        @summary 添加域名
+        
         @param request: AddDomainRequest
         @return: AddDomainResponse
         """
@@ -127,6 +133,8 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.AddDomainRequest,
     ) -> httpdns_20160201_models.AddDomainResponse:
         """
+        @summary 添加域名
+        
         @param request: AddDomainRequest
         @return: AddDomainResponse
         """
@@ -139,6 +147,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.DeleteDomainResponse:
         """
+        @summary 删除域名
+        
         @param request: DeleteDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteDomainResponse
@@ -174,6 +184,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.DeleteDomainResponse:
         """
+        @summary 删除域名
+        
         @param request: DeleteDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteDomainResponse
@@ -208,6 +220,8 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.DeleteDomainRequest,
     ) -> httpdns_20160201_models.DeleteDomainResponse:
         """
+        @summary 删除域名
+        
         @param request: DeleteDomainRequest
         @return: DeleteDomainResponse
         """
@@ -219,6 +233,8 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.DeleteDomainRequest,
     ) -> httpdns_20160201_models.DeleteDomainResponse:
         """
+        @summary 删除域名
+        
         @param request: DeleteDomainRequest
         @return: DeleteDomainResponse
         """
@@ -326,6 +342,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.GetAccountInfoResponse:
         """
+        @summary 获取用户信息包含配置项
+        
         @param request: GetAccountInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAccountInfoResponse
@@ -352,6 +370,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.GetAccountInfoResponse:
         """
+        @summary 获取用户信息包含配置项
+        
         @param request: GetAccountInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAccountInfoResponse
@@ -375,6 +395,8 @@ class Client(OpenApiClient):
 
     def get_account_info(self) -> httpdns_20160201_models.GetAccountInfoResponse:
         """
+        @summary 获取用户信息包含配置项
+        
         @return: GetAccountInfoResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -382,6 +404,8 @@ class Client(OpenApiClient):
 
     async def get_account_info_async(self) -> httpdns_20160201_models.GetAccountInfoResponse:
         """
+        @summary 获取用户信息包含配置项
+        
         @return: GetAccountInfoResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -393,6 +417,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.GetResolveCountSummaryResponse:
         """
+        @summary 解析次数概览
+        
         @param request: GetResolveCountSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetResolveCountSummaryResponse
@@ -428,6 +454,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.GetResolveCountSummaryResponse:
         """
+        @summary 解析次数概览
+        
         @param request: GetResolveCountSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetResolveCountSummaryResponse
@@ -462,6 +490,8 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.GetResolveCountSummaryRequest,
     ) -> httpdns_20160201_models.GetResolveCountSummaryResponse:
         """
+        @summary 解析次数概览
+        
         @param request: GetResolveCountSummaryRequest
         @return: GetResolveCountSummaryResponse
         """
@@ -473,6 +503,8 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.GetResolveCountSummaryRequest,
     ) -> httpdns_20160201_models.GetResolveCountSummaryResponse:
         """
+        @summary 解析次数概览
+        
         @param request: GetResolveCountSummaryRequest
         @return: GetResolveCountSummaryResponse
         """
@@ -585,6 +617,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.ListDomainsResponse:
         """
+        @summary 列举域名以及解析统计信息
+        
         @param request: ListDomainsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDomainsResponse
@@ -597,6 +631,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.search):
             query['Search'] = request.search
+        if not UtilClient.is_unset(request.without_metering_data):
+            query['WithoutMeteringData'] = request.without_metering_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -622,6 +658,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.ListDomainsResponse:
         """
+        @summary 列举域名以及解析统计信息
+        
         @param request: ListDomainsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDomainsResponse
@@ -634,6 +672,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.search):
             query['Search'] = request.search
+        if not UtilClient.is_unset(request.without_metering_data):
+            query['WithoutMeteringData'] = request.without_metering_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -658,6 +698,8 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.ListDomainsRequest,
     ) -> httpdns_20160201_models.ListDomainsResponse:
         """
+        @summary 列举域名以及解析统计信息
+        
         @param request: ListDomainsRequest
         @return: ListDomainsResponse
         """
@@ -669,6 +711,8 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.ListDomainsRequest,
     ) -> httpdns_20160201_models.ListDomainsResponse:
         """
+        @summary 列举域名以及解析统计信息
+        
         @param request: ListDomainsRequest
         @return: ListDomainsResponse
         """

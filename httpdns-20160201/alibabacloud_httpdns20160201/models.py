@@ -419,6 +419,9 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
     def __init__(
         self,
         account_id: str = None,
+        doh_enabled: bool = None,
+        doh_resolve_all_enabled: bool = None,
+        month_doh_resolve_count: int = None,
         month_free_count: int = None,
         month_https_resolve_count: int = None,
         month_resolve_count: int = None,
@@ -430,6 +433,9 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
         user_status: int = None,
     ):
         self.account_id = account_id
+        self.doh_enabled = doh_enabled
+        self.doh_resolve_all_enabled = doh_resolve_all_enabled
+        self.month_doh_resolve_count = month_doh_resolve_count
         self.month_free_count = month_free_count
         self.month_https_resolve_count = month_https_resolve_count
         self.month_resolve_count = month_resolve_count
@@ -451,6 +457,12 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
         result = dict()
         if self.account_id is not None:
             result['AccountId'] = self.account_id
+        if self.doh_enabled is not None:
+            result['DohEnabled'] = self.doh_enabled
+        if self.doh_resolve_all_enabled is not None:
+            result['DohResolveAllEnabled'] = self.doh_resolve_all_enabled
+        if self.month_doh_resolve_count is not None:
+            result['MonthDohResolveCount'] = self.month_doh_resolve_count
         if self.month_free_count is not None:
             result['MonthFreeCount'] = self.month_free_count
         if self.month_https_resolve_count is not None:
@@ -475,6 +487,12 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
         m = m or dict()
         if m.get('AccountId') is not None:
             self.account_id = m.get('AccountId')
+        if m.get('DohEnabled') is not None:
+            self.doh_enabled = m.get('DohEnabled')
+        if m.get('DohResolveAllEnabled') is not None:
+            self.doh_resolve_all_enabled = m.get('DohResolveAllEnabled')
+        if m.get('MonthDohResolveCount') is not None:
+            self.month_doh_resolve_count = m.get('MonthDohResolveCount')
         if m.get('MonthFreeCount') is not None:
             self.month_free_count = m.get('MonthFreeCount')
         if m.get('MonthHttpsResolveCount') is not None:
@@ -610,11 +628,13 @@ class GetResolveCountSummaryRequest(TeaModel):
 class GetResolveCountSummaryResponseBodyResolveSummary(TeaModel):
     def __init__(
         self,
+        doh: int = None,
         http: int = None,
         http_6: int = None,
         https: int = None,
         https_6: int = None,
     ):
+        self.doh = doh
         self.http = http
         self.http_6 = http_6
         self.https = https
@@ -629,6 +649,8 @@ class GetResolveCountSummaryResponseBodyResolveSummary(TeaModel):
             return _map
 
         result = dict()
+        if self.doh is not None:
+            result['Doh'] = self.doh
         if self.http is not None:
             result['Http'] = self.http
         if self.http_6 is not None:
@@ -641,6 +663,8 @@ class GetResolveCountSummaryResponseBodyResolveSummary(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Doh') is not None:
+            self.doh = m.get('Doh')
         if m.get('Http') is not None:
             self.http = m.get('Http')
         if m.get('Http6') is not None:
@@ -926,10 +950,12 @@ class ListDomainsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         search: str = None,
+        without_metering_data: bool = None,
     ):
         self.page_number = page_number
         self.page_size = page_size
         self.search = search
+        self.without_metering_data = without_metering_data
 
     def validate(self):
         pass
@@ -946,6 +972,8 @@ class ListDomainsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.search is not None:
             result['Search'] = self.search
+        if self.without_metering_data is not None:
+            result['WithoutMeteringData'] = self.without_metering_data
         return result
 
     def from_map(self, m: dict = None):
@@ -956,6 +984,8 @@ class ListDomainsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('Search') is not None:
             self.search = m.get('Search')
+        if m.get('WithoutMeteringData') is not None:
+            self.without_metering_data = m.get('WithoutMeteringData')
         return self
 
 
@@ -965,6 +995,7 @@ class ListDomainsResponseBodyDomainInfosDomainInfo(TeaModel):
         domain_name: str = None,
         resolved: int = None,
         resolved_6: int = None,
+        resolved_doh: int = None,
         resolved_https: int = None,
         resolved_https_6: int = None,
         time_modified: int = None,
@@ -972,6 +1003,7 @@ class ListDomainsResponseBodyDomainInfosDomainInfo(TeaModel):
         self.domain_name = domain_name
         self.resolved = resolved
         self.resolved_6 = resolved_6
+        self.resolved_doh = resolved_doh
         self.resolved_https = resolved_https
         self.resolved_https_6 = resolved_https_6
         self.time_modified = time_modified
@@ -991,6 +1023,8 @@ class ListDomainsResponseBodyDomainInfosDomainInfo(TeaModel):
             result['Resolved'] = self.resolved
         if self.resolved_6 is not None:
             result['Resolved6'] = self.resolved_6
+        if self.resolved_doh is not None:
+            result['ResolvedDoh'] = self.resolved_doh
         if self.resolved_https is not None:
             result['ResolvedHttps'] = self.resolved_https
         if self.resolved_https_6 is not None:
@@ -1007,6 +1041,8 @@ class ListDomainsResponseBodyDomainInfosDomainInfo(TeaModel):
             self.resolved = m.get('Resolved')
         if m.get('Resolved6') is not None:
             self.resolved_6 = m.get('Resolved6')
+        if m.get('ResolvedDoh') is not None:
+            self.resolved_doh = m.get('ResolvedDoh')
         if m.get('ResolvedHttps') is not None:
             self.resolved_https = m.get('ResolvedHttps')
         if m.get('ResolvedHttps6') is not None:
