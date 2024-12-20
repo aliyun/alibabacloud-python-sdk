@@ -61,6 +61,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.category_tags):
             body['categoryTags'] = request.category_tags
+        if not UtilClient.is_unset(request.custom_prompt):
+            body['customPrompt'] = request.custom_prompt
         if not UtilClient.is_unset(request.dialogue):
             body['dialogue'] = request.dialogue
         if not UtilClient.is_unset(request.examples):
@@ -123,6 +125,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.category_tags):
             body['categoryTags'] = request.category_tags
+        if not UtilClient.is_unset(request.custom_prompt):
+            body['customPrompt'] = request.custom_prompt
         if not UtilClient.is_unset(request.dialogue):
             body['dialogue'] = request.dialogue
         if not UtilClient.is_unset(request.examples):

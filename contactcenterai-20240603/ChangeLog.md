@@ -1,3 +1,7 @@
+2024-12-20 Version: 3.3.3
+- Update API AnalyzeConversation: update param body.
+
+
 2024-12-05 Version: 3.3.2
 - Generated python 2024-06-03 for ContactCenterAI.
 

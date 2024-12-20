@@ -410,6 +410,7 @@ class AnalyzeConversationRequest(TeaModel):
     def __init__(
         self,
         category_tags: List[AnalyzeConversationRequestCategoryTags] = None,
+        custom_prompt: str = None,
         dialogue: AnalyzeConversationRequestDialogue = None,
         examples: List[AnalyzeConversationRequestExamples] = None,
         fields: List[AnalyzeConversationRequestFields] = None,
@@ -423,7 +424,7 @@ class AnalyzeConversationRequest(TeaModel):
         user_profiles: List[AnalyzeConversationRequestUserProfiles] = None,
     ):
         self.category_tags = category_tags
-        # This parameter is required.
+        self.custom_prompt = custom_prompt
         self.dialogue = dialogue
         self.examples = examples
         self.fields = fields
@@ -470,6 +471,8 @@ class AnalyzeConversationRequest(TeaModel):
         if self.category_tags is not None:
             for k in self.category_tags:
                 result['categoryTags'].append(k.to_map() if k else None)
+        if self.custom_prompt is not None:
+            result['customPrompt'] = self.custom_prompt
         if self.dialogue is not None:
             result['dialogue'] = self.dialogue.to_map()
         result['examples'] = []
@@ -507,6 +510,8 @@ class AnalyzeConversationRequest(TeaModel):
             for k in m.get('categoryTags'):
                 temp_model = AnalyzeConversationRequestCategoryTags()
                 self.category_tags.append(temp_model.from_map(k))
+        if m.get('customPrompt') is not None:
+            self.custom_prompt = m.get('customPrompt')
         if m.get('dialogue') is not None:
             temp_model = AnalyzeConversationRequestDialogue()
             self.dialogue = temp_model.from_map(m['dialogue'])
