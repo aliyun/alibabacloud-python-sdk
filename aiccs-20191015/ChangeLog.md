@@ -1,3 +1,8 @@
+2024-12-20 Version: 2.0.0
+- Support API LlmSmartCall.
+- Delete API ListOuterOrderedNumbers.
+
+
 2023-02-07 Version: 1.0.3
 - Upgrade SDK.
 
