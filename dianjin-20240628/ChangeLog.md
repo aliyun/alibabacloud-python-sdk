@@ -1,3 +1,11 @@
+2024-12-20 Version: 1.7.0
+- Support API CreateDialog.
+- Support API GenDocQaResult.
+- Support API GetChatQuestionResp.
+- Support API SubmitChatQuestion.
+- Support API UpdateQaLibrary.
+
+
 2024-12-20 Version: 1.6.6
 - Generated python 2024-06-28 for DianJin.
 

@@ -171,6 +171,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_annual_doc_summary_task_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_dialog_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateDialogRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateDialogResponse:
+        """
+        @summary 创建外呼会话
+        
+        @param request: CreateDialogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDialogResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel):
+            body['channel'] = request.channel
+        if not UtilClient.is_unset(request.meta_data):
+            body['metaData'] = request.meta_data
+        if not UtilClient.is_unset(request.play_code):
+            body['playCode'] = request.play_code
+        if not UtilClient.is_unset(request.qa_library_list):
+            body['qaLibraryList'] = request.qa_library_list
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDialog',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/dialog/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateDialogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dialog_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateDialogRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateDialogResponse:
+        """
+        @summary 创建外呼会话
+        
+        @param request: CreateDialogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDialogResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel):
+            body['channel'] = request.channel
+        if not UtilClient.is_unset(request.meta_data):
+            body['metaData'] = request.meta_data
+        if not UtilClient.is_unset(request.play_code):
+            body['playCode'] = request.play_code
+        if not UtilClient.is_unset(request.qa_library_list):
+            body['qaLibraryList'] = request.qa_library_list
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDialog',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/dialog/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateDialogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dialog(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateDialogRequest,
+    ) -> dian_jin_20240628_models.CreateDialogResponse:
+        """
+        @summary 创建外呼会话
+        
+        @param request: CreateDialogRequest
+        @return: CreateDialogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_dialog_with_options(workspace_id, request, headers, runtime)
+
+    async def create_dialog_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateDialogRequest,
+    ) -> dian_jin_20240628_models.CreateDialogResponse:
+        """
+        @summary 创建外呼会话
+        
+        @param request: CreateDialogRequest
+        @return: CreateDialogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_dialog_with_options_async(workspace_id, request, headers, runtime)
+
     def create_docs_summary_task_with_options(
         self,
         workspace_id: str,
@@ -1243,6 +1367,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.evict_task_with_options_async(workspace_id, request, headers, runtime)
 
+    def gen_doc_qa_result_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GenDocQaResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GenDocQaResultResponse:
+        """
+        @summary 根据文档解析问答QA
+        
+        @param request: GenDocQaResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenDocQaResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['docId'] = request.doc_id
+        if not UtilClient.is_unset(request.library_id):
+            body['libraryId'] = request.library_id
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenDocQaResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/qa/parse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GenDocQaResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def gen_doc_qa_result_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GenDocQaResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GenDocQaResultResponse:
+        """
+        @summary 根据文档解析问答QA
+        
+        @param request: GenDocQaResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenDocQaResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['docId'] = request.doc_id
+        if not UtilClient.is_unset(request.library_id):
+            body['libraryId'] = request.library_id
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenDocQaResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/qa/parse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GenDocQaResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def gen_doc_qa_result(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GenDocQaResultRequest,
+    ) -> dian_jin_20240628_models.GenDocQaResultResponse:
+        """
+        @summary 根据文档解析问答QA
+        
+        @param request: GenDocQaResultRequest
+        @return: GenDocQaResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.gen_doc_qa_result_with_options(workspace_id, request, headers, runtime)
+
+    async def gen_doc_qa_result_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GenDocQaResultRequest,
+    ) -> dian_jin_20240628_models.GenDocQaResultResponse:
+        """
+        @summary 根据文档解析问答QA
+        
+        @param request: GenDocQaResultRequest
+        @return: GenDocQaResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.gen_doc_qa_result_with_options_async(workspace_id, request, headers, runtime)
+
     def get_app_config_with_options(
         self,
         workspace_id: str,
@@ -1332,6 +1572,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_app_config_with_options_async(workspace_id, headers, runtime)
+
+    def get_chat_question_resp_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetChatQuestionRespRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetChatQuestionRespResponse:
+        """
+        @summary 获取问答结果
+        
+        @param request: GetChatQuestionRespRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatQuestionRespResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.batch_id):
+            body['batchId'] = request.batch_id
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetChatQuestionResp',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/chat/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetChatQuestionRespResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chat_question_resp_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetChatQuestionRespRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetChatQuestionRespResponse:
+        """
+        @summary 获取问答结果
+        
+        @param request: GetChatQuestionRespRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatQuestionRespResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.batch_id):
+            body['batchId'] = request.batch_id
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetChatQuestionResp',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/chat/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetChatQuestionRespResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chat_question_resp(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetChatQuestionRespRequest,
+    ) -> dian_jin_20240628_models.GetChatQuestionRespResponse:
+        """
+        @summary 获取问答结果
+        
+        @param request: GetChatQuestionRespRequest
+        @return: GetChatQuestionRespResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_chat_question_resp_with_options(workspace_id, request, headers, runtime)
+
+    async def get_chat_question_resp_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetChatQuestionRespRequest,
+    ) -> dian_jin_20240628_models.GetChatQuestionRespResponse:
+        """
+        @summary 获取问答结果
+        
+        @param request: GetChatQuestionRespRequest
+        @return: GetChatQuestionRespResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_chat_question_resp_with_options_async(workspace_id, request, headers, runtime)
 
     def get_document_chunk_list_with_options(
         self,
@@ -3721,6 +4073,134 @@ class Client(OpenApiClient):
         headers = {}
         return await self.run_library_chat_generation_with_options_async(workspace_id, request, headers, runtime)
 
+    def submit_chat_question_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.SubmitChatQuestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.SubmitChatQuestionResponse:
+        """
+        @summary 提交问题列表
+        
+        @param request: SubmitChatQuestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitChatQuestionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.gmt_service):
+            body['gmtService'] = request.gmt_service
+        if not UtilClient.is_unset(request.live_script_content):
+            body['liveScriptContent'] = request.live_script_content
+        if not UtilClient.is_unset(request.open_small_talk):
+            body['openSmallTalk'] = request.open_small_talk
+        if not UtilClient.is_unset(request.question_list):
+            body['questionList'] = request.question_list
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitChatQuestion',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/chat/submit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.SubmitChatQuestionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_chat_question_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.SubmitChatQuestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.SubmitChatQuestionResponse:
+        """
+        @summary 提交问题列表
+        
+        @param request: SubmitChatQuestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitChatQuestionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.gmt_service):
+            body['gmtService'] = request.gmt_service
+        if not UtilClient.is_unset(request.live_script_content):
+            body['liveScriptContent'] = request.live_script_content
+        if not UtilClient.is_unset(request.open_small_talk):
+            body['openSmallTalk'] = request.open_small_talk
+        if not UtilClient.is_unset(request.question_list):
+            body['questionList'] = request.question_list
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitChatQuestion',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/chat/submit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.SubmitChatQuestionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_chat_question(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.SubmitChatQuestionRequest,
+    ) -> dian_jin_20240628_models.SubmitChatQuestionResponse:
+        """
+        @summary 提交问题列表
+        
+        @param request: SubmitChatQuestionRequest
+        @return: SubmitChatQuestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_chat_question_with_options(workspace_id, request, headers, runtime)
+
+    async def submit_chat_question_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.SubmitChatQuestionRequest,
+    ) -> dian_jin_20240628_models.SubmitChatQuestionResponse:
+        """
+        @summary 提交问题列表
+        
+        @param request: SubmitChatQuestionRequest
+        @return: SubmitChatQuestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_chat_question_with_options_async(workspace_id, request, headers, runtime)
+
     def update_document_with_options(
         self,
         workspace_id: str,
@@ -3960,6 +4440,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_library_with_options_async(workspace_id, request, headers, runtime)
+
+    def update_qa_library_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.UpdateQaLibraryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.UpdateQaLibraryResponse:
+        """
+        @summary 更新QA问答库
+        
+        @param request: UpdateQaLibraryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQaLibraryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.parse_qa_results):
+            body['parseQaResults'] = request.parse_qa_results
+        if not UtilClient.is_unset(request.qa_library_id):
+            body['qaLibraryId'] = request.qa_library_id
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateQaLibrary',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/qa/upload',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.UpdateQaLibraryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_qa_library_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.UpdateQaLibraryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.UpdateQaLibraryResponse:
+        """
+        @summary 更新QA问答库
+        
+        @param request: UpdateQaLibraryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQaLibraryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.parse_qa_results):
+            body['parseQaResults'] = request.parse_qa_results
+        if not UtilClient.is_unset(request.qa_library_id):
+            body['qaLibraryId'] = request.qa_library_id
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateQaLibrary',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/qa/upload',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.UpdateQaLibraryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_qa_library(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.UpdateQaLibraryRequest,
+    ) -> dian_jin_20240628_models.UpdateQaLibraryResponse:
+        """
+        @summary 更新QA问答库
+        
+        @param request: UpdateQaLibraryRequest
+        @return: UpdateQaLibraryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_qa_library_with_options(workspace_id, request, headers, runtime)
+
+    async def update_qa_library_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.UpdateQaLibraryRequest,
+    ) -> dian_jin_20240628_models.UpdateQaLibraryResponse:
+        """
+        @summary 更新QA问答库
+        
+        @param request: UpdateQaLibraryRequest
+        @return: UpdateQaLibraryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_qa_library_with_options_async(workspace_id, request, headers, runtime)
 
     def upload_document_with_options(
         self,
