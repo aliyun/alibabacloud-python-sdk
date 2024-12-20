@@ -1,3 +1,16 @@
+2024-12-20 Version: 1.2.0
+- Support API CreatePool.
+- Support API DeletePool.
+- Support API GetAppVersions.
+- Support API GetPool.
+- Support API ListPools.
+- Support API UpdatePool.
+- Update API CreateJob: update param Tasks.
+- Update API GetImage: update response param.
+- Update API ListImages: add param Mode.
+- Update API ListImages: update response param.
+
+
 2024-11-18 Version: 1.1.1
 - Update API ListImages: update response param.
 

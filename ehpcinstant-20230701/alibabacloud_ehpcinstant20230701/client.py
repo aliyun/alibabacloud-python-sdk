@@ -293,6 +293,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_job_with_options_async(request, runtime)
 
+    def create_pool_with_options(
+        self,
+        tmp_req: ehpc_instant_20230701_models.CreatePoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.CreatePoolResponse:
+        """
+        @summary 创建资源池
+        
+        @param tmp_req: CreatePoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePoolResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.CreatePoolShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_limits):
+            request.resource_limits_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_limits, 'ResourceLimits', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.pool_name):
+            query['PoolName'] = request.pool_name
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_limits_shrink):
+            query['ResourceLimits'] = request.resource_limits_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePool',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.CreatePoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pool_with_options_async(
+        self,
+        tmp_req: ehpc_instant_20230701_models.CreatePoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.CreatePoolResponse:
+        """
+        @summary 创建资源池
+        
+        @param tmp_req: CreatePoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePoolResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.CreatePoolShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_limits):
+            request.resource_limits_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_limits, 'ResourceLimits', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.pool_name):
+            query['PoolName'] = request.pool_name
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_limits_shrink):
+            query['ResourceLimits'] = request.resource_limits_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePool',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.CreatePoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pool(
+        self,
+        request: ehpc_instant_20230701_models.CreatePoolRequest,
+    ) -> ehpc_instant_20230701_models.CreatePoolResponse:
+        """
+        @summary 创建资源池
+        
+        @param request: CreatePoolRequest
+        @return: CreatePoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_pool_with_options(request, runtime)
+
+    async def create_pool_async(
+        self,
+        request: ehpc_instant_20230701_models.CreatePoolRequest,
+    ) -> ehpc_instant_20230701_models.CreatePoolResponse:
+        """
+        @summary 创建资源池
+        
+        @param request: CreatePoolRequest
+        @return: CreatePoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_pool_with_options_async(request, runtime)
+
     def delete_jobs_with_options(
         self,
         tmp_req: ehpc_instant_20230701_models.DeleteJobsRequest,
@@ -404,6 +516,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_jobs_with_options_async(request, runtime)
+
+    def delete_pool_with_options(
+        self,
+        request: ehpc_instant_20230701_models.DeletePoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.DeletePoolResponse:
+        """
+        @summary 删除资源池
+        
+        @param request: DeletePoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pool_name):
+            query['PoolName'] = request.pool_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePool',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.DeletePoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_pool_with_options_async(
+        self,
+        request: ehpc_instant_20230701_models.DeletePoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.DeletePoolResponse:
+        """
+        @summary 删除资源池
+        
+        @param request: DeletePoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pool_name):
+            query['PoolName'] = request.pool_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePool',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.DeletePoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_pool(
+        self,
+        request: ehpc_instant_20230701_models.DeletePoolRequest,
+    ) -> ehpc_instant_20230701_models.DeletePoolResponse:
+        """
+        @summary 删除资源池
+        
+        @param request: DeletePoolRequest
+        @return: DeletePoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_pool_with_options(request, runtime)
+
+    async def delete_pool_async(
+        self,
+        request: ehpc_instant_20230701_models.DeletePoolRequest,
+    ) -> ehpc_instant_20230701_models.DeletePoolResponse:
+        """
+        @summary 删除资源池
+        
+        @param request: DeletePoolRequest
+        @return: DeletePoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_pool_with_options_async(request, runtime)
 
     def describe_job_metric_data_with_options(
         self,
@@ -633,6 +841,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_job_metric_last_with_options_async(request, runtime)
 
+    def get_app_versions_with_options(
+        self,
+        request: ehpc_instant_20230701_models.GetAppVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.GetAppVersionsResponse:
+        """
+        @summary 查看应用版本列表
+        
+        @param request: GetAppVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAppVersions',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.GetAppVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_versions_with_options_async(
+        self,
+        request: ehpc_instant_20230701_models.GetAppVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.GetAppVersionsResponse:
+        """
+        @summary 查看应用版本列表
+        
+        @param request: GetAppVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAppVersions',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.GetAppVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app_versions(
+        self,
+        request: ehpc_instant_20230701_models.GetAppVersionsRequest,
+    ) -> ehpc_instant_20230701_models.GetAppVersionsResponse:
+        """
+        @summary 查看应用版本列表
+        
+        @param request: GetAppVersionsRequest
+        @return: GetAppVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_app_versions_with_options(request, runtime)
+
+    async def get_app_versions_async(
+        self,
+        request: ehpc_instant_20230701_models.GetAppVersionsRequest,
+    ) -> ehpc_instant_20230701_models.GetAppVersionsResponse:
+        """
+        @summary 查看应用版本列表
+        
+        @param request: GetAppVersionsRequest
+        @return: GetAppVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_app_versions_with_options_async(request, runtime)
+
     def get_image_with_options(
         self,
         request: ehpc_instant_20230701_models.GetImageRequest,
@@ -833,6 +1153,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_job_with_options_async(request, runtime)
 
+    def get_pool_with_options(
+        self,
+        request: ehpc_instant_20230701_models.GetPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.GetPoolResponse:
+        """
+        @summary 查询队列详细信息
+        
+        @param request: GetPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pool_name):
+            query['PoolName'] = request.pool_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPool',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.GetPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_pool_with_options_async(
+        self,
+        request: ehpc_instant_20230701_models.GetPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.GetPoolResponse:
+        """
+        @summary 查询队列详细信息
+        
+        @param request: GetPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pool_name):
+            query['PoolName'] = request.pool_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPool',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.GetPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_pool(
+        self,
+        request: ehpc_instant_20230701_models.GetPoolRequest,
+    ) -> ehpc_instant_20230701_models.GetPoolResponse:
+        """
+        @summary 查询队列详细信息
+        
+        @param request: GetPoolRequest
+        @return: GetPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_pool_with_options(request, runtime)
+
+    async def get_pool_async(
+        self,
+        request: ehpc_instant_20230701_models.GetPoolRequest,
+    ) -> ehpc_instant_20230701_models.GetPoolResponse:
+        """
+        @summary 查询队列详细信息
+        
+        @param request: GetPoolRequest
+        @return: GetPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_pool_with_options_async(request, runtime)
+
     def list_executors_with_options(
         self,
         tmp_req: ehpc_instant_20230701_models.ListExecutorsRequest,
@@ -973,6 +1389,8 @@ class Client(OpenApiClient):
             query['ImageNames'] = request.image_names_shrink
         if not UtilClient.is_unset(request.image_type):
             query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -1024,6 +1442,8 @@ class Client(OpenApiClient):
             query['ImageNames'] = request.image_names_shrink
         if not UtilClient.is_unset(request.image_type):
             query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -1300,6 +1720,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_jobs_with_options_async(request, runtime)
+
+    def list_pools_with_options(
+        self,
+        tmp_req: ehpc_instant_20230701_models.ListPoolsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.ListPoolsResponse:
+        """
+        @summary 查询资源池列表
+        
+        @param tmp_req: ListPoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoolsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.ListPoolsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPools',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.ListPoolsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pools_with_options_async(
+        self,
+        tmp_req: ehpc_instant_20230701_models.ListPoolsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.ListPoolsResponse:
+        """
+        @summary 查询资源池列表
+        
+        @param tmp_req: ListPoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoolsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.ListPoolsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPools',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.ListPoolsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pools(
+        self,
+        request: ehpc_instant_20230701_models.ListPoolsRequest,
+    ) -> ehpc_instant_20230701_models.ListPoolsResponse:
+        """
+        @summary 查询资源池列表
+        
+        @param request: ListPoolsRequest
+        @return: ListPoolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_pools_with_options(request, runtime)
+
+    async def list_pools_async(
+        self,
+        request: ehpc_instant_20230701_models.ListPoolsRequest,
+    ) -> ehpc_instant_20230701_models.ListPoolsResponse:
+        """
+        @summary 查询资源池列表
+        
+        @param request: ListPoolsRequest
+        @return: ListPoolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_pools_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -1724,3 +2256,115 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.un_tag_resources_with_options_async(request, runtime)
+
+    def update_pool_with_options(
+        self,
+        tmp_req: ehpc_instant_20230701_models.UpdatePoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.UpdatePoolResponse:
+        """
+        @summary 更新资源池
+        
+        @param tmp_req: UpdatePoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePoolResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.UpdatePoolShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_limits):
+            request.resource_limits_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_limits, 'ResourceLimits', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.pool_name):
+            query['PoolName'] = request.pool_name
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_limits_shrink):
+            query['ResourceLimits'] = request.resource_limits_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePool',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.UpdatePoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_pool_with_options_async(
+        self,
+        tmp_req: ehpc_instant_20230701_models.UpdatePoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.UpdatePoolResponse:
+        """
+        @summary 更新资源池
+        
+        @param tmp_req: UpdatePoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePoolResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.UpdatePoolShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_limits):
+            request.resource_limits_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_limits, 'ResourceLimits', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.pool_name):
+            query['PoolName'] = request.pool_name
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_limits_shrink):
+            query['ResourceLimits'] = request.resource_limits_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePool',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.UpdatePoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_pool(
+        self,
+        request: ehpc_instant_20230701_models.UpdatePoolRequest,
+    ) -> ehpc_instant_20230701_models.UpdatePoolResponse:
+        """
+        @summary 更新资源池
+        
+        @param request: UpdatePoolRequest
+        @return: UpdatePoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_pool_with_options(request, runtime)
+
+    async def update_pool_async(
+        self,
+        request: ehpc_instant_20230701_models.UpdatePoolRequest,
+    ) -> ehpc_instant_20230701_models.UpdatePoolResponse:
+        """
+        @summary 更新资源池
+        
+        @param request: UpdatePoolRequest
+        @return: UpdatePoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_pool_with_options_async(request, runtime)

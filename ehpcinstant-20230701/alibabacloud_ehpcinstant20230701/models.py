@@ -1159,6 +1159,184 @@ class CreateJobResponse(TeaModel):
         return self
 
 
+class CreatePoolRequestResourceLimits(TeaModel):
+    def __init__(
+        self,
+        max_exector_num: int = None,
+    ):
+        self.max_exector_num = max_exector_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_exector_num is not None:
+            result['MaxExectorNum'] = self.max_exector_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxExectorNum') is not None:
+            self.max_exector_num = m.get('MaxExectorNum')
+        return self
+
+
+class CreatePoolRequest(TeaModel):
+    def __init__(
+        self,
+        pool_name: str = None,
+        priority: int = None,
+        resource_limits: CreatePoolRequestResourceLimits = None,
+    ):
+        # This parameter is required.
+        self.pool_name = pool_name
+        self.priority = priority
+        self.resource_limits = resource_limits
+
+    def validate(self):
+        if self.resource_limits:
+            self.resource_limits.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_name is not None:
+            result['PoolName'] = self.pool_name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.resource_limits is not None:
+            result['ResourceLimits'] = self.resource_limits.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolName') is not None:
+            self.pool_name = m.get('PoolName')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ResourceLimits') is not None:
+            temp_model = CreatePoolRequestResourceLimits()
+            self.resource_limits = temp_model.from_map(m['ResourceLimits'])
+        return self
+
+
+class CreatePoolShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        pool_name: str = None,
+        priority: int = None,
+        resource_limits_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.pool_name = pool_name
+        self.priority = priority
+        self.resource_limits_shrink = resource_limits_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_name is not None:
+            result['PoolName'] = self.pool_name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.resource_limits_shrink is not None:
+            result['ResourceLimits'] = self.resource_limits_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolName') is not None:
+            self.pool_name = m.get('PoolName')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ResourceLimits') is not None:
+            self.resource_limits_shrink = m.get('ResourceLimits')
+        return self
+
+
+class CreatePoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreatePoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteJobsRequestJobSpecTaskSpec(TeaModel):
     def __init__(
         self,
@@ -1371,6 +1549,103 @@ class DeleteJobsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeletePoolRequest(TeaModel):
+    def __init__(
+        self,
+        pool_name: str = None,
+    ):
+        # This parameter is required.
+        self.pool_name = pool_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_name is not None:
+            result['PoolName'] = self.pool_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolName') is not None:
+            self.pool_name = m.get('PoolName')
+        return self
+
+
+class DeletePoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeletePoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePoolResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1738,6 +2013,204 @@ class DescribeJobMetricLastResponse(TeaModel):
         return self
 
 
+class GetAppVersionsRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        image_category: str = None,
+        image_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.app_name = app_name
+        self.image_category = image_category
+        self.image_type = image_type
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.image_category is not None:
+            result['ImageCategory'] = self.image_category
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('ImageCategory') is not None:
+            self.image_category = m.get('ImageCategory')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetAppVersionsResponseBodyAppVersions(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        name: str = None,
+        version: str = None,
+    ):
+        # This parameter is required.
+        self.image_id = image_id
+        self.name = name
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class GetAppVersionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        app_versions: List[GetAppVersionsResponseBodyAppVersions] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.app_versions = app_versions
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.app_versions:
+            for k in self.app_versions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AppVersions'] = []
+        if self.app_versions is not None:
+            for k in self.app_versions:
+                result['AppVersions'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.app_versions = []
+        if m.get('AppVersions') is not None:
+            for k in m.get('AppVersions'):
+                temp_model = GetAppVersionsResponseBodyAppVersions()
+                self.app_versions.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetAppVersionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAppVersionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAppVersionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetImageRequest(TeaModel):
     def __init__(
         self,
@@ -1820,14 +2293,20 @@ class GetImageResponseBodyImageContainerImageSpecRegistryCredential(TeaModel):
 class GetImageResponseBodyImageContainerImageSpec(TeaModel):
     def __init__(
         self,
+        architecture: str = None,
         is_acrenterprise: bool = None,
         is_acrregistry: bool = None,
+        os_tag: str = None,
+        platform: str = None,
         registry_credential: GetImageResponseBodyImageContainerImageSpecRegistryCredential = None,
         registry_cri_id: str = None,
         registry_url: str = None,
     ):
+        self.architecture = architecture
         self.is_acrenterprise = is_acrenterprise
         self.is_acrregistry = is_acrregistry
+        self.os_tag = os_tag
+        self.platform = platform
         self.registry_credential = registry_credential
         self.registry_cri_id = registry_cri_id
         self.registry_url = registry_url
@@ -1842,10 +2321,16 @@ class GetImageResponseBodyImageContainerImageSpec(TeaModel):
             return _map
 
         result = dict()
+        if self.architecture is not None:
+            result['Architecture'] = self.architecture
         if self.is_acrenterprise is not None:
             result['IsACREnterprise'] = self.is_acrenterprise
         if self.is_acrregistry is not None:
             result['IsACRRegistry'] = self.is_acrregistry
+        if self.os_tag is not None:
+            result['OsTag'] = self.os_tag
+        if self.platform is not None:
+            result['Platform'] = self.platform
         if self.registry_credential is not None:
             result['RegistryCredential'] = self.registry_credential.to_map()
         if self.registry_cri_id is not None:
@@ -1856,10 +2341,16 @@ class GetImageResponseBodyImageContainerImageSpec(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Architecture') is not None:
+            self.architecture = m.get('Architecture')
         if m.get('IsACREnterprise') is not None:
             self.is_acrenterprise = m.get('IsACREnterprise')
         if m.get('IsACRRegistry') is not None:
             self.is_acrregistry = m.get('IsACRRegistry')
+        if m.get('OsTag') is not None:
+            self.os_tag = m.get('OsTag')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
         if m.get('RegistryCredential') is not None:
             temp_model = GetImageResponseBodyImageContainerImageSpecRegistryCredential()
             self.registry_credential = temp_model.from_map(m['RegistryCredential'])
@@ -1867,6 +2358,45 @@ class GetImageResponseBodyImageContainerImageSpec(TeaModel):
             self.registry_cri_id = m.get('RegistryCriId')
         if m.get('RegistryUrl') is not None:
             self.registry_url = m.get('RegistryUrl')
+        return self
+
+
+class GetImageResponseBodyImageDocumentInfo(TeaModel):
+    def __init__(
+        self,
+        document: str = None,
+        document_id: str = None,
+        encoding_mode: str = None,
+    ):
+        self.document = document
+        self.document_id = document_id
+        self.encoding_mode = encoding_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document is not None:
+            result['Document'] = self.document
+        if self.document_id is not None:
+            result['DocumentId'] = self.document_id
+        if self.encoding_mode is not None:
+            result['EncodingMode'] = self.encoding_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Document') is not None:
+            self.document = m.get('Document')
+        if m.get('DocumentId') is not None:
+            self.document_id = m.get('DocumentId')
+        if m.get('EncodingMode') is not None:
+            self.encoding_mode = m.get('EncodingMode')
         return self
 
 
@@ -1922,6 +2452,7 @@ class GetImageResponseBodyImage(TeaModel):
         container_image_spec: GetImageResponseBodyImageContainerImageSpec = None,
         create_time: str = None,
         description: str = None,
+        document_info: GetImageResponseBodyImageDocumentInfo = None,
         image_type: str = None,
         name: str = None,
         size: str = None,
@@ -1933,6 +2464,7 @@ class GetImageResponseBodyImage(TeaModel):
         self.container_image_spec = container_image_spec
         self.create_time = create_time
         self.description = description
+        self.document_info = document_info
         # This parameter is required.
         self.image_type = image_type
         self.name = name
@@ -1944,6 +2476,8 @@ class GetImageResponseBodyImage(TeaModel):
     def validate(self):
         if self.container_image_spec:
             self.container_image_spec.validate()
+        if self.document_info:
+            self.document_info.validate()
         if self.vmimage_spec:
             self.vmimage_spec.validate()
 
@@ -1961,6 +2495,8 @@ class GetImageResponseBodyImage(TeaModel):
             result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
+        if self.document_info is not None:
+            result['DocumentInfo'] = self.document_info.to_map()
         if self.image_type is not None:
             result['ImageType'] = self.image_type
         if self.name is not None:
@@ -1986,6 +2522,9 @@ class GetImageResponseBodyImage(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DocumentInfo') is not None:
+            temp_model = GetImageResponseBodyImageDocumentInfo()
+            self.document_info = temp_model.from_map(m['DocumentInfo'])
         if m.get('ImageType') is not None:
             self.image_type = m.get('ImageType')
         if m.get('Name') is not None:
@@ -2789,6 +3328,186 @@ class GetJobResponse(TeaModel):
         return self
 
 
+class GetPoolRequest(TeaModel):
+    def __init__(
+        self,
+        pool_name: str = None,
+    ):
+        # This parameter is required.
+        self.pool_name = pool_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_name is not None:
+            result['PoolName'] = self.pool_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolName') is not None:
+            self.pool_name = m.get('PoolName')
+        return self
+
+
+class GetPoolResponseBodyPoolInfo(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        exector_usage: int = None,
+        is_default: bool = None,
+        max_exector_num: int = None,
+        pool_name: str = None,
+        priority: int = None,
+        reason: str = None,
+        status: str = None,
+        update_time: str = None,
+    ):
+        self.create_time = create_time
+        self.exector_usage = exector_usage
+        self.is_default = is_default
+        self.max_exector_num = max_exector_num
+        self.pool_name = pool_name
+        self.priority = priority
+        self.reason = reason
+        self.status = status
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.exector_usage is not None:
+            result['ExectorUsage'] = self.exector_usage
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.max_exector_num is not None:
+            result['MaxExectorNum'] = self.max_exector_num
+        if self.pool_name is not None:
+            result['PoolName'] = self.pool_name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ExectorUsage') is not None:
+            self.exector_usage = m.get('ExectorUsage')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('MaxExectorNum') is not None:
+            self.max_exector_num = m.get('MaxExectorNum')
+        if m.get('PoolName') is not None:
+            self.pool_name = m.get('PoolName')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetPoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        pool_info: GetPoolResponseBodyPoolInfo = None,
+        request_id: str = None,
+    ):
+        self.pool_info = pool_info
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.pool_info:
+            self.pool_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_info is not None:
+            result['PoolInfo'] = self.pool_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolInfo') is not None:
+            temp_model = GetPoolResponseBodyPoolInfo()
+            self.pool_info = temp_model.from_map(m['PoolInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetPoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListExecutorsRequestFilter(TeaModel):
     def __init__(
         self,
@@ -3292,6 +4011,7 @@ class ListImagesRequest(TeaModel):
         image_ids: List[str] = None,
         image_names: List[str] = None,
         image_type: str = None,
+        mode: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
@@ -3299,6 +4019,7 @@ class ListImagesRequest(TeaModel):
         self.image_ids = image_ids
         self.image_names = image_names
         self.image_type = image_type
+        self.mode = mode
         self.page_number = page_number
         self.page_size = page_size
 
@@ -3319,6 +4040,8 @@ class ListImagesRequest(TeaModel):
             result['ImageNames'] = self.image_names
         if self.image_type is not None:
             result['ImageType'] = self.image_type
+        if self.mode is not None:
+            result['Mode'] = self.mode
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -3335,6 +4058,8 @@ class ListImagesRequest(TeaModel):
             self.image_names = m.get('ImageNames')
         if m.get('ImageType') is not None:
             self.image_type = m.get('ImageType')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -3349,6 +4074,7 @@ class ListImagesShrinkRequest(TeaModel):
         image_ids_shrink: str = None,
         image_names_shrink: str = None,
         image_type: str = None,
+        mode: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
@@ -3356,6 +4082,7 @@ class ListImagesShrinkRequest(TeaModel):
         self.image_ids_shrink = image_ids_shrink
         self.image_names_shrink = image_names_shrink
         self.image_type = image_type
+        self.mode = mode
         self.page_number = page_number
         self.page_size = page_size
 
@@ -3376,6 +4103,8 @@ class ListImagesShrinkRequest(TeaModel):
             result['ImageNames'] = self.image_names_shrink
         if self.image_type is not None:
             result['ImageType'] = self.image_type
+        if self.mode is not None:
+            result['Mode'] = self.mode
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -3392,6 +4121,8 @@ class ListImagesShrinkRequest(TeaModel):
             self.image_names_shrink = m.get('ImageNames')
         if m.get('ImageType') is not None:
             self.image_type = m.get('ImageType')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -3405,23 +4136,29 @@ class ListImagesResponseBodyImages(TeaModel):
         app_id: str = None,
         create_time: str = None,
         description: str = None,
+        document_id: int = None,
         image_id: str = None,
         image_type: str = None,
         name: str = None,
         os_tag: str = None,
+        update_time: str = None,
         version: str = None,
+        weight: int = None,
     ):
         # This parameter is required.
         self.app_id = app_id
         self.create_time = create_time
         self.description = description
+        self.document_id = document_id
         # This parameter is required.
         self.image_id = image_id
         # This parameter is required.
         self.image_type = image_type
         self.name = name
         self.os_tag = os_tag
+        self.update_time = update_time
         self.version = version
+        self.weight = weight
 
     def validate(self):
         pass
@@ -3438,6 +4175,8 @@ class ListImagesResponseBodyImages(TeaModel):
             result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
+        if self.document_id is not None:
+            result['DocumentId'] = self.document_id
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_type is not None:
@@ -3446,8 +4185,12 @@ class ListImagesResponseBodyImages(TeaModel):
             result['Name'] = self.name
         if self.os_tag is not None:
             result['OsTag'] = self.os_tag
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
         if self.version is not None:
             result['Version'] = self.version
+        if self.weight is not None:
+            result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
@@ -3458,6 +4201,8 @@ class ListImagesResponseBodyImages(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DocumentId') is not None:
+            self.document_id = m.get('DocumentId')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageType') is not None:
@@ -3466,8 +4211,12 @@ class ListImagesResponseBodyImages(TeaModel):
             self.name = m.get('Name')
         if m.get('OsTag') is not None:
             self.os_tag = m.get('OsTag')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
         if m.get('Version') is not None:
             self.version = m.get('Version')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         return self
 
 
@@ -4347,6 +5096,283 @@ class ListJobsResponse(TeaModel):
         return self
 
 
+class ListPoolsRequestFilter(TeaModel):
+    def __init__(
+        self,
+        pool_name: List[str] = None,
+        status: List[str] = None,
+        time_created_after: int = None,
+        time_created_before: int = None,
+    ):
+        self.pool_name = pool_name
+        self.status = status
+        self.time_created_after = time_created_after
+        self.time_created_before = time_created_before
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_name is not None:
+            result['PoolName'] = self.pool_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.time_created_after is not None:
+            result['TimeCreatedAfter'] = self.time_created_after
+        if self.time_created_before is not None:
+            result['TimeCreatedBefore'] = self.time_created_before
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolName') is not None:
+            self.pool_name = m.get('PoolName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TimeCreatedAfter') is not None:
+            self.time_created_after = m.get('TimeCreatedAfter')
+        if m.get('TimeCreatedBefore') is not None:
+            self.time_created_before = m.get('TimeCreatedBefore')
+        return self
+
+
+class ListPoolsRequest(TeaModel):
+    def __init__(
+        self,
+        filter: ListPoolsRequestFilter = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.filter = filter
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            temp_model = ListPoolsRequestFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListPoolsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        filter_shrink: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.filter_shrink = filter_shrink
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListPoolsResponseBodyPoolList(TeaModel):
+    def __init__(
+        self,
+        is_default: bool = None,
+        max_exector_num: int = None,
+        pool_name: str = None,
+        priority: int = None,
+        status: str = None,
+    ):
+        self.is_default = is_default
+        self.max_exector_num = max_exector_num
+        self.pool_name = pool_name
+        self.priority = priority
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.max_exector_num is not None:
+            result['MaxExectorNum'] = self.max_exector_num
+        if self.pool_name is not None:
+            result['PoolName'] = self.pool_name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('MaxExectorNum') is not None:
+            self.max_exector_num = m.get('MaxExectorNum')
+        if m.get('PoolName') is not None:
+            self.pool_name = m.get('PoolName')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListPoolsResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        pool_list: List[ListPoolsResponseBodyPoolList] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.pool_list = pool_list
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.pool_list:
+            for k in self.pool_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['PoolList'] = []
+        if self.pool_list is not None:
+            for k in self.pool_list:
+                result['PoolList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.pool_list = []
+        if m.get('PoolList') is not None:
+            for k in m.get('PoolList'):
+                temp_model = ListPoolsResponseBodyPoolList()
+                self.pool_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListPoolsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPoolsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPoolsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagResourcesRequestTag(TeaModel):
     def __init__(
         self,
@@ -4973,6 +5999,184 @@ class UnTagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePoolRequestResourceLimits(TeaModel):
+    def __init__(
+        self,
+        max_exector_num: int = None,
+    ):
+        self.max_exector_num = max_exector_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_exector_num is not None:
+            result['MaxExectorNum'] = self.max_exector_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxExectorNum') is not None:
+            self.max_exector_num = m.get('MaxExectorNum')
+        return self
+
+
+class UpdatePoolRequest(TeaModel):
+    def __init__(
+        self,
+        pool_name: str = None,
+        priority: int = None,
+        resource_limits: UpdatePoolRequestResourceLimits = None,
+    ):
+        # This parameter is required.
+        self.pool_name = pool_name
+        self.priority = priority
+        self.resource_limits = resource_limits
+
+    def validate(self):
+        if self.resource_limits:
+            self.resource_limits.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_name is not None:
+            result['PoolName'] = self.pool_name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.resource_limits is not None:
+            result['ResourceLimits'] = self.resource_limits.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolName') is not None:
+            self.pool_name = m.get('PoolName')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ResourceLimits') is not None:
+            temp_model = UpdatePoolRequestResourceLimits()
+            self.resource_limits = temp_model.from_map(m['ResourceLimits'])
+        return self
+
+
+class UpdatePoolShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        pool_name: str = None,
+        priority: int = None,
+        resource_limits_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.pool_name = pool_name
+        self.priority = priority
+        self.resource_limits_shrink = resource_limits_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_name is not None:
+            result['PoolName'] = self.pool_name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.resource_limits_shrink is not None:
+            result['ResourceLimits'] = self.resource_limits_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolName') is not None:
+            self.pool_name = m.get('PoolName')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ResourceLimits') is not None:
+            self.resource_limits_shrink = m.get('ResourceLimits')
+        return self
+
+
+class UpdatePoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdatePoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePoolResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
