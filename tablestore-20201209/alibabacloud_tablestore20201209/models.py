@@ -10,7 +10,13 @@ class ChangeResourceGroupRequest(TeaModel):
         new_resource_group_id: str = None,
         resource_id: str = None,
     ):
+        # The ID of the new resource group.
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
+        # The resource ID, which is the instance name.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
 
     def validate(self):
@@ -42,6 +48,7 @@ class ChangeResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID, which can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -105,13 +112,141 @@ class ChangeResourceGroupResponse(TeaModel):
         return self
 
 
+class CheckInstancePolicyRequest(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+        policy: str = None,
+    ):
+        # The name of the instance.
+        # 
+        # This parameter is required.
+        self.instance_name = instance_name
+        # The instance policy in the JSON format.
+        # 
+        # This parameter is required.
+        self.policy = policy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        return self
+
+
+class CheckInstancePolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The HTTP status code.
+        self.code = code
+        # The response message.
+        self.message = message
+        # The request ID, which can be used to troubleshoot issues.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckInstancePolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckInstancePolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckInstancePolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateInstanceRequestTags(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key can be up to 64 characters in length.
+        # 
+        # This parameter is required.
         self.key = key
+        # The tag value. The tag value can be up to 64 characters in length.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -152,15 +287,50 @@ class CreateInstanceRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[CreateInstanceRequestTags] = None,
     ):
+        # The type of the instance.
+        # 
+        # *   SSD: high-performance instance
+        # *   HYBRID: capacity instance
+        # 
+        # This parameter is required.
         self.cluster_type = cluster_type
+        # (Deprecated) Specifies whether to enable disaster recovery for the instance.
+        # 
+        # Valid values:
+        # 
+        # *   false
+        # *   true
         self.disable_replication = disable_replication
+        # The description of the instance. The instance description must be 3 to 256 characters in length.
         self.instance_description = instance_description
+        # The name of the instance. Instance naming conventions:
+        # 
+        # *   The name can contain only letters, digits, and hyphens (-).
+        # *   The name must start with a letter.
+        # *   The name cannot end with a hyphen (-).
+        # *   The name is case-insensitive.
+        # *   The name must be 3 to 16 characters in length.
+        # *   The name cannot contain the following words: ali, ay, ots, taobao, and admin.
+        # 
+        # This parameter is required.
         self.instance_name = instance_name
+        # (Deprecated) The network type of the instance. Valid values: NORMAL and VPC_CONSOLE. Default value: NORMAL.
         self.network = network
+        # The types of the source from which access is allowed. By default, the following source type is allowed:
+        # 
+        # TRUST_PROXY: console
         self.network_source_acl = network_source_acl
+        # The types of the network from which access is allowed. By default, the following network types are allowed:
+        # 
+        # *   INTERNET: Internet
+        # *   VPC: virtual private cloud (VPC)
+        # *   CLASSIC: classic network
         self.network_type_acl = network_type_acl
+        # The instance policy in the JSON format.
         self.policy = policy
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -234,8 +404,11 @@ class CreateInstanceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The response message.
         self.message = message
+        # The request ID, which can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -312,6 +485,9 @@ class DeleteInstanceRequest(TeaModel):
         self,
         instance_name: str = None,
     ):
+        # The name of the instance.
+        # 
+        # This parameter is required.
         self.instance_name = instance_name
 
     def validate(self):
@@ -339,6 +515,7 @@ class DeleteInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID, which can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -402,11 +579,136 @@ class DeleteInstanceResponse(TeaModel):
         return self
 
 
+class DeleteInstancePolicyRequest(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+        policy_version: int = None,
+    ):
+        # The name of the instance.
+        # 
+        # This parameter is required.
+        self.instance_name = instance_name
+        # The version of the instance policy.
+        # 
+        # This parameter is required.
+        self.policy_version = policy_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.policy_version is not None:
+            result['PolicyVersion'] = self.policy_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('PolicyVersion') is not None:
+            self.policy_version = m.get('PolicyVersion')
+        return self
+
+
+class DeleteInstancePolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The HTTP status code.
+        self.code = code
+        # The response message.
+        self.message = message
+        # The request ID, which can be used to troubleshoot issues.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteInstancePolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteInstancePolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteInstancePolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeRegionsRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # >  #### You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -435,7 +737,9 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         i_18n_key: str = None,
         region_id: str = None,
     ):
+        # The key of the region.
         self.i_18n_key = i_18n_key
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -468,7 +772,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # The regions.
         self.regions = regions
+        # The request ID, which can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -549,6 +855,9 @@ class GetInstanceRequest(TeaModel):
         self,
         instance_name: str = None,
     ):
+        # The name of the instance.
+        # 
+        # This parameter is required.
         self.instance_name = instance_name
 
     def validate(self):
@@ -579,9 +888,13 @@ class GetInstanceResponseBodyTags(TeaModel):
         tag_value: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # (Deprecated) The tag key.
         self.tag_key = tag_key
+        # (Deprecated) The tag value.
         self.tag_value = tag_value
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -625,6 +938,7 @@ class GetInstanceResponseBody(TeaModel):
         instance_name: str = None,
         instance_specification: str = None,
         instance_status: str = None,
+        is_multi_az: bool = None,
         network: str = None,
         network_source_acl: List[str] = None,
         network_type_acl: List[str] = None,
@@ -641,26 +955,71 @@ class GetInstanceResponseBody(TeaModel):
         user_id: str = None,
         vcuquota: int = None,
     ):
+        # The alias of the instance.
         self.alias_name = alias_name
+        # The time when the instance was created.
         self.create_time = create_time
+        # The description of the instance.
         self.instance_description = instance_description
+        # The name of the instance.
         self.instance_name = instance_name
+        # The type of the instance.
+        # 
+        # *   SSD: high-performance instance
+        # *   HYBRID: capacity instance
         self.instance_specification = instance_specification
+        # The status of the instance.
+        # 
+        # *   normal: The instance works as expected.
+        # *   forbidden: The instance is disabled.
+        # *   Deleting: The instance is being deleted.
         self.instance_status = instance_status
+        self.is_multi_az = is_multi_az
+        # The network type of the instance. Valid values:
+        # 
+        # *   VPC: The instance can be accessed only over the bound virtual private clouds (VPCs).
+        # *   VPC_CONSOLE: The instance can be accessed from the Tablestore console or over the bound VPCs.
+        # *   NORMAL: The instance can be accessed from networks of the custom types.
         self.network = network
+        # The sources of the network from which access is allowed. Valid value:
+        # 
+        # TRUST_PROXY: console
         self.network_source_acl = network_source_acl
+        # The types of the network from which access is allowed. Valid values:
+        # 
+        # *   CLASSIC: the classic network
+        # *   INTERNET: the Internet
+        # *   VPC: VPCs
         self.network_type_acl = network_type_acl
+        # The billing method. Valid values:
+        # 
+        # *   Subscription: subscription
+        # *   PayAsYouGo: pay-as-you-go
         self.payment_type = payment_type
+        # The instance policy.
         self.policy = policy
+        # The version of the instance policy.
         self.policy_version = policy_version
+        # The region ID of the instance.
         self.region_id = region_id
+        # The request ID, which can be used to troubleshoot issues.
         self.request_id = request_id
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        # The ID of the instance.
         self.spinstance_id = spinstance_id
+        # The storage type.
+        # 
+        # *   SSD: high-performance
+        # *   HYBRID: capacity
         self.storage_type = storage_type
+        # The total number of tables in the instance.
         self.table_quota = table_quota
+        # The tags of the instance.
         self.tags = tags
+        # The user ID.
         self.user_id = user_id
+        # The VCU quota.
         self.vcuquota = vcuquota
 
     def validate(self):
@@ -687,6 +1046,8 @@ class GetInstanceResponseBody(TeaModel):
             result['InstanceSpecification'] = self.instance_specification
         if self.instance_status is not None:
             result['InstanceStatus'] = self.instance_status
+        if self.is_multi_az is not None:
+            result['IsMultiAZ'] = self.is_multi_az
         if self.network is not None:
             result['Network'] = self.network
         if self.network_source_acl is not None:
@@ -735,6 +1096,8 @@ class GetInstanceResponseBody(TeaModel):
             self.instance_specification = m.get('InstanceSpecification')
         if m.get('InstanceStatus') is not None:
             self.instance_status = m.get('InstanceStatus')
+        if m.get('IsMultiAZ') is not None:
+            self.is_multi_az = m.get('IsMultiAZ')
         if m.get('Network') is not None:
             self.network = m.get('Network')
         if m.get('NetworkSourceACL') is not None:
@@ -816,15 +1179,27 @@ class ListInstancesRequest(TeaModel):
     def __init__(
         self,
         instance_name: str = None,
+        instance_name_list: List[str] = None,
         max_results: int = None,
         next_token: str = None,
         resource_group_id: str = None,
         status: str = None,
     ):
+        # The name of the instance. Fuzzy search is supported.
         self.instance_name = instance_name
+        # The names of the instances. This parameter is used to specify multiple instances that you want to query at the same time.
+        self.instance_name_list = instance_name_list
+        # The maximum number of instances that you want to return. Valid values: 0 to 200. If you do not configure this parameter or set this parameter to 0, the default value of 100 is used.
         self.max_results = max_results
+        # The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call. Instances are returned in lexicographical order starting from the position that is specified by this parameter. The first time you call the operation, leave this parameter empty.
         self.next_token = next_token
+        # The resource group ID. You can query the ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
+        # The instance status.
+        # 
+        # *   normal: The instance is running as expected.
+        # *   forbidden: The instance is disabled.
+        # *   Deleting: The instance is being deleted.
         self.status = status
 
     def validate(self):
@@ -838,6 +1213,8 @@ class ListInstancesRequest(TeaModel):
         result = dict()
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.instance_name_list is not None:
+            result['InstanceNameList'] = self.instance_name_list
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -852,6 +1229,75 @@ class ListInstancesRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('InstanceNameList') is not None:
+            self.instance_name_list = m.get('InstanceNameList')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+        instance_name_list_shrink: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        resource_group_id: str = None,
+        status: str = None,
+    ):
+        # The name of the instance. Fuzzy search is supported.
+        self.instance_name = instance_name
+        # The names of the instances. This parameter is used to specify multiple instances that you want to query at the same time.
+        self.instance_name_list_shrink = instance_name_list_shrink
+        # The maximum number of instances that you want to return. Valid values: 0 to 200. If you do not configure this parameter or set this parameter to 0, the default value of 100 is used.
+        self.max_results = max_results
+        # The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call. Instances are returned in lexicographical order starting from the position that is specified by this parameter. The first time you call the operation, leave this parameter empty.
+        self.next_token = next_token
+        # The resource group ID. You can query the ID on the Resource Group page in the Resource Management console.
+        self.resource_group_id = resource_group_id
+        # The instance status.
+        # 
+        # *   normal: The instance is running as expected.
+        # *   forbidden: The instance is disabled.
+        # *   Deleting: The instance is being deleted.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_name_list_shrink is not None:
+            result['InstanceNameList'] = self.instance_name_list_shrink
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceNameList') is not None:
+            self.instance_name_list_shrink = m.get('InstanceNameList')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -872,6 +1318,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         instance_name: str = None,
         instance_specification: str = None,
         instance_status: str = None,
+        is_multi_az: bool = None,
         payment_type: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -880,18 +1327,41 @@ class ListInstancesResponseBodyInstances(TeaModel):
         user_id: str = None,
         vcuquota: int = None,
     ):
+        # The instance alias.
         self.alias_name = alias_name
+        # The time when the instance was created.
         self.create_time = create_time
+        # The instance description.
         self.instance_description = instance_description
+        # The name of the instance, which is used to uniquely identify the instance.
         self.instance_name = instance_name
+        # The type of the instance.
+        # 
+        # *   SSD: high-performance instance
+        # *   HYBRID: capacity instance
         self.instance_specification = instance_specification
+        # The instance status.
         self.instance_status = instance_status
+        self.is_multi_az = is_multi_az
+        # The billing method.
+        # 
+        # *   Subscription: subscription
+        # *   PayAsYouGo: pay as you go
         self.payment_type = payment_type
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the instance.
         self.spinstance_id = spinstance_id
+        # The storage type.
+        # 
+        # *   SSD: high-performance
+        # *   HYBRID: capacity
         self.storage_type = storage_type
+        # The user ID.
         self.user_id = user_id
+        # The VCU quota.
         self.vcuquota = vcuquota
 
     def validate(self):
@@ -915,6 +1385,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['InstanceSpecification'] = self.instance_specification
         if self.instance_status is not None:
             result['InstanceStatus'] = self.instance_status
+        if self.is_multi_az is not None:
+            result['IsMultiAZ'] = self.is_multi_az
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
         if self.region_id is not None:
@@ -945,6 +1417,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.instance_specification = m.get('InstanceSpecification')
         if m.get('InstanceStatus') is not None:
             self.instance_status = m.get('InstanceStatus')
+        if m.get('IsMultiAZ') is not None:
+            self.is_multi_az = m.get('IsMultiAZ')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
         if m.get('RegionId') is not None:
@@ -970,9 +1444,13 @@ class ListInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The instances.
         self.instances = instances
+        # The token that determines the start position of the next query. If this parameter is empty, all instances that you want to query are returned.
         self.next_token = next_token
+        # The request ID, which can be used to troubleshoot issues.
         self.request_id = request_id
+        # The total number of instances returned.
         self.total_count = total_count
 
     def validate(self):
@@ -1062,7 +1540,9 @@ class ListTagResourcesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -1098,10 +1578,17 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tags: List[ListTagResourcesRequestTags] = None,
     ):
+        # The maximum number of tagged resources that you want to return. Valid values: 0 to 200. If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. Tagged resources are returned in lexicographical order starting from the position that is specified by this parameter.
         self.next_token = next_token
+        # The resource IDs, which are instance names.
         self.resource_ids = resource_ids
+        # The type of the resource. valid value:
+        # 
+        # instance: instance
         self.resource_type = resource_type
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -1157,10 +1644,17 @@ class ListTagResourcesShrinkRequest(TeaModel):
         resource_type: str = None,
         tags_shrink: str = None,
     ):
+        # The maximum number of tagged resources that you want to return. Valid values: 0 to 200. If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. Tagged resources are returned in lexicographical order starting from the position that is specified by this parameter.
         self.next_token = next_token
+        # The resource IDs, which are instance names.
         self.resource_ids_shrink = resource_ids_shrink
+        # The type of the resource. valid value:
+        # 
+        # instance: instance
         self.resource_type = resource_type
+        # The tags.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -1207,9 +1701,13 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The resource ID, which is the instance name.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -1252,9 +1750,13 @@ class ListTagResourcesResponseBody(TeaModel):
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
         request_id: str = None,
     ):
+        # The maximum number of tagged resources that are returned for the query.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The tags.
         self.tag_resources = tag_resources
+        # The request ID, which can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -1344,7 +1846,13 @@ class TagResourcesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # This parameter is required.
         self.key = key
+        # The tag value.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -1378,8 +1886,19 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tags: List[TagResourcesRequestTags] = None,
     ):
+        # The resource IDs, which are instance names.
+        # 
+        # This parameter is required.
         self.resource_ids = resource_ids
+        # The type of the resource. valid value:
+        # 
+        # instance: instance
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
+        # The tags.
+        # 
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -1423,6 +1942,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID, which can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -1494,9 +2014,18 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_keys: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the resources. Default value: false. Valid values:
+        # 
+        # *   true: removes all tags from the resources.
+        # *   false: removes the tags that are specified by the TagKeys parameter from the resources.
         self.all = all
+        # The resource IDs, which are instance names.
         self.resource_ids = resource_ids
+        # The type of the resource. valid value:
+        # 
+        # instance: instance
         self.resource_type = resource_type
+        # The tag keys.
         self.tag_keys = tag_keys
 
     def validate(self):
@@ -1536,6 +2065,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID, which can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -1609,11 +2139,25 @@ class UpdateInstanceRequest(TeaModel):
         network_source_acl: List[str] = None,
         network_type_acl: List[str] = None,
     ):
+        # The alias of the instance.
         self.alias_name = alias_name
+        # The description of the instance.
         self.instance_description = instance_description
+        # The name of the instance whose information you want to update.
+        # 
+        # This parameter is required.
         self.instance_name = instance_name
+        # (Deprecated) The network type of the instance. Valid values: NORMAL and VPC_CONSOLE. Default value: NORMAL.
         self.network = network
+        # The new sources of the network from which access is allowed. By default, all sources of networks are allowed. Valid value:
+        # 
+        # TRUST_PROXY: the console
         self.network_source_acl = network_source_acl
+        # The new types of the network from which access is allowed. By default, all types of networks are allowed. Valid values:
+        # 
+        # *   INTERNET: the Internet
+        # *   VPC: VPCs
+        # *   CLASSIC: the classic network
         self.network_type_acl = network_type_acl
 
     def validate(self):
@@ -1661,6 +2205,7 @@ class UpdateInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID, which can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -1720,6 +2265,247 @@ class UpdateInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateInstanceElasticVCUUpperLimitRequest(TeaModel):
+    def __init__(
+        self,
+        elastic_vcuupper_limit: float = None,
+        instance_name: str = None,
+    ):
+        # The upper limit for the VCUs of the instance.
+        # 
+        # >  Valid values of the upper limit for the VCUs of an instance: **Number of reserved VCUs+0.1 to 2000**. You can upgrade or downgrade configurations to modify the number of reserved VCUs by increments or decrements of 1. You can dynamically modify the upper limit for the VCUs of an instance by increments or decrements of 0.1
+        # 
+        # This parameter is required.
+        self.elastic_vcuupper_limit = elastic_vcuupper_limit
+        # The name of the instance.
+        # 
+        # This parameter is required.
+        self.instance_name = instance_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.elastic_vcuupper_limit is not None:
+            result['ElasticVCUUpperLimit'] = self.elastic_vcuupper_limit
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ElasticVCUUpperLimit') is not None:
+            self.elastic_vcuupper_limit = m.get('ElasticVCUUpperLimit')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        return self
+
+
+class UpdateInstanceElasticVCUUpperLimitResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID, which can be used to troubleshoot issues.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateInstanceElasticVCUUpperLimitResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateInstanceElasticVCUUpperLimitResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateInstanceElasticVCUUpperLimitResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateInstancePolicyRequest(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+        policy: str = None,
+        policy_version: int = None,
+    ):
+        # The name of the instance.
+        # 
+        # This parameter is required.
+        self.instance_name = instance_name
+        # The instance policy in the JSON format.
+        # 
+        # This parameter is required.
+        self.policy = policy
+        # The version of the instance policy.
+        # 
+        # This parameter is required.
+        self.policy_version = policy_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.policy_version is not None:
+            result['PolicyVersion'] = self.policy_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PolicyVersion') is not None:
+            self.policy_version = m.get('PolicyVersion')
+        return self
+
+
+class UpdateInstancePolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The HTTP status code.
+        self.code = code
+        # The response message.
+        self.message = message
+        # The request ID, which can be used to troubleshoot issues.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateInstancePolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateInstancePolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateInstancePolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
