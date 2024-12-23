@@ -1,3 +1,11 @@
+2024-12-23 Version: 1.11.0
+- Support API UpdateAndPublishAgentSelective.
+- Update API CreateAndPulishAgent: add param sampleLibrary.
+- Update API CreateAndPulishAgent: update param applicationConfig.
+- Update API UpdateAndPublishAgent: add param sampleLibrary.
+- Update API UpdateAndPublishAgent: update param applicationConfig.
+
+
 2024-12-12 Version: 1.10.2
 - Update API ListChunks: update param body.
 

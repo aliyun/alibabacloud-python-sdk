@@ -157,11 +157,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.AddFileResponse:
         """
-        @summary Imports an unstructured document stored in the temporary storage space to Data Management.
+        @summary Imports an unstructured document stored in the temporary storage space to Data Management. You cannot use the API to import structured documents. Use the console instead.
         
-        @description    Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://help.aliyun.com/zh/model-studio/developer-reference/upload-files-by-calling-api).
+        @description    Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://www.alibabacloud.com/help/en/model-studio/developer-reference/upload-files-by-calling-api).
         >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
-        You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+        You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
         After you call this operation, the system parses and imports your document. The process takes some time.
         This interface is not idempotent.
         
@@ -212,11 +212,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.AddFileResponse:
         """
-        @summary Imports an unstructured document stored in the temporary storage space to Data Management.
+        @summary Imports an unstructured document stored in the temporary storage space to Data Management. You cannot use the API to import structured documents. Use the console instead.
         
-        @description    Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://help.aliyun.com/zh/model-studio/developer-reference/upload-files-by-calling-api).
+        @description    Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://www.alibabacloud.com/help/en/model-studio/developer-reference/upload-files-by-calling-api).
         >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
-        You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+        You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
         After you call this operation, the system parses and imports your document. The process takes some time.
         This interface is not idempotent.
         
@@ -265,11 +265,11 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.AddFileRequest,
     ) -> bailian_20231229_models.AddFileResponse:
         """
-        @summary Imports an unstructured document stored in the temporary storage space to Data Management.
+        @summary Imports an unstructured document stored in the temporary storage space to Data Management. You cannot use the API to import structured documents. Use the console instead.
         
-        @description    Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://help.aliyun.com/zh/model-studio/developer-reference/upload-files-by-calling-api).
+        @description    Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://www.alibabacloud.com/help/en/model-studio/developer-reference/upload-files-by-calling-api).
         >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
-        You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+        You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
         After you call this operation, the system parses and imports your document. The process takes some time.
         This interface is not idempotent.
         
@@ -286,11 +286,11 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.AddFileRequest,
     ) -> bailian_20231229_models.AddFileResponse:
         """
-        @summary Imports an unstructured document stored in the temporary storage space to Data Management.
+        @summary Imports an unstructured document stored in the temporary storage space to Data Management. You cannot use the API to import structured documents. Use the console instead.
         
-        @description    Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://help.aliyun.com/zh/model-studio/developer-reference/upload-files-by-calling-api).
+        @description    Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://www.alibabacloud.com/help/en/model-studio/developer-reference/upload-files-by-calling-api).
         >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
-        You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+        You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
         After you call this operation, the system parses and imports your document. The process takes some time.
         This interface is not idempotent.
         
@@ -461,6 +461,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.application_config):
             request.application_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_config, 'applicationConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sample_library):
+            request.sample_library_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sample_library, 'sampleLibrary', 'json')
         body = {}
         if not UtilClient.is_unset(request.application_config_shrink):
             body['applicationConfig'] = request.application_config_shrink
@@ -470,6 +472,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.sample_library_shrink):
+            body['sampleLibrary'] = request.sample_library_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -510,6 +514,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.application_config):
             request.application_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_config, 'applicationConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sample_library):
+            request.sample_library_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sample_library, 'sampleLibrary', 'json')
         body = {}
         if not UtilClient.is_unset(request.application_config_shrink):
             body['applicationConfig'] = request.application_config_shrink
@@ -519,6 +525,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.sample_library_shrink):
+            body['sampleLibrary'] = request.sample_library_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -4176,6 +4184,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.application_config):
             request.application_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_config, 'applicationConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sample_library):
+            request.sample_library_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sample_library, 'sampleLibrary', 'json')
         body = {}
         if not UtilClient.is_unset(request.application_config_shrink):
             body['applicationConfig'] = request.application_config_shrink
@@ -4185,6 +4195,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.sample_library_shrink):
+            body['sampleLibrary'] = request.sample_library_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -4226,6 +4238,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.application_config):
             request.application_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_config, 'applicationConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sample_library):
+            request.sample_library_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sample_library, 'sampleLibrary', 'json')
         body = {}
         if not UtilClient.is_unset(request.application_config_shrink):
             body['applicationConfig'] = request.application_config_shrink
@@ -4235,6 +4249,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.sample_library_shrink):
+            body['sampleLibrary'] = request.sample_library_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -4286,6 +4302,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_and_publish_agent_with_options_async(workspace_id, app_code, request, headers, runtime)
+
+    def update_and_publish_agent_selective_with_options(
+        self,
+        workspace_id: str,
+        app_code: str,
+        tmp_req: bailian_20231229_models.UpdateAndPublishAgentSelectiveRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdateAndPublishAgentSelectiveResponse:
+        """
+        @summary 选择更新并发布智能体应用
+        
+        @param tmp_req: UpdateAndPublishAgentSelectiveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAndPublishAgentSelectiveResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.UpdateAndPublishAgentSelectiveShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.application_config):
+            request.application_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_config, 'applicationConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sample_library):
+            request.sample_library_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sample_library, 'sampleLibrary', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_config_shrink):
+            body['applicationConfig'] = request.application_config_shrink
+        if not UtilClient.is_unset(request.instructions):
+            body['instructions'] = request.instructions
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.sample_library_shrink):
+            body['sampleLibrary'] = request.sample_library_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAndPublishAgentSelective',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/application/agents/{OpenApiUtilClient.get_encode_param(app_code)}/updateAndPublishAgentSelective',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateAndPublishAgentSelectiveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_and_publish_agent_selective_with_options_async(
+        self,
+        workspace_id: str,
+        app_code: str,
+        tmp_req: bailian_20231229_models.UpdateAndPublishAgentSelectiveRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdateAndPublishAgentSelectiveResponse:
+        """
+        @summary 选择更新并发布智能体应用
+        
+        @param tmp_req: UpdateAndPublishAgentSelectiveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAndPublishAgentSelectiveResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.UpdateAndPublishAgentSelectiveShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.application_config):
+            request.application_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_config, 'applicationConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sample_library):
+            request.sample_library_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sample_library, 'sampleLibrary', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_config_shrink):
+            body['applicationConfig'] = request.application_config_shrink
+        if not UtilClient.is_unset(request.instructions):
+            body['instructions'] = request.instructions
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.sample_library_shrink):
+            body['sampleLibrary'] = request.sample_library_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAndPublishAgentSelective',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/application/agents/{OpenApiUtilClient.get_encode_param(app_code)}/updateAndPublishAgentSelective',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateAndPublishAgentSelectiveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_and_publish_agent_selective(
+        self,
+        workspace_id: str,
+        app_code: str,
+        request: bailian_20231229_models.UpdateAndPublishAgentSelectiveRequest,
+    ) -> bailian_20231229_models.UpdateAndPublishAgentSelectiveResponse:
+        """
+        @summary 选择更新并发布智能体应用
+        
+        @param request: UpdateAndPublishAgentSelectiveRequest
+        @return: UpdateAndPublishAgentSelectiveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_and_publish_agent_selective_with_options(workspace_id, app_code, request, headers, runtime)
+
+    async def update_and_publish_agent_selective_async(
+        self,
+        workspace_id: str,
+        app_code: str,
+        request: bailian_20231229_models.UpdateAndPublishAgentSelectiveRequest,
+    ) -> bailian_20231229_models.UpdateAndPublishAgentSelectiveResponse:
+        """
+        @summary 选择更新并发布智能体应用
+        
+        @param request: UpdateAndPublishAgentSelectiveRequest
+        @return: UpdateAndPublishAgentSelectiveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_and_publish_agent_selective_with_options_async(workspace_id, app_code, request, headers, runtime)
 
     def update_file_tag_with_options(
         self,
