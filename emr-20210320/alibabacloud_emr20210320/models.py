@@ -7780,7 +7780,7 @@ class CreateClusterRequest(TeaModel):
         subscription_config: SubscriptionConfig = None,
         tags: List[Tag] = None,
     ):
-        # The service configurations. Number of elements in the array: 1 to 1000.
+        # The application configurations. Number of elements in the array: 1 to 1000.
         self.application_configs = application_configs
         # The services. Number of elements in the array: 1 to 100.
         # 
@@ -7813,8 +7813,9 @@ class CreateClusterRequest(TeaModel):
         # *   NORMAL: regular mode. This is the default value. A cluster that contains only one master node is created.
         # *   HA: high availability (HA) mode. A cluster that contains three master nodes is created.
         self.deploy_mode = deploy_mode
+        # The cluster description.
         self.description = description
-        # The attributes of all ECS instances. The basic attributes of all ECS instances in the cluster.
+        # The attributes of all ECS instances.
         # 
         # This parameter is required.
         self.node_attributes = node_attributes
@@ -7833,7 +7834,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The version of EMR. You can view the EMR release version on the EMR cluster purchase page.
+        # The EMR version. You can query available E-MapReduce (EMR) versions in the EMR console.
         # 
         # This parameter is required.
         self.release_version = release_version
@@ -7844,9 +7845,9 @@ class CreateClusterRequest(TeaModel):
         # *   NORMAL: disables Kerberos authentication for the cluster. This is the default value.
         # *   KERBEROS: enables Kerberos authentication for the cluster.
         self.security_mode = security_mode
-        # The subscription configurations. This parameter is required only if you set the PaymentType parameter to Subscription.
+        # The subscription configurations. This parameter takes effect only if you set the PaymentType parameter to Subscription.
         self.subscription_config = subscription_config
-        # The list of tags. Number of elements in the array: 0 to 20.
+        # The tags. Number of elements in the array: 0 to 20.
         self.tags = tags
 
     def validate(self):
@@ -8351,7 +8352,9 @@ class DecreaseNodesRequest(TeaModel):
         node_ids: List[str] = None,
         region_id: str = None,
     ):
+        # The cooldown interval between two batches.
         self.batch_interval = batch_interval
+        # The number of nodes to be removed in a single batch.
         self.batch_size = batch_size
         # The cluster ID.
         # 
@@ -8498,17 +8501,17 @@ class DeleteApiTemplateRequest(TeaModel):
         resource_group_id: str = None,
         template_id: str = None,
     ):
-        # 接口名。
+        # Interface name.
         # 
         # This parameter is required.
         self.api_name = api_name
-        # 区域ID。
+        # Region ID
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 资源组ID。
+        # Resource group ID.
         self.resource_group_id = resource_group_id
-        # 集群模板id。
+        # Cluster template ID.
         # 
         # This parameter is required.
         self.template_id = template_id
@@ -8551,8 +8554,9 @@ class DeleteApiTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 请求ID。
+        # Request ID.
         self.request_id = request_id
+        # Whether the call was successful: - true: Call succeeded - false: Call failed.
         self.success = success
 
     def validate(self):
@@ -10092,6 +10096,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints(
     ):
         # The maximum number of nodes in the node group. Default value: 2000.
         self.max_capacity = max_capacity
+        # The maximum number of nodes that you can configure based on your business requirements.
         self.max_on_demand_capacity = max_on_demand_capacity
         # The minimum number of nodes in the node group. Default value: 0.
         self.min_capacity = min_capacity
@@ -10216,6 +10221,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies(TeaModel):
         self.node_group_id = node_group_id
         # The ID of the auto scaling policy.
         self.scaling_policy_id = scaling_policy_id
+        # The type of the auto scaling policy.
         self.scaling_policy_type = scaling_policy_type
         # The list of auto scaling rules.
         self.scaling_rules = scaling_rules
@@ -10339,7 +10345,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
         # *   False
         # *   True
         self.exist_clone_config = exist_clone_config
-        # The attributes of all ECS instances.
+        # The node attributes.
         self.node_attributes = node_attributes
         # The node groups. Number of elements in the array: 1 to 100.
         self.node_groups = node_groups
@@ -10363,7 +10369,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
         self.security_mode = security_mode
         # The subscription configurations.
         self.subscription_config = subscription_config
-        # The list of tags.
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -47421,19 +47427,22 @@ class ListScriptsRequest(TeaModel):
         region_id: str = None,
         script_type: str = None,
     ):
-        # 集群ID。
+        # Cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The maximum number of records to retrieve at once.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # Marks the current position to start reading from.
         self.next_token = next_token
-        # 区域ID。
+        # Region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 集群脚本类型。
+        # Type of cluster script. Possible values:
+        # 
+        # - BOOTSTRAP: Bootstrap script.
+        # - NORMAL: Regular cluster script.
         # 
         # This parameter is required.
         self.script_type = script_type
@@ -47491,41 +47500,41 @@ class ListScriptsResponseBodyScripts(TeaModel):
         script_path: str = None,
         start_time: int = None,
     ):
-        # The name of the API operation.
+        # API name.
         self.action = action
-        # The time when the system finishes the running of the script. This parameter is returned only if the ScriptType parameter is set to NORMAL.
+        # End execution time. This value is returned only when `ScriptType` is `NORMAL`.
         self.end_time = end_time
-        # The policy that is used to handle execution failures of the script. Valid values:
+        # Execution failure strategy. Possible values:
         # 
-        # *   FAILED_CONTINUE
-        # *   FAILED_BLOCK
+        # - FAILED_CONTINUE: Continue after failure.
+        # - FAILED_BLOCK: Block after failure.
         self.execution_fail_strategy = execution_fail_strategy
-        # The time based on which the system runs the script. Valid values:
+        # Execution timing. Possible values:
         # 
-        # *   BEFORE_INSTALL
-        # *   AFTER_STARTED
+        # - BEFORE_INSTALL: Before application installation.
+        # - AFTER_STARTED: After application startup.
         self.execution_moment = execution_moment
-        # The status of the script. This parameter is returned only if the `ScriptType` parameter is set to `NORMAL`. Valid values:
+        # Script execution state. This value is returned only when `ScriptType` is `NORMAL`. Possible values:
         # 
-        # *   SCRIPT_COMPLETED
-        # *   SCRIPT_SUBMISSION_FAILED
-        # *   SCRIPT_RUNNING
+        # - SCRIPT_COMPLETED: Script executed successfully.
+        # - SCRIPT_SUBMISSION_FAILED: Script execution failed.
+        # - SCRIPT_RUNNING: Script is running.
         self.execution_state = execution_state
-        # The time when the script was last modified.
+        # Time of the last update.
         self.last_update_time = last_update_time
-        # The node selector.
+        # Node selector.
         self.node_selector = node_selector
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
-        # The runtime parameters of the script.
+        # Script execution parameters.
         self.script_args = script_args
-        # The script ID.
+        # Script ID.
         self.script_id = script_id
-        # The name of the script.
+        # Script name.
         self.script_name = script_name
-        # The path in which the script is stored.
+        # Script path.
         self.script_path = script_path
-        # The time when the system starts to run the script. This parameter is returned only if the ScriptType parameter is set to NORMAL.
+        # Start execution time. This value is returned only when `ScriptType` is `NORMAL`.
         self.start_time = start_time
 
     def validate(self):
@@ -47607,15 +47616,15 @@ class ListScriptsResponseBody(TeaModel):
         scripts: List[ListScriptsResponseBodyScripts] = None,
         total_count: int = None,
     ):
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of records returned in this request.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # The position of the data read.
         self.next_token = next_token
-        # 请求ID。
+        # Request ID.
         self.request_id = request_id
-        # The scripts.
+        # List of scripts.
         self.scripts = scripts
-        # 本次请求条件下的数据总量。
+        # The total amount of data under the conditions of this request.
         self.total_count = total_count
 
     def validate(self):
@@ -48575,9 +48584,9 @@ class RunClusterRequest(TeaModel):
         subscription_config: SubscriptionConfig = None,
         tags: List[Tag] = None,
     ):
-        # The service configurations. Number of elements in the array: 1 to 1,000.
+        # The application configurations. Number of elements in the array: 1 to 1000.
         self.application_configs = application_configs
-        # The list of services. Number of elements in the array: 1 to 100.
+        # The services. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.applications = applications
@@ -48610,7 +48619,7 @@ class RunClusterRequest(TeaModel):
         self.deploy_mode = deploy_mode
         # The cluster description.
         self.description = description
-        # The basic attributes of all ECS instances in the cluster.
+        # The attributes of all ECS instances.
         self.node_attributes = node_attributes
         # The node groups. Number of elements in the array: 1 to 100.
         # 
@@ -48638,9 +48647,9 @@ class RunClusterRequest(TeaModel):
         # *   NORMAL: regular mode. Kerberos authentication is disabled. This is the default value.
         # *   KERBEROS: Kerberos mode. Kerberos authentication is enabled.
         self.security_mode = security_mode
-        # The subscription configurations. This parameter is required only if you set the PaymentType parameter to Subscription.
+        # The subscription configurations. This parameter takes effect only if you set the PaymentType parameter to Subscription.
         self.subscription_config = subscription_config
-        # The list of tags. Number of elements in the array: 0 to 20.
+        # The tags. Number of elements in the array: 0 to 20.
         self.tags = tags
 
     def validate(self):
@@ -48803,9 +48812,9 @@ class RunClusterShrinkRequest(TeaModel):
         subscription_config_shrink: str = None,
         tags_shrink: str = None,
     ):
-        # The service configurations. Number of elements in the array: 1 to 1,000.
+        # The application configurations. Number of elements in the array: 1 to 1000.
         self.application_configs_shrink = application_configs_shrink
-        # The list of services. Number of elements in the array: 1 to 100.
+        # The services. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.applications_shrink = applications_shrink
@@ -48838,7 +48847,7 @@ class RunClusterShrinkRequest(TeaModel):
         self.deploy_mode = deploy_mode
         # The cluster description.
         self.description = description
-        # The basic attributes of all ECS instances in the cluster.
+        # The attributes of all ECS instances.
         self.node_attributes_shrink = node_attributes_shrink
         # The node groups. Number of elements in the array: 1 to 100.
         # 
@@ -48866,9 +48875,9 @@ class RunClusterShrinkRequest(TeaModel):
         # *   NORMAL: regular mode. Kerberos authentication is disabled. This is the default value.
         # *   KERBEROS: Kerberos mode. Kerberos authentication is enabled.
         self.security_mode = security_mode
-        # The subscription configurations. This parameter is required only if you set the PaymentType parameter to Subscription.
+        # The subscription configurations. This parameter takes effect only if you set the PaymentType parameter to Subscription.
         self.subscription_config_shrink = subscription_config_shrink
-        # The list of tags. Number of elements in the array: 0 to 20.
+        # The tags. Number of elements in the array: 0 to 20.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -49648,6 +49657,133 @@ class UpdateApplicationConfigsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateApplicationConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateClusterAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        deletion_protection: bool = None,
+        description: str = None,
+        region_id: str = None,
+    ):
+        # 集群ID。
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # 集群名称。
+        self.cluster_name = cluster_name
+        self.deletion_protection = deletion_protection
+        self.description = description
+        # 区域ID。
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpdateClusterAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # 请求ID。
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateClusterAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateClusterAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateClusterAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

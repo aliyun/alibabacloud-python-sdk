@@ -1,3 +1,7 @@
+2024-12-23 Version: 2.2.0
+- Support API UpdateClusterAttribute.
+
+
 2024-12-02 Version: 2.1.2
 - Update API CreateCluster: add param DeletionProtection.
 - Update API DecreaseNodes: add param BatchInterval.

@@ -6531,7 +6531,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListScriptsResponse:
         """
-        @summary Queries the bootstrap actions or common scripts of an E-MapReduce (EMR) cluster.
+        @summary Query EMR cluster bootstrap scripts or regular scripts.
         
         @param request: ListScriptsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6574,7 +6574,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListScriptsResponse:
         """
-        @summary Queries the bootstrap actions or common scripts of an E-MapReduce (EMR) cluster.
+        @summary Query EMR cluster bootstrap scripts or regular scripts.
         
         @param request: ListScriptsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6616,7 +6616,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListScriptsRequest,
     ) -> emr_20210320_models.ListScriptsResponse:
         """
-        @summary Queries the bootstrap actions or common scripts of an E-MapReduce (EMR) cluster.
+        @summary Query EMR cluster bootstrap scripts or regular scripts.
         
         @param request: ListScriptsRequest
         @return: ListScriptsResponse
@@ -6629,7 +6629,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListScriptsRequest,
     ) -> emr_20210320_models.ListScriptsResponse:
         """
-        @summary Queries the bootstrap actions or common scripts of an E-MapReduce (EMR) cluster.
+        @summary Query EMR cluster bootstrap scripts or regular scripts.
         
         @param request: ListScriptsRequest
         @return: ListScriptsResponse
@@ -7197,7 +7197,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a pay-as-you-go or subscription E-MapReduce (EMR) cluster.
         
-        @description RunCluster is an upgraded version of CreateCluster and supports more parameters. Parameters of the object and array types are in the JSON format, which are friendly for users who use CLI.
+        @description RunCluster is an upgraded version of CreateCluster. RunCluster uses HTTPS POST requests and supports more parameters. Complex parameters, such as parameters of the object and array types, are in the JSON format and are more friendly for users who use CLI.
         
         @param tmp_req: RunClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7286,7 +7286,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a pay-as-you-go or subscription E-MapReduce (EMR) cluster.
         
-        @description RunCluster is an upgraded version of CreateCluster and supports more parameters. Parameters of the object and array types are in the JSON format, which are friendly for users who use CLI.
+        @description RunCluster is an upgraded version of CreateCluster. RunCluster uses HTTPS POST requests and supports more parameters. Complex parameters, such as parameters of the object and array types, are in the JSON format and are more friendly for users who use CLI.
         
         @param tmp_req: RunClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7374,7 +7374,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a pay-as-you-go or subscription E-MapReduce (EMR) cluster.
         
-        @description RunCluster is an upgraded version of CreateCluster and supports more parameters. Parameters of the object and array types are in the JSON format, which are friendly for users who use CLI.
+        @description RunCluster is an upgraded version of CreateCluster. RunCluster uses HTTPS POST requests and supports more parameters. Complex parameters, such as parameters of the object and array types, are in the JSON format and are more friendly for users who use CLI.
         
         @param request: RunClusterRequest
         @return: RunClusterResponse
@@ -7389,7 +7389,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a pay-as-you-go or subscription E-MapReduce (EMR) cluster.
         
-        @description RunCluster is an upgraded version of CreateCluster and supports more parameters. Parameters of the object and array types are in the JSON format, which are friendly for users who use CLI.
+        @description RunCluster is an upgraded version of CreateCluster. RunCluster uses HTTPS POST requests and supports more parameters. Complex parameters, such as parameters of the object and array types, are in the JSON format and are more friendly for users who use CLI.
         
         @param request: RunClusterRequest
         @return: RunClusterResponse
@@ -7874,6 +7874,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_application_configs_with_options_async(request, runtime)
+
+    def update_cluster_attribute_with_options(
+        self,
+        request: emr_20210320_models.UpdateClusterAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.UpdateClusterAttributeResponse:
+        """
+        @param request: UpdateClusterAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateClusterAttribute',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.UpdateClusterAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cluster_attribute_with_options_async(
+        self,
+        request: emr_20210320_models.UpdateClusterAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.UpdateClusterAttributeResponse:
+        """
+        @param request: UpdateClusterAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateClusterAttribute',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.UpdateClusterAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cluster_attribute(
+        self,
+        request: emr_20210320_models.UpdateClusterAttributeRequest,
+    ) -> emr_20210320_models.UpdateClusterAttributeResponse:
+        """
+        @param request: UpdateClusterAttributeRequest
+        @return: UpdateClusterAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cluster_attribute_with_options(request, runtime)
+
+    async def update_cluster_attribute_async(
+        self,
+        request: emr_20210320_models.UpdateClusterAttributeRequest,
+    ) -> emr_20210320_models.UpdateClusterAttributeResponse:
+        """
+        @param request: UpdateClusterAttributeRequest
+        @return: UpdateClusterAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cluster_attribute_with_options_async(request, runtime)
 
     def update_script_with_options(
         self,
