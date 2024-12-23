@@ -1,3 +1,6 @@
+2024-12-23 Version: 3.0.1
+- Generated python 2019-06-24 for eais.
+
 2024-10-24 Version: 3.0.0
 - Support API ListTagResources.
 - Support API StartEaiJupyter.
