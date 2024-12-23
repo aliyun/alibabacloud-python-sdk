@@ -1,3 +1,8 @@
+2024-12-23 Version: 2.2.0
+- Support API VoiceGroupCall.
+- Support API VoiceSingleCall.
+
+
 2024-03-25 Version: 2.1.0
 - Support API GroupCall.
 - Support API SignalCall.

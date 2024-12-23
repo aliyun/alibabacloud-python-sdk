@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import List, Dict, Any
 
 
 class BackendCallGroupRequest(TeaModel):
@@ -396,7 +396,7 @@ class BackendCallSignalRequest(TeaModel):
     ):
         # The phone number that receives the voice notification.
         # 
-        # You must add the country code to the beginning of the phone number. Example: 85200\*\*\*\*00.
+        # You must add the country code to the beginning of the phone number. Example: 85200\\*\\*\\*\\*00.
         self.called_number = called_number
         # The calling number.
         # 
@@ -1277,6 +1277,553 @@ class SignalCallResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SignalCallResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class VoiceGroupCallRequest(TeaModel):
+    def __init__(
+        self,
+        called_number: List[str] = None,
+        caller_id_number: str = None,
+        country_id: str = None,
+        out_id: str = None,
+        owner_id: int = None,
+        play_times: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        send_type: int = None,
+        speed: int = None,
+        task_name: str = None,
+        timing_start: str = None,
+        tts_code: str = None,
+        tts_param: str = None,
+        voice_code: str = None,
+        volume: int = None,
+    ):
+        self.called_number = called_number
+        self.caller_id_number = caller_id_number
+        self.country_id = country_id
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.play_times = play_times
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.send_type = send_type
+        self.speed = speed
+        self.task_name = task_name
+        self.timing_start = timing_start
+        self.tts_code = tts_code
+        self.tts_param = tts_param
+        self.voice_code = voice_code
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.called_number is not None:
+            result['CalledNumber'] = self.called_number
+        if self.caller_id_number is not None:
+            result['CallerIdNumber'] = self.caller_id_number
+        if self.country_id is not None:
+            result['CountryId'] = self.country_id
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.play_times is not None:
+            result['PlayTimes'] = self.play_times
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.send_type is not None:
+            result['SendType'] = self.send_type
+        if self.speed is not None:
+            result['Speed'] = self.speed
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.timing_start is not None:
+            result['TimingStart'] = self.timing_start
+        if self.tts_code is not None:
+            result['TtsCode'] = self.tts_code
+        if self.tts_param is not None:
+            result['TtsParam'] = self.tts_param
+        if self.voice_code is not None:
+            result['VoiceCode'] = self.voice_code
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalledNumber') is not None:
+            self.called_number = m.get('CalledNumber')
+        if m.get('CallerIdNumber') is not None:
+            self.caller_id_number = m.get('CallerIdNumber')
+        if m.get('CountryId') is not None:
+            self.country_id = m.get('CountryId')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PlayTimes') is not None:
+            self.play_times = m.get('PlayTimes')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SendType') is not None:
+            self.send_type = m.get('SendType')
+        if m.get('Speed') is not None:
+            self.speed = m.get('Speed')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TimingStart') is not None:
+            self.timing_start = m.get('TimingStart')
+        if m.get('TtsCode') is not None:
+            self.tts_code = m.get('TtsCode')
+        if m.get('TtsParam') is not None:
+            self.tts_param = m.get('TtsParam')
+        if m.get('VoiceCode') is not None:
+            self.voice_code = m.get('VoiceCode')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class VoiceGroupCallShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        called_number_shrink: str = None,
+        caller_id_number: str = None,
+        country_id: str = None,
+        out_id: str = None,
+        owner_id: int = None,
+        play_times: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        send_type: int = None,
+        speed: int = None,
+        task_name: str = None,
+        timing_start: str = None,
+        tts_code: str = None,
+        tts_param: str = None,
+        voice_code: str = None,
+        volume: int = None,
+    ):
+        self.called_number_shrink = called_number_shrink
+        self.caller_id_number = caller_id_number
+        self.country_id = country_id
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.play_times = play_times
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.send_type = send_type
+        self.speed = speed
+        self.task_name = task_name
+        self.timing_start = timing_start
+        self.tts_code = tts_code
+        self.tts_param = tts_param
+        self.voice_code = voice_code
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.called_number_shrink is not None:
+            result['CalledNumber'] = self.called_number_shrink
+        if self.caller_id_number is not None:
+            result['CallerIdNumber'] = self.caller_id_number
+        if self.country_id is not None:
+            result['CountryId'] = self.country_id
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.play_times is not None:
+            result['PlayTimes'] = self.play_times
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.send_type is not None:
+            result['SendType'] = self.send_type
+        if self.speed is not None:
+            result['Speed'] = self.speed
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.timing_start is not None:
+            result['TimingStart'] = self.timing_start
+        if self.tts_code is not None:
+            result['TtsCode'] = self.tts_code
+        if self.tts_param is not None:
+            result['TtsParam'] = self.tts_param
+        if self.voice_code is not None:
+            result['VoiceCode'] = self.voice_code
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalledNumber') is not None:
+            self.called_number_shrink = m.get('CalledNumber')
+        if m.get('CallerIdNumber') is not None:
+            self.caller_id_number = m.get('CallerIdNumber')
+        if m.get('CountryId') is not None:
+            self.country_id = m.get('CountryId')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PlayTimes') is not None:
+            self.play_times = m.get('PlayTimes')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SendType') is not None:
+            self.send_type = m.get('SendType')
+        if m.get('Speed') is not None:
+            self.speed = m.get('Speed')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TimingStart') is not None:
+            self.timing_start = m.get('TimingStart')
+        if m.get('TtsCode') is not None:
+            self.tts_code = m.get('TtsCode')
+        if m.get('TtsParam') is not None:
+            self.tts_param = m.get('TtsParam')
+        if m.get('VoiceCode') is not None:
+            self.voice_code = m.get('VoiceCode')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class VoiceGroupCallResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: Dict[str, Any] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class VoiceGroupCallResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: VoiceGroupCallResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = VoiceGroupCallResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class VoiceSingleCallRequest(TeaModel):
+    def __init__(
+        self,
+        called_number: str = None,
+        caller_id_number: str = None,
+        country_id: str = None,
+        out_id: str = None,
+        owner_id: int = None,
+        play_times: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        send_type: int = None,
+        speed: int = None,
+        task_name: str = None,
+        timing_start: str = None,
+        tts_code: str = None,
+        tts_param: str = None,
+        voice_code: str = None,
+        volume: int = None,
+    ):
+        self.called_number = called_number
+        self.caller_id_number = caller_id_number
+        self.country_id = country_id
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.play_times = play_times
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.send_type = send_type
+        self.speed = speed
+        self.task_name = task_name
+        self.timing_start = timing_start
+        self.tts_code = tts_code
+        self.tts_param = tts_param
+        self.voice_code = voice_code
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.called_number is not None:
+            result['CalledNumber'] = self.called_number
+        if self.caller_id_number is not None:
+            result['CallerIdNumber'] = self.caller_id_number
+        if self.country_id is not None:
+            result['CountryId'] = self.country_id
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.play_times is not None:
+            result['PlayTimes'] = self.play_times
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.send_type is not None:
+            result['SendType'] = self.send_type
+        if self.speed is not None:
+            result['Speed'] = self.speed
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.timing_start is not None:
+            result['TimingStart'] = self.timing_start
+        if self.tts_code is not None:
+            result['TtsCode'] = self.tts_code
+        if self.tts_param is not None:
+            result['TtsParam'] = self.tts_param
+        if self.voice_code is not None:
+            result['VoiceCode'] = self.voice_code
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalledNumber') is not None:
+            self.called_number = m.get('CalledNumber')
+        if m.get('CallerIdNumber') is not None:
+            self.caller_id_number = m.get('CallerIdNumber')
+        if m.get('CountryId') is not None:
+            self.country_id = m.get('CountryId')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PlayTimes') is not None:
+            self.play_times = m.get('PlayTimes')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SendType') is not None:
+            self.send_type = m.get('SendType')
+        if m.get('Speed') is not None:
+            self.speed = m.get('Speed')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TimingStart') is not None:
+            self.timing_start = m.get('TimingStart')
+        if m.get('TtsCode') is not None:
+            self.tts_code = m.get('TtsCode')
+        if m.get('TtsParam') is not None:
+            self.tts_param = m.get('TtsParam')
+        if m.get('VoiceCode') is not None:
+            self.voice_code = m.get('VoiceCode')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class VoiceSingleCallResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: Dict[str, Any] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class VoiceSingleCallResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: VoiceSingleCallResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = VoiceSingleCallResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

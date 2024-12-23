@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         tmp_req: dyvmsapi_intl_20211015_models.BackendCallGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_intl_20211015_models.BackendCallGroupResponse:
+        """
+        @summary Initiates a voice group call to multiple phone numbers. The content of the group call is that of approved templates. You can log on to the VMS console and choose Voice Call Template to view the template ID. This feature enqueues the phone numbers to be called. The time when the phone numbers are called is uncertain.
+        
+        @param tmp_req: BackendCallGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BackendCallGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dyvmsapi_intl_20211015_models.BackendCallGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -106,6 +113,13 @@ class Client(OpenApiClient):
         tmp_req: dyvmsapi_intl_20211015_models.BackendCallGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_intl_20211015_models.BackendCallGroupResponse:
+        """
+        @summary Initiates a voice group call to multiple phone numbers. The content of the group call is that of approved templates. You can log on to the VMS console and choose Voice Call Template to view the template ID. This feature enqueues the phone numbers to be called. The time when the phone numbers are called is uncertain.
+        
+        @param tmp_req: BackendCallGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BackendCallGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dyvmsapi_intl_20211015_models.BackendCallGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -165,6 +179,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_intl_20211015_models.BackendCallGroupRequest,
     ) -> dyvmsapi_intl_20211015_models.BackendCallGroupResponse:
+        """
+        @summary Initiates a voice group call to multiple phone numbers. The content of the group call is that of approved templates. You can log on to the VMS console and choose Voice Call Template to view the template ID. This feature enqueues the phone numbers to be called. The time when the phone numbers are called is uncertain.
+        
+        @param request: BackendCallGroupRequest
+        @return: BackendCallGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.backend_call_group_with_options(request, runtime)
 
@@ -172,6 +192,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_intl_20211015_models.BackendCallGroupRequest,
     ) -> dyvmsapi_intl_20211015_models.BackendCallGroupResponse:
+        """
+        @summary Initiates a voice group call to multiple phone numbers. The content of the group call is that of approved templates. You can log on to the VMS console and choose Voice Call Template to view the template ID. This feature enqueues the phone numbers to be called. The time when the phone numbers are called is uncertain.
+        
+        @param request: BackendCallGroupRequest
+        @return: BackendCallGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.backend_call_group_with_options_async(request, runtime)
 
@@ -180,6 +206,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_intl_20211015_models.BackendCallSignalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_intl_20211015_models.BackendCallSignalResponse:
+        """
+        @summary Sends a voice verification code and voice notification with variables to a phone number.
+        
+        @param request: BackendCallSignalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BackendCallSignalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.called_number):
@@ -230,6 +263,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_intl_20211015_models.BackendCallSignalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_intl_20211015_models.BackendCallSignalResponse:
+        """
+        @summary Sends a voice verification code and voice notification with variables to a phone number.
+        
+        @param request: BackendCallSignalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BackendCallSignalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.called_number):
@@ -279,6 +319,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_intl_20211015_models.BackendCallSignalRequest,
     ) -> dyvmsapi_intl_20211015_models.BackendCallSignalResponse:
+        """
+        @summary Sends a voice verification code and voice notification with variables to a phone number.
+        
+        @param request: BackendCallSignalRequest
+        @return: BackendCallSignalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.backend_call_signal_with_options(request, runtime)
 
@@ -286,6 +332,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_intl_20211015_models.BackendCallSignalRequest,
     ) -> dyvmsapi_intl_20211015_models.BackendCallSignalResponse:
+        """
+        @summary Sends a voice verification code and voice notification with variables to a phone number.
+        
+        @param request: BackendCallSignalRequest
+        @return: BackendCallSignalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.backend_call_signal_with_options_async(request, runtime)
 
@@ -294,6 +346,13 @@ class Client(OpenApiClient):
         tmp_req: dyvmsapi_intl_20211015_models.GroupCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_intl_20211015_models.GroupCallResponse:
+        """
+        @summary 向指定号码发送语音验证码和带参数变量的语音通知，支持语音文件模板或文本转语音模板
+        
+        @param tmp_req: GroupCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GroupCallResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dyvmsapi_intl_20211015_models.GroupCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -362,6 +421,13 @@ class Client(OpenApiClient):
         tmp_req: dyvmsapi_intl_20211015_models.GroupCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_intl_20211015_models.GroupCallResponse:
+        """
+        @summary 向指定号码发送语音验证码和带参数变量的语音通知，支持语音文件模板或文本转语音模板
+        
+        @param tmp_req: GroupCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GroupCallResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dyvmsapi_intl_20211015_models.GroupCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -429,6 +495,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_intl_20211015_models.GroupCallRequest,
     ) -> dyvmsapi_intl_20211015_models.GroupCallResponse:
+        """
+        @summary 向指定号码发送语音验证码和带参数变量的语音通知，支持语音文件模板或文本转语音模板
+        
+        @param request: GroupCallRequest
+        @return: GroupCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.group_call_with_options(request, runtime)
 
@@ -436,6 +508,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_intl_20211015_models.GroupCallRequest,
     ) -> dyvmsapi_intl_20211015_models.GroupCallResponse:
+        """
+        @summary 向指定号码发送语音验证码和带参数变量的语音通知，支持语音文件模板或文本转语音模板
+        
+        @param request: GroupCallRequest
+        @return: GroupCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.group_call_with_options_async(request, runtime)
 
@@ -444,6 +522,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_intl_20211015_models.SignalCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_intl_20211015_models.SignalCallResponse:
+        """
+        @summary 向指定号码发送语音验证码和带参数变量的语音通知，支持语音文件模板或文本转语音模板
+        
+        @param request: SignalCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SignalCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.called_number):
@@ -508,6 +593,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_intl_20211015_models.SignalCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_intl_20211015_models.SignalCallResponse:
+        """
+        @summary 向指定号码发送语音验证码和带参数变量的语音通知，支持语音文件模板或文本转语音模板
+        
+        @param request: SignalCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SignalCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.called_number):
@@ -571,6 +663,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_intl_20211015_models.SignalCallRequest,
     ) -> dyvmsapi_intl_20211015_models.SignalCallResponse:
+        """
+        @summary 向指定号码发送语音验证码和带参数变量的语音通知，支持语音文件模板或文本转语音模板
+        
+        @param request: SignalCallRequest
+        @return: SignalCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.signal_call_with_options(request, runtime)
 
@@ -578,5 +676,331 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_intl_20211015_models.SignalCallRequest,
     ) -> dyvmsapi_intl_20211015_models.SignalCallResponse:
+        """
+        @summary 向指定号码发送语音验证码和带参数变量的语音通知，支持语音文件模板或文本转语音模板
+        
+        @param request: SignalCallRequest
+        @return: SignalCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.signal_call_with_options_async(request, runtime)
+
+    def voice_group_call_with_options(
+        self,
+        tmp_req: dyvmsapi_intl_20211015_models.VoiceGroupCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_intl_20211015_models.VoiceGroupCallResponse:
+        """
+        @summary 国际语音api-语音群呼
+        
+        @param tmp_req: VoiceGroupCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceGroupCallResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyvmsapi_intl_20211015_models.VoiceGroupCallShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.called_number):
+            request.called_number_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.called_number, 'CalledNumber', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.called_number_shrink):
+            query['CalledNumber'] = request.called_number_shrink
+        if not UtilClient.is_unset(request.caller_id_number):
+            query['CallerIdNumber'] = request.caller_id_number
+        if not UtilClient.is_unset(request.country_id):
+            query['CountryId'] = request.country_id
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.play_times):
+            query['PlayTimes'] = request.play_times
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.send_type):
+            query['SendType'] = request.send_type
+        if not UtilClient.is_unset(request.speed):
+            query['Speed'] = request.speed
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.timing_start):
+            query['TimingStart'] = request.timing_start
+        if not UtilClient.is_unset(request.tts_code):
+            query['TtsCode'] = request.tts_code
+        if not UtilClient.is_unset(request.tts_param):
+            query['TtsParam'] = request.tts_param
+        if not UtilClient.is_unset(request.voice_code):
+            query['VoiceCode'] = request.voice_code
+        if not UtilClient.is_unset(request.volume):
+            query['Volume'] = request.volume
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VoiceGroupCall',
+            version='2021-10-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_intl_20211015_models.VoiceGroupCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def voice_group_call_with_options_async(
+        self,
+        tmp_req: dyvmsapi_intl_20211015_models.VoiceGroupCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_intl_20211015_models.VoiceGroupCallResponse:
+        """
+        @summary 国际语音api-语音群呼
+        
+        @param tmp_req: VoiceGroupCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceGroupCallResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyvmsapi_intl_20211015_models.VoiceGroupCallShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.called_number):
+            request.called_number_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.called_number, 'CalledNumber', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.called_number_shrink):
+            query['CalledNumber'] = request.called_number_shrink
+        if not UtilClient.is_unset(request.caller_id_number):
+            query['CallerIdNumber'] = request.caller_id_number
+        if not UtilClient.is_unset(request.country_id):
+            query['CountryId'] = request.country_id
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.play_times):
+            query['PlayTimes'] = request.play_times
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.send_type):
+            query['SendType'] = request.send_type
+        if not UtilClient.is_unset(request.speed):
+            query['Speed'] = request.speed
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.timing_start):
+            query['TimingStart'] = request.timing_start
+        if not UtilClient.is_unset(request.tts_code):
+            query['TtsCode'] = request.tts_code
+        if not UtilClient.is_unset(request.tts_param):
+            query['TtsParam'] = request.tts_param
+        if not UtilClient.is_unset(request.voice_code):
+            query['VoiceCode'] = request.voice_code
+        if not UtilClient.is_unset(request.volume):
+            query['Volume'] = request.volume
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VoiceGroupCall',
+            version='2021-10-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_intl_20211015_models.VoiceGroupCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def voice_group_call(
+        self,
+        request: dyvmsapi_intl_20211015_models.VoiceGroupCallRequest,
+    ) -> dyvmsapi_intl_20211015_models.VoiceGroupCallResponse:
+        """
+        @summary 国际语音api-语音群呼
+        
+        @param request: VoiceGroupCallRequest
+        @return: VoiceGroupCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.voice_group_call_with_options(request, runtime)
+
+    async def voice_group_call_async(
+        self,
+        request: dyvmsapi_intl_20211015_models.VoiceGroupCallRequest,
+    ) -> dyvmsapi_intl_20211015_models.VoiceGroupCallResponse:
+        """
+        @summary 国际语音api-语音群呼
+        
+        @param request: VoiceGroupCallRequest
+        @return: VoiceGroupCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.voice_group_call_with_options_async(request, runtime)
+
+    def voice_single_call_with_options(
+        self,
+        request: dyvmsapi_intl_20211015_models.VoiceSingleCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_intl_20211015_models.VoiceSingleCallResponse:
+        """
+        @summary 国际语音api-语音单呼
+        
+        @param request: VoiceSingleCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceSingleCallResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.caller_id_number):
+            query['CallerIdNumber'] = request.caller_id_number
+        if not UtilClient.is_unset(request.country_id):
+            query['CountryId'] = request.country_id
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.play_times):
+            query['PlayTimes'] = request.play_times
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.send_type):
+            query['SendType'] = request.send_type
+        if not UtilClient.is_unset(request.speed):
+            query['Speed'] = request.speed
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.timing_start):
+            query['TimingStart'] = request.timing_start
+        if not UtilClient.is_unset(request.tts_code):
+            query['TtsCode'] = request.tts_code
+        if not UtilClient.is_unset(request.tts_param):
+            query['TtsParam'] = request.tts_param
+        if not UtilClient.is_unset(request.voice_code):
+            query['VoiceCode'] = request.voice_code
+        if not UtilClient.is_unset(request.volume):
+            query['Volume'] = request.volume
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VoiceSingleCall',
+            version='2021-10-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_intl_20211015_models.VoiceSingleCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def voice_single_call_with_options_async(
+        self,
+        request: dyvmsapi_intl_20211015_models.VoiceSingleCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_intl_20211015_models.VoiceSingleCallResponse:
+        """
+        @summary 国际语音api-语音单呼
+        
+        @param request: VoiceSingleCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceSingleCallResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.caller_id_number):
+            query['CallerIdNumber'] = request.caller_id_number
+        if not UtilClient.is_unset(request.country_id):
+            query['CountryId'] = request.country_id
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.play_times):
+            query['PlayTimes'] = request.play_times
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.send_type):
+            query['SendType'] = request.send_type
+        if not UtilClient.is_unset(request.speed):
+            query['Speed'] = request.speed
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.timing_start):
+            query['TimingStart'] = request.timing_start
+        if not UtilClient.is_unset(request.tts_code):
+            query['TtsCode'] = request.tts_code
+        if not UtilClient.is_unset(request.tts_param):
+            query['TtsParam'] = request.tts_param
+        if not UtilClient.is_unset(request.voice_code):
+            query['VoiceCode'] = request.voice_code
+        if not UtilClient.is_unset(request.volume):
+            query['Volume'] = request.volume
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VoiceSingleCall',
+            version='2021-10-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_intl_20211015_models.VoiceSingleCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def voice_single_call(
+        self,
+        request: dyvmsapi_intl_20211015_models.VoiceSingleCallRequest,
+    ) -> dyvmsapi_intl_20211015_models.VoiceSingleCallResponse:
+        """
+        @summary 国际语音api-语音单呼
+        
+        @param request: VoiceSingleCallRequest
+        @return: VoiceSingleCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.voice_single_call_with_options(request, runtime)
+
+    async def voice_single_call_async(
+        self,
+        request: dyvmsapi_intl_20211015_models.VoiceSingleCallRequest,
+    ) -> dyvmsapi_intl_20211015_models.VoiceSingleCallResponse:
+        """
+        @summary 国际语音api-语音单呼
+        
+        @param request: VoiceSingleCallRequest
+        @return: VoiceSingleCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.voice_single_call_with_options_async(request, runtime)
