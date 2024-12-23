@@ -97,6 +97,384 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_mms_data_source_with_options(
+        self,
+        request: max_compute_20220104_models.CreateMmsDataSourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.CreateMmsDataSourceResponse:
+        """
+        @param request: CreateMmsDataSourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMmsDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.networklink):
+            body['networklink'] = request.networklink
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMmsDataSource',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateMmsDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mms_data_source_with_options_async(
+        self,
+        request: max_compute_20220104_models.CreateMmsDataSourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.CreateMmsDataSourceResponse:
+        """
+        @param request: CreateMmsDataSourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMmsDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.networklink):
+            body['networklink'] = request.networklink
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMmsDataSource',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateMmsDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mms_data_source(
+        self,
+        request: max_compute_20220104_models.CreateMmsDataSourceRequest,
+    ) -> max_compute_20220104_models.CreateMmsDataSourceResponse:
+        """
+        @param request: CreateMmsDataSourceRequest
+        @return: CreateMmsDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_mms_data_source_with_options(request, headers, runtime)
+
+    async def create_mms_data_source_async(
+        self,
+        request: max_compute_20220104_models.CreateMmsDataSourceRequest,
+    ) -> max_compute_20220104_models.CreateMmsDataSourceResponse:
+        """
+        @param request: CreateMmsDataSourceRequest
+        @return: CreateMmsDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_mms_data_source_with_options_async(request, headers, runtime)
+
+    def create_mms_fetch_metadata_job_with_options(
+        self,
+        source_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.CreateMmsFetchMetadataJobResponse:
+        """
+        @summary 创建数据源的更新元数据操作
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMmsFetchMetadataJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateMmsFetchMetadataJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/scans',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateMmsFetchMetadataJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mms_fetch_metadata_job_with_options_async(
+        self,
+        source_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.CreateMmsFetchMetadataJobResponse:
+        """
+        @summary 创建数据源的更新元数据操作
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMmsFetchMetadataJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateMmsFetchMetadataJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/scans',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateMmsFetchMetadataJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mms_fetch_metadata_job(
+        self,
+        source_id: str,
+    ) -> max_compute_20220104_models.CreateMmsFetchMetadataJobResponse:
+        """
+        @summary 创建数据源的更新元数据操作
+        
+        @return: CreateMmsFetchMetadataJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_mms_fetch_metadata_job_with_options(source_id, headers, runtime)
+
+    async def create_mms_fetch_metadata_job_async(
+        self,
+        source_id: str,
+    ) -> max_compute_20220104_models.CreateMmsFetchMetadataJobResponse:
+        """
+        @summary 创建数据源的更新元数据操作
+        
+        @return: CreateMmsFetchMetadataJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_mms_fetch_metadata_job_with_options_async(source_id, headers, runtime)
+
+    def create_mms_job_with_options(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.CreateMmsJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.CreateMmsJobResponse:
+        """
+        @summary 创建迁移任务
+        
+        @param request: CreateMmsJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMmsJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.column_mapping):
+            body['columnMapping'] = request.column_mapping
+        if not UtilClient.is_unset(request.dst_db_name):
+            body['dstDbName'] = request.dst_db_name
+        if not UtilClient.is_unset(request.dst_schema_name):
+            body['dstSchemaName'] = request.dst_schema_name
+        if not UtilClient.is_unset(request.enable_verification):
+            body['enableVerification'] = request.enable_verification
+        if not UtilClient.is_unset(request.increment):
+            body['increment'] = request.increment
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.others):
+            body['others'] = request.others
+        if not UtilClient.is_unset(request.partition_filters):
+            body['partitionFilters'] = request.partition_filters
+        if not UtilClient.is_unset(request.partitions):
+            body['partitions'] = request.partitions
+        if not UtilClient.is_unset(request.schema_only):
+            body['schemaOnly'] = request.schema_only
+        if not UtilClient.is_unset(request.source_id):
+            body['sourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_name):
+            body['sourceName'] = request.source_name
+        if not UtilClient.is_unset(request.src_db_name):
+            body['srcDbName'] = request.src_db_name
+        if not UtilClient.is_unset(request.src_schema_name):
+            body['srcSchemaName'] = request.src_schema_name
+        if not UtilClient.is_unset(request.table_black_list):
+            body['tableBlackList'] = request.table_black_list
+        if not UtilClient.is_unset(request.table_mapping):
+            body['tableMapping'] = request.table_mapping
+        if not UtilClient.is_unset(request.table_white_list):
+            body['tableWhiteList'] = request.table_white_list
+        if not UtilClient.is_unset(request.tables):
+            body['tables'] = request.tables
+        if not UtilClient.is_unset(request.task_type):
+            body['taskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMmsJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateMmsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mms_job_with_options_async(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.CreateMmsJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.CreateMmsJobResponse:
+        """
+        @summary 创建迁移任务
+        
+        @param request: CreateMmsJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMmsJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.column_mapping):
+            body['columnMapping'] = request.column_mapping
+        if not UtilClient.is_unset(request.dst_db_name):
+            body['dstDbName'] = request.dst_db_name
+        if not UtilClient.is_unset(request.dst_schema_name):
+            body['dstSchemaName'] = request.dst_schema_name
+        if not UtilClient.is_unset(request.enable_verification):
+            body['enableVerification'] = request.enable_verification
+        if not UtilClient.is_unset(request.increment):
+            body['increment'] = request.increment
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.others):
+            body['others'] = request.others
+        if not UtilClient.is_unset(request.partition_filters):
+            body['partitionFilters'] = request.partition_filters
+        if not UtilClient.is_unset(request.partitions):
+            body['partitions'] = request.partitions
+        if not UtilClient.is_unset(request.schema_only):
+            body['schemaOnly'] = request.schema_only
+        if not UtilClient.is_unset(request.source_id):
+            body['sourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_name):
+            body['sourceName'] = request.source_name
+        if not UtilClient.is_unset(request.src_db_name):
+            body['srcDbName'] = request.src_db_name
+        if not UtilClient.is_unset(request.src_schema_name):
+            body['srcSchemaName'] = request.src_schema_name
+        if not UtilClient.is_unset(request.table_black_list):
+            body['tableBlackList'] = request.table_black_list
+        if not UtilClient.is_unset(request.table_mapping):
+            body['tableMapping'] = request.table_mapping
+        if not UtilClient.is_unset(request.table_white_list):
+            body['tableWhiteList'] = request.table_white_list
+        if not UtilClient.is_unset(request.tables):
+            body['tables'] = request.tables
+        if not UtilClient.is_unset(request.task_type):
+            body['taskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMmsJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateMmsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mms_job(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.CreateMmsJobRequest,
+    ) -> max_compute_20220104_models.CreateMmsJobResponse:
+        """
+        @summary 创建迁移任务
+        
+        @param request: CreateMmsJobRequest
+        @return: CreateMmsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_mms_job_with_options(source_id, request, headers, runtime)
+
+    async def create_mms_job_async(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.CreateMmsJobRequest,
+    ) -> max_compute_20220104_models.CreateMmsJobResponse:
+        """
+        @summary 创建迁移任务
+        
+        @param request: CreateMmsJobRequest
+        @return: CreateMmsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_mms_job_with_options_async(source_id, request, headers, runtime)
+
     def create_package_with_options(
         self,
         project_name: str,
@@ -419,120 +797,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_quota_plan_with_options_async(nickname, request, headers, runtime)
 
-    def create_quota_schedule_with_options(
-        self,
-        nickname: str,
-        request: max_compute_20220104_models.CreateQuotaScheduleRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> max_compute_20220104_models.CreateQuotaScheduleResponse:
-        """
-        @summary Creates a scheduling plan for a quota plan.
-        
-        @param request: CreateQuotaScheduleRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateQuotaScheduleResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region):
-            query['region'] = request.region
-        if not UtilClient.is_unset(request.tenant_id):
-            query['tenantId'] = request.tenant_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
-        )
-        params = open_api_models.Params(
-            action='CreateQuotaSchedule',
-            version='2022-01-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/schedule',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            max_compute_20220104_models.CreateQuotaScheduleResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_quota_schedule_with_options_async(
-        self,
-        nickname: str,
-        request: max_compute_20220104_models.CreateQuotaScheduleRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> max_compute_20220104_models.CreateQuotaScheduleResponse:
-        """
-        @summary Creates a scheduling plan for a quota plan.
-        
-        @param request: CreateQuotaScheduleRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateQuotaScheduleResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region):
-            query['region'] = request.region
-        if not UtilClient.is_unset(request.tenant_id):
-            query['tenantId'] = request.tenant_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
-        )
-        params = open_api_models.Params(
-            action='CreateQuotaSchedule',
-            version='2022-01-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/schedule',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            max_compute_20220104_models.CreateQuotaScheduleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_quota_schedule(
-        self,
-        nickname: str,
-        request: max_compute_20220104_models.CreateQuotaScheduleRequest,
-    ) -> max_compute_20220104_models.CreateQuotaScheduleResponse:
-        """
-        @summary Creates a scheduling plan for a quota plan.
-        
-        @param request: CreateQuotaScheduleRequest
-        @return: CreateQuotaScheduleResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_quota_schedule_with_options(nickname, request, headers, runtime)
-
-    async def create_quota_schedule_async(
-        self,
-        nickname: str,
-        request: max_compute_20220104_models.CreateQuotaScheduleRequest,
-    ) -> max_compute_20220104_models.CreateQuotaScheduleResponse:
-        """
-        @summary Creates a scheduling plan for a quota plan.
-        
-        @param request: CreateQuotaScheduleRequest
-        @return: CreateQuotaScheduleResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_quota_schedule_with_options_async(nickname, request, headers, runtime)
-
     def create_role_with_options(
         self,
         project_name: str,
@@ -634,6 +898,182 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_role_with_options_async(project_name, request, headers, runtime)
+
+    def delete_mms_data_source_with_options(
+        self,
+        source_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.DeleteMmsDataSourceResponse:
+        """
+        @summary 删除数据源
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMmsDataSourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMmsDataSource',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteMmsDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_mms_data_source_with_options_async(
+        self,
+        source_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.DeleteMmsDataSourceResponse:
+        """
+        @summary 删除数据源
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMmsDataSourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMmsDataSource',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteMmsDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_mms_data_source(
+        self,
+        source_id: str,
+    ) -> max_compute_20220104_models.DeleteMmsDataSourceResponse:
+        """
+        @summary 删除数据源
+        
+        @return: DeleteMmsDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_mms_data_source_with_options(source_id, headers, runtime)
+
+    async def delete_mms_data_source_async(
+        self,
+        source_id: str,
+    ) -> max_compute_20220104_models.DeleteMmsDataSourceResponse:
+        """
+        @summary 删除数据源
+        
+        @return: DeleteMmsDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_mms_data_source_with_options_async(source_id, headers, runtime)
+
+    def delete_mms_job_with_options(
+        self,
+        source_id: str,
+        job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.DeleteMmsJobResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMmsJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMmsJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteMmsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_mms_job_with_options_async(
+        self,
+        source_id: str,
+        job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.DeleteMmsJobResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMmsJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMmsJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteMmsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_mms_job(
+        self,
+        source_id: str,
+        job_id: str,
+    ) -> max_compute_20220104_models.DeleteMmsJobResponse:
+        """
+        @return: DeleteMmsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_mms_job_with_options(source_id, job_id, headers, runtime)
+
+    async def delete_mms_job_async(
+        self,
+        source_id: str,
+        job_id: str,
+    ) -> max_compute_20220104_models.DeleteMmsJobResponse:
+        """
+        @return: DeleteMmsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_mms_job_with_options_async(source_id, job_id, headers, runtime)
 
     def delete_quota_plan_with_options(
         self,
@@ -882,6 +1322,712 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_job_resource_usage_with_options_async(request, headers, runtime)
+
+    def get_mms_async_task_with_options(
+        self,
+        source_id: str,
+        async_task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsAsyncTaskResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsAsyncTaskResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsAsyncTask',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/asyncTasks/{OpenApiUtilClient.get_encode_param(async_task_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsAsyncTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mms_async_task_with_options_async(
+        self,
+        source_id: str,
+        async_task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsAsyncTaskResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsAsyncTaskResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsAsyncTask',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/asyncTasks/{OpenApiUtilClient.get_encode_param(async_task_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsAsyncTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mms_async_task(
+        self,
+        source_id: str,
+        async_task_id: str,
+    ) -> max_compute_20220104_models.GetMmsAsyncTaskResponse:
+        """
+        @return: GetMmsAsyncTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_mms_async_task_with_options(source_id, async_task_id, headers, runtime)
+
+    async def get_mms_async_task_async(
+        self,
+        source_id: str,
+        async_task_id: str,
+    ) -> max_compute_20220104_models.GetMmsAsyncTaskResponse:
+        """
+        @return: GetMmsAsyncTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_mms_async_task_with_options_async(source_id, async_task_id, headers, runtime)
+
+    def get_mms_data_source_with_options(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.GetMmsDataSourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsDataSourceResponse:
+        """
+        @param request: GetMmsDataSourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['lang'] = request.lang
+        if not UtilClient.is_unset(request.with_config):
+            query['withConfig'] = request.with_config
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMmsDataSource',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mms_data_source_with_options_async(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.GetMmsDataSourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsDataSourceResponse:
+        """
+        @param request: GetMmsDataSourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['lang'] = request.lang
+        if not UtilClient.is_unset(request.with_config):
+            query['withConfig'] = request.with_config
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMmsDataSource',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mms_data_source(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.GetMmsDataSourceRequest,
+    ) -> max_compute_20220104_models.GetMmsDataSourceResponse:
+        """
+        @param request: GetMmsDataSourceRequest
+        @return: GetMmsDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_mms_data_source_with_options(source_id, request, headers, runtime)
+
+    async def get_mms_data_source_async(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.GetMmsDataSourceRequest,
+    ) -> max_compute_20220104_models.GetMmsDataSourceResponse:
+        """
+        @param request: GetMmsDataSourceRequest
+        @return: GetMmsDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_mms_data_source_with_options_async(source_id, request, headers, runtime)
+
+    def get_mms_db_with_options(
+        self,
+        source_id: str,
+        db_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsDbResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsDbResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsDb',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/dbs/{OpenApiUtilClient.get_encode_param(db_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsDbResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mms_db_with_options_async(
+        self,
+        source_id: str,
+        db_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsDbResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsDbResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsDb',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/dbs/{OpenApiUtilClient.get_encode_param(db_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsDbResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mms_db(
+        self,
+        source_id: str,
+        db_id: str,
+    ) -> max_compute_20220104_models.GetMmsDbResponse:
+        """
+        @return: GetMmsDbResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_mms_db_with_options(source_id, db_id, headers, runtime)
+
+    async def get_mms_db_async(
+        self,
+        source_id: str,
+        db_id: str,
+    ) -> max_compute_20220104_models.GetMmsDbResponse:
+        """
+        @return: GetMmsDbResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_mms_db_with_options_async(source_id, db_id, headers, runtime)
+
+    def get_mms_fetch_metadata_job_with_options(
+        self,
+        source_id: str,
+        scan_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsFetchMetadataJobResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsFetchMetadataJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsFetchMetadataJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/scans/{OpenApiUtilClient.get_encode_param(scan_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsFetchMetadataJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mms_fetch_metadata_job_with_options_async(
+        self,
+        source_id: str,
+        scan_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsFetchMetadataJobResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsFetchMetadataJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsFetchMetadataJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/scans/{OpenApiUtilClient.get_encode_param(scan_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsFetchMetadataJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mms_fetch_metadata_job(
+        self,
+        source_id: str,
+        scan_id: str,
+    ) -> max_compute_20220104_models.GetMmsFetchMetadataJobResponse:
+        """
+        @return: GetMmsFetchMetadataJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_mms_fetch_metadata_job_with_options(source_id, scan_id, headers, runtime)
+
+    async def get_mms_fetch_metadata_job_async(
+        self,
+        source_id: str,
+        scan_id: str,
+    ) -> max_compute_20220104_models.GetMmsFetchMetadataJobResponse:
+        """
+        @return: GetMmsFetchMetadataJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_mms_fetch_metadata_job_with_options_async(source_id, scan_id, headers, runtime)
+
+    def get_mms_job_with_options(
+        self,
+        source_id: str,
+        job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsJobResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mms_job_with_options_async(
+        self,
+        source_id: str,
+        job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsJobResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mms_job(
+        self,
+        source_id: str,
+        job_id: str,
+    ) -> max_compute_20220104_models.GetMmsJobResponse:
+        """
+        @return: GetMmsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_mms_job_with_options(source_id, job_id, headers, runtime)
+
+    async def get_mms_job_async(
+        self,
+        source_id: str,
+        job_id: str,
+    ) -> max_compute_20220104_models.GetMmsJobResponse:
+        """
+        @return: GetMmsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_mms_job_with_options_async(source_id, job_id, headers, runtime)
+
+    def get_mms_partition_with_options(
+        self,
+        source_id: str,
+        partition_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsPartitionResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsPartitionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsPartition',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/partitions/{OpenApiUtilClient.get_encode_param(partition_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsPartitionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mms_partition_with_options_async(
+        self,
+        source_id: str,
+        partition_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsPartitionResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsPartitionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsPartition',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/partitions/{OpenApiUtilClient.get_encode_param(partition_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsPartitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mms_partition(
+        self,
+        source_id: str,
+        partition_id: str,
+    ) -> max_compute_20220104_models.GetMmsPartitionResponse:
+        """
+        @return: GetMmsPartitionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_mms_partition_with_options(source_id, partition_id, headers, runtime)
+
+    async def get_mms_partition_async(
+        self,
+        source_id: str,
+        partition_id: str,
+    ) -> max_compute_20220104_models.GetMmsPartitionResponse:
+        """
+        @return: GetMmsPartitionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_mms_partition_with_options_async(source_id, partition_id, headers, runtime)
+
+    def get_mms_table_with_options(
+        self,
+        source_id: str,
+        table_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsTableResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsTableResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsTable',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/tables/{OpenApiUtilClient.get_encode_param(table_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mms_table_with_options_async(
+        self,
+        source_id: str,
+        table_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsTableResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsTableResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsTable',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/tables/{OpenApiUtilClient.get_encode_param(table_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mms_table(
+        self,
+        source_id: str,
+        table_id: str,
+    ) -> max_compute_20220104_models.GetMmsTableResponse:
+        """
+        @return: GetMmsTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_mms_table_with_options(source_id, table_id, headers, runtime)
+
+    async def get_mms_table_async(
+        self,
+        source_id: str,
+        table_id: str,
+    ) -> max_compute_20220104_models.GetMmsTableResponse:
+        """
+        @return: GetMmsTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_mms_table_with_options_async(source_id, table_id, headers, runtime)
+
+    def get_mms_task_with_options(
+        self,
+        source_id: str,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsTaskResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsTaskResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsTask',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mms_task_with_options_async(
+        self,
+        source_id: str,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetMmsTaskResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMmsTaskResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMmsTask',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetMmsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mms_task(
+        self,
+        source_id: str,
+        task_id: str,
+    ) -> max_compute_20220104_models.GetMmsTaskResponse:
+        """
+        @return: GetMmsTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_mms_task_with_options(source_id, task_id, headers, runtime)
+
+    async def get_mms_task_async(
+        self,
+        source_id: str,
+        task_id: str,
+    ) -> max_compute_20220104_models.GetMmsTaskResponse:
+        """
+        @return: GetMmsTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_mms_task_with_options_async(source_id, task_id, headers, runtime)
 
     def get_package_with_options(
         self,
@@ -1455,6 +2601,150 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_quota_schedule_with_options_async(nickname, request, headers, runtime)
 
+    def get_quota_usage_with_options(
+        self,
+        nickname: str,
+        tmp_req: max_compute_20220104_models.GetQuotaUsageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetQuotaUsageResponse:
+        """
+        @param tmp_req: GetQuotaUsageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaUsageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.GetQuotaUsageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.plot_types):
+            request.plot_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.plot_types, 'plotTypes', 'simple')
+        if not UtilClient.is_unset(tmp_req.y_axis_types):
+            request.y_axis_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.y_axis_types, 'yAxisTypes', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.agg_method):
+            query['aggMethod'] = request.agg_method
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.plot_types_shrink):
+            query['plotTypes'] = request.plot_types_shrink
+        if not UtilClient.is_unset(request.product_id):
+            query['productId'] = request.product_id
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.sub_quota_nickname):
+            query['subQuotaNickname'] = request.sub_quota_nickname
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        if not UtilClient.is_unset(request.y_axis_types_shrink):
+            query['yAxisTypes'] = request.y_axis_types_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQuotaUsage',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/usage',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetQuotaUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_quota_usage_with_options_async(
+        self,
+        nickname: str,
+        tmp_req: max_compute_20220104_models.GetQuotaUsageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetQuotaUsageResponse:
+        """
+        @param tmp_req: GetQuotaUsageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaUsageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.GetQuotaUsageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.plot_types):
+            request.plot_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.plot_types, 'plotTypes', 'simple')
+        if not UtilClient.is_unset(tmp_req.y_axis_types):
+            request.y_axis_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.y_axis_types, 'yAxisTypes', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.agg_method):
+            query['aggMethod'] = request.agg_method
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.plot_types_shrink):
+            query['plotTypes'] = request.plot_types_shrink
+        if not UtilClient.is_unset(request.product_id):
+            query['productId'] = request.product_id
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.sub_quota_nickname):
+            query['subQuotaNickname'] = request.sub_quota_nickname
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        if not UtilClient.is_unset(request.y_axis_types_shrink):
+            query['yAxisTypes'] = request.y_axis_types_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQuotaUsage',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/usage',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetQuotaUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_quota_usage(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.GetQuotaUsageRequest,
+    ) -> max_compute_20220104_models.GetQuotaUsageResponse:
+        """
+        @param request: GetQuotaUsageRequest
+        @return: GetQuotaUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_quota_usage_with_options(nickname, request, headers, runtime)
+
+    async def get_quota_usage_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.GetQuotaUsageRequest,
+    ) -> max_compute_20220104_models.GetQuotaUsageResponse:
+        """
+        @param request: GetQuotaUsageRequest
+        @return: GetQuotaUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_quota_usage_with_options_async(nickname, request, headers, runtime)
+
     def get_role_acl_with_options(
         self,
         project_name: str,
@@ -1904,6 +3194,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetTableInfoResponse:
         """
+        @summary Views the information about MaxCompute internal tables, views, external tables, clustered tables, or transactional tables.
+        
         @param request: GetTableInfoRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1944,6 +3236,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetTableInfoResponse:
         """
+        @summary Views the information about MaxCompute internal tables, views, external tables, clustered tables, or transactional tables.
+        
         @param request: GetTableInfoRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1982,6 +3276,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.GetTableInfoRequest,
     ) -> max_compute_20220104_models.GetTableInfoResponse:
         """
+        @summary Views the information about MaxCompute internal tables, views, external tables, clustered tables, or transactional tables.
+        
         @param request: GetTableInfoRequest
         @return: GetTableInfoResponse
         """
@@ -1996,6 +3292,8 @@ class Client(OpenApiClient):
         request: max_compute_20220104_models.GetTableInfoRequest,
     ) -> max_compute_20220104_models.GetTableInfoResponse:
         """
+        @summary Views the information about MaxCompute internal tables, views, external tables, clustered tables, or transactional tables.
+        
         @param request: GetTableInfoRequest
         @return: GetTableInfoResponse
         """
@@ -2351,10 +3649,39 @@ class Client(OpenApiClient):
             query['region'] = request.region
         if not UtilClient.is_unset(request.tenant_id):
             query['tenantId'] = request.tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.ext_node_id_list):
+            body['extNodeIdList'] = request.ext_node_id_list
+        if not UtilClient.is_unset(request.from_):
+            body['from'] = request.from_
+        if not UtilClient.is_unset(request.instance_id_list):
+            body['instanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.job_owner_list):
+            body['jobOwnerList'] = request.job_owner_list
+        if not UtilClient.is_unset(request.priority_list):
+            body['priorityList'] = request.priority_list
+        if not UtilClient.is_unset(request.project_list):
+            body['projectList'] = request.project_list
+        if not UtilClient.is_unset(request.quota_nickname):
+            body['quotaNickname'] = request.quota_nickname
+        if not UtilClient.is_unset(request.scene_tag_list):
+            body['sceneTagList'] = request.scene_tag_list
+        if not UtilClient.is_unset(request.signature_list):
+            body['signatureList'] = request.signature_list
+        if not UtilClient.is_unset(request.sort_by_list):
+            body['sortByList'] = request.sort_by_list
+        if not UtilClient.is_unset(request.sort_order_list):
+            body['sortOrderList'] = request.sort_order_list
+        if not UtilClient.is_unset(request.status_list):
+            body['statusList'] = request.status_list
+        if not UtilClient.is_unset(request.to):
+            body['to'] = request.to
+        if not UtilClient.is_unset(request.type_list):
+            body['typeList'] = request.type_list
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListJobInfos',
@@ -2400,10 +3727,39 @@ class Client(OpenApiClient):
             query['region'] = request.region
         if not UtilClient.is_unset(request.tenant_id):
             query['tenantId'] = request.tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.ext_node_id_list):
+            body['extNodeIdList'] = request.ext_node_id_list
+        if not UtilClient.is_unset(request.from_):
+            body['from'] = request.from_
+        if not UtilClient.is_unset(request.instance_id_list):
+            body['instanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.job_owner_list):
+            body['jobOwnerList'] = request.job_owner_list
+        if not UtilClient.is_unset(request.priority_list):
+            body['priorityList'] = request.priority_list
+        if not UtilClient.is_unset(request.project_list):
+            body['projectList'] = request.project_list
+        if not UtilClient.is_unset(request.quota_nickname):
+            body['quotaNickname'] = request.quota_nickname
+        if not UtilClient.is_unset(request.scene_tag_list):
+            body['sceneTagList'] = request.scene_tag_list
+        if not UtilClient.is_unset(request.signature_list):
+            body['signatureList'] = request.signature_list
+        if not UtilClient.is_unset(request.sort_by_list):
+            body['sortByList'] = request.sort_by_list
+        if not UtilClient.is_unset(request.sort_order_list):
+            body['sortOrderList'] = request.sort_order_list
+        if not UtilClient.is_unset(request.status_list):
+            body['statusList'] = request.status_list
+        if not UtilClient.is_unset(request.to):
+            body['to'] = request.to
+        if not UtilClient.is_unset(request.type_list):
+            body['typeList'] = request.type_list
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListJobInfos',
@@ -2448,6 +3804,912 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_job_infos_with_options_async(request, headers, runtime)
+
+    def list_mms_data_sources_with_options(
+        self,
+        request: max_compute_20220104_models.ListMmsDataSourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsDataSourcesResponse:
+        """
+        @param request: ListMmsDataSourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsDataSourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMmsDataSources',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsDataSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mms_data_sources_with_options_async(
+        self,
+        request: max_compute_20220104_models.ListMmsDataSourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsDataSourcesResponse:
+        """
+        @param request: ListMmsDataSourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsDataSourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMmsDataSources',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsDataSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mms_data_sources(
+        self,
+        request: max_compute_20220104_models.ListMmsDataSourcesRequest,
+    ) -> max_compute_20220104_models.ListMmsDataSourcesResponse:
+        """
+        @param request: ListMmsDataSourcesRequest
+        @return: ListMmsDataSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_mms_data_sources_with_options(request, headers, runtime)
+
+    async def list_mms_data_sources_async(
+        self,
+        request: max_compute_20220104_models.ListMmsDataSourcesRequest,
+    ) -> max_compute_20220104_models.ListMmsDataSourcesResponse:
+        """
+        @param request: ListMmsDataSourcesRequest
+        @return: ListMmsDataSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_mms_data_sources_with_options_async(request, headers, runtime)
+
+    def list_mms_dbs_with_options(
+        self,
+        source_id: str,
+        tmp_req: max_compute_20220104_models.ListMmsDbsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsDbsResponse:
+        """
+        @summary 获取一个数据源内“库”列表
+        
+        @param tmp_req: ListMmsDbsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsDbsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.ListMmsDbsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sorter):
+            request.sorter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sorter, 'sorter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sorter_shrink):
+            query['sorter'] = request.sorter_shrink
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMmsDbs',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/dbs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsDbsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mms_dbs_with_options_async(
+        self,
+        source_id: str,
+        tmp_req: max_compute_20220104_models.ListMmsDbsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsDbsResponse:
+        """
+        @summary 获取一个数据源内“库”列表
+        
+        @param tmp_req: ListMmsDbsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsDbsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.ListMmsDbsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sorter):
+            request.sorter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sorter, 'sorter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sorter_shrink):
+            query['sorter'] = request.sorter_shrink
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMmsDbs',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/dbs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsDbsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mms_dbs(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsDbsRequest,
+    ) -> max_compute_20220104_models.ListMmsDbsResponse:
+        """
+        @summary 获取一个数据源内“库”列表
+        
+        @param request: ListMmsDbsRequest
+        @return: ListMmsDbsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_mms_dbs_with_options(source_id, request, headers, runtime)
+
+    async def list_mms_dbs_async(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsDbsRequest,
+    ) -> max_compute_20220104_models.ListMmsDbsResponse:
+        """
+        @summary 获取一个数据源内“库”列表
+        
+        @param request: ListMmsDbsRequest
+        @return: ListMmsDbsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_mms_dbs_with_options_async(source_id, request, headers, runtime)
+
+    def list_mms_jobs_with_options(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsJobsResponse:
+        """
+        @param request: ListMmsJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_db_name):
+            query['dstDbName'] = request.dst_db_name
+        if not UtilClient.is_unset(request.dst_table_name):
+            query['dstTableName'] = request.dst_table_name
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.src_db_name):
+            query['srcDbName'] = request.src_db_name
+        if not UtilClient.is_unset(request.src_table_name):
+            query['srcTableName'] = request.src_table_name
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.stopped):
+            query['stopped'] = request.stopped
+        if not UtilClient.is_unset(request.sorter):
+            query['sorter'] = request.sorter
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMmsJobs',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mms_jobs_with_options_async(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsJobsResponse:
+        """
+        @param request: ListMmsJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_db_name):
+            query['dstDbName'] = request.dst_db_name
+        if not UtilClient.is_unset(request.dst_table_name):
+            query['dstTableName'] = request.dst_table_name
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.src_db_name):
+            query['srcDbName'] = request.src_db_name
+        if not UtilClient.is_unset(request.src_table_name):
+            query['srcTableName'] = request.src_table_name
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.stopped):
+            query['stopped'] = request.stopped
+        if not UtilClient.is_unset(request.sorter):
+            query['sorter'] = request.sorter
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMmsJobs',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mms_jobs(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsJobsRequest,
+    ) -> max_compute_20220104_models.ListMmsJobsResponse:
+        """
+        @param request: ListMmsJobsRequest
+        @return: ListMmsJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_mms_jobs_with_options(source_id, request, headers, runtime)
+
+    async def list_mms_jobs_async(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsJobsRequest,
+    ) -> max_compute_20220104_models.ListMmsJobsResponse:
+        """
+        @param request: ListMmsJobsRequest
+        @return: ListMmsJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_mms_jobs_with_options_async(source_id, request, headers, runtime)
+
+    def list_mms_partitions_with_options(
+        self,
+        source_id: str,
+        tmp_req: max_compute_20220104_models.ListMmsPartitionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsPartitionsResponse:
+        """
+        @param tmp_req: ListMmsPartitionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsPartitionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.ListMmsPartitionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.status):
+            request.status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status, 'status', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['dbId'] = request.db_id
+        if not UtilClient.is_unset(request.db_name):
+            query['dbName'] = request.db_name
+        if not UtilClient.is_unset(request.last_ddl_time_end):
+            query['lastDdlTimeEnd'] = request.last_ddl_time_end
+        if not UtilClient.is_unset(request.last_ddl_time_start):
+            query['lastDdlTimeStart'] = request.last_ddl_time_start
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status_shrink):
+            query['status'] = request.status_shrink
+        if not UtilClient.is_unset(request.table_name):
+            query['tableName'] = request.table_name
+        if not UtilClient.is_unset(request.updated):
+            query['updated'] = request.updated
+        if not UtilClient.is_unset(request.value):
+            query['value'] = request.value
+        if not UtilClient.is_unset(request.sorter):
+            query['sorter'] = request.sorter
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMmsPartitions',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/partitions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsPartitionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mms_partitions_with_options_async(
+        self,
+        source_id: str,
+        tmp_req: max_compute_20220104_models.ListMmsPartitionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsPartitionsResponse:
+        """
+        @param tmp_req: ListMmsPartitionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsPartitionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.ListMmsPartitionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.status):
+            request.status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status, 'status', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['dbId'] = request.db_id
+        if not UtilClient.is_unset(request.db_name):
+            query['dbName'] = request.db_name
+        if not UtilClient.is_unset(request.last_ddl_time_end):
+            query['lastDdlTimeEnd'] = request.last_ddl_time_end
+        if not UtilClient.is_unset(request.last_ddl_time_start):
+            query['lastDdlTimeStart'] = request.last_ddl_time_start
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status_shrink):
+            query['status'] = request.status_shrink
+        if not UtilClient.is_unset(request.table_name):
+            query['tableName'] = request.table_name
+        if not UtilClient.is_unset(request.updated):
+            query['updated'] = request.updated
+        if not UtilClient.is_unset(request.value):
+            query['value'] = request.value
+        if not UtilClient.is_unset(request.sorter):
+            query['sorter'] = request.sorter
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMmsPartitions',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/partitions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsPartitionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mms_partitions(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsPartitionsRequest,
+    ) -> max_compute_20220104_models.ListMmsPartitionsResponse:
+        """
+        @param request: ListMmsPartitionsRequest
+        @return: ListMmsPartitionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_mms_partitions_with_options(source_id, request, headers, runtime)
+
+    async def list_mms_partitions_async(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsPartitionsRequest,
+    ) -> max_compute_20220104_models.ListMmsPartitionsResponse:
+        """
+        @param request: ListMmsPartitionsRequest
+        @return: ListMmsPartitionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_mms_partitions_with_options_async(source_id, request, headers, runtime)
+
+    def list_mms_tables_with_options(
+        self,
+        source_id: str,
+        tmp_req: max_compute_20220104_models.ListMmsTablesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsTablesResponse:
+        """
+        @param tmp_req: ListMmsTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsTablesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.ListMmsTablesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.status):
+            request.status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status, 'status', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['dbId'] = request.db_id
+        if not UtilClient.is_unset(request.db_name):
+            query['dbName'] = request.db_name
+        if not UtilClient.is_unset(request.has_partitions):
+            query['hasPartitions'] = request.has_partitions
+        if not UtilClient.is_unset(request.last_ddl_time_end):
+            query['lastDdlTimeEnd'] = request.last_ddl_time_end
+        if not UtilClient.is_unset(request.last_ddl_time_start):
+            query['lastDdlTimeStart'] = request.last_ddl_time_start
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.only_name):
+            query['onlyName'] = request.only_name
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status_shrink):
+            query['status'] = request.status_shrink
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        if not UtilClient.is_unset(request.sorter):
+            query['sorter'] = request.sorter
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMmsTables',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/tables',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mms_tables_with_options_async(
+        self,
+        source_id: str,
+        tmp_req: max_compute_20220104_models.ListMmsTablesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsTablesResponse:
+        """
+        @param tmp_req: ListMmsTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsTablesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.ListMmsTablesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.status):
+            request.status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status, 'status', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['dbId'] = request.db_id
+        if not UtilClient.is_unset(request.db_name):
+            query['dbName'] = request.db_name
+        if not UtilClient.is_unset(request.has_partitions):
+            query['hasPartitions'] = request.has_partitions
+        if not UtilClient.is_unset(request.last_ddl_time_end):
+            query['lastDdlTimeEnd'] = request.last_ddl_time_end
+        if not UtilClient.is_unset(request.last_ddl_time_start):
+            query['lastDdlTimeStart'] = request.last_ddl_time_start
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.only_name):
+            query['onlyName'] = request.only_name
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status_shrink):
+            query['status'] = request.status_shrink
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        if not UtilClient.is_unset(request.sorter):
+            query['sorter'] = request.sorter
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMmsTables',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/tables',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mms_tables(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsTablesRequest,
+    ) -> max_compute_20220104_models.ListMmsTablesResponse:
+        """
+        @param request: ListMmsTablesRequest
+        @return: ListMmsTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_mms_tables_with_options(source_id, request, headers, runtime)
+
+    async def list_mms_tables_async(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsTablesRequest,
+    ) -> max_compute_20220104_models.ListMmsTablesResponse:
+        """
+        @param request: ListMmsTablesRequest
+        @return: ListMmsTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_mms_tables_with_options_async(source_id, request, headers, runtime)
+
+    def list_mms_task_logs_with_options(
+        self,
+        source_id: str,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsTaskLogsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsTaskLogsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListMmsTaskLogs',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/logs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsTaskLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mms_task_logs_with_options_async(
+        self,
+        source_id: str,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsTaskLogsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsTaskLogsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListMmsTaskLogs',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/logs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsTaskLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mms_task_logs(
+        self,
+        source_id: str,
+        task_id: str,
+    ) -> max_compute_20220104_models.ListMmsTaskLogsResponse:
+        """
+        @return: ListMmsTaskLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_mms_task_logs_with_options(source_id, task_id, headers, runtime)
+
+    async def list_mms_task_logs_async(
+        self,
+        source_id: str,
+        task_id: str,
+    ) -> max_compute_20220104_models.ListMmsTaskLogsResponse:
+        """
+        @return: ListMmsTaskLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_mms_task_logs_with_options_async(source_id, task_id, headers, runtime)
+
+    def list_mms_tasks_with_options(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsTasksRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsTasksResponse:
+        """
+        @param request: ListMmsTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_db_name):
+            query['dstDbName'] = request.dst_db_name
+        if not UtilClient.is_unset(request.dst_table_name):
+            query['dstTableName'] = request.dst_table_name
+        if not UtilClient.is_unset(request.job_id):
+            query['jobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_name):
+            query['jobName'] = request.job_name
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.partition):
+            query['partition'] = request.partition
+        if not UtilClient.is_unset(request.src_db_name):
+            query['srcDbName'] = request.src_db_name
+        if not UtilClient.is_unset(request.src_table_name):
+            query['srcTableName'] = request.src_table_name
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.sorter):
+            query['sorter'] = request.sorter
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMmsTasks',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mms_tasks_with_options_async(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsTasksRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListMmsTasksResponse:
+        """
+        @param request: ListMmsTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMmsTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_db_name):
+            query['dstDbName'] = request.dst_db_name
+        if not UtilClient.is_unset(request.dst_table_name):
+            query['dstTableName'] = request.dst_table_name
+        if not UtilClient.is_unset(request.job_id):
+            query['jobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_name):
+            query['jobName'] = request.job_name
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.partition):
+            query['partition'] = request.partition
+        if not UtilClient.is_unset(request.src_db_name):
+            query['srcDbName'] = request.src_db_name
+        if not UtilClient.is_unset(request.src_table_name):
+            query['srcTableName'] = request.src_table_name
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.sorter):
+            query['sorter'] = request.sorter
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMmsTasks',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListMmsTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mms_tasks(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsTasksRequest,
+    ) -> max_compute_20220104_models.ListMmsTasksResponse:
+        """
+        @param request: ListMmsTasksRequest
+        @return: ListMmsTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_mms_tasks_with_options(source_id, request, headers, runtime)
+
+    async def list_mms_tasks_async(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.ListMmsTasksRequest,
+    ) -> max_compute_20220104_models.ListMmsTasksResponse:
+        """
+        @param request: ListMmsTasksRequest
+        @return: ListMmsTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_mms_tasks_with_options_async(source_id, request, headers, runtime)
 
     def list_packages_with_options(
         self,
@@ -3219,6 +5481,302 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_roles_with_options_async(project_name, headers, runtime)
 
+    def list_storage_partitions_info_with_options(
+        self,
+        project: str,
+        table: str,
+        tmp_req: max_compute_20220104_models.ListStoragePartitionsInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListStoragePartitionsInfoResponse:
+        """
+        @param tmp_req: ListStoragePartitionsInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStoragePartitionsInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.ListStoragePartitionsInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'types', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.asc_order):
+            query['ascOrder'] = request.asc_order
+        if not UtilClient.is_unset(request.date):
+            query['date'] = request.date
+        if not UtilClient.is_unset(request.order_column):
+            query['orderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.partition_prefix):
+            query['partitionPrefix'] = request.partition_prefix
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.schema):
+            query['schema'] = request.schema
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.types_shrink):
+            query['types'] = request.types_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStoragePartitionsInfo',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/analysis/storage/projects/{OpenApiUtilClient.get_encode_param(project)}/tables/{OpenApiUtilClient.get_encode_param(table)}/partitionsInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListStoragePartitionsInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_storage_partitions_info_with_options_async(
+        self,
+        project: str,
+        table: str,
+        tmp_req: max_compute_20220104_models.ListStoragePartitionsInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListStoragePartitionsInfoResponse:
+        """
+        @param tmp_req: ListStoragePartitionsInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStoragePartitionsInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.ListStoragePartitionsInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'types', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.asc_order):
+            query['ascOrder'] = request.asc_order
+        if not UtilClient.is_unset(request.date):
+            query['date'] = request.date
+        if not UtilClient.is_unset(request.order_column):
+            query['orderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.partition_prefix):
+            query['partitionPrefix'] = request.partition_prefix
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.schema):
+            query['schema'] = request.schema
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.types_shrink):
+            query['types'] = request.types_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStoragePartitionsInfo',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/analysis/storage/projects/{OpenApiUtilClient.get_encode_param(project)}/tables/{OpenApiUtilClient.get_encode_param(table)}/partitionsInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListStoragePartitionsInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_storage_partitions_info(
+        self,
+        project: str,
+        table: str,
+        request: max_compute_20220104_models.ListStoragePartitionsInfoRequest,
+    ) -> max_compute_20220104_models.ListStoragePartitionsInfoResponse:
+        """
+        @param request: ListStoragePartitionsInfoRequest
+        @return: ListStoragePartitionsInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_storage_partitions_info_with_options(project, table, request, headers, runtime)
+
+    async def list_storage_partitions_info_async(
+        self,
+        project: str,
+        table: str,
+        request: max_compute_20220104_models.ListStoragePartitionsInfoRequest,
+    ) -> max_compute_20220104_models.ListStoragePartitionsInfoResponse:
+        """
+        @param request: ListStoragePartitionsInfoRequest
+        @return: ListStoragePartitionsInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_storage_partitions_info_with_options_async(project, table, request, headers, runtime)
+
+    def list_storage_tables_info_with_options(
+        self,
+        project: str,
+        tmp_req: max_compute_20220104_models.ListStorageTablesInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListStorageTablesInfoResponse:
+        """
+        @param tmp_req: ListStorageTablesInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStorageTablesInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.ListStorageTablesInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'types', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.asc_order):
+            query['ascOrder'] = request.asc_order
+        if not UtilClient.is_unset(request.date):
+            query['date'] = request.date
+        if not UtilClient.is_unset(request.order_column):
+            query['orderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.recent_days):
+            query['recentDays'] = request.recent_days
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.schema):
+            query['schema'] = request.schema
+        if not UtilClient.is_unset(request.table_prefix):
+            query['tablePrefix'] = request.table_prefix
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.types_shrink):
+            query['types'] = request.types_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStorageTablesInfo',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/analysis/storage/projects/{OpenApiUtilClient.get_encode_param(project)}/tablesInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListStorageTablesInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_storage_tables_info_with_options_async(
+        self,
+        project: str,
+        tmp_req: max_compute_20220104_models.ListStorageTablesInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListStorageTablesInfoResponse:
+        """
+        @param tmp_req: ListStorageTablesInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStorageTablesInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.ListStorageTablesInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'types', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.asc_order):
+            query['ascOrder'] = request.asc_order
+        if not UtilClient.is_unset(request.date):
+            query['date'] = request.date
+        if not UtilClient.is_unset(request.order_column):
+            query['orderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.recent_days):
+            query['recentDays'] = request.recent_days
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.schema):
+            query['schema'] = request.schema
+        if not UtilClient.is_unset(request.table_prefix):
+            query['tablePrefix'] = request.table_prefix
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.types_shrink):
+            query['types'] = request.types_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStorageTablesInfo',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/analysis/storage/projects/{OpenApiUtilClient.get_encode_param(project)}/tablesInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListStorageTablesInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_storage_tables_info(
+        self,
+        project: str,
+        request: max_compute_20220104_models.ListStorageTablesInfoRequest,
+    ) -> max_compute_20220104_models.ListStorageTablesInfoResponse:
+        """
+        @param request: ListStorageTablesInfoRequest
+        @return: ListStorageTablesInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_storage_tables_info_with_options(project, request, headers, runtime)
+
+    async def list_storage_tables_info_async(
+        self,
+        project: str,
+        request: max_compute_20220104_models.ListStorageTablesInfoRequest,
+    ) -> max_compute_20220104_models.ListStorageTablesInfoResponse:
+        """
+        @param request: ListStorageTablesInfoRequest
+        @return: ListStorageTablesInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_storage_tables_info_with_options_async(project, request, headers, runtime)
+
     def list_tables_with_options(
         self,
         project_name: str,
@@ -3342,6 +5900,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tables_with_options_async(project_name, request, headers, runtime)
+
+    def list_tunnel_quota_timer_with_options(
+        self,
+        nickname: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListTunnelQuotaTimerResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTunnelQuotaTimerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListTunnelQuotaTimer',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tunnel/{OpenApiUtilClient.get_encode_param(nickname)}/timers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListTunnelQuotaTimerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tunnel_quota_timer_with_options_async(
+        self,
+        nickname: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListTunnelQuotaTimerResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTunnelQuotaTimerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListTunnelQuotaTimer',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tunnel/{OpenApiUtilClient.get_encode_param(nickname)}/timers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListTunnelQuotaTimerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tunnel_quota_timer(
+        self,
+        nickname: str,
+    ) -> max_compute_20220104_models.ListTunnelQuotaTimerResponse:
+        """
+        @return: ListTunnelQuotaTimerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_tunnel_quota_timer_with_options(nickname, headers, runtime)
+
+    async def list_tunnel_quota_timer_async(
+        self,
+        nickname: str,
+    ) -> max_compute_20220104_models.ListTunnelQuotaTimerResponse:
+        """
+        @return: ListTunnelQuotaTimerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_tunnel_quota_timer_with_options_async(nickname, headers, runtime)
 
     def list_users_with_options(
         self,
@@ -3545,6 +6185,496 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_users_by_role_with_options_async(project_name, role_name, headers, runtime)
 
+    def query_quota_with_options(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.QueryQuotaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.QueryQuotaResponse:
+        """
+        @param request: QueryQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ak_proven):
+            query['AkProven'] = request.ak_proven
+        if not UtilClient.is_unset(request.mock):
+            query['mock'] = request.mock
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryQuota',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/query',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.QueryQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_quota_with_options_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.QueryQuotaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.QueryQuotaResponse:
+        """
+        @param request: QueryQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ak_proven):
+            query['AkProven'] = request.ak_proven
+        if not UtilClient.is_unset(request.mock):
+            query['mock'] = request.mock
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryQuota',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/query',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.QueryQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_quota(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.QueryQuotaRequest,
+    ) -> max_compute_20220104_models.QueryQuotaResponse:
+        """
+        @param request: QueryQuotaRequest
+        @return: QueryQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_quota_with_options(nickname, request, headers, runtime)
+
+    async def query_quota_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.QueryQuotaRequest,
+    ) -> max_compute_20220104_models.QueryQuotaResponse:
+        """
+        @param request: QueryQuotaRequest
+        @return: QueryQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_quota_with_options_async(nickname, request, headers, runtime)
+
+    def retry_mms_job_with_options(
+        self,
+        source_id: str,
+        job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.RetryMmsJobResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryMmsJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='RetryMmsJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/retry',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.RetryMmsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_mms_job_with_options_async(
+        self,
+        source_id: str,
+        job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.RetryMmsJobResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryMmsJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='RetryMmsJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/retry',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.RetryMmsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_mms_job(
+        self,
+        source_id: str,
+        job_id: str,
+    ) -> max_compute_20220104_models.RetryMmsJobResponse:
+        """
+        @return: RetryMmsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.retry_mms_job_with_options(source_id, job_id, headers, runtime)
+
+    async def retry_mms_job_async(
+        self,
+        source_id: str,
+        job_id: str,
+    ) -> max_compute_20220104_models.RetryMmsJobResponse:
+        """
+        @return: RetryMmsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.retry_mms_job_with_options_async(source_id, job_id, headers, runtime)
+
+    def start_mms_job_with_options(
+        self,
+        source_id: str,
+        job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.StartMmsJobResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartMmsJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartMmsJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/start',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.StartMmsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_mms_job_with_options_async(
+        self,
+        source_id: str,
+        job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.StartMmsJobResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartMmsJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartMmsJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/start',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.StartMmsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_mms_job(
+        self,
+        source_id: str,
+        job_id: str,
+    ) -> max_compute_20220104_models.StartMmsJobResponse:
+        """
+        @return: StartMmsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_mms_job_with_options(source_id, job_id, headers, runtime)
+
+    async def start_mms_job_async(
+        self,
+        source_id: str,
+        job_id: str,
+    ) -> max_compute_20220104_models.StartMmsJobResponse:
+        """
+        @return: StartMmsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_mms_job_with_options_async(source_id, job_id, headers, runtime)
+
+    def stop_mms_job_with_options(
+        self,
+        source_id: str,
+        job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.StopMmsJobResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMmsJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopMmsJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.StopMmsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_mms_job_with_options_async(
+        self,
+        source_id: str,
+        job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.StopMmsJobResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMmsJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopMmsJob',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.StopMmsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_mms_job(
+        self,
+        source_id: str,
+        job_id: str,
+    ) -> max_compute_20220104_models.StopMmsJobResponse:
+        """
+        @return: StopMmsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.stop_mms_job_with_options(source_id, job_id, headers, runtime)
+
+    async def stop_mms_job_async(
+        self,
+        source_id: str,
+        job_id: str,
+    ) -> max_compute_20220104_models.StopMmsJobResponse:
+        """
+        @return: StopMmsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.stop_mms_job_with_options_async(source_id, job_id, headers, runtime)
+
+    def update_mms_data_source_with_options(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.UpdateMmsDataSourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateMmsDataSourceResponse:
+        """
+        @summary 更新数据源配置、名称，启/停数据源实例
+        
+        @param request: UpdateMmsDataSourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMmsDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.action):
+            body['action'] = request.action
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.test):
+            body['test'] = request.test
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMmsDataSource',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateMmsDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mms_data_source_with_options_async(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.UpdateMmsDataSourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateMmsDataSourceResponse:
+        """
+        @summary 更新数据源配置、名称，启/停数据源实例
+        
+        @param request: UpdateMmsDataSourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMmsDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.action):
+            body['action'] = request.action
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.test):
+            body['test'] = request.test
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMmsDataSource',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/mms/datasources/{OpenApiUtilClient.get_encode_param(source_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateMmsDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mms_data_source(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.UpdateMmsDataSourceRequest,
+    ) -> max_compute_20220104_models.UpdateMmsDataSourceResponse:
+        """
+        @summary 更新数据源配置、名称，启/停数据源实例
+        
+        @param request: UpdateMmsDataSourceRequest
+        @return: UpdateMmsDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_mms_data_source_with_options(source_id, request, headers, runtime)
+
+    async def update_mms_data_source_async(
+        self,
+        source_id: str,
+        request: max_compute_20220104_models.UpdateMmsDataSourceRequest,
+    ) -> max_compute_20220104_models.UpdateMmsDataSourceResponse:
+        """
+        @summary 更新数据源配置、名称，启/停数据源实例
+        
+        @param request: UpdateMmsDataSourceRequest
+        @return: UpdateMmsDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_mms_data_source_with_options_async(source_id, request, headers, runtime)
+
     def update_package_with_options(
         self,
         project_name: str,
@@ -3651,6 +6781,226 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_package_with_options_async(project_name, package_name, request, headers, runtime)
 
+    def update_project_basic_meta_with_options(
+        self,
+        project_name: str,
+        request: max_compute_20220104_models.UpdateProjectBasicMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateProjectBasicMetaResponse:
+        """
+        @summary Update Project Basic Information
+        
+        @param request: UpdateProjectBasicMetaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectBasicMetaResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['comment'] = request.comment
+        if not UtilClient.is_unset(request.properties):
+            body['properties'] = request.properties
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProjectBasicMeta',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/projects/{OpenApiUtilClient.get_encode_param(project_name)}/meta',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateProjectBasicMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_project_basic_meta_with_options_async(
+        self,
+        project_name: str,
+        request: max_compute_20220104_models.UpdateProjectBasicMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateProjectBasicMetaResponse:
+        """
+        @summary Update Project Basic Information
+        
+        @param request: UpdateProjectBasicMetaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectBasicMetaResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['comment'] = request.comment
+        if not UtilClient.is_unset(request.properties):
+            body['properties'] = request.properties
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProjectBasicMeta',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/projects/{OpenApiUtilClient.get_encode_param(project_name)}/meta',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateProjectBasicMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_project_basic_meta(
+        self,
+        project_name: str,
+        request: max_compute_20220104_models.UpdateProjectBasicMetaRequest,
+    ) -> max_compute_20220104_models.UpdateProjectBasicMetaResponse:
+        """
+        @summary Update Project Basic Information
+        
+        @param request: UpdateProjectBasicMetaRequest
+        @return: UpdateProjectBasicMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_project_basic_meta_with_options(project_name, request, headers, runtime)
+
+    async def update_project_basic_meta_async(
+        self,
+        project_name: str,
+        request: max_compute_20220104_models.UpdateProjectBasicMetaRequest,
+    ) -> max_compute_20220104_models.UpdateProjectBasicMetaResponse:
+        """
+        @summary Update Project Basic Information
+        
+        @param request: UpdateProjectBasicMetaRequest
+        @return: UpdateProjectBasicMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_project_basic_meta_with_options_async(project_name, request, headers, runtime)
+
+    def update_project_default_quota_with_options(
+        self,
+        project_name: str,
+        request: max_compute_20220104_models.UpdateProjectDefaultQuotaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateProjectDefaultQuotaResponse:
+        """
+        @summary Modify Default Project Compute Quota
+        
+        @param request: UpdateProjectDefaultQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectDefaultQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.quota):
+            body['quota'] = request.quota
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProjectDefaultQuota',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/projects/{OpenApiUtilClient.get_encode_param(project_name)}/quota',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateProjectDefaultQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_project_default_quota_with_options_async(
+        self,
+        project_name: str,
+        request: max_compute_20220104_models.UpdateProjectDefaultQuotaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateProjectDefaultQuotaResponse:
+        """
+        @summary Modify Default Project Compute Quota
+        
+        @param request: UpdateProjectDefaultQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectDefaultQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.quota):
+            body['quota'] = request.quota
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProjectDefaultQuota',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/projects/{OpenApiUtilClient.get_encode_param(project_name)}/quota',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateProjectDefaultQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_project_default_quota(
+        self,
+        project_name: str,
+        request: max_compute_20220104_models.UpdateProjectDefaultQuotaRequest,
+    ) -> max_compute_20220104_models.UpdateProjectDefaultQuotaResponse:
+        """
+        @summary Modify Default Project Compute Quota
+        
+        @param request: UpdateProjectDefaultQuotaRequest
+        @return: UpdateProjectDefaultQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_project_default_quota_with_options(project_name, request, headers, runtime)
+
+    async def update_project_default_quota_async(
+        self,
+        project_name: str,
+        request: max_compute_20220104_models.UpdateProjectDefaultQuotaRequest,
+    ) -> max_compute_20220104_models.UpdateProjectDefaultQuotaResponse:
+        """
+        @summary Modify Default Project Compute Quota
+        
+        @param request: UpdateProjectDefaultQuotaRequest
+        @return: UpdateProjectDefaultQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_project_default_quota_with_options_async(project_name, request, headers, runtime)
+
     def update_project_ip_white_list_with_options(
         self,
         project_name: str,
@@ -3752,130 +7102,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_project_ip_white_list_with_options_async(project_name, request, headers, runtime)
-
-    def update_quota_with_options(
-        self,
-        nickname: str,
-        request: max_compute_20220104_models.UpdateQuotaRequest,
-        headers: max_compute_20220104_models.UpdateQuotaHeaders,
-        runtime: util_models.RuntimeOptions,
-    ) -> max_compute_20220104_models.UpdateQuotaResponse:
-        """
-        @summary Updates a quota.
-        
-        @param request: UpdateQuotaRequest
-        @param headers: UpdateQuotaHeaders
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateQuotaResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region):
-            query['region'] = request.region
-        if not UtilClient.is_unset(request.tenant_id):
-            query['tenantId'] = request.tenant_id
-        real_headers = {}
-        if not UtilClient.is_unset(headers.common_headers):
-            real_headers = headers.common_headers
-        if not UtilClient.is_unset(headers.ak_proven):
-            real_headers['AkProven'] = UtilClient.to_jsonstring(headers.ak_proven)
-        req = open_api_models.OpenApiRequest(
-            headers=real_headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
-        )
-        params = open_api_models.Params(
-            action='UpdateQuota',
-            version='2022-01-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            max_compute_20220104_models.UpdateQuotaResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_quota_with_options_async(
-        self,
-        nickname: str,
-        request: max_compute_20220104_models.UpdateQuotaRequest,
-        headers: max_compute_20220104_models.UpdateQuotaHeaders,
-        runtime: util_models.RuntimeOptions,
-    ) -> max_compute_20220104_models.UpdateQuotaResponse:
-        """
-        @summary Updates a quota.
-        
-        @param request: UpdateQuotaRequest
-        @param headers: UpdateQuotaHeaders
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateQuotaResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region):
-            query['region'] = request.region
-        if not UtilClient.is_unset(request.tenant_id):
-            query['tenantId'] = request.tenant_id
-        real_headers = {}
-        if not UtilClient.is_unset(headers.common_headers):
-            real_headers = headers.common_headers
-        if not UtilClient.is_unset(headers.ak_proven):
-            real_headers['AkProven'] = UtilClient.to_jsonstring(headers.ak_proven)
-        req = open_api_models.OpenApiRequest(
-            headers=real_headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
-        )
-        params = open_api_models.Params(
-            action='UpdateQuota',
-            version='2022-01-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            max_compute_20220104_models.UpdateQuotaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_quota(
-        self,
-        nickname: str,
-        request: max_compute_20220104_models.UpdateQuotaRequest,
-    ) -> max_compute_20220104_models.UpdateQuotaResponse:
-        """
-        @summary Updates a quota.
-        
-        @param request: UpdateQuotaRequest
-        @return: UpdateQuotaResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = max_compute_20220104_models.UpdateQuotaHeaders()
-        return self.update_quota_with_options(nickname, request, headers, runtime)
-
-    async def update_quota_async(
-        self,
-        nickname: str,
-        request: max_compute_20220104_models.UpdateQuotaRequest,
-    ) -> max_compute_20220104_models.UpdateQuotaResponse:
-        """
-        @summary Updates a quota.
-        
-        @param request: UpdateQuotaRequest
-        @return: UpdateQuotaResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = max_compute_20220104_models.UpdateQuotaHeaders()
-        return await self.update_quota_with_options_async(nickname, request, headers, runtime)
 
     def update_quota_plan_with_options(
         self,
@@ -4108,3 +7334,97 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_quota_schedule_with_options_async(nickname, request, headers, runtime)
+
+    def update_tunnel_quota_timer_with_options(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateTunnelQuotaTimerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateTunnelQuotaTimerResponse:
+        """
+        @param request: UpdateTunnelQuotaTimerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTunnelQuotaTimerResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTunnelQuotaTimer',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tunnel/{OpenApiUtilClient.get_encode_param(nickname)}/timers',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateTunnelQuotaTimerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_tunnel_quota_timer_with_options_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateTunnelQuotaTimerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateTunnelQuotaTimerResponse:
+        """
+        @param request: UpdateTunnelQuotaTimerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTunnelQuotaTimerResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTunnelQuotaTimer',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tunnel/{OpenApiUtilClient.get_encode_param(nickname)}/timers',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateTunnelQuotaTimerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_tunnel_quota_timer(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateTunnelQuotaTimerRequest,
+    ) -> max_compute_20220104_models.UpdateTunnelQuotaTimerResponse:
+        """
+        @param request: UpdateTunnelQuotaTimerRequest
+        @return: UpdateTunnelQuotaTimerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_tunnel_quota_timer_with_options(nickname, request, headers, runtime)
+
+    async def update_tunnel_quota_timer_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateTunnelQuotaTimerRequest,
+    ) -> max_compute_20220104_models.UpdateTunnelQuotaTimerResponse:
+        """
+        @param request: UpdateTunnelQuotaTimerRequest
+        @return: UpdateTunnelQuotaTimerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_tunnel_quota_timer_with_options_async(nickname, request, headers, runtime)

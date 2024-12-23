@@ -1,3 +1,48 @@
+2024-12-23 Version: 3.0.0
+- Support API CreateMmsDataSource.
+- Support API CreateMmsFetchMetadataJob.
+- Support API CreateMmsJob.
+- Support API DeleteMmsDataSource.
+- Support API DeleteMmsJob.
+- Support API GetMmsAsyncTask.
+- Support API GetMmsDataSource.
+- Support API GetMmsDb.
+- Support API GetMmsFetchMetadataJob.
+- Support API GetMmsJob.
+- Support API GetMmsPartition.
+- Support API GetMmsTable.
+- Support API GetMmsTask.
+- Support API GetQuotaUsage.
+- Support API ListMmsDataSources.
+- Support API ListMmsDbs.
+- Support API ListMmsJobs.
+- Support API ListMmsPartitions.
+- Support API ListMmsTables.
+- Support API ListMmsTaskLogs.
+- Support API ListMmsTasks.
+- Support API ListStoragePartitionsInfo.
+- Support API ListStorageTablesInfo.
+- Support API ListTunnelQuotaTimer.
+- Support API QueryQuota.
+- Support API RetryMmsJob.
+- Support API StartMmsJob.
+- Support API StopMmsJob.
+- Support API UpdateMmsDataSource.
+- Support API UpdateProjectBasicMeta.
+- Support API UpdateProjectDefaultQuota.
+- Support API UpdateTunnelQuotaTimer.
+- Delete API CreateQuotaSchedule.
+- Delete API UpdateQuota.
+- Update API GetProject: update response param.
+- Update API GetRoleAclOnObject: update response param.
+- Update API GetTableInfo: update response param.
+- Update API ListJobInfos: add param body.
+- Update API ListJobInfos: update param body.
+- Update API ListJobInfos: update response param.
+- Update API ListProjects: update response param.
+- Update API ListTables: update response param.
+
+
 2024-06-24 Version: 2.3.1
 - Update API GetProject: update response param.
 
