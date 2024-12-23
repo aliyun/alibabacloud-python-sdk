@@ -1,3 +1,6 @@
+2024-12-23 Version: 1.2.6
+- Generated python 2020-06-16 for Alb.
+
 2024-12-20 Version: 1.2.5
 - Update API CreateListener: update param XForwardedForConfig.
 - Update API GetListenerAttribute: update response param.
