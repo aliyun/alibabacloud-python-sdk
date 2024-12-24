@@ -21243,12 +21243,14 @@ class GetSmartHandleJobResponseBodyJobResult(TeaModel):
         self,
         ai_result: str = None,
         media_id: str = None,
+        media_url: str = None,
         usage: str = None,
     ):
         # The AI analysis result.
         self.ai_result = ai_result
         # The ID of the media asset.
         self.media_id = media_id
+        self.media_url = media_url
         # The token usage. This parameter is returned only for keyword-based text generation jobs.
         self.usage = usage
 
@@ -21265,6 +21267,8 @@ class GetSmartHandleJobResponseBodyJobResult(TeaModel):
             result['AiResult'] = self.ai_result
         if self.media_id is not None:
             result['MediaId'] = self.media_id
+        if self.media_url is not None:
+            result['MediaUrl'] = self.media_url
         if self.usage is not None:
             result['Usage'] = self.usage
         return result
@@ -21275,6 +21279,8 @@ class GetSmartHandleJobResponseBodyJobResult(TeaModel):
             self.ai_result = m.get('AiResult')
         if m.get('MediaId') is not None:
             self.media_id = m.get('MediaId')
+        if m.get('MediaUrl') is not None:
+            self.media_url = m.get('MediaUrl')
         if m.get('Usage') is not None:
             self.usage = m.get('Usage')
         return self
@@ -36920,20 +36926,16 @@ class ListSearchLibRequest(TeaModel):
         return self
 
 
-class ListSearchLibResponseBodySearchLibInfoList(TeaModel):
+class ListSearchLibResponseBodySearchLibInfoListIndexInfo(TeaModel):
     def __init__(
         self,
-        search_lib_name: str = None,
-        status: str = None,
+        index_readiness: str = None,
+        index_status: str = None,
+        index_type: str = None,
     ):
-        # The search library.
-        self.search_lib_name = search_lib_name
-        # The status of the search library.
-        # 
-        # *   normal
-        # *   deleting
-        # *   deleteFail
-        self.status = status
+        self.index_readiness = index_readiness
+        self.index_status = index_status
+        self.index_type = index_type
 
     def validate(self):
         pass
@@ -36944,6 +36946,58 @@ class ListSearchLibResponseBodySearchLibInfoList(TeaModel):
             return _map
 
         result = dict()
+        if self.index_readiness is not None:
+            result['IndexReadiness'] = self.index_readiness
+        if self.index_status is not None:
+            result['IndexStatus'] = self.index_status
+        if self.index_type is not None:
+            result['IndexType'] = self.index_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IndexReadiness') is not None:
+            self.index_readiness = m.get('IndexReadiness')
+        if m.get('IndexStatus') is not None:
+            self.index_status = m.get('IndexStatus')
+        if m.get('IndexType') is not None:
+            self.index_type = m.get('IndexType')
+        return self
+
+
+class ListSearchLibResponseBodySearchLibInfoList(TeaModel):
+    def __init__(
+        self,
+        index_info: List[ListSearchLibResponseBodySearchLibInfoListIndexInfo] = None,
+        search_lib_name: str = None,
+        status: str = None,
+    ):
+        self.index_info = index_info
+        # The search library.
+        self.search_lib_name = search_lib_name
+        # The status of the search library.
+        # 
+        # *   normal
+        # *   deleting
+        # *   deleteFail
+        self.status = status
+
+    def validate(self):
+        if self.index_info:
+            for k in self.index_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IndexInfo'] = []
+        if self.index_info is not None:
+            for k in self.index_info:
+                result['IndexInfo'].append(k.to_map() if k else None)
         if self.search_lib_name is not None:
             result['SearchLibName'] = self.search_lib_name
         if self.status is not None:
@@ -36952,6 +37006,11 @@ class ListSearchLibResponseBodySearchLibInfoList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.index_info = []
+        if m.get('IndexInfo') is not None:
+            for k in m.get('IndexInfo'):
+                temp_model = ListSearchLibResponseBodySearchLibInfoListIndexInfo()
+                self.index_info.append(temp_model.from_map(k))
         if m.get('SearchLibName') is not None:
             self.search_lib_name = m.get('SearchLibName')
         if m.get('Status') is not None:
@@ -44630,10 +44689,50 @@ class QuerySearchLibRequest(TeaModel):
         return self
 
 
+class QuerySearchLibResponseBodyIndexInfo(TeaModel):
+    def __init__(
+        self,
+        index_readiness: str = None,
+        index_status: str = None,
+        index_type: str = None,
+    ):
+        self.index_readiness = index_readiness
+        self.index_status = index_status
+        self.index_type = index_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index_readiness is not None:
+            result['IndexReadiness'] = self.index_readiness
+        if self.index_status is not None:
+            result['IndexStatus'] = self.index_status
+        if self.index_type is not None:
+            result['IndexType'] = self.index_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IndexReadiness') is not None:
+            self.index_readiness = m.get('IndexReadiness')
+        if m.get('IndexStatus') is not None:
+            self.index_status = m.get('IndexStatus')
+        if m.get('IndexType') is not None:
+            self.index_type = m.get('IndexType')
+        return self
+
+
 class QuerySearchLibResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
+        index_info: List[QuerySearchLibResponseBodyIndexInfo] = None,
         request_id: str = None,
         search_lib_name: str = None,
         status: str = None,
@@ -44641,6 +44740,7 @@ class QuerySearchLibResponseBody(TeaModel):
     ):
         # The status code returned.
         self.code = code
+        self.index_info = index_info
         # The ID of the request.
         self.request_id = request_id
         # The name of the search library.
@@ -44660,7 +44760,10 @@ class QuerySearchLibResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        pass
+        if self.index_info:
+            for k in self.index_info:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -44670,6 +44773,10 @@ class QuerySearchLibResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        result['IndexInfo'] = []
+        if self.index_info is not None:
+            for k in self.index_info:
+                result['IndexInfo'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.search_lib_name is not None:
@@ -44684,6 +44791,11 @@ class QuerySearchLibResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        self.index_info = []
+        if m.get('IndexInfo') is not None:
+            for k in m.get('IndexInfo'):
+                temp_model = QuerySearchLibResponseBodyIndexInfo()
+                self.index_info.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SearchLibName') is not None:
@@ -52490,7 +52602,7 @@ class SubmitBatchMediaProducingJobRequest(TeaModel):
         self.input_config = input_config
         # The output configurations. For more information, see [OutputConfig](~~2692547#447b928fcbuoa~~).
         self.output_config = output_config
-        # The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html?spm=a2c4g.439285.0.i1#section-urj-v3f-0s1).
+        # The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html).
         self.user_data = user_data
 
     def validate(self):

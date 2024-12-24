@@ -1,3 +1,9 @@
+2024-12-24 Version: 3.8.1
+- Update API GetSmartHandleJob: update response param.
+- Update API ListSearchLib: update response param.
+- Update API QuerySearchLib: update response param.
+
+
 2024-12-13 Version: 3.8.0
 - Support API SendAIAgentDataChannelMessage.
 - Support API TakeoverAIAgentCall.
