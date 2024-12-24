@@ -1,3 +1,8 @@
+2024-12-24 Version: 1.0.7
+- Update API GetInstanceDetail: update response param.
+- Update API ListInstances: update response param.
+
+
 2024-12-02 Version: 1.0.6
 - Update API GetInstanceDetail: update response param.
 

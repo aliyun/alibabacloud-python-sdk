@@ -334,12 +334,14 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(TeaMode
         self,
         component_type: str = None,
         cu_num: int = None,
+        cu_ratio: int = None,
         disk_size: int = None,
         disk_type: str = None,
         replica: int = None,
     ):
         self.component_type = component_type
         self.cu_num = cu_num
+        self.cu_ratio = cu_ratio
         self.disk_size = disk_size
         self.disk_type = disk_type
         self.replica = replica
@@ -357,6 +359,8 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(TeaMode
             result['ComponentType'] = self.component_type
         if self.cu_num is not None:
             result['CuNum'] = self.cu_num
+        if self.cu_ratio is not None:
+            result['CuRatio'] = self.cu_ratio
         if self.disk_size is not None:
             result['DiskSize'] = self.disk_size
         if self.disk_type is not None:
@@ -371,6 +375,8 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(TeaMode
             self.component_type = m.get('ComponentType')
         if m.get('CuNum') is not None:
             self.cu_num = m.get('CuNum')
+        if m.get('CuRatio') is not None:
+            self.cu_ratio = m.get('CuRatio')
         if m.get('DiskSize') is not None:
             self.disk_size = m.get('DiskSize')
         if m.get('DiskType') is not None:
@@ -558,6 +564,7 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         instance_id: str = None,
         instance_status: str = None,
         measure_config: GetInstanceDetailResponseBodyDataMeasureConfig = None,
+        node_type: str = None,
         open_public_net: bool = None,
         package_type: str = None,
         pay_type: int = None,
@@ -584,6 +591,7 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         self.instance_id = instance_id
         self.instance_status = instance_status
         self.measure_config = measure_config
+        self.node_type = node_type
         self.open_public_net = open_public_net
         self.package_type = package_type
         self.pay_type = pay_type
@@ -633,6 +641,8 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             result['InstanceStatus'] = self.instance_status
         if self.measure_config is not None:
             result['MeasureConfig'] = self.measure_config.to_map()
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
         if self.open_public_net is not None:
             result['OpenPublicNet'] = self.open_public_net
         if self.package_type is not None:
@@ -689,6 +699,8 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         if m.get('MeasureConfig') is not None:
             temp_model = GetInstanceDetailResponseBodyDataMeasureConfig()
             self.measure_config = temp_model.from_map(m['MeasureConfig'])
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
         if m.get('OpenPublicNet') is not None:
             self.open_public_net = m.get('OpenPublicNet')
         if m.get('PackageType') is not None:
@@ -1014,6 +1026,7 @@ class ListInstancesResponseBodyData(TeaModel):
         expire_time: int = None,
         instance_id: str = None,
         instance_status: str = None,
+        node_type: str = None,
         open_public_net: bool = None,
         package_type: str = None,
         pay_type: int = None,
@@ -1032,6 +1045,7 @@ class ListInstancesResponseBodyData(TeaModel):
         self.expire_time = expire_time
         self.instance_id = instance_id
         self.instance_status = instance_status
+        self.node_type = node_type
         self.open_public_net = open_public_net
         self.package_type = package_type
         self.pay_type = pay_type
@@ -1066,6 +1080,8 @@ class ListInstancesResponseBodyData(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_status is not None:
             result['InstanceStatus'] = self.instance_status
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
         if self.open_public_net is not None:
             result['OpenPublicNet'] = self.open_public_net
         if self.package_type is not None:
@@ -1105,6 +1121,8 @@ class ListInstancesResponseBodyData(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceStatus') is not None:
             self.instance_status = m.get('InstanceStatus')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
         if m.get('OpenPublicNet') is not None:
             self.open_public_net = m.get('OpenPublicNet')
         if m.get('PackageType') is not None:
