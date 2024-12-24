@@ -1,3 +1,24 @@
+2024-12-24 Version: 1.2.0
+- Support API BatchDeleteSynonyms.
+- Support API CreateBusinessLogic.
+- Support API CreateSynonyms.
+- Support API DeleteBusinessLogic.
+- Support API DeleteColumn.
+- Support API DeleteSelectedTable.
+- Support API ListBusinessLogic.
+- Support API ListColumn.
+- Support API ListEnumMapping.
+- Support API ListSelectedTables.
+- Support API ListSynonyms.
+- Support API RecoverColumn.
+- Support API ResyncTable.
+- Support API UpdateBusinessLogic.
+- Support API UpdateColumn.
+- Support API UpdateEnumMapping.
+- Support API UpdateSynonyms.
+- Support API UpdateTableInfo.
+
+
 2024-12-10 Version: 1.1.3
 - Update API CreateVirtualDatasourceInstance: update param body.
 - Update API UpdateVirtualDatasourceInstance: update param body.

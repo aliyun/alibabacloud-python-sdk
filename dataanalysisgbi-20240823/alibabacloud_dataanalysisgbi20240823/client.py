@@ -41,6 +41,118 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def batch_delete_synonyms_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.BatchDeleteSynonymsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.BatchDeleteSynonymsResponse:
+        """
+        @summary 批量删除当前指定业务空间下的同义词
+        
+        @param request: BatchDeleteSynonymsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteSynonymsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.synonym_id_keys):
+            body['synonymIdKeys'] = request.synonym_id_keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteSynonyms',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/batchDelete/synonyms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.BatchDeleteSynonymsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_synonyms_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.BatchDeleteSynonymsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.BatchDeleteSynonymsResponse:
+        """
+        @summary 批量删除当前指定业务空间下的同义词
+        
+        @param request: BatchDeleteSynonymsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteSynonymsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.synonym_id_keys):
+            body['synonymIdKeys'] = request.synonym_id_keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteSynonyms',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/batchDelete/synonyms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.BatchDeleteSynonymsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_synonyms(
+        self,
+        request: data_analysis_gbi20240823_models.BatchDeleteSynonymsRequest,
+    ) -> data_analysis_gbi20240823_models.BatchDeleteSynonymsResponse:
+        """
+        @summary 批量删除当前指定业务空间下的同义词
+        
+        @param request: BatchDeleteSynonymsRequest
+        @return: BatchDeleteSynonymsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.batch_delete_synonyms_with_options(request, headers, runtime)
+
+    async def batch_delete_synonyms_async(
+        self,
+        request: data_analysis_gbi20240823_models.BatchDeleteSynonymsRequest,
+    ) -> data_analysis_gbi20240823_models.BatchDeleteSynonymsResponse:
+        """
+        @summary 批量删除当前指定业务空间下的同义词
+        
+        @param request: BatchDeleteSynonymsRequest
+        @return: BatchDeleteSynonymsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.batch_delete_synonyms_with_options_async(request, headers, runtime)
+
     def cancel_datasource_authorization_with_options(
         self,
         request: data_analysis_gbi20240823_models.CancelDatasourceAuthorizationRequest,
@@ -144,6 +256,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_datasource_authorization_with_options_async(request, headers, runtime)
+
+    def create_business_logic_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.CreateBusinessLogicRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.CreateBusinessLogicResponse:
+        """
+        @summary 在指定的业务空间下创建新的业务逻辑解释
+        
+        @param request: CreateBusinessLogicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBusinessLogicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateBusinessLogic',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/create/logic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.CreateBusinessLogicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_business_logic_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.CreateBusinessLogicRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.CreateBusinessLogicResponse:
+        """
+        @summary 在指定的业务空间下创建新的业务逻辑解释
+        
+        @param request: CreateBusinessLogicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBusinessLogicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateBusinessLogic',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/create/logic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.CreateBusinessLogicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_business_logic(
+        self,
+        request: data_analysis_gbi20240823_models.CreateBusinessLogicRequest,
+    ) -> data_analysis_gbi20240823_models.CreateBusinessLogicResponse:
+        """
+        @summary 在指定的业务空间下创建新的业务逻辑解释
+        
+        @param request: CreateBusinessLogicRequest
+        @return: CreateBusinessLogicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_business_logic_with_options(request, headers, runtime)
+
+    async def create_business_logic_async(
+        self,
+        request: data_analysis_gbi20240823_models.CreateBusinessLogicRequest,
+    ) -> data_analysis_gbi20240823_models.CreateBusinessLogicResponse:
+        """
+        @summary 在指定的业务空间下创建新的业务逻辑解释
+        
+        @param request: CreateBusinessLogicRequest
+        @return: CreateBusinessLogicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_business_logic_with_options_async(request, headers, runtime)
 
     def create_datasource_authorization_with_options(
         self,
@@ -273,6 +501,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_datasource_authorization_with_options_async(request, headers, runtime)
 
+    def create_synonyms_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.CreateSynonymsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.CreateSynonymsResponse:
+        """
+        @summary 在当前指定的业务空间下面，新建同义词
+        
+        @param request: CreateSynonymsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSynonymsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.columns):
+            body['columns'] = request.columns
+        if not UtilClient.is_unset(request.word):
+            body['word'] = request.word
+        if not UtilClient.is_unset(request.word_synonyms):
+            body['wordSynonyms'] = request.word_synonyms
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSynonyms',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/create/synonyms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.CreateSynonymsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_synonyms_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.CreateSynonymsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.CreateSynonymsResponse:
+        """
+        @summary 在当前指定的业务空间下面，新建同义词
+        
+        @param request: CreateSynonymsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSynonymsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.columns):
+            body['columns'] = request.columns
+        if not UtilClient.is_unset(request.word):
+            body['word'] = request.word
+        if not UtilClient.is_unset(request.word_synonyms):
+            body['wordSynonyms'] = request.word_synonyms
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSynonyms',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/create/synonyms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.CreateSynonymsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_synonyms(
+        self,
+        request: data_analysis_gbi20240823_models.CreateSynonymsRequest,
+    ) -> data_analysis_gbi20240823_models.CreateSynonymsResponse:
+        """
+        @summary 在当前指定的业务空间下面，新建同义词
+        
+        @param request: CreateSynonymsRequest
+        @return: CreateSynonymsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_synonyms_with_options(request, headers, runtime)
+
+    async def create_synonyms_async(
+        self,
+        request: data_analysis_gbi20240823_models.CreateSynonymsRequest,
+    ) -> data_analysis_gbi20240823_models.CreateSynonymsResponse:
+        """
+        @summary 在当前指定的业务空间下面，新建同义词
+        
+        @param request: CreateSynonymsRequest
+        @return: CreateSynonymsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_synonyms_with_options_async(request, headers, runtime)
+
     def create_virtual_datasource_instance_with_options(
         self,
         request: data_analysis_gbi20240823_models.CreateVirtualDatasourceInstanceRequest,
@@ -393,6 +741,342 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_virtual_datasource_instance_with_options_async(request, headers, runtime)
 
+    def delete_business_logic_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.DeleteBusinessLogicRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.DeleteBusinessLogicResponse:
+        """
+        @summary 删除指定业务空间下所指定的业务逻辑解释
+        
+        @param request: DeleteBusinessLogicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBusinessLogicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.business_logic_id_keys):
+            body['businessLogicIdKeys'] = request.business_logic_id_keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteBusinessLogic',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/delete/logic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.DeleteBusinessLogicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_business_logic_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.DeleteBusinessLogicRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.DeleteBusinessLogicResponse:
+        """
+        @summary 删除指定业务空间下所指定的业务逻辑解释
+        
+        @param request: DeleteBusinessLogicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBusinessLogicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.business_logic_id_keys):
+            body['businessLogicIdKeys'] = request.business_logic_id_keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteBusinessLogic',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/delete/logic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.DeleteBusinessLogicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_business_logic(
+        self,
+        request: data_analysis_gbi20240823_models.DeleteBusinessLogicRequest,
+    ) -> data_analysis_gbi20240823_models.DeleteBusinessLogicResponse:
+        """
+        @summary 删除指定业务空间下所指定的业务逻辑解释
+        
+        @param request: DeleteBusinessLogicRequest
+        @return: DeleteBusinessLogicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_business_logic_with_options(request, headers, runtime)
+
+    async def delete_business_logic_async(
+        self,
+        request: data_analysis_gbi20240823_models.DeleteBusinessLogicRequest,
+    ) -> data_analysis_gbi20240823_models.DeleteBusinessLogicResponse:
+        """
+        @summary 删除指定业务空间下所指定的业务逻辑解释
+        
+        @param request: DeleteBusinessLogicRequest
+        @return: DeleteBusinessLogicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_business_logic_with_options_async(request, headers, runtime)
+
+    def delete_column_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.DeleteColumnRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.DeleteColumnResponse:
+        """
+        @summary 从当前所指定的业务空间中，删除所指定的列
+        
+        @param request: DeleteColumnRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteColumnResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.column_id_key):
+            body['columnIdKey'] = request.column_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteColumn',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/delete/column',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.DeleteColumnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_column_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.DeleteColumnRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.DeleteColumnResponse:
+        """
+        @summary 从当前所指定的业务空间中，删除所指定的列
+        
+        @param request: DeleteColumnRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteColumnResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.column_id_key):
+            body['columnIdKey'] = request.column_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteColumn',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/delete/column',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.DeleteColumnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_column(
+        self,
+        request: data_analysis_gbi20240823_models.DeleteColumnRequest,
+    ) -> data_analysis_gbi20240823_models.DeleteColumnResponse:
+        """
+        @summary 从当前所指定的业务空间中，删除所指定的列
+        
+        @param request: DeleteColumnRequest
+        @return: DeleteColumnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_column_with_options(request, headers, runtime)
+
+    async def delete_column_async(
+        self,
+        request: data_analysis_gbi20240823_models.DeleteColumnRequest,
+    ) -> data_analysis_gbi20240823_models.DeleteColumnResponse:
+        """
+        @summary 从当前所指定的业务空间中，删除所指定的列
+        
+        @param request: DeleteColumnRequest
+        @return: DeleteColumnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_column_with_options_async(request, headers, runtime)
+
+    def delete_selected_table_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.DeleteSelectedTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.DeleteSelectedTableResponse:
+        """
+        @summary 将当前指定数据表从指定业务空间管控中删除
+        
+        @param request: DeleteSelectedTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSelectedTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSelectedTable',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/delete/table',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.DeleteSelectedTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_selected_table_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.DeleteSelectedTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.DeleteSelectedTableResponse:
+        """
+        @summary 将当前指定数据表从指定业务空间管控中删除
+        
+        @param request: DeleteSelectedTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSelectedTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSelectedTable',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/delete/table',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.DeleteSelectedTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_selected_table(
+        self,
+        request: data_analysis_gbi20240823_models.DeleteSelectedTableRequest,
+    ) -> data_analysis_gbi20240823_models.DeleteSelectedTableResponse:
+        """
+        @summary 将当前指定数据表从指定业务空间管控中删除
+        
+        @param request: DeleteSelectedTableRequest
+        @return: DeleteSelectedTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_selected_table_with_options(request, headers, runtime)
+
+    async def delete_selected_table_async(
+        self,
+        request: data_analysis_gbi20240823_models.DeleteSelectedTableRequest,
+    ) -> data_analysis_gbi20240823_models.DeleteSelectedTableResponse:
+        """
+        @summary 将当前指定数据表从指定业务空间管控中删除
+        
+        @param request: DeleteSelectedTableRequest
+        @return: DeleteSelectedTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_selected_table_with_options_async(request, headers, runtime)
+
     def delete_virtual_datasource_instance_with_options(
         self,
         request: data_analysis_gbi20240823_models.DeleteVirtualDatasourceInstanceRequest,
@@ -504,6 +1188,590 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_virtual_datasource_instance_with_options_async(request, headers, runtime)
+
+    def list_business_logic_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.ListBusinessLogicRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.ListBusinessLogicResponse:
+        """
+        @summary 获取当前指定业务空间下的企业知识名词解释列表
+        
+        @param request: ListBusinessLogicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBusinessLogicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListBusinessLogic',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/list/logic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.ListBusinessLogicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_business_logic_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.ListBusinessLogicRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.ListBusinessLogicResponse:
+        """
+        @summary 获取当前指定业务空间下的企业知识名词解释列表
+        
+        @param request: ListBusinessLogicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBusinessLogicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListBusinessLogic',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/list/logic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.ListBusinessLogicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_business_logic(
+        self,
+        request: data_analysis_gbi20240823_models.ListBusinessLogicRequest,
+    ) -> data_analysis_gbi20240823_models.ListBusinessLogicResponse:
+        """
+        @summary 获取当前指定业务空间下的企业知识名词解释列表
+        
+        @param request: ListBusinessLogicRequest
+        @return: ListBusinessLogicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_business_logic_with_options(request, headers, runtime)
+
+    async def list_business_logic_async(
+        self,
+        request: data_analysis_gbi20240823_models.ListBusinessLogicRequest,
+    ) -> data_analysis_gbi20240823_models.ListBusinessLogicResponse:
+        """
+        @summary 获取当前指定业务空间下的企业知识名词解释列表
+        
+        @param request: ListBusinessLogicRequest
+        @return: ListBusinessLogicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_business_logic_with_options_async(request, headers, runtime)
+
+    def list_column_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.ListColumnRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.ListColumnResponse:
+        """
+        @summary 获取当前指定业务空间，指定表下面的列信息
+        
+        @param request: ListColumnRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListColumnResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListColumn',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/list/column',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.ListColumnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_column_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.ListColumnRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.ListColumnResponse:
+        """
+        @summary 获取当前指定业务空间，指定表下面的列信息
+        
+        @param request: ListColumnRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListColumnResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListColumn',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/list/column',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.ListColumnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_column(
+        self,
+        request: data_analysis_gbi20240823_models.ListColumnRequest,
+    ) -> data_analysis_gbi20240823_models.ListColumnResponse:
+        """
+        @summary 获取当前指定业务空间，指定表下面的列信息
+        
+        @param request: ListColumnRequest
+        @return: ListColumnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_column_with_options(request, headers, runtime)
+
+    async def list_column_async(
+        self,
+        request: data_analysis_gbi20240823_models.ListColumnRequest,
+    ) -> data_analysis_gbi20240823_models.ListColumnResponse:
+        """
+        @summary 获取当前指定业务空间，指定表下面的列信息
+        
+        @param request: ListColumnRequest
+        @return: ListColumnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_column_with_options_async(request, headers, runtime)
+
+    def list_enum_mapping_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.ListEnumMappingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.ListEnumMappingResponse:
+        """
+        @summary 获取当前业务空间，指定表、列下的枚举值
+        
+        @param request: ListEnumMappingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnumMappingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.column_id_key):
+            body['columnIdKey'] = request.column_id_key
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListEnumMapping',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/list/mapping',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.ListEnumMappingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_enum_mapping_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.ListEnumMappingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.ListEnumMappingResponse:
+        """
+        @summary 获取当前业务空间，指定表、列下的枚举值
+        
+        @param request: ListEnumMappingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnumMappingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.column_id_key):
+            body['columnIdKey'] = request.column_id_key
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListEnumMapping',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/list/mapping',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.ListEnumMappingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_enum_mapping(
+        self,
+        request: data_analysis_gbi20240823_models.ListEnumMappingRequest,
+    ) -> data_analysis_gbi20240823_models.ListEnumMappingResponse:
+        """
+        @summary 获取当前业务空间，指定表、列下的枚举值
+        
+        @param request: ListEnumMappingRequest
+        @return: ListEnumMappingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_enum_mapping_with_options(request, headers, runtime)
+
+    async def list_enum_mapping_async(
+        self,
+        request: data_analysis_gbi20240823_models.ListEnumMappingRequest,
+    ) -> data_analysis_gbi20240823_models.ListEnumMappingResponse:
+        """
+        @summary 获取当前业务空间，指定表、列下的枚举值
+        
+        @param request: ListEnumMappingRequest
+        @return: ListEnumMappingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_enum_mapping_with_options_async(request, headers, runtime)
+
+    def list_selected_tables_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.ListSelectedTablesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.ListSelectedTablesResponse:
+        """
+        @summary 获取当前业务空间处于以关联状态的数据表
+        
+        @param request: ListSelectedTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSelectedTablesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSelectedTables',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/list/datasource/table',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.ListSelectedTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_selected_tables_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.ListSelectedTablesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.ListSelectedTablesResponse:
+        """
+        @summary 获取当前业务空间处于以关联状态的数据表
+        
+        @param request: ListSelectedTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSelectedTablesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSelectedTables',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/list/datasource/table',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.ListSelectedTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_selected_tables(
+        self,
+        request: data_analysis_gbi20240823_models.ListSelectedTablesRequest,
+    ) -> data_analysis_gbi20240823_models.ListSelectedTablesResponse:
+        """
+        @summary 获取当前业务空间处于以关联状态的数据表
+        
+        @param request: ListSelectedTablesRequest
+        @return: ListSelectedTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_selected_tables_with_options(request, headers, runtime)
+
+    async def list_selected_tables_async(
+        self,
+        request: data_analysis_gbi20240823_models.ListSelectedTablesRequest,
+    ) -> data_analysis_gbi20240823_models.ListSelectedTablesResponse:
+        """
+        @summary 获取当前业务空间处于以关联状态的数据表
+        
+        @param request: ListSelectedTablesRequest
+        @return: ListSelectedTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_selected_tables_with_options_async(request, headers, runtime)
+
+    def list_synonyms_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.ListSynonymsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.ListSynonymsResponse:
+        """
+        @summary 获取当前指定业务空间下的同义词列表
+        
+        @param request: ListSynonymsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSynonymsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSynonyms',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/list/synonyms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.ListSynonymsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_synonyms_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.ListSynonymsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.ListSynonymsResponse:
+        """
+        @summary 获取当前指定业务空间下的同义词列表
+        
+        @param request: ListSynonymsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSynonymsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSynonyms',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/list/synonyms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.ListSynonymsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_synonyms(
+        self,
+        request: data_analysis_gbi20240823_models.ListSynonymsRequest,
+    ) -> data_analysis_gbi20240823_models.ListSynonymsResponse:
+        """
+        @summary 获取当前指定业务空间下的同义词列表
+        
+        @param request: ListSynonymsRequest
+        @return: ListSynonymsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_synonyms_with_options(request, headers, runtime)
+
+    async def list_synonyms_async(
+        self,
+        request: data_analysis_gbi20240823_models.ListSynonymsRequest,
+    ) -> data_analysis_gbi20240823_models.ListSynonymsResponse:
+        """
+        @summary 获取当前指定业务空间下的同义词列表
+        
+        @param request: ListSynonymsRequest
+        @return: ListSynonymsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_synonyms_with_options_async(request, headers, runtime)
 
     def list_virtual_datasource_instance_with_options(
         self,
@@ -620,6 +1888,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_virtual_datasource_instance_with_options_async(request, headers, runtime)
+
+    def recover_column_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.RecoverColumnRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.RecoverColumnResponse:
+        """
+        @summary 将指定数据表的数据列恢复到初始话状态
+        
+        @param request: RecoverColumnRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecoverColumnResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.column_id_key):
+            body['columnIdKey'] = request.column_id_key
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecoverColumn',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/recover/column',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.RecoverColumnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recover_column_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.RecoverColumnRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.RecoverColumnResponse:
+        """
+        @summary 将指定数据表的数据列恢复到初始话状态
+        
+        @param request: RecoverColumnRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecoverColumnResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.column_id_key):
+            body['columnIdKey'] = request.column_id_key
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecoverColumn',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/recover/column',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.RecoverColumnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recover_column(
+        self,
+        request: data_analysis_gbi20240823_models.RecoverColumnRequest,
+    ) -> data_analysis_gbi20240823_models.RecoverColumnResponse:
+        """
+        @summary 将指定数据表的数据列恢复到初始话状态
+        
+        @param request: RecoverColumnRequest
+        @return: RecoverColumnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.recover_column_with_options(request, headers, runtime)
+
+    async def recover_column_async(
+        self,
+        request: data_analysis_gbi20240823_models.RecoverColumnRequest,
+    ) -> data_analysis_gbi20240823_models.RecoverColumnResponse:
+        """
+        @summary 将指定数据表的数据列恢复到初始话状态
+        
+        @param request: RecoverColumnRequest
+        @return: RecoverColumnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.recover_column_with_options_async(request, headers, runtime)
+
+    def resync_table_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.ResyncTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.ResyncTableResponse:
+        """
+        @summary 从远程数据库刷新当前所关联的数据表信息
+        
+        @param request: ResyncTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResyncTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ResyncTable',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/refresh/table',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.ResyncTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resync_table_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.ResyncTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.ResyncTableResponse:
+        """
+        @summary 从远程数据库刷新当前所关联的数据表信息
+        
+        @param request: ResyncTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResyncTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ResyncTable',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/refresh/table',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.ResyncTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resync_table(
+        self,
+        request: data_analysis_gbi20240823_models.ResyncTableRequest,
+    ) -> data_analysis_gbi20240823_models.ResyncTableResponse:
+        """
+        @summary 从远程数据库刷新当前所关联的数据表信息
+        
+        @param request: ResyncTableRequest
+        @return: ResyncTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.resync_table_with_options(request, headers, runtime)
+
+    async def resync_table_async(
+        self,
+        request: data_analysis_gbi20240823_models.ResyncTableRequest,
+    ) -> data_analysis_gbi20240823_models.ResyncTableResponse:
+        """
+        @summary 从远程数据库刷新当前所关联的数据表信息
+        
+        @param request: ResyncTableRequest
+        @return: ResyncTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.resync_table_with_options_async(request, headers, runtime)
 
     def run_data_analysis_with_options(
         self,
@@ -976,6 +2472,638 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.sync_remote_tables_with_options_async(request, headers, runtime)
+
+    def update_business_logic_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateBusinessLogicRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.UpdateBusinessLogicResponse:
+        """
+        @summary 修改当前指定业务空间下所指定的业务逻辑解释
+        
+        @param request: UpdateBusinessLogicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBusinessLogicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.business_logic_id_key):
+            body['businessLogicIdKey'] = request.business_logic_id_key
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateBusinessLogic',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/update/logic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.UpdateBusinessLogicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_business_logic_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateBusinessLogicRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.UpdateBusinessLogicResponse:
+        """
+        @summary 修改当前指定业务空间下所指定的业务逻辑解释
+        
+        @param request: UpdateBusinessLogicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBusinessLogicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.business_logic_id_key):
+            body['businessLogicIdKey'] = request.business_logic_id_key
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateBusinessLogic',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/update/logic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.UpdateBusinessLogicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_business_logic(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateBusinessLogicRequest,
+    ) -> data_analysis_gbi20240823_models.UpdateBusinessLogicResponse:
+        """
+        @summary 修改当前指定业务空间下所指定的业务逻辑解释
+        
+        @param request: UpdateBusinessLogicRequest
+        @return: UpdateBusinessLogicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_business_logic_with_options(request, headers, runtime)
+
+    async def update_business_logic_async(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateBusinessLogicRequest,
+    ) -> data_analysis_gbi20240823_models.UpdateBusinessLogicResponse:
+        """
+        @summary 修改当前指定业务空间下所指定的业务逻辑解释
+        
+        @param request: UpdateBusinessLogicRequest
+        @return: UpdateBusinessLogicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_business_logic_with_options_async(request, headers, runtime)
+
+    def update_column_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateColumnRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.UpdateColumnResponse:
+        """
+        @summary 修改当前指定业务空间中，指定列的信息
+        
+        @param request: UpdateColumnRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateColumnResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.chinese_name):
+            body['chineseName'] = request.chinese_name
+        if not UtilClient.is_unset(request.column_id_key):
+            body['columnIdKey'] = request.column_id_key
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.enum_type):
+            body['enumType'] = request.enum_type
+        if not UtilClient.is_unset(request.enum_values):
+            body['enumValues'] = request.enum_values
+        if not UtilClient.is_unset(request.range_max):
+            body['rangeMax'] = request.range_max
+        if not UtilClient.is_unset(request.range_min):
+            body['rangeMin'] = request.range_min
+        if not UtilClient.is_unset(request.samples):
+            body['samples'] = request.samples
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateColumn',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/update/column',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.UpdateColumnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_column_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateColumnRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.UpdateColumnResponse:
+        """
+        @summary 修改当前指定业务空间中，指定列的信息
+        
+        @param request: UpdateColumnRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateColumnResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.chinese_name):
+            body['chineseName'] = request.chinese_name
+        if not UtilClient.is_unset(request.column_id_key):
+            body['columnIdKey'] = request.column_id_key
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.enum_type):
+            body['enumType'] = request.enum_type
+        if not UtilClient.is_unset(request.enum_values):
+            body['enumValues'] = request.enum_values
+        if not UtilClient.is_unset(request.range_max):
+            body['rangeMax'] = request.range_max
+        if not UtilClient.is_unset(request.range_min):
+            body['rangeMin'] = request.range_min
+        if not UtilClient.is_unset(request.samples):
+            body['samples'] = request.samples
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateColumn',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/update/column',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.UpdateColumnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_column(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateColumnRequest,
+    ) -> data_analysis_gbi20240823_models.UpdateColumnResponse:
+        """
+        @summary 修改当前指定业务空间中，指定列的信息
+        
+        @param request: UpdateColumnRequest
+        @return: UpdateColumnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_column_with_options(request, headers, runtime)
+
+    async def update_column_async(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateColumnRequest,
+    ) -> data_analysis_gbi20240823_models.UpdateColumnResponse:
+        """
+        @summary 修改当前指定业务空间中，指定列的信息
+        
+        @param request: UpdateColumnRequest
+        @return: UpdateColumnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_column_with_options_async(request, headers, runtime)
+
+    def update_enum_mapping_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateEnumMappingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.UpdateEnumMappingResponse:
+        """
+        @summary 修改当前指定业务空间指定列下的枚举值信息
+        
+        @param request: UpdateEnumMappingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEnumMappingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.column_id_key):
+            body['columnIdKey'] = request.column_id_key
+        if not UtilClient.is_unset(request.enum_mapping):
+            body['enumMapping'] = request.enum_mapping
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnumMapping',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/update/mapping',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.UpdateEnumMappingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_enum_mapping_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateEnumMappingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.UpdateEnumMappingResponse:
+        """
+        @summary 修改当前指定业务空间指定列下的枚举值信息
+        
+        @param request: UpdateEnumMappingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEnumMappingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.column_id_key):
+            body['columnIdKey'] = request.column_id_key
+        if not UtilClient.is_unset(request.enum_mapping):
+            body['enumMapping'] = request.enum_mapping
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnumMapping',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/update/mapping',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.UpdateEnumMappingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_enum_mapping(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateEnumMappingRequest,
+    ) -> data_analysis_gbi20240823_models.UpdateEnumMappingResponse:
+        """
+        @summary 修改当前指定业务空间指定列下的枚举值信息
+        
+        @param request: UpdateEnumMappingRequest
+        @return: UpdateEnumMappingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_enum_mapping_with_options(request, headers, runtime)
+
+    async def update_enum_mapping_async(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateEnumMappingRequest,
+    ) -> data_analysis_gbi20240823_models.UpdateEnumMappingResponse:
+        """
+        @summary 修改当前指定业务空间指定列下的枚举值信息
+        
+        @param request: UpdateEnumMappingRequest
+        @return: UpdateEnumMappingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_enum_mapping_with_options_async(request, headers, runtime)
+
+    def update_synonyms_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateSynonymsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.UpdateSynonymsResponse:
+        """
+        @summary 修改当前业务空间指定的同义词信息
+        
+        @param request: UpdateSynonymsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSynonymsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.columns):
+            body['columns'] = request.columns
+        if not UtilClient.is_unset(request.synonym_id_key):
+            body['synonymIdKey'] = request.synonym_id_key
+        if not UtilClient.is_unset(request.word):
+            body['word'] = request.word
+        if not UtilClient.is_unset(request.word_synonyms):
+            body['wordSynonyms'] = request.word_synonyms
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSynonyms',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/update/synonyms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.UpdateSynonymsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_synonyms_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateSynonymsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.UpdateSynonymsResponse:
+        """
+        @summary 修改当前业务空间指定的同义词信息
+        
+        @param request: UpdateSynonymsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSynonymsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.columns):
+            body['columns'] = request.columns
+        if not UtilClient.is_unset(request.synonym_id_key):
+            body['synonymIdKey'] = request.synonym_id_key
+        if not UtilClient.is_unset(request.word):
+            body['word'] = request.word
+        if not UtilClient.is_unset(request.word_synonyms):
+            body['wordSynonyms'] = request.word_synonyms
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSynonyms',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/update/synonyms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.UpdateSynonymsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_synonyms(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateSynonymsRequest,
+    ) -> data_analysis_gbi20240823_models.UpdateSynonymsResponse:
+        """
+        @summary 修改当前业务空间指定的同义词信息
+        
+        @param request: UpdateSynonymsRequest
+        @return: UpdateSynonymsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_synonyms_with_options(request, headers, runtime)
+
+    async def update_synonyms_async(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateSynonymsRequest,
+    ) -> data_analysis_gbi20240823_models.UpdateSynonymsResponse:
+        """
+        @summary 修改当前业务空间指定的同义词信息
+        
+        @param request: UpdateSynonymsRequest
+        @return: UpdateSynonymsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_synonyms_with_options_async(request, headers, runtime)
+
+    def update_table_info_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateTableInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.UpdateTableInfoResponse:
+        """
+        @summary 修改当前所指定的数据表的信息
+        
+        @param request: UpdateTableInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.foreign_keys):
+            body['foreignKeys'] = request.foreign_keys
+        if not UtilClient.is_unset(request.primary_key):
+            body['primaryKey'] = request.primary_key
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTableInfo',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/update/table',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.UpdateTableInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_table_info_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateTableInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.UpdateTableInfoResponse:
+        """
+        @summary 修改当前所指定的数据表的信息
+        
+        @param request: UpdateTableInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.foreign_keys):
+            body['foreignKeys'] = request.foreign_keys
+        if not UtilClient.is_unset(request.primary_key):
+            body['primaryKey'] = request.primary_key
+        if not UtilClient.is_unset(request.table_id_key):
+            body['tableIdKey'] = request.table_id_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTableInfo',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/update/table',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.UpdateTableInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_table_info(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateTableInfoRequest,
+    ) -> data_analysis_gbi20240823_models.UpdateTableInfoResponse:
+        """
+        @summary 修改当前所指定的数据表的信息
+        
+        @param request: UpdateTableInfoRequest
+        @return: UpdateTableInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_table_info_with_options(request, headers, runtime)
+
+    async def update_table_info_async(
+        self,
+        request: data_analysis_gbi20240823_models.UpdateTableInfoRequest,
+    ) -> data_analysis_gbi20240823_models.UpdateTableInfoResponse:
+        """
+        @summary 修改当前所指定的数据表的信息
+        
+        @param request: UpdateTableInfoRequest
+        @return: UpdateTableInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_table_info_with_options_async(request, headers, runtime)
 
     def update_virtual_datasource_instance_with_options(
         self,
