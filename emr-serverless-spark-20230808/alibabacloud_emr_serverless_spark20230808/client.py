@@ -269,6 +269,194 @@ class Client(OpenApiClient):
         headers = {}
         return await self.cancel_job_run_with_options_async(workspace_id, job_run_id, request, headers, runtime)
 
+    def create_process_definition_with_schedule_with_options(
+        self,
+        biz_id: str,
+        tmp_req: emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleResponse:
+        """
+        @summary 创建工作流定义
+        
+        @param tmp_req: CreateProcessDefinitionWithScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProcessDefinitionWithScheduleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.schedule):
+            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'schedule', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
+        if not UtilClient.is_unset(tmp_req.task_definition_json):
+            request.task_definition_json_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_definition_json, 'taskDefinitionJson', 'json')
+        if not UtilClient.is_unset(tmp_req.task_relation_json):
+            request.task_relation_json_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_relation_json, 'taskRelationJson', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.alert_email_address):
+            query['alertEmailAddress'] = request.alert_email_address
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        if not UtilClient.is_unset(request.execution_type):
+            query['executionType'] = request.execution_type
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.product_namespace):
+            query['productNamespace'] = request.product_namespace
+        if not UtilClient.is_unset(request.publish):
+            query['publish'] = request.publish
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_queue):
+            query['resourceQueue'] = request.resource_queue
+        if not UtilClient.is_unset(request.retry_times):
+            query['retryTimes'] = request.retry_times
+        if not UtilClient.is_unset(request.run_as):
+            query['runAs'] = request.run_as
+        if not UtilClient.is_unset(request.schedule_shrink):
+            query['schedule'] = request.schedule_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.task_definition_json_shrink):
+            query['taskDefinitionJson'] = request.task_definition_json_shrink
+        if not UtilClient.is_unset(request.task_parallelism):
+            query['taskParallelism'] = request.task_parallelism
+        if not UtilClient.is_unset(request.task_relation_json_shrink):
+            query['taskRelationJson'] = request.task_relation_json_shrink
+        if not UtilClient.is_unset(request.timeout):
+            query['timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProcessDefinitionWithSchedule',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/projects/{OpenApiUtilClient.get_encode_param(biz_id)}/process-definition',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_process_definition_with_schedule_with_options_async(
+        self,
+        biz_id: str,
+        tmp_req: emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleResponse:
+        """
+        @summary 创建工作流定义
+        
+        @param tmp_req: CreateProcessDefinitionWithScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProcessDefinitionWithScheduleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.schedule):
+            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'schedule', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
+        if not UtilClient.is_unset(tmp_req.task_definition_json):
+            request.task_definition_json_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_definition_json, 'taskDefinitionJson', 'json')
+        if not UtilClient.is_unset(tmp_req.task_relation_json):
+            request.task_relation_json_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_relation_json, 'taskRelationJson', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.alert_email_address):
+            query['alertEmailAddress'] = request.alert_email_address
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        if not UtilClient.is_unset(request.execution_type):
+            query['executionType'] = request.execution_type
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.product_namespace):
+            query['productNamespace'] = request.product_namespace
+        if not UtilClient.is_unset(request.publish):
+            query['publish'] = request.publish
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_queue):
+            query['resourceQueue'] = request.resource_queue
+        if not UtilClient.is_unset(request.retry_times):
+            query['retryTimes'] = request.retry_times
+        if not UtilClient.is_unset(request.run_as):
+            query['runAs'] = request.run_as
+        if not UtilClient.is_unset(request.schedule_shrink):
+            query['schedule'] = request.schedule_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.task_definition_json_shrink):
+            query['taskDefinitionJson'] = request.task_definition_json_shrink
+        if not UtilClient.is_unset(request.task_parallelism):
+            query['taskParallelism'] = request.task_parallelism
+        if not UtilClient.is_unset(request.task_relation_json_shrink):
+            query['taskRelationJson'] = request.task_relation_json_shrink
+        if not UtilClient.is_unset(request.timeout):
+            query['timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProcessDefinitionWithSchedule',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/projects/{OpenApiUtilClient.get_encode_param(biz_id)}/process-definition',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_process_definition_with_schedule(
+        self,
+        biz_id: str,
+        request: emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleResponse:
+        """
+        @summary 创建工作流定义
+        
+        @param request: CreateProcessDefinitionWithScheduleRequest
+        @return: CreateProcessDefinitionWithScheduleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_process_definition_with_schedule_with_options(biz_id, request, headers, runtime)
+
+    async def create_process_definition_with_schedule_async(
+        self,
+        biz_id: str,
+        request: emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateProcessDefinitionWithScheduleResponse:
+        """
+        @summary 创建工作流定义
+        
+        @param request: CreateProcessDefinitionWithScheduleRequest
+        @return: CreateProcessDefinitionWithScheduleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_process_definition_with_schedule_with_options_async(biz_id, request, headers, runtime)
+
     def create_sql_statement_with_options(
         self,
         workspace_id: str,
@@ -522,7 +710,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GetSessionClusterResponse:
         """
-        @summary 查询SessionCluster集群
+        @summary Queries a list of sessions.
         
         @param request: GetSessionClusterRequest
         @param headers: map
@@ -562,7 +750,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GetSessionClusterResponse:
         """
-        @summary 查询SessionCluster集群
+        @summary Queries a list of sessions.
         
         @param request: GetSessionClusterRequest
         @param headers: map
@@ -600,7 +788,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.GetSessionClusterRequest,
     ) -> emr_serverless_spark_20230808_models.GetSessionClusterResponse:
         """
-        @summary 查询SessionCluster集群
+        @summary Queries a list of sessions.
         
         @param request: GetSessionClusterRequest
         @return: GetSessionClusterResponse
@@ -616,7 +804,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.GetSessionClusterRequest,
     ) -> emr_serverless_spark_20230808_models.GetSessionClusterResponse:
         """
-        @summary 查询SessionCluster集群
+        @summary Queries a list of sessions.
         
         @param request: GetSessionClusterRequest
         @return: GetSessionClusterResponse
@@ -745,7 +933,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GetTemplateResponse:
         """
-        @summary 获取任务模板
+        @summary Queries task templates.
         
         @param request: GetTemplateRequest
         @param headers: map
@@ -786,7 +974,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GetTemplateResponse:
         """
-        @summary 获取任务模板
+        @summary Queries task templates.
         
         @param request: GetTemplateRequest
         @param headers: map
@@ -825,7 +1013,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.GetTemplateRequest,
     ) -> emr_serverless_spark_20230808_models.GetTemplateResponse:
         """
-        @summary 获取任务模板
+        @summary Queries task templates.
         
         @param request: GetTemplateRequest
         @return: GetTemplateResponse
@@ -840,7 +1028,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.GetTemplateRequest,
     ) -> emr_serverless_spark_20230808_models.GetTemplateResponse:
         """
-        @summary 获取任务模板
+        @summary Queries task templates.
         
         @param request: GetTemplateRequest
         @return: GetTemplateResponse
@@ -1897,6 +2085,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.start_job_run_with_options_async(workspace_id, request, headers, runtime)
 
+    def start_process_instance_with_options(
+        self,
+        biz_id: str,
+        request: emr_serverless_spark_20230808_models.StartProcessInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.StartProcessInstanceResponse:
+        """
+        @summary 启动工作流实例
+        
+        @param request: StartProcessInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartProcessInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_prod):
+            query['isProd'] = request.is_prod
+        if not UtilClient.is_unset(request.process_definition_code):
+            query['processDefinitionCode'] = request.process_definition_code
+        if not UtilClient.is_unset(request.product_namespace):
+            query['productNamespace'] = request.product_namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.runtime_queue):
+            query['runtimeQueue'] = request.runtime_queue
+        if not UtilClient.is_unset(request.version_hash_code):
+            query['versionHashCode'] = request.version_hash_code
+        if not UtilClient.is_unset(request.version_number):
+            query['versionNumber'] = request.version_number
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartProcessInstance',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/projects/{OpenApiUtilClient.get_encode_param(biz_id)}/executors/start-process-instance',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.StartProcessInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_process_instance_with_options_async(
+        self,
+        biz_id: str,
+        request: emr_serverless_spark_20230808_models.StartProcessInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.StartProcessInstanceResponse:
+        """
+        @summary 启动工作流实例
+        
+        @param request: StartProcessInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartProcessInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_prod):
+            query['isProd'] = request.is_prod
+        if not UtilClient.is_unset(request.process_definition_code):
+            query['processDefinitionCode'] = request.process_definition_code
+        if not UtilClient.is_unset(request.product_namespace):
+            query['productNamespace'] = request.product_namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.runtime_queue):
+            query['runtimeQueue'] = request.runtime_queue
+        if not UtilClient.is_unset(request.version_hash_code):
+            query['versionHashCode'] = request.version_hash_code
+        if not UtilClient.is_unset(request.version_number):
+            query['versionNumber'] = request.version_number
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartProcessInstance',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/projects/{OpenApiUtilClient.get_encode_param(biz_id)}/executors/start-process-instance',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.StartProcessInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_process_instance(
+        self,
+        biz_id: str,
+        request: emr_serverless_spark_20230808_models.StartProcessInstanceRequest,
+    ) -> emr_serverless_spark_20230808_models.StartProcessInstanceResponse:
+        """
+        @summary 启动工作流实例
+        
+        @param request: StartProcessInstanceRequest
+        @return: StartProcessInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_process_instance_with_options(biz_id, request, headers, runtime)
+
+    async def start_process_instance_async(
+        self,
+        biz_id: str,
+        request: emr_serverless_spark_20230808_models.StartProcessInstanceRequest,
+    ) -> emr_serverless_spark_20230808_models.StartProcessInstanceResponse:
+        """
+        @summary 启动工作流实例
+        
+        @param request: StartProcessInstanceRequest
+        @return: StartProcessInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_process_instance_with_options_async(biz_id, request, headers, runtime)
+
     def start_session_cluster_with_options(
         self,
         workspace_id: str,
@@ -2248,3 +2568,199 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.terminate_sql_statement_with_options_async(workspace_id, statement_id, request, headers, runtime)
+
+    def update_process_definition_with_schedule_with_options(
+        self,
+        biz_id: str,
+        code: str,
+        tmp_req: emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleResponse:
+        """
+        @summary 更新工作流定义和定时调度
+        
+        @param tmp_req: UpdateProcessDefinitionWithScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProcessDefinitionWithScheduleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.schedule):
+            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'schedule', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
+        if not UtilClient.is_unset(tmp_req.task_definition_json):
+            request.task_definition_json_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_definition_json, 'taskDefinitionJson', 'json')
+        if not UtilClient.is_unset(tmp_req.task_relation_json):
+            request.task_relation_json_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_relation_json, 'taskRelationJson', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.alert_email_address):
+            query['alertEmailAddress'] = request.alert_email_address
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        if not UtilClient.is_unset(request.execution_type):
+            query['executionType'] = request.execution_type
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.product_namespace):
+            query['productNamespace'] = request.product_namespace
+        if not UtilClient.is_unset(request.publish):
+            query['publish'] = request.publish
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.release_state):
+            query['releaseState'] = request.release_state
+        if not UtilClient.is_unset(request.resource_queue):
+            query['resourceQueue'] = request.resource_queue
+        if not UtilClient.is_unset(request.retry_times):
+            query['retryTimes'] = request.retry_times
+        if not UtilClient.is_unset(request.run_as):
+            query['runAs'] = request.run_as
+        if not UtilClient.is_unset(request.schedule_shrink):
+            query['schedule'] = request.schedule_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.task_definition_json_shrink):
+            query['taskDefinitionJson'] = request.task_definition_json_shrink
+        if not UtilClient.is_unset(request.task_parallelism):
+            query['taskParallelism'] = request.task_parallelism
+        if not UtilClient.is_unset(request.task_relation_json_shrink):
+            query['taskRelationJson'] = request.task_relation_json_shrink
+        if not UtilClient.is_unset(request.timeout):
+            query['timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateProcessDefinitionWithSchedule',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/projects/{OpenApiUtilClient.get_encode_param(biz_id)}/process-definition/{OpenApiUtilClient.get_encode_param(code)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_process_definition_with_schedule_with_options_async(
+        self,
+        biz_id: str,
+        code: str,
+        tmp_req: emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleResponse:
+        """
+        @summary 更新工作流定义和定时调度
+        
+        @param tmp_req: UpdateProcessDefinitionWithScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProcessDefinitionWithScheduleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.schedule):
+            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'schedule', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
+        if not UtilClient.is_unset(tmp_req.task_definition_json):
+            request.task_definition_json_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_definition_json, 'taskDefinitionJson', 'json')
+        if not UtilClient.is_unset(tmp_req.task_relation_json):
+            request.task_relation_json_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_relation_json, 'taskRelationJson', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.alert_email_address):
+            query['alertEmailAddress'] = request.alert_email_address
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        if not UtilClient.is_unset(request.execution_type):
+            query['executionType'] = request.execution_type
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.product_namespace):
+            query['productNamespace'] = request.product_namespace
+        if not UtilClient.is_unset(request.publish):
+            query['publish'] = request.publish
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.release_state):
+            query['releaseState'] = request.release_state
+        if not UtilClient.is_unset(request.resource_queue):
+            query['resourceQueue'] = request.resource_queue
+        if not UtilClient.is_unset(request.retry_times):
+            query['retryTimes'] = request.retry_times
+        if not UtilClient.is_unset(request.run_as):
+            query['runAs'] = request.run_as
+        if not UtilClient.is_unset(request.schedule_shrink):
+            query['schedule'] = request.schedule_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.task_definition_json_shrink):
+            query['taskDefinitionJson'] = request.task_definition_json_shrink
+        if not UtilClient.is_unset(request.task_parallelism):
+            query['taskParallelism'] = request.task_parallelism
+        if not UtilClient.is_unset(request.task_relation_json_shrink):
+            query['taskRelationJson'] = request.task_relation_json_shrink
+        if not UtilClient.is_unset(request.timeout):
+            query['timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateProcessDefinitionWithSchedule',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/projects/{OpenApiUtilClient.get_encode_param(biz_id)}/process-definition/{OpenApiUtilClient.get_encode_param(code)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_process_definition_with_schedule(
+        self,
+        biz_id: str,
+        code: str,
+        request: emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleRequest,
+    ) -> emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleResponse:
+        """
+        @summary 更新工作流定义和定时调度
+        
+        @param request: UpdateProcessDefinitionWithScheduleRequest
+        @return: UpdateProcessDefinitionWithScheduleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_process_definition_with_schedule_with_options(biz_id, code, request, headers, runtime)
+
+    async def update_process_definition_with_schedule_async(
+        self,
+        biz_id: str,
+        code: str,
+        request: emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleRequest,
+    ) -> emr_serverless_spark_20230808_models.UpdateProcessDefinitionWithScheduleResponse:
+        """
+        @summary 更新工作流定义和定时调度
+        
+        @param request: UpdateProcessDefinitionWithScheduleRequest
+        @return: UpdateProcessDefinitionWithScheduleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_process_definition_with_schedule_with_options_async(biz_id, code, request, headers, runtime)

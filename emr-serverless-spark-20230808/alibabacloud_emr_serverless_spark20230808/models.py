@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import List, Dict, Any
 
 
 class Credential(TeaModel):
@@ -1714,6 +1714,760 @@ class CancelJobRunResponse(TeaModel):
         return self
 
 
+class CreateProcessDefinitionWithScheduleRequestSchedule(TeaModel):
+    def __init__(
+        self,
+        crontab: str = None,
+        end_time: str = None,
+        start_time: str = None,
+        timezone_id: str = None,
+    ):
+        self.crontab = crontab
+        self.end_time = end_time
+        self.start_time = start_time
+        self.timezone_id = timezone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.crontab is not None:
+            result['crontab'] = self.crontab
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.timezone_id is not None:
+            result['timezoneId'] = self.timezone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('crontab') is not None:
+            self.crontab = m.get('crontab')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('timezoneId') is not None:
+            self.timezone_id = m.get('timezoneId')
+        return self
+
+
+class CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(TeaModel):
+    def __init__(
+        self,
+        display_spark_version: str = None,
+        environment_id: str = None,
+        fusion: bool = None,
+        resource_queue_id: str = None,
+        spark_conf: List[CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf] = None,
+        spark_driver_cores: int = None,
+        spark_driver_memory: int = None,
+        spark_executor_cores: int = None,
+        spark_executor_memory: int = None,
+        spark_log_level: str = None,
+        spark_log_path: str = None,
+        spark_version: str = None,
+        task_biz_id: str = None,
+        type: str = None,
+        workspace_biz_id: str = None,
+    ):
+        self.display_spark_version = display_spark_version
+        self.environment_id = environment_id
+        self.fusion = fusion
+        # This parameter is required.
+        self.resource_queue_id = resource_queue_id
+        self.spark_conf = spark_conf
+        self.spark_driver_cores = spark_driver_cores
+        self.spark_driver_memory = spark_driver_memory
+        self.spark_executor_cores = spark_executor_cores
+        self.spark_executor_memory = spark_executor_memory
+        self.spark_log_level = spark_log_level
+        self.spark_log_path = spark_log_path
+        self.spark_version = spark_version
+        # This parameter is required.
+        self.task_biz_id = task_biz_id
+        self.type = type
+        # This parameter is required.
+        self.workspace_biz_id = workspace_biz_id
+
+    def validate(self):
+        if self.spark_conf:
+            for k in self.spark_conf:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_spark_version is not None:
+            result['displaySparkVersion'] = self.display_spark_version
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
+        if self.resource_queue_id is not None:
+            result['resourceQueueId'] = self.resource_queue_id
+        result['sparkConf'] = []
+        if self.spark_conf is not None:
+            for k in self.spark_conf:
+                result['sparkConf'].append(k.to_map() if k else None)
+        if self.spark_driver_cores is not None:
+            result['sparkDriverCores'] = self.spark_driver_cores
+        if self.spark_driver_memory is not None:
+            result['sparkDriverMemory'] = self.spark_driver_memory
+        if self.spark_executor_cores is not None:
+            result['sparkExecutorCores'] = self.spark_executor_cores
+        if self.spark_executor_memory is not None:
+            result['sparkExecutorMemory'] = self.spark_executor_memory
+        if self.spark_log_level is not None:
+            result['sparkLogLevel'] = self.spark_log_level
+        if self.spark_log_path is not None:
+            result['sparkLogPath'] = self.spark_log_path
+        if self.spark_version is not None:
+            result['sparkVersion'] = self.spark_version
+        if self.task_biz_id is not None:
+            result['taskBizId'] = self.task_biz_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.workspace_biz_id is not None:
+            result['workspaceBizId'] = self.workspace_biz_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('displaySparkVersion') is not None:
+            self.display_spark_version = m.get('displaySparkVersion')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
+        if m.get('resourceQueueId') is not None:
+            self.resource_queue_id = m.get('resourceQueueId')
+        self.spark_conf = []
+        if m.get('sparkConf') is not None:
+            for k in m.get('sparkConf'):
+                temp_model = CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf()
+                self.spark_conf.append(temp_model.from_map(k))
+        if m.get('sparkDriverCores') is not None:
+            self.spark_driver_cores = m.get('sparkDriverCores')
+        if m.get('sparkDriverMemory') is not None:
+            self.spark_driver_memory = m.get('sparkDriverMemory')
+        if m.get('sparkExecutorCores') is not None:
+            self.spark_executor_cores = m.get('sparkExecutorCores')
+        if m.get('sparkExecutorMemory') is not None:
+            self.spark_executor_memory = m.get('sparkExecutorMemory')
+        if m.get('sparkLogLevel') is not None:
+            self.spark_log_level = m.get('sparkLogLevel')
+        if m.get('sparkLogPath') is not None:
+            self.spark_log_path = m.get('sparkLogPath')
+        if m.get('sparkVersion') is not None:
+            self.spark_version = m.get('sparkVersion')
+        if m.get('taskBizId') is not None:
+            self.task_biz_id = m.get('taskBizId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('workspaceBizId') is not None:
+            self.workspace_biz_id = m.get('workspaceBizId')
+        return self
+
+
+class CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson(TeaModel):
+    def __init__(
+        self,
+        alert_email_address: str = None,
+        code: int = None,
+        description: str = None,
+        fail_alert_enable: bool = None,
+        fail_retry_times: int = None,
+        name: str = None,
+        start_alert_enable: bool = None,
+        tags: Dict[str, str] = None,
+        task_params: CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams = None,
+        task_type: str = None,
+        timeout: int = None,
+    ):
+        self.alert_email_address = alert_email_address
+        # This parameter is required.
+        self.code = code
+        self.description = description
+        self.fail_alert_enable = fail_alert_enable
+        self.fail_retry_times = fail_retry_times
+        # This parameter is required.
+        self.name = name
+        self.start_alert_enable = start_alert_enable
+        self.tags = tags
+        # This parameter is required.
+        self.task_params = task_params
+        # This parameter is required.
+        self.task_type = task_type
+        self.timeout = timeout
+
+    def validate(self):
+        if self.task_params:
+            self.task_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_email_address is not None:
+            result['alertEmailAddress'] = self.alert_email_address
+        if self.code is not None:
+            result['code'] = self.code
+        if self.description is not None:
+            result['description'] = self.description
+        if self.fail_alert_enable is not None:
+            result['failAlertEnable'] = self.fail_alert_enable
+        if self.fail_retry_times is not None:
+            result['failRetryTimes'] = self.fail_retry_times
+        if self.name is not None:
+            result['name'] = self.name
+        if self.start_alert_enable is not None:
+            result['startAlertEnable'] = self.start_alert_enable
+        if self.tags is not None:
+            result['tags'] = self.tags
+        if self.task_params is not None:
+            result['taskParams'] = self.task_params.to_map()
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alertEmailAddress') is not None:
+            self.alert_email_address = m.get('alertEmailAddress')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('failAlertEnable') is not None:
+            self.fail_alert_enable = m.get('failAlertEnable')
+        if m.get('failRetryTimes') is not None:
+            self.fail_retry_times = m.get('failRetryTimes')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('startAlertEnable') is not None:
+            self.start_alert_enable = m.get('startAlertEnable')
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
+        if m.get('taskParams') is not None:
+            temp_model = CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams()
+            self.task_params = temp_model.from_map(m['taskParams'])
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        return self
+
+
+class CreateProcessDefinitionWithScheduleRequestTaskRelationJson(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        post_task_code: int = None,
+        post_task_version: int = None,
+        pre_task_code: int = None,
+        pre_task_version: int = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.post_task_code = post_task_code
+        # This parameter is required.
+        self.post_task_version = post_task_version
+        # This parameter is required.
+        self.pre_task_code = pre_task_code
+        # This parameter is required.
+        self.pre_task_version = pre_task_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.post_task_code is not None:
+            result['postTaskCode'] = self.post_task_code
+        if self.post_task_version is not None:
+            result['postTaskVersion'] = self.post_task_version
+        if self.pre_task_code is not None:
+            result['preTaskCode'] = self.pre_task_code
+        if self.pre_task_version is not None:
+            result['preTaskVersion'] = self.pre_task_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('postTaskCode') is not None:
+            self.post_task_code = m.get('postTaskCode')
+        if m.get('postTaskVersion') is not None:
+            self.post_task_version = m.get('postTaskVersion')
+        if m.get('preTaskCode') is not None:
+            self.pre_task_code = m.get('preTaskCode')
+        if m.get('preTaskVersion') is not None:
+            self.pre_task_version = m.get('preTaskVersion')
+        return self
+
+
+class CreateProcessDefinitionWithScheduleRequest(TeaModel):
+    def __init__(
+        self,
+        alert_email_address: str = None,
+        description: str = None,
+        execution_type: str = None,
+        name: str = None,
+        product_namespace: str = None,
+        publish: bool = None,
+        region_id: str = None,
+        resource_queue: str = None,
+        retry_times: int = None,
+        run_as: str = None,
+        schedule: CreateProcessDefinitionWithScheduleRequestSchedule = None,
+        tags: Dict[str, str] = None,
+        task_definition_json: List[CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson] = None,
+        task_parallelism: int = None,
+        task_relation_json: List[CreateProcessDefinitionWithScheduleRequestTaskRelationJson] = None,
+        timeout: int = None,
+    ):
+        self.alert_email_address = alert_email_address
+        # This parameter is required.
+        self.description = description
+        # This parameter is required.
+        self.execution_type = execution_type
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.product_namespace = product_namespace
+        self.publish = publish
+        self.region_id = region_id
+        self.resource_queue = resource_queue
+        self.retry_times = retry_times
+        self.run_as = run_as
+        self.schedule = schedule
+        self.tags = tags
+        # This parameter is required.
+        self.task_definition_json = task_definition_json
+        self.task_parallelism = task_parallelism
+        # This parameter is required.
+        self.task_relation_json = task_relation_json
+        self.timeout = timeout
+
+    def validate(self):
+        if self.schedule:
+            self.schedule.validate()
+        if self.task_definition_json:
+            for k in self.task_definition_json:
+                if k:
+                    k.validate()
+        if self.task_relation_json:
+            for k in self.task_relation_json:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_email_address is not None:
+            result['alertEmailAddress'] = self.alert_email_address
+        if self.description is not None:
+            result['description'] = self.description
+        if self.execution_type is not None:
+            result['executionType'] = self.execution_type
+        if self.name is not None:
+            result['name'] = self.name
+        if self.product_namespace is not None:
+            result['productNamespace'] = self.product_namespace
+        if self.publish is not None:
+            result['publish'] = self.publish
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.resource_queue is not None:
+            result['resourceQueue'] = self.resource_queue
+        if self.retry_times is not None:
+            result['retryTimes'] = self.retry_times
+        if self.run_as is not None:
+            result['runAs'] = self.run_as
+        if self.schedule is not None:
+            result['schedule'] = self.schedule.to_map()
+        if self.tags is not None:
+            result['tags'] = self.tags
+        result['taskDefinitionJson'] = []
+        if self.task_definition_json is not None:
+            for k in self.task_definition_json:
+                result['taskDefinitionJson'].append(k.to_map() if k else None)
+        if self.task_parallelism is not None:
+            result['taskParallelism'] = self.task_parallelism
+        result['taskRelationJson'] = []
+        if self.task_relation_json is not None:
+            for k in self.task_relation_json:
+                result['taskRelationJson'].append(k.to_map() if k else None)
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alertEmailAddress') is not None:
+            self.alert_email_address = m.get('alertEmailAddress')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('executionType') is not None:
+            self.execution_type = m.get('executionType')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('productNamespace') is not None:
+            self.product_namespace = m.get('productNamespace')
+        if m.get('publish') is not None:
+            self.publish = m.get('publish')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('resourceQueue') is not None:
+            self.resource_queue = m.get('resourceQueue')
+        if m.get('retryTimes') is not None:
+            self.retry_times = m.get('retryTimes')
+        if m.get('runAs') is not None:
+            self.run_as = m.get('runAs')
+        if m.get('schedule') is not None:
+            temp_model = CreateProcessDefinitionWithScheduleRequestSchedule()
+            self.schedule = temp_model.from_map(m['schedule'])
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
+        self.task_definition_json = []
+        if m.get('taskDefinitionJson') is not None:
+            for k in m.get('taskDefinitionJson'):
+                temp_model = CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson()
+                self.task_definition_json.append(temp_model.from_map(k))
+        if m.get('taskParallelism') is not None:
+            self.task_parallelism = m.get('taskParallelism')
+        self.task_relation_json = []
+        if m.get('taskRelationJson') is not None:
+            for k in m.get('taskRelationJson'):
+                temp_model = CreateProcessDefinitionWithScheduleRequestTaskRelationJson()
+                self.task_relation_json.append(temp_model.from_map(k))
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        return self
+
+
+class CreateProcessDefinitionWithScheduleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        alert_email_address: str = None,
+        description: str = None,
+        execution_type: str = None,
+        name: str = None,
+        product_namespace: str = None,
+        publish: bool = None,
+        region_id: str = None,
+        resource_queue: str = None,
+        retry_times: int = None,
+        run_as: str = None,
+        schedule_shrink: str = None,
+        tags_shrink: str = None,
+        task_definition_json_shrink: str = None,
+        task_parallelism: int = None,
+        task_relation_json_shrink: str = None,
+        timeout: int = None,
+    ):
+        self.alert_email_address = alert_email_address
+        # This parameter is required.
+        self.description = description
+        # This parameter is required.
+        self.execution_type = execution_type
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.product_namespace = product_namespace
+        self.publish = publish
+        self.region_id = region_id
+        self.resource_queue = resource_queue
+        self.retry_times = retry_times
+        self.run_as = run_as
+        self.schedule_shrink = schedule_shrink
+        self.tags_shrink = tags_shrink
+        # This parameter is required.
+        self.task_definition_json_shrink = task_definition_json_shrink
+        self.task_parallelism = task_parallelism
+        # This parameter is required.
+        self.task_relation_json_shrink = task_relation_json_shrink
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_email_address is not None:
+            result['alertEmailAddress'] = self.alert_email_address
+        if self.description is not None:
+            result['description'] = self.description
+        if self.execution_type is not None:
+            result['executionType'] = self.execution_type
+        if self.name is not None:
+            result['name'] = self.name
+        if self.product_namespace is not None:
+            result['productNamespace'] = self.product_namespace
+        if self.publish is not None:
+            result['publish'] = self.publish
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.resource_queue is not None:
+            result['resourceQueue'] = self.resource_queue
+        if self.retry_times is not None:
+            result['retryTimes'] = self.retry_times
+        if self.run_as is not None:
+            result['runAs'] = self.run_as
+        if self.schedule_shrink is not None:
+            result['schedule'] = self.schedule_shrink
+        if self.tags_shrink is not None:
+            result['tags'] = self.tags_shrink
+        if self.task_definition_json_shrink is not None:
+            result['taskDefinitionJson'] = self.task_definition_json_shrink
+        if self.task_parallelism is not None:
+            result['taskParallelism'] = self.task_parallelism
+        if self.task_relation_json_shrink is not None:
+            result['taskRelationJson'] = self.task_relation_json_shrink
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alertEmailAddress') is not None:
+            self.alert_email_address = m.get('alertEmailAddress')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('executionType') is not None:
+            self.execution_type = m.get('executionType')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('productNamespace') is not None:
+            self.product_namespace = m.get('productNamespace')
+        if m.get('publish') is not None:
+            self.publish = m.get('publish')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('resourceQueue') is not None:
+            self.resource_queue = m.get('resourceQueue')
+        if m.get('retryTimes') is not None:
+            self.retry_times = m.get('retryTimes')
+        if m.get('runAs') is not None:
+            self.run_as = m.get('runAs')
+        if m.get('schedule') is not None:
+            self.schedule_shrink = m.get('schedule')
+        if m.get('tags') is not None:
+            self.tags_shrink = m.get('tags')
+        if m.get('taskDefinitionJson') is not None:
+            self.task_definition_json_shrink = m.get('taskDefinitionJson')
+        if m.get('taskParallelism') is not None:
+            self.task_parallelism = m.get('taskParallelism')
+        if m.get('taskRelationJson') is not None:
+            self.task_relation_json_shrink = m.get('taskRelationJson')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        return self
+
+
+class CreateProcessDefinitionWithScheduleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        id: int = None,
+    ):
+        self.code = code
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.id is not None:
+            result['id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        return self
+
+
+class CreateProcessDefinitionWithScheduleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: CreateProcessDefinitionWithScheduleResponseBodyData = None,
+        failed: str = None,
+        http_status_code: int = None,
+        msg: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.failed = failed
+        self.http_status_code = http_status_code
+        self.msg = msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.failed is not None:
+            result['failed'] = self.failed
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.msg is not None:
+            result['msg'] = self.msg
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateProcessDefinitionWithScheduleResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('failed') is not None:
+            self.failed = m.get('failed')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('msg') is not None:
+            self.msg = m.get('msg')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateProcessDefinitionWithScheduleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateProcessDefinitionWithScheduleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateProcessDefinitionWithScheduleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSqlStatementRequest(TeaModel):
     def __init__(
         self,
@@ -2041,7 +2795,7 @@ class GetJobRunResponseBodyJobRun(TeaModel):
         self.state_change_reason = state_change_reason
         # The time when the job was submitted.
         self.submit_time = submit_time
-        # The tags of the job.
+        # The tags.
         self.tags = tags
         # The web UI of the job.
         self.web_ui = web_ui
@@ -2247,6 +3001,7 @@ class GetSessionClusterRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -2276,8 +3031,11 @@ class GetSessionClusterResponseBodySessionClusterApplicationConfigs(TeaModel):
         config_item_key: str = None,
         config_item_value: str = None,
     ):
+        # The name of the configuration file.
         self.config_file_name = config_file_name
+        # The key of the configuration.
         self.config_item_key = config_item_key
+        # The configuration value.
         self.config_item_value = config_item_value
 
     def validate(self):
@@ -2313,6 +3071,7 @@ class GetSessionClusterResponseBodySessionClusterAutoStartConfiguration(TeaModel
         self,
         enable: bool = None,
     ):
+        # Indicates whether automatic startup is enabled.
         self.enable = enable
 
     def validate(self):
@@ -2341,7 +3100,9 @@ class GetSessionClusterResponseBodySessionClusterAutoStopConfiguration(TeaModel)
         enable: bool = None,
         idle_timeout_minutes: int = None,
     ):
+        # Indicates whether automatic termination is enabled.
         self.enable = enable
+        # The idle timeout period. The session is automatically terminated when the idle timeout period is exceeded.
         self.idle_timeout_minutes = idle_timeout_minutes
 
     def validate(self):
@@ -2374,7 +3135,9 @@ class GetSessionClusterResponseBodySessionClusterStateChangeReason(TeaModel):
         code: str = None,
         message: str = None,
     ):
+        # The status change code.
         self.code = code
+        # The status change message.
         self.message = message
 
     def validate(self):
@@ -2427,32 +3190,53 @@ class GetSessionClusterResponseBodySessionCluster(TeaModel):
         web_ui: str = None,
         workspace_id: str = None,
     ):
+        # The Spark configurations.
         self.application_configs = application_configs
+        # The automatic startup configurations.
         self.auto_start_configuration = auto_start_configuration
+        # The automatic termination configurations.
         self.auto_stop_configuration = auto_stop_configuration
+        # The version of the Spark engine.
         self.display_release_version = display_release_version
+        # The domain name to which the Spark UI of the session belongs.
         self.domain = domain
+        # The internal endpoint.
         self.domain_inner = domain_inner
+        # The ID of the job that is associated with the session.
         self.draft_id = draft_id
+        # The environment ID.
         self.env_id = env_id
+        # Indicates whether the Fusion engine is used for acceleration.
         self.fusion = fusion
+        # The creation time.
         self.gmt_create = gmt_create
+        # The type of the job. This parameter is required and cannot be modified after the deployment is created. Valid values:
+        # 
+        # *   SQLSCRIPT
+        # *   JAR
+        # *   PYTHON
         self.kind = kind
+        # The name of the session.
         self.name = name
-        # 作业实例名称。
+        # The queue name.
         self.queue_name = queue_name
+        # The version of E-MapReduce (EMR) Serverless Spark.
         self.release_version = release_version
-        # 交互式作业会话id。
+        # The session ID.
         self.session_cluster_id = session_cluster_id
+        # The start time.
         self.start_time = start_time
-        # 作业状态。
+        # The job status.
         self.state = state
+        # The reason of the job status change.
         self.state_change_reason = state_change_reason
-        # 任务实例ID。
+        # The user ID.
         self.user_id = user_id
+        # The name of the account that is used to create the session.
         self.user_name = user_name
+        # The Spark UI of the session.
         self.web_ui = web_ui
-        # 工作空间id。
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -2582,8 +3366,9 @@ class GetSessionClusterResponseBody(TeaModel):
         request_id: str = None,
         session_cluster: GetSessionClusterResponseBodySessionCluster = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
+        # The session.
         self.session_cluster = session_cluster
 
     def validate(self):
@@ -2801,7 +3586,7 @@ class GetSqlStatementResponseBody(TeaModel):
         data: GetSqlStatementResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response parameters.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -2879,7 +3664,12 @@ class GetTemplateRequest(TeaModel):
         region_id: str = None,
         template_type: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The template type.
+        # 
+        # *   TASK
+        # *   SESSION
         self.template_type = template_type
 
     def validate(self):
@@ -2916,12 +3706,19 @@ class GetTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
-        # Id of the request
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3577,7 +4374,7 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         self.state_change_reason = state_change_reason
         # The time when the job was submitted.
         self.submit_time = submit_time
-        # The tags of the job.
+        # The tags.
         self.tags = tags
         self.vcore_seconds = vcore_seconds
         # The web UI of the job.
@@ -3714,7 +4511,7 @@ class ListJobRunsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of Spark jobs.
+        # The Spark jobs.
         self.job_runs = job_runs
         # The maximum number of entries returned.
         self.max_results = max_results
@@ -4504,12 +5301,15 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         self.auto_stop_configuration = auto_stop_configuration
         # The version of the Spark engine.
         self.display_release_version = display_release_version
+        # The public endpoint of the Thrift server.
         self.domain = domain
+        # The internal endpoint of the Thrift server.
         self.domain_inner = domain_inner
         # The ID of the job that is associated with the session.
         self.draft_id = draft_id
         # Indicates whether the Fusion engine is used for acceleration.
         self.fusion = fusion
+        # The creation time.
         self.gmt_create = gmt_create
         # The session type.
         # 
@@ -4527,8 +5327,15 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         self.release_version = release_version
         # The session ID.
         self.session_cluster_id = session_cluster_id
+        # The start time.
         self.start_time = start_time
         # The status of the session.
+        # 
+        # *   Starting
+        # *   Running
+        # *   Stopping
+        # *   Stopped
+        # *   Error
         self.state = state
         # The details of the most recent status change of the session.
         self.state_change_reason = state_change_reason
@@ -4669,11 +5476,11 @@ class ListSessionClustersResponseBody(TeaModel):
     ):
         # The maximum number of entries returned.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # A pagination token.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The list of sessions.
+        # The sessions.
         self.session_clusters = session_clusters
         # The total number of entries returned.
         self.total_count = total_count
@@ -5561,7 +6368,7 @@ class StartJobRunRequest(TeaModel):
         self.release_version = release_version
         # The name of the resource queue on which the Spark job runs.
         self.resource_queue_id = resource_queue_id
-        # The tags of the job.
+        # The tags.
         self.tags = tags
         # The region ID.
         self.region_id = region_id
@@ -5720,6 +6527,176 @@ class StartJobRunResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartJobRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartProcessInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        is_prod: bool = None,
+        process_definition_code: int = None,
+        product_namespace: str = None,
+        region_id: str = None,
+        runtime_queue: str = None,
+        version_hash_code: str = None,
+        version_number: int = None,
+    ):
+        self.is_prod = is_prod
+        # This parameter is required.
+        self.process_definition_code = process_definition_code
+        # This parameter is required.
+        self.product_namespace = product_namespace
+        self.region_id = region_id
+        self.runtime_queue = runtime_queue
+        self.version_hash_code = version_hash_code
+        self.version_number = version_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_prod is not None:
+            result['isProd'] = self.is_prod
+        if self.process_definition_code is not None:
+            result['processDefinitionCode'] = self.process_definition_code
+        if self.product_namespace is not None:
+            result['productNamespace'] = self.product_namespace
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.runtime_queue is not None:
+            result['runtimeQueue'] = self.runtime_queue
+        if self.version_hash_code is not None:
+            result['versionHashCode'] = self.version_hash_code
+        if self.version_number is not None:
+            result['versionNumber'] = self.version_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('isProd') is not None:
+            self.is_prod = m.get('isProd')
+        if m.get('processDefinitionCode') is not None:
+            self.process_definition_code = m.get('processDefinitionCode')
+        if m.get('productNamespace') is not None:
+            self.product_namespace = m.get('productNamespace')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('runtimeQueue') is not None:
+            self.runtime_queue = m.get('runtimeQueue')
+        if m.get('versionHashCode') is not None:
+            self.version_hash_code = m.get('versionHashCode')
+        if m.get('versionNumber') is not None:
+            self.version_number = m.get('versionNumber')
+        return self
+
+
+class StartProcessInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: Any = None,
+        failed: bool = None,
+        http_status_code: int = None,
+        msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.failed = failed
+        self.http_status_code = http_status_code
+        self.msg = msg
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.failed is not None:
+            result['failed'] = self.failed
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.msg is not None:
+            result['msg'] = self.msg
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('failed') is not None:
+            self.failed = m.get('failed')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('msg') is not None:
+            self.msg = m.get('msg')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class StartProcessInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartProcessInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartProcessInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6053,6 +7030,873 @@ class TerminateSqlStatementResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TerminateSqlStatementResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateProcessDefinitionWithScheduleRequestSchedule(TeaModel):
+    def __init__(
+        self,
+        crontab: str = None,
+        end_time: str = None,
+        start_time: str = None,
+        timezone_id: str = None,
+    ):
+        self.crontab = crontab
+        self.end_time = end_time
+        self.start_time = start_time
+        self.timezone_id = timezone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.crontab is not None:
+            result['crontab'] = self.crontab
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.timezone_id is not None:
+            result['timezoneId'] = self.timezone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('crontab') is not None:
+            self.crontab = m.get('crontab')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('timezoneId') is not None:
+            self.timezone_id = m.get('timezoneId')
+        return self
+
+
+class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(TeaModel):
+    def __init__(
+        self,
+        display_spark_version: str = None,
+        environment_id: str = None,
+        fusion: bool = None,
+        resource_queue_id: str = None,
+        spark_conf: List[UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf] = None,
+        spark_driver_cores: int = None,
+        spark_driver_memory: int = None,
+        spark_executor_cores: int = None,
+        spark_executor_memory: int = None,
+        spark_log_level: str = None,
+        spark_log_path: str = None,
+        spark_version: str = None,
+        task_biz_id: str = None,
+        type: str = None,
+        workspace_biz_id: str = None,
+    ):
+        self.display_spark_version = display_spark_version
+        self.environment_id = environment_id
+        self.fusion = fusion
+        # This parameter is required.
+        self.resource_queue_id = resource_queue_id
+        self.spark_conf = spark_conf
+        self.spark_driver_cores = spark_driver_cores
+        self.spark_driver_memory = spark_driver_memory
+        self.spark_executor_cores = spark_executor_cores
+        self.spark_executor_memory = spark_executor_memory
+        self.spark_log_level = spark_log_level
+        self.spark_log_path = spark_log_path
+        self.spark_version = spark_version
+        # This parameter is required.
+        self.task_biz_id = task_biz_id
+        self.type = type
+        # This parameter is required.
+        self.workspace_biz_id = workspace_biz_id
+
+    def validate(self):
+        if self.spark_conf:
+            for k in self.spark_conf:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_spark_version is not None:
+            result['displaySparkVersion'] = self.display_spark_version
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
+        if self.resource_queue_id is not None:
+            result['resourceQueueId'] = self.resource_queue_id
+        result['sparkConf'] = []
+        if self.spark_conf is not None:
+            for k in self.spark_conf:
+                result['sparkConf'].append(k.to_map() if k else None)
+        if self.spark_driver_cores is not None:
+            result['sparkDriverCores'] = self.spark_driver_cores
+        if self.spark_driver_memory is not None:
+            result['sparkDriverMemory'] = self.spark_driver_memory
+        if self.spark_executor_cores is not None:
+            result['sparkExecutorCores'] = self.spark_executor_cores
+        if self.spark_executor_memory is not None:
+            result['sparkExecutorMemory'] = self.spark_executor_memory
+        if self.spark_log_level is not None:
+            result['sparkLogLevel'] = self.spark_log_level
+        if self.spark_log_path is not None:
+            result['sparkLogPath'] = self.spark_log_path
+        if self.spark_version is not None:
+            result['sparkVersion'] = self.spark_version
+        if self.task_biz_id is not None:
+            result['taskBizId'] = self.task_biz_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.workspace_biz_id is not None:
+            result['workspaceBizId'] = self.workspace_biz_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('displaySparkVersion') is not None:
+            self.display_spark_version = m.get('displaySparkVersion')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
+        if m.get('resourceQueueId') is not None:
+            self.resource_queue_id = m.get('resourceQueueId')
+        self.spark_conf = []
+        if m.get('sparkConf') is not None:
+            for k in m.get('sparkConf'):
+                temp_model = UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf()
+                self.spark_conf.append(temp_model.from_map(k))
+        if m.get('sparkDriverCores') is not None:
+            self.spark_driver_cores = m.get('sparkDriverCores')
+        if m.get('sparkDriverMemory') is not None:
+            self.spark_driver_memory = m.get('sparkDriverMemory')
+        if m.get('sparkExecutorCores') is not None:
+            self.spark_executor_cores = m.get('sparkExecutorCores')
+        if m.get('sparkExecutorMemory') is not None:
+            self.spark_executor_memory = m.get('sparkExecutorMemory')
+        if m.get('sparkLogLevel') is not None:
+            self.spark_log_level = m.get('sparkLogLevel')
+        if m.get('sparkLogPath') is not None:
+            self.spark_log_path = m.get('sparkLogPath')
+        if m.get('sparkVersion') is not None:
+            self.spark_version = m.get('sparkVersion')
+        if m.get('taskBizId') is not None:
+            self.task_biz_id = m.get('taskBizId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('workspaceBizId') is not None:
+            self.workspace_biz_id = m.get('workspaceBizId')
+        return self
+
+
+class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson(TeaModel):
+    def __init__(
+        self,
+        alert_email_address: str = None,
+        code: int = None,
+        description: str = None,
+        fail_alert_enable: bool = None,
+        fail_retry_times: int = None,
+        name: str = None,
+        start_alert_enable: bool = None,
+        tags: Dict[str, str] = None,
+        task_params: UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams = None,
+        task_type: str = None,
+        timeout: int = None,
+    ):
+        self.alert_email_address = alert_email_address
+        # This parameter is required.
+        self.code = code
+        self.description = description
+        self.fail_alert_enable = fail_alert_enable
+        self.fail_retry_times = fail_retry_times
+        # This parameter is required.
+        self.name = name
+        self.start_alert_enable = start_alert_enable
+        self.tags = tags
+        # This parameter is required.
+        self.task_params = task_params
+        # This parameter is required.
+        self.task_type = task_type
+        self.timeout = timeout
+
+    def validate(self):
+        if self.task_params:
+            self.task_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_email_address is not None:
+            result['alertEmailAddress'] = self.alert_email_address
+        if self.code is not None:
+            result['code'] = self.code
+        if self.description is not None:
+            result['description'] = self.description
+        if self.fail_alert_enable is not None:
+            result['failAlertEnable'] = self.fail_alert_enable
+        if self.fail_retry_times is not None:
+            result['failRetryTimes'] = self.fail_retry_times
+        if self.name is not None:
+            result['name'] = self.name
+        if self.start_alert_enable is not None:
+            result['startAlertEnable'] = self.start_alert_enable
+        if self.tags is not None:
+            result['tags'] = self.tags
+        if self.task_params is not None:
+            result['taskParams'] = self.task_params.to_map()
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alertEmailAddress') is not None:
+            self.alert_email_address = m.get('alertEmailAddress')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('failAlertEnable') is not None:
+            self.fail_alert_enable = m.get('failAlertEnable')
+        if m.get('failRetryTimes') is not None:
+            self.fail_retry_times = m.get('failRetryTimes')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('startAlertEnable') is not None:
+            self.start_alert_enable = m.get('startAlertEnable')
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
+        if m.get('taskParams') is not None:
+            temp_model = UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams()
+            self.task_params = temp_model.from_map(m['taskParams'])
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        return self
+
+
+class UpdateProcessDefinitionWithScheduleRequestTaskRelationJson(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        post_task_code: int = None,
+        post_task_version: int = None,
+        pre_task_code: int = None,
+        pre_task_version: int = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.post_task_code = post_task_code
+        # This parameter is required.
+        self.post_task_version = post_task_version
+        # This parameter is required.
+        self.pre_task_code = pre_task_code
+        # This parameter is required.
+        self.pre_task_version = pre_task_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.post_task_code is not None:
+            result['postTaskCode'] = self.post_task_code
+        if self.post_task_version is not None:
+            result['postTaskVersion'] = self.post_task_version
+        if self.pre_task_code is not None:
+            result['preTaskCode'] = self.pre_task_code
+        if self.pre_task_version is not None:
+            result['preTaskVersion'] = self.pre_task_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('postTaskCode') is not None:
+            self.post_task_code = m.get('postTaskCode')
+        if m.get('postTaskVersion') is not None:
+            self.post_task_version = m.get('postTaskVersion')
+        if m.get('preTaskCode') is not None:
+            self.pre_task_code = m.get('preTaskCode')
+        if m.get('preTaskVersion') is not None:
+            self.pre_task_version = m.get('preTaskVersion')
+        return self
+
+
+class UpdateProcessDefinitionWithScheduleRequest(TeaModel):
+    def __init__(
+        self,
+        alert_email_address: str = None,
+        description: str = None,
+        execution_type: str = None,
+        name: str = None,
+        product_namespace: str = None,
+        publish: bool = None,
+        region_id: str = None,
+        release_state: str = None,
+        resource_queue: str = None,
+        retry_times: int = None,
+        run_as: str = None,
+        schedule: UpdateProcessDefinitionWithScheduleRequestSchedule = None,
+        tags: Dict[str, str] = None,
+        task_definition_json: List[UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson] = None,
+        task_parallelism: int = None,
+        task_relation_json: List[UpdateProcessDefinitionWithScheduleRequestTaskRelationJson] = None,
+        timeout: int = None,
+    ):
+        self.alert_email_address = alert_email_address
+        self.description = description
+        # This parameter is required.
+        self.execution_type = execution_type
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.product_namespace = product_namespace
+        self.publish = publish
+        self.region_id = region_id
+        self.release_state = release_state
+        self.resource_queue = resource_queue
+        self.retry_times = retry_times
+        self.run_as = run_as
+        self.schedule = schedule
+        self.tags = tags
+        # This parameter is required.
+        self.task_definition_json = task_definition_json
+        self.task_parallelism = task_parallelism
+        # This parameter is required.
+        self.task_relation_json = task_relation_json
+        self.timeout = timeout
+
+    def validate(self):
+        if self.schedule:
+            self.schedule.validate()
+        if self.task_definition_json:
+            for k in self.task_definition_json:
+                if k:
+                    k.validate()
+        if self.task_relation_json:
+            for k in self.task_relation_json:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_email_address is not None:
+            result['alertEmailAddress'] = self.alert_email_address
+        if self.description is not None:
+            result['description'] = self.description
+        if self.execution_type is not None:
+            result['executionType'] = self.execution_type
+        if self.name is not None:
+            result['name'] = self.name
+        if self.product_namespace is not None:
+            result['productNamespace'] = self.product_namespace
+        if self.publish is not None:
+            result['publish'] = self.publish
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.release_state is not None:
+            result['releaseState'] = self.release_state
+        if self.resource_queue is not None:
+            result['resourceQueue'] = self.resource_queue
+        if self.retry_times is not None:
+            result['retryTimes'] = self.retry_times
+        if self.run_as is not None:
+            result['runAs'] = self.run_as
+        if self.schedule is not None:
+            result['schedule'] = self.schedule.to_map()
+        if self.tags is not None:
+            result['tags'] = self.tags
+        result['taskDefinitionJson'] = []
+        if self.task_definition_json is not None:
+            for k in self.task_definition_json:
+                result['taskDefinitionJson'].append(k.to_map() if k else None)
+        if self.task_parallelism is not None:
+            result['taskParallelism'] = self.task_parallelism
+        result['taskRelationJson'] = []
+        if self.task_relation_json is not None:
+            for k in self.task_relation_json:
+                result['taskRelationJson'].append(k.to_map() if k else None)
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alertEmailAddress') is not None:
+            self.alert_email_address = m.get('alertEmailAddress')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('executionType') is not None:
+            self.execution_type = m.get('executionType')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('productNamespace') is not None:
+            self.product_namespace = m.get('productNamespace')
+        if m.get('publish') is not None:
+            self.publish = m.get('publish')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('releaseState') is not None:
+            self.release_state = m.get('releaseState')
+        if m.get('resourceQueue') is not None:
+            self.resource_queue = m.get('resourceQueue')
+        if m.get('retryTimes') is not None:
+            self.retry_times = m.get('retryTimes')
+        if m.get('runAs') is not None:
+            self.run_as = m.get('runAs')
+        if m.get('schedule') is not None:
+            temp_model = UpdateProcessDefinitionWithScheduleRequestSchedule()
+            self.schedule = temp_model.from_map(m['schedule'])
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
+        self.task_definition_json = []
+        if m.get('taskDefinitionJson') is not None:
+            for k in m.get('taskDefinitionJson'):
+                temp_model = UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson()
+                self.task_definition_json.append(temp_model.from_map(k))
+        if m.get('taskParallelism') is not None:
+            self.task_parallelism = m.get('taskParallelism')
+        self.task_relation_json = []
+        if m.get('taskRelationJson') is not None:
+            for k in m.get('taskRelationJson'):
+                temp_model = UpdateProcessDefinitionWithScheduleRequestTaskRelationJson()
+                self.task_relation_json.append(temp_model.from_map(k))
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        return self
+
+
+class UpdateProcessDefinitionWithScheduleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        alert_email_address: str = None,
+        description: str = None,
+        execution_type: str = None,
+        name: str = None,
+        product_namespace: str = None,
+        publish: bool = None,
+        region_id: str = None,
+        release_state: str = None,
+        resource_queue: str = None,
+        retry_times: int = None,
+        run_as: str = None,
+        schedule_shrink: str = None,
+        tags_shrink: str = None,
+        task_definition_json_shrink: str = None,
+        task_parallelism: int = None,
+        task_relation_json_shrink: str = None,
+        timeout: int = None,
+    ):
+        self.alert_email_address = alert_email_address
+        self.description = description
+        # This parameter is required.
+        self.execution_type = execution_type
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.product_namespace = product_namespace
+        self.publish = publish
+        self.region_id = region_id
+        self.release_state = release_state
+        self.resource_queue = resource_queue
+        self.retry_times = retry_times
+        self.run_as = run_as
+        self.schedule_shrink = schedule_shrink
+        self.tags_shrink = tags_shrink
+        # This parameter is required.
+        self.task_definition_json_shrink = task_definition_json_shrink
+        self.task_parallelism = task_parallelism
+        # This parameter is required.
+        self.task_relation_json_shrink = task_relation_json_shrink
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_email_address is not None:
+            result['alertEmailAddress'] = self.alert_email_address
+        if self.description is not None:
+            result['description'] = self.description
+        if self.execution_type is not None:
+            result['executionType'] = self.execution_type
+        if self.name is not None:
+            result['name'] = self.name
+        if self.product_namespace is not None:
+            result['productNamespace'] = self.product_namespace
+        if self.publish is not None:
+            result['publish'] = self.publish
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.release_state is not None:
+            result['releaseState'] = self.release_state
+        if self.resource_queue is not None:
+            result['resourceQueue'] = self.resource_queue
+        if self.retry_times is not None:
+            result['retryTimes'] = self.retry_times
+        if self.run_as is not None:
+            result['runAs'] = self.run_as
+        if self.schedule_shrink is not None:
+            result['schedule'] = self.schedule_shrink
+        if self.tags_shrink is not None:
+            result['tags'] = self.tags_shrink
+        if self.task_definition_json_shrink is not None:
+            result['taskDefinitionJson'] = self.task_definition_json_shrink
+        if self.task_parallelism is not None:
+            result['taskParallelism'] = self.task_parallelism
+        if self.task_relation_json_shrink is not None:
+            result['taskRelationJson'] = self.task_relation_json_shrink
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alertEmailAddress') is not None:
+            self.alert_email_address = m.get('alertEmailAddress')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('executionType') is not None:
+            self.execution_type = m.get('executionType')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('productNamespace') is not None:
+            self.product_namespace = m.get('productNamespace')
+        if m.get('publish') is not None:
+            self.publish = m.get('publish')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('releaseState') is not None:
+            self.release_state = m.get('releaseState')
+        if m.get('resourceQueue') is not None:
+            self.resource_queue = m.get('resourceQueue')
+        if m.get('retryTimes') is not None:
+            self.retry_times = m.get('retryTimes')
+        if m.get('runAs') is not None:
+            self.run_as = m.get('runAs')
+        if m.get('schedule') is not None:
+            self.schedule_shrink = m.get('schedule')
+        if m.get('tags') is not None:
+            self.tags_shrink = m.get('tags')
+        if m.get('taskDefinitionJson') is not None:
+            self.task_definition_json_shrink = m.get('taskDefinitionJson')
+        if m.get('taskParallelism') is not None:
+            self.task_parallelism = m.get('taskParallelism')
+        if m.get('taskRelationJson') is not None:
+            self.task_relation_json_shrink = m.get('taskRelationJson')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        return self
+
+
+class UpdateProcessDefinitionWithScheduleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        alert_email_address: str = None,
+        biz_id: str = None,
+        code: str = None,
+        create_time: str = None,
+        crontab: str = None,
+        description: str = None,
+        end_time: str = None,
+        execution_type: str = None,
+        id: str = None,
+        name: str = None,
+        project_name: str = None,
+        release_state: str = None,
+        start_time: str = None,
+        timezone_id: str = None,
+        update_time: str = None,
+        user_id: str = None,
+        user_name: str = None,
+        version: int = None,
+        version_hash_code: str = None,
+    ):
+        self.alert_email_address = alert_email_address
+        self.biz_id = biz_id
+        self.code = code
+        self.create_time = create_time
+        self.crontab = crontab
+        self.description = description
+        self.end_time = end_time
+        self.execution_type = execution_type
+        self.id = id
+        self.name = name
+        self.project_name = project_name
+        self.release_state = release_state
+        self.start_time = start_time
+        self.timezone_id = timezone_id
+        self.update_time = update_time
+        self.user_id = user_id
+        self.user_name = user_name
+        self.version = version
+        self.version_hash_code = version_hash_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_email_address is not None:
+            result['alertEmailAddress'] = self.alert_email_address
+        if self.biz_id is not None:
+            result['bizId'] = self.biz_id
+        if self.code is not None:
+            result['code'] = self.code
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.crontab is not None:
+            result['crontab'] = self.crontab
+        if self.description is not None:
+            result['description'] = self.description
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.execution_type is not None:
+            result['executionType'] = self.execution_type
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.project_name is not None:
+            result['projectName'] = self.project_name
+        if self.release_state is not None:
+            result['releaseState'] = self.release_state
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.timezone_id is not None:
+            result['timezoneId'] = self.timezone_id
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        if self.version is not None:
+            result['version'] = self.version
+        if self.version_hash_code is not None:
+            result['versionHashCode'] = self.version_hash_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alertEmailAddress') is not None:
+            self.alert_email_address = m.get('alertEmailAddress')
+        if m.get('bizId') is not None:
+            self.biz_id = m.get('bizId')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('crontab') is not None:
+            self.crontab = m.get('crontab')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('executionType') is not None:
+            self.execution_type = m.get('executionType')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('projectName') is not None:
+            self.project_name = m.get('projectName')
+        if m.get('releaseState') is not None:
+            self.release_state = m.get('releaseState')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('timezoneId') is not None:
+            self.timezone_id = m.get('timezoneId')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('versionHashCode') is not None:
+            self.version_hash_code = m.get('versionHashCode')
+        return self
+
+
+class UpdateProcessDefinitionWithScheduleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: UpdateProcessDefinitionWithScheduleResponseBodyData = None,
+        failed: str = None,
+        http_status_code: int = None,
+        msg: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.failed = failed
+        self.http_status_code = http_status_code
+        self.msg = msg
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.failed is not None:
+            result['failed'] = self.failed
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.msg is not None:
+            result['msg'] = self.msg
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = UpdateProcessDefinitionWithScheduleResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('failed') is not None:
+            self.failed = m.get('failed')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('msg') is not None:
+            self.msg = m.get('msg')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateProcessDefinitionWithScheduleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateProcessDefinitionWithScheduleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateProcessDefinitionWithScheduleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

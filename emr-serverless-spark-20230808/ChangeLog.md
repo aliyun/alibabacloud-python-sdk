@@ -1,3 +1,9 @@
+2024-12-24 Version: 1.9.0
+- Support API CreateProcessDefinitionWithSchedule.
+- Support API StartProcessInstance.
+- Support API UpdateProcessDefinitionWithSchedule.
+
+
 2024-12-10 Version: 1.8.1
 - Update API ListJobRuns: update response param.
 
