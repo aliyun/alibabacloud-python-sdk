@@ -18281,131 +18281,6 @@ class GetEdgeContainerTerminalResponse(TeaModel):
         return self
 
 
-class GetErServiceRequest(TeaModel):
-    def __init__(
-        self,
-        owner_id: int = None,
-        security_token: str = None,
-    ):
-        self.owner_id = owner_id
-        self.security_token = security_token
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
-        return self
-
-
-class GetErServiceResponseBody(TeaModel):
-    def __init__(
-        self,
-        plan_name: str = None,
-        request_id: str = None,
-        status: str = None,
-    ):
-        # The billing mode. Valid values:
-        # 
-        # *   er_paymode: billed for customers on the China site.
-        # *   er_freemode: free for customers on the China site.
-        # *   er_paymodeintl: billed for customers on the International site.
-        # *   err_freemodeintl: free for customers on the International site
-        self.plan_name = plan_name
-        # The request ID.
-        self.request_id = request_id
-        # The service status. Valid values:
-        # 
-        # *   Creating
-        # *   Running
-        # *   NotOpened
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.plan_name is not None:
-            result['PlanName'] = self.plan_name
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PlanName') is not None:
-            self.plan_name = m.get('PlanName')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class GetErServiceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetErServiceResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetErServiceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetKvRequest(TeaModel):
     def __init__(
         self,
@@ -19053,6 +18928,8 @@ class GetOriginProtectionRequest(TeaModel):
         site_id: int = None,
     ):
         # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.site_id = site_id
 
     def validate(self):
