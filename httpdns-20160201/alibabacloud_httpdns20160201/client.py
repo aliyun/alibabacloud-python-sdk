@@ -718,3 +718,107 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_domains_with_options_async(request, runtime)
+
+    def refresh_resolve_cache_with_options(
+        self,
+        tmp_req: httpdns_20160201_models.RefreshResolveCacheRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> httpdns_20160201_models.RefreshResolveCacheResponse:
+        """
+        @summary 刷新域名缓存
+        
+        @param tmp_req: RefreshResolveCacheRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshResolveCacheResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = httpdns_20160201_models.RefreshResolveCacheShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.domains):
+            request.domains_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domains, 'Domains', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.domains_shrink):
+            query['Domains'] = request.domains_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshResolveCache',
+            version='2016-02-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            httpdns_20160201_models.RefreshResolveCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refresh_resolve_cache_with_options_async(
+        self,
+        tmp_req: httpdns_20160201_models.RefreshResolveCacheRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> httpdns_20160201_models.RefreshResolveCacheResponse:
+        """
+        @summary 刷新域名缓存
+        
+        @param tmp_req: RefreshResolveCacheRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshResolveCacheResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = httpdns_20160201_models.RefreshResolveCacheShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.domains):
+            request.domains_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domains, 'Domains', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.domains_shrink):
+            query['Domains'] = request.domains_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshResolveCache',
+            version='2016-02-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            httpdns_20160201_models.RefreshResolveCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refresh_resolve_cache(
+        self,
+        request: httpdns_20160201_models.RefreshResolveCacheRequest,
+    ) -> httpdns_20160201_models.RefreshResolveCacheResponse:
+        """
+        @summary 刷新域名缓存
+        
+        @param request: RefreshResolveCacheRequest
+        @return: RefreshResolveCacheResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.refresh_resolve_cache_with_options(request, runtime)
+
+    async def refresh_resolve_cache_async(
+        self,
+        request: httpdns_20160201_models.RefreshResolveCacheRequest,
+    ) -> httpdns_20160201_models.RefreshResolveCacheResponse:
+        """
+        @summary 刷新域名缓存
+        
+        @param request: RefreshResolveCacheRequest
+        @return: RefreshResolveCacheResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.refresh_resolve_cache_with_options_async(request, runtime)
