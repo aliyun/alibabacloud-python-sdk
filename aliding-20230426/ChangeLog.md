@@ -1,3 +1,11 @@
+2024-12-24 Version: 2.29.0
+- Support API GetOrgOrWebOpenDocContentTaskId.
+- Support API QueryConferenceInfoByRoomCode.
+- Update API CreateScheduleConference: add param ScheduleConfSettingModel.
+- Update API GetOrgLiveList: update response param.
+- Update API UpdateScheduleConfSettings: update param ScheduleConfSettingModel.
+
+
 2024-12-03 Version: 2.28.1
 - Update API CreatePersonalTodoTask: add param ReminderTimeStamp.
 

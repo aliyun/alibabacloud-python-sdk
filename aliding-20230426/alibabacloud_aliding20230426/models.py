@@ -14244,6 +14244,265 @@ class CreateScheduleConferenceShrinkHeaders(TeaModel):
         return self
 
 
+class CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting(TeaModel):
+    def __init__(
+        self,
+        is_follow_host: bool = None,
+        mode: str = None,
+        record_auto_start: int = None,
+        record_auto_start_type: int = None,
+    ):
+        self.is_follow_host = is_follow_host
+        self.mode = mode
+        self.record_auto_start = record_auto_start
+        self.record_auto_start_type = record_auto_start_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_follow_host is not None:
+            result['IsFollowHost'] = self.is_follow_host
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.record_auto_start is not None:
+            result['RecordAutoStart'] = self.record_auto_start
+        if self.record_auto_start_type is not None:
+            result['RecordAutoStartType'] = self.record_auto_start_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsFollowHost') is not None:
+            self.is_follow_host = m.get('IsFollowHost')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('RecordAutoStart') is not None:
+            self.record_auto_start = m.get('RecordAutoStart')
+        if m.get('RecordAutoStartType') is not None:
+            self.record_auto_start_type = m.get('RecordAutoStartType')
+        return self
+
+
+class CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings(TeaModel):
+    def __init__(
+        self,
+        auto_open_mode: int = None,
+        cool_app_code: str = None,
+        extension_app_biz_data: str = None,
+    ):
+        self.auto_open_mode = auto_open_mode
+        self.cool_app_code = cool_app_code
+        self.extension_app_biz_data = extension_app_biz_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_open_mode is not None:
+            result['AutoOpenMode'] = self.auto_open_mode
+        if self.cool_app_code is not None:
+            result['CoolAppCode'] = self.cool_app_code
+        if self.extension_app_biz_data is not None:
+            result['ExtensionAppBizData'] = self.extension_app_biz_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoOpenMode') is not None:
+            self.auto_open_mode = m.get('AutoOpenMode')
+        if m.get('CoolAppCode') is not None:
+            self.cool_app_code = m.get('CoolAppCode')
+        if m.get('ExtensionAppBizData') is not None:
+            self.extension_app_biz_data = m.get('ExtensionAppBizData')
+        return self
+
+
+class CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting(TeaModel):
+    def __init__(
+        self,
+        cloud_record_owner_user_id: str = None,
+        enable_chat: int = None,
+        enable_web_anonymous_join: bool = None,
+        join_before_host: int = None,
+        lock_media_status_mic_mute: int = None,
+        lock_nick: int = None,
+        minutes_owner_user_id: str = None,
+        mozi_conf_extension_app_settings: List[CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings] = None,
+        push_all_meeting_records: bool = None,
+        push_cloud_record_card: bool = None,
+        push_minutes_card: bool = None,
+        waiting_room: int = None,
+    ):
+        self.cloud_record_owner_user_id = cloud_record_owner_user_id
+        self.enable_chat = enable_chat
+        self.enable_web_anonymous_join = enable_web_anonymous_join
+        self.join_before_host = join_before_host
+        self.lock_media_status_mic_mute = lock_media_status_mic_mute
+        self.lock_nick = lock_nick
+        self.minutes_owner_user_id = minutes_owner_user_id
+        self.mozi_conf_extension_app_settings = mozi_conf_extension_app_settings
+        self.push_all_meeting_records = push_all_meeting_records
+        self.push_cloud_record_card = push_cloud_record_card
+        self.push_minutes_card = push_minutes_card
+        self.waiting_room = waiting_room
+
+    def validate(self):
+        if self.mozi_conf_extension_app_settings:
+            for k in self.mozi_conf_extension_app_settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cloud_record_owner_user_id is not None:
+            result['CloudRecordOwnerUserId'] = self.cloud_record_owner_user_id
+        if self.enable_chat is not None:
+            result['EnableChat'] = self.enable_chat
+        if self.enable_web_anonymous_join is not None:
+            result['EnableWebAnonymousJoin'] = self.enable_web_anonymous_join
+        if self.join_before_host is not None:
+            result['JoinBeforeHost'] = self.join_before_host
+        if self.lock_media_status_mic_mute is not None:
+            result['LockMediaStatusMicMute'] = self.lock_media_status_mic_mute
+        if self.lock_nick is not None:
+            result['LockNick'] = self.lock_nick
+        if self.minutes_owner_user_id is not None:
+            result['MinutesOwnerUserId'] = self.minutes_owner_user_id
+        result['MoziConfExtensionAppSettings'] = []
+        if self.mozi_conf_extension_app_settings is not None:
+            for k in self.mozi_conf_extension_app_settings:
+                result['MoziConfExtensionAppSettings'].append(k.to_map() if k else None)
+        if self.push_all_meeting_records is not None:
+            result['PushAllMeetingRecords'] = self.push_all_meeting_records
+        if self.push_cloud_record_card is not None:
+            result['PushCloudRecordCard'] = self.push_cloud_record_card
+        if self.push_minutes_card is not None:
+            result['PushMinutesCard'] = self.push_minutes_card
+        if self.waiting_room is not None:
+            result['WaitingRoom'] = self.waiting_room
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CloudRecordOwnerUserId') is not None:
+            self.cloud_record_owner_user_id = m.get('CloudRecordOwnerUserId')
+        if m.get('EnableChat') is not None:
+            self.enable_chat = m.get('EnableChat')
+        if m.get('EnableWebAnonymousJoin') is not None:
+            self.enable_web_anonymous_join = m.get('EnableWebAnonymousJoin')
+        if m.get('JoinBeforeHost') is not None:
+            self.join_before_host = m.get('JoinBeforeHost')
+        if m.get('LockMediaStatusMicMute') is not None:
+            self.lock_media_status_mic_mute = m.get('LockMediaStatusMicMute')
+        if m.get('LockNick') is not None:
+            self.lock_nick = m.get('LockNick')
+        if m.get('MinutesOwnerUserId') is not None:
+            self.minutes_owner_user_id = m.get('MinutesOwnerUserId')
+        self.mozi_conf_extension_app_settings = []
+        if m.get('MoziConfExtensionAppSettings') is not None:
+            for k in m.get('MoziConfExtensionAppSettings'):
+                temp_model = CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings()
+                self.mozi_conf_extension_app_settings.append(temp_model.from_map(k))
+        if m.get('PushAllMeetingRecords') is not None:
+            self.push_all_meeting_records = m.get('PushAllMeetingRecords')
+        if m.get('PushCloudRecordCard') is not None:
+            self.push_cloud_record_card = m.get('PushCloudRecordCard')
+        if m.get('PushMinutesCard') is not None:
+            self.push_minutes_card = m.get('PushMinutesCard')
+        if m.get('WaitingRoom') is not None:
+            self.waiting_room = m.get('WaitingRoom')
+        return self
+
+
+class CreateScheduleConferenceRequestScheduleConfSettingModel(TeaModel):
+    def __init__(
+        self,
+        cohost_user_ids: List[str] = None,
+        conf_allowed_corp_id: str = None,
+        host_user_id: str = None,
+        lock_room: int = None,
+        mozi_conf_open_record_setting: CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting = None,
+        mozi_conf_virtual_extra_setting: CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting = None,
+        mute_on_join: int = None,
+        screen_share_forbidden: int = None,
+    ):
+        self.cohost_user_ids = cohost_user_ids
+        self.conf_allowed_corp_id = conf_allowed_corp_id
+        self.host_user_id = host_user_id
+        self.lock_room = lock_room
+        self.mozi_conf_open_record_setting = mozi_conf_open_record_setting
+        self.mozi_conf_virtual_extra_setting = mozi_conf_virtual_extra_setting
+        self.mute_on_join = mute_on_join
+        self.screen_share_forbidden = screen_share_forbidden
+
+    def validate(self):
+        if self.mozi_conf_open_record_setting:
+            self.mozi_conf_open_record_setting.validate()
+        if self.mozi_conf_virtual_extra_setting:
+            self.mozi_conf_virtual_extra_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cohost_user_ids is not None:
+            result['CohostUserIds'] = self.cohost_user_ids
+        if self.conf_allowed_corp_id is not None:
+            result['ConfAllowedCorpId'] = self.conf_allowed_corp_id
+        if self.host_user_id is not None:
+            result['HostUserId'] = self.host_user_id
+        if self.lock_room is not None:
+            result['LockRoom'] = self.lock_room
+        if self.mozi_conf_open_record_setting is not None:
+            result['MoziConfOpenRecordSetting'] = self.mozi_conf_open_record_setting.to_map()
+        if self.mozi_conf_virtual_extra_setting is not None:
+            result['MoziConfVirtualExtraSetting'] = self.mozi_conf_virtual_extra_setting.to_map()
+        if self.mute_on_join is not None:
+            result['MuteOnJoin'] = self.mute_on_join
+        if self.screen_share_forbidden is not None:
+            result['ScreenShareForbidden'] = self.screen_share_forbidden
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CohostUserIds') is not None:
+            self.cohost_user_ids = m.get('CohostUserIds')
+        if m.get('ConfAllowedCorpId') is not None:
+            self.conf_allowed_corp_id = m.get('ConfAllowedCorpId')
+        if m.get('HostUserId') is not None:
+            self.host_user_id = m.get('HostUserId')
+        if m.get('LockRoom') is not None:
+            self.lock_room = m.get('LockRoom')
+        if m.get('MoziConfOpenRecordSetting') is not None:
+            temp_model = CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting()
+            self.mozi_conf_open_record_setting = temp_model.from_map(m['MoziConfOpenRecordSetting'])
+        if m.get('MoziConfVirtualExtraSetting') is not None:
+            temp_model = CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting()
+            self.mozi_conf_virtual_extra_setting = temp_model.from_map(m['MoziConfVirtualExtraSetting'])
+        if m.get('MuteOnJoin') is not None:
+            self.mute_on_join = m.get('MuteOnJoin')
+        if m.get('ScreenShareForbidden') is not None:
+            self.screen_share_forbidden = m.get('ScreenShareForbidden')
+        return self
+
+
 class CreateScheduleConferenceRequestTenantContext(TeaModel):
     def __init__(
         self,
@@ -14275,12 +14534,14 @@ class CreateScheduleConferenceRequest(TeaModel):
     def __init__(
         self,
         end_time: int = None,
+        schedule_conf_setting_model: CreateScheduleConferenceRequestScheduleConfSettingModel = None,
         start_time: int = None,
         tenant_context: CreateScheduleConferenceRequestTenantContext = None,
         title: str = None,
     ):
         # This parameter is required.
         self.end_time = end_time
+        self.schedule_conf_setting_model = schedule_conf_setting_model
         # This parameter is required.
         self.start_time = start_time
         self.tenant_context = tenant_context
@@ -14288,6 +14549,8 @@ class CreateScheduleConferenceRequest(TeaModel):
         self.title = title
 
     def validate(self):
+        if self.schedule_conf_setting_model:
+            self.schedule_conf_setting_model.validate()
         if self.tenant_context:
             self.tenant_context.validate()
 
@@ -14299,6 +14562,8 @@ class CreateScheduleConferenceRequest(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.schedule_conf_setting_model is not None:
+            result['ScheduleConfSettingModel'] = self.schedule_conf_setting_model.to_map()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.tenant_context is not None:
@@ -14311,6 +14576,9 @@ class CreateScheduleConferenceRequest(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('ScheduleConfSettingModel') is not None:
+            temp_model = CreateScheduleConferenceRequestScheduleConfSettingModel()
+            self.schedule_conf_setting_model = temp_model.from_map(m['ScheduleConfSettingModel'])
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('TenantContext') is not None:
@@ -14325,12 +14593,14 @@ class CreateScheduleConferenceShrinkRequest(TeaModel):
     def __init__(
         self,
         end_time: int = None,
+        schedule_conf_setting_model_shrink: str = None,
         start_time: int = None,
         tenant_context_shrink: str = None,
         title: str = None,
     ):
         # This parameter is required.
         self.end_time = end_time
+        self.schedule_conf_setting_model_shrink = schedule_conf_setting_model_shrink
         # This parameter is required.
         self.start_time = start_time
         self.tenant_context_shrink = tenant_context_shrink
@@ -14348,6 +14618,8 @@ class CreateScheduleConferenceShrinkRequest(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.schedule_conf_setting_model_shrink is not None:
+            result['ScheduleConfSettingModel'] = self.schedule_conf_setting_model_shrink
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.tenant_context_shrink is not None:
@@ -14360,6 +14632,8 @@ class CreateScheduleConferenceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('ScheduleConfSettingModel') is not None:
+            self.schedule_conf_setting_model_shrink = m.get('ScheduleConfSettingModel')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('TenantContext') is not None:
@@ -38132,6 +38406,7 @@ class GetOrgLiveListResponseBodyResultNewLiveLiveList(TeaModel):
     def __init__(
         self,
         anchor_nickname: str = None,
+        anchor_union_id: str = None,
         anchor_user_id: str = None,
         live_end_time: int = None,
         live_start_time: int = None,
@@ -38140,6 +38415,7 @@ class GetOrgLiveListResponseBodyResultNewLiveLiveList(TeaModel):
         title: str = None,
     ):
         self.anchor_nickname = anchor_nickname
+        self.anchor_union_id = anchor_union_id
         self.anchor_user_id = anchor_user_id
         self.live_end_time = live_end_time
         self.live_start_time = live_start_time
@@ -38158,6 +38434,8 @@ class GetOrgLiveListResponseBodyResultNewLiveLiveList(TeaModel):
         result = dict()
         if self.anchor_nickname is not None:
             result['AnchorNickname'] = self.anchor_nickname
+        if self.anchor_union_id is not None:
+            result['AnchorUnionId'] = self.anchor_union_id
         if self.anchor_user_id is not None:
             result['AnchorUserId'] = self.anchor_user_id
         if self.live_end_time is not None:
@@ -38176,6 +38454,8 @@ class GetOrgLiveListResponseBodyResultNewLiveLiveList(TeaModel):
         m = m or dict()
         if m.get('AnchorNickname') is not None:
             self.anchor_nickname = m.get('AnchorNickname')
+        if m.get('AnchorUnionId') is not None:
+            self.anchor_union_id = m.get('AnchorUnionId')
         if m.get('AnchorUserId') is not None:
             self.anchor_user_id = m.get('AnchorUserId')
         if m.get('LiveEndTime') is not None:
@@ -38254,6 +38534,7 @@ class GetOrgLiveListResponseBodyResultUpdateLiveLiveList(TeaModel):
     def __init__(
         self,
         anchor_nickname: str = None,
+        anchor_union_id: str = None,
         anchor_user_id: str = None,
         live_end_time: int = None,
         live_start_time: int = None,
@@ -38261,6 +38542,7 @@ class GetOrgLiveListResponseBodyResultUpdateLiveLiveList(TeaModel):
         title: str = None,
     ):
         self.anchor_nickname = anchor_nickname
+        self.anchor_union_id = anchor_union_id
         self.anchor_user_id = anchor_user_id
         self.live_end_time = live_end_time
         self.live_start_time = live_start_time
@@ -38278,6 +38560,8 @@ class GetOrgLiveListResponseBodyResultUpdateLiveLiveList(TeaModel):
         result = dict()
         if self.anchor_nickname is not None:
             result['AnchorNickname'] = self.anchor_nickname
+        if self.anchor_union_id is not None:
+            result['AnchorUnionId'] = self.anchor_union_id
         if self.anchor_user_id is not None:
             result['AnchorUserId'] = self.anchor_user_id
         if self.live_end_time is not None:
@@ -38294,6 +38578,8 @@ class GetOrgLiveListResponseBodyResultUpdateLiveLiveList(TeaModel):
         m = m or dict()
         if m.get('AnchorNickname') is not None:
             self.anchor_nickname = m.get('AnchorNickname')
+        if m.get('AnchorUnionId') is not None:
+            self.anchor_union_id = m.get('AnchorUnionId')
         if m.get('AnchorUserId') is not None:
             self.anchor_user_id = m.get('AnchorUserId')
         if m.get('LiveEndTime') is not None:
@@ -38488,6 +38774,309 @@ class GetOrgLiveListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetOrgLiveListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOrgOrWebOpenDocContentTaskIdHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetOrgOrWebOpenDocContentTaskIdHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetOrgOrWebOpenDocContentTaskIdHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetOrgOrWebOpenDocContentTaskIdHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetOrgOrWebOpenDocContentTaskIdShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetOrgOrWebOpenDocContentTaskIdRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetOrgOrWebOpenDocContentTaskIdRequest(TeaModel):
+    def __init__(
+        self,
+        dentry_uuid: str = None,
+        generate_cp: bool = None,
+        target_format: str = None,
+        tenant_context: GetOrgOrWebOpenDocContentTaskIdRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.dentry_uuid = dentry_uuid
+        self.generate_cp = generate_cp
+        self.target_format = target_format
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dentry_uuid is not None:
+            result['DentryUuid'] = self.dentry_uuid
+        if self.generate_cp is not None:
+            result['GenerateCp'] = self.generate_cp
+        if self.target_format is not None:
+            result['TargetFormat'] = self.target_format
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DentryUuid') is not None:
+            self.dentry_uuid = m.get('DentryUuid')
+        if m.get('GenerateCp') is not None:
+            self.generate_cp = m.get('GenerateCp')
+        if m.get('TargetFormat') is not None:
+            self.target_format = m.get('TargetFormat')
+        if m.get('TenantContext') is not None:
+            temp_model = GetOrgOrWebOpenDocContentTaskIdRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class GetOrgOrWebOpenDocContentTaskIdShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dentry_uuid: str = None,
+        generate_cp: bool = None,
+        target_format: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.dentry_uuid = dentry_uuid
+        self.generate_cp = generate_cp
+        self.target_format = target_format
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dentry_uuid is not None:
+            result['DentryUuid'] = self.dentry_uuid
+        if self.generate_cp is not None:
+            result['GenerateCp'] = self.generate_cp
+        if self.target_format is not None:
+            result['TargetFormat'] = self.target_format
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DentryUuid') is not None:
+            self.dentry_uuid = m.get('DentryUuid')
+        if m.get('GenerateCp') is not None:
+            self.generate_cp = m.get('GenerateCp')
+        if m.get('TargetFormat') is not None:
+            self.target_format = m.get('TargetFormat')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class GetOrgOrWebOpenDocContentTaskIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: int = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetOrgOrWebOpenDocContentTaskIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOrgOrWebOpenDocContentTaskIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOrgOrWebOpenDocContentTaskIdResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -60004,6 +60593,436 @@ class QueryConferenceInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryConferenceInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryConferenceInfoByRoomCodeHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class QueryConferenceInfoByRoomCodeHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: QueryConferenceInfoByRoomCodeHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = QueryConferenceInfoByRoomCodeHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class QueryConferenceInfoByRoomCodeShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class QueryConferenceInfoByRoomCodeRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class QueryConferenceInfoByRoomCodeRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context: QueryConferenceInfoByRoomCodeRequestTenantContext = None,
+        max_results: int = None,
+        next_token: str = None,
+        room_code: str = None,
+    ):
+        self.tenant_context = tenant_context
+        self.max_results = max_results
+        # This parameter is required.
+        self.next_token = next_token
+        # This parameter is required.
+        self.room_code = room_code
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.room_code is not None:
+            result['roomCode'] = self.room_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            temp_model = QueryConferenceInfoByRoomCodeRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('roomCode') is not None:
+            self.room_code = m.get('roomCode')
+        return self
+
+
+class QueryConferenceInfoByRoomCodeShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context_shrink: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        room_code: str = None,
+    ):
+        self.tenant_context_shrink = tenant_context_shrink
+        self.max_results = max_results
+        # This parameter is required.
+        self.next_token = next_token
+        # This parameter is required.
+        self.room_code = room_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.room_code is not None:
+            result['roomCode'] = self.room_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('roomCode') is not None:
+            self.room_code = m.get('roomCode')
+        return self
+
+
+class QueryConferenceInfoByRoomCodeResponseBodyConferenceList(TeaModel):
+    def __init__(
+        self,
+        biz_type: str = None,
+        conf_duration: int = None,
+        conference_id: str = None,
+        creator_id: str = None,
+        creator_nick: str = None,
+        end_time: int = None,
+        external_link_url: str = None,
+        room_code: str = None,
+        schedule_conference_id: str = None,
+        start_time: int = None,
+        status: int = None,
+        title: str = None,
+    ):
+        self.biz_type = biz_type
+        self.conf_duration = conf_duration
+        self.conference_id = conference_id
+        self.creator_id = creator_id
+        self.creator_nick = creator_nick
+        self.end_time = end_time
+        self.external_link_url = external_link_url
+        self.room_code = room_code
+        self.schedule_conference_id = schedule_conference_id
+        self.start_time = start_time
+        self.status = status
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.conf_duration is not None:
+            result['ConfDuration'] = self.conf_duration
+        if self.conference_id is not None:
+            result['ConferenceId'] = self.conference_id
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.creator_nick is not None:
+            result['CreatorNick'] = self.creator_nick
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.external_link_url is not None:
+            result['ExternalLinkUrl'] = self.external_link_url
+        if self.room_code is not None:
+            result['RoomCode'] = self.room_code
+        if self.schedule_conference_id is not None:
+            result['ScheduleConferenceId'] = self.schedule_conference_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('ConfDuration') is not None:
+            self.conf_duration = m.get('ConfDuration')
+        if m.get('ConferenceId') is not None:
+            self.conference_id = m.get('ConferenceId')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('CreatorNick') is not None:
+            self.creator_nick = m.get('CreatorNick')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ExternalLinkUrl') is not None:
+            self.external_link_url = m.get('ExternalLinkUrl')
+        if m.get('RoomCode') is not None:
+            self.room_code = m.get('RoomCode')
+        if m.get('ScheduleConferenceId') is not None:
+            self.schedule_conference_id = m.get('ScheduleConferenceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class QueryConferenceInfoByRoomCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        conference_list: List[QueryConferenceInfoByRoomCodeResponseBodyConferenceList] = None,
+        dingtalk_request_id: str = None,
+        has_more: bool = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.conference_list = conference_list
+        self.dingtalk_request_id = dingtalk_request_id
+        self.has_more = has_more
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.conference_list:
+            for k in self.conference_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['conferenceList'] = []
+        if self.conference_list is not None:
+            for k in self.conference_list:
+                result['conferenceList'].append(k.to_map() if k else None)
+        if self.dingtalk_request_id is not None:
+            result['dingtalkRequestId'] = self.dingtalk_request_id
+        if self.has_more is not None:
+            result['hasMore'] = self.has_more
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conference_list = []
+        if m.get('conferenceList') is not None:
+            for k in m.get('conferenceList'):
+                temp_model = QueryConferenceInfoByRoomCodeResponseBodyConferenceList()
+                self.conference_list.append(temp_model.from_map(k))
+        if m.get('dingtalkRequestId') is not None:
+            self.dingtalk_request_id = m.get('dingtalkRequestId')
+        if m.get('hasMore') is not None:
+            self.has_more = m.get('hasMore')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class QueryConferenceInfoByRoomCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryConferenceInfoByRoomCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryConferenceInfoByRoomCodeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -81714,6 +82733,90 @@ class UpdateScheduleConfSettingsShrinkHeaders(TeaModel):
         return self
 
 
+class UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting(TeaModel):
+    def __init__(
+        self,
+        is_follow_host: bool = None,
+        mode: str = None,
+        record_auto_start: int = None,
+        record_auto_start_type: int = None,
+    ):
+        self.is_follow_host = is_follow_host
+        self.mode = mode
+        self.record_auto_start = record_auto_start
+        self.record_auto_start_type = record_auto_start_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_follow_host is not None:
+            result['IsFollowHost'] = self.is_follow_host
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.record_auto_start is not None:
+            result['RecordAutoStart'] = self.record_auto_start
+        if self.record_auto_start_type is not None:
+            result['RecordAutoStartType'] = self.record_auto_start_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsFollowHost') is not None:
+            self.is_follow_host = m.get('IsFollowHost')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('RecordAutoStart') is not None:
+            self.record_auto_start = m.get('RecordAutoStart')
+        if m.get('RecordAutoStartType') is not None:
+            self.record_auto_start_type = m.get('RecordAutoStartType')
+        return self
+
+
+class UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings(TeaModel):
+    def __init__(
+        self,
+        auto_open_mode: int = None,
+        cool_app_code: str = None,
+        extension_app_biz_data: str = None,
+    ):
+        self.auto_open_mode = auto_open_mode
+        self.cool_app_code = cool_app_code
+        self.extension_app_biz_data = extension_app_biz_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_open_mode is not None:
+            result['AutoOpenMode'] = self.auto_open_mode
+        if self.cool_app_code is not None:
+            result['CoolAppCode'] = self.cool_app_code
+        if self.extension_app_biz_data is not None:
+            result['ExtensionAppBizData'] = self.extension_app_biz_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoOpenMode') is not None:
+            self.auto_open_mode = m.get('AutoOpenMode')
+        if m.get('CoolAppCode') is not None:
+            self.cool_app_code = m.get('CoolAppCode')
+        if m.get('ExtensionAppBizData') is not None:
+            self.extension_app_biz_data = m.get('ExtensionAppBizData')
+        return self
+
+
 class UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting(TeaModel):
     def __init__(
         self,
@@ -81724,6 +82827,7 @@ class UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualEx
         lock_media_status_mic_mute: int = None,
         lock_nick: int = None,
         minutes_owner_user_id: str = None,
+        mozi_conf_extension_app_settings: List[UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings] = None,
         push_all_meeting_records: bool = None,
         push_cloud_record_card: bool = None,
         push_minutes_card: bool = None,
@@ -81736,13 +82840,17 @@ class UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualEx
         self.lock_media_status_mic_mute = lock_media_status_mic_mute
         self.lock_nick = lock_nick
         self.minutes_owner_user_id = minutes_owner_user_id
+        self.mozi_conf_extension_app_settings = mozi_conf_extension_app_settings
         self.push_all_meeting_records = push_all_meeting_records
         self.push_cloud_record_card = push_cloud_record_card
         self.push_minutes_card = push_minutes_card
         self.waiting_room = waiting_room
 
     def validate(self):
-        pass
+        if self.mozi_conf_extension_app_settings:
+            for k in self.mozi_conf_extension_app_settings:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -81764,6 +82872,10 @@ class UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualEx
             result['LockNick'] = self.lock_nick
         if self.minutes_owner_user_id is not None:
             result['MinutesOwnerUserId'] = self.minutes_owner_user_id
+        result['MoziConfExtensionAppSettings'] = []
+        if self.mozi_conf_extension_app_settings is not None:
+            for k in self.mozi_conf_extension_app_settings:
+                result['MoziConfExtensionAppSettings'].append(k.to_map() if k else None)
         if self.push_all_meeting_records is not None:
             result['PushAllMeetingRecords'] = self.push_all_meeting_records
         if self.push_cloud_record_card is not None:
@@ -81790,6 +82902,11 @@ class UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualEx
             self.lock_nick = m.get('LockNick')
         if m.get('MinutesOwnerUserId') is not None:
             self.minutes_owner_user_id = m.get('MinutesOwnerUserId')
+        self.mozi_conf_extension_app_settings = []
+        if m.get('MoziConfExtensionAppSettings') is not None:
+            for k in m.get('MoziConfExtensionAppSettings'):
+                temp_model = UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings()
+                self.mozi_conf_extension_app_settings.append(temp_model.from_map(k))
         if m.get('PushAllMeetingRecords') is not None:
             self.push_all_meeting_records = m.get('PushAllMeetingRecords')
         if m.get('PushCloudRecordCard') is not None:
@@ -81808,6 +82925,7 @@ class UpdateScheduleConfSettingsRequestScheduleConfSettingModel(TeaModel):
         conf_allowed_corp_id: str = None,
         host_user_id: str = None,
         lock_room: int = None,
+        mozi_conf_open_record_setting: UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting = None,
         mozi_conf_virtual_extra_setting: UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting = None,
         mute_on_join: int = None,
         screen_share_forbidden: int = None,
@@ -81816,11 +82934,14 @@ class UpdateScheduleConfSettingsRequestScheduleConfSettingModel(TeaModel):
         self.conf_allowed_corp_id = conf_allowed_corp_id
         self.host_user_id = host_user_id
         self.lock_room = lock_room
+        self.mozi_conf_open_record_setting = mozi_conf_open_record_setting
         self.mozi_conf_virtual_extra_setting = mozi_conf_virtual_extra_setting
         self.mute_on_join = mute_on_join
         self.screen_share_forbidden = screen_share_forbidden
 
     def validate(self):
+        if self.mozi_conf_open_record_setting:
+            self.mozi_conf_open_record_setting.validate()
         if self.mozi_conf_virtual_extra_setting:
             self.mozi_conf_virtual_extra_setting.validate()
 
@@ -81838,6 +82959,8 @@ class UpdateScheduleConfSettingsRequestScheduleConfSettingModel(TeaModel):
             result['HostUserId'] = self.host_user_id
         if self.lock_room is not None:
             result['LockRoom'] = self.lock_room
+        if self.mozi_conf_open_record_setting is not None:
+            result['MoziConfOpenRecordSetting'] = self.mozi_conf_open_record_setting.to_map()
         if self.mozi_conf_virtual_extra_setting is not None:
             result['MoziConfVirtualExtraSetting'] = self.mozi_conf_virtual_extra_setting.to_map()
         if self.mute_on_join is not None:
@@ -81856,6 +82979,9 @@ class UpdateScheduleConfSettingsRequestScheduleConfSettingModel(TeaModel):
             self.host_user_id = m.get('HostUserId')
         if m.get('LockRoom') is not None:
             self.lock_room = m.get('LockRoom')
+        if m.get('MoziConfOpenRecordSetting') is not None:
+            temp_model = UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting()
+            self.mozi_conf_open_record_setting = temp_model.from_map(m['MoziConfOpenRecordSetting'])
         if m.get('MoziConfVirtualExtraSetting') is not None:
             temp_model = UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting()
             self.mozi_conf_virtual_extra_setting = temp_model.from_map(m['MoziConfVirtualExtraSetting'])
