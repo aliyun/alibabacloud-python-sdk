@@ -1,3 +1,7 @@
+2024-12-24 Version: 1.2.1
+- Update API GetAbnormalEventsCount: add param showPod.
+
+
 2024-10-16 Version: 1.2.0
 - Support API GetAbnormalEventsCount.
 - Support API GetHealthPercentage.

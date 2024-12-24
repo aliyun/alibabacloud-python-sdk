@@ -283,6 +283,8 @@ class Client(OpenApiClient):
             query['namespace'] = request.namespace
         if not UtilClient.is_unset(request.pod):
             query['pod'] = request.pod
+        if not UtilClient.is_unset(request.show_pod):
+            query['showPod'] = request.show_pod
         if not UtilClient.is_unset(request.start):
             query['start'] = request.start
         req = open_api_models.OpenApiRequest(
@@ -331,6 +333,8 @@ class Client(OpenApiClient):
             query['namespace'] = request.namespace
         if not UtilClient.is_unset(request.pod):
             query['pod'] = request.pod
+        if not UtilClient.is_unset(request.show_pod):
+            query['showPod'] = request.show_pod
         if not UtilClient.is_unset(request.start):
             query['start'] = request.start
         req = open_api_models.OpenApiRequest(

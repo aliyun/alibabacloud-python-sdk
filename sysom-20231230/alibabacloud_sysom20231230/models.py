@@ -292,6 +292,7 @@ class GetAbnormalEventsCountRequest(TeaModel):
         instance: str = None,
         namespace: str = None,
         pod: str = None,
+        show_pod: int = None,
         start: float = None,
     ):
         self.cluster = cluster
@@ -300,6 +301,7 @@ class GetAbnormalEventsCountRequest(TeaModel):
         self.instance = instance
         self.namespace = namespace
         self.pod = pod
+        self.show_pod = show_pod
         self.start = start
 
     def validate(self):
@@ -321,6 +323,8 @@ class GetAbnormalEventsCountRequest(TeaModel):
             result['namespace'] = self.namespace
         if self.pod is not None:
             result['pod'] = self.pod
+        if self.show_pod is not None:
+            result['showPod'] = self.show_pod
         if self.start is not None:
             result['start'] = self.start
         return result
@@ -337,6 +341,8 @@ class GetAbnormalEventsCountRequest(TeaModel):
             self.namespace = m.get('namespace')
         if m.get('pod') is not None:
             self.pod = m.get('pod')
+        if m.get('showPod') is not None:
+            self.show_pod = m.get('showPod')
         if m.get('start') is not None:
             self.start = m.get('start')
         return self
