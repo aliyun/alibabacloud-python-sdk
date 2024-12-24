@@ -26020,6 +26020,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         category: str = None,
         cold_data_enabled: bool = None,
         collation: str = None,
+        compression_mode: str = None,
+        compression_ratio: str = None,
         connection_mode: str = None,
         connection_string: str = None,
         console_version: str = None,
@@ -26078,6 +26080,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         serverless_config: DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeServerlessConfig = None,
         slave_zones: DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones = None,
         super_permission_mode: str = None,
+        support_compression: bool = None,
         temp_dbinstance_id: str = None,
         temp_upgrade_time_end: str = None,
         temp_upgrade_time_start: str = None,
@@ -26129,6 +26132,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.cold_data_enabled = cold_data_enabled
         # The character set collation of the instance.
         self.collation = collation
+        self.compression_mode = compression_mode
+        self.compression_ratio = compression_ratio
         # The connection mode of the instance. Valid values:
         # 
         # *   **Standard**: standard mode
@@ -26316,6 +26321,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **Enable**\
         # *   **Disabled**\
         self.super_permission_mode = super_permission_mode
+        self.support_compression = support_compression
         # The ID of the temporary instance that is attached to the primary instance.
         self.temp_dbinstance_id = temp_dbinstance_id
         # The end time of the temporary upgrade of the instance.
@@ -26388,6 +26394,10 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['ColdDataEnabled'] = self.cold_data_enabled
         if self.collation is not None:
             result['Collation'] = self.collation
+        if self.compression_mode is not None:
+            result['CompressionMode'] = self.compression_mode
+        if self.compression_ratio is not None:
+            result['CompressionRatio'] = self.compression_ratio
         if self.connection_mode is not None:
             result['ConnectionMode'] = self.connection_mode
         if self.connection_string is not None:
@@ -26504,6 +26514,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['SlaveZones'] = self.slave_zones.to_map()
         if self.super_permission_mode is not None:
             result['SuperPermissionMode'] = self.super_permission_mode
+        if self.support_compression is not None:
+            result['SupportCompression'] = self.support_compression
         if self.temp_dbinstance_id is not None:
             result['TempDBInstanceId'] = self.temp_dbinstance_id
         if self.temp_upgrade_time_end is not None:
@@ -26553,6 +26565,10 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.cold_data_enabled = m.get('ColdDataEnabled')
         if m.get('Collation') is not None:
             self.collation = m.get('Collation')
+        if m.get('CompressionMode') is not None:
+            self.compression_mode = m.get('CompressionMode')
+        if m.get('CompressionRatio') is not None:
+            self.compression_ratio = m.get('CompressionRatio')
         if m.get('ConnectionMode') is not None:
             self.connection_mode = m.get('ConnectionMode')
         if m.get('ConnectionString') is not None:
@@ -26674,6 +26690,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.slave_zones = temp_model.from_map(m['SlaveZones'])
         if m.get('SuperPermissionMode') is not None:
             self.super_permission_mode = m.get('SuperPermissionMode')
+        if m.get('SupportCompression') is not None:
+            self.support_compression = m.get('SupportCompression')
         if m.get('TempDBInstanceId') is not None:
             self.temp_dbinstance_id = m.get('TempDBInstanceId')
         if m.get('TempUpgradeTimeEnd') is not None:
@@ -69685,6 +69703,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         bursting_enabled: bool = None,
         category: str = None,
         cold_data_enabled: bool = None,
+        compression_mode: str = None,
         dbinstance_class: str = None,
         dbinstance_id: str = None,
         dbinstance_storage: int = None,
@@ -69747,6 +69766,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.category = category
         # A reserved parameter.
         self.cold_data_enabled = cold_data_enabled
+        self.compression_mode = compression_mode
         # The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
         # 
         # > *   You must specify at least one of DBInstanceClass and **DBInstanceStorage**.
@@ -69889,6 +69909,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             result['Category'] = self.category
         if self.cold_data_enabled is not None:
             result['ColdDataEnabled'] = self.cold_data_enabled
+        if self.compression_mode is not None:
+            result['CompressionMode'] = self.compression_mode
         if self.dbinstance_class is not None:
             result['DBInstanceClass'] = self.dbinstance_class
         if self.dbinstance_id is not None:
@@ -69955,6 +69977,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             self.category = m.get('Category')
         if m.get('ColdDataEnabled') is not None:
             self.cold_data_enabled = m.get('ColdDataEnabled')
+        if m.get('CompressionMode') is not None:
+            self.compression_mode = m.get('CompressionMode')
         if m.get('DBInstanceClass') is not None:
             self.dbinstance_class = m.get('DBInstanceClass')
         if m.get('DBInstanceId') is not None:
@@ -70019,6 +70043,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         bursting_enabled: bool = None,
         category: str = None,
         cold_data_enabled: bool = None,
+        compression_mode: str = None,
         dbinstance_class: str = None,
         dbinstance_id: str = None,
         dbinstance_storage: int = None,
@@ -70081,6 +70106,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         self.category = category
         # A reserved parameter.
         self.cold_data_enabled = cold_data_enabled
+        self.compression_mode = compression_mode
         # The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
         # 
         # > *   You must specify at least one of DBInstanceClass and **DBInstanceStorage**.
@@ -70222,6 +70248,8 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
             result['Category'] = self.category
         if self.cold_data_enabled is not None:
             result['ColdDataEnabled'] = self.cold_data_enabled
+        if self.compression_mode is not None:
+            result['CompressionMode'] = self.compression_mode
         if self.dbinstance_class is not None:
             result['DBInstanceClass'] = self.dbinstance_class
         if self.dbinstance_id is not None:
@@ -70288,6 +70316,8 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
             self.category = m.get('Category')
         if m.get('ColdDataEnabled') is not None:
             self.cold_data_enabled = m.get('ColdDataEnabled')
+        if m.get('CompressionMode') is not None:
+            self.compression_mode = m.get('CompressionMode')
         if m.get('DBInstanceClass') is not None:
             self.dbinstance_class = m.get('DBInstanceClass')
         if m.get('DBInstanceId') is not None:
@@ -81207,10 +81237,12 @@ class RunRCInstancesRequestSystemDisk(TeaModel):
     def __init__(
         self,
         category: str = None,
+        performance_level: str = None,
         size: int = None,
     ):
         # The type of the system disk. Set the value to **cloud_essd**, which indicates ESSDs.
         self.category = category
+        self.performance_level = performance_level
         # The size of the system disk. Unit: GiB. Only performance level 1 (PL1) ESSDs are supported. Valid values: 20 to 2048.
         self.size = size
 
@@ -81225,6 +81257,8 @@ class RunRCInstancesRequestSystemDisk(TeaModel):
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
         if self.size is not None:
             result['Size'] = self.size
         return result
@@ -81233,6 +81267,8 @@ class RunRCInstancesRequestSystemDisk(TeaModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         return self

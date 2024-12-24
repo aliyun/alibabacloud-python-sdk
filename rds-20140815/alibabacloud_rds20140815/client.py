@@ -37964,6 +37964,8 @@ class Client(OpenApiClient):
             query['Category'] = request.category
         if not UtilClient.is_unset(request.cold_data_enabled):
             query['ColdDataEnabled'] = request.cold_data_enabled
+        if not UtilClient.is_unset(request.compression_mode):
+            query['CompressionMode'] = request.compression_mode
         if not UtilClient.is_unset(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -38075,6 +38077,8 @@ class Client(OpenApiClient):
             query['Category'] = request.category
         if not UtilClient.is_unset(request.cold_data_enabled):
             query['ColdDataEnabled'] = request.cold_data_enabled
+        if not UtilClient.is_unset(request.compression_mode):
+            query['CompressionMode'] = request.compression_mode
         if not UtilClient.is_unset(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
         if not UtilClient.is_unset(request.dbinstance_id):

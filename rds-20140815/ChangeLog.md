@@ -1,3 +1,22 @@
+2024-12-24 Version: 9.1.0
+- Support API AssociateEipAddressWithRCInstance.
+- Support API SyncRCSecurityGroup.
+- Support API UnassociateEipAddressWithRCInstance.
+- Update API CreateDBInstance: add param OptimizedWrites.
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API DescribeRCDeploymentSets: update response param.
+- Update API DescribeRCInstanceAttribute: add param PrivateIpAddress.
+- Update API DescribeRCInstanceAttribute: update param InstanceId.
+- Update API DescribeRCInstanceAttribute: update response param.
+- Update API DescribeRCInstances: update response param.
+- Update API ModifyDBInstanceConfig: add param SwitchTime.
+- Update API ModifyDBInstanceConfig: add param SwitchTimeMode.
+- Update API ModifyDBInstanceSpec: add param CompressionMode.
+- Update API ModifyDBInstanceSpec: add param OptimizedWrites.
+- Update API ModifyResourceGroup: add param ResourceType.
+- Update API RunRCInstances: update param SystemDisk.
+
+
 2024-12-18 Version: 9.0.0
 - Support API AssociateEipAddressWithRCInstance.
 - Support API SyncRCSecurityGroup.
