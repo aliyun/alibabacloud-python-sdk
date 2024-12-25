@@ -2646,114 +2646,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.continuous_move_with_options_async(request, runtime)
 
-    def create_cluster_with_options(
-        self,
-        request: vs_20181212_models.CreateClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.CreateClusterResponse:
-        """
-        @param request: CreateClusterRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateClusterResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.internal_ports):
-            query['InternalPorts'] = request.internal_ports
-        if not UtilClient.is_unset(request.maintain_time):
-            query['MaintainTime'] = request.maintain_time
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_group_id):
-            query['SecurityGroupId'] = request.security_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateCluster',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.CreateClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_cluster_with_options_async(
-        self,
-        request: vs_20181212_models.CreateClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.CreateClusterResponse:
-        """
-        @param request: CreateClusterRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateClusterResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.internal_ports):
-            query['InternalPorts'] = request.internal_ports
-        if not UtilClient.is_unset(request.maintain_time):
-            query['MaintainTime'] = request.maintain_time
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_group_id):
-            query['SecurityGroupId'] = request.security_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateCluster',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.CreateClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_cluster(
-        self,
-        request: vs_20181212_models.CreateClusterRequest,
-    ) -> vs_20181212_models.CreateClusterResponse:
-        """
-        @param request: CreateClusterRequest
-        @return: CreateClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_cluster_with_options(request, runtime)
-
-    async def create_cluster_async(
-        self,
-        request: vs_20181212_models.CreateClusterRequest,
-    ) -> vs_20181212_models.CreateClusterResponse:
-        """
-        @param request: CreateClusterRequest
-        @return: CreateClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_cluster_with_options_async(request, runtime)
-
     def create_device_with_options(
         self,
         request: vs_20181212_models.CreateDeviceRequest,
@@ -3410,6 +3302,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_parent_platform_with_options_async(request, runtime)
 
+    def create_rendering_data_package_with_options(
+        self,
+        request: vs_20181212_models.CreateRenderingDataPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.CreateRenderingDataPackageResponse:
+        """
+        @summary 创建云渲染数据包
+        
+        @param request: CreateRenderingDataPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRenderingDataPackageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRenderingDataPackage',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.CreateRenderingDataPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rendering_data_package_with_options_async(
+        self,
+        request: vs_20181212_models.CreateRenderingDataPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.CreateRenderingDataPackageResponse:
+        """
+        @summary 创建云渲染数据包
+        
+        @param request: CreateRenderingDataPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRenderingDataPackageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRenderingDataPackage',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.CreateRenderingDataPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rendering_data_package(
+        self,
+        request: vs_20181212_models.CreateRenderingDataPackageRequest,
+    ) -> vs_20181212_models.CreateRenderingDataPackageResponse:
+        """
+        @summary 创建云渲染数据包
+        
+        @param request: CreateRenderingDataPackageRequest
+        @return: CreateRenderingDataPackageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_rendering_data_package_with_options(request, runtime)
+
+    async def create_rendering_data_package_async(
+        self,
+        request: vs_20181212_models.CreateRenderingDataPackageRequest,
+    ) -> vs_20181212_models.CreateRenderingDataPackageResponse:
+        """
+        @summary 创建云渲染数据包
+        
+        @param request: CreateRenderingDataPackageRequest
+        @return: CreateRenderingDataPackageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_rendering_data_package_with_options_async(request, runtime)
+
     def create_rendering_instance_with_options(
         self,
         tmp_req: vs_20181212_models.CreateRenderingInstanceRequest,
@@ -3432,6 +3424,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_info_shrink):
             query['ClientInfo'] = request.client_info_shrink
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.internet_charge_type):
@@ -3442,6 +3436,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.rendering_spec):
             query['RenderingSpec'] = request.rendering_spec
+        if not UtilClient.is_unset(request.storage_size):
+            query['StorageSize'] = request.storage_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3483,6 +3479,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_info_shrink):
             query['ClientInfo'] = request.client_info_shrink
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.internet_charge_type):
@@ -3493,6 +3491,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.rendering_spec):
             query['RenderingSpec'] = request.rendering_spec
+        if not UtilClient.is_unset(request.storage_size):
+            query['StorageSize'] = request.storage_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3997,98 +3997,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cloud_app_with_options_async(request, runtime)
-
-    def delete_cluster_with_options(
-        self,
-        request: vs_20181212_models.DeleteClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DeleteClusterResponse:
-        """
-        @param request: DeleteClusterRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteClusterResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteCluster',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DeleteClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_cluster_with_options_async(
-        self,
-        request: vs_20181212_models.DeleteClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DeleteClusterResponse:
-        """
-        @param request: DeleteClusterRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteClusterResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteCluster',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DeleteClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_cluster(
-        self,
-        request: vs_20181212_models.DeleteClusterRequest,
-    ) -> vs_20181212_models.DeleteClusterResponse:
-        """
-        @param request: DeleteClusterRequest
-        @return: DeleteClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_cluster_with_options(request, runtime)
-
-    async def delete_cluster_async(
-        self,
-        request: vs_20181212_models.DeleteClusterRequest,
-    ) -> vs_20181212_models.DeleteClusterResponse:
-        """
-        @param request: DeleteClusterRequest
-        @return: DeleteClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_cluster_with_options_async(request, runtime)
 
     def delete_device_with_options(
         self,
@@ -5329,406 +5237,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_account_stat_with_options_async(request, runtime)
-
-    def describe_cluster_with_options(
-        self,
-        request: vs_20181212_models.DescribeClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeClusterResponse:
-        """
-        @param request: DescribeClusterRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClusterResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeCluster',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_cluster_with_options_async(
-        self,
-        request: vs_20181212_models.DescribeClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeClusterResponse:
-        """
-        @param request: DescribeClusterRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClusterResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeCluster',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_cluster(
-        self,
-        request: vs_20181212_models.DescribeClusterRequest,
-    ) -> vs_20181212_models.DescribeClusterResponse:
-        """
-        @param request: DescribeClusterRequest
-        @return: DescribeClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_cluster_with_options(request, runtime)
-
-    async def describe_cluster_async(
-        self,
-        request: vs_20181212_models.DescribeClusterRequest,
-    ) -> vs_20181212_models.DescribeClusterResponse:
-        """
-        @param request: DescribeClusterRequest
-        @return: DescribeClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_cluster_with_options_async(request, runtime)
-
-    def describe_cluster_devices_with_options(
-        self,
-        request: vs_20181212_models.DescribeClusterDevicesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeClusterDevicesResponse:
-        """
-        @param request: DescribeClusterDevicesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClusterDevicesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.edge_node_name):
-            query['EdgeNodeName'] = request.edge_node_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.platform):
-            query['Platform'] = request.platform
-        if not UtilClient.is_unset(request.specification):
-            query['Specification'] = request.specification
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeClusterDevices',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeClusterDevicesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_cluster_devices_with_options_async(
-        self,
-        request: vs_20181212_models.DescribeClusterDevicesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeClusterDevicesResponse:
-        """
-        @param request: DescribeClusterDevicesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClusterDevicesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.edge_node_name):
-            query['EdgeNodeName'] = request.edge_node_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.platform):
-            query['Platform'] = request.platform
-        if not UtilClient.is_unset(request.specification):
-            query['Specification'] = request.specification
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeClusterDevices',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeClusterDevicesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_cluster_devices(
-        self,
-        request: vs_20181212_models.DescribeClusterDevicesRequest,
-    ) -> vs_20181212_models.DescribeClusterDevicesResponse:
-        """
-        @param request: DescribeClusterDevicesRequest
-        @return: DescribeClusterDevicesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_cluster_devices_with_options(request, runtime)
-
-    async def describe_cluster_devices_async(
-        self,
-        request: vs_20181212_models.DescribeClusterDevicesRequest,
-    ) -> vs_20181212_models.DescribeClusterDevicesResponse:
-        """
-        @param request: DescribeClusterDevicesRequest
-        @return: DescribeClusterDevicesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_cluster_devices_with_options_async(request, runtime)
-
-    def describe_clusters_with_options(
-        self,
-        request: vs_20181212_models.DescribeClustersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeClustersResponse:
-        """
-        @param request: DescribeClustersRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClustersResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeClusters',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeClustersResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_clusters_with_options_async(
-        self,
-        request: vs_20181212_models.DescribeClustersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeClustersResponse:
-        """
-        @param request: DescribeClustersRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClustersResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeClusters',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeClustersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_clusters(
-        self,
-        request: vs_20181212_models.DescribeClustersRequest,
-    ) -> vs_20181212_models.DescribeClustersResponse:
-        """
-        @param request: DescribeClustersRequest
-        @return: DescribeClustersResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_clusters_with_options(request, runtime)
-
-    async def describe_clusters_async(
-        self,
-        request: vs_20181212_models.DescribeClustersRequest,
-    ) -> vs_20181212_models.DescribeClustersResponse:
-        """
-        @param request: DescribeClustersRequest
-        @return: DescribeClustersResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_clusters_with_options_async(request, runtime)
-
-    def describe_container_instance_id_with_options(
-        self,
-        request: vs_20181212_models.DescribeContainerInstanceIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeContainerInstanceIdResponse:
-        """
-        @param request: DescribeContainerInstanceIdRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeContainerInstanceIdResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.node_name):
-            query['NodeName'] = request.node_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pod_index):
-            query['PodIndex'] = request.pod_index
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeContainerInstanceId',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeContainerInstanceIdResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_container_instance_id_with_options_async(
-        self,
-        request: vs_20181212_models.DescribeContainerInstanceIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeContainerInstanceIdResponse:
-        """
-        @param request: DescribeContainerInstanceIdRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeContainerInstanceIdResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.node_name):
-            query['NodeName'] = request.node_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pod_index):
-            query['PodIndex'] = request.pod_index
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeContainerInstanceId',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeContainerInstanceIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_container_instance_id(
-        self,
-        request: vs_20181212_models.DescribeContainerInstanceIdRequest,
-    ) -> vs_20181212_models.DescribeContainerInstanceIdResponse:
-        """
-        @param request: DescribeContainerInstanceIdRequest
-        @return: DescribeContainerInstanceIdResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_container_instance_id_with_options(request, runtime)
-
-    async def describe_container_instance_id_async(
-        self,
-        request: vs_20181212_models.DescribeContainerInstanceIdRequest,
-    ) -> vs_20181212_models.DescribeContainerInstanceIdResponse:
-        """
-        @param request: DescribeContainerInstanceIdRequest
-        @return: DescribeContainerInstanceIdResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_container_instance_id_with_options_async(request, runtime)
 
     def describe_device_with_options(
         self,
@@ -8417,102 +7925,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_templates_with_options_async(request, runtime)
-
-    def describe_user_devices_with_options(
-        self,
-        request: vs_20181212_models.DescribeUserDevicesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeUserDevicesResponse:
-        """
-        @param request: DescribeUserDevicesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeUserDevicesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ens_instance_ids):
-            query['EnsInstanceIds'] = request.ens_instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.server_name):
-            query['ServerName'] = request.server_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeUserDevices',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeUserDevicesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_user_devices_with_options_async(
-        self,
-        request: vs_20181212_models.DescribeUserDevicesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeUserDevicesResponse:
-        """
-        @param request: DescribeUserDevicesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeUserDevicesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ens_instance_ids):
-            query['EnsInstanceIds'] = request.ens_instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.server_name):
-            query['ServerName'] = request.server_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeUserDevices',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeUserDevicesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_user_devices(
-        self,
-        request: vs_20181212_models.DescribeUserDevicesRequest,
-    ) -> vs_20181212_models.DescribeUserDevicesResponse:
-        """
-        @param request: DescribeUserDevicesRequest
-        @return: DescribeUserDevicesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_user_devices_with_options(request, runtime)
-
-    async def describe_user_devices_async(
-        self,
-        request: vs_20181212_models.DescribeUserDevicesRequest,
-    ) -> vs_20181212_models.DescribeUserDevicesResponse:
-        """
-        @param request: DescribeUserDevicesRequest
-        @return: DescribeUserDevicesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_user_devices_with_options_async(request, runtime)
 
     def describe_vod_stream_urlwith_options(
         self,
@@ -13070,6 +12482,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_parent_platform_with_options_async(request, runtime)
 
+    def modify_rendering_instance_with_options(
+        self,
+        request: vs_20181212_models.ModifyRenderingInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ModifyRenderingInstanceResponse:
+        """
+        @summary 变配云渲染资源实例
+        
+        @param request: ModifyRenderingInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRenderingInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        if not UtilClient.is_unset(request.rendering_spec):
+            query['RenderingSpec'] = request.rendering_spec
+        if not UtilClient.is_unset(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRenderingInstance',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyRenderingInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_rendering_instance_with_options_async(
+        self,
+        request: vs_20181212_models.ModifyRenderingInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ModifyRenderingInstanceResponse:
+        """
+        @summary 变配云渲染资源实例
+        
+        @param request: ModifyRenderingInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRenderingInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        if not UtilClient.is_unset(request.rendering_spec):
+            query['RenderingSpec'] = request.rendering_spec
+        if not UtilClient.is_unset(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRenderingInstance',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyRenderingInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_rendering_instance(
+        self,
+        request: vs_20181212_models.ModifyRenderingInstanceRequest,
+    ) -> vs_20181212_models.ModifyRenderingInstanceResponse:
+        """
+        @summary 变配云渲染资源实例
+        
+        @param request: ModifyRenderingInstanceRequest
+        @return: ModifyRenderingInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_rendering_instance_with_options(request, runtime)
+
+    async def modify_rendering_instance_async(
+        self,
+        request: vs_20181212_models.ModifyRenderingInstanceRequest,
+    ) -> vs_20181212_models.ModifyRenderingInstanceResponse:
+        """
+        @summary 变配云渲染资源实例
+        
+        @param request: ModifyRenderingInstanceRequest
+        @return: ModifyRenderingInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_rendering_instance_with_options_async(request, runtime)
+
     def modify_rendering_instance_bandwidth_with_options(
         self,
         request: vs_20181212_models.ModifyRenderingInstanceBandwidthRequest,
@@ -13603,6 +13119,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.reboot_rendering_instance_with_options_async(request, runtime)
+
+    def release_rendering_data_package_with_options(
+        self,
+        request: vs_20181212_models.ReleaseRenderingDataPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ReleaseRenderingDataPackageResponse:
+        """
+        @summary 释放云渲染数据包
+        
+        @param request: ReleaseRenderingDataPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseRenderingDataPackageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_package_id):
+            query['DataPackageId'] = request.data_package_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseRenderingDataPackage',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ReleaseRenderingDataPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_rendering_data_package_with_options_async(
+        self,
+        request: vs_20181212_models.ReleaseRenderingDataPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ReleaseRenderingDataPackageResponse:
+        """
+        @summary 释放云渲染数据包
+        
+        @param request: ReleaseRenderingDataPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseRenderingDataPackageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_package_id):
+            query['DataPackageId'] = request.data_package_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseRenderingDataPackage',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ReleaseRenderingDataPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_rendering_data_package(
+        self,
+        request: vs_20181212_models.ReleaseRenderingDataPackageRequest,
+    ) -> vs_20181212_models.ReleaseRenderingDataPackageResponse:
+        """
+        @summary 释放云渲染数据包
+        
+        @param request: ReleaseRenderingDataPackageRequest
+        @return: ReleaseRenderingDataPackageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.release_rendering_data_package_with_options(request, runtime)
+
+    async def release_rendering_data_package_async(
+        self,
+        request: vs_20181212_models.ReleaseRenderingDataPackageRequest,
+    ) -> vs_20181212_models.ReleaseRenderingDataPackageResponse:
+        """
+        @summary 释放云渲染数据包
+        
+        @param request: ReleaseRenderingDataPackageRequest
+        @return: ReleaseRenderingDataPackageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.release_rendering_data_package_with_options_async(request, runtime)
 
     def release_rendering_instance_with_options(
         self,
@@ -16383,122 +15995,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_cloud_app_info_with_options_async(request, runtime)
-
-    def update_cluster_with_options(
-        self,
-        request: vs_20181212_models.UpdateClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UpdateClusterResponse:
-        """
-        @param request: UpdateClusterRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateClusterResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.effective_time):
-            query['EffectiveTime'] = request.effective_time
-        if not UtilClient.is_unset(request.internal_ports):
-            query['InternalPorts'] = request.internal_ports
-        if not UtilClient.is_unset(request.maintain_time):
-            query['MaintainTime'] = request.maintain_time
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_group_id):
-            query['SecurityGroupId'] = request.security_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateCluster',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.UpdateClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_cluster_with_options_async(
-        self,
-        request: vs_20181212_models.UpdateClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UpdateClusterResponse:
-        """
-        @param request: UpdateClusterRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateClusterResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.effective_time):
-            query['EffectiveTime'] = request.effective_time
-        if not UtilClient.is_unset(request.internal_ports):
-            query['InternalPorts'] = request.internal_ports
-        if not UtilClient.is_unset(request.maintain_time):
-            query['MaintainTime'] = request.maintain_time
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_group_id):
-            query['SecurityGroupId'] = request.security_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateCluster',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.UpdateClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_cluster(
-        self,
-        request: vs_20181212_models.UpdateClusterRequest,
-    ) -> vs_20181212_models.UpdateClusterResponse:
-        """
-        @param request: UpdateClusterRequest
-        @return: UpdateClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.update_cluster_with_options(request, runtime)
-
-    async def update_cluster_async(
-        self,
-        request: vs_20181212_models.UpdateClusterRequest,
-    ) -> vs_20181212_models.UpdateClusterResponse:
-        """
-        @param request: UpdateClusterRequest
-        @return: UpdateClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.update_cluster_with_options_async(request, runtime)
 
     def update_file_info_with_options(
         self,
