@@ -1,3 +1,9 @@
+2024-12-25 Version: 1.3.0
+- Support API RunDataResultAnalysis.
+- Support API RunSqlGeneration.
+- Update API RunDataAnalysis: update param body.
+
+
 2024-12-24 Version: 1.2.0
 - Support API BatchDeleteSynonyms.
 - Support API CreateBusinessLogic.

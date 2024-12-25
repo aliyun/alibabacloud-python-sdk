@@ -2134,6 +2134,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.data_role):
+            body['dataRole'] = request.data_role
         if not UtilClient.is_unset(request.generate_sql_only):
             body['generateSqlOnly'] = request.generate_sql_only
         if not UtilClient.is_unset(request.query):
@@ -2142,6 +2144,8 @@ class Client(OpenApiClient):
             body['sessionId'] = request.session_id
         if not UtilClient.is_unset(request.specification_type):
             body['specificationType'] = request.specification_type
+        if not UtilClient.is_unset(request.user_params):
+            body['userParams'] = request.user_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2179,6 +2183,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.data_role):
+            body['dataRole'] = request.data_role
         if not UtilClient.is_unset(request.generate_sql_only):
             body['generateSqlOnly'] = request.generate_sql_only
         if not UtilClient.is_unset(request.query):
@@ -2187,6 +2193,8 @@ class Client(OpenApiClient):
             body['sessionId'] = request.session_id
         if not UtilClient.is_unset(request.specification_type):
             body['specificationType'] = request.specification_type
+        if not UtilClient.is_unset(request.user_params):
+            body['userParams'] = request.user_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2236,6 +2244,246 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.run_data_analysis_with_options_async(workspace_id, request, headers, runtime)
+
+    def run_data_result_analysis_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.RunDataResultAnalysisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.RunDataResultAnalysisResponse:
+        """
+        @summary 对结构化结果进行分析、可视化信息生成
+        
+        @param request: RunDataResultAnalysisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDataResultAnalysisResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.analysis_mode):
+            body['analysisMode'] = request.analysis_mode
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.sql_data):
+            body['sqlData'] = request.sql_data
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDataResultAnalysis',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/runDataResultAnalysis',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.RunDataResultAnalysisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_data_result_analysis_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.RunDataResultAnalysisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.RunDataResultAnalysisResponse:
+        """
+        @summary 对结构化结果进行分析、可视化信息生成
+        
+        @param request: RunDataResultAnalysisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDataResultAnalysisResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.analysis_mode):
+            body['analysisMode'] = request.analysis_mode
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.sql_data):
+            body['sqlData'] = request.sql_data
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDataResultAnalysis',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/runDataResultAnalysis',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.RunDataResultAnalysisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_data_result_analysis(
+        self,
+        request: data_analysis_gbi20240823_models.RunDataResultAnalysisRequest,
+    ) -> data_analysis_gbi20240823_models.RunDataResultAnalysisResponse:
+        """
+        @summary 对结构化结果进行分析、可视化信息生成
+        
+        @param request: RunDataResultAnalysisRequest
+        @return: RunDataResultAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_data_result_analysis_with_options(request, headers, runtime)
+
+    async def run_data_result_analysis_async(
+        self,
+        request: data_analysis_gbi20240823_models.RunDataResultAnalysisRequest,
+    ) -> data_analysis_gbi20240823_models.RunDataResultAnalysisResponse:
+        """
+        @summary 对结构化结果进行分析、可视化信息生成
+        
+        @param request: RunDataResultAnalysisRequest
+        @return: RunDataResultAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_data_result_analysis_with_options_async(request, headers, runtime)
+
+    def run_sql_generation_with_options(
+        self,
+        request: data_analysis_gbi20240823_models.RunSqlGenerationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.RunSqlGenerationResponse:
+        """
+        @summary 运行sql生成
+        
+        @param request: RunSqlGenerationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunSqlGenerationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.specification_type):
+            body['specificationType'] = request.specification_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunSqlGeneration',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/runSqlGeneration',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.RunSqlGenerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_sql_generation_with_options_async(
+        self,
+        request: data_analysis_gbi20240823_models.RunSqlGenerationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_analysis_gbi20240823_models.RunSqlGenerationResponse:
+        """
+        @summary 运行sql生成
+        
+        @param request: RunSqlGenerationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunSqlGenerationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.specification_type):
+            body['specificationType'] = request.specification_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunSqlGeneration',
+            version='2024-08-23',
+            protocol='HTTPS',
+            pathname=f'/gbi/runSqlGeneration',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_analysis_gbi20240823_models.RunSqlGenerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_sql_generation(
+        self,
+        request: data_analysis_gbi20240823_models.RunSqlGenerationRequest,
+    ) -> data_analysis_gbi20240823_models.RunSqlGenerationResponse:
+        """
+        @summary 运行sql生成
+        
+        @param request: RunSqlGenerationRequest
+        @return: RunSqlGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_sql_generation_with_options(request, headers, runtime)
+
+    async def run_sql_generation_async(
+        self,
+        request: data_analysis_gbi20240823_models.RunSqlGenerationRequest,
+    ) -> data_analysis_gbi20240823_models.RunSqlGenerationResponse:
+        """
+        @summary 运行sql生成
+        
+        @param request: RunSqlGenerationRequest
+        @return: RunSqlGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_sql_generation_with_options_async(request, headers, runtime)
 
     def save_virtual_datasource_ddl_with_options(
         self,
