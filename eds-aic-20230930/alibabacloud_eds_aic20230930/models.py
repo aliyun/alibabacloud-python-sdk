@@ -509,6 +509,226 @@ class BackupFileResponse(TeaModel):
         return self
 
 
+class BatchGetAcpConnectionTicketRequestInstanceTasks(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        task_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class BatchGetAcpConnectionTicketRequest(TeaModel):
+    def __init__(
+        self,
+        end_user_id: str = None,
+        instance_group_id: str = None,
+        instance_ids: List[str] = None,
+        instance_tasks: List[BatchGetAcpConnectionTicketRequestInstanceTasks] = None,
+    ):
+        self.end_user_id = end_user_id
+        self.instance_group_id = instance_group_id
+        self.instance_ids = instance_ids
+        self.instance_tasks = instance_tasks
+
+    def validate(self):
+        if self.instance_tasks:
+            for k in self.instance_tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.instance_group_id is not None:
+            result['InstanceGroupId'] = self.instance_group_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        result['InstanceTasks'] = []
+        if self.instance_tasks is not None:
+            for k in self.instance_tasks:
+                result['InstanceTasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('InstanceGroupId') is not None:
+            self.instance_group_id = m.get('InstanceGroupId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        self.instance_tasks = []
+        if m.get('InstanceTasks') is not None:
+            for k in m.get('InstanceTasks'):
+                temp_model = BatchGetAcpConnectionTicketRequestInstanceTasks()
+                self.instance_tasks.append(temp_model.from_map(k))
+        return self
+
+
+class BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels(TeaModel):
+    def __init__(
+        self,
+        app_instance_group_id: str = None,
+        instance_id: str = None,
+        task_id: str = None,
+        task_status: str = None,
+        ticket: str = None,
+    ):
+        self.app_instance_group_id = app_instance_group_id
+        self.instance_id = instance_id
+        self.task_id = task_id
+        self.task_status = task_status
+        self.ticket = ticket
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_group_id is not None:
+            result['AppInstanceGroupId'] = self.app_instance_group_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        if self.ticket is not None:
+            result['Ticket'] = self.ticket
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceGroupId') is not None:
+            self.app_instance_group_id = m.get('AppInstanceGroupId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        if m.get('Ticket') is not None:
+            self.ticket = m.get('Ticket')
+        return self
+
+
+class BatchGetAcpConnectionTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_connection_models: List[BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels] = None,
+        request_id: str = None,
+    ):
+        self.instance_connection_models = instance_connection_models
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_connection_models:
+            for k in self.instance_connection_models:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceConnectionModels'] = []
+        if self.instance_connection_models is not None:
+            for k in self.instance_connection_models:
+                result['InstanceConnectionModels'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_connection_models = []
+        if m.get('InstanceConnectionModels') is not None:
+            for k in m.get('InstanceConnectionModels'):
+                temp_model = BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels()
+                self.instance_connection_models.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BatchGetAcpConnectionTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchGetAcpConnectionTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchGetAcpConnectionTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckResourceStockRequest(TeaModel):
     def __init__(
         self,

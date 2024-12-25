@@ -1,3 +1,7 @@
+2024-12-25 Version: 3.1.0
+- Support API BatchGetAcpConnectionTicket.
+
+
 2024-12-20 Version: 3.0.5
 - Update API DescribeAndroidInstances: add param BizRegionId.
 - Update API DescribeAndroidInstances: add param Tag.

@@ -370,6 +370,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.backup_file_with_options_async(request, runtime)
 
+    def batch_get_acp_connection_ticket_with_options(
+        self,
+        request: eds_aic_20230930_models.BatchGetAcpConnectionTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse:
+        """
+        @summary 批量获取ticket
+        
+        @param request: BatchGetAcpConnectionTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetAcpConnectionTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.instance_group_id):
+            query['InstanceGroupId'] = request.instance_group_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_tasks):
+            query['InstanceTasks'] = request.instance_tasks
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetAcpConnectionTicket',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_get_acp_connection_ticket_with_options_async(
+        self,
+        request: eds_aic_20230930_models.BatchGetAcpConnectionTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse:
+        """
+        @summary 批量获取ticket
+        
+        @param request: BatchGetAcpConnectionTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetAcpConnectionTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.instance_group_id):
+            query['InstanceGroupId'] = request.instance_group_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_tasks):
+            query['InstanceTasks'] = request.instance_tasks
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetAcpConnectionTicket',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_get_acp_connection_ticket(
+        self,
+        request: eds_aic_20230930_models.BatchGetAcpConnectionTicketRequest,
+    ) -> eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse:
+        """
+        @summary 批量获取ticket
+        
+        @param request: BatchGetAcpConnectionTicketRequest
+        @return: BatchGetAcpConnectionTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_get_acp_connection_ticket_with_options(request, runtime)
+
+    async def batch_get_acp_connection_ticket_async(
+        self,
+        request: eds_aic_20230930_models.BatchGetAcpConnectionTicketRequest,
+    ) -> eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse:
+        """
+        @summary 批量获取ticket
+        
+        @param request: BatchGetAcpConnectionTicketRequest
+        @return: BatchGetAcpConnectionTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_get_acp_connection_ticket_with_options_async(request, runtime)
+
     def check_resource_stock_with_options(
         self,
         request: eds_aic_20230930_models.CheckResourceStockRequest,
