@@ -1,3 +1,8 @@
+2024-12-25 Version: 2.9.0
+- Support API CreateAICoachTask.
+- Support API ListAICoachScriptPage.
+
+
 2024-12-17 Version: 2.8.0
 - Support API BatchQueryIndividuationText.
 - Support API CreateAnchor.

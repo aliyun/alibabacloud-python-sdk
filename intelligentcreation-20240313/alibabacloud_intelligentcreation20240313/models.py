@@ -2049,6 +2049,138 @@ class CountTextResponse(TeaModel):
         return self
 
 
+class CreateAICoachTaskRequest(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        script_record_id: str = None,
+        student_id: str = None,
+    ):
+        self.request_id = request_id
+        self.script_record_id = script_record_id
+        self.student_id = student_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.script_record_id is not None:
+            result['scriptRecordId'] = self.script_record_id
+        if self.student_id is not None:
+            result['studentId'] = self.student_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('scriptRecordId') is not None:
+            self.script_record_id = m.get('scriptRecordId')
+        if m.get('studentId') is not None:
+            self.student_id = m.get('studentId')
+        return self
+
+
+class CreateAICoachTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        task_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class CreateAICoachTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAICoachTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAICoachTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAICoachTaskSessionRequest(TeaModel):
     def __init__(
         self,
@@ -4359,6 +4491,382 @@ class InteractTextResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = InteractTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAICoachScriptPageRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        status: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class ListAICoachScriptPageResponseBodyListCompleteStrategy(TeaModel):
+    def __init__(
+        self,
+        click_complete_auto_end: bool = None,
+        duration: int = None,
+        full_coverage_auto_end: bool = None,
+    ):
+        self.click_complete_auto_end = click_complete_auto_end
+        self.duration = duration
+        self.full_coverage_auto_end = full_coverage_auto_end
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.click_complete_auto_end is not None:
+            result['clickCompleteAutoEnd'] = self.click_complete_auto_end
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.full_coverage_auto_end is not None:
+            result['fullCoverageAutoEnd'] = self.full_coverage_auto_end
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clickCompleteAutoEnd') is not None:
+            self.click_complete_auto_end = m.get('clickCompleteAutoEnd')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('fullCoverageAutoEnd') is not None:
+            self.full_coverage_auto_end = m.get('fullCoverageAutoEnd')
+        return self
+
+
+class ListAICoachScriptPageResponseBodyListSampleDialogueList(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        role: str = None,
+    ):
+        self.message = message
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
+    def __init__(
+        self,
+        assessment_point: int = None,
+        expressiveness: int = None,
+        standard: int = None,
+        standard_enabled: bool = None,
+    ):
+        self.assessment_point = assessment_point
+        self.expressiveness = expressiveness
+        self.standard = standard
+        self.standard_enabled = standard_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assessment_point is not None:
+            result['assessmentPoint'] = self.assessment_point
+        if self.expressiveness is not None:
+            result['expressiveness'] = self.expressiveness
+        if self.standard is not None:
+            result['standard'] = self.standard
+        if self.standard_enabled is not None:
+            result['standardEnabled'] = self.standard_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assessmentPoint') is not None:
+            self.assessment_point = m.get('assessmentPoint')
+        if m.get('expressiveness') is not None:
+            self.expressiveness = m.get('expressiveness')
+        if m.get('standard') is not None:
+            self.standard = m.get('standard')
+        if m.get('standardEnabled') is not None:
+            self.standard_enabled = m.get('standardEnabled')
+        return self
+
+
+class ListAICoachScriptPageResponseBodyList(TeaModel):
+    def __init__(
+        self,
+        complete_strategy: ListAICoachScriptPageResponseBodyListCompleteStrategy = None,
+        cover_url: str = None,
+        expressiveness: Dict[str, str] = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        initiator: str = None,
+        interaction_type: str = None,
+        introduce: str = None,
+        name: str = None,
+        sample_dialogue_list: List[ListAICoachScriptPageResponseBodyListSampleDialogueList] = None,
+        script_record_id: str = None,
+        status: int = None,
+        weights: ListAICoachScriptPageResponseBodyListWeights = None,
+    ):
+        self.complete_strategy = complete_strategy
+        self.cover_url = cover_url
+        self.expressiveness = expressiveness
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.initiator = initiator
+        self.interaction_type = interaction_type
+        self.introduce = introduce
+        self.name = name
+        self.sample_dialogue_list = sample_dialogue_list
+        self.script_record_id = script_record_id
+        self.status = status
+        self.weights = weights
+
+    def validate(self):
+        if self.complete_strategy:
+            self.complete_strategy.validate()
+        if self.sample_dialogue_list:
+            for k in self.sample_dialogue_list:
+                if k:
+                    k.validate()
+        if self.weights:
+            self.weights.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.complete_strategy is not None:
+            result['completeStrategy'] = self.complete_strategy.to_map()
+        if self.cover_url is not None:
+            result['coverUrl'] = self.cover_url
+        if self.expressiveness is not None:
+            result['expressiveness'] = self.expressiveness
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.initiator is not None:
+            result['initiator'] = self.initiator
+        if self.interaction_type is not None:
+            result['interactionType'] = self.interaction_type
+        if self.introduce is not None:
+            result['introduce'] = self.introduce
+        if self.name is not None:
+            result['name'] = self.name
+        result['sampleDialogueList'] = []
+        if self.sample_dialogue_list is not None:
+            for k in self.sample_dialogue_list:
+                result['sampleDialogueList'].append(k.to_map() if k else None)
+        if self.script_record_id is not None:
+            result['scriptRecordId'] = self.script_record_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.weights is not None:
+            result['weights'] = self.weights.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('completeStrategy') is not None:
+            temp_model = ListAICoachScriptPageResponseBodyListCompleteStrategy()
+            self.complete_strategy = temp_model.from_map(m['completeStrategy'])
+        if m.get('coverUrl') is not None:
+            self.cover_url = m.get('coverUrl')
+        if m.get('expressiveness') is not None:
+            self.expressiveness = m.get('expressiveness')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('initiator') is not None:
+            self.initiator = m.get('initiator')
+        if m.get('interactionType') is not None:
+            self.interaction_type = m.get('interactionType')
+        if m.get('introduce') is not None:
+            self.introduce = m.get('introduce')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        self.sample_dialogue_list = []
+        if m.get('sampleDialogueList') is not None:
+            for k in m.get('sampleDialogueList'):
+                temp_model = ListAICoachScriptPageResponseBodyListSampleDialogueList()
+                self.sample_dialogue_list.append(temp_model.from_map(k))
+        if m.get('scriptRecordId') is not None:
+            self.script_record_id = m.get('scriptRecordId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('weights') is not None:
+            temp_model = ListAICoachScriptPageResponseBodyListWeights()
+            self.weights = temp_model.from_map(m['weights'])
+        return self
+
+
+class ListAICoachScriptPageResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        list: List[ListAICoachScriptPageResponseBodyList] = None,
+        request_id: str = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.list = list
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        result['list'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['list'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        self.list = []
+        if m.get('list') is not None:
+            for k in m.get('list'):
+                temp_model = ListAICoachScriptPageResponseBodyList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListAICoachScriptPageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAICoachScriptPageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAICoachScriptPageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
