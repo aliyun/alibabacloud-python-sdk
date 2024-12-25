@@ -6853,6 +6853,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_disk_with_options_async(request, runtime)
 
+    def delete_eip_with_options(
+        self,
+        request: ens_20171110_models.DeleteEipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteEipResponse:
+        """
+        @summary 调用DeleteEip删除后付费的弹性公网EIP实例。
+        
+        @param request: DeleteEipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEipResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEip',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteEipResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_eip_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteEipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteEipResponse:
+        """
+        @summary 调用DeleteEip删除后付费的弹性公网EIP实例。
+        
+        @param request: DeleteEipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEipResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEip',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteEipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_eip(
+        self,
+        request: ens_20171110_models.DeleteEipRequest,
+    ) -> ens_20171110_models.DeleteEipResponse:
+        """
+        @summary 调用DeleteEip删除后付费的弹性公网EIP实例。
+        
+        @param request: DeleteEipRequest
+        @return: DeleteEipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_eip_with_options(request, runtime)
+
+    async def delete_eip_async(
+        self,
+        request: ens_20171110_models.DeleteEipRequest,
+    ) -> ens_20171110_models.DeleteEipResponse:
+        """
+        @summary 调用DeleteEip删除后付费的弹性公网EIP实例。
+        
+        @param request: DeleteEipRequest
+        @return: DeleteEipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_eip_with_options_async(request, runtime)
+
     def delete_ens_route_entry_with_options(
         self,
         request: ens_20171110_models.DeleteEnsRouteEntryRequest,

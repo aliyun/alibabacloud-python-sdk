@@ -1,3 +1,8 @@
+2024-12-25 Version: 7.7.0
+- Support API DeleteEip.
+- Update API GetBucketAcl: update param BucketName.
+
+
 2024-12-02 Version: 7.6.0
 - Support API ModifySnatEntry.
 - Update API CreateSnatEntry: add param IspAffinity.
