@@ -181,9 +181,9 @@ class AddBackendServersRequest(TeaModel):
         # Examples:
         # 
         # *   ECS instance: `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
-        # *   ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" }]`
-        # *   ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-113" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.\*\*.**", "Port":"80","Description":"test-113" }]`
-        # *   Elastic container instance: `[{ "ServerId": "eci-xxxxxxxxx", "Weight": "100", "Type": "eci", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-114" }]`
+        # *   ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-112" }]`
+        # *   ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-113" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``172.166.**.**``", "Port":"80","Description":"test-113" }]`
+        # *   Elastic container instance: `[{ "ServerId": "eci-xxxxxxxxx", "Weight": "100", "Type": "eci", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-114" }]`
         # 
         # >  The backend servers that you add to a CLB instance must be in the Running state. You can add at most 20 backend servers to a CLB instance in each request.
         self.backend_servers = backend_servers
@@ -597,9 +597,7 @@ class AddTagsRequest(TeaModel):
         resource_owner_id: int = None,
         tags: str = None,
     ):
-        # The name of this action.
-        # 
-        # Value: **AddTags**\
+        # The ID of the Server Load Balancer (SLB) instance.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
@@ -611,7 +609,7 @@ class AddTagsRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the region to which the SLB instance belongs.
+        # The list of tags that need to be added.
         # 
         # This parameter is required.
         self.tags = tags
@@ -665,7 +663,7 @@ class AddTagsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the SLB instance.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -740,42 +738,56 @@ class AddVServerGroupBackendServersRequest(TeaModel):
         resource_owner_id: int = None,
         vserver_group_id: str = None,
     ):
-        # The list of backend servers. You can specify up to 20 backend servers in each request.
+        # The backend servers that you want to add. Configure the following parameters:
         # 
-        # The following parameters are used to specify the backend servers:
+        # *   **ServerId**: Required. The ID of the backend server. Specify the ID in a string. You can specify the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), and an elastic container instance. If you set **ServerId** to the ID of an ENI or an elastic container instance, you must configure the **Type** parameter.
         # 
-        # *   **ServerId**: The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
+        # *   **Weight**: the weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If you set the weight of a backend server to 0, no requests are forwarded to the backend server.
         # 
-        # *   **Port**: Required. The port that is used by the backend server. Valid values: **1 to 65535**.
+        # *   **Description**: Optional. The description of the backend server. Specify the description in a string. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         # 
-        # *   **Weight**: The weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If the value is set to 0, no requests are forwarded to the backend server.
+        # *   **Type**: the type of the backend server. Valid values:
         # 
-        # *   **Type**: The type of backend server. Valid values:
+        #     *   **ecs** (default): ECS instance
+        #     *   **eni**: ENI
+        #     *   **eci**: elastic container instance
         # 
-        #     *   **ecs**: an ECS instance. This is the default value.
-        #     *   **eni**: an ENI.
+        # >  You can specify ENIs and elastic container instances as backend servers only for high-performance SLB instances.
         # 
-        # *   **Description**: Optional. The description of the backend server. This parameter is of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-        # 
-        # *   **ServerIp**: The IP address of the ECS instance or ENI.
+        # *   **ServerIp**: the IP address of an ENI or an elastic container instance.
+        # *   **Port**: the backend port.
         # 
         # Examples:
         # 
-        # *   ECS instance:`  [{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port": "80", "Description": "test-112" }]. `
-        # *   ENI:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168. **. **", "Port":"80","Description":"test-112" }] `
-        # *   ENI with multiple IP addresses:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168. **. **", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166. **. **", "Port":"80","Description":"test-113" }] `
+        # *   Add an ECS instance:
+        # 
+        #     `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
+        # 
+        # *   Add an ENI:
+        # 
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-112" }]`
+        # 
+        # *   Add an ENI with multiple IP addresses:
+        # 
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-113" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``172.166.**.**``", "Port":"80","Description":"test-113" }]`
+        # 
+        # *   Add an elastic container instance:
+        # 
+        #     `[{ "ServerId": "eci-xxxxxxxxx", "Weight": "100", "Type": "eci", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-114" }]`
+        # 
+        # >  You can add only running backend servers to SLB instances. You can specify at most 20 backend servers in each call.
         # 
         # This parameter is required.
         self.backend_servers = backend_servers
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the Classic Load Balancer (CLB) instance is created.
+        # The region ID of the Server Load Balancer (SLB) instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the server group.
+        # The ID of the vServer group.
         # 
         # This parameter is required.
         self.vserver_group_id = vserver_group_id
@@ -833,7 +845,7 @@ class AddVServerGroupBackendServersResponseBodyBackendServersBackendServer(TeaMo
         type: str = None,
         weight: int = None,
     ):
-        # The description of the server group.
+        # The description of the vServer group.
         self.description = description
         # The port that is used by the backend server.
         self.port = port
@@ -841,8 +853,9 @@ class AddVServerGroupBackendServersResponseBodyBackendServersBackendServer(TeaMo
         self.server_id = server_id
         # The type of backend server. Valid values:
         # 
-        # *   **ecs**: an ECS instance. This is the default value.
-        # *   **eni**: an ENI.
+        # *   **ecs** (default): ECS instance
+        # *   **eni**: ENI
+        # *   **eci**: elastic container instance
         self.type = type
         # The weight of the backend server.
         self.weight = weight
@@ -925,11 +938,11 @@ class AddVServerGroupBackendServersResponseBody(TeaModel):
         request_id: str = None,
         vserver_group_id: str = None,
     ):
-        # The list of backend servers.
+        # The backend servers.
         self.backend_servers = backend_servers
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the server group.
+        # The ID of the vServer group.
         self.vserver_group_id = vserver_group_id
 
     def validate(self):
@@ -1009,13 +1022,9 @@ class CreateAccessControlListRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the bastion host. Valid values of N: **1 to 20**. The tag key cannot be an empty string.
-        # 
-        # The tag key can be at most 64 characters in length, and cannot contain `http://` or `https://`. It must not start with `aliyun` or `acs:`.
+        # The key of tag N. Valid values of N: **1** to **20**. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. The tag value cannot be an empty string.
-        # 
-        # The tag value must be 1 to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The value of tag N. Valid values of N: **1** to **20**. The tag value can be an empty string. The tag value must be 0 to 128 characters in length, and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1055,19 +1064,19 @@ class CreateAccessControlListRequest(TeaModel):
         resource_owner_id: int = None,
         tag: List[CreateAccessControlListRequestTag] = None,
     ):
-        # The operation that you want to perform. Set the value to **CreateAccessControlList**.
+        # The name of the ACL. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (_). The name of the ACL that you create must be unique within each region.
         # 
         # This parameter is required.
         self.acl_name = acl_name
-        # The ID of the region where you want to create the ACL.
+        # The IP version. Valid values: **ipv4** and **ipv6**.
         self.address_ipversion = address_ipversion
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID.
+        # The region ID of the ACL.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the ACL. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (_). The name of the ACL that you create must be unique within each region.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1142,7 +1151,7 @@ class CreateAccessControlListResponseBody(TeaModel):
     ):
         # The IP version. Valid values: **ipv4** and **ipv6**.
         self.acl_id = acl_id
-        # The ID of the resource group to which the ACL belongs.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1223,13 +1232,13 @@ class CreateDomainExtensionRequest(TeaModel):
         resource_owner_id: int = None,
         server_certificate_id: str = None,
     ):
-        # The domain name to be created.
+        # The domain name.
         # 
         # This parameter is required.
         self.domain = domain
-        # The frontend port of the HTTPS listener.
+        # The frontend port that is used by the HTTPS listener of the SLB instance.
         # 
-        # Value range:** 1 to 65535**\
+        # Valid values: **1 to 65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -1239,7 +1248,7 @@ class CreateDomainExtensionRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the SLB instance belongs.
+        # The region ID of the Server Load Balancer (SLB) instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -1307,11 +1316,11 @@ class CreateDomainExtensionResponseBody(TeaModel):
         listener_port: int = None,
         request_id: str = None,
     ):
-        # The ID of the created domain name extension.
+        # The ID of the additional domain name.
         self.domain_extension_id = domain_extension_id
-        # The frontend port used by the SLB instance.
+        # The frontend port that is used by the SLB instance.
         self.listener_port = listener_port
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1455,23 +1464,23 @@ class CreateLoadBalancerRequest(TeaModel):
     ):
         # The private IP address of the CLB instance. The private IP address must belong to the destination CIDR block of the vSwitch.
         self.address = address
-        # The IP version that is used by the CLB instance. Valid values: **ipv4** and **ipv6**.
+        # The IP version of the CLB instance. Valid values: **ipv4** and **ipv6**.
         self.address_ipversion = address_ipversion
         # The network type of the CLB instance. Valid values:
         # 
-        # *   **internet**: After an Internet-facing CLB instance is created, the system assigns a public IP address to the CLB instance. Then, the CLB instance can forward requests over the Internet.
-        # *   **intranet**: After an internal-facing CLB instance is created, the system assigns a private IP address to the CLB instance. Then, the CLB instance can forward requests only over the internal networks.
+        # *   **internet**: After an Internet-facing CLB instance is created, the system allocates a public IP address to the instance. The CLB instance can forward requests over the Internet.
+        # *   **intranet**: After an internal-facing CLB instance is created, the system allocates a private IP address to the CLB instance. The CLB instance can forward requests only within the VPC.
         self.address_type = address_type
-        # Specifies whether to automatically pay for the subscription Internet-facing CLB instance. Valid values:
+        # Specifies whether to automatically pay the subscription fee of the Internet-facing CLB instance. Valid values:
         # 
-        # *   **true**: automatically pays for the CLB instance. After you call this operation, the system automatically completes the payment and creates the CLB instance.
-        # *   **false** (default): After you call the operation, the order is created but the payment is not completed. You can view the pending order in the console. The CLB instance will not be created until you complete the payment.
+        # *   **true**: yes. The CLB instance is created after you call the API operation.
+        # *   **false** (default): After you call the operation, the order is created but the payment is not completed. You can view pending orders in the console. The CLB instance will not be created until you complete the payment.
         # 
-        # >  This parameter is supported only by subscription instances created on the Alibaba Cloud China site.
+        # >  This parameter takes effect only for subscription CLB instances created on the Alibaba Cloud China site.
         self.auto_pay = auto_pay
         # The maximum bandwidth of the listener. Unit: Mbit/s.
         # 
-        # Valid values: **1** to **5120**. For a pay-by-bandwidth Internet-facing CLB instance, you can specify the maximum bandwidth of each listener. The sum of the maximum bandwidth of all listeners cannot exceed the maximum bandwidth of the CLB instance.
+        # Valid values: **1** to **5120**. For a pay-by-bandwidth Internet-facing CLB instance, you can specify a maximum bandwidth for each listener. The sum of the maximum bandwidth of all listeners cannot exceed the maximum bandwidth of the CLB instance.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -1500,13 +1509,13 @@ class CreateLoadBalancerRequest(TeaModel):
         self.instance_charge_type = instance_charge_type
         # The metering method of the Internet-facing CLB instance. Valid values:
         # 
-        # *   **paybytraffic** (default)
+        # *   **paybytraffic** (default): pay-by-data-transfer
         # 
-        # > If you set the value to **paybytraffic**, you do not need to specify **Bandwidth**. Even if you specify **Bandwidth**, the value does not take effect.
+        #     >  If you set InternetChargeType to **paybytraffic**, you do not need to configure the **Bandwidth** parameter. The value of **Bandwidth** does not take effect even if you specify one.
         # 
         # *   **paybybandwidth**: pay-by-bandwidth
         # 
-        # >  If you set **PayType** to **PayOnDemand** and set **InstanceChargeType** to **PayByCLCU**, you must set InternetChargeType to **paybytraffic**.
+        # >  If you set **PayType** to **PayOnDemand** and **InstanceChargeType** to **PayByCLCU**, the only valid value for InternetChargeType is **paybytraffic**.
         self.internet_charge_type = internet_charge_type
         # The CLB instance name.
         # 
@@ -1528,15 +1537,14 @@ class CreateLoadBalancerRequest(TeaModel):
         # 
         # *   **slb.s3.large**\
         # 
-        #     **\
-        # 
-        #     **Note** If you do not specify this parameter, a shared-resource CLB instance is created. Shared-resource CLB instances are no longer available for purchase. Therefore, you must specify this parameter.
+        #     
+        #  >   If you do not specify this parameter, a shared-resource CLB instance is created. Shared-resource CLB instances are no longer available for purchase. Therefore, you must specify this parameter.
         # 
         # If **InstanceChargeType** is set to **PayByCLCU**, this parameter is invalid and you do not need to specify this parameter.
         self.load_balancer_spec = load_balancer_spec
         # The ID of the primary zone to which the CLB instance belongs.
         # 
-        # You can call the [DescribeZone](~~DescribeZone~~) operation to query the primary and secondary zones in the region where you want to create the CLB instance.
+        # You can call the [DescribeZone](https://help.aliyun.com/document_detail/2401683.html) operation to query the primary and secondary zones in the region where you want to create the CLB instance.
         self.master_zone_id = master_zone_id
         # The reason for enabling the configuration read-only mode. The reason must be 1 to 80 characters in length. It must start with a letter and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         # 
@@ -1551,9 +1559,11 @@ class CreateLoadBalancerRequest(TeaModel):
         self.modification_protection_status = modification_protection_status
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The billing method of the CLB instance. Set the value to
+        # The billing method of the CLB instance. Valid values:
         # 
-        # **PayOnDemand**, which specifies the pay-as-you-go billing method.
+        # **PayOnDemand**: pay-as-you-go.
+        # 
+        # >  The Alibaba Cloud International site supports only pay-as-you-go CLB instances.
         self.pay_type = pay_type
         # The billing cycle of the subscription Internet-facing CLB instance. Valid values:
         # 
@@ -1574,7 +1584,7 @@ class CreateLoadBalancerRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the secondary zone to which the CLB instance belongs.
         # 
-        # You can call the [DescribeZone](~~DescribeZone~~) operation to query the primary and secondary zones in the region where you want to create the CLB instance.
+        # You can call the [DescribeZone](https://help.aliyun.com/document_detail/2401683.html) operation to query the primary and secondary zones in the region where you want to create the CLB instance.
         self.slave_zone_id = slave_zone_id
         # The tags.
         self.tag = tag
@@ -1936,7 +1946,7 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         xforwarded_for__slbport: str = None,
         xforwarded_for_proto: str = None,
     ):
-        # The ID of the network ACL that is associated with the listener.
+        # The ID of the network access control list (ACL) that is associated with the listener.
         # 
         # >  If **AclStatus** is set to **on**, this parameter is required.
         self.acl_id = acl_id
@@ -1945,36 +1955,33 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         # *   **on**: yes
         # *   **off** (default): no
         self.acl_status = acl_status
-        # The type of the network ACL. Valid values:
+        # The type of access control. Valid values:
         # 
-        # *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios where you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. If a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
+        # *   **white**: Only requests from IP addresses and CIDR blocks on the whitelist are forwarded by the listener. Your service may be adversely affected if the whitelist is not properly configured. If a whitelist is configured, the listener forwards only requests from IP addresses that are added to the whitelist.
         # 
-        #     If you enable a whitelist but do not add an IP address to the ACL, the listener forwards all requests.
+        #     If you configure a whitelist but do not add an IP address to the whitelist, the listener forwards all requests.
         # 
-        # *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are rejected. Blacklists apply to scenarios where you want to block access from specified IP addresses to an application.
+        # *   **black**: Requests from the IP addresses and CIDR blocks on the blacklist are blocked.
         # 
-        #     If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
+        #     If you configure a blacklist but do not add an IP address to the blacklist, the listener forwards all requests.
         # 
-        # >  If **AclStatus** is set to **on**, this parameter is required.
+        # >  When **AclStatus** is set to **on**, this parameter takes effect.
         self.acl_type = acl_type
         # The backend port that is used by the CLB instance.
         # 
         # Valid values: **1** to **65535**.
         # 
-        # >  If the VServerGroupId parameter is not set, this parameter is required.
+        # >  If the VServerGroupId parameter is not specified, this parameter is required.
         self.backend_server_port = backend_server_port
         # The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
         # 
-        # *   **-1**: If -1 is returned, the bandwidth of the listener is unlimited.
-        # *   **1** to **5120**: The sum of the maximum bandwidth that you specify for all listeners of the CLB instance cannot exceed the maximum bandwidth of the CLB instance.
-        # 
-        # >  This parameter is available only in the Chinese mainland.
+        # **-1**: specifies that the bandwidth of the listener is unlimited.
         self.bandwidth = bandwidth
-        # The cookie that is configured on the server.
+        # The cookie configured for the server.
         # 
-        # The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+        # The cookie must be 1 to 200 characters in length, and can contain only ASCII letters and digits. It cannot contain commas (,), semicolons (;), space characters, or start with a dollar sign ($).
         # 
-        # >  This parameter is required if the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **server**.
+        # >  This parameter is required when the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **server**.
         self.cookie = cookie
         # The timeout period of a cookie. Unit: seconds.
         # 
@@ -2008,8 +2015,8 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         self.health_check_connect_port = health_check_connect_port
         # The domain name that is used for health checks. Valid values:
         # 
-        # *   **$_ip**: the private IP address of a backend server. If you do not set the HealthCheckDomain parameter or set the parameter to $_ip, the CLB instance uses the private IP address of each backend server for health checks.
-        # *   **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+        # *   **$_ip**: the private IP address of a backend server. If an IP address is specified, or this parameter is not specified, the CLB instance uses the private IP address of each backend server as the domain name for health checks.
+        # *   **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         # 
         # >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
         self.health_check_domain = health_check_domain
@@ -2029,13 +2036,11 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         # 
         # >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
         self.health_check_method = health_check_method
-        # The timeout period of a health check response. If a backend server, such as an Elastic Compute Service (ECS) instance, does not respond to a probe packet within the specified timeout period, the server fails the health check. Unit: seconds.
+        # The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds
         # 
         # Valid values: **1** to **300**.
         # 
-        # > 
-        # *   If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the period of time specified by the **HealthCheckInterval** parameter is used as the timeout period.
-        # *   This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+        # >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
         self.health_check_timeout = health_check_timeout
         # The URI that is used for health checks.
         # 
@@ -2093,20 +2098,18 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         # 
         # *   **on**: yes
         # *   **off** (default): no
-        # 
-        # This parameter is required.
         self.sticky_session = sticky_session
-        # The method that is used to handle a cookie. Valid values:
+        # The method that is used to handle cookies. Valid values:
         # 
         # *   **insert**: inserts a cookie.
         # 
-        #     CLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client carries this cookie, and the listener will forward this request to the recorded backend server.
+        #     The first time a client accesses CLB, CLB inserts a cookie into the response packet. Subsequent requests from the client that carry the cookie are distributed to the same backend server as the first request.
         # 
-        # *   **server**: rewrites a cookie.
+        # *   **server**: rewrites the original cookie.
         # 
-        #     When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener forwards this request to the recorded backend server.
+        #     CLB rewrites the custom cookies in requests from a client. Subsequent requests from the client that carry the new cookie are forwarded to the same backend server as the first request.
         # 
-        # > This parameter is required if the **StickySession** parameter is set to **on**.
+        # >  This parameter is required if the **StickySession** parameter is set to **on**.
         self.sticky_session_type = sticky_session_type
         # The tags.
         self.tag = tag
@@ -2412,9 +2415,13 @@ class CreateLoadBalancerHTTPSListenerRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key of the resource. You can specify up to 20 tag keys.
+        # 
+        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value cannot be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -2490,7 +2497,7 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
     ):
         # The ID of the network access control list (ACL) that is associated with the listener.
         # 
-        # >  If **AclStatus** is set to **on**, this parameter is required.
+        # >  This parameter is required if **AclStatus** is set to **on**.
         self.acl_id = acl_id
         # Specifies whether to enable access control. Valid values:
         # 
@@ -2515,10 +2522,9 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         self.backend_server_port = backend_server_port
         # The maximum bandwidth of the listener. Unit: Mbit/s.
         # 
-        # Valid values: **-1** and **1** to **5120**.
+        # The URL must meet the following requirements:
         # 
-        # *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, you can set this parameter to **-1**. This way, the bandwidth of the listener is unlimited.
-        # *   **1** to **5120**: For a pay-by-bandwidth Internet-facing SLB instance, you can specify the bandwidth limit of each listener. The sum of bandwidth limits that you set for all listeners cannot exceed the bandwidth limit of the SLB instance.
+        # *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, this parameter is set to -1. This indicates that the bandwidth of the listener is unlimited.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
@@ -2528,11 +2534,11 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # 
         # If you upload only the server certificate, one-way authentication is used.
         self.cacertificate_id = cacertificate_id
-        # The cookie that is configured on the server.
+        # The cookie that you configure for the server.
         # 
-        # The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+        # The cookie must be 1 to 200 characters in length, and can contain only ASCII letters and digits. It cannot contain commas (,), semicolons (;), spaces, or start with a dollar sign ($).
         # 
-        # >  This parameter is required if the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **server**.
+        # >  This parameter is required when the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **server**.
         self.cookie = cookie
         # The timeout period of a cookie. Unit: seconds.
         # 
@@ -2590,13 +2596,9 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # 
         # >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
         self.health_check_method = health_check_method
-        # The timeout period of a health check response. If a backend server, such as an Elastic Compute Service (ECS) instance, does not return a health check response within the specified timeout period, the server fails the health check. Unit: seconds.
+        # The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds Valid values: **1** to **300**.
         # 
-        # Valid values: **1** to **300**.
-        # 
-        # > 
-        # *   If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the period of time specified by the **HealthCheckInterval** parameter is used as the timeout period.
-        # *   This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+        # >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
         self.health_check_timeout = health_check_timeout
         # The URI that is used for health checks.
         # 
@@ -2647,8 +2649,6 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # 
         # *   **on**: yes
         # *   **off**: no
-        # 
-        # This parameter is required.
         self.sticky_session = sticky_session
         # The method that is used to handle a cookie. Valid values: **insert** and **server**.
         # 
@@ -3830,12 +3830,11 @@ class CreateMasterSlaveServerGroupRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 资源标签键。N的取值范围：**1**~**20**。一旦输入该值，则不允许为空字符串。
+        # The key of tag N. Valid values of N: **1** to **20**. The tag key cannot be an empty string.
         # 
-        # 最多支持64个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
+        # The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         self.key = key
-        # 资源的标签值。N的取值范围：**1~20**。一旦输入该值，可以为空字符串。
-        # 最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
+        # The value of tag N. Valid values of N: **1 to 20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -3875,64 +3874,48 @@ class CreateMasterSlaveServerGroupRequest(TeaModel):
         resource_owner_id: int = None,
         tag: List[CreateMasterSlaveServerGroupRequestTag] = None,
     ):
-        # The ID of the SLB instance.
+        # The CLB instance ID.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The backend servers in the primary/secondary server group.
+        # The backend servers in the primary/secondary server group. Each primary/secondary server group consists of two backend servers.
         # 
-        # The value of this parameter must be a STRING list in the JSON format. You can specify up to 20 elements in each request.
+        # Configure the following parameters:
         # 
-        # *   **ServerId**: Required. Specify the ID of the backend server. The value must be of the STRING type.
+        # *   **ServerId**: required. The IDs of the backend servers. Specify the IDs in a string. You can specify the IDs of Elastic Compute Service (ECS) instances, elastic network interfaces (ENIs), and elastic container instances. If you set **ServerId** to the IDs of ENIs or elastic container instances, you must configure the **Type** parameter.
         # 
-        # *   **Port**: Required. Specify the port that is used by the backend server. The value must be of the INTEGER type. Valid values: **1** to **65535**.
+        # *   **Weight**: the weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If you set the weight of a backend server to 0, no requests are forwarded to the backend server.
         # 
-        # *   **Weight**: Required. Specify the weight of the backend server. The value must be of the INTEGER type. Valid values: **0** to **100**.
+        # *   **Description**: optional. The description of the backend servers. Specify the description in a string. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/). periods (.), and underscores (_).
         # 
-        # *   \\*\\*Description \\*\\*: Optional. The description of the backend server. The value must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        # *   **Type**: the type of the backend server. Valid values:
         # 
-        # *   **ServerType**: the type of the backend server. The value must be of the STRING type. Valid values:
+        #     *   **ecs** (default): ECS instance
+        #     *   **eni**: ENI
+        #     *   **eci**: elastic container instance
         # 
-        #     *   **Master**\
+        # >  You can specify ENIs and elastic container instances as backend servers only for high-performance CLB instances.
         # 
-        # *   **Slave**\
+        # *   **ServerIp**: the IP address of the ENI or elastic container instance.
         # 
-        # *   **Type**: the service type of backend server. The value must be of the STRING type. Valid values:
+        # *   **Port**: the backend port.
         # 
-        #     *   **ecs**\
-        #     *   **eni**\
+        # *   **ServerType**: Specify the primary and secondary backend servers in a string. Valid values:
         # 
-        # *   **ServerIp**\
-        # 
-        # A primary/secondary server group can contain up to two backend servers.
-        # 
-        # If you do not specify this parameter, an empty primary/secondary server group is created.
-        # 
-        # Examples:
-        # 
-        # *   ECS instances:
-        # 
-        # `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"82","ServerType":"Master","Description":"test-112" }, { "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"84","ServerType":"Slave","Description":"test-112" }]`
-        # 
-        # *   ENIs:
-        # 
-        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "Port":"80","ServerType":"Master","Description":"test-112" }, { "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","ServerType":"Slave","Description":"test-112" }]`
-        # 
-        # *   IP addresses of ENIs:
-        # 
-        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni","ServerIp": "192.168.\*\*.**", "Port":"80","ServerType":"Master","Description":"test-112" }, { "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni","ServerIp": "192.168.\*\*.**", "Port":"80","ServerType":"Slave","Description":"test-112" }]`
+        #     *   **Master**: primary server
+        #     *   **Slave**: secondary server
         self.master_slave_backend_servers = master_slave_backend_servers
         # The name of the primary/secondary server group.
         self.master_slave_server_group_name = master_slave_server_group_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the Server Load Balancer (SLB) instance is deployed.
+        # The region ID of the Classic Load Balancer (CLB) instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 标签列表。
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -4009,16 +3992,17 @@ class CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSla
         self.description = description
         # The port that is used by the backend server.
         self.port = port
-        # The ID of the ECS instance or ENI that is added.
+        # The ID of the backend server that you want to add.
         self.server_id = server_id
-        # The type of the backend server.
+        # The type of backend server.
         # 
         # Valid values: **Master** and **Slave**.
         self.server_type = server_type
-        # The service type of the backend server. Valid values:
+        # The type of backend server. Valid values:
         # 
-        # *   **ecs**\
-        # *   **eni**\
+        # *   **ecs**: ECS instance
+        # *   **eni**: ENI
+        # *   **eci**: elastic container instance
         self.type = type
         # The weight of the backend server.
         self.weight = weight
@@ -4107,7 +4091,7 @@ class CreateMasterSlaveServerGroupResponseBody(TeaModel):
     ):
         # The backend servers in the primary/secondary server group.
         self.master_slave_backend_servers = master_slave_backend_servers
-        # The primary/secondary server group ID.
+        # The ID of the active/standby server group.
         self.master_slave_server_group_id = master_slave_server_group_id
         # The request ID.
         self.request_id = request_id
@@ -4220,14 +4204,14 @@ class CreateRulesRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The forwarding rules that you want to create. You can create up to 10 forwarding rules in each request. Each forwarding rule contains the following parameters:
+        # The forwarding rules that you want to create. You can create at most 10 forwarding rules in each call. Each forwarding rule contains the following parameters:
         # 
         # *   **RuleName**: Required. The value must be of the STRING type. The name of the forwarding rule. The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_). Forwarding rule names must be unique within the same listener.
-        # *   **Domain**: Optional. The value must be of the STRING type. The domain name that is associated with the forwarding rule. You must specify at least one of this parameter and **Url**.
-        # *   **Url**: Optional. The value must be of the STRING type. The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL cannot be a forward slash (/). However, the URL must start with a forward slash (/). You must specify at least one of this parameter and **Domain**.
-        # *   **VServerGroupId**: Required. The value must be of the STRING type. The ID of the vServer group that is associated with the forwarding rule.
+        # *   **Domain**: Optional. The value must be a string. The domain name that is associated with the forwarding rule. You must specify this parameter or the **URL** parameter.
+        # *   **Url**: Optional. The value must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The value must be a string. The URL cannot be only a forward slash (/). However, it must start with a forward slash (/). You must specify this parameter or the **Domain** parameter.
+        # *   **VServerGroupId**: Required. The value must be a string. The ID of the vServer group to be specified in the forwarding rule.
         # 
-        # > You must specify at least one of `Domain` and `Url`. The combination of `Domain` and `Url` must be unique within the same listener.
+        # >  You must specify at least one between the `Domain` and `URL` parameters. You can also specify both. The combination of `Domain` and `Url` must be unique within the same listener.
         # 
         # This parameter is required.
         self.rule_list = rule_list
@@ -4637,12 +4621,13 @@ class CreateVServerGroupRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 资源的标签键。N的取值范围：**1~20**。一旦输入该值，则不允许为空字符串。
+        # The key of tag N. Valid values of N: **1 to 20**. The tag key cannot be an empty string.
         # 
-        # 最多支持64个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
+        # The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         self.key = key
-        # 资源的标签值。N的取值范围：**1~20**。一旦输入该值，可以为空字符串。
-        # 最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
+        # The tag value. Valid values of N: **1 to 20**. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -4682,30 +4667,41 @@ class CreateVServerGroupRequest(TeaModel):
         tag: List[CreateVServerGroupRequestTag] = None,
         vserver_group_name: str = None,
     ):
-        # The list of backend servers to be added.
+        # The backend servers that you want to add. Configure the following parameters:
         # 
-        # The value of this parameter must be a STRING list in the JSON format. You can specify up to 20 elements in each request.
+        # *   **ServerId**:  required. The ID of the backend server. Specify the ID in a string. You can specify the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. If you set ServerId to the ID of an ENI or an elastic container instance, you must configure the Type parameter.
         # 
-        # *   **ServerId**: Required. Specify the ID of an Elastic Compute Service (ECS) instance or an Elastic Network Interface (ENI). This parameter must be of the STRING type.
+        # *   **Weight**: the weight of the backend server. Valid values: 0 to 100. Default value: 100. If you set the weight of a backend server to 0, no requests are forwarded to the backend server.
         # 
-        # *   **Port**: Required. Specify the port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: **1** to **65535**.
+        # *   **Description**: optional. The description of the backend server. Specify the description in a string. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         # 
-        # *   **Weight**: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: **0** to **100**.
+        # *   **Type**: the type of the backend server. Valid values:
         # 
-        # *   **Description**: Optional. Specify the description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+        #     *   **ecs (default)**: ECS instance
+        #     *   **eni**: ENI.
+        #     *   **eni**: elastic container instance.
         # 
-        # *   **Type**: Specify the type of the backend server. This parameter must be of the STRING type. Valid values:
-        # 
-        #     *   **ecs**: an ECS instance. This is the default value.
-        #     *   **eni**: an ENI.
+        # > You can specify ENIs and elastic container instances as backend servers only for high-performance SLB instances.
         # 
         # *   **ServerIp**: The IP address of the ECS instance or ENI.
+        # *   **Port**: the backend port.
         # 
         # Examples:
         # 
-        # *   ECS instance:`  [{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port": "80", "Description": "test-112" }]. `
-        # *   ENI:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" }] `
-        # *   ENI with multiple IP addresses:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.\*\*.**", "Port":"80","Description":"test-113" }] `
+        # - Add an ECS instance:
+        # 
+        #   `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
+        # - Add an ENI:
+        # 
+        #   ` [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-112" }]`
+        # - Add an ENI with multiple IP addresses:
+        # 
+        #    `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-113" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``172.166.**.**``", "Port":"80","Description":"test-113" }]`
+        # - Add an elastic container instance:
+        # 
+        #   ` [{ "ServerId": "eci-xxxxxxxxx", "Weight": "100", "Type": "eci", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-114" }]`
+        # 
+        # > You can add only running backend servers to SLB instances. You can specify at most 20 backend servers.
         self.backend_servers = backend_servers
         # The ID of the Server Load Balancer (SLB) instance.
         # 
@@ -4719,7 +4715,7 @@ class CreateVServerGroupRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 标签列表。
+        # The tags.
         self.tag = tag
         # The name of the vServer group.
         # 
@@ -4801,10 +4797,11 @@ class CreateVServerGroupResponseBodyBackendServersBackendServer(TeaModel):
         self.port = port
         # The ID of the ECS instance or ENI.
         self.server_id = server_id
-        # The type of the backend server. Valid values:
+        # The type of backend server. Valid values:
         # 
-        # *   **ecs**: an ECS instance. This is the default value.
-        # *   **eni**: an ENI.
+        # *   **ecs** (default): ECS instance
+        # *   **eni**: elastic network interface (ENI)
+        # *   **eci**: elastic container instance
         self.type = type
         # The weight of the backend server.
         self.weight = weight
@@ -5671,8 +5668,6 @@ class DeleteLoadBalancerListenerRequest(TeaModel):
         self.listener_protocol = listener_protocol
         # The ID of the CLB instance.
         # 
-        # >  If the endpoint of the selected region is slb.aliyuncs.com, the **RegionId** parameter is required.
-        # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
@@ -5680,6 +5675,8 @@ class DeleteLoadBalancerListenerRequest(TeaModel):
         # The region ID of the Classic Load Balancer (CLB) instance.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # >  The **RegionId** parameter is required if the endpoint of the region is slb.aliyuncs.com.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5811,15 +5808,15 @@ class DeleteMasterSlaveServerGroupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the active/standby server group to be deleted.
+        # The primary/secondary server group ID.
         # 
-        # >  An active/standby server group in use cannot be deleted.
+        # >  You cannot delete a primary/secondary server group that is in use.
         # 
         # This parameter is required.
         self.master_slave_server_group_id = master_slave_server_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the associated Server Load Balancer (SLB) instance belongs.
+        # The region ID of the Server Load Balancer (SLB) instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -5871,7 +5868,7 @@ class DeleteMasterSlaveServerGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6485,20 +6482,20 @@ class DescribeAccessControlListAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The remarks of the ACL entry.
-        # 
-        # It must be 2 to 100 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         self.acl_entry_comment = acl_entry_comment
-        # The ID of the ACL.
+        # The ID of the ACL that you want to query.
         # 
         # This parameter is required.
         self.acl_id = acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number.
+        # The number of the page to return.
         self.page = page
-        # The number of entries returned on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The time when the network ACL was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
+        # The region ID of the ACL.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2401682.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -6563,9 +6560,9 @@ class DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry(TeaModel):
         acl_entry_comment: str = None,
         acl_entry_ip: str = None,
     ):
-        # The description of the ACL entry.
+        # The remarks of the ACL entry.
         self.acl_entry_comment = acl_entry_comment
-        # The IP address specified in the ACL entry.
+        # The IP entry in the ACL.
         self.acl_entry_ip = acl_entry_ip
 
     def validate(self):
@@ -6798,28 +6795,25 @@ class DescribeAccessControlListAttributeResponseBody(TeaModel):
         tags: DescribeAccessControlListAttributeResponseBodyTags = None,
         total_acl_entry: int = None,
     ):
-        # The IP entries that you want to remove from the network ACL. Valid values:
-        # 
-        # *   **entry**: the IP address or CIDR block that you want to remove from the network ACL. Separate multiple IP addresses or CIDR blocks with commas (,).
-        # *   **comment**: the description of the network ACL.
+        # The information about the access control policy.
         self.acl_entrys = acl_entrys
-        # The ID of the network ACL.
+        # The ACL ID.
         self.acl_id = acl_id
-        # The ACL name. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (_). The name of each ACL must be unique within a region. Fuzzy match is supported.
+        # The ACL name.
         self.acl_name = acl_name
         # The IP version. Valid values: **ipv4** and **ipv6**.
         self.address_ipversion = address_ipversion
         # The time when the ACL was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_time = create_time
-        # The listeners that are associated with the network ACL.
+        # The listeners with which the ACL is associated.
         self.related_listeners = related_listeners
         # The ID of the request.
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # The tags added to the ACL.
         self.tags = tags
-        # The total number of access control entries.
+        # The total number of ACL entries.
         self.total_acl_entry = total_acl_entry
 
     def validate(self):
@@ -8433,9 +8427,9 @@ class DescribeDomainExtensionAttributeResponseBody(TeaModel):
         self.listener_port = listener_port
         # The ID of the SLB instance.
         self.load_balancer_id = load_balancer_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the server certificate that is used by the domain name.
+        # The ID of the server certificate used by the domain name.
         self.server_certificate_id = server_certificate_id
 
     def validate(self):
@@ -8765,13 +8759,11 @@ class DescribeHealthStatusRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The frontend port that is used by the CLB instance.
-        # 
-        # Valid values: **1 to 65535**.
+        # The frontend port that is used by the SLB instance. Valid values: **1 to 65535**.
         # 
         # >  If you do not specify this parameter, the health status of all ports is returned.
         self.listener_port = listener_port
-        # The frontend protocol that is used by the CLB instance.
+        # The frontend protocol that is used by the SLB instance.
         self.listener_protocol = listener_protocol
         # The ID of the Classic Load Balancer (CLB) instance.
         # 
@@ -8779,7 +8771,7 @@ class DescribeHealthStatusRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the CLB instance is deployed.
+        # The region ID of the SLB instance.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8842,21 +8834,21 @@ class DescribeHealthStatusResponseBodyBackendServersBackendServer(TeaModel):
         server_id: str = None,
         server_ip: str = None,
     ):
-        # The frontend port that is used by the CLB instance.
+        # The frontend port that is used by the SLB instance.
         self.listener_port = listener_port
-        # The backend port that is used by the CLB instance.
+        # The backend port that is used by the SLB instance.
         self.port = port
-        # The frontend protocol that is used by the CLB instance.
+        # The frontend protocol that is used by the SLB instance.
         self.protocol = protocol
         # The health status of the backend server. Valid values:
         # 
-        # *   **normal**: The backend server is healthy.
-        # *   **abnormal**: The backend server is unhealthy.
-        # *   **unavailable**: The health check is not complete.
+        # *   normal: The backend server is healthy.
+        # *   abnormal: The backend server is unhealthy.
+        # *   unavailable: The health check is not completed.
         self.server_health_status = server_health_status
-        # The ID of the Elastic Compute Service (ECS) instance or elastic network interface (ENI).
+        # The ID of the backend server.
         self.server_id = server_id
-        # The IP address of the ECS instance.
+        # The IP address of the backend server.
         self.server_ip = server_ip
 
     def validate(self):
@@ -8940,9 +8932,9 @@ class DescribeHealthStatusResponseBody(TeaModel):
         backend_servers: DescribeHealthStatusResponseBodyBackendServers = None,
         request_id: str = None,
     ):
-        # The list of backend servers.
+        # The backend servers.
         self.backend_servers = backend_servers
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9842,6 +9834,8 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
         # The name of the CLB instance.
         self.load_balancer_name = load_balancer_name
         # The specification of the CLB instance.
+        # 
+        # >  Pay-as-you-go CLB instances are not subject to specifications. By default, **slb.lcu.elastic** is returned.
         self.load_balancer_spec = load_balancer_spec
         # The status of the CLB instance. Valid values:
         # 
@@ -9878,9 +9872,9 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
         self.renewal_cyc_unit = renewal_cyc_unit
         # The auto-renewal duration. This parameter is valid only if **RenewalStatus** is set to **AutoRenewal**.
         # 
-        # *   Valid values when **PeriodUnit** is set to **Year**: **1**, **2**, and **3**.
+        # *   Valid values when **PeriodUnit** is set to **Year**: **1**~**5**.
         # 
-        # *   Valid values when **PeriodUnit** is set to **Month**: **1**, **2**, **3**, and **6**.
+        # *   Valid values when **PeriodUnit** is set to **Month**: **1**~ **9**.
         # 
         # > This parameter is valid only when you create a subscription CLB instance on the Alibaba Cloud China site. In this case, the **PayType** parameter must be set to **PrePay**.
         self.renewal_duration = renewal_duration
@@ -11881,35 +11875,35 @@ class DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig(TeaMo
         xforwarded_for__slbport: str = None,
         xforwarded_for_proto: str = None,
     ):
-        # The cookie that is configured on the server.
+        # The cookie configures for the server.
         self.cookie = cookie
-        # The timeout period of a cookie. Unit: seconds.
+        # The maximum amount of time to wait before the session cookie expires. Unit: seconds.
         # 
         # Valid values: **1** to **86400**.
         self.cookie_timeout = cookie_timeout
-        # The listening port that is used to redirect HTTP requests to HTTPS.
+        # The listener port that is used for HTTP-to-HTTPS redirection.
         # 
-        # >  If the **ListenerForward** parameter is set to **off**, this parameter is not displayed.
+        # >  If the **ListenerForward** parameter is set to **off**, this parameter is not returned.
         self.forward_port = forward_port
-        # Indicates whether Gzip compression is enabled. Valid values:
+        # Indicates whether GZIP compression is enabled. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.gzip = gzip
         # Indicates whether the health check feature is enabled. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.health_check = health_check
         # The port that is used for health checks.
         # 
-        # >  This parameter takes effect when the **HealthCheck** parameter is set to **on**.
+        # >  This parameter takes effect only when **HealthCheck** is set to **on**.
         self.health_check_connect_port = health_check_connect_port
         # The domain name that is used for health checks.
         self.health_check_domain = health_check_domain
-        # The HTTP status codes that are used to determine whether the backend server passes the health check.
+        # The HTTP status code that indicates a healthy backend server.
         self.health_check_http_code = health_check_http_code
-        # The HTTP version that is used for health checks.
+        # The HTTP version for health checks.
         self.health_check_http_version = health_check_http_version
         # The interval at which health checks are performed. Unit: seconds.
         self.health_check_interval = health_check_interval
@@ -11917,11 +11911,11 @@ class DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig(TeaMo
         self.health_check_method = health_check_method
         # The maximum timeout period of a health check. Unit: seconds.
         self.health_check_timeout = health_check_timeout
-        # The protocol that is used for health checks.
+        # The protocol that you want to use for health checks.
         self.health_check_type = health_check_type
         # The URI that is used for health checks.
         self.health_check_uri = health_check_uri
-        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from **fail** to **success**.
         # 
         # Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
@@ -11929,10 +11923,10 @@ class DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig(TeaMo
         # 
         # If no request is received within the specified timeout period, CLB closes the connection. When a request is received, CLB establishes a new connection.
         self.idle_timeout = idle_timeout
-        # Indicates whether HTTP-to-HTTPS redirection is enabled. Valid values:
+        # Indicates whether HTTP-to-HTTPS redirection is enabled for the listener. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.listener_forward = listener_forward
         # The timeout period of a request. Unit: seconds. Valid values: **1** to **180**.
         # 
@@ -11940,47 +11934,47 @@ class DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig(TeaMo
         self.request_timeout = request_timeout
         # Indicates whether session persistence is enabled. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.sticky_session = sticky_session
-        # The method that is used to handle a cookie. Valid values:
+        # The method used to handle the cookie. Valid values:
         # 
-        # *   **insert**: inserts a cookie. CLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client contains this cookie, and the listener forwards this request to the recorded backend server.
-        # *   **server**: rewrites a cookie. When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener will distribute the request to the recorded backend server.
+        # *   **insert**: inserts a cookie. CLB inserts the SERVERID cookie to the HTTP or HTTPS response to the first request from a client. Subsequent requests that carry the SERVERID cookie from the client are forwarded to the same backend server as the first request.
+        # *   **server**: rewrites the original cookie. CLB rewrites the custom cookies in requests from a client. Subsequent requests from the client that carry the new cookie are forwarded to the same backend server as the first request.
         self.sticky_session_type = sticky_session_type
-        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from **success** to **fail**.
         # 
         # Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
-        # Indicates whether the `XForwardedFor` header is used to retrieve client IP addresses. Valid values:
+        # Indicates whether the `X-Forwarded-For` header is used to preserve client IP addresses. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for = xforwarded_for
         # Indicates whether the `XForwardedFor_ClientSrcPort` header is used to retrieve the client port. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
         # Indicates whether the `SLB-ID` header is used to retrieve the ID of the CLB instance. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__slbid = xforwarded_for__slbid
-        # Indicates whether the `SLB-IP` header is used to retrieve the virtual IP address requested by the client. Valid values:
+        # Indicates whether the `SLB-IP` header is used to retrieve the VIP of the client. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__slbip = xforwarded_for__slbip
-        # Indicates whether the `XForwardedFor_SLBPORT` header is used to retrieve the listening port. Valid values:
+        # Indicates whether the `XForwardedFor_SLBPORT` header is used to retrieve the listener port of the CLB instance. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__slbport = xforwarded_for__slbport
-        # Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listening protocol. Valid values:
+        # Indicates whether the `X-Forwarded-Proto` header is used to obtain the listener protocol. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for_proto = xforwarded_for_proto
 
     def validate(self):
@@ -12144,48 +12138,48 @@ class DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig(TeaM
         xforwarded_for__slbport: str = None,
         xforwarded_for_proto: str = None,
     ):
-        # The ID of the certificate authority (CA) certificate.
+        # The ID of the CA certificate.
         self.cacertificate_id = cacertificate_id
-        # The cookie that is configured on the server.
+        # The cookie configures for the server.
         self.cookie = cookie
-        # The timeout period of a cookie. Unit: seconds.
+        # The maximum amount of time to wait before the session cookie expires. Unit: seconds.
         # 
         # Valid values: **1** to **86400**.
         self.cookie_timeout = cookie_timeout
         # Indicates whether `HTTP 2.0` is enabled. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.enable_http_2 = enable_http_2
-        # Indicates whether Gzip compression is enabled. Valid values:
+        # Indicates whether GZIP compression is enabled. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.gzip = gzip
         # Indicates whether the health check feature is enabled. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.health_check = health_check
         # The port that is used for health checks.
         self.health_check_connect_port = health_check_connect_port
         # The domain name that is used for health checks.
         self.health_check_domain = health_check_domain
-        # The HTTP status codes that are used to determine whether the backend server passes the health check.
+        # The HTTP status code that indicates a healthy backend server.
         self.health_check_http_code = health_check_http_code
-        # The HTTP version that is used for health checks.
+        # The HTTP version for health checks.
         self.health_check_http_version = health_check_http_version
         # The interval at which health checks are performed. Unit: seconds.
         self.health_check_interval = health_check_interval
         # The health check method.
         self.health_check_method = health_check_method
-        # The maximum timeout period of a health check. Unit: seconds.
+        # The timeout period of a health check response. Unit: seconds.
         self.health_check_timeout = health_check_timeout
-        # The protocol that is used for health checks.
+        # The protocol that you want to use for health checks.
         self.health_check_type = health_check_type
         # The URI that is used for health checks.
         self.health_check_uri = health_check_uri
-        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from **fail** to **success**.
         # 
         # Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
@@ -12201,99 +12195,99 @@ class DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig(TeaM
         self.server_certificate_id = server_certificate_id
         # Indicates whether session persistence is enabled. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.sticky_session = sticky_session
-        # The method that is used to handle a cookie.
+        # The method used to handle the cookie.
         # 
-        # *   **insert**: inserts a cookie. CLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client contains this cookie, and the listener forwards this request to the recorded backend server.
-        # *   **server**: rewrites a cookie. When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener will distribute the request to the recorded backend server.
+        # *   **insert**: inserts a cookie. CLB inserts the SERVERID cookie to the HTTP or HTTPS response to the first request from a client. Subsequent requests that carry the SERVERID cookie from the client are forwarded to the same backend server as the first request.
+        # *   **server**: rewrites the original cookie. CLB rewrites the custom cookies in requests from a client. Subsequent requests from the client that carry the new cookie are forwarded to the same backend server as the first request.
         self.sticky_session_type = sticky_session_type
-        # The Transport Layer Security (TLS) security policy. Each security policy contains TLS protocol versions and cipher suites available for HTTPS.
+        # A TLS security policy contains TLS protocols and cipher suites available for HTTPS.
         # 
         # *   **tls_cipher_policy_1_0**:
         # 
-        #     Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2
+        #     Supported TLS versions: TLSv1.0, TLSv1.1, and TLSv1.2.
         # 
-        #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
+        #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
         # 
         # *   **tls_cipher_policy_1_1**:
         # 
-        #     Supported TLS versions: TLS 1.1 and TLS 1.2
+        #     Supported TLS versions: TLSv1.1 and TLSv1.2.
         # 
-        #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
+        #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
         # 
         # *   **tls_cipher_policy_1_2**\
         # 
-        #     Supported TLS version: TLS 1.2
+        #     Supported TLS versions: TLSv1.2.
         # 
-        #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
+        #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
         # 
         # *   **tls_cipher_policy_1_2_strict**\
         # 
-        #     Supported TLS version: TLS 1.2
+        #     Supported TLS versions: TLSv1.2.
         # 
-        #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
+        #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
         # 
         # *   **tls_cipher_policy_1_2_strict_with_1_3**\
         # 
-        #     Supported TLS versions: TLS 1.2 and TLS 1.3
+        #     Supported TLS versions: TLSv1.2 and TLSv1.3.
         # 
-        #     Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
+        #     Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
         self.tlscipher_policy = tlscipher_policy
-        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from **success** to **fail**.
         # 
         # Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
-        # Indicates whether the `XForwardedFor` header is used to retrieve client IP addresses. Valid values:
+        # Indicates whether the `X-Forwarded-For` header is used to retrieve client IP addresses. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for = xforwarded_for
-        # Indicates whether the `XForwardedFor_ClientCertClientVerify` header is used to retrieve the verification result of the client certificate. Valid values:
+        # Indicates whether the `XForwardedFor_ClientCertClientVerify` header is used to obtain the verification result of the client certificate. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__client_cert_client_verify = xforwarded_for__client_cert_client_verify
-        # Indicates whether the `XForwardedFor_ClientCertFingerprint` header is used to retrieve the fingerprint of the client certificate. Valid values:
+        # Indicates whether the `XForwardedFor_ClientCertFingerprint` header is used to obtain the fingerprint of the client certificate. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__client_cert_fingerprint = xforwarded_for__client_cert_fingerprint
-        # Indicates whether the `XForwardedFor_ClientCertIssuerDN` header is used to retrieve information about the authority that issues the client certificate. Valid values:
+        # Indicates whether the `XForwardedFor_ClientCertIssuerDN` header is used to obtain information about the authority that issues the client certificate. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__client_cert_issuer_dn = xforwarded_for__client_cert_issuer_dn
-        # Indicates whether the `XForwardedFor_ClientCertSubjectDN` header is used to retrieve information about the owner of the client certificate. Valid values:
+        # Indicates whether the `XForwardedFor_ClientCertSubjectDN` header is used to obtain information about the owner of the client certificate. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__client_cert_subject_dn = xforwarded_for__client_cert_subject_dn
         # Indicates whether the `XForwardedFor_ClientSrcPort` header is used to retrieve the client port. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
         # Indicates whether the `SLB-ID` header is used to retrieve the ID of the CLB instance. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__slbid = xforwarded_for__slbid
-        # Indicates whether the `SLB-IP` header is used to retrieve the virtual IP address requested by the client. Valid values:
+        # Indicates whether the `SLB-IP` header is used to retrieve the VIP of the client. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__slbip = xforwarded_for__slbip
-        # Indicates whether the `XForwardedFor_SLBPORT` header is used to retrieve the listening port. Valid values:
+        # Indicates whether the `XForwardedFor_SLBPORT` header is used to retrieve the listener port of the CLB instance. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__slbport = xforwarded_for__slbport
-        # Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listening protocol. Valid values:
+        # Indicates whether the `X-Forwarded-Proto` header is used to obtain the listener protocol. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for_proto = xforwarded_for_proto
 
     def validate(self):
@@ -12467,8 +12461,8 @@ class DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig(TeaMod
     ):
         # Indicates whether connection draining is enabled. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.connection_drain = connection_drain
         # The timeout period of connection draining. Unit: seconds.
         # 
@@ -12478,8 +12472,8 @@ class DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig(TeaMod
         self.established_timeout = established_timeout
         # Indicates whether the health check feature is enabled. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.health_check = health_check
         # The port that is used for health checks.
         self.health_check_connect_port = health_check_connect_port
@@ -12489,21 +12483,21 @@ class DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig(TeaMod
         self.health_check_connect_timeout = health_check_connect_timeout
         # The domain name that is used for health checks.
         self.health_check_domain = health_check_domain
-        # The HTTP status codes that are used to determine whether the backend server passes the health check.
+        # The HTTP status code that indicates a healthy backend server.
         self.health_check_http_code = health_check_http_code
         # The interval between two consecutive health checks. Unit: seconds.
         self.health_check_interval = health_check_interval
         # The health check method.
         self.health_check_method = health_check_method
-        # The protocol that is used for health checks.
+        # The protocol that you want to use for health checks.
         self.health_check_type = health_check_type
         # The URI that is used for health checks.
         self.health_check_uri = health_check_uri
-        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from **fail** to **success**.
         # 
         # Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
-        # The ID of the primary/secondary server group that is associated with the listener.
+        # The ID of the primary/secondary server group associated with the listener.
         self.master_slave_server_group_id = master_slave_server_group_id
         # Indicates whether session persistence is enabled. Unit: seconds.
         # 
@@ -12511,12 +12505,12 @@ class DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig(TeaMod
         # 
         # **0** indicates that session persistence is disabled.
         self.persistence_timeout = persistence_timeout
-        # Indicates whether the Proxy protocol is used to pass client IP addresses to backend servers. Valid values:
+        # Indicates whether the Proxy protocol is used to pass source client IP addresses to backend servers. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**: enables the burst feature for the data disk.
+        # *   **false**: The task is not being retried.
         self.proxy_protocol_v2enabled = proxy_protocol_v2enabled
-        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from **success** to **fail**.
         # 
         # Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
@@ -12614,8 +12608,6 @@ class DescribeLoadBalancerListenersResponseBodyListenersTags(TeaModel):
         # The tag key.
         self.tag_key = tag_key
         # The tag value.
-        # 
-        # For more information about how to obtain a tag value, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145557.html).
         self.tag_value = tag_value
 
     def validate(self):
@@ -12660,8 +12652,8 @@ class DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig(TeaMod
     ):
         # Indicates whether connection draining is enabled. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.connection_drain = connection_drain
         # The timeout period of connection draining. Unit: seconds.
         # 
@@ -12669,27 +12661,27 @@ class DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig(TeaMod
         self.connection_drain_timeout = connection_drain_timeout
         # Indicates whether the health check feature is enabled. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.health_check = health_check
         # The port that is used for health checks.
         self.health_check_connect_port = health_check_connect_port
         # The timeout period for a health check response.
         self.health_check_connect_timeout = health_check_connect_timeout
-        # The response string for UDP listener health checks.
+        # The response string of UDP health checks.
         self.health_check_exp = health_check_exp
         # The interval between two consecutive health checks. Unit: seconds.
         self.health_check_interval = health_check_interval
-        # The request string for UDP listener health checks.
+        # The request string of UDP health checks.
         self.health_check_req = health_check_req
         # The number of times that a backend server must consecutively pass health checks before it is declared healthy.
         self.healthy_threshold = healthy_threshold
         # The ID of the primary/secondary server group that is associated with the listener.
         self.master_slave_server_group_id = master_slave_server_group_id
-        # Indicates whether the Proxy protocol is used to pass client IP addresses to backend servers. Valid values:
+        # Indicates whether the Proxy protocol is used to pass source client IP addresses to backend servers. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**: enables the burst feature for the data disk.
+        # *   **false**: The task is not being retried.
         self.proxy_protocol_v2enabled = proxy_protocol_v2enabled
         # The number of times that a backend server must consecutively fail health checks before it is declared unhealthy.
         self.unhealthy_threshold = unhealthy_threshold
@@ -12780,40 +12772,38 @@ class DescribeLoadBalancerListenersResponseBodyListeners(TeaModel):
         udplistener_config: DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig = None,
         vserver_group_id: str = None,
     ):
-        # The ID of the network ACL.
+        # The ID of the access control list (ACL).
         self.acl_id = acl_id
+        # The IDs of the ACLs.
         self.acl_ids = acl_ids
         # Indicates whether access control is enabled. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # *   **on**\
+        # *   **off**\
         self.acl_status = acl_status
-        # The type of the network access control list (ACL). Valid values:
+        # The type of access control. Valid values:
         # 
-        # *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
+        # *   **white**: The listener forwards requests only from IP addresses and CIDR blocks on the whitelist. Your service may be adversely affected if the whitelist is not properly configured. If a whitelist is configured, the listener forwards requests only from IP addresses that are added to the whitelist.
         # 
-        # If you enable a whitelist but do not add an IP address to the whitelist, the listener forwards all requests.
+        # If you configure a whitelist but no IP address is added to the whitelist, the listener forwards all requests.
         # 
-        # *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the network ACL are denied. A blacklist applies to scenarios in which you want to deny access from specific IP addresses.
+        # *   **black**: The listener blocks requests from IP addresses and CIDR blocks on the blacklist.
         # 
-        # If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
+        # If you configure a blacklist but no IP address is added to the blacklist, the listener forwards all requests.
         self.acl_type = acl_type
         # The port of the backend server.
         # 
-        # >  This parameter takes effect when the `VServerGroupId` parameter and the `MasterSlaveServerGroupId` parameter are empty.
+        # >  This parameter takes effect only when the `VServerGroupId` and `MasterSlaveServerGroupId` parameters are both empty.
         self.backend_server_port = backend_server_port
-        # The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-        # 
-        # *   **-1**: If -1 is returned, it indicates that the bandwidth of the listener is unlimited.
-        # *   **1 to 5120**: If a value from 1 to 5120 is returned, the value indicates the maximum bandwidth of the listener. The sum of the maximum bandwidth of all listeners added to a CLB instance does not exceed the maximum bandwidth of the CLB instance.
+        # The maximum bandwidth of the listener. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The description of the listener.
         self.description = description
-        # The configuration of the HTTP listener.
+        # The configurations of the HTTP listener.
         self.httplistener_config = httplistener_config
-        # The configuration of the HTTPS listener.
+        # The configurations of the HTTPS listener.
         self.httpslistener_config = httpslistener_config
-        # The listening port.
+        # The listener port.
         self.listener_port = listener_port
         # The protocol used by the listener.
         self.listener_protocol = listener_protocol
@@ -12823,19 +12813,24 @@ class DescribeLoadBalancerListenersResponseBodyListeners(TeaModel):
         # 
         # *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
         # *   **rr**: Requests are distributed to backend servers in sequence.
+        # *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # *   **tch**: specifies consistent hashing based on the source IP address, destination IP address, source port, and destination port. Requests that have the same four factors are distributed to the same backend server.
+        # *   **qch**: specifies consistent hashing based on Quick UDP Internet Connection (QUIC) IDs. Requests that contain the same QUIC ID are scheduled to the same backend server.
+        # 
+        # >  Only high-performance CLB instances support the **sch**, **tch**, and **qch** consistent hashing algorithms.
         self.scheduler = scheduler
         # The status of the listener. Valid values:
         # 
-        # *   **running**: The listener runs as expected.
-        # *   **stopped**: The listener is disabled.
+        # *   **running**\
+        # *   **stopped**\
         self.status = status
-        # The configuration of the TCP listener.
+        # The configurations of the TCP listener.
         self.tcplistener_config = tcplistener_config
-        # The tags.
+        # A list of tags.
         self.tags = tags
-        # The configuration of the UDP listener.
+        # The configurations of the UDP listener.
         self.udplistener_config = udplistener_config
-        # The ID of the vServer group that is associated with the listener.
+        # The ID of the vServer group associated with the listener.
         self.vserver_group_id = vserver_group_id
 
     def validate(self):
@@ -12955,9 +12950,9 @@ class DescribeLoadBalancerListenersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of listeners on the CLB instance.
+        # A list of listeners of the CLB instance.
         # 
-        # >  This parameter is not returned if no listener is created on the CLB instance.
+        # >  This parameter is not returned if the CLB instance does not have a listener.
         self.listeners = listeners
         # The number of entries returned per page.
         self.max_results = max_results
@@ -13163,9 +13158,9 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBodyTagsTag(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tags.
+        # The key of tag N. Valid values of N: **1** to **20**. The tag value cannot be an empty string. The tag key can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
         self.tag_key = tag_key
-        # The tag value.
+        # The value of tag N. Valid values of N: **1** to **20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):
@@ -13267,6 +13262,7 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         # 
         # If **AclStatus** is set to **on**, this parameter is returned.
         self.acl_id = acl_id
+        # The IDs of the ACLs.
         self.acl_ids = acl_ids
         # Indicates whether access control is enabled. Valid values:
         # 
@@ -13358,6 +13354,10 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         # 
         # *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
         # *   **rr**: Requests are distributed to backend servers in sequence.
+        # *   **sch**: specifies consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # *   **tch**: specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are distributed to the same backend server.
+        # 
+        # > Only high-performance CLB instances support the sch and tch algorithms.
         self.scheduler = scheduler
         # The status of the listener. Valid values:
         # 
@@ -13673,9 +13673,9 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBodyTagsTag(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The key of tag N. Valid values of N: **1** to **20**. The tag value cannot be an empty string. The tag key can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
         self.tag_key = tag_key
-        # The tag value.
+        # The value of tag N. Valid values of N: **1** to **20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):
@@ -13767,6 +13767,7 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
     ):
         # The ID of the network ACL.
         self.acl_id = acl_id
+        # The ID of the access control list (ACL).
         self.acl_ids = acl_ids
         # Indicates whether access control is enabled. Valid values: **on** and **off**. Default value: off.
         self.acl_status = acl_status
@@ -14381,10 +14382,7 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
         # *   **internet:** After an Internet-facing CLB instance is created, the system assigns a public IP address to the CLB instance. Then, the CLB instance can forward requests over the Internet.
         # *   **intranet:** After an internal-facing CLB instance is created, the system assigns a private IP address to the CLB instance. Then, the CLB instance can forward requests only over internal networks.
         self.address_type = address_type
-        # The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-        # 
-        # *   **-1:** For a pay-by-data-transfer Internet-facing CLB instance, this value is set to -1. This indicates that the bandwidth is unlimited.
-        # *   **1 to 5120:** For a pay-by-bandwidth Internet-facing CLB instance, you can specify the maximum bandwidth for each listener. The sum of the maximum bandwidth of all listeners cannot exceed the maximum bandwidth of the CLB instance.
+        # The maximum bandwidth of the listener. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_time = create_time
@@ -14417,6 +14415,8 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
         # The name of the CLB instance.
         self.load_balancer_name = load_balancer_name
         # The specification of the CLB instance.
+        # 
+        # >  Pay-as-you-go CLB instances are not subject to specifications. **slb.lcu.elastic** is returned by default.
         self.load_balancer_spec = load_balancer_spec
         # The status of the CLB instance. Valid values:
         # 
@@ -14792,16 +14792,17 @@ class DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServe
     ):
         # The description of the primary/secondary server group.
         self.description = description
-        # The port used by the backend server.
+        # The port that is used by the backend server.
         self.port = port
-        # The ID of the ECS instance or ENI.
+        # The ID of the backend server.
         self.server_id = server_id
-        # The type of backend server. Valid values: **Master and Slave. Default value: Master.
+        # The type of backend server. Valid values: **Master** and **Slave**.
         self.server_type = server_type
         # The type of the backend server. Valid values:
         # 
-        # *   **ecs** (default): an Elastic Compute Service (ECS) instance
-        # *   **eni**: an elastic network interface (ENI)
+        # *   **ecs** (default): Elastic Compute Service (ECS) instance
+        # *   **eni**: elastic network interface (ENI)
+        # *   **eci**: elastic container instance
         self.type = type
         # The weight of the backend server.
         self.weight = weight
@@ -14887,9 +14888,13 @@ class DescribeMasterSlaveServerGroupAttributeResponseBodyTagsTag(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The tag key. Valid values of N: **1** to **20**. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         self.tag_key = tag_key
-        # The tag value.
+        # The tag value. Valid values of N: **1** to **20**. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
         self.tag_value = tag_value
 
     def validate(self):
@@ -14966,13 +14971,13 @@ class DescribeMasterSlaveServerGroupAttributeResponseBody(TeaModel):
         self.create_time = create_time
         # The ID of the associated CLB instance.
         self.load_balancer_id = load_balancer_id
-        # The list of backend servers in the primary/secondary server group.
+        # A list of backend servers in the primary/secondary server group.
         self.master_slave_backend_servers = master_slave_backend_servers
         # The ID of the primary/secondary server group.
         self.master_slave_server_group_id = master_slave_server_group_id
         # The name of the primary/secondary server group.
         self.master_slave_server_group_name = master_slave_server_group_name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The tag list.
         self.tags = tags
@@ -15873,11 +15878,11 @@ class DescribeRuleAttributeResponseBody(TeaModel):
         # 
         # >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
         self.health_check = health_check
-        # The port of the backend server that is used for health checks.
+        # The backend port that is used for health checks.
         # 
         # Valid values: **1** to **65535**.
         # 
-        # >  If you set the **HealthCheck** parameter to **on**, this parameter is required. If you left this parameter empty and the **HealthCheck** parameter is set to **on**, the backend port configuration of the listener is used by default.
+        # >  If you set the **HealthCheck** parameter to **on**, this parameter is required. If this parameter is empty but **HealthCheck** is set to **on**, the listener port is used for health checks.
         self.health_check_connect_port = health_check_connect_port
         # The domain name that is used for health checks. Valid values:
         # 
@@ -15898,11 +15903,11 @@ class DescribeRuleAttributeResponseBody(TeaModel):
         # 
         # >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
         self.health_check_interval = health_check_interval
-        # The timeout period of a health check response. If a backend ECS instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy.
+        # The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check.
         # 
         # Valid values: **1** to **300**. Unit: seconds.
         # 
-        # >  If the value of the **HealthCHeckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the value of the **HealthCHeckTimeout** parameter is ignored and the value of the **HealthCheckInterval** parameter is regarded as the waiting period. If you set the **HealthCheck** parameter to **on**, this parameter is required.
+        # >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
         self.health_check_timeout = health_check_timeout
         # The URI that is used for health checks.
         # 
@@ -16238,11 +16243,11 @@ class DescribeRulesResponseBodyRulesRule(TeaModel):
         # 
         # >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
         self.health_check = health_check
-        # The port of the backend server that is used for health check.
+        # The backend port that is used for health checks.
         # 
         # Valid values: **1 to 65535**.
         # 
-        # >  If you set the **HealthCheck** parameter to **on**, this parameter is required. If you left this parameter empty and the **HealthCheck** parameter is set to **on**, the backend port configuration of the listener is used by default.
+        # >  If you set the **HealthCheck** parameter to **on**, this parameter is required. If this parameter is empty but **HealthCheck** is set to **on**, the listener port is used for health checks.
         self.health_check_connect_port = health_check_connect_port
         # The domain name that is used for health checks. Valid values:
         # 
@@ -16266,11 +16271,11 @@ class DescribeRulesResponseBodyRulesRule(TeaModel):
         # 
         # >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
         self.health_check_interval = health_check_interval
-        # The timeout period for a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.
+        # The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds
         # 
-        # Valid values: **1 to 300**. Unit: seconds.
+        # Valid values: **1 to 300**.
         # 
-        # >  If the value of the **HealthCHeckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the value of the **HealthCHeckTimeout** parameter is ignored and the value of the **HealthCheckInterval** parameter is regarded as the waiting period. If you set the **HealthCheck** parameter to **on**, this parameter is required.
+        # >  When you set the **HealthCheck** parameter to **on**, this parameter takes effect.
         self.health_check_timeout = health_check_timeout
         # The URI that is used for health checks.
         # 
@@ -16465,7 +16470,7 @@ class DescribeRulesResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The list of forwarding rules.
+        # The forwarding rules.
         self.rules = rules
 
     def validate(self):
@@ -16541,9 +16546,13 @@ class DescribeServerCertificatesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key of the resource. You can specify up to 20 tag keys.
+        # 
+        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value cannot be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -16584,17 +16593,17 @@ class DescribeServerCertificatesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region where the CLB instances are deployed.
+        # The region where the CLB instance is deployed.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         # 
-        # >  If the endpoint of the region is slb.aliyuncs.com, you must specify the `RegionId` parameter.
+        # >  If the endpoint of the selected region is slb.aliyuncs.com, you must specify `RegionId`.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the server certificate.
+        # The server certificate ID.
         self.server_certificate_id = server_certificate_id
         # The tags.
         self.tag = tag
@@ -16775,15 +16784,15 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate(
         self.ali_cloud_certificate_id = ali_cloud_certificate_id
         # The name of the server certificate from Alibaba Cloud Certificate Management Service.
         self.ali_cloud_certificate_name = ali_cloud_certificate_name
-        # The domain name of the certificate. The domain name is specified in the `CommonName` field.
+        # The domain name of the server certificate. The domain name is specified in the `CommonName` field.
         self.common_name = common_name
-        # The time when the server certificate is uploaded.
+        # The time when the server certificate was uploaded.
         self.create_time = create_time
-        # The timestamp generated when the server certificate is uploaded.
+        # The timestamp when the server certificate was uploaded.
         self.create_time_stamp = create_time_stamp
-        # The expiration time.
+        # The time when the server certificate expires.
         self.expire_time = expire_time
-        # The timestamp that indicates when the certificate expires.
+        # The timestamp when the server certificate expires.
         self.expire_time_stamp = expire_time_stamp
         # The fingerprint of the server certificate.
         self.fingerprint = fingerprint
@@ -16792,15 +16801,15 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate(
         # *   **1**: yes
         # *   **0**: no
         self.is_ali_cloud_certificate = is_ali_cloud_certificate
-        # The ID of the region where the server certificate is created.
+        # The region ID of the server certificate.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the server certificate.
+        # The server certificate ID.
         self.server_certificate_id = server_certificate_id
         # The name of the server certificate.
         self.server_certificate_name = server_certificate_name
-        # The list of alternative domain names of the server certificate. The alternative domain names are specified in the `Subject Alternative Name` field of the server certificate.
+        # The alternative domain names of the server certificate. The alternative domain names are specified in the Subject Alternative Name field of the server certificate.
         self.subject_alternative_names = subject_alternative_names
         # The tags.
         self.tags = tags
@@ -16927,9 +16936,9 @@ class DescribeServerCertificatesResponseBody(TeaModel):
         request_id: str = None,
         server_certificates: DescribeServerCertificatesResponseBodyServerCertificates = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of server certificates.
+        # The server certificates.
         self.server_certificates = server_certificates
 
     def validate(self):
@@ -17013,11 +17022,11 @@ class DescribeTagsRequest(TeaModel):
         resource_owner_id: int = None,
         tags: str = None,
     ):
-        # Specifies whether the tag is DistinctKey.
+        # Specifies whether the tags contain distinct keys.
         # 
-        # Valid values: **true and false**.
+        # Valid values: true and false.
         self.distinct_key = distinct_key
-        # The ID of the SLB instance.
+        # The SLB instance ID.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -17025,7 +17034,7 @@ class DescribeTagsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Default value: 50. Maximum value: 100.
         self.page_size = page_size
-        # The ID of the region where the Server Load Balancer (SLB) instance is deployed.
+        # The region ID of the Server Load Balancer (SLB) instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -17178,11 +17187,11 @@ class DescribeTagsResponseBody(TeaModel):
     ):
         # The number of the returned page. Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # Default value: 50. Maximum value: 100.
+        # The number of entries returned per page. Default value: 50. Maximum value: 100.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # A list of tags.
+        # The tags that are queried.
         self.tag_sets = tag_sets
         # The number of instances returned.
         self.total_count = total_count
@@ -17339,19 +17348,21 @@ class DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer(TeaMo
         type: str = None,
         weight: int = None,
     ):
-        # The description of the vServer group.
-        self.description = description
-        # The port used by the backend server.
-        self.port = port
-        # The ID of the ECS instance, ENI, or elastic container instance.
-        self.server_id = server_id
-        # The IP address of the ECS instance, ENI, or elastic container instance.
-        self.server_ip = server_ip
-        # The type of the backend server. Valid values:
+        # The description of the server group.
         # 
-        # *   **ecs** (default): an Elastic Compute Service (ECS) instance
-        # *   **eni**: an elastic network interface (ENI)
-        # *   **eci**: an elastic container instance
+        # >  This parameter is not returned if the Description parameter is not specified in the request.
+        self.description = description
+        # The port that is used by the backend server.
+        self.port = port
+        # The ID of the backend server.
+        self.server_id = server_id
+        # The IP address of the backend server.
+        self.server_ip = server_ip
+        # The type of backend server. Valid values:
+        # 
+        # *   **ecs**: ECS instance
+        # *   **eni**: ENI
+        # *   **eci**: elastic container instance
         self.type = type
         # The weight of the backend server.
         self.weight = weight
@@ -17437,9 +17448,13 @@ class DescribeVServerGroupAttributeResponseBodyTagsTag(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The tag key. Valid values of N: **1** to **20**. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         self.tag_key = tag_key
-        # The tag value.
+        # The tag value. Valid values of N: **1** to **20**. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
         self.tag_value = tag_value
 
     def validate(self):
@@ -17512,15 +17527,15 @@ class DescribeVServerGroupAttributeResponseBody(TeaModel):
         vserver_group_id: str = None,
         vserver_group_name: str = None,
     ):
-        # The list of backend servers.
+        # The backend servers.
         self.backend_servers = backend_servers
         # The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_time = create_time
         # The ID of the CLB instance.
         self.load_balancer_id = load_balancer_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The tag list.
+        # The tags of the backend server.
         self.tags = tags
         # The ID of the vServer group.
         self.vserver_group_id = vserver_group_id
@@ -17623,9 +17638,13 @@ class DescribeVServerGroupsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs`:.
         self.key = key
-        # The tag value.
+        # The tag value. Valid values of N: 1 to 20. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -17765,9 +17784,9 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
         port: int = None,
         protocol: str = None,
     ):
-        # The listening port.
+        # The listener port.
         self.port = port
-        # The listening protocol. Valid values: **tcp**, **udp**, **http**, and **https**.
+        # The listener protocol. Valid values: **tcp**, **udp**, **http**, and **https**.
         self.protocol = protocol
 
     def validate(self):
@@ -17843,7 +17862,7 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
         self.rule_id = rule_id
         # The name of the forwarding rule.
         self.rule_name = rule_name
-        # The request path.
+        # The request URL.
         self.url = url
 
     def validate(self):
@@ -17919,9 +17938,9 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
         listeners: DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListeners = None,
         rules: DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRules = None,
     ):
-        # The list of listeners.
+        # The listeners.
         self.listeners = listeners
-        # The list of forwarding rules.
+        # The forwarding rules.
         self.rules = rules
 
     def validate(self):
@@ -17959,7 +17978,7 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupTagsTag(TeaModel
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag keys of the resource.
+        # The tag key.
         self.tag_key = tag_key
         # The tag value.
         self.tag_value = tag_value
@@ -18033,19 +18052,19 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup(TeaModel):
         vserver_group_id: str = None,
         vserver_group_name: str = None,
     ):
-        # The items associated with the server groups.
+        # The associated resources.
         self.associated_objects = associated_objects
         # The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
         self.create_time = create_time
-        # The number of servers. 
+        # The number of servers.
         # 
-        # >  The feature corresponding to this parameter is not available by default. If you want to use this feature, [submit a ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex).
+        # This parameter is unavailable by default. To use this parameter, submit a ticket or contact your account manager.
         self.server_count = server_count
         # The tags.
         self.tags = tags
-        # The ID of the server group.
+        # The server group ID.
         self.vserver_group_id = vserver_group_id
-        # The name of the server group.
+        # The server group name.
         self.vserver_group_name = vserver_group_name
 
     def validate(self):
@@ -18134,9 +18153,9 @@ class DescribeVServerGroupsResponseBody(TeaModel):
         request_id: str = None,
         vserver_groups: DescribeVServerGroupsResponseBodyVServerGroups = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of backend servers.
+        # The backend servers.
         self.vserver_groups = vserver_groups
 
     def validate(self):
@@ -19030,13 +19049,13 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys.
+        # The tag key of the resource. You can specify up to 20 tag keys.
         # 
-        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. The tag value cannot be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value cannot be an empty string.
         # 
-        # The tag value must be 1 to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -19083,21 +19102,26 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the Server Load Balancer (SLB) instance is created.
+        # The region ID of the CLB instance.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of a resource. You can specify up to 20 resources.
+        # The resource ID. You can specify up to 20 resources.
+        # 
+        # >  The value of **ResourceId** of a **listener** is **LoadBalancerId_Listener protocol_Port**, where LoadBalancerId is the ID of the CLB instance and port is the listener port. Example: lb-bp1qnnvj18yy6h\\*\\*\\*\\*_http_80.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the resource. Valid values:
         # 
-        # *   **instance**: an SLB instance
+        # *   **instance**: a CLB instance
         # *   **certificate**: a certificate
-        # *   **acl**: a network access control list (ACL)
+        # *   **acl**: an access control list (ACL)
+        # *   **listener**: a listener
+        # *   **vservergroup**: a vServer group
+        # *   **masterslaveservergroup**: a primary/secondary server group
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -19172,7 +19196,7 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
         # The resource type.
         self.resource_type = resource_type
@@ -19262,7 +19286,7 @@ class ListTagResourcesResponseBody(TeaModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The details about the resource to which the tags are added.
+        # The resources to which the tags are added.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -20204,51 +20228,83 @@ class ModifyVServerGroupBackendServersRequest(TeaModel):
         resource_owner_id: int = None,
         vserver_group_id: str = None,
     ):
-        # The list of new backend servers that you want to use to replace those in the vServer group. You can specify at most 20 backend servers for a vServer group in each call.
+        # The backend servers that you want to add to the vServer group. Configure the following parameters:
         # 
-        # *   **ServerId**: required. The ID of the ECS instance or ENI that serves as a backend server. This parameter must be of the STRING type.
+        # *   **ServerId**: required. The IDs of the backend servers. Specify the IDs in a string. You can specify the IDs of ECS instances, ENIs, and elastic container instances. If you set **ServerId** to the IDs of ENIs or elastic container instances, you must configure the **Type** parameter.
         # 
-        # *   **Port**: required. The port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: **1 to 65535**.
+        # *   **Weight**: the weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If you set the weight of a backend server to 0, no requests are forwarded to the backend server.
         # 
-        # *   **Weight**: required. The weight of the backend server. This parameter must be of the INTEGER type. Valid values: **0 to 100**.
+        # *   **Description**: optional. The description of the backend servers. Specify the description in a string. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/). periods (.), and underscores (_).
         # 
-        # *   **Description**: optional. The description of the backend server. This parameter must be of the STRING type. The description can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+        # *   **Type**: the type of the backend server. Valid values:
         # 
-        # *   **Type**: the type of backend server. This parameter must be of the STRING type. Valid values:
+        #     *   **ecs** (default): ECS instance
+        #     *   **eni**: ENI
+        #     *   **eci**: elastic container instance
         # 
-        #     *   **ecs**: an ECS instance. This is the default value.
-        #     *   **eni**: an ENI.
+        # >  You can specify ENIs and elastic container instances as backend servers only for high-performance SLB instances.
         # 
-        # *   **ServerIp**: the IP address of the ECS instance or ENI.
+        # *   **ServerIp**: the IP address of the ENI or elastic container instance.
+        # *   **Port**: the backend port.
         # 
         # Examples:
         # 
-        # *   An ECS instance: `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
-        # *   An ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" }]`
-        # *   An ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.\*\*.**", "Port":"80","Description":"test-113" }]`
+        # *   Add an ECS instance:
+        # 
+        #     `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
+        # 
+        # *   Add an ENI:
+        # 
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-112" }]`
+        # 
+        # *   Add an ENI with multiple IP addresses:
+        # 
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-113" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``172.166.**.**``", "Port":"80","Description":"test-113" }]`
+        # 
+        # *   Add an elastic container instance
+        # 
+        #     `[{ "ServerId": "eci-xxxxxxxxx", "Weight": "100", "Type": "eci", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-114" }]`
+        # 
+        # >  You can add only running backend servers to SLB instances. You can specify at most 20 backend servers in each call.
         self.new_backend_servers = new_backend_servers
-        # The list of backend servers that you want to replace in the vServer group. You can specify at most 20 backend servers for a vServer group in each call.
+        # The backend servers that you want to replace. Configure the following parameters:
         # 
-        # *   **ServerId**: required. The ID of the Elastic Compute Service (ECS) instance or elastic network interface (ENI) that serves as a backend server. This parameter must be of the STRING type.
+        # *   **ServerId**: required. The IDs of the backend servers. Specify the IDs in a string. You can specify the IDs of Elastic Compute Service (ECS) instances, elastic network interfaces (ENIs), and elastic container instances. If you set **ServerId** to the IDs of ENIs or elastic container instances, you must configure the **Type** parameter.
         # 
-        # *   **Port**: required. The port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: **1 to 65535**.
+        # *   **Weight**: the weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If you set the weight of a backend server to 0, no requests are forwarded to the backend server.
         # 
-        # *   **Weight**: required. The weight of the backend server. This parameter must be of the INTEGER type. Valid values: **0 to 100**.
+        # *   **Description**: optional. The description of the backend servers. Specify the description in a string. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/). periods (.), and underscores (_).
         # 
-        # *   **Description**: optional. The description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+        # *   **Type**: the type of the backend server. Valid values:
         # 
-        # *   **Type**: the type of backend server. This parameter must be of the STRING type. Valid values:
+        #     *   **ecs** (default): ECS instance
+        #     *   **eni**: ENI
+        #     *   **eci**: elastic container instance
         # 
-        #     *   **ecs**: an ECS instance. This is the default value.
-        #     *   **eni**: an ENI.
+        # >  You can specify ENIs and elastic container instances as backend servers only for high-performance SLB instances.
         # 
-        # *   **ServerIp**: the IP address of the ECS instance or ENI.
+        # *   **ServerIp**: the IP address of the ENI or elastic container instance.
+        # *   **Port**: the backend port.
         # 
         # Examples:
         # 
-        # *   An ECS instance: `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
-        # *   An ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" }]`
-        # *   An ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.\*\*.**", "Port":"80","Description":"test-113" }]`
+        # *   Add an ECS instance:
+        # 
+        #     `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
+        # 
+        # *   Add an ENI:
+        # 
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-112" }]`
+        # 
+        # *   Add an ENI with multiple IP addresses:
+        # 
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-113" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``172.166.**.**``", "Port":"80","Description":"test-113" }]`
+        # 
+        # *   Add an elastic container instance
+        # 
+        #     `[{ "ServerId": "eci-xxxxxxxxx", "Weight": "100", "Type": "eci", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-114" }]`
+        # 
+        # >  You can add only running backend servers to SLB instances. You can specify at most 20 backend servers in each call.
         self.old_backend_servers = old_backend_servers
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20328,8 +20384,9 @@ class ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer(Te
         self.server_id = server_id
         # The type of backend server. Valid values:
         # 
-        # *   **ecs**: an ECS instance. This is the default value.
-        # *   **eni**: an ENI.
+        # *   **ecs** (default): ECS instance
+        # *   **eni**: ENI
+        # *   **eci**: elastic container instance
         self.type = type
         # The weight of the backend server.
         self.weight = weight
@@ -20412,9 +20469,9 @@ class ModifyVServerGroupBackendServersResponseBody(TeaModel):
         request_id: str = None,
         vserver_group_id: str = None,
     ):
-        # The list of backend servers.
+        # The backend servers.
         self.backend_servers = backend_servers
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the vServer group.
         self.vserver_group_id = vserver_group_id
@@ -20813,24 +20870,31 @@ class RemoveBackendServersRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The backend servers to be removed.
+        # The backend servers that you want to remove.
         # 
         # *   **ServerId**: The IDs of the backend servers. Set the value to a string. This parameter is required.
         # 
-        # *   **Type**: The type of the backend server. Valid values:
+        # *   **Type**: the type of the backend server. Valid values:
         # 
-        #     *   **ecs** (default): an Elastic Compute Service (ECS) instance
-        # 
-        #     <!---->
-        # 
-        #     *   **eni**: an elastic network interface (ENI)
+        #     *   **ecs** (default): Elastic Compute Service (ECS) instance
+        #     *   **eni**: elastic network interface (ENI)
+        #     *   **eci**: elastic container instance
         # 
         # *   **Weight**: the weight of the backend server. Valid values: **0** to **100**. Set the value to an integer.
         # 
-        # You can remove at most 20 backend servers in each call. Examples:
+        # You can specify at most 20 backend servers in each call. Examples:
         # 
-        # *   Remove an ECS instance: `[{"ServerId":"i-bp1fq61enf4loa5i****", "Type": "ecs","Weight":"100"}]`
-        # *   Remove an ENI: `[{"ServerId":"eni-2ze1sdp5****","Type": "eni","Weight":"100"}]`
+        # *   Remove ECS instances:
+        # 
+        # `[{"ServerId":"i-bp1fq61enf4loa5i****", "Type": "ecs","Weight":"100"}]`
+        # 
+        # *   Remove ENIs:
+        # 
+        # `[{"ServerId":"eni-2ze1sdp5****","Type": "eni","Weight":"100"}]`
+        # 
+        # *   Remove elastic container instances:
+        # 
+        # `[{"ServerId":"eci-2ze1sdp5****","Type": "eci","Weight":"100"}]`
         # 
         # This parameter is required.
         self.backend_servers = backend_servers
@@ -20901,10 +20965,11 @@ class RemoveBackendServersResponseBodyBackendServersBackendServer(TeaModel):
         self.description = description
         # The ID of the backend server.
         self.server_id = server_id
-        # The type of the backend server. Valid values:
+        # The type of backend server. Valid values:
         # 
-        # *   **ecs**: an ECS instance
-        # *   **eni**: an ENI
+        # *   **ecs**: ECS instance
+        # *   **eni**: ENI
+        # *   **eci**: elastic container instances
         self.type = type
         # The weight of the backend server. Valid values: **0 to 100**.
         self.weight = weight
@@ -20983,11 +21048,11 @@ class RemoveBackendServersResponseBody(TeaModel):
         load_balancer_id: str = None,
         request_id: str = None,
     ):
-        # The list of backend servers.
+        # The backend servers.
         self.backend_servers = backend_servers
         # The ID of the CLB instance.
         self.load_balancer_id = load_balancer_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21233,13 +21298,15 @@ class RemoveTagsRequest(TeaModel):
         resource_owner_id: int = None,
         tags: str = None,
     ):
-        # The ID of the SLB instance.
+        # The SLB instance ID.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the SLB instance belongs.
+        # The ID of the region where the Server Load Balancer (SLB) instance is created.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2401682.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -21299,7 +21366,7 @@ class RemoveTagsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21374,32 +21441,50 @@ class RemoveVServerGroupBackendServersRequest(TeaModel):
         resource_owner_id: int = None,
         vserver_group_id: str = None,
     ):
-        # The list of backend servers that you want to remove from the vServer group.
+        # The backend servers that you want to remove. Configure the following parameters:
         # 
-        # You can specify at most 20 backend servers for a vServer group in each call.
+        # *   **ServerId**: Required. The ID of the backend server. Specify the value in a string. You can specify the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. If you set **ServerId** to the ID of an ENI or an elastic container instance, you must configure the **Type** parameter.
         # 
-        # The value of this parameter is a JSON list of the STRING type. You can specify at most 20 elements in a list for each request.
+        # *   **Weight**: the weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If you set the weight of a backend server to 0, no requests are forwarded to the backend server.
         # 
-        # *   **ServerId**: the ID of the Elastic Compute Service (ECS) instance or elastic network interface (ENI) that serves as a backend server.
+        # *   **Description**: Optional. The description of the backend server. Specify the value in a string. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         # 
-        # *   **Port**: the port that is used by the backend server. Valid values: **1 to 65535**.
+        # *   **Type**: the type of the backend server. Valid values:
         # 
-        # *   **Weight**: the weight of the backend server. Valid values: **0 to 100**.
+        #     *   **ecs**: ECS instance
+        #     *   **eni**: ENI
+        #     *   **eci**: elastic container instance
         # 
-        # *   **Description**: the description of the backend server. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+        # >  You can specify ENIs and elastic container instances as backend servers only for high-performance SLB instances.
         # 
-        # *   **Type**: the type of backend server. Valid values:
+        # *   **ServerIp**: the IP address of an ENI or an elastic container instance.
+        # *   **Port**: the backend port.
         # 
-        #     *   **ecs**: an ECS instance. This is the default value.
-        #     *   **eni**: an ENI.
+        # Examples:
         # 
-        # *   **ServerIp**: the IP address of the ECS instance or ENI.
+        # *   Add ECS instances:
+        # 
+        #     `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
+        # 
+        # *   Add ENIs:
+        # 
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-112" }]`
+        # 
+        # *   Add ENIs with multiple IP addresses:
+        # 
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-113" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``172.166.**.**``", "Port":"80","Description":"test-113" }]`
+        # 
+        # *   Add elastic container instances:
+        # 
+        #     `[{ "ServerId": "eci-xxxxxxxxx", "Weight": "100", "Type": "eci", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-114" }]`
+        # 
+        # >  You can add only running backend servers to SLB instances. You can specify at most 20 backend servers.
         # 
         # This parameter is required.
         self.backend_servers = backend_servers
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+        # The region ID of the Server Load Balancer (SLB) instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -21464,12 +21549,13 @@ class RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer(Te
     ):
         # The port that is used by the backend server.
         self.port = port
-        # The ID of the ECS instance or ENI.
+        # The ID of the backend server.
         self.server_id = server_id
-        # The type of backend server. Valid values:
+        # The type of the backend server. Valid values:
         # 
-        # *   **ecs**: an ECS instance
-        # *   **eni**: an ENI
+        # *   **ecs** (default): ECS instance
+        # *   **eni**: ENI
+        # *   **eci**: elastic container instance
         self.type = type
         # The weight of the backend server.
         self.weight = weight
@@ -21548,9 +21634,9 @@ class RemoveVServerGroupBackendServersResponseBody(TeaModel):
         request_id: str = None,
         vserver_group_id: str = None,
     ):
-        # The list of backend servers.
+        # The backend servers.
         self.backend_servers = backend_servers
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the vServer group.
         self.vserver_group_id = vserver_group_id
@@ -21637,17 +21723,17 @@ class SetAccessControlListAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the network ACL.
+        # The ACL ID.
         # 
         # This parameter is required.
         self.acl_id = acl_id
-        # The new name of the network ACL. The name must be 1 to 80 characters in length, and can contain only letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (_). The name of the network ACL must be unique within each region.
+        # The ACL name.
         # 
         # This parameter is required.
         self.acl_name = acl_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the network ACL is created.
+        # The region ID of the ACL.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         # 
@@ -21705,7 +21791,7 @@ class SetAccessControlListAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21785,15 +21871,15 @@ class SetAccessLogsDownloadAttributeRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         # The access log forwarding rule. Parameters:
         # 
-        # *   **LogProject**: the name of the project.
-        # *   **LogStore**: the name of the Logstore.
+        # *   **LogProject**: the name of the project of Simple Log Service.
+        # *   **LogStore**: the name of the Logstore of Simple Log Service.
         # *   **LoadBalancerId**: the ID of the CLB instance.
         # 
         # This parameter is required.
         self.logs_download_attributes = logs_download_attributes
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the CLB instance is deployed.
+        # The region ID of the CLB instance.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         # 
@@ -21859,7 +21945,7 @@ class SetAccessLogsDownloadAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21934,33 +22020,44 @@ class SetBackendServersRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The list of backend servers that you want to modify.
+        # The backend servers that you want to add. Configure the following parameters:
         # 
-        # The value of this parameter must be a STRING list in the JSON format. You can specify up to 20 elements in each request.
+        # *   **ServerId**: Required. The ID of the backend server. Specify the value in a string. You can specify the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. If you set **ServerId** to the ID of an ENI or an elastic container instance, you must configure the **Type** parameter.
         # 
-        # *   **ServerId**: Required. Specify the ID of the backend server. This parameter must be of the STRING type.
+        # *   **Weight**: the weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If you set the weight of a backend server to 0, no requests are forwarded to the backend server.
         # 
-        # *   **Port**: Required. Specify the port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: **1** to **65535**.
+        # *   **Description**: Optional. The description of the backend server. Specify the value in a string. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         # 
-        # *   **Weight**: Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: **0** to **100**.
+        # *   **Type**: the type of the backend server. Valid values:
         # 
-        # *   **Description**: Optional. The description of the backend server. This value must be a string. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        #     *   **ecs** (default): ECS instance
+        #     *   **eni**: ENI
+        #     *   **eci**: elastic container instance
         # 
-        # *   **Type**: the type of backend server. This parameter must be of the STRING type. Valid values:
+        # >  You can specify ENIs and elastic container instances as backend servers only for high-performance CLB instances.
         # 
-        #     *   **ecs** (default): an Elastic Compute Service (ECS) instance
-        #     *   **eni**: an elastic network interface (ENI). You can specify ENIs as the backend servers only for high-performance CLB instances.
-        # 
-        # *   **ServerIp**: the IP address of the ECS instance or ENI
+        # *   **ServerIp**: the IP address of the ENI or elastic container instance.
+        # *   **Port**: the backend port.
         # 
         # Examples:
         # 
-        # *   ECS instance: `[{ "ServerId": "ecs-******FmYAXG", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
-        # *   ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" }]`
-        # *   ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.\*\*.**", "Port":"80","Description":"test-113" }]`
+        # *   ECS instance:
         # 
-        # > 
-        # *   The backend servers must be in the Running state. You can specify up to 20 backend servers in each request.
+        #     `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
+        # 
+        # *   ENI:
+        # 
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-112" }]`
+        # 
+        # *   ENI with multiple IP addresses:
+        # 
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-113" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``172.166.**.**``", "Port":"80","Description":"test-113" }]`
+        # 
+        # *   Elastic container instance:
+        # 
+        #     `[{ "ServerId": "eci-xxxxxxxxx", "Weight": "100", "Type": "eci", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-114" }]`
+        # 
+        # >  You can add only running backend servers to a CLB instance. You can specify at most 20 backend servers in each call.
         self.backend_servers = backend_servers
         # The ID of the CLB instance.
         # 
@@ -22027,12 +22124,13 @@ class SetBackendServersResponseBodyBackendServersBackendServer(TeaModel):
     ):
         # The description of the backend server.
         self.description = description
-        # The ID of the server.
+        # The ID of the server group.
         self.server_id = server_id
-        # The type of the backend server. Valid values:
+        # The type of backend server. Valid values:
         # 
-        # *   **ecs** (default): an ECS instance
-        # *   **eni**: an elastic network interface (ENI)
+        # *   **ecs** (default): ECS instance
+        # *   **eni**: ENI
+        # *   **eci**: elastic container instance
         self.type = type
         # The weight of the backend server.
         self.weight = weight
@@ -22111,11 +22209,11 @@ class SetBackendServersResponseBody(TeaModel):
         load_balancer_id: str = None,
         request_id: str = None,
     ):
-        # The list of backend servers.
+        # The backend servers.
         self.backend_servers = backend_servers
         # The ID of the CLB instance.
         self.load_balancer_id = load_balancer_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22204,17 +22302,17 @@ class SetCACertificateNameRequest(TeaModel):
         # 
         # This parameter is required.
         self.cacertificate_id = cacertificate_id
-        # The name of the CA certificate.
+        # The CA certificate name.
         # 
-        # The name must be 1 to 80 characters in length and start with an English letter or a Chinese character. It can contain numbers, underscores (_), periods (.), and hyphens (-).
+        # The name must be 1 to 80 character in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         # 
         # This parameter is required.
         self.cacertificate_name = cacertificate_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region to which the CA certificate belongs.
+        # The region of the CA certificate.
         # 
-        # To query the region ID, call [DescribeRegions](https://help.aliyun.com/document_detail/27584.html).
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -22270,7 +22368,7 @@ class SetCACertificateNameResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22351,7 +22449,7 @@ class SetDomainExtensionAttributeRequest(TeaModel):
         self.domain_extension_id = domain_extension_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the SLB instance is created.
+        # The region ID of the Server Load Balancer (SLB) instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -22409,7 +22507,7 @@ class SetDomainExtensionAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22904,11 +23002,9 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # 
         # > The parameter takes effect only if you set **HealthCheck** to **on**.
         self.health_check_method = health_check_method
-        # The timeout period of a health check response. If a backend server, such as an Elastic Compute Service (ECS) instance, does not respond to a probe packet within the specified timeout period, the server fails the health check. This parameter takes effect only if you set **HealthCheck** to **on**.
+        # The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
         # 
         # Valid values: **1** to **300**. Unit: seconds.
-        # 
-        # > If the value of **HealthCheckTimeout** is smaller than the value of **HealthCheckInterval**, the value of **HealthCheckTimeout** becomes invalid and the value of **HealthCheckInterval** is used as the timeout period.
         self.health_check_timeout = health_check_timeout
         # The Uniform Resource Identifier (URI) that you want to use for health checks.
         # 
@@ -23297,9 +23393,9 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         xforwarded_for__slbport: str = None,
         xforwarded_for_proto: str = None,
     ):
-        # The ID of the network access control list (ACL) that you want to associate with the listener.
+        # The ID of the network access control list (ACL) that is associated with the listener.
         # 
-        # If **AclStatus** is set to **on**, this parameter is required.
+        # This parameter is required if **AclStatus** is set to **on**.
         self.acl_id = acl_id
         # Specifies whether to enable access control. Valid values:
         # 
@@ -23318,23 +23414,22 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         # 
         # >  This parameter takes effect only when **AclStatus** is set to **on**.
         self.acl_type = acl_type
-        # The bandwidth limit of the listener. Unit: Mbit/s.
+        # The maximum bandwidth of the listener. Unit: Mbit/s.
         # 
-        # Valid values: **-1** and **1** to **5120**.
+        # Valid values:
         # 
         # *   **-1**: If you set the value to -1, the bandwidth of the listener is unlimited.
-        # *   **1** to **5120**: If you set a value from 1 to 5120, the value that you specify equals the bandwidth limit of the listener. The sum of bandwidth limit values that you specify for all listeners of the CLB instance cannot exceed the bandwidth limit of the CLB instance.
         self.bandwidth = bandwidth
         # The ID of the CA certificate.
         # 
         # *   If both the CA certificate and the server certificate are uploaded, mutual authentication is used.
         # *   If you upload only the server certificate, one-way authentication is used.
         self.cacertificate_id = cacertificate_id
-        # The cookie to be configured on the backend server.
+        # The cookie that you want to configure for the server.
         # 
-        # The cookie must be 1 to 200 characters in length, and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+        # The cookie must be 1 to 200 characters in length, and can contain only ASCII letters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
         # 
-        # >  This parameter is required if the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **server**.
+        # >  This parameter is required when you set the **StickySession** parameter to **on** and the **StickySessionType** parameter to **server**.
         self.cookie = cookie
         # The timeout period of the cookie. Unit: seconds.
         # 
@@ -23343,6 +23438,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         # >  This parameter is required if the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **insert**.
         self.cookie_timeout = cookie_timeout
         # The description of the listener.
+        # The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         self.description = description
         # Specifies whether to use `HTTP 2.0`. Valid values:
         # 
@@ -23388,13 +23484,9 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         # 
         # >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
         self.health_check_method = health_check_method
-        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the health check fails. Unit: seconds.
+        # The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds Valid values: **1** to **300**.
         # 
-        # Valid values: **1** to **300**.
-        # 
-        # If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the period of time specified by the **HealthCheckInterval** parameter is used as the timeout period.
-        # 
-        # >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
+        # >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
         self.health_check_timeout = health_check_timeout
         # The URL that is used for health checks.
         # 
@@ -25090,9 +25182,9 @@ class SetRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The name of the forwarding rule. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        # The name of the forwarding rule. The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         # 
-        # >  Forwarding rule names must be unique within the same listener.
+        # > On the same listener, the forwarding rule names must be unique.
         self.rule_name = rule_name
         # The scheduling algorithm. Valid values:
         # 
@@ -25666,42 +25758,58 @@ class SetVServerGroupAttributeRequest(TeaModel):
         vserver_group_id: str = None,
         vserver_group_name: str = None,
     ):
-        # The list of backend servers in the vServer group. You can specify at most 20 backend servers for a vServer group in each call.
+        # The backend servers. This operation only can be used to modify the weights of backend servers and names of vServer groups. Configure the following parameters:
         # 
-        # *   **ServerId**: required. The ID of the Elastic Compute Service (ECS) instance or elastic network interface (ENI) that serves as a backend server. This parameter must be of the STRING type.
+        # *   **ServerId**: Required. The ID of the backend server. Specify the value in a string. You can specify the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. If you set **ServerId** to the ID of an ENI or an elastic container instance, you must configure the **Type** parameter.
         # 
-        # *   **Port**: required. The port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: **1 to 65535**.
+        # *   **Weight**: the weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If you set the weight of a backend server to 0, no requests are forwarded to the backend server.
         # 
-        # *   **Weight**: required. The weight of the backend server. This parameter must be of the INTEGER type. You can modify this parameter. Valid values: **0 to 100**.
+        # *   **Description**: Optional. The description of the backend server. Specify the value in a string. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         # 
-        # *   **Description**: optional. The description of the backend server. This parameter must be of the STRING type. You can modify this parameter. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+        # *   **Type**: the type of the backend server. Valid values:
         # 
-        # *   **Type**: the type of backend server. This parameter must be of the STRING type. Valid values:
+        #     *   **ecs** (default): ECS instance
+        #     *   **eni**: ENI
+        #     *   **eci**: elastic container instance
         # 
-        #     *   **ecs**: an ECS instance. This is the default value.
-        #     *   **eni**: an ENI.
+        # >  You can specify ENIs and elastic container instances as backend servers only for high-performance CLB instances.
         # 
-        # *   **ServerIp**: the IP address of the ECS instance or ENI.
+        # *   **ServerIp**: the IP address of an ENI or an elastic container instance.
+        # *   **Port**: the backend port.
         # 
         # Examples:
         # 
-        # *   An ECS instance: `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
-        # *   An ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" }]`
-        # *   An ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.\*\*.**", "Port":"80","Description":"test-113" }]`
+        # *   Add ECS instances:
+        # 
+        #     `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
+        # 
+        # *   Add ENIs:
+        # 
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-112" }]`
+        # 
+        # *   Add ENIs with multiple IP addresses:
+        # 
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-113" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "``172.166.**.**``", "Port":"80","Description":"test-113" }]`
+        # 
+        # *   Add elastic container instances:
+        # 
+        #     `[{ "ServerId": "eci-xxxxxxxxx", "Weight": "100", "Type": "eci", "ServerIp": "``192.168.**.**``", "Port":"80","Description":"test-114" }]`
+        # 
+        # >  You can add only running backend servers to SLB instances. You can specify at most 20 backend servers in each call.
         self.backend_servers = backend_servers
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the Classic Load Balancer (CLB) instance is deployed. This parameter cannot be modified.
+        # The region ID of the Server Load Balancer (SLB) instance, which cannot be modified.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the vServer group. This parameter cannot be modified.
+        # The vServer group ID, which cannot be modified.
         # 
         # This parameter is required.
         self.vserver_group_id = vserver_group_id
-        # The name of the vServer group. You can specify a custom name for the vServer group.
+        # The vServer group name. You can specify a name.
         self.vserver_group_name = vserver_group_name
 
     def validate(self):
@@ -25761,16 +25869,17 @@ class SetVServerGroupAttributeResponseBodyBackendServersBackendServer(TeaModel):
         type: str = None,
         weight: int = None,
     ):
-        # The description of the vServer group.
+        # The description of the server group.
         self.description = description
         # The port that is used by the backend server.
         self.port = port
-        # The ID of the ECS instance or ENI.
+        # The ID of the backend server.
         self.server_id = server_id
         # The type of backend server. Valid values:
         # 
-        # *   **ecs**: an ECS instance
-        # *   **eni**: an ENI
+        # *   **ecs** (default): ECS instance
+        # *   **eni**: ENI
+        # *   **eci**: elastic container instance
         self.type = type
         # The weight of the backend server.
         self.weight = weight
@@ -25854,11 +25963,11 @@ class SetVServerGroupAttributeResponseBody(TeaModel):
         vserver_group_id: str = None,
         vserver_group_name: str = None,
     ):
-        # The list of backend servers.
+        # The backend servers.
         self.backend_servers = backend_servers
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the vServer group.
+        # The server group ID.
         self.vserver_group_id = vserver_group_id
         # The name of the vServer group.
         self.vserver_group_name = vserver_group_name
@@ -25950,25 +26059,25 @@ class StartLoadBalancerListenerRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The listener port of the SLB instance.
+        # The frontend port that is used by the CLB instance.
         # 
         # Valid values: **1 to 65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
-        # The protocol used by the listener of the SLB instance.
+        # The frontend protocol that is used by the CLB instance.
         # 
-        # >  If different listeners use the same port, you must specify this parameter.
+        # >  This parameter is required if the same port is used by listeners of different protocols.
         self.listener_protocol = listener_protocol
-        # The ID of the SLB instance.
+        # The CLB instance ID.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region where the SLB instance is deployed.
+        # The region where the CLB instance is created.
         # 
-        # You can retrieve the region ID by calling the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26026,7 +26135,7 @@ class StartLoadBalancerListenerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26102,17 +26211,17 @@ class StopLoadBalancerListenerRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The frontend listening port used by the listener.
+        # The frontend port that is used by the CLB instance.
         # 
-        # Value range: **1 to 65535**\
+        # Valid values: **1 to 65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
-        # The frontend listening protocol used by the SLB instance.
+        # The frontend protocol that is used by the CLB instance.
         # 
-        # >  This parameter is required when listeners with different protocols use the same port.
+        # > This parameter is required if the same port is used by listeners of different protocols.
         self.listener_protocol = listener_protocol
-        # The ID of the SLB instance to which the listener belongs.
+        # The CLB instance ID.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
@@ -26120,7 +26229,7 @@ class StopLoadBalancerListenerRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the SLB instance belongs.
         # 
-        # To query the region ID, refer to the list of [regions and zones](https://help.aliyun.com/document_detail/40654.html) or call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html).
+        # To query the region ID, refer to the list of  [regions and zones](https://help.aliyun.com/document_detail/40654.html) or call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26178,7 +26287,7 @@ class StopLoadBalancerListenerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26301,9 +26410,9 @@ class TagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource ID. You can specify up to 20 IDs.
+        # The ID of the resource. You can specify at most 20 resources.
         # 
-        # >  The value of **ResourceId** of a **listener** is **LoadBalancerId_ Listener protocol_Port**, where LoadBalancerId is the SLB instance ID and port is the listener port. Example: lb-bp1snb10sbml4mqty_http_80.
+        # >  Set **ResourceId** of the **listener** to **LoadBalancerId_Listener protocol_Port**. Set LoadBalancerId to the ID of the SLB instance, and Port to the listener port. Example: lb-bp1snb10sbml4\\*\\*\\*\\*_http_80.
         # 
         # This parameter is required.
         self.resource_id = resource_id
@@ -26463,37 +26572,42 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the specified one or more resources. This parameter takes effect only if the **TagKey.N** parameter is not set.
+        # Specifies whether to remove all tags from the specified resource. This parameter takes effect only if **TagKey.N** is empty.
         # 
         # Valid values: **true** and **false**.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the Server Load Balancer (SLB) instance is created.
+        # The region ID of the Classic Load Balancer (CLB) instance.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource. Valid values of N: 1 to 20.
+        # The ID of the resource. You can specify at most 20 resources.
+        # 
+        # >  Set **ResourceId** of the **listener** to **LoadBalancerId_Listener protocol_Port**. Set LoadBalancerId to the ID of the CLB instance, and Port to the listener port.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Valid values:
+        # The type of resource. Valid values:
         # 
-        # *   **instance**: an SLB instance
-        # *   **certificate**: a certificate
-        # *   **acl**: a network access control list (ACL)
+        # *   **instance**: CLB instance
+        # *   **certificate**: certificate
+        # *   **acl**: access control list (ACL)
+        # *   **listener**: listener
+        # *   **vservergroup**: vServer group
+        # *   **masterslaveservergroup**: primary/secondary server group
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag value. Valid values of N: **1** to **20**.
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
+        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         # 
-        # >  If you do not set **TagKey**, all tags of the specified instance are removed.
+        # >  If you do not specify **TagKey**, all tags are removed from the instance.
         self.tag_key = tag_key
 
     def validate(self):
@@ -26553,7 +26667,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26623,13 +26737,9 @@ class UploadCACertificateRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys.
-        # 
-        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The key of tag N. Valid values of N: **1** to **20**. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. Valid values of N: **1 to 20**. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
+        # The tag value. Valid values of N: **1 to 20**. The tag value can be an empty string. The tag value must be 1 to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
         self.value = value
 
     def validate(self):
@@ -26669,23 +26779,21 @@ class UploadCACertificateRequest(TeaModel):
         resource_owner_id: int = None,
         tag: List[UploadCACertificateRequestTag] = None,
     ):
-        # The name of this action.
-        # 
-        # Value: **UploadCACertificate**\
+        # The information about the CA certificate.
         # 
         # This parameter is required.
         self.cacertificate = cacertificate
-        # The ID of the region to which the CA certificate belongs.
-        # 
-        # To query the region ID, call [DescribeRegions](https://help.aliyun.com/document_detail/27584.html).
+        # The CA certificate name.
         self.cacertificate_name = cacertificate_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region id.
+        # The region of the CA certificates.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2401682.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The content of the CA certificate to be uploaded.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26766,25 +26874,25 @@ class UploadCACertificateResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The name of the CA certificate.
+        # The ID of the CA certificate.
         self.cacertificate_id = cacertificate_id
-        # The domain name of the CA certificate.
+        # The CA certificate name.
         self.cacertificate_name = cacertificate_name
-        # The fingerprint of the CA certificate.
+        # The domain name on the CA certificate.
         self.common_name = common_name
-        # The time when the CA certificate expires.
+        # The time when the CA certificate was created.
         self.create_time = create_time
-        # The name of the CA certificate.
+        # The timestamp when the CA certificate was created.
         self.create_time_stamp = create_time_stamp
-        # The timestamp generated when the CA certificate is uploaded.
+        # The time when the CA certificate expires.
         self.expire_time = expire_time
-        # The ID of the enterprise resource group.
+        # The timestamp when the server certificate expires.
         self.expire_time_stamp = expire_time_stamp
-        # The ID of the request.
+        # The fingerprint of the server certificate.
         self.fingerprint = fingerprint
-        # The ID of the enterprise resource group.
+        # The request ID.
         self.request_id = request_id
-        # The time when the CA certificate is uploaded.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

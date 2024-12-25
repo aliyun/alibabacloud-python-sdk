@@ -484,6 +484,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddTagsResponse:
         """
+        @summary Adds tags to an SLB instance.
+        
         @description # Limits
         Before you call this API, note the following limits:
         You can add up to 10 tags to each SLB instance.
@@ -536,6 +538,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddTagsResponse:
         """
+        @summary Adds tags to an SLB instance.
+        
         @description # Limits
         Before you call this API, note the following limits:
         You can add up to 10 tags to each SLB instance.
@@ -587,6 +591,8 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddTagsRequest,
     ) -> slb_20140515_models.AddTagsResponse:
         """
+        @summary Adds tags to an SLB instance.
+        
         @description # Limits
         Before you call this API, note the following limits:
         You can add up to 10 tags to each SLB instance.
@@ -605,6 +611,8 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddTagsRequest,
     ) -> slb_20140515_models.AddTagsResponse:
         """
+        @summary Adds tags to an SLB instance.
+        
         @description # Limits
         Before you call this API, note the following limits:
         You can add up to 10 tags to each SLB instance.
@@ -624,7 +632,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddVServerGroupBackendServersResponse:
         """
-        @summary Adds backend servers to a specified server group.
+        @summary Adds backend servers to a vServer group.
         
         @param request: AddVServerGroupBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -671,7 +679,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddVServerGroupBackendServersResponse:
         """
-        @summary Adds backend servers to a specified server group.
+        @summary Adds backend servers to a vServer group.
         
         @param request: AddVServerGroupBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -717,7 +725,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddVServerGroupBackendServersRequest,
     ) -> slb_20140515_models.AddVServerGroupBackendServersResponse:
         """
-        @summary Adds backend servers to a specified server group.
+        @summary Adds backend servers to a vServer group.
         
         @param request: AddVServerGroupBackendServersRequest
         @return: AddVServerGroupBackendServersResponse
@@ -730,7 +738,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddVServerGroupBackendServersRequest,
     ) -> slb_20140515_models.AddVServerGroupBackendServersResponse:
         """
-        @summary Adds backend servers to a specified server group.
+        @summary Adds backend servers to a vServer group.
         
         @param request: AddVServerGroupBackendServersRequest
         @return: AddVServerGroupBackendServersResponse
@@ -892,7 +900,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateDomainExtensionResponse:
         """
-        @summary Creates a domain name extension.
+        @summary Adds an additional domain name.
         
         @param request: CreateDomainExtensionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -943,7 +951,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateDomainExtensionResponse:
         """
-        @summary Creates a domain name extension.
+        @summary Adds an additional domain name.
         
         @param request: CreateDomainExtensionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -993,7 +1001,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateDomainExtensionRequest,
     ) -> slb_20140515_models.CreateDomainExtensionResponse:
         """
-        @summary Creates a domain name extension.
+        @summary Adds an additional domain name.
         
         @param request: CreateDomainExtensionRequest
         @return: CreateDomainExtensionResponse
@@ -1006,7 +1014,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateDomainExtensionRequest,
     ) -> slb_20140515_models.CreateDomainExtensionResponse:
         """
-        @summary Creates a domain name extension.
+        @summary Adds an additional domain name.
         
         @param request: CreateDomainExtensionRequest
         @return: CreateDomainExtensionResponse
@@ -2224,7 +2232,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateMasterSlaveServerGroupResponse:
         """
-        @summary Creates a primary/secondary server group. A primary/secondary server group can contain only two Elastic Compute Service (ECS) instances. One of the ECS instances functions as the primary server and the other functions as the secondary server.
+        @summary Creates a primary/secondary server group. Each primary/secondary server group consists of two backend servers. One backend server functions as the primary server, and the other backend server functions as the secondary backend server.
         
         @param request: CreateMasterSlaveServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2275,7 +2283,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateMasterSlaveServerGroupResponse:
         """
-        @summary Creates a primary/secondary server group. A primary/secondary server group can contain only two Elastic Compute Service (ECS) instances. One of the ECS instances functions as the primary server and the other functions as the secondary server.
+        @summary Creates a primary/secondary server group. Each primary/secondary server group consists of two backend servers. One backend server functions as the primary server, and the other backend server functions as the secondary backend server.
         
         @param request: CreateMasterSlaveServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2325,7 +2333,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateMasterSlaveServerGroupRequest,
     ) -> slb_20140515_models.CreateMasterSlaveServerGroupResponse:
         """
-        @summary Creates a primary/secondary server group. A primary/secondary server group can contain only two Elastic Compute Service (ECS) instances. One of the ECS instances functions as the primary server and the other functions as the secondary server.
+        @summary Creates a primary/secondary server group. Each primary/secondary server group consists of two backend servers. One backend server functions as the primary server, and the other backend server functions as the secondary backend server.
         
         @param request: CreateMasterSlaveServerGroupRequest
         @return: CreateMasterSlaveServerGroupResponse
@@ -2338,7 +2346,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateMasterSlaveServerGroupRequest,
     ) -> slb_20140515_models.CreateMasterSlaveServerGroupResponse:
         """
-        @summary Creates a primary/secondary server group. A primary/secondary server group can contain only two Elastic Compute Service (ECS) instances. One of the ECS instances functions as the primary server and the other functions as the secondary server.
+        @summary Creates a primary/secondary server group. Each primary/secondary server group consists of two backend servers. One backend server functions as the primary server, and the other backend server functions as the secondary backend server.
         
         @param request: CreateMasterSlaveServerGroupRequest
         @return: CreateMasterSlaveServerGroupResponse
@@ -3476,7 +3484,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteMasterSlaveServerGroupResponse:
         """
-        @summary Deletes an active/standby server group.
+        @summary Deletes a primary/secondary server group.
         
         @param request: DeleteMasterSlaveServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3521,7 +3529,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteMasterSlaveServerGroupResponse:
         """
-        @summary Deletes an active/standby server group.
+        @summary Deletes a primary/secondary server group.
         
         @param request: DeleteMasterSlaveServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3565,7 +3573,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteMasterSlaveServerGroupRequest,
     ) -> slb_20140515_models.DeleteMasterSlaveServerGroupResponse:
         """
-        @summary Deletes an active/standby server group.
+        @summary Deletes a primary/secondary server group.
         
         @param request: DeleteMasterSlaveServerGroupRequest
         @return: DeleteMasterSlaveServerGroupResponse
@@ -3578,7 +3586,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteMasterSlaveServerGroupRequest,
     ) -> slb_20140515_models.DeleteMasterSlaveServerGroupResponse:
         """
-        @summary Deletes an active/standby server group.
+        @summary Deletes a primary/secondary server group.
         
         @param request: DeleteMasterSlaveServerGroupRequest
         @return: DeleteMasterSlaveServerGroupResponse
@@ -4744,7 +4752,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeDomainExtensionAttributeResponse:
         """
-        @summary Queries the attributes of an additional certificate.
+        @summary Queries the attributes of an additional domain name.
         
         @param request: DescribeDomainExtensionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4789,7 +4797,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeDomainExtensionAttributeResponse:
         """
-        @summary Queries the attributes of an additional certificate.
+        @summary Queries the attributes of an additional domain name.
         
         @param request: DescribeDomainExtensionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4833,7 +4841,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeDomainExtensionAttributeRequest,
     ) -> slb_20140515_models.DescribeDomainExtensionAttributeResponse:
         """
-        @summary Queries the attributes of an additional certificate.
+        @summary Queries the attributes of an additional domain name.
         
         @param request: DescribeDomainExtensionAttributeRequest
         @return: DescribeDomainExtensionAttributeResponse
@@ -4846,7 +4854,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeDomainExtensionAttributeRequest,
     ) -> slb_20140515_models.DescribeDomainExtensionAttributeResponse:
         """
-        @summary Queries the attributes of an additional certificate.
+        @summary Queries the attributes of an additional domain name.
         
         @param request: DescribeDomainExtensionAttributeRequest
         @return: DescribeDomainExtensionAttributeResponse
@@ -6580,7 +6588,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRegionsResponse:
         """
-        @summary Queries regions.
+        @summary Queries available regions.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6625,7 +6633,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRegionsResponse:
         """
-        @summary Queries regions.
+        @summary Queries available regions.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6669,7 +6677,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeRegionsRequest,
     ) -> slb_20140515_models.DescribeRegionsResponse:
         """
-        @summary Queries regions.
+        @summary Queries available regions.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -6682,7 +6690,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeRegionsRequest,
     ) -> slb_20140515_models.DescribeRegionsResponse:
         """
-        @summary Queries regions.
+        @summary Queries available regions.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -6936,9 +6944,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         """
-        @summary Queries server certificates of Classic Load Balancer (CLB) instances in a specified region.
+        @summary Queries the server certificates in a region.
         
-        @description >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
+        @description >  For security reasons, only the fingerprints and names of server certificates are returned. The content of server certificates and private keys is not returned.
         
         @param request: DescribeServerCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6987,9 +6995,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         """
-        @summary Queries server certificates of Classic Load Balancer (CLB) instances in a specified region.
+        @summary Queries the server certificates in a region.
         
-        @description >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
+        @description >  For security reasons, only the fingerprints and names of server certificates are returned. The content of server certificates and private keys is not returned.
         
         @param request: DescribeServerCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7037,9 +7045,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeServerCertificatesRequest,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         """
-        @summary Queries server certificates of Classic Load Balancer (CLB) instances in a specified region.
+        @summary Queries the server certificates in a region.
         
-        @description >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
+        @description >  For security reasons, only the fingerprints and names of server certificates are returned. The content of server certificates and private keys is not returned.
         
         @param request: DescribeServerCertificatesRequest
         @return: DescribeServerCertificatesResponse
@@ -7052,9 +7060,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeServerCertificatesRequest,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         """
-        @summary Queries server certificates of Classic Load Balancer (CLB) instances in a specified region.
+        @summary Queries the server certificates in a region.
         
-        @description >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
+        @description >  For security reasons, only the fingerprints and names of server certificates are returned. The content of server certificates and private keys is not returned.
         
         @param request: DescribeServerCertificatesRequest
         @return: DescribeServerCertificatesResponse
@@ -7070,12 +7078,12 @@ class Client(OpenApiClient):
         """
         @summary Queries tags.
         
-        @description When you call this operation, take note of the following items:
-        You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions.
-        The logical relationship among the specified conditions is AND. Only tags that match all the specified conditions are returned.
-        If the Tagkey parameter is set and the Tagvalue parameter is not set, all tags that contain the specified tag key are returned.
-        If you set the Tagvalue parameter in a request, you must also set the Tagkey parameter in the request.
-        If you set both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
+        @description Take note of the following items:
+        The system queries tags based on the instance ID, tag key, and tag value specified by you.
+        If the logical relationship among the specified conditions is AND, only tags that match all the specified conditions are returned.
+        If the Tagkey parameter is specified and but Tagvalue parameter is not specified, all tags that contain the specified tag key are returned.
+        If you specify the Tagvalue parameter in a request, you must also specify the Tagkey parameter in the request.
+        If you specify both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
         
         @param request: DescribeTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7130,12 +7138,12 @@ class Client(OpenApiClient):
         """
         @summary Queries tags.
         
-        @description When you call this operation, take note of the following items:
-        You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions.
-        The logical relationship among the specified conditions is AND. Only tags that match all the specified conditions are returned.
-        If the Tagkey parameter is set and the Tagvalue parameter is not set, all tags that contain the specified tag key are returned.
-        If you set the Tagvalue parameter in a request, you must also set the Tagkey parameter in the request.
-        If you set both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
+        @description Take note of the following items:
+        The system queries tags based on the instance ID, tag key, and tag value specified by you.
+        If the logical relationship among the specified conditions is AND, only tags that match all the specified conditions are returned.
+        If the Tagkey parameter is specified and but Tagvalue parameter is not specified, all tags that contain the specified tag key are returned.
+        If you specify the Tagvalue parameter in a request, you must also specify the Tagkey parameter in the request.
+        If you specify both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
         
         @param request: DescribeTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7189,12 +7197,12 @@ class Client(OpenApiClient):
         """
         @summary Queries tags.
         
-        @description When you call this operation, take note of the following items:
-        You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions.
-        The logical relationship among the specified conditions is AND. Only tags that match all the specified conditions are returned.
-        If the Tagkey parameter is set and the Tagvalue parameter is not set, all tags that contain the specified tag key are returned.
-        If you set the Tagvalue parameter in a request, you must also set the Tagkey parameter in the request.
-        If you set both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
+        @description Take note of the following items:
+        The system queries tags based on the instance ID, tag key, and tag value specified by you.
+        If the logical relationship among the specified conditions is AND, only tags that match all the specified conditions are returned.
+        If the Tagkey parameter is specified and but Tagvalue parameter is not specified, all tags that contain the specified tag key are returned.
+        If you specify the Tagvalue parameter in a request, you must also specify the Tagkey parameter in the request.
+        If you specify both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
         
         @param request: DescribeTagsRequest
         @return: DescribeTagsResponse
@@ -7209,12 +7217,12 @@ class Client(OpenApiClient):
         """
         @summary Queries tags.
         
-        @description When you call this operation, take note of the following items:
-        You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions.
-        The logical relationship among the specified conditions is AND. Only tags that match all the specified conditions are returned.
-        If the Tagkey parameter is set and the Tagvalue parameter is not set, all tags that contain the specified tag key are returned.
-        If you set the Tagvalue parameter in a request, you must also set the Tagkey parameter in the request.
-        If you set both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
+        @description Take note of the following items:
+        The system queries tags based on the instance ID, tag key, and tag value specified by you.
+        If the logical relationship among the specified conditions is AND, only tags that match all the specified conditions are returned.
+        If the Tagkey parameter is specified and but Tagvalue parameter is not specified, all tags that contain the specified tag key are returned.
+        If you specify the Tagvalue parameter in a request, you must also specify the Tagkey parameter in the request.
+        If you specify both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
         
         @param request: DescribeTagsRequest
         @return: DescribeTagsResponse
@@ -7228,7 +7236,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeVServerGroupAttributeResponse:
         """
-        @summary Queries detailed information about a vServer group.
+        @summary Queries the detailed information about a vServer group.
         
         @param request: DescribeVServerGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7273,7 +7281,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeVServerGroupAttributeResponse:
         """
-        @summary Queries detailed information about a vServer group.
+        @summary Queries the detailed information about a vServer group.
         
         @param request: DescribeVServerGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7317,7 +7325,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeVServerGroupAttributeRequest,
     ) -> slb_20140515_models.DescribeVServerGroupAttributeResponse:
         """
-        @summary Queries detailed information about a vServer group.
+        @summary Queries the detailed information about a vServer group.
         
         @param request: DescribeVServerGroupAttributeRequest
         @return: DescribeVServerGroupAttributeResponse
@@ -7330,7 +7338,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeVServerGroupAttributeRequest,
     ) -> slb_20140515_models.DescribeVServerGroupAttributeResponse:
         """
-        @summary Queries detailed information about a vServer group.
+        @summary Queries the detailed information about a vServer group.
         
         @param request: DescribeVServerGroupAttributeRequest
         @return: DescribeVServerGroupAttributeResponse
@@ -7344,7 +7352,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeVServerGroupsResponse:
         """
-        @summary Queries server groups.
+        @summary Queries vServer groups.
         
         @param request: DescribeVServerGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7397,7 +7405,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeVServerGroupsResponse:
         """
-        @summary Queries server groups.
+        @summary Queries vServer groups.
         
         @param request: DescribeVServerGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7449,7 +7457,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeVServerGroupsRequest,
     ) -> slb_20140515_models.DescribeVServerGroupsResponse:
         """
-        @summary Queries server groups.
+        @summary Queries vServer groups.
         
         @param request: DescribeVServerGroupsRequest
         @return: DescribeVServerGroupsResponse
@@ -7462,7 +7470,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeVServerGroupsRequest,
     ) -> slb_20140515_models.DescribeVServerGroupsResponse:
         """
-        @summary Queries server groups.
+        @summary Queries vServer groups.
         
         @param request: DescribeVServerGroupsRequest
         @return: DescribeVServerGroupsResponse
@@ -7844,7 +7852,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ListTagResourcesResponse:
         """
-        @summary Queries tags that are added to one or more instances.
+        @summary Queries the tags that are added to resources.
         
         @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
         **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you set only **Tag.N.Value**, an error message is returned.
@@ -7900,7 +7908,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ListTagResourcesResponse:
         """
-        @summary Queries tags that are added to one or more instances.
+        @summary Queries the tags that are added to resources.
         
         @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
         **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you set only **Tag.N.Value**, an error message is returned.
@@ -7955,7 +7963,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ListTagResourcesRequest,
     ) -> slb_20140515_models.ListTagResourcesResponse:
         """
-        @summary Queries tags that are added to one or more instances.
+        @summary Queries the tags that are added to resources.
         
         @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
         **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you set only **Tag.N.Value**, an error message is returned.
@@ -7973,7 +7981,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ListTagResourcesRequest,
     ) -> slb_20140515_models.ListTagResourcesResponse:
         """
-        @summary Queries tags that are added to one or more instances.
+        @summary Queries the tags that are added to resources.
         
         @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
         **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you set only **Tag.N.Value**, an error message is returned.
@@ -8524,11 +8532,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerPayTypeResponse:
         """
+        @deprecated OpenAPI ModifyLoadBalancerPayType is deprecated
+        
         @summary Changes the billing method of a Classic Load Balancer (CLB) instance from pay-as-you-go to subscription.
         
         @param request: ModifyLoadBalancerPayTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyLoadBalancerPayTypeResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -8577,11 +8588,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerPayTypeResponse:
         """
+        @deprecated OpenAPI ModifyLoadBalancerPayType is deprecated
+        
         @summary Changes the billing method of a Classic Load Balancer (CLB) instance from pay-as-you-go to subscription.
         
         @param request: ModifyLoadBalancerPayTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyLoadBalancerPayTypeResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -8629,10 +8643,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyLoadBalancerPayTypeRequest,
     ) -> slb_20140515_models.ModifyLoadBalancerPayTypeResponse:
         """
+        @deprecated OpenAPI ModifyLoadBalancerPayType is deprecated
+        
         @summary Changes the billing method of a Classic Load Balancer (CLB) instance from pay-as-you-go to subscription.
         
         @param request: ModifyLoadBalancerPayTypeRequest
         @return: ModifyLoadBalancerPayTypeResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.modify_load_balancer_pay_type_with_options(request, runtime)
@@ -8642,10 +8659,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyLoadBalancerPayTypeRequest,
     ) -> slb_20140515_models.ModifyLoadBalancerPayTypeResponse:
         """
+        @deprecated OpenAPI ModifyLoadBalancerPayType is deprecated
+        
         @summary Changes the billing method of a Classic Load Balancer (CLB) instance from pay-as-you-go to subscription.
         
         @param request: ModifyLoadBalancerPayTypeRequest
         @return: ModifyLoadBalancerPayTypeResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_load_balancer_pay_type_with_options_async(request, runtime)
@@ -8656,9 +8676,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyVServerGroupBackendServersResponse:
         """
-        @summary Replaces backend servers in a specified vServer group.
+        @summary Replaces backend servers in a vServer group.
         
-        @description You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](https://help.aliyun.com/document_detail/35217.html) operation.
+        @description This operation can be used only to replace backend servers in a vServer group. To modify the attributes of backend servers, such as weights, call the [SetVServerGroupAttribute](https://help.aliyun.com/document_detail/35217.html) operation.
         
         @param request: ModifyVServerGroupBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8707,9 +8727,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyVServerGroupBackendServersResponse:
         """
-        @summary Replaces backend servers in a specified vServer group.
+        @summary Replaces backend servers in a vServer group.
         
-        @description You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](https://help.aliyun.com/document_detail/35217.html) operation.
+        @description This operation can be used only to replace backend servers in a vServer group. To modify the attributes of backend servers, such as weights, call the [SetVServerGroupAttribute](https://help.aliyun.com/document_detail/35217.html) operation.
         
         @param request: ModifyVServerGroupBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8757,9 +8777,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyVServerGroupBackendServersRequest,
     ) -> slb_20140515_models.ModifyVServerGroupBackendServersResponse:
         """
-        @summary Replaces backend servers in a specified vServer group.
+        @summary Replaces backend servers in a vServer group.
         
-        @description You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](https://help.aliyun.com/document_detail/35217.html) operation.
+        @description This operation can be used only to replace backend servers in a vServer group. To modify the attributes of backend servers, such as weights, call the [SetVServerGroupAttribute](https://help.aliyun.com/document_detail/35217.html) operation.
         
         @param request: ModifyVServerGroupBackendServersRequest
         @return: ModifyVServerGroupBackendServersResponse
@@ -8772,9 +8792,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyVServerGroupBackendServersRequest,
     ) -> slb_20140515_models.ModifyVServerGroupBackendServersResponse:
         """
-        @summary Replaces backend servers in a specified vServer group.
+        @summary Replaces backend servers in a vServer group.
         
-        @description You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](https://help.aliyun.com/document_detail/35217.html) operation.
+        @description This operation can be used only to replace backend servers in a vServer group. To modify the attributes of backend servers, such as weights, call the [SetVServerGroupAttribute](https://help.aliyun.com/document_detail/35217.html) operation.
         
         @param request: ModifyVServerGroupBackendServersRequest
         @return: ModifyVServerGroupBackendServersResponse
@@ -9296,6 +9316,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveTagsResponse:
         """
+        @summary Removes tags from a Server Load Balancer (SLB) instance.
+        
         @param request: RemoveTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveTagsResponse
@@ -9341,6 +9363,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveTagsResponse:
         """
+        @summary Removes tags from a Server Load Balancer (SLB) instance.
+        
         @param request: RemoveTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveTagsResponse
@@ -9385,6 +9409,8 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveTagsRequest,
     ) -> slb_20140515_models.RemoveTagsResponse:
         """
+        @summary Removes tags from a Server Load Balancer (SLB) instance.
+        
         @param request: RemoveTagsRequest
         @return: RemoveTagsResponse
         """
@@ -9396,6 +9422,8 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveTagsRequest,
     ) -> slb_20140515_models.RemoveTagsResponse:
         """
+        @summary Removes tags from a Server Load Balancer (SLB) instance.
+        
         @param request: RemoveTagsRequest
         @return: RemoveTagsResponse
         """
@@ -9408,9 +9436,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveVServerGroupBackendServersResponse:
         """
-        @summary Removes one or more backend servers from a specified vServer group.
+        @summary Removes backend servers from a vServer group.
         
-        @description >  If one or more backend servers specified by the *BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
+        @description >  If the backend servers specified by the *BackendServers** parameter do not exist in the vServer group, the backend servers are ignored. No error message is returned.
         
         @param request: RemoveVServerGroupBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9457,9 +9485,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveVServerGroupBackendServersResponse:
         """
-        @summary Removes one or more backend servers from a specified vServer group.
+        @summary Removes backend servers from a vServer group.
         
-        @description >  If one or more backend servers specified by the *BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
+        @description >  If the backend servers specified by the *BackendServers** parameter do not exist in the vServer group, the backend servers are ignored. No error message is returned.
         
         @param request: RemoveVServerGroupBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9505,9 +9533,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveVServerGroupBackendServersRequest,
     ) -> slb_20140515_models.RemoveVServerGroupBackendServersResponse:
         """
-        @summary Removes one or more backend servers from a specified vServer group.
+        @summary Removes backend servers from a vServer group.
         
-        @description >  If one or more backend servers specified by the *BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
+        @description >  If the backend servers specified by the *BackendServers** parameter do not exist in the vServer group, the backend servers are ignored. No error message is returned.
         
         @param request: RemoveVServerGroupBackendServersRequest
         @return: RemoveVServerGroupBackendServersResponse
@@ -9520,9 +9548,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveVServerGroupBackendServersRequest,
     ) -> slb_20140515_models.RemoveVServerGroupBackendServersResponse:
         """
-        @summary Removes one or more backend servers from a specified vServer group.
+        @summary Removes backend servers from a vServer group.
         
-        @description >  If one or more backend servers specified by the *BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
+        @description >  If the backend servers specified by the *BackendServers** parameter do not exist in the vServer group, the backend servers are ignored. No error message is returned.
         
         @param request: RemoveVServerGroupBackendServersRequest
         @return: RemoveVServerGroupBackendServersResponse
@@ -9536,7 +9564,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetAccessControlListAttributeResponse:
         """
-        @summary Modifies the name of a network access control list (ACL).
+        @summary Renames an access control list (ACL).
         
         @param request: SetAccessControlListAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9583,7 +9611,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetAccessControlListAttributeResponse:
         """
-        @summary Modifies the name of a network access control list (ACL).
+        @summary Renames an access control list (ACL).
         
         @param request: SetAccessControlListAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9629,7 +9657,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetAccessControlListAttributeRequest,
     ) -> slb_20140515_models.SetAccessControlListAttributeResponse:
         """
-        @summary Modifies the name of a network access control list (ACL).
+        @summary Renames an access control list (ACL).
         
         @param request: SetAccessControlListAttributeRequest
         @return: SetAccessControlListAttributeResponse
@@ -9642,7 +9670,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetAccessControlListAttributeRequest,
     ) -> slb_20140515_models.SetAccessControlListAttributeResponse:
         """
-        @summary Modifies the name of a network access control list (ACL).
+        @summary Renames an access control list (ACL).
         
         @param request: SetAccessControlListAttributeRequest
         @return: SetAccessControlListAttributeResponse
@@ -9656,7 +9684,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetAccessLogsDownloadAttributeResponse:
         """
-        @summary Adds an access log forwarding rule for a Classic Load Balancer (CLB) instance.
+        @summary Adds an access log forwarding rule to a Classic Load Balancer (CLB) instance.
         
         @param request: SetAccessLogsDownloadAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9705,7 +9733,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetAccessLogsDownloadAttributeResponse:
         """
-        @summary Adds an access log forwarding rule for a Classic Load Balancer (CLB) instance.
+        @summary Adds an access log forwarding rule to a Classic Load Balancer (CLB) instance.
         
         @param request: SetAccessLogsDownloadAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9753,7 +9781,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetAccessLogsDownloadAttributeRequest,
     ) -> slb_20140515_models.SetAccessLogsDownloadAttributeResponse:
         """
-        @summary Adds an access log forwarding rule for a Classic Load Balancer (CLB) instance.
+        @summary Adds an access log forwarding rule to a Classic Load Balancer (CLB) instance.
         
         @param request: SetAccessLogsDownloadAttributeRequest
         @return: SetAccessLogsDownloadAttributeResponse
@@ -9766,7 +9794,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetAccessLogsDownloadAttributeRequest,
     ) -> slb_20140515_models.SetAccessLogsDownloadAttributeResponse:
         """
-        @summary Adds an access log forwarding rule for a Classic Load Balancer (CLB) instance.
+        @summary Adds an access log forwarding rule to a Classic Load Balancer (CLB) instance.
         
         @param request: SetAccessLogsDownloadAttributeRequest
         @return: SetAccessLogsDownloadAttributeResponse
@@ -9780,7 +9808,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetBackendServersResponse:
         """
-        @summary Sets the weights of backend servers.
+        @summary Specifies weights for backend servers.
         
         @param request: SetBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9827,7 +9855,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetBackendServersResponse:
         """
-        @summary Sets the weights of backend servers.
+        @summary Specifies weights for backend servers.
         
         @param request: SetBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9873,7 +9901,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetBackendServersRequest,
     ) -> slb_20140515_models.SetBackendServersResponse:
         """
-        @summary Sets the weights of backend servers.
+        @summary Specifies weights for backend servers.
         
         @param request: SetBackendServersRequest
         @return: SetBackendServersResponse
@@ -9886,7 +9914,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetBackendServersRequest,
     ) -> slb_20140515_models.SetBackendServersResponse:
         """
-        @summary Sets the weights of backend servers.
+        @summary Specifies weights for backend servers.
         
         @param request: SetBackendServersRequest
         @return: SetBackendServersResponse
@@ -9900,7 +9928,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetCACertificateNameResponse:
         """
-        @summary Sets the name of a CA Certificate.
+        @summary Specifies a name for a CA certificate.
         
         @param request: SetCACertificateNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9947,7 +9975,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetCACertificateNameResponse:
         """
-        @summary Sets the name of a CA Certificate.
+        @summary Specifies a name for a CA certificate.
         
         @param request: SetCACertificateNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9993,7 +10021,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetCACertificateNameRequest,
     ) -> slb_20140515_models.SetCACertificateNameResponse:
         """
-        @summary Sets the name of a CA Certificate.
+        @summary Specifies a name for a CA certificate.
         
         @param request: SetCACertificateNameRequest
         @return: SetCACertificateNameResponse
@@ -10006,7 +10034,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetCACertificateNameRequest,
     ) -> slb_20140515_models.SetCACertificateNameResponse:
         """
-        @summary Sets the name of a CA Certificate.
+        @summary Specifies a name for a CA certificate.
         
         @param request: SetCACertificateNameRequest
         @return: SetCACertificateNameResponse
@@ -10020,7 +10048,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetDomainExtensionAttributeResponse:
         """
-        @summary Replaces an additional certificate.
+        @summary Replaces the certificate of an additional domain name.
         
         @description >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
         
@@ -10069,7 +10097,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetDomainExtensionAttributeResponse:
         """
-        @summary Replaces an additional certificate.
+        @summary Replaces the certificate of an additional domain name.
         
         @description >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
         
@@ -10117,7 +10145,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetDomainExtensionAttributeRequest,
     ) -> slb_20140515_models.SetDomainExtensionAttributeResponse:
         """
-        @summary Replaces an additional certificate.
+        @summary Replaces the certificate of an additional domain name.
         
         @description >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
         
@@ -10132,7 +10160,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetDomainExtensionAttributeRequest,
     ) -> slb_20140515_models.SetDomainExtensionAttributeResponse:
         """
-        @summary Replaces an additional certificate.
+        @summary Replaces the certificate of an additional domain name.
         
         @description >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
         
@@ -12170,7 +12198,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configurations of a vServer group.
         
-        @description This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
+        @description This operation can be used to modify the weights of backend servers and names of vServer groups.
         If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](https://help.aliyun.com/document_detail/35220.html) operation.
         If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](https://help.aliyun.com/document_detail/35218.html) operation.
         
@@ -12223,7 +12251,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configurations of a vServer group.
         
-        @description This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
+        @description This operation can be used to modify the weights of backend servers and names of vServer groups.
         If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](https://help.aliyun.com/document_detail/35220.html) operation.
         If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](https://help.aliyun.com/document_detail/35218.html) operation.
         
@@ -12275,7 +12303,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configurations of a vServer group.
         
-        @description This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
+        @description This operation can be used to modify the weights of backend servers and names of vServer groups.
         If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](https://help.aliyun.com/document_detail/35220.html) operation.
         If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](https://help.aliyun.com/document_detail/35218.html) operation.
         
@@ -12292,7 +12320,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configurations of a vServer group.
         
-        @description This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
+        @description This operation can be used to modify the weights of backend servers and names of vServer groups.
         If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](https://help.aliyun.com/document_detail/35220.html) operation.
         If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](https://help.aliyun.com/document_detail/35218.html) operation.
         
@@ -12308,12 +12336,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.StartLoadBalancerListenerResponse:
         """
-        @summary You can call this operation to start a listener.
+        @summary Enables a listener.
         
-        @description When you call this operation, note the following items:
+        @description When you call this operation, take note of the following items:
         You can call the operation only when the listener is in the Stopped state.
-        After the operation is called, the status of the listener changes to Starting.
-        You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
+        If the operation is successful, the listener switches to the Starting state.
+        You cannot perform this operation when the Classic Load Balancer (CLB) instance to which the listener belongs is in the Locked state.
         
         @param request: StartLoadBalancerListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12362,12 +12390,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.StartLoadBalancerListenerResponse:
         """
-        @summary You can call this operation to start a listener.
+        @summary Enables a listener.
         
-        @description When you call this operation, note the following items:
+        @description When you call this operation, take note of the following items:
         You can call the operation only when the listener is in the Stopped state.
-        After the operation is called, the status of the listener changes to Starting.
-        You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
+        If the operation is successful, the listener switches to the Starting state.
+        You cannot perform this operation when the Classic Load Balancer (CLB) instance to which the listener belongs is in the Locked state.
         
         @param request: StartLoadBalancerListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12415,12 +12443,12 @@ class Client(OpenApiClient):
         request: slb_20140515_models.StartLoadBalancerListenerRequest,
     ) -> slb_20140515_models.StartLoadBalancerListenerResponse:
         """
-        @summary You can call this operation to start a listener.
+        @summary Enables a listener.
         
-        @description When you call this operation, note the following items:
+        @description When you call this operation, take note of the following items:
         You can call the operation only when the listener is in the Stopped state.
-        After the operation is called, the status of the listener changes to Starting.
-        You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
+        If the operation is successful, the listener switches to the Starting state.
+        You cannot perform this operation when the Classic Load Balancer (CLB) instance to which the listener belongs is in the Locked state.
         
         @param request: StartLoadBalancerListenerRequest
         @return: StartLoadBalancerListenerResponse
@@ -12433,12 +12461,12 @@ class Client(OpenApiClient):
         request: slb_20140515_models.StartLoadBalancerListenerRequest,
     ) -> slb_20140515_models.StartLoadBalancerListenerResponse:
         """
-        @summary You can call this operation to start a listener.
+        @summary Enables a listener.
         
-        @description When you call this operation, note the following items:
+        @description When you call this operation, take note of the following items:
         You can call the operation only when the listener is in the Stopped state.
-        After the operation is called, the status of the listener changes to Starting.
-        You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
+        If the operation is successful, the listener switches to the Starting state.
+        You cannot perform this operation when the Classic Load Balancer (CLB) instance to which the listener belongs is in the Locked state.
         
         @param request: StartLoadBalancerListenerRequest
         @return: StartLoadBalancerListenerResponse
@@ -12728,7 +12756,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UntagResourcesResponse:
         """
-        @summary Removes tags from specified resources.
+        @summary Removes tags from a resource.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12779,7 +12807,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UntagResourcesResponse:
         """
-        @summary Removes tags from specified resources.
+        @summary Removes tags from a resource.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12829,7 +12857,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.UntagResourcesRequest,
     ) -> slb_20140515_models.UntagResourcesResponse:
         """
-        @summary Removes tags from specified resources.
+        @summary Removes tags from a resource.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -12842,7 +12870,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.UntagResourcesRequest,
     ) -> slb_20140515_models.UntagResourcesResponse:
         """
-        @summary Removes tags from specified resources.
+        @summary Removes tags from a resource.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
