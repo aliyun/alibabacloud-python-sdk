@@ -190,6 +190,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.channel):
             body['channel'] = request.channel
+        if not UtilClient.is_unset(request.enable_library):
+            body['enableLibrary'] = request.enable_library
         if not UtilClient.is_unset(request.meta_data):
             body['metaData'] = request.meta_data
         if not UtilClient.is_unset(request.play_code):
@@ -198,6 +200,8 @@ class Client(OpenApiClient):
             body['qaLibraryList'] = request.qa_library_list
         if not UtilClient.is_unset(request.request_id):
             body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.self_directed):
+            body['selfDirected'] = request.self_directed
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -237,6 +241,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.channel):
             body['channel'] = request.channel
+        if not UtilClient.is_unset(request.enable_library):
+            body['enableLibrary'] = request.enable_library
         if not UtilClient.is_unset(request.meta_data):
             body['metaData'] = request.meta_data
         if not UtilClient.is_unset(request.play_code):
@@ -245,6 +251,8 @@ class Client(OpenApiClient):
             body['qaLibraryList'] = request.qa_library_list
         if not UtilClient.is_unset(request.request_id):
             body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.self_directed):
+            body['selfDirected'] = request.self_directed
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3400,6 +3408,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.re_index_with_options_async(workspace_id, request, headers, runtime)
+
+    def real_time_dialog_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RealTimeDialogRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.RealTimeDialogResponse:
+        """
+        @summary 实时对话
+        
+        @param request: RealTimeDialogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RealTimeDialogResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.analysis):
+            body['analysis'] = request.analysis
+        if not UtilClient.is_unset(request.biz_type):
+            body['bizType'] = request.biz_type
+        if not UtilClient.is_unset(request.conversation_model):
+            body['conversationModel'] = request.conversation_model
+        if not UtilClient.is_unset(request.dialog_memory_turns):
+            body['dialogMemoryTurns'] = request.dialog_memory_turns
+        if not UtilClient.is_unset(request.meta_data):
+            body['metaData'] = request.meta_data
+        if not UtilClient.is_unset(request.recommend):
+            body['recommend'] = request.recommend
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RealTimeDialog',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/realtime/dialog/chat',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.RealTimeDialogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def real_time_dialog_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RealTimeDialogRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.RealTimeDialogResponse:
+        """
+        @summary 实时对话
+        
+        @param request: RealTimeDialogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RealTimeDialogResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.analysis):
+            body['analysis'] = request.analysis
+        if not UtilClient.is_unset(request.biz_type):
+            body['bizType'] = request.biz_type
+        if not UtilClient.is_unset(request.conversation_model):
+            body['conversationModel'] = request.conversation_model
+        if not UtilClient.is_unset(request.dialog_memory_turns):
+            body['dialogMemoryTurns'] = request.dialog_memory_turns
+        if not UtilClient.is_unset(request.meta_data):
+            body['metaData'] = request.meta_data
+        if not UtilClient.is_unset(request.recommend):
+            body['recommend'] = request.recommend
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RealTimeDialog',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/realtime/dialog/chat',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.RealTimeDialogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def real_time_dialog(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RealTimeDialogRequest,
+    ) -> dian_jin_20240628_models.RealTimeDialogResponse:
+        """
+        @summary 实时对话
+        
+        @param request: RealTimeDialogRequest
+        @return: RealTimeDialogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.real_time_dialog_with_options(workspace_id, request, headers, runtime)
+
+    async def real_time_dialog_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RealTimeDialogRequest,
+    ) -> dian_jin_20240628_models.RealTimeDialogResponse:
+        """
+        @summary 实时对话
+        
+        @param request: RealTimeDialogRequest
+        @return: RealTimeDialogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.real_time_dialog_with_options_async(workspace_id, request, headers, runtime)
 
     def rebuild_task_with_options(
         self,

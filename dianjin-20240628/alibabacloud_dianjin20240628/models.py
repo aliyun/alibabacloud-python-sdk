@@ -234,20 +234,23 @@ class CreateDialogRequest(TeaModel):
     def __init__(
         self,
         channel: str = None,
+        enable_library: bool = None,
         meta_data: Dict[str, Any] = None,
         play_code: str = None,
         qa_library_list: List[str] = None,
         request_id: str = None,
+        self_directed: bool = None,
     ):
         # This parameter is required.
         self.channel = channel
+        self.enable_library = enable_library
         self.meta_data = meta_data
         # This parameter is required.
         self.play_code = play_code
-        # This parameter is required.
         self.qa_library_list = qa_library_list
         # This parameter is required.
         self.request_id = request_id
+        self.self_directed = self_directed
 
     def validate(self):
         pass
@@ -260,6 +263,8 @@ class CreateDialogRequest(TeaModel):
         result = dict()
         if self.channel is not None:
             result['channel'] = self.channel
+        if self.enable_library is not None:
+            result['enableLibrary'] = self.enable_library
         if self.meta_data is not None:
             result['metaData'] = self.meta_data
         if self.play_code is not None:
@@ -268,12 +273,16 @@ class CreateDialogRequest(TeaModel):
             result['qaLibraryList'] = self.qa_library_list
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.self_directed is not None:
+            result['selfDirected'] = self.self_directed
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('channel') is not None:
             self.channel = m.get('channel')
+        if m.get('enableLibrary') is not None:
+            self.enable_library = m.get('enableLibrary')
         if m.get('metaData') is not None:
             self.meta_data = m.get('metaData')
         if m.get('playCode') is not None:
@@ -282,14 +291,18 @@ class CreateDialogRequest(TeaModel):
             self.qa_library_list = m.get('qaLibraryList')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('selfDirected') is not None:
+            self.self_directed = m.get('selfDirected')
         return self
 
 
 class CreateDialogResponseBodyData(TeaModel):
     def __init__(
         self,
+        opening_remarks: str = None,
         session_id: str = None,
     ):
+        self.opening_remarks = opening_remarks
         self.session_id = session_id
 
     def validate(self):
@@ -301,12 +314,16 @@ class CreateDialogResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.opening_remarks is not None:
+            result['openingRemarks'] = self.opening_remarks
         if self.session_id is not None:
             result['sessionId'] = self.session_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('openingRemarks') is not None:
+            self.opening_remarks = m.get('openingRemarks')
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
         return self
@@ -7817,6 +7834,477 @@ class ReIndexResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReIndexResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RealTimeDialogRequestConversationModel(TeaModel):
+    def __init__(
+        self,
+        begin: int = None,
+        begin_time: str = None,
+        content: str = None,
+        customer_id: str = None,
+        customer_service_id: str = None,
+        customer_service_type: str = None,
+        end: int = None,
+        role: int = None,
+        type: str = None,
+    ):
+        self.begin = begin
+        self.begin_time = begin_time
+        # This parameter is required.
+        self.content = content
+        self.customer_id = customer_id
+        self.customer_service_id = customer_service_id
+        self.customer_service_type = customer_service_type
+        self.end = end
+        # This parameter is required.
+        self.role = role
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin is not None:
+            result['begin'] = self.begin
+        if self.begin_time is not None:
+            result['beginTime'] = self.begin_time
+        if self.content is not None:
+            result['content'] = self.content
+        if self.customer_id is not None:
+            result['customerId'] = self.customer_id
+        if self.customer_service_id is not None:
+            result['customerServiceId'] = self.customer_service_id
+        if self.customer_service_type is not None:
+            result['customerServiceType'] = self.customer_service_type
+        if self.end is not None:
+            result['end'] = self.end
+        if self.role is not None:
+            result['role'] = self.role
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('begin') is not None:
+            self.begin = m.get('begin')
+        if m.get('beginTime') is not None:
+            self.begin_time = m.get('beginTime')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('customerId') is not None:
+            self.customer_id = m.get('customerId')
+        if m.get('customerServiceId') is not None:
+            self.customer_service_id = m.get('customerServiceId')
+        if m.get('customerServiceType') is not None:
+            self.customer_service_type = m.get('customerServiceType')
+        if m.get('end') is not None:
+            self.end = m.get('end')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class RealTimeDialogRequest(TeaModel):
+    def __init__(
+        self,
+        analysis: bool = None,
+        biz_type: str = None,
+        conversation_model: List[RealTimeDialogRequestConversationModel] = None,
+        dialog_memory_turns: int = None,
+        meta_data: Dict[str, Any] = None,
+        recommend: bool = None,
+        session_id: str = None,
+        stream: bool = None,
+    ):
+        self.analysis = analysis
+        self.biz_type = biz_type
+        # This parameter is required.
+        self.conversation_model = conversation_model
+        self.dialog_memory_turns = dialog_memory_turns
+        self.meta_data = meta_data
+        self.recommend = recommend
+        # This parameter is required.
+        self.session_id = session_id
+        self.stream = stream
+
+    def validate(self):
+        if self.conversation_model:
+            for k in self.conversation_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis is not None:
+            result['analysis'] = self.analysis
+        if self.biz_type is not None:
+            result['bizType'] = self.biz_type
+        result['conversationModel'] = []
+        if self.conversation_model is not None:
+            for k in self.conversation_model:
+                result['conversationModel'].append(k.to_map() if k else None)
+        if self.dialog_memory_turns is not None:
+            result['dialogMemoryTurns'] = self.dialog_memory_turns
+        if self.meta_data is not None:
+            result['metaData'] = self.meta_data
+        if self.recommend is not None:
+            result['recommend'] = self.recommend
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.stream is not None:
+            result['stream'] = self.stream
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysis') is not None:
+            self.analysis = m.get('analysis')
+        if m.get('bizType') is not None:
+            self.biz_type = m.get('bizType')
+        self.conversation_model = []
+        if m.get('conversationModel') is not None:
+            for k in m.get('conversationModel'):
+                temp_model = RealTimeDialogRequestConversationModel()
+                self.conversation_model.append(temp_model.from_map(k))
+        if m.get('dialogMemoryTurns') is not None:
+            self.dialog_memory_turns = m.get('dialogMemoryTurns')
+        if m.get('metaData') is not None:
+            self.meta_data = m.get('metaData')
+        if m.get('recommend') is not None:
+            self.recommend = m.get('recommend')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('stream') is not None:
+            self.stream = m.get('stream')
+        return self
+
+
+class RealTimeDialogResponseBodyChoicesDelta(TeaModel):
+    def __init__(
+        self,
+        analysis_process: str = None,
+        call_time: str = None,
+        hang_up_dialog: bool = None,
+        intention_code: str = None,
+        intention_name: str = None,
+        intention_script: str = None,
+        recommend_intention: str = None,
+        recommend_script: str = None,
+        self_directed_script: str = None,
+        self_directed_script_full_content: str = None,
+    ):
+        self.analysis_process = analysis_process
+        # time
+        self.call_time = call_time
+        self.hang_up_dialog = hang_up_dialog
+        self.intention_code = intention_code
+        self.intention_name = intention_name
+        self.intention_script = intention_script
+        self.recommend_intention = recommend_intention
+        self.recommend_script = recommend_script
+        self.self_directed_script = self_directed_script
+        self.self_directed_script_full_content = self_directed_script_full_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis_process is not None:
+            result['analysisProcess'] = self.analysis_process
+        if self.call_time is not None:
+            result['callTime'] = self.call_time
+        if self.hang_up_dialog is not None:
+            result['hangUpDialog'] = self.hang_up_dialog
+        if self.intention_code is not None:
+            result['intentionCode'] = self.intention_code
+        if self.intention_name is not None:
+            result['intentionName'] = self.intention_name
+        if self.intention_script is not None:
+            result['intentionScript'] = self.intention_script
+        if self.recommend_intention is not None:
+            result['recommendIntention'] = self.recommend_intention
+        if self.recommend_script is not None:
+            result['recommendScript'] = self.recommend_script
+        if self.self_directed_script is not None:
+            result['selfDirectedScript'] = self.self_directed_script
+        if self.self_directed_script_full_content is not None:
+            result['selfDirectedScriptFullContent'] = self.self_directed_script_full_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysisProcess') is not None:
+            self.analysis_process = m.get('analysisProcess')
+        if m.get('callTime') is not None:
+            self.call_time = m.get('callTime')
+        if m.get('hangUpDialog') is not None:
+            self.hang_up_dialog = m.get('hangUpDialog')
+        if m.get('intentionCode') is not None:
+            self.intention_code = m.get('intentionCode')
+        if m.get('intentionName') is not None:
+            self.intention_name = m.get('intentionName')
+        if m.get('intentionScript') is not None:
+            self.intention_script = m.get('intentionScript')
+        if m.get('recommendIntention') is not None:
+            self.recommend_intention = m.get('recommendIntention')
+        if m.get('recommendScript') is not None:
+            self.recommend_script = m.get('recommendScript')
+        if m.get('selfDirectedScript') is not None:
+            self.self_directed_script = m.get('selfDirectedScript')
+        if m.get('selfDirectedScriptFullContent') is not None:
+            self.self_directed_script_full_content = m.get('selfDirectedScriptFullContent')
+        return self
+
+
+class RealTimeDialogResponseBodyChoicesMessage(TeaModel):
+    def __init__(
+        self,
+        analysis_process: str = None,
+        call_time: str = None,
+        hang_up_dialog: bool = None,
+        intention_code: str = None,
+        intention_name: str = None,
+        intention_script: str = None,
+        recommend_intention: str = None,
+        recommend_script: str = None,
+        self_directed_script: str = None,
+        self_directed_script_full_content: str = None,
+    ):
+        self.analysis_process = analysis_process
+        # time
+        self.call_time = call_time
+        self.hang_up_dialog = hang_up_dialog
+        self.intention_code = intention_code
+        self.intention_name = intention_name
+        self.intention_script = intention_script
+        self.recommend_intention = recommend_intention
+        self.recommend_script = recommend_script
+        self.self_directed_script = self_directed_script
+        self.self_directed_script_full_content = self_directed_script_full_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis_process is not None:
+            result['analysisProcess'] = self.analysis_process
+        if self.call_time is not None:
+            result['callTime'] = self.call_time
+        if self.hang_up_dialog is not None:
+            result['hangUpDialog'] = self.hang_up_dialog
+        if self.intention_code is not None:
+            result['intentionCode'] = self.intention_code
+        if self.intention_name is not None:
+            result['intentionName'] = self.intention_name
+        if self.intention_script is not None:
+            result['intentionScript'] = self.intention_script
+        if self.recommend_intention is not None:
+            result['recommendIntention'] = self.recommend_intention
+        if self.recommend_script is not None:
+            result['recommendScript'] = self.recommend_script
+        if self.self_directed_script is not None:
+            result['selfDirectedScript'] = self.self_directed_script
+        if self.self_directed_script_full_content is not None:
+            result['selfDirectedScriptFullContent'] = self.self_directed_script_full_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysisProcess') is not None:
+            self.analysis_process = m.get('analysisProcess')
+        if m.get('callTime') is not None:
+            self.call_time = m.get('callTime')
+        if m.get('hangUpDialog') is not None:
+            self.hang_up_dialog = m.get('hangUpDialog')
+        if m.get('intentionCode') is not None:
+            self.intention_code = m.get('intentionCode')
+        if m.get('intentionName') is not None:
+            self.intention_name = m.get('intentionName')
+        if m.get('intentionScript') is not None:
+            self.intention_script = m.get('intentionScript')
+        if m.get('recommendIntention') is not None:
+            self.recommend_intention = m.get('recommendIntention')
+        if m.get('recommendScript') is not None:
+            self.recommend_script = m.get('recommendScript')
+        if m.get('selfDirectedScript') is not None:
+            self.self_directed_script = m.get('selfDirectedScript')
+        if m.get('selfDirectedScriptFullContent') is not None:
+            self.self_directed_script_full_content = m.get('selfDirectedScriptFullContent')
+        return self
+
+
+class RealTimeDialogResponseBodyChoices(TeaModel):
+    def __init__(
+        self,
+        delta: RealTimeDialogResponseBodyChoicesDelta = None,
+        finish_reason: str = None,
+        index: int = None,
+        message: RealTimeDialogResponseBodyChoicesMessage = None,
+    ):
+        self.delta = delta
+        self.finish_reason = finish_reason
+        self.index = index
+        self.message = message
+
+    def validate(self):
+        if self.delta:
+            self.delta.validate()
+        if self.message:
+            self.message.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delta is not None:
+            result['delta'] = self.delta.to_map()
+        if self.finish_reason is not None:
+            result['finishReason'] = self.finish_reason
+        if self.index is not None:
+            result['index'] = self.index
+        if self.message is not None:
+            result['message'] = self.message.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('delta') is not None:
+            temp_model = RealTimeDialogResponseBodyChoicesDelta()
+            self.delta = temp_model.from_map(m['delta'])
+        if m.get('finishReason') is not None:
+            self.finish_reason = m.get('finishReason')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('message') is not None:
+            temp_model = RealTimeDialogResponseBodyChoicesMessage()
+            self.message = temp_model.from_map(m['message'])
+        return self
+
+
+class RealTimeDialogResponseBody(TeaModel):
+    def __init__(
+        self,
+        choices: List[RealTimeDialogResponseBodyChoices] = None,
+        created: str = None,
+        id: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.choices = choices
+        self.created = created
+        self.id = id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.choices:
+            for k in self.choices:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['choices'] = []
+        if self.choices is not None:
+            for k in self.choices:
+                result['choices'].append(k.to_map() if k else None)
+        if self.created is not None:
+            result['created'] = self.created
+        if self.id is not None:
+            result['id'] = self.id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.choices = []
+        if m.get('choices') is not None:
+            for k in m.get('choices'):
+                temp_model = RealTimeDialogResponseBodyChoices()
+                self.choices.append(temp_model.from_map(k))
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class RealTimeDialogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RealTimeDialogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RealTimeDialogResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

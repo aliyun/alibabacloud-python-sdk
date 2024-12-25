@@ -1,3 +1,9 @@
+2024-12-25 Version: 1.8.0
+- Support API RealTimeDialog.
+- Update API CreateDialog: update param body.
+- Update API CreateDialog: update response param.
+
+
 2024-12-20 Version: 1.7.0
 - Support API CreateDialog.
 - Support API GenDocQaResult.
