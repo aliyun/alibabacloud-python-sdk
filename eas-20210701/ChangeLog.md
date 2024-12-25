@@ -1,3 +1,8 @@
+2024-12-25 Version: 6.3.0
+- Support API DescribeGroupEndpoints.
+- Support API DescribeServiceEndpoints.
+
+
 2024-12-10 Version: 6.2.0
 - Support API ListGatewayIntranetSupportedZone.
 - Update API DescribeGateway: update response param.

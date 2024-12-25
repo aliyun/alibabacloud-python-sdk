@@ -6372,6 +6372,151 @@ class DescribeGroupResponse(TeaModel):
         return self
 
 
+class DescribeGroupEndpointsResponseBodyEndpoints(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        endpoint_type: str = None,
+        internet_endpoints: List[str] = None,
+        intranet_endpoints: List[str] = None,
+        path_type: str = None,
+        port: int = None,
+    ):
+        self.backend_id = backend_id
+        self.endpoint_type = endpoint_type
+        self.internet_endpoints = internet_endpoints
+        self.intranet_endpoints = intranet_endpoints
+        self.path_type = path_type
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        if self.internet_endpoints is not None:
+            result['InternetEndpoints'] = self.internet_endpoints
+        if self.intranet_endpoints is not None:
+            result['IntranetEndpoints'] = self.intranet_endpoints
+        if self.path_type is not None:
+            result['PathType'] = self.path_type
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        if m.get('InternetEndpoints') is not None:
+            self.internet_endpoints = m.get('InternetEndpoints')
+        if m.get('IntranetEndpoints') is not None:
+            self.intranet_endpoints = m.get('IntranetEndpoints')
+        if m.get('PathType') is not None:
+            self.path_type = m.get('PathType')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class DescribeGroupEndpointsResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        endpoints: DescribeGroupEndpointsResponseBodyEndpoints = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.access_token = access_token
+        self.endpoints = endpoints
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.endpoints:
+            self.endpoints.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.endpoints is not None:
+            result['Endpoints'] = self.endpoints.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('Endpoints') is not None:
+            temp_model = DescribeGroupEndpointsResponseBodyEndpoints()
+            self.endpoints = temp_model.from_map(m['Endpoints'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeGroupEndpointsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeGroupEndpointsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeGroupEndpointsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeResourceResponseBody(TeaModel):
     def __init__(
         self,
@@ -7326,6 +7471,151 @@ class DescribeServiceDiagnosisResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeServiceDiagnosisResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeServiceEndpointsResponseBodyEndpoints(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        endpoint_type: str = None,
+        internet_endpoints: List[str] = None,
+        intranet_endpoints: List[str] = None,
+        path_type: str = None,
+        port: int = None,
+    ):
+        self.backend_id = backend_id
+        self.endpoint_type = endpoint_type
+        self.internet_endpoints = internet_endpoints
+        self.intranet_endpoints = intranet_endpoints
+        self.path_type = path_type
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        if self.internet_endpoints is not None:
+            result['InternetEndpoints'] = self.internet_endpoints
+        if self.intranet_endpoints is not None:
+            result['IntranetEndpoints'] = self.intranet_endpoints
+        if self.path_type is not None:
+            result['PathType'] = self.path_type
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        if m.get('InternetEndpoints') is not None:
+            self.internet_endpoints = m.get('InternetEndpoints')
+        if m.get('IntranetEndpoints') is not None:
+            self.intranet_endpoints = m.get('IntranetEndpoints')
+        if m.get('PathType') is not None:
+            self.path_type = m.get('PathType')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class DescribeServiceEndpointsResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        endpoints: DescribeServiceEndpointsResponseBodyEndpoints = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.access_token = access_token
+        self.endpoints = endpoints
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.endpoints:
+            self.endpoints.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.endpoints is not None:
+            result['Endpoints'] = self.endpoints.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('Endpoints') is not None:
+            temp_model = DescribeServiceEndpointsResponseBodyEndpoints()
+            self.endpoints = temp_model.from_map(m['Endpoints'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeServiceEndpointsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeServiceEndpointsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeServiceEndpointsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9295,6 +9585,7 @@ class ListGatewayResponseBodyGateways(TeaModel):
         self.is_default = is_default
         # The number of nodes in the private gateway.
         self.replicas = replicas
+        # Specifies whether to enable HTTP to HTTPS redirection.
         self.sslredirection_enabled = sslredirection_enabled
         # The state of the private gateway.
         # 
@@ -10001,7 +10292,9 @@ class ListGatewayIntranetSupportedZoneResponseBody(TeaModel):
         request_id: str = None,
         zones: List[str] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The zones that are supported by the region.
         self.zones = zones
 
     def validate(self):

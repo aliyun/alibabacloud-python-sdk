@@ -4168,6 +4168,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_group_with_options_async(cluster_id, group_name, headers, runtime)
 
+    def describe_group_endpoints_with_options(
+        self,
+        cluster_id: str,
+        group_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeGroupEndpointsResponse:
+        """
+        @summary 获取群组端点列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupEndpointsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeGroupEndpoints',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/groups/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(group_name)}/endpoints',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeGroupEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_group_endpoints_with_options_async(
+        self,
+        cluster_id: str,
+        group_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeGroupEndpointsResponse:
+        """
+        @summary 获取群组端点列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupEndpointsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeGroupEndpoints',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/groups/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(group_name)}/endpoints',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeGroupEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_group_endpoints(
+        self,
+        cluster_id: str,
+        group_name: str,
+    ) -> eas_20210701_models.DescribeGroupEndpointsResponse:
+        """
+        @summary 获取群组端点列表
+        
+        @return: DescribeGroupEndpointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_group_endpoints_with_options(cluster_id, group_name, headers, runtime)
+
+    async def describe_group_endpoints_async(
+        self,
+        cluster_id: str,
+        group_name: str,
+    ) -> eas_20210701_models.DescribeGroupEndpointsResponse:
+        """
+        @summary 获取群组端点列表
+        
+        @return: DescribeGroupEndpointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_group_endpoints_with_options_async(cluster_id, group_name, headers, runtime)
+
     def describe_resource_with_options(
         self,
         cluster_id: str,
@@ -4825,6 +4919,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_service_diagnosis_with_options_async(cluster_id, service_name, headers, runtime)
+
+    def describe_service_endpoints_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeServiceEndpointsResponse:
+        """
+        @summary 获取服务端点列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceEndpointsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeServiceEndpoints',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/endpoints',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_service_endpoints_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeServiceEndpointsResponse:
+        """
+        @summary 获取服务端点列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceEndpointsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeServiceEndpoints',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/endpoints',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_service_endpoints(
+        self,
+        cluster_id: str,
+        service_name: str,
+    ) -> eas_20210701_models.DescribeServiceEndpointsResponse:
+        """
+        @summary 获取服务端点列表
+        
+        @return: DescribeServiceEndpointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_service_endpoints_with_options(cluster_id, service_name, headers, runtime)
+
+    async def describe_service_endpoints_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+    ) -> eas_20210701_models.DescribeServiceEndpointsResponse:
+        """
+        @summary 获取服务端点列表
+        
+        @return: DescribeServiceEndpointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_service_endpoints_with_options_async(cluster_id, service_name, headers, runtime)
 
     def describe_service_event_with_options(
         self,
@@ -6384,7 +6572,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListGatewayIntranetSupportedZoneResponse:
         """
-        @summary 获取网关内网支持的可用区
+        @summary Obtains the zones supported by a gateway within an intranet.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6417,7 +6605,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListGatewayIntranetSupportedZoneResponse:
         """
-        @summary 获取网关内网支持的可用区
+        @summary Obtains the zones supported by a gateway within an intranet.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6448,7 +6636,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> eas_20210701_models.ListGatewayIntranetSupportedZoneResponse:
         """
-        @summary 获取网关内网支持的可用区
+        @summary Obtains the zones supported by a gateway within an intranet.
         
         @return: ListGatewayIntranetSupportedZoneResponse
         """
@@ -6462,7 +6650,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> eas_20210701_models.ListGatewayIntranetSupportedZoneResponse:
         """
-        @summary 获取网关内网支持的可用区
+        @summary Obtains the zones supported by a gateway within an intranet.
         
         @return: ListGatewayIntranetSupportedZoneResponse
         """
