@@ -1,3 +1,22 @@
+2024-12-26 Version: 2.0.0
+- Support API AddDisasterRecoveryItem.
+- Update API CreateConsumerGroup: update param body.
+- Update API CreateInstance: update param body.
+- Update API CreateTopic: update param body.
+- Update API GetConsumerGroupLag: update response param.
+- Update API GetInstance: update response param.
+- Update API GetInstanceAccount: update response param.
+- Update API GetTopic: update response param.
+- Update API GetTrace: update response param.
+- Update API ListConsumerGroups: update param pageNumber.
+- Update API ListConsumerGroups: update param pageSize.
+- Update API ListConsumerGroups: update response param.
+- Update API ListInstances: add param storageSecretKey.
+- Update API ListTopics: update response param.
+- Update API UpdateConsumerGroup: update param body.
+- Update API UpdateTopic: update param body.
+
+
 2024-09-25 Version: 1.5.1
 - Update API GetTrace: update param instanceId.
 - Update API GetTrace: update param topicName.

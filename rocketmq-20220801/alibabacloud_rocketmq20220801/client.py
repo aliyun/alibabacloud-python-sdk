@@ -41,6 +41,114 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_disaster_recovery_item_with_options(
+        self,
+        plan_id: str,
+        request: rocket_mq20220801_models.AddDisasterRecoveryItemRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.AddDisasterRecoveryItemResponse:
+        """
+        @summary 添加容灾计划条目
+        
+        @param request: AddDisasterRecoveryItemRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDisasterRecoveryItemResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.topics):
+            body['topics'] = request.topics
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDisasterRecoveryItem',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.AddDisasterRecoveryItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_disaster_recovery_item_with_options_async(
+        self,
+        plan_id: str,
+        request: rocket_mq20220801_models.AddDisasterRecoveryItemRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.AddDisasterRecoveryItemResponse:
+        """
+        @summary 添加容灾计划条目
+        
+        @param request: AddDisasterRecoveryItemRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDisasterRecoveryItemResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.topics):
+            body['topics'] = request.topics
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDisasterRecoveryItem',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.AddDisasterRecoveryItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_disaster_recovery_item(
+        self,
+        plan_id: str,
+        request: rocket_mq20220801_models.AddDisasterRecoveryItemRequest,
+    ) -> rocket_mq20220801_models.AddDisasterRecoveryItemResponse:
+        """
+        @summary 添加容灾计划条目
+        
+        @param request: AddDisasterRecoveryItemRequest
+        @return: AddDisasterRecoveryItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.add_disaster_recovery_item_with_options(plan_id, request, headers, runtime)
+
+    async def add_disaster_recovery_item_async(
+        self,
+        plan_id: str,
+        request: rocket_mq20220801_models.AddDisasterRecoveryItemRequest,
+    ) -> rocket_mq20220801_models.AddDisasterRecoveryItemResponse:
+        """
+        @summary 添加容灾计划条目
+        
+        @param request: AddDisasterRecoveryItemRequest
+        @return: AddDisasterRecoveryItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.add_disaster_recovery_item_with_options_async(plan_id, request, headers, runtime)
+
     def change_resource_group_with_options(
         self,
         request: rocket_mq20220801_models.ChangeResourceGroupRequest,
@@ -181,6 +289,8 @@ class Client(OpenApiClient):
             body['consumeRetryPolicy'] = request.consume_retry_policy
         if not UtilClient.is_unset(request.delivery_order_type):
             body['deliveryOrderType'] = request.delivery_order_type
+        if not UtilClient.is_unset(request.max_receive_tps):
+            body['maxReceiveTps'] = request.max_receive_tps
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
         req = open_api_models.OpenApiRequest(
@@ -227,6 +337,8 @@ class Client(OpenApiClient):
             body['consumeRetryPolicy'] = request.consume_retry_policy
         if not UtilClient.is_unset(request.delivery_order_type):
             body['deliveryOrderType'] = request.delivery_order_type
+        if not UtilClient.is_unset(request.max_receive_tps):
+            body['maxReceiveTps'] = request.max_receive_tps
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
         req = open_api_models.OpenApiRequest(
@@ -465,7 +577,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateInstanceAccountResponse:
         """
-        @summary 创建访问控制acl用户
+        @summary Creates an account that is used to access an instance.
         
         @param request: CreateInstanceAccountRequest
         @param headers: map
@@ -506,7 +618,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateInstanceAccountResponse:
         """
-        @summary 创建访问控制acl用户
+        @summary Creates an account that is used to access an instance.
         
         @param request: CreateInstanceAccountRequest
         @param headers: map
@@ -545,7 +657,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.CreateInstanceAccountRequest,
     ) -> rocket_mq20220801_models.CreateInstanceAccountResponse:
         """
-        @summary 创建访问控制acl用户
+        @summary Creates an account that is used to access an instance.
         
         @param request: CreateInstanceAccountRequest
         @return: CreateInstanceAccountResponse
@@ -560,7 +672,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.CreateInstanceAccountRequest,
     ) -> rocket_mq20220801_models.CreateInstanceAccountResponse:
         """
-        @summary 创建访问控制acl用户
+        @summary Creates an account that is used to access an instance.
         
         @param request: CreateInstanceAccountRequest
         @return: CreateInstanceAccountResponse
@@ -578,7 +690,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateInstanceAclResponse:
         """
-        @summary 创建访问控制acl数据
+        @summary Creates an access control list (ACL) in a specific instance.
         
         @param request: CreateInstanceAclRequest
         @param headers: map
@@ -626,7 +738,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateInstanceAclResponse:
         """
-        @summary 创建访问控制acl数据
+        @summary Creates an access control list (ACL) in a specific instance.
         
         @param request: CreateInstanceAclRequest
         @param headers: map
@@ -672,7 +784,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.CreateInstanceAclRequest,
     ) -> rocket_mq20220801_models.CreateInstanceAclResponse:
         """
-        @summary 创建访问控制acl数据
+        @summary Creates an access control list (ACL) in a specific instance.
         
         @param request: CreateInstanceAclRequest
         @return: CreateInstanceAclResponse
@@ -688,7 +800,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.CreateInstanceAclRequest,
     ) -> rocket_mq20220801_models.CreateInstanceAclResponse:
         """
-        @summary 创建访问控制acl数据
+        @summary Creates an access control list (ACL) in a specific instance.
         
         @param request: CreateInstanceAclRequest
         @return: CreateInstanceAclResponse
@@ -705,7 +817,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateInstanceIpWhitelistResponse:
         """
-        @summary 创建访问控制ip白名单
+        @summary Creates an IP address whitelist.
         
         @param request: CreateInstanceIpWhitelistRequest
         @param headers: map
@@ -744,7 +856,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateInstanceIpWhitelistResponse:
         """
-        @summary 创建访问控制ip白名单
+        @summary Creates an IP address whitelist.
         
         @param request: CreateInstanceIpWhitelistRequest
         @param headers: map
@@ -781,7 +893,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.CreateInstanceIpWhitelistRequest,
     ) -> rocket_mq20220801_models.CreateInstanceIpWhitelistResponse:
         """
-        @summary 创建访问控制ip白名单
+        @summary Creates an IP address whitelist.
         
         @param request: CreateInstanceIpWhitelistRequest
         @return: CreateInstanceIpWhitelistResponse
@@ -796,7 +908,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.CreateInstanceIpWhitelistRequest,
     ) -> rocket_mq20220801_models.CreateInstanceIpWhitelistResponse:
         """
-        @summary 创建访问控制ip白名单
+        @summary Creates an IP address whitelist.
         
         @param request: CreateInstanceIpWhitelistRequest
         @return: CreateInstanceIpWhitelistResponse
@@ -823,6 +935,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.max_send_tps):
+            body['maxSendTps'] = request.max_send_tps
         if not UtilClient.is_unset(request.message_type):
             body['messageType'] = request.message_type
         if not UtilClient.is_unset(request.remark):
@@ -865,6 +979,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.max_send_tps):
+            body['maxSendTps'] = request.max_send_tps
         if not UtilClient.is_unset(request.message_type):
             body['messageType'] = request.message_type
         if not UtilClient.is_unset(request.remark):
@@ -1036,7 +1152,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse:
         """
-        @summary 取消消费组订阅关系
+        @summary Deletes the subscriptions of a consumer group.
         
         @param request: DeleteConsumerGroupSubscriptionRequest
         @param headers: map
@@ -1080,7 +1196,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse:
         """
-        @summary 取消消费组订阅关系
+        @summary Deletes the subscriptions of a consumer group.
         
         @param request: DeleteConsumerGroupSubscriptionRequest
         @param headers: map
@@ -1122,7 +1238,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.DeleteConsumerGroupSubscriptionRequest,
     ) -> rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse:
         """
-        @summary 取消消费组订阅关系
+        @summary Deletes the subscriptions of a consumer group.
         
         @param request: DeleteConsumerGroupSubscriptionRequest
         @return: DeleteConsumerGroupSubscriptionResponse
@@ -1138,7 +1254,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.DeleteConsumerGroupSubscriptionRequest,
     ) -> rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse:
         """
-        @summary 取消消费组订阅关系
+        @summary Deletes the subscriptions of a consumer group.
         
         @param request: DeleteConsumerGroupSubscriptionRequest
         @return: DeleteConsumerGroupSubscriptionResponse
@@ -1261,7 +1377,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteInstanceAccountResponse:
         """
-        @summary 删除访问控制acl用户
+        @summary Delete access control ACL user
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1294,7 +1410,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteInstanceAccountResponse:
         """
-        @summary 删除访问控制acl用户
+        @summary Delete access control ACL user
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1325,7 +1441,7 @@ class Client(OpenApiClient):
         username: str,
     ) -> rocket_mq20220801_models.DeleteInstanceAccountResponse:
         """
-        @summary 删除访问控制acl用户
+        @summary Delete access control ACL user
         
         @return: DeleteInstanceAccountResponse
         """
@@ -1339,7 +1455,7 @@ class Client(OpenApiClient):
         username: str,
     ) -> rocket_mq20220801_models.DeleteInstanceAccountResponse:
         """
-        @summary 删除访问控制acl用户
+        @summary Delete access control ACL user
         
         @return: DeleteInstanceAccountResponse
         """
@@ -1356,7 +1472,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteInstanceAclResponse:
         """
-        @summary 删除访问控制acl数据
+        @summary Deletes the permissions of a specific account of an instance.
         
         @param request: DeleteInstanceAclRequest
         @param headers: map
@@ -1398,7 +1514,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteInstanceAclResponse:
         """
-        @summary 删除访问控制acl数据
+        @summary Deletes the permissions of a specific account of an instance.
         
         @param request: DeleteInstanceAclRequest
         @param headers: map
@@ -1438,7 +1554,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.DeleteInstanceAclRequest,
     ) -> rocket_mq20220801_models.DeleteInstanceAclResponse:
         """
-        @summary 删除访问控制acl数据
+        @summary Deletes the permissions of a specific account of an instance.
         
         @param request: DeleteInstanceAclRequest
         @return: DeleteInstanceAclResponse
@@ -1454,7 +1570,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.DeleteInstanceAclRequest,
     ) -> rocket_mq20220801_models.DeleteInstanceAclResponse:
         """
-        @summary 删除访问控制acl数据
+        @summary Deletes the permissions of a specific account of an instance.
         
         @param request: DeleteInstanceAclRequest
         @return: DeleteInstanceAclResponse
@@ -1471,7 +1587,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse:
         """
-        @summary 删除访问控制ip白名单
+        @summary Deletes a specific IP address whitelist from an instance.
         
         @param request: DeleteInstanceIpWhitelistRequest
         @param headers: map
@@ -1510,7 +1626,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse:
         """
-        @summary 删除访问控制ip白名单
+        @summary Deletes a specific IP address whitelist from an instance.
         
         @param request: DeleteInstanceIpWhitelistRequest
         @param headers: map
@@ -1547,7 +1663,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.DeleteInstanceIpWhitelistRequest,
     ) -> rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse:
         """
-        @summary 删除访问控制ip白名单
+        @summary Deletes a specific IP address whitelist from an instance.
         
         @param request: DeleteInstanceIpWhitelistRequest
         @return: DeleteInstanceIpWhitelistResponse
@@ -1562,7 +1678,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.DeleteInstanceIpWhitelistRequest,
     ) -> rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse:
         """
-        @summary 删除访问控制ip白名单
+        @summary Deletes a specific IP address whitelist from an instance.
         
         @param request: DeleteInstanceIpWhitelistRequest
         @return: DeleteInstanceIpWhitelistResponse
@@ -1783,7 +1899,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetConsumerGroupLagResponse:
         """
-        @summary 查询消费者组堆积信息
+        @summary Query Consumer Group Backlog Information
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1816,7 +1932,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetConsumerGroupLagResponse:
         """
-        @summary 查询消费者组堆积信息
+        @summary Query Consumer Group Backlog Information
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1847,7 +1963,7 @@ class Client(OpenApiClient):
         consumer_group_id: str,
     ) -> rocket_mq20220801_models.GetConsumerGroupLagResponse:
         """
-        @summary 查询消费者组堆积信息
+        @summary Query Consumer Group Backlog Information
         
         @return: GetConsumerGroupLagResponse
         """
@@ -1861,7 +1977,7 @@ class Client(OpenApiClient):
         consumer_group_id: str,
     ) -> rocket_mq20220801_models.GetConsumerGroupLagResponse:
         """
-        @summary 查询消费者组堆积信息
+        @summary Query Consumer Group Backlog Information
         
         @return: GetConsumerGroupLagResponse
         """
@@ -1878,7 +1994,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse:
         """
-        @summary 查询消费组订阅关系列表客户端分布
+        @summary Queries the subscriptions of a consumer group.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1912,7 +2028,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse:
         """
-        @summary 查询消费组订阅关系列表客户端分布
+        @summary Queries the subscriptions of a consumer group.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1944,7 +2060,7 @@ class Client(OpenApiClient):
         topic_name: str,
     ) -> rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse:
         """
-        @summary 查询消费组订阅关系列表客户端分布
+        @summary Queries the subscriptions of a consumer group.
         
         @return: GetConsumerGroupSubscriptionResponse
         """
@@ -1959,7 +2075,7 @@ class Client(OpenApiClient):
         topic_name: str,
     ) -> rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse:
         """
-        @summary 查询消费组订阅关系列表客户端分布
+        @summary Queries the subscriptions of a consumer group.
         
         @return: GetConsumerGroupSubscriptionResponse
         """
@@ -1976,7 +2092,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetConsumerStackResponse:
         """
-        @summary 查询消费者堆栈信息
+        @summary Queries the stack information about a consumer.
         
         @param request: GetConsumerStackRequest
         @param headers: map
@@ -2016,7 +2132,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetConsumerStackResponse:
         """
-        @summary 查询消费者堆栈信息
+        @summary Queries the stack information about a consumer.
         
         @param request: GetConsumerStackRequest
         @param headers: map
@@ -2054,7 +2170,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.GetConsumerStackRequest,
     ) -> rocket_mq20220801_models.GetConsumerStackResponse:
         """
-        @summary 查询消费者堆栈信息
+        @summary Queries the stack information about a consumer.
         
         @param request: GetConsumerStackRequest
         @return: GetConsumerStackResponse
@@ -2070,7 +2186,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.GetConsumerStackRequest,
     ) -> rocket_mq20220801_models.GetConsumerStackResponse:
         """
-        @summary 查询消费者堆栈信息
+        @summary Queries the stack information about a consumer.
         
         @param request: GetConsumerStackRequest
         @return: GetConsumerStackResponse
@@ -2185,7 +2301,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetInstanceAccountResponse:
         """
-        @summary 获取实例账号
+        @summary Obtains the account used to access a specific instance.
         
         @param request: GetInstanceAccountRequest
         @param headers: map
@@ -2224,7 +2340,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetInstanceAccountResponse:
         """
-        @summary 获取实例账号
+        @summary Obtains the account used to access a specific instance.
         
         @param request: GetInstanceAccountRequest
         @param headers: map
@@ -2261,7 +2377,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.GetInstanceAccountRequest,
     ) -> rocket_mq20220801_models.GetInstanceAccountResponse:
         """
-        @summary 获取实例账号
+        @summary Obtains the account used to access a specific instance.
         
         @param request: GetInstanceAccountRequest
         @return: GetInstanceAccountResponse
@@ -2276,7 +2392,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.GetInstanceAccountRequest,
     ) -> rocket_mq20220801_models.GetInstanceAccountResponse:
         """
-        @summary 获取实例账号
+        @summary Obtains the account used to access a specific instance.
         
         @param request: GetInstanceAccountRequest
         @return: GetInstanceAccountResponse
@@ -2294,7 +2410,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetMessageDetailResponse:
         """
-        @summary 消息详情
+        @summary Obtains the details of a specific message.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2328,7 +2444,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetMessageDetailResponse:
         """
-        @summary 消息详情
+        @summary Obtains the details of a specific message.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2360,7 +2476,7 @@ class Client(OpenApiClient):
         message_id: str,
     ) -> rocket_mq20220801_models.GetMessageDetailResponse:
         """
-        @summary 消息详情
+        @summary Obtains the details of a specific message.
         
         @return: GetMessageDetailResponse
         """
@@ -2375,7 +2491,7 @@ class Client(OpenApiClient):
         message_id: str,
     ) -> rocket_mq20220801_models.GetMessageDetailResponse:
         """
-        @summary 消息详情
+        @summary Obtains the details of a specific message.
         
         @return: GetMessageDetailResponse
         """
@@ -2486,7 +2602,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetTraceResponse:
         """
-        @summary 轨迹查询
+        @summary Queries the trace of a specific message in a specific topic.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2520,7 +2636,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetTraceResponse:
         """
-        @summary 轨迹查询
+        @summary Queries the trace of a specific message in a specific topic.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2552,7 +2668,7 @@ class Client(OpenApiClient):
         message_id: str,
     ) -> rocket_mq20220801_models.GetTraceResponse:
         """
-        @summary 轨迹查询
+        @summary Queries the trace of a specific message in a specific topic.
         
         @return: GetTraceResponse
         """
@@ -2567,7 +2683,7 @@ class Client(OpenApiClient):
         message_id: str,
     ) -> rocket_mq20220801_models.GetTraceResponse:
         """
-        @summary 轨迹查询
+        @summary Queries the trace of a specific message in a specific topic.
         
         @return: GetTraceResponse
         """
@@ -2977,7 +3093,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListInstanceAccountResponse:
         """
-        @summary 访问控制acl用户列表
+        @summary Queries the accounts that are used to access a specific instance.
         
         @param request: ListInstanceAccountRequest
         @param headers: map
@@ -3024,7 +3140,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListInstanceAccountResponse:
         """
-        @summary 访问控制acl用户列表
+        @summary Queries the accounts that are used to access a specific instance.
         
         @param request: ListInstanceAccountRequest
         @param headers: map
@@ -3069,7 +3185,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListInstanceAccountRequest,
     ) -> rocket_mq20220801_models.ListInstanceAccountResponse:
         """
-        @summary 访问控制acl用户列表
+        @summary Queries the accounts that are used to access a specific instance.
         
         @param request: ListInstanceAccountRequest
         @return: ListInstanceAccountResponse
@@ -3084,7 +3200,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListInstanceAccountRequest,
     ) -> rocket_mq20220801_models.ListInstanceAccountResponse:
         """
-        @summary 访问控制acl用户列表
+        @summary Queries the accounts that are used to access a specific instance.
         
         @param request: ListInstanceAccountRequest
         @return: ListInstanceAccountResponse
@@ -3101,7 +3217,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListInstanceAclResponse:
         """
-        @summary 访问控制acl数据列表
+        @summary Queries the access control lists (ACLs) of an instance.
         
         @param request: ListInstanceAclRequest
         @param headers: map
@@ -3144,7 +3260,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListInstanceAclResponse:
         """
-        @summary 访问控制acl数据列表
+        @summary Queries the access control lists (ACLs) of an instance.
         
         @param request: ListInstanceAclRequest
         @param headers: map
@@ -3185,7 +3301,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListInstanceAclRequest,
     ) -> rocket_mq20220801_models.ListInstanceAclResponse:
         """
-        @summary 访问控制acl数据列表
+        @summary Queries the access control lists (ACLs) of an instance.
         
         @param request: ListInstanceAclRequest
         @return: ListInstanceAclResponse
@@ -3200,7 +3316,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListInstanceAclRequest,
     ) -> rocket_mq20220801_models.ListInstanceAclResponse:
         """
-        @summary 访问控制acl数据列表
+        @summary Queries the access control lists (ACLs) of an instance.
         
         @param request: ListInstanceAclRequest
         @return: ListInstanceAclResponse
@@ -3217,7 +3333,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListInstanceIpWhitelistResponse:
         """
-        @summary 查询访问控制ip白名单列表
+        @summary Queries the IP address whitelists of an instance.
         
         @param request: ListInstanceIpWhitelistRequest
         @param headers: map
@@ -3260,7 +3376,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListInstanceIpWhitelistResponse:
         """
-        @summary 查询访问控制ip白名单列表
+        @summary Queries the IP address whitelists of an instance.
         
         @param request: ListInstanceIpWhitelistRequest
         @param headers: map
@@ -3301,7 +3417,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListInstanceIpWhitelistRequest,
     ) -> rocket_mq20220801_models.ListInstanceIpWhitelistResponse:
         """
-        @summary 查询访问控制ip白名单列表
+        @summary Queries the IP address whitelists of an instance.
         
         @param request: ListInstanceIpWhitelistRequest
         @return: ListInstanceIpWhitelistResponse
@@ -3316,7 +3432,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListInstanceIpWhitelistRequest,
     ) -> rocket_mq20220801_models.ListInstanceIpWhitelistResponse:
         """
-        @summary 查询访问控制ip白名单列表
+        @summary Queries the IP address whitelists of an instance.
         
         @param request: ListInstanceIpWhitelistRequest
         @return: ListInstanceIpWhitelistResponse
@@ -3357,6 +3473,8 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.series_codes_shrink):
             query['seriesCodes'] = request.series_codes_shrink
+        if not UtilClient.is_unset(request.storage_secret_key):
+            query['storageSecretKey'] = request.storage_secret_key
         if not UtilClient.is_unset(request.tags):
             query['tags'] = request.tags
         req = open_api_models.OpenApiRequest(
@@ -3411,6 +3529,8 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.series_codes_shrink):
             query['seriesCodes'] = request.series_codes_shrink
+        if not UtilClient.is_unset(request.storage_secret_key):
+            query['storageSecretKey'] = request.storage_secret_key
         if not UtilClient.is_unset(request.tags):
             query['tags'] = request.tags
         req = open_api_models.OpenApiRequest(
@@ -3474,7 +3594,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListMessagesResponse:
         """
-        @summary 查询消息列表
+        @summary Queries the list of messages.
         
         @param request: ListMessagesRequest
         @param headers: map
@@ -3526,7 +3646,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListMessagesResponse:
         """
-        @summary 查询消息列表
+        @summary Queries the list of messages.
         
         @param request: ListMessagesRequest
         @param headers: map
@@ -3576,7 +3696,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListMessagesRequest,
     ) -> rocket_mq20220801_models.ListMessagesResponse:
         """
-        @summary 查询消息列表
+        @summary Queries the list of messages.
         
         @param request: ListMessagesRequest
         @return: ListMessagesResponse
@@ -3592,7 +3712,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListMessagesRequest,
     ) -> rocket_mq20220801_models.ListMessagesResponse:
         """
-        @summary 查询消息列表
+        @summary Queries the list of messages.
         
         @param request: ListMessagesRequest
         @return: ListMessagesResponse
@@ -3690,7 +3810,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTagResourcesResponse:
         """
-        @summary 查询可见的资源标签关系
+        @summary Query visible resource tag relationships
         
         @param request: ListTagResourcesRequest
         @param headers: map
@@ -3738,7 +3858,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTagResourcesResponse:
         """
-        @summary 查询可见的资源标签关系
+        @summary Query visible resource tag relationships
         
         @param request: ListTagResourcesRequest
         @param headers: map
@@ -3784,7 +3904,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListTagResourcesRequest,
     ) -> rocket_mq20220801_models.ListTagResourcesResponse:
         """
-        @summary 查询可见的资源标签关系
+        @summary Query visible resource tag relationships
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -3798,7 +3918,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListTagResourcesRequest,
     ) -> rocket_mq20220801_models.ListTagResourcesResponse:
         """
-        @summary 查询可见的资源标签关系
+        @summary Query visible resource tag relationships
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -4038,7 +4158,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTracesResponse:
         """
-        @summary 轨迹消息列表
+        @summary Queries the message traces of a specific topic.
         
         @param request: ListTracesRequest
         @param headers: map
@@ -4090,7 +4210,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTracesResponse:
         """
-        @summary 轨迹消息列表
+        @summary Queries the message traces of a specific topic.
         
         @param request: ListTracesRequest
         @param headers: map
@@ -4140,7 +4260,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListTracesRequest,
     ) -> rocket_mq20220801_models.ListTracesResponse:
         """
-        @summary 轨迹消息列表
+        @summary Queries the message traces of a specific topic.
         
         @param request: ListTracesRequest
         @return: ListTracesResponse
@@ -4156,7 +4276,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListTracesRequest,
     ) -> rocket_mq20220801_models.ListTracesResponse:
         """
-        @summary 轨迹消息列表
+        @summary Queries the message traces of a specific topic.
         
         @param request: ListTracesRequest
         @return: ListTracesResponse
@@ -4292,7 +4412,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.TagResourcesResponse:
         """
-        @summary 用户创建标签资源关系（用户标签）
+        @summary Creates resource tags.
         
         @param request: TagResourcesRequest
         @param headers: map
@@ -4336,7 +4456,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.TagResourcesResponse:
         """
-        @summary 用户创建标签资源关系（用户标签）
+        @summary Creates resource tags.
         
         @param request: TagResourcesRequest
         @param headers: map
@@ -4378,7 +4498,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.TagResourcesRequest,
     ) -> rocket_mq20220801_models.TagResourcesResponse:
         """
-        @summary 用户创建标签资源关系（用户标签）
+        @summary Creates resource tags.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -4392,7 +4512,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.TagResourcesRequest,
     ) -> rocket_mq20220801_models.TagResourcesResponse:
         """
-        @summary 用户创建标签资源关系（用户标签）
+        @summary Creates resource tags.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -4408,7 +4528,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UntagResourcesResponse:
         """
-        @summary 用户删除标签资源关系
+        @summary Removes tags from resources.
         
         @param request: UntagResourcesRequest
         @param headers: map
@@ -4454,7 +4574,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UntagResourcesResponse:
         """
-        @summary 用户删除标签资源关系
+        @summary Removes tags from resources.
         
         @param request: UntagResourcesRequest
         @param headers: map
@@ -4498,7 +4618,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UntagResourcesRequest,
     ) -> rocket_mq20220801_models.UntagResourcesResponse:
         """
-        @summary 用户删除标签资源关系
+        @summary Removes tags from resources.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -4512,7 +4632,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UntagResourcesRequest,
     ) -> rocket_mq20220801_models.UntagResourcesResponse:
         """
-        @summary 用户删除标签资源关系
+        @summary Removes tags from resources.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -4545,6 +4665,8 @@ class Client(OpenApiClient):
             body['consumeRetryPolicy'] = request.consume_retry_policy
         if not UtilClient.is_unset(request.delivery_order_type):
             body['deliveryOrderType'] = request.delivery_order_type
+        if not UtilClient.is_unset(request.max_receive_tps):
+            body['maxReceiveTps'] = request.max_receive_tps
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
         req = open_api_models.OpenApiRequest(
@@ -4591,6 +4713,8 @@ class Client(OpenApiClient):
             body['consumeRetryPolicy'] = request.consume_retry_policy
         if not UtilClient.is_unset(request.delivery_order_type):
             body['deliveryOrderType'] = request.delivery_order_type
+        if not UtilClient.is_unset(request.max_receive_tps):
+            body['maxReceiveTps'] = request.max_receive_tps
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
         req = open_api_models.OpenApiRequest(
@@ -4790,7 +4914,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateInstanceAccountResponse:
         """
-        @summary 修改访问控制acl用户
+        @summary Updates the information about a specific account in a specific instance.
         
         @param request: UpdateInstanceAccountRequest
         @param headers: map
@@ -4832,7 +4956,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateInstanceAccountResponse:
         """
-        @summary 修改访问控制acl用户
+        @summary Updates the information about a specific account in a specific instance.
         
         @param request: UpdateInstanceAccountRequest
         @param headers: map
@@ -4872,7 +4996,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UpdateInstanceAccountRequest,
     ) -> rocket_mq20220801_models.UpdateInstanceAccountResponse:
         """
-        @summary 修改访问控制acl用户
+        @summary Updates the information about a specific account in a specific instance.
         
         @param request: UpdateInstanceAccountRequest
         @return: UpdateInstanceAccountResponse
@@ -4888,7 +5012,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UpdateInstanceAccountRequest,
     ) -> rocket_mq20220801_models.UpdateInstanceAccountResponse:
         """
-        @summary 修改访问控制acl用户
+        @summary Updates the information about a specific account in a specific instance.
         
         @param request: UpdateInstanceAccountRequest
         @return: UpdateInstanceAccountResponse
@@ -4906,7 +5030,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateInstanceAclResponse:
         """
-        @summary 删除访问控制acl数据
+        @summary Updates the permissions on the resources of a specific instance for a specific user.
         
         @param request: UpdateInstanceAclRequest
         @param headers: map
@@ -4954,7 +5078,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateInstanceAclResponse:
         """
-        @summary 删除访问控制acl数据
+        @summary Updates the permissions on the resources of a specific instance for a specific user.
         
         @param request: UpdateInstanceAclRequest
         @param headers: map
@@ -5000,7 +5124,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UpdateInstanceAclRequest,
     ) -> rocket_mq20220801_models.UpdateInstanceAclResponse:
         """
-        @summary 删除访问控制acl数据
+        @summary Updates the permissions on the resources of a specific instance for a specific user.
         
         @param request: UpdateInstanceAclRequest
         @return: UpdateInstanceAclResponse
@@ -5016,7 +5140,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UpdateInstanceAclRequest,
     ) -> rocket_mq20220801_models.UpdateInstanceAclResponse:
         """
-        @summary 删除访问控制acl数据
+        @summary Updates the permissions on the resources of a specific instance for a specific user.
         
         @param request: UpdateInstanceAclRequest
         @return: UpdateInstanceAclResponse
@@ -5043,6 +5167,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.max_send_tps):
+            body['maxSendTps'] = request.max_send_tps
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
         req = open_api_models.OpenApiRequest(
@@ -5083,6 +5209,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.max_send_tps):
+            body['maxSendTps'] = request.max_send_tps
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
         req = open_api_models.OpenApiRequest(
@@ -5147,7 +5275,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.VerifyConsumeMessageResponse:
         """
-        @summary 消费验证
+        @summary Verifies the consumption status of a message in a specific topic on a specific instance.
         
         @param request: VerifyConsumeMessageRequest
         @param headers: map
@@ -5190,7 +5318,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.VerifyConsumeMessageResponse:
         """
-        @summary 消费验证
+        @summary Verifies the consumption status of a message in a specific topic on a specific instance.
         
         @param request: VerifyConsumeMessageRequest
         @param headers: map
@@ -5231,7 +5359,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.VerifyConsumeMessageRequest,
     ) -> rocket_mq20220801_models.VerifyConsumeMessageResponse:
         """
-        @summary 消费验证
+        @summary Verifies the consumption status of a message in a specific topic on a specific instance.
         
         @param request: VerifyConsumeMessageRequest
         @return: VerifyConsumeMessageResponse
@@ -5248,7 +5376,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.VerifyConsumeMessageRequest,
     ) -> rocket_mq20220801_models.VerifyConsumeMessageResponse:
         """
-        @summary 消费验证
+        @summary Verifies the consumption status of a message in a specific topic on a specific instance.
         
         @param request: VerifyConsumeMessageRequest
         @return: VerifyConsumeMessageResponse
@@ -5266,7 +5394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.VerifySendMessageResponse:
         """
-        @summary 发送消息
+        @summary Verifies the message sending feature of a specific topic on a specific instance.
         
         @param request: VerifySendMessageRequest
         @param headers: map
@@ -5310,7 +5438,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.VerifySendMessageResponse:
         """
-        @summary 发送消息
+        @summary Verifies the message sending feature of a specific topic on a specific instance.
         
         @param request: VerifySendMessageRequest
         @param headers: map
@@ -5352,7 +5480,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.VerifySendMessageRequest,
     ) -> rocket_mq20220801_models.VerifySendMessageResponse:
         """
-        @summary 发送消息
+        @summary Verifies the message sending feature of a specific topic on a specific instance.
         
         @param request: VerifySendMessageRequest
         @return: VerifySendMessageResponse
@@ -5368,7 +5496,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.VerifySendMessageRequest,
     ) -> rocket_mq20220801_models.VerifySendMessageResponse:
         """
-        @summary 发送消息
+        @summary Verifies the message sending feature of a specific topic on a specific instance.
         
         @param request: VerifySendMessageRequest
         @return: VerifySendMessageResponse
