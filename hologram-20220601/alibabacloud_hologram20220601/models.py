@@ -255,9 +255,9 @@ class CreateInstanceRequest(TeaModel):
         # *   true
         # *   false
         # 
-        # > The default value is true. If the balance of your account is insufficient, you can set this parameter to false. In this case, an unpaid order is generated. You can log on to the User Center to pay for the order.
+        # >  The default value is true. If the balance of your account is insufficient, you can set this parameter to false. In this case, an unpaid order is generated. You can log on to the Expenses and Costs console to pay for the order.
         self.auto_pay = auto_pay
-        # Specifies whether to enable monthly auto-renewal. Default value: false. Valid values:
+        # Specifies whether to enable monthly auto-renewal. The default value is false. Valid values:
         # 
         # *   true
         # *   false
@@ -267,60 +267,66 @@ class CreateInstanceRequest(TeaModel):
         # *   PrePaid: subscription
         # *   PostPaid: pay-as-you-go
         # 
-        # > This parameter is invalid for shared instances. Shared instances have fixed specifications and are pay-as-you-go instances.
+        # >  This parameter is invalid for Hologres Shared Cluster instances. Hologres Shared Cluster instances have fixed specifications and are pay-as-you-go instances.
         # 
         # This parameter is required.
         self.charge_type = charge_type
         # The infrequent access (IA) storage space of the instance. Unit: GB.
         # 
-        # > This parameter is invalid for pay-as-you-go instances.
+        # >  This parameter is invalid for pay-as-you-go instances.
         self.cold_storage_size = cold_storage_size
         # The instance specifications. Valid values:
         # 
-        # *   8-core 32 GB (number of compute nodes: 1)
-        # *   16-core 64 GB (number of compute nodes: 1)
-        # *   32-core 128 GB (number of compute nodes: 2)
-        # *   64-core 256 GB (number of compute nodes: 4)
-        # *   96-core 384 GB (number of compute nodes: 6)
-        # *   128-core 512 GB (number of compute nodes: 8)
+        # *   8-core 32GB (number of compute nodes: 1)
+        # *   32-core 128GB (number of compute nodes: 2)
+        # *   64-core 256GB (number of compute nodes: 4)
+        # *   96-core 384GB (number of compute nodes: 6)
+        # *   128-core 512GB (number of compute nodes: 8)
         # *   Others
         # 
         # > 
         # 
         # *   Set this parameter to the number of cores.
         # 
-        # *   If you want to set this parameter to specifications with more than 1,024 compute units (CUs), you must submit a ticket.
+        # *   If you want to set this parameter to specifications with more than 1,024 GB, you must submit a ticket.
         # 
-        # *   If you want to purchase a shared instance, you do not need to configure this parameter.
+        # *   This parameter is invalid for Hologres Shared Cluster instances.
         # 
-        # *   The specifications of 8-core 32 GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
+        # *   The specifications of 8-core 32GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
         self.cpu = cpu
         # The validity period of the instance that you want to purchase. For example, you can specify a validity period of two months.
         # 
-        # > You do not need to configure this parameter for pay-as-you-go instances.
+        # >  You do not need to configure this parameter for pay-as-you-go instances.
         self.duration = duration
+        # Specifies whether to enable the Serverless Computing feature.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_serverless_computing = enable_serverless_computing
         # The number of gateways. Valid values: 2 to 50.
         # 
-        # > This parameter is required only for virtual warehouse instances.
+        # >  This parameter is required only for virtual warehouse instances.
         self.gateway_count = gateway_count
+        # The initial database.
         self.initial_databases = initial_databases
-        # The name of the Hologres instance that you want to purchase. The name must be 2 to 64 characters in length.
+        # The name of the instance. The name must be 2 to 64 characters in length.
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The type of the instance. Valid values:
+        # The category of the instance. Valid values:
         # 
         # *   Standard: general-purpose instance
         # *   Follower: read-only secondary instance
         # *   Warehouse: virtual warehouse instance
-        # *   Shared: shared instance
+        # *   Shared: Hologres Shared Cluster instance
         # 
         # This parameter is required.
         self.instance_type = instance_type
         # The ID of the primary instance. This parameter is required for read-only secondary instances.
         # 
-        # > The primary instance and secondary instances must meet the following requirements:
+        # >  The primary and secondary instances must meet the following requirements:
         # 
         # *   The primary instance is in the Running state.
         # 
@@ -330,7 +336,7 @@ class CreateInstanceRequest(TeaModel):
         # 
         # *   Less than 10 secondary instances are associated with the primary instance.
         # 
-        # *   The primary and secondary instances belong to the same Alibaba Cloud account.
+        # *   The primary instance and secondary instances belong to the same Alibaba Cloud account.
         self.leader_instance_id = leader_instance_id
         # The billing cycle. Valid values:
         # 
@@ -343,19 +349,19 @@ class CreateInstanceRequest(TeaModel):
         # 
         # *   This parameter can only be set to Hour for pay-as-you-go instances.
         # 
-        # *   By default, this parameter is set to Hour for shared instances.
+        # *   By default, this parameter is set to Hour for Hologres Shared Cluster instances.
         self.pricing_cycle = pricing_cycle
-        # The ID of the region. You can go to the [OpenAPI Explorer](https://api.aliyun.com/product/Hologram) or the Usage notes section to view the ID of the region.
+        # The ID of the region. You can obtain region IDs in [Endpoints](https://www.alibabacloud.com/help/en/maxcompute/user-guide/endpoints).
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group. If you do not specify this parameter, the default resource group of the account is used.
+        # The ID of the resource group. If you do not specify this parameter, the default resource group of the account is used.
         self.resource_group_id = resource_group_id
         # The standard storage space of the instance. Unit: GB.
         # 
-        # > This parameter is invalid for pay-as-you-go instances.
+        # >  This parameter is invalid for pay-as-you-go instances.
         self.storage_size = storage_size
-        # The ID of the vSwitch. The zone in which the vSwitch resides must be the same as the zone in which the instance resides.
+        # The ID of the vSwitch. The zone in which the vSwitch resides must be the same as the zone in which the Hologres instance resides.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
@@ -363,7 +369,7 @@ class CreateInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The ID of the zone. For more information about how to obtain the ID of the zone, see the Usage notes section.
+        # The ID of the zone. For more information, see the "Operation description" section in this topic.
         # 
         # This parameter is required.
         self.zone_id = zone_id
@@ -1399,6 +1405,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         region_id: str = None,
         replica_role: str = None,
         resource_group_id: str = None,
+        storage_type: str = None,
         suspend_reason: str = None,
         tags: List[GetInstanceResponseBodyInstanceTags] = None,
         version: str = None,
@@ -1674,6 +1681,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         self.replica_role = replica_role
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        self.storage_type = storage_type
         # The reason for the suspension.
         # 
         # Valid values:
@@ -1795,6 +1803,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             result['ReplicaRole'] = self.replica_role
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         if self.suspend_reason is not None:
             result['SuspendReason'] = self.suspend_reason
         result['Tags'] = []
@@ -1862,6 +1872,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             self.replica_role = m.get('ReplicaRole')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         if m.get('SuspendReason') is not None:
             self.suspend_reason = m.get('SuspendReason')
         self.tags = []
@@ -2753,6 +2765,7 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
         leader_instance_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        storage_type: str = None,
         suspend_reason: str = None,
         tags: List[ListInstancesResponseBodyInstanceListTags] = None,
         version: str = None,
@@ -2895,6 +2908,7 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        self.storage_type = storage_type
         # The reason for the suspension.
         self.suspend_reason = suspend_reason
         # The tags that are added to the resource.
@@ -2947,6 +2961,8 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         if self.suspend_reason is not None:
             result['SuspendReason'] = self.suspend_reason
         result['Tags'] = []
@@ -2990,6 +3006,8 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         if m.get('SuspendReason') is not None:
             self.suspend_reason = m.get('SuspendReason')
         self.tags = []
@@ -4313,6 +4331,7 @@ class ScaleInstanceRequest(TeaModel):
         # 
         # *   The specifications of 8-core 32GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
         self.cpu = cpu
+        # 是否开启ServerlessComputing
         self.enable_serverless_computing = enable_serverless_computing
         # The number of gateways. Valid values: 2 to 50.
         # 
