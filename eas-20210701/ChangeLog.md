@@ -1,3 +1,7 @@
+2024-12-26 Version: 6.4.0
+- Support API DescribeServiceSignedUrl.
+
+
 2024-12-25 Version: 6.3.0
 - Support API DescribeGroupEndpoints.
 - Support API DescribeServiceEndpoints.

@@ -5482,6 +5482,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_service_mirror_with_options_async(cluster_id, service_name, headers, runtime)
 
+    def describe_service_signed_url_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DescribeServiceSignedUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeServiceSignedUrlResponse:
+        """
+        @summary 获取服务监控签名地址
+        
+        @param request: DescribeServiceSignedUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceSignedUrlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.expire):
+            query['Expire'] = request.expire
+        if not UtilClient.is_unset(request.internal):
+            query['Internal'] = request.internal
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServiceSignedUrl',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/signed_url',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceSignedUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_service_signed_url_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DescribeServiceSignedUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeServiceSignedUrlResponse:
+        """
+        @summary 获取服务监控签名地址
+        
+        @param request: DescribeServiceSignedUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceSignedUrlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.expire):
+            query['Expire'] = request.expire
+        if not UtilClient.is_unset(request.internal):
+            query['Internal'] = request.internal
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServiceSignedUrl',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/signed_url',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceSignedUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_service_signed_url(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DescribeServiceSignedUrlRequest,
+    ) -> eas_20210701_models.DescribeServiceSignedUrlResponse:
+        """
+        @summary 获取服务监控签名地址
+        
+        @param request: DescribeServiceSignedUrlRequest
+        @return: DescribeServiceSignedUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_service_signed_url_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def describe_service_signed_url_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DescribeServiceSignedUrlRequest,
+    ) -> eas_20210701_models.DescribeServiceSignedUrlResponse:
+        """
+        @summary 获取服务监控签名地址
+        
+        @param request: DescribeServiceSignedUrlRequest
+        @return: DescribeServiceSignedUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_service_signed_url_with_options_async(cluster_id, service_name, request, headers, runtime)
+
     def describe_spot_discount_history_with_options(
         self,
         request: eas_20210701_models.DescribeSpotDiscountHistoryRequest,
