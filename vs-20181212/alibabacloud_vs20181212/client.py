@@ -11330,6 +11330,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_public_keys_with_options_async(request, runtime)
 
+    def list_rendering_data_packages_with_options(
+        self,
+        request: vs_20181212_models.ListRenderingDataPackagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListRenderingDataPackagesResponse:
+        """
+        @summary 查询所有云应用数据包信息，支持分页查询。
+        
+        @param request: ListRenderingDataPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRenderingDataPackagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_package_id):
+            query['DataPackageId'] = request.data_package_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.size):
+            query['Size'] = request.size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRenderingDataPackages',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListRenderingDataPackagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_rendering_data_packages_with_options_async(
+        self,
+        request: vs_20181212_models.ListRenderingDataPackagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListRenderingDataPackagesResponse:
+        """
+        @summary 查询所有云应用数据包信息，支持分页查询。
+        
+        @param request: ListRenderingDataPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRenderingDataPackagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_package_id):
+            query['DataPackageId'] = request.data_package_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.size):
+            query['Size'] = request.size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRenderingDataPackages',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListRenderingDataPackagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_rendering_data_packages(
+        self,
+        request: vs_20181212_models.ListRenderingDataPackagesRequest,
+    ) -> vs_20181212_models.ListRenderingDataPackagesResponse:
+        """
+        @summary 查询所有云应用数据包信息，支持分页查询。
+        
+        @param request: ListRenderingDataPackagesRequest
+        @return: ListRenderingDataPackagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_rendering_data_packages_with_options(request, runtime)
+
+    async def list_rendering_data_packages_async(
+        self,
+        request: vs_20181212_models.ListRenderingDataPackagesRequest,
+    ) -> vs_20181212_models.ListRenderingDataPackagesResponse:
+        """
+        @summary 查询所有云应用数据包信息，支持分页查询。
+        
+        @param request: ListRenderingDataPackagesRequest
+        @return: ListRenderingDataPackagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_rendering_data_packages_with_options_async(request, runtime)
+
     def list_rendering_instance_gateway_with_options(
         self,
         request: vs_20181212_models.ListRenderingInstanceGatewayRequest,
@@ -13119,6 +13231,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.reboot_rendering_instance_with_options_async(request, runtime)
+
+    def recover_rendering_data_package_with_options(
+        self,
+        request: vs_20181212_models.RecoverRenderingDataPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.RecoverRenderingDataPackageResponse:
+        """
+        @summary 恢复数据到云渲染实例
+        
+        @param request: RecoverRenderingDataPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecoverRenderingDataPackageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_package_id):
+            query['DataPackageId'] = request.data_package_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecoverRenderingDataPackage',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.RecoverRenderingDataPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recover_rendering_data_package_with_options_async(
+        self,
+        request: vs_20181212_models.RecoverRenderingDataPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.RecoverRenderingDataPackageResponse:
+        """
+        @summary 恢复数据到云渲染实例
+        
+        @param request: RecoverRenderingDataPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecoverRenderingDataPackageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_package_id):
+            query['DataPackageId'] = request.data_package_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecoverRenderingDataPackage',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.RecoverRenderingDataPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recover_rendering_data_package(
+        self,
+        request: vs_20181212_models.RecoverRenderingDataPackageRequest,
+    ) -> vs_20181212_models.RecoverRenderingDataPackageResponse:
+        """
+        @summary 恢复数据到云渲染实例
+        
+        @param request: RecoverRenderingDataPackageRequest
+        @return: RecoverRenderingDataPackageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.recover_rendering_data_package_with_options(request, runtime)
+
+    async def recover_rendering_data_package_async(
+        self,
+        request: vs_20181212_models.RecoverRenderingDataPackageRequest,
+    ) -> vs_20181212_models.RecoverRenderingDataPackageResponse:
+        """
+        @summary 恢复数据到云渲染实例
+        
+        @param request: RecoverRenderingDataPackageRequest
+        @return: RecoverRenderingDataPackageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.recover_rendering_data_package_with_options_async(request, runtime)
 
     def release_rendering_data_package_with_options(
         self,

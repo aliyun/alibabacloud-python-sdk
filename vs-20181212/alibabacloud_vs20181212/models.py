@@ -20711,6 +20711,209 @@ class ListPublicKeysResponse(TeaModel):
         return self
 
 
+class ListRenderingDataPackagesRequest(TeaModel):
+    def __init__(
+        self,
+        data_package_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        size: int = None,
+        status: str = None,
+    ):
+        self.data_package_id = data_package_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.size = size
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_package_id is not None:
+            result['DataPackageId'] = self.data_package_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataPackageId') is not None:
+            self.data_package_id = m.get('DataPackageId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListRenderingDataPackagesResponseBodyDataPackages(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        data_package_id: str = None,
+        description: str = None,
+        rendering_instance_id: str = None,
+        size: int = None,
+        status: str = None,
+        update_time: str = None,
+    ):
+        self.creation_time = creation_time
+        self.data_package_id = data_package_id
+        self.description = description
+        self.rendering_instance_id = rendering_instance_id
+        self.size = size
+        self.status = status
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.data_package_id is not None:
+            result['DataPackageId'] = self.data_package_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DataPackageId') is not None:
+            self.data_package_id = m.get('DataPackageId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListRenderingDataPackagesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_packages: List[ListRenderingDataPackagesResponseBodyDataPackages] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.data_packages = data_packages
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data_packages:
+            for k in self.data_packages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataPackages'] = []
+        if self.data_packages is not None:
+            for k in self.data_packages:
+                result['DataPackages'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_packages = []
+        if m.get('DataPackages') is not None:
+            for k in m.get('DataPackages'):
+                temp_model = ListRenderingDataPackagesResponseBodyDataPackages()
+                self.data_packages.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListRenderingDataPackagesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRenderingDataPackagesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRenderingDataPackagesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListRenderingInstanceGatewayRequest(TeaModel):
     def __init__(
         self,
@@ -23002,6 +23205,110 @@ class RebootRenderingInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RebootRenderingInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecoverRenderingDataPackageRequest(TeaModel):
+    def __init__(
+        self,
+        data_package_id: str = None,
+        rendering_instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.data_package_id = data_package_id
+        # This parameter is required.
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_package_id is not None:
+            result['DataPackageId'] = self.data_package_id
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataPackageId') is not None:
+            self.data_package_id = m.get('DataPackageId')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class RecoverRenderingDataPackageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RecoverRenderingDataPackageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RecoverRenderingDataPackageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RecoverRenderingDataPackageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1,3 +1,8 @@
+2024-12-26 Version: 3.1.0
+- Support API ListRenderingDataPackages.
+- Support API RecoverRenderingDataPackage.
+
+
 2024-12-25 Version: 3.0.0
 - Support API CreateRenderingDataPackage.
 - Support API ModifyRenderingInstance.
