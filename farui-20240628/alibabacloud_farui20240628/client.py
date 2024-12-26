@@ -694,3 +694,307 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.run_legal_advice_consultation_with_options_async(workspace_id, request, headers, runtime)
+
+    def run_search_case_full_text_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: fa_rui_20240628_models.RunSearchCaseFullTextRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fa_rui_20240628_models.RunSearchCaseFullTextResponse:
+        """
+        @summary 案例检索
+        
+        @param tmp_req: RunSearchCaseFullTextRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunSearchCaseFullTextResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = fa_rui_20240628_models.RunSearchCaseFullTextShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter_condition):
+            request.filter_condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_condition, 'filterCondition', 'json')
+        if not UtilClient.is_unset(tmp_req.page_param):
+            request.page_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page_param, 'pageParam', 'json')
+        if not UtilClient.is_unset(tmp_req.query_keywords):
+            request.query_keywords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_keywords, 'queryKeywords', 'json')
+        if not UtilClient.is_unset(tmp_req.sort_key_and_direction):
+            request.sort_key_and_direction_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sort_key_and_direction, 'sortKeyAndDirection', 'json')
+        if not UtilClient.is_unset(tmp_req.thread):
+            request.thread_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.thread, 'thread', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['appId'] = request.app_id
+        if not UtilClient.is_unset(request.filter_condition_shrink):
+            body['filterCondition'] = request.filter_condition_shrink
+        if not UtilClient.is_unset(request.page_param_shrink):
+            body['pageParam'] = request.page_param_shrink
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.query_keywords_shrink):
+            body['queryKeywords'] = request.query_keywords_shrink
+        if not UtilClient.is_unset(request.sort_key_and_direction_shrink):
+            body['sortKeyAndDirection'] = request.sort_key_and_direction_shrink
+        if not UtilClient.is_unset(request.thread_shrink):
+            body['thread'] = request.thread_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunSearchCaseFullText',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/farui/search/case/fulltext',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fa_rui_20240628_models.RunSearchCaseFullTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_search_case_full_text_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: fa_rui_20240628_models.RunSearchCaseFullTextRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fa_rui_20240628_models.RunSearchCaseFullTextResponse:
+        """
+        @summary 案例检索
+        
+        @param tmp_req: RunSearchCaseFullTextRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunSearchCaseFullTextResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = fa_rui_20240628_models.RunSearchCaseFullTextShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter_condition):
+            request.filter_condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_condition, 'filterCondition', 'json')
+        if not UtilClient.is_unset(tmp_req.page_param):
+            request.page_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page_param, 'pageParam', 'json')
+        if not UtilClient.is_unset(tmp_req.query_keywords):
+            request.query_keywords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_keywords, 'queryKeywords', 'json')
+        if not UtilClient.is_unset(tmp_req.sort_key_and_direction):
+            request.sort_key_and_direction_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sort_key_and_direction, 'sortKeyAndDirection', 'json')
+        if not UtilClient.is_unset(tmp_req.thread):
+            request.thread_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.thread, 'thread', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['appId'] = request.app_id
+        if not UtilClient.is_unset(request.filter_condition_shrink):
+            body['filterCondition'] = request.filter_condition_shrink
+        if not UtilClient.is_unset(request.page_param_shrink):
+            body['pageParam'] = request.page_param_shrink
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.query_keywords_shrink):
+            body['queryKeywords'] = request.query_keywords_shrink
+        if not UtilClient.is_unset(request.sort_key_and_direction_shrink):
+            body['sortKeyAndDirection'] = request.sort_key_and_direction_shrink
+        if not UtilClient.is_unset(request.thread_shrink):
+            body['thread'] = request.thread_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunSearchCaseFullText',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/farui/search/case/fulltext',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fa_rui_20240628_models.RunSearchCaseFullTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_search_case_full_text(
+        self,
+        workspace_id: str,
+        request: fa_rui_20240628_models.RunSearchCaseFullTextRequest,
+    ) -> fa_rui_20240628_models.RunSearchCaseFullTextResponse:
+        """
+        @summary 案例检索
+        
+        @param request: RunSearchCaseFullTextRequest
+        @return: RunSearchCaseFullTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_search_case_full_text_with_options(workspace_id, request, headers, runtime)
+
+    async def run_search_case_full_text_async(
+        self,
+        workspace_id: str,
+        request: fa_rui_20240628_models.RunSearchCaseFullTextRequest,
+    ) -> fa_rui_20240628_models.RunSearchCaseFullTextResponse:
+        """
+        @summary 案例检索
+        
+        @param request: RunSearchCaseFullTextRequest
+        @return: RunSearchCaseFullTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_search_case_full_text_with_options_async(workspace_id, request, headers, runtime)
+
+    def run_search_law_query_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: fa_rui_20240628_models.RunSearchLawQueryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fa_rui_20240628_models.RunSearchLawQueryResponse:
+        """
+        @summary 法规搜索
+        
+        @param tmp_req: RunSearchLawQueryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunSearchLawQueryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = fa_rui_20240628_models.RunSearchLawQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter_condition):
+            request.filter_condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_condition, 'filterCondition', 'json')
+        if not UtilClient.is_unset(tmp_req.page_param):
+            request.page_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page_param, 'pageParam', 'json')
+        if not UtilClient.is_unset(tmp_req.query_keywords):
+            request.query_keywords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_keywords, 'queryKeywords', 'json')
+        if not UtilClient.is_unset(tmp_req.thread):
+            request.thread_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.thread, 'thread', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['appId'] = request.app_id
+        if not UtilClient.is_unset(request.filter_condition_shrink):
+            body['filterCondition'] = request.filter_condition_shrink
+        if not UtilClient.is_unset(request.page_param_shrink):
+            body['pageParam'] = request.page_param_shrink
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.query_keywords_shrink):
+            body['queryKeywords'] = request.query_keywords_shrink
+        if not UtilClient.is_unset(request.thread_shrink):
+            body['thread'] = request.thread_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunSearchLawQuery',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/farui/search/law/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fa_rui_20240628_models.RunSearchLawQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_search_law_query_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: fa_rui_20240628_models.RunSearchLawQueryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fa_rui_20240628_models.RunSearchLawQueryResponse:
+        """
+        @summary 法规搜索
+        
+        @param tmp_req: RunSearchLawQueryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunSearchLawQueryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = fa_rui_20240628_models.RunSearchLawQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter_condition):
+            request.filter_condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_condition, 'filterCondition', 'json')
+        if not UtilClient.is_unset(tmp_req.page_param):
+            request.page_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page_param, 'pageParam', 'json')
+        if not UtilClient.is_unset(tmp_req.query_keywords):
+            request.query_keywords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_keywords, 'queryKeywords', 'json')
+        if not UtilClient.is_unset(tmp_req.thread):
+            request.thread_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.thread, 'thread', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['appId'] = request.app_id
+        if not UtilClient.is_unset(request.filter_condition_shrink):
+            body['filterCondition'] = request.filter_condition_shrink
+        if not UtilClient.is_unset(request.page_param_shrink):
+            body['pageParam'] = request.page_param_shrink
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.query_keywords_shrink):
+            body['queryKeywords'] = request.query_keywords_shrink
+        if not UtilClient.is_unset(request.thread_shrink):
+            body['thread'] = request.thread_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunSearchLawQuery',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/farui/search/law/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fa_rui_20240628_models.RunSearchLawQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_search_law_query(
+        self,
+        workspace_id: str,
+        request: fa_rui_20240628_models.RunSearchLawQueryRequest,
+    ) -> fa_rui_20240628_models.RunSearchLawQueryResponse:
+        """
+        @summary 法规搜索
+        
+        @param request: RunSearchLawQueryRequest
+        @return: RunSearchLawQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_search_law_query_with_options(workspace_id, request, headers, runtime)
+
+    async def run_search_law_query_async(
+        self,
+        workspace_id: str,
+        request: fa_rui_20240628_models.RunSearchLawQueryRequest,
+    ) -> fa_rui_20240628_models.RunSearchLawQueryResponse:
+        """
+        @summary 法规搜索
+        
+        @param request: RunSearchLawQueryRequest
+        @return: RunSearchLawQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_search_law_query_with_options_async(workspace_id, request, headers, runtime)
