@@ -41,6 +41,330 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def chat_message_with_options(
+        self,
+        request: aimath_20241114_models.ChatMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aimath_20241114_models.ChatMessageResponse:
+        """
+        @summary 聊天消息API
+        
+        @param request: ChatMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChatMessage',
+            version='2024-11-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aimath_20241114_models.ChatMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def chat_message_with_options_async(
+        self,
+        request: aimath_20241114_models.ChatMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aimath_20241114_models.ChatMessageResponse:
+        """
+        @summary 聊天消息API
+        
+        @param request: ChatMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChatMessage',
+            version='2024-11-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aimath_20241114_models.ChatMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def chat_message(
+        self,
+        request: aimath_20241114_models.ChatMessageRequest,
+    ) -> aimath_20241114_models.ChatMessageResponse:
+        """
+        @summary 聊天消息API
+        
+        @param request: ChatMessageRequest
+        @return: ChatMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.chat_message_with_options(request, runtime)
+
+    async def chat_message_async(
+        self,
+        request: aimath_20241114_models.ChatMessageRequest,
+    ) -> aimath_20241114_models.ChatMessageResponse:
+        """
+        @summary 聊天消息API
+        
+        @param request: ChatMessageRequest
+        @return: ChatMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.chat_message_with_options_async(request, runtime)
+
+    def create_conversation_with_options(
+        self,
+        request: aimath_20241114_models.CreateConversationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aimath_20241114_models.CreateConversationResponse:
+        """
+        @summary 创建试题相应的对话。
+        
+        @param request: CreateConversationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConversationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.exercise_analysis):
+            body['ExerciseAnalysis'] = request.exercise_analysis
+        if not UtilClient.is_unset(request.exercise_answer):
+            body['ExerciseAnswer'] = request.exercise_answer
+        if not UtilClient.is_unset(request.exercise_content):
+            body['ExerciseContent'] = request.exercise_content
+        if not UtilClient.is_unset(request.exercise_type):
+            body['ExerciseType'] = request.exercise_type
+        if not UtilClient.is_unset(request.outer_biz_id):
+            body['OuterBizId'] = request.outer_biz_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConversation',
+            version='2024-11-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aimath_20241114_models.CreateConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_conversation_with_options_async(
+        self,
+        request: aimath_20241114_models.CreateConversationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aimath_20241114_models.CreateConversationResponse:
+        """
+        @summary 创建试题相应的对话。
+        
+        @param request: CreateConversationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConversationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.exercise_analysis):
+            body['ExerciseAnalysis'] = request.exercise_analysis
+        if not UtilClient.is_unset(request.exercise_answer):
+            body['ExerciseAnswer'] = request.exercise_answer
+        if not UtilClient.is_unset(request.exercise_content):
+            body['ExerciseContent'] = request.exercise_content
+        if not UtilClient.is_unset(request.exercise_type):
+            body['ExerciseType'] = request.exercise_type
+        if not UtilClient.is_unset(request.outer_biz_id):
+            body['OuterBizId'] = request.outer_biz_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConversation',
+            version='2024-11-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aimath_20241114_models.CreateConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_conversation(
+        self,
+        request: aimath_20241114_models.CreateConversationRequest,
+    ) -> aimath_20241114_models.CreateConversationResponse:
+        """
+        @summary 创建试题相应的对话。
+        
+        @param request: CreateConversationRequest
+        @return: CreateConversationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_conversation_with_options(request, runtime)
+
+    async def create_conversation_async(
+        self,
+        request: aimath_20241114_models.CreateConversationRequest,
+    ) -> aimath_20241114_models.CreateConversationResponse:
+        """
+        @summary 创建试题相应的对话。
+        
+        @param request: CreateConversationRequest
+        @return: CreateConversationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_conversation_with_options_async(request, runtime)
+
+    def create_related_conversation_with_options(
+        self,
+        request: aimath_20241114_models.CreateRelatedConversationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aimath_20241114_models.CreateRelatedConversationResponse:
+        """
+        @summary 创建关联的对话，输入试题code即可开启对话
+        
+        @param request: CreateRelatedConversationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRelatedConversationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.exercise_code):
+            body['ExerciseCode'] = request.exercise_code
+        if not UtilClient.is_unset(request.outer_biz_id):
+            body['OuterBizId'] = request.outer_biz_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRelatedConversation',
+            version='2024-11-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aimath_20241114_models.CreateRelatedConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_related_conversation_with_options_async(
+        self,
+        request: aimath_20241114_models.CreateRelatedConversationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aimath_20241114_models.CreateRelatedConversationResponse:
+        """
+        @summary 创建关联的对话，输入试题code即可开启对话
+        
+        @param request: CreateRelatedConversationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRelatedConversationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.exercise_code):
+            body['ExerciseCode'] = request.exercise_code
+        if not UtilClient.is_unset(request.outer_biz_id):
+            body['OuterBizId'] = request.outer_biz_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRelatedConversation',
+            version='2024-11-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aimath_20241114_models.CreateRelatedConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_related_conversation(
+        self,
+        request: aimath_20241114_models.CreateRelatedConversationRequest,
+    ) -> aimath_20241114_models.CreateRelatedConversationResponse:
+        """
+        @summary 创建关联的对话，输入试题code即可开启对话
+        
+        @param request: CreateRelatedConversationRequest
+        @return: CreateRelatedConversationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_related_conversation_with_options(request, runtime)
+
+    async def create_related_conversation_async(
+        self,
+        request: aimath_20241114_models.CreateRelatedConversationRequest,
+    ) -> aimath_20241114_models.CreateRelatedConversationResponse:
+        """
+        @summary 创建关联的对话，输入试题code即可开启对话
+        
+        @param request: CreateRelatedConversationRequest
+        @return: CreateRelatedConversationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_related_conversation_with_options_async(request, runtime)
+
     def gen_analysis_with_options(
         self,
         request: aimath_20241114_models.GenAnalysisRequest,
