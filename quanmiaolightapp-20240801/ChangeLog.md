@@ -1,3 +1,8 @@
+2024-12-26 Version: 2.1.0
+- Support API GenerateOutputFormat.
+- Support API RunTagMiningAnalysis.
+
+
 2024-12-11 Version: 2.0.1
 - Update API RunHotTopicChat: add param messages.
 
