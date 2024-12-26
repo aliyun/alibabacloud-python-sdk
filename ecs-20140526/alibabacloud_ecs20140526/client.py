@@ -452,6 +452,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AddTagsResponse:
         """
+        @deprecated OpenAPI AddTags is deprecated, please use Ecs::2014-05-26::TagResources instead.
+        
         @summary Adds tags to Elastic Compute Service (ECS) resources, or overwrites tags of ECS resources. You can add tags to ECS resources such as instances, disks, snapshots, images, and security groups for easy management.
         
         @description When you call this operation, take note of the following items:
@@ -462,6 +464,7 @@ class Client(OpenApiClient):
         @param request: AddTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddTagsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -504,6 +507,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AddTagsResponse:
         """
+        @deprecated OpenAPI AddTags is deprecated, please use Ecs::2014-05-26::TagResources instead.
+        
         @summary Adds tags to Elastic Compute Service (ECS) resources, or overwrites tags of ECS resources. You can add tags to ECS resources such as instances, disks, snapshots, images, and security groups for easy management.
         
         @description When you call this operation, take note of the following items:
@@ -514,6 +519,7 @@ class Client(OpenApiClient):
         @param request: AddTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddTagsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -555,6 +561,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AddTagsRequest,
     ) -> ecs_20140526_models.AddTagsResponse:
         """
+        @deprecated OpenAPI AddTags is deprecated, please use Ecs::2014-05-26::TagResources instead.
+        
         @summary Adds tags to Elastic Compute Service (ECS) resources, or overwrites tags of ECS resources. You can add tags to ECS resources such as instances, disks, snapshots, images, and security groups for easy management.
         
         @description When you call this operation, take note of the following items:
@@ -564,6 +572,7 @@ class Client(OpenApiClient):
         
         @param request: AddTagsRequest
         @return: AddTagsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.add_tags_with_options(request, runtime)
@@ -573,6 +582,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AddTagsRequest,
     ) -> ecs_20140526_models.AddTagsResponse:
         """
+        @deprecated OpenAPI AddTags is deprecated, please use Ecs::2014-05-26::TagResources instead.
+        
         @summary Adds tags to Elastic Compute Service (ECS) resources, or overwrites tags of ECS resources. You can add tags to ECS resources such as instances, disks, snapshots, images, and security groups for easy management.
         
         @description When you call this operation, take note of the following items:
@@ -582,6 +593,7 @@ class Client(OpenApiClient):
         
         @param request: AddTagsRequest
         @return: AddTagsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.add_tags_with_options_async(request, runtime)
@@ -29688,11 +29700,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeResourceByTagsResponse:
         """
+        @deprecated OpenAPI DescribeResourceByTags is deprecated, please use Tag::2018-08-28::ListResourcesByTag instead.
+        
         @summary Queries resources by tag or resource type.
         
         @param request: DescribeResourceByTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeResourceByTagsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -29737,11 +29752,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeResourceByTagsResponse:
         """
+        @deprecated OpenAPI DescribeResourceByTags is deprecated, please use Tag::2018-08-28::ListResourcesByTag instead.
+        
         @summary Queries resources by tag or resource type.
         
         @param request: DescribeResourceByTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeResourceByTagsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -29785,10 +29803,13 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeResourceByTagsRequest,
     ) -> ecs_20140526_models.DescribeResourceByTagsResponse:
         """
+        @deprecated OpenAPI DescribeResourceByTags is deprecated, please use Tag::2018-08-28::ListResourcesByTag instead.
+        
         @summary Queries resources by tag or resource type.
         
         @param request: DescribeResourceByTagsRequest
         @return: DescribeResourceByTagsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.describe_resource_by_tags_with_options(request, runtime)
@@ -29798,10 +29819,13 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeResourceByTagsRequest,
     ) -> ecs_20140526_models.DescribeResourceByTagsResponse:
         """
+        @deprecated OpenAPI DescribeResourceByTags is deprecated, please use Tag::2018-08-28::ListResourcesByTag instead.
+        
         @summary Queries resources by tag or resource type.
         
         @param request: DescribeResourceByTagsRequest
         @return: DescribeResourceByTagsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_resource_by_tags_with_options_async(request, runtime)
@@ -31830,8 +31854,17 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of cloud disk snapshots. The details include the status of the snapshots, the amount of remaining time required to create the snapshots, and the retention period of the automatic snapshots in days.
         
-        @description You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
-        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+        @description You can specify multiple request parameters, such as `InstanceId`, `DiskId`, and `SnapshotIds`, to query snapshots. The specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
+        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
+        Sample requests:
+        *Query the snapshots of all cloud disks attached to an Elastic Compute Service (ECS) instance in the China (Hangzhou) region**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.InstanceId:  i-bp1fh7by6d9mw7zr***   // Specify the ID of the instance that you want to query.
+        *Query the snapshots of a specific cloud disk in the China (Hangzhou) region**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.DiskId:   d-bp10e7ej8z743dmu***   // Specify the ID of the cloud disk that you want to query.
+        *Query information about two snapshots in the China (Hangzhou) region by snapshot ID**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.SnapshotIds:   ["d-bp10e7ej8z743dmu***", "s-bp19vd1lorzgzt2s****"]   // Specify the IDs of the snapshots that you want to query.
+        *Query snapshots created after a specific point in time in the China (Hangzhou) region**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.Filter.1.Key:   CreationStartTime,   // Specify a point in time to query snapshots that were created after the specified point in time.Filter.1.Value:   2024-11-27T00:00Z
         
         @param request: DescribeSnapshotsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31916,8 +31949,17 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of cloud disk snapshots. The details include the status of the snapshots, the amount of remaining time required to create the snapshots, and the retention period of the automatic snapshots in days.
         
-        @description You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
-        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+        @description You can specify multiple request parameters, such as `InstanceId`, `DiskId`, and `SnapshotIds`, to query snapshots. The specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
+        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
+        Sample requests:
+        *Query the snapshots of all cloud disks attached to an Elastic Compute Service (ECS) instance in the China (Hangzhou) region**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.InstanceId:  i-bp1fh7by6d9mw7zr***   // Specify the ID of the instance that you want to query.
+        *Query the snapshots of a specific cloud disk in the China (Hangzhou) region**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.DiskId:   d-bp10e7ej8z743dmu***   // Specify the ID of the cloud disk that you want to query.
+        *Query information about two snapshots in the China (Hangzhou) region by snapshot ID**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.SnapshotIds:   ["d-bp10e7ej8z743dmu***", "s-bp19vd1lorzgzt2s****"]   // Specify the IDs of the snapshots that you want to query.
+        *Query snapshots created after a specific point in time in the China (Hangzhou) region**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.Filter.1.Key:   CreationStartTime,   // Specify a point in time to query snapshots that were created after the specified point in time.Filter.1.Value:   2024-11-27T00:00Z
         
         @param request: DescribeSnapshotsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32001,8 +32043,17 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of cloud disk snapshots. The details include the status of the snapshots, the amount of remaining time required to create the snapshots, and the retention period of the automatic snapshots in days.
         
-        @description You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
-        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+        @description You can specify multiple request parameters, such as `InstanceId`, `DiskId`, and `SnapshotIds`, to query snapshots. The specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
+        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
+        Sample requests:
+        *Query the snapshots of all cloud disks attached to an Elastic Compute Service (ECS) instance in the China (Hangzhou) region**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.InstanceId:  i-bp1fh7by6d9mw7zr***   // Specify the ID of the instance that you want to query.
+        *Query the snapshots of a specific cloud disk in the China (Hangzhou) region**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.DiskId:   d-bp10e7ej8z743dmu***   // Specify the ID of the cloud disk that you want to query.
+        *Query information about two snapshots in the China (Hangzhou) region by snapshot ID**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.SnapshotIds:   ["d-bp10e7ej8z743dmu***", "s-bp19vd1lorzgzt2s****"]   // Specify the IDs of the snapshots that you want to query.
+        *Query snapshots created after a specific point in time in the China (Hangzhou) region**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.Filter.1.Key:   CreationStartTime,   // Specify a point in time to query snapshots that were created after the specified point in time.Filter.1.Value:   2024-11-27T00:00Z
         
         @param request: DescribeSnapshotsRequest
         @return: DescribeSnapshotsResponse
@@ -32017,8 +32068,17 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of cloud disk snapshots. The details include the status of the snapshots, the amount of remaining time required to create the snapshots, and the retention period of the automatic snapshots in days.
         
-        @description You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
-        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+        @description You can specify multiple request parameters, such as `InstanceId`, `DiskId`, and `SnapshotIds`, to query snapshots. The specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
+        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
+        Sample requests:
+        *Query the snapshots of all cloud disks attached to an Elastic Compute Service (ECS) instance in the China (Hangzhou) region**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.InstanceId:  i-bp1fh7by6d9mw7zr***   // Specify the ID of the instance that you want to query.
+        *Query the snapshots of a specific cloud disk in the China (Hangzhou) region**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.DiskId:   d-bp10e7ej8z743dmu***   // Specify the ID of the cloud disk that you want to query.
+        *Query information about two snapshots in the China (Hangzhou) region by snapshot ID**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.SnapshotIds:   ["d-bp10e7ej8z743dmu***", "s-bp19vd1lorzgzt2s****"]   // Specify the IDs of the snapshots that you want to query.
+        *Query snapshots created after a specific point in time in the China (Hangzhou) region**\
+        RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.Filter.1.Key:   CreationStartTime,   // Specify a point in time to query snapshots that were created after the specified point in time.Filter.1.Value:   2024-11-27T00:00Z
         
         @param request: DescribeSnapshotsRequest
         @return: DescribeSnapshotsResponse
@@ -32904,6 +32964,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeTagsResponse:
         """
+        @deprecated OpenAPI DescribeTags is deprecated, please use Tag::2018-08-28::CountResourcesByTags instead.
+        
         @summary Queries tags that are available to you. You can specify multiple filter conditions, such as a resource type, a resource ID, a tag key, and a tag value, to query tags. The specified filter conditions have logical AND relations.
         
         @description If a tag key that has no tag value is specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
@@ -32911,6 +32973,7 @@ class Client(OpenApiClient):
         @param request: DescribeTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeTagsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -32959,6 +33022,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeTagsResponse:
         """
+        @deprecated OpenAPI DescribeTags is deprecated, please use Tag::2018-08-28::CountResourcesByTags instead.
+        
         @summary Queries tags that are available to you. You can specify multiple filter conditions, such as a resource type, a resource ID, a tag key, and a tag value, to query tags. The specified filter conditions have logical AND relations.
         
         @description If a tag key that has no tag value is specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
@@ -32966,6 +33031,7 @@ class Client(OpenApiClient):
         @param request: DescribeTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeTagsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -33013,12 +33079,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeTagsRequest,
     ) -> ecs_20140526_models.DescribeTagsResponse:
         """
+        @deprecated OpenAPI DescribeTags is deprecated, please use Tag::2018-08-28::CountResourcesByTags instead.
+        
         @summary Queries tags that are available to you. You can specify multiple filter conditions, such as a resource type, a resource ID, a tag key, and a tag value, to query tags. The specified filter conditions have logical AND relations.
         
         @description If a tag key that has no tag value is specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
         
         @param request: DescribeTagsRequest
         @return: DescribeTagsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.describe_tags_with_options(request, runtime)
@@ -33028,12 +33097,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeTagsRequest,
     ) -> ecs_20140526_models.DescribeTagsResponse:
         """
+        @deprecated OpenAPI DescribeTags is deprecated, please use Tag::2018-08-28::CountResourcesByTags instead.
+        
         @summary Queries tags that are available to you. You can specify multiple filter conditions, such as a resource type, a resource ID, a tag key, and a tag value, to query tags. The specified filter conditions have logical AND relations.
         
         @description If a tag key that has no tag value is specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
         
         @param request: DescribeTagsRequest
         @return: DescribeTagsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tags_with_options_async(request, runtime)
@@ -43756,16 +43828,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceNetworkSpecResponse:
         """
-        @summary Modifies the bandwidth configurations of an Elastic Compute Service (ECS) instance. You can modify the bandwidth configurations of ECS instances to improve network performance. You can call this operation to upgrade or downgrade the bandwidth configurations of ECS instances.
+        @summary Modifies the network configurations of an Elastic Compute Service (ECS) instance, such as the public bandwidth, assignment or unassignment of a static public IP address (also known as system-assigned or auto-assigned public IP address), and billing method for network usage. You can call this operation to upgrade or downgrade the network configurations of ECS instances.
         
         @description Take note of the following items:
-        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a subscription (PrePaid) instance from 0 Mbit/s when you modify the bandwidth configurations of the instance, a public IP address is automatically assigned to the instance.
-        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a pay-as-you-go (PostPaid) instance from 0 Mbit/s when you modify the bandwidth configurations of the instance, no public IP address is automatically assigned to the instance. In this case, you can set `AllocatePublicIp` to `true` or call the [AllocatePublicIpAddress](https://help.aliyun.com/document_detail/25544.html) operation to assign a public IP address to the instance.
+        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a subscription (PrePaid) instance from 0 Mbit/s when you modify the network configurations of the instance, a static public IP address is automatically assigned to the instance.
+        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a pay-as-you-go (PostPaid) instance from 0 Mbit/s when you modify the network configurations of the instance, no static public IP address is automatically assigned to the instance. In this case, to assign a static public IP address to the instance, you must set `AllocatePublicIp` to `true`.
         You can upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of an instance in the classic network from 0 Mbit/s only if the instance is in the Stopped state.
         >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits" topic.
         Billing:
-        After the bandwidth is upgraded, AutoPay is set to true by default and the payment is automatically made. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set AutoPay to false. In this case, when you call the ModifyInstanceNetworkSpec operation, an unpaid order is generated. Then, you can log on to the ECS console to pay for the order.
-        After the bandwidth is downgraded, the price difference is refunded to the payment account that you used. Vouchers or coupons that have been redeemed are not refundable.
+        After the public bandwidth is upgraded, AutoPay is automatically set to true and the payment is automatically made. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set AutoPay to false. In this case, when you call the ModifyInstanceNetworkSpec operation, an unpaid order is generated. Then, you can log on to the ECS console to pay for the order.
+        After the public bandwidth is downgraded, the price difference is refunded to the payment account that you used. Vouchers or coupons that have been redeemed are not refundable.
         
         @param request: ModifyInstanceNetworkSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43826,16 +43898,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceNetworkSpecResponse:
         """
-        @summary Modifies the bandwidth configurations of an Elastic Compute Service (ECS) instance. You can modify the bandwidth configurations of ECS instances to improve network performance. You can call this operation to upgrade or downgrade the bandwidth configurations of ECS instances.
+        @summary Modifies the network configurations of an Elastic Compute Service (ECS) instance, such as the public bandwidth, assignment or unassignment of a static public IP address (also known as system-assigned or auto-assigned public IP address), and billing method for network usage. You can call this operation to upgrade or downgrade the network configurations of ECS instances.
         
         @description Take note of the following items:
-        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a subscription (PrePaid) instance from 0 Mbit/s when you modify the bandwidth configurations of the instance, a public IP address is automatically assigned to the instance.
-        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a pay-as-you-go (PostPaid) instance from 0 Mbit/s when you modify the bandwidth configurations of the instance, no public IP address is automatically assigned to the instance. In this case, you can set `AllocatePublicIp` to `true` or call the [AllocatePublicIpAddress](https://help.aliyun.com/document_detail/25544.html) operation to assign a public IP address to the instance.
+        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a subscription (PrePaid) instance from 0 Mbit/s when you modify the network configurations of the instance, a static public IP address is automatically assigned to the instance.
+        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a pay-as-you-go (PostPaid) instance from 0 Mbit/s when you modify the network configurations of the instance, no static public IP address is automatically assigned to the instance. In this case, to assign a static public IP address to the instance, you must set `AllocatePublicIp` to `true`.
         You can upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of an instance in the classic network from 0 Mbit/s only if the instance is in the Stopped state.
         >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits" topic.
         Billing:
-        After the bandwidth is upgraded, AutoPay is set to true by default and the payment is automatically made. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set AutoPay to false. In this case, when you call the ModifyInstanceNetworkSpec operation, an unpaid order is generated. Then, you can log on to the ECS console to pay for the order.
-        After the bandwidth is downgraded, the price difference is refunded to the payment account that you used. Vouchers or coupons that have been redeemed are not refundable.
+        After the public bandwidth is upgraded, AutoPay is automatically set to true and the payment is automatically made. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set AutoPay to false. In this case, when you call the ModifyInstanceNetworkSpec operation, an unpaid order is generated. Then, you can log on to the ECS console to pay for the order.
+        After the public bandwidth is downgraded, the price difference is refunded to the payment account that you used. Vouchers or coupons that have been redeemed are not refundable.
         
         @param request: ModifyInstanceNetworkSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43895,16 +43967,16 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceNetworkSpecRequest,
     ) -> ecs_20140526_models.ModifyInstanceNetworkSpecResponse:
         """
-        @summary Modifies the bandwidth configurations of an Elastic Compute Service (ECS) instance. You can modify the bandwidth configurations of ECS instances to improve network performance. You can call this operation to upgrade or downgrade the bandwidth configurations of ECS instances.
+        @summary Modifies the network configurations of an Elastic Compute Service (ECS) instance, such as the public bandwidth, assignment or unassignment of a static public IP address (also known as system-assigned or auto-assigned public IP address), and billing method for network usage. You can call this operation to upgrade or downgrade the network configurations of ECS instances.
         
         @description Take note of the following items:
-        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a subscription (PrePaid) instance from 0 Mbit/s when you modify the bandwidth configurations of the instance, a public IP address is automatically assigned to the instance.
-        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a pay-as-you-go (PostPaid) instance from 0 Mbit/s when you modify the bandwidth configurations of the instance, no public IP address is automatically assigned to the instance. In this case, you can set `AllocatePublicIp` to `true` or call the [AllocatePublicIpAddress](https://help.aliyun.com/document_detail/25544.html) operation to assign a public IP address to the instance.
+        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a subscription (PrePaid) instance from 0 Mbit/s when you modify the network configurations of the instance, a static public IP address is automatically assigned to the instance.
+        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a pay-as-you-go (PostPaid) instance from 0 Mbit/s when you modify the network configurations of the instance, no static public IP address is automatically assigned to the instance. In this case, to assign a static public IP address to the instance, you must set `AllocatePublicIp` to `true`.
         You can upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of an instance in the classic network from 0 Mbit/s only if the instance is in the Stopped state.
         >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits" topic.
         Billing:
-        After the bandwidth is upgraded, AutoPay is set to true by default and the payment is automatically made. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set AutoPay to false. In this case, when you call the ModifyInstanceNetworkSpec operation, an unpaid order is generated. Then, you can log on to the ECS console to pay for the order.
-        After the bandwidth is downgraded, the price difference is refunded to the payment account that you used. Vouchers or coupons that have been redeemed are not refundable.
+        After the public bandwidth is upgraded, AutoPay is automatically set to true and the payment is automatically made. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set AutoPay to false. In this case, when you call the ModifyInstanceNetworkSpec operation, an unpaid order is generated. Then, you can log on to the ECS console to pay for the order.
+        After the public bandwidth is downgraded, the price difference is refunded to the payment account that you used. Vouchers or coupons that have been redeemed are not refundable.
         
         @param request: ModifyInstanceNetworkSpecRequest
         @return: ModifyInstanceNetworkSpecResponse
@@ -43917,16 +43989,16 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceNetworkSpecRequest,
     ) -> ecs_20140526_models.ModifyInstanceNetworkSpecResponse:
         """
-        @summary Modifies the bandwidth configurations of an Elastic Compute Service (ECS) instance. You can modify the bandwidth configurations of ECS instances to improve network performance. You can call this operation to upgrade or downgrade the bandwidth configurations of ECS instances.
+        @summary Modifies the network configurations of an Elastic Compute Service (ECS) instance, such as the public bandwidth, assignment or unassignment of a static public IP address (also known as system-assigned or auto-assigned public IP address), and billing method for network usage. You can call this operation to upgrade or downgrade the network configurations of ECS instances.
         
         @description Take note of the following items:
-        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a subscription (PrePaid) instance from 0 Mbit/s when you modify the bandwidth configurations of the instance, a public IP address is automatically assigned to the instance.
-        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a pay-as-you-go (PostPaid) instance from 0 Mbit/s when you modify the bandwidth configurations of the instance, no public IP address is automatically assigned to the instance. In this case, you can set `AllocatePublicIp` to `true` or call the [AllocatePublicIpAddress](https://help.aliyun.com/document_detail/25544.html) operation to assign a public IP address to the instance.
+        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a subscription (PrePaid) instance from 0 Mbit/s when you modify the network configurations of the instance, a static public IP address is automatically assigned to the instance.
+        If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a pay-as-you-go (PostPaid) instance from 0 Mbit/s when you modify the network configurations of the instance, no static public IP address is automatically assigned to the instance. In this case, to assign a static public IP address to the instance, you must set `AllocatePublicIp` to `true`.
         You can upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of an instance in the classic network from 0 Mbit/s only if the instance is in the Stopped state.
         >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits" topic.
         Billing:
-        After the bandwidth is upgraded, AutoPay is set to true by default and the payment is automatically made. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set AutoPay to false. In this case, when you call the ModifyInstanceNetworkSpec operation, an unpaid order is generated. Then, you can log on to the ECS console to pay for the order.
-        After the bandwidth is downgraded, the price difference is refunded to the payment account that you used. Vouchers or coupons that have been redeemed are not refundable.
+        After the public bandwidth is upgraded, AutoPay is automatically set to true and the payment is automatically made. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set AutoPay to false. In this case, when you call the ModifyInstanceNetworkSpec operation, an unpaid order is generated. Then, you can log on to the ECS console to pay for the order.
+        After the public bandwidth is downgraded, the price difference is refunded to the payment account that you used. Vouchers or coupons that have been redeemed are not refundable.
         
         @param request: ModifyInstanceNetworkSpecRequest
         @return: ModifyInstanceNetworkSpecResponse
@@ -50380,11 +50452,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReleasePublicIpAddressResponse:
         """
+        @deprecated OpenAPI ReleasePublicIpAddress is deprecated
+        
         @summary 释放公网IP
         
         @param request: ReleasePublicIpAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ReleasePublicIpAddressResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -50421,11 +50496,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReleasePublicIpAddressResponse:
         """
+        @deprecated OpenAPI ReleasePublicIpAddress is deprecated
+        
         @summary 释放公网IP
         
         @param request: ReleasePublicIpAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ReleasePublicIpAddressResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -50461,10 +50539,13 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReleasePublicIpAddressRequest,
     ) -> ecs_20140526_models.ReleasePublicIpAddressResponse:
         """
+        @deprecated OpenAPI ReleasePublicIpAddress is deprecated
+        
         @summary 释放公网IP
         
         @param request: ReleasePublicIpAddressRequest
         @return: ReleasePublicIpAddressResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.release_public_ip_address_with_options(request, runtime)
@@ -50474,10 +50555,13 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReleasePublicIpAddressRequest,
     ) -> ecs_20140526_models.ReleasePublicIpAddressResponse:
         """
+        @deprecated OpenAPI ReleasePublicIpAddress is deprecated
+        
         @summary 释放公网IP
         
         @param request: ReleasePublicIpAddressRequest
         @return: ReleasePublicIpAddressResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.release_public_ip_address_with_options_async(request, runtime)
@@ -50616,11 +50700,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RemoveTagsResponse:
         """
+        @deprecated OpenAPI RemoveTags is deprecated, please use Ecs::2014-05-26::UntagResources instead.
+        
         @summary Removes one or more tags from a resource such as an instance, disk, snapshot, image, or security group.
         
         @param request: RemoveTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveTagsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -50663,11 +50750,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RemoveTagsResponse:
         """
+        @deprecated OpenAPI RemoveTags is deprecated, please use Ecs::2014-05-26::UntagResources instead.
+        
         @summary Removes one or more tags from a resource such as an instance, disk, snapshot, image, or security group.
         
         @param request: RemoveTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveTagsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -50709,10 +50799,13 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RemoveTagsRequest,
     ) -> ecs_20140526_models.RemoveTagsResponse:
         """
+        @deprecated OpenAPI RemoveTags is deprecated, please use Ecs::2014-05-26::UntagResources instead.
+        
         @summary Removes one or more tags from a resource such as an instance, disk, snapshot, image, or security group.
         
         @param request: RemoveTagsRequest
         @return: RemoveTagsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.remove_tags_with_options(request, runtime)
@@ -50722,10 +50815,13 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RemoveTagsRequest,
     ) -> ecs_20140526_models.RemoveTagsResponse:
         """
+        @deprecated OpenAPI RemoveTags is deprecated, please use Ecs::2014-05-26::UntagResources instead.
+        
         @summary Removes one or more tags from a resource such as an instance, disk, snapshot, image, or security group.
         
         @param request: RemoveTagsRequest
         @return: RemoveTagsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.remove_tags_with_options_async(request, runtime)
