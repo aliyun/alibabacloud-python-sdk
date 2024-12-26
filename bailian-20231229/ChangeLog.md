@@ -1,3 +1,6 @@
+2024-12-26 Version: 1.11.1
+- Generated python 2023-12-29 for bailian.
+
 2024-12-23 Version: 1.11.0
 - Support API UpdateAndPublishAgentSelective.
 - Update API CreateAndPulishAgent: add param sampleLibrary.
