@@ -2,6 +2,10 @@
 - Update API QueryAllSwimmingLane: update response param.
 
 
+2024-12-26 Version: 6.16.2
+- Update API QueryAllSwimmingLane: update response param.
+
+
 2024-12-20 Version: 6.16.1
 - Update API GetApplicationInstanceList: update param AppName.
 - Update API GetServiceListPage: update param AppName.
