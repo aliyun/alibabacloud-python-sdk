@@ -53015,6 +53015,7 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute(TeaModel):
 class QueryAllSwimmingLaneResponseBodyData(TeaModel):
     def __init__(
         self,
+        enable: str = None,
         entry_rules: List[QueryAllSwimmingLaneResponseBodyDataEntryRules] = None,
         gateway_swimming_lane_route: QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute = None,
         group_id: str = None,
@@ -53032,6 +53033,7 @@ class QueryAllSwimmingLaneResponseBodyData(TeaModel):
         gmt_create: str = None,
         gmt_modified: str = None,
     ):
+        self.enable = enable
         self.entry_rules = entry_rules
         self.gateway_swimming_lane_route = gateway_swimming_lane_route
         self.group_id = group_id
@@ -53063,6 +53065,8 @@ class QueryAllSwimmingLaneResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
         result['EntryRules'] = []
         if self.entry_rules is not None:
             for k in self.entry_rules:
@@ -53101,6 +53105,8 @@ class QueryAllSwimmingLaneResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
         self.entry_rules = []
         if m.get('EntryRules') is not None:
             for k in m.get('EntryRules'):
