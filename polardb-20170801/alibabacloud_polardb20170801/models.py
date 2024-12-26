@@ -17,11 +17,21 @@ class CancelActiveOperationTasksRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # > 
+        # 
+        # *   You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region information about all clusters within a specified account.
+        # 
+        # *   If you do not specify this parameter, scheduled tasks on your clusters that are deployed in all regions are queried.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The IDs of O\\&M events that are canceled at a time. Separate multiple IDs with commas (,).
+        # 
         # This parameter is required.
         self.task_ids = task_ids
 
@@ -75,7 +85,9 @@ class CancelActiveOperationTasksResponseBody(TeaModel):
         request_id: str = None,
         task_ids: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The IDs of O\\&M events that are canceled at a time. Separate multiple IDs with commas (,).
         self.task_ids = task_ids
 
     def validate(self):
@@ -1951,6 +1963,8 @@ class CreateDBClusterRequest(TeaModel):
         source_resource_id: str = None,
         standby_az: str = None,
         storage_auto_scale: str = None,
+        storage_encryption: bool = None,
+        storage_encryption_key: str = None,
         storage_pay_type: str = None,
         storage_space: int = None,
         storage_type: str = None,
@@ -2232,6 +2246,8 @@ class CreateDBClusterRequest(TeaModel):
         # - Enable: Enables automatic storage expansion.
         # - Disable: Disables automatic storage expansion.
         self.storage_auto_scale = storage_auto_scale
+        self.storage_encryption = storage_encryption
+        self.storage_encryption_key = storage_encryption_key
         # The storage billing type, with valid values as follows:
         # 
         # - Postpaid: Pay-as-you-go (hourly).
@@ -2389,6 +2405,10 @@ class CreateDBClusterRequest(TeaModel):
             result['StandbyAZ'] = self.standby_az
         if self.storage_auto_scale is not None:
             result['StorageAutoScale'] = self.storage_auto_scale
+        if self.storage_encryption is not None:
+            result['StorageEncryption'] = self.storage_encryption
+        if self.storage_encryption_key is not None:
+            result['StorageEncryptionKey'] = self.storage_encryption_key
         if self.storage_pay_type is not None:
             result['StoragePayType'] = self.storage_pay_type
         if self.storage_space is not None:
@@ -2507,6 +2527,10 @@ class CreateDBClusterRequest(TeaModel):
             self.standby_az = m.get('StandbyAZ')
         if m.get('StorageAutoScale') is not None:
             self.storage_auto_scale = m.get('StorageAutoScale')
+        if m.get('StorageEncryption') is not None:
+            self.storage_encryption = m.get('StorageEncryption')
+        if m.get('StorageEncryptionKey') is not None:
+            self.storage_encryption_key = m.get('StorageEncryptionKey')
         if m.get('StoragePayType') is not None:
             self.storage_pay_type = m.get('StoragePayType')
         if m.get('StorageSpace') is not None:
@@ -9884,6 +9908,7 @@ class DescribeClassListResponseBodyItems(TeaModel):
         self.class_type_level = class_type_level
         # The number of vCPU cores. Unit: cores.
         self.cpu = cpu
+        # The maximum ESSD storage capacity. Unit: TB.
         self.essd_max_storage_capacity = essd_max_storage_capacity
         # The maximum number of concurrent connections in the cluster.
         self.max_connections = max_connections
@@ -9899,6 +9924,7 @@ class DescribeClassListResponseBodyItems(TeaModel):
         self.pl_2max_iops = pl_2max_iops
         # The maximum IOPS of an ESSD of performance level 3 (PL3). Unit: operations per second.
         self.pl_3max_iops = pl_3max_iops
+        # The maximum PSL4/PSL5 storage capacity. Unit: TB.
         self.polar_store_max_storage_capacity = polar_store_max_storage_capacity
         # The maximum Input/output operations per second (IOPS) for PolarStore Level 4 (PSL4). Unit: operations per second.
         self.psl_4max_iops = psl_4max_iops
@@ -14399,6 +14425,7 @@ class DescribeDBClusterTDEResponseBody(TeaModel):
         dbcluster_id: str = None,
         encrypt_new_tables: str = None,
         encryption_key: str = None,
+        encryption_key_status: str = None,
         request_id: str = None,
         rotation_interval: str = None,
         tderegion: str = None,
@@ -14422,6 +14449,7 @@ class DescribeDBClusterTDEResponseBody(TeaModel):
         self.encrypt_new_tables = encrypt_new_tables
         # The ID of the custom key.
         self.encryption_key = encryption_key
+        self.encryption_key_status = encryption_key_status
         # The ID of the request.
         self.request_id = request_id
         # The automatic key rotation period configured in Key Management Service (KMS). If no automatic key rotation period is configured, 0s is returned. Unit: seconds.
@@ -14455,6 +14483,8 @@ class DescribeDBClusterTDEResponseBody(TeaModel):
             result['EncryptNewTables'] = self.encrypt_new_tables
         if self.encryption_key is not None:
             result['EncryptionKey'] = self.encryption_key
+        if self.encryption_key_status is not None:
+            result['EncryptionKeyStatus'] = self.encryption_key_status
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.rotation_interval is not None:
@@ -14475,6 +14505,8 @@ class DescribeDBClusterTDEResponseBody(TeaModel):
             self.encrypt_new_tables = m.get('EncryptNewTables')
         if m.get('EncryptionKey') is not None:
             self.encryption_key = m.get('EncryptionKey')
+        if m.get('EncryptionKeyStatus') is not None:
+            self.encryption_key_status = m.get('EncryptionKeyStatus')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('RotationInterval') is not None:
@@ -24610,8 +24642,6 @@ class DescribeUserEncryptionKeyListRequest(TeaModel):
         # The ID of the cluster.
         # 
         # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
-        # 
-        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -26849,15 +26879,38 @@ class ModifyActiveOperationTasksRequest(TeaModel):
         switch_time: str = None,
         task_ids: str = None,
     ):
+        # Specifies whether to immediately start scheduling. Valid values:
+        # 
+        # *   0: No. This is the default value.
+        # *   1: Yes.
+        # 
+        # > 
+        # 
+        # *   If you set this parameter to 0, you must specify the SwitchTime parameter.
+        # 
+        # *   If you set this parameter to 1, the SwitchTime parameter does not take effect. In this case, the start time of the event is set to the current time, and the system determines the switching time based on the start time. Scheduling is started immediately, which is a prerequisite for the switchover. Then, the switchover is performed. You can call the DescribeActiveOperationTasks operation and check the return value of the PrepareInterval parameter for the preparation time.
         self.immediate_start = immediate_start
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region information about all clusters within a specified account.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The scheduled switching time that you want to specify. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # > 
+        # 
+        # *   The time that is specified by this parameter cannot be later than the latest execution time.
+        # 
+        # *   You can call the DescribeActiveOperationTasks operation and check the return value of the Deadline parameter for the latest execution time.
         self.switch_time = switch_time
+        # The task IDs.
+        # 
         # This parameter is required.
         self.task_ids = task_ids
 
@@ -26919,7 +26972,9 @@ class ModifyActiveOperationTasksResponseBody(TeaModel):
         request_id: str = None,
         task_ids: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The task IDs.
         self.task_ids = task_ids
 
     def validate(self):
@@ -27897,13 +27952,13 @@ class ModifyDBClusterAndNodesParametersRequest(TeaModel):
         resource_owner_id: int = None,
         standby_cluster_id_list_need_to_sync: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The node ID. You can set this parameter to modify the parameters of a specified node or of the cluster. Separate multiple node IDs with commas (,).
+        # The IDs of nodes. You can specify this parameter, or leave this parameter empty. Separate multiple node IDs with commas (,).
         # 
-        # > If you do not specify this parameter, only the cluster parameters are modified.
+        # >  If you do not specify this parameter, only the cluster parameters are modified.
         self.dbnode_ids = dbnode_ids
         # Specifies an immediate or scheduled task to modify parameters and restart the cluster. Default value: false. Valid values:
         # 
@@ -27912,7 +27967,7 @@ class ModifyDBClusterAndNodesParametersRequest(TeaModel):
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the parameter template that is used for the instance.
+        # The ID of the parameter template.
         self.parameter_group_id = parameter_group_id
         # The JSON string for the parameter and its value.
         self.parameters = parameters
@@ -27934,6 +27989,7 @@ class ModifyDBClusterAndNodesParametersRequest(TeaModel):
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The secondary clusters in the GDN to which the parameter settings are synchronized.
         self.standby_cluster_id_list_need_to_sync = standby_cluster_id_list_need_to_sync
 
     def validate(self):

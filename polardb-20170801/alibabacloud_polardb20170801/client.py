@@ -93,7 +93,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CancelActiveOperationTasksResponse:
         """
-        @summary 用户侧取消任务
+        @summary Cancels O\\&M events at a time.
         
         @param request: CancelActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -140,7 +140,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CancelActiveOperationTasksResponse:
         """
-        @summary 用户侧取消任务
+        @summary Cancels O\\&M events at a time.
         
         @param request: CancelActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -186,7 +186,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CancelActiveOperationTasksRequest,
     ) -> polardb_20170801_models.CancelActiveOperationTasksResponse:
         """
-        @summary 用户侧取消任务
+        @summary Cancels O\\&M events at a time.
         
         @param request: CancelActiveOperationTasksRequest
         @return: CancelActiveOperationTasksResponse
@@ -199,7 +199,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CancelActiveOperationTasksRequest,
     ) -> polardb_20170801_models.CancelActiveOperationTasksResponse:
         """
-        @summary 用户侧取消任务
+        @summary Cancels O\\&M events at a time.
         
         @param request: CancelActiveOperationTasksRequest
         @return: CancelActiveOperationTasksResponse
@@ -1669,6 +1669,10 @@ class Client(OpenApiClient):
             query['StandbyAZ'] = request.standby_az
         if not UtilClient.is_unset(request.storage_auto_scale):
             query['StorageAutoScale'] = request.storage_auto_scale
+        if not UtilClient.is_unset(request.storage_encryption):
+            query['StorageEncryption'] = request.storage_encryption
+        if not UtilClient.is_unset(request.storage_encryption_key):
+            query['StorageEncryptionKey'] = request.storage_encryption_key
         if not UtilClient.is_unset(request.storage_pay_type):
             query['StoragePayType'] = request.storage_pay_type
         if not UtilClient.is_unset(request.storage_space):
@@ -1814,6 +1818,10 @@ class Client(OpenApiClient):
             query['StandbyAZ'] = request.standby_az
         if not UtilClient.is_unset(request.storage_auto_scale):
             query['StorageAutoScale'] = request.storage_auto_scale
+        if not UtilClient.is_unset(request.storage_encryption):
+            query['StorageEncryption'] = request.storage_encryption
+        if not UtilClient.is_unset(request.storage_encryption_key):
+            query['StorageEncryptionKey'] = request.storage_encryption_key
         if not UtilClient.is_unset(request.storage_pay_type):
             query['StoragePayType'] = request.storage_pay_type
         if not UtilClient.is_unset(request.storage_space):
@@ -13541,7 +13549,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyActiveOperationTasksResponse:
         """
-        @summary 用户侧修改任务
+        @summary Modifies the switching time of scheduled O\\&M events for an instance.
         
         @param request: ModifyActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13592,7 +13600,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyActiveOperationTasksResponse:
         """
-        @summary 用户侧修改任务
+        @summary Modifies the switching time of scheduled O\\&M events for an instance.
         
         @param request: ModifyActiveOperationTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13642,7 +13650,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyActiveOperationTasksRequest,
     ) -> polardb_20170801_models.ModifyActiveOperationTasksResponse:
         """
-        @summary 用户侧修改任务
+        @summary Modifies the switching time of scheduled O\\&M events for an instance.
         
         @param request: ModifyActiveOperationTasksRequest
         @return: ModifyActiveOperationTasksResponse
@@ -13655,7 +13663,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyActiveOperationTasksRequest,
     ) -> polardb_20170801_models.ModifyActiveOperationTasksResponse:
         """
-        @summary 用户侧修改任务
+        @summary Modifies the switching time of scheduled O\\&M events for an instance.
         
         @param request: ModifyActiveOperationTasksRequest
         @return: ModifyActiveOperationTasksResponse
