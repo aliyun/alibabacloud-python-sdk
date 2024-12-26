@@ -1,3 +1,9 @@
+2024-12-26 Version: 1.5.0
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UntagResources.
+
+
 2024-12-13 Version: 1.4.0
 - Support API SetSniConfig.
 
