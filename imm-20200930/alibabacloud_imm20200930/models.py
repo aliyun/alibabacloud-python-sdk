@@ -2539,6 +2539,45 @@ class Dataset(TeaModel):
         return self
 
 
+class DatasetTaskStatus(TeaModel):
+    def __init__(
+        self,
+        last_succeeded_time: str = None,
+        start_time: str = None,
+        status: str = None,
+    ):
+        self.last_succeeded_time = last_succeeded_time
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.last_succeeded_time is not None:
+            result['LastSucceededTime'] = self.last_succeeded_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LastSucceededTime') is not None:
+            self.last_succeeded_time = m.get('LastSucceededTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class HeadPose(TeaModel):
     def __init__(
         self,
@@ -5154,6 +5193,128 @@ class SimpleQuery(TeaModel):
         return self
 
 
+class SmartClusterRule(TeaModel):
+    def __init__(
+        self,
+        keywords: List[str] = None,
+        sensitivity: float = None,
+    ):
+        self.keywords = keywords
+        self.sensitivity = sensitivity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keywords is not None:
+            result['Keywords'] = self.keywords
+        if self.sensitivity is not None:
+            result['Sensitivity'] = self.sensitivity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keywords') is not None:
+            self.keywords = m.get('Keywords')
+        if m.get('Sensitivity') is not None:
+            self.sensitivity = m.get('Sensitivity')
+        return self
+
+
+class SmartCluster(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        dataset_name: str = None,
+        description: str = None,
+        name: str = None,
+        object_id: str = None,
+        object_status: str = None,
+        object_type: str = None,
+        owner_id: str = None,
+        project_name: str = None,
+        rule: SmartClusterRule = None,
+        update_time: str = None,
+    ):
+        self.create_time = create_time
+        self.dataset_name = dataset_name
+        self.description = description
+        self.name = name
+        self.object_id = object_id
+        self.object_status = object_status
+        self.object_type = object_type
+        self.owner_id = owner_id
+        self.project_name = project_name
+        self.rule = rule
+        self.update_time = update_time
+
+    def validate(self):
+        if self.rule:
+            self.rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.object_status is not None:
+            result['ObjectStatus'] = self.object_status
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.rule is not None:
+            result['Rule'] = self.rule.to_map()
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ObjectStatus') is not None:
+            self.object_status = m.get('ObjectStatus')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Rule') is not None:
+            temp_model = SmartClusterRule()
+            self.rule = temp_model.from_map(m['Rule'])
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
 class Story(TeaModel):
     def __init__(
         self,
@@ -6602,13 +6763,39 @@ class AddImageMosaicRequestTargetsBoundary(TeaModel):
         x: float = None,
         y: float = None,
     ):
+        # The height of the bounding box. The value can be an integer greater than or equal to 0 or a decimal within the range of [0,1):
+        # 
+        # *   An integer value greater than or equal to 0 indicates the height of the bounding box in pixels.
+        # *   A decimal value within the range of [0,1) indicates the height of the bounding box as a ratio of its height to the image height.
+        # 
         # This parameter is required.
         self.height = height
+        # The reference position of the bounding box on the image. Valid values:
+        # 
+        # *   topright: the upper-right corner.
+        # *   topleft: the upper-left corner. This is the default value.
+        # *   bottomright: the lower-right corner.
+        # *   bottomleft: the lower-left corner.
         self.refer_pos = refer_pos
+        # The width of the bounding box. The value can be an integer greater than or equal to 0 or a decimal within the range of [0,1):
+        # 
+        # *   An integer value greater than or equal to 0 indicates the width of the bounding box in pixels.
+        # *   A decimal value within the range of [0,1) indicates the width of the bounding box as a ratio of its width to the image width.
+        # 
         # This parameter is required.
         self.width = width
+        # The horizontal offset relative to the reference position. The value can be an integer greater than or equal to 0 or a decimal within the range of [0,1):
+        # 
+        # *   An integer value greater than or equal to 0 indicates the horizontal offset in pixels.
+        # *   A decimal value within the range of [0,1) indicates the horizontal offset as a ratio of the offset to the image width.
+        # 
         # This parameter is required.
         self.x = x
+        # The vertical offset relative to the reference position. The value can be an integer greater than or equal to 0 or a decimal within the range of [0,1):
+        # 
+        # *   An integer value greater than or equal to 0 indicates the vertical offset in pixels.
+        # *   A decimal value within the range of [0,1) indicates the vertical offset as a ratio of the offset to the image height.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -6658,12 +6845,34 @@ class AddImageMosaicRequestTargets(TeaModel):
         sigma: int = None,
         type: str = None,
     ):
+        # The radius of the Gaussian blur. Valid values: 1 to 50. Default value: 3. Unit: pixels.
+        # 
+        # >  This parameter takes effect only for a Gaussian blur.
         self.blur_radius = blur_radius
+        # The position of the bounding box.
+        # 
         # This parameter is required.
         self.boundary = boundary
+        # The color of the color shape. You can specify a color by using a color code such as`#RRGGBB` or preset color names such as `red` and `white`. The default value is #FFFFFF, which is white.
+        # 
+        # >  This parameter takes effect only for solid color shapes.
         self.color = color
+        # The radius of the mosaic. Default value: 5. Unit: pixels.
+        # 
+        # >  This parameter does not take effect for Gaussian blurs and solid color shapes.
         self.mosaic_radius = mosaic_radius
+        # The standard deviation of the Gaussian blur. The value must be greater than 0. Default value: 5.
+        # 
+        # >  This parameter takes effect only for a Gaussian blur.
         self.sigma = sigma
+        # The type of the mosaic effect. Valid values:
+        # 
+        # *   square: squares.
+        # *   diamond: diamonds.
+        # *   hexagon: hexagons.
+        # *   blur: Gaussian blurs.
+        # *   pure: solid color shapes.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -6720,15 +6929,34 @@ class AddImageMosaicRequest(TeaModel):
         target_uri: str = None,
         targets: List[AddImageMosaicRequestTargets] = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The encoding of the output image. By default, the output image uses the same encoding as the input image. Valid values: jpg, png, and webp.
         self.image_format = image_format
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The quality of the output image. This parameter applies only to JPG and WebP images. Valid values: 0 to 100. Default value: 80.
         self.quality = quality
+        # The OSS URI of the input image.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
+        # Supported formats of input images include JPG, PNG, TIFF, JP2, and BMP.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The OSS URI of the output image.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.target_uri = target_uri
+        # The bounding boxes and processing parameters.
+        # 
         # This parameter is required.
         self.targets = targets
 
@@ -6798,15 +7026,34 @@ class AddImageMosaicShrinkRequest(TeaModel):
         target_uri: str = None,
         targets_shrink: str = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The encoding of the output image. By default, the output image uses the same encoding as the input image. Valid values: jpg, png, and webp.
         self.image_format = image_format
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The quality of the output image. This parameter applies only to JPG and WebP images. Valid values: 0 to 100. Default value: 80.
         self.quality = quality
+        # The OSS URI of the input image.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
+        # Supported formats of input images include JPG, PNG, TIFF, JP2, and BMP.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The OSS URI of the output image.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.target_uri = target_uri
+        # The bounding boxes and processing parameters.
+        # 
         # This parameter is required.
         self.targets_shrink = targets_shrink
 
@@ -6859,6 +7106,7 @@ class AddImageMosaicResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6927,6 +7175,9 @@ class AddStoryFilesRequestFiles(TeaModel):
         self,
         uri: str = None,
     ):
+        # The URI of the object.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.uri = uri
 
     def validate(self):
@@ -6957,12 +7208,20 @@ class AddStoryFilesRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # The name of the dataset.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The objects that you want to add.
+        # 
         # This parameter is required.
         self.files = files
+        # The ID of the story.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -7014,12 +7273,20 @@ class AddStoryFilesShrinkRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # The name of the dataset.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The objects that you want to add.
+        # 
         # This parameter is required.
         self.files_shrink = files_shrink
+        # The ID of the story.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -7062,8 +7329,13 @@ class AddStoryFilesResponseBodyFiles(TeaModel):
         error_message: str = None,
         uri: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message that is returned.
         self.error_message = error_message
+        # The URI of the object.
+        # 
+        # The OSS URI follows the `oss://{bucketname}/{objectname}` format, where `bucketname` is the name of the bucket in the same region as the current project and `objectname` is the path of the object with the extension included.
         self.uri = uri
 
     def validate(self):
@@ -7100,7 +7372,9 @@ class AddStoryFilesResponseBody(TeaModel):
         files: List[AddStoryFilesResponseBodyFiles] = None,
         request_id: str = None,
     ):
+        # The objects that were added.
         self.files = files
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7183,9 +7457,14 @@ class AttachOSSBucketRequest(TeaModel):
         ossbucket: str = None,
         project_name: str = None,
     ):
+        # The description of the binding. The description must be 1 to 128 characters in length. By default, no description is applied.
         self.description = description
+        # The name of the OSS bucket in the same region as the project.
+        # 
         # This parameter is required.
         self.ossbucket = ossbucket
+        # The name of the project. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -7222,6 +7501,7 @@ class AttachOSSBucketResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7292,10 +7572,16 @@ class BatchDeleteFileMetaRequest(TeaModel):
         project_name: str = None,
         uris: List[str] = None,
     ):
+        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URIs of the OSS buckets in which the files whose metadata you want to delete are stored. You can specify up to 100 URIs.
+        # 
         # This parameter is required.
         self.uris = uris
 
@@ -7334,10 +7620,16 @@ class BatchDeleteFileMetaShrinkRequest(TeaModel):
         project_name: str = None,
         uris_shrink: str = None,
     ):
+        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URIs of the OSS buckets in which the files whose metadata you want to delete are stored. You can specify up to 100 URIs.
+        # 
         # This parameter is required.
         self.uris_shrink = uris_shrink
 
@@ -7374,6 +7666,7 @@ class BatchDeleteFileMetaResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7444,10 +7737,16 @@ class BatchGetFigureClusterRequest(TeaModel):
         object_ids: List[str] = None,
         project_name: str = None,
     ):
+        # The name of the dataset.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The cluster IDs.
+        # 
         # This parameter is required.
         self.object_ids = object_ids
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -7486,10 +7785,16 @@ class BatchGetFigureClusterShrinkRequest(TeaModel):
         object_ids_shrink: str = None,
         project_name: str = None,
     ):
+        # The name of the dataset.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The cluster IDs.
+        # 
         # This parameter is required.
         self.object_ids_shrink = object_ids_shrink
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -7527,7 +7832,9 @@ class BatchGetFigureClusterResponseBody(TeaModel):
         figure_clusters: List[FigureCluster] = None,
         request_id: str = None,
     ):
+        # The clusters.
         self.figure_clusters = figure_clusters
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7611,12 +7918,21 @@ class BatchGetFileMetaRequest(TeaModel):
         uris: List[str] = None,
         with_fields: List[str] = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The array of object URIs. You can specify up to 100 object URIs in an array.
+        # 
         # This parameter is required.
         self.uris = uris
+        # The fields to return. If you specify this parameter, only specified metadata fields are returned. You can use this parameter to control the size of the response.
+        # 
+        # If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields.
         self.with_fields = with_fields
 
     def validate(self):
@@ -7659,12 +7975,21 @@ class BatchGetFileMetaShrinkRequest(TeaModel):
         uris_shrink: str = None,
         with_fields_shrink: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The array of object URIs. You can specify up to 100 object URIs in an array.
+        # 
         # This parameter is required.
         self.uris_shrink = uris_shrink
+        # The fields to return. If you specify this parameter, only specified metadata fields are returned. You can use this parameter to control the size of the response.
+        # 
+        # If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields.
         self.with_fields_shrink = with_fields_shrink
 
     def validate(self):
@@ -7705,7 +8030,9 @@ class BatchGetFileMetaResponseBody(TeaModel):
         files: List[File] = None,
         request_id: str = None,
     ):
+        # The metadata returned.
         self.files = files
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7790,11 +8117,18 @@ class BatchIndexFileMetaRequest(TeaModel):
         project_name: str = None,
         user_data: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The objects in Object Storage Service (OSS). Specify OSS objects by using a JSON array. You can specify up to 100 objects in an array.
+        # 
         # This parameter is required.
         self.files = files
+        # The notification settings. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
         self.notification = notification
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
         self.user_data = user_data
@@ -7855,11 +8189,18 @@ class BatchIndexFileMetaShrinkRequest(TeaModel):
         project_name: str = None,
         user_data: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The objects in Object Storage Service (OSS). Specify OSS objects by using a JSON array. You can specify up to 100 objects in an array.
+        # 
         # This parameter is required.
         self.files_shrink = files_shrink
+        # The notification settings. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
         self.notification_shrink = notification_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
         self.user_data = user_data
@@ -7906,7 +8247,9 @@ class BatchIndexFileMetaResponseBody(TeaModel):
         event_id: str = None,
         request_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7981,10 +8324,16 @@ class BatchUpdateFileMetaRequest(TeaModel):
         files: List[InputFile] = None,
         project_name: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The files whose metadata you want to update.
+        # 
         # This parameter is required.
         self.files = files
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -8031,10 +8380,16 @@ class BatchUpdateFileMetaShrinkRequest(TeaModel):
         files_shrink: str = None,
         project_name: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The files whose metadata you want to update.
+        # 
         # This parameter is required.
         self.files_shrink = files_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -8073,8 +8428,16 @@ class BatchUpdateFileMetaResponseBodyFiles(TeaModel):
         success: bool = None,
         uri: str = None,
     ):
+        # The error message returned when the value of the Success parameter is false.
         self.message = message
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # Enumerated values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The URI of the file.
         self.uri = uri
 
     def validate(self):
@@ -8111,7 +8474,9 @@ class BatchUpdateFileMetaResponseBody(TeaModel):
         files: List[BatchUpdateFileMetaResponseBodyFiles] = None,
         request_id: str = None,
     ):
+        # The files whose metadata was updated.
         self.files = files
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8193,7 +8558,13 @@ class CompareImageFacesRequestSource(TeaModel):
         uri1: str = None,
         uri2: str = None,
     ):
+        # The OSS URL of the image file.
+        # 
+        # Specify the URL in the `oss://<bucket>/<object>` format. `<bucket>` specifies the name of the OSS bucket that is in the same region as the current project. `<object>` specifies path of the object with the extension included.
         self.uri1 = uri1
+        # The OSS URL of the image file.
+        # 
+        # Specify the URL in the `oss://<bucket>/<object>` format. `<bucket>` specifies the name of the OSS bucket that is in the same region as the current project, and `<object>` specifies the path of the object with the extension included.
         self.uri2 = uri2
 
     def validate(self):
@@ -8227,9 +8598,15 @@ class CompareImageFacesRequest(TeaModel):
         project_name: str = None,
         source: CompareImageFacesRequestSource = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URLs of the two images for compression.
         self.source = source
 
     def validate(self):
@@ -8272,9 +8649,15 @@ class CompareImageFacesShrinkRequest(TeaModel):
         project_name: str = None,
         source_shrink: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URLs of the two images for compression.
         self.source_shrink = source_shrink
 
     def validate(self):
@@ -8311,7 +8694,9 @@ class CompareImageFacesResponseBody(TeaModel):
         request_id: str = None,
         similarity: float = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The face similarity. A larger value indicates a higher face similarity. Valid values: 0 to 1.
         self.similarity = similarity
 
     def validate(self):
@@ -8379,6 +8764,379 @@ class CompareImageFacesResponse(TeaModel):
         return self
 
 
+class ContextualAnswerRequest(TeaModel):
+    def __init__(
+        self,
+        files: List[ContextualFile] = None,
+        messages: List[ContextualMessage] = None,
+        project_name: str = None,
+    ):
+        self.files = files
+        # This parameter is required.
+        self.messages = messages
+        # This parameter is required.
+        self.project_name = project_name
+
+    def validate(self):
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['Files'].append(k.to_map() if k else None)
+        result['Messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['Messages'].append(k.to_map() if k else None)
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.files = []
+        if m.get('Files') is not None:
+            for k in m.get('Files'):
+                temp_model = ContextualFile()
+                self.files.append(temp_model.from_map(k))
+        self.messages = []
+        if m.get('Messages') is not None:
+            for k in m.get('Messages'):
+                temp_model = ContextualMessage()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class ContextualAnswerShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        files_shrink: str = None,
+        messages_shrink: str = None,
+        project_name: str = None,
+    ):
+        self.files_shrink = files_shrink
+        # This parameter is required.
+        self.messages_shrink = messages_shrink
+        # This parameter is required.
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.files_shrink is not None:
+            result['Files'] = self.files_shrink
+        if self.messages_shrink is not None:
+            result['Messages'] = self.messages_shrink
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Files') is not None:
+            self.files_shrink = m.get('Files')
+        if m.get('Messages') is not None:
+            self.messages_shrink = m.get('Messages')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class ContextualAnswerResponseBody(TeaModel):
+    def __init__(
+        self,
+        answer: Answer = None,
+        request_id: str = None,
+    ):
+        self.answer = answer
+        self.request_id = request_id
+
+    def validate(self):
+        if self.answer:
+            self.answer.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer is not None:
+            result['Answer'] = self.answer.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Answer') is not None:
+            temp_model = Answer()
+            self.answer = temp_model.from_map(m['Answer'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ContextualAnswerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ContextualAnswerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ContextualAnswerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ContextualRetrievalRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        messages: List[ContextualMessage] = None,
+        project_name: str = None,
+        recall_only: bool = None,
+        smart_cluster_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.dataset_name = dataset_name
+        # This parameter is required.
+        self.messages = messages
+        # This parameter is required.
+        self.project_name = project_name
+        self.recall_only = recall_only
+        self.smart_cluster_ids = smart_cluster_ids
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        result['Messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['Messages'].append(k.to_map() if k else None)
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.recall_only is not None:
+            result['RecallOnly'] = self.recall_only
+        if self.smart_cluster_ids is not None:
+            result['SmartClusterIds'] = self.smart_cluster_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        self.messages = []
+        if m.get('Messages') is not None:
+            for k in m.get('Messages'):
+                temp_model = ContextualMessage()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('RecallOnly') is not None:
+            self.recall_only = m.get('RecallOnly')
+        if m.get('SmartClusterIds') is not None:
+            self.smart_cluster_ids = m.get('SmartClusterIds')
+        return self
+
+
+class ContextualRetrievalShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        messages_shrink: str = None,
+        project_name: str = None,
+        recall_only: bool = None,
+        smart_cluster_ids_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.dataset_name = dataset_name
+        # This parameter is required.
+        self.messages_shrink = messages_shrink
+        # This parameter is required.
+        self.project_name = project_name
+        self.recall_only = recall_only
+        self.smart_cluster_ids_shrink = smart_cluster_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.messages_shrink is not None:
+            result['Messages'] = self.messages_shrink
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.recall_only is not None:
+            result['RecallOnly'] = self.recall_only
+        if self.smart_cluster_ids_shrink is not None:
+            result['SmartClusterIds'] = self.smart_cluster_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('Messages') is not None:
+            self.messages_shrink = m.get('Messages')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('RecallOnly') is not None:
+            self.recall_only = m.get('RecallOnly')
+        if m.get('SmartClusterIds') is not None:
+            self.smart_cluster_ids_shrink = m.get('SmartClusterIds')
+        return self
+
+
+class ContextualRetrievalResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        results: List[File] = None,
+    ):
+        self.request_id = request_id
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = File()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class ContextualRetrievalResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ContextualRetrievalResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ContextualRetrievalResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateArchiveFileInspectionTaskRequest(TeaModel):
     def __init__(
         self,
@@ -8389,12 +9147,23 @@ class CreateArchiveFileInspectionTaskRequest(TeaModel):
         source_uri: str = None,
         user_data: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The password that protects the package. If the package is password-protected, you must provide the password to view the contents of the package.
         self.password = password
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the package.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -8452,12 +9221,23 @@ class CreateArchiveFileInspectionTaskShrinkRequest(TeaModel):
         source_uri: str = None,
         user_data: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The password that protects the package. If the package is password-protected, you must provide the password to view the contents of the package.
         self.password = password
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the package.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -8507,8 +9287,11 @@ class CreateArchiveFileInspectionTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -8587,9 +9370,13 @@ class CreateBatchRequestActions(TeaModel):
         name: str = None,
         parameters: List[str] = None,
     ):
+        # The policy configurations for handling failures.
         self.fast_fail_policy = fast_fail_policy
+        # The name of the template.
+        # 
         # This parameter is required.
         self.name = name
+        # The template parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -8627,6 +9414,7 @@ class CreateBatchRequestNotification(TeaModel):
         self,
         mns: MNS = None,
     ):
+        # The Simple Message Queue notification message configurations.
         self.mns = mns
 
     def validate(self):
@@ -8661,15 +9449,29 @@ class CreateBatchRequest(TeaModel):
         service_role: str = None,
         tags: Dict[str, Any] = None,
     ):
+        # The processing templates.
+        # 
         # This parameter is required.
         self.actions = actions
+        # The data source configurations.
+        # 
         # This parameter is required.
         self.input = input
+        # The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
+        # 
+        # Activate and connect to EventBridge in the same region as the IMM project. For more information, see IMM events. Activate Simple Message Queue in the same region as the IMM project and configure a subscription.
         self.notification = notification
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The service role. IMM assumes the service role so that it can access resources in other cloud services, such as OSS. Default value: AliyunIMMBatchTriggerRole.
+        # 
+        # You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+        # 
         # This parameter is required.
         self.service_role = service_role
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags = tags
 
     def validate(self):
@@ -8736,15 +9538,29 @@ class CreateBatchShrinkRequest(TeaModel):
         service_role: str = None,
         tags_shrink: str = None,
     ):
+        # The processing templates.
+        # 
         # This parameter is required.
         self.actions_shrink = actions_shrink
+        # The data source configurations.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
+        # The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
+        # 
+        # Activate and connect to EventBridge in the same region as the IMM project. For more information, see IMM events. Activate Simple Message Queue in the same region as the IMM project and configure a subscription.
         self.notification_shrink = notification_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The service role. IMM assumes the service role so that it can access resources in other cloud services, such as OSS. Default value: AliyunIMMBatchTriggerRole.
+        # 
+        # You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+        # 
         # This parameter is required.
         self.service_role = service_role
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -8793,7 +9609,9 @@ class CreateBatchResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The ID of the batch processing task.
         self.id = id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8868,10 +9686,18 @@ class CreateBindingRequest(TeaModel):
         project_name: str = None,
         uri: str = None,
     ):
+        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the OSS bucket to which you bind the dataset.
+        # 
+        # Specify the value in the oss://${Bucket} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project.
+        # 
         # This parameter is required.
         self.uri = uri
 
@@ -8909,7 +9735,9 @@ class CreateBindingResponseBody(TeaModel):
         binding: Binding = None,
         request_id: str = None,
     ):
+        # The binding relationship.
         self.binding = binding
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8995,22 +9823,51 @@ class CreateCompressPointCloudTaskRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
+        # The compression algorithm. Valid values:
+        # 
+        # *   octree
+        # *   kdtree
+        # 
         # This parameter is required.
         self.compress_method = compress_method
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The k-d tree compression options.
         self.kdtree_option = kdtree_option
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The octree compression options.
         self.octree_option = octree_option
+        # The PCD property fields and the compression order in which the data is decompressed after the compression is complete.
+        # 
+        # *   If octree of Point Cloud Library (PCL) is used for compression, ["xyz"] is supported.
+        # *   If Draco k-dimensional (k-d) tree is used for compression, ["xyz"] and ["xyz", "intensity"] are supported.
+        # 
         # This parameter is required.
         self.point_cloud_fields = point_cloud_fields
+        # The file format. Set the value to the default value: pcd.
         self.point_cloud_file_format = point_cloud_file_format
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URL of the PCD file.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The custom tags, which can be used to search for and filter asynchronous tasks.
         self.tags = tags
+        # The OSS URL of the output file after compression.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.target_uri = target_uri
+        # The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -9104,22 +9961,51 @@ class CreateCompressPointCloudTaskShrinkRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
+        # The compression algorithm. Valid values:
+        # 
+        # *   octree
+        # *   kdtree
+        # 
         # This parameter is required.
         self.compress_method = compress_method
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The k-d tree compression options.
         self.kdtree_option_shrink = kdtree_option_shrink
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The octree compression options.
         self.octree_option_shrink = octree_option_shrink
+        # The PCD property fields and the compression order in which the data is decompressed after the compression is complete.
+        # 
+        # *   If octree of Point Cloud Library (PCL) is used for compression, ["xyz"] is supported.
+        # *   If Draco k-dimensional (k-d) tree is used for compression, ["xyz"] and ["xyz", "intensity"] are supported.
+        # 
         # This parameter is required.
         self.point_cloud_fields_shrink = point_cloud_fields_shrink
+        # The file format. Set the value to the default value: pcd.
         self.point_cloud_file_format = point_cloud_file_format
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URL of the PCD file.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The custom tags, which can be used to search for and filter asynchronous tasks.
         self.tags_shrink = tags_shrink
+        # The OSS URL of the output file after compression.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.target_uri = target_uri
+        # The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -9193,8 +10079,11 @@ class CreateCompressPointCloudTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -9271,6 +10160,8 @@ class CreateCustomizedStoryRequestCover(TeaModel):
         self,
         uri: str = None,
     ):
+        # The URI of the cover image.
+        # 
         # This parameter is required.
         self.uri = uri
 
@@ -9299,6 +10190,8 @@ class CreateCustomizedStoryRequestFiles(TeaModel):
         self,
         uri: str = None,
     ):
+        # The URIs of the files.
+        # 
         # This parameter is required.
         self.uri = uri
 
@@ -9334,19 +10227,34 @@ class CreateCustomizedStoryRequest(TeaModel):
         story_sub_type: str = None,
         story_type: str = None,
     ):
+        # The cover image of the story. You can specify an image as the cover image of the custom story.
+        # 
         # This parameter is required.
         self.cover = cover
+        # The custom labels. You can specify labels to help you identify and retrieve the story.
         self.custom_labels = custom_labels
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The files of the story. You can specify up to 100 files in a custom story.
+        # 
         # This parameter is required.
         self.files = files
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The name of the story.
+        # 
         # This parameter is required.
         self.story_name = story_name
+        # The subtype of the story. For information about valid subtypes, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+        # 
         # This parameter is required.
         self.story_sub_type = story_sub_type
+        # The type of the story. For information about valid types, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+        # 
         # This parameter is required.
         self.story_type = story_type
 
@@ -9421,19 +10329,34 @@ class CreateCustomizedStoryShrinkRequest(TeaModel):
         story_sub_type: str = None,
         story_type: str = None,
     ):
+        # The cover image of the story. You can specify an image as the cover image of the custom story.
+        # 
         # This parameter is required.
         self.cover_shrink = cover_shrink
+        # The custom labels. You can specify labels to help you identify and retrieve the story.
         self.custom_labels_shrink = custom_labels_shrink
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The files of the story. You can specify up to 100 files in a custom story.
+        # 
         # This parameter is required.
         self.files_shrink = files_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The name of the story.
+        # 
         # This parameter is required.
         self.story_name = story_name
+        # The subtype of the story. For information about valid subtypes, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+        # 
         # This parameter is required.
         self.story_sub_type = story_sub_type
+        # The type of the story. For information about valid types, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+        # 
         # This parameter is required.
         self.story_type = story_type
 
@@ -9491,7 +10414,9 @@ class CreateCustomizedStoryResponseBody(TeaModel):
         object_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the story.
         self.object_id = object_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9572,16 +10497,31 @@ class CreateDatasetRequest(TeaModel):
         project_name: str = None,
         template_id: str = None,
     ):
+        # The maximum number of bindings for the dataset. Valid values: 1 to 10. Default value: 10.
         self.dataset_max_bind_count = dataset_max_bind_count
+        # The maximum number of metadata entities in the dataset. Default value: 10000000000.
         self.dataset_max_entity_count = dataset_max_entity_count
+        # The maximum number of files in the dataset. Valid values: 1 to 100000000. Default value: 100000000.
         self.dataset_max_file_count = dataset_max_file_count
+        # The maximum number of metadata relationships in the dataset. Default value: 100000000000.
         self.dataset_max_relation_count = dataset_max_relation_count
+        # The maximum total file size for the dataset. If the total file size of the dataset exceeds this limit, indexes can no longer be added. Default value: 90000000000000000. Unit: bytes.
         self.dataset_max_total_file_size = dataset_max_total_file_size
+        # The name of the dataset. The dataset name must be unique in the same project. The name must meet the following requirements:
+        # 
+        # *   The name must be 1 to 128 characters in length.
+        # *   The name can contain only letters, digits, hyphens (-), and underscores (_).
+        # *   The name must start with a letter or underscore (_).
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The description of the dataset. The description must be 1 to 256 characters in length. You can leave this parameter empty.
         self.description = description
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
         self.template_id = template_id
 
     def validate(self):
@@ -9642,7 +10582,9 @@ class CreateDatasetResponseBody(TeaModel):
         dataset: Dataset = None,
         request_id: str = None,
     ):
+        # The information about the dataset.
         self.dataset = dataset
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9725,16 +10667,39 @@ class CreateDecodeBlindWatermarkTaskRequest(TeaModel):
         target_uri: str = None,
         watermark_type: str = None,
     ):
+        # The quality of the output image.
+        # The higher the quality, the larger the image size and the higher the watermark resolution quality.
         self.image_quality = image_quality
+        # The watermark algorithm model.Valid values: FFT, FFT_FULL, DWT, and DWT_IBG. Default value: FFT.
+        # 
+        # If this parameter is left empty, the DecodeBlindWatermark operation is called. Otherwise, the CreateDecodeBlindWatermarkTask operation is called.
         self.model = model
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The OSS URI of the image before the blind watermark is added. 
+        # 
+        # Do not specify this parameter when you set the Model parameter to DWT or DWT_IBG.
+        # 
+        # Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
         self.original_image_uri = original_image_uri
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URI of the image.
+        # 
+        # Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The watermark strength level. The higher the strength level, the more resistant the watermarked image is to attacks, but the more the image is distorted. Valid values: low, medium, and high. Default value: low.
         self.strength_level = strength_level
+        # The OSS URI of the output image.
+        # Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
         self.target_uri = target_uri
+        # The type of the watermark. Valid value: text.
+        # 
+        # No image watermarks are supported.
         self.watermark_type = watermark_type
 
     def validate(self):
@@ -9804,16 +10769,39 @@ class CreateDecodeBlindWatermarkTaskShrinkRequest(TeaModel):
         target_uri: str = None,
         watermark_type: str = None,
     ):
+        # The quality of the output image.
+        # The higher the quality, the larger the image size and the higher the watermark resolution quality.
         self.image_quality = image_quality
+        # The watermark algorithm model.Valid values: FFT, FFT_FULL, DWT, and DWT_IBG. Default value: FFT.
+        # 
+        # If this parameter is left empty, the DecodeBlindWatermark operation is called. Otherwise, the CreateDecodeBlindWatermarkTask operation is called.
         self.model = model
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The OSS URI of the image before the blind watermark is added. 
+        # 
+        # Do not specify this parameter when you set the Model parameter to DWT or DWT_IBG.
+        # 
+        # Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
         self.original_image_uri = original_image_uri
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URI of the image.
+        # 
+        # Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The watermark strength level. The higher the strength level, the more resistant the watermarked image is to attacks, but the more the image is distorted. Valid values: low, medium, and high. Default value: low.
         self.strength_level = strength_level
+        # The OSS URI of the output image.
+        # Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
         self.target_uri = target_uri
+        # The type of the watermark. Valid value: text.
+        # 
+        # No image watermarks are supported.
         self.watermark_type = watermark_type
 
     def validate(self):
@@ -9875,8 +10863,11 @@ class CreateDecodeBlindWatermarkTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -9953,6 +10944,9 @@ class CreateFacesSearchingTaskRequestSources(TeaModel):
         self,
         uri: str = None,
     ):
+        # The OSS URI of the image.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.uri = uri
 
     def validate(self):
@@ -9985,13 +10979,21 @@ class CreateFacesSearchingTaskRequest(TeaModel):
         sources: List[CreateFacesSearchingTaskRequestSources] = None,
         user_data: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The number of the most similar faces that you want to return. Valid values: 1 to 100. Default value: 5.
         self.max_result = max_result
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The images.
         self.sources = sources
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -10055,13 +11057,21 @@ class CreateFacesSearchingTaskShrinkRequest(TeaModel):
         sources_shrink: str = None,
         user_data: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The number of the most similar faces that you want to return. Valid values: 1 to 100. Default value: 5.
         self.max_result = max_result
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The images.
         self.sources_shrink = sources_shrink
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -10111,8 +11121,11 @@ class CreateFacesSearchingTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -10193,12 +11206,19 @@ class CreateFigureClusteringTaskRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags = tags
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -10248,12 +11268,19 @@ class CreateFigureClusteringTaskShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags_shrink = tags_shrink
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -10299,8 +11326,11 @@ class CreateFigureClusteringTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -10384,16 +11414,27 @@ class CreateFigureClustersMergingTaskRequest(TeaModel):
         to: str = None,
         user_data: str = None,
     ):
+        # The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The ID of the source group. You must specify either From or Froms, but not both.
         self.from_ = from_
+        # The IDs of source clustering groups. You must specify either From or Froms, but not both. You can specify up to 100 task IDs.
         self.froms = froms
+        # The notification message configurations. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
         self.notification = notification
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom tags, which can be used to search for and filter asynchronous tasks.
         self.tags = tags
+        # The ID of the destination clustering group.
+        # 
         # This parameter is required.
         self.to = to
+        # The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -10458,16 +11499,27 @@ class CreateFigureClustersMergingTaskShrinkRequest(TeaModel):
         to: str = None,
         user_data: str = None,
     ):
+        # The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The ID of the source group. You must specify either From or Froms, but not both.
         self.from_ = from_
+        # The IDs of source clustering groups. You must specify either From or Froms, but not both. You can specify up to 100 task IDs.
         self.froms_shrink = froms_shrink
+        # The notification message configurations. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
         self.notification_shrink = notification_shrink
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom tags, which can be used to search for and filter asynchronous tasks.
         self.tags_shrink = tags_shrink
+        # The ID of the destination clustering group.
+        # 
         # This parameter is required.
         self.to = to
+        # The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -10525,8 +11577,11 @@ class CreateFigureClustersMergingTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -10605,8 +11660,27 @@ class CreateFileCompressionTaskRequestSources(TeaModel):
         mode: str = None,
         uri: str = None,
     ):
+        # Specifies the path of the object in the package, or renames the object in the package.
+        # 
+        # *   Leave this parameter empty to retain the original directory structure of the object in the package. For example, if the object is stored at `oss://test-bucket/test-dir/test-object.doc` and you do not specify this parameter, the path of the object in the package is `/test-dir/test-object.doc`.
+        # *   Rename the object. For example, if the object is stored at `oss://test-bucket/test-object.jpg` and you set the **Alias** parameter to `test-rename-object.jpg`, the name of the object in the package is `test-rename-object.jpg`.
+        # *   Specify a different path for the object in the package. For example, if the directory to be packed is `oss://test-bucket/test-dir/` and you set the **Alias** parameter to `/new-dir/`, all objects in the directory are placed in the `/new-dir/` path in the package.
+        # *   Set the parameter to `/` to remove the original directory structure.
+        # 
+        # >  Duplicate object names may cause a failure in extracting the objects from the package, depending on the packing tool that you use. We recommend that you avoid using duplicate object names when you rename objects in the packing task.
         self.alias = alias
+        # The object matching rule. Valid values: `fullname` and `prefix`. Default value: `prefix`
+        # 
+        # *   `prefix`: matches objects by object name prefix.
+        # *   `fullname`: exactly matches one single object by its full object name.
         self.mode = mode
+        # The OSS URI of the object or directory.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is a directory or object:
+        # 
+        # When you pack a directory, `${Object}` is the path of the directory.
+        # 
+        # *   When you pack an object, `${Object}` is the path of the object with the extension included.
         self.uri = uri
 
     def validate(self):
@@ -10649,15 +11723,37 @@ class CreateFileCompressionTaskRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
+        # The format of the package. Default value: zip.
+        # 
+        # >  Only the ZIP format is supported.
         self.compressed_format = compressed_format
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URI of the inventory object that contains the objects to compress. The inventory object stores the objects to compress by using the same data structure of the Sources parameter in the JSON format. This parameter is suitable for specifying a large number of objects to compress.
+        # 
+        # >  You must specify this parameter or the `Sources` parameter. The `URI` parameter is required and the `Alias` parameter is optional. You can specify up to 80,000 compression rule by using SourceManifestURI in one single call to the operation. The following line provides an example of the content within an inventory object.
+        # 
+        #     [{"URI":"oss://<bucket>/<object>", "Alias":"/new-dir/new-name"}]
         self.source_manifest_uri = source_manifest_uri
+        # The objects to be packed and packing rules.
+        # 
+        # >  You must specify this parameter or the SourceManifestURI parameter. The Sources parameter can hold up to 100 packing rules. If you want to include more than 100 packing rules, use the SourceManifestURI parameter.
         self.sources = sources
+        # The OSS URI of the package. The object name part in the URI is used as the name of the package. Example: `name.zip`.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.target_uri = target_uri
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -10734,15 +11830,37 @@ class CreateFileCompressionTaskShrinkRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
+        # The format of the package. Default value: zip.
+        # 
+        # >  Only the ZIP format is supported.
         self.compressed_format = compressed_format
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URI of the inventory object that contains the objects to compress. The inventory object stores the objects to compress by using the same data structure of the Sources parameter in the JSON format. This parameter is suitable for specifying a large number of objects to compress.
+        # 
+        # >  You must specify this parameter or the `Sources` parameter. The `URI` parameter is required and the `Alias` parameter is optional. You can specify up to 80,000 compression rule by using SourceManifestURI in one single call to the operation. The following line provides an example of the content within an inventory object.
+        # 
+        #     [{"URI":"oss://<bucket>/<object>", "Alias":"/new-dir/new-name"}]
         self.source_manifest_uri = source_manifest_uri
+        # The objects to be packed and packing rules.
+        # 
+        # >  You must specify this parameter or the SourceManifestURI parameter. The Sources parameter can hold up to 100 packing rules. If you want to include more than 100 packing rules, use the SourceManifestURI parameter.
         self.sources_shrink = sources_shrink
+        # The OSS URI of the package. The object name part in the URI is used as the name of the package. Example: `name.zip`.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.target_uri = target_uri
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -10800,8 +11918,11 @@ class CreateFileCompressionTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -10885,15 +12006,31 @@ class CreateFileUncompressionTaskRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The password that protects the package.
         self.password = password
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The files to extract. If you do not specify this parameter, the entire package is decompressed.
         self.selected_files = selected_files
+        # The OSS URI of the package.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The OSS URI to which you want to extract files from the package or decompress the entire package.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.target_uri = target_uri
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -10961,15 +12098,31 @@ class CreateFileUncompressionTaskShrinkRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The password that protects the package.
         self.password = password
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The files to extract. If you do not specify this parameter, the entire package is decompressed.
         self.selected_files_shrink = selected_files_shrink
+        # The OSS URI of the package.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The OSS URI to which you want to extract files from the package or decompress the entire package.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.target_uri = target_uri
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -11027,8 +12180,11 @@ class CreateFileUncompressionTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -11113,17 +12269,29 @@ class CreateImageModerationTaskRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
+        # The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The time interval between two consecutive frames in a GIF or long image. Default value: 1.
         self.interval = interval
+        # The maximum number of frames that can be captured in a GIF or long image. Default value: 1.
         self.max_frames = max_frames
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+        # The notification settings. For more information, click Notification. For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The scenarios in which you want to apply the image moderation task.
         self.scenes = scenes
+        # The URI of the Object Storage Service (OSS) bucket in which you store the image.
+        # 
+        # Specify the value in the `oss://<Bucket>/<Object>` format. `<Bucket>` specifies the name of the OSS bucket that resides in the same region as the current project. `<Object>` specifies the complete path to the image file that has an extension.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags = tags
+        # The user data, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the user data is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -11196,17 +12364,29 @@ class CreateImageModerationTaskShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
+        # The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The time interval between two consecutive frames in a GIF or long image. Default value: 1.
         self.interval = interval
+        # The maximum number of frames that can be captured in a GIF or long image. Default value: 1.
         self.max_frames = max_frames
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+        # The notification settings. For more information, click Notification. For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The scenarios in which you want to apply the image moderation task.
         self.scenes_shrink = scenes_shrink
+        # The URI of the Object Storage Service (OSS) bucket in which you store the image.
+        # 
+        # Specify the value in the `oss://<Bucket>/<Object>` format. `<Bucket>` specifies the name of the OSS bucket that resides in the same region as the current project. `<Object>` specifies the complete path to the image file that has an extension.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags_shrink = tags_shrink
+        # The user data, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the user data is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -11268,8 +12448,11 @@ class CreateImageModerationTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -11347,7 +12530,19 @@ class CreateImageSplicingTaskRequestSources(TeaModel):
         rotate: int = None,
         uri: str = None,
     ):
+        # The rotation angle. Valid values:
+        # 
+        # *   0 (default)
+        # *   90
+        # *   180
+        # *   270
         self.rotate = rotate
+        # The Object Storage Service (OSS) bucket in which you store the input images.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the input images that have an extension.
+        # 
+        # The following image formats are supported: jpg and png.
+        # 
         # This parameter is required.
         self.uri = uri
 
@@ -11394,23 +12589,60 @@ class CreateImageSplicingTaskRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
+        # The width or height with which the input images must align. Valid values: 1 to 4096. Unit: px.
+        # 
+        # *   If you set **Direction** to `vertical`, this parameter specifies the width with which the input images must align.
+        # *   If you set **Direction** to `horizontal`, this parameter specifies the height with which the input images must align.
+        # 
+        # >  If you do not specify this parameter, the width or height of the first input image is used.
         self.align = align
+        # The padding color of the spaces specified by `Padding` and `Margin`. Colors encoded in the `#FFFFFF` format and colors that are related to preset keywords such as `red` and `alpha` are supported.
         self.background_color = background_color
+        # The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The splicing method. Valid values:
+        # 
+        # *   vertical (default): All input images are vertically aligned and have the same width.
+        # *   horizontal: All input images are horizontally aligned and have the same height.
         self.direction = direction
+        # The compression format of the output image. Valid values:
+        # 
+        # *   jpg (default)
+        # *   png
+        # *   webp
         self.image_format = image_format
+        # The empty space or border around the edges of the output image. Default value: 0. Unit: px.
         self.margin = margin
+        # The notification settings. For more information, click Notification. For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The space between component images in the output image. Default value: 0. Unit: px.
         self.padding = padding
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The compression quality of the output image. This parameter takes effect only for JPG and WebP images. Valid values: 0 to 100. Default value: 80.
         self.quality = quality
+        # The scaling mode of the input images that are vertically or horizontally aligned. Valid values:
+        # 
+        # *   fit (default): Input images are scaled proportionally, and black edges are not retained.
+        # *   stretch: Input images are stretched to fill the space.
+        # *   horizon: Input images are horizontally stretched.
+        # *   vertical: Input images are vertically stretched.
         self.scale_type = scale_type
+        # The input images. The images are sliced in the order of the input image URIs.
+        # 
         # This parameter is required.
         self.sources = sources
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags = tags
+        # The OSS bucket in which you want to store the output image.
+        # 
+        # Specify the value in the oss://${bucketname}/${objectname} format. ${bucketname} specifies the name of the OSS bucket that resides in the same region as the current project. ${objectname} specifies the path to the output image.
+        # 
         # This parameter is required.
         self.target_uri = target_uri
+        # The user data, which is returned as asynchronous notifications to help manage notifications within your system. The maximum length of the user data is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -11522,23 +12754,60 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
+        # The width or height with which the input images must align. Valid values: 1 to 4096. Unit: px.
+        # 
+        # *   If you set **Direction** to `vertical`, this parameter specifies the width with which the input images must align.
+        # *   If you set **Direction** to `horizontal`, this parameter specifies the height with which the input images must align.
+        # 
+        # >  If you do not specify this parameter, the width or height of the first input image is used.
         self.align = align
+        # The padding color of the spaces specified by `Padding` and `Margin`. Colors encoded in the `#FFFFFF` format and colors that are related to preset keywords such as `red` and `alpha` are supported.
         self.background_color = background_color
+        # The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The splicing method. Valid values:
+        # 
+        # *   vertical (default): All input images are vertically aligned and have the same width.
+        # *   horizontal: All input images are horizontally aligned and have the same height.
         self.direction = direction
+        # The compression format of the output image. Valid values:
+        # 
+        # *   jpg (default)
+        # *   png
+        # *   webp
         self.image_format = image_format
+        # The empty space or border around the edges of the output image. Default value: 0. Unit: px.
         self.margin = margin
+        # The notification settings. For more information, click Notification. For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The space between component images in the output image. Default value: 0. Unit: px.
         self.padding = padding
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The compression quality of the output image. This parameter takes effect only for JPG and WebP images. Valid values: 0 to 100. Default value: 80.
         self.quality = quality
+        # The scaling mode of the input images that are vertically or horizontally aligned. Valid values:
+        # 
+        # *   fit (default): Input images are scaled proportionally, and black edges are not retained.
+        # *   stretch: Input images are stretched to fill the space.
+        # *   horizon: Input images are horizontally stretched.
+        # *   vertical: Input images are vertically stretched.
         self.scale_type = scale_type
+        # The input images. The images are sliced in the order of the input image URIs.
+        # 
         # This parameter is required.
         self.sources_shrink = sources_shrink
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags_shrink = tags_shrink
+        # The OSS bucket in which you want to store the output image.
+        # 
+        # Specify the value in the oss://${bucketname}/${objectname} format. ${bucketname} specifies the name of the OSS bucket that resides in the same region as the current project. ${objectname} specifies the path to the output image.
+        # 
         # This parameter is required.
         self.target_uri = target_uri
+        # The user data, which is returned as asynchronous notifications to help manage notifications within your system. The maximum length of the user data is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -11624,8 +12893,11 @@ class CreateImageSplicingTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -11703,7 +12975,19 @@ class CreateImageToPDFTaskRequestSources(TeaModel):
         rotate: int = None,
         uri: str = None,
     ):
+        # The rotation angle. Valid values:
+        # 
+        # *   0 (default)
+        # *   90
+        # *   180
+        # *   270
         self.rotate = rotate
+        # The OSS URI of the input image.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
+        # The operation supports the following image formats: JPG, JP2, PNG, TIFF, WebP, BMP, and SVG.
+        # 
         # This parameter is required.
         self.uri = uri
 
@@ -11742,15 +13026,29 @@ class CreateImageToPDFTaskRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The list of images. The sequence of image URIs in the list determines the order in which they are converted.
+        # 
         # This parameter is required.
         self.sources = sources
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags = tags
+        # The OSS URI of the output file.
+        # 
+        # Specify the OSS URI in the oss://${bucketname}/${objectname} format, where ${bucketname} is the name of the bucket in the same region as the current project and ${objectname} is the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.target_uri = target_uri
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -11822,15 +13120,29 @@ class CreateImageToPDFTaskShrinkRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The list of images. The sequence of image URIs in the list determines the order in which they are converted.
+        # 
         # This parameter is required.
         self.sources_shrink = sources_shrink
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags_shrink = tags_shrink
+        # The OSS URI of the output file.
+        # 
+        # Specify the OSS URI in the oss://${bucketname}/${objectname} format, where ${bucketname} is the name of the bucket in the same region as the current project and ${objectname} is the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.target_uri = target_uri
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -11884,8 +13196,11 @@ class CreateImageToPDFTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -11964,10 +13279,24 @@ class CreateLocationDateClusteringTaskRequestDateOptions(TeaModel):
         max_days: int = None,
         min_days: int = None,
     ):
+        # The maximum number of days allowed in a gap for a single spatiotemporal cluster. Valid values: 0 to 99999.
+        # 
+        # For example, if travel photos were produced on March 4, 5, and 7, 2024, but not on Marh 6, 2024, and you set the parameter to 1, IMM considers the travel spanning the date range from March 4, 2024 to March 7, 2024 and includes photos within the data range in the same cluster.````
+        # 
+        # We recommend that you set the parameter to a value within the range from 0 to 3.
+        # 
         # This parameter is required.
         self.gap_days = gap_days
+        # The maximum number of days that a single spatiotemporal cluster can span. Valid values: 1 to 99999. IMM does not create a cluster that spans more than the maximum number of days.
+        # 
+        # For example, if you want to create travel photo clusters, you may want to exclude photos that were taken within 15 consecutive days in the same city, because it is likely that these photos were not taken during a travel. In this case, you can set the parameter to 15 to exclude this time range and location from the clustering task.
+        # 
         # This parameter is required.
         self.max_days = max_days
+        # The minimum number of days that a single spatiotemporal cluster can span. Valid values: 1 to 99999. IMM does not create a cluster that spans less than the minimum number of days.
+        # 
+        # For example, if you do not want a one-day tour cluster, you can set the parameter to 2.
+        # 
         # This parameter is required.
         self.min_days = min_days
 
@@ -12004,6 +13333,14 @@ class CreateLocationDateClusteringTaskRequestLocationOptions(TeaModel):
         self,
         location_date_cluster_levels: List[str] = None,
     ):
+        # The administrative division levels. You can specify multiple administrative division levels.
+        # 
+        # For example, you uploaded photos that were taken from March 3, 2024 to March 5, 2024 in Hangzhou and photos that were taken from March 6, 2024 to March 8, 2024 in Jiaxing. When you call the operation and set the parameter to `["city", "province"]`, the following spatiotemporal clusters are created from these photos:
+        # 
+        # *   March 3, 2024 to March 5, 2024, Hangzhou
+        # *   March 6, 2024 to March 8, 2024, Jiaxing
+        # *   March 3, 2024 to March 8, 2024, Zhejiang
+        # 
         # This parameter is required.
         self.location_date_cluster_levels = location_date_cluster_levels
 
@@ -12038,16 +13375,31 @@ class CreateLocationDateClusteringTaskRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The date configurations for clustering.
+        # 
+        # >  Adjusting these configurations affects existing spatiotemporal clusters for the dataset.
+        # 
         # This parameter is required.
         self.date_options = date_options
+        # The geolocation configurations for clustering.
+        # 
+        # >  Adjusting these configurations affects existing spatiotemporal clusters for the dataset.
+        # 
         # This parameter is required.
         self.location_options = location_options
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags = tags
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -12113,16 +13465,31 @@ class CreateLocationDateClusteringTaskShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The date configurations for clustering.
+        # 
+        # >  Adjusting these configurations affects existing spatiotemporal clusters for the dataset.
+        # 
         # This parameter is required.
         self.date_options_shrink = date_options_shrink
+        # The geolocation configurations for clustering.
+        # 
+        # >  Adjusting these configurations affects existing spatiotemporal clusters for the dataset.
+        # 
         # This parameter is required.
         self.location_options_shrink = location_options_shrink
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags_shrink = tags_shrink
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -12176,8 +13543,11 @@ class CreateLocationDateClusteringTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -12256,8 +13626,11 @@ class CreateMediaConvertTaskRequestSourcesSubtitles(TeaModel):
         time_offset: float = None,
         uri: str = None,
     ):
+        # The subtitle language. If you specify this parameter, comply with the ISO 639-2 standard. This parameter is left empty by default.
         self.language = language
+        # The time offset of the subtitle. Unit: seconds. Default value: 0.
         self.time_offset = time_offset
+        # The URI of the Object Storage Service (OSS) bucket. Specify the value in the `oss://${Bucket}/${Object}` format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region with the current project. `${Object}` specifies the complete path to the file whose name contains an extension. The following subtitle formats are supported: srt, vtt, mov_text, ass, dvd_sub, and pgs.
         self.uri = uri
 
     def validate(self):
@@ -12296,9 +13669,16 @@ class CreateMediaConvertTaskRequestSources(TeaModel):
         subtitles: List[CreateMediaConvertTaskRequestSourcesSubtitles] = None,
         uri: str = None,
     ):
+        # The transcoding duration of the media. Unit: seconds. Default value: 0. A value of 0 specifies that the transcoding duration lasts until the end of the video.
         self.duration = duration
+        # The start time of the media transcoding task. Unit: seconds. Valid values:
+        # 
+        # *   0 (default): starts transcoding when the media starts playing.
+        # *   n: starts transcoding n seconds after the media starts playing. n must be greater than 0.
         self.start_time = start_time
+        # The subtitles. By default, this parameter is left empty.
         self.subtitles = subtitles
+        # The URI of the Object Storage Service (OSS) bucket. Specify the value in the `oss://${Bucket}/${Object}` format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region with the current project. `${Object}` specifies the complete path to the file whose name contains an extension.
         self.uri = uri
 
     def validate(self):
@@ -12348,8 +13728,14 @@ class CreateMediaConvertTaskRequestTargetsSegment(TeaModel):
         format: str = None,
         start_number: int = None,
     ):
+        # The duration of the segment. Unit: seconds.
         self.duration = duration
+        # The media segmentation mode. Valid values:
+        # 
+        # *   hls
+        # *   dash
         self.format = format
+        # The start sequence number. You can specify this parameter only if you set Format to hls. Default value: 0.
         self.start_number = start_number
 
     def validate(self):
@@ -12393,14 +13779,48 @@ class CreateMediaConvertTaskRequestTargets(TeaModel):
         uri: str = None,
         video: TargetVideo = None,
     ):
+        # The audio processing settings.
+        # 
+        # >  If you leave Audio empty and the first audio stream exists, the first audio stream is directly copied to the output file.
         self.audio = audio
+        # The type of the media container.
+        # 
+        # *   Valid values for audio and video containers: mp4, mkv, mov, asf, avi, mxf, ts, and flv.
+        # 
+        # *   Valid values only for audio containers: mp3, aac, flac, oga, ac3, and opus.
+        # 
+        #     **\
+        # 
+        #     **Note** Specify Container and URI at the same time. If you want to extract subtitles, capture frames, capture image sprites, or rotate media images, set Container and URI to null. In this case, Segment, Video, Audio, and Speed do not take effect.
         self.container = container
+        # The frame capturing, sprite capturing, and media rotation settings.
         self.image = image
+        # The media segmentation settings. By default, no segmentation is performed.
         self.segment = segment
+        # The playback speed of the media. Valid values: 0.5 to 2. Default value: 1.0.
+        # 
+        # >  This parameter specifies the ratio of the non-regular playback speed of the transcoded media file to the default playback speed of the source media file.
         self.speed = speed
+        # Specifies whether to remove the metadata, such as `title` and `album`, from the media file. Default value: false.
         self.strip_metadata = strip_metadata
+        # The subtitle processing settings.
+        # 
+        # >  If you leave Subtitle empty and the first subtitle stream exists, the first subtitle stream is directly copied to the output file.
         self.subtitle = subtitle
+        # The URI of the OSS bucket in which you want to store the media transcoding output file.
+        # 
+        # Specify the value in the `oss://${Bucket}/${Object}` format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region with the current project. `${Object}` specifies the complete path to the file whose name contains an extension.
+        # 
+        # *   If the value of **URI** contains an extension, the endpoint of the OSS bucket matches the URI. If multiple media transcoding output files exist, the endpoints of the correspodning OSS buckets may be overwritten.****\
+        # 
+        # *   If the value of **URI** does not contain an extension, the endpoint of the OSS bucket consists of the following parameters: **URI**, **Container**, and **Segment**. In the following examples, the value of **URI** is `oss://examplebucket/outputVideo`.
+        # 
+        #     *   If the value of **Container** is `mp4` and the value of **Segment** is null, the endpoint of the OSS bucket is `oss://examplebucket/outputVideo.mp4`.
+        #     *   If the value of **Container** is `ts` and the value of **Format** in **Segment** is `hls`, the endpoint of the OSS bucket is `oss://examplebucket/outputVideo.m3u8`. In addition, multiple ts files prefixed with `oss://examplebucket/outputVideo` are generated.
         self.uri = uri
+        # The video processing settings.
+        # 
+        # >  If you leave Video empty and the first video stream exists, the first video stream is directly copied to the output file.
         self.video = video
 
     def validate(self):
@@ -12481,17 +13901,29 @@ class CreateMediaConvertTaskRequest(TeaModel):
         targets: List[CreateMediaConvertTaskRequestTargets] = None,
         user_data: str = None,
     ):
+        # The sequence number of the main media file in the concatenation list of media files. The main media file provides the default transcoding settings, such as the resolution and the frame rate, for videos and audios. Default value: `0`. A value of `0` specifies that the main media file is aligned with the first media file in the concatenation list.
         self.alignment_index = alignment_index
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+        # The notification settings. For more information, see "Notification". For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The source media files. If multiple files exist at the same time, the Concat feature is enabled. The video files are concatenated in the order of their URI inputs.
+        # 
         # This parameter is required.
         self.sources = sources
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags = tags
+        # The media processing tasks. You can specify multiple values for this parameter.
+        # 
         # This parameter is required.
         self.targets = targets
+        # The custom information, which is returned as asynchronous notifications to facilitate notification management in your system. The maximum information length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -12577,17 +14009,29 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
         targets_shrink: str = None,
         user_data: str = None,
     ):
+        # The sequence number of the main media file in the concatenation list of media files. The main media file provides the default transcoding settings, such as the resolution and the frame rate, for videos and audios. Default value: `0`. A value of `0` specifies that the main media file is aligned with the first media file in the concatenation list.
         self.alignment_index = alignment_index
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+        # The notification settings. For more information, see "Notification". For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The source media files. If multiple files exist at the same time, the Concat feature is enabled. The video files are concatenated in the order of their URI inputs.
+        # 
         # This parameter is required.
         self.sources_shrink = sources_shrink
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags_shrink = tags_shrink
+        # The media processing tasks. You can specify multiple values for this parameter.
+        # 
         # This parameter is required.
         self.targets_shrink = targets_shrink
+        # The custom information, which is returned as asynchronous notifications to facilitate notification management in your system. The maximum information length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -12645,8 +14089,11 @@ class CreateMediaConvertTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -12718,6 +14165,39 @@ class CreateMediaConvertTaskResponse(TeaModel):
         return self
 
 
+class CreateOfficeConversionTaskRequestSources(TeaModel):
+    def __init__(
+        self,
+        rotate: int = None,
+        uri: str = None,
+    ):
+        self.rotate = rotate
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rotate is not None:
+            result['Rotate'] = self.rotate
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Rotate') is not None:
+            self.rotate = m.get('Rotate')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
 class CreateOfficeConversionTaskRequest(TeaModel):
     def __init__(
         self,
@@ -12745,6 +14225,7 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         show_comments: bool = None,
         source_type: str = None,
         source_uri: str = None,
+        sources: List[CreateOfficeConversionTaskRequestSources] = None,
         start_page: int = None,
         tags: Dict[str, Any] = None,
         target_type: str = None,
@@ -12753,39 +14234,151 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         trim_policy: TrimPolicy = None,
         user_data: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The ending page for document conversion. The default value is -1, which converts the file until the last page of the file.
+        # 
+        # > 
+        # 
+        # *   If the source is a spreadsheet file, specify the index number of the corresponding sheet instead.
+        # 
+        # *   If you convert a large number of pages within the document, we recommend that you split the pages into several document conversion tasks to prevent conversion timeouts.
+        # 
+        # *   This parameter takes effect only when you convert the file into an image. It does not take effect when you convert the file into a PDF or TXT file.
         self.end_page = end_page
+        # Specifies whether to return only the first resulting image when you convert a spreadsheet document to images. The number of rows and the number of columns in the first image are determined by the automatic splitting process. Valid values:
+        # 
+        # *   false (default): does not return only the first resulting image. All the resulting images are returned.
+        # *   true: returns only the first resulting image. A thumbnail is generated.
+        # 
+        # >  This parameter takes effect only when the **LongPicture** parameter is set to `true`.
         self.first_page = first_page
+        # Specifies whether to convert all rows of a spreadsheet document to one single image or a single-page PDF document when you convert the table document to an image or a PDF document. Valid values:
+        # 
+        # *   false (default): converts all rows of the document to multiple images or a multi-page PDF document. This is the default value.
+        # *   true: converts all rows of the document to one single image or a single-page PDF document.
         self.fit_to_height = fit_to_height
+        # Specifies whether to convert all columns of a spreadsheet document to one single image or a single-page PDF document when you convert the spreadsheet file to an image or a PDF document. Valid values:
+        # 
+        # *   false (default): converts all columns of the document to multiple images or a multi-page PDF document.
+        # *   true: converts all columns of the document to one single image or a single-page PDF document.
         self.fit_to_width = fit_to_width
+        # Specifies whether to retain line feeds in the output file when a document is converted to a text file. Valid values:
+        # 
+        # *   false (default): does not retain the line feeds.
+        # *   true: retains the line feeds.
         self.hold_line_feed = hold_line_feed
+        # The dots per inch (DPI) of output images. Valid values: 96 to 600. Default value: 96.
         self.image_dpi = image_dpi
+        # Specifies whether to convert the document to a long image. Valid values:
+        # 
+        # *   false (default): does not convert the document to a long image.
+        # *   true: converts the document to a long image.
+        # 
+        # >  You can convert up to 20 pages of a document into a long image. If you convert more than 20 pages to a long image, an error may occur.
         self.long_picture = long_picture
+        # Specifies whether to convert the document to a long text file. Valid values:
+        # 
+        # *   false (default): does not convert the document to a long text file. Each page of the document is converted to a text file.
+        # *   true: converts the entire document to a long text file.
         self.long_text = long_text
+        # The maximum number of spreadsheet columns to be converted to an image. By default, all columns within the spreadsheet file are converted.
+        # 
+        # >  This parameter takes effect only when the **LongPicture** parameter is set to `true`.
         self.max_sheet_column = max_sheet_column
+        # The maximum number of spreadsheet rows to be converted to an image. By default, all rows within the spreadsheet file are converted.
+        # 
+        # >  This parameter takes effect only when the **LongPicture** parameter is set to `true`.
         self.max_sheet_row = max_sheet_row
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The numbers of pages to be converted. This parameter takes precedence over the StartPage and EndPage parameters. The value of this parameter can be in different formats:
+        # 
+        # *   If you specify pages separately by page number, separate page numbers with commas (,). Example: 1,2
+        # *   If you specify consecutive pages by using a page range, connect the starting and ending page numbers with a hyphen (-). Example: 1,2-4,7
         self.pages = pages
+        # Specifies whether to place sheets of paper horizontally for converting a spreadsheet document to images. Conversion to images is similar to printing the content on a sheet of paper. Valid values:
+        # 
+        # *   false (default): does not place sheets of paper horizontally. Paper sheets are placed vertically.
+        # *   true: places sheets of paper horizontally.
         self.paper_horizontal = paper_horizontal
+        # The paper size for converting a spreadsheet document to images. Conversion to images is similar to printing the content on a sheet of paper. Valid values:
+        # 
+        # *   A0
+        # *   A2
+        # *   A4 (default)
+        # 
+        # >  This parameter takes effect only when the **FitToHeight** and **FitToWidth** parameters are specified.
         self.paper_size = paper_size
+        # The password that protects the source document. To convert a password-protected document, specify this parameter.
         self.password = password
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The quality of the output file. Valid values: 0 to 100. A smaller value indicates lower quality and better conversion performance. By default, the system specifies an appropriate value that provides an optimal balance between the quality and conversion performance based on the document content.
         self.quality = quality
+        # The percentage scale relative to the source document. Valid values: 20 to 200. The default value is 100, which indicates that the document is not scaled.
+        # 
+        # >  A value that is less than 100 indicates a size reduction. A value that is greater than 100 indicates an enlargement.
         self.scale_percentage = scale_percentage
+        # The number of sheets to be converted to an image. By default, all sheets within the spreadsheet file are converted.
         self.sheet_count = sheet_count
+        # The index number of the sheet to be converted to an image. The value ranges from 1 to the index number of the last sheet. By default, the conversion starts from the first sheet.
         self.sheet_index = sheet_index
+        # Specifies whether to display comments in resulting images when a text document is converted to images. Valid values:
+        # 
+        # *   false (default): does not display comments in resulting images.
+        # *   true: displays comments in resulting images.
         self.show_comments = show_comments
+        # The name extension of the source file. By default, the type of the source file is determined based on the name extension of the source object in OSS. If the object in OSS does not have a name extension, you can specify this parameter. Valid values:
+        # 
+        # *   Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
+        # *   Presentation documents: pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
+        # *   Spreadsheet documents: xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
+        # *   PDF documents: pdf
         self.source_type = source_type
-        # This parameter is required.
+        # The URI of the source file.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
+        self.sources = sources
+        # The starting page for document conversion. Default value: 1.
+        # 
+        # > 
+        # 
+        # *   If the document is a spreadsheet file, specify the index number of the corresponding sheet instead.
+        # 
+        # *   This parameter takes effect only when you convert the file to an image format. It does not take effect when you convert the file into a PDF or TXT file.
         self.start_page = start_page
+        # The custom tags in dictionary format. You can use the custom tags to search for the task.
         self.tags = tags
+        # The format of the output file. Valid values:
+        # 
+        # *   png: a PNG image.
+        # *   jpg: a JPG image.
+        # *   pdf: a PDF file.
+        # *   txt: a TXT file. You can specify this value to extract the text content of the source document. Only presentation, text, or spreadsheet documents can be converted to a TXT file. If the source document is a spreadsheet, only one TXT is created and sheet-related parameters do not take effect.
+        # 
         # This parameter is required.
         self.target_type = target_type
+        # The address template of the output file.
+        # 
+        # Specify the value in the `oss://{bucket}/{tags.custom}/{dirname}/{barename}.{autoext}` format. For more information, see [TargetURI template](https://help.aliyun.com/document_detail/465762.html).
+        # 
+        # >  Specify at least one of the TargetURI and TargetURIPrefix parameters.
         self.target_uri = target_uri
+        # The prefix of the storage address of the output file.
+        # 
+        # Specify the prefix in the `oss://${Bucket}/${Prefix}/` format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Prefix}` is the prefix of the output file.
+        # 
+        # >  Specify at least one of the TargetURI and TargetURIPrefix parameters.
         self.target_uriprefix = target_uriprefix
+        # The trim policy for converting a spreadsheet file. Empty rows and columns may generate blank spaces in the output file if no appropriate trim policy is specified.
         self.trim_policy = trim_policy
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum information length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -12793,6 +14386,10 @@ class CreateOfficeConversionTaskRequest(TeaModel):
             self.credential_config.validate()
         if self.notification:
             self.notification.validate()
+        if self.sources:
+            for k in self.sources:
+                if k:
+                    k.validate()
         if self.trim_policy:
             self.trim_policy.validate()
 
@@ -12850,6 +14447,10 @@ class CreateOfficeConversionTaskRequest(TeaModel):
             result['SourceType'] = self.source_type
         if self.source_uri is not None:
             result['SourceURI'] = self.source_uri
+        result['Sources'] = []
+        if self.sources is not None:
+            for k in self.sources:
+                result['Sources'].append(k.to_map() if k else None)
         if self.start_page is not None:
             result['StartPage'] = self.start_page
         if self.tags is not None:
@@ -12918,6 +14519,11 @@ class CreateOfficeConversionTaskRequest(TeaModel):
             self.source_type = m.get('SourceType')
         if m.get('SourceURI') is not None:
             self.source_uri = m.get('SourceURI')
+        self.sources = []
+        if m.get('Sources') is not None:
+            for k in m.get('Sources'):
+                temp_model = CreateOfficeConversionTaskRequestSources()
+                self.sources.append(temp_model.from_map(k))
         if m.get('StartPage') is not None:
             self.start_page = m.get('StartPage')
         if m.get('Tags') is not None:
@@ -12963,6 +14569,7 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
         show_comments: bool = None,
         source_type: str = None,
         source_uri: str = None,
+        sources_shrink: str = None,
         start_page: int = None,
         tags_shrink: str = None,
         target_type: str = None,
@@ -12971,39 +14578,151 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
         trim_policy_shrink: str = None,
         user_data: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The ending page for document conversion. The default value is -1, which converts the file until the last page of the file.
+        # 
+        # > 
+        # 
+        # *   If the source is a spreadsheet file, specify the index number of the corresponding sheet instead.
+        # 
+        # *   If you convert a large number of pages within the document, we recommend that you split the pages into several document conversion tasks to prevent conversion timeouts.
+        # 
+        # *   This parameter takes effect only when you convert the file into an image. It does not take effect when you convert the file into a PDF or TXT file.
         self.end_page = end_page
+        # Specifies whether to return only the first resulting image when you convert a spreadsheet document to images. The number of rows and the number of columns in the first image are determined by the automatic splitting process. Valid values:
+        # 
+        # *   false (default): does not return only the first resulting image. All the resulting images are returned.
+        # *   true: returns only the first resulting image. A thumbnail is generated.
+        # 
+        # >  This parameter takes effect only when the **LongPicture** parameter is set to `true`.
         self.first_page = first_page
+        # Specifies whether to convert all rows of a spreadsheet document to one single image or a single-page PDF document when you convert the table document to an image or a PDF document. Valid values:
+        # 
+        # *   false (default): converts all rows of the document to multiple images or a multi-page PDF document. This is the default value.
+        # *   true: converts all rows of the document to one single image or a single-page PDF document.
         self.fit_to_height = fit_to_height
+        # Specifies whether to convert all columns of a spreadsheet document to one single image or a single-page PDF document when you convert the spreadsheet file to an image or a PDF document. Valid values:
+        # 
+        # *   false (default): converts all columns of the document to multiple images or a multi-page PDF document.
+        # *   true: converts all columns of the document to one single image or a single-page PDF document.
         self.fit_to_width = fit_to_width
+        # Specifies whether to retain line feeds in the output file when a document is converted to a text file. Valid values:
+        # 
+        # *   false (default): does not retain the line feeds.
+        # *   true: retains the line feeds.
         self.hold_line_feed = hold_line_feed
+        # The dots per inch (DPI) of output images. Valid values: 96 to 600. Default value: 96.
         self.image_dpi = image_dpi
+        # Specifies whether to convert the document to a long image. Valid values:
+        # 
+        # *   false (default): does not convert the document to a long image.
+        # *   true: converts the document to a long image.
+        # 
+        # >  You can convert up to 20 pages of a document into a long image. If you convert more than 20 pages to a long image, an error may occur.
         self.long_picture = long_picture
+        # Specifies whether to convert the document to a long text file. Valid values:
+        # 
+        # *   false (default): does not convert the document to a long text file. Each page of the document is converted to a text file.
+        # *   true: converts the entire document to a long text file.
         self.long_text = long_text
+        # The maximum number of spreadsheet columns to be converted to an image. By default, all columns within the spreadsheet file are converted.
+        # 
+        # >  This parameter takes effect only when the **LongPicture** parameter is set to `true`.
         self.max_sheet_column = max_sheet_column
+        # The maximum number of spreadsheet rows to be converted to an image. By default, all rows within the spreadsheet file are converted.
+        # 
+        # >  This parameter takes effect only when the **LongPicture** parameter is set to `true`.
         self.max_sheet_row = max_sheet_row
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The numbers of pages to be converted. This parameter takes precedence over the StartPage and EndPage parameters. The value of this parameter can be in different formats:
+        # 
+        # *   If you specify pages separately by page number, separate page numbers with commas (,). Example: 1,2
+        # *   If you specify consecutive pages by using a page range, connect the starting and ending page numbers with a hyphen (-). Example: 1,2-4,7
         self.pages = pages
+        # Specifies whether to place sheets of paper horizontally for converting a spreadsheet document to images. Conversion to images is similar to printing the content on a sheet of paper. Valid values:
+        # 
+        # *   false (default): does not place sheets of paper horizontally. Paper sheets are placed vertically.
+        # *   true: places sheets of paper horizontally.
         self.paper_horizontal = paper_horizontal
+        # The paper size for converting a spreadsheet document to images. Conversion to images is similar to printing the content on a sheet of paper. Valid values:
+        # 
+        # *   A0
+        # *   A2
+        # *   A4 (default)
+        # 
+        # >  This parameter takes effect only when the **FitToHeight** and **FitToWidth** parameters are specified.
         self.paper_size = paper_size
+        # The password that protects the source document. To convert a password-protected document, specify this parameter.
         self.password = password
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The quality of the output file. Valid values: 0 to 100. A smaller value indicates lower quality and better conversion performance. By default, the system specifies an appropriate value that provides an optimal balance between the quality and conversion performance based on the document content.
         self.quality = quality
+        # The percentage scale relative to the source document. Valid values: 20 to 200. The default value is 100, which indicates that the document is not scaled.
+        # 
+        # >  A value that is less than 100 indicates a size reduction. A value that is greater than 100 indicates an enlargement.
         self.scale_percentage = scale_percentage
+        # The number of sheets to be converted to an image. By default, all sheets within the spreadsheet file are converted.
         self.sheet_count = sheet_count
+        # The index number of the sheet to be converted to an image. The value ranges from 1 to the index number of the last sheet. By default, the conversion starts from the first sheet.
         self.sheet_index = sheet_index
+        # Specifies whether to display comments in resulting images when a text document is converted to images. Valid values:
+        # 
+        # *   false (default): does not display comments in resulting images.
+        # *   true: displays comments in resulting images.
         self.show_comments = show_comments
+        # The name extension of the source file. By default, the type of the source file is determined based on the name extension of the source object in OSS. If the object in OSS does not have a name extension, you can specify this parameter. Valid values:
+        # 
+        # *   Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
+        # *   Presentation documents: pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
+        # *   Spreadsheet documents: xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
+        # *   PDF documents: pdf
         self.source_type = source_type
-        # This parameter is required.
+        # The URI of the source file.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
+        self.sources_shrink = sources_shrink
+        # The starting page for document conversion. Default value: 1.
+        # 
+        # > 
+        # 
+        # *   If the document is a spreadsheet file, specify the index number of the corresponding sheet instead.
+        # 
+        # *   This parameter takes effect only when you convert the file to an image format. It does not take effect when you convert the file into a PDF or TXT file.
         self.start_page = start_page
+        # The custom tags in dictionary format. You can use the custom tags to search for the task.
         self.tags_shrink = tags_shrink
+        # The format of the output file. Valid values:
+        # 
+        # *   png: a PNG image.
+        # *   jpg: a JPG image.
+        # *   pdf: a PDF file.
+        # *   txt: a TXT file. You can specify this value to extract the text content of the source document. Only presentation, text, or spreadsheet documents can be converted to a TXT file. If the source document is a spreadsheet, only one TXT is created and sheet-related parameters do not take effect.
+        # 
         # This parameter is required.
         self.target_type = target_type
+        # The address template of the output file.
+        # 
+        # Specify the value in the `oss://{bucket}/{tags.custom}/{dirname}/{barename}.{autoext}` format. For more information, see [TargetURI template](https://help.aliyun.com/document_detail/465762.html).
+        # 
+        # >  Specify at least one of the TargetURI and TargetURIPrefix parameters.
         self.target_uri = target_uri
+        # The prefix of the storage address of the output file.
+        # 
+        # Specify the prefix in the `oss://${Bucket}/${Prefix}/` format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Prefix}` is the prefix of the output file.
+        # 
+        # >  Specify at least one of the TargetURI and TargetURIPrefix parameters.
         self.target_uriprefix = target_uriprefix
+        # The trim policy for converting a spreadsheet file. Empty rows and columns may generate blank spaces in the output file if no appropriate trim policy is specified.
         self.trim_policy_shrink = trim_policy_shrink
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum information length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -13063,6 +14782,8 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
             result['SourceType'] = self.source_type
         if self.source_uri is not None:
             result['SourceURI'] = self.source_uri
+        if self.sources_shrink is not None:
+            result['Sources'] = self.sources_shrink
         if self.start_page is not None:
             result['StartPage'] = self.start_page
         if self.tags_shrink is not None:
@@ -13129,6 +14850,8 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
             self.source_type = m.get('SourceType')
         if m.get('SourceURI') is not None:
             self.source_uri = m.get('SourceURI')
+        if m.get('Sources') is not None:
+            self.sources_shrink = m.get('Sources')
         if m.get('StartPage') is not None:
             self.start_page = m.get('StartPage')
         if m.get('Tags') is not None:
@@ -13153,8 +14876,11 @@ class CreateOfficeConversionTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -13232,7 +14958,9 @@ class CreateProjectRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -13274,17 +15002,39 @@ class CreateProjectRequest(TeaModel):
         tag: List[CreateProjectRequestTag] = None,
         template_id: str = None,
     ):
+        # The maximum number of bindings for each dataset. Valid values: 1 to 10. Default value: 10.
         self.dataset_max_bind_count = dataset_max_bind_count
+        # The maximum number of metadata entities in each dataset. Default value: 10000000000.
+        # 
+        # >  This is a precautionary setting that does not impose practical limitations.
         self.dataset_max_entity_count = dataset_max_entity_count
+        # The maximum number of files in each dataset. Valid values: 1 to 100000000. Default value: 10000000000.
         self.dataset_max_file_count = dataset_max_file_count
+        # The maximum number of metadata relationships in each dataset. Default value: 100000000000.
+        # 
+        # >  This is a precautionary setting that does not impose practical limitations.
         self.dataset_max_relation_count = dataset_max_relation_count
+        # The maximum size of files in each dataset. If the maximum size is exceeded, no indexes can be added. Unit: bytes. Default value: 90000000000000000.
         self.dataset_max_total_file_size = dataset_max_total_file_size
+        # The description of the project. The description must be 1 to 256 characters in length. You can leave this parameter empty.
         self.description = description
+        # The maximum number of datasets in the project. Valid values: 1 to 1000000000. Default value: 1000000000.
         self.project_max_dataset_count = project_max_dataset_count
+        # The name of the project. The name must meet the following requirements:
+        # 
+        # *   The name must be 1 to 128 characters in length
+        # *   and can contain only letters, digits, hyphens (-), and underscores (_).
+        # *   The name must start with a letter or an underscores (_).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The name of the Resource Access Management (RAM) role. You must attach the RAM role to IMM to allow IMM to access other cloud resources, such as Object Storage Service (OSS). Default value: `AliyunIMMDefaultRole`.
+        # 
+        # You can also create a custom role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Grant permissions to a RAM user](https://help.aliyun.com/document_detail/477257.html).
         self.service_role = service_role
+        # The tags.
         self.tag = tag
+        # The ID of the workflow template. You can leave this parameter empty. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
         self.template_id = template_id
 
     def validate(self):
@@ -13370,17 +15120,39 @@ class CreateProjectShrinkRequest(TeaModel):
         tag_shrink: str = None,
         template_id: str = None,
     ):
+        # The maximum number of bindings for each dataset. Valid values: 1 to 10. Default value: 10.
         self.dataset_max_bind_count = dataset_max_bind_count
+        # The maximum number of metadata entities in each dataset. Default value: 10000000000.
+        # 
+        # >  This is a precautionary setting that does not impose practical limitations.
         self.dataset_max_entity_count = dataset_max_entity_count
+        # The maximum number of files in each dataset. Valid values: 1 to 100000000. Default value: 10000000000.
         self.dataset_max_file_count = dataset_max_file_count
+        # The maximum number of metadata relationships in each dataset. Default value: 100000000000.
+        # 
+        # >  This is a precautionary setting that does not impose practical limitations.
         self.dataset_max_relation_count = dataset_max_relation_count
+        # The maximum size of files in each dataset. If the maximum size is exceeded, no indexes can be added. Unit: bytes. Default value: 90000000000000000.
         self.dataset_max_total_file_size = dataset_max_total_file_size
+        # The description of the project. The description must be 1 to 256 characters in length. You can leave this parameter empty.
         self.description = description
+        # The maximum number of datasets in the project. Valid values: 1 to 1000000000. Default value: 1000000000.
         self.project_max_dataset_count = project_max_dataset_count
+        # The name of the project. The name must meet the following requirements:
+        # 
+        # *   The name must be 1 to 128 characters in length
+        # *   and can contain only letters, digits, hyphens (-), and underscores (_).
+        # *   The name must start with a letter or an underscores (_).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The name of the Resource Access Management (RAM) role. You must attach the RAM role to IMM to allow IMM to access other cloud resources, such as Object Storage Service (OSS). Default value: `AliyunIMMDefaultRole`.
+        # 
+        # You can also create a custom role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Grant permissions to a RAM user](https://help.aliyun.com/document_detail/477257.html).
         self.service_role = service_role
+        # The tags.
         self.tag_shrink = tag_shrink
+        # The ID of the workflow template. You can leave this parameter empty. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
         self.template_id = template_id
 
     def validate(self):
@@ -13449,7 +15221,9 @@ class CreateProjectResponseBody(TeaModel):
         project: Project = None,
         request_id: str = None,
     ):
+        # The project. For more information, click Project.
         self.project = project
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13528,12 +15302,19 @@ class CreateSimilarImageClusteringTaskRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags = tags
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -13583,12 +15364,19 @@ class CreateSimilarImageClusteringTaskShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags_shrink = tags_shrink
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -13634,8 +15422,11 @@ class CreateSimilarImageClusteringTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -13728,26 +15519,51 @@ class CreateStoryRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
+        # The address of the story. IMM filters candidate photos to generate a story based on the value of this parameter. This parameter takes effect only if you set StoryType to TravelMemory.
+        # 
+        # >  If you are located in Hong Kong (China), Macao (China), Taiwan (China), or overseas, you cannot specify an address in the Chinese mainland by using this parameter.
         self.address = address
+        # The custom ID. A custom ID of a generated story may differ from the value of ObjectID and can be utilized for subsequent retrieval and sorting of stories.
         self.custom_id = custom_id
+        # The custom labels. Labels specify the custom information of the story. This enables retrieval based on your business requirements.
         self.custom_labels = custom_labels
+        # The name of the dataset. For information about how to obtain the name of a dataset, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The maximum number of photo files in the story. The actual number of photo files ranges from the value of MinFileCount to the value of MaxFileCount. The value of this parameter must be an integer greater than the value of MinFileCount. To provide the desired effect, the algorithm limits the maximum number of photo files to 1,500. If you set MaxFileCount to a value greater than 1,500, this parameter does not take effect.
         self.max_file_count = max_file_count
+        # The minimum number of photo files in the story. The actual number of photo files ranges from the value of MinFileCount to the value of MaxFileCount. The value of this parameter must be an integer greater than 1. If the actual number of candidate photos is less than the value of this parameter, a null story is returned.
         self.min_file_count = min_file_count
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The topic name of the asynchronous reverse notification.
         self.notify_topic_name = notify_topic_name
+        # The ID of the story. This parameter is optional. If you leave this parameter empty, IMM assigns a unique identifier to the story. You can query and update a story based on its ID. You can also manually create an ID for a story. After you create an ID for a story, you must specify this parameter to pass the ID into the system. This way, IMM can record the ID as the unique identifier of the story. If you pass an existing ID into the system, IMM updates the story that corresponds to the ID.
         self.object_id = object_id
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The end time of the photo collection for which you want to create the story. StoryStartTime and StoryEndTime form a time interval based on which IMM filters candidate photos to generate a story. The value must be a string in the RFC3339 format.
         self.story_end_time = story_end_time
+        # The name of the story.
         self.story_name = story_name
+        # The start time of the photo collection for which you want to create the story. StoryStartTime and StoryEndTime form a time interval based on which IMM filters candidate photos to generate a story. The value must be a string in the RFC3339 format.
         self.story_start_time = story_start_time
+        # The subtype of the story. For information about valid subtypes, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
         self.story_sub_type = story_sub_type
+        # The type of the story. For information about valid types, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+        # 
         # This parameter is required.
         self.story_type = story_type
+        # The tags. You can specify this parameter in one of the following scenarios:
+        # 
+        # *   Specify tags as custom data, which is returned in messages provided by Simple Message Queue.
+        # *   Search for tasks by tag.
+        # *   Specify tags as variables in destination URIs.
         self.tags = tags
+        # The custom information, which is returned as asynchronous notifications to facilitate notification management in your system. The maximum information length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -13860,26 +15676,51 @@ class CreateStoryShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
+        # The address of the story. IMM filters candidate photos to generate a story based on the value of this parameter. This parameter takes effect only if you set StoryType to TravelMemory.
+        # 
+        # >  If you are located in Hong Kong (China), Macao (China), Taiwan (China), or overseas, you cannot specify an address in the Chinese mainland by using this parameter.
         self.address_shrink = address_shrink
+        # The custom ID. A custom ID of a generated story may differ from the value of ObjectID and can be utilized for subsequent retrieval and sorting of stories.
         self.custom_id = custom_id
+        # The custom labels. Labels specify the custom information of the story. This enables retrieval based on your business requirements.
         self.custom_labels_shrink = custom_labels_shrink
+        # The name of the dataset. For information about how to obtain the name of a dataset, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The maximum number of photo files in the story. The actual number of photo files ranges from the value of MinFileCount to the value of MaxFileCount. The value of this parameter must be an integer greater than the value of MinFileCount. To provide the desired effect, the algorithm limits the maximum number of photo files to 1,500. If you set MaxFileCount to a value greater than 1,500, this parameter does not take effect.
         self.max_file_count = max_file_count
+        # The minimum number of photo files in the story. The actual number of photo files ranges from the value of MinFileCount to the value of MaxFileCount. The value of this parameter must be an integer greater than 1. If the actual number of candidate photos is less than the value of this parameter, a null story is returned.
         self.min_file_count = min_file_count
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The topic name of the asynchronous reverse notification.
         self.notify_topic_name = notify_topic_name
+        # The ID of the story. This parameter is optional. If you leave this parameter empty, IMM assigns a unique identifier to the story. You can query and update a story based on its ID. You can also manually create an ID for a story. After you create an ID for a story, you must specify this parameter to pass the ID into the system. This way, IMM can record the ID as the unique identifier of the story. If you pass an existing ID into the system, IMM updates the story that corresponds to the ID.
         self.object_id = object_id
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The end time of the photo collection for which you want to create the story. StoryStartTime and StoryEndTime form a time interval based on which IMM filters candidate photos to generate a story. The value must be a string in the RFC3339 format.
         self.story_end_time = story_end_time
+        # The name of the story.
         self.story_name = story_name
+        # The start time of the photo collection for which you want to create the story. StoryStartTime and StoryEndTime form a time interval based on which IMM filters candidate photos to generate a story. The value must be a string in the RFC3339 format.
         self.story_start_time = story_start_time
+        # The subtype of the story. For information about valid subtypes, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
         self.story_sub_type = story_sub_type
+        # The type of the story. For information about valid types, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+        # 
         # This parameter is required.
         self.story_type = story_type
+        # The tags. You can specify this parameter in one of the following scenarios:
+        # 
+        # *   Specify tags as custom data, which is returned in messages provided by Simple Message Queue.
+        # *   Search for tasks by tag.
+        # *   Specify tags as variables in destination URIs.
         self.tags_shrink = tags_shrink
+        # The custom information, which is returned as asynchronous notifications to facilitate notification management in your system. The maximum information length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -13973,8 +15814,11 @@ class CreateStoryResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -14053,9 +15897,13 @@ class CreateTriggerRequestActions(TeaModel):
         name: str = None,
         parameters: List[str] = None,
     ):
+        # The policy configurations for handling failures.
         self.fast_fail_policy = fast_fail_policy
+        # The name of the template.
+        # 
         # This parameter is required.
         self.name = name
+        # The template parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -14093,6 +15941,7 @@ class CreateTriggerRequestNotification(TeaModel):
         self,
         mns: MNS = None,
     ):
+        # The Simple Message Queue notification message configurations.
         self.mns = mns
 
     def validate(self):
@@ -14127,15 +15976,29 @@ class CreateTriggerRequest(TeaModel):
         service_role: str = None,
         tags: Dict[str, Any] = None,
     ):
+        # The processing templates.
+        # 
         # This parameter is required.
         self.actions = actions
+        # The data source configurations.
+        # 
         # This parameter is required.
         self.input = input
+        # The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
+        # 
+        # Activate and connect to EventBridge in the same region as the IMM project. For more information, see IMM events. Activate Simple Message Queue in the same region as the IMM project and configure a subscription.
         self.notification = notification
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The service role. IMM assumes the service role so that it can access resources in other cloud services, such as OSS. Default value: AliyunIMMBatchTriggerRole.
+        # 
+        # You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+        # 
         # This parameter is required.
         self.service_role = service_role
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags = tags
 
     def validate(self):
@@ -14202,15 +16065,29 @@ class CreateTriggerShrinkRequest(TeaModel):
         service_role: str = None,
         tags_shrink: str = None,
     ):
+        # The processing templates.
+        # 
         # This parameter is required.
         self.actions_shrink = actions_shrink
+        # The data source configurations.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
+        # The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
+        # 
+        # Activate and connect to EventBridge in the same region as the IMM project. For more information, see IMM events. Activate Simple Message Queue in the same region as the IMM project and configure a subscription.
         self.notification_shrink = notification_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The service role. IMM assumes the service role so that it can access resources in other cloud services, such as OSS. Default value: AliyunIMMBatchTriggerRole.
+        # 
+        # You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+        # 
         # This parameter is required.
         self.service_role = service_role
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -14259,7 +16136,9 @@ class CreateTriggerResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The ID of the trigger.
         self.id = id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14337,14 +16216,25 @@ class CreateVideoLabelClassificationTaskRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URI of the video file.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The custom tags, which can be used to search for and filter asynchronous tasks.
         self.tags = tags
+        # The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -14402,14 +16292,25 @@ class CreateVideoLabelClassificationTaskShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URI of the video file.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The custom tags, which can be used to search for and filter asynchronous tasks.
         self.tags_shrink = tags_shrink
+        # The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -14459,8 +16360,11 @@ class CreateVideoLabelClassificationTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID of the current task. You can use [EventBridge](https://www.alibabacloud.com/en/product/eventbridge) to query the ID and obtain the task information notification.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The ID of the current task. You can call the [GetTask](~~GetTask~~) operation to view the task information or the [GetVideoLabelClassificationResult](https://help.aliyun.com/document_detail/478224.html) operation to obtain the result of the video label detection task.
         self.task_id = task_id
 
     def validate(self):
@@ -14545,17 +16449,29 @@ class CreateVideoModerationTaskRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The interval of capturing video frames. Unit: seconds. Valid values: 1 to 600. Default value: 1.
         self.interval = interval
+        # The maximum number of frames that can be captured from the video. Valid values: 5 to 3600. Default value: 200.
         self.max_frames = max_frames
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+        # The notification settings. For information about the asynchronous notification format, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
         self.notification = notification
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The scenarios of video moderation.
         self.scenes = scenes
+        # The OSS URI of the video.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The custom tags. The custom tags help you retrieve the task.
         self.tags = tags
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -14628,17 +16544,29 @@ class CreateVideoModerationTaskShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The interval of capturing video frames. Unit: seconds. Valid values: 1 to 600. Default value: 1.
         self.interval = interval
+        # The maximum number of frames that can be captured from the video. Valid values: 5 to 3600. Default value: 200.
         self.max_frames = max_frames
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+        # The notification settings. For information about the asynchronous notification format, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
         self.notification_shrink = notification_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The scenarios of video moderation.
         self.scenes_shrink = scenes_shrink
+        # The OSS URI of the video.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The custom tags. The custom tags help you retrieve the task.
         self.tags_shrink = tags_shrink
+        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -14700,8 +16628,11 @@ class CreateVideoModerationTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -14779,8 +16710,12 @@ class DeleteBatchRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # The ID of the batch processing task.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -14813,6 +16748,7 @@ class DeleteBatchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14883,10 +16819,18 @@ class DeleteBindingRequest(TeaModel):
         project_name: str = None,
         uri: str = None,
     ):
+        # The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the OSS bucket to which the dataset is bound.
+        # 
+        # Specify the value in the oss://${Bucket} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project.
+        # 
         # This parameter is required.
         self.uri = uri
 
@@ -14923,6 +16867,7 @@ class DeleteBindingResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14992,8 +16937,12 @@ class DeleteDatasetRequest(TeaModel):
         dataset_name: str = None,
         project_name: str = None,
     ):
+        # The name of the dataset.[](https://help.aliyun.com/zh/imm/user-guide/create-datasets?spm=a2c4g.11186623.0.0.453e3cbf9vcZrq)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project.[](https://help.aliyun.com/zh/imm/getting-started/create-a-project-1?spm=a2c4g.11186623.0.i30)
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -15026,6 +16975,7 @@ class DeleteDatasetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15096,10 +17046,20 @@ class DeleteFileMetaRequest(TeaModel):
         project_name: str = None,
         uri: str = None,
     ):
+        # The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the file in OSS.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+        # 
+        # The URI of the file in Photo and Drive Service must be in the pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision} format.
+        # 
         # This parameter is required.
         self.uri = uri
 
@@ -15136,6 +17096,7 @@ class DeleteFileMetaResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15206,10 +17167,16 @@ class DeleteLocationDateClusterRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # The name of the dataset. For information about how to create a dataset, see [CreateDataset](https://help.aliyun.com/document_detail/478160.html).
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The ID of the group to be deleted.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -15246,6 +17213,7 @@ class DeleteLocationDateClusterResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15314,6 +17282,8 @@ class DeleteProjectRequest(TeaModel):
         self,
         project_name: str = None,
     ):
+        # The name of the project. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -15342,6 +17312,7 @@ class DeleteProjectResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15412,10 +17383,16 @@ class DeleteStoryRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The ID of the story to delete.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -15452,6 +17429,7 @@ class DeleteStoryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15521,8 +17499,12 @@ class DeleteTriggerRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # The ID of the trigger. You can obtain the ID of the trigger from the response of the [CreateTrigger](https://help.aliyun.com/document_detail/479912.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -15555,6 +17537,7 @@ class DeleteTriggerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15623,6 +17606,8 @@ class DetachOSSBucketRequest(TeaModel):
         self,
         ossbucket: str = None,
     ):
+        # The OSS bucket that you want to unbind.
+        # 
         # This parameter is required.
         self.ossbucket = ossbucket
 
@@ -15651,6 +17636,7 @@ class DetachOSSBucketResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15722,10 +17708,19 @@ class DetectImageBodiesRequest(TeaModel):
         sensitivity: float = None,
         source_uri: str = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The accuracy level of detecting and recognizing specific content in the image. Valid values: 0 to 1. Default value: 0.6. A higher sensitivity specifies that more image details can be detected.
         self.sensitivity = sensitivity
+        # The URI of the Object Storage Service (OSS) bucket in which the image file is stored.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
         self.source_uri = source_uri
 
     def validate(self):
@@ -15770,10 +17765,19 @@ class DetectImageBodiesShrinkRequest(TeaModel):
         sensitivity: float = None,
         source_uri: str = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The accuracy level of detecting and recognizing specific content in the image. Valid values: 0 to 1. Default value: 0.6. A higher sensitivity specifies that more image details can be detected.
         self.sensitivity = sensitivity
+        # The URI of the Object Storage Service (OSS) bucket in which the image file is stored.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
         self.source_uri = source_uri
 
     def validate(self):
@@ -15814,7 +17818,9 @@ class DetectImageBodiesResponseBody(TeaModel):
         bodies: List[Body] = None,
         request_id: str = None,
     ):
+        # The human bodies.
         self.bodies = bodies
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15897,9 +17903,18 @@ class DetectImageCarsRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the Object Storage Service (OSS) bucket in which you store the image file.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
 
@@ -15940,9 +17955,18 @@ class DetectImageCarsShrinkRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the Object Storage Service (OSS) bucket in which you store the image file.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
 
@@ -15980,8 +18004,11 @@ class DetectImageCarsResponseBody(TeaModel):
         cars: List[Car] = None,
         request_id: str = None,
     ):
+        # The vehicles.
+        # 
         # This parameter is required.
         self.cars = cars
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16064,9 +18091,18 @@ class DetectImageCodesRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the Object Storage Service (OSS) bucket in which the image file is stored.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
 
@@ -16107,9 +18143,18 @@ class DetectImageCodesShrinkRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the Object Storage Service (OSS) bucket in which the image file is stored.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
 
@@ -16147,8 +18192,11 @@ class DetectImageCodesResponseBody(TeaModel):
         codes: List[Codes] = None,
         request_id: str = None,
     ):
+        # The barcodes or QR codes.
+        # 
         # This parameter is required.
         self.codes = codes
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16232,10 +18280,29 @@ class DetectImageCroppingRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # The cropping ratios. You can specify up to five cropping ratios. Take note of the following requirements:
+        # 
+        # *   The ratio must be an integer between 0 and 20.
+        # *   The ratio must range from 0.5 to 2.
+        # *   If you leave this parameter empty, the default processing logic is `["auto"]`.
+        # 
+        # >  Errors are reported in one of the following cases:\\
+        # You specify more than five cropping ratios.\\
+        # You pass an empty list to the system.\\
+        # You specify a ratio that is not an integer, such as `4.1:3`.\\
+        # The ratio is beyond the range of 0.5 to 2.
         self.aspect_ratios = aspect_ratios
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the Object Storage Service (OSS) bucket in which you store the image.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the image file that has an extension.
         self.source_uri = source_uri
 
     def validate(self):
@@ -16280,10 +18347,29 @@ class DetectImageCroppingShrinkRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # The cropping ratios. You can specify up to five cropping ratios. Take note of the following requirements:
+        # 
+        # *   The ratio must be an integer between 0 and 20.
+        # *   The ratio must range from 0.5 to 2.
+        # *   If you leave this parameter empty, the default processing logic is `["auto"]`.
+        # 
+        # >  Errors are reported in one of the following cases:\\
+        # You specify more than five cropping ratios.\\
+        # You pass an empty list to the system.\\
+        # You specify a ratio that is not an integer, such as `4.1:3`.\\
+        # The ratio is beyond the range of 0.5 to 2.
         self.aspect_ratios = aspect_ratios
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the Object Storage Service (OSS) bucket in which you store the image.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the image file that has an extension.
         self.source_uri = source_uri
 
     def validate(self):
@@ -16324,7 +18410,9 @@ class DetectImageCroppingResponseBody(TeaModel):
         croppings: List[CroppingSuggestion] = None,
         request_id: str = None,
     ):
+        # The image croppings.
         self.croppings = croppings
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16407,9 +18495,17 @@ class DetectImageFacesRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URI of the image object.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
 
     def validate(self):
@@ -16449,9 +18545,17 @@ class DetectImageFacesShrinkRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URI of the image object.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
 
     def validate(self):
@@ -16488,7 +18592,9 @@ class DetectImageFacesResponseBody(TeaModel):
         faces: List[Figure] = None,
         request_id: str = None,
     ):
+        # The faces.
         self.faces = faces
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16572,11 +18678,21 @@ class DetectImageLabelsRequest(TeaModel):
         source_uri: str = None,
         threshold: float = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the Object Storage Service (OSS) bucket in which you store the image.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the image file that has an extension.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The threshold of the label confidence. Labels whose confidence is lower than the specified threshold are not returned in the response. Valid values: 0 to 1. If you leave this parameter empty, the algorithm provides a default threshold.
         self.threshold = threshold
 
     def validate(self):
@@ -16621,11 +18737,21 @@ class DetectImageLabelsShrinkRequest(TeaModel):
         source_uri: str = None,
         threshold: float = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the Object Storage Service (OSS) bucket in which you store the image.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the image file that has an extension.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The threshold of the label confidence. Labels whose confidence is lower than the specified threshold are not returned in the response. Valid values: 0 to 1. If you leave this parameter empty, the algorithm provides a default threshold.
         self.threshold = threshold
 
     def validate(self):
@@ -16666,7 +18792,9 @@ class DetectImageLabelsResponseBody(TeaModel):
         labels: List[Label] = None,
         request_id: str = None,
     ):
+        # The labels that are detected.
         self.labels = labels
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16749,9 +18877,17 @@ class DetectImageScoreRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The name of the project.[](~~477051~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URI of the input image.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
 
     def validate(self):
@@ -16791,9 +18927,17 @@ class DetectImageScoreShrinkRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The name of the project.[](~~477051~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URI of the input image.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
 
     def validate(self):
@@ -16829,6 +18973,7 @@ class DetectImageScoreResponseBodyImageScore(TeaModel):
         self,
         overall_quality_score: float = None,
     ):
+        # The overall quality score.
         self.overall_quality_score = overall_quality_score
 
     def validate(self):
@@ -16857,7 +19002,9 @@ class DetectImageScoreResponseBody(TeaModel):
         image_score: DetectImageScoreResponseBodyImageScore = None,
         request_id: str = None,
     ):
+        # The quality score of the image.
         self.image_score = image_score
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16934,9 +19081,18 @@ class DetectImageTextsRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you have no special requirements, leave this field empty.**\
+        # 
+        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The Object Storage Service (OSS) URI of the file.
+        # 
+        # Specify the URI in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of an OSS bucket that is in the same region as the current project. ${Object} specifies the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
 
@@ -16977,9 +19133,18 @@ class DetectImageTextsShrinkRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you have no special requirements, leave this field empty.**\
+        # 
+        # The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The Object Storage Service (OSS) URI of the file.
+        # 
+        # Specify the URI in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of an OSS bucket that is in the same region as the current project. ${Object} specifies the path of the object with the extension included.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
 
@@ -17018,8 +19183,11 @@ class DetectImageTextsResponseBody(TeaModel):
         ocrtexts: str = None,
         request_id: str = None,
     ):
+        # OCR text blocks.
         self.ocrcontents = ocrcontents
+        # The full Optical Character Recognition (OCR) text, which is spliced by using the content of OCRContents.
         self.ocrtexts = ocrtexts
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17106,8 +19274,15 @@ class DetectMediaMetaRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The name of the project.[](~~478153~~)
         self.project_name = project_name
+        # The URI of the media object in Object Storage Service (OSS).
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
 
     def validate(self):
@@ -17147,8 +19322,15 @@ class DetectMediaMetaShrinkRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The name of the project.[](~~478153~~)
         self.project_name = project_name
+        # The URI of the media object in Object Storage Service (OSS).
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
 
     def validate(self):
@@ -17207,29 +19389,55 @@ class DetectMediaMetaResponseBody(TeaModel):
         video_streams: List[VideoStream] = None,
         video_width: int = None,
     ):
+        # The addresses.
+        # 
+        # This parameter is returned only when address information is detected.
         self.addresses = addresses
+        # The album.
         self.album = album
+        # The album artist.
         self.album_artist = album_artist
+        # The artist.
         self.artist = artist
+        # The audio streams.
         self.audio_streams = audio_streams
+        # The bitrate. Unit: bit/s.
         self.bitrate = bitrate
+        # The composer.
         self.composer = composer
+        # The total duration of the video. Unit: seconds.
         self.duration = duration
+        # The full format name.
         self.format_long_name = format_long_name
+        # The abbreviated format name.
         self.format_name = format_name
+        # The language of the content. For more information, see the ISO 639-2 Alpha-3 codes for the representation of names of languages.
         self.language = language
+        # The coordinate pair of the central point. The coordinate pair consists of latitude and longitude values. This parameter value must be in the "latitude,longitude" format. Valid values of the latitude: [-90,+90]. Valid values of the longitude: [-180,+180].
         self.lat_long = lat_long
+        # The performer.
         self.performer = performer
+        # The time of recording. For more information about the time formats, see the RFC3339 Nano standard.
         self.produce_time = produce_time
+        # The number of programs.
         self.program_count = program_count
+        # The request ID.
         self.request_id = request_id
+        # The size of the media object. Unit: bytes.
         self.size = size
+        # The initial playback time.
         self.start_time = start_time
+        # The number of media streams.
         self.stream_count = stream_count
+        # The subtitle streams.
         self.subtitles = subtitles
+        # The title of the media object.
         self.title = title
+        # The video height in pixels.
         self.video_height = video_height
+        # The video streams.
         self.video_streams = video_streams
+        # The video width in pixels.
         self.video_width = video_width
 
     def validate(self):
@@ -17426,8 +19634,12 @@ class DetectTextAnomalyRequest(TeaModel):
         content: str = None,
         project_name: str = None,
     ):
+        # The text to be detected. It can contain up to 10,000 characters (including punctuation marks). Only Chinese text can be detected.
+        # 
         # This parameter is required.
         self.content = content
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -17461,7 +19673,12 @@ class DetectTextAnomalyResponseBody(TeaModel):
         request_id: str = None,
         suggestion: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the text contains anomalies. Valid values:
+        # 
+        # *   pass: the text does not contain anomalies.
+        # *   block: the text contains anomalies.
         self.suggestion = suggestion
 
     def validate(self):
@@ -17539,13 +19756,36 @@ class EncodeBlindWatermarkRequest(TeaModel):
         strength_level: str = None,
         target_uri: str = None,
     ):
+        # The text content of watermarks. It can be up to 256 characters in length.
         self.content = content
+        # This parameter takes effect only if the input image format is JPG.
+        # 
+        # The storage quality of the output image that carries the watermarks. Default value: 90. Valid values: 70 to 100. The higher the quality, the larger the image size and the higher the watermark resolution quality.
         self.image_quality = image_quality
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The Object Storage Service (OSS) URI of the image.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region with the current project. `${Object}` specifies the path of the object with the extension included.
+        # 
+        # Supported image formats: JPG, PNG, BMP, TIFF, and WebP.
+        # 
+        # Image size limit: 10,000 px maximum and 80 px x 80 px minimum.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The watermark strength level. The higher the strength, the more resistant the watermarked image is to attacks, but the more the image is distorted. Default value: low. Valid values: [low, medium, high].
         self.strength_level = strength_level
+        # The URI of the output image in OSS.
+        # 
+        # Specify the URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
+        # > 
+        # 
+        # *   The format of the output image is the same as that of the input image.
+        # 
         # This parameter is required.
         self.target_uri = target_uri
 
@@ -17594,6 +19834,7 @@ class EncodeBlindWatermarkResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17665,10 +19906,25 @@ class ExtractDocumentTextRequest(TeaModel):
         source_type: str = None,
         source_uri: str = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/477051.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The type of the filename extension of the source data. By default, the filename extension of the source data is the same as the filename extension of the input document. If the input document has no extension, you can specify this parameter. Valid values:
+        # 
+        # *   Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
+        # *   Presentation documents: pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
+        # *   Table documents: xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
+        # *   PDF documents: pdf.
         self.source_type = source_type
+        # The URI of the Object Storage Service (OSS) bucket in which the document is stored.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
 
@@ -17714,10 +19970,25 @@ class ExtractDocumentTextShrinkRequest(TeaModel):
         source_type: str = None,
         source_uri: str = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/477051.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The type of the filename extension of the source data. By default, the filename extension of the source data is the same as the filename extension of the input document. If the input document has no extension, you can specify this parameter. Valid values:
+        # 
+        # *   Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
+        # *   Presentation documents: pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
+        # *   Table documents: xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
+        # *   PDF documents: pdf.
         self.source_type = source_type
+        # The URI of the Object Storage Service (OSS) bucket in which the document is stored.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
 
@@ -17839,16 +20110,50 @@ class FuzzyQueryRequest(TeaModel):
         sort: str = None,
         with_fields: List[str] = None,
     ):
+        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The maximum number of entries to return. Valid values: 0 to 200.
+        # 
+        # Default value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If the total number of files is greater than the value of MaxResults, you must specify NextToken.
+        # 
+        # The file information is returned in alphabetical order starting from the value of NextToken.
+        # 
+        # You do not need to specify this parameter for the first request.
         self.next_token = next_token
+        # The sorting method. Valid values:
+        # 
+        # *   asc: ascending order.
+        # *   desc (default): descending order.
+        # 
+        # > 
+        # 
+        # *   Separate multiple sorting methods with commas (,). Example: asc,desc.
+        # 
+        # *   The number of values for Order must be less than or equal to the number of values for Sort. For example, if you set Sort to Size,Filename, you can set Order only to desc or asc.
+        # 
+        # *   If the number of values for Order is less than the number of values for Sort, the unsorted fields are default to the value of asc. For example, if you set Sort to Size,Filename and Order to asc, the Filename field is default to the value of asc.
         self.order = order
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The query content. The value can be up to 1 MB in size.
+        # 
         # This parameter is required.
         self.query = query
+        # The sort field. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
+        # 
+        # *   Separate multiple sort fields with commas (,). Example: `Size,Filename`.
+        # *   You can specify up to five sort fields.
+        # *   The priority order of sorting is determined based on the order of the sort fields.
         self.sort = sort
+        # The fields that you want to include in the response. To help reduce the size of the response, include only necessary metadata fields.
+        # 
+        # If you do not specify this parameter or set the value to null, all existing metadata fields are returned.
         self.with_fields = with_fields
 
     def validate(self):
@@ -17911,16 +20216,50 @@ class FuzzyQueryShrinkRequest(TeaModel):
         sort: str = None,
         with_fields_shrink: str = None,
     ):
+        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The maximum number of entries to return. Valid values: 0 to 200.
+        # 
+        # Default value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If the total number of files is greater than the value of MaxResults, you must specify NextToken.
+        # 
+        # The file information is returned in alphabetical order starting from the value of NextToken.
+        # 
+        # You do not need to specify this parameter for the first request.
         self.next_token = next_token
+        # The sorting method. Valid values:
+        # 
+        # *   asc: ascending order.
+        # *   desc (default): descending order.
+        # 
+        # > 
+        # 
+        # *   Separate multiple sorting methods with commas (,). Example: asc,desc.
+        # 
+        # *   The number of values for Order must be less than or equal to the number of values for Sort. For example, if you set Sort to Size,Filename, you can set Order only to desc or asc.
+        # 
+        # *   If the number of values for Order is less than the number of values for Sort, the unsorted fields are default to the value of asc. For example, if you set Sort to Size,Filename and Order to asc, the Filename field is default to the value of asc.
         self.order = order
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The query content. The value can be up to 1 MB in size.
+        # 
         # This parameter is required.
         self.query = query
+        # The sort field. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
+        # 
+        # *   Separate multiple sort fields with commas (,). Example: `Size,Filename`.
+        # *   You can specify up to five sort fields.
+        # *   The priority order of sorting is determined based on the order of the sort fields.
         self.sort = sort
+        # The fields that you want to include in the response. To help reduce the size of the response, include only necessary metadata fields.
+        # 
+        # If you do not specify this parameter or set the value to null, all existing metadata fields are returned.
         self.with_fields_shrink = with_fields_shrink
 
     def validate(self):
@@ -17979,10 +20318,19 @@ class FuzzyQueryResponseBody(TeaModel):
         request_id: str = None,
         total_hits: int = None,
     ):
+        # The files.
         self.files = files
+        # A pagination token.
+        # 
+        # It can be used in the next request to retrieve a new page of results.
+        # 
+        # If NextToken is empty, no next page exists.
+        # 
         # This parameter is required.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The number of hits.
         self.total_hits = total_hits
 
     def validate(self):
@@ -18072,7 +20420,14 @@ class GenerateVideoPlaylistRequestSourceSubtitles(TeaModel):
         language: str = None,
         uri: str = None,
     ):
+        # The subtitle language. If you configure this parameter, the value must comply with the ISO 639-2 standard. By default, this parameter is left empty.
         self.language = language
+        # The OSS path of the subtitle file.
+        # 
+        # The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file.
+        # 
+        # >  The **MasterURI** parameter cannot be left empty, and the OSS path `oss://${Bucket}/${Object}` of a subtitle file must be in the directory specified by the **MasterURI** parameter or its subdirectory.
+        # 
         # This parameter is required.
         self.uri = uri
 
@@ -18113,14 +20468,45 @@ class GenerateVideoPlaylistRequestTargets(TeaModel):
         uri: str = None,
         video: TargetVideo = None,
     ):
+        # The audio processing configuration. If you set this parameter to null (default), audio processing is disabled. The generated TS files do not contain audio streams.
+        # 
+        # >  The Audio and Subtitle parameters in the same output are mutually exclusive. If the Audio parameter is configured, the Subtitle parameter is ignored. The Audio and Video parameters can be configured at the same time. You can also configure only the Audio parameter to generate only audio information.
         self.audio = audio
+        # The playback duration of a single TS file. Unit: seconds. Default value: 10. Valid values: 5 to 15.
         self.duration = duration
+        # The array of the durations of the pre-transcoded TS files. The array can contain the durations of up to six pre-transcoded TS files. By default, this parameter is left empty. This parameter is independent of the **Duration** parameter.
         self.initial_segments = initial_segments
+        # The pre-transcoding duration. Unit: seconds. Default value: 30.
+        # 
+        # *   If you set this parameter to 0, pre-transcoding is disabled.
+        # *   If you set this parameter to a value that is less than 0 or greater than the duration of a source video, the entire video is pre-transcoded.
+        # *   If you set this parameter to a value that is within the middle of the playback duration of a TS file, the transcoding continues until the end of the playback duration.
+        # 
+        # >  This parameter is used to reduce the time spent in waiting for the initial playback of a video and improve the playback experience. If you want to replace the traditional video on demand (VOD) business scenario, you can try to pre-transcode the entire video.
         self.initial_transcode = initial_transcode
+        # The subtitle processing configuration.
+        # 
+        # >  The Subtitle and Video or Audio parameters in the same output are mutually exclusive. You must configure the Subtitle parameter independently to generate subtitles.
         self.subtitle = subtitle
+        # The [tags](https://help.aliyun.com/document_detail/106678.html) that you want to add to a TS file in OSS. You can use tags to manage the lifecycles of TS files in OSS.
+        # 
+        # >  The combination of the value of the Tags parameter and the value of the Tags parameter in the upper level is used as the tag value of the current output. If the value of the Tags parameter in the current level is the same as the value of the Tags parameter in the upper level, use the value of the Tags parameter in the current level.
         self.tags = tags
+        # The number of TS files that are pre-transcoded when the live transcoding is triggered. By default, a 2-minute video is pre-transcoded.
+        # 
+        # *   Example: If you set the **Duration** parameter to 10, the value of the **TranscodeAhead** parameter is 12 by default. You can configure this parameter to manage the number of pre-transcoded files in an asynchronous manner. Valid values: 10 to 30.
         self.transcode_ahead = transcode_ahead
+        # The prefix of the OSS path that is used to store the live transcoding files. The live transcoding files include a M3U8 file and multiple TS files.
+        # 
+        # The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the prefix of the full path of the file that does not contain the file name extension.
+        # 
+        # *   Example: If the URI is oss://test-bucket/test-object/output-video, the output-video.m3u8 file and multiple output-video-${token}-${index}.ts files are generated in the oss://test-bucket/test-object/ directory. ${token} is a unique string generated based on the transcoding parameters. The ${token} parameter is included in the response of the operation. ${index} is the serial number of the generated TS files that are numbered starting from 0.
+        # 
+        # >  If the **MasterURI** parameter is not left empty, the URI specified by this parameter must be in the directory specified by the **MasterURI** parameter or its subdirectory.
         self.uri = uri
+        # The video processing configuration. If you set this parameter to null (default), video processing is disabled. The generated TS files do not contain video streams.
+        # 
+        # >  The Video and Subtitle parameters in the same output are mutually exclusive. If the Video parameter is configured, the Subtitle parameter is ignored.
         self.video = video
 
     def validate(self):
@@ -18199,20 +20585,60 @@ class GenerateVideoPlaylistRequest(TeaModel):
         targets: List[GenerateVideoPlaylistRequestTargets] = None,
         user_data: str = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The OSS path of the master playlist.
+        # 
+        # The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that is suffixed with .m3u8.
+        # 
+        # >  If a playlist contains subtitles or multiple outputs, the MasterURI parameter is required and the URI of subtitle files or outputs must be in the directory specified by the MasterURI parameter or its subdirectory.
         self.master_uri = master_uri
+        # The notification settings. To view details, click Notification. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
+        # The overwrite policy when the media playlist exists. Valid values:
+        # 
+        # *   overwrite (default): overwrites an existing media playlist.
+        # *   skip-existing: skips generation and retains the existing media playlist.
         self.overwrite_policy = overwrite_policy
+        # The project name.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The period of time during which the playlist is generated. Unit: seconds.
+        # 
+        # *   If you set this parameter to 0 (default) or leave this parameter empty, a playlist is generated until the end time of the source video.
+        # *   If you set this parameter to a value greater than 0, a playlist is generated for the specified period of time from the start time that you specify.
+        # 
+        # >  If you set this parameter to a value that exceeds the end time of a source video, use the default value.
         self.source_duration = source_duration
+        # The time when the playlist starts to generate. Unit: seconds.
+        # 
+        # *   If you set this parameter to 0 (default) or leave this parameter empty, the start time of the source video is used as the time when a playlist starts to generate.
+        # *   If you set this parameter to a value greater than 0, the time when a playlist starts to generate is the specified point in time.
+        # 
+        # >  If you use this parameter together with the **SourceDuration** parameter, a playlist can be generated based on the partial content of a source video.
         self.source_start_time = source_start_time
+        # The subtitle files. By default, this parameter is left empty. Up to two subtitle files are supported.
         self.source_subtitles = source_subtitles
+        # The OSS path of the video file.
+        # 
+        # The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that contains the file name extension.
+        # 
+        # >  Only OSS buckets of the Standard storage class are supported. OSS buckets for which hotlink protection whitelists are configured are not supported.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The [tags](https://help.aliyun.com/document_detail/106678.html) that you want to add to a TS file in OSS. You can use tags to manage the lifecycles of TS files in OSS.
         self.tags = tags
+        # The live transcoding playlists. Up to 6 playlists are supported. Each output corresponds to at most one video media playlist and one or more subtitle media playlists.
+        # 
+        # >  If more than one output is configured, the **MasterURI** parameter is required.
+        # 
         # This parameter is required.
         self.targets = targets
+        # The custom user information, which is returned in asynchronous notifications to help you handle the notifications in the system. The maximum length of a notification is 2048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -18318,20 +20744,60 @@ class GenerateVideoPlaylistShrinkRequest(TeaModel):
         targets_shrink: str = None,
         user_data: str = None,
     ):
+        # **If you do not have special requirements, leave this parameter empty.**\
+        # 
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The OSS path of the master playlist.
+        # 
+        # The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that is suffixed with .m3u8.
+        # 
+        # >  If a playlist contains subtitles or multiple outputs, the MasterURI parameter is required and the URI of subtitle files or outputs must be in the directory specified by the MasterURI parameter or its subdirectory.
         self.master_uri = master_uri
+        # The notification settings. To view details, click Notification. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
+        # The overwrite policy when the media playlist exists. Valid values:
+        # 
+        # *   overwrite (default): overwrites an existing media playlist.
+        # *   skip-existing: skips generation and retains the existing media playlist.
         self.overwrite_policy = overwrite_policy
+        # The project name.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The period of time during which the playlist is generated. Unit: seconds.
+        # 
+        # *   If you set this parameter to 0 (default) or leave this parameter empty, a playlist is generated until the end time of the source video.
+        # *   If you set this parameter to a value greater than 0, a playlist is generated for the specified period of time from the start time that you specify.
+        # 
+        # >  If you set this parameter to a value that exceeds the end time of a source video, use the default value.
         self.source_duration = source_duration
+        # The time when the playlist starts to generate. Unit: seconds.
+        # 
+        # *   If you set this parameter to 0 (default) or leave this parameter empty, the start time of the source video is used as the time when a playlist starts to generate.
+        # *   If you set this parameter to a value greater than 0, the time when a playlist starts to generate is the specified point in time.
+        # 
+        # >  If you use this parameter together with the **SourceDuration** parameter, a playlist can be generated based on the partial content of a source video.
         self.source_start_time = source_start_time
+        # The subtitle files. By default, this parameter is left empty. Up to two subtitle files are supported.
         self.source_subtitles_shrink = source_subtitles_shrink
+        # The OSS path of the video file.
+        # 
+        # The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that contains the file name extension.
+        # 
+        # >  Only OSS buckets of the Standard storage class are supported. OSS buckets for which hotlink protection whitelists are configured are not supported.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
+        # The [tags](https://help.aliyun.com/document_detail/106678.html) that you want to add to a TS file in OSS. You can use tags to manage the lifecycles of TS files in OSS.
         self.tags_shrink = tags_shrink
+        # The live transcoding playlists. Up to 6 playlists are supported. Each output corresponds to at most one video media playlist and one or more subtitle media playlists.
+        # 
+        # >  If more than one output is configured, the **MasterURI** parameter is required.
+        # 
         # This parameter is required.
         self.targets_shrink = targets_shrink
+        # The custom user information, which is returned in asynchronous notifications to help you handle the notifications in the system. The maximum length of a notification is 2048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -18405,10 +20871,11 @@ class GenerateVideoPlaylistResponseBodyAudioPlaylist(TeaModel):
         token: str = None,
         uri: str = None,
     ):
+        # The number of audio channels.
         self.channels = channels
-        # 转码生成的Token。用于LiveTranscoding访问的参数。
+        # The token of the audio media playlist. You can use this parameter to generate the path of a TS file.
         self.token = token
-        # 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+        # The OSS path of the audio media playlist.
         self.uri = uri
 
     def validate(self):
@@ -18447,13 +20914,17 @@ class GenerateVideoPlaylistResponseBodySubtitlePlaylist(TeaModel):
         token: str = None,
         uri: str = None,
     ):
-        # 字幕流编号，从0开始。
+        # The serial number of the subtitle stream. The value starts from 0.
         self.index = index
-        # 视频源中字幕流的语言。
+        # The language of the subtitle stream.
+        # 
+        # >  The language is derived from the subtitle stream information in the OSS path specified by the SourceURI parameter for a source video. If no language information exists in the source video, null is returned.
         self.language = language
-        # 转码生成的Token。用于LiveTranscoding访问的参数。
+        # The token of the subtitle media playlist. You can use this parameter to generate the path of a subtitle file.
+        # 
+        # >  You can generate the path of a transcoded subtitle file based on the returned token value. The path must be in the oss://${Bucket}/${Object}-${Token}_${Index}.ts format. oss://${Bucket}/${Object} specifies the URI specified by input parameters for output files. ${Token} specifies the returned token value, and ${Index} specifies the serial number of a subtitle file.
         self.token = token
-        # 输出m3u8的OSS地址。地址规则为 Target.URI + “_” + Index + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+        # The OSS path of the subtitle media playlist.
         self.uri = uri
 
     def validate(self):
@@ -18496,11 +20967,15 @@ class GenerateVideoPlaylistResponseBodyVideoPlaylist(TeaModel):
         token: str = None,
         uri: str = None,
     ):
+        # The video frame rate.
         self.frame_rate = frame_rate
+        # The video resolution.
         self.resolution = resolution
-        # 转码生成的Token。用于LiveTranscoding访问的参数。
+        # The token of the video media playlist. You can use this parameter to generate the path of a TS file.
+        # 
+        # >  You can generate the path of a transcoded TS file based on the value of this parameter. The path must be in the oss://${Bucket}/${Object}-${Token}-${Index}.ts format. oss://${Bucket}/${Object} specifies the URI specified by input parameters for output files. ${Token} specifies the returned token, and ${Index} specifies the serial number of a TS file.
         self.token = token
-        # 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+        # The OSS path of the video media playlist.
         self.uri = uri
 
     def validate(self):
@@ -18546,15 +21021,19 @@ class GenerateVideoPlaylistResponseBody(TeaModel):
         token: str = None,
         video_playlist: List[GenerateVideoPlaylistResponseBodyVideoPlaylist] = None,
     ):
-        # 转码文件列表。
+        # The audio media playlist files.
         self.audio_playlist = audio_playlist
+        # The total duration of the generated video.
         self.duration = duration
+        # The OSS path of the master playlist.
         self.master_uri = master_uri
+        # The request ID.
         self.request_id = request_id
-        # 转码文件列表。
+        # The subtitle media playlist files.
         self.subtitle_playlist = subtitle_playlist
+        # The token of the master playlist.
         self.token = token
-        # 转码文件列表。
+        # The video media playlist files.
         self.video_playlist = video_playlist
 
     def validate(self):
@@ -18688,15 +21167,60 @@ class GenerateWebofficeTokenRequest(TeaModel):
         user_data: str = None,
         watermark: WebofficeWatermark = None,
     ):
+        # Specifies whether to enable cache preview.
+        # 
+        # *   true: enables cache preview. The document can be previewed only and cannot be collaboratively edited.
+        # *   false: does not enable cache preview. The document can be collaboratively edited when it is being previewed.
+        # 
+        # >  The pricing for document previews varies based on whether cache preview is enabled or disabled.
+        # 
+        # >  If you specify this parameter, the Pemission.copy parameter does not take effect. >
+        # 
+        # >  Printing is not supported during cache preview.
         self.cache_preview = cache_preview
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # Specifies whether to allow an upload of a document to the Object Storage Service (OSS) bucket. Valid values:
+        # 
+        # *   true: Documents can be directly uploaded to OSS. The uploaded document overwrites the existing document and a new version is generated for the document. Before you upload a new document, close the existing document if it is being edited. After the document is uploaded, wait for approximately 5 minutes before you open the document again so that the new version can successfully load. Upload a new document only when the existing is closed. Otherwise, the uploaded document is overwritten when the existing document is saved.
+        # *   false: Documents cannot be directly uploaded to OSS. If you try to upload a document, an error is returned. This is the default value.
         self.external_uploaded = external_uploaded
+        # The name of the file. The extension must be included in the file name. By default, this parameter is set to the last depth level of the **SourceURI** parameter value.
+        # 
+        # Supported extensions (only preview supported for .pdf):
+        # 
+        # *   Word documents: .doc, .docx, .txt, .dot, .wps, .wpt, .dotx, .docm, .dotm, and .rtf
+        # *   Presentation documents: .ppt, .pptx, .pptm, .ppsx, .ppsm, .pps, .potx, .potm, .dpt, and .dps
+        # *   Table documents: .et, .xls, .xlt, .xlsx, .xlsm, .xltx, .xltm, and .csv
+        # *   PDF documents: .pdf
         self.filename = filename
         self.hidecmb = hidecmb
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+        # The notification settings. Only Simple Message Queue messages are supported. For more information, see [WebOffice message example](https://help.aliyun.com/document_detail/2743999.html).
+        # 
+        # >  A notification is sent after the document is saved or renamed.
         self.notification = notification
         self.notify_topic_name = notify_topic_name
         self.password = password
+        # The user permission settings in the JSON format.
+        # 
+        # The parameter supports the following permission fields:
+        # 
+        # Each field is of type Boolean and can have a value of true and false (the default value):
+        # 
+        # *   Readonly: grants the permission to preview the document. This field is optional.
+        # *   Rename: grants the permission to rename the document. Notification messages of a rename event can be sent only by using SMQ. This field is optional.
+        # *   History: grants the permission to view historical versions. This field is optional.
+        # *   Copy: grants the permission to copy the document. This field is optional.
+        # *   Export: grants the permission to export the document as a PDF file. This field is optional.
+        # *   Print: grants the permission to print the document. This field is optional.
+        # 
+        # >  Only online preview is supported for PDF documents. When you call the operation on a PDF document, you can set Readonly only to true.
+        # 
+        # >  To manage multiple versions of the document, you must enable versioning for the bucket that stores the document and set the History parameter to true.
+        # 
+        # >  Printing is not supported during cache preview.
         self.permission = permission
         self.preview_pages = preview_pages
         # This parameter is required.
@@ -18704,7 +21228,9 @@ class GenerateWebofficeTokenRequest(TeaModel):
         self.referer = referer
         # This parameter is required.
         self.source_uri = source_uri
+        # The user information. The user information that you want to display on the WebOffice page. If you do not specify this parameter, the user name displayed is Unknown.
         self.user = user
+        # The user-defined data that you want to return in asynchronous messages. This parameter takes effect only when you specify the MNS settings in the Notification parameter. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
         self.watermark = watermark
 
@@ -18822,15 +21348,60 @@ class GenerateWebofficeTokenShrinkRequest(TeaModel):
         user_data: str = None,
         watermark_shrink: str = None,
     ):
+        # Specifies whether to enable cache preview.
+        # 
+        # *   true: enables cache preview. The document can be previewed only and cannot be collaboratively edited.
+        # *   false: does not enable cache preview. The document can be collaboratively edited when it is being previewed.
+        # 
+        # >  The pricing for document previews varies based on whether cache preview is enabled or disabled.
+        # 
+        # >  If you specify this parameter, the Pemission.copy parameter does not take effect. >
+        # 
+        # >  Printing is not supported during cache preview.
         self.cache_preview = cache_preview
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # Specifies whether to allow an upload of a document to the Object Storage Service (OSS) bucket. Valid values:
+        # 
+        # *   true: Documents can be directly uploaded to OSS. The uploaded document overwrites the existing document and a new version is generated for the document. Before you upload a new document, close the existing document if it is being edited. After the document is uploaded, wait for approximately 5 minutes before you open the document again so that the new version can successfully load. Upload a new document only when the existing is closed. Otherwise, the uploaded document is overwritten when the existing document is saved.
+        # *   false: Documents cannot be directly uploaded to OSS. If you try to upload a document, an error is returned. This is the default value.
         self.external_uploaded = external_uploaded
+        # The name of the file. The extension must be included in the file name. By default, this parameter is set to the last depth level of the **SourceURI** parameter value.
+        # 
+        # Supported extensions (only preview supported for .pdf):
+        # 
+        # *   Word documents: .doc, .docx, .txt, .dot, .wps, .wpt, .dotx, .docm, .dotm, and .rtf
+        # *   Presentation documents: .ppt, .pptx, .pptm, .ppsx, .ppsm, .pps, .potx, .potm, .dpt, and .dps
+        # *   Table documents: .et, .xls, .xlt, .xlsx, .xlsm, .xltx, .xltm, and .csv
+        # *   PDF documents: .pdf
         self.filename = filename
         self.hidecmb = hidecmb
-        # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+        # The notification settings. Only Simple Message Queue messages are supported. For more information, see [WebOffice message example](https://help.aliyun.com/document_detail/2743999.html).
+        # 
+        # >  A notification is sent after the document is saved or renamed.
         self.notification_shrink = notification_shrink
         self.notify_topic_name = notify_topic_name
         self.password = password
+        # The user permission settings in the JSON format.
+        # 
+        # The parameter supports the following permission fields:
+        # 
+        # Each field is of type Boolean and can have a value of true and false (the default value):
+        # 
+        # *   Readonly: grants the permission to preview the document. This field is optional.
+        # *   Rename: grants the permission to rename the document. Notification messages of a rename event can be sent only by using SMQ. This field is optional.
+        # *   History: grants the permission to view historical versions. This field is optional.
+        # *   Copy: grants the permission to copy the document. This field is optional.
+        # *   Export: grants the permission to export the document as a PDF file. This field is optional.
+        # *   Print: grants the permission to print the document. This field is optional.
+        # 
+        # >  Only online preview is supported for PDF documents. When you call the operation on a PDF document, you can set Readonly only to true.
+        # 
+        # >  To manage multiple versions of the document, you must enable versioning for the bucket that stores the document and set the History parameter to true.
+        # 
+        # >  Printing is not supported during cache preview.
         self.permission_shrink = permission_shrink
         self.preview_pages = preview_pages
         # This parameter is required.
@@ -18838,7 +21409,9 @@ class GenerateWebofficeTokenShrinkRequest(TeaModel):
         self.referer = referer
         # This parameter is required.
         self.source_uri = source_uri
+        # The user information. The user information that you want to display on the WebOffice page. If you do not specify this parameter, the user name displayed is Unknown.
         self.user_shrink = user_shrink
+        # The user-defined data that you want to return in asynchronous messages. This parameter takes effect only when you specify the MNS settings in the Notification parameter. The maximum length of the value is 2,048 bytes.
         self.user_data = user_data
         self.watermark_shrink = watermark_shrink
 
@@ -19026,8 +21599,12 @@ class GetBatchRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # The ID of the batch processing task. For more information about how to obtain the ID, see [CreateBatch](https://help.aliyun.com/document_detail/606694.html).
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -19061,7 +21638,9 @@ class GetBatchResponseBody(TeaModel):
         batch: DataIngestion = None,
         request_id: str = None,
     ):
+        # The information about the batch processing task.
         self.batch = batch
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19138,10 +21717,18 @@ class GetBindingRequest(TeaModel):
         project_name: str = None,
         uri: str = None,
     ):
+        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the OSS bucket to which you bind the dataset.
+        # 
+        # Specify the value in the oss://${Bucket} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project.
+        # 
         # This parameter is required.
         self.uri = uri
 
@@ -19179,7 +21766,9 @@ class GetBindingResponseBody(TeaModel):
         binding: Binding = None,
         request_id: str = None,
     ):
+        # The binding relationship.
         self.binding = binding
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19393,10 +21982,18 @@ class GetDatasetRequest(TeaModel):
         project_name: str = None,
         with_statistics: bool = None,
     ):
+        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # Specifies whether to enable real-time retrieval of file statistics. Default value: false.
+        # 
+        # *   If you set the value to true, FileCount and TotalFileSize in the response return true and valid values.
+        # *   If you set the value to false, FileCount and TotalFileSize in the response return invalid values or 0.
         self.with_statistics = with_statistics
 
     def validate(self):
@@ -19433,7 +22030,9 @@ class GetDatasetResponseBody(TeaModel):
         dataset: Dataset = None,
         request_id: str = None,
     ):
+        # The dataset.
         self.dataset = dataset
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19510,10 +22109,18 @@ class GetDecodeBlindWatermarkResultRequest(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The ID of the task. You can obtain the ID of the task from the response of the CreateDecodeBlindWatermarkTask operation.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The type of the task.
+        # 
+        # *   Set the value to DecodeBlindWatermark.
+        # 
         # This parameter is required.
         self.task_type = task_type
 
@@ -19561,17 +22168,29 @@ class GetDecodeBlindWatermarkResultResponseBody(TeaModel):
         task_type: str = None,
         user_data: str = None,
     ):
+        # The error code of the task.
         self.code = code
+        # The watermark content.
         self.content = content
+        # The end time of the task.
         self.end_time = end_time
+        # The event ID.
         self.event_id = event_id
+        # The error message of the task.
         self.message = message
+        # The project name.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The start time of the task.
         self.start_time = start_time
+        # The task status.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The task type.
         self.task_type = task_type
+        # The user data of the task.
         self.user_data = user_data
 
     def validate(self):
@@ -19686,10 +22305,16 @@ class GetFigureClusterRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # The dataset name.[](~~CreateDataset~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The ID of the face clustering task. You can obtain the ID from the face clustering information returned after you call the [QueryFigureClusters](~~QueryFigureClusters~~) operation.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The project name.[](~~CreateProject~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -19727,7 +22352,9 @@ class GetFigureClusterResponseBody(TeaModel):
         figure_cluster: FigureCluster = None,
         request_id: str = None,
     ):
+        # The information about the face clustering task.
         self.figure_cluster = figure_cluster
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19805,10 +22432,20 @@ class GetFileMetaRequest(TeaModel):
         uri: str = None,
         with_fields: List[str] = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the file. Make sure that the file is indexed****.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
+        # Specify the URI of the file in Photo and Drive Service in the pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision} format.
+        # 
         # This parameter is required.
         self.uri = uri
         self.with_fields = with_fields
@@ -19853,10 +22490,20 @@ class GetFileMetaShrinkRequest(TeaModel):
         uri: str = None,
         with_fields_shrink: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The URI of the file. Make sure that the file is indexed****.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # 
+        # Specify the URI of the file in Photo and Drive Service in the pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision} format.
+        # 
         # This parameter is required.
         self.uri = uri
         self.with_fields_shrink = with_fields_shrink
@@ -19899,7 +22546,9 @@ class GetFileMetaResponseBody(TeaModel):
         files: List[File] = None,
         request_id: str = None,
     ):
+        # The metadata returned.
         self.files = files
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19982,10 +22631,16 @@ class GetImageModerationResultRequest(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The type of the task.
+        # 
         # This parameter is required.
         self.task_type = task_type
 
@@ -20024,8 +22679,11 @@ class GetImageModerationResultResponseBodyModerationResultFramesBlockFrames(TeaM
         offset: int = None,
         rate: float = None,
     ):
+        # The label of the violation.
         self.label = label
+        # The offset of the frame.
         self.offset = offset
+        # The confidence level of the violation.
         self.rate = rate
 
     def validate(self):
@@ -20062,7 +22720,9 @@ class GetImageModerationResultResponseBodyModerationResultFrames(TeaModel):
         block_frames: List[GetImageModerationResultResponseBodyModerationResultFramesBlockFrames] = None,
         total_count: int = None,
     ):
+        # The violated frames.
         self.block_frames = block_frames
+        # The total number of detected frames.
         self.total_count = total_count
 
     def validate(self):
@@ -20105,9 +22765,17 @@ class GetImageModerationResultResponseBodyModerationResult(TeaModel):
         suggestion: str = None,
         uri: str = None,
     ):
+        # List of categories.
         self.categories = categories
+        # The information about video and motion detection frames.
         self.frames = frames
+        # The recommended operation. Valid values:
+        # 
+        # *   pass: The image has passed the check. No action is required.
+        # *   review: The image contains suspected violations and requires human review.
+        # *   block: The image contains violations. Further actions, such as deleting or blocking the image, are recommended.
         self.suggestion = suggestion
+        # The OSS URI of the file. The URI follows the oss://${bucketname}/${objectname} format. bucketname indicates the name of an OSS bucket that is in the same region as the current project, and objectname is the file path.
         self.uri = uri
 
     def validate(self):
@@ -20160,17 +22828,33 @@ class GetImageModerationResultResponseBody(TeaModel):
         task_type: str = None,
         user_data: str = None,
     ):
+        # The error code of the task.
         self.code = code
+        # The end time of the task.
         self.end_time = end_time
+        # The event ID.
         self.event_id = event_id
+        # The error message of the task.
         self.message = message
+        # The result of the image compliance detection task.
         self.moderation_result = moderation_result
+        # The name of the project.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The start time of the task.
         self.start_time = start_time
+        # The task status. Valid values:
+        # 
+        # *   Running
+        # *   Succeeded
+        # *   Failed
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The type of the task.
         self.task_type = task_type
+        # The custom information.
         self.user_data = user_data
 
     def validate(self):
@@ -20285,6 +22969,8 @@ class GetOSSBucketAttachmentRequest(TeaModel):
         self,
         ossbucket: str = None,
     ):
+        # The name of the OSS bucket.
+        # 
         # This parameter is required.
         self.ossbucket = ossbucket
 
@@ -20317,10 +23003,15 @@ class GetOSSBucketAttachmentResponseBody(TeaModel):
         request_id: str = None,
         update_time: str = None,
     ):
+        # The time when the dataset was created.
         self.create_time = create_time
+        # The description of the dataset.
         self.description = description
+        # The name of the project.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The time when the dataset was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -20406,8 +23097,14 @@ class GetProjectRequest(TeaModel):
         project_name: str = None,
         with_statistics: bool = None,
     ):
+        # The name of the project. You can obtain the name from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # Specifies whether to enable real-time retrieval of file statistics. Default value: false.
+        # 
+        # *   If you set the value to true, the returned values of FileCount and TotalFileSize in the response are valid.
+        # *   If you set the value to false, the returned values of FileCount and TotalFileSize in the response are invalid or equal to 0.
         self.with_statistics = with_statistics
 
     def validate(self):
@@ -20440,7 +23137,9 @@ class GetProjectResponseBody(TeaModel):
         project: Project = None,
         request_id: str = None,
     ):
+        # The project.
         self.project = project
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20517,10 +23216,16 @@ class GetStoryRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The ID of the story.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -20558,7 +23263,9 @@ class GetStoryResponseBody(TeaModel):
         request_id: str = None,
         story: Story = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the story.
         self.story = story
 
     def validate(self):
@@ -20636,11 +23343,18 @@ class GetTaskRequest(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # Specifies whether to return the initial request parameters that are used to create the task. Default value: False.
         self.request_definition = request_definition
+        # The ID of the task. You can obtain the ID of a task after you create the task.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The type of the task. For information about valid values, see [Task types](https://help.aliyun.com/document_detail/2743993.html).
+        # 
         # This parameter is required.
         self.task_type = task_type
 
@@ -20694,19 +23408,39 @@ class GetTaskResponseBody(TeaModel):
         task_type: str = None,
         user_data: str = None,
     ):
+        # The error code of the task.
         self.code = code
+        # The end time of the task.
         self.end_time = end_time
+        # The event ID.
         self.event_id = event_id
+        # The error message of the task.
         self.message = message
+        # The task progress. Valid values: 0 to 100. Unit: %.
+        # 
+        # >  This parameter is valid only if the task is in the `Running` state.``
         self.progress = progress
+        # The project name.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The start time of the task.
         self.start_time = start_time
+        # The status of the task. Valid values:
+        # 
+        # *   RUNNING: The task is running.
+        # *   Succeeded: The task is successful.
+        # *   Failed: The task failed.
         self.status = status
+        # The tags. This parameter is returned only if you specified Tags when you created the task.
         self.tags = tags
+        # The task ID.
         self.task_id = task_id
+        # The initial request parameters used to create the task.
         self.task_request_definition = task_request_definition
+        # The type of the task. For more information, see [Task types](https://help.aliyun.com/document_detail/2743993.html).
         self.task_type = task_type
+        # The user data of the task.
         self.user_data = user_data
 
     def validate(self):
@@ -20828,8 +23562,12 @@ class GetTriggerRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # The ID of the trigger. You can obtain the ID from the response parameters of the [CreateTrigger](https://help.aliyun.com/document_detail/479912.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -20863,7 +23601,9 @@ class GetTriggerResponseBody(TeaModel):
         request_id: str = None,
         trigger: DataIngestion = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The trigger information.
         self.trigger = trigger
 
     def validate(self):
@@ -20940,10 +23680,16 @@ class GetVideoLabelClassificationResultRequest(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The task ID, which is obtained from response parameters of [CreateVideoLabelClassificationTask](https://help.aliyun.com/document_detail/478223.html).
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The type of the task. Valid values:
+        # 
         # This parameter is required.
         self.task_type = task_type
 
@@ -20991,17 +23737,29 @@ class GetVideoLabelClassificationResultResponseBody(TeaModel):
         task_type: str = None,
         user_data: str = None,
     ):
+        # The error code of the task.
         self.code = code
+        # The end time of the task.
         self.end_time = end_time
+        # The event ID.
         self.event_id = event_id
+        # The labels.
         self.labels = labels
+        # The error message of the task.
         self.message = message
+        # The project name.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The start time of the task.
         self.start_time = start_time
+        # The task status.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The type of the task.
         self.task_type = task_type
+        # The custom information.
         self.user_data = user_data
 
     def validate(self):
@@ -21431,11 +24189,18 @@ class IndexFileMetaRequest(TeaModel):
         project_name: str = None,
         user_data: str = None,
     ):
+        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The file for which you want to create an index. The value must be in the JSON format.
+        # 
         # This parameter is required.
         self.file = file
+        # The notification settings. For more information, click Notification. For information about the formats of asynchronous notifications, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
         self.notification = notification
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
         self.user_data = user_data
@@ -21490,11 +24255,18 @@ class IndexFileMetaShrinkRequest(TeaModel):
         project_name: str = None,
         user_data: str = None,
     ):
+        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The file for which you want to create an index. The value must be in the JSON format.
+        # 
         # This parameter is required.
         self.file_shrink = file_shrink
+        # The notification settings. For more information, click Notification. For information about the formats of asynchronous notifications, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
         self.notification_shrink = notification_shrink
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
         self.user_data = user_data
@@ -21541,7 +24313,9 @@ class IndexFileMetaResponseBody(TeaModel):
         event_id: str = None,
         request_id: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21620,13 +24394,39 @@ class ListBatchesRequest(TeaModel):
         state: str = None,
         tag_selector: str = None,
     ):
+        # The maximum number of results to return. Valid values: 0 to 100.
+        # 
+        # If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
         self.max_results = max_results
+        # The pagination token.
+        # 
+        # The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter. The next call to the operation returns results lexicographically after the NextToken parameter value.
+        # 
+        # You do not need to specify this parameter in your initial request.
         self.next_token = next_token
+        # The sort order. Valid values:
+        # 
+        # *   ASC: sorts the results in ascending order. This is the default sort order.
+        # *   DES: sorts the results in descending order.
         self.order = order
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The sort field. Valid values:
+        # 
+        # *   CreateTime
+        # *   UpdateTime
         self.sort = sort
+        # The task status.
+        # 
+        # *   Ready: The task is newly created and ready.
+        # *   Running: The task is running.
+        # *   Failed: The task failed and cannot be automatically recovered.
+        # *   Suspended: The task is suspended.
+        # *   Succeeded: The task is successful.
         self.state = state
+        # The custom tag. You can use this parameter to query tasks that have the specified tag.
         self.tag_selector = tag_selector
 
     def validate(self):
@@ -21680,8 +24480,13 @@ class ListBatchesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The batch processing tasks.
         self.batches = batches
+        # The pagination token.
+        # 
+        # The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter. The next call to the operation returns results lexicographically after the NextToken parameter value.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21769,10 +24574,19 @@ class ListBindingsRequest(TeaModel):
         next_token: str = None,
         project_name: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # *   The maximum number of bindings to return. Valid values: 0 to 200.
+        # *   If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
         self.max_results = max_results
+        # *   The pagination token that is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
+        # *   The next call to the operation returns results lexicographically after the NextToken parameter value.
+        # *   You do not need to specify this parameter in your initial request.
         self.next_token = next_token
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -21815,8 +24629,13 @@ class ListBindingsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The bindings between the dataset and OSS buckets.
         self.bindings = bindings
+        # *   The pagination token that is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
+        # *   The next request returns remaining results starting from the position marked by the NextToken parameter value.
+        # *   This parameter has a non-empty value only when not all bindings are returned.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21904,9 +24723,20 @@ class ListDatasetsRequest(TeaModel):
         prefix: str = None,
         project_name: str = None,
     ):
+        # The maximum number of datasets to return. Valid values: 0 to 200.
+        # 
+        # If this parameter is left empty or set to 0, 100 datasets are returned.
         self.max_results = max_results
+        # The pagination token.
+        # 
+        # If the total number of datasets is greater than the value of MaxResults, you must specify this parameter. The list is returned in lexicographic order starting from the value of NextToken.
+        # 
+        # >  The first time you call this operation in a query, set this parameter to null.
         self.next_token = next_token
+        # The dataset prefix.
         self.prefix = prefix
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -21949,8 +24779,13 @@ class ListDatasetsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The list of datasets.
         self.datasets = datasets
+        # The pagination token. If the total number of datasets is greater than the value of MaxResults, you must specify this parameter. This parameter has a value only if not all the datasets that meet the conditions are returned.
+        # 
+        # Pass this value as the value of NextToken in the next call to query subsequent datasets.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22036,7 +24871,9 @@ class ListProjectsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -22071,9 +24908,13 @@ class ListProjectsRequest(TeaModel):
         prefix: str = None,
         tag: List[ListProjectsRequestTag] = None,
     ):
+        # The maximum number of entries to return. Valid values: 0 to 200. Default value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. The operation returns the projects in lexicographical order starting from the location specified by NextToken.
         self.next_token = next_token
+        # The prefix used by the projects that you want to query. The prefix must be up to 128 characters in length.
         self.prefix = prefix
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -22124,9 +24965,13 @@ class ListProjectsShrinkRequest(TeaModel):
         prefix: str = None,
         tag_shrink: str = None,
     ):
+        # The maximum number of entries to return. Valid values: 0 to 200. Default value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. The operation returns the projects in lexicographical order starting from the location specified by NextToken.
         self.next_token = next_token
+        # The prefix used by the projects that you want to query. The prefix must be up to 128 characters in length.
         self.prefix = prefix
+        # The tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -22168,8 +25013,11 @@ class ListProjectsResponseBody(TeaModel):
         projects: List[Project] = None,
         request_id: str = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The projects.
         self.projects = projects
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22254,6 +25102,12 @@ class ListRegionsRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
+        # The language. Valid values:
+        # 
+        # *   zh-CN: Chinese.
+        # *   en-US: English.
+        # *   ja: Japanese.
+        # 
         # This parameter is required.
         self.accept_language = accept_language
 
@@ -22283,7 +25137,9 @@ class ListRegionsResponseBody(TeaModel):
         regions: List[RegionType] = None,
         request_id: str = None,
     ):
+        # The regions.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22374,17 +25230,44 @@ class ListTasksRequest(TeaModel):
         tag_selector: str = None,
         task_types: List[str] = None,
     ):
+        # The range of task end time. You can specify this parameter to filter tasks that end within the specified range.
         self.end_time_range = end_time_range
+        # The maximum number of results to return. Valid value range: (0, 100]. Default value: 100.
         self.max_results = max_results
+        # The pagination token.
+        # 
+        # The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter. The next call to the operation returns results lexicographically after the NextToken parameter value.
+        # 
+        # >  Leave this parameter empty in your first call to the operation.
         self.next_token = next_token
+        # The sort order. Valid values:
+        # 
+        # *   ASC: sorts the results in ascending order. This is the default sort order.
+        # *   DES: sorts the results in descending order.
         self.order = order
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # Specifies whether to return request parameters in the initial request to create the task. Default value: False.
         self.request_definition = request_definition
+        # The field used to sort the results by. Valid values:
+        # 
+        # *   TaskId: sorts the results by task ID. This is the default sort field.
+        # *   StartTime: sorts the results by task start time.
+        # *   StartTime: sorts the results by task end time.
         self.sort = sort
+        # The range of task start time. You can specify this parameter to filter tasks that start within the specified range.
         self.start_time_range = start_time_range
+        # The task status. Valid values:
+        # 
+        # *   Running: The task is running.
+        # *   Succeeded: The task is successful.
+        # *   Failed: The task failed.
         self.status = status
+        # The custom tags of tasks.
         self.tag_selector = tag_selector
+        # The task types.
         self.task_types = task_types
 
     def validate(self):
@@ -22467,17 +25350,44 @@ class ListTasksShrinkRequest(TeaModel):
         tag_selector: str = None,
         task_types_shrink: str = None,
     ):
+        # The range of task end time. You can specify this parameter to filter tasks that end within the specified range.
         self.end_time_range_shrink = end_time_range_shrink
+        # The maximum number of results to return. Valid value range: (0, 100]. Default value: 100.
         self.max_results = max_results
+        # The pagination token.
+        # 
+        # The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter. The next call to the operation returns results lexicographically after the NextToken parameter value.
+        # 
+        # >  Leave this parameter empty in your first call to the operation.
         self.next_token = next_token
+        # The sort order. Valid values:
+        # 
+        # *   ASC: sorts the results in ascending order. This is the default sort order.
+        # *   DES: sorts the results in descending order.
         self.order = order
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # Specifies whether to return request parameters in the initial request to create the task. Default value: False.
         self.request_definition = request_definition
+        # The field used to sort the results by. Valid values:
+        # 
+        # *   TaskId: sorts the results by task ID. This is the default sort field.
+        # *   StartTime: sorts the results by task start time.
+        # *   StartTime: sorts the results by task end time.
         self.sort = sort
+        # The range of task start time. You can specify this parameter to filter tasks that start within the specified range.
         self.start_time_range_shrink = start_time_range_shrink
+        # The task status. Valid values:
+        # 
+        # *   Running: The task is running.
+        # *   Succeeded: The task is successful.
+        # *   Failed: The task failed.
         self.status = status
+        # The custom tags of tasks.
         self.tag_selector = tag_selector
+        # The task types.
         self.task_types_shrink = task_types_shrink
 
     def validate(self):
@@ -22549,10 +25459,17 @@ class ListTasksResponseBody(TeaModel):
         request_id: str = None,
         tasks: List[TaskInfo] = None,
     ):
+        # The length of the returned result list.
         self.max_results = max_results
+        # The pagination token. The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter. This parameter has a value only when not all results are returned.
+        # 
+        # You can specify the value of the NextToken parameter in the next request to list remaining results.
         self.next_token = next_token
+        # The name of the project.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -22651,13 +25568,39 @@ class ListTriggersRequest(TeaModel):
         state: str = None,
         tag_selector: str = None,
     ):
+        # The maximum number of entries to return. Valid values: 0 to 100.
+        # 
+        # Default value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # If the total number of triggers is greater than the value of MaxResults, you must specify NextToken.
+        # 
+        # You do not need to specify this parameter for the first request.
         self.next_token = next_token
+        # The sort order. Default value: DESC.
+        # 
+        # *   ASC (default): ascending order.
+        # *   DESC: descending order.
         self.order = order
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The sort field. Valid values:
+        # 
+        # *   CreateTime: the point in time when the trigger is created.
+        # *   UpdateTime: the most recent point in time when the trigger is updated.
         self.sort = sort
+        # The status of the trigger. Valid values:
+        # 
+        # *   Ready: The trigger is ready.
+        # *   Running: The trigger is running.
+        # *   Failed: The trigger failed and cannot be automatically recovered.
+        # *   Suspended: The trigger is suspended.
+        # *   Succeeded: The trigger is complete.
         self.state = state
+        # The custom tag. You can specify this parameter only if you specified Tags when you called the CreateTrigger operation.
         self.tag_selector = tag_selector
 
     def validate(self):
@@ -22711,8 +25654,13 @@ class ListTriggersResponseBody(TeaModel):
         request_id: str = None,
         triggers: List[DataIngestion] = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # 
+        # If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The triggers.
         self.triggers = triggers
 
     def validate(self):
@@ -22806,17 +25754,46 @@ class QueryFigureClustersRequest(TeaModel):
         update_time_range: TimeRange = None,
         with_total_count: bool = None,
     ):
+        # The time period during which the faces are grouped together.
         self.create_time_range = create_time_range
+        # The custom labels, which can be used as query conditions.
         self.custom_labels = custom_labels
+        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The maximum number of entries to return. Valid values: 0 to 100. Default value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The sort order. Default value: asc.
+        # 
+        # Valid values:
+        # 
+        # *   asc: ascending order.
+        # *   desc: descending order.
         self.order = order
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The sort field. If you leave this parameter empty, the group ID is used as the sort field.
+        # 
+        # Valid values:
+        # 
+        # *   ImageCount: the number of images.
+        # *   VideoCount: the number of videos.
+        # *   ProjectName: the name of the project.
+        # *   DatasetName: the name of the dataset.
+        # *   CreateTime: the point in time when the group is created.
+        # *   UpdateTime: the most recent point in time when the group is updated.
+        # *   Gender: the gender.
+        # *   FaceCount: the number of faces.
+        # *   GroupName: the name of the group.
         self.sort = sort
+        # The time period during which the faces in the group are updated.
         self.update_time_range = update_time_range
+        # Specifies whether to return the total number of face groups that match the current query conditions. Default value: false.
         self.with_total_count = with_total_count
 
     def validate(self):
@@ -22894,17 +25871,46 @@ class QueryFigureClustersShrinkRequest(TeaModel):
         update_time_range_shrink: str = None,
         with_total_count: bool = None,
     ):
+        # The time period during which the faces are grouped together.
         self.create_time_range_shrink = create_time_range_shrink
+        # The custom labels, which can be used as query conditions.
         self.custom_labels = custom_labels
+        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The maximum number of entries to return. Valid values: 0 to 100. Default value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The sort order. Default value: asc.
+        # 
+        # Valid values:
+        # 
+        # *   asc: ascending order.
+        # *   desc: descending order.
         self.order = order
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The sort field. If you leave this parameter empty, the group ID is used as the sort field.
+        # 
+        # Valid values:
+        # 
+        # *   ImageCount: the number of images.
+        # *   VideoCount: the number of videos.
+        # *   ProjectName: the name of the project.
+        # *   DatasetName: the name of the dataset.
+        # *   CreateTime: the point in time when the group is created.
+        # *   UpdateTime: the most recent point in time when the group is updated.
+        # *   Gender: the gender.
+        # *   FaceCount: the number of faces.
+        # *   GroupName: the name of the group.
         self.sort = sort
+        # The time period during which the faces in the group are updated.
         self.update_time_range_shrink = update_time_range_shrink
+        # Specifies whether to return the total number of face groups that match the current query conditions. Default value: false.
         self.with_total_count = with_total_count
 
     def validate(self):
@@ -22971,9 +25977,13 @@ class QueryFigureClustersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The face groups.
         self.figure_clusters = figure_clusters
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of face groups that matches the current query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -23076,22 +26086,51 @@ class QueryLocationDateClustersRequest(TeaModel):
         title: str = None,
         update_time_range: TimeRange = None,
     ):
+        # The address information.
         self.address = address
+        # The time range during which the spatiotemporal clustering groups are generated.
         self.create_time_range = create_time_range
+        # The custom labels, which can be used as query conditions.
         self.custom_labels = custom_labels
+        # The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The time range when the clustering groups are ended.
         self.location_date_cluster_end_time_range = location_date_cluster_end_time_range
+        # The administrative level of the spatiotemporal clustering groups to be queried.
         self.location_date_cluster_levels = location_date_cluster_levels
+        # The time range when the clustering groups are started.
         self.location_date_cluster_start_time_range = location_date_cluster_start_time_range
+        # The number of entries per page. Valid values: [1,100]. Default value: 20.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        # The ID of the group that you want to query. Specify this parameter if you want to obtain the information about a specific spatiotemporal clustering group. Otherwise, leave this parameter empty and use other parameters to query the groups that meet the matching conditions.
         self.object_id = object_id
+        # The sorting order.
+        # 
+        # Default value: asc. Valid values:
+        # 
+        # *   asc: ascending order.
+        # *   desc: descending order.
         self.order = order
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The condition by which the results are sorted.
+        # 
+        # Valid values:
+        # 
+        # *   LocationDateClusterEndTime: by the end time of the spatiotemporal clustering groups.
+        # *   CreateTime: by the creation time of the spatiotemporal clustering groups.
+        # *   UpdateTime: by the update time of the spatiotemporal clustering groups.
+        # *   LocationDateClusterStartTime: by the start time of the spatiotemporal clustering groups. This is the default value.
         self.sort = sort
+        # The title of spatiotemporal clustering. Fuzzy matching is performed.
         self.title = title
+        # The time range during which the spatiotemporal clustering groups are updated.
         self.update_time_range = update_time_range
 
     def validate(self):
@@ -23203,22 +26242,51 @@ class QueryLocationDateClustersShrinkRequest(TeaModel):
         title: str = None,
         update_time_range_shrink: str = None,
     ):
+        # The address information.
         self.address_shrink = address_shrink
+        # The time range during which the spatiotemporal clustering groups are generated.
         self.create_time_range_shrink = create_time_range_shrink
+        # The custom labels, which can be used as query conditions.
         self.custom_labels = custom_labels
+        # The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The time range when the clustering groups are ended.
         self.location_date_cluster_end_time_range_shrink = location_date_cluster_end_time_range_shrink
+        # The administrative level of the spatiotemporal clustering groups to be queried.
         self.location_date_cluster_levels_shrink = location_date_cluster_levels_shrink
+        # The time range when the clustering groups are started.
         self.location_date_cluster_start_time_range_shrink = location_date_cluster_start_time_range_shrink
+        # The number of entries per page. Valid values: [1,100]. Default value: 20.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        # The ID of the group that you want to query. Specify this parameter if you want to obtain the information about a specific spatiotemporal clustering group. Otherwise, leave this parameter empty and use other parameters to query the groups that meet the matching conditions.
         self.object_id = object_id
+        # The sorting order.
+        # 
+        # Default value: asc. Valid values:
+        # 
+        # *   asc: ascending order.
+        # *   desc: descending order.
         self.order = order
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The condition by which the results are sorted.
+        # 
+        # Valid values:
+        # 
+        # *   LocationDateClusterEndTime: by the end time of the spatiotemporal clustering groups.
+        # *   CreateTime: by the creation time of the spatiotemporal clustering groups.
+        # *   UpdateTime: by the update time of the spatiotemporal clustering groups.
+        # *   LocationDateClusterStartTime: by the start time of the spatiotemporal clustering groups. This is the default value.
         self.sort = sort
+        # The title of spatiotemporal clustering. Fuzzy matching is performed.
         self.title = title
+        # The time range during which the spatiotemporal clustering groups are updated.
         self.update_time_range_shrink = update_time_range_shrink
 
     def validate(self):
@@ -23304,8 +26372,11 @@ class QueryLocationDateClustersResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The list of spatiotemporal groups.
         self.location_date_clusters = location_date_clusters
+        # The pagination token.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23396,14 +26467,33 @@ class QuerySimilarImageClustersRequest(TeaModel):
         project_name: str = None,
         sort: str = None,
     ):
+        # The custom tags, which are used to filter tasks.
         self.custom_labels = custom_labels
+        # The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The number of entries per page. Value range: 0 to 100. Default value: 100.
         self.max_results = max_results
+        # The pagination token.
+        # 
+        # If the total number of clusters is greater than the value of MaxResults, you must specify this parameter. The next call to the operation returns results lexicographically after the NextToken parameter value.
+        # 
+        # >  The first time you call this operation in a query, set this parameter to null.
         self.next_token = next_token
+        # The sorting order. Valid values:
+        # 
+        # *   asc: ascending order.
+        # *   desc: descending order. This is the default value.
         self.order = order
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The sorting field.
+        # 
+        # *   CreateTime: the time when the clusters were created.
+        # *   UpdateTime: the time when the clusters were updated. This is the default value.
         self.sort = sort
 
     def validate(self):
@@ -23457,8 +26547,13 @@ class QuerySimilarImageClustersResponseBody(TeaModel):
         request_id: str = None,
         similar_image_clusters: List[SimilarImageCluster] = None,
     ):
+        # The pagination token. If the total number of clusters is greater than the value of MaxResults, this token can be used to retrieve the next page. This parameter has a value only if not all the clusters that meet the condition are returned.
+        # 
+        # Pass this value as the value of NextToken in the next query to return the subsequent clusters.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The list of similar image clusters.
         self.similar_image_clusters = similar_image_clusters
 
     def validate(self):
@@ -23558,23 +26653,52 @@ class QueryStoriesRequest(TeaModel):
         story_type: str = None,
         with_empty_stories: bool = None,
     ):
+        # The time range in which stories were created.
         self.create_time_range = create_time_range
+        # The custom labels in key-value pairs.
         self.custom_labels = custom_labels
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The IDs of the face clusters.
         self.figure_cluster_ids = figure_cluster_ids
+        # The maximum number of entries to return. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If you do not specify this token in the next request, results are returned from the beginning.
         self.next_token = next_token
+        # The ID of the story.
         self.object_id = object_id
+        # The sort order. Valid values:
+        # 
+        # *   asc: in ascending order.
+        # *   desc: in descending order.
         self.order = order
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The sort field. Valid values:
+        # 
+        # *   CreateTime: sorts by story creation time.
+        # *   StoryName: sorts by story name.
+        # *   StoryStartTime: sorts by story start time.
+        # *   StoryEndTime: sorts by story end time.
         self.sort = sort
+        # The time range for the creation time of the last photo or video in the story.
         self.story_end_time_range = story_end_time_range
+        # The name of the story.
         self.story_name = story_name
+        # The time range for the creation time of the first photo or video in the story.
         self.story_start_time_range = story_start_time_range
+        # The subtype of the story. For a list of valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
         self.story_sub_type = story_sub_type
+        # The type of the story. For a list of valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
         self.story_type = story_type
+        # Specifies whether to return empty stories. Valid values:
+        # 
+        # *   true (The default value)
+        # *   false
         self.with_empty_stories = with_empty_stories
 
     def validate(self):
@@ -23685,23 +26809,52 @@ class QueryStoriesShrinkRequest(TeaModel):
         story_type: str = None,
         with_empty_stories: bool = None,
     ):
+        # The time range in which stories were created.
         self.create_time_range_shrink = create_time_range_shrink
+        # The custom labels in key-value pairs.
         self.custom_labels = custom_labels
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The IDs of the face clusters.
         self.figure_cluster_ids_shrink = figure_cluster_ids_shrink
+        # The maximum number of entries to return. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If you do not specify this token in the next request, results are returned from the beginning.
         self.next_token = next_token
+        # The ID of the story.
         self.object_id = object_id
+        # The sort order. Valid values:
+        # 
+        # *   asc: in ascending order.
+        # *   desc: in descending order.
         self.order = order
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The sort field. Valid values:
+        # 
+        # *   CreateTime: sorts by story creation time.
+        # *   StoryName: sorts by story name.
+        # *   StoryStartTime: sorts by story start time.
+        # *   StoryEndTime: sorts by story end time.
         self.sort = sort
+        # The time range for the creation time of the last photo or video in the story.
         self.story_end_time_range_shrink = story_end_time_range_shrink
+        # The name of the story.
         self.story_name = story_name
+        # The time range for the creation time of the first photo or video in the story.
         self.story_start_time_range_shrink = story_start_time_range_shrink
+        # The subtype of the story. For a list of valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
         self.story_sub_type = story_sub_type
+        # The type of the story. For a list of valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
         self.story_type = story_type
+        # Specifies whether to return empty stories. Valid values:
+        # 
+        # *   true (The default value)
+        # *   false
         self.with_empty_stories = with_empty_stories
 
     def validate(self):
@@ -23791,8 +26944,11 @@ class QueryStoriesResponseBody(TeaModel):
         request_id: str = None,
         stories: List[Story] = None,
     ):
+        # The pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The stories.
         self.stories = stories
 
     def validate(self):
@@ -23882,6 +27038,9 @@ class RefreshWebofficeTokenRequest(TeaModel):
     ):
         # This parameter is required.
         self.access_token = access_token
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # This parameter is required.
         self.project_name = project_name
@@ -23932,6 +27091,9 @@ class RefreshWebofficeTokenShrinkRequest(TeaModel):
     ):
         # This parameter is required.
         self.access_token = access_token
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # This parameter is required.
         self.project_name = project_name
@@ -24067,6 +27229,9 @@ class RemoveStoryFilesRequestFiles(TeaModel):
         self,
         uri: str = None,
     ):
+        # The URI of the Object Storage Service (OSS) bucket where you store the files that you want to delete.
+        # 
+        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the files that have an extension.
         self.uri = uri
 
     def validate(self):
@@ -24097,12 +27262,20 @@ class RemoveStoryFilesRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # The name of the dataset.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The files that you want to delete.
+        # 
         # This parameter is required.
         self.files = files
+        # The ID of the story.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -24154,12 +27327,20 @@ class RemoveStoryFilesShrinkRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # The name of the dataset.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The files that you want to delete.
+        # 
         # This parameter is required.
         self.files_shrink = files_shrink
+        # The ID of the story.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -24200,6 +27381,7 @@ class RemoveStoryFilesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24269,8 +27451,12 @@ class ResumeBatchRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # The ID of the batch processing task. You can obtain the ID of the batch processing task from the response of the [CreateBatch](https://help.aliyun.com/document_detail/606694.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -24303,6 +27489,7 @@ class ResumeBatchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24372,8 +27559,12 @@ class ResumeTriggerRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # The ID of the trigger. You can obtain the ID from the response of the [CreateTrigger](https://help.aliyun.com/document_detail/479912.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -24406,6 +27597,7 @@ class ResumeTriggerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24477,11 +27669,21 @@ class SearchImageFigureClusterRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URI of the image.
+        # 
+        # Specify the OSS URI in the `oss://${Bucket}/${Object}` format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
 
     def validate(self):
@@ -24526,11 +27728,21 @@ class SearchImageFigureClusterShrinkRequest(TeaModel):
         project_name: str = None,
         source_uri: str = None,
     ):
+        # **If you have no special requirements, leave this parameter empty.**\
+        # 
+        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The OSS URI of the image.
+        # 
+        # Specify the OSS URI in the `oss://${Bucket}/${Object}` format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
 
     def validate(self):
@@ -24572,8 +27784,11 @@ class SearchImageFigureClusterResponseBodyClusters(TeaModel):
         cluster_id: str = None,
         similarity: float = None,
     ):
+        # The bounding box of the face.
         self.boundary = boundary
+        # The ID of the face cluster that contains faces similar to the face within the bounding box.
         self.cluster_id = cluster_id
+        # The similarity between the face within the bounding box and the face cluster. Valid value: 0 to 1.
         self.similarity = similarity
 
     def validate(self):
@@ -24612,7 +27827,9 @@ class SearchImageFigureClusterResponseBody(TeaModel):
         clusters: List[SearchImageFigureClusterResponseBodyClusters] = None,
         request_id: str = None,
     ):
+        # The face clusters.
         self.clusters = clusters
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24697,19 +27914,31 @@ class SemanticQueryRequest(TeaModel):
         next_token: str = None,
         project_name: str = None,
         query: str = None,
-        smart_cluster_ids: List[str] = None,
         with_fields: List[str] = None,
     ):
+        # The name of the dataset.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The maximum number of entries to return. Valid values: 1 to 1000.
         self.max_results = max_results
+        # The types of the media that you want to query. Default value:
+        # 
+        # ["image"]
         self.media_types = media_types
+        # This parameter is no longer available.
         self.next_token = next_token
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The content of the query that you input.
+        # 
         # This parameter is required.
         self.query = query
-        self.smart_cluster_ids = smart_cluster_ids
+        # The fields that you want to include in the response. Including only necessary metadata fields can help reduce the size of the response.
+        # 
+        # If you do not specify this parameter or set the value to null, all existing metadata fields are returned.
         self.with_fields = with_fields
 
     def validate(self):
@@ -24733,8 +27962,6 @@ class SemanticQueryRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.query is not None:
             result['Query'] = self.query
-        if self.smart_cluster_ids is not None:
-            result['SmartClusterIds'] = self.smart_cluster_ids
         if self.with_fields is not None:
             result['WithFields'] = self.with_fields
         return result
@@ -24753,8 +27980,6 @@ class SemanticQueryRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('Query') is not None:
             self.query = m.get('Query')
-        if m.get('SmartClusterIds') is not None:
-            self.smart_cluster_ids = m.get('SmartClusterIds')
         if m.get('WithFields') is not None:
             self.with_fields = m.get('WithFields')
         return self
@@ -24769,19 +27994,31 @@ class SemanticQueryShrinkRequest(TeaModel):
         next_token: str = None,
         project_name: str = None,
         query: str = None,
-        smart_cluster_ids_shrink: str = None,
         with_fields_shrink: str = None,
     ):
+        # The name of the dataset.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The maximum number of entries to return. Valid values: 1 to 1000.
         self.max_results = max_results
+        # The types of the media that you want to query. Default value:
+        # 
+        # ["image"]
         self.media_types_shrink = media_types_shrink
+        # This parameter is no longer available.
         self.next_token = next_token
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The content of the query that you input.
+        # 
         # This parameter is required.
         self.query = query
-        self.smart_cluster_ids_shrink = smart_cluster_ids_shrink
+        # The fields that you want to include in the response. Including only necessary metadata fields can help reduce the size of the response.
+        # 
+        # If you do not specify this parameter or set the value to null, all existing metadata fields are returned.
         self.with_fields_shrink = with_fields_shrink
 
     def validate(self):
@@ -24805,8 +28042,6 @@ class SemanticQueryShrinkRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.query is not None:
             result['Query'] = self.query
-        if self.smart_cluster_ids_shrink is not None:
-            result['SmartClusterIds'] = self.smart_cluster_ids_shrink
         if self.with_fields_shrink is not None:
             result['WithFields'] = self.with_fields_shrink
         return result
@@ -24825,8 +28060,6 @@ class SemanticQueryShrinkRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('Query') is not None:
             self.query = m.get('Query')
-        if m.get('SmartClusterIds') is not None:
-            self.smart_cluster_ids_shrink = m.get('SmartClusterIds')
         if m.get('WithFields') is not None:
             self.with_fields_shrink = m.get('WithFields')
         return self
@@ -24838,7 +28071,9 @@ class SemanticQueryResponseBody(TeaModel):
         files: List[File] = None,
         request_id: str = None,
     ):
+        # The files.
         self.files = files
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24920,7 +28155,19 @@ class SimpleQueryRequestAggregations(TeaModel):
         field: str = None,
         operation: str = None,
     ):
+        # The name of the field. For more information about supported fields, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
         self.field = field
+        # The operator.
+        # 
+        # Enumerated values:
+        # 
+        # *   average: calculates the average number.
+        # *   min: finds the minimum value.
+        # *   max: finds the maximum value.
+        # *   count: counts the number of results.
+        # *   distinct: counts the number of distinct results.
+        # *   sum: calculates the sum of all matching results..
+        # *   group: counts the number of results by group. The results are sorted by the count number in descending order.
         self.operation = operation
 
     def validate(self):
@@ -24961,17 +28208,59 @@ class SimpleQueryRequest(TeaModel):
         with_fields: List[str] = None,
         without_total_hits: bool = None,
     ):
+        # The aggregations.
+        # 
+        # >  If you perform an aggregate query, the aggregation returned in the response contains only statistical results, not the actual metadata.
         self.aggregations = aggregations
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # *   If the Aggregations parameter is not specified, this parameter specifies the maximum number of files that can be returned. Valid values: 1 to 100.
+        # *   If the Aggregations parameter is specified, this parameter specifies the maximum number of aggregation groups that can be returned. Valid values: 0 to 2000.
+        # *   If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
         self.max_results = max_results
+        # The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
+        # 
+        # The next call to the operation returns results lexicographically after the NextToken parameter value.
+        # 
+        # You do not need to specify this parameter in your initial request.
         self.next_token = next_token
+        # The sort order. Valid values:
+        # 
+        # *   asc: sorts the results in ascending order.
+        # *   desc: sorts the results in descending order. This is the default value.
+        # 
+        # *   You can specify multiple sort orders that are separated by commas. Example: asc,desc.
+        # 
+        # *   The number of elements in the Order parameter must be less than or equal to the number of elements in the Sort parameter. For example, if the value of the Sort parameter is Size,Filename, you can set the Order parameter to desc,asc.
+        # 
+        # *   If the number of sort orders is less than the number of sort fields, the sort fields for which no sorting orders are explicitly specified use the asc order by default. For example, if you set Sort to Size,Filename and Order to asc, the Filename field defaults to the value of asc.
         self.order = order
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The query conditions.
         self.query = query
+        # The sort fields. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
+        # 
+        # > 
+        # 
+        # *   If you specify multiple sort fields, separate them with commas (,), as in Size,Filename.
+        # 
+        # *   You can specify up to five sort fields.
+        # 
+        # *   The order of the sort fields determines their precedence in the sorting process.
         self.sort = sort
+        # The fields that you want to include in the response. You can use this parameter to reduce the size of the response.
+        # 
+        # If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields.
         self.with_fields = with_fields
+        # Specifies whether to return the total number of hits. Valid values:
+        # 
+        # *   true
+        # *   false
         self.without_total_hits = without_total_hits
 
     def validate(self):
@@ -25055,17 +28344,59 @@ class SimpleQueryShrinkRequest(TeaModel):
         with_fields_shrink: str = None,
         without_total_hits: bool = None,
     ):
+        # The aggregations.
+        # 
+        # >  If you perform an aggregate query, the aggregation returned in the response contains only statistical results, not the actual metadata.
         self.aggregations_shrink = aggregations_shrink
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # *   If the Aggregations parameter is not specified, this parameter specifies the maximum number of files that can be returned. Valid values: 1 to 100.
+        # *   If the Aggregations parameter is specified, this parameter specifies the maximum number of aggregation groups that can be returned. Valid values: 0 to 2000.
+        # *   If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
         self.max_results = max_results
+        # The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
+        # 
+        # The next call to the operation returns results lexicographically after the NextToken parameter value.
+        # 
+        # You do not need to specify this parameter in your initial request.
         self.next_token = next_token
+        # The sort order. Valid values:
+        # 
+        # *   asc: sorts the results in ascending order.
+        # *   desc: sorts the results in descending order. This is the default value.
+        # 
+        # *   You can specify multiple sort orders that are separated by commas. Example: asc,desc.
+        # 
+        # *   The number of elements in the Order parameter must be less than or equal to the number of elements in the Sort parameter. For example, if the value of the Sort parameter is Size,Filename, you can set the Order parameter to desc,asc.
+        # 
+        # *   If the number of sort orders is less than the number of sort fields, the sort fields for which no sorting orders are explicitly specified use the asc order by default. For example, if you set Sort to Size,Filename and Order to asc, the Filename field defaults to the value of asc.
         self.order = order
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The query conditions.
         self.query_shrink = query_shrink
+        # The sort fields. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
+        # 
+        # > 
+        # 
+        # *   If you specify multiple sort fields, separate them with commas (,), as in Size,Filename.
+        # 
+        # *   You can specify up to five sort fields.
+        # 
+        # *   The order of the sort fields determines their precedence in the sorting process.
         self.sort = sort
+        # The fields that you want to include in the response. You can use this parameter to reduce the size of the response.
+        # 
+        # If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields.
         self.with_fields_shrink = with_fields_shrink
+        # Specifies whether to return the total number of hits. Valid values:
+        # 
+        # *   true
+        # *   false
         self.without_total_hits = without_total_hits
 
     def validate(self):
@@ -25130,7 +28461,9 @@ class SimpleQueryResponseBodyAggregationsGroups(TeaModel):
         count: int = None,
         value: str = None,
     ):
+        # The number of results in the grouped aggregation.
         self.count = count
+        # The value for the grouped aggregation.
         self.value = value
 
     def validate(self):
@@ -25165,9 +28498,13 @@ class SimpleQueryResponseBodyAggregations(TeaModel):
         operation: str = None,
         value: float = None,
     ):
+        # The name of the field.
         self.field = field
+        # The grouped aggregations. This parameter is returned only when the group operator is specified in the Aggregations request parameter.
         self.groups = groups
+        # The operator.
         self.operation = operation
+        # The statistical result.
         self.value = value
 
     def validate(self):
@@ -25219,11 +28556,21 @@ class SimpleQueryResponseBody(TeaModel):
         request_id: str = None,
         total_hits: int = None,
     ):
+        # The aggregations. This parameter is returned only when the value of the Aggregations request parameter is not empty.
         self.aggregations = aggregations
+        # The files. This parameter is returned only when the value of the Aggregations request parameter is empty.
         self.files = files
+        # The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
+        # 
+        # It can be used in the next request to retrieve a new page of results.
+        # 
+        # If NextToken is empty, no next page exists.
+        # 
         # This parameter is required.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The number of total hits.
         self.total_hits = total_hits
 
     def validate(self):
@@ -25326,8 +28673,12 @@ class SuspendBatchRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # The ID of the batch processing task. You can obtain the ID of the batch processing task from the response of the [CreateBatch](https://help.aliyun.com/document_detail/606694.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -25360,6 +28711,7 @@ class SuspendBatchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25429,8 +28781,12 @@ class SuspendTriggerRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # The ID of the trigger.[](~~479912~~)
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -25463,6 +28819,7 @@ class SuspendTriggerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25532,7 +28889,9 @@ class UpdateBatchRequestActions(TeaModel):
         name: str = None,
         parameters: List[str] = None,
     ):
+        # The name of the template.
         self.name = name
+        # The template parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -25568,12 +28927,19 @@ class UpdateBatchRequest(TeaModel):
         project_name: str = None,
         tags: Dict[str, Any] = None,
     ):
+        # The processing templates.
         self.actions = actions
+        # The ID of the batch processing task. You can obtain the ID of the batch processing task from the response of the [CreateBatch](https://help.aliyun.com/document_detail/606694.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The input data source.
         self.input = input
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags = tags
 
     def validate(self):
@@ -25632,12 +28998,19 @@ class UpdateBatchShrinkRequest(TeaModel):
         project_name: str = None,
         tags_shrink: str = None,
     ):
+        # The processing templates.
         self.actions_shrink = actions_shrink
+        # The ID of the batch processing task. You can obtain the ID of the batch processing task from the response of the [CreateBatch](https://help.aliyun.com/document_detail/606694.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The input data source.
         self.input_shrink = input_shrink
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -25681,6 +29054,7 @@ class UpdateBatchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25904,10 +29278,16 @@ class UpdateFigureClusterRequest(TeaModel):
         figure_cluster: FigureClusterForReq = None,
         project_name: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The information about the cluster.
+        # 
         # This parameter is required.
         self.figure_cluster = figure_cluster
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -25948,10 +29328,16 @@ class UpdateFigureClusterShrinkRequest(TeaModel):
         figure_cluster_shrink: str = None,
         project_name: str = None,
     ):
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The information about the cluster.
+        # 
         # This parameter is required.
         self.figure_cluster_shrink = figure_cluster_shrink
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -25988,6 +29374,7 @@ class UpdateFigureClusterResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26058,10 +29445,16 @@ class UpdateFileMetaRequest(TeaModel):
         file: InputFile = None,
         project_name: str = None,
     ):
+        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The file whose metadata you want to update. The value must be in the JSON format.
+        # 
         # This parameter is required.
         self.file = file
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -26102,10 +29495,16 @@ class UpdateFileMetaShrinkRequest(TeaModel):
         file_shrink: str = None,
         project_name: str = None,
     ):
+        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The file whose metadata you want to update. The value must be in the JSON format.
+        # 
         # This parameter is required.
         self.file_shrink = file_shrink
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -26142,6 +29541,7 @@ class UpdateFileMetaResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26215,14 +29615,23 @@ class UpdateLocationDateClusterRequest(TeaModel):
         project_name: str = None,
         title: str = None,
     ):
+        # The custom ID of the cluster. When the cluster is indexed into the dataset, the custom ID is stored as the data attribute. You can map the custom ID to other data in your business system. For example, you can pass the custom ID to map a URI to an ID. We recommend that you specify a globally unique value. The value can be up to 1,024 bytes in size.
         self.custom_id = custom_id
+        # The custom labels. The parameter stores custom key-value labels, which can be used to filter data. You can specify up to 100 custom labels for a cluster.
         self.custom_labels = custom_labels
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The ID of the cluster that you want to update.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The name of the cluster. The name can be used to search for the cluster. The value can be up to 1,024 bytes in size.
         self.title = title
 
     def validate(self):
@@ -26275,14 +29684,23 @@ class UpdateLocationDateClusterShrinkRequest(TeaModel):
         project_name: str = None,
         title: str = None,
     ):
+        # The custom ID of the cluster. When the cluster is indexed into the dataset, the custom ID is stored as the data attribute. You can map the custom ID to other data in your business system. For example, you can pass the custom ID to map a URI to an ID. We recommend that you specify a globally unique value. The value can be up to 1,024 bytes in size.
         self.custom_id = custom_id
+        # The custom labels. The parameter stores custom key-value labels, which can be used to filter data. You can specify up to 100 custom labels for a cluster.
         self.custom_labels_shrink = custom_labels_shrink
+        # The name of the dataset.[](~~478160~~)
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The ID of the cluster that you want to update.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The name of the project.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The name of the cluster. The name can be used to search for the cluster. The value can be up to 1,024 bytes in size.
         self.title = title
 
     def validate(self):
@@ -26330,6 +29748,7 @@ class UpdateLocationDateClusterResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26399,7 +29818,9 @@ class UpdateProjectRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -26441,17 +29862,35 @@ class UpdateProjectRequest(TeaModel):
         tag: List[UpdateProjectRequestTag] = None,
         template_id: str = None,
     ):
+        # The maximum number of bindings for each dataset. Valid values: 1 to 10.
         self.dataset_max_bind_count = dataset_max_bind_count
+        # The maximum number of metadata entities in each dataset.
+        # 
+        # >  This is a precautionary setting that does not impose practical limitations.
         self.dataset_max_entity_count = dataset_max_entity_count
+        # The maximum number of files in each dataset. Valid values: 1 to 100000000.
         self.dataset_max_file_count = dataset_max_file_count
+        # The maximum number of metadata relationships in a dataset.
+        # 
+        # >  This is a precautionary setting that does not impose practical limitations.
         self.dataset_max_relation_count = dataset_max_relation_count
+        # The maximum size of files in each dataset. If the maximum size is exceeded, indexes can no longer be added. Unit: bytes.
         self.dataset_max_total_file_size = dataset_max_total_file_size
+        # The description of the project. The description must be 1 to 256 characters in length.
         self.description = description
+        # The maximum number of datasets in the project. Valid values: 1 to 1000000000.
         self.project_max_dataset_count = project_max_dataset_count
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The name of the Resource Access Management (RAM) role. You must grant the RAM role to Intelligent Media Management (IMM) before IMM can access other cloud resources such as Object Storage Service (OSS).
+        # 
+        # You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
         self.service_role = service_role
+        # The tags.
         self.tag = tag
+        # The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
         self.template_id = template_id
 
     def validate(self):
@@ -26537,17 +29976,35 @@ class UpdateProjectShrinkRequest(TeaModel):
         tag_shrink: str = None,
         template_id: str = None,
     ):
+        # The maximum number of bindings for each dataset. Valid values: 1 to 10.
         self.dataset_max_bind_count = dataset_max_bind_count
+        # The maximum number of metadata entities in each dataset.
+        # 
+        # >  This is a precautionary setting that does not impose practical limitations.
         self.dataset_max_entity_count = dataset_max_entity_count
+        # The maximum number of files in each dataset. Valid values: 1 to 100000000.
         self.dataset_max_file_count = dataset_max_file_count
+        # The maximum number of metadata relationships in a dataset.
+        # 
+        # >  This is a precautionary setting that does not impose practical limitations.
         self.dataset_max_relation_count = dataset_max_relation_count
+        # The maximum size of files in each dataset. If the maximum size is exceeded, indexes can no longer be added. Unit: bytes.
         self.dataset_max_total_file_size = dataset_max_total_file_size
+        # The description of the project. The description must be 1 to 256 characters in length.
         self.description = description
+        # The maximum number of datasets in the project. Valid values: 1 to 1000000000.
         self.project_max_dataset_count = project_max_dataset_count
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The name of the Resource Access Management (RAM) role. You must grant the RAM role to Intelligent Media Management (IMM) before IMM can access other cloud resources such as Object Storage Service (OSS).
+        # 
+        # You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
         self.service_role = service_role
+        # The tags.
         self.tag_shrink = tag_shrink
+        # The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
         self.template_id = template_id
 
     def validate(self):
@@ -26616,7 +30073,9 @@ class UpdateProjectResponseBody(TeaModel):
         project: Project = None,
         request_id: str = None,
     ):
+        # The project. For more information, see "Project".
         self.project = project
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26691,6 +30150,9 @@ class UpdateStoryRequestCover(TeaModel):
         self,
         uri: str = None,
     ):
+        # The URI of the cover image.
+        # 
+        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.uri = uri
 
     def validate(self):
@@ -26724,15 +30186,25 @@ class UpdateStoryRequest(TeaModel):
         project_name: str = None,
         story_name: str = None,
     ):
+        # The cover image of the story.
         self.cover = cover
+        # The custom ID.
         self.custom_id = custom_id
+        # The custom tags. You can specify up to 100 custom tags.
         self.custom_labels = custom_labels
+        # The name of the dataset.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The ID of the story.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The name of the story.
         self.story_name = story_name
 
     def validate(self):
@@ -26792,15 +30264,25 @@ class UpdateStoryShrinkRequest(TeaModel):
         project_name: str = None,
         story_name: str = None,
     ):
+        # The cover image of the story.
         self.cover_shrink = cover_shrink
+        # The custom ID.
         self.custom_id = custom_id
+        # The custom tags. You can specify up to 100 custom tags.
         self.custom_labels_shrink = custom_labels_shrink
+        # The name of the dataset.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The ID of the story.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The name of the story.
         self.story_name = story_name
 
     def validate(self):
@@ -26852,6 +30334,7 @@ class UpdateStoryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26921,7 +30404,9 @@ class UpdateTriggerRequestActions(TeaModel):
         name: str = None,
         parameters: List[str] = None,
     ):
+        # The template name.
         self.name = name
+        # The template parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -26957,12 +30442,19 @@ class UpdateTriggerRequest(TeaModel):
         project_name: str = None,
         tags: Dict[str, Any] = None,
     ):
+        # The processing templates.
         self.actions = actions
+        # The ID of the trigger. You can obtain the ID of the trigger from the response of the [CreateTrigger](https://help.aliyun.com/document_detail/479912.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The input data source.
         self.input = input
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags = tags
 
     def validate(self):
@@ -27021,12 +30513,19 @@ class UpdateTriggerShrinkRequest(TeaModel):
         project_name: str = None,
         tags_shrink: str = None,
     ):
+        # The processing templates.
         self.actions_shrink = actions_shrink
+        # The ID of the trigger. You can obtain the ID of the trigger from the response of the [CreateTrigger](https://help.aliyun.com/document_detail/479912.html) operation.
+        # 
         # This parameter is required.
         self.id = id
+        # The input data source.
         self.input_shrink = input_shrink
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -27070,6 +30569,7 @@ class UpdateTriggerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

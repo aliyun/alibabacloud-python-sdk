@@ -1,3 +1,12 @@
+2024-12-27 Version: 4.6.0
+- Support API ContextualAnswer.
+- Support API ContextualRetrieval.
+- Update API CreateOfficeConversionTask: add param Sources.
+- Update API CreateOfficeConversionTask: update param SourceURI.
+- Update API GetVideoModerationResult: update response param.
+- Update API SemanticQuery: delete param SmartClusterIds.
+
+
 2024-09-04 Version: 4.5.5
 - Update API CreateBinding: update param DatasetName.
 - Update API CreateBinding: update param ProjectName.
