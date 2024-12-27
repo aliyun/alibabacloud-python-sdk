@@ -1,3 +1,11 @@
+2024-12-27 Version: 1.3.2
+- Update API GetTrace: add param PageNumber.
+- Update API GetTrace: add param PageSize.
+- Update API GetTrace: update response param.
+- Update API SearchTraces: add param StatusCode.
+- Update API SearchTraces: update response param.
+
+
 2024-06-25 Version: 1.3.1
 - Update API CheckCommercialStatus: update param Service.
 

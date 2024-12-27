@@ -385,6 +385,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_type):
             query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.trace_id):
@@ -424,6 +428,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_type):
             query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.trace_id):
@@ -479,7 +487,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListIpOrHostsResponse:
         """
-        @summary Queries the IP addresses of an application.
+        @summary Queries IP addresses or hostnames in trace data. You can obtain all IP addresses of an application or in a region.
         
         @param request: ListIpOrHostsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -520,7 +528,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListIpOrHostsResponse:
         """
-        @summary Queries the IP addresses of an application.
+        @summary Queries IP addresses or hostnames in trace data. You can obtain all IP addresses of an application or in a region.
         
         @param request: ListIpOrHostsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -560,7 +568,7 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.ListIpOrHostsRequest,
     ) -> xtrace_20190808_models.ListIpOrHostsResponse:
         """
-        @summary Queries the IP addresses of an application.
+        @summary Queries IP addresses or hostnames in trace data. You can obtain all IP addresses of an application or in a region.
         
         @param request: ListIpOrHostsRequest
         @return: ListIpOrHostsResponse
@@ -573,7 +581,7 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.ListIpOrHostsRequest,
     ) -> xtrace_20190808_models.ListIpOrHostsResponse:
         """
-        @summary Queries the IP addresses of an application.
+        @summary Queries IP addresses or hostnames in trace data. You can obtain all IP addresses of an application or in a region.
         
         @param request: ListIpOrHostsRequest
         @return: ListIpOrHostsResponse
@@ -795,7 +803,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.OpenXtraceServiceResponse:
         """
-        @summary 开通xtrace和对应的sls
+        @summary Activates Managed Service for OpenTelemetry.
         
         @param request: OpenXtraceServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -830,7 +838,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.OpenXtraceServiceResponse:
         """
-        @summary 开通xtrace和对应的sls
+        @summary Activates Managed Service for OpenTelemetry.
         
         @param request: OpenXtraceServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -864,7 +872,7 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.OpenXtraceServiceRequest,
     ) -> xtrace_20190808_models.OpenXtraceServiceResponse:
         """
-        @summary 开通xtrace和对应的sls
+        @summary Activates Managed Service for OpenTelemetry.
         
         @param request: OpenXtraceServiceRequest
         @return: OpenXtraceServiceResponse
@@ -877,7 +885,7 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.OpenXtraceServiceRequest,
     ) -> xtrace_20190808_models.OpenXtraceServiceResponse:
         """
-        @summary 开通xtrace和对应的sls
+        @summary Activates Managed Service for OpenTelemetry.
         
         @param request: OpenXtraceServiceRequest
         @return: OpenXtraceServiceResponse
@@ -1057,6 +1065,8 @@ class Client(OpenApiClient):
             query['ServiceName'] = request.service_name
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status_code):
+            query['StatusCode'] = request.status_code
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -1114,6 +1124,8 @@ class Client(OpenApiClient):
             query['ServiceName'] = request.service_name
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status_code):
+            query['StatusCode'] = request.status_code
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(

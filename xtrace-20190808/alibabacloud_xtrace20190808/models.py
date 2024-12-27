@@ -11,6 +11,8 @@ class CheckCommercialStatusRequest(TeaModel):
         service: str = None,
     ):
         self.region_id = region_id
+        # The service code.
+        # 
         # This parameter is required.
         self.service = service
 
@@ -122,7 +124,9 @@ class GetTagKeyRequest(TeaModel):
         span_name: str = None,
         start_time: int = None,
     ):
-        # The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+        # The end of the time range to query. The value is a timestamp that is accurate to milliseconds.
+        # 
+        # >  The value of this parameter is of the LONG type. Precision loss may occur during serialization or deserialization. The value must be less than or equal to 9007199254740991.
         self.end_time = end_time
         # The ID of the region.
         # 
@@ -132,7 +136,9 @@ class GetTagKeyRequest(TeaModel):
         self.service_name = service_name
         # The name of the span.
         self.span_name = span_name
-        # The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+        # The beginning of the time range to query. The value is a timestamp that is accurate to milliseconds.
+        # 
+        # >  The value of this parameter is of the LONG type. Precision loss may occur during serialization or deserialization. The value must be less than or equal to 9007199254740991.
         self.start_time = start_time
 
     def validate(self):
@@ -286,7 +292,9 @@ class GetTagValRequest(TeaModel):
         start_time: int = None,
         tag_key: str = None,
     ):
-        # The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+        # The end of the time range to query. The value is a timestamp that is accurate to milliseconds.
+        # 
+        # >  This value is of the LONG type, and precision loss may occur during serialization or deserialization. Do not set this parameter to a value greater than 9007199254740991.
         self.end_time = end_time
         # The ID of the region.
         self.region_id = region_id
@@ -294,9 +302,13 @@ class GetTagValRequest(TeaModel):
         self.service_name = service_name
         # The name of the span.
         self.span_name = span_name
-        # The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+        # The beginning of the time range to query. The value is a timestamp that is accurate to milliseconds.
+        # 
+        # >  This value is of the LONG type, and precision loss may occur during serialization or deserialization. Do not set this parameter to a value greater than 9007199254740991.
         self.start_time = start_time
         # The tag key.
+        # 
+        # You can call the [GetTagKey](https://help.aliyun.com/document_detail/2399667.html) operation to obtain a tag key.
         # 
         # This parameter is required.
         self.tag_key = tag_key
@@ -450,16 +462,25 @@ class GetTraceRequest(TeaModel):
     def __init__(
         self,
         app_type: str = None,
+        page_number: int = None,
+        page_size: str = None,
         region_id: str = None,
         trace_id: str = None,
     ):
-        # The type of the application. You can set the value to **XTRACE** or leave this parameter unspecified.
+        # The type of the application. You can leave this parameter empty or set this parameter to `XTRACE`. We recommend that you leave this parameter empty.
+        # 
+        # *   If you leave this parameter empty, traces reported to Managed Service for OpenTelemetry and Application Real-Time Monitoring Service (ARMS) can be queried.
+        # *   If you set this parameter to `XTRACE`, only traces reported to Managed Service for OpenTelemetry can be queried.
         self.app_type = app_type
+        self.page_number = page_number
+        self.page_size = page_size
         # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The unique ID of the trace.
+        # The trace ID, which is the unique identifier of the trace.
+        # 
+        # You can obtain the trace ID on the **Trace Explorer** page in the Managed Service for OpenTelemetry console or by calling the [SearchTraces](https://help.aliyun.com/document_detail/2399674.html~) operation.
         # 
         # This parameter is required.
         self.trace_id = trace_id
@@ -475,6 +496,10 @@ class GetTraceRequest(TeaModel):
         result = dict()
         if self.app_type is not None:
             result['AppType'] = self.app_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.trace_id is not None:
@@ -485,6 +510,10 @@ class GetTraceRequest(TeaModel):
         m = m or dict()
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('TraceID') is not None:
@@ -498,9 +527,9 @@ class GetTraceResponseBodySpansSpanLogEventListLogEventTagEntryListTagEntry(TeaM
         key: str = None,
         value: str = None,
     ):
-        # The tag key in the log event.
+        # The tag key of the log event.
         self.key = key
-        # The tag value in the log event.
+        # The tag value of the log event.
         self.value = value
 
     def validate(self):
@@ -568,9 +597,9 @@ class GetTraceResponseBodySpansSpanLogEventListLogEvent(TeaModel):
         tag_entry_list: GetTraceResponseBodySpansSpanLogEventListLogEventTagEntryList = None,
         timestamp: int = None,
     ):
-        # The tags in the log event.
+        # The tags.
         self.tag_entry_list = tag_entry_list
-        # The timestamp when the log event was generated.
+        # The timestamp when the log event was generated. Unit: microseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -640,9 +669,9 @@ class GetTraceResponseBodySpansSpanTagEntryListTagEntry(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key in the span.
+        # The tag key of the span.
         self.key = key
-        # The tag value in the span.
+        # The tag value of the span.
         self.value = value
 
     def validate(self):
@@ -717,38 +746,40 @@ class GetTraceResponseBodySpansSpan(TeaModel):
         service_ip: str = None,
         service_name: str = None,
         span_id: str = None,
+        status_code: int = None,
         tag_entry_list: GetTraceResponseBodySpansSpanTagEntryList = None,
         timestamp: int = None,
         trace_id: str = None,
     ):
-        # The time used to call the trace. Unit: milliseconds.
+        # The duration of the span. Unit: milliseconds.
         self.duration = duration
         # Indicates whether the span has child spans. Valid values:
         # 
-        # - true: The span has child spans. 
-        # - false: The span has no child spans.
+        # *   `true`
+        # *   `false`
         self.have_stack = have_stack
-        # The log events in the trace.
+        # The log events.
         self.log_event_list = log_event_list
         # The name of the span.
         self.operation_name = operation_name
         # The ID of the parent span.
         self.parent_span_id = parent_span_id
-        # The status code.
+        # The response code.
         self.result_code = result_code
         # The parent-child and sibling relationship between spans. For example, span 1.1 is the parent of span 1.1.1, and span 1.1.2 and span 1.1.1 are siblings.
         self.rpc_id = rpc_id
-        # The IP address of the server where the span resides.
+        # The IP address of the server on which the span resides.
         self.service_ip = service_ip
         # The name of the application.
         self.service_name = service_name
-        # Span ID.
+        # The span ID.
         self.span_id = span_id
-        # The tags in the span.
+        self.status_code = status_code
+        # The tags.
         self.tag_entry_list = tag_entry_list
         # The timestamp when the span was generated. Unit: microseconds.
         self.timestamp = timestamp
-        # The unique ID of the trace.
+        # The trace ID, which is the unique identifier of the trace.
         self.trace_id = trace_id
 
     def validate(self):
@@ -783,6 +814,8 @@ class GetTraceResponseBodySpansSpan(TeaModel):
             result['ServiceName'] = self.service_name
         if self.span_id is not None:
             result['SpanId'] = self.span_id
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
         if self.tag_entry_list is not None:
             result['TagEntryList'] = self.tag_entry_list.to_map()
         if self.timestamp is not None:
@@ -814,6 +847,8 @@ class GetTraceResponseBodySpansSpan(TeaModel):
             self.service_name = m.get('ServiceName')
         if m.get('SpanId') is not None:
             self.span_id = m.get('SpanId')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
         if m.get('TagEntryList') is not None:
             temp_model = GetTraceResponseBodySpansSpanTagEntryList()
             self.tag_entry_list = temp_model.from_map(m['TagEntryList'])
@@ -867,7 +902,7 @@ class GetTraceResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The details of the trace.
+        # The spans that are contained in the trace.
         self.spans = spans
 
     def validate(self):
@@ -945,15 +980,15 @@ class ListIpOrHostsRequest(TeaModel):
         service_name: str = None,
         start_time: int = None,
     ):
-        # The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+        # The end of the time range to query. The value is a timestamp that is accurate to milliseconds.
         self.end_time = end_time
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the application. If you do not set this parameter, the IP addresses of all applications in the specified region are returned.
+        # The name of the service. If you do not specify this parameter, the IP addresses of all applications in the specified region are returned.
         self.service_name = service_name
-        # The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+        # The beginning of the time range to query. The value is a timestamp that is accurate to milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -1023,7 +1058,7 @@ class ListIpOrHostsResponseBody(TeaModel):
     ):
         # The IP addresses.
         self.ip_names = ip_names
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1099,7 +1134,10 @@ class ListServicesRequest(TeaModel):
         app_type: str = None,
         region_id: str = None,
     ):
-        # The type of the application. You can set the value to **XTRACE** or leave this parameter unspecified.
+        # The type of the application. You can leave this parameter empty or set this parameter to `XTRACE`. We recommend that you leave this parameter empty.
+        # 
+        # *   If you leave this parameter empty, applications monitored by Managed Service for OpenTelemetry or Application Real-Time Monitoring Service (ARMS) can be queried.
+        # *   If you set this parameter to `XTRACE`, only applications monitored by Managed Service for OpenTelemetry can be queried.
         self.app_type = app_type
         # The ID of the region.
         # 
@@ -1293,7 +1331,7 @@ class ListSpanNamesRequest(TeaModel):
         service_name: str = None,
         start_time: int = None,
     ):
-        # The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+        # The end of the time range to query. The value is a timestamp that is accurate to milliseconds.
         self.end_time = end_time
         # The ID of the region.
         # 
@@ -1301,7 +1339,7 @@ class ListSpanNamesRequest(TeaModel):
         self.region_id = region_id
         # The name of the application.
         self.service_name = service_name
-        # The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+        # The beginning of the time range to query. The value is a timestamp that is accurate to milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -1600,7 +1638,9 @@ class QueryMetricRequest(TeaModel):
     ):
         # The dimensions of the metric that you want to query.
         self.dimensions = dimensions
-        # The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+        # The end of the time range to query. The value is a timestamp that is accurate to milliseconds.
+        # 
+        # >  The value of this parameter is of the LONG type. Precision loss may occur during serialization or deserialization. The value must be less than or equal to 9007199254740991.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -1632,7 +1672,9 @@ class QueryMetricRequest(TeaModel):
         self.order_by = order_by
         # The ID of the proxy user.
         self.proxy_user_id = proxy_user_id
-        # The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+        # The beginning of the time range to query. The value is a timestamp that is accurate to milliseconds.
+        # 
+        # >  The value of this parameter is of the LONG type. Precision loss may occur during serialization or deserialization. The value must be less than or equal to 9007199254740991.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -1830,21 +1872,22 @@ class SearchTracesRequest(TeaModel):
         service_ip: str = None,
         service_name: str = None,
         start_time: int = None,
+        status_code: str = None,
         tag: List[SearchTracesRequestTag] = None,
     ):
         # The type of the application. You can set the value to **XTRACE** or leave this parameter unspecified.
         self.app_type = app_type
-        # The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+        # The end of the time range to query. The value is a timestamp that is accurate to milliseconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The time more than which is used to call the trace. Unit: milliseconds. For example, a value of 100 specifies to return the traces that more than 100 milliseconds are used to call.
+        # The minimum value of an execution duration. Unit: seconds. For example, a value of 2 indicates that the traces whose execution duration is more than 2 seconds are queried.
         self.min_duration = min_duration
         # The name of the span.
         self.operation_name = operation_name
         # The number of the page to return. For example, a value of 5 indicates page 5.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The ID of the region.
         # 
@@ -1855,14 +1898,15 @@ class SearchTracesRequest(TeaModel):
         # - true: reverse chronological order 
         # - false: chronological order
         self.reverse = reverse
-        # The IP address that corresponds to the span.
+        # The IP address of the server on which the span is running.
         self.service_ip = service_ip
         # The name of the application.
         self.service_name = service_name
-        # The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+        # The beginning of the time range to query. The value is a timestamp that is accurate to milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time
+        self.status_code = status_code
         # The list of the tags.
         self.tag = tag
 
@@ -1900,6 +1944,8 @@ class SearchTracesRequest(TeaModel):
             result['ServiceName'] = self.service_name
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -1930,6 +1976,8 @@ class SearchTracesRequest(TeaModel):
             self.service_name = m.get('ServiceName')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -1945,23 +1993,25 @@ class SearchTracesResponseBodyPageBeanTraceInfosTraceInfo(TeaModel):
         operation_name: str = None,
         service_ip: str = None,
         service_name: str = None,
+        status_code: int = None,
         tag_map: Dict[str, Any] = None,
         timestamp: int = None,
         trace_id: str = None,
     ):
-        # The time used to call the trace. Unit: milliseconds.
+        # The execution duration. Unit: seconds.
         self.duration = duration
-        # The name of the span.
+        # The span name.
         self.operation_name = operation_name
-        # The IP address of the server where the span resides.
+        # The IP address or name of the server on which the span is running.
         self.service_ip = service_ip
-        # The name of the application.
+        # The service name.
         self.service_name = service_name
-        # The map of tags.
+        self.status_code = status_code
+        # The tag information.
         self.tag_map = tag_map
-        # The time when the span was generated. Unit: microseconds.
+        # The timestamp when the span was generated. Unit: millisecond.
         self.timestamp = timestamp
-        # The ID of the trace.
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):
@@ -1981,6 +2031,8 @@ class SearchTracesResponseBodyPageBeanTraceInfosTraceInfo(TeaModel):
             result['ServiceIp'] = self.service_ip
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
         if self.tag_map is not None:
             result['TagMap'] = self.tag_map
         if self.timestamp is not None:
@@ -1999,6 +2051,8 @@ class SearchTracesResponseBodyPageBeanTraceInfosTraceInfo(TeaModel):
             self.service_ip = m.get('ServiceIp')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
         if m.get('TagMap') is not None:
             self.tag_map = m.get('TagMap')
         if m.get('Timestamp') is not None:
@@ -2053,11 +2107,11 @@ class SearchTracesResponseBodyPageBean(TeaModel):
     ):
         # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
-        # The information about the trace.
+        # The information about the traces that are returned.
         self.trace_infos = trace_infos
 
     def validate(self):
