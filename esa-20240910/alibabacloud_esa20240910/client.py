@@ -139,6 +139,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.activate_client_certificate_with_options_async(request, runtime)
 
+    def apply_certificate_with_options(
+        self,
+        request: esa20240910_models.ApplyCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ApplyCertificateResponse:
+        """
+        @summary 申请免费证书
+        
+        @param request: ApplyCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ApplyCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_certificate_with_options_async(
+        self,
+        request: esa20240910_models.ApplyCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ApplyCertificateResponse:
+        """
+        @summary 申请免费证书
+        
+        @param request: ApplyCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ApplyCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_certificate(
+        self,
+        request: esa20240910_models.ApplyCertificateRequest,
+    ) -> esa20240910_models.ApplyCertificateResponse:
+        """
+        @summary 申请免费证书
+        
+        @param request: ApplyCertificateRequest
+        @return: ApplyCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.apply_certificate_with_options(request, runtime)
+
+    async def apply_certificate_async(
+        self,
+        request: esa20240910_models.ApplyCertificateRequest,
+    ) -> esa20240910_models.ApplyCertificateResponse:
+        """
+        @summary 申请免费证书
+        
+        @param request: ApplyCertificateRequest
+        @return: ApplyCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.apply_certificate_with_options_async(request, runtime)
+
     def batch_create_records_with_options(
         self,
         tmp_req: esa20240910_models.BatchCreateRecordsRequest,
@@ -2823,6 +2915,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_list_with_options_async(request, runtime)
 
+    def create_origin_pool_with_options(
+        self,
+        tmp_req: esa20240910_models.CreateOriginPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateOriginPoolResponse:
+        """
+        @summary 新增源地址池
+        
+        @param tmp_req: CreateOriginPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOriginPoolResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.CreateOriginPoolShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.origins):
+            request.origins_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.origins, 'Origins', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.origins_shrink):
+            query['Origins'] = request.origins_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOriginPool',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateOriginPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_origin_pool_with_options_async(
+        self,
+        tmp_req: esa20240910_models.CreateOriginPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateOriginPoolResponse:
+        """
+        @summary 新增源地址池
+        
+        @param tmp_req: CreateOriginPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOriginPoolResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.CreateOriginPoolShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.origins):
+            request.origins_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.origins, 'Origins', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.origins_shrink):
+            query['Origins'] = request.origins_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOriginPool',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateOriginPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_origin_pool(
+        self,
+        request: esa20240910_models.CreateOriginPoolRequest,
+    ) -> esa20240910_models.CreateOriginPoolResponse:
+        """
+        @summary 新增源地址池
+        
+        @param request: CreateOriginPoolRequest
+        @return: CreateOriginPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_origin_pool_with_options(request, runtime)
+
+    async def create_origin_pool_async(
+        self,
+        request: esa20240910_models.CreateOriginPoolRequest,
+    ) -> esa20240910_models.CreateOriginPoolResponse:
+        """
+        @summary 新增源地址池
+        
+        @param request: CreateOriginPoolRequest
+        @return: CreateOriginPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_origin_pool_with_options_async(request, runtime)
+
     def create_origin_protection_with_options(
         self,
         request: esa20240910_models.CreateOriginProtectionRequest,
@@ -4185,6 +4393,8 @@ class Client(OpenApiClient):
             body['DataCenter'] = request.data_center
         if not UtilClient.is_unset(request.delivery_type):
             body['DeliveryType'] = request.delivery_type
+        if not UtilClient.is_unset(request.details):
+            body['Details'] = request.details
         if not UtilClient.is_unset(request.discard_rate):
             body['DiscardRate'] = request.discard_rate
         if not UtilClient.is_unset(request.field_name):
@@ -4262,6 +4472,8 @@ class Client(OpenApiClient):
             body['DataCenter'] = request.data_center
         if not UtilClient.is_unset(request.delivery_type):
             body['DeliveryType'] = request.delivery_type
+        if not UtilClient.is_unset(request.details):
+            body['Details'] = request.details
         if not UtilClient.is_unset(request.discard_rate):
             body['DiscardRate'] = request.discard_rate
         if not UtilClient.is_unset(request.field_name):
@@ -5750,6 +5962,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_list_with_options_async(request, runtime)
+
+    def delete_origin_pool_with_options(
+        self,
+        request: esa20240910_models.DeleteOriginPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteOriginPoolResponse:
+        """
+        @summary 删除源地址池
+        
+        @param request: DeleteOriginPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOriginPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOriginPool',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteOriginPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_origin_pool_with_options_async(
+        self,
+        request: esa20240910_models.DeleteOriginPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteOriginPoolResponse:
+        """
+        @summary 删除源地址池
+        
+        @param request: DeleteOriginPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOriginPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOriginPool',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteOriginPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_origin_pool(
+        self,
+        request: esa20240910_models.DeleteOriginPoolRequest,
+    ) -> esa20240910_models.DeleteOriginPoolResponse:
+        """
+        @summary 删除源地址池
+        
+        @param request: DeleteOriginPoolRequest
+        @return: DeleteOriginPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_origin_pool_with_options(request, runtime)
+
+    async def delete_origin_pool_async(
+        self,
+        request: esa20240910_models.DeleteOriginPoolRequest,
+    ) -> esa20240910_models.DeleteOriginPoolResponse:
+        """
+        @summary 删除源地址池
+        
+        @param request: DeleteOriginPoolRequest
+        @return: DeleteOriginPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_origin_pool_with_options_async(request, runtime)
 
     def delete_origin_protection_with_options(
         self,
@@ -8411,6 +8723,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_cache_reserve_specification_with_options_async(runtime)
 
+    def get_certificate_with_options(
+        self,
+        request: esa20240910_models.GetCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetCertificateResponse:
+        """
+        @summary Queries certificate information about a website.
+        
+        @param request: GetCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_certificate_with_options_async(
+        self,
+        request: esa20240910_models.GetCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetCertificateResponse:
+        """
+        @summary Queries certificate information about a website.
+        
+        @param request: GetCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCertificate',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_certificate(
+        self,
+        request: esa20240910_models.GetCertificateRequest,
+    ) -> esa20240910_models.GetCertificateResponse:
+        """
+        @summary Queries certificate information about a website.
+        
+        @param request: GetCertificateRequest
+        @return: GetCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_certificate_with_options(request, runtime)
+
+    async def get_certificate_async(
+        self,
+        request: esa20240910_models.GetCertificateRequest,
+    ) -> esa20240910_models.GetCertificateResponse:
+        """
+        @summary Queries certificate information about a website.
+        
+        @param request: GetCertificateRequest
+        @return: GetCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_certificate_with_options_async(request, runtime)
+
     def get_certificate_quota_with_options(
         self,
         request: esa20240910_models.GetCertificateQuotaRequest,
@@ -9792,6 +10196,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_list_with_options_async(request, runtime)
+
+    def get_origin_pool_with_options(
+        self,
+        request: esa20240910_models.GetOriginPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetOriginPoolResponse:
+        """
+        @summary 查询特定源地址池
+        
+        @param request: GetOriginPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOriginPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOriginPool',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetOriginPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_origin_pool_with_options_async(
+        self,
+        request: esa20240910_models.GetOriginPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetOriginPoolResponse:
+        """
+        @summary 查询特定源地址池
+        
+        @param request: GetOriginPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOriginPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOriginPool',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetOriginPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_origin_pool(
+        self,
+        request: esa20240910_models.GetOriginPoolRequest,
+    ) -> esa20240910_models.GetOriginPoolResponse:
+        """
+        @summary 查询特定源地址池
+        
+        @param request: GetOriginPoolRequest
+        @return: GetOriginPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_origin_pool_with_options(request, runtime)
+
+    async def get_origin_pool_async(
+        self,
+        request: esa20240910_models.GetOriginPoolRequest,
+    ) -> esa20240910_models.GetOriginPoolResponse:
+        """
+        @summary 查询特定源地址池
+        
+        @param request: GetOriginPoolRequest
+        @return: GetOriginPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_origin_pool_with_options_async(request, runtime)
 
     def get_origin_protection_with_options(
         self,
@@ -11987,6 +12483,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_cache_reserve_instances_with_options_async(request, runtime)
 
+    def list_certificates_with_options(
+        self,
+        request: esa20240910_models.ListCertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListCertificatesResponse:
+        """
+        @summary 查询站点下证书列表
+        
+        @param request: ListCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCertificatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCertificates',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListCertificatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_certificates_with_options_async(
+        self,
+        request: esa20240910_models.ListCertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListCertificatesResponse:
+        """
+        @summary 查询站点下证书列表
+        
+        @param request: ListCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCertificatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCertificates',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListCertificatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_certificates(
+        self,
+        request: esa20240910_models.ListCertificatesRequest,
+    ) -> esa20240910_models.ListCertificatesResponse:
+        """
+        @summary 查询站点下证书列表
+        
+        @param request: ListCertificatesRequest
+        @return: ListCertificatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_certificates_with_options(request, runtime)
+
+    async def list_certificates_async(
+        self,
+        request: esa20240910_models.ListCertificatesRequest,
+    ) -> esa20240910_models.ListCertificatesResponse:
+        """
+        @summary 查询站点下证书列表
+        
+        @param request: ListCertificatesRequest
+        @return: ListCertificatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_certificates_with_options_async(request, runtime)
+
     def list_ciphers_with_options(
         self,
         request: esa20240910_models.ListCiphersRequest,
@@ -13416,6 +14004,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_managed_rules_groups_with_options_async(request, runtime)
+
+    def list_origin_pools_with_options(
+        self,
+        request: esa20240910_models.ListOriginPoolsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListOriginPoolsResponse:
+        """
+        @summary 查询源地址池列表
+        
+        @param request: ListOriginPoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOriginPoolsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOriginPools',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListOriginPoolsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_origin_pools_with_options_async(
+        self,
+        request: esa20240910_models.ListOriginPoolsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListOriginPoolsResponse:
+        """
+        @summary 查询源地址池列表
+        
+        @param request: ListOriginPoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOriginPoolsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOriginPools',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListOriginPoolsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_origin_pools(
+        self,
+        request: esa20240910_models.ListOriginPoolsRequest,
+    ) -> esa20240910_models.ListOriginPoolsResponse:
+        """
+        @summary 查询源地址池列表
+        
+        @param request: ListOriginPoolsRequest
+        @return: ListOriginPoolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_origin_pools_with_options(request, runtime)
+
+    async def list_origin_pools_async(
+        self,
+        request: esa20240910_models.ListOriginPoolsRequest,
+    ) -> esa20240910_models.ListOriginPoolsResponse:
+        """
+        @summary 查询源地址池列表
+        
+        @param request: ListOriginPoolsRequest
+        @return: ListOriginPoolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_origin_pools_with_options_async(request, runtime)
 
     def list_pages_with_options(
         self,
@@ -17685,6 +18365,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_kv_namespace_with_options_async(request, runtime)
 
+    def update_origin_pool_with_options(
+        self,
+        tmp_req: esa20240910_models.UpdateOriginPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateOriginPoolResponse:
+        """
+        @summary 修改监视器
+        
+        @param tmp_req: UpdateOriginPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOriginPoolResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateOriginPoolShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.origins):
+            request.origins_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.origins, 'Origins', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.origins_shrink):
+            query['Origins'] = request.origins_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOriginPool',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateOriginPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_origin_pool_with_options_async(
+        self,
+        tmp_req: esa20240910_models.UpdateOriginPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateOriginPoolResponse:
+        """
+        @summary 修改监视器
+        
+        @param tmp_req: UpdateOriginPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOriginPoolResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateOriginPoolShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.origins):
+            request.origins_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.origins, 'Origins', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.origins_shrink):
+            query['Origins'] = request.origins_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOriginPool',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateOriginPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_origin_pool(
+        self,
+        request: esa20240910_models.UpdateOriginPoolRequest,
+    ) -> esa20240910_models.UpdateOriginPoolResponse:
+        """
+        @summary 修改监视器
+        
+        @param request: UpdateOriginPoolRequest
+        @return: UpdateOriginPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_origin_pool_with_options(request, runtime)
+
+    async def update_origin_pool_async(
+        self,
+        request: esa20240910_models.UpdateOriginPoolRequest,
+    ) -> esa20240910_models.UpdateOriginPoolResponse:
+        """
+        @summary 修改监视器
+        
+        @param request: UpdateOriginPoolRequest
+        @return: UpdateOriginPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_origin_pool_with_options_async(request, runtime)
+
     def update_origin_protection_with_options(
         self,
         request: esa20240910_models.UpdateOriginProtectionRequest,
@@ -18941,6 +19737,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.business_type):
             body['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.details):
+            body['Details'] = request.details
         if not UtilClient.is_unset(request.discard_rate):
             body['DiscardRate'] = request.discard_rate
         if not UtilClient.is_unset(request.field_name):
@@ -18982,6 +19780,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.business_type):
             body['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.details):
+            body['Details'] = request.details
         if not UtilClient.is_unset(request.discard_rate):
             body['DiscardRate'] = request.discard_rate
         if not UtilClient.is_unset(request.field_name):

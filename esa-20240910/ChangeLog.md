@@ -1,3 +1,19 @@
+2024-12-27 Version: 2.8.0
+- Support API ApplyCertificate.
+- Support API CreateOriginPool.
+- Support API DeleteOriginPool.
+- Support API GetCertificate.
+- Support API GetOriginPool.
+- Support API ListCertificates.
+- Support API ListOriginPools.
+- Support API UpdateOriginPool.
+- Update API CreateUserDeliveryTask: add param Details.
+- Update API GetOriginProtection: update param SiteId.
+- Update API GetUserDeliveryTask: update response param.
+- Update API UpdatePage: update param Description.
+- Update API UpdateUserDeliveryTask: add param Details.
+
+
 2024-12-24 Version: 2.7.6
 - Update API GetOriginProtection: update param SiteId.
 

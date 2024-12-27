@@ -2153,6 +2153,180 @@ class ActivateClientCertificateResponse(TeaModel):
         return self
 
 
+class ApplyCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        domains: str = None,
+        site_id: int = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.domains = domains
+        # This parameter is required.
+        self.site_id = site_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domains is not None:
+            result['Domains'] = self.domains
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domains') is not None:
+            self.domains = m.get('Domains')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ApplyCertificateResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        id: str = None,
+        status: str = None,
+    ):
+        self.domain = domain
+        self.id = id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ApplyCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: List[ApplyCertificateResponseBodyResult] = None,
+        site_name: str = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.site_name = site_name
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ApplyCertificateResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ApplyCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ApplyCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ApplyCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BatchCreateRecordsRequestRecordListAuthConf(TeaModel):
     def __init__(
         self,
@@ -6423,6 +6597,299 @@ class CreateListResponse(TeaModel):
         return self
 
 
+class CreateOriginPoolRequestOriginsAuthConf(TeaModel):
+    def __init__(
+        self,
+        access_key: str = None,
+        auth_type: str = None,
+        region: str = None,
+        secret_key: str = None,
+        version: str = None,
+    ):
+        self.access_key = access_key
+        self.auth_type = auth_type
+        self.region = region
+        self.secret_key = secret_key
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key is not None:
+            result['AccessKey'] = self.access_key
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.secret_key is not None:
+            result['SecretKey'] = self.secret_key
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKey') is not None:
+            self.access_key = m.get('AccessKey')
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SecretKey') is not None:
+            self.secret_key = m.get('SecretKey')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class CreateOriginPoolRequestOrigins(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        auth_conf: CreateOriginPoolRequestOriginsAuthConf = None,
+        enabled: bool = None,
+        header: Any = None,
+        name: str = None,
+        type: str = None,
+        weight: int = None,
+    ):
+        self.address = address
+        self.auth_conf = auth_conf
+        self.enabled = enabled
+        self.header = header
+        self.name = name
+        self.type = type
+        self.weight = weight
+
+    def validate(self):
+        if self.auth_conf:
+            self.auth_conf.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.auth_conf is not None:
+            result['AuthConf'] = self.auth_conf.to_map()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.header is not None:
+            result['Header'] = self.header
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AuthConf') is not None:
+            temp_model = CreateOriginPoolRequestOriginsAuthConf()
+            self.auth_conf = temp_model.from_map(m['AuthConf'])
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Header') is not None:
+            self.header = m.get('Header')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class CreateOriginPoolRequest(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        name: str = None,
+        origins: List[CreateOriginPoolRequestOrigins] = None,
+        site_id: int = None,
+    ):
+        self.enabled = enabled
+        # This parameter is required.
+        self.name = name
+        self.origins = origins
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        if self.origins:
+            for k in self.origins:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Origins'] = []
+        if self.origins is not None:
+            for k in self.origins:
+                result['Origins'].append(k.to_map() if k else None)
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.origins = []
+        if m.get('Origins') is not None:
+            for k in m.get('Origins'):
+                temp_model = CreateOriginPoolRequestOrigins()
+                self.origins.append(temp_model.from_map(k))
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class CreateOriginPoolShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        name: str = None,
+        origins_shrink: str = None,
+        site_id: int = None,
+    ):
+        self.enabled = enabled
+        # This parameter is required.
+        self.name = name
+        self.origins_shrink = origins_shrink
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.origins_shrink is not None:
+            result['Origins'] = self.origins_shrink
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Origins') is not None:
+            self.origins_shrink = m.get('Origins')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class CreateOriginPoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateOriginPoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOriginPoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOriginPoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateOriginProtectionRequest(TeaModel):
     def __init__(
         self,
@@ -9808,6 +10275,7 @@ class CreateUserDeliveryTaskRequest(TeaModel):
         business_type: str = None,
         data_center: str = None,
         delivery_type: str = None,
+        details: str = None,
         discard_rate: float = None,
         field_name: str = None,
         http_delivery: CreateUserDeliveryTaskRequestHttpDelivery = None,
@@ -9844,6 +10312,7 @@ class CreateUserDeliveryTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.delivery_type = delivery_type
+        self.details = details
         # The discard rate. Default value: 0.
         self.discard_rate = discard_rate
         # The log field. If you specify multiple fields, separate them with commas (,).
@@ -9889,6 +10358,8 @@ class CreateUserDeliveryTaskRequest(TeaModel):
             result['DataCenter'] = self.data_center
         if self.delivery_type is not None:
             result['DeliveryType'] = self.delivery_type
+        if self.details is not None:
+            result['Details'] = self.details
         if self.discard_rate is not None:
             result['DiscardRate'] = self.discard_rate
         if self.field_name is not None:
@@ -9915,6 +10386,8 @@ class CreateUserDeliveryTaskRequest(TeaModel):
             self.data_center = m.get('DataCenter')
         if m.get('DeliveryType') is not None:
             self.delivery_type = m.get('DeliveryType')
+        if m.get('Details') is not None:
+            self.details = m.get('Details')
         if m.get('DiscardRate') is not None:
             self.discard_rate = m.get('DiscardRate')
         if m.get('FieldName') is not None:
@@ -9945,6 +10418,7 @@ class CreateUserDeliveryTaskShrinkRequest(TeaModel):
         business_type: str = None,
         data_center: str = None,
         delivery_type: str = None,
+        details: str = None,
         discard_rate: float = None,
         field_name: str = None,
         http_delivery_shrink: str = None,
@@ -9981,6 +10455,7 @@ class CreateUserDeliveryTaskShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.delivery_type = delivery_type
+        self.details = details
         # The discard rate. Default value: 0.
         self.discard_rate = discard_rate
         # The log field. If you specify multiple fields, separate them with commas (,).
@@ -10017,6 +10492,8 @@ class CreateUserDeliveryTaskShrinkRequest(TeaModel):
             result['DataCenter'] = self.data_center
         if self.delivery_type is not None:
             result['DeliveryType'] = self.delivery_type
+        if self.details is not None:
+            result['Details'] = self.details
         if self.discard_rate is not None:
             result['DiscardRate'] = self.discard_rate
         if self.field_name is not None:
@@ -10043,6 +10520,8 @@ class CreateUserDeliveryTaskShrinkRequest(TeaModel):
             self.data_center = m.get('DataCenter')
         if m.get('DeliveryType') is not None:
             self.delivery_type = m.get('DeliveryType')
+        if m.get('Details') is not None:
+            self.details = m.get('Details')
         if m.get('DiscardRate') is not None:
             self.discard_rate = m.get('DiscardRate')
         if m.get('FieldName') is not None:
@@ -12195,6 +12674,110 @@ class DeleteListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteOriginPoolRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteOriginPoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteOriginPoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteOriginPoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteOriginPoolResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15775,6 +16358,376 @@ class GetCacheReserveSpecificationResponse(TeaModel):
         return self
 
 
+class GetCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        site_id: int = None,
+    ):
+        # The certificate ID.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetCertificateResponseBodyResultDCV(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        key: str = None,
+        status: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        # DCV ID。
+        self.id = id
+        self.key = key
+        self.status = status
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetCertificateResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        apply_code: int = None,
+        apply_message: str = None,
+        cas_id: str = None,
+        common_name: str = None,
+        create_time: str = None,
+        dcv: List[GetCertificateResponseBodyResultDCV] = None,
+        fingerprint_sha_256: str = None,
+        id: str = None,
+        issuer: str = None,
+        issuer_cn: str = None,
+        name: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        pub_alg: str = None,
+        region: str = None,
+        san: str = None,
+        serial_number: str = None,
+        sig_alg: str = None,
+        status: str = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        self.apply_code = apply_code
+        self.apply_message = apply_message
+        # The certificate ID on Certificate Management Service.
+        self.cas_id = cas_id
+        # The Common Name of the certificate.
+        self.common_name = common_name
+        # The time when the certificate was created.
+        self.create_time = create_time
+        self.dcv = dcv
+        # The SHA-256 fingerprint of the certificate.
+        self.fingerprint_sha_256 = fingerprint_sha_256
+        # The certificate ID on ESA.
+        self.id = id
+        # The certificate authority (CA) that issued the certificate.
+        self.issuer = issuer
+        # The Common Name of the CA that issued the certificate.
+        self.issuer_cn = issuer_cn
+        # The certificate name.
+        self.name = name
+        # The time when the certificate expires.
+        self.not_after = not_after
+        # The time when the certificate takes effect.
+        self.not_before = not_before
+        # The public-key algorithm of the certificate.
+        self.pub_alg = pub_alg
+        # The region.
+        self.region = region
+        # The Subject Alternative Name (SAN) of the certificate.
+        self.san = san
+        # The serial number of the certificate.
+        self.serial_number = serial_number
+        # The signature algorithm of the certificate.
+        self.sig_alg = sig_alg
+        # The certificate status.
+        self.status = status
+        # The certificate type.
+        self.type = type
+        # The time when the certificate was updated.
+        self.update_time = update_time
+
+    def validate(self):
+        if self.dcv:
+            for k in self.dcv:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.apply_code is not None:
+            result['ApplyCode'] = self.apply_code
+        if self.apply_message is not None:
+            result['ApplyMessage'] = self.apply_message
+        if self.cas_id is not None:
+            result['CasId'] = self.cas_id
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['DCV'] = []
+        if self.dcv is not None:
+            for k in self.dcv:
+                result['DCV'].append(k.to_map() if k else None)
+        if self.fingerprint_sha_256 is not None:
+            result['FingerprintSha256'] = self.fingerprint_sha_256
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.issuer_cn is not None:
+            result['IssuerCN'] = self.issuer_cn
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.pub_alg is not None:
+            result['PubAlg'] = self.pub_alg
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.san is not None:
+            result['SAN'] = self.san
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.sig_alg is not None:
+            result['SigAlg'] = self.sig_alg
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplyCode') is not None:
+            self.apply_code = m.get('ApplyCode')
+        if m.get('ApplyMessage') is not None:
+            self.apply_message = m.get('ApplyMessage')
+        if m.get('CasId') is not None:
+            self.cas_id = m.get('CasId')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.dcv = []
+        if m.get('DCV') is not None:
+            for k in m.get('DCV'):
+                temp_model = GetCertificateResponseBodyResultDCV()
+                self.dcv.append(temp_model.from_map(k))
+        if m.get('FingerprintSha256') is not None:
+            self.fingerprint_sha_256 = m.get('FingerprintSha256')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('IssuerCN') is not None:
+            self.issuer_cn = m.get('IssuerCN')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('PubAlg') is not None:
+            self.pub_alg = m.get('PubAlg')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SAN') is not None:
+            self.san = m.get('SAN')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('SigAlg') is not None:
+            self.sig_alg = m.get('SigAlg')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        certificate: str = None,
+        request_id: str = None,
+        result: GetCertificateResponseBodyResult = None,
+        site_id: int = None,
+        site_name: str = None,
+        status: str = None,
+    ):
+        # The certificate content.
+        self.certificate = certificate
+        # The request ID.
+        self.request_id = request_id
+        # The certificate information.
+        self.result = result
+        # The website ID.
+        self.site_id = site_id
+        # The website name.
+        self.site_name = site_name
+        # The certificate status.
+        self.status = status
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetCertificateResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetCertificateQuotaRequest(TeaModel):
     def __init__(
         self,
@@ -18918,6 +19871,455 @@ class GetListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOriginPoolRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetOriginPoolResponseBodyOriginsAuthConf(TeaModel):
+    def __init__(
+        self,
+        access_key: str = None,
+        auth_type: str = None,
+        region: str = None,
+        secret_key: str = None,
+        version: str = None,
+    ):
+        self.access_key = access_key
+        self.auth_type = auth_type
+        self.region = region
+        self.secret_key = secret_key
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key is not None:
+            result['AccessKey'] = self.access_key
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.secret_key is not None:
+            result['SecretKey'] = self.secret_key
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKey') is not None:
+            self.access_key = m.get('AccessKey')
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SecretKey') is not None:
+            self.secret_key = m.get('SecretKey')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class GetOriginPoolResponseBodyOrigins(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        auth_conf: GetOriginPoolResponseBodyOriginsAuthConf = None,
+        enabled: bool = None,
+        header: Any = None,
+        id: int = None,
+        name: str = None,
+        type: str = None,
+        weight: int = None,
+    ):
+        self.address = address
+        self.auth_conf = auth_conf
+        self.enabled = enabled
+        self.header = header
+        self.id = id
+        self.name = name
+        self.type = type
+        self.weight = weight
+
+    def validate(self):
+        if self.auth_conf:
+            self.auth_conf.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.auth_conf is not None:
+            result['AuthConf'] = self.auth_conf.to_map()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.header is not None:
+            result['Header'] = self.header
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AuthConf') is not None:
+            temp_model = GetOriginPoolResponseBodyOriginsAuthConf()
+            self.auth_conf = temp_model.from_map(m['AuthConf'])
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Header') is not None:
+            self.header = m.get('Header')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class GetOriginPoolResponseBodyReferencesDnsRecords(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetOriginPoolResponseBodyReferencesIPARecords(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetOriginPoolResponseBodyReferencesLoadBalancers(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetOriginPoolResponseBodyReferences(TeaModel):
+    def __init__(
+        self,
+        dns_records: List[GetOriginPoolResponseBodyReferencesDnsRecords] = None,
+        iparecords: List[GetOriginPoolResponseBodyReferencesIPARecords] = None,
+        load_balancers: List[GetOriginPoolResponseBodyReferencesLoadBalancers] = None,
+    ):
+        self.dns_records = dns_records
+        self.iparecords = iparecords
+        self.load_balancers = load_balancers
+
+    def validate(self):
+        if self.dns_records:
+            for k in self.dns_records:
+                if k:
+                    k.validate()
+        if self.iparecords:
+            for k in self.iparecords:
+                if k:
+                    k.validate()
+        if self.load_balancers:
+            for k in self.load_balancers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DnsRecords'] = []
+        if self.dns_records is not None:
+            for k in self.dns_records:
+                result['DnsRecords'].append(k.to_map() if k else None)
+        result['IPARecords'] = []
+        if self.iparecords is not None:
+            for k in self.iparecords:
+                result['IPARecords'].append(k.to_map() if k else None)
+        result['LoadBalancers'] = []
+        if self.load_balancers is not None:
+            for k in self.load_balancers:
+                result['LoadBalancers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dns_records = []
+        if m.get('DnsRecords') is not None:
+            for k in m.get('DnsRecords'):
+                temp_model = GetOriginPoolResponseBodyReferencesDnsRecords()
+                self.dns_records.append(temp_model.from_map(k))
+        self.iparecords = []
+        if m.get('IPARecords') is not None:
+            for k in m.get('IPARecords'):
+                temp_model = GetOriginPoolResponseBodyReferencesIPARecords()
+                self.iparecords.append(temp_model.from_map(k))
+        self.load_balancers = []
+        if m.get('LoadBalancers') is not None:
+            for k in m.get('LoadBalancers'):
+                temp_model = GetOriginPoolResponseBodyReferencesLoadBalancers()
+                self.load_balancers.append(temp_model.from_map(k))
+        return self
+
+
+class GetOriginPoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        id: int = None,
+        name: str = None,
+        origins: List[GetOriginPoolResponseBodyOrigins] = None,
+        record_name: str = None,
+        reference_lbcount: int = None,
+        references: GetOriginPoolResponseBodyReferences = None,
+        request_id: str = None,
+        site_id: int = None,
+    ):
+        self.enabled = enabled
+        self.id = id
+        self.name = name
+        self.origins = origins
+        self.record_name = record_name
+        self.reference_lbcount = reference_lbcount
+        self.references = references
+        # Id of the request
+        self.request_id = request_id
+        self.site_id = site_id
+
+    def validate(self):
+        if self.origins:
+            for k in self.origins:
+                if k:
+                    k.validate()
+        if self.references:
+            self.references.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Origins'] = []
+        if self.origins is not None:
+            for k in self.origins:
+                result['Origins'].append(k.to_map() if k else None)
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.reference_lbcount is not None:
+            result['ReferenceLBCount'] = self.reference_lbcount
+        if self.references is not None:
+            result['References'] = self.references.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.origins = []
+        if m.get('Origins') is not None:
+            for k in m.get('Origins'):
+                temp_model = GetOriginPoolResponseBodyOrigins()
+                self.origins.append(temp_model.from_map(k))
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('ReferenceLBCount') is not None:
+            self.reference_lbcount = m.get('ReferenceLBCount')
+        if m.get('References') is not None:
+            temp_model = GetOriginPoolResponseBodyReferences()
+            self.references = temp_model.from_map(m['References'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetOriginPoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOriginPoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOriginPoolResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22234,6 +23636,7 @@ class GetUserDeliveryTaskResponseBody(TeaModel):
         business_type: str = None,
         data_center: str = None,
         delivery_type: str = None,
+        details: str = None,
         discard_rate: float = None,
         field_list: str = None,
         filter_rules: str = None,
@@ -22263,6 +23666,7 @@ class GetUserDeliveryTaskResponseBody(TeaModel):
         # *   kafka: Kafka.
         # *   aws3cmpt: S3-compatible storage service.
         self.delivery_type = delivery_type
+        self.details = details
         # The discard rate.
         self.discard_rate = discard_rate
         # The fields.
@@ -22293,6 +23697,8 @@ class GetUserDeliveryTaskResponseBody(TeaModel):
             result['DataCenter'] = self.data_center
         if self.delivery_type is not None:
             result['DeliveryType'] = self.delivery_type
+        if self.details is not None:
+            result['Details'] = self.details
         if self.discard_rate is not None:
             result['DiscardRate'] = self.discard_rate
         if self.field_list is not None:
@@ -22317,6 +23723,8 @@ class GetUserDeliveryTaskResponseBody(TeaModel):
             self.data_center = m.get('DataCenter')
         if m.get('DeliveryType') is not None:
             self.delivery_type = m.get('DeliveryType')
+        if m.get('Details') is not None:
+            self.details = m.get('Details')
         if m.get('DiscardRate') is not None:
             self.discard_rate = m.get('DiscardRate')
         if m.get('FieldList') is not None:
@@ -23681,6 +25089,376 @@ class ListCacheReserveInstancesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCacheReserveInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCertificatesRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        site_id: int = None,
+        valid_only: bool = None,
+    ):
+        self.keyword = keyword
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.site_id = site_id
+        self.valid_only = valid_only
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.valid_only is not None:
+            result['ValidOnly'] = self.valid_only
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('ValidOnly') is not None:
+            self.valid_only = m.get('ValidOnly')
+        return self
+
+
+class ListCertificatesResponseBodyResultDCV(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        key: str = None,
+        status: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.id = id
+        self.key = key
+        self.status = status
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListCertificatesResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        apply_code: int = None,
+        apply_message: str = None,
+        cas_id: str = None,
+        common_name: str = None,
+        create_time: str = None,
+        dcv: List[ListCertificatesResponseBodyResultDCV] = None,
+        fingerprint_sha_256: str = None,
+        id: str = None,
+        issuer: str = None,
+        issuer_cn: str = None,
+        name: str = None,
+        not_after: str = None,
+        not_before: str = None,
+        pub_alg: str = None,
+        region: str = None,
+        san: str = None,
+        serial_number: str = None,
+        sig_alg: str = None,
+        status: str = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        self.apply_code = apply_code
+        self.apply_message = apply_message
+        self.cas_id = cas_id
+        self.common_name = common_name
+        self.create_time = create_time
+        self.dcv = dcv
+        self.fingerprint_sha_256 = fingerprint_sha_256
+        self.id = id
+        self.issuer = issuer
+        self.issuer_cn = issuer_cn
+        self.name = name
+        self.not_after = not_after
+        self.not_before = not_before
+        self.pub_alg = pub_alg
+        self.region = region
+        self.san = san
+        self.serial_number = serial_number
+        self.sig_alg = sig_alg
+        self.status = status
+        self.type = type
+        self.update_time = update_time
+
+    def validate(self):
+        if self.dcv:
+            for k in self.dcv:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.apply_code is not None:
+            result['ApplyCode'] = self.apply_code
+        if self.apply_message is not None:
+            result['ApplyMessage'] = self.apply_message
+        if self.cas_id is not None:
+            result['CasId'] = self.cas_id
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['DCV'] = []
+        if self.dcv is not None:
+            for k in self.dcv:
+                result['DCV'].append(k.to_map() if k else None)
+        if self.fingerprint_sha_256 is not None:
+            result['FingerprintSha256'] = self.fingerprint_sha_256
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.issuer_cn is not None:
+            result['IssuerCN'] = self.issuer_cn
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
+        if self.pub_alg is not None:
+            result['PubAlg'] = self.pub_alg
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.san is not None:
+            result['SAN'] = self.san
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.sig_alg is not None:
+            result['SigAlg'] = self.sig_alg
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplyCode') is not None:
+            self.apply_code = m.get('ApplyCode')
+        if m.get('ApplyMessage') is not None:
+            self.apply_message = m.get('ApplyMessage')
+        if m.get('CasId') is not None:
+            self.cas_id = m.get('CasId')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.dcv = []
+        if m.get('DCV') is not None:
+            for k in m.get('DCV'):
+                temp_model = ListCertificatesResponseBodyResultDCV()
+                self.dcv.append(temp_model.from_map(k))
+        if m.get('FingerprintSha256') is not None:
+            self.fingerprint_sha_256 = m.get('FingerprintSha256')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('IssuerCN') is not None:
+            self.issuer_cn = m.get('IssuerCN')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
+        if m.get('PubAlg') is not None:
+            self.pub_alg = m.get('PubAlg')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SAN') is not None:
+            self.san = m.get('SAN')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('SigAlg') is not None:
+            self.sig_alg = m.get('SigAlg')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListCertificatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        result: List[ListCertificatesResponseBodyResult] = None,
+        site_id: int = None,
+        site_name: str = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.result = result
+        self.site_id = site_id
+        self.site_name = site_name
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ListCertificatesResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCertificatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCertificatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCertificatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27622,6 +29400,536 @@ class ListManagedRulesGroupsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListManagedRulesGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListOriginPoolsRequest(TeaModel):
+    def __init__(
+        self,
+        match_type: str = None,
+        name: str = None,
+        order_by: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        site_id: int = None,
+    ):
+        self.match_type = match_type
+        self.name = name
+        self.order_by = order_by
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match_type is not None:
+            result['MatchType'] = self.match_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MatchType') is not None:
+            self.match_type = m.get('MatchType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf(TeaModel):
+    def __init__(
+        self,
+        access_key: str = None,
+        auth_type: str = None,
+        region: str = None,
+        secret_key: str = None,
+        version: str = None,
+    ):
+        self.access_key = access_key
+        self.auth_type = auth_type
+        self.region = region
+        self.secret_key = secret_key
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key is not None:
+            result['AccessKey'] = self.access_key
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.secret_key is not None:
+            result['SecretKey'] = self.secret_key
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKey') is not None:
+            self.access_key = m.get('AccessKey')
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SecretKey') is not None:
+            self.secret_key = m.get('SecretKey')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListOriginPoolsResponseBodyOriginPoolsOrigins(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        auth_conf: ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf = None,
+        enabled: bool = None,
+        header: Any = None,
+        id: int = None,
+        name: str = None,
+        type: str = None,
+        weight: int = None,
+    ):
+        self.address = address
+        self.auth_conf = auth_conf
+        self.enabled = enabled
+        self.header = header
+        self.id = id
+        self.name = name
+        self.type = type
+        self.weight = weight
+
+    def validate(self):
+        if self.auth_conf:
+            self.auth_conf.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.auth_conf is not None:
+            result['AuthConf'] = self.auth_conf.to_map()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.header is not None:
+            result['Header'] = self.header
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AuthConf') is not None:
+            temp_model = ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf()
+            self.auth_conf = temp_model.from_map(m['AuthConf'])
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Header') is not None:
+            self.header = m.get('Header')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListOriginPoolsResponseBodyOriginPoolsReferences(TeaModel):
+    def __init__(
+        self,
+        dns_records: List[ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords] = None,
+        iparecords: List[ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords] = None,
+        load_balancers: List[ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers] = None,
+    ):
+        self.dns_records = dns_records
+        self.iparecords = iparecords
+        self.load_balancers = load_balancers
+
+    def validate(self):
+        if self.dns_records:
+            for k in self.dns_records:
+                if k:
+                    k.validate()
+        if self.iparecords:
+            for k in self.iparecords:
+                if k:
+                    k.validate()
+        if self.load_balancers:
+            for k in self.load_balancers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DnsRecords'] = []
+        if self.dns_records is not None:
+            for k in self.dns_records:
+                result['DnsRecords'].append(k.to_map() if k else None)
+        result['IPARecords'] = []
+        if self.iparecords is not None:
+            for k in self.iparecords:
+                result['IPARecords'].append(k.to_map() if k else None)
+        result['LoadBalancers'] = []
+        if self.load_balancers is not None:
+            for k in self.load_balancers:
+                result['LoadBalancers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dns_records = []
+        if m.get('DnsRecords') is not None:
+            for k in m.get('DnsRecords'):
+                temp_model = ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords()
+                self.dns_records.append(temp_model.from_map(k))
+        self.iparecords = []
+        if m.get('IPARecords') is not None:
+            for k in m.get('IPARecords'):
+                temp_model = ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords()
+                self.iparecords.append(temp_model.from_map(k))
+        self.load_balancers = []
+        if m.get('LoadBalancers') is not None:
+            for k in m.get('LoadBalancers'):
+                temp_model = ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers()
+                self.load_balancers.append(temp_model.from_map(k))
+        return self
+
+
+class ListOriginPoolsResponseBodyOriginPools(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        id: int = None,
+        name: str = None,
+        origins: List[ListOriginPoolsResponseBodyOriginPoolsOrigins] = None,
+        record_name: str = None,
+        reference_lbcount: int = None,
+        references: ListOriginPoolsResponseBodyOriginPoolsReferences = None,
+        site_id: int = None,
+    ):
+        self.enabled = enabled
+        self.id = id
+        self.name = name
+        self.origins = origins
+        self.record_name = record_name
+        self.reference_lbcount = reference_lbcount
+        self.references = references
+        self.site_id = site_id
+
+    def validate(self):
+        if self.origins:
+            for k in self.origins:
+                if k:
+                    k.validate()
+        if self.references:
+            self.references.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Origins'] = []
+        if self.origins is not None:
+            for k in self.origins:
+                result['Origins'].append(k.to_map() if k else None)
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.reference_lbcount is not None:
+            result['ReferenceLBCount'] = self.reference_lbcount
+        if self.references is not None:
+            result['References'] = self.references.to_map()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.origins = []
+        if m.get('Origins') is not None:
+            for k in m.get('Origins'):
+                temp_model = ListOriginPoolsResponseBodyOriginPoolsOrigins()
+                self.origins.append(temp_model.from_map(k))
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('ReferenceLBCount') is not None:
+            self.reference_lbcount = m.get('ReferenceLBCount')
+        if m.get('References') is not None:
+            temp_model = ListOriginPoolsResponseBodyOriginPoolsReferences()
+            self.references = temp_model.from_map(m['References'])
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class ListOriginPoolsResponseBody(TeaModel):
+    def __init__(
+        self,
+        origin_pools: List[ListOriginPoolsResponseBodyOriginPools] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.origin_pools = origin_pools
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.origin_pools:
+            for k in self.origin_pools:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OriginPools'] = []
+        if self.origin_pools is not None:
+            for k in self.origin_pools:
+                result['OriginPools'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.origin_pools = []
+        if m.get('OriginPools') is not None:
+            for k in m.get('OriginPools'):
+                temp_model = ListOriginPoolsResponseBodyOriginPools()
+                self.origin_pools.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class ListOriginPoolsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListOriginPoolsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListOriginPoolsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -36104,6 +38412,299 @@ class UpdateKvNamespaceResponse(TeaModel):
         return self
 
 
+class UpdateOriginPoolRequestOriginsAuthConf(TeaModel):
+    def __init__(
+        self,
+        access_key: str = None,
+        auth_type: str = None,
+        region: str = None,
+        secret_key: str = None,
+        version: str = None,
+    ):
+        self.access_key = access_key
+        self.auth_type = auth_type
+        self.region = region
+        self.secret_key = secret_key
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key is not None:
+            result['AccessKey'] = self.access_key
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.secret_key is not None:
+            result['SecretKey'] = self.secret_key
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKey') is not None:
+            self.access_key = m.get('AccessKey')
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SecretKey') is not None:
+            self.secret_key = m.get('SecretKey')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class UpdateOriginPoolRequestOrigins(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        auth_conf: UpdateOriginPoolRequestOriginsAuthConf = None,
+        enabled: bool = None,
+        header: Any = None,
+        name: str = None,
+        type: str = None,
+        weight: int = None,
+    ):
+        self.address = address
+        self.auth_conf = auth_conf
+        self.enabled = enabled
+        self.header = header
+        self.name = name
+        self.type = type
+        self.weight = weight
+
+    def validate(self):
+        if self.auth_conf:
+            self.auth_conf.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.auth_conf is not None:
+            result['AuthConf'] = self.auth_conf.to_map()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.header is not None:
+            result['Header'] = self.header
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AuthConf') is not None:
+            temp_model = UpdateOriginPoolRequestOriginsAuthConf()
+            self.auth_conf = temp_model.from_map(m['AuthConf'])
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Header') is not None:
+            self.header = m.get('Header')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class UpdateOriginPoolRequest(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        id: int = None,
+        origins: List[UpdateOriginPoolRequestOrigins] = None,
+        site_id: int = None,
+    ):
+        self.enabled = enabled
+        # This parameter is required.
+        self.id = id
+        self.origins = origins
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        if self.origins:
+            for k in self.origins:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.id is not None:
+            result['Id'] = self.id
+        result['Origins'] = []
+        if self.origins is not None:
+            for k in self.origins:
+                result['Origins'].append(k.to_map() if k else None)
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        self.origins = []
+        if m.get('Origins') is not None:
+            for k in m.get('Origins'):
+                temp_model = UpdateOriginPoolRequestOrigins()
+                self.origins.append(temp_model.from_map(k))
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UpdateOriginPoolShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        id: int = None,
+        origins_shrink: str = None,
+        site_id: int = None,
+    ):
+        self.enabled = enabled
+        # This parameter is required.
+        self.id = id
+        self.origins_shrink = origins_shrink
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.origins_shrink is not None:
+            result['Origins'] = self.origins_shrink
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Origins') is not None:
+            self.origins_shrink = m.get('Origins')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UpdateOriginPoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateOriginPoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateOriginPoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateOriginPoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateOriginProtectionRequest(TeaModel):
     def __init__(
         self,
@@ -36335,6 +38936,8 @@ class UpdatePageRequest(TeaModel):
         # This parameter is required.
         self.content_type = content_type
         # The description of the custom error page.
+        # 
+        # This parameter is required.
         self.description = description
         # The ID of the custom error page, which can be obtained by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
         # 
@@ -37884,6 +40487,7 @@ class UpdateUserDeliveryTaskRequest(TeaModel):
     def __init__(
         self,
         business_type: str = None,
+        details: str = None,
         discard_rate: float = None,
         field_name: str = None,
         task_name: str = None,
@@ -37895,6 +40499,7 @@ class UpdateUserDeliveryTaskRequest(TeaModel):
         # *   dcdn_log_waf: firewall logs.
         # *   dcdn_log_ipa: TCP/UDP proxy logs.
         self.business_type = business_type
+        self.details = details
         # The discard rate. Default value: 0.
         self.discard_rate = discard_rate
         # The log fields that you want to include in logs to be delivered. Separate the log fields with commas (,).
@@ -37917,6 +40522,8 @@ class UpdateUserDeliveryTaskRequest(TeaModel):
         result = dict()
         if self.business_type is not None:
             result['BusinessType'] = self.business_type
+        if self.details is not None:
+            result['Details'] = self.details
         if self.discard_rate is not None:
             result['DiscardRate'] = self.discard_rate
         if self.field_name is not None:
@@ -37929,6 +40536,8 @@ class UpdateUserDeliveryTaskRequest(TeaModel):
         m = m or dict()
         if m.get('BusinessType') is not None:
             self.business_type = m.get('BusinessType')
+        if m.get('Details') is not None:
+            self.details = m.get('Details')
         if m.get('DiscardRate') is not None:
             self.discard_rate = m.get('DiscardRate')
         if m.get('FieldName') is not None:
