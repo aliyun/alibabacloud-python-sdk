@@ -21838,6 +21838,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_package_job_with_options_async(request, runtime)
 
+    def submit_screen_media_highlights_job_with_options(
+        self,
+        request: ice20201109_models.SubmitScreenMediaHighlightsJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitScreenMediaHighlightsJobResponse:
+        """
+        @summary 提交高燃混剪任务
+        
+        @param request: SubmitScreenMediaHighlightsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitScreenMediaHighlightsJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.editing_config):
+            body['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            body['InputConfig'] = request.input_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitScreenMediaHighlightsJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitScreenMediaHighlightsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_screen_media_highlights_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitScreenMediaHighlightsJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitScreenMediaHighlightsJobResponse:
+        """
+        @summary 提交高燃混剪任务
+        
+        @param request: SubmitScreenMediaHighlightsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitScreenMediaHighlightsJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.editing_config):
+            body['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            body['InputConfig'] = request.input_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitScreenMediaHighlightsJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitScreenMediaHighlightsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_screen_media_highlights_job(
+        self,
+        request: ice20201109_models.SubmitScreenMediaHighlightsJobRequest,
+    ) -> ice20201109_models.SubmitScreenMediaHighlightsJobResponse:
+        """
+        @summary 提交高燃混剪任务
+        
+        @param request: SubmitScreenMediaHighlightsJobRequest
+        @return: SubmitScreenMediaHighlightsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_screen_media_highlights_job_with_options(request, runtime)
+
+    async def submit_screen_media_highlights_job_async(
+        self,
+        request: ice20201109_models.SubmitScreenMediaHighlightsJobRequest,
+    ) -> ice20201109_models.SubmitScreenMediaHighlightsJobResponse:
+        """
+        @summary 提交高燃混剪任务
+        
+        @param request: SubmitScreenMediaHighlightsJobRequest
+        @return: SubmitScreenMediaHighlightsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_screen_media_highlights_job_with_options_async(request, runtime)
+
     def submit_smarttag_job_with_options(
         self,
         tmp_req: ice20201109_models.SubmitSmarttagJobRequest,

@@ -1,3 +1,7 @@
+2024-12-27 Version: 3.9.0
+- Support API SubmitScreenMediaHighlightsJob.
+
+
 2024-12-24 Version: 3.8.1
 - Update API GetSmartHandleJob: update response param.
 - Update API ListSearchLib: update response param.
