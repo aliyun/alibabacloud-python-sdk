@@ -1374,6 +1374,2548 @@ class AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse(TeaModel):
         return self
 
 
+class ExecuteAITeacherExpansionDialogueRequestDialogueTasks(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        assistant_translate: str = None,
+        order: int = None,
+        user: str = None,
+    ):
+        # This parameter is required.
+        self.assistant = assistant
+        self.assistant_translate = assistant_translate
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.assistant_translate is not None:
+            result['assistantTranslate'] = self.assistant_translate
+        if self.order is not None:
+            result['order'] = self.order
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('assistantTranslate') is not None:
+            self.assistant_translate = m.get('assistantTranslate')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueRequestRecords(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        is_off_topic_control: bool = None,
+        is_on_topic: bool = None,
+        order: int = None,
+        role: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        self.is_off_topic_control = is_off_topic_control
+        self.is_on_topic = is_on_topic
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.is_off_topic_control is not None:
+            result['isOffTopicControl'] = self.is_off_topic_control
+        if self.is_on_topic is not None:
+            result['isOnTopic'] = self.is_on_topic
+        if self.order is not None:
+            result['order'] = self.order
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('isOffTopicControl') is not None:
+            self.is_off_topic_control = m.get('isOffTopicControl')
+        if m.get('isOnTopic') is not None:
+            self.is_on_topic = m.get('isOnTopic')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueRequestRoleInfo(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        user: str = None,
+    ):
+        # This parameter is required.
+        self.assistant = assistant
+        # This parameter is required.
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueRequest(TeaModel):
+    def __init__(
+        self,
+        background: str = None,
+        dialogue_tasks: List[ExecuteAITeacherExpansionDialogueRequestDialogueTasks] = None,
+        language_code: str = None,
+        records: List[ExecuteAITeacherExpansionDialogueRequestRecords] = None,
+        role_info: ExecuteAITeacherExpansionDialogueRequestRoleInfo = None,
+        start_sentence: str = None,
+        topic: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.background = background
+        # This parameter is required.
+        self.dialogue_tasks = dialogue_tasks
+        self.language_code = language_code
+        self.records = records
+        # This parameter is required.
+        self.role_info = role_info
+        self.start_sentence = start_sentence
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        if self.dialogue_tasks:
+            for k in self.dialogue_tasks:
+                if k:
+                    k.validate()
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+        if self.role_info:
+            self.role_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.background is not None:
+            result['background'] = self.background
+        result['dialogueTasks'] = []
+        if self.dialogue_tasks is not None:
+            for k in self.dialogue_tasks:
+                result['dialogueTasks'].append(k.to_map() if k else None)
+        if self.language_code is not None:
+            result['languageCode'] = self.language_code
+        result['records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['records'].append(k.to_map() if k else None)
+        if self.role_info is not None:
+            result['roleInfo'] = self.role_info.to_map()
+        if self.start_sentence is not None:
+            result['startSentence'] = self.start_sentence
+        if self.topic is not None:
+            result['topic'] = self.topic
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('background') is not None:
+            self.background = m.get('background')
+        self.dialogue_tasks = []
+        if m.get('dialogueTasks') is not None:
+            for k in m.get('dialogueTasks'):
+                temp_model = ExecuteAITeacherExpansionDialogueRequestDialogueTasks()
+                self.dialogue_tasks.append(temp_model.from_map(k))
+        if m.get('languageCode') is not None:
+            self.language_code = m.get('languageCode')
+        self.records = []
+        if m.get('records') is not None:
+            for k in m.get('records'):
+                temp_model = ExecuteAITeacherExpansionDialogueRequestRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('roleInfo') is not None:
+            temp_model = ExecuteAITeacherExpansionDialogueRequestRoleInfo()
+            self.role_info = temp_model.from_map(m['roleInfo'])
+        if m.get('startSentence') is not None:
+            self.start_sentence = m.get('startSentence')
+        if m.get('topic') is not None:
+            self.topic = m.get('topic')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        chinese_result: str = None,
+        english_result: str = None,
+        is_finish: bool = None,
+        is_off_topic_control: bool = None,
+        is_on_topic: bool = None,
+        question_index: int = None,
+    ):
+        self.chinese_result = chinese_result
+        self.english_result = english_result
+        self.is_finish = is_finish
+        self.is_off_topic_control = is_off_topic_control
+        self.is_on_topic = is_on_topic
+        self.question_index = question_index
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chinese_result is not None:
+            result['chineseResult'] = self.chinese_result
+        if self.english_result is not None:
+            result['englishResult'] = self.english_result
+        if self.is_finish is not None:
+            result['isFinish'] = self.is_finish
+        if self.is_off_topic_control is not None:
+            result['isOffTopicControl'] = self.is_off_topic_control
+        if self.is_on_topic is not None:
+            result['isOnTopic'] = self.is_on_topic
+        if self.question_index is not None:
+            result['questionIndex'] = self.question_index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('chineseResult') is not None:
+            self.chinese_result = m.get('chineseResult')
+        if m.get('englishResult') is not None:
+            self.english_result = m.get('englishResult')
+        if m.get('isFinish') is not None:
+            self.is_finish = m.get('isFinish')
+        if m.get('isOffTopicControl') is not None:
+            self.is_off_topic_control = m.get('isOffTopicControl')
+        if m.get('isOnTopic') is not None:
+            self.is_on_topic = m.get('isOnTopic')
+        if m.get('questionIndex') is not None:
+            self.question_index = m.get('questionIndex')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ExecuteAITeacherExpansionDialogueResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ExecuteAITeacherExpansionDialogueResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteAITeacherExpansionDialogueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteAITeacherExpansionDialogueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        assistant_translate: str = None,
+        order: int = None,
+        user: str = None,
+    ):
+        # This parameter is required.
+        self.assistant = assistant
+        self.assistant_translate = assistant_translate
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.assistant_translate is not None:
+            result['assistantTranslate'] = self.assistant_translate
+        if self.order is not None:
+            result['order'] = self.order
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('assistantTranslate') is not None:
+            self.assistant_translate = m.get('assistantTranslate')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueRefineRequestRecords(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        is_off_topic_control: bool = None,
+        is_on_topic: bool = None,
+        order: int = None,
+        role: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        self.is_off_topic_control = is_off_topic_control
+        self.is_on_topic = is_on_topic
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.is_off_topic_control is not None:
+            result['isOffTopicControl'] = self.is_off_topic_control
+        if self.is_on_topic is not None:
+            result['isOnTopic'] = self.is_on_topic
+        if self.order is not None:
+            result['order'] = self.order
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('isOffTopicControl') is not None:
+            self.is_off_topic_control = m.get('isOffTopicControl')
+        if m.get('isOnTopic') is not None:
+            self.is_on_topic = m.get('isOnTopic')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueRefineRequestRoleInfo(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        user: str = None,
+    ):
+        # This parameter is required.
+        self.assistant = assistant
+        # This parameter is required.
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueRefineRequest(TeaModel):
+    def __init__(
+        self,
+        background: str = None,
+        dialogue_tasks: List[ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks] = None,
+        language_code: str = None,
+        records: List[ExecuteAITeacherExpansionDialogueRefineRequestRecords] = None,
+        role_info: ExecuteAITeacherExpansionDialogueRefineRequestRoleInfo = None,
+        start_sentence: str = None,
+        topic: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.background = background
+        # This parameter is required.
+        self.dialogue_tasks = dialogue_tasks
+        self.language_code = language_code
+        # This parameter is required.
+        self.records = records
+        # This parameter is required.
+        self.role_info = role_info
+        self.start_sentence = start_sentence
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        if self.dialogue_tasks:
+            for k in self.dialogue_tasks:
+                if k:
+                    k.validate()
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+        if self.role_info:
+            self.role_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.background is not None:
+            result['background'] = self.background
+        result['dialogueTasks'] = []
+        if self.dialogue_tasks is not None:
+            for k in self.dialogue_tasks:
+                result['dialogueTasks'].append(k.to_map() if k else None)
+        if self.language_code is not None:
+            result['languageCode'] = self.language_code
+        result['records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['records'].append(k.to_map() if k else None)
+        if self.role_info is not None:
+            result['roleInfo'] = self.role_info.to_map()
+        if self.start_sentence is not None:
+            result['startSentence'] = self.start_sentence
+        if self.topic is not None:
+            result['topic'] = self.topic
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('background') is not None:
+            self.background = m.get('background')
+        self.dialogue_tasks = []
+        if m.get('dialogueTasks') is not None:
+            for k in m.get('dialogueTasks'):
+                temp_model = ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks()
+                self.dialogue_tasks.append(temp_model.from_map(k))
+        if m.get('languageCode') is not None:
+            self.language_code = m.get('languageCode')
+        self.records = []
+        if m.get('records') is not None:
+            for k in m.get('records'):
+                temp_model = ExecuteAITeacherExpansionDialogueRefineRequestRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('roleInfo') is not None:
+            temp_model = ExecuteAITeacherExpansionDialogueRefineRequestRoleInfo()
+            self.role_info = temp_model.from_map(m['roleInfo'])
+        if m.get('startSentence') is not None:
+            self.start_sentence = m.get('startSentence')
+        if m.get('topic') is not None:
+            self.topic = m.get('topic')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueRefineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        result: str = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueRefineResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ExecuteAITeacherExpansionDialogueRefineResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ExecuteAITeacherExpansionDialogueRefineResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueRefineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteAITeacherExpansionDialogueRefineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteAITeacherExpansionDialogueRefineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        assistant_translate: str = None,
+        order: int = None,
+        user: str = None,
+    ):
+        # This parameter is required.
+        self.assistant = assistant
+        self.assistant_translate = assistant_translate
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.assistant_translate is not None:
+            result['assistantTranslate'] = self.assistant_translate
+        if self.order is not None:
+            result['order'] = self.order
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('assistantTranslate') is not None:
+            self.assistant_translate = m.get('assistantTranslate')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueTranslateRequestRecords(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        is_off_topic_control: bool = None,
+        is_on_topic: bool = None,
+        order: int = None,
+        role: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        self.is_off_topic_control = is_off_topic_control
+        self.is_on_topic = is_on_topic
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.is_off_topic_control is not None:
+            result['isOffTopicControl'] = self.is_off_topic_control
+        if self.is_on_topic is not None:
+            result['isOnTopic'] = self.is_on_topic
+        if self.order is not None:
+            result['order'] = self.order
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('isOffTopicControl') is not None:
+            self.is_off_topic_control = m.get('isOffTopicControl')
+        if m.get('isOnTopic') is not None:
+            self.is_on_topic = m.get('isOnTopic')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        user: str = None,
+    ):
+        # This parameter is required.
+        self.assistant = assistant
+        # This parameter is required.
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueTranslateRequest(TeaModel):
+    def __init__(
+        self,
+        background: str = None,
+        dialogue_tasks: List[ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks] = None,
+        records: List[ExecuteAITeacherExpansionDialogueTranslateRequestRecords] = None,
+        role_info: ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo = None,
+        start_sentence: str = None,
+        topic: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.background = background
+        # This parameter is required.
+        self.dialogue_tasks = dialogue_tasks
+        self.records = records
+        # This parameter is required.
+        self.role_info = role_info
+        self.start_sentence = start_sentence
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        if self.dialogue_tasks:
+            for k in self.dialogue_tasks:
+                if k:
+                    k.validate()
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+        if self.role_info:
+            self.role_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.background is not None:
+            result['background'] = self.background
+        result['dialogueTasks'] = []
+        if self.dialogue_tasks is not None:
+            for k in self.dialogue_tasks:
+                result['dialogueTasks'].append(k.to_map() if k else None)
+        result['records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['records'].append(k.to_map() if k else None)
+        if self.role_info is not None:
+            result['roleInfo'] = self.role_info.to_map()
+        if self.start_sentence is not None:
+            result['startSentence'] = self.start_sentence
+        if self.topic is not None:
+            result['topic'] = self.topic
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('background') is not None:
+            self.background = m.get('background')
+        self.dialogue_tasks = []
+        if m.get('dialogueTasks') is not None:
+            for k in m.get('dialogueTasks'):
+                temp_model = ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks()
+                self.dialogue_tasks.append(temp_model.from_map(k))
+        self.records = []
+        if m.get('records') is not None:
+            for k in m.get('records'):
+                temp_model = ExecuteAITeacherExpansionDialogueTranslateRequestRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('roleInfo') is not None:
+            temp_model = ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo()
+            self.role_info = temp_model.from_map(m['roleInfo'])
+        if m.get('startSentence') is not None:
+            self.start_sentence = m.get('startSentence')
+        if m.get('topic') is not None:
+            self.topic = m.get('topic')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueTranslateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        result: str = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueTranslateResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ExecuteAITeacherExpansionDialogueTranslateResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ExecuteAITeacherExpansionDialogueTranslateResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ExecuteAITeacherExpansionDialogueTranslateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteAITeacherExpansionDialogueTranslateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteAITeacherExpansionDialogueTranslateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteAITeacherGrammarCheckRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class ExecuteAITeacherGrammarCheckResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        analysis: str = None,
+        correction: str = None,
+        correction_status: str = None,
+        error_reason: str = None,
+    ):
+        self.analysis = analysis
+        self.correction = correction
+        self.correction_status = correction_status
+        self.error_reason = error_reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis is not None:
+            result['analysis'] = self.analysis
+        if self.correction is not None:
+            result['correction'] = self.correction
+        if self.correction_status is not None:
+            result['correctionStatus'] = self.correction_status
+        if self.error_reason is not None:
+            result['errorReason'] = self.error_reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysis') is not None:
+            self.analysis = m.get('analysis')
+        if m.get('correction') is not None:
+            self.correction = m.get('correction')
+        if m.get('correctionStatus') is not None:
+            self.correction_status = m.get('correctionStatus')
+        if m.get('errorReason') is not None:
+            self.error_reason = m.get('errorReason')
+        return self
+
+
+class ExecuteAITeacherGrammarCheckResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ExecuteAITeacherGrammarCheckResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ExecuteAITeacherGrammarCheckResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ExecuteAITeacherGrammarCheckResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteAITeacherGrammarCheckResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteAITeacherGrammarCheckResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteAITeacherSyncDialogueRequestDialogueTasks(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        assistant_translate: str = None,
+        order: int = None,
+        user: str = None,
+    ):
+        # This parameter is required.
+        self.assistant = assistant
+        self.assistant_translate = assistant_translate
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.assistant_translate is not None:
+            result['assistantTranslate'] = self.assistant_translate
+        if self.order is not None:
+            result['order'] = self.order
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('assistantTranslate') is not None:
+            self.assistant_translate = m.get('assistantTranslate')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class ExecuteAITeacherSyncDialogueRequestRecords(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        is_off_topic_control: bool = None,
+        is_on_topic: bool = None,
+        order: int = None,
+        role: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        self.is_off_topic_control = is_off_topic_control
+        self.is_on_topic = is_on_topic
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.is_off_topic_control is not None:
+            result['isOffTopicControl'] = self.is_off_topic_control
+        if self.is_on_topic is not None:
+            result['isOnTopic'] = self.is_on_topic
+        if self.order is not None:
+            result['order'] = self.order
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('isOffTopicControl') is not None:
+            self.is_off_topic_control = m.get('isOffTopicControl')
+        if m.get('isOnTopic') is not None:
+            self.is_on_topic = m.get('isOnTopic')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class ExecuteAITeacherSyncDialogueRequest(TeaModel):
+    def __init__(
+        self,
+        dialogue_tasks: List[ExecuteAITeacherSyncDialogueRequestDialogueTasks] = None,
+        language_code: str = None,
+        records: List[ExecuteAITeacherSyncDialogueRequestRecords] = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.dialogue_tasks = dialogue_tasks
+        self.language_code = language_code
+        self.records = records
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        if self.dialogue_tasks:
+            for k in self.dialogue_tasks:
+                if k:
+                    k.validate()
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['dialogueTasks'] = []
+        if self.dialogue_tasks is not None:
+            for k in self.dialogue_tasks:
+                result['dialogueTasks'].append(k.to_map() if k else None)
+        if self.language_code is not None:
+            result['languageCode'] = self.language_code
+        result['records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['records'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dialogue_tasks = []
+        if m.get('dialogueTasks') is not None:
+            for k in m.get('dialogueTasks'):
+                temp_model = ExecuteAITeacherSyncDialogueRequestDialogueTasks()
+                self.dialogue_tasks.append(temp_model.from_map(k))
+        if m.get('languageCode') is not None:
+            self.language_code = m.get('languageCode')
+        self.records = []
+        if m.get('records') is not None:
+            for k in m.get('records'):
+                temp_model = ExecuteAITeacherSyncDialogueRequestRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class ExecuteAITeacherSyncDialogueResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        english_result: str = None,
+        is_finish: bool = None,
+        is_on_topic: bool = None,
+        question_index: int = None,
+    ):
+        self.english_result = english_result
+        self.is_finish = is_finish
+        self.is_on_topic = is_on_topic
+        self.question_index = question_index
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.english_result is not None:
+            result['englishResult'] = self.english_result
+        if self.is_finish is not None:
+            result['isFinish'] = self.is_finish
+        if self.is_on_topic is not None:
+            result['isOnTopic'] = self.is_on_topic
+        if self.question_index is not None:
+            result['questionIndex'] = self.question_index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('englishResult') is not None:
+            self.english_result = m.get('englishResult')
+        if m.get('isFinish') is not None:
+            self.is_finish = m.get('isFinish')
+        if m.get('isOnTopic') is not None:
+            self.is_on_topic = m.get('isOnTopic')
+        if m.get('questionIndex') is not None:
+            self.question_index = m.get('questionIndex')
+        return self
+
+
+class ExecuteAITeacherSyncDialogueResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ExecuteAITeacherSyncDialogueResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ExecuteAITeacherSyncDialogueResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ExecuteAITeacherSyncDialogueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteAITeacherSyncDialogueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteAITeacherSyncDialogueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        assistant_translate: str = None,
+        order: int = None,
+        user: str = None,
+    ):
+        # This parameter is required.
+        self.assistant = assistant
+        self.assistant_translate = assistant_translate
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.assistant_translate is not None:
+            result['assistantTranslate'] = self.assistant_translate
+        if self.order is not None:
+            result['order'] = self.order
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('assistantTranslate') is not None:
+            self.assistant_translate = m.get('assistantTranslate')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class ExecuteAITeacherSyncDialogueTranslateRequestRecords(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        is_off_topic_control: bool = None,
+        is_on_topic: bool = None,
+        order: int = None,
+        role: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        self.is_off_topic_control = is_off_topic_control
+        self.is_on_topic = is_on_topic
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.is_off_topic_control is not None:
+            result['isOffTopicControl'] = self.is_off_topic_control
+        if self.is_on_topic is not None:
+            result['isOnTopic'] = self.is_on_topic
+        if self.order is not None:
+            result['order'] = self.order
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('isOffTopicControl') is not None:
+            self.is_off_topic_control = m.get('isOffTopicControl')
+        if m.get('isOnTopic') is not None:
+            self.is_on_topic = m.get('isOnTopic')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class ExecuteAITeacherSyncDialogueTranslateRequest(TeaModel):
+    def __init__(
+        self,
+        dialogue_tasks: List[ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks] = None,
+        records: List[ExecuteAITeacherSyncDialogueTranslateRequestRecords] = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.dialogue_tasks = dialogue_tasks
+        self.records = records
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        if self.dialogue_tasks:
+            for k in self.dialogue_tasks:
+                if k:
+                    k.validate()
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['dialogueTasks'] = []
+        if self.dialogue_tasks is not None:
+            for k in self.dialogue_tasks:
+                result['dialogueTasks'].append(k.to_map() if k else None)
+        result['records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['records'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dialogue_tasks = []
+        if m.get('dialogueTasks') is not None:
+            for k in m.get('dialogueTasks'):
+                temp_model = ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks()
+                self.dialogue_tasks.append(temp_model.from_map(k))
+        self.records = []
+        if m.get('records') is not None:
+            for k in m.get('records'):
+                temp_model = ExecuteAITeacherSyncDialogueTranslateRequestRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class ExecuteAITeacherSyncDialogueTranslateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        result: str = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class ExecuteAITeacherSyncDialogueTranslateResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ExecuteAITeacherSyncDialogueTranslateResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ExecuteAITeacherSyncDialogueTranslateResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ExecuteAITeacherSyncDialogueTranslateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteAITeacherSyncDialogueTranslateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteAITeacherSyncDialogueTranslateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        assistant_translate: str = None,
+        order: int = None,
+        user: str = None,
+    ):
+        # This parameter is required.
+        self.assistant = assistant
+        self.assistant_translate = assistant_translate
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.assistant_translate is not None:
+            result['assistantTranslate'] = self.assistant_translate
+        if self.order is not None:
+            result['order'] = self.order
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('assistantTranslate') is not None:
+            self.assistant_translate = m.get('assistantTranslate')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class GetAITeacherExpansionDialogueSuggestionRequestRecords(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        is_off_topic_control: bool = None,
+        is_on_topic: bool = None,
+        order: int = None,
+        role: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        self.is_off_topic_control = is_off_topic_control
+        self.is_on_topic = is_on_topic
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.is_off_topic_control is not None:
+            result['isOffTopicControl'] = self.is_off_topic_control
+        if self.is_on_topic is not None:
+            result['isOnTopic'] = self.is_on_topic
+        if self.order is not None:
+            result['order'] = self.order
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('isOffTopicControl') is not None:
+            self.is_off_topic_control = m.get('isOffTopicControl')
+        if m.get('isOnTopic') is not None:
+            self.is_on_topic = m.get('isOnTopic')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class GetAITeacherExpansionDialogueSuggestionRequestRoleInfo(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        user: str = None,
+    ):
+        # This parameter is required.
+        self.assistant = assistant
+        # This parameter is required.
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class GetAITeacherExpansionDialogueSuggestionRequest(TeaModel):
+    def __init__(
+        self,
+        background: str = None,
+        dialogue_tasks: List[GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks] = None,
+        language_code: str = None,
+        records: List[GetAITeacherExpansionDialogueSuggestionRequestRecords] = None,
+        role_info: GetAITeacherExpansionDialogueSuggestionRequestRoleInfo = None,
+        start_sentence: str = None,
+        topic: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.background = background
+        # This parameter is required.
+        self.dialogue_tasks = dialogue_tasks
+        self.language_code = language_code
+        # This parameter is required.
+        self.records = records
+        # This parameter is required.
+        self.role_info = role_info
+        self.start_sentence = start_sentence
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        if self.dialogue_tasks:
+            for k in self.dialogue_tasks:
+                if k:
+                    k.validate()
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+        if self.role_info:
+            self.role_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.background is not None:
+            result['background'] = self.background
+        result['dialogueTasks'] = []
+        if self.dialogue_tasks is not None:
+            for k in self.dialogue_tasks:
+                result['dialogueTasks'].append(k.to_map() if k else None)
+        if self.language_code is not None:
+            result['languageCode'] = self.language_code
+        result['records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['records'].append(k.to_map() if k else None)
+        if self.role_info is not None:
+            result['roleInfo'] = self.role_info.to_map()
+        if self.start_sentence is not None:
+            result['startSentence'] = self.start_sentence
+        if self.topic is not None:
+            result['topic'] = self.topic
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('background') is not None:
+            self.background = m.get('background')
+        self.dialogue_tasks = []
+        if m.get('dialogueTasks') is not None:
+            for k in m.get('dialogueTasks'):
+                temp_model = GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks()
+                self.dialogue_tasks.append(temp_model.from_map(k))
+        if m.get('languageCode') is not None:
+            self.language_code = m.get('languageCode')
+        self.records = []
+        if m.get('records') is not None:
+            for k in m.get('records'):
+                temp_model = GetAITeacherExpansionDialogueSuggestionRequestRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('roleInfo') is not None:
+            temp_model = GetAITeacherExpansionDialogueSuggestionRequestRoleInfo()
+            self.role_info = temp_model.from_map(m['roleInfo'])
+        if m.get('startSentence') is not None:
+            self.start_sentence = m.get('startSentence')
+        if m.get('topic') is not None:
+            self.topic = m.get('topic')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class GetAITeacherExpansionDialogueSuggestionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        chinese_result: str = None,
+        english_result: str = None,
+    ):
+        self.chinese_result = chinese_result
+        self.english_result = english_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chinese_result is not None:
+            result['chineseResult'] = self.chinese_result
+        if self.english_result is not None:
+            result['englishResult'] = self.english_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('chineseResult') is not None:
+            self.chinese_result = m.get('chineseResult')
+        if m.get('englishResult') is not None:
+            self.english_result = m.get('englishResult')
+        return self
+
+
+class GetAITeacherExpansionDialogueSuggestionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetAITeacherExpansionDialogueSuggestionResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetAITeacherExpansionDialogueSuggestionResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetAITeacherExpansionDialogueSuggestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAITeacherExpansionDialogueSuggestionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAITeacherExpansionDialogueSuggestionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAITeacherSyncDialogueSuggestionRequestDialogueTasks(TeaModel):
+    def __init__(
+        self,
+        assistant: str = None,
+        assistant_translate: str = None,
+        order: int = None,
+        user: str = None,
+    ):
+        # This parameter is required.
+        self.assistant = assistant
+        self.assistant_translate = assistant_translate
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant is not None:
+            result['assistant'] = self.assistant
+        if self.assistant_translate is not None:
+            result['assistantTranslate'] = self.assistant_translate
+        if self.order is not None:
+            result['order'] = self.order
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assistant') is not None:
+            self.assistant = m.get('assistant')
+        if m.get('assistantTranslate') is not None:
+            self.assistant_translate = m.get('assistantTranslate')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class GetAITeacherSyncDialogueSuggestionRequestRecords(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        is_off_topic_control: bool = None,
+        is_on_topic: bool = None,
+        order: int = None,
+        role: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        self.is_off_topic_control = is_off_topic_control
+        self.is_on_topic = is_on_topic
+        # This parameter is required.
+        self.order = order
+        # This parameter is required.
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.is_off_topic_control is not None:
+            result['isOffTopicControl'] = self.is_off_topic_control
+        if self.is_on_topic is not None:
+            result['isOnTopic'] = self.is_on_topic
+        if self.order is not None:
+            result['order'] = self.order
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('isOffTopicControl') is not None:
+            self.is_off_topic_control = m.get('isOffTopicControl')
+        if m.get('isOnTopic') is not None:
+            self.is_on_topic = m.get('isOnTopic')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class GetAITeacherSyncDialogueSuggestionRequest(TeaModel):
+    def __init__(
+        self,
+        dialogue_tasks: List[GetAITeacherSyncDialogueSuggestionRequestDialogueTasks] = None,
+        language_code: str = None,
+        records: List[GetAITeacherSyncDialogueSuggestionRequestRecords] = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.dialogue_tasks = dialogue_tasks
+        self.language_code = language_code
+        # This parameter is required.
+        self.records = records
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        if self.dialogue_tasks:
+            for k in self.dialogue_tasks:
+                if k:
+                    k.validate()
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['dialogueTasks'] = []
+        if self.dialogue_tasks is not None:
+            for k in self.dialogue_tasks:
+                result['dialogueTasks'].append(k.to_map() if k else None)
+        if self.language_code is not None:
+            result['languageCode'] = self.language_code
+        result['records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['records'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dialogue_tasks = []
+        if m.get('dialogueTasks') is not None:
+            for k in m.get('dialogueTasks'):
+                temp_model = GetAITeacherSyncDialogueSuggestionRequestDialogueTasks()
+                self.dialogue_tasks.append(temp_model.from_map(k))
+        if m.get('languageCode') is not None:
+            self.language_code = m.get('languageCode')
+        self.records = []
+        if m.get('records') is not None:
+            for k in m.get('records'):
+                temp_model = GetAITeacherSyncDialogueSuggestionRequestRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class GetAITeacherSyncDialogueSuggestionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        english_result: str = None,
+        english_result_1: str = None,
+    ):
+        self.english_result = english_result
+        self.english_result_1 = english_result_1
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.english_result is not None:
+            result['englishResult'] = self.english_result
+        if self.english_result_1 is not None:
+            result['englishResult1'] = self.english_result_1
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('englishResult') is not None:
+            self.english_result = m.get('englishResult')
+        if m.get('englishResult1') is not None:
+            self.english_result_1 = m.get('englishResult1')
+        return self
+
+
+class GetAITeacherSyncDialogueSuggestionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetAITeacherSyncDialogueSuggestionResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.err_message is not None:
+            result['errMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetAITeacherSyncDialogueSuggestionResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('errMessage') is not None:
+            self.err_message = m.get('errMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetAITeacherSyncDialogueSuggestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAITeacherSyncDialogueSuggestionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAITeacherSyncDialogueSuggestionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PersonalizedTextToImageAddInferenceJobRequest(TeaModel):
     def __init__(
         self,

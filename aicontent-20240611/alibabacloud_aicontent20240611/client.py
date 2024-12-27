@@ -469,6 +469,982 @@ class Client(OpenApiClient):
         headers = {}
         return await self.aliyun_console_open_api_query_aliyun_console_service_list_with_options_async(headers, runtime)
 
+    def execute_aiteacher_expansion_dialogue_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherExpansionDialogueResponse:
+        """
+        @summary 进行拓展练对话
+        
+        @param request: ExecuteAITeacherExpansionDialogueRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherExpansionDialogueResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.background):
+            body['background'] = request.background
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.language_code):
+            body['languageCode'] = request.language_code
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.role_info):
+            body['roleInfo'] = request.role_info
+        if not UtilClient.is_unset(request.start_sentence):
+            body['startSentence'] = request.start_sentence
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherExpansionDialogue',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/expansionPractice/executeExpansionTraining',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteAITeacherExpansionDialogueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_aiteacher_expansion_dialogue_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherExpansionDialogueResponse:
+        """
+        @summary 进行拓展练对话
+        
+        @param request: ExecuteAITeacherExpansionDialogueRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherExpansionDialogueResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.background):
+            body['background'] = request.background
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.language_code):
+            body['languageCode'] = request.language_code
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.role_info):
+            body['roleInfo'] = request.role_info
+        if not UtilClient.is_unset(request.start_sentence):
+            body['startSentence'] = request.start_sentence
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherExpansionDialogue',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/expansionPractice/executeExpansionTraining',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteAITeacherExpansionDialogueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_aiteacher_expansion_dialogue(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherExpansionDialogueResponse:
+        """
+        @summary 进行拓展练对话
+        
+        @param request: ExecuteAITeacherExpansionDialogueRequest
+        @return: ExecuteAITeacherExpansionDialogueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_aiteacher_expansion_dialogue_with_options(request, headers, runtime)
+
+    async def execute_aiteacher_expansion_dialogue_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherExpansionDialogueResponse:
+        """
+        @summary 进行拓展练对话
+        
+        @param request: ExecuteAITeacherExpansionDialogueRequest
+        @return: ExecuteAITeacherExpansionDialogueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_aiteacher_expansion_dialogue_with_options_async(request, headers, runtime)
+
+    def execute_aiteacher_expansion_dialogue_refine_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineResponse:
+        """
+        @summary 拓展练根据上下文进行润色
+        
+        @param request: ExecuteAITeacherExpansionDialogueRefineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherExpansionDialogueRefineResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.background):
+            body['background'] = request.background
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.language_code):
+            body['languageCode'] = request.language_code
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.role_info):
+            body['roleInfo'] = request.role_info
+        if not UtilClient.is_unset(request.start_sentence):
+            body['startSentence'] = request.start_sentence
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherExpansionDialogueRefine',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/expansionPractice/refineByContext',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_aiteacher_expansion_dialogue_refine_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineResponse:
+        """
+        @summary 拓展练根据上下文进行润色
+        
+        @param request: ExecuteAITeacherExpansionDialogueRefineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherExpansionDialogueRefineResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.background):
+            body['background'] = request.background
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.language_code):
+            body['languageCode'] = request.language_code
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.role_info):
+            body['roleInfo'] = request.role_info
+        if not UtilClient.is_unset(request.start_sentence):
+            body['startSentence'] = request.start_sentence
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherExpansionDialogueRefine',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/expansionPractice/refineByContext',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_aiteacher_expansion_dialogue_refine(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineResponse:
+        """
+        @summary 拓展练根据上下文进行润色
+        
+        @param request: ExecuteAITeacherExpansionDialogueRefineRequest
+        @return: ExecuteAITeacherExpansionDialogueRefineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_aiteacher_expansion_dialogue_refine_with_options(request, headers, runtime)
+
+    async def execute_aiteacher_expansion_dialogue_refine_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherExpansionDialogueRefineResponse:
+        """
+        @summary 拓展练根据上下文进行润色
+        
+        @param request: ExecuteAITeacherExpansionDialogueRefineRequest
+        @return: ExecuteAITeacherExpansionDialogueRefineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_aiteacher_expansion_dialogue_refine_with_options_async(request, headers, runtime)
+
+    def execute_aiteacher_expansion_dialogue_translate_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateResponse:
+        """
+        @summary 拓展练语境翻译
+        
+        @param request: ExecuteAITeacherExpansionDialogueTranslateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherExpansionDialogueTranslateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.background):
+            body['background'] = request.background
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.role_info):
+            body['roleInfo'] = request.role_info
+        if not UtilClient.is_unset(request.start_sentence):
+            body['startSentence'] = request.start_sentence
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherExpansionDialogueTranslate',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/expansionPractice/translate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_aiteacher_expansion_dialogue_translate_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateResponse:
+        """
+        @summary 拓展练语境翻译
+        
+        @param request: ExecuteAITeacherExpansionDialogueTranslateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherExpansionDialogueTranslateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.background):
+            body['background'] = request.background
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.role_info):
+            body['roleInfo'] = request.role_info
+        if not UtilClient.is_unset(request.start_sentence):
+            body['startSentence'] = request.start_sentence
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherExpansionDialogueTranslate',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/expansionPractice/translate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_aiteacher_expansion_dialogue_translate(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateResponse:
+        """
+        @summary 拓展练语境翻译
+        
+        @param request: ExecuteAITeacherExpansionDialogueTranslateRequest
+        @return: ExecuteAITeacherExpansionDialogueTranslateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_aiteacher_expansion_dialogue_translate_with_options(request, headers, runtime)
+
+    async def execute_aiteacher_expansion_dialogue_translate_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherExpansionDialogueTranslateResponse:
+        """
+        @summary 拓展练语境翻译
+        
+        @param request: ExecuteAITeacherExpansionDialogueTranslateRequest
+        @return: ExecuteAITeacherExpansionDialogueTranslateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_aiteacher_expansion_dialogue_translate_with_options_async(request, headers, runtime)
+
+    def execute_aiteacher_grammar_check_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherGrammarCheckRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherGrammarCheckResponse:
+        """
+        @summary 语法检测
+        
+        @param request: ExecuteAITeacherGrammarCheckRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherGrammarCheckResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherGrammarCheck',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/common/grammarChecking',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteAITeacherGrammarCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_aiteacher_grammar_check_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherGrammarCheckRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherGrammarCheckResponse:
+        """
+        @summary 语法检测
+        
+        @param request: ExecuteAITeacherGrammarCheckRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherGrammarCheckResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherGrammarCheck',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/common/grammarChecking',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteAITeacherGrammarCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_aiteacher_grammar_check(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherGrammarCheckRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherGrammarCheckResponse:
+        """
+        @summary 语法检测
+        
+        @param request: ExecuteAITeacherGrammarCheckRequest
+        @return: ExecuteAITeacherGrammarCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_aiteacher_grammar_check_with_options(request, headers, runtime)
+
+    async def execute_aiteacher_grammar_check_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherGrammarCheckRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherGrammarCheckResponse:
+        """
+        @summary 语法检测
+        
+        @param request: ExecuteAITeacherGrammarCheckRequest
+        @return: ExecuteAITeacherGrammarCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_aiteacher_grammar_check_with_options_async(request, headers, runtime)
+
+    def execute_aiteacher_sync_dialogue_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherSyncDialogueRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherSyncDialogueResponse:
+        """
+        @summary 进行同步练对话
+        
+        @param request: ExecuteAITeacherSyncDialogueRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherSyncDialogueResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.language_code):
+            body['languageCode'] = request.language_code
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherSyncDialogue',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/syncPractice/executeSyncTraining',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteAITeacherSyncDialogueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_aiteacher_sync_dialogue_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherSyncDialogueRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherSyncDialogueResponse:
+        """
+        @summary 进行同步练对话
+        
+        @param request: ExecuteAITeacherSyncDialogueRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherSyncDialogueResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.language_code):
+            body['languageCode'] = request.language_code
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherSyncDialogue',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/syncPractice/executeSyncTraining',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteAITeacherSyncDialogueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_aiteacher_sync_dialogue(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherSyncDialogueRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherSyncDialogueResponse:
+        """
+        @summary 进行同步练对话
+        
+        @param request: ExecuteAITeacherSyncDialogueRequest
+        @return: ExecuteAITeacherSyncDialogueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_aiteacher_sync_dialogue_with_options(request, headers, runtime)
+
+    async def execute_aiteacher_sync_dialogue_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherSyncDialogueRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherSyncDialogueResponse:
+        """
+        @summary 进行同步练对话
+        
+        @param request: ExecuteAITeacherSyncDialogueRequest
+        @return: ExecuteAITeacherSyncDialogueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_aiteacher_sync_dialogue_with_options_async(request, headers, runtime)
+
+    def execute_aiteacher_sync_dialogue_translate_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateResponse:
+        """
+        @summary 同步练语境翻译
+        
+        @param request: ExecuteAITeacherSyncDialogueTranslateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherSyncDialogueTranslateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherSyncDialogueTranslate',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/syncPractice/translate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_aiteacher_sync_dialogue_translate_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateResponse:
+        """
+        @summary 同步练语境翻译
+        
+        @param request: ExecuteAITeacherSyncDialogueTranslateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteAITeacherSyncDialogueTranslateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteAITeacherSyncDialogueTranslate',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/syncPractice/translate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_aiteacher_sync_dialogue_translate(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateResponse:
+        """
+        @summary 同步练语境翻译
+        
+        @param request: ExecuteAITeacherSyncDialogueTranslateRequest
+        @return: ExecuteAITeacherSyncDialogueTranslateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_aiteacher_sync_dialogue_translate_with_options(request, headers, runtime)
+
+    async def execute_aiteacher_sync_dialogue_translate_async(
+        self,
+        request: ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateRequest,
+    ) -> ai_content_20240611_models.ExecuteAITeacherSyncDialogueTranslateResponse:
+        """
+        @summary 同步练语境翻译
+        
+        @param request: ExecuteAITeacherSyncDialogueTranslateRequest
+        @return: ExecuteAITeacherSyncDialogueTranslateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_aiteacher_sync_dialogue_translate_with_options_async(request, headers, runtime)
+
+    def get_aiteacher_expansion_dialogue_suggestion_with_options(
+        self,
+        request: ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionResponse:
+        """
+        @summary 拓展练小助手
+        
+        @param request: GetAITeacherExpansionDialogueSuggestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAITeacherExpansionDialogueSuggestionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.background):
+            body['background'] = request.background
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.language_code):
+            body['languageCode'] = request.language_code
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.role_info):
+            body['roleInfo'] = request.role_info
+        if not UtilClient.is_unset(request.start_sentence):
+            body['startSentence'] = request.start_sentence
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAITeacherExpansionDialogueSuggestion',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/expansionPractice/suggestion',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aiteacher_expansion_dialogue_suggestion_with_options_async(
+        self,
+        request: ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionResponse:
+        """
+        @summary 拓展练小助手
+        
+        @param request: GetAITeacherExpansionDialogueSuggestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAITeacherExpansionDialogueSuggestionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.background):
+            body['background'] = request.background
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.language_code):
+            body['languageCode'] = request.language_code
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.role_info):
+            body['roleInfo'] = request.role_info
+        if not UtilClient.is_unset(request.start_sentence):
+            body['startSentence'] = request.start_sentence
+        if not UtilClient.is_unset(request.topic):
+            body['topic'] = request.topic
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAITeacherExpansionDialogueSuggestion',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/expansionPractice/suggestion',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aiteacher_expansion_dialogue_suggestion(
+        self,
+        request: ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionRequest,
+    ) -> ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionResponse:
+        """
+        @summary 拓展练小助手
+        
+        @param request: GetAITeacherExpansionDialogueSuggestionRequest
+        @return: GetAITeacherExpansionDialogueSuggestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_aiteacher_expansion_dialogue_suggestion_with_options(request, headers, runtime)
+
+    async def get_aiteacher_expansion_dialogue_suggestion_async(
+        self,
+        request: ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionRequest,
+    ) -> ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionResponse:
+        """
+        @summary 拓展练小助手
+        
+        @param request: GetAITeacherExpansionDialogueSuggestionRequest
+        @return: GetAITeacherExpansionDialogueSuggestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_aiteacher_expansion_dialogue_suggestion_with_options_async(request, headers, runtime)
+
+    def get_aiteacher_sync_dialogue_suggestion_with_options(
+        self,
+        request: ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionResponse:
+        """
+        @summary 同步练小助手
+        
+        @param request: GetAITeacherSyncDialogueSuggestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAITeacherSyncDialogueSuggestionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.language_code):
+            body['languageCode'] = request.language_code
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAITeacherSyncDialogueSuggestion',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/syncPractice/suggestion',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aiteacher_sync_dialogue_suggestion_with_options_async(
+        self,
+        request: ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionResponse:
+        """
+        @summary 同步练小助手
+        
+        @param request: GetAITeacherSyncDialogueSuggestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAITeacherSyncDialogueSuggestionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialogue_tasks):
+            body['dialogueTasks'] = request.dialogue_tasks
+        if not UtilClient.is_unset(request.language_code):
+            body['languageCode'] = request.language_code
+        if not UtilClient.is_unset(request.records):
+            body['records'] = request.records
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAITeacherSyncDialogueSuggestion',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aiteacher/syncPractice/suggestion',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aiteacher_sync_dialogue_suggestion(
+        self,
+        request: ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionRequest,
+    ) -> ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionResponse:
+        """
+        @summary 同步练小助手
+        
+        @param request: GetAITeacherSyncDialogueSuggestionRequest
+        @return: GetAITeacherSyncDialogueSuggestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_aiteacher_sync_dialogue_suggestion_with_options(request, headers, runtime)
+
+    async def get_aiteacher_sync_dialogue_suggestion_async(
+        self,
+        request: ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionRequest,
+    ) -> ai_content_20240611_models.GetAITeacherSyncDialogueSuggestionResponse:
+        """
+        @summary 同步练小助手
+        
+        @param request: GetAITeacherSyncDialogueSuggestionRequest
+        @return: GetAITeacherSyncDialogueSuggestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_aiteacher_sync_dialogue_suggestion_with_options_async(request, headers, runtime)
+
     def personalized_text_to_image_add_inference_job_with_options(
         self,
         request: ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobRequest,
