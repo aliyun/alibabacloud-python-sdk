@@ -1,3 +1,10 @@
+2024-12-27 Version: 1.14.0
+- Support API RunBookIntroduction.
+- Support API RunBookSmartCard.
+- Support API RunDocSmartCard.
+- Support API UploadBook.
+
+
 2024-12-19 Version: 1.13.0
 - Support API AddDatasetDocument.
 - Support API CreateDataset.

@@ -9369,6 +9369,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.run_abbreviation_content_with_options_async(request, runtime)
 
+    def run_book_introduction_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunBookIntroductionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunBookIntroductionResponse:
+        """
+        @summary 书籍导读接口
+        
+        @param request: RunBookIntroductionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunBookIntroductionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunBookIntroduction',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunBookIntroductionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_book_introduction_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunBookIntroductionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunBookIntroductionResponse:
+        """
+        @summary 书籍导读接口
+        
+        @param request: RunBookIntroductionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunBookIntroductionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunBookIntroduction',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunBookIntroductionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_book_introduction(
+        self,
+        request: ai_miao_bi_20230801_models.RunBookIntroductionRequest,
+    ) -> ai_miao_bi_20230801_models.RunBookIntroductionResponse:
+        """
+        @summary 书籍导读接口
+        
+        @param request: RunBookIntroductionRequest
+        @return: RunBookIntroductionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_book_introduction_with_options(request, runtime)
+
+    async def run_book_introduction_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunBookIntroductionRequest,
+    ) -> ai_miao_bi_20230801_models.RunBookIntroductionResponse:
+        """
+        @summary 书籍导读接口
+        
+        @param request: RunBookIntroductionRequest
+        @return: RunBookIntroductionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_book_introduction_with_options_async(request, runtime)
+
+    def run_book_smart_card_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunBookSmartCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunBookSmartCardResponse:
+        """
+        @summary 书籍智能卡片接口
+        
+        @param request: RunBookSmartCardRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunBookSmartCardResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunBookSmartCard',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunBookSmartCardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_book_smart_card_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunBookSmartCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunBookSmartCardResponse:
+        """
+        @summary 书籍智能卡片接口
+        
+        @param request: RunBookSmartCardRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunBookSmartCardResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunBookSmartCard',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunBookSmartCardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_book_smart_card(
+        self,
+        request: ai_miao_bi_20230801_models.RunBookSmartCardRequest,
+    ) -> ai_miao_bi_20230801_models.RunBookSmartCardResponse:
+        """
+        @summary 书籍智能卡片接口
+        
+        @param request: RunBookSmartCardRequest
+        @return: RunBookSmartCardResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_book_smart_card_with_options(request, runtime)
+
+    async def run_book_smart_card_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunBookSmartCardRequest,
+    ) -> ai_miao_bi_20230801_models.RunBookSmartCardResponse:
+        """
+        @summary 书籍智能卡片接口
+        
+        @param request: RunBookSmartCardRequest
+        @return: RunBookSmartCardResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_book_smart_card_with_options_async(request, runtime)
+
     def run_continue_content_with_options(
         self,
         request: ai_miao_bi_20230801_models.RunContinueContentRequest,
@@ -10068,6 +10276,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.run_doc_qa_with_options_async(request, runtime)
+
+    def run_doc_smart_card_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocSmartCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocSmartCardResponse:
+        """
+        @summary 文档智能卡片接口
+        
+        @param request: RunDocSmartCardRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocSmartCardResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocSmartCard',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDocSmartCardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_doc_smart_card_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocSmartCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocSmartCardResponse:
+        """
+        @summary 文档智能卡片接口
+        
+        @param request: RunDocSmartCardRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocSmartCardResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocSmartCard',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDocSmartCardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_doc_smart_card(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocSmartCardRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocSmartCardResponse:
+        """
+        @summary 文档智能卡片接口
+        
+        @param request: RunDocSmartCardRequest
+        @return: RunDocSmartCardResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_doc_smart_card_with_options(request, runtime)
+
+    async def run_doc_smart_card_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocSmartCardRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocSmartCardResponse:
+        """
+        @summary 文档智能卡片接口
+        
+        @param request: RunDocSmartCardRequest
+        @return: RunDocSmartCardResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_doc_smart_card_with_options_async(request, runtime)
 
     def run_doc_summary_with_options(
         self,
@@ -13724,6 +14036,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_material_document_with_options_async(request, runtime)
+
+    def upload_book_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.UploadBookRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UploadBookResponse:
+        """
+        @summary 妙读上传书籍
+        
+        @param tmp_req: UploadBookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadBookResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.UploadBookShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.docs):
+            request.docs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.docs, 'Docs', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.docs_shrink):
+            body['Docs'] = request.docs_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadBook',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UploadBookResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_book_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.UploadBookRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UploadBookResponse:
+        """
+        @summary 妙读上传书籍
+        
+        @param tmp_req: UploadBookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadBookResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.UploadBookShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.docs):
+            request.docs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.docs, 'Docs', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.docs_shrink):
+            body['Docs'] = request.docs_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadBook',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UploadBookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_book(
+        self,
+        request: ai_miao_bi_20230801_models.UploadBookRequest,
+    ) -> ai_miao_bi_20230801_models.UploadBookResponse:
+        """
+        @summary 妙读上传书籍
+        
+        @param request: UploadBookRequest
+        @return: UploadBookResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upload_book_with_options(request, runtime)
+
+    async def upload_book_async(
+        self,
+        request: ai_miao_bi_20230801_models.UploadBookRequest,
+    ) -> ai_miao_bi_20230801_models.UploadBookResponse:
+        """
+        @summary 妙读上传书籍
+        
+        @param request: UploadBookRequest
+        @return: UploadBookResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_book_with_options_async(request, runtime)
 
     def upload_doc_with_options(
         self,
