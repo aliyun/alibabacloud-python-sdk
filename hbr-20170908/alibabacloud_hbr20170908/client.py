@@ -789,12 +789,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateBackupPlanResponse:
         """
-        @summary Creates a backup plan.
+        @summary Create a backup plan.
         
-        @description    A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        You can specify only one type of data source in a backup schedule.
-        You can specify only one interval as a backup cycle in a backup schedule.
-        Each backup schedule allows you to back up data to only one backup vault.
+        @description - A backup plan associates data sources with backup policies and other necessary information for backups. After the execution of a backup plan, it generates a backup task that records the progress and results of the backup. If the backup task is successful, a backup snapshot is created. You can use the backup snapshot to create a recovery task.
+        - A backup plan supports only one type of data source.
+        - A backup plan supports only a single fixed interval backup cycle strategy.
+        - A backup plan can back up to only one backup vault.
         
         @param tmp_req: CreateBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -897,12 +897,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateBackupPlanResponse:
         """
-        @summary Creates a backup plan.
+        @summary Create a backup plan.
         
-        @description    A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        You can specify only one type of data source in a backup schedule.
-        You can specify only one interval as a backup cycle in a backup schedule.
-        Each backup schedule allows you to back up data to only one backup vault.
+        @description - A backup plan associates data sources with backup policies and other necessary information for backups. After the execution of a backup plan, it generates a backup task that records the progress and results of the backup. If the backup task is successful, a backup snapshot is created. You can use the backup snapshot to create a recovery task.
+        - A backup plan supports only one type of data source.
+        - A backup plan supports only a single fixed interval backup cycle strategy.
+        - A backup plan can back up to only one backup vault.
         
         @param tmp_req: CreateBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1004,12 +1004,12 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateBackupPlanRequest,
     ) -> hbr_20170908_models.CreateBackupPlanResponse:
         """
-        @summary Creates a backup plan.
+        @summary Create a backup plan.
         
-        @description    A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        You can specify only one type of data source in a backup schedule.
-        You can specify only one interval as a backup cycle in a backup schedule.
-        Each backup schedule allows you to back up data to only one backup vault.
+        @description - A backup plan associates data sources with backup policies and other necessary information for backups. After the execution of a backup plan, it generates a backup task that records the progress and results of the backup. If the backup task is successful, a backup snapshot is created. You can use the backup snapshot to create a recovery task.
+        - A backup plan supports only one type of data source.
+        - A backup plan supports only a single fixed interval backup cycle strategy.
+        - A backup plan can back up to only one backup vault.
         
         @param request: CreateBackupPlanRequest
         @return: CreateBackupPlanResponse
@@ -1022,12 +1022,12 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateBackupPlanRequest,
     ) -> hbr_20170908_models.CreateBackupPlanResponse:
         """
-        @summary Creates a backup plan.
+        @summary Create a backup plan.
         
-        @description    A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        You can specify only one type of data source in a backup schedule.
-        You can specify only one interval as a backup cycle in a backup schedule.
-        Each backup schedule allows you to back up data to only one backup vault.
+        @description - A backup plan associates data sources with backup policies and other necessary information for backups. After the execution of a backup plan, it generates a backup task that records the progress and results of the backup. If the backup task is successful, a backup snapshot is created. You can use the backup snapshot to create a recovery task.
+        - A backup plan supports only one type of data source.
+        - A backup plan supports only a single fixed interval backup cycle strategy.
+        - A backup plan can back up to only one backup vault.
         
         @param request: CreateBackupPlanRequest
         @return: CreateBackupPlanResponse
@@ -1041,7 +1041,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateClientsResponse:
         """
-        @summary Installs one or more HBR clients on specified instances.
+        @summary Installs one or more Cloud Backup clients on specified instances.
         
         @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Cloud Backup. For more information, see [Billing methods and billable items](https://help.aliyun.com/document_detail/89062.html).
         
@@ -1092,7 +1092,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateClientsResponse:
         """
-        @summary Installs one or more HBR clients on specified instances.
+        @summary Installs one or more Cloud Backup clients on specified instances.
         
         @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Cloud Backup. For more information, see [Billing methods and billable items](https://help.aliyun.com/document_detail/89062.html).
         
@@ -1142,7 +1142,7 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateClientsRequest,
     ) -> hbr_20170908_models.CreateClientsResponse:
         """
-        @summary Installs one or more HBR clients on specified instances.
+        @summary Installs one or more Cloud Backup clients on specified instances.
         
         @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Cloud Backup. For more information, see [Billing methods and billable items](https://help.aliyun.com/document_detail/89062.html).
         
@@ -1157,7 +1157,7 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateClientsRequest,
     ) -> hbr_20170908_models.CreateClientsResponse:
         """
-        @summary Installs one or more HBR clients on specified instances.
+        @summary Installs one or more Cloud Backup clients on specified instances.
         
         @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Cloud Backup. For more information, see [Billing methods and billable items](https://help.aliyun.com/document_detail/89062.html).
         
@@ -2523,6 +2523,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_vault_with_options_async(request, runtime)
 
+    def delete_air_ecs_instance_with_options(
+        self,
+        tmp_req: hbr_20170908_models.DeleteAirEcsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbr_20170908_models.DeleteAirEcsInstanceResponse:
+        """
+        @summary Removes the Elastic Compute Service (ECS) instance that is used for restoration only in ECS Backup Essential Edition.
+        
+        @param tmp_req: DeleteAirEcsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAirEcsInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = hbr_20170908_models.DeleteAirEcsInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.uninstall_client_source_types):
+            request.uninstall_client_source_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.uninstall_client_source_types, 'UninstallClientSourceTypes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.uninstall_client_source_types_shrink):
+            query['UninstallClientSourceTypes'] = request.uninstall_client_source_types_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAirEcsInstance',
+            version='2017-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteAirEcsInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_air_ecs_instance_with_options_async(
+        self,
+        tmp_req: hbr_20170908_models.DeleteAirEcsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbr_20170908_models.DeleteAirEcsInstanceResponse:
+        """
+        @summary Removes the Elastic Compute Service (ECS) instance that is used for restoration only in ECS Backup Essential Edition.
+        
+        @param tmp_req: DeleteAirEcsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAirEcsInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = hbr_20170908_models.DeleteAirEcsInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.uninstall_client_source_types):
+            request.uninstall_client_source_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.uninstall_client_source_types, 'UninstallClientSourceTypes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.uninstall_client_source_types_shrink):
+            query['UninstallClientSourceTypes'] = request.uninstall_client_source_types_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAirEcsInstance',
+            version='2017-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteAirEcsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_air_ecs_instance(
+        self,
+        request: hbr_20170908_models.DeleteAirEcsInstanceRequest,
+    ) -> hbr_20170908_models.DeleteAirEcsInstanceResponse:
+        """
+        @summary Removes the Elastic Compute Service (ECS) instance that is used for restoration only in ECS Backup Essential Edition.
+        
+        @param request: DeleteAirEcsInstanceRequest
+        @return: DeleteAirEcsInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_air_ecs_instance_with_options(request, runtime)
+
+    async def delete_air_ecs_instance_async(
+        self,
+        request: hbr_20170908_models.DeleteAirEcsInstanceRequest,
+    ) -> hbr_20170908_models.DeleteAirEcsInstanceResponse:
+        """
+        @summary Removes the Elastic Compute Service (ECS) instance that is used for restoration only in ECS Backup Essential Edition.
+        
+        @param request: DeleteAirEcsInstanceRequest
+        @return: DeleteAirEcsInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_air_ecs_instance_with_options_async(request, runtime)
+
     def delete_backup_client_with_options(
         self,
         request: hbr_20170908_models.DeleteBackupClientRequest,
@@ -3549,7 +3657,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteUdmDiskResponse:
         """
-        @summary 取消保护云盘
+        @summary Cancels a protected disk.
         
         @param request: DeleteUdmDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3584,7 +3692,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteUdmDiskResponse:
         """
-        @summary 取消保护云盘
+        @summary Cancels a protected disk.
         
         @param request: DeleteUdmDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3618,7 +3726,7 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteUdmDiskRequest,
     ) -> hbr_20170908_models.DeleteUdmDiskResponse:
         """
-        @summary 取消保护云盘
+        @summary Cancels a protected disk.
         
         @param request: DeleteUdmDiskRequest
         @return: DeleteUdmDiskResponse
@@ -3631,7 +3739,7 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteUdmDiskRequest,
     ) -> hbr_20170908_models.DeleteUdmDiskResponse:
         """
-        @summary 取消保护云盘
+        @summary Cancels a protected disk.
         
         @param request: DeleteUdmDiskRequest
         @return: DeleteUdmDiskResponse
@@ -5695,7 +5803,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribePolicyBindingsResponse:
         """
-        @summary Queries one or more data sources bound to a backup policy or queries one or more backup policies bound to a data source.
+        @summary Query one or more data sources bound to a policy, or query one or more policies bound to a data source.
         
         @param tmp_req: DescribePolicyBindingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5746,7 +5854,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribePolicyBindingsResponse:
         """
-        @summary Queries one or more data sources bound to a backup policy or queries one or more backup policies bound to a data source.
+        @summary Query one or more data sources bound to a policy, or query one or more policies bound to a data source.
         
         @param tmp_req: DescribePolicyBindingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5796,7 +5904,7 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribePolicyBindingsRequest,
     ) -> hbr_20170908_models.DescribePolicyBindingsResponse:
         """
-        @summary Queries one or more data sources bound to a backup policy or queries one or more backup policies bound to a data source.
+        @summary Query one or more data sources bound to a policy, or query one or more policies bound to a data source.
         
         @param request: DescribePolicyBindingsRequest
         @return: DescribePolicyBindingsResponse
@@ -5809,7 +5917,7 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribePolicyBindingsRequest,
     ) -> hbr_20170908_models.DescribePolicyBindingsResponse:
         """
-        @summary Queries one or more data sources bound to a backup policy or queries one or more backup policies bound to a data source.
+        @summary Query one or more data sources bound to a policy, or query one or more policies bound to a data source.
         
         @param request: DescribePolicyBindingsRequest
         @return: DescribePolicyBindingsResponse
@@ -6577,7 +6685,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DetachNasFileSystemResponse:
         """
-        @summary Deletes a mount target that is created by Hybrid Backup Recovery (HBR).
+        @summary Deletes an internal mount target created by Cloud Backup.
         
         @description    If the request is successful, the mount target is deleted.
         After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
@@ -6623,7 +6731,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DetachNasFileSystemResponse:
         """
-        @summary Deletes a mount target that is created by Hybrid Backup Recovery (HBR).
+        @summary Deletes an internal mount target created by Cloud Backup.
         
         @description    If the request is successful, the mount target is deleted.
         After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
@@ -6668,7 +6776,7 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DetachNasFileSystemRequest,
     ) -> hbr_20170908_models.DetachNasFileSystemResponse:
         """
-        @summary Deletes a mount target that is created by Hybrid Backup Recovery (HBR).
+        @summary Deletes an internal mount target created by Cloud Backup.
         
         @description    If the request is successful, the mount target is deleted.
         After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
@@ -6684,7 +6792,7 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DetachNasFileSystemRequest,
     ) -> hbr_20170908_models.DetachNasFileSystemResponse:
         """
-        @summary Deletes a mount target that is created by Hybrid Backup Recovery (HBR).
+        @summary Deletes an internal mount target created by Cloud Backup.
         
         @description    If the request is successful, the mount target is deleted.
         After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
@@ -7265,6 +7373,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.ExecutePolicyV2Response:
         """
+        @summary Execute a policy for one or all bound data sources.
+        
         @param request: ExecutePolicyV2Request
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExecutePolicyV2Response
@@ -7306,6 +7416,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.ExecutePolicyV2Response:
         """
+        @summary Execute a policy for one or all bound data sources.
+        
         @param request: ExecutePolicyV2Request
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExecutePolicyV2Response
@@ -7346,6 +7458,8 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.ExecutePolicyV2Request,
     ) -> hbr_20170908_models.ExecutePolicyV2Response:
         """
+        @summary Execute a policy for one or all bound data sources.
+        
         @param request: ExecutePolicyV2Request
         @return: ExecutePolicyV2Response
         """
@@ -7357,6 +7471,8 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.ExecutePolicyV2Request,
     ) -> hbr_20170908_models.ExecutePolicyV2Response:
         """
+        @summary Execute a policy for one or all bound data sources.
+        
         @param request: ExecutePolicyV2Request
         @return: ExecutePolicyV2Response
         """
@@ -8715,7 +8831,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateContainerClusterResponse:
         """
-        @summary Updates the name and network type of a Container Service for Kubernetes (ACK) cluster.
+        @summary Update container cluster information, including the container cluster name, network type, etc.
         
         @param request: UpdateContainerClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8758,7 +8874,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateContainerClusterResponse:
         """
-        @summary Updates the name and network type of a Container Service for Kubernetes (ACK) cluster.
+        @summary Update container cluster information, including the container cluster name, network type, etc.
         
         @param request: UpdateContainerClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8800,7 +8916,7 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateContainerClusterRequest,
     ) -> hbr_20170908_models.UpdateContainerClusterResponse:
         """
-        @summary Updates the name and network type of a Container Service for Kubernetes (ACK) cluster.
+        @summary Update container cluster information, including the container cluster name, network type, etc.
         
         @param request: UpdateContainerClusterRequest
         @return: UpdateContainerClusterResponse
@@ -8813,7 +8929,7 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateContainerClusterRequest,
     ) -> hbr_20170908_models.UpdateContainerClusterResponse:
         """
-        @summary Updates the name and network type of a Container Service for Kubernetes (ACK) cluster.
+        @summary Update container cluster information, including the container cluster name, network type, etc.
         
         @param request: UpdateContainerClusterRequest
         @return: UpdateContainerClusterResponse

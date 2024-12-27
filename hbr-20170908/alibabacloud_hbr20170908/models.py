@@ -955,16 +955,15 @@ class CreateBackupJobRequest(TeaModel):
         speed_limit: str = None,
         vault_id: str = None,
     ):
-        # The backup type. Valid values:
+        # The backup type. This parameter is required only if you set the SourceType parameter to UDM_ECS.
         # 
         # *   **COMPLETE**: full backup
-        # *   **INCREMENTAL**: incremental backup
         self.backup_type = backup_type
-        # The ID of the cluster.
+        # You do not need to specify this parameter.
         self.cluster_id = cluster_id
-        # The ID of the cluster. This parameter is required only if you set the **SourceType** parameter to **CONTAINER**.
+        # You do not need to specify this parameter.
         self.container_cluster_id = container_cluster_id
-        # The cluster resources. This parameter is required only if you set the **SourceType** parameter to **CONTAINER**.
+        # You do not need to specify this parameter.
         self.container_resources = container_resources
         # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
@@ -975,7 +974,7 @@ class CreateBackupJobRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The details about ECS instance backup. The value is a JSON string.
+        # This parameter is required only if you set the **SourceType** parameter to **UDM_ECS**. The value is a JSON string. Valid values:
         # 
         # *   doCopy: specifies whether to enable remote replication.
         # 
@@ -995,46 +994,40 @@ class CreateBackupJobRequest(TeaModel):
         # 
         # *   enableWriters: This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies whether to create application-consistent snapshots.
         # 
-        #     *   true (default): creates application-consistent snapshots.
+        #     *   true: creates application-consistent snapshots.
         #     *   false: creates file system-consistent snapshots.
         # 
         # *   enableFsFreeze: This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
         # 
         # *   timeoutSeconds: This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
         self.detail = detail
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
+        # This parameter does not take effect if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
         self.exclude = exclude
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
+        # This parameter does not take effect if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the paths to the files that are backed up. The value can be up to 255 characters in length.
         self.include = include
-        # This parameter specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
+        # false or left empty
         self.initiated_by_ack = initiated_by_ack
-        # This parameter is required only if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the ID of the Elastic Compute Service (ECS) instance.
+        # This parameter is required only if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the ID of the ECS instance.
         self.instance_id = instance_id
         # The name of the backup job.
         self.job_name = job_name
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a source path.
-        # 
-        # *   This parameter is available only for Windows ECS instances.
-        # *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
-        # *   If you use VSS, you cannot back up data from multiple directories.
+        # You do not need to specify this parameter.
         self.options = options
         # The retention period of the backup data. Unit: days.
         self.retention = retention
         # The type of the data source. Valid values:
         # 
-        # *   **ECS_FILE**: Elastic Compute Service (ECS) files
-        # *   **UDM_ECS**: ECS instances
-        # *   **CONTAINER**: containers
+        # *   **UDM_ECS**: Elastic Compute Service (ECS) instance
         # 
         # This parameter is required.
         self.source_type = source_type
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+        # This parameter does not take effect if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
         # 
         # *   **start**: the start hour.
         # *   **end**: the end hour.
         # *   **bandwidth**: the bandwidth. Unit: KB/s.
         self.speed_limit = speed_limit
-        # The ID of the backup vault.
+        # The ID of the backup vault. This parameter is not required if you set the SourceType parameter to UDM_ECS.
         self.vault_id = vault_id
 
     def validate(self):
@@ -1147,16 +1140,15 @@ class CreateBackupJobShrinkRequest(TeaModel):
         speed_limit: str = None,
         vault_id: str = None,
     ):
-        # The backup type. Valid values:
+        # The backup type. This parameter is required only if you set the SourceType parameter to UDM_ECS.
         # 
         # *   **COMPLETE**: full backup
-        # *   **INCREMENTAL**: incremental backup
         self.backup_type = backup_type
-        # The ID of the cluster.
+        # You do not need to specify this parameter.
         self.cluster_id = cluster_id
-        # The ID of the cluster. This parameter is required only if you set the **SourceType** parameter to **CONTAINER**.
+        # You do not need to specify this parameter.
         self.container_cluster_id = container_cluster_id
-        # The cluster resources. This parameter is required only if you set the **SourceType** parameter to **CONTAINER**.
+        # You do not need to specify this parameter.
         self.container_resources = container_resources
         # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
@@ -1167,7 +1159,7 @@ class CreateBackupJobShrinkRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The details about ECS instance backup. The value is a JSON string.
+        # This parameter is required only if you set the **SourceType** parameter to **UDM_ECS**. The value is a JSON string. Valid values:
         # 
         # *   doCopy: specifies whether to enable remote replication.
         # 
@@ -1187,46 +1179,40 @@ class CreateBackupJobShrinkRequest(TeaModel):
         # 
         # *   enableWriters: This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies whether to create application-consistent snapshots.
         # 
-        #     *   true (default): creates application-consistent snapshots.
+        #     *   true: creates application-consistent snapshots.
         #     *   false: creates file system-consistent snapshots.
         # 
         # *   enableFsFreeze: This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
         # 
         # *   timeoutSeconds: This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
         self.detail_shrink = detail_shrink
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
+        # This parameter does not take effect if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
         self.exclude = exclude
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
+        # This parameter does not take effect if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the paths to the files that are backed up. The value can be up to 255 characters in length.
         self.include = include
-        # This parameter specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
+        # false or left empty
         self.initiated_by_ack = initiated_by_ack
-        # This parameter is required only if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the ID of the Elastic Compute Service (ECS) instance.
+        # This parameter is required only if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the ID of the ECS instance.
         self.instance_id = instance_id
         # The name of the backup job.
         self.job_name = job_name
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a source path.
-        # 
-        # *   This parameter is available only for Windows ECS instances.
-        # *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
-        # *   If you use VSS, you cannot back up data from multiple directories.
+        # You do not need to specify this parameter.
         self.options = options
         # The retention period of the backup data. Unit: days.
         self.retention = retention
         # The type of the data source. Valid values:
         # 
-        # *   **ECS_FILE**: Elastic Compute Service (ECS) files
-        # *   **UDM_ECS**: ECS instances
-        # *   **CONTAINER**: containers
+        # *   **UDM_ECS**: Elastic Compute Service (ECS) instance
         # 
         # This parameter is required.
         self.source_type = source_type
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+        # This parameter does not take effect if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
         # 
         # *   **start**: the start hour.
         # *   **end**: the end hour.
         # *   **bandwidth**: the bandwidth. Unit: KB/s.
         self.speed_limit = speed_limit
-        # The ID of the backup vault.
+        # The ID of the backup vault. This parameter is not required if you set the SourceType parameter to UDM_ECS.
         self.vault_id = vault_id
 
     def validate(self):
@@ -1429,23 +1415,24 @@ class CreateBackupPlanRequestRule(TeaModel):
         rule_name: str = None,
         schedule: str = None,
     ):
-        # The backup type.
+        # Backup type.
         self.backup_type = backup_type
-        # The ID of the region to which data is replicated.
+        # ID of the region for offsite replication.
         self.destination_region_id = destination_region_id
-        # The retention period of the backup data in geo-redundancy mode. Unit: days.
+        # Number of days to retain offsite backups.
         self.destination_retention = destination_retention
-        # Specifies whether to enable the rule.
+        # Whether the rule is enabled.
         self.disabled = disabled
-        # Specifies whether to enable cross-region replication.
+        # Whether to enable offsite replication.
         self.do_copy = do_copy
-        # The retention period of the backup data. Unit: days.
+        # Backup retention period.
         self.retention = retention
-        # The name of the rule.
+        # Rule name.
         self.rule_name = rule_name
-        # The backup policy. Format: I|{startTime}|{interval}. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # Backup strategy. Optional format: I|{startTime}|{interval}. This means that a backup task is executed every {interval} starting from {startTime}. Backup tasks for past times will not be executed. If the previous backup task has not been completed, the next backup task will not be triggered. For example, I|1631685600|P1D means a backup is performed every day starting from 2021-09-15 14:00:00.
         # 
-        # startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        # - startTime: The start time of the backup, in UNIX time, in seconds.
+        # - interval: ISO8601 time interval. For example, PT1H means an interval of one hour. P1D means an interval of one day.
         self.schedule = schedule
 
     def validate(self):
@@ -1530,98 +1517,99 @@ class CreateBackupPlanRequest(TeaModel):
         udm_region_id: str = None,
         vault_id: str = None,
     ):
-        # The backup type. Valid value: **COMPLETE**, which indicates full backup.
+        # Backup type. Value: **COMPLETE**, indicating a full backup.
         # 
         # This parameter is required.
         self.backup_type = backup_type
-        # This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket.
+        # This parameter is required when **SourceType** is set to **OSS**. It represents the OSS bucket name.
         self.bucket = bucket
-        # The configurations of the incremental file synchronization. This parameter is required for data synchronization only.
+        # Configuration for the incremental file synchronization list. (Required only for synchronization)
         self.change_list_path = change_list_path
-        # This parameter is required only if the **SourceType** parameter is set to **NAS**. This parameter specifies the time to create the file system. The value must be a UNIX timestamp. Unit: seconds.
+        # This parameter is required when **SourceType** is set to **NAS**. It represents the creation time of the file system, in UNIX timestamp, in seconds.
         self.create_time = create_time
-        # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+        # The role name created in the RAM of the original account for cross-account backup.
         self.cross_account_role_name = cross_account_role_name
-        # Specifies whether data is backed up and restored within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
-        # 
-        # *   SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
-        # *   CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+        # Cross-account backup type. Supported values:
+        # - SELF_ACCOUNT: Backup within the same account
+        # - CROSS_ACCOUNT: Cross-account backup
         self.cross_account_type = cross_account_type
-        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+        # The original account ID used for cross-account backup.
         self.cross_account_user_id = cross_account_user_id
+        # Destination data source details. (Required only for synchronization)
         self.dest_data_source_detail = dest_data_source_detail
+        # Destination data source ID. (Required only for synchronization)
         self.dest_data_source_id = dest_data_source_id
+        # Destination data source type. (Required only for synchronization)
         self.dest_source_type = dest_source_type
-        # The details about ECS instance backup. The value is a JSON string.
+        # Details of the whole machine backup, in JSON string format.
         # 
-        # *   snapshotGroup: specifies whether to use a snapshot-consistent group. This parameter is valid only if all disks of the ECS instance are enhanced SSDs (ESSDs).
-        # *   appConsistent: specifies whether to enable application consistency. If you set this parameter to true, you must also specify the preScriptPath and postScriptPath parameters.
-        # *   preScriptPath: the path to the prescript file.
-        # *   postScriptPath: the path to the postscript file.
+        # * snapshotGroup: Whether to use a consistent snapshot group (only valid if all instance disks are ESSD).
+        # * appConsistent: Whether to use application consistency (requires the use of preScriptPath and postScriptPath parameters).
+        # * preScriptPath: Path to the freeze script.
+        # * postScriptPath: Path to the thaw script.
         self.detail = detail
-        # Specifies whether to disable the plan by default.
+        # Is the plan disabled by default
         self.disabled = disabled
-        # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
+        # This parameter is required only when **SourceType** is set to **ECS_FILE**. It specifies the path that should not be backed up, meaning all files under this path will not be included in the backup. The maximum length is 255 characters.
         self.exclude = exclude
-        # This parameter is required only if the **SourceType** parameter is set to **NAS**. This parameter specifies the ID of the NAS file system.
+        # This parameter is required when **SourceType** is set to **NAS**. It represents the file system ID.
         self.file_system_id = file_system_id
-        # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value can be up to 255 characters in length.
+        # This parameter is required when **SourceType** is set to **ECS_FILE**. It represents the path to be backed up, and all files under this path will be backed up. Supports up to 255 characters.
         self.include = include
-        # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance.
+        # This parameter is required when **SourceType** is set to **ECS_FILE**. It represents the ECS instance ID.
         self.instance_id = instance_id
-        # The name of the Tablestore instance.
+        # Table store instance name.
         self.instance_name = instance_name
-        # Specifies whether to enable the "Keep at least one backup version" feature. Valid values:
-        # 
-        # *   0: The feature is disabled.
-        # *   1: The feature is enabled.
+        # Whether to enable retaining at least one backup version.
+        # - 0 - Do not retain
+        # - 1 - Retain
         self.keep_latest_snapshots = keep_latest_snapshots
-        # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a backup path.
+        # This parameter is required when **SourceType** is set to **ECS_FILE**. It indicates whether to use the Windows system VSS to define the backup path.
         # 
-        # *   This parameter is available only for Windows ECS instances.
-        # *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before the system sets this parameter to `["UseVSS":true]`.
-        # *   If you use VSS, you cannot back up data from multiple directories.
+        # - This feature only supports Windows type ECS instances.
+        # - If there are data changes in the backup source and you need to ensure consistency between the backup data and the source data, you can configure it as `["UseVSS":true]`.
+        # - After choosing to use VSS, multiple file directories cannot be backed up simultaneously.
         self.options = options
-        # The details about the Tablestore instance.
+        # Table store instance details.
         self.ots_detail = ots_detail
-        # The backup paths.
+        # Backup paths.
         self.path = path
-        # The name of the backup schedule. The name must be 1 to 64 characters in length. The name of a backup schedule for each type of data source must be unique within a backup vault.
+        # Name of the backup plan. 1 to 64 characters. The name must be unique for each data source type within a single backup vault.
         # 
         # This parameter is required.
         self.plan_name = plan_name
-        # This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
+        # This parameter is required when **SourceType** is set to **OSS**. It represents the backup prefix. When specified, only objects matching the prefix are backed up.
         self.prefix = prefix
-        # The retention period of backup data. Minimum value: 1. Unit: days.
+        # Number of days to retain the backup, with a minimum value of 1, in days.
         self.retention = retention
-        # The rules of the backup schedule.
+        # Backup plan rules.
         self.rule = rule
-        # The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the `{startTime}` parameter and the subsequent backup jobs at an interval that is specified in the `{interval}` parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # Backup policy. Optional format: `I|{startTime}|{interval}`. This indicates that a backup task will be executed every `{interval}` starting from `{startTime}`. It does not compensate for missed backup tasks due to past time. If the previous backup task has not been completed, the next backup task will not be triggered. For example, `I|1631685600|P1D` means a backup is performed every day starting from 2021-09-15 14:00:00.
         # 
-        # *   **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-        # *   **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        # - **startTime**: Start time of the backup, in UNIX timestamp, in seconds.
+        # - **interval**: ISO8601 time interval. For example, PT1H indicates an interval of one hour, and P1D indicates an interval of one day.
         # 
         # This parameter is required.
         self.schedule = schedule
-        # The type of the data source. Valid values:
+        # Data source type, with the following options:
         # 
-        # *   **ECS_FILE**: backs up Elastic Compute Service (ECS) files.
-        # *   **OSS**: backs up Object Storage Service (OSS) buckets.
-        # *   **NAS**: backs up Apsara File Storage NAS file systems.
-        # *   **OTS**: backs up Tablestore instances.
-        # *   **UDM_ECS**: backs up ECS instances.
+        # - **ECS_FILE**: Backs up ECS files
+        # - **OSS**: Backs up Alibaba Cloud OSS
+        # - **NAS**: Backs up Alibaba Cloud NAS
+        # - **OTS**: Backs up Alibaba Cloud OTS
+        # - **UDM_ECS**: Backs up the entire ECS instance
         # 
         # This parameter is required.
         self.source_type = source_type
-        # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+        # This parameter is required when **SourceType** is set to **ECS_FILE**. It represents the backup traffic control. Format: `{start}:{end}:{bandwidth}`. Multiple traffic control configurations are separated by |, and the configured times should not overlap.
         # 
-        # *   **start**: the start hour.
-        # *   **end**: the end hour.
-        # *   **bandwidth**: the bandwidth. Unit: KB/s.
+        # - **start**: Start hour.
+        # - **end**: End hour.
+        # - **bandwidth**: Limit rate, in KB/s.
         self.speed_limit = speed_limit
-        # The region in which the ECS instance that you want to back up resides.
+        # Region where the whole machine backup instance is located.
         self.udm_region_id = udm_region_id
-        # The ID of the backup vault.
+        # Backup vault ID.
         self.vault_id = vault_id
 
     def validate(self):
@@ -1783,23 +1771,24 @@ class CreateBackupPlanShrinkRequestRule(TeaModel):
         rule_name: str = None,
         schedule: str = None,
     ):
-        # The backup type.
+        # Backup type.
         self.backup_type = backup_type
-        # The ID of the region to which data is replicated.
+        # ID of the region for offsite replication.
         self.destination_region_id = destination_region_id
-        # The retention period of the backup data in geo-redundancy mode. Unit: days.
+        # Number of days to retain offsite backups.
         self.destination_retention = destination_retention
-        # Specifies whether to enable the rule.
+        # Whether the rule is enabled.
         self.disabled = disabled
-        # Specifies whether to enable cross-region replication.
+        # Whether to enable offsite replication.
         self.do_copy = do_copy
-        # The retention period of the backup data. Unit: days.
+        # Backup retention period.
         self.retention = retention
-        # The name of the rule.
+        # Rule name.
         self.rule_name = rule_name
-        # The backup policy. Format: I|{startTime}|{interval}. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # Backup strategy. Optional format: I|{startTime}|{interval}. This means that a backup task is executed every {interval} starting from {startTime}. Backup tasks for past times will not be executed. If the previous backup task has not been completed, the next backup task will not be triggered. For example, I|1631685600|P1D means a backup is performed every day starting from 2021-09-15 14:00:00.
         # 
-        # startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        # - startTime: The start time of the backup, in UNIX time, in seconds.
+        # - interval: ISO8601 time interval. For example, PT1H means an interval of one hour. P1D means an interval of one day.
         self.schedule = schedule
 
     def validate(self):
@@ -1884,98 +1873,99 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         udm_region_id: str = None,
         vault_id: str = None,
     ):
-        # The backup type. Valid value: **COMPLETE**, which indicates full backup.
+        # Backup type. Value: **COMPLETE**, indicating a full backup.
         # 
         # This parameter is required.
         self.backup_type = backup_type
-        # This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket.
+        # This parameter is required when **SourceType** is set to **OSS**. It represents the OSS bucket name.
         self.bucket = bucket
-        # The configurations of the incremental file synchronization. This parameter is required for data synchronization only.
+        # Configuration for the incremental file synchronization list. (Required only for synchronization)
         self.change_list_path = change_list_path
-        # This parameter is required only if the **SourceType** parameter is set to **NAS**. This parameter specifies the time to create the file system. The value must be a UNIX timestamp. Unit: seconds.
+        # This parameter is required when **SourceType** is set to **NAS**. It represents the creation time of the file system, in UNIX timestamp, in seconds.
         self.create_time = create_time
-        # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+        # The role name created in the RAM of the original account for cross-account backup.
         self.cross_account_role_name = cross_account_role_name
-        # Specifies whether data is backed up and restored within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
-        # 
-        # *   SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
-        # *   CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+        # Cross-account backup type. Supported values:
+        # - SELF_ACCOUNT: Backup within the same account
+        # - CROSS_ACCOUNT: Cross-account backup
         self.cross_account_type = cross_account_type
-        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+        # The original account ID used for cross-account backup.
         self.cross_account_user_id = cross_account_user_id
+        # Destination data source details. (Required only for synchronization)
         self.dest_data_source_detail_shrink = dest_data_source_detail_shrink
+        # Destination data source ID. (Required only for synchronization)
         self.dest_data_source_id = dest_data_source_id
+        # Destination data source type. (Required only for synchronization)
         self.dest_source_type = dest_source_type
-        # The details about ECS instance backup. The value is a JSON string.
+        # Details of the whole machine backup, in JSON string format.
         # 
-        # *   snapshotGroup: specifies whether to use a snapshot-consistent group. This parameter is valid only if all disks of the ECS instance are enhanced SSDs (ESSDs).
-        # *   appConsistent: specifies whether to enable application consistency. If you set this parameter to true, you must also specify the preScriptPath and postScriptPath parameters.
-        # *   preScriptPath: the path to the prescript file.
-        # *   postScriptPath: the path to the postscript file.
+        # * snapshotGroup: Whether to use a consistent snapshot group (only valid if all instance disks are ESSD).
+        # * appConsistent: Whether to use application consistency (requires the use of preScriptPath and postScriptPath parameters).
+        # * preScriptPath: Path to the freeze script.
+        # * postScriptPath: Path to the thaw script.
         self.detail_shrink = detail_shrink
-        # Specifies whether to disable the plan by default.
+        # Is the plan disabled by default
         self.disabled = disabled
-        # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
+        # This parameter is required only when **SourceType** is set to **ECS_FILE**. It specifies the path that should not be backed up, meaning all files under this path will not be included in the backup. The maximum length is 255 characters.
         self.exclude = exclude
-        # This parameter is required only if the **SourceType** parameter is set to **NAS**. This parameter specifies the ID of the NAS file system.
+        # This parameter is required when **SourceType** is set to **NAS**. It represents the file system ID.
         self.file_system_id = file_system_id
-        # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value can be up to 255 characters in length.
+        # This parameter is required when **SourceType** is set to **ECS_FILE**. It represents the path to be backed up, and all files under this path will be backed up. Supports up to 255 characters.
         self.include = include
-        # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance.
+        # This parameter is required when **SourceType** is set to **ECS_FILE**. It represents the ECS instance ID.
         self.instance_id = instance_id
-        # The name of the Tablestore instance.
+        # Table store instance name.
         self.instance_name = instance_name
-        # Specifies whether to enable the "Keep at least one backup version" feature. Valid values:
-        # 
-        # *   0: The feature is disabled.
-        # *   1: The feature is enabled.
+        # Whether to enable retaining at least one backup version.
+        # - 0 - Do not retain
+        # - 1 - Retain
         self.keep_latest_snapshots = keep_latest_snapshots
-        # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a backup path.
+        # This parameter is required when **SourceType** is set to **ECS_FILE**. It indicates whether to use the Windows system VSS to define the backup path.
         # 
-        # *   This parameter is available only for Windows ECS instances.
-        # *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before the system sets this parameter to `["UseVSS":true]`.
-        # *   If you use VSS, you cannot back up data from multiple directories.
+        # - This feature only supports Windows type ECS instances.
+        # - If there are data changes in the backup source and you need to ensure consistency between the backup data and the source data, you can configure it as `["UseVSS":true]`.
+        # - After choosing to use VSS, multiple file directories cannot be backed up simultaneously.
         self.options = options
-        # The details about the Tablestore instance.
+        # Table store instance details.
         self.ots_detail_shrink = ots_detail_shrink
-        # The backup paths.
+        # Backup paths.
         self.path = path
-        # The name of the backup schedule. The name must be 1 to 64 characters in length. The name of a backup schedule for each type of data source must be unique within a backup vault.
+        # Name of the backup plan. 1 to 64 characters. The name must be unique for each data source type within a single backup vault.
         # 
         # This parameter is required.
         self.plan_name = plan_name
-        # This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
+        # This parameter is required when **SourceType** is set to **OSS**. It represents the backup prefix. When specified, only objects matching the prefix are backed up.
         self.prefix = prefix
-        # The retention period of backup data. Minimum value: 1. Unit: days.
+        # Number of days to retain the backup, with a minimum value of 1, in days.
         self.retention = retention
-        # The rules of the backup schedule.
+        # Backup plan rules.
         self.rule = rule
-        # The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the `{startTime}` parameter and the subsequent backup jobs at an interval that is specified in the `{interval}` parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # Backup policy. Optional format: `I|{startTime}|{interval}`. This indicates that a backup task will be executed every `{interval}` starting from `{startTime}`. It does not compensate for missed backup tasks due to past time. If the previous backup task has not been completed, the next backup task will not be triggered. For example, `I|1631685600|P1D` means a backup is performed every day starting from 2021-09-15 14:00:00.
         # 
-        # *   **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-        # *   **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        # - **startTime**: Start time of the backup, in UNIX timestamp, in seconds.
+        # - **interval**: ISO8601 time interval. For example, PT1H indicates an interval of one hour, and P1D indicates an interval of one day.
         # 
         # This parameter is required.
         self.schedule = schedule
-        # The type of the data source. Valid values:
+        # Data source type, with the following options:
         # 
-        # *   **ECS_FILE**: backs up Elastic Compute Service (ECS) files.
-        # *   **OSS**: backs up Object Storage Service (OSS) buckets.
-        # *   **NAS**: backs up Apsara File Storage NAS file systems.
-        # *   **OTS**: backs up Tablestore instances.
-        # *   **UDM_ECS**: backs up ECS instances.
+        # - **ECS_FILE**: Backs up ECS files
+        # - **OSS**: Backs up Alibaba Cloud OSS
+        # - **NAS**: Backs up Alibaba Cloud NAS
+        # - **OTS**: Backs up Alibaba Cloud OTS
+        # - **UDM_ECS**: Backs up the entire ECS instance
         # 
         # This parameter is required.
         self.source_type = source_type
-        # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+        # This parameter is required when **SourceType** is set to **ECS_FILE**. It represents the backup traffic control. Format: `{start}:{end}:{bandwidth}`. Multiple traffic control configurations are separated by |, and the configured times should not overlap.
         # 
-        # *   **start**: the start hour.
-        # *   **end**: the end hour.
-        # *   **bandwidth**: the bandwidth. Unit: KB/s.
+        # - **start**: Start hour.
+        # - **end**: End hour.
+        # - **bandwidth**: Limit rate, in KB/s.
         self.speed_limit = speed_limit
-        # The region in which the ECS instance that you want to back up resides.
+        # Region where the whole machine backup instance is located.
         self.udm_region_id = udm_region_id
-        # The ID of the backup vault.
+        # Backup vault ID.
         self.vault_id = vault_id
 
     def validate(self):
@@ -2131,18 +2121,18 @@ class CreateBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request is successful.
+        # Return code, 200 indicates success.
         self.code = code
-        # The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+        # Description of the return message, usually returns \\"successful\\" upon success, and corresponding error messages in case of failure.
         self.message = message
-        # The ID of the backup schedule.
+        # Backup plan ID.
         self.plan_id = plan_id
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Whether the request was successful.
         # 
-        # *   true: The request is successful.
-        # *   false: The request fails.
+        # - true: Success.
+        # - false: Failure.
         self.success = success
 
     def validate(self):
@@ -3307,6 +3297,7 @@ class CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsOssDetail(TeaMo
         inventory_cleanup_policy: str = None,
         inventory_id: str = None,
     ):
+        # Do not prompt for archival type objects in task statistics and failed file lists.
         self.ignore_archive_object = ignore_archive_object
         # Specifies whether the system deletes the inventory lists when a backup is completed. This parameter is valid only when OSS inventories are used. Valid values:
         # 
@@ -3459,7 +3450,7 @@ class CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions(TeaModel):
         self.common_nas_detail = common_nas_detail
         # The advanced options for file backup.
         self.file_detail = file_detail
-        # The advanced options for OSS backup.
+        # The advanced options for Object Storage Service (OSS) backup.
         self.oss_detail = oss_detail
         # The advanced options for ECS instance backup.
         self.udm_detail = udm_detail
@@ -3545,7 +3536,7 @@ class CreatePolicyBindingsRequestPolicyBindingList(TeaModel):
         # 
         # *   **UDM_ECS**: the ID of the Elastic Compute Service (ECS) instance
         # *   **OSS**: the name of the Object Storage Service (OSS) bucket
-        # *   **NAS**: the ID of the Apsara File Storage NAS (NAS) file system
+        # *   **NAS**: the ID of the File Storage NAS (NAS) file system
         # *   **COMMON_NAS**: the ID of the on-premises NAS file system
         # *   **ECS_FILE**: the ID of the ECS instance
         # *   **File**: the ID of the Cloud Backup client
@@ -3556,14 +3547,15 @@ class CreatePolicyBindingsRequestPolicyBindingList(TeaModel):
         # *   true: disables the backup policy for the data source
         # *   false: enables the backup policy for the data source
         self.disabled = disabled
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
+        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**, **File**, **NAS**, **COMMON_NAS**, or **COMMON_FILE_SYSTEM**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
         self.exclude = exclude
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
+        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**, **File**, **NAS**, **COMMON_NAS**, or **COMMON_FILE_SYSTEM**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
         self.include = include
         # The description of the association.
         self.policy_binding_description = policy_binding_description
         # *   If the SourceType parameter is set to **OSS**, set the Source parameter to the prefix of the path to the folder that you want to back up. If you do not specify the Source parameter, the entire bucket (root directory) is backed up.
-        # *   If the SourceType parameter is set to **ECS_FILE** or **File**, set the Source parameter to the path to the files that you want to back up. If you do not specify the Source parameter, all paths backed up.
+        # *   If the SourceType parameter is set to **ECS_FILE** or **File**, set the Source parameter to the path to the files that you want to back up. If you do not specify the Source parameter, all paths are backed up.
+        # *   This parameter is required if the SourceType parameter is set to **COMMON_FILE_SYSTEM**. This parameter specifies the path to be backed up. To back up the /src path, enter ["/src"]. To back up the root path, enter ["/"].
         self.source = source
         # The type of the data source. Valid values:
         # 
@@ -3825,7 +3817,15 @@ class CreatePolicyV2RequestRulesDataSourceFilters(TeaModel):
         data_source_ids: List[str] = None,
         source_type: str = None,
     ):
+        # This parameter is deprecated.
         self.data_source_ids = data_source_ids
+        # The type of the data source. Valid value:
+        # 
+        # *   **UDM_ECS**: Elastic Compute Service (ECS) instance This type of data source is supported only if the **RuleType** parameter is set to **UDM_ECS_ONLY**.
+        # *   **OSS**: Object Storage Service (OSS) bucket This type of data source is supported only if the **RuleType** parameter is set to **STANDARD**.
+        # *   **NAS**: File Storage NAS (NAS) file system This type of data source is supported only if the **RuleType** parameter is set to **STANDARD**.
+        # *   **ECS_FILE**: ECS file This type of data source is supported only if the **RuleType** parameter is set to **STANDARD**.
+        # *   **OTS**: Tablestore instance This type of data source is supported only if the **RuleType** parameter is set to **STANDARD**.
         self.source_type = source_type
 
     def validate(self):
@@ -3906,8 +3906,14 @@ class CreatePolicyV2RequestRulesTagFilters(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag-based matching rule. Valid values:
+        # 
+        # *   **EQUAL**: Both the tag key and tag value are matched.
+        # *   **NOT**: The tag key is matched and the tag value is not matched.
         self.operator = operator
+        # The tag value. If you leave this parameter empty, the value is any value.
         self.value = value
 
     def validate(self):
@@ -3955,7 +3961,9 @@ class CreatePolicyV2RequestRules(TeaModel):
     ):
         # This parameter is required only if the **RuleType** parameter is set to **BACKUP**. This parameter specifies the backup type. Valid value: **COMPLETE**, which indicates full backup.
         self.backup_type = backup_type
+        # This parameter is required only if the **RuleType** parameter is set to **TAG**. This parameter specifies the data source filter rule.
         self.data_source_filters = data_source_filters
+        # This parameter is required only if the **PolicyType** parameter is set to **UDM_ECS_ONLY**. This parameter specifies whether to enable the immutable backup feature.
         self.immutable = immutable
         # Specifies whether to enable the feature of keeping at least one backup version. Valid values:
         # 
@@ -3984,7 +3992,9 @@ class CreatePolicyV2RequestRules(TeaModel):
         # *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
         # *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour. P1D specifies an interval of one day.
         self.schedule = schedule
+        # This parameter is required only if the **RuleType** parameter is set to **TAG**. This parameter specifies the resource tag filter rule.
         self.tag_filters = tag_filters
+        # This parameter is required only if the RuleType parameter is set to BACKUP. The ID of the backup vault.
         self.vault_id = vault_id
 
     def validate(self):
@@ -4310,7 +4320,12 @@ class CreateReplicationVaultRequest(TeaModel):
     ):
         # The description of the backup vault. The description must be 0 to 255 characters in length.
         self.description = description
+        # The method that is used to encrypt the source data. This parameter is valid only if you set the VaultType parameter to STANDARD or OTS_BACKUP. Valid values:
+        # 
+        # *   **HBR_PRIVATE**: The source data is encrypted by using the built-in encryption method of Hybrid Backup Recovery (HBR).
+        # *   **KMS**: The source data is encrypted by using Key Management Service (KMS).
         self.encrypt_type = encrypt_type
+        # The customer master key (CMK) created in KMS or the alias of the key. This parameter is required only if you set the EncryptType parameter to KMS.
         self.kms_key_id = kms_key_id
         # The data redundancy type of the backup vault. Valid values:
         # 
@@ -4333,7 +4348,7 @@ class CreateReplicationVaultRequest(TeaModel):
         # 
         # This parameter is required.
         self.vault_region_id = vault_region_id
-        # The storage class of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
+        # The storage type of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
         self.vault_storage_class = vault_storage_class
 
     def validate(self):
@@ -4537,11 +4552,13 @@ class CreateRestoreJobRequest(TeaModel):
         self.cross_account_user_id = cross_account_user_id
         # The paths to the files that you do not want to restore. No files in the specified paths are restored. The value must be 1 to 255 characters in length.
         self.exclude = exclude
+        # Details of restoration to local.
         self.failback_detail = failback_detail
         # The paths to the files that you want to restore. All files in the specified paths are restored. The value must be 1 to 255 characters in length.
         self.include = include
         # Specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
         self.initiated_by_ack = initiated_by_ack
+        # Parameters for restoring a task
         self.options = options
         # The details about the Tablestore instance.
         self.ots_detail = ots_detail
@@ -4766,11 +4783,13 @@ class CreateRestoreJobShrinkRequest(TeaModel):
         self.cross_account_user_id = cross_account_user_id
         # The paths to the files that you do not want to restore. No files in the specified paths are restored. The value must be 1 to 255 characters in length.
         self.exclude = exclude
+        # Details of restoration to local.
         self.failback_detail_shrink = failback_detail_shrink
         # The paths to the files that you want to restore. All files in the specified paths are restored. The value must be 1 to 255 characters in length.
         self.include = include
         # Specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
         self.initiated_by_ack = initiated_by_ack
+        # Parameters for restoring a task
         self.options = options
         # The details about the Tablestore instance.
         self.ots_detail_shrink = ots_detail_shrink
@@ -5410,6 +5429,176 @@ class CreateVaultResponse(TeaModel):
         return self
 
 
+class DeleteAirEcsInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        ecs_instance_id: str = None,
+        uninstall_client_source_types: List[str] = None,
+    ):
+        # The ID of the ECS instance.
+        self.ecs_instance_id = ecs_instance_id
+        # The data sources for which the client needs to be uninstalled.
+        self.uninstall_client_source_types = uninstall_client_source_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ecs_instance_id is not None:
+            result['EcsInstanceId'] = self.ecs_instance_id
+        if self.uninstall_client_source_types is not None:
+            result['UninstallClientSourceTypes'] = self.uninstall_client_source_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EcsInstanceId') is not None:
+            self.ecs_instance_id = m.get('EcsInstanceId')
+        if m.get('UninstallClientSourceTypes') is not None:
+            self.uninstall_client_source_types = m.get('UninstallClientSourceTypes')
+        return self
+
+
+class DeleteAirEcsInstanceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ecs_instance_id: str = None,
+        uninstall_client_source_types_shrink: str = None,
+    ):
+        # The ID of the ECS instance.
+        self.ecs_instance_id = ecs_instance_id
+        # The data sources for which the client needs to be uninstalled.
+        self.uninstall_client_source_types_shrink = uninstall_client_source_types_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ecs_instance_id is not None:
+            result['EcsInstanceId'] = self.ecs_instance_id
+        if self.uninstall_client_source_types_shrink is not None:
+            result['UninstallClientSourceTypes'] = self.uninstall_client_source_types_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EcsInstanceId') is not None:
+            self.ecs_instance_id = m.get('EcsInstanceId')
+        if m.get('UninstallClientSourceTypes') is not None:
+            self.uninstall_client_source_types_shrink = m.get('UninstallClientSourceTypes')
+        return self
+
+
+class DeleteAirEcsInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        task_id: str = None,
+    ):
+        # The response code. The status code 200 indicates that the request was successful.
+        self.code = code
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.success = success
+        # The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DeleteAirEcsInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAirEcsInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAirEcsInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteBackupClientRequest(TeaModel):
     def __init__(
         self,
@@ -5843,8 +6032,11 @@ class DeleteClientRequest(TeaModel):
         resource_group_id: str = None,
         vault_id: str = None,
     ):
+        # The ID of the client.
         self.client_id = client_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the backup vault.
         self.vault_id = vault_id
 
     def validate(self):
@@ -5883,9 +6075,16 @@ class DeleteClientResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the call is successful.
         self.code = code
+        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call is successful. Valid values:
+        # 
+        # *   true: The call is successful.
+        # *   false: The call fails.
         self.success = success
 
     def validate(self):
@@ -8084,6 +8283,7 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail(TeaModel):
         self.disk_native_snapshot_id_list = disk_native_snapshot_id_list
         # Indicates whether remote replication is enabled.
         self.do_copy = do_copy
+        # ECS instance information, including ECS instance name, instance type, etc.
         self.instance_infos = instance_infos
         # The ID of the backup snapshot.
         self.native_snapshot_id = native_snapshot_id
@@ -8809,7 +9009,7 @@ class DescribeBackupPlansRequest(TeaModel):
         page_size: int = None,
         source_type: str = None,
     ):
-        # The filter.
+        # The filters.
         self.filters = filters
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
@@ -8871,8 +9071,14 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag(TeaModel
         operator: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag-based matching rule. Valid values:
+        # 
+        # *   **EQUAL**: Both the tag key and tag value are matched.
+        # *   **NOT**: The tag key is matched and the tag value is not matched.
         self.operator = operator
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -9330,6 +9536,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         self.cluster_id = cluster_id
         # This parameter is valid only when **SourceType** is set to **NAS**. This parameter indicates the time when the file system was created. This value is a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
+        # Indicates whether a backup plan is automatically created based on tags.
         self.created_by_tag = created_by_tag
         # The time when the backup plan was created. This value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
@@ -9361,6 +9568,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         self.exclude = exclude
         # This parameter is valid only when **SourceType** is set to **NAS**. This parameter indicates the ID of the NAS file system.
         self.file_system_id = file_system_id
+        # The matched tag rules.
         self.hit_tags = hit_tags
         # This parameter is valid only when **SourceType** is set to **ECS_FILE**. This parameter indicates the paths to the files that are backed up.
         self.include = include
@@ -12288,7 +12496,7 @@ class DescribeHanaRestoresRequest(TeaModel):
         self.database_name = database_name
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.\\`
         self.page_size = page_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -13417,7 +13625,14 @@ class DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters(TeaModel):
         data_source_ids: List[str] = None,
         source_type: str = None,
     ):
+        # Deprecated.
         self.data_source_ids = data_source_ids
+        # Data source type. The value range is as follows: 
+        # - **UDM_ECS**: Indicates ECS server backup. 
+        # - **OSS**: Indicates OSS backup. 
+        # - **NAS**: Indicates Alibaba Cloud NAS backup. 
+        # - **ECS_FILE**: Indicates ECS file backup. 
+        # - **OTS**: Indicates Tablestore backup.
         self.source_type = source_type
 
     def validate(self):
@@ -13497,8 +13712,11 @@ class DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # Tag key
         self.key = key
+        # Tag matching rules, supporting: - **EQUAL**: Matches both the tag key and tag value. - **NOT**: Matches the tag key but not the tag value.
         self.operator = operator
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -13550,7 +13768,9 @@ class DescribePoliciesV2ResponseBodyPoliciesRules(TeaModel):
         self.archive_days = archive_days
         # This parameter is returned only if the value of the **RuleType** parameter is **BACKUP**. This parameter indicates the backup type. Valid value: **COMPLETE**, which indicates full backup.
         self.backup_type = backup_type
+        # This parameter is required only when **RuleType** is set to **TAG**. It defines the data source filtering rule.
         self.data_source_filters = data_source_filters
+        # This parameter is returned only if the **PolicyType** is **UDM_ECS_ONLY**. This parameter indicates whether the immutable backup feature is enabled.
         self.immutable = immutable
         # Indicates whether the feature of keeping at least one backup version is enabled. Valid values:
         # 
@@ -13579,6 +13799,7 @@ class DescribePoliciesV2ResponseBodyPoliciesRules(TeaModel):
         # *   startTime: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
         # *   interval: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
         self.schedule = schedule
+        # This parameter is required only when **RuleType** is set to **TAG**. It defines the resource tag filtering rule.
         self.tag_filters = tag_filters
         # This parameter is returned only if the value of the RuleType parameter is BACKUP. The ID of the backup vault.
         self.vault_id = vault_id
@@ -13903,8 +14124,24 @@ class DescribePolicyBindingsRequestFilters(TeaModel):
         operator: str = None,
         values: List[str] = None,
     ):
+        # Key in the query filter. Possible values include:
+        # 
+        # - **PolicyId**: Backup policy ID
+        # - **DataSourceId**: ECS instance ID
+        # - **DataSourceType**: Data source type
         self.key = key
+        # Matching method. Default is IN. This refers to the matching operation (Operator) supported by the Key and Value in the filter. Possible values include:
+        # 
+        # - **EQUAL**: Equal to
+        # - **NOT_EQUAL**: Not equal to
+        # - **GREATER_THAN**: Greater than
+        # - **GREATER_THAN_OR_EQUAL**: Greater than or equal to
+        # - **LESS_THAN**: Less than
+        # - **LESS_THAN_OR_EQUAL**: Less than or equal to
+        # - **BETWEEN**: Range, where value is a JSON array `[lower_bound, upper_bound]`.
+        # - **IN**: In the set, where value is an array.
         self.operator = operator
+        # Values to be matched in the query filter.
         self.values = values
 
     def validate(self):
@@ -13945,14 +14182,20 @@ class DescribePolicyBindingsRequest(TeaModel):
         policy_id: str = None,
         source_type: str = None,
     ):
+        # List of data source IDs.
         self.data_source_ids = data_source_ids
+        # Query filters.
         self.filters = filters
-        # The number of results for each query.
+        # Number of results per query.
         # 
-        # Valid values: 10 to 100. Default value: 10.
+        # Range: 10~100. Default: 10.
         self.max_results = max_results
+        # Token required to fetch the next page of policy and data source associations.
         self.next_token = next_token
+        # Policy ID.
         self.policy_id = policy_id
+        # Data source type. Possible values:
+        # * **UDM_ECS**: Indicates ECS full machine backup.
         self.source_type = source_type
 
     def validate(self):
@@ -14010,8 +14253,24 @@ class DescribePolicyBindingsShrinkRequestFilters(TeaModel):
         operator: str = None,
         values: List[str] = None,
     ):
+        # Key in the query filter. Possible values include:
+        # 
+        # - **PolicyId**: Backup policy ID
+        # - **DataSourceId**: ECS instance ID
+        # - **DataSourceType**: Data source type
         self.key = key
+        # Matching method. Default is IN. This refers to the matching operation (Operator) supported by the Key and Value in the filter. Possible values include:
+        # 
+        # - **EQUAL**: Equal to
+        # - **NOT_EQUAL**: Not equal to
+        # - **GREATER_THAN**: Greater than
+        # - **GREATER_THAN_OR_EQUAL**: Greater than or equal to
+        # - **LESS_THAN**: Less than
+        # - **LESS_THAN_OR_EQUAL**: Less than or equal to
+        # - **BETWEEN**: Range, where value is a JSON array `[lower_bound, upper_bound]`.
+        # - **IN**: In the set, where value is an array.
         self.operator = operator
+        # Values to be matched in the query filter.
         self.values = values
 
     def validate(self):
@@ -14052,14 +14311,20 @@ class DescribePolicyBindingsShrinkRequest(TeaModel):
         policy_id: str = None,
         source_type: str = None,
     ):
+        # List of data source IDs.
         self.data_source_ids_shrink = data_source_ids_shrink
+        # Query filters.
         self.filters = filters
-        # The number of results for each query.
+        # Number of results per query.
         # 
-        # Valid values: 10 to 100. Default value: 10.
+        # Range: 10~100. Default: 10.
         self.max_results = max_results
+        # Token required to fetch the next page of policy and data source associations.
         self.next_token = next_token
+        # Policy ID.
         self.policy_id = policy_id
+        # Data source type. Possible values:
+        # * **UDM_ECS**: Indicates ECS full machine backup.
         self.source_type = source_type
 
     def validate(self):
@@ -14116,12 +14381,11 @@ class DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileS
         fetch_slice_size: int = None,
         full_on_increment_fail: bool = None,
     ):
-        # The size of backup shards (the number of files).
+        # Backup shard size (number of files).
         self.fetch_slice_size = fetch_slice_size
-        # Specifies whether the system performs full backup if incremental backup fails. Valid values:
-        # 
-        # *   **true**: The system performs full backup if incremental backup fails.
-        # *   **false**: The system does not perform full backup if incremental backup fails.
+        # Whether to switch to a full backup when an incremental backup fails. Values:
+        # - **true**: Switch to full backup on failure.
+        # - **false**: Do not switch to full backup on failure.
         self.full_on_increment_fail = full_on_increment_fail
 
     def validate(self):
@@ -14156,16 +14420,15 @@ class DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDe
         fetch_slice_size: int = None,
         full_on_increment_fail: bool = None,
     ):
-        # The ID of the Cloud Backup client.
+        # Backup client ID.
         self.client_id = client_id
-        # The ID of the client group.
+        # Client group ID.
         self.cluster_id = cluster_id
-        # The size of backup shards (the number of files).
+        # Backup slice size (number of files).
         self.fetch_slice_size = fetch_slice_size
-        # Indicates whether the system performs full backup if incremental backup fails. Valid values:
-        # 
-        # *   **true**: The system performs full backup if incremental backup fails.
-        # *   **false**: The system does not perform full backup if incremental backup fails.
+        # Whether to switch to a full backup when an incremental backup fails. Values:
+        # - **true**: Switch to full backup on failure.
+        # - **false**: Do not switch to full backup on failure.
         self.full_on_increment_fail = full_on_increment_fail
 
     def validate(self):
@@ -14206,15 +14469,13 @@ class DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsFileDetail(
         adv_policy: bool = None,
         use_vss: bool = None,
     ):
-        # Indicates whether an advanced policy is used. Valid values:
-        # 
-        # *   **true**\
-        # *   **false**\
+        # Whether to use advanced policies. Values:
+        # - **true**: Use.
+        # - **false**: Do not use.
         self.adv_policy = adv_policy
-        # Indicates whether the Volume Shadow Copy Service (VSS) feature is enabled. Valid values:
-        # 
-        # *   **true**: The feature is enabled.
-        # *   **false**: The feature is disabled.
+        # Whether to enable VSS (Windows) functionality. Values:
+        # - **true**: Enable.
+        # - **false**: Disable.
         self.use_vss = use_vss
 
     def validate(self):
@@ -14248,18 +14509,16 @@ class DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetail(T
         inventory_cleanup_policy: str = None,
         inventory_id: str = None,
     ):
-        # 不在任务统计和失败文件列表中提示归档型对象
+        # Do not prompt for archive-type objects in the task statistics and failed file list.
         self.ignore_archive_object = ignore_archive_object
-        # Indicates whether the system deletes the inventory lists when a backup is completed. This parameter is valid only when OSS inventories are used. Valid values:
-        # 
-        # *   **NO_CLEANUP**: Inventory lists are not deleted.
-        # *   **DELETE_CURRENT**: The current inventory list is deleted.
-        # *   **DELETE_CURRENT_AND_PREVIOUS**: All inventory lists are deleted.
+        # Whether to delete the inventory file after the backup. This is only effective when using an OSS inventory. Supported values:
+        # - **NO_CLEANUP**: Do not delete.
+        # - **DELETE_CURRENT**: Delete the current file.
+        # - **DELETE_CURRENT_AND_PREVIOUS**: Delete all files.
         self.inventory_cleanup_policy = inventory_cleanup_policy
-        # The name of the OSS inventory. If this parameter is not empty, the OSS inventory is used for performance optimization.
-        # 
-        # *   If you want to back up more than 100 million OSS objects, we recommend that you use inventory lists to accelerate incremental backup. Storage fees for inventory lists are included into your OSS bills.
-        # *   A certain amount of time is required for OSS to generate inventory lists. Before inventory lists are generated, OSS objects may fail to be backed up. In this case, you can back up the OSS objects in the next backup cycle.
+        # The name of the OSS inventory. If this value is not empty, the OSS inventory will be used for performance optimization.
+        # - It is recommended to use an inventory for backing up more than 100 million OSS objects to improve incremental performance. Storage costs for the inventory files are charged separately by the OSS service.
+        # - The generation of the OSS inventory file takes time, and the backup may fail before the inventory file is generated. You can wait for the next cycle to execute.
         self.inventory_id = inventory_id
 
     def validate(self):
@@ -14305,32 +14564,31 @@ class DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail(T
         snapshot_group: bool = None,
         timeout_in_seconds: int = None,
     ):
-        # Indicates whether application consistency is enabled. You can enable application consistency only if all disks are ESSDs.
+        # 是否创建应用一致性。仅云盘类型全部为ESSD时，支持创建快照应用一致性。
         self.app_consistent = app_consistent
-        # The ID of the custom KMS key in the destination region. If this parameter is not empty and geo-replication is enabled, the key is used for encrypted geo-replication.
+        # The custom KMS key ID in the destination region. When this field is not empty and cross-region replication is enabled, the specified key will be used for encrypting the cross-region replication.
         self.destination_kms_key_id = destination_kms_key_id
-        # The IDs of the disks that need to be protected. If all disks need to be protected, this parameter is empty.
+        # List of disk IDs that need protection. This value is empty when protecting all disks.
         self.disk_id_list = disk_id_list
-        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter indicates whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
+        # This parameter is required when **AppConsistent** is **true**. It indicates whether to use the Linux FsFreeze mechanism to ensure the file system is in a read-only consistent state before creating an application-consistent snapshot. The default value is true.
         self.enable_fs_freeze = enable_fs_freeze
-        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter indicates whether application-consistent snapshots are created. Valid values:
+        # This parameter is required when **AppConsistent** is **true**. It determines whether to set an application-consistent snapshot:
+        # - **true**: Create an application-consistent snapshot
+        # - **false**: Create a file system-consistent snapshot
         # 
-        # *   true: Application-consistent snapshots are created.
-        # *   false: File system-consistent snapshots are created.
-        # 
-        # Default value: true.
+        # The default value is true.
         self.enable_writers = enable_writers
-        # The IDs of the disks that do not need to be protected. If the DiskIdList parameter is not empty, this parameter is ignored.
+        # List of disk IDs that do not need protection. This parameter is ignored if DiskIdList is not empty.
         self.exclude_disk_id_list = exclude_disk_id_list
-        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter indicates the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
+        # This parameter is required when **AppConsistent** is **true**. It specifies the path of the unfreeze script to be executed after creating an application-consistent snapshot.
         self.post_script_path = post_script_path
-        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter indicates the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
+        # This parameter is required when **AppConsistent** is **true**. It specifies the path of the freeze script to be executed before creating an application-consistent snapshot.
         self.pre_script_path = pre_script_path
-        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter indicates the name of the RAM role that is required to create application-consistent snapshots.
+        # This parameter is required when **AppConsistent** is **true**. It specifies the RAM role name needed for creating an application-consistent snapshot.
         self.ram_role_name = ram_role_name
-        # Indicates whether a snapshot-consistent group is created. You can create a snapshot-consistent group only if all disks are enhanced SSDs (ESSDs).
+        # Indicates whether to create a snapshot consistency group. Only supported when all disk types are ESSD.
         self.snapshot_group = snapshot_group
-        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter indicates the I/O freeze timeout period. Default value: 30. Unit: seconds.
+        # This parameter is required when **AppConsistent** is **true**. It specifies the IO freeze timeout duration. The default value is 30 seconds.
         self.timeout_in_seconds = timeout_in_seconds
 
     def validate(self):
@@ -14402,15 +14660,15 @@ class DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions(TeaModel):
         oss_detail: DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetail = None,
         udm_detail: DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail = None,
     ):
-        # The advanced options for large-scale file system backup.
+        # Advanced options for large-scale file system backup.
         self.common_file_system_detail = common_file_system_detail
-        # The advanced options for on-premises NAS backup.
+        # Advanced options for local NAS.
         self.common_nas_detail = common_nas_detail
-        # The advanced options for file backup.
+        # Advanced options for file backup.
         self.file_detail = file_detail
-        # The advanced options for OSS backup.
+        # Advanced options for OSS backup.
         self.oss_detail = oss_detail
-        # The advanced options for ECS instance backup.
+        # Advanced options for full machine backup.
         self.udm_detail = udm_detail
 
     def validate(self):
@@ -14470,14 +14728,13 @@ class DescribePolicyBindingsResponseBodyPolicyBindingsHitTags(TeaModel):
         operator: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # Tag key.
         self.key = key
-        # The tag-based matching rule.
-        # 
-        # *   **EQUAL**: Both the tag key and tag value are matched.
-        # *   **NOT**: The tag key is matched and the tag value is not matched.
+        # Tag matching rule.
+        # - **EQUAL**: Matches both the tag key and tag value.
+        # - **NOT**: Matches the tag key but not the tag value.
         self.operator = operator
-        # The tag value.
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -14530,54 +14787,51 @@ class DescribePolicyBindingsResponseBodyPolicyBindings(TeaModel):
         speed_limit: str = None,
         updated_time: int = None,
     ):
-        # The advanced options.
+        # Advanced options.
         self.advanced_options = advanced_options
-        # Indicates whether the resource is automatically associated with the related resource tag in the backup policy.
+        # Whether the resource is automatically associated through the backup policy resource tag.
         self.created_by_tag = created_by_tag
-        # The time when the backup policy was created. The value is a UNIX timestamp. Unit: seconds.
+        # Creation time. UNIX timestamp, in seconds.
         self.created_time = created_time
-        # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The name of the role created in the RAM of the original account for cross-account backup.
         self.cross_account_role_name = cross_account_role_name
-        # Indicates whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
-        # 
-        # *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-        # *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+        # Cross-account backup type. Supported values: 
+        # - SELF_ACCOUNT: Backup within the same account
+        # - CROSS_ACCOUNT: Cross-account backup
         self.cross_account_type = cross_account_type
-        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The ID of the original account for cross-account backup.
         self.cross_account_user_id = cross_account_user_id
-        # The ID of the data source.
+        # Data source ID.
         self.data_source_id = data_source_id
-        # Indicates whether the backup policy is enabled for the data source. Valid values:
-        # 
-        # *   true: The backup policy is disabled.
-        # *   false: The backup policy is enabled.
+        # 策略是否对该数据源生效。
+        # - true：暂停
+        # - false：未暂停
         self.disabled = disabled
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
+        # This parameter is required only when **SourceType** is **ECS_FILE** or **File**. It specifies the file types that should not be backed up, and all files of these types will be excluded. Supports up to 255 characters.
         self.exclude = exclude
-        # The matched tag rules.
+        # Hit tag rules.
         self.hit_tags = hit_tags
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
+        # This parameter is required only when **SourceType** is **ECS_FILE** or **File**. It specifies the file types to be backed up, and all files of these types will be backed up. Supports up to 255 characters.
         self.include = include
-        # The description of the association.
+        # Bound policy description.
         self.policy_binding_description = policy_binding_description
-        # The ID of the association.
+        # Bound policy ID.
         self.policy_binding_id = policy_binding_id
-        # The ID of the backup policy.
+        # Policy ID.
         self.policy_id = policy_id
-        # *   If the SourceType parameter is set to **OSS**, set the Source parameter to the prefix of the path to the folder that you want to back up. If you do not specify the Source parameter, the entire bucket (root directory) is backed up.
-        # *   If the SourceType parameter is set to **ECS_FILE** or **File**, set the Source parameter to the path to the files that you want to back up. If you do not specify the Source parameter, all paths backed up.
+        # - When **SourceType** is **OSS**, it indicates the prefix to be backed up. If not specified, it means backing up the entire root directory of the Bucket.
+        # - When **SourceType** is **ECS_FILE** or **File**, it indicates the file directory to be backed up. If not specified, it means backing up all directories.
         self.source = source
-        # The type of the data source. Valid values:
-        # 
-        # *   **UDM_ECS**: ECS instances
+        # Data source type, with the value range:
+        # - **UDM_ECS**: indicates ECS full machine backup
         self.source_type = source_type
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the throttling rules. Format: `{start}{end}{bandwidth}`. Separate multiple throttling rules with vertical bars (|). The time ranges of the throttling rules cannot overlap.
+        # This parameter is required only when **SourceType** is **ECS_FILE** or **File**. It specifies the backup traffic control. The format is `{start}{end}{bandwidth}`. Multiple traffic control configurations are separated by commas, and the configured times must not overlap.
         # 
-        # *   **start**: the start hour.
-        # *   **end**: the end hour.
-        # *   **bandwidth**: the bandwidth. Unit: KB/s.
+        # - **start**: Start hour.
+        # - **end**: End hour.
+        # - **bandwidth**: Limit rate, in KB/s.
         self.speed_limit = speed_limit
-        # The time when the backup policy was updated. The value is a UNIX timestamp. Unit: seconds.
+        # Update time. UNIX timestamp, in seconds.
         self.updated_time = updated_time
 
     def validate(self):
@@ -14691,14 +14945,26 @@ class DescribePolicyBindingsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Return code, 200 indicates success.
         self.code = code
+        # The number of results per query.
+        # 
+        # Range: 10~100. Default: 10.
         self.max_results = max_results
+        # Description of the return message. A successful response usually returns \\"successful\\", while an error will return a corresponding error message.
         self.message = message
+        # The token required to fetch the next page of policy and data source bindings.
         self.next_token = next_token
-        # The association between the backup policy and data sources.
+        # List of bound policies.
         self.policy_bindings = policy_bindings
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - true: Success
+        # - false: Failure
         self.success = success
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -16781,9 +17047,9 @@ class DescribeVaultReplicationRegionsRequest(TeaModel):
         token: str = None,
         vault_id: str = None,
     ):
-        # The access token.
+        # This parameter is deprecated.
         self.token = token
-        # The ID of the backup vault.
+        # This parameter is deprecated.
         self.vault_id = vault_id
 
     def validate(self):
@@ -16945,7 +17211,9 @@ class DescribeVaultsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The Value of the tag.
         self.value = value
 
     def validate(self):
@@ -16988,6 +17256,7 @@ class DescribeVaultsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         # The status of the backup vault. Valid values:
         # 
@@ -16996,9 +17265,15 @@ class DescribeVaultsRequest(TeaModel):
         # *   **CREATED**: The backup vault is created.
         # *   **ERROR**: An error occurs on the backup vault.
         self.status = status
+        # Tag information. Supports up to 20 tags.
         self.tag = tag
+        # Backup vault ID.
         self.vault_id = vault_id
+        # The region ID to which the backup vault belongs.
         self.vault_region_id = vault_region_id
+        # Backup repository type. The values are as follows: 
+        # - **STANDARD**: Represents a standard repository, which can be used for ECS file backups, OSS backups, NAS backups, etc. 
+        # - **OTS_BACKUP**: Represents a TableStore repository, which is only used for TableStore backups, and TableStore must use this type of repository.
         self.vault_type = vault_type
 
     def validate(self):
@@ -17078,6 +17353,7 @@ class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(TeaModel):
     ):
         # The number of archive plans.
         self.archive = archive
+        # The number of Cloud Parallel File Storage (CPFS) backup plans.
         self.common_file_system = common_file_system
         # The number of backup plans for General-purpose NAS file systems.
         self.common_nas = common_nas
@@ -17416,6 +17692,7 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
         vault_type: str = None,
         worm_enabled: bool = None,
     ):
+        # Archival tier backup data volume. Unit: bytes.
         self.archive_bytes_done = archive_bytes_done
         # The billable storage usage of the Archive tier. Unit: bytes.
         self.archive_storage_size = archive_storage_size
@@ -17482,6 +17759,7 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
         self.replication_source_vault = replication_source_vault
         # The ID of the source vault that corresponds to the remote backup vault.
         self.replication_source_vault_id = replication_source_vault_id
+        # Target region for remote backup repository.
         self.replication_target_region_id = replication_target_region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -17767,12 +18045,20 @@ class DescribeVaultsResponseBody(TeaModel):
         total_count: int = None,
         vaults: DescribeVaultsResponseBodyVaults = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the call is successful.
         self.code = code
+        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
         self.message = message
+        # Page number for pagination, starting from 1. The default value is 1.
         self.page_number = page_number
+        # Page size, with a minimum value of 1, a maximum value of 99, and a default value of 10.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Whether the request was successful.
+        # - true: Success - false: Failure
         self.success = success
+        # Returns the total number of backup repositories.
         self.total_count = total_count
         # The backup vaults.
         self.vaults = vaults
@@ -18772,11 +19058,19 @@ class ExecutePolicyV2Request(TeaModel):
         rule_id: str = None,
         source_type: str = None,
     ):
+        # Data source ID.
         self.data_source_id = data_source_id
+        # Policy ID.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
+        # Rule ID, limited to executing rules of **RuleType** **BACKUP**.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
+        # Data source type, with the value range as follows:
+        # 
+        # - **UDM_ECS**: Represents ECS full machine backup.
         self.source_type = source_type
 
     def validate(self):
@@ -18820,10 +19114,18 @@ class ExecutePolicyV2ResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Return code, 200 indicates success.
         self.code = code
+        # Backup job ID.
         self.job_id = job_id
+        # Description of the return message, usually returns \\"successful\\" on success, and corresponding error messages on failure.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - true: Success
+        # - false: Failure
         self.success = success
 
     def validate(self):
@@ -19590,7 +19892,7 @@ class SearchHistoricalSnapshotsRequest(TeaModel):
         #     *   VaultId: specifies the ID of the backup vault. This field is required.
         #     *   InstanceId: specifies the ID of the Elastic Compute Service (ECS) instance. If the SourceType parameter is set to ECS_FILE, this field is required.
         #     *   Bucket: specifies the name of the Object Storage Service (OSS) bucket. If the SourceType parameter is set to OSS, this field is required.
-        #     *   FileSystemId: specifies the ID of the Apsara File Storage NAS (NAS) file system. If the SourceType parameter is set to NAS, this field is required.
+        #     *   FileSystemId: specifies the ID of the File Storage NAS (NAS) file system. If the SourceType parameter is set to NAS, this field is required.
         #     *   CreateTime: specifies the time when the NAS file system was created. If the SourceType parameter is set to NAS, this field is required.
         #     *   CompleteTime: specifies the time when the backup snapshot was completed.
         #     *   PlanId: the ID of a backup plan.
@@ -19704,7 +20006,7 @@ class SearchHistoricalSnapshotsShrinkRequest(TeaModel):
         #     *   VaultId: specifies the ID of the backup vault. This field is required.
         #     *   InstanceId: specifies the ID of the Elastic Compute Service (ECS) instance. If the SourceType parameter is set to ECS_FILE, this field is required.
         #     *   Bucket: specifies the name of the Object Storage Service (OSS) bucket. If the SourceType parameter is set to OSS, this field is required.
-        #     *   FileSystemId: specifies the ID of the Apsara File Storage NAS (NAS) file system. If the SourceType parameter is set to NAS, this field is required.
+        #     *   FileSystemId: specifies the ID of the File Storage NAS (NAS) file system. If the SourceType parameter is set to NAS, this field is required.
         #     *   CreateTime: specifies the time when the NAS file system was created. If the SourceType parameter is set to NAS, this field is required.
         #     *   CompleteTime: specifies the time when the backup snapshot was completed.
         #     *   PlanId: the ID of a backup plan.
@@ -19846,6 +20148,7 @@ class SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         # 
         # >  This parameter is available only for file backup.
         self.actual_items = actual_items
+        # Time to archive
         self.archive_time = archive_time
         # The backup type. Valid value: **COMPLETE**, which indicates full backup.
         self.backup_type = backup_type
@@ -19865,11 +20168,13 @@ class SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         self.created_time = created_time
         # The files that record the information about backup failures, including the information about partially completed backups.
         self.error_file = error_file
+        # Backup paths not included in the backup job.
         self.exclude = exclude
         # The time when the snapshot expired. The value is a UNIX timestamp. Unit: seconds.
         self.expire_time = expire_time
         # This parameter is returned only if the **SourceType** parameter is set to **NAS**. This parameter indicates the ID of the NAS file system.
         self.file_system_id = file_system_id
+        # Backup paths included in the backup job.
         self.include = include
         # This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the ID of the ECS instance.
         self.instance_id = instance_id
@@ -19903,7 +20208,9 @@ class SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         self.snapshot_hash = snapshot_hash
         # The ID of the backup snapshot.
         self.snapshot_id = snapshot_id
+        # Parent snapshot HASH value before archiving.
         self.source_parent_snapshot_hash = source_parent_snapshot_hash
+        # Snapshot HASH value before archiving
         self.source_snapshot_hash = source_snapshot_hash
         # The type of the data source. Valid values:
         # 
@@ -19919,11 +20226,16 @@ class SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         # *   **PARTIAL_COMPLETE**: The backup job is partially completed.
         # *   **FAILED**: The backup job has failed.
         self.status = status
+        # Storage type. Values: 
+        # - **Standard**: Standard. 
+        # - **Archive**: Archive. 
+        # - **ColdArchive**: Cold Archive.
         self.storage_class = storage_class
         # The name of a table in the Tablestore instance.
         self.table_name = table_name
         # The time when the backup snapshot was updated. The value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
+        # Whether to use local NAS.
         self.use_common_nas = use_common_nas
         # The ID of the backup vault that stores the backup snapshot.
         self.vault_id = vault_id
@@ -20272,12 +20584,16 @@ class StartHanaDatabaseAsyncRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The database name.
         # 
         # This parameter is required.
         self.database_name = database_name
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -20416,12 +20732,16 @@ class StopHanaDatabaseAsyncRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The database name.
         # 
         # This parameter is required.
         self.database_name = database_name
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -20572,7 +20892,7 @@ class UninstallBackupClientsRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The IDs of ECS instances. You can specify a maximum of 20 ECS instances.
+        # The IDs of Elastic Compute Service (ECS) instances. You can specify a maximum of 20 ECS instances.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -20631,7 +20951,7 @@ class UninstallBackupClientsShrinkRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The IDs of ECS instances. You can specify a maximum of 20 ECS instances.
+        # The IDs of Elastic Compute Service (ECS) instances. You can specify a maximum of 20 ECS instances.
         self.instance_ids_shrink = instance_ids_shrink
 
     def validate(self):
@@ -21837,11 +22157,19 @@ class UpdateContainerClusterRequest(TeaModel):
         network_type: str = None,
         renew_token: bool = None,
     ):
+        # Cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Cluster description.
         self.description = description
+        # Cluster name.
         self.name = name
+        # Network type, with possible values including:
+        # * **CLASSIC**: Classic Network.
+        # * **VPC**: Virtual Private Cloud.
         self.network_type = network_type
+        # Whether to regenerate the token.
         self.renew_token = renew_token
 
     def validate(self):
@@ -21890,11 +22218,20 @@ class UpdateContainerClusterResponseBody(TeaModel):
         token: str = None,
         token_updated: bool = None,
     ):
+        # Return code, 200 indicates success.
         self.code = code
+        # Return information.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates if the request was successful.
+        # 
+        # - true: Success
+        # - false: Failure
         self.success = success
+        # Cluster token, used for registering HBR clients within the cluster.
         self.token = token
+        # Indicates whether the cluster token has been updated.
         self.token_updated = token_updated
 
     def validate(self):
@@ -22567,6 +22904,8 @@ class UpdateHanaRetentionSettingRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The database name.
         # 
@@ -22591,6 +22930,8 @@ class UpdateHanaRetentionSettingRequest(TeaModel):
         # This parameter is required.
         self.schedule = schedule
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -22732,7 +23073,12 @@ class UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail(TeaModel):
         fetch_slice_size: int = None,
         full_on_increment_fail: bool = None,
     ):
+        # The size of backup shards (the number of files).
         self.fetch_slice_size = fetch_slice_size
+        # Specifies whether the system performs full backup if incremental backup fails. Valid values:
+        # 
+        # *   **true**: The system performs full backup if incremental backup fails.
+        # *   **false**: The system does not perform full backup if incremental backup fails.
         self.full_on_increment_fail = full_on_increment_fail
 
     def validate(self):
@@ -22766,17 +23112,18 @@ class UpdatePolicyBindingRequestAdvancedOptionsOssDetail(TeaModel):
         inventory_cleanup_policy: str = None,
         inventory_id: str = None,
     ):
+        # Do not prompt for archival type objects in task statistics and failed file lists.
         self.ignore_archive_object = ignore_archive_object
-        # Specifies whether the system deletes the inventory lists after a backup is complete. This parameter is available only when OSS inventory lists are used. Valid values:
+        # Specifies whether the system deletes the inventory lists when a backup is completed. This parameter is valid only when OSS inventories are used. Valid values:
         # 
-        # *   **NO_CLEANUP**: Does not delete inventory lists.
-        # *   **DELETE_CURRENT**: Deletes the current inventory list.
-        # *   **DELETE_CURRENT_AND_PREVIOUS**: Deletes all inventory lists.
+        # *   **NO_CLEANUP**: does not delete inventory lists.
+        # *   **DELETE_CURRENT**: deletes the current inventory list.
+        # *   **DELETE_CURRENT_AND_PREVIOUS**: deletes all inventory lists.
         self.inventory_cleanup_policy = inventory_cleanup_policy
-        # The name of the OSS inventory list. The OSS inventory list specified for this parameter is used for performance optimization.
+        # The name of the OSS inventory. If this parameter is not empty, the OSS inventory is used for performance optimization.
         # 
-        # *   If you want to back up more than 100 million OSS objects, we recommend that you use inventory lists to accelerate incremental backup. Storage fees for inventory lists are included in your OSS bills.
-        # *   An extended period of time is required for OSS to generate inventory lists. Before inventory lists are generated, OSS objects may fail to be backed up. In this case, you can back up the OSS objects in the next backup cycle.
+        # *   If you want to back up more than 100 million OSS objects, we recommend that you use inventory lists to accelerate incremental backup. Storage fees for inventory lists are included into your OSS bills.
+        # *   A certain amount of time is required for OSS to generate inventory lists. Before inventory lists are generated, OSS objects may fail to be backed up. In this case, you can back up the OSS objects in the next backup cycle.
         self.inventory_id = inventory_id
 
     def validate(self):
@@ -22823,28 +23170,28 @@ class UpdatePolicyBindingRequestAdvancedOptionsUdmDetail(TeaModel):
     ):
         # Specifies whether to enable application consistency. You can enable application consistency only if all disks are ESSDs.
         self.app_consistent = app_consistent
-        # The IDs of the disks that require protection. This parameter is not required if all disks require protection.
+        # The IDs of the disks that need to be protected. If all disks need to be protected, this parameter is empty.
         self.disk_id_list = disk_id_list
-        # This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
         self.enable_fs_freeze = enable_fs_freeze
-        # This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies whether to create application-consistent snapshots. Valid values:
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies whether to create application-consistent snapshots. Valid values:
         # 
-        # *   true: creates application-consistent snapshots.
-        # *   false: creates file system-consistent snapshots.
+        # *   true: creates application-consistent snapshots
+        # *   false: creates file system-consistent snapshots
         # 
         # Default value: true.
         self.enable_writers = enable_writers
-        # The IDs of the disks that require no protection. This parameter is not required if the DiskIdList parameter is specified.
+        # The IDs of the disks that do not need to be protected. If the DiskIdList parameter is not empty, this parameter is ignored.
         self.exclude_disk_id_list = exclude_disk_id_list
-        # This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
         self.post_script_path = post_script_path
-        # This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
         self.pre_script_path = pre_script_path
-        # This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the name of the Resource Access Management (RAM) role that is required to create application-consistent snapshots.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the name of the Resource Access Management (RAM) role that is required to create application-consistent snapshots.
         self.ram_role_name = ram_role_name
-        # Specifies whether to create a snapshot-consistent group. You can create a snapshot-consistent group only if all disks are enhanced SSDs (ESSDs).
+        # Specifies whether to create a snapshot-consistent group. You can create a snapshot-consistent group only if all disks are Enterprise SSDs (ESSDs).
         self.snapshot_group = snapshot_group
-        # This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
         self.timeout_in_seconds = timeout_in_seconds
 
     def validate(self):
@@ -22910,10 +23257,11 @@ class UpdatePolicyBindingRequestAdvancedOptions(TeaModel):
         oss_detail: UpdatePolicyBindingRequestAdvancedOptionsOssDetail = None,
         udm_detail: UpdatePolicyBindingRequestAdvancedOptionsUdmDetail = None,
     ):
+        # The details about large-scale file system backup.
         self.common_file_system_detail = common_file_system_detail
-        # The details of the Object Storage Service (OSS) backup.
+        # The details about Object Storage Service (OSS) backup.
         self.oss_detail = oss_detail
-        # The backup details of the Elastic Compute Service (ECS) instance.
+        # The details about Elastic Compute Service (ECS) instance backup.
         self.udm_detail = udm_detail
 
     def validate(self):
@@ -22977,7 +23325,9 @@ class UpdatePolicyBindingRequest(TeaModel):
         # *   true: disables the backup policy for the data source
         # *   false: enables the backup policy for the data source
         self.disabled = disabled
+        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
         self.exclude = exclude
+        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
         self.include = include
         # The description of the association.
         self.policy_binding_description = policy_binding_description
@@ -22985,6 +23335,8 @@ class UpdatePolicyBindingRequest(TeaModel):
         # 
         # This parameter is required.
         self.policy_id = policy_id
+        # *   If the SourceType parameter is set to **OSS**, set the Source parameter to the prefix of the path to the folder that you want to back up. If you do not specify the Source parameter, the entire bucket (root directory) is backed up.
+        # *   If the SourceType parameter is set to **ECS_FILE** or **File**, set the Source parameter to the path to the files that you want to back up. If you do not specify the Source parameter, all paths backed up.
         self.source = source
         # The type of the data source. Valid values:
         # 
@@ -22992,6 +23344,11 @@ class UpdatePolicyBindingRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_type = source_type
+        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the throttling rules. Format: `{start}{end}{bandwidth}`. Separate multiple throttling rules with vertical bars (|). The time ranges of the throttling rules cannot overlap.
+        # 
+        # *   **start**: the start hour.
+        # *   **end**: the end hour.
+        # *   **bandwidth**: the bandwidth. Unit: KB/s.
         self.speed_limit = speed_limit
 
     def validate(self):
@@ -23077,7 +23434,9 @@ class UpdatePolicyBindingShrinkRequest(TeaModel):
         # *   true: disables the backup policy for the data source
         # *   false: enables the backup policy for the data source
         self.disabled = disabled
+        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
         self.exclude = exclude
+        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
         self.include = include
         # The description of the association.
         self.policy_binding_description = policy_binding_description
@@ -23085,6 +23444,8 @@ class UpdatePolicyBindingShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.policy_id = policy_id
+        # *   If the SourceType parameter is set to **OSS**, set the Source parameter to the prefix of the path to the folder that you want to back up. If you do not specify the Source parameter, the entire bucket (root directory) is backed up.
+        # *   If the SourceType parameter is set to **ECS_FILE** or **File**, set the Source parameter to the path to the files that you want to back up. If you do not specify the Source parameter, all paths backed up.
         self.source = source
         # The type of the data source. Valid values:
         # 
@@ -23092,6 +23453,11 @@ class UpdatePolicyBindingShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_type = source_type
+        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the throttling rules. Format: `{start}{end}{bandwidth}`. Separate multiple throttling rules with vertical bars (|). The time ranges of the throttling rules cannot overlap.
+        # 
+        # *   **start**: the start hour.
+        # *   **end**: the end hour.
+        # *   **bandwidth**: the bandwidth. Unit: KB/s.
         self.speed_limit = speed_limit
 
     def validate(self):
@@ -23249,7 +23615,15 @@ class UpdatePolicyV2RequestRulesDataSourceFilters(TeaModel):
         data_source_ids: List[str] = None,
         source_type: str = None,
     ):
+        # This parameter is deprecated.
         self.data_source_ids = data_source_ids
+        # The type of the data source. Valid values:
+        # 
+        # *   **UDM_ECS**: Elastic Compute Service (ECS) instance This type of data source is supported only if the **RuleType** parameter is set to **UDM_ECS_ONLY**.
+        # *   **OSS**: Object Storage Service (OSS) bucket This type of data source is supported only if the **RuleType** parameter is set to **STANDARD**.
+        # *   **NAS**: File Storage NAS (NAS) file system This type of data source is supported only if the **RuleType** parameter is set to **STANDARD**.
+        # *   **ECS_FILE**: ECS file This type of data source is supported only if the **RuleType** parameter is set to **STANDARD**.
+        # *   **OTS**: Tablestore instance This type of data source is supported only if the **RuleType** parameter is set to **STANDARD**.
         self.source_type = source_type
 
     def validate(self):
@@ -23329,8 +23703,14 @@ class UpdatePolicyV2RequestRulesTagFilters(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag-based matching rule. Valid values:
+        # 
+        # *   **EQUAL**: Both the tag key and tag value are matched.
+        # *   **NOT**: The tag key is matched and the tag value is not matched.
         self.operator = operator
+        # The tag value. If you leave this parameter empty, the value is any value.
         self.value = value
 
     def validate(self):
@@ -23384,7 +23764,9 @@ class UpdatePolicyV2RequestRules(TeaModel):
         self.backup_type = backup_type
         # This parameter is required only if the **RuleType** parameter is set to **TRANSITION**. This parameter specifies the time when data is dumped from a backup vault to a cold archive vault. Unit: days.
         self.cold_archive_days = cold_archive_days
+        # This parameter is required only if the **RuleType** parameter is set to **TAG**. This parameter specifies the data source filter rule.
         self.data_source_filters = data_source_filters
+        # This parameter is required only if the **PolicyType** parameter is set to **UDM_ECS_ONLY**. This parameter specifies whether to enable the immutable backup feature.
         self.immutable = immutable
         # Specifies whether to enable the feature of keeping at least one backup version. Valid values:
         # 
@@ -23398,7 +23780,7 @@ class UpdatePolicyV2RequestRules(TeaModel):
         # *   If the **RuleType** parameter is set to **TRANSITION**, this parameter specifies the retention period of the backup data. Minimum value: 1. Unit: days.
         # *   If the **RuleType** parameter is set to **REPLICATION**, this parameter specifies the retention period of remote backups. Minimum value: 1. Unit: days.
         self.retention = retention
-        # This parameter is required only if the **RuleType** parameter is set to **TRANSITION**. This parameter specifies the special retention rules.
+        # This parameter is required only if the value of the **RuleType** parameter is **TRANSITION**. This parameter specifies the special retention rules.
         self.retention_rules = retention_rules
         # The rule ID.
         self.rule_id = rule_id
@@ -23413,6 +23795,7 @@ class UpdatePolicyV2RequestRules(TeaModel):
         # *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
         # *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour. P1D specifies an interval of one day.
         self.schedule = schedule
+        # This parameter is required only if the **RuleType** parameter is set to **TAG**. This parameter specifies the resource tag filter rule.
         self.tag_filters = tag_filters
 
     def validate(self):

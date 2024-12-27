@@ -1,3 +1,16 @@
+2024-12-27 Version: 2.1.0
+- Support API DeleteAirEcsInstance.
+- Update API DeleteUdmDisk: update param DiskId.
+- Update API DescribeBackupJobs2: update response param.
+- Update API DescribeClients: update param ClientType.
+- Update API StartHanaDatabaseAsync: update param ClusterId.
+- Update API StartHanaDatabaseAsync: update param VaultId.
+- Update API StopHanaDatabaseAsync: update param ClusterId.
+- Update API StopHanaDatabaseAsync: update param VaultId.
+- Update API UpdateHanaRetentionSetting: update param ClusterId.
+- Update API UpdateHanaRetentionSetting: update param VaultId.
+
+
 2024-12-10 Version: 2.0.3
 - Update API CreatePolicyBindings: update param PolicyBindingList.
 - Update API CreatePolicyV2: update param Rules.
