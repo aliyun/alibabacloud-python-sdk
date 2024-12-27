@@ -307,6 +307,8 @@ class Client(OpenApiClient):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.executor_block_strategy):
+            body['ExecutorBlockStrategy'] = request.executor_block_strategy
         if not UtilClient.is_unset(request.job_handler):
             body['JobHandler'] = request.job_handler
         if not UtilClient.is_unset(request.job_type):
@@ -386,6 +388,8 @@ class Client(OpenApiClient):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.executor_block_strategy):
+            body['ExecutorBlockStrategy'] = request.executor_block_strategy
         if not UtilClient.is_unset(request.job_handler):
             body['JobHandler'] = request.job_handler
         if not UtilClient.is_unset(request.job_type):
@@ -3195,17 +3199,21 @@ class Client(OpenApiClient):
 
     def operate_retry_job_execution_with_options(
         self,
-        request: scheduler_x320240624_models.OperateRetryJobExecutionRequest,
+        tmp_req: scheduler_x320240624_models.OperateRetryJobExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> scheduler_x320240624_models.OperateRetryJobExecutionResponse:
         """
         @summary 重跑失败的任务实例
         
-        @param request: OperateRetryJobExecutionRequest
+        @param tmp_req: OperateRetryJobExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OperateRetryJobExecutionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = scheduler_x320240624_models.OperateRetryJobExecutionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_list):
+            request.task_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_list, 'TaskList', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
@@ -3213,8 +3221,8 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.job_execution_id):
             query['JobExecutionId'] = request.job_execution_id
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.task_list_shrink):
+            query['TaskList'] = request.task_list_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3236,17 +3244,21 @@ class Client(OpenApiClient):
 
     async def operate_retry_job_execution_with_options_async(
         self,
-        request: scheduler_x320240624_models.OperateRetryJobExecutionRequest,
+        tmp_req: scheduler_x320240624_models.OperateRetryJobExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> scheduler_x320240624_models.OperateRetryJobExecutionResponse:
         """
         @summary 重跑失败的任务实例
         
-        @param request: OperateRetryJobExecutionRequest
+        @param tmp_req: OperateRetryJobExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OperateRetryJobExecutionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = scheduler_x320240624_models.OperateRetryJobExecutionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_list):
+            request.task_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_list, 'TaskList', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
@@ -3254,8 +3266,8 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.job_execution_id):
             query['JobExecutionId'] = request.job_execution_id
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.task_list_shrink):
+            query['TaskList'] = request.task_list_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3303,17 +3315,21 @@ class Client(OpenApiClient):
 
     def operate_stop_job_execution_with_options(
         self,
-        request: scheduler_x320240624_models.OperateStopJobExecutionRequest,
+        tmp_req: scheduler_x320240624_models.OperateStopJobExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> scheduler_x320240624_models.OperateStopJobExecutionResponse:
         """
         @summary 停止正在运行的任务实例
         
-        @param request: OperateStopJobExecutionRequest
+        @param tmp_req: OperateStopJobExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OperateStopJobExecutionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = scheduler_x320240624_models.OperateStopJobExecutionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_list):
+            request.task_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_list, 'TaskList', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
@@ -3321,8 +3337,8 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.job_execution_id):
             query['JobExecutionId'] = request.job_execution_id
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.task_list_shrink):
+            query['TaskList'] = request.task_list_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3344,17 +3360,21 @@ class Client(OpenApiClient):
 
     async def operate_stop_job_execution_with_options_async(
         self,
-        request: scheduler_x320240624_models.OperateStopJobExecutionRequest,
+        tmp_req: scheduler_x320240624_models.OperateStopJobExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> scheduler_x320240624_models.OperateStopJobExecutionResponse:
         """
         @summary 停止正在运行的任务实例
         
-        @param request: OperateStopJobExecutionRequest
+        @param tmp_req: OperateStopJobExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OperateStopJobExecutionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = scheduler_x320240624_models.OperateStopJobExecutionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_list):
+            request.task_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_list, 'TaskList', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
@@ -3362,8 +3382,8 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.job_execution_id):
             query['JobExecutionId'] = request.job_execution_id
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.task_list_shrink):
+            query['TaskList'] = request.task_list_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3655,6 +3675,8 @@ class Client(OpenApiClient):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.executor_block_strategy):
+            body['ExecutorBlockStrategy'] = request.executor_block_strategy
         if not UtilClient.is_unset(request.job_handler):
             body['JobHandler'] = request.job_handler
         if not UtilClient.is_unset(request.job_id):
@@ -3732,6 +3754,8 @@ class Client(OpenApiClient):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.executor_block_strategy):
+            body['ExecutorBlockStrategy'] = request.executor_block_strategy
         if not UtilClient.is_unset(request.job_handler):
             body['JobHandler'] = request.job_handler
         if not UtilClient.is_unset(request.job_id):

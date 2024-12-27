@@ -594,6 +594,7 @@ class CreateJobRequest(TeaModel):
         calendar: str = None,
         cluster_id: str = None,
         description: str = None,
+        executor_block_strategy: int = None,
         job_handler: str = None,
         job_type: str = None,
         max_attempt: int = None,
@@ -617,6 +618,7 @@ class CreateJobRequest(TeaModel):
         # This parameter is required.
         self.cluster_id = cluster_id
         self.description = description
+        self.executor_block_strategy = executor_block_strategy
         # This parameter is required.
         self.job_handler = job_handler
         # This parameter is required.
@@ -661,6 +663,8 @@ class CreateJobRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.executor_block_strategy is not None:
+            result['ExecutorBlockStrategy'] = self.executor_block_strategy
         if self.job_handler is not None:
             result['JobHandler'] = self.job_handler
         if self.job_type is not None:
@@ -707,6 +711,8 @@ class CreateJobRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExecutorBlockStrategy') is not None:
+            self.executor_block_strategy = m.get('ExecutorBlockStrategy')
         if m.get('JobHandler') is not None:
             self.job_handler = m.get('JobHandler')
         if m.get('JobType') is not None:
@@ -752,6 +758,7 @@ class CreateJobShrinkRequest(TeaModel):
         calendar: str = None,
         cluster_id: str = None,
         description: str = None,
+        executor_block_strategy: int = None,
         job_handler: str = None,
         job_type: str = None,
         max_attempt: int = None,
@@ -775,6 +782,7 @@ class CreateJobShrinkRequest(TeaModel):
         # This parameter is required.
         self.cluster_id = cluster_id
         self.description = description
+        self.executor_block_strategy = executor_block_strategy
         # This parameter is required.
         self.job_handler = job_handler
         # This parameter is required.
@@ -814,6 +822,8 @@ class CreateJobShrinkRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.executor_block_strategy is not None:
+            result['ExecutorBlockStrategy'] = self.executor_block_strategy
         if self.job_handler is not None:
             result['JobHandler'] = self.job_handler
         if self.job_type is not None:
@@ -858,6 +868,8 @@ class CreateJobShrinkRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExecutorBlockStrategy') is not None:
+            self.executor_block_strategy = m.get('ExecutorBlockStrategy')
         if m.get('JobHandler') is not None:
             self.job_handler = m.get('JobHandler')
         if m.get('JobType') is not None:
@@ -4920,11 +4932,15 @@ class ListJobsResponseBodyDataRecords(TeaModel):
         calendar: str = None,
         clean_mode: str = None,
         creator: str = None,
+        current_execute_status: int = None,
         data_offset: int = None,
         description: str = None,
+        executor_block_strategy: str = None,
         job_handler: str = None,
         job_id: int = None,
         job_type: str = None,
+        last_execute_end_time: str = None,
+        last_execute_status: int = None,
         max_attempt: int = None,
         max_concurrency: int = None,
         name: str = None,
@@ -4946,11 +4962,15 @@ class ListJobsResponseBodyDataRecords(TeaModel):
         self.calendar = calendar
         self.clean_mode = clean_mode
         self.creator = creator
+        self.current_execute_status = current_execute_status
         self.data_offset = data_offset
         self.description = description
+        self.executor_block_strategy = executor_block_strategy
         self.job_handler = job_handler
         self.job_id = job_id
         self.job_type = job_type
+        self.last_execute_end_time = last_execute_end_time
+        self.last_execute_status = last_execute_status
         self.max_attempt = max_attempt
         self.max_concurrency = max_concurrency
         self.name = name
@@ -4986,16 +5006,24 @@ class ListJobsResponseBodyDataRecords(TeaModel):
             result['CleanMode'] = self.clean_mode
         if self.creator is not None:
             result['Creator'] = self.creator
+        if self.current_execute_status is not None:
+            result['CurrentExecuteStatus'] = self.current_execute_status
         if self.data_offset is not None:
             result['DataOffset'] = self.data_offset
         if self.description is not None:
             result['Description'] = self.description
+        if self.executor_block_strategy is not None:
+            result['ExecutorBlockStrategy'] = self.executor_block_strategy
         if self.job_handler is not None:
             result['JobHandler'] = self.job_handler
         if self.job_id is not None:
             result['JobId'] = self.job_id
         if self.job_type is not None:
             result['JobType'] = self.job_type
+        if self.last_execute_end_time is not None:
+            result['LastExecuteEndTime'] = self.last_execute_end_time
+        if self.last_execute_status is not None:
+            result['LastExecuteStatus'] = self.last_execute_status
         if self.max_attempt is not None:
             result['MaxAttempt'] = self.max_attempt
         if self.max_concurrency is not None:
@@ -5040,16 +5068,24 @@ class ListJobsResponseBodyDataRecords(TeaModel):
             self.clean_mode = m.get('CleanMode')
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
+        if m.get('CurrentExecuteStatus') is not None:
+            self.current_execute_status = m.get('CurrentExecuteStatus')
         if m.get('DataOffset') is not None:
             self.data_offset = m.get('DataOffset')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExecutorBlockStrategy') is not None:
+            self.executor_block_strategy = m.get('ExecutorBlockStrategy')
         if m.get('JobHandler') is not None:
             self.job_handler = m.get('JobHandler')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
+        if m.get('LastExecuteEndTime') is not None:
+            self.last_execute_end_time = m.get('LastExecuteEndTime')
+        if m.get('LastExecuteStatus') is not None:
+            self.last_execute_status = m.get('LastExecuteStatus')
         if m.get('MaxAttempt') is not None:
             self.max_attempt = m.get('MaxAttempt')
         if m.get('MaxConcurrency') is not None:
@@ -5140,10 +5176,18 @@ class ListJobsResponseBodyData(TeaModel):
 class ListJobsResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
         data: ListJobsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
     ):
+        self.code = code
         # -\
         self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.data:
@@ -5155,15 +5199,31 @@ class ListJobsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = ListJobsResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -7017,14 +7077,15 @@ class OperateRetryJobExecutionRequest(TeaModel):
         app_name: str = None,
         cluster_id: str = None,
         job_execution_id: str = None,
-        job_id: int = None,
+        task_list: List[str] = None,
     ):
         # This parameter is required.
         self.app_name = app_name
         # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.job_execution_id = job_execution_id
-        self.job_id = job_id
+        self.task_list = task_list
 
     def validate(self):
         pass
@@ -7041,8 +7102,8 @@ class OperateRetryJobExecutionRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.job_execution_id is not None:
             result['JobExecutionId'] = self.job_execution_id
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
+        if self.task_list is not None:
+            result['TaskList'] = self.task_list
         return result
 
     def from_map(self, m: dict = None):
@@ -7053,8 +7114,56 @@ class OperateRetryJobExecutionRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('JobExecutionId') is not None:
             self.job_execution_id = m.get('JobExecutionId')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
+        if m.get('TaskList') is not None:
+            self.task_list = m.get('TaskList')
+        return self
+
+
+class OperateRetryJobExecutionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        cluster_id: str = None,
+        job_execution_id: str = None,
+        task_list_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_name = app_name
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.job_execution_id = job_execution_id
+        self.task_list_shrink = task_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.job_execution_id is not None:
+            result['JobExecutionId'] = self.job_execution_id
+        if self.task_list_shrink is not None:
+            result['TaskList'] = self.task_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('JobExecutionId') is not None:
+            self.job_execution_id = m.get('JobExecutionId')
+        if m.get('TaskList') is not None:
+            self.task_list_shrink = m.get('TaskList')
         return self
 
 
@@ -7150,14 +7259,15 @@ class OperateStopJobExecutionRequest(TeaModel):
         app_name: str = None,
         cluster_id: str = None,
         job_execution_id: str = None,
-        job_id: int = None,
+        task_list: List[str] = None,
     ):
         # This parameter is required.
         self.app_name = app_name
         # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.job_execution_id = job_execution_id
-        self.job_id = job_id
+        self.task_list = task_list
 
     def validate(self):
         pass
@@ -7174,8 +7284,8 @@ class OperateStopJobExecutionRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.job_execution_id is not None:
             result['JobExecutionId'] = self.job_execution_id
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
+        if self.task_list is not None:
+            result['TaskList'] = self.task_list
         return result
 
     def from_map(self, m: dict = None):
@@ -7186,8 +7296,56 @@ class OperateStopJobExecutionRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('JobExecutionId') is not None:
             self.job_execution_id = m.get('JobExecutionId')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
+        if m.get('TaskList') is not None:
+            self.task_list = m.get('TaskList')
+        return self
+
+
+class OperateStopJobExecutionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        cluster_id: str = None,
+        job_execution_id: str = None,
+        task_list_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_name = app_name
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.job_execution_id = job_execution_id
+        self.task_list_shrink = task_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.job_execution_id is not None:
+            result['JobExecutionId'] = self.job_execution_id
+        if self.task_list_shrink is not None:
+            result['TaskList'] = self.task_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('JobExecutionId') is not None:
+            self.job_execution_id = m.get('JobExecutionId')
+        if m.get('TaskList') is not None:
+            self.task_list_shrink = m.get('TaskList')
         return self
 
 
@@ -7654,6 +7812,7 @@ class UpdateJobRequest(TeaModel):
         calendar: str = None,
         cluster_id: str = None,
         description: str = None,
+        executor_block_strategy: int = None,
         job_handler: str = None,
         job_id: int = None,
         max_attempt: int = None,
@@ -7676,6 +7835,7 @@ class UpdateJobRequest(TeaModel):
         # This parameter is required.
         self.cluster_id = cluster_id
         self.description = description
+        self.executor_block_strategy = executor_block_strategy
         self.job_handler = job_handler
         # This parameter is required.
         self.job_id = job_id
@@ -7716,6 +7876,8 @@ class UpdateJobRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.executor_block_strategy is not None:
+            result['ExecutorBlockStrategy'] = self.executor_block_strategy
         if self.job_handler is not None:
             result['JobHandler'] = self.job_handler
         if self.job_id is not None:
@@ -7760,6 +7922,8 @@ class UpdateJobRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExecutorBlockStrategy') is not None:
+            self.executor_block_strategy = m.get('ExecutorBlockStrategy')
         if m.get('JobHandler') is not None:
             self.job_handler = m.get('JobHandler')
         if m.get('JobId') is not None:
@@ -7803,6 +7967,7 @@ class UpdateJobShrinkRequest(TeaModel):
         calendar: str = None,
         cluster_id: str = None,
         description: str = None,
+        executor_block_strategy: int = None,
         job_handler: str = None,
         job_id: int = None,
         max_attempt: int = None,
@@ -7825,6 +7990,7 @@ class UpdateJobShrinkRequest(TeaModel):
         # This parameter is required.
         self.cluster_id = cluster_id
         self.description = description
+        self.executor_block_strategy = executor_block_strategy
         self.job_handler = job_handler
         # This parameter is required.
         self.job_id = job_id
@@ -7860,6 +8026,8 @@ class UpdateJobShrinkRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.executor_block_strategy is not None:
+            result['ExecutorBlockStrategy'] = self.executor_block_strategy
         if self.job_handler is not None:
             result['JobHandler'] = self.job_handler
         if self.job_id is not None:
@@ -7902,6 +8070,8 @@ class UpdateJobShrinkRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExecutorBlockStrategy') is not None:
+            self.executor_block_strategy = m.get('ExecutorBlockStrategy')
         if m.get('JobHandler') is not None:
             self.job_handler = m.get('JobHandler')
         if m.get('JobId') is not None:
