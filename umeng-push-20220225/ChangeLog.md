@@ -1,3 +1,12 @@
+2024-12-27 Version: 1.0.14
+- Update API SendByAlias: add param HarmonyPayload.
+- Update API SendByAliasFileId: add param HarmonyPayload.
+- Update API SendByApp: add param HarmonyPayload.
+- Update API SendByDevice: add param HarmonyPayload.
+- Update API SendByDeviceFileId: add param HarmonyPayload.
+- Update API SendByFilter: add param HarmonyPayload.
+
+
 2024-11-15 Version: 1.0.13
 - Generated python 2022-02-25 for umeng-push.
 

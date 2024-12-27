@@ -272,6 +272,8 @@ class Client(OpenApiClient):
             request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.harmony_payload):
+            request.harmony_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.harmony_payload, 'HarmonyPayload', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
             request.ios_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ios_payload, 'IosPayload', 'json')
         if not UtilClient.is_unset(tmp_req.policy):
@@ -289,6 +291,8 @@ class Client(OpenApiClient):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.harmony_payload_shrink):
+            body['HarmonyPayload'] = request.harmony_payload_shrink
         if not UtilClient.is_unset(request.ios_payload_shrink):
             body['IosPayload'] = request.ios_payload_shrink
         if not UtilClient.is_unset(request.policy_shrink):
@@ -346,6 +350,8 @@ class Client(OpenApiClient):
             request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.harmony_payload):
+            request.harmony_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.harmony_payload, 'HarmonyPayload', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
             request.ios_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ios_payload, 'IosPayload', 'json')
         if not UtilClient.is_unset(tmp_req.policy):
@@ -363,6 +369,8 @@ class Client(OpenApiClient):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.harmony_payload_shrink):
+            body['HarmonyPayload'] = request.harmony_payload_shrink
         if not UtilClient.is_unset(request.ios_payload_shrink):
             body['IosPayload'] = request.ios_payload_shrink
         if not UtilClient.is_unset(request.policy_shrink):
@@ -448,6 +456,8 @@ class Client(OpenApiClient):
             request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.harmony_payload):
+            request.harmony_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.harmony_payload, 'HarmonyPayload', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
             request.ios_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ios_payload, 'IosPayload', 'json')
         if not UtilClient.is_unset(tmp_req.policy):
@@ -465,6 +475,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.file_id):
             body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.harmony_payload_shrink):
+            body['HarmonyPayload'] = request.harmony_payload_shrink
         if not UtilClient.is_unset(request.ios_payload_shrink):
             body['IosPayload'] = request.ios_payload_shrink
         if not UtilClient.is_unset(request.policy_shrink):
@@ -522,6 +534,8 @@ class Client(OpenApiClient):
             request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.harmony_payload):
+            request.harmony_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.harmony_payload, 'HarmonyPayload', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
             request.ios_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ios_payload, 'IosPayload', 'json')
         if not UtilClient.is_unset(tmp_req.policy):
@@ -539,6 +553,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.file_id):
             body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.harmony_payload_shrink):
+            body['HarmonyPayload'] = request.harmony_payload_shrink
         if not UtilClient.is_unset(request.ios_payload_shrink):
             body['IosPayload'] = request.ios_payload_shrink
         if not UtilClient.is_unset(request.policy_shrink):
@@ -624,6 +640,8 @@ class Client(OpenApiClient):
             request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.harmony_payload):
+            request.harmony_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.harmony_payload, 'HarmonyPayload', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
             request.ios_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ios_payload, 'IosPayload', 'json')
         if not UtilClient.is_unset(tmp_req.policy):
@@ -637,6 +655,8 @@ class Client(OpenApiClient):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.harmony_payload_shrink):
+            body['HarmonyPayload'] = request.harmony_payload_shrink
         if not UtilClient.is_unset(request.ios_payload_shrink):
             body['IosPayload'] = request.ios_payload_shrink
         if not UtilClient.is_unset(request.policy_shrink):
@@ -694,6 +714,8 @@ class Client(OpenApiClient):
             request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.harmony_payload):
+            request.harmony_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.harmony_payload, 'HarmonyPayload', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
             request.ios_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ios_payload, 'IosPayload', 'json')
         if not UtilClient.is_unset(tmp_req.policy):
@@ -707,6 +729,8 @@ class Client(OpenApiClient):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.harmony_payload_shrink):
+            body['HarmonyPayload'] = request.harmony_payload_shrink
         if not UtilClient.is_unset(request.ios_payload_shrink):
             body['IosPayload'] = request.ios_payload_shrink
         if not UtilClient.is_unset(request.policy_shrink):
@@ -792,6 +816,8 @@ class Client(OpenApiClient):
             request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.harmony_payload):
+            request.harmony_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.harmony_payload, 'HarmonyPayload', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
             request.ios_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ios_payload, 'IosPayload', 'json')
         if not UtilClient.is_unset(tmp_req.policy):
@@ -807,6 +833,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.device_tokens):
             body['DeviceTokens'] = request.device_tokens
+        if not UtilClient.is_unset(request.harmony_payload_shrink):
+            body['HarmonyPayload'] = request.harmony_payload_shrink
         if not UtilClient.is_unset(request.ios_payload_shrink):
             body['IosPayload'] = request.ios_payload_shrink
         if not UtilClient.is_unset(request.policy_shrink):
@@ -864,6 +892,8 @@ class Client(OpenApiClient):
             request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.harmony_payload):
+            request.harmony_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.harmony_payload, 'HarmonyPayload', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
             request.ios_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ios_payload, 'IosPayload', 'json')
         if not UtilClient.is_unset(tmp_req.policy):
@@ -879,6 +909,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.device_tokens):
             body['DeviceTokens'] = request.device_tokens
+        if not UtilClient.is_unset(request.harmony_payload_shrink):
+            body['HarmonyPayload'] = request.harmony_payload_shrink
         if not UtilClient.is_unset(request.ios_payload_shrink):
             body['IosPayload'] = request.ios_payload_shrink
         if not UtilClient.is_unset(request.policy_shrink):
@@ -964,6 +996,8 @@ class Client(OpenApiClient):
             request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.harmony_payload):
+            request.harmony_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.harmony_payload, 'HarmonyPayload', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
             request.ios_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ios_payload, 'IosPayload', 'json')
         if not UtilClient.is_unset(tmp_req.policy):
@@ -979,6 +1013,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.file_id):
             body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.harmony_payload_shrink):
+            body['HarmonyPayload'] = request.harmony_payload_shrink
         if not UtilClient.is_unset(request.ios_payload_shrink):
             body['IosPayload'] = request.ios_payload_shrink
         if not UtilClient.is_unset(request.policy_shrink):
@@ -1036,6 +1072,8 @@ class Client(OpenApiClient):
             request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.harmony_payload):
+            request.harmony_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.harmony_payload, 'HarmonyPayload', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
             request.ios_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ios_payload, 'IosPayload', 'json')
         if not UtilClient.is_unset(tmp_req.policy):
@@ -1051,6 +1089,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.file_id):
             body['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.harmony_payload_shrink):
+            body['HarmonyPayload'] = request.harmony_payload_shrink
         if not UtilClient.is_unset(request.ios_payload_shrink):
             body['IosPayload'] = request.ios_payload_shrink
         if not UtilClient.is_unset(request.policy_shrink):
@@ -1134,6 +1174,8 @@ class Client(OpenApiClient):
             request.android_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_payload, 'AndroidPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.harmony_payload):
+            request.harmony_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.harmony_payload, 'HarmonyPayload', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
             request.ios_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ios_payload, 'IosPayload', 'json')
         if not UtilClient.is_unset(tmp_req.policy):
@@ -1149,6 +1191,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.filter):
             body['Filter'] = request.filter
+        if not UtilClient.is_unset(request.harmony_payload_shrink):
+            body['HarmonyPayload'] = request.harmony_payload_shrink
         if not UtilClient.is_unset(request.ios_payload_shrink):
             body['IosPayload'] = request.ios_payload_shrink
         if not UtilClient.is_unset(request.policy_shrink):
@@ -1204,6 +1248,8 @@ class Client(OpenApiClient):
             request.android_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_payload, 'AndroidPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
+        if not UtilClient.is_unset(tmp_req.harmony_payload):
+            request.harmony_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.harmony_payload, 'HarmonyPayload', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
             request.ios_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ios_payload, 'IosPayload', 'json')
         if not UtilClient.is_unset(tmp_req.policy):
@@ -1219,6 +1265,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.filter):
             body['Filter'] = request.filter
+        if not UtilClient.is_unset(request.harmony_payload_shrink):
+            body['HarmonyPayload'] = request.harmony_payload_shrink
         if not UtilClient.is_unset(request.ios_payload_shrink):
             body['IosPayload'] = request.ios_payload_shrink
         if not UtilClient.is_unset(request.policy_shrink):

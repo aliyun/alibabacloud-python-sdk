@@ -423,6 +423,7 @@ class ChannelProperties(TeaModel):
         self,
         channel_activity: str = None,
         channel_fcm: str = None,
+        harmony_channel_category: str = None,
         huawei_channel_category: str = None,
         huawei_channel_importance: str = None,
         huawei_message_urgency: str = None,
@@ -439,6 +440,7 @@ class ChannelProperties(TeaModel):
     ):
         self.channel_activity = channel_activity
         self.channel_fcm = channel_fcm
+        self.harmony_channel_category = harmony_channel_category
         self.huawei_channel_category = huawei_channel_category
         self.huawei_channel_importance = huawei_channel_importance
         self.huawei_message_urgency = huawei_message_urgency
@@ -466,6 +468,8 @@ class ChannelProperties(TeaModel):
             result['channelActivity'] = self.channel_activity
         if self.channel_fcm is not None:
             result['channelFcm'] = self.channel_fcm
+        if self.harmony_channel_category is not None:
+            result['harmonyChannelCategory'] = self.harmony_channel_category
         if self.huawei_channel_category is not None:
             result['huaweiChannelCategory'] = self.huawei_channel_category
         if self.huawei_channel_importance is not None:
@@ -500,6 +504,8 @@ class ChannelProperties(TeaModel):
             self.channel_activity = m.get('channelActivity')
         if m.get('channelFcm') is not None:
             self.channel_fcm = m.get('channelFcm')
+        if m.get('harmonyChannelCategory') is not None:
+            self.harmony_channel_category = m.get('harmonyChannelCategory')
         if m.get('huaweiChannelCategory') is not None:
             self.huawei_channel_category = m.get('huaweiChannelCategory')
         if m.get('huaweiChannelImportance') is not None:
@@ -526,6 +532,129 @@ class ChannelProperties(TeaModel):
             self.vivo_push_mode = m.get('vivoPushMode')
         if m.get('xiaomiChannelId') is not None:
             self.xiaomi_channel_id = m.get('xiaomiChannelId')
+        return self
+
+
+class HarmonyBody(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        add_badge: int = None,
+        after_open: str = None,
+        big_body: str = None,
+        custom: str = None,
+        img: str = None,
+        large_icon: str = None,
+        text: str = None,
+        title: str = None,
+        uri: str = None,
+    ):
+        self.action = action
+        self.add_badge = add_badge
+        self.after_open = after_open
+        self.big_body = big_body
+        self.custom = custom
+        self.img = img
+        self.large_icon = large_icon
+        self.text = text
+        self.title = title
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['action'] = self.action
+        if self.add_badge is not None:
+            result['addBadge'] = self.add_badge
+        if self.after_open is not None:
+            result['afterOpen'] = self.after_open
+        if self.big_body is not None:
+            result['bigBody'] = self.big_body
+        if self.custom is not None:
+            result['custom'] = self.custom
+        if self.img is not None:
+            result['img'] = self.img
+        if self.large_icon is not None:
+            result['largeIcon'] = self.large_icon
+        if self.text is not None:
+            result['text'] = self.text
+        if self.title is not None:
+            result['title'] = self.title
+        if self.uri is not None:
+            result['uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        if m.get('addBadge') is not None:
+            self.add_badge = m.get('addBadge')
+        if m.get('afterOpen') is not None:
+            self.after_open = m.get('afterOpen')
+        if m.get('bigBody') is not None:
+            self.big_body = m.get('bigBody')
+        if m.get('custom') is not None:
+            self.custom = m.get('custom')
+        if m.get('img') is not None:
+            self.img = m.get('img')
+        if m.get('largeIcon') is not None:
+            self.large_icon = m.get('largeIcon')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('uri') is not None:
+            self.uri = m.get('uri')
+        return self
+
+
+class HarmonyPayload(TeaModel):
+    def __init__(
+        self,
+        display_type: str = None,
+        extra: Dict[str, Any] = None,
+        harmony_body: HarmonyBody = None,
+    ):
+        # This parameter is required.
+        self.display_type = display_type
+        self.extra = extra
+        self.harmony_body = harmony_body
+
+    def validate(self):
+        if self.harmony_body:
+            self.harmony_body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_type is not None:
+            result['displayType'] = self.display_type
+        if self.extra is not None:
+            result['extra'] = self.extra
+        if self.harmony_body is not None:
+            result['harmonyBody'] = self.harmony_body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('displayType') is not None:
+            self.display_type = m.get('displayType')
+        if m.get('extra') is not None:
+            self.extra = m.get('extra')
+        if m.get('harmonyBody') is not None:
+            temp_model = HarmonyBody()
+            self.harmony_body = temp_model.from_map(m['harmonyBody'])
         return self
 
 
@@ -567,11 +696,13 @@ class IosPayload(TeaModel):
 class Policy(TeaModel):
     def __init__(
         self,
+        channel_strategy: Dict[str, str] = None,
         expire_time: str = None,
         outer_biz_no: str = None,
         speed: int = None,
         start_time: str = None,
     ):
+        self.channel_strategy = channel_strategy
         self.expire_time = expire_time
         self.outer_biz_no = outer_biz_no
         self.speed = speed
@@ -586,6 +717,8 @@ class Policy(TeaModel):
             return _map
 
         result = dict()
+        if self.channel_strategy is not None:
+            result['channelStrategy'] = self.channel_strategy
         if self.expire_time is not None:
             result['expireTime'] = self.expire_time
         if self.outer_biz_no is not None:
@@ -598,6 +731,8 @@ class Policy(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('channelStrategy') is not None:
+            self.channel_strategy = m.get('channelStrategy')
         if m.get('expireTime') is not None:
             self.expire_time = m.get('expireTime')
         if m.get('outerBizNo') is not None:
@@ -968,6 +1103,7 @@ class SendByAliasRequest(TeaModel):
         android_short_payload: AndroidShortPayload = None,
         channel_properties: ChannelProperties = None,
         description: str = None,
+        harmony_payload: HarmonyPayload = None,
         ios_payload: IosPayload = None,
         policy: Policy = None,
         production_mode: bool = None,
@@ -983,6 +1119,7 @@ class SendByAliasRequest(TeaModel):
         self.android_short_payload = android_short_payload
         self.channel_properties = channel_properties
         self.description = description
+        self.harmony_payload = harmony_payload
         self.ios_payload = ios_payload
         self.policy = policy
         self.production_mode = production_mode
@@ -998,6 +1135,8 @@ class SendByAliasRequest(TeaModel):
             self.android_short_payload.validate()
         if self.channel_properties:
             self.channel_properties.validate()
+        if self.harmony_payload:
+            self.harmony_payload.validate()
         if self.ios_payload:
             self.ios_payload.validate()
         if self.policy:
@@ -1021,6 +1160,8 @@ class SendByAliasRequest(TeaModel):
             result['ChannelProperties'] = self.channel_properties.to_map()
         if self.description is not None:
             result['Description'] = self.description
+        if self.harmony_payload is not None:
+            result['HarmonyPayload'] = self.harmony_payload.to_map()
         if self.ios_payload is not None:
             result['IosPayload'] = self.ios_payload.to_map()
         if self.policy is not None:
@@ -1054,6 +1195,9 @@ class SendByAliasRequest(TeaModel):
             self.channel_properties = temp_model.from_map(m['ChannelProperties'])
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('HarmonyPayload') is not None:
+            temp_model = HarmonyPayload()
+            self.harmony_payload = temp_model.from_map(m['HarmonyPayload'])
         if m.get('IosPayload') is not None:
             temp_model = IosPayload()
             self.ios_payload = temp_model.from_map(m['IosPayload'])
@@ -1082,6 +1226,7 @@ class SendByAliasShrinkRequest(TeaModel):
         android_short_payload_shrink: str = None,
         channel_properties_shrink: str = None,
         description: str = None,
+        harmony_payload_shrink: str = None,
         ios_payload_shrink: str = None,
         policy_shrink: str = None,
         production_mode: bool = None,
@@ -1097,6 +1242,7 @@ class SendByAliasShrinkRequest(TeaModel):
         self.android_short_payload_shrink = android_short_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
         self.description = description
+        self.harmony_payload_shrink = harmony_payload_shrink
         self.ios_payload_shrink = ios_payload_shrink
         self.policy_shrink = policy_shrink
         self.production_mode = production_mode
@@ -1126,6 +1272,8 @@ class SendByAliasShrinkRequest(TeaModel):
             result['ChannelProperties'] = self.channel_properties_shrink
         if self.description is not None:
             result['Description'] = self.description
+        if self.harmony_payload_shrink is not None:
+            result['HarmonyPayload'] = self.harmony_payload_shrink
         if self.ios_payload_shrink is not None:
             result['IosPayload'] = self.ios_payload_shrink
         if self.policy_shrink is not None:
@@ -1156,6 +1304,8 @@ class SendByAliasShrinkRequest(TeaModel):
             self.channel_properties_shrink = m.get('ChannelProperties')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('HarmonyPayload') is not None:
+            self.harmony_payload_shrink = m.get('HarmonyPayload')
         if m.get('IosPayload') is not None:
             self.ios_payload_shrink = m.get('IosPayload')
         if m.get('Policy') is not None:
@@ -1309,6 +1459,7 @@ class SendByAliasFileIdRequest(TeaModel):
         channel_properties: ChannelProperties = None,
         description: str = None,
         file_id: str = None,
+        harmony_payload: HarmonyPayload = None,
         ios_payload: IosPayload = None,
         policy: Policy = None,
         production_mode: bool = None,
@@ -1324,6 +1475,7 @@ class SendByAliasFileIdRequest(TeaModel):
         self.description = description
         # This parameter is required.
         self.file_id = file_id
+        self.harmony_payload = harmony_payload
         self.ios_payload = ios_payload
         self.policy = policy
         self.production_mode = production_mode
@@ -1339,6 +1491,8 @@ class SendByAliasFileIdRequest(TeaModel):
             self.android_short_payload.validate()
         if self.channel_properties:
             self.channel_properties.validate()
+        if self.harmony_payload:
+            self.harmony_payload.validate()
         if self.ios_payload:
             self.ios_payload.validate()
         if self.policy:
@@ -1362,6 +1516,8 @@ class SendByAliasFileIdRequest(TeaModel):
             result['Description'] = self.description
         if self.file_id is not None:
             result['FileId'] = self.file_id
+        if self.harmony_payload is not None:
+            result['HarmonyPayload'] = self.harmony_payload.to_map()
         if self.ios_payload is not None:
             result['IosPayload'] = self.ios_payload.to_map()
         if self.policy is not None:
@@ -1395,6 +1551,9 @@ class SendByAliasFileIdRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
+        if m.get('HarmonyPayload') is not None:
+            temp_model = HarmonyPayload()
+            self.harmony_payload = temp_model.from_map(m['HarmonyPayload'])
         if m.get('IosPayload') is not None:
             temp_model = IosPayload()
             self.ios_payload = temp_model.from_map(m['IosPayload'])
@@ -1423,6 +1582,7 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
         channel_properties_shrink: str = None,
         description: str = None,
         file_id: str = None,
+        harmony_payload_shrink: str = None,
         ios_payload_shrink: str = None,
         policy_shrink: str = None,
         production_mode: bool = None,
@@ -1438,6 +1598,7 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
         self.description = description
         # This parameter is required.
         self.file_id = file_id
+        self.harmony_payload_shrink = harmony_payload_shrink
         self.ios_payload_shrink = ios_payload_shrink
         self.policy_shrink = policy_shrink
         self.production_mode = production_mode
@@ -1467,6 +1628,8 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
             result['Description'] = self.description
         if self.file_id is not None:
             result['FileId'] = self.file_id
+        if self.harmony_payload_shrink is not None:
+            result['HarmonyPayload'] = self.harmony_payload_shrink
         if self.ios_payload_shrink is not None:
             result['IosPayload'] = self.ios_payload_shrink
         if self.policy_shrink is not None:
@@ -1497,6 +1660,8 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
+        if m.get('HarmonyPayload') is not None:
+            self.harmony_payload_shrink = m.get('HarmonyPayload')
         if m.get('IosPayload') is not None:
             self.ios_payload_shrink = m.get('IosPayload')
         if m.get('Policy') is not None:
@@ -1648,6 +1813,7 @@ class SendByAppRequest(TeaModel):
         android_short_payload: AndroidShortPayload = None,
         channel_properties: ChannelProperties = None,
         description: str = None,
+        harmony_payload: HarmonyPayload = None,
         ios_payload: IosPayload = None,
         policy: Policy = None,
         production_mode: bool = None,
@@ -1660,6 +1826,7 @@ class SendByAppRequest(TeaModel):
         self.android_short_payload = android_short_payload
         self.channel_properties = channel_properties
         self.description = description
+        self.harmony_payload = harmony_payload
         self.ios_payload = ios_payload
         self.policy = policy
         self.production_mode = production_mode
@@ -1675,6 +1842,8 @@ class SendByAppRequest(TeaModel):
             self.android_short_payload.validate()
         if self.channel_properties:
             self.channel_properties.validate()
+        if self.harmony_payload:
+            self.harmony_payload.validate()
         if self.ios_payload:
             self.ios_payload.validate()
         if self.policy:
@@ -1694,6 +1863,8 @@ class SendByAppRequest(TeaModel):
             result['ChannelProperties'] = self.channel_properties.to_map()
         if self.description is not None:
             result['Description'] = self.description
+        if self.harmony_payload is not None:
+            result['HarmonyPayload'] = self.harmony_payload.to_map()
         if self.ios_payload is not None:
             result['IosPayload'] = self.ios_payload.to_map()
         if self.policy is not None:
@@ -1723,6 +1894,9 @@ class SendByAppRequest(TeaModel):
             self.channel_properties = temp_model.from_map(m['ChannelProperties'])
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('HarmonyPayload') is not None:
+            temp_model = HarmonyPayload()
+            self.harmony_payload = temp_model.from_map(m['HarmonyPayload'])
         if m.get('IosPayload') is not None:
             temp_model = IosPayload()
             self.ios_payload = temp_model.from_map(m['IosPayload'])
@@ -1749,6 +1923,7 @@ class SendByAppShrinkRequest(TeaModel):
         android_short_payload_shrink: str = None,
         channel_properties_shrink: str = None,
         description: str = None,
+        harmony_payload_shrink: str = None,
         ios_payload_shrink: str = None,
         policy_shrink: str = None,
         production_mode: bool = None,
@@ -1761,6 +1936,7 @@ class SendByAppShrinkRequest(TeaModel):
         self.android_short_payload_shrink = android_short_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
         self.description = description
+        self.harmony_payload_shrink = harmony_payload_shrink
         self.ios_payload_shrink = ios_payload_shrink
         self.policy_shrink = policy_shrink
         self.production_mode = production_mode
@@ -1786,6 +1962,8 @@ class SendByAppShrinkRequest(TeaModel):
             result['ChannelProperties'] = self.channel_properties_shrink
         if self.description is not None:
             result['Description'] = self.description
+        if self.harmony_payload_shrink is not None:
+            result['HarmonyPayload'] = self.harmony_payload_shrink
         if self.ios_payload_shrink is not None:
             result['IosPayload'] = self.ios_payload_shrink
         if self.policy_shrink is not None:
@@ -1812,6 +1990,8 @@ class SendByAppShrinkRequest(TeaModel):
             self.channel_properties_shrink = m.get('ChannelProperties')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('HarmonyPayload') is not None:
+            self.harmony_payload_shrink = m.get('HarmonyPayload')
         if m.get('IosPayload') is not None:
             self.ios_payload_shrink = m.get('IosPayload')
         if m.get('Policy') is not None:
@@ -1964,6 +2144,7 @@ class SendByDeviceRequest(TeaModel):
         channel_properties: ChannelProperties = None,
         description: str = None,
         device_tokens: str = None,
+        harmony_payload: HarmonyPayload = None,
         ios_payload: IosPayload = None,
         policy: Policy = None,
         production_mode: bool = None,
@@ -1978,6 +2159,7 @@ class SendByDeviceRequest(TeaModel):
         self.description = description
         # This parameter is required.
         self.device_tokens = device_tokens
+        self.harmony_payload = harmony_payload
         self.ios_payload = ios_payload
         self.policy = policy
         self.production_mode = production_mode
@@ -1993,6 +2175,8 @@ class SendByDeviceRequest(TeaModel):
             self.android_short_payload.validate()
         if self.channel_properties:
             self.channel_properties.validate()
+        if self.harmony_payload:
+            self.harmony_payload.validate()
         if self.ios_payload:
             self.ios_payload.validate()
         if self.policy:
@@ -2014,6 +2198,8 @@ class SendByDeviceRequest(TeaModel):
             result['Description'] = self.description
         if self.device_tokens is not None:
             result['DeviceTokens'] = self.device_tokens
+        if self.harmony_payload is not None:
+            result['HarmonyPayload'] = self.harmony_payload.to_map()
         if self.ios_payload is not None:
             result['IosPayload'] = self.ios_payload.to_map()
         if self.policy is not None:
@@ -2045,6 +2231,9 @@ class SendByDeviceRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('DeviceTokens') is not None:
             self.device_tokens = m.get('DeviceTokens')
+        if m.get('HarmonyPayload') is not None:
+            temp_model = HarmonyPayload()
+            self.harmony_payload = temp_model.from_map(m['HarmonyPayload'])
         if m.get('IosPayload') is not None:
             temp_model = IosPayload()
             self.ios_payload = temp_model.from_map(m['IosPayload'])
@@ -2072,6 +2261,7 @@ class SendByDeviceShrinkRequest(TeaModel):
         channel_properties_shrink: str = None,
         description: str = None,
         device_tokens: str = None,
+        harmony_payload_shrink: str = None,
         ios_payload_shrink: str = None,
         policy_shrink: str = None,
         production_mode: bool = None,
@@ -2086,6 +2276,7 @@ class SendByDeviceShrinkRequest(TeaModel):
         self.description = description
         # This parameter is required.
         self.device_tokens = device_tokens
+        self.harmony_payload_shrink = harmony_payload_shrink
         self.ios_payload_shrink = ios_payload_shrink
         self.policy_shrink = policy_shrink
         self.production_mode = production_mode
@@ -2113,6 +2304,8 @@ class SendByDeviceShrinkRequest(TeaModel):
             result['Description'] = self.description
         if self.device_tokens is not None:
             result['DeviceTokens'] = self.device_tokens
+        if self.harmony_payload_shrink is not None:
+            result['HarmonyPayload'] = self.harmony_payload_shrink
         if self.ios_payload_shrink is not None:
             result['IosPayload'] = self.ios_payload_shrink
         if self.policy_shrink is not None:
@@ -2141,6 +2334,8 @@ class SendByDeviceShrinkRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('DeviceTokens') is not None:
             self.device_tokens = m.get('DeviceTokens')
+        if m.get('HarmonyPayload') is not None:
+            self.harmony_payload_shrink = m.get('HarmonyPayload')
         if m.get('IosPayload') is not None:
             self.ios_payload_shrink = m.get('IosPayload')
         if m.get('Policy') is not None:
@@ -2293,6 +2488,7 @@ class SendByDeviceFileIdRequest(TeaModel):
         channel_properties: ChannelProperties = None,
         description: str = None,
         file_id: str = None,
+        harmony_payload: HarmonyPayload = None,
         ios_payload: IosPayload = None,
         policy: Policy = None,
         production_mode: bool = None,
@@ -2307,6 +2503,7 @@ class SendByDeviceFileIdRequest(TeaModel):
         self.description = description
         # This parameter is required.
         self.file_id = file_id
+        self.harmony_payload = harmony_payload
         self.ios_payload = ios_payload
         self.policy = policy
         self.production_mode = production_mode
@@ -2322,6 +2519,8 @@ class SendByDeviceFileIdRequest(TeaModel):
             self.android_short_payload.validate()
         if self.channel_properties:
             self.channel_properties.validate()
+        if self.harmony_payload:
+            self.harmony_payload.validate()
         if self.ios_payload:
             self.ios_payload.validate()
         if self.policy:
@@ -2343,6 +2542,8 @@ class SendByDeviceFileIdRequest(TeaModel):
             result['Description'] = self.description
         if self.file_id is not None:
             result['FileId'] = self.file_id
+        if self.harmony_payload is not None:
+            result['HarmonyPayload'] = self.harmony_payload.to_map()
         if self.ios_payload is not None:
             result['IosPayload'] = self.ios_payload.to_map()
         if self.policy is not None:
@@ -2374,6 +2575,9 @@ class SendByDeviceFileIdRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
+        if m.get('HarmonyPayload') is not None:
+            temp_model = HarmonyPayload()
+            self.harmony_payload = temp_model.from_map(m['HarmonyPayload'])
         if m.get('IosPayload') is not None:
             temp_model = IosPayload()
             self.ios_payload = temp_model.from_map(m['IosPayload'])
@@ -2401,6 +2605,7 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
         channel_properties_shrink: str = None,
         description: str = None,
         file_id: str = None,
+        harmony_payload_shrink: str = None,
         ios_payload_shrink: str = None,
         policy_shrink: str = None,
         production_mode: bool = None,
@@ -2415,6 +2620,7 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
         self.description = description
         # This parameter is required.
         self.file_id = file_id
+        self.harmony_payload_shrink = harmony_payload_shrink
         self.ios_payload_shrink = ios_payload_shrink
         self.policy_shrink = policy_shrink
         self.production_mode = production_mode
@@ -2442,6 +2648,8 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
             result['Description'] = self.description
         if self.file_id is not None:
             result['FileId'] = self.file_id
+        if self.harmony_payload_shrink is not None:
+            result['HarmonyPayload'] = self.harmony_payload_shrink
         if self.ios_payload_shrink is not None:
             result['IosPayload'] = self.ios_payload_shrink
         if self.policy_shrink is not None:
@@ -2470,6 +2678,8 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
+        if m.get('HarmonyPayload') is not None:
+            self.harmony_payload_shrink = m.get('HarmonyPayload')
         if m.get('IosPayload') is not None:
             self.ios_payload_shrink = m.get('IosPayload')
         if m.get('Policy') is not None:
@@ -2622,6 +2832,7 @@ class SendByFilterRequest(TeaModel):
         channel_properties: ChannelProperties = None,
         description: str = None,
         filter: str = None,
+        harmony_payload: HarmonyPayload = None,
         ios_payload: IosPayload = None,
         policy: Policy = None,
         production_mode: bool = None,
@@ -2635,6 +2846,7 @@ class SendByFilterRequest(TeaModel):
         self.channel_properties = channel_properties
         self.description = description
         self.filter = filter
+        self.harmony_payload = harmony_payload
         self.ios_payload = ios_payload
         self.policy = policy
         self.production_mode = production_mode
@@ -2650,6 +2862,8 @@ class SendByFilterRequest(TeaModel):
             self.android_short_payload.validate()
         if self.channel_properties:
             self.channel_properties.validate()
+        if self.harmony_payload:
+            self.harmony_payload.validate()
         if self.ios_payload:
             self.ios_payload.validate()
         if self.policy:
@@ -2671,6 +2885,8 @@ class SendByFilterRequest(TeaModel):
             result['Description'] = self.description
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.harmony_payload is not None:
+            result['HarmonyPayload'] = self.harmony_payload.to_map()
         if self.ios_payload is not None:
             result['IosPayload'] = self.ios_payload.to_map()
         if self.policy is not None:
@@ -2702,6 +2918,9 @@ class SendByFilterRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('HarmonyPayload') is not None:
+            temp_model = HarmonyPayload()
+            self.harmony_payload = temp_model.from_map(m['HarmonyPayload'])
         if m.get('IosPayload') is not None:
             temp_model = IosPayload()
             self.ios_payload = temp_model.from_map(m['IosPayload'])
@@ -2729,6 +2948,7 @@ class SendByFilterShrinkRequest(TeaModel):
         channel_properties_shrink: str = None,
         description: str = None,
         filter: str = None,
+        harmony_payload_shrink: str = None,
         ios_payload_shrink: str = None,
         policy_shrink: str = None,
         production_mode: bool = None,
@@ -2742,6 +2962,7 @@ class SendByFilterShrinkRequest(TeaModel):
         self.channel_properties_shrink = channel_properties_shrink
         self.description = description
         self.filter = filter
+        self.harmony_payload_shrink = harmony_payload_shrink
         self.ios_payload_shrink = ios_payload_shrink
         self.policy_shrink = policy_shrink
         self.production_mode = production_mode
@@ -2770,6 +2991,8 @@ class SendByFilterShrinkRequest(TeaModel):
             result['Description'] = self.description
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.harmony_payload_shrink is not None:
+            result['HarmonyPayload'] = self.harmony_payload_shrink
         if self.ios_payload_shrink is not None:
             result['IosPayload'] = self.ios_payload_shrink
         if self.policy_shrink is not None:
@@ -2799,6 +3022,8 @@ class SendByFilterShrinkRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('HarmonyPayload') is not None:
+            self.harmony_payload_shrink = m.get('HarmonyPayload')
         if m.get('IosPayload') is not None:
             self.ios_payload_shrink = m.get('IosPayload')
         if m.get('Policy') is not None:
