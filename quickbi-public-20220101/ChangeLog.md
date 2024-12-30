@@ -1,3 +1,19 @@
+2024-12-30 Version: 1.9.0
+- Support API GetDataSourceConnectionInfo.
+- Support API ListDataSource.
+- Support API QueryDatasetSmartqStatus.
+- Support API QueryLlmCubeWithThemeListByUserId.
+- Support API QuerySmartqPermissionByCubeId.
+- Support API SmartqAuthTransfer.
+- Support API SmartqAuthorize.
+- Update API AddUser: update param AccountId.
+- Update API QueryApprovalInfo: update param Status.
+- Update API QueryAuditLog: update response param.
+- Update API QueryWorksBloodRelationship: update response param.
+- Update API UpdateWorkspaceUserRole: add param RoleIds.
+- Update API UpdateWorkspaceUserRole: update param RoleId.
+
+
 2024-11-26 Version: 1.8.0
 - Support API GetMailTaskStatus.
 - Support API GetWorksEmbedList.

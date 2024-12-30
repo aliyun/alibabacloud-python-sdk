@@ -3405,6 +3405,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_tag_meta_with_options_async(request, runtime)
 
+    def get_data_source_connection_info_with_options(
+        self,
+        request: quickbi_public_20220101_models.GetDataSourceConnectionInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse:
+        """
+        @summary 获取数据源信息
+        
+        @param request: GetDataSourceConnectionInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataSourceConnectionInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ds_id):
+            query['DsId'] = request.ds_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataSourceConnectionInfo',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_source_connection_info_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.GetDataSourceConnectionInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse:
+        """
+        @summary 获取数据源信息
+        
+        @param request: GetDataSourceConnectionInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataSourceConnectionInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ds_id):
+            query['DsId'] = request.ds_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataSourceConnectionInfo',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_source_connection_info(
+        self,
+        request: quickbi_public_20220101_models.GetDataSourceConnectionInfoRequest,
+    ) -> quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse:
+        """
+        @summary 获取数据源信息
+        
+        @param request: GetDataSourceConnectionInfoRequest
+        @return: GetDataSourceConnectionInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_source_connection_info_with_options(request, runtime)
+
+    async def get_data_source_connection_info_async(
+        self,
+        request: quickbi_public_20220101_models.GetDataSourceConnectionInfoRequest,
+    ) -> quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse:
+        """
+        @summary 获取数据源信息
+        
+        @param request: GetDataSourceConnectionInfoRequest
+        @return: GetDataSourceConnectionInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_source_connection_info_with_options_async(request, runtime)
+
     def get_mail_task_status_with_options(
         self,
         request: quickbi_public_20220101_models.GetMailTaskStatusRequest,
@@ -4220,6 +4316,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_level_permission_white_list_with_options_async(request, runtime)
+
+    def list_data_source_with_options(
+        self,
+        request: quickbi_public_20220101_models.ListDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListDataSourceResponse:
+        """
+        @summary 查询指定空间下的所有数据源
+        
+        @param request: ListDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ds_type):
+            query['DsType'] = request.ds_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataSource',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_source_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.ListDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListDataSourceResponse:
+        """
+        @summary 查询指定空间下的所有数据源
+        
+        @param request: ListDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ds_type):
+            query['DsType'] = request.ds_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataSource',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_source(
+        self,
+        request: quickbi_public_20220101_models.ListDataSourceRequest,
+    ) -> quickbi_public_20220101_models.ListDataSourceResponse:
+        """
+        @summary 查询指定空间下的所有数据源
+        
+        @param request: ListDataSourceRequest
+        @return: ListDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_source_with_options(request, runtime)
+
+    async def list_data_source_async(
+        self,
+        request: quickbi_public_20220101_models.ListDataSourceRequest,
+    ) -> quickbi_public_20220101_models.ListDataSourceResponse:
+        """
+        @summary 查询指定空间下的所有数据源
+        
+        @param request: ListDataSourceRequest
+        @return: ListDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_source_with_options_async(request, runtime)
 
     def list_favorite_reports_with_options(
         self,
@@ -6951,6 +7147,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_dataset_list_with_options_async(request, runtime)
 
+    def query_dataset_smartq_status_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryDatasetSmartqStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryDatasetSmartqStatusResponse:
+        """
+        @summary 查看数据集是否开通智能问数
+        
+        @param request: QueryDatasetSmartqStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDatasetSmartqStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDatasetSmartqStatus',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryDatasetSmartqStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_dataset_smartq_status_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryDatasetSmartqStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryDatasetSmartqStatusResponse:
+        """
+        @summary 查看数据集是否开通智能问数
+        
+        @param request: QueryDatasetSmartqStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDatasetSmartqStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDatasetSmartqStatus',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryDatasetSmartqStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_dataset_smartq_status(
+        self,
+        request: quickbi_public_20220101_models.QueryDatasetSmartqStatusRequest,
+    ) -> quickbi_public_20220101_models.QueryDatasetSmartqStatusResponse:
+        """
+        @summary 查看数据集是否开通智能问数
+        
+        @param request: QueryDatasetSmartqStatusRequest
+        @return: QueryDatasetSmartqStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_dataset_smartq_status_with_options(request, runtime)
+
+    async def query_dataset_smartq_status_async(
+        self,
+        request: quickbi_public_20220101_models.QueryDatasetSmartqStatusRequest,
+    ) -> quickbi_public_20220101_models.QueryDatasetSmartqStatusResponse:
+        """
+        @summary 查看数据集是否开通智能问数
+        
+        @param request: QueryDatasetSmartqStatusRequest
+        @return: QueryDatasetSmartqStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_dataset_smartq_status_with_options_async(request, runtime)
+
     def query_dataset_switch_info_with_options(
         self,
         request: quickbi_public_20220101_models.QueryDatasetSwitchInfoRequest,
@@ -7216,6 +7508,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_embedded_status_with_options_async(request, runtime)
+
+    def query_llm_cube_with_theme_list_by_user_id_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdResponse:
+        """
+        @summary 查看用户有哪些数据集和分析主题的问数授权
+        
+        @param request: QueryLlmCubeWithThemeListByUserIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLlmCubeWithThemeListByUserIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryLlmCubeWithThemeListByUserId',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_llm_cube_with_theme_list_by_user_id_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdResponse:
+        """
+        @summary 查看用户有哪些数据集和分析主题的问数授权
+        
+        @param request: QueryLlmCubeWithThemeListByUserIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLlmCubeWithThemeListByUserIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryLlmCubeWithThemeListByUserId',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_llm_cube_with_theme_list_by_user_id(
+        self,
+        request: quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdRequest,
+    ) -> quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdResponse:
+        """
+        @summary 查看用户有哪些数据集和分析主题的问数授权
+        
+        @param request: QueryLlmCubeWithThemeListByUserIdRequest
+        @return: QueryLlmCubeWithThemeListByUserIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_llm_cube_with_theme_list_by_user_id_with_options(request, runtime)
+
+    async def query_llm_cube_with_theme_list_by_user_id_async(
+        self,
+        request: quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdRequest,
+    ) -> quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdResponse:
+        """
+        @summary 查看用户有哪些数据集和分析主题的问数授权
+        
+        @param request: QueryLlmCubeWithThemeListByUserIdRequest
+        @return: QueryLlmCubeWithThemeListByUserIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_llm_cube_with_theme_list_by_user_id_with_options_async(request, runtime)
 
     def query_organization_role_config_with_options(
         self,
@@ -7828,6 +8216,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_shares_to_user_list_with_options_async(request, runtime)
+
+    def query_smartq_permission_by_cube_id_with_options(
+        self,
+        request: quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdResponse:
+        """
+        @summary 查看用户是否有某个智能问数数据集权限
+        
+        @param request: QuerySmartqPermissionByCubeIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmartqPermissionByCubeIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySmartqPermissionByCubeId',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_smartq_permission_by_cube_id_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdResponse:
+        """
+        @summary 查看用户是否有某个智能问数数据集权限
+        
+        @param request: QuerySmartqPermissionByCubeIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmartqPermissionByCubeIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySmartqPermissionByCubeId',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_smartq_permission_by_cube_id(
+        self,
+        request: quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdRequest,
+    ) -> quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdResponse:
+        """
+        @summary 查看用户是否有某个智能问数数据集权限
+        
+        @param request: QuerySmartqPermissionByCubeIdRequest
+        @return: QuerySmartqPermissionByCubeIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_smartq_permission_by_cube_id_with_options(request, runtime)
+
+    async def query_smartq_permission_by_cube_id_async(
+        self,
+        request: quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdRequest,
+    ) -> quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdResponse:
+        """
+        @summary 查看用户是否有某个智能问数数据集权限
+        
+        @param request: QuerySmartqPermissionByCubeIdRequest
+        @return: QuerySmartqPermissionByCubeIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_smartq_permission_by_cube_id_with_options_async(request, runtime)
 
     def query_ticket_info_with_options(
         self,
@@ -9807,6 +10295,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_data_level_permission_white_list_with_options_async(request, runtime)
 
+    def smartq_auth_transfer_with_options(
+        self,
+        request: quickbi_public_20220101_models.SmartqAuthTransferRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.SmartqAuthTransferResponse:
+        """
+        @summary 将指定用户的问数权限同步给其他用户
+        
+        @param request: SmartqAuthTransferRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SmartqAuthTransferResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.origin_user_id):
+            query['OriginUserId'] = request.origin_user_id
+        if not UtilClient.is_unset(request.target_user_ids):
+            query['TargetUserIds'] = request.target_user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SmartqAuthTransfer',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.SmartqAuthTransferResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def smartq_auth_transfer_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.SmartqAuthTransferRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.SmartqAuthTransferResponse:
+        """
+        @summary 将指定用户的问数权限同步给其他用户
+        
+        @param request: SmartqAuthTransferRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SmartqAuthTransferResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.origin_user_id):
+            query['OriginUserId'] = request.origin_user_id
+        if not UtilClient.is_unset(request.target_user_ids):
+            query['TargetUserIds'] = request.target_user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SmartqAuthTransfer',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.SmartqAuthTransferResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def smartq_auth_transfer(
+        self,
+        request: quickbi_public_20220101_models.SmartqAuthTransferRequest,
+    ) -> quickbi_public_20220101_models.SmartqAuthTransferResponse:
+        """
+        @summary 将指定用户的问数权限同步给其他用户
+        
+        @param request: SmartqAuthTransferRequest
+        @return: SmartqAuthTransferResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.smartq_auth_transfer_with_options(request, runtime)
+
+    async def smartq_auth_transfer_async(
+        self,
+        request: quickbi_public_20220101_models.SmartqAuthTransferRequest,
+    ) -> quickbi_public_20220101_models.SmartqAuthTransferResponse:
+        """
+        @summary 将指定用户的问数权限同步给其他用户
+        
+        @param request: SmartqAuthTransferRequest
+        @return: SmartqAuthTransferResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.smartq_auth_transfer_with_options_async(request, runtime)
+
+    def smartq_authorize_with_options(
+        self,
+        request: quickbi_public_20220101_models.SmartqAuthorizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.SmartqAuthorizeResponse:
+        """
+        @summary 批量管理智能问数的授权
+        
+        @param request: SmartqAuthorizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SmartqAuthorizeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.expire_day):
+            query['ExpireDay'] = request.expire_day
+        if not UtilClient.is_unset(request.llm_cube_themes):
+            query['LlmCubeThemes'] = request.llm_cube_themes
+        if not UtilClient.is_unset(request.llm_cubes):
+            query['LlmCubes'] = request.llm_cubes
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SmartqAuthorize',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.SmartqAuthorizeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def smartq_authorize_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.SmartqAuthorizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.SmartqAuthorizeResponse:
+        """
+        @summary 批量管理智能问数的授权
+        
+        @param request: SmartqAuthorizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SmartqAuthorizeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.expire_day):
+            query['ExpireDay'] = request.expire_day
+        if not UtilClient.is_unset(request.llm_cube_themes):
+            query['LlmCubeThemes'] = request.llm_cube_themes
+        if not UtilClient.is_unset(request.llm_cubes):
+            query['LlmCubes'] = request.llm_cubes
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SmartqAuthorize',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.SmartqAuthorizeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def smartq_authorize(
+        self,
+        request: quickbi_public_20220101_models.SmartqAuthorizeRequest,
+    ) -> quickbi_public_20220101_models.SmartqAuthorizeResponse:
+        """
+        @summary 批量管理智能问数的授权
+        
+        @param request: SmartqAuthorizeRequest
+        @return: SmartqAuthorizeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.smartq_authorize_with_options(request, runtime)
+
+    async def smartq_authorize_async(
+        self,
+        request: quickbi_public_20220101_models.SmartqAuthorizeRequest,
+    ) -> quickbi_public_20220101_models.SmartqAuthorizeResponse:
+        """
+        @summary 批量管理智能问数的授权
+        
+        @param request: SmartqAuthorizeRequest
+        @return: SmartqAuthorizeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.smartq_authorize_with_options_async(request, runtime)
+
     def smartq_query_ability_with_options(
         self,
         request: quickbi_public_20220101_models.SmartqQueryAbilityRequest,
@@ -10687,6 +11387,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.role_id):
             query['RoleId'] = request.role_id
+        if not UtilClient.is_unset(request.role_ids):
+            query['RoleIds'] = request.role_ids
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -10726,6 +11428,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.role_id):
             query['RoleId'] = request.role_id
+        if not UtilClient.is_unset(request.role_ids):
+            query['RoleIds'] = request.role_ids
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.workspace_id):

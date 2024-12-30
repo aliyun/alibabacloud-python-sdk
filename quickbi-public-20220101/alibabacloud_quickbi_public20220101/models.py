@@ -4350,6 +4350,233 @@ class DeleteUserTagMetaResponse(TeaModel):
         return self
 
 
+class GetDataSourceConnectionInfoRequest(TeaModel):
+    def __init__(
+        self,
+        ds_id: str = None,
+    ):
+        # This parameter is required.
+        self.ds_id = ds_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ds_id is not None:
+            result['DsId'] = self.ds_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DsId') is not None:
+            self.ds_id = m.get('DsId')
+        return self
+
+
+class GetDataSourceConnectionInfoResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        auth_level: str = None,
+        creator_id: str = None,
+        ds_id: str = None,
+        ds_type: str = None,
+        ds_version: str = None,
+        instance: str = None,
+        instance_id: str = None,
+        modify_user: str = None,
+        no_sasl: bool = None,
+        parent_ds_type: str = None,
+        port: str = None,
+        project: str = None,
+        schema: str = None,
+        show_name: str = None,
+        workspace_id: str = None,
+    ):
+        self.address = address
+        self.auth_level = auth_level
+        self.creator_id = creator_id
+        self.ds_id = ds_id
+        self.ds_type = ds_type
+        self.ds_version = ds_version
+        self.instance = instance
+        self.instance_id = instance_id
+        self.modify_user = modify_user
+        self.no_sasl = no_sasl
+        self.parent_ds_type = parent_ds_type
+        self.port = port
+        self.project = project
+        self.schema = schema
+        self.show_name = show_name
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.auth_level is not None:
+            result['AuthLevel'] = self.auth_level
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.ds_id is not None:
+            result['DsId'] = self.ds_id
+        if self.ds_type is not None:
+            result['DsType'] = self.ds_type
+        if self.ds_version is not None:
+            result['DsVersion'] = self.ds_version
+        if self.instance is not None:
+            result['Instance'] = self.instance
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.no_sasl is not None:
+            result['NoSasl'] = self.no_sasl
+        if self.parent_ds_type is not None:
+            result['ParentDsType'] = self.parent_ds_type
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.project is not None:
+            result['Project'] = self.project
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        if self.show_name is not None:
+            result['ShowName'] = self.show_name
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AuthLevel') is not None:
+            self.auth_level = m.get('AuthLevel')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('DsId') is not None:
+            self.ds_id = m.get('DsId')
+        if m.get('DsType') is not None:
+            self.ds_type = m.get('DsType')
+        if m.get('DsVersion') is not None:
+            self.ds_version = m.get('DsVersion')
+        if m.get('Instance') is not None:
+            self.instance = m.get('Instance')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('NoSasl') is not None:
+            self.no_sasl = m.get('NoSasl')
+        if m.get('ParentDsType') is not None:
+            self.parent_ds_type = m.get('ParentDsType')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Project') is not None:
+            self.project = m.get('Project')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        if m.get('ShowName') is not None:
+            self.show_name = m.get('ShowName')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetDataSourceConnectionInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: GetDataSourceConnectionInfoResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetDataSourceConnectionInfoResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDataSourceConnectionInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDataSourceConnectionInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDataSourceConnectionInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetMailTaskStatusRequest(TeaModel):
     def __init__(
         self,
@@ -5958,6 +6185,197 @@ class ListDataLevelPermissionWhiteListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDataLevelPermissionWhiteListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataSourceRequest(TeaModel):
+    def __init__(
+        self,
+        ds_type: str = None,
+        workspace_id: str = None,
+    ):
+        self.ds_type = ds_type
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ds_type is not None:
+            result['DsType'] = self.ds_type
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DsType') is not None:
+            self.ds_type = m.get('DsType')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListDataSourceResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        creator_id: str = None,
+        creator_name: str = None,
+        datasource_id: str = None,
+        ds_type: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        parent_ds_type: str = None,
+        show_name: str = None,
+    ):
+        self.creator_id = creator_id
+        self.creator_name = creator_name
+        self.datasource_id = datasource_id
+        self.ds_type = ds_type
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.parent_ds_type = parent_ds_type
+        self.show_name = show_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.creator_name is not None:
+            result['CreatorName'] = self.creator_name
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+        if self.ds_type is not None:
+            result['DsType'] = self.ds_type
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.parent_ds_type is not None:
+            result['ParentDsType'] = self.parent_ds_type
+        if self.show_name is not None:
+            result['ShowName'] = self.show_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('CreatorName') is not None:
+            self.creator_name = m.get('CreatorName')
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+        if m.get('DsType') is not None:
+            self.ds_type = m.get('DsType')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('ParentDsType') is not None:
+            self.parent_ds_type = m.get('ParentDsType')
+        if m.get('ShowName') is not None:
+            self.show_name = m.get('ShowName')
+        return self
+
+
+class ListDataSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: List[ListDataSourceResponseBodyResult] = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ListDataSourceResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListDataSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataSourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8978,6 +9396,7 @@ class QueryAuditLogResponseBodyResult(TeaModel):
         operator_account_name: str = None,
         operator_name: str = None,
         operator_type: str = None,
+        target_id: str = None,
         target_name: str = None,
         target_type: str = None,
         workspace_id: str = None,
@@ -8986,6 +9405,7 @@ class QueryAuditLogResponseBodyResult(TeaModel):
         self.operator_account_name = operator_account_name
         self.operator_name = operator_name
         self.operator_type = operator_type
+        self.target_id = target_id
         self.target_name = target_name
         self.target_type = target_type
         self.workspace_id = workspace_id
@@ -9007,6 +9427,8 @@ class QueryAuditLogResponseBodyResult(TeaModel):
             result['OperatorName'] = self.operator_name
         if self.operator_type is not None:
             result['OperatorType'] = self.operator_type
+        if self.target_id is not None:
+            result['TargetId'] = self.target_id
         if self.target_name is not None:
             result['TargetName'] = self.target_name
         if self.target_type is not None:
@@ -9025,6 +9447,8 @@ class QueryAuditLogResponseBodyResult(TeaModel):
             self.operator_name = m.get('OperatorName')
         if m.get('OperatorType') is not None:
             self.operator_type = m.get('OperatorType')
+        if m.get('TargetId') is not None:
+            self.target_id = m.get('TargetId')
         if m.get('TargetName') is not None:
             self.target_name = m.get('TargetName')
         if m.get('TargetType') is not None:
@@ -12761,6 +13185,114 @@ class QueryDatasetListResponse(TeaModel):
         return self
 
 
+class QueryDatasetSmartqStatusRequest(TeaModel):
+    def __init__(
+        self,
+        cube_id: str = None,
+    ):
+        # This parameter is required.
+        self.cube_id = cube_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cube_id is not None:
+            result['CubeId'] = self.cube_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CubeId') is not None:
+            self.cube_id = m.get('CubeId')
+        return self
+
+
+class QueryDatasetSmartqStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryDatasetSmartqStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryDatasetSmartqStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryDatasetSmartqStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryDatasetSwitchInfoRequest(TeaModel):
     def __init__(
         self,
@@ -13191,6 +13723,149 @@ class QueryEmbeddedStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryEmbeddedStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryLlmCubeWithThemeListByUserIdRequest(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QueryLlmCubeWithThemeListByUserIdResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        cube_ids: Dict[str, str] = None,
+        theme_ids: Dict[str, str] = None,
+    ):
+        self.cube_ids = cube_ids
+        self.theme_ids = theme_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cube_ids is not None:
+            result['CubeIds'] = self.cube_ids
+        if self.theme_ids is not None:
+            result['ThemeIds'] = self.theme_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CubeIds') is not None:
+            self.cube_ids = m.get('CubeIds')
+        if m.get('ThemeIds') is not None:
+            self.theme_ids = m.get('ThemeIds')
+        return self
+
+
+class QueryLlmCubeWithThemeListByUserIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: QueryLlmCubeWithThemeListByUserIdResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = QueryLlmCubeWithThemeListByUserIdResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryLlmCubeWithThemeListByUserIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryLlmCubeWithThemeListByUserIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryLlmCubeWithThemeListByUserIdResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14828,6 +15503,162 @@ class QuerySharesToUserListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QuerySharesToUserListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QuerySmartqPermissionByCubeIdRequest(TeaModel):
+    def __init__(
+        self,
+        cube_id: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.cube_id = cube_id
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cube_id is not None:
+            result['CubeId'] = self.cube_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CubeId') is not None:
+            self.cube_id = m.get('CubeId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QuerySmartqPermissionByCubeIdResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        cube_id: str = None,
+        cube_name: str = None,
+        has_perssion: bool = None,
+    ):
+        self.cube_id = cube_id
+        self.cube_name = cube_name
+        self.has_perssion = has_perssion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cube_id is not None:
+            result['CubeId'] = self.cube_id
+        if self.cube_name is not None:
+            result['CubeName'] = self.cube_name
+        if self.has_perssion is not None:
+            result['HasPerssion'] = self.has_perssion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CubeId') is not None:
+            self.cube_id = m.get('CubeId')
+        if m.get('CubeName') is not None:
+            self.cube_name = m.get('CubeName')
+        if m.get('HasPerssion') is not None:
+            self.has_perssion = m.get('HasPerssion')
+        return self
+
+
+class QuerySmartqPermissionByCubeIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: QuerySmartqPermissionByCubeIdResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = QuerySmartqPermissionByCubeIdResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QuerySmartqPermissionByCubeIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySmartqPermissionByCubeIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySmartqPermissionByCubeIdResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16883,6 +17714,7 @@ class QueryWorksBloodRelationshipResponseBodyResultQueryParams(TeaModel):
         area_name: str = None,
         caption: str = None,
         data_type: str = None,
+        expression: str = None,
         is_measure: bool = None,
         path_id: str = None,
         uid: str = None,
@@ -16897,6 +17729,7 @@ class QueryWorksBloodRelationshipResponseBodyResultQueryParams(TeaModel):
         self.caption = caption
         # The display name of the field.
         self.data_type = data_type
+        self.expression = expression
         # The type of the field. Valid values:
         # 
         # *   string: string type
@@ -16932,6 +17765,8 @@ class QueryWorksBloodRelationshipResponseBodyResultQueryParams(TeaModel):
             result['Caption'] = self.caption
         if self.data_type is not None:
             result['DataType'] = self.data_type
+        if self.expression is not None:
+            result['Expression'] = self.expression
         if self.is_measure is not None:
             result['IsMeasure'] = self.is_measure
         if self.path_id is not None:
@@ -16950,6 +17785,8 @@ class QueryWorksBloodRelationshipResponseBodyResultQueryParams(TeaModel):
             self.caption = m.get('Caption')
         if m.get('DataType') is not None:
             self.data_type = m.get('DataType')
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
         if m.get('IsMeasure') is not None:
             self.is_measure = m.get('IsMeasure')
         if m.get('PathId') is not None:
@@ -16965,6 +17802,7 @@ class QueryWorksBloodRelationshipResponseBodyResult(TeaModel):
         component_id: str = None,
         component_name: str = None,
         component_type: int = None,
+        component_type_cn_name: str = None,
         component_type_name: str = None,
         dataset_id: str = None,
         query_params: List[QueryWorksBloodRelationshipResponseBodyResultQueryParams] = None,
@@ -16975,6 +17813,7 @@ class QueryWorksBloodRelationshipResponseBodyResult(TeaModel):
         self.component_name = component_name
         # Line
         self.component_type = component_type
+        self.component_type_cn_name = component_type_cn_name
         # The type of the image component.
         self.component_type_name = component_type_name
         # Column (Measure)
@@ -17000,6 +17839,8 @@ class QueryWorksBloodRelationshipResponseBodyResult(TeaModel):
             result['ComponentName'] = self.component_name
         if self.component_type is not None:
             result['ComponentType'] = self.component_type
+        if self.component_type_cn_name is not None:
+            result['ComponentTypeCnName'] = self.component_type_cn_name
         if self.component_type_name is not None:
             result['ComponentTypeName'] = self.component_type_name
         if self.dataset_id is not None:
@@ -17018,6 +17859,8 @@ class QueryWorksBloodRelationshipResponseBodyResult(TeaModel):
             self.component_name = m.get('ComponentName')
         if m.get('ComponentType') is not None:
             self.component_type = m.get('ComponentType')
+        if m.get('ComponentTypeCnName') is not None:
+            self.component_type_cn_name = m.get('ComponentTypeCnName')
         if m.get('ComponentTypeName') is not None:
             self.component_type_name = m.get('ComponentTypeName')
         if m.get('DatasetId') is not None:
@@ -19058,6 +19901,307 @@ class SetDataLevelPermissionWhiteListResponse(TeaModel):
         return self
 
 
+class SmartqAuthTransferRequest(TeaModel):
+    def __init__(
+        self,
+        origin_user_id: str = None,
+        target_user_ids: str = None,
+    ):
+        # This parameter is required.
+        self.origin_user_id = origin_user_id
+        # This parameter is required.
+        self.target_user_ids = target_user_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.origin_user_id is not None:
+            result['OriginUserId'] = self.origin_user_id
+        if self.target_user_ids is not None:
+            result['TargetUserIds'] = self.target_user_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OriginUserId') is not None:
+            self.origin_user_id = m.get('OriginUserId')
+        if m.get('TargetUserIds') is not None:
+            self.target_user_ids = m.get('TargetUserIds')
+        return self
+
+
+class SmartqAuthTransferResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SmartqAuthTransferResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SmartqAuthTransferResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SmartqAuthTransferResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SmartqAuthorizeRequest(TeaModel):
+    def __init__(
+        self,
+        expire_day: str = None,
+        llm_cube_themes: str = None,
+        llm_cubes: str = None,
+        operation_type: int = None,
+        user_ids: str = None,
+    ):
+        self.expire_day = expire_day
+        self.llm_cube_themes = llm_cube_themes
+        self.llm_cubes = llm_cubes
+        # This parameter is required.
+        self.operation_type = operation_type
+        # This parameter is required.
+        self.user_ids = user_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expire_day is not None:
+            result['ExpireDay'] = self.expire_day
+        if self.llm_cube_themes is not None:
+            result['LlmCubeThemes'] = self.llm_cube_themes
+        if self.llm_cubes is not None:
+            result['LlmCubes'] = self.llm_cubes
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.user_ids is not None:
+            result['UserIds'] = self.user_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpireDay') is not None:
+            self.expire_day = m.get('ExpireDay')
+        if m.get('LlmCubeThemes') is not None:
+            self.llm_cube_themes = m.get('LlmCubeThemes')
+        if m.get('LlmCubes') is not None:
+            self.llm_cubes = m.get('LlmCubes')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('UserIds') is not None:
+            self.user_ids = m.get('UserIds')
+        return self
+
+
+class SmartqAuthorizeResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        detail_message: str = None,
+        llm_cube: str = None,
+        llm_cube_theme: str = None,
+        user_id: str = None,
+    ):
+        self.detail_message = detail_message
+        self.llm_cube = llm_cube
+        self.llm_cube_theme = llm_cube_theme
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detail_message is not None:
+            result['DetailMessage'] = self.detail_message
+        if self.llm_cube is not None:
+            result['LlmCube'] = self.llm_cube
+        if self.llm_cube_theme is not None:
+            result['LlmCubeTheme'] = self.llm_cube_theme
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DetailMessage') is not None:
+            self.detail_message = m.get('DetailMessage')
+        if m.get('LlmCube') is not None:
+            self.llm_cube = m.get('LlmCube')
+        if m.get('LlmCubeTheme') is not None:
+            self.llm_cube_theme = m.get('LlmCubeTheme')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class SmartqAuthorizeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: List[SmartqAuthorizeResponseBodyResult] = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = SmartqAuthorizeResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SmartqAuthorizeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SmartqAuthorizeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SmartqAuthorizeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SmartqQueryAbilityRequest(TeaModel):
     def __init__(
         self,
@@ -20210,11 +21354,12 @@ class UpdateWorkspaceUserRoleRequest(TeaModel):
     def __init__(
         self,
         role_id: int = None,
+        role_ids: str = None,
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # This parameter is required.
         self.role_id = role_id
+        self.role_ids = role_ids
         # This parameter is required.
         self.user_id = user_id
         # This parameter is required.
@@ -20231,6 +21376,8 @@ class UpdateWorkspaceUserRoleRequest(TeaModel):
         result = dict()
         if self.role_id is not None:
             result['RoleId'] = self.role_id
+        if self.role_ids is not None:
+            result['RoleIds'] = self.role_ids
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.workspace_id is not None:
@@ -20241,6 +21388,8 @@ class UpdateWorkspaceUserRoleRequest(TeaModel):
         m = m or dict()
         if m.get('RoleId') is not None:
             self.role_id = m.get('RoleId')
+        if m.get('RoleIds') is not None:
+            self.role_ids = m.get('RoleIds')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('WorkspaceId') is not None:
