@@ -1,3 +1,51 @@
+2024-12-30 Version: 1.1.0
+- Support API CreateBatchTask.
+- Support API CreateBizEntity.
+- Support API CreateBizUnit.
+- Support API CreateDataDomain.
+- Support API CreatePipelineNode.
+- Support API CreateStreamBatchJobMapping.
+- Support API DeleteBatchTask.
+- Support API DeleteBizEntity.
+- Support API DeleteBizUnit.
+- Support API DeleteDataDomain.
+- Support API ExecuteAdHocTask.
+- Support API GetAdHocTaskLog.
+- Support API GetAdHocTaskResult.
+- Support API GetAlertEvent.
+- Support API GetBatchTaskInfo.
+- Support API GetBatchTaskInfoByVersion.
+- Support API GetBatchTaskUdfLineages.
+- Support API GetBatchTaskVersions.
+- Support API GetBizEntityInfo.
+- Support API GetBizEntityInfoByVersion.
+- Support API GetBizUnitInfo.
+- Support API GetClusterQueueInfoByEnv.
+- Support API GetDataDomainInfo.
+- Support API GetDirectoryTree.
+- Support API GetLatestSubmitDetail.
+- Support API GetQueueEngineVersionByEnv.
+- Support API ListAlertEvents.
+- Support API ListAlertNotifications.
+- Support API ListBizEntities.
+- Support API ListBizUnits.
+- Support API ListDataDomains.
+- Support API ListPublishRecords.
+- Support API ListSubmitRecords.
+- Support API OfflineBatchTask.
+- Support API OfflineBizEntity.
+- Support API OnlineBizEntity.
+- Support API ParseBatchTaskDependency.
+- Support API PublishObjectList.
+- Support API StopAdHocTask.
+- Support API SubmitBatchTask.
+- Support API UpdateBatchTask.
+- Support API UpdateBatchTaskUdfLineages.
+- Support API UpdateBizEntity.
+- Support API UpdateBizUnit.
+- Support API UpdateDataDomain.
+
+
 2024-10-11 Version: 1.0.0
 - Generated python 2023-06-30 for dataphin-public.
 
